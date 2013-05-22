@@ -33,10 +33,10 @@ from gettext import gettext as _
 
 try:
     import gst
-    GST_AVAILABLE = True
+    _GST_AVAILABLE = True
 except ImportError:
     # Turtle Art should not fail if gst is not available
-    GST_AVAILABLE = False
+    _GST_AVAILABLE = False
 
 import os
 import subprocess
@@ -83,32 +83,32 @@ from tautils import (magnitude, get_load_name, get_save_name, data_from_file,
 from tasprite_factory import (SVG, svg_str_to_pixbuf, svg_from_file)
 from sprites import (Sprites, Sprite)
 
-if GST_AVAILABLE:
+if _GST_AVAILABLE:
     from tagplay import stop_media
 
-MOTION_THRESHOLD = 6
-SNAP_THRESHOLD = 200
-NO_DOCK = (100, 100)  # Blocks cannot be docked
-BUTTON_SIZE = 32
-MARGIN = 5
+_MOTION_THRESHOLD = 6
+_SNAP_THRESHOLD = 200
+_NO_DOCK = (100, 100)  # Blocks cannot be docked
+_BUTTON_SIZE = 32
+_MARGIN = 5
 _UNFULLSCREEN_VISIBILITY_TIMEOUT = 2
+_PLUGIN_SUBPATH = 'plugins'
+_MACROS_SUBPATH = 'macros'
 
 
 class TurtleArtWindow():
     ''' TurtleArt Window class abstraction  '''
-    timeout_tag = [0]
-    _PLUGIN_SUBPATH = 'plugins'
-    _MACROS_SUBPATH = 'macros'
 
     def __init__(self, canvas_window, path, parent=None,
                  mycolors=None, mynick=None, turtle_canvas=None,
                  running_sugar=True):
-        self._loaded_project = ''
-        self._sharing = False
         self.parent = parent
         self.turtle_canvas = turtle_canvas
+        self._loaded_project = ''
+        self._sharing = False
+        self._timeout_tag = [0]
         self.send_event = None  # method to send events over the network
-        self.gst_available = GST_AVAILABLE
+        self.gst_available = _GST_AVAILABLE
         self.running_sugar = False
         self.nick = None
         if isinstance(canvas_window, gtk.DrawingArea):
@@ -124,12 +124,12 @@ class TurtleArtWindow():
 
                 self.nick = profile.get_nick_name()
                 self.macros_path = os.path.join(
-                    get_path(parent, 'data'), self._MACROS_SUBPATH)
+                    get_path(parent, 'data'), _MACROS_SUBPATH)
             else:
                 # Make sure macros_path is somewhere writable
                 self.macros_path = os.path.join(
                     os.path.expanduser('~'), 'Activities',
-                    'TurtleArt.activity', self._MACROS_SUBPATH)
+                    'TurtleArt.activity', _MACROS_SUBPATH)
             self._setup_events()
         else:
             self.interactive_mode = False
@@ -302,7 +302,7 @@ class TurtleArtWindow():
 
     def _get_plugin_home(self):
         ''' Look in the execution directory '''
-        path = os.path.join(self.path, self._PLUGIN_SUBPATH)
+        path = os.path.join(self.path, _PLUGIN_SUBPATH)
         if os.path.exists(path):
             return path
         else:
@@ -840,14 +840,14 @@ class TurtleArtWindow():
         w, h = self.palette_sprs[n][self.orientation].get_dimensions()
         bx, by = self.palettes[n][0].spr.get_xy()
         if self.orientation == 0:
-            if bx != BUTTON_SIZE:
+            if bx != _BUTTON_SIZE:
                 dx = w - self.width
             else:
                 dx = self.width - w
             dy = 0
         else:
             dx = 0
-            if by != self.toolbar_offset + BUTTON_SIZE + MARGIN:
+            if by != self.toolbar_offset + _BUTTON_SIZE + _MARGIN:
                 dy = h - self.height + ICON_SIZE
             else:
                 dy = self.height - h - ICON_SIZE
@@ -1276,37 +1276,37 @@ class TurtleArtWindow():
         ''' Layout prototypes in a palette. '''
         if n is not None:
             if self.orientation == HORIZONTAL_PALETTE:
-                x, y = BUTTON_SIZE, self.toolbar_offset + MARGIN
+                x, y = _BUTTON_SIZE, self.toolbar_offset + _MARGIN
                 x, y, max_w = self._horizontal_layout(x, y, self.palettes[n])
                 if n == palette_names.index('trash'):
                     x, y, max_w = self._horizontal_layout(x + max_w, y,
                                                           self.trash_stack)
-                w = x + max_w + BUTTON_SIZE + MARGIN
+                w = x + max_w + _BUTTON_SIZE + _MARGIN
                 self._make_palette_spr(n, 0, self.toolbar_offset,
                                        w, PALETTE_HEIGHT, regenerate)
                 if show:
                     self.palette_button[2].move(
-                        (w - BUTTON_SIZE, self.toolbar_offset))
+                        (w - _BUTTON_SIZE, self.toolbar_offset))
                     self.palette_button[4].move(
-                        (BUTTON_SIZE, self.toolbar_offset))
+                        (_BUTTON_SIZE, self.toolbar_offset))
                     self.palette_button[6].move(
-                        (BUTTON_SIZE, self.toolbar_offset))
+                        (_BUTTON_SIZE, self.toolbar_offset))
             else:
-                x, y = MARGIN, self.toolbar_offset + BUTTON_SIZE + MARGIN
+                x, y = _MARGIN, self.toolbar_offset + _BUTTON_SIZE + _MARGIN
                 x, y, max_h = self._vertical_layout(x, y, self.palettes[n])
                 if n == palette_names.index('trash'):
                     x, y, max_h = self._vertical_layout(x, y + max_h,
                                                         self.trash_stack)
-                h = y + max_h + BUTTON_SIZE + MARGIN - self.toolbar_offset
+                h = y + max_h + _BUTTON_SIZE + _MARGIN - self.toolbar_offset
                 self._make_palette_spr(n, 0, self.toolbar_offset,
                                        PALETTE_WIDTH, h, regenerate)
                 if show:
-                    self.palette_button[2].move((PALETTE_WIDTH - BUTTON_SIZE,
+                    self.palette_button[2].move((PALETTE_WIDTH - _BUTTON_SIZE,
                                                  self.toolbar_offset))
                     self.palette_button[3].move(
-                        (0, self.toolbar_offset + BUTTON_SIZE))
+                        (0, self.toolbar_offset + _BUTTON_SIZE))
                     self.palette_button[5].move(
-                        (0, self.toolbar_offset + BUTTON_SIZE))
+                        (0, self.toolbar_offset + _BUTTON_SIZE))
             if show:
                 self.palette_button[2].save_xy = \
                     self.palette_button[2].get_xy()
@@ -2558,37 +2558,37 @@ before making changes to your Turtle Blocks program'))
         spr = self.sprite_list.find_sprite((x, y))
         blk = self.block_list.spr_to_block(spr)
         if spr and blk is not None:
-            if self.timeout_tag[0] == 0:
-                self.timeout_tag[0] = self._do_show_popup(blk.name)
+            if self._timeout_tag[0] == 0:
+                self._timeout_tag[0] = self._do_show_popup(blk.name)
                 self.selected_spr = spr
             else:
-                if self.timeout_tag[0] > 0:
+                if self._timeout_tag[0] > 0:
                     try:
-                        gobject.source_remove(self.timeout_tag[0])
-                        self.timeout_tag[0] = 0
+                        gobject.source_remove(self._timeout_tag[0])
+                        self._timeout_tag[0] = 0
                     except:
-                        self.timeout_tag[0] = 0
+                        self._timeout_tag[0] = 0
         elif spr and hasattr(spr, 'type') and \
                 (spr.type == 'selector' or
                  spr.type == 'palette' or
                  spr.type == 'toolbar'):
-            if self.timeout_tag[0] == 0 and hasattr(spr, 'name'):
-                self.timeout_tag[0] = self._do_show_popup(spr.name)
+            if self._timeout_tag[0] == 0 and hasattr(spr, 'name'):
+                self._timeout_tag[0] = self._do_show_popup(spr.name)
                 self.selected_spr = spr
             else:
-                if self.timeout_tag[0] > 0:
+                if self._timeout_tag[0] > 0:
                     try:
-                        gobject.source_remove(self.timeout_tag[0])
-                        self.timeout_tag[0] = 0
+                        gobject.source_remove(self._timeout_tag[0])
+                        self._timeout_tag[0] = 0
                     except:
-                        self.timeout_tag[0] = 0
+                        self._timeout_tag[0] = 0
         else:
-            if self.timeout_tag[0] > 0:
+            if self._timeout_tag[0] > 0:
                 try:
-                    gobject.source_remove(self.timeout_tag[0])
-                    self.timeout_tag[0] = 0
+                    gobject.source_remove(self._timeout_tag[0])
+                    self._timeout_tag[0] = 0
                 except:
-                    self.timeout_tag[0] = 0
+                    self._timeout_tag[0] = 0
 
     def _do_show_popup(self, block_name):
         ''' Fetch the help text and display it.  '''
@@ -2698,8 +2698,8 @@ before making changes to your Turtle Blocks program'))
         if self.block_operation == 'click' or \
            (self.hw in [XO175, XO30, XO4] and
             self.block_operation == 'move' and (
-                abs(self.dx) < MOTION_THRESHOLD and
-                abs(self.dy < MOTION_THRESHOLD))):
+                abs(self.dx) < _MOTION_THRESHOLD and
+                abs(self.dy < _MOTION_THRESHOLD))):
             self._click_block(x, y)
         elif self.block_operation == 'copying':
             gobject.timeout_add(500, self._unhighlight_drag_group, blk)
@@ -3043,7 +3043,7 @@ before making changes to your Turtle Blocks program'))
         (destination_block). '''
         selected_block = self.drag_group[0]
         best_destination = None
-        d = SNAP_THRESHOLD
+        d = _SNAP_THRESHOLD
         self.inserting_block_mid_stack = False
         for selected_block_dockn in range(len(selected_block.docks)):
             for destination_block in self.just_blocks():
@@ -3065,7 +3065,7 @@ before making changes to your Turtle Blocks program'))
                     best_destination = destination_block
                     best_destination_dockn = destination_dockn
                     best_selected_block_dockn = selected_block_dockn
-        if d < SNAP_THRESHOLD:
+        if d < _SNAP_THRESHOLD:
             # Some combinations of blocks are not valid
             if not arithmetic_check(selected_block, best_destination,
                                     best_selected_block_dockn,
@@ -4566,7 +4566,7 @@ variable'))
         ''' Find the distance between the dock points of two blocks. '''
         # Cannot dock a block to itself
         if block1 == block2:
-            return NO_DOCK
+            return _NO_DOCK
         dock1 = block1.docks[dock1n]
         dock2 = block2.docks[dock2n]
         # Dock types include flow, number, string, unavailable
@@ -4577,7 +4577,7 @@ variable'))
         d2type, d2dir, d2x, d2y = dock2[0:4]
         # Cannot connect an innie to an innie or an outie to an outie
         if d1dir == d2dir:
-            return NO_DOCK
+            return _NO_DOCK
         # Flow blocks can be inserted into the middle of a stack
         if d2type is 'flow' and dock2n is 0:
             if block1.connections is not None and \
@@ -4593,11 +4593,11 @@ variable'))
             if block1.connections is not None and \
                     dock1n < len(block1.connections) and \
                     block1.connections[dock1n] is not None:
-                return NO_DOCK
+                return _NO_DOCK
             if block2.connections is not None and \
                     dock2n < len(block2.connections) and \
                     block2.connections[dock2n] is not None:
-                return NO_DOCK
+                return _NO_DOCK
         # Only some dock types are interchangeable
         if d1type != d2type:
             # Some blocks will take strings or numbers
@@ -4609,7 +4609,7 @@ variable'))
                 if d2type in content_blocks:
                     pass
             else:
-                return NO_DOCK
+                return _NO_DOCK
         (b1x, b1y) = block1.spr.get_xy()
         (b2x, b2y) = block2.spr.get_xy()
         return ((b1x + d1x) - (b2x + d2x), (b1y + d1y) - (b2y + d2y))
