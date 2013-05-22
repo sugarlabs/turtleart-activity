@@ -1581,7 +1581,7 @@ bullets'))
         # into position to place the next block in the stack.
         # TODO: Add expandable argument
         x, y = self.tw.active_turtle.get_xy()
-        if isinstance(blkname) == list:
+        if isinstance(blkname, list):
             name = blkname[0]
             if len(blkname) > 1:
                 value = blkname[1:]

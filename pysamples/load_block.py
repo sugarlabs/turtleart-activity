@@ -71,7 +71,7 @@ def myblock(tw, blkname):
     # Place the block at the active turtle (x, y) and move the turtle
     # into position to place the next block in the stack.
     x, y = tw.active_turtle.get_xy()
-    if isinstance(blkname) == list:
+    if isinstance(blkname, list):
         name = blkname[0]
         value = blkname[1:]
         dy = int(find_block(tw, name, x, y, value))

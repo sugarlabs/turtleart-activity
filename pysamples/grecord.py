@@ -204,7 +204,7 @@ def myblock(tw, arg):
 
     # Sometime we need to parse multiple arguments, e.g., save, savename
     save_name = '%s_%s' % (tw.activity.name, _('sound'))
-    if isinstance(arg) == list:
+    if isinstance(arg, list):
         cmd = arg[0].lower()
         if len(arg) > 1:
             save_name = str(arg[1])
