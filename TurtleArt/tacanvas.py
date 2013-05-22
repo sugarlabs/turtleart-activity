@@ -155,8 +155,8 @@ class TurtleGraphics:
         if self.tw.sharing():
             shared_poly_points = []
             for p in self.poly_points:
-                shared_poly_points.append((self.screen_to_turtle_coordinates(
-                            p[0], p[1])))
+                shared_poly_points.append((self.screen_to_turtle_coordinates
+                                           (p[0], p[1])))
                 event = 'F|%s' % (data_to_string([self._get_my_nick(),
                                                   shared_poly_points]))
             self.tw.send_event(event)
@@ -230,7 +230,8 @@ class TurtleGraphics:
         if self.cr_svg is not None:
             debug_output('in forward', True)
             self.cr_svg.set_source_rgb(self.fgrgb[0] / 255.,
-                self.fgrgb[1] / 255., self.fgrgb[2] / 255.)
+                                       self.fgrgb[1] / 255.,
+                                       self.fgrgb[2] / 255.)
         oldx, oldy = self.xcor, self.ycor
         try:
             self.xcor += nn * sin(self.heading * DEGTOR)
@@ -285,7 +286,8 @@ class TurtleGraphics:
                                    self.fgrgb[2] / 255.)
         if self.cr_svg is not None:
             self.cr_svg.set_source_rgb(self.fgrgb[0] / 255.,
-                self.fgrgb[1] / 255., self.fgrgb[2] / 255.)
+                                       self.fgrgb[1] / 255.,
+                                       self.fgrgb[2] / 255.)
         try:
             if a < 0:
                 self.larc(-a, r)
@@ -383,8 +385,8 @@ class TurtleGraphics:
                                        self.fgrgb[2] / 255.)
             if self.cr_svg is not None:
                 self.cr_svg.set_source_rgb(self.fgrgb[0] / 255.,
-                                          self.fgrgb[1] / 255.,
-                                          self.fgrgb[2] / 255.)
+                                           self.fgrgb[1] / 255.,
+                                           self.fgrgb[2] / 255.)
             self.draw_line(oldx, oldy, self.xcor, self.ycor)
             self.inval()
         self.move_turtle()
@@ -593,7 +595,7 @@ class TurtleGraphics:
             else:
                 tmp_path = '/tmp'
             tmp_file = os.path.join(get_path(self.tw.activity, 'instance'),
-                                   'tmpfile.png')
+                                    'tmpfile.png')
             pixbuf.save(tmp_file, 'png', {'quality': '100'})
             data = image_to_base64(tmp_file, tmp_path)
             height = pixbuf.get_height()

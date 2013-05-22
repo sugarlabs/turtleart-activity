@@ -398,7 +398,7 @@ class Sprite:
             if w > my_width:
                 if self._rescale[i]:
                     self._fd.set_size(
-                            int(self._scale[i] * pango.SCALE * my_width / w))
+                        int(self._scale[i] * pango.SCALE * my_width / w))
                     pl.set_font_description(self._fd)
                     w = pl.get_size()[0] / pango.SCALE
                 else:

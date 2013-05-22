@@ -27,8 +27,8 @@ import gtk
 
 from gettext import gettext as _
 
-from TurtleArt.tautils import data_to_string, data_from_string, get_path, \
-                              base64_to_image, debug_output, error_output
+from TurtleArt.tautils import (data_to_string, data_from_string, get_path,
+                               base64_to_image, debug_output, error_output)
 from TurtleArt.taconstants import DEFAULT_TURTLE_COLORS
 
 try:
@@ -86,7 +86,7 @@ class Collaboration():
             'P': self._draw_pixbuf,
             'B': self._paste,
             'S': self._speak
-            }
+        }
 
     def _shared_cb(self, activity):
         self._shared_activity = self._activity.get_shared_activity()
@@ -101,7 +101,7 @@ class Collaboration():
         self.initiating = True
         self.waiting_for_turtles = False
         self._tw.remote_turtle_dictionary = self._get_dictionary()
-        
+
         debug_output('I am sharing...', self._tw.running_sugar)
 
         self.conn = self._shared_activity.telepathy_conn
@@ -166,16 +166,18 @@ class Collaboration():
 
         if (type == telepathy.TUBE_TYPE_DBUS and service == SERVICE):
             if state == telepathy.TUBE_STATE_LOCAL_PENDING:
-                self.tubes_chan[ \
-                              telepathy.CHANNEL_TYPE_TUBES].AcceptDBusTube(id)
+                self.tubes_chan[telepathy.CHANNEL_TYPE_TUBES]\
+                    .AcceptDBusTube(id)
 
-            tube_conn = TubeConnection(self.conn,
-                self.tubes_chan[telepathy.CHANNEL_TYPE_TUBES], id, \
+            tube_conn = TubeConnection(
+                self.conn,
+                self.tubes_chan[telepathy.CHANNEL_TYPE_TUBES],
+                id,
                 group_iface=self.text_chan[telepathy.CHANNEL_INTERFACE_GROUP])
 
             # We'll use a chat tube to send serialized stacks back and forth.
-            self.chattube = ChatTube(tube_conn, self.initiating, \
-                self.event_received_cb)
+            self.chattube = ChatTube(tube_conn, self.initiating,
+                                     self.event_received_cb)
 
             # Now that we have the tube, we can ask for the turtle dictionary.
             if self.waiting_for_turtles:  # A joiner must wait for turtles.
@@ -209,8 +211,8 @@ class Collaboration():
         self._processing_methods[command](payload)
 
         # Restore active Turtle
-        self._tw.canvas.set_turtle(self._tw.turtles.get_turtle_key(
-                save_active_turtle))
+        self._tw.canvas.set_turtle(
+            self._tw.turtles.get_turtle_key(save_active_turtle))
 
     def send_event(self, entry):
         """ Send event through the tube. """
@@ -256,8 +258,8 @@ class Collaboration():
                 # Add see what is new.
                 for nick in remote_turtle_dictionary:
                     if nick == self._tw.nick:
-                        debug_output('skipping my nick %s' \
-                                         % (nick), self._tw.running_sugar)
+                        debug_output('skipping my nick %s' %
+                                     (nick), self._tw.running_sugar)
                     elif nick != self._tw.remote_turtle_dictionary:
                         # Add new the turtle.
                         colors = remote_turtle_dictionary[nick]
@@ -265,11 +267,11 @@ class Collaboration():
                         self._tw.canvas.set_turtle(nick, colors)
                         # Label the remote turtle.
                         self._tw.label_remote_turtle(nick, colors)
-                        debug_output('adding %s to remote turtle dictionary' \
-                                         % (nick), self._tw.running_sugar)
+                        debug_output('adding %s to remote turtle dictionary' %
+                                     (nick), self._tw.running_sugar)
                     else:
-                        debug_output('%s already in remote turtle dictionary' \
-                                         % (nick), self._tw.running_sugar)
+                        debug_output('%s already in remote turtle dictionary' %
+                                     (nick), self._tw.running_sugar)
             self.waiting_for_turtles = False
         self.send_my_xy()
 
@@ -283,13 +285,16 @@ class Collaboration():
             put_pen_back_down = True
         else:
             put_pen_back_down = False
-        self.send_event('x|%s' % (data_to_string([self._get_nick(),
-                [int(self._tw.canvas.xcor), int(self._tw.canvas.ycor)]])))
+        self.send_event('x|%s' %
+                        (data_to_string([self._get_nick(),
+                                         [int(self._tw.canvas.xcor),
+                                          int(self._tw.canvas.ycor)]])))
         if put_pen_back_down:
             self.send_event('p|%s' % (data_to_string([self._get_nick(),
                                                       True])))
-        self.send_event('r|%s' % (data_to_string([self._get_nick(),
-                int(self._tw.canvas.heading)])))
+        self.send_event('r|%s' %
+                        (data_to_string([self._get_nick(),
+                                         int(self._tw.canvas.heading)])))
 
     def _reskin_turtle(self, payload):
         if len(payload) > 0:
@@ -396,9 +401,9 @@ class Collaboration():
             [nick, poly_points] = data_from_string(payload)
             shared_poly_points = []
             for i in range(len(poly_points)):
-                shared_poly_points.append((
-                    self._tw.canvas.turtle_to_screen_coordinates(
-                    poly_points[i][0], poly_points[i][1])))
+                shared_poly_points.append(
+                    (self._tw.canvas.turtle_to_screen_coordinates
+                     (poly_points[i][0], poly_points[i][1])))
             self._tw.canvas.fill_polygon(shared_poly_points)
 
     def _speak(self, payload):
@@ -407,8 +412,8 @@ class Collaboration():
             if language_option == 'None':
                 language_option = ''
             if text is not None:
-                os.system('espeak %s "%s" --stdout | aplay' % (
-                        language_option, str(text)))
+                os.system('espeak %s "%s" --stdout | aplay' %
+                          (language_option, str(text)))
 
     def _paste(self, payload):
         if len(payload) > 0:
@@ -447,8 +452,8 @@ class ChatTube(ExportedGObject):
         self.stack_received_cb = stack_received_cb
         self.stack = ''
 
-        self.tube.add_signal_receiver(self.send_stack_cb, 'SendText', IFACE, \
-            path=PATH, sender_keyword='sender')
+        self.tube.add_signal_receiver(self.send_stack_cb, 'SendText', IFACE,
+                                      path=PATH, sender_keyword='sender')
 
     def send_stack_cb(self, text, sender=None):
         if sender == self.tube.get_unique_name():

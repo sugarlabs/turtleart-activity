@@ -127,8 +127,9 @@ class Palettes():
                           logo_command='forward',
                           help_string=_('moves turtle forward'))
         self.tw.lc.def_prim('forward', 1,
-                             lambda self, x: primitive_dictionary['move'](
-                self.tw.canvas.forward, x))
+                            lambda self, x:
+                            primitive_dictionary['move']
+                            (self.tw.canvas.forward, x))
 
         palette.add_block('back',
                           style='basic-style-1arg',
@@ -138,8 +139,9 @@ class Palettes():
                           logo_command='back',
                           help_string=_('moves turtle backward'))
         self.tw.lc.def_prim('back', 1,
-                             lambda self, x: primitive_dictionary['move'](
-                self.tw.canvas.forward, x, reverse=True))
+                            lambda self, x:
+                            primitive_dictionary['move']
+                            (self.tw.canvas.forward, x, reverse=True))
 
         primitive_dictionary['clean'] = self.tw.lc.prim_clear
         palette.add_block('clean',
@@ -150,7 +152,7 @@ class Palettes():
                           help_string=_('clears the screen and reset the \
 turtle'))
         self.tw.lc.def_prim('clean', 0,
-                             lambda self: primitive_dictionary['clean']())
+                            lambda self: primitive_dictionary['clean']())
 
         primitive_dictionary['right'] = self._prim_right
         palette.add_block('left',
@@ -174,7 +176,7 @@ in degrees)'))
                           help_string=_('turns turtle clockwise (angle in \
 degrees)'))
         self.tw.lc.def_prim('right', 1,
-                             lambda self, x: primitive_dictionary['right'](x))
+                            lambda self, x: primitive_dictionary['right'](x))
 
         primitive_dictionary['arc'] = self._prim_arc
         palette.add_block('arc',
@@ -185,8 +187,9 @@ degrees)'))
                           logo_command='taarc',
                           help_string=_('moves turtle along an arc'))
         self.tw.lc.def_prim('arc', 2,
-                             lambda self, x, y: primitive_dictionary['arc'](
-                self.tw.canvas.arc, x, y))
+                            lambda self, x, y:
+                            primitive_dictionary['arc']
+                            (self.tw.canvas.arc, x, y))
         define_logo_function('taarc', 'to taarc :a :r\nrepeat round :a \
 [right 1 forward (0.0175 * :r)]\nend\n')
 
@@ -199,8 +202,9 @@ degrees)'))
                           help_string=_('moves turtle to position xcor, ycor; \
 (0, 0) is in the center of the screen.'))
         self.tw.lc.def_prim('setxy2', 2,
-                             lambda self, x, y: primitive_dictionary['move'](
-                self.tw.canvas.setxy, x, y))
+                            lambda self, x, y:
+                            primitive_dictionary['move']
+                            (self.tw.canvas.setxy, x, y))
         define_logo_function('tasetxy', 'to tasetxy :x :y\nsetxy :x :y\nend\n')
 
         primitive_dictionary['set'] = self._prim_set
@@ -213,8 +217,9 @@ degrees)'))
                           help_string=_('sets the heading of the turtle (0 is \
 towards the top of the screen.)'))
         self.tw.lc.def_prim('seth', 1,
-                             lambda self, x: primitive_dictionary['set'](
-                'heading', self.tw.canvas.seth, x))
+                            lambda self, x:
+                            primitive_dictionary['set']
+                            ('heading', self.tw.canvas.seth, x))
 
         palette.add_block('xcor',
                           style='box-style',
@@ -265,8 +270,9 @@ turtle (can be used in place of a number block)'),
                           help_string=_('moves turtle to position xcor, ycor; \
 (0, 0) is in the center of the screen.'))
         self.tw.lc.def_prim('setxy', 2,
-                             lambda self, x, y: primitive_dictionary['move'](
-                self.tw.canvas.setxy, x, y, pendown=False))
+                            lambda self, x, y:
+                            primitive_dictionary['move']
+                            (self.tw.canvas.setxy, x, y, pendown=False))
         define_logo_function('tasetxypenup', 'to tasetxypenup :x :y\npenup\n\
 setxy :x :y\npendown\nend\n')
 
@@ -287,7 +293,7 @@ setxy :x :y\npendown\nend\n')
                           help_string=_('fills the background with (color, \
 shade)'))
         self.tw.lc.def_prim('fillscreen', 2,
-            lambda self, x, y: self.tw.canvas.fillscreen(x, y))
+                            lambda self, x, y: self.tw.canvas.fillscreen(x, y))
 
         palette.add_block('fillscreen2',
                           style='basic-style-3arg',
@@ -299,7 +305,8 @@ shade)'))
                           help_string=_('fills the background with (color, \
 shade)'))
         self.tw.lc.def_prim('fillscreen2', 3,
-            lambda self, x, y, z: self.tw.canvas.fillscreen_with_gray(x, y, z))
+                            lambda self, x, y, z:
+                            self.tw.canvas.fillscreen_with_gray(x, y, z))
 
         define_logo_function('tasetbackground', 'to tasetbackground :color \
 :shade\ntasetshade :shade\nsetbackground :color\nend\n')
@@ -313,8 +320,9 @@ shade)'))
                           help_string=_('sets color of the line drawn by the \
 turtle'))
         self.tw.lc.def_prim('setcolor', 1,
-                             lambda self, x: primitive_dictionary['set'](
-                'color', self.tw.canvas.setcolor, x))
+                            lambda self, x:
+                            primitive_dictionary['set']
+                            ('color', self.tw.canvas.setcolor, x))
 
         palette.add_block('setshade',
                           style='basic-style-1arg',
@@ -325,8 +333,9 @@ turtle'))
                           help_string=_('sets shade of the line drawn by the \
 turtle'))
         self.tw.lc.def_prim('setshade', 1,
-                             lambda self, x: primitive_dictionary['set'](
-                'shade', self.tw.canvas.setshade, x))
+                            lambda self, x:
+                            primitive_dictionary['set']
+                            ('shade', self.tw.canvas.setshade, x))
 
         palette.add_block('setgray',
                           style='basic-style-1arg',
@@ -336,8 +345,9 @@ turtle'))
                           help_string=_('sets gray level of the line drawn by \
 the turtle'))
         self.tw.lc.def_prim('setgray', 1,
-                             lambda self, x: primitive_dictionary['set'](
-                'gray', self.tw.canvas.setgray, x))
+                            lambda self, x:
+                            primitive_dictionary['set']
+                            ('gray', self.tw.canvas.setgray, x))
 
         palette.add_block('color',
                           style='box-style',
@@ -374,7 +384,7 @@ used in place of a number block)'),
                           logo_command='penup',
                           help_string=_('Turtle will not draw when moved.'))
         self.tw.lc.def_prim('penup', 0,
-                             lambda self: self.tw.canvas.setpen(False))
+                            lambda self: self.tw.canvas.setpen(False))
 
         palette.add_block('pendown',
                           style='basic-style-extended-vertical',
@@ -383,7 +393,7 @@ used in place of a number block)'),
                           logo_command='pendown',
                           help_string=_('Turtle will draw when moved.'))
         self.tw.lc.def_prim('pendown', 0,
-                             lambda self: self.tw.canvas.setpen(True))
+                            lambda self: self.tw.canvas.setpen(True))
 
         palette.add_block('setpensize',
                           style='basic-style-1arg',
@@ -394,8 +404,9 @@ used in place of a number block)'),
                           help_string=_('sets size of the line drawn by the \
 turtle'))
         self.tw.lc.def_prim('setpensize', 1,
-                             lambda self, x: primitive_dictionary['set'](
-                'pensize', self.tw.canvas.setpensize, x))
+                            lambda self, x:
+                            primitive_dictionary['set']
+                            ('pensize', self.tw.canvas.setpensize, x))
         define_logo_function('tasetpensize', 'to tasetpensize :a\nsetpensize \
 round :a\nend\n')
 
@@ -406,7 +417,7 @@ round :a\nend\n')
                           help_string=_('starts filled polygon (used with end \
 fill block)'))
         self.tw.lc.def_prim('startfill', 0,
-                             lambda self: self.tw.canvas.start_fill())
+                            lambda self: self.tw.canvas.start_fill())
 
         palette.add_block('stopfill',
                           style='basic-style-extended-vertical',
@@ -415,7 +426,7 @@ fill block)'))
                           help_string=_('completes filled polygon (used with \
 start fill block)'))
         self.tw.lc.def_prim('stopfill', 0,
-                             lambda self: self.tw.canvas.stop_fill())
+                            lambda self: self.tw.canvas.stop_fill())
 
         palette.add_block('pensize',
                           style='box-style',
@@ -459,7 +470,7 @@ pensize\nend\n')
                           help_string=_('sets color of text drawn by the \
 turtle'))
         self.tw.lc.def_prim('settextcolor', 1,
-                             lambda self, x: self.tw.canvas.settextcolor(x))
+                            lambda self, x: self.tw.canvas.settextcolor(x))
 
         palette.add_block('settextsize',
                           hidden=True,
@@ -470,7 +481,7 @@ turtle'))
                           help_string=_('sets size of text drawn by the \
 turtle'))
         self.tw.lc.def_prim('settextsize', 1,
-                             lambda self, x: self.tw.canvas.settextsize(x))
+                            lambda self, x: self.tw.canvas.settextsize(x))
 
         # In order to map Turtle Art colors to the standard UCB Logo palette,
         # we need to define a somewhat complex set of functions.
@@ -612,7 +623,7 @@ minus :y\nend\n')
                           help_string=_('identity operator used for extending \
 blocks'))
         self.tw.lc.def_prim('id', 1,
-                             lambda self, x: primitive_dictionary['id'](x))
+                            lambda self, x: primitive_dictionary['id'](x))
 
         primitive_dictionary['remainder'] = self._prim_mod
         palette.add_block('remainder2',
@@ -623,7 +634,8 @@ blocks'))
                           logo_command='remainder',
                           help_string=_('modular (remainder) operator'))
         self.tw.lc.def_prim('remainder', 2,
-            lambda self, x, y: primitive_dictionary['remainder'](x, y))
+                            lambda self, x, y:
+                            primitive_dictionary['remainder'](x, y))
 
         primitive_dictionary['sqrt'] = self._prim_sqrt
         palette.add_block('sqrt',
@@ -634,7 +646,7 @@ blocks'))
                           logo_command='tasqrt',
                           help_string=_('calculates square root'))
         self.tw.lc.def_prim('sqrt', 1,
-                             lambda self, x: primitive_dictionary['sqrt'](x))
+                            lambda self, x: primitive_dictionary['sqrt'](x))
 
         primitive_dictionary['random'] = self._prim_random
         palette.add_block('random',
@@ -694,7 +706,8 @@ operators'))
                           logo_command='equal?',
                           help_string=_('logical equal-to operator'))
         self.tw.lc.def_prim('equal?', 2,
-            lambda self, x, y: primitive_dictionary['equal'](x, y))
+                            lambda self, x, y:
+                            primitive_dictionary['equal'](x, y))
 
         palette.add_block('not',
                           style='not-style',
@@ -824,7 +837,7 @@ boolean operators from Numbers palette'))
                           logo_command='stop',
                           help_string=_('stops current action'))
         self.tw.lc.def_prim('stopstack', 0,
-                             lambda self: primitive_dictionary['stopstack']())
+                            lambda self: primitive_dictionary['stopstack']())
 
     def _blocks_palette(self):
         """ The basic Turtle Art blocks palette """
@@ -842,7 +855,7 @@ boolean operators from Numbers palette'))
                           help_string=_('connects action to toolbar run \
 buttons'))
         self.tw.lc.def_prim('start', 0,
-                             lambda self: primitive_dictionary['start']())
+                            lambda self: primitive_dictionary['start']())
 
         palette.add_block('string',
                           style='box-style',
@@ -883,8 +896,9 @@ buttons'))
                           logo_command='make "box1',
                           help_string=_('stores numeric value in Variable 1'))
         self.tw.lc.def_prim('storeinbox1', 1,
-                             lambda self, x: primitive_dictionary['setbox'](
-                'box1', None, x))
+                            lambda self, x:
+                            primitive_dictionary['setbox']
+                            ('box1', None, x))
 
         palette.add_block('storeinbox2',
                           hidden=True,
@@ -896,8 +910,9 @@ buttons'))
                           logo_command='make "box2',
                           help_string=_('stores numeric value in Variable 2'))
         self.tw.lc.def_prim('storeinbox2', 1,
-                             lambda self, x: primitive_dictionary['setbox'](
-                'box2', None, x))
+                            lambda self, x:
+                            primitive_dictionary['setbox']
+                            ('box2', None, x))
 
         palette.add_block('box1',
                           hidden=True,
@@ -929,8 +944,9 @@ buttons'))
                           help_string=_('stores numeric value in named \
 variable'))
         self.tw.lc.def_prim('storeinbox', 2,
-                             lambda self, x, y: primitive_dictionary['setbox'](
-                'box3', x, y))
+                            lambda self, x, y:
+                            primitive_dictionary['setbox']
+                            ('box3', x, y))
 
         primitive_dictionary['box'] = self._prim_box
         palette.add_block('box',
@@ -944,7 +960,7 @@ variable'))
                           value_block=True,
                           help_string=_('named variable (numeric value)'))
         self.tw.lc.def_prim('box', 1,
-                             lambda self, x: primitive_dictionary['box'](x))
+                            lambda self, x: primitive_dictionary['box'](x))
 
         palette.add_block('hat1',
                           hidden=True,
@@ -1059,7 +1075,8 @@ variable'))
             self.tw.lc.ijmp(self.tw.lc.evline, list2[:])
             yield True
 
-    def _prim_move(self, cmd, value1, value2=None, pendown=True, reverse=False):
+    def _prim_move(self, cmd, value1, value2=None, pendown=True,
+                   reverse=False):
         """ Turtle moves by method specified in value1 """
         if not _num_type(value1):
             raise logoerror("#notanumber")
@@ -1125,7 +1142,7 @@ variable'))
         else:
             self.tw.lc.boxes[name] = val
             if self.tw.lc.update_values:
-                self.tw.lc.update_label_value(name, val)            
+                self.tw.lc.update_label_value(name, val)
 
     def _prim_stack(self, x):
         """ Process a named stack """
@@ -1133,10 +1150,10 @@ variable'))
             if int(float(x)) == x:
                 x = int(x)
         if 'stack3' + str(x) not in self.tw.lc.stacks or \
-           self.tw.lc.stacks['stack3' + str(x)] is None:
+                self.tw.lc.stacks['stack3' + str(x)] is None:
             raise logoerror("#nostack")
         self.tw.lc.icall(self.tw.lc.evline,
-                          self.tw.lc.stacks['stack3' + str(x)][:])
+                         self.tw.lc.stacks['stack3' + str(x)][:])
         yield True
         self.tw.lc.procstop = False
         self.tw.lc.ireturn()
@@ -1147,7 +1164,7 @@ variable'))
         if self.tw.lc.stacks['stack1'] is None:
             raise logoerror("#nostack")
         self.tw.lc.icall(self.tw.lc.evline,
-                          self.tw.lc.stacks['stack1'][:])
+                         self.tw.lc.stacks['stack1'][:])
         yield True
         self.tw.lc.procstop = False
         self.tw.lc.ireturn()
