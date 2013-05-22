@@ -153,7 +153,6 @@ class SVG:
         self.new_path(x, y)
         self._corner(1, -1)
         self._do_slot()
-        xx = self._x
         self._corner(1, 1)
         self._corner(-1, 1)
         self._do_tab()
@@ -194,7 +193,6 @@ class SVG:
         else:
             svg += self._rline_to(self._radius + self._slot_x, 0)
         save_y = self._y
-        hh = self._x
         svg += self._corner(1, 1)
         svg += self._rline_to(-self._radius, 0)
         if self._else:

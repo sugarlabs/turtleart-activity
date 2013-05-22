@@ -48,8 +48,6 @@ DEGTOR = 2 * pi / 360
 
 import locale
 
-import logging
-
 from taconstants import (HORIZONTAL_PALETTE, VERTICAL_PALETTE, BLOCK_SCALE,
                          MEDIA_SHAPES, STATUS_SHAPES, OVERLAY_SHAPES,
                          TOOLBAR_SHAPES, TAB_LAYER, RETURN, OVERLAY_LAYER,
@@ -1660,8 +1658,8 @@ before making changes to your Turtle Blocks program'))
                 try:
                     os.remove(macro_path)
                 except Exception, e:
-                    error_debug('Could not remove macro %s: %s' %
-                                (macro_path, e))
+                    error_output('Could not remove macro %s: %s' %
+                                 (macro_path, e))
                     return
                 i = palette_names.index('myblocks')
                 palette_blocks[i].remove(blk.name)

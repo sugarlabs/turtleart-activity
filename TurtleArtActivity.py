@@ -58,7 +58,7 @@ from gettext import gettext as _
 
 from TurtleArt.tapalette import (palette_names, help_strings, help_palettes,
                                  help_windows)
-from TurtleArt.taconstants import (BLOCK_SCALE, XO1, XO15, XO175, XO30, XO4,
+from TurtleArt.taconstants import (BLOCK_SCALE, XO1, XO15, XO175, XO4,
                                    MIMETYPE)
 from TurtleArt.taexportlogo import save_logo
 from TurtleArt.tautils import (data_to_file, data_to_string, data_from_string,

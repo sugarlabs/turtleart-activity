@@ -30,7 +30,6 @@ import getopt
 import sys
 import os
 import os.path
-import glob
 import cStringIO
 import errno
 import ConfigParser
@@ -48,6 +47,7 @@ argv = sys.argv[:]  # Workaround for import behavior of gst in tagplay
 sys.argv[1:] = []  # Execution of import gst cannot see '--help' or '-h'
 
 import gettext
+from gettext import gettext as _
 
 from TurtleArt.taconstants import (OVERLAY_LAYER, DEFAULT_TURTLE_COLORS,
                                    TAB_LAYER, SUFFIX)
