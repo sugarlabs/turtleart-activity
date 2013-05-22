@@ -34,7 +34,7 @@ from TurtleArt.taconstants import (DEFAULT_SCALE, ICON_SIZE, CONSTANTS,
                                    MEDIA_SHAPES, SKIN_PATHS, BLOCKS_WITH_SKIN,
                                    PYTHON_SKIN, PREFIX_DICTIONARY, VOICES,
                                    MACROS, COLORDICT)
-from TurtleArt.tautils import (convert, round_int, debug_output, get_path,
+from TurtleArt.tautils import (round_int, debug_output, get_path,
                                data_to_string, find_group, image_to_base64,
                                hat_on_top, listify, data_from_file)
 from TurtleArt.tajail import (myfunc, myfunc_import)
@@ -49,19 +49,6 @@ def _num_type(x):
     if type(x) == ord:
         return True
     return False
-
-
-def _string_to_num(x):
-    """ Try to comvert a string to a number """
-    xx = convert(x.replace(self.tw.decimal_point, '.'), float)
-    if type(xx) is float:
-        return xx
-    else:
-        xx, xflag = chr_to_ord(x)
-        if xflag:
-            return xx
-        else:
-            raise logoerror("#syntaxerror")
 
 
 def _millisecond():
@@ -204,7 +191,8 @@ boolean operators from Numbers palette'))
                           help_string=_('draws text or show media from the \
 Journal'))
         self.tw.lc.def_prim('show', 1,
-            lambda self, x: primitive_dictionary['show'](x, True))
+                            lambda self, x:
+                            primitive_dictionary['show'](x, True))
 
         palette.add_block('showaligned',
                           hidden=True,
@@ -217,7 +205,8 @@ Journal'))
                           help_string=_('draws text or show media from the \
 Journal'))
         self.tw.lc.def_prim('showaligned', 1,
-            lambda self, x: primitive_dictionary['show'](x, False))
+                            lambda self, x:
+                            primitive_dictionary['show'](x, False))
 
         # deprecated
         primitive_dictionary['write'] = self._prim_write
@@ -232,7 +221,8 @@ Journal'))
                           help_string=_('draws text or show media from the \
 Journal'))
         self.tw.lc.def_prim('write', 2,
-            lambda self, x, y: primitive_dictionary['write'](x, y))
+                            lambda self, x, y:
+                            primitive_dictionary['write'](x, y))
 
         primitive_dictionary['setscale'] = self._prim_setscale
         palette.add_block('setscale',
@@ -243,7 +233,8 @@ Journal'))
                           logo_command='setlabelheight',
                           help_string=_('sets the scale of media'))
         self.tw.lc.def_prim('setscale', 1,
-            lambda self, x: primitive_dictionary['setscale'](x))
+                            lambda self, x:
+                            primitive_dictionary['setscale'](x))
 
         primitive_dictionary['savepix'] = self._prim_save_picture
         palette.add_block('savepix',
@@ -326,8 +317,8 @@ complete'))
                           help_string=_('plays a sinewave at frequency, \
 amplitude, and duration (in seconds)'))
         self.tw.lc.def_prim('sinewave', 3,
-                            lambda self,
-                            x, y, z: primitive_dictionary['sinewave'](x, y, z))
+                            lambda self, x, y, z:
+                            primitive_dictionary['sinewave'](x, y, z))
 
     def _sensor_palette(self):
 
@@ -357,7 +348,8 @@ pressed'))
                           help_string=_('returns True if mouse button is \
 pressed'))
         self.tw.lc.def_prim('mousebutton2', 0,
-                            lambda self: primitive_dictionary['mousebutton2']())
+                            lambda self:
+                            primitive_dictionary['mousebutton2']())
 
         palette.add_block('mousex',
                           style='box-style',
@@ -366,8 +358,8 @@ pressed'))
                           value_block=True,
                           help_string=_('returns mouse x coordinate'))
         self.tw.lc.def_prim('mousex', 0,
-                            lambda self: self.tw.mouse_x - (
-                self.tw.canvas.width / 2))
+                            lambda self:
+                            self.tw.mouse_x - (self.tw.canvas.width / 2))
 
         palette.add_block('mousey',
                           style='box-style',
@@ -376,8 +368,8 @@ pressed'))
                           value_block=True,
                           help_string=_('returns mouse y coordinate'))
         self.tw.lc.def_prim('mousey', 0,
-                            lambda self: (
-                self.tw.canvas.height / 2) - self.tw.mouse_y)
+                            lambda self:
+                            (self.tw.canvas.height / 2) - self.tw.mouse_y)
 
         primitive_dictionary['kbinput'] = self._prim_kbinput
         palette.add_block('kbinput',
@@ -537,7 +529,8 @@ make "tmp first :taheap\nmake "taheap butfirst :taheap\noutput :tmp\nend\n')
                           value_block=True,
                           help_string=_('returns True if heap is empty'))
         self.tw.lc.def_prim('isheapempty2', 0,
-                            lambda self: primitive_dictionary['isheapempty2']())
+                            lambda self:
+                            primitive_dictionary['isheapempty2']())
 
         primitive_dictionary['print'] = self._prim_print
         palette.add_block('comment',
@@ -548,7 +541,8 @@ make "tmp first :taheap\nmake "taheap butfirst :taheap\noutput :tmp\nend\n')
                           string_or_number=True,
                           help_string=_('places a comment in your code'))
         self.tw.lc.def_prim('comment', 1,
-            lambda self, x: primitive_dictionary['print'](x, True))
+                            lambda self, x:
+                            primitive_dictionary['print'](x, True))
 
         palette.add_block('print',
                           style='basic-style-1arg',
@@ -559,7 +553,8 @@ make "tmp first :taheap\nmake "taheap butfirst :taheap\noutput :tmp\nend\n')
                           help_string=_('prints value in status block at \
 bottom of the screen'))
         self.tw.lc.def_prim('print', 1,
-            lambda self, x: primitive_dictionary['print'](x, False))
+                            lambda self, x:
+                            primitive_dictionary['print'](x, False))
 
         primitive_dictionary['chr'] = self._prim_chr
         palette.add_block('chr',
@@ -589,7 +584,8 @@ bottom of the screen'))
                           help_string=_('a programmable block: used to add \
 advanced single-variable math equations, e.g., sin(x)'))
         self.tw.lc.def_prim('myfunction', 2,
-            lambda self, f, x: primitive_dictionary['myfunction'](f, [x]))
+                            lambda self, f, x:
+                            primitive_dictionary['myfunction'](f, [x]))
 
         palette.add_block('myfunc2arg',
                           hidden=True,
@@ -602,8 +598,8 @@ advanced single-variable math equations, e.g., sin(x)'))
                           help_string=_('a programmable block: used to add \
 advanced multi-variable math equations, e.g., sqrt(x*x+y*y)'))
         self.tw.lc.def_prim('myfunction2', 3,
-            lambda self, f, x, y: primitive_dictionary['myfunction'](
-                f, [x, y]))
+                            lambda self, f, x, y:
+                            primitive_dictionary['myfunction'](f, [x, y]))
 
         palette.add_block('myfunc3arg',
                           hidden=True,
@@ -616,8 +612,8 @@ advanced multi-variable math equations, e.g., sqrt(x*x+y*y)'))
                           help_string=_('a programmable block: used to add \
 advanced multi-variable math equations, e.g., sin(x+y+z)'))
         self.tw.lc.def_prim('myfunction3', 4,
-            lambda self, f, x, y, z: primitive_dictionary['myfunction'](
-                f, [x, y, z]))
+                            lambda self, f, x, y, z:
+                            primitive_dictionary['myfunction'](f, [x, y, z]))
 
         primitive_dictionary['userdefined'] = self._prim_myblock
         palette.add_block('userdefined',
@@ -630,7 +626,8 @@ advanced multi-variable math equations, e.g., sin(x+y+z)'))
                           help_string=_('runs code found in the tamyblock.py \
 module found in the Journal'))
         self.tw.lc.def_prim('userdefined', 1,
-            lambda self, x: primitive_dictionary['userdefined']([x]))
+                            lambda self, x:
+                            primitive_dictionary['userdefined']([x]))
         BLOCKS_WITH_SKIN.append('userdefined')
         PYTHON_SKIN.append('userdefined')
 
@@ -646,7 +643,8 @@ module found in the Journal'))
                           help_string=_('runs code found in the tamyblock.py \
 module found in the Journal'))
         self.tw.lc.def_prim('userdefined2', 2,
-            lambda self, x, y: primitive_dictionary['userdefined']([x, y]))
+                            lambda self, x, y:
+                            primitive_dictionary['userdefined']([x, y]))
         BLOCKS_WITH_SKIN.append('userdefined2args')
         PYTHON_SKIN.append('userdefined2args')
 
@@ -662,8 +660,8 @@ module found in the Journal'))
                           help_string=_('runs code found in the tamyblock.py \
 module found in the Journal'))
         self.tw.lc.def_prim('userdefined3', 3,
-            lambda self, x, y, z: primitive_dictionary['userdefined'](
-                [x, y, z]))
+                            lambda self, x, y, z:
+                            primitive_dictionary['userdefined']([x, y, z]))
         BLOCKS_WITH_SKIN.append('userdefined3args')
         PYTHON_SKIN.append('userdefined3args')
         MEDIA_SHAPES.append('pythonsmall')
@@ -676,7 +674,7 @@ module found in the Journal'))
                           prim_name='cartesian',
                           help_string=_('displays Cartesian coordinates'))
         self.tw.lc.def_prim('cartesian', 0,
-                             lambda self: self.tw.set_cartesian(True))
+                            lambda self: self.tw.set_cartesian(True))
 
         palette.add_block('polar',
                           style='basic-style-extended-vertical',
@@ -684,7 +682,7 @@ module found in the Journal'))
                           prim_name='polar',
                           help_string=_('displays polar coordinates'))
         self.tw.lc.def_prim('polar', 0,
-                             lambda self: self.tw.set_polar(True))
+                            lambda self: self.tw.set_polar(True))
 
         palette.add_block('addturtle',
                           style='basic-style-1arg',
@@ -694,7 +692,8 @@ module found in the Journal'))
                           string_or_number=True,
                           help_string=_('chooses which turtle to command'))
         self.tw.lc.def_prim('turtle', 1,
-            lambda self, x: self.tw.canvas.set_turtle(x))
+                            lambda self, x:
+                            self.tw.canvas.set_turtle(x))
 
         primitive_dictionary['activeturtle'] = self._prim_active_turtle
         palette.add_block('activeturtle',
@@ -705,7 +704,8 @@ module found in the Journal'))
                           value_block=True,
                           help_string=_('the name of the active turtle'))
         self.tw.lc.def_prim('activeturtle', 0,
-                            lambda self: primitive_dictionary['activeturtle']())
+                            lambda self:
+                            primitive_dictionary['activeturtle']())
 
         primitive_dictionary['skin'] = self._prim_reskin
         palette.add_block('skin',
@@ -716,7 +716,8 @@ module found in the Journal'))
                           prim_name='skin',
                           help_string=_("put a custom 'shell' on the turtle"))
         self.tw.lc.def_prim('skin', 1,
-            lambda self, x: primitive_dictionary['skin'](x))
+                            lambda self, x:
+                            primitive_dictionary['skin'](x))
 
         # macro
         palette.add_block('reskin',
@@ -740,7 +741,8 @@ module found in the Journal'))
                           default=_('forward'),
                           help_string=_('loads a block'))
         self.tw.lc.def_prim('loadblock', 1,
-            lambda self, x: primitive_dictionary['loadblock'](x))
+                            lambda self, x:
+                            primitive_dictionary['loadblock'](x))
 
         palette.add_block('loadblock2arg',
                           style='basic-style-var-arg',
@@ -751,7 +753,8 @@ module found in the Journal'))
                           default=[_('forward'), 100],
                           help_string=_('loads a block'))
         self.tw.lc.def_prim('loadblock2', 2,
-            lambda self, x, y: primitive_dictionary['loadblock']([x, y]))
+                            lambda self, x, y:
+                            primitive_dictionary['loadblock']([x, y]))
 
         palette.add_block('loadblock3arg',
                           style='basic-style-var-arg',
@@ -762,7 +765,8 @@ module found in the Journal'))
                           default=[_('setxy'), 0, 0],
                           help_string=_('loads a block'))
         self.tw.lc.def_prim('loadblock3', 3,
-            lambda self, x, y, z: primitive_dictionary['loadblock']([x, y, z]))
+                            lambda self, x, y, z:
+                            primitive_dictionary['loadblock']([x, y, z]))
 
         primitive_dictionary['loadpalette'] = self._prim_load_palette
         palette.add_block('loadpalette',
@@ -773,7 +777,8 @@ module found in the Journal'))
                           default=_('turtle'),
                           help_string=_('selects a palette'))
         self.tw.lc.def_prim('loadpalette', 1,
-            lambda self, x: primitive_dictionary['loadpalette'](x))
+                            lambda self, x:
+                            primitive_dictionary['loadpalette'](x))
 
     def _portfolio_palette(self):
 
@@ -807,7 +812,7 @@ templates'),
                           prim_name='fullscreen',
                           help_string=_('hides the Sugar toolbars'))
         self.tw.lc.def_prim('fullscreen', 0,
-                             lambda self: self.tw.set_fullscreen())
+                            lambda self: self.tw.set_fullscreen())
 
         primitive_dictionary['bulletlist'] = self._prim_list
         palette.add_block('list',
@@ -820,7 +825,7 @@ templates'),
                           default=['∙ ', '∙ '],
                           help_string=_('presentation bulleted list'))
         self.tw.lc.def_prim('bulletlist', 1,
-                             primitive_dictionary['bulletlist'], True)
+                            primitive_dictionary['bulletlist'], True)
 
         # macros
         palette.add_block('picturelist',
@@ -983,7 +988,8 @@ Journal objects'))
                           help_string=_('presentation template: select \
 Journal object (with description)'))
         self.tw.lc.def_prim('t1x1', 2,
-            lambda self, a, b: primitive_dictionary['t1x1'](a, b))
+                            lambda self, a, b:
+                            primitive_dictionary['t1x1'](a, b))
 
         primitive_dictionary['t1x1a'] = self._prim_t1x1a
         palette.add_block('template1x1a',
@@ -998,7 +1004,8 @@ Journal object (with description)'))
                           help_string=_('presentation template: select \
 Journal object (no description)'))
         self.tw.lc.def_prim('t1x1a', 2,
-            lambda self, a, b: primitive_dictionary['t1x1a'](a, b))
+                            lambda self, a, b:
+                            primitive_dictionary['t1x1a'](a, b))
 
         primitive_dictionary['2x1'] = self._prim_t2x1
         palette.add_block('template2x1',
@@ -1013,7 +1020,8 @@ Journal object (no description)'))
                           help_string=_("presentation template: select two \
 Journal objects"))
         self.tw.lc.def_prim('t2x1', 3,
-            lambda self, a, b, c: primitive_dictionary['t2x1'](a, b, c))
+                            lambda self, a, b, c:
+                            primitive_dictionary['t2x1'](a, b, c))
 
         primitive_dictionary['1x2'] = self._prim_t1x2
         palette.add_block('template1x2',
@@ -1028,7 +1036,8 @@ Journal objects"))
                           help_string=_("presentation template: select two \
 Journal objects"))
         self.tw.lc.def_prim('t1x2', 3,
-            lambda self, a, b, c: primitive_dictionary['t1x2'](a, b, c))
+                            lambda self, a, b, c:
+                            primitive_dictionary['t1x2'](a, b, c))
 
         primitive_dictionary['t2x2'] = self._prim_t2x2
         palette.add_block('template2x2',
@@ -1043,8 +1052,8 @@ Journal objects"))
                           help_string=_("presentation template: select four \
 Journal objects"))
         self.tw.lc.def_prim('t2x2', 5,
-            lambda self, a, b, c, d, e: primitive_dictionary['t2x2'](
-                a, b, c, d, e))
+                            lambda self, a, b, c, d, e:
+                            primitive_dictionary['t2x2'](a, b, c, d, e))
 
         palette.add_block('templatelist',
                           hidden=True,
@@ -1067,10 +1076,10 @@ bullets'))
             files = glob.glob(os.path.join(self.tw.macros_path, '*.tb'))
             print 'creating macros palette'
             if len(files) > 0:
-                palette = make_palette('myblocks',
-                                       colors=["#FFFF00", "#A0A000"],
-                                       help_string=\
-_('Palette of user-defined operators'))
+                palette = make_palette(
+                    'myblocks',
+                    colors=["#FFFF00", "#A0A000"],
+                    help_string=_('Palette of user-defined operators'))
 
             for tafile in files:
                 data = data_from_file(tafile)
@@ -1093,7 +1102,8 @@ _('Palette of user-defined operators'))
             self.tw.lc.keyboard = ord(self.tw.keypress[0])
         else:
             try:
-                self.tw.lc.keyboard = {'Escape': 27, 'space': 32, ' ': 32,
+                self.tw.lc.keyboard = {
+                    'Escape': 27, 'space': 32, ' ': 32,
                     'Return': 13, 'KP_Up': 2, 'KP_Down': 4, 'KP_Left': 1,
                     'KP_Right': 3}[self.tw.keypress]
             except KeyError:
@@ -1189,16 +1199,16 @@ _('Palette of user-defined operators'))
         elif type(n) == str or type(n) == unicode:
             if n in COLORDICT:
                 if COLORDICT[n][0] is None:
-                    self.tw.showlabel('print', '%s %d, %s %d' % (
-                            _('shade'), COLORDICT[n][1],
-                            _('gray'), COLORDICT[n][2]))
+                    self.tw.showlabel('print', '%s %d, %s %d' %
+                                      (_('shade'), COLORDICT[n][1],
+                                       _('gray'), COLORDICT[n][2]))
                 else:
-                    self.tw.showlabel('print', '%s %d, %s %d, %s %d' % (
-                            _('color'), COLORDICT[n][0],
-                            _('shade'), COLORDICT[n][1],
-                            _('gray'), COLORDICT[n][2]))
+                    self.tw.showlabel('print', '%s %d, %s %d, %s %d' %
+                                      (_('color'), COLORDICT[n][0],
+                                       _('shade'), COLORDICT[n][1],
+                                       _('gray'), COLORDICT[n][2]))
             elif n[0:6] == 'media_' and \
-               n[6:].lower not in media_blocks_dictionary:
+                    n[6:].lower not in media_blocks_dictionary:
                 try:
                     if self.tw.running_sugar:
                         from sugar.datastore import datastore
@@ -1218,7 +1228,8 @@ _('Palette of user-defined operators'))
         elif type(n) == int:
             self.tw.showlabel('print', n)
         else:
-            self.tw.showlabel('print',
+            self.tw.showlabel(
+                'print',
                 str(round_int(n)).replace('.', self.tw.decimal_point))
 
     def _prim_printheap(self):
@@ -1263,7 +1274,7 @@ _('Palette of user-defined operators'))
                              self.tw.running_sugar)
             if dsobject is not None:
                 self.tw.lc.filepath = dsobject.file_path
-        if self.tw.lc.filepath == None:
+        if self.tw.lc.filepath is None:
             self.tw.showlabel('nojournal', self.tw.lc.filepath)
             return
         pixbuf = None
@@ -1289,7 +1300,7 @@ _('Palette of user-defined operators'))
             else:
                 tmp_path = '/tmp'
             tmp_file = os.path.join(get_path(self.tw.activity, 'instance'),
-                                   'tmpfile.png')
+                                    'tmpfile.png')
             pixbuf.save(tmp_file, 'png', {'quality': '100'})
             data = image_to_base64(tmp_file, tmp_path)
             height = pixbuf.get_height()
@@ -1320,8 +1331,8 @@ _('Palette of user-defined operators'))
             language_option = '-v ' + VOICES[lang]
         else:
             language_option = ''
-        os.system('espeak %s "%s" --stdout | aplay' % (
-                language_option, str(text)))
+        os.system('espeak %s "%s" --stdout | aplay' %
+                  (language_option, str(text)))
         if self.tw.sharing():
             if language_option == '':
                 event = 'S|%s' % (data_to_string([self.tw.nick, 'None', text]))
@@ -1338,7 +1349,7 @@ _('Palette of user-defined operators'))
 
         try:
             pitch = abs(float(pitch))
-            amplitute = abs(float(amplitude))
+            amplitude = abs(float(amplitude))
             duration = abs(float(duration))
         except ValueError:
             self.tw.lc.stop_logo()
@@ -1357,7 +1368,8 @@ _('Palette of user-defined operators'))
         os.system('csound ' + path + ' > /dev/null 2>&1')
 
     def _play_sinewave(self, pitch, amplitude, duration, starttime=0,
-              pitch_envelope=99, amplitude_envelope=100, instrument=1):
+                       pitch_envelope=99, amplitude_envelope=100,
+                       instrument=1):
 
         pitenv = pitch_envelope
         ampenv = amplitude_envelope
@@ -1370,9 +1382,10 @@ _('Palette of user-defined operators'))
             self.orchlines.append("endin\n\n")
             self.instrlist.append(1)
 
-        self.scorelines.append("i1 %s %s %s %s %s %s %s\n" % (
-                str(starttime), str(duration), str(pitch), str(amplitude),
-                str(pitenv), str(ampenv), str(instrument)))
+        self.scorelines.append("i1 %s %s %s %s %s %s %s\n" %
+                               (str(starttime), str(duration), str(pitch),
+                                str(amplitude), str(pitenv), str(ampenv),
+                                str(instrument)))
 
     def _audio_write(self, file):
         """ Compile a .csd file. """
@@ -1434,9 +1447,9 @@ _('Palette of user-defined operators'))
     def _prim_show(self, string, center=False):
         """ Show is the general-purpose media-rendering block. """
         if type(string) == str or type(string) == unicode:
-            if string in  ['media_', 'descr_', 'audio_', 'video_',
-                           'media_None', 'descr_None', 'audio_None',
-                           'video_None']:
+            if string in ['media_', 'descr_', 'audio_', 'video_',
+                          'media_None', 'descr_None', 'audio_None',
+                          'video_None']:
                 pass
             elif string[0:6] in ['media_', 'descr_', 'audio_', 'video_']:
                 self.tw.lc.filepath = None
@@ -1451,15 +1464,16 @@ _('Palette of user-defined operators'))
                     try:
                         self.tw.lc.dsobject = datastore.get(string[6:])
                     except:
-                        debug_output("Couldn't find dsobject %s" % (
-                                string[6:]), self.tw.running_sugar)
+                        debug_output("Couldn't find dsobject %s" %
+                                     (string[6:]), self.tw.running_sugar)
                     if self.tw.lc.dsobject is not None:
                         self.tw.lc.filepath = self.tw.lc.dsobject.file_path
                 if self.tw.lc.pixbuf is not None:
                     self.tw.lc.insert_image(center=center, pixbuf=True)
                 elif self.tw.lc.filepath is None:
                     if self.tw.lc.dsobject is not None:
-                        self.tw.showlabel('nojournal',
+                        self.tw.showlabel(
+                            'nojournal',
                             self.tw.lc.dsobject.metadata['title'])
                     else:
                         self.tw.showlabel('nojournal', string[6:])
@@ -1489,7 +1503,7 @@ _('Palette of user-defined operators'))
                 if center:
                     y -= self.tw.canvas.textsize
                 self.tw.canvas.draw_text(string, x, y,
-                                         int(self.tw.canvas.textsize * \
+                                         int(self.tw.canvas.textsize *
                                              self.tw.lc.scale / 100.),
                                          self.tw.canvas.width - x)
         elif type(string) == float or type(string) == int:
@@ -1498,7 +1512,7 @@ _('Palette of user-defined operators'))
             if center:
                 y -= self.tw.canvas.textsize
             self.tw.canvas.draw_text(string, x, y,
-                                     int(self.tw.canvas.textsize * \
+                                     int(self.tw.canvas.textsize *
                                          self.tw.lc.scale / 100.),
                                      self.tw.canvas.width - x)
 
@@ -1567,7 +1581,7 @@ _('Palette of user-defined operators'))
         # into position to place the next block in the stack.
         # TODO: Add expandable argument
         x, y = self.tw.active_turtle.get_xy()
-        if type(blkname) == type([]):
+        if isinstance(blkname) == list:
             name = blkname[0]
             if len(blkname) > 1:
                 value = blkname[1:]
@@ -1611,7 +1625,7 @@ _('Palette of user-defined operators'))
 
         # Disassociate new block from mouse.
         self.tw.drag_group = None
-        return blk.docks[-1][3] # * self.tw.scale
+        return blk.docks[-1][3]
 
     def _find_block(self, blkname, x, y, defaults=None):
         """ Create a new block. It is a bit more work than just calling
@@ -1622,9 +1636,9 @@ _('Palette of user-defined operators'))
         for name in block_names:
             # Translate label name into block/prim name.
             if blkname in block_names[name]:
-                if (name in block_primitives and \
-                    block_primitives[name] == name) or \
-                    name in content_blocks:
+                if name in content_blocks or \
+                        (name in block_primitives and
+                         block_primitives[name] == name):
                     return self._make_block(name, x, y, defaults)
             elif blkname in block_names:
                     return self._make_block(blkname, x, y, defaults)
@@ -1670,7 +1684,7 @@ _('Palette of user-defined operators'))
         self._prim_show(title)
         # calculate and set scale for media blocks
         myscale = 45 * (self.tw.canvas.height - self.title_height * 2) \
-                      / self.tw.canvas.height
+            / self.tw.canvas.height
         self._prim_setscale(myscale)
         # set body text size
         self.tw.canvas.settextsize(self.tw.lc.body_height)
@@ -1699,7 +1713,7 @@ _('Palette of user-defined operators'))
         self._prim_show(title)
         # calculate and set scale for media blocks
         myscale = 45 * (self.tw.canvas.height - self.title_height * 2) / \
-                  self.tw.canvas.height
+            self.tw.canvas.height
         self._prim_setscale(myscale)
         # set body text size
         self.tw.canvas.settextsize(self.tw.lc.body_height)
@@ -1734,7 +1748,7 @@ _('Palette of user-defined operators'))
         self._prim_show(title)
         # calculate and set scale for media blocks
         myscale = 45 * (self.tw.canvas.height - self.title_height * 2) / \
-                 self.tw.canvas.height
+            self.tw.canvas.height
         self._prim_setscale(myscale)
         # set body text size
         self.tw.canvas.settextsize(self.tw.lc.body_height)
@@ -1769,7 +1783,7 @@ _('Palette of user-defined operators'))
         self._prim_show(title)
         # calculate and set scale for media blocks
         myscale = 45 * (self.tw.canvas.height - self.title_height * 2) / \
-                  self.tw.canvas.height
+            self.tw.canvas.height
         self._prim_setscale(myscale)
         # set body text size
         self.tw.canvas.settextsize(self.tw.lc.body_height)
@@ -1803,7 +1817,7 @@ _('Palette of user-defined operators'))
         self._prim_show(title)
         # calculate and set scale for media blocks
         myscale = 90 * (self.tw.canvas.height - self.title_height * 2) / \
-                       self.tw.canvas.height
+            self.tw.canvas.height
         self._prim_setscale(myscale)
         # set body text size
         self.tw.canvas.settextsize(self.tw.lc.body_height)
