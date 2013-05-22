@@ -67,7 +67,7 @@ from gettext import gettext as _
 from tapalette import (make_palette, define_logo_function)
 from talogo import (primitive_dictionary, logoerror)
 from tautils import (convert, chr_to_ord, round_int, strtype)
-from taconstants import (COLORDICT, CONSTANTS)
+from taconstants import (LOGOCOLORDICT, COLORDICT, CONSTANTS)
 
 
 def _color_to_num(c):
@@ -187,8 +187,8 @@ degrees)'))
         self.tw.lc.def_prim('arc', 2,
                              lambda self, x, y: primitive_dictionary['arc'](
                 self.tw.canvas.arc, x, y))
-        define_logo_function('taarc', 'to taarc :a :r\rrepeat round :a \
-[right 1 forward (0.0175 * :r)]\rend\r')
+        define_logo_function('taarc', 'to taarc :a :r\nrepeat round :a \
+[right 1 forward (0.0175 * :r)]\nend\n')
 
         palette.add_block('setxy2',
                           style='basic-style-2arg',
@@ -201,7 +201,7 @@ degrees)'))
         self.tw.lc.def_prim('setxy2', 2,
                              lambda self, x, y: primitive_dictionary['move'](
                 self.tw.canvas.setxy, x, y))
-        define_logo_function('tasetxy', 'to tasetxy :x :y\rsetxy :x :y\rend\r')
+        define_logo_function('tasetxy', 'to tasetxy :x :y\nsetxy :x :y\nend\n')
 
         primitive_dictionary['set'] = self._prim_set
         palette.add_block('seth',
@@ -267,8 +267,8 @@ turtle (can be used in place of a number block)'),
         self.tw.lc.def_prim('setxy', 2,
                              lambda self, x, y: primitive_dictionary['move'](
                 self.tw.canvas.setxy, x, y, pendown=False))
-        define_logo_function('tasetxypenup', 'to tasetxypenup :x :y\rpenup\r\
-setxy :x :y\rpendown\rend\r')
+        define_logo_function('tasetxypenup', 'to tasetxypenup :x :y\npenup\n\
+setxy :x :y\npendown\nend\n')
 
     def _pen_palette(self):
         """ The basic Turtle Art pen palette """
@@ -302,7 +302,7 @@ shade)'))
             lambda self, x, y, z: self.tw.canvas.fillscreen_with_gray(x, y, z))
 
         define_logo_function('tasetbackground', 'to tasetbackground :color \
-:shade\rtasetshade :shade\rsetbackground :color\rend\r')
+:shade\ntasetshade :shade\nsetbackground :color\nend\n')
 
         palette.add_block('setcolor',
                           style='basic-style-1arg',
@@ -396,8 +396,8 @@ turtle'))
         self.tw.lc.def_prim('setpensize', 1,
                              lambda self, x: primitive_dictionary['set'](
                 'pensize', self.tw.canvas.setpensize, x))
-        define_logo_function('tasetpensize', 'to tasetpensize :a\rsetpensize \
-round :a\rend\r')
+        define_logo_function('tasetpensize', 'to tasetpensize :a\nsetpensize \
+round :a\nend\n')
 
         palette.add_block('startfill',
                           style='basic-style-extended-vertical',
@@ -426,8 +426,8 @@ in place of a number block)'),
                           prim_name='pensize',
                           logo_command='pensize')
         self.tw.lc.def_prim('pensize', 0, lambda self: self.tw.canvas.pensize)
-        define_logo_function('tapensize', 'to tapensize\routput first round \
-pensize\rend\r')
+        define_logo_function('tapensize', 'to tapensize\noutput first round \
+pensize\nend\n')
 
     def _color_palette(self):
         """ The basic Turtle Art color palette """
@@ -475,51 +475,51 @@ turtle'))
         # In order to map Turtle Art colors to the standard UCB Logo palette,
         # we need to define a somewhat complex set of functions.
         define_logo_function('tacolor', '\
-to tasetpalette :i :r :g :b :myshade \r\
-make "s ((:myshade - 50) / 50) \r\
-ifelse lessp :s 0 [ \r\
-make "s (1 + (:s *0.8)) \r\
-make "r (:r * :s) \r\
-make "g (:g * :s) \r\
-make "b (:b * :s) \r\
+to tasetpalette :i :r :g :b :myshade \n\
+make "s ((:myshade - 50) / 50) \n\
+ifelse lessp :s 0 [ \n\
+make "s (1 + (:s *0.8)) \n\
+make "r (:r * :s) \n\
+make "g (:g * :s) \n\
+make "b (:b * :s) \n\
 ] [ \
-make "s (:s * 0.9) \r\
-make "r (:r + ((99-:r) * :s)) \r\
-make "g (:g + ((99-:g) * :s)) \r\
-make "b (:b + ((99-:b) * :s)) \r\
+make "s (:s * 0.9) \n\
+make "r (:r + ((99-:r) * :s)) \n\
+make "g (:g + ((99-:g) * :s)) \n\
+make "b (:b + ((99-:b) * :s)) \n\
 ] \
-setpalette :i (list :r :g :b) \r\
-end \r\
+setpalette :i (list :r :g :b) \n\
+end \n\
 \
-to rgb :myi :mycolors :myshade \r\
-make "myr first :mycolors \r\
-make "mycolors butfirst :mycolors \r\
-make "myg first :mycolors \r\
-make "mycolors butfirst :mycolors \r\
-make "myb first :mycolors \r\
-make "mycolors butfirst :mycolors \r\
-tasetpalette :myi :myr :myg :myb :myshade \r\
-output :mycolors \r\
-end \r\
+to rgb :myi :mycolors :myshade \n\
+make "myr first :mycolors \n\
+make "mycolors butfirst :mycolors \n\
+make "myg first :mycolors \n\
+make "mycolors butfirst :mycolors \n\
+make "myb first :mycolors \n\
+make "mycolors butfirst :mycolors \n\
+tasetpalette :myi :myr :myg :myb :myshade \n\
+output :mycolors \n\
+end \n\
 \
-to processcolor :mycolors :myshade \r\
-if emptyp :mycolors [stop] \r\
-make "i :i + 1 \r\
-processcolor (rgb :i :mycolors :myshade) :myshade \r\
-end \r\
+to processcolor :mycolors :myshade \n\
+if emptyp :mycolors [stop] \n\
+make "i :i + 1 \n\
+processcolor (rgb :i :mycolors :myshade) :myshade \n\
+end \n\
 \
-to tasetshade :shade \r\
-make "myshade modulo :shade 200 \r\
-if greaterp :myshade 99 [make "myshade (199-:myshade)] \r\
-make "i 7 \r\
-make "mycolors :colors \r\
-processcolor :mycolors :myshade \r\
-end \r\
+to tasetshade :shade \n\
+make "myshade modulo :shade 200 \n\
+if greaterp :myshade 99 [make "myshade (199-:myshade)] \n\
+make "i 7 \n\
+make "mycolors :colors \n\
+processcolor :mycolors :myshade \n\
+end \n\
 \
-to tasetpencolor :c \r\
-make "color (modulo (round :c) 100) \r\
-setpencolor :color + 8 \r\
-end \r\
+to tasetpencolor :c \n\
+make "color (modulo (round :c) 100) \n\
+setpencolor :color + 8 \n\
+end \n\
 \
 make "colors [ \
 99  0  0 99  5  0 99 10  0 99 15  0 99 20  0 \
@@ -541,9 +541,9 @@ make "colors [ \
 50  0 99 55  0 99 60  0 99 65  0 99 70  0 99 \
 75  0 99 80  0 99 85  0 99 90  0 99 95  0 99 \
 99  0 99 99  0 90 99  0 80 99  0 70 99  0 60 \
-99  0 50 99  0 40 99  0 30 99  0 20 99  0 10] \r\
-make "shade  50 \r\
-tasetshade :shade \r')
+99  0 50 99  0 40 99  0 30 99  0 20 99  0 10] \n\
+make "shade  50 \n\
+tasetshade :shade \n')
 
     def _numbers_palette(self):
         """ The basic Turtle Art numbers palette """
@@ -575,8 +575,8 @@ tasetshade :shade \r')
 top numeric input'))
         self.tw.lc.def_prim(
             'minus', 2, lambda self, x, y: primitive_dictionary['minus'](x, y))
-        define_logo_function('taminus', 'to taminus :y :x\routput sum :x \
-minus :y\rend\r')
+        define_logo_function('taminus', 'to taminus :y :x\noutput sum :x \
+minus :y\nend\n')
 
         primitive_dictionary['product'] = self._prim_product
         palette.add_block('product2',
@@ -648,8 +648,8 @@ minimum (top) and maximum (bottom) values'))
         self.tw.lc.def_prim(
             'random', 2, lambda self, x, y: primitive_dictionary['random'](
                 x, y))
-        define_logo_function('tarandom', 'to tarandom :min :max\r \
-output (random (:max - :min)) + :min\rend\r')
+        define_logo_function('tarandom', 'to tarandom :min :max\n \
+output (random (:max - :min)) + :min\nend\n')
 
         palette.add_block('number',
                           style='box-style',
@@ -838,7 +838,7 @@ boolean operators from Numbers palette'))
                           style='basic-style-head',
                           label=_('start'),
                           prim_name='start',
-                          logo_command='to start\r',
+                          logo_command='to start\n',
                           help_string=_('connects action to toolbar run \
 buttons'))
         self.tw.lc.def_prim('start', 0,
@@ -951,7 +951,7 @@ variable'))
                           style='basic-style-head',
                           label=_('action 1'),
                           prim_name='nop1',
-                          logo_command='to stack1\r',
+                          logo_command='to stack1\n',
                           help_string=_('top of Action 1 stack'))
         self.tw.lc.def_prim('nop1', 0, lambda self: None)
 
@@ -960,7 +960,7 @@ variable'))
                           style='basic-style-head',
                           label=_('action 2'),
                           prim_name='nop2',
-                          logo_command='to stack2\r',
+                          logo_command='to stack2\n',
                           help_string=_('top of Action 2 stack'))
         self.tw.lc.def_prim('nop2', 0, lambda self: None)
 
@@ -1382,7 +1382,13 @@ variable'))
 
     def _make_constant(self, palette, block_name, label, constant):
         """ Factory for constant blocks """
-        palette.add_block(block_name, style='box-style',
-                          label=label, prim_name=block_name,
-                          logo_command=block_name)
+        if constant in LOGOCOLORDICT:
+            value = str(LOGOCOLORDICT[constant])
+        else:
+            value = constant
+        palette.add_block(block_name,
+                          style='box-style',
+                          label=label,
+                          prim_name=block_name,
+                          logo_command=value)
         self.tw.lc.def_prim(block_name, 0, lambda self: constant)
