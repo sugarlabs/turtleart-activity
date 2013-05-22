@@ -325,7 +325,9 @@ def chooser(parent_window, filter, action):
     try:
         chooser = ObjectChooser(parent=parent_window, what_filter=filter)
     except TypeError:
-        chooser = ObjectChooser(None, parent_window,
+        chooser = ObjectChooser(
+            None,
+            parent_window,
             gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT)
     if chooser is not None:
         dsobject = None
@@ -520,7 +522,7 @@ def round_int(num):
 def calc_image_size(spr):
     ''' Calculate the maximum size for placing an image onto a sprite. '''
     return int(max(spr.label_safe_width(), 1)), \
-           int(max(spr.label_safe_height(), 1))
+        int(max(spr.label_safe_height(), 1))
 
 
 def restore_clamp(top):
@@ -571,7 +573,7 @@ def restore_clamp(top):
 
 def collapse_clamp(top, transform=True):
     ''' Hide all the blocks in the clamp. '''
-    if top == None or top.spr == None:
+    if top is None or top.spr is None:
         return
 
     if top.name in ['sandwichclampcollapsed', 'sandwichclamp']:
@@ -639,7 +641,7 @@ def neg_arg(value):
 
 def journal_check(blk1, blk2, dock1, dock2):
     ''' Dock blocks only if arg is Journal block '''
-    if blk1 == None or blk2 == None:
+    if blk1 is None or blk2 is None:
         return True
     if (blk1.name == 'skin' and dock1 == 1) and blk2.name != 'journal':
         return False
@@ -650,7 +652,7 @@ def journal_check(blk1, blk2, dock1, dock2):
 
 def arithmetic_check(blk1, blk2, dock1, dock2):
     ''' Dock strings only if they convert to numbers. Avoid /0 and root(-1)'''
-    if blk1 == None or blk2 == None:
+    if blk1 is None or blk2 is None:
         return True
     if blk1.name in ['sqrt', 'number', 'string'] and\
        blk2.name in ['sqrt', 'number', 'string']:
@@ -660,8 +662,8 @@ def arithmetic_check(blk1, blk2, dock1, dock2):
         elif blk2.name == 'number' or blk2.name == 'string':
             if not numeric_arg(blk2.values[0]) or neg_arg(blk2.values[0]):
                 return False
-    elif blk1.name in ['division2', 'number', 'string'] and\
-         blk2.name in ['division2', 'number', 'string']:
+    elif blk1.name in ['division2', 'number', 'string'] and \
+            blk2.name in ['division2', 'number', 'string']:
         if blk1.name == 'number' or blk1.name == 'string':
             if not numeric_arg(blk1.values[0]):
                 return False
@@ -672,10 +674,10 @@ def arithmetic_check(blk1, blk2, dock1, dock2):
                 return False
             if dock1 == 2 and zero_arg(blk2.values[0]):
                 return False
-    elif blk1.name in ['product2', 'minus2', 'random', 'remainder2',
-                     'string'] and\
-         blk2.name in ['product2', 'minus2', 'random', 'remainder2',
-                     'string']:
+    elif blk1.name \
+            in ['product2', 'minus2', 'random', 'remainder2', 'string'] and \
+            blk2.name \
+            in ['product2', 'minus2', 'random', 'remainder2', 'string']:
         if blk1.name == 'string':
             if not numeric_arg(blk1.values[0]):
                 return False
@@ -790,7 +792,7 @@ def find_group(blk):
 
 def find_blk_below(blk, namelist):
     ''' Find a specific block below this block. '''
-    if blk == None or len(blk.connections) == 0:
+    if blk is None or len(blk.connections) == 0:
         return
     if not isinstance(namelist, list):
         namelist = [namelist]
@@ -814,7 +816,7 @@ def get_hardware():
     if version == '1':
         return XO1
     elif version == '1.5':
-         return XO15
+        return XO15
     elif version == '1.75':
         return XO175
     elif version == '4':
@@ -822,7 +824,7 @@ def get_hardware():
     else:
         # Some systems (e.g. ARM) don't have dmi info
         if os.path.exists('/sys/devices/platform/lis3lv02d/position'):
-            return XO175        
+            return XO175
         elif os.path.exists('/etc/olpc-release'):
             return XO1
         else:
