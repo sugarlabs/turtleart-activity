@@ -193,7 +193,7 @@ http://turtleartsite.sugarlabs.org to upload your project.'))
                               ('title', title),
                               ('description', description),
                               ('upload_key', key), ('_formname',
-                                                   'image_create')])
+                                                    'image_create')])
         c.perform()
         error_code = c.getinfo(c.HTTP_CODE)
         c.close
@@ -207,7 +207,7 @@ http://turtleartsite.sugarlabs.org to upload your project.'))
 
 if __name__ == "__main__":
     # TODO: create test data...
-    u = Uploader(None)
+    u = Uploader_plugin(None)
     if u.enabled():
         print "Uploader is enabled... trying to upload"
         u.do_upload_to_web()

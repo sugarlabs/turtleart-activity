@@ -32,7 +32,6 @@
 
 
 import pycurl
-import sys
 import urlparse
 
 import gtk
@@ -44,6 +43,7 @@ except ImportError:
 from plugin import Plugin
 from util.menubuilder import MenuBuilder, MENUBAR
 from gettext import gettext as _
+
 
 class FbUploader():
     UPLOAD_URL = "https://graph.facebook.com/me/photos?access_token=%s"
@@ -142,7 +142,7 @@ class Fb_plugin(Plugin):
         if uri:
             url_o = urlparse.urlparse(uri)
             params = urlparse.parse_qs(url_o.fragment)
-            if params.has_key('access_token'):
+            if 'access_token' in params:
                 self._access_token = params['access_token'][0]
                 self._auth_win.hide()
                 self._post_to_fb()

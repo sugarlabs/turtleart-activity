@@ -35,19 +35,17 @@ from util.menubuilder import MenuBuilder
 from util.configfile import ConfigFile
 from util.configwizard import ConfigWizard
 
-import telepathy
 from collaboration.neighborhood import get_neighborhood
 from collaboration.connectionmanager import get_connection_manager
 from collaboration.activity import Activity
 from collaboration import telepathyclient
-from collaboration.tubeconn import TubeConnection
 
 from TurtleArt.tacollaboration import Collaboration
 
 import traceback
 
 CONNECTION_INTERFACE_ACTIVITY_PROPERTIES = \
-        'org.laptop.Telepathy.ActivityProperties'
+    'org.laptop.Telepathy.ActivityProperties'
 
 
 class Collaboration_plugin(Plugin):
@@ -56,8 +54,7 @@ class Collaboration_plugin(Plugin):
         'joined': (gobject.SIGNAL_RUN_FIRST, gobject.TYPE_NONE,
                    ()),
         'shared': (gobject.SIGNAL_RUN_FIRST, gobject.TYPE_NONE,
-                   ()),
-        }
+                   ()), }
 
     def __init__(self, parent):
         Plugin.__init__(self)
@@ -82,8 +79,7 @@ class Collaboration_plugin(Plugin):
             'server': {'type': 'text'},
             'port': {'type': 'integer'},
             'register': {'type': 'boolean'},
-            'colors': {'type': 'text'}
-            }
+            'colors': {'type': 'text'}}
 
     def _connect_cb(self, button):
         """ Enable connection """
@@ -181,7 +177,7 @@ class Collaboration_plugin(Plugin):
         dbus.mainloop.glib.DBusGMainLoop(set_as_default=True)
 
         self._client_handler = telepathyclient.get_instance()
-        if self._client_handler == None:
+        if self._client_handler is None:
             raise RuntimeError('Telepathy client unavailable')
         self._neighborhood = get_neighborhood(params)
         self._neighborhood.connect('activity-added', self._activity_added_cb)
@@ -263,7 +259,8 @@ class Collaboration_plugin(Plugin):
         properties['private'] = True
 
         try:
-            room_handle = connection.GetActivity(activity.activity_id,
+            room_handle = connection.GetActivity(
+                activity.activity_id,
                 dbus_interface=CONNECTION_INTERFACE_ACTIVITY_PROPERTIES)
             print('room_handle = %s' % str(room_handle))
             self._joined_activity = Activity(
@@ -277,7 +274,7 @@ class Collaboration_plugin(Plugin):
             raise RuntimeError('Activity %s is already shared.' %
                                activity.activity_id)
 
-        _join_id = self._joined_activity.connect('joined', self.__joined_cb)
+        self._joined_activity.connect('joined', self.__joined_cb)
         self._joined_activity.join()
 
     def __joined_cb(self, activity, success, err):
@@ -302,8 +299,7 @@ class Collaboration_plugin(Plugin):
             {'item_label': _('Register'), 'item_type': 'boolean',
              'item_name': 'register'},
             {'item_label': _('Colors'), 'item_type': 'text',
-             'item_name': 'colors'}
-            ]
+             'item_name': 'colors'}]
         config_w.set_config_items(config_items)
         config_w.set_config_file_obj(self._collaboration_config_values)
         config_w.show()
@@ -328,8 +324,8 @@ class Collaboration_plugin(Plugin):
 
         try:
             self._parent._shared_activity = Activity(account_path,
-                                                       connection,
-                                                       properties=properties)
+                                                     connection,
+                                                     properties=properties)
             # FIXME: this should be unified, no need to keep 2 references
             self._shared_activity = self._parent._shared_activity
         except:
@@ -340,7 +336,7 @@ class Collaboration_plugin(Plugin):
                                self._parent._get_activity_id())
 
         self._parent._shared_parent.share(self.__share_activity_cb,
-                                              self.__share_activity_error_cb)
+                                          self.__share_activity_error_cb)
 
     def __share_activity_cb(self, activity):
         """Finish sharing the activity"""
