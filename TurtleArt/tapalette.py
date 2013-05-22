@@ -34,7 +34,7 @@ logo_functions = {}
 special_names = {}  # Names for blocks without names for popup help
 content_blocks = ['number', 'string', 'description', 'audio', 'video',
                   'journal']
-hidden_proto_blocks = [] # proto blocks that are (at least initially) hidden
+hidden_proto_blocks = []  # proto blocks that are (at least initially) hidden
 value_blocks = []  # blocks whose labels are updated get added here
 special_block_colors = {}
 string_or_number_args = []
@@ -95,8 +95,7 @@ from gettext import gettext as _
 
 help_strings = {
     'next': _('displays next palette'),
-    'orientation': _("changes the orientation of the palette of blocks")
-    }
+    'orientation': _("changes the orientation of the palette of blocks")}
 
 
 class Palette():
@@ -162,7 +161,8 @@ class Palette():
         if self._help is None:
             self._help = help
             if hasattr(self, '_help_box') and HELP_PALETTE:
-                add_section(self._help_box, self._help, icon=self._name + 'off')
+                add_section(self._help_box, self._help,
+                            icon=self._name + 'off')
 
     def set_special_name(self, name):
         self._special_name = name
@@ -190,7 +190,7 @@ class Palette():
             block.set_logo_command(logo_command)
         if help_string is not None:
             block.set_help(help_string)
-            if not hidden: 
+            if not hidden:
                 first_arg = None
                 if special_name is None:
                     if isinstance(label, list):
@@ -200,7 +200,9 @@ class Palette():
                 else:
                     first_arg = special_name
                 if HELP_PALETTE:
-                    if first_arg is None or first_arg == '' or first_arg == ' ':
+                    if first_arg is None or \
+                            first_arg == '' or \
+                            first_arg == ' ':
                         add_paragraph(self._help_box, '%s' % (help_string))
                     else:
                         add_paragraph(self._help_box, '%s: %s' % (first_arg,
@@ -241,7 +243,7 @@ def palette_name_to_index(palette_name):
 def define_logo_function(key, value):
     ''' Add a logo function to the table (not necessarily associated
     with a block, e.g., color lookup tables) '''
-    logo_functions[key] = value    
+    logo_functions[key] = value
 
 
 class Block():
@@ -291,8 +293,8 @@ class Block():
         if self._palette is not None:
             i = palette_names.index(self._palette)
             if self._name in palette_blocks[i]:
-                debug_output('%s already in palette %s, skipping...' % (
-                        self._name, self._palette))
+                debug_output('%s already in palette %s, skipping...' %
+                             (self._name, self._palette))
             else:
                 if position is not None and isinstance(position, int) and \
                         position < len(palette_blocks[i]):
@@ -300,7 +302,8 @@ class Block():
                 else:
                     palette_blocks[i].append(self._name)
                     if position is not None:
-                        debug_output('Ignoring position (%s)' % (str(position)))
+                        debug_output('Ignoring position (%s)' %
+                                     (str(position)))
 
         if self._help is not None:
             help_strings[self._name] = self._help

@@ -46,7 +46,7 @@ def myfunc(f, args):
 
 def myfunc_import(parent, f, x):
     ''' Run Python code imported from Journal '''
-    if 'def myblock(lc,' in  f:
+    if 'def myblock(lc,' in f:
         base_class = parent.tw.lc  # pre-v107, we passed lc
     else:
         base_class = parent.tw  # as of v107, we pass tw

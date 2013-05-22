@@ -63,12 +63,12 @@ def play_movie_from_file(lc, filepath, x, y, w, h):
 
 def stop_media(lc):
     """ Called from Clean block and toolbar Stop button """
-    if lc.gplay == None:
+    if lc.gplay is None:
         return False
 
     if lc.gplay.player is not None:
         lc.gplay.player.stop()
-    if lc.gplay.bin != None:
+    if lc.gplay.bin is not None:
         lc.gplay.bin.destroy()
 
     lc.gplay = None
@@ -76,7 +76,7 @@ def stop_media(lc):
 
 def pause_media(lc):
     """ From pause media block """
-    if lc.gplay == None:
+    if lc.gplay is None:
         return False
 
     if lc.gplay.player is not None:
@@ -85,7 +85,7 @@ def pause_media(lc):
 
 def play_media(lc):
     """ From play media block """
-    if lc.gplay == None:
+    if lc.gplay is None:
         return False
 
     if lc.gplay.player is not None:
@@ -93,7 +93,7 @@ def play_media(lc):
 
 
 def media_playing(lc):
-    if lc.gplay == None:
+    if lc.gplay is None:
         return False
     return lc.gplay.player.is_playing()
 

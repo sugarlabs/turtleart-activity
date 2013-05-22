@@ -289,7 +289,7 @@ class LogoCode:
                 except ValueError:
                     code.append(float(ord(blk.values[0][0])))
             elif blk.name == 'string' or \
-                 blk.name == 'title':  # deprecated block
+                    blk.name == 'title':  # deprecated block
                 if isinstance(blk.values[0], (float, int)):
                     if int(blk.values[0]) == blk.values[0]:
                         blk.values[0] = int(blk.values[0])
@@ -298,8 +298,8 @@ class LogoCode:
                     code.append('#s' + blk.values[0])
             elif blk.name in PREFIX_DICTIONARY:
                 if blk.values[0] is not None:
-                    code.append(PREFIX_DICTIONARY[blk.name] + \
-                                    str(blk.values[0]))
+                    code.append(PREFIX_DICTIONARY[blk.name] +
+                                str(blk.values[0]))
                 else:
                     code.append(PREFIX_DICTIONARY[blk.name] + 'None')
             elif blk.name in media_blocks_dictionary:
@@ -436,7 +436,7 @@ class LogoCode:
 
             if self.procstop:
                 break
-            if self.iresult == None:
+            if self.iresult is None:
                 continue
 
             if self.bindex is not None:
@@ -480,7 +480,7 @@ class LogoCode:
         oldcfun, oldarglist = self.cfun, self.arglist
         self.cfun, self.arglist = token, []
 
-        if token.nargs == None:
+        if token.nargs is None:
             self.tw.showblocks()
             self.tw.display_coordinates()
             raise logoerror("#noinput")
@@ -502,10 +502,11 @@ class LogoCode:
         else:
             result = self.cfun.fcn(self, *self.arglist)
         self.cfun, self.arglist = oldcfun, oldarglist
-        if self.arglist is not None and result == None:
+        if self.arglist is not None and result is None:
             self.tw.showblocks()
-            raise logoerror("%s %s %s" % \
-                (oldcfun.name, _("did not output to"), self.cfun.name))
+            raise logoerror("%s %s %s" %
+                            (oldcfun.name, _("did not output to"),
+                             self.cfun.name))
         self.ireturn(result)
         yield True
 
@@ -619,8 +620,9 @@ class LogoCode:
             return int(ord(n[0]))
         else:
             self.tw.showblocks()
-            raise logoerror("%s %s %s %s" \
-                % (self.cfun.name, _("doesn't like"), str(n), _("as input")))
+            raise logoerror("%s %s %s %s" %
+                            (self.cfun.name, _("doesn't like"), str(n),
+                             _("as input")))
 
     def find_value_blocks(self):
         """ Find any value blocks that may need label updates """
@@ -654,8 +656,8 @@ class LogoCode:
                     block.resize()
         elif self.update_values:
             if isinstance(value, float):
-                valstring = str(round_int(value)).replace('.',
-                    self.tw.decimal_point)
+                valstring = str(round_int(value)).replace(
+                    '.', self.tw.decimal_point)
             else:
                 valstring = str(value)
             for block in self.value_blocks_to_update[name]:
@@ -763,7 +765,7 @@ class LogoCode:
         text = None
         if text_media_type(self.filepath):
             if RTFPARSE and (
-                mimetype == 'application/rtf' or \
+                mimetype == 'application/rtf' or
                     self.filepath.endswith(('rtf'))):
                 text_only = RtfTextOnly()
                 for line in open(self.filepath, 'r'):

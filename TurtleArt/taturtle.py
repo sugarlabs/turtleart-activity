@@ -59,7 +59,7 @@ class Turtles:
         elif not append:
             return None
         else:
-            if colors == None:
+            if colors is None:
                 Turtle(self, k)
             elif isinstance(colors, (list, tuple)):
                 Turtle(self, k, colors)

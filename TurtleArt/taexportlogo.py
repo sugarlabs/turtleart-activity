@@ -37,8 +37,7 @@ def save_logo(tw):
         'to action': _add_named_stack,
         'action': _add_reference_to_stack,
         'storeinbox': _add_named_box,
-        'box': _add_reference_to_box
-        }
+        'box': _add_reference_to_box}
     constants_table = {
         'lpos': _lpos,
         'tpos': _tpos,
@@ -60,8 +59,7 @@ def save_logo(tw):
         'rightx': _rightx,
         'bottomy': _bottomy,
         'width': _width,
-        'height': _height
-        }
+        'height': _height}
 
     stacks_of_blocks = tw.just_blocks()
     stack_count = 0
@@ -212,7 +210,8 @@ def _leftx(tw):
 
 
 def _topy(tw):
-    return int((tw.canvas.height * (TITLEXY[1] - 0.125)) / (tw.coord_scale * 2))
+    return int((tw.canvas.height * (TITLEXY[1] - 0.125))
+               / (tw.coord_scale * 2))
 
 
 def _rightx(tw):
