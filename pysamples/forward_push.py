@@ -50,4 +50,4 @@ def myblock(tw, name):
 
     # Regenerate the palette, which will now include the new block.
     tw.show_toolbar_palette(palette_name_to_index('turtle'),
-                                   regenerate=True)
+                            regenerate=True)

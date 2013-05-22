@@ -17,5 +17,5 @@
 
 def myblock(tw, x):
     ''' Add start group to SVG output '''
-    
+
     tw.svg_string += '<g>'

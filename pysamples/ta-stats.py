@@ -14,14 +14,14 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
+
 def myblock(tw, x):  # ignore second argument
     ''' Load journal stats to heap (Sugar only) '''
 
     import os
     import glob
-    MAX = 19
-    DIROFINTEREST = 'datastore'
 
+    _DIROFINTEREST = 'datastore'
 
     class ParseJournal():
         ''' Simple parser of datastore for turtle art entries '''
@@ -33,19 +33,18 @@ def myblock(tw, x):  # ignore second argument
             for path in glob.glob(os.path.join(homepath, '.sugar', '*')):
                 if isdsdir(path):
                     dsobjdirs = glob.glob(
-                        os.path.join(path, DIROFINTEREST, '??'))
+                        os.path.join(path, _DIROFINTEREST, '??'))
                     for dsobjdir in dsobjdirs:
                         dsobjs = glob.glob(os.path.join(dsobjdir, '*'))
                         for dsobj in dsobjs:
                             if not isactivity(dsobj) == 'TurtleArtActivity':
                                 continue
                             if hascomponent(dsobj, 'mime_type') != \
-                                'application/x-turtle-art':
+                                    'application/x-turtle-art':
                                 continue
                             score = hasturtleblocks(dsobj)
                             if score:
                                 self._score.append(score)
-
 
     def hascomponent(path, component):
         ''' Return metadata attribute, if any '''
@@ -60,7 +59,6 @@ def myblock(tw, x):  # ignore second argument
             return False
         return data
 
-
     def isactivity(path):
         ''' Return activity name '''
         activity = hascomponent(path, 'activity')
@@ -69,59 +67,59 @@ def myblock(tw, x):  # ignore second argument
         else:
             return activity.split('.')[-1]
 
-
     def isdsdir(path):
         ''' Only interested if it is a datastore directory '''
         if not os.path.isdir(path):
             return False
-        if not os.path.exists(os.path.join(path, DIROFINTEREST)):
+        if not os.path.exists(os.path.join(path, _DIROFINTEREST)):
             return False
         return True
 
-
-    TACAT = {'clean':'forward', 'forward':'forward', 'back':'forward',
-         'left':'forward', 'right':'forward', 'arc': 'arc',
-         'xcor': 'coord', 'ycor': 'coord', 'heading': 'coord', 
-         'setxy2': 'setxy', 'seth': 'setxy', 'penup': 'pen', 'pendown': 'pen',
-         'setpensize': 'pen', 'setcolor': 'pen', 'pensize': 'pen',
-         'color': 'pen', 'setshade': 'pen', 'setgray': 'pen', 'shade': 'pen',
-         'gray': 'pen', 'fillscreen': 'pen', 'startfill': 'fill',
-         'stopfill': 'fill', 'plus2': 'number', 'minus2': 'number',
-         'product2': 'number', 'division2': 'number', 'remainder2': 'number',
-         'sqrt': 'number', 'identity2': 'number', 'and2': 'boolean',
-         'or2': 'boolean', 'not': 'boolean', 'greater2': 'boolean',
-         'less2': 'boolean', 'equal2': 'boolean', 'random': 'random',
-         'repeat': 'repeat', 'forever': 'repeat', 'if': 'ifthen',
-         'ifelse': 'ifthen', 'while': 'ifthen', 'until': 'ifthen',
-         'hat': 'action', 'stack': 'action', 'storein': 'box', 'box': 'box',
-         'luminance': 'sensor', 'mousex': 'sensor', 'mousey': 'sensor',
-         'mousebutton2': 'sensor', 'keyboard': 'sensor', 'kbinput': 'sensor',
-         'readpixel': 'sensor', 'see': 'sensor', 'time': 'sensor',
-         'sound': 'sensor', 'volume': 'sensor', 'pitch': 'sensor',
-         'resistance': 'sensor', 'voltage': 'sensor', 'video': 'media',
-         'wait': 'media', 'camera': 'media', 'journal': 'media',
-         'audio': 'media', 'show': 'media', 'setscale': 'media',
-         'savepix': 'media', 'savesvg': 'media', 'mediawait': 'media',
-         'mediapause': 'media', 'mediastop': 'media', 'mediaplay': 'media',
-         'speak': 'media', 'sinewave': 'media', 'description': 'media',
-         'push':'extras', 'pop':'extras', 'printheap':'extras',
-         'clearheap':'extras', 'isheapempty2':'extras', 'chr':'extras',
-         'int':'extras', 'myfunction': 'python', 'userdefined': 'python',
-         'loadblock': 'python', 'loadpalette': 'python'}
+    TACAT = {'clean': 'forward', 'forward': 'forward', 'back': 'forward',
+             'left': 'forward', 'right': 'forward', 'arc': 'arc',
+             'xcor': 'coord', 'ycor': 'coord', 'heading': 'coord',
+             'setxy2': 'setxy', 'seth': 'setxy', 'penup': 'pen',
+             'setpensize': 'pen', 'setcolor': 'pen', 'pensize': 'pen',
+             'color': 'pen', 'setshade': 'pen', 'setgray': 'pen',
+             'gray': 'pen', 'fillscreen': 'pen', 'startfill': 'fill',
+             'stopfill': 'fill', 'plus2': 'number', 'minus2': 'number',
+             'product2': 'number', 'division2': 'number',
+             'pendown': 'pen', 'shade': 'pen', 'remainder2': 'number',
+             'sqrt': 'number', 'identity2': 'number', 'and2': 'boolean',
+             'or2': 'boolean', 'not': 'boolean', 'greater2': 'boolean',
+             'less2': 'boolean', 'equal2': 'boolean', 'random': 'random',
+             'repeat': 'repeat', 'forever': 'repeat', 'if': 'ifthen',
+             'ifelse': 'ifthen', 'while': 'ifthen', 'until': 'ifthen',
+             'hat': 'action', 'stack': 'action', 'storein': 'box',
+             'luminance': 'sensor', 'mousex': 'sensor', 'mousey': 'sensor',
+             'mousebutton2': 'sensor', 'keyboard': 'sensor',
+             'readpixel': 'sensor', 'see': 'sensor', 'time': 'sensor',
+             'sound': 'sensor', 'volume': 'sensor', 'pitch': 'sensor',
+             'resistance': 'sensor', 'voltage': 'sensor', 'video': 'media',
+             'wait': 'media', 'camera': 'media', 'journal': 'media',
+             'audio': 'media', 'show': 'media', 'setscale': 'media',
+             'savepix': 'media', 'savesvg': 'media', 'mediawait': 'media',
+             'mediapause': 'media', 'mediastop': 'media', 'mediaplay': 'media',
+             'speak': 'media', 'sinewave': 'media', 'description': 'media',
+             'push': 'extras', 'pop': 'extras', 'printheap': 'extras',
+             'clearheap': 'extras', 'isheapempty2': 'extras', 'chr': 'extras',
+             'int': 'extras', 'myfunction': 'python', 'userdefined': 'python',
+             'box': 'box', 'kbinput': 'sensor',
+             'loadblock': 'python', 'loadpalette': 'python'}
     TAPAL = {'forward': 'turtlep', 'arc': 'turtlep', 'coord': 'turtlep',
-         'setxy': 'turtlep', 'pen': 'penp', 'fill': 'penp', 'number': 'numberp',
-         'random': 'numberp', 'boolean': 'numberp', 'repeat': 'flowp',
-         'ifthen': 'flowp', 'action': 'boxp', 'box': 'boxp',
-         'sensor': 'sensorp', 'media': 'mediap', 'extras': 'extrasp',
-         'python': 'extrasp'}
+             'setxy': 'turtlep', 'pen': 'penp', 'fill': 'penp',
+             'random': 'numberp', 'boolean': 'numberp', 'repeat': 'flowp',
+             'ifthen': 'flowp', 'action': 'boxp', 'box': 'boxp',
+             'sensor': 'sensorp', 'media': 'mediap', 'extras': 'extrasp',
+             'number': 'numberp', 'python': 'extrasp'}
     TASCORE = {'forward': 3, 'arc': 3, 'setxy': 2.5, 'coord': 4, 'turtlep': 5,
-           'pen': 2.5, 'fill': 2.5, 'penp': 5,
-           'number': 2.5, 'boolean': 2.5, 'random': 2.5, 'numberp': 0,
-           'repeat': 2.5, 'ifthen': 7.5, 'flowp': 10,
-           'box': 7.5, 'action': 7.5, 'boxp': 0,
-           'media': 5, 'mediap': 0,
-           'python': 5, 'extras': 5, 'extrasp': 0,
-           'sensor': 5, 'sensorp': 0}
+               'pen': 2.5, 'fill': 2.5, 'penp': 5,
+               'number': 2.5, 'boolean': 2.5, 'random': 2.5, 'numberp': 0,
+               'repeat': 2.5, 'ifthen': 7.5, 'flowp': 10,
+               'box': 7.5, 'action': 7.5, 'boxp': 0,
+               'media': 5, 'mediap': 0,
+               'python': 5, 'extras': 5, 'extrasp': 0,
+               'sensor': 5, 'sensorp': 0}
     PALS = ['turtlep', 'penp', 'numberp', 'flowp', 'boxp', 'sensorp', 'mediap',
             'extrasp']
 
@@ -169,6 +167,6 @@ def myblock(tw, x):  # ignore second argument
     for i in range(n):
         for j in range(len(PALS)):
             tw.lc.heap.append(data._score[(n - i - 1)][len(PALS) - j - 1])
-    
+
     tw.lc.heap.append(n)
     return

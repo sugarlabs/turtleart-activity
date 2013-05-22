@@ -9,13 +9,13 @@
 #    (3) use a Pop Block to retrieve any strings input from serial device.
 
 
-def myblock(tw, x):  # x is the string to transmit    
-   import serial   # you may need to install this library
+def myblock(tw, x):  # x is the string to transmit
+    import serial  # you may need to install this library
 
-   # serial device on USB, 9600 baud
-   ser = serial.Serial('/dev/ttyUSB0', 9600, timeout=1)
+    # serial device on USB, 9600 baud
+    ser = serial.Serial('/dev/ttyUSB0', 9600, timeout=1)
 
-   ser.write(str(x))  #send string x
-   st = ser.read(1000)  #read up to 1000 bytes
-   tw.lc.heap.append(st)  #append to heap
-   ser.close()
+    ser.write(str(x))  # send string x
+    st = ser.read(1000)  # read up to 1000 bytes
+    tw.lc.heap.append(st)  # append to heap
+    ser.close()

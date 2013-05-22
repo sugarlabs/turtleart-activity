@@ -20,7 +20,7 @@ def myblock(tw, x):  # ignore second argument
         # push y first so x will be popped first
         tw.lc.heap.append((tw.canvas.height / 2) - tw.mouse_y)
         tw.lc.heap.append(tw.mouse_x - (tw.canvas.width / 2))
-        tw.lc.heap.append(1) # mouse event
+        tw.lc.heap.append(1)  # mouse event
         tw.mouse_flag = 0
     else:
-        tw.lc.heap.append(0) # no mouse event
+        tw.lc.heap.append(0)  # no mouse event

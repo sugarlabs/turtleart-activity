@@ -53,12 +53,14 @@ def myblock(tw, blkname):
         (1) translate the label name into the internal block name;
         (2) 'dock' the block onto a stack where appropriate; and
         (3) disassociate the new block from the mouse. """
+
         for name in block_names:
             # Translate label name into block/prim name.
             if blkname in block_names[name]:
-                if (name in block_primitives and \
-                        block_primitives[name] == name) or \
-                        name in content_blocks:
+                if name in block_primitives and \
+                        block_primitives[name] == name:
+                    return make_block(tw, name, x, y, defaults)
+                elif name in content_blocks:
                     return make_block(tw, name, x, y, defaults)
         for name in special_names:
             # Translate label name into block/prim name.
@@ -69,7 +71,7 @@ def myblock(tw, blkname):
     # Place the block at the active turtle (x, y) and move the turtle
     # into position to place the next block in the stack.
     x, y = tw.active_turtle.get_xy()
-    if type(blkname) == type([]):
+    if isinstance(blkname) == list:
         name = blkname[0]
         value = blkname[1:]
         dy = int(find_block(tw, name, x, y, value))

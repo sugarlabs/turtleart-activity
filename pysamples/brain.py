@@ -45,21 +45,18 @@ def myblock(tw, text):
     import sys
     sys.path.append(speakpath)
 
-    import gobject
     import aiml
     import voice
 
-
     BOTS = {
-        _('Spanish'): { 'name': 'Sara',
-                        'brain': os.path.join(speakpath, 'bot', 'sara.brn'),
-                        'predicates': { 'nombre_bot': 'Sara',
-                                        'botmaster': 'La comunidad Azucar' } },
-        _('English'): { 'name': 'Alice',
-                        'brain': os.path.join(speakpath, 'bot', 'alice.brn'),
-                        'predicates': { 'name': 'Alice',
-                                        'master': 'The Sugar Community' } } }
-    
+        _('Spanish'): {'name': 'Sara',
+                       'brain': os.path.join(speakpath, 'bot', 'sara.brn'),
+                       'predicates': {'nombre_bot': 'Sara',
+                                      'botmaster': 'La comunidad Azucar'}},
+        _('English'): {'name': 'Alice',
+                       'brain': os.path.join(speakpath, 'bot', 'alice.brn'),
+                       'predicates': {'name': 'Alice',
+                                      'master': 'The Sugar Community'}}}
 
     def get_mem_info(tag):
         meminfo = file('/proc/meminfo').readlines()
@@ -107,7 +104,6 @@ Close other activities and try once more.'))
 
         return kernel
 
-    kernel = None
     if not hasattr(tw, 'aiml_kernel'):
         tw.aiml_kernel = brain_load(tw, get_default_voice())
     response_text = brain_respond(tw.aiml_kernel, text)

@@ -13,11 +13,7 @@
 def myblock(tw, arg):
     ''' Record and playback a sound (Sugar only) '''
     import os
-    import time
-
-    import gtk
     import gst
-
     import gobject
     gobject.threads_init()
 
@@ -57,27 +53,29 @@ def myblock(tw, arg):
             ''' Assemble all the pieces we need. '''
             src = gst.element_factory_make("alsasrc", "absrc")
 
-            # attempt to use direct access to the 0,0 device, solving some A/V
-            # sync issues
+            # attempt to use direct access to the 0,0 device, solving
+            # some A/V sync issues
             src.set_property("device", "plughw:0,0")
             hwdev_available = src.set_state(gst.STATE_PAUSED) != \
-                              gst.STATE_CHANGE_FAILURE
+                gst.STATE_CHANGE_FAILURE
             src.set_state(gst.STATE_NULL)
             if not hwdev_available:
                 src.set_property("device", "default")
 
-            srccaps = gst.Caps("audio/x-raw-int,rate=16000,channels=1,depth=16")
+            srccaps = gst.Caps(
+                "audio/x-raw-int,rate=16000,channels=1,depth=16")
 
             # guarantee perfect stream, important for A/V sync
             rate = gst.element_factory_make("audiorate")
 
-            # without a buffer here, gstreamer struggles at the start of the
-            # recording and then the A/V sync is bad for the whole video
-            # (possibly a gstreamer/ALSA bug -- even if it gets caught up, it
-            # should be able to resync without problem)
+            # without a buffer here, gstreamer struggles at the start
+            # of the recording and then the A/V sync is bad for the
+            # whole video (possibly a gstreamer/ALSA bug -- even if it
+            # gets caught up, it should be able to resync without
+            # problem)
             queue = gst.element_factory_make("queue", "audioqueue")
-            queue.set_property("leaky", True) # prefer fresh data
-            queue.set_property("max-size-time", 5000000000) # 5 seconds
+            queue.set_property("leaky", True)  # prefer fresh data
+            queue.set_property("max-size-time", 5000000000)  # 5 seconds
             queue.set_property("max-size-buffers", 500)
             queue.connect("overrun", self._log_queue_overrun)
 
@@ -97,7 +95,7 @@ def myblock(tw, arg):
             cbuffers = queue.get_property("current-level-buffers")
             cbytes = queue.get_property("current-level-bytes")
             ctime = queue.get_property("current-level-time")
- 
+
         def is_recording(self):
             ''' Are we recording? '''
             return self._recording
@@ -120,17 +118,20 @@ def myblock(tw, arg):
             self._recording = False
 
             if not os.path.exists(self.capture_file) or \
-                   os.path.getsize(self.capture_file) <= 0:
+                    os.path.getsize(self.capture_file) <= 0:
                 return
 
             # Remove previous transcoding results.
             if os.path.exists(self.save_file):
                 os.remove(self.save_file)
 
-            line = 'filesrc location=' + self.capture_file + ' name=audioFilesrc ! wavparse name=audioWavparse ! audioconvert name=audioAudioconvert ! vorbisenc name=audioVorbisenc ! oggmux name=audioOggmux ! filesink name=audioFilesink'
+            line = 'filesrc location=' + self.capture_file + \
+                ' name=audioFilesrc ! wavparse name=audioWavparse \
+! audioconvert name=audioAudioconvert ! vorbisenc name=audioVorbisenc \
+! oggmux name=audioOggmux ! filesink name=audioFilesink'
             audioline = gst.parse_launch(line)
 
-            vorbis_enc = audioline.get_by_name('audioVorbisenc')
+            # vorbis_enc = audioline.get_by_name('audioVorbisenc')
 
             audioFilesink = audioline.get_by_name('audioFilesink')
             audioFilesink.set_property("location", self.save_file)
@@ -203,7 +204,7 @@ def myblock(tw, arg):
 
     # Sometime we need to parse multiple arguments, e.g., save, savename
     save_name = '%s_%s' % (tw.activity.name, _('sound'))
-    if type(arg) == type([]):
+    if isinstance(arg) == list:
         cmd = arg[0].lower()
         if len(arg) > 1:
             save_name = str(arg[1])

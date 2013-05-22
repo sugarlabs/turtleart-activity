@@ -17,6 +17,5 @@
 
 def myblock(tw, x):
     ''' Add end group to SVG output '''
-    
-    tw.svg_string += '</g>'
 
+    tw.svg_string += '</g>'

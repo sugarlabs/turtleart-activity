@@ -16,12 +16,12 @@ def myblock(tw, sound):
     from TurtleArt.tautils import get_path
     import os
 
-    dirs = [os.path.join(os.environ['HOME'],
-                'Activities/TamTamMini.activity/common/Resources/Sounds/')]
+    dirs = [os.path.join(
+            os.environ['HOME'],
+            'Activities/TamTamMini.activity/common/Resources/Sounds/')]
     orchlines = []
     scorelines = []
     instrlist = []
-    fnum = [100]
 
     def finddir():
         for d in dirs:
@@ -55,9 +55,10 @@ def myblock(tw, sound):
             orchlines.append("endin\n\n")
             instrlist.append(1)
 
-        scorelines.append("i1 %s %s %s %s %s %s %s\n" % (
-                str(starttime), str(duration), str(pitch), str(amplitude),
-                str(pitenv), str(ampenv), str(instrument)))
+        scorelines.append("i1 %s %s %s %s %s %s %s\n" %
+                          (str(starttime), str(duration), str(pitch),
+                           str(amplitude), str(pitenv), str(ampenv),
+                           str(instrument)))
 
     def playWave(sound='horse', pitch=1, amplitude=1, loop=False, duration=1,
                  starttime=0, pitch_envelope='default',
@@ -69,28 +70,35 @@ def myblock(tw, sound):
         else:
             fullname = finddir() + str(sound)
 
-        if loop == False: lp = 0
-        else: lp = 1
+        if loop:
+            lp = 1
+        else:
+            lp = 0
 
-        if pitch_envelope == 'default': pitenv = 99
-        else: pitenv = pitch_envelope
+        if pitch_envelope == 'default':
+            pitenv = 99
+        else:
+            pitenv = pitch_envelope
 
-        if amplitude_envelope == 'default': ampenv = 100
-        else: ampenv = amplitude_envelope
+        if amplitude_envelope == 'default':
+            ampenv = 100
+        else:
+            ampenv = amplitude_envelope
 
         if not 9 in instrlist:
-            orchlines.append("instr 9\n") 
+            orchlines.append("instr 9\n")
             orchlines.append("kpitenv oscil 1, 1/p3, p8\n")
             orchlines.append("aenv oscil 1, 1/p3, p9\n")
-            orchlines.append("asig diskin p4, p5*kpitenv, 0, p7\n") 
+            orchlines.append("asig diskin p4, p5*kpitenv, 0, p7\n")
             orchlines.append("out asig*p6*aenv\n")
             orchlines.append("endin\n\n")
             instrlist.append(9)
 
-        scorelines.append('i9 %f %f "%s" %s %s %s %s %s\n' % (
-                float(starttime), float(duration), fullname, str(pitch),
-                str(amplitude), str(lp), str(pitenv), str(ampenv)))
-    
+        scorelines.append('i9 %f %f "%s" %s %s %s %s %s\n' %
+                          (float(starttime), float(duration), fullname,
+                           str(pitch), str(amplitude), str(lp), str(pitenv),
+                           str(ampenv)))
+
     def audioWrite(file):
         """ Compile a .csd file. """
 

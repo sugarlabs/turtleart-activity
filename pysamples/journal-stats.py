@@ -14,14 +14,16 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
+
 def myblock(tw, x):  # ignore second argument
     ''' Load journal stats to heap (Sugar only) '''
 
     import os
     import glob
+    from gettext import gettext as _
+
     MAX = 19
     DIROFINTEREST = 'datastore'
-
 
     class ParseJournal():
         ''' Simple parser of datastore '''
@@ -78,7 +80,6 @@ def myblock(tw, x):  # ignore second argument
                 activity_list.append([_('other'), count])
             return activity_list
 
-
     def hascomponent(path, component):
         ''' Return metadata attribute, if any '''
         if not os.path.exists(os.path.join(path, 'metadata')):
@@ -92,7 +93,6 @@ def myblock(tw, x):  # ignore second argument
             return False
         return data
 
-
     def isactivity(path):
         ''' Return activity name '''
         activity = hascomponent(path, 'activity')
@@ -100,7 +100,6 @@ def myblock(tw, x):  # ignore second argument
             return False
         else:
             return activity.split('.')[-1]
-
 
     def isdsdir(path):
         ''' Only interested if it is a datastore directory '''
@@ -110,12 +109,11 @@ def myblock(tw, x):  # ignore second argument
             return False
         return True
 
-
     data = ParseJournal()
     activity_list = data.get_sorted()
     for a in activity_list:
         tw.lc.heap.append(a[0])
         tw.lc.heap.append(a[1])
-    
+
     tw.lc.heap.append(activity_list[0][1])
     return
