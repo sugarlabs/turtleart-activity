@@ -92,11 +92,6 @@ COLORDICT = {'_black': [None, 0, 0], '_white': [None, 100, 0],
              '_cyan': [50, 50, 100], '_blue': [70, 50, 100],
              '_purple': [90, 50, 100]}
 
-LOGOCOLORDICT = {'_black': 0, '_white': 1, '_red': 2, '_orange': 3,
-                 '_yellow': 3, '_green': 4, '_cyan': 5, '_blue': 6,
-                 '_purple': 7}
-
-
 # Blocks that are expandable
 EXPANDABLE_STYLE = ['boolean-style', 'compare-porch-style', 'compare-style',
                     'number-style-porch', 'number-style', 'basic-style-2arg',

@@ -67,7 +67,7 @@ from gettext import gettext as _
 from tapalette import (make_palette, define_logo_function)
 from talogo import (primitive_dictionary, logoerror)
 from tautils import (convert, chr_to_ord, round_int, strtype)
-from taconstants import (LOGOCOLORDICT, COLORDICT, CONSTANTS)
+from taconstants import (COLORDICT, CONSTANTS)
 
 
 def _color_to_num(c):
@@ -1382,8 +1382,12 @@ variable'))
 
     def _make_constant(self, palette, block_name, label, constant):
         """ Factory for constant blocks """
-        if constant in LOGOCOLORDICT:
-            value = str(LOGOCOLORDICT[constant])
+        if constant in COLORDICT:
+            if COLORDICT[constant][0] is not None:
+                value = str(COLORDICT[constant][0])
+            else:
+                # Black or White
+                value = '0 tasetshade %d' % (COLORDICT[constant][1])
         else:
             value = constant
         palette.add_block(block_name,
