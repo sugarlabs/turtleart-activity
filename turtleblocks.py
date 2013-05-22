@@ -50,7 +50,7 @@ sys.argv[1:] = []  # Execution of import gst cannot see '--help' or '-h'
 import gettext
 
 from TurtleArt.taconstants import (OVERLAY_LAYER, DEFAULT_TURTLE_COLORS,
-                                  TAB_LAYER, SUFFIX)
+                                   TAB_LAYER, SUFFIX)
 from TurtleArt.tautils import (data_from_string, get_save_name)
 from TurtleArt.tawindow import TurtleArtWindow
 from TurtleArt.taexportlogo import save_logo
@@ -140,8 +140,8 @@ class TurtleMain():
         ''' Try launching any plugins we may have found. '''
         for p in self._get_plugin_candidates(self._get_gnome_plugin_home()):
             P = p.capitalize()
-            f = \
-    "def f(self): from gnome_plugins.%s import %s; return %s(self)" % (p, P, P)
+            f = "def f(self): from gnome_plugins.%s import %s; \
+return %s(self)" % (p, P, P)
             plugin = {}
             try:
                 exec f in globals(), plugin
@@ -261,15 +261,15 @@ class TurtleMain():
             if not os.path.exists(self._ta_file):
                 self._ta_file = os.path.join(self._abspath, self._ta_file)
                 if not os.path.exists(self._ta_file):
-                    assert False, ('%s: %s' % (self._ta_file,
-                                               _('File not found')))
+                    assert False, ('%s: %s' %
+                                   (self._ta_file, _('File not found')))
 
     def _ensure_sugar_paths(self):
         ''' Make sure Sugar paths are present. '''
         tapath = os.path.join(os.environ['HOME'], '.sugar', 'default',
                               'org.laptop.TurtleArtActivity')
         map(self._makepath, (os.path.join(tapath, 'data/'),
-                       os.path.join(tapath, 'instance/')))
+                             os.path.join(tapath, 'instance/')))
 
     def _read_initial_pos(self):
         ''' Read saved configuration. '''
@@ -375,17 +375,17 @@ class TurtleMain():
 
         menu = gtk.Menu()
         MenuBuilder.make_menu_item(menu, _('Cartesian coordinates'),
-                        self._do_cartesian_cb)
+                                   self._do_cartesian_cb)
         MenuBuilder.make_menu_item(menu, _('Polar coordinates'),
                                    self._do_polar_cb)
         MenuBuilder.make_menu_item(menu, _('Rescale coordinates'),
-                        self._do_rescale_cb)
+                                   self._do_rescale_cb)
         MenuBuilder.make_menu_item(menu, _('Grow blocks'),
                                    self._do_resize_cb, 1.5)
         MenuBuilder.make_menu_item(menu, _('Shrink blocks'),
-                        self._do_resize_cb, 0.667)
+                                   self._do_resize_cb, 0.667)
         MenuBuilder.make_menu_item(menu, _('Reset block size'),
-                        self._do_resize_cb, -1)
+                                   self._do_resize_cb, -1)
         self.hover = MenuBuilder.make_checkmenu_item(
             menu, _('Turn on hover help'),
             self._do_toggle_hover_help_cb, status=True)
@@ -457,8 +457,8 @@ class TurtleMain():
         ''' Dialog for save project '''
         dlg = gtk.MessageDialog(parent=None, type=gtk.MESSAGE_INFO,
                                 buttons=gtk.BUTTONS_YES_NO,
-                                message_format=_(
-             'You have unsaved work. Would you like to save before quitting?'))
+                                message_format=_('You have unsaved work. \
+Would you like to save before quitting?'))
         dlg.set_title(_('Save project?'))
         dlg.set_property('skip-taskbar-hint', False)
 
@@ -507,8 +507,8 @@ class TurtleMain():
         if len(logocode) == 0:
             return
         save_type = '.lg'
-        filename, self.tw.load_save_folder = get_save_name(save_type,
-                      self.tw.load_save_folder, 'logosession')
+        filename, self.tw.load_save_folder = get_save_name(
+            save_type, self.tw.load_save_folder, 'logosession')
         if isinstance(filename, unicode):
             filename = filename.encode('ascii', 'replace')
         if filename is not None:
@@ -546,7 +546,7 @@ class TurtleMain():
             if self.tw.cartesian is True:
                 self.tw.overlay_shapes['Cartesian'].hide()
                 self.tw.overlay_shapes['Cartesian_labeled'].set_layer(
-                                                              OVERLAY_LAYER)
+                    OVERLAY_LAYER)
 
     def _do_toggle_hover_help_cb(self, button):
         ''' Toggle hover help on/off '''
@@ -679,7 +679,8 @@ class TurtleMain():
         about.set_version(self.version)
         about.set_comments(_(self.summary))
         about.set_website(self.website)
-        about.set_logo(gtk.gdk.pixbuf_new_from_file(
+        about.set_logo(
+            gtk.gdk.pixbuf_new_from_file(
                 'activity/' + self.icon_name + '.svg'))
         about.run()
         about.destroy()
