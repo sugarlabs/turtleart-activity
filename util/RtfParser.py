@@ -12,9 +12,6 @@
 # Boston, MA 02111-1307, USA.
 
 
-import sys
-
-
 class RtfException(Exception):
     pass
 

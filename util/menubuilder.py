@@ -19,6 +19,7 @@ import gtk
 
 MENUBAR = {}
 
+
 class MenuBuilder():
     @classmethod
     def get_sub_menu_by_name(cls, name):

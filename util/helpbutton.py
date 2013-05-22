@@ -25,9 +25,8 @@ import gtk
 
 from sugar.graphics.toolbutton import ToolButton
 from sugar.graphics.icon import Icon
-from sugar.graphics import style
 
-from TurtleArt.tapalette import palette_names, help_windows
+from TurtleArt.tapalette import help_windows
 
 import logging
 _logger = logging.getLogger('turtleart-activity')

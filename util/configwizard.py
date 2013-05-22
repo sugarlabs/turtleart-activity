@@ -169,8 +169,7 @@ def test_wizard_from_config_file_obj(test_config_file):
         {"item_label": "Password", "item_type": "text",
          "item_name": "password"},
         {"item_label": "Register", "item_type": "text",
-         "item_name": "register"}
-        ]
+         "item_name": "register"}]
     config_w.set_config_items(config_items)
     config_w.set_config_file_obj(c)
     config_w.show()
@@ -206,8 +205,7 @@ def test_wizard_from_config_file_path(test_config_file):
         {"item_label": "Password", "item_type": "text",
          "item_name": "password"},
         {"item_label": "Register", "item_type": "text",
-         "item_name": "register"}
-        ]
+         "item_name": "register"}]
     config_w.set_config_items(config_items)
     config_w.show(True)
 

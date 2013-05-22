@@ -26,8 +26,8 @@ class ConfigFile(gobject.GObject):
         'configuration-loaded': (gobject.SIGNAL_RUN_FIRST, gobject.TYPE_NONE,
                                  ()),
         'configuration-saved': (gobject.SIGNAL_RUN_FIRST, gobject.TYPE_NONE,
-                                 ()),
-        }
+                                ()),
+    }
 
     def __init__(self, config_file_path, valid_keys={}):
         gobject.GObject.__init__(self)
