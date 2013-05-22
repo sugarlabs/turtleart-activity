@@ -474,8 +474,8 @@ program started'))
 last-out heap)'))
         self.tw.lc.def_prim('push', 1,
                             lambda self, x: primitive_dictionary['push'](x))
-        define_logo_function('tapush', 'to tapush :foo\rmake "taheap fput \
-:foo :taheap\rend\rmake "taheap []\r')
+        define_logo_function('tapush', 'to tapush :foo\nmake "taheap fput \
+:foo :taheap\nend\nmake "taheap []\n')
 
         primitive_dictionary['printheap'] = self._prim_printheap
         palette.add_block('printheap',
@@ -487,8 +487,8 @@ last-out heap)'))
 last-out heap)'))
         self.tw.lc.def_prim('printheap', 0,
                             lambda self: primitive_dictionary['printheap']())
-        define_logo_function('taprintheap', 'to taprintheap \rprint :taheap\r\
-end\r')
+        define_logo_function('taprintheap', 'to taprintheap \nprint :taheap\n\
+end\n')
 
         primitive_dictionary['clearheap'] = self._prim_emptyheap
         palette.add_block('clearheap',
@@ -500,8 +500,8 @@ end\r')
 heap)'))
         self.tw.lc.def_prim('clearheap', 0,
                             lambda self: primitive_dictionary['clearheap']())
-        define_logo_function('taclearheap', 'to taclearheap\rmake "taheap []\r\
-end\r')
+        define_logo_function('taclearheap', 'to taclearheap\nmake "taheap []\n\
+end\n')
 
         primitive_dictionary['pop'] = self._prim_pop
         palette.add_block('pop',
@@ -515,8 +515,8 @@ end\r')
 last-out heap)'))
         self.tw.lc.def_prim('pop', 0,
                             lambda self: primitive_dictionary['pop']())
-        define_logo_function('tapop', 'to tapop\rif emptyp :taheap [stop]\r\
-make "tmp first :taheap\rmake "taheap butfirst :taheap\routput :tmp\rend\r')
+        define_logo_function('tapop', 'to tapop\nif emptyp :taheap [stop]\n\
+make "tmp first :taheap\nmake "taheap butfirst :taheap\noutput :tmp\nend\n')
 
         primitive_dictionary['isheapempty'] = self._prim_is_heap_empty
         palette.add_block('isheapempty',
