@@ -36,7 +36,8 @@ class Plugin(gobject.GObject):
         pass
 
     def clear(self):
-        """ clear is called when erase button is pressed and from the clean block. """
+        """ clear is called when erase button is pressed and from the
+        clean block. """
         pass
 
     def goto_background(self):
