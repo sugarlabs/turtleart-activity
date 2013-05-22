@@ -48,14 +48,11 @@ class TelepathyClient(dbus.service.Object, DBusProperties):
         DBusProperties.__init__(self)
 
         self._implement_property_get(CLIENT, {
-            'Interfaces': lambda: list(self._interfaces),
-          })
+            'Interfaces': lambda: list(self._interfaces), })
         self._implement_property_get(CLIENT_HANDLER, {
-            'HandlerChannelFilter': self.__get_filters_cb,
-          })
+            'HandlerChannelFilter': self.__get_filters_cb, })
         self._implement_property_get(CLIENT_APPROVER, {
-            'ApproverChannelFilter': self.__get_filters_cb,
-          })
+            'ApproverChannelFilter': self.__get_filters_cb, })
 
         self.got_channel = dispatch.Signal()
         self.got_dispatch_operation = dispatch.Signal()
@@ -68,7 +65,7 @@ class TelepathyClient(dbus.service.Object, DBusProperties):
     @dbus.service.method(dbus_interface=CLIENT_HANDLER,
                          in_signature='ooa(oa{sv})aota{sv}', out_signature='')
     def HandleChannels(self, account, connection, channels, requests_satisfied,
-                        user_action_time, handler_info):
+                       user_action_time, handler_info):
         logging.debug('HandleChannels\n%r\n%r\n%r\n%r\n%r\n%r\n', account,
                       connection, channels, requests_satisfied,
                       user_action_time, handler_info)
@@ -91,9 +88,11 @@ class TelepathyClient(dbus.service.Object, DBusProperties):
             logging.debug('AddDispatchOperation\n%r\n%r\n%r', channels,
                           dispatch_operation_path, properties)
 
-            self.got_dispatch_operation.send(self, channels=channels,
-                    dispatch_operation_path=dispatch_operation_path,
-                    properties=properties)
+            self.got_dispatch_operation.send(
+                self,
+                channels=channels,
+                dispatch_operation_path=dispatch_operation_path,
+                properties=properties)
         except Exception, e:
             logging.exception(e)
 

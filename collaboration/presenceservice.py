@@ -30,15 +30,15 @@ from dbus import PROPERTIES_IFACE
 
 """ FIXME ... """
 try:
-    from sugar.presence.buddy import Buddy, Owner
+    from sugar.presence.buddy import Buddy
     from sugar.presence.activity import Activity
     from sugar.presence.connectionmanager import get_connection_manager
-except:
+except ImportError:
     pass
 
-from telepathy.interfaces import ACCOUNT, \
-                                 ACCOUNT_MANAGER, \
-                                 CONNECTION
+from telepathy.interfaces import (ACCOUNT,
+                                  ACCOUNT_MANAGER,
+                                  CONNECTION)
 from telepathy.constants import HANDLE_TYPE_CONTACT
 
 
@@ -54,9 +54,8 @@ class PresenceService(gobject.GObject):
     """Provides simplified access to the Telepathy framework to activities"""
     __gsignals__ = {
         'activity-shared': (gobject.SIGNAL_RUN_FIRST, gobject.TYPE_NONE,
-                        ([gobject.TYPE_PYOBJECT, gobject.TYPE_PYOBJECT,
-                          gobject.TYPE_PYOBJECT])),
-    }
+                            ([gobject.TYPE_PYOBJECT, gobject.TYPE_PYOBJECT,
+                              gobject.TYPE_PYOBJECT])), }
 
     def __init__(self):
         """Initialise the service and attempt to connect to events
@@ -82,15 +81,15 @@ class PresenceService(gobject.GObject):
         else:
             connection_manager = get_connection_manager()
             connections_per_account = \
-                    connection_manager.get_connections_per_account()
+                connection_manager.get_connections_per_account()
             for account_path, connection in connections_per_account.items():
                 if not connection.connected:
                     continue
                 logging.debug('Calling GetActivity on %s', account_path)
                 try:
                     room_handle = connection.connection.GetActivity(
-                            activity_id,
-                            dbus_interface=CONN_INTERFACE_ACTIVITY_PROPERTIES)
+                        activity_id,
+                        dbus_interface=CONN_INTERFACE_ACTIVITY_PROPERTIES)
                 except dbus.exceptions.DBusException, e:
                     name = 'org.freedesktop.Telepathy.Error.NotAvailable'
                     if e.get_dbus_name() == name:
@@ -161,12 +160,13 @@ class PresenceService(gobject.GObject):
             if connection_path == tp_conn_path:
                 connection_name = connection_path.replace('/', '.')[1:]
                 connection = bus.get_object(connection_name, connection_path)
-                contact_ids = connection.InspectHandles(HANDLE_TYPE_CONTACT,
-                        [handle],
-                        dbus_interface=CONNECTION)
+                contact_ids = connection.InspectHandles(
+                    HANDLE_TYPE_CONTACT,
+                    [handle],
+                    dbus_interface=CONNECTION)
                 return self.get_buddy(account_path, contact_ids[0])
 
-        raise ValueError('Unknown buddy in connection %s with handle %d' % \
+        raise ValueError('Unknown buddy in connection %s with handle %d' %
                          (tp_conn_path, handle))
 
     def get_owner(self):
@@ -203,12 +203,12 @@ class PresenceService(gobject.GObject):
         properties['private'] = private
 
         if self._activity_cache is not None:
-            raise ValueError('Activity %s is already tracked' % \
+            raise ValueError('Activity %s is already tracked' %
                              (activity.get_id()))
 
         connection_manager = get_connection_manager()
         account_path, connection = \
-                connection_manager.get_preferred_connection()
+            connection_manager.get_preferred_connection()
 
         if connection is None:
             self.emit('activity-shared', False, None,
@@ -220,7 +220,7 @@ class PresenceService(gobject.GObject):
         self._activity_cache = shared_activity
 
         if shared_activity.props.joined:
-            raise RuntimeError('Activity %s is already shared.' % \
+            raise RuntimeError('Activity %s is already shared.' %
                                (activity.props.id))
 
         shared_activity.share(self.__share_activity_cb,
