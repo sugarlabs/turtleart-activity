@@ -372,7 +372,7 @@ class Audio_sensors(Plugin):
     def prim_resistance(self, channel):
         if not self.hw in [XO1, XO15, XO175, XO30, XO4] or not self._status:
             return 0
-        if self.hw == XO1:
+        if self.hw in [XO1, XO4]:
             resistance = self._prim_resistance(0)
             if self._parent.lc.update_values:
                 self._update_resistance_labels(0, resistance)
@@ -382,12 +382,12 @@ class Audio_sensors(Plugin):
             if self._parent.lc.update_values:
                 self._update_resistance_labels(channel, resistance)
             return resistance
-        # FIXME: For ARM (XO175, XO4) channel assignment is seemingly
-        # random (#3675), so sum both channels
+        # FIXME: For XO175: channel assignment is seemingly random
+        # (#3675), so sum both channels (one of them will be 0)
         else:
             chan0 = self._prim_resistance(0)
             chan1 = self._prim_resistance(1)
-            resistance = (chan0 + chan1) / 2.
+            resistance = chan0 + chan1
             if self._parent.lc.update_values:
                 self._update_resistance_labels(0, resistance)
             return resistance
@@ -431,7 +431,7 @@ class Audio_sensors(Plugin):
     def prim_voltage(self, channel):
         if not self.hw in [XO1, XO15, XO175, XO30, XO4] or not self._status:
             return 0
-        if self.hw == XO1:
+        if self.hw in [XO1, XO4]:
             voltage = self._prim_voltage(0)
             if self._parent.lc.update_values:
                 self._update_voltage_labels(0, voltage)
@@ -441,12 +441,12 @@ class Audio_sensors(Plugin):
             if self._parent.lc.update_values:
                 self._update_voltage_labels(channel, voltage)
             return voltage
-        # FIXME: For ARM (XO175, XO4) channel assignment is seemingly
-        # random (#3675), so sum both channels
+        # FIXME: For XO175: channel assignment is seemingly random
+        # (#3675), so sum both channels (one of them will be 0)
         else:
             chan0 = self._prim_voltage(0)
             chan1 = self._prim_voltage(1)
-            voltage = (chan0 + chan1) / 2.
+            voltage = chan0 + chan1
             if self._parent.lc.update_values:
                 self._update_voltage_labels(0, voltage)
             return voltage
