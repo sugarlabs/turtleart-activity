@@ -200,7 +200,7 @@ class TurtleArtActivity(activity.Activity):
         ''' Load a TA project from the datastore. '''
         try:
             _logger.debug('Opening %s ' % (dsobject.file_path))
-            self.read_file(dsobject.file_path, run_it=False, plugin=False)
+            self.read_file(dsobject.file_path, plugin=False)
         except:
             _logger.debug("Couldn't open %s" % (dsobject.file_path))
 
@@ -217,7 +217,7 @@ class TurtleArtActivity(activity.Activity):
     def _load_ta_plugin(self, dsobject):
         ''' Load a TA plugin from the datastore. '''
         _logger.debug('Opening %s ' % (dsobject.file_path))
-        self.read_file(dsobject.file_path, run_it=False, plugin=True)
+        self.read_file(dsobject.file_path, plugin=True)
 
     def do_load_python_cb(self, button):
         ''' Load Python code from the Journal. '''
@@ -1096,17 +1096,23 @@ class TurtleArtActivity(activity.Activity):
         self.tw.save_folder = os.path.join(
             os.environ['SUGAR_ACTIVITY_ROOT'], 'data')
 
-        # Try restoring an existing project...
-        if self._jobject and self._jobject.file_path:
-            self.read_file(self._jobject.file_path)
-        else:  # ...or else, load a Start Block onto the canvas.
-            self.tw.load_start()
-
         if hasattr(self, 'get_window') and \
            hasattr(self.get_window(), 'get_cursor'):
             self._old_cursor = self.get_window().get_cursor()
         else:
-            self._old_cursor = None
+            self._old_cursor = gtk.gdk.Cursor(gtk.gdk.LEFT_PTR)
+
+        # Try restoring an existing project...
+        if self._jobject and self._jobject.file_path:
+            if hasattr(self, 'get_window'):
+                _logger.debug('setting watch cursor')
+                if hasattr(self.get_window(), 'get_cursor'):
+                    self._old_cursor = self.get_window().get_cursor()
+                    self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.WATCH))
+            self.read_file(self._jobject.file_path)
+        else:  # ...or else, load a Start Block onto the canvas.
+            self.tw.load_start()
+
         self.tw.copying_blocks = False
         self.tw.sharing_blocks = False
         self.tw.saving_blocks = False
@@ -1275,7 +1281,7 @@ in order to use the plugin.'))
         self.add_alert(alert)
         alert.show()
 
-    def read_file(self, file_path, run_it=False, plugin=False):
+    def read_file(self, file_path, plugin=False):
         ''' Open a project or plugin and then run it. '''
         if hasattr(self, 'tw') and self.tw is not None:
             if not hasattr(self, '_old_cursor'):
@@ -1306,18 +1312,17 @@ in order to use the plugin.'))
                 try:
                     tar_fd.extractall(tmp_dir)
                     if not plugin:
-                        # Looking for a .ta file
-                        self.tw.load_files(os.path.join(tmp_dir, 'ta_code.ta'),
-                                           run_it)
                         turtle_code = os.path.join(tmp_dir, 'ta_code.ta')
                         if os.path.exists(turtle_code):
-                            self.tw.load_files(turtle_code, run_it)
+                            gobject.idle_add(self._project_loader, turtle_code)
                     else:
                         _logger.debug('load a plugin from %s' % (tmp_dir))
                         self._load_a_plugin(tmp_dir)
+                        self.restore_cursor()
                 except:
                     _logger.debug('Could not extract files from %s.' %
                                   (file_path))
+                    self.restore_cursor()
                 finally:
                     if not plugin:
                         shutil.rmtree(tmp_dir)
@@ -1328,18 +1333,16 @@ in order to use the plugin.'))
 
             # ...otherwise, assume it is a .ta file.
             else:
-                _logger.debug('Trying to open a .ta file:' + file_path)
-                self.tw.load_files(file_path, run_it)
+                gobject.idle_add(self._project_loader, file_path)
 
-            # Now that the file is loaded, restore the cursor
-            _logger.debug('restoring cursor')
-            self.restore_cursor()
-
-            # Finally, run the project.
-            if run_it:
-                self.tw.run_button(0)
         else:
             _logger.debug('Deferring reading file %s' % (file_path))
+
+    def _project_loader(self, file_path):
+        ''' Load the turtle file and then restore cursor '''
+        _logger.debug('Opening:' + file_path)
+        self.tw.load_files(file_path, False)
+        self.restore_cursor()
 
     def jobject_new_patch(self):
         ''' Save instance to Journal. '''

@@ -24,6 +24,7 @@
 import pygtk
 pygtk.require('2.0')
 import gtk
+import gobject
 import cairo
 
 import getopt
@@ -181,11 +182,16 @@ return %s(self)" % (p, P, P)
         if self._ta_file is None:
             self.tw.load_start()
         else:
-            self.tw.load_start(self._ta_file)
-            self.tw.lc.trace = 0
-            if self._run_on_launch:
-                self._do_run_cb()
+            self.win.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.WATCH))
+            gobject.idle_add(self._project_loader, self._ta_file)
         gtk.main()
+
+    def _project_loader(self, file_name):
+        self.tw.load_start(self._ta_file)
+        self.tw.lc.trace = 0
+        if self._run_on_launch:
+            self._do_run_cb()
+        self.win.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.LEFT_PTR))
 
     def _draw_and_quit(self):
         ''' Non-interactive mode: run the project, save it to a file
