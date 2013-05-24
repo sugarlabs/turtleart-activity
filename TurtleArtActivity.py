@@ -62,7 +62,7 @@ from TurtleArt.taconstants import (BLOCK_SCALE, XO1, XO15, XO175, XO4,
                                    MIMETYPE)
 from TurtleArt.taexportlogo import save_logo
 from TurtleArt.tautils import (data_to_file, data_to_string, data_from_string,
-                               get_path, chooser, get_hardware)
+                               get_path, chooser_dialog, get_hardware)
 from TurtleArt.tawindow import TurtleArtWindow
 from TurtleArt.tacollaboration import Collaboration
 
@@ -194,7 +194,8 @@ class TurtleArtActivity(activity.Activity):
             if hasattr(self.get_window(), 'get_cursor'):
                 self._old_cursor = self.get_window().get_cursor()
                 self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.WATCH))
-        chooser(self, 'org.laptop.TurtleArtActivity', self._load_ta_project)
+        chooser_dialog(self, 'org.laptop.TurtleArtActivity',
+                       self._load_ta_project)
 
     def _load_ta_project(self, dsobject):
         ''' Load a TA project from the datastore. '''
@@ -212,7 +213,7 @@ class TurtleArtActivity(activity.Activity):
                 self._old_cursor = self.get_window().get_cursor()
                 self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.WATCH))
         # FIXME: we are looking for tar files
-        gobject.idle_add(chooser, self, '', self._load_ta_plugin)
+        chooser_dialog(self, '', self._load_ta_plugin)
 
     def _load_ta_plugin(self, dsobject):
         ''' Load a TA plugin from the datastore. '''

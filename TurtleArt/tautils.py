@@ -317,31 +317,36 @@ def get_save_name(filefilter, load_save_folder, save_file_name):
     return do_dialog(dialog, filefilter, load_save_folder)
 
 
-def chooser(parent_window, filter, action):
+def chooser_dialog(parent_window, filter, action):
     ''' Choose an object from the datastore and take some action '''
     from sugar.graphics.objectchooser import ObjectChooser
 
     chooser = None
+    dsobject = None
+    cleanup_needed = False
     try:
         chooser = ObjectChooser(parent=parent_window, what_filter=filter)
-    except TypeError:
+    except TypeError:  # Old-syle Sugar chooser
         chooser = ObjectChooser(
             None,
             parent_window,
             gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT)
+        cleanup_needed = True
+
     if chooser is not None:
-        dsobject = None
-        try:
-            result = chooser.run()
-            if result == gtk.RESPONSE_ACCEPT:
-                dsobject = chooser.get_selected_object()
-        finally:
+        result = chooser.run()
+        if result == gtk.RESPONSE_ACCEPT:
+            dsobject = chooser.get_selected_object()
+        if cleanup_needed:
             chooser.destroy()
             del chooser
-        if dsobject is not None:
-            action(dsobject)
-            dsobject.destroy()
 
+    if dsobject is not None:
+        gobject.idle_add(self._take_action, action, dsobject)
+
+def _take_action(self, action, dsobject):
+    action(dsobject)
+    dsobject.destroy()
 
 def data_from_file(ta_file):
     ''' Open the .ta file, ignoring any .png file that might be present. '''

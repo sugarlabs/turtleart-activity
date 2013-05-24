@@ -73,7 +73,7 @@ from tautils import (magnitude, get_load_name, get_save_name, data_from_file,
                      data_to_file, round_int, get_id, get_pixbuf_from_journal,
                      movie_media_type, audio_media_type, image_media_type,
                      save_picture, calc_image_size, get_path, hide_button_hit,
-                     show_button_hit, chooser, arithmetic_check, xy,
+                     show_button_hit, chooser_dialog, arithmetic_check, xy,
                      find_block_to_run, find_top_block, journal_check,
                      find_group, find_blk_below, data_to_string,
                      find_start_stack, get_hardware, debug_output,
@@ -3348,7 +3348,7 @@ before making changes to your Turtle Blocks program'))
         ''' Import a file from the Sugar Journal '''
         # TODO: check blk name to set filter
         if self.running_sugar:
-            chooser(self.parent, '', self._update_media_blk)
+            chooser_dialog(self.parent, '', self._update_media_blk)
         else:
             fname, self.load_save_folder = get_load_name('.*',
                                                          self.load_save_folder)
@@ -3719,8 +3719,8 @@ before making changes to your Turtle Blocks program'))
     def _import_py(self):
         ''' Import Python code into a block '''
         if self.running_sugar:
-            chooser(self.parent, 'org.laptop.Pippy',
-                    self.load_python_code_from_journal)
+            chooser_dialog(self.parent, 'org.laptop.Pippy',
+                           self.load_python_code_from_journal)
         else:
             self.load_python_code_from_file(fname=None, add_new_block=False)
 
