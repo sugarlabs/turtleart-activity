@@ -2,6 +2,7 @@
 
 ENHANCEMENT:
 * New translations
+* Faster startup time
 
 BUG FIXES:
 * Fixed Logo export (#4502)
