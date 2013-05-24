@@ -21,6 +21,7 @@
 #THE SOFTWARE.
 
 import gtk
+import gobject
 import gconf
 import dbus
 import cairo
@@ -342,9 +343,9 @@ def chooser_dialog(parent_window, filter, action):
             del chooser
 
     if dsobject is not None:
-        gobject.idle_add(self._take_action, action, dsobject)
+        gobject.idle_add(_take_action, action, dsobject)
 
-def _take_action(self, action, dsobject):
+def _take_action(action, dsobject):
     action(dsobject)
     dsobject.destroy()
 
