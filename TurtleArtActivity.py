@@ -348,6 +348,7 @@ class TurtleArtActivity(activity.Activity):
         self.eraser_button.set_icon('eraseroff')
         self.recenter()
         self.tw.eraser_button()
+        self.restore_challenge()
         gobject.timeout_add(250, self.eraser_button.set_icon, 'eraseron')
 
     def restore_challenge(self):
