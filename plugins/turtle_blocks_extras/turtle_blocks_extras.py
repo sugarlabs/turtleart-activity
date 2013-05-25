@@ -92,6 +92,7 @@ class Turtle_blocks_extras(Plugin):
 
         # internally expanded macro
         palette.add_block('while',
+                          hidden=True,
                           style='clamp-style-boolean',
                           label=_('while'),
                           prim_name='while',
@@ -102,6 +103,7 @@ boolean operators from Numbers palette'))
 
         # internally expanded macro
         palette.add_block('until',
+                          hidden=True,
                           style='clamp-style-boolean',
                           label=_('until'),
                           prim_name='until',
@@ -112,6 +114,7 @@ boolean operators from Numbers palette'))
 
         primitive_dictionary['clamp'] = self._prim_clamp
         palette.add_block('sandwichclamp',
+                          hidden=True,
                           style='clamp-style-collapsible',
                           label=' ',
                           special_name=_('top'),
@@ -121,12 +124,12 @@ boolean operators from Numbers palette'))
 
     def _media_palette(self):
 
-        palette = make_palette('media',
-                               colors=["#A0FF00", "#80A000"],
-                               help_string=_('Palette of media objects'),
-                               position=7)
+        palette = make_palette('flow',
+                               colors=["#FFC000", "#A08000"],
+                               help_string=_('Palette of flow operators'))
 
         palette.add_block('journal',
+                          hidden=True,
                           style='box-style-media',
                           label=' ',
                           default='None',
@@ -139,6 +142,7 @@ boolean operators from Numbers palette'))
         MEDIA_SHAPES.append('journalon')
 
         palette.add_block('audio',
+                          hidden=True,
                           style='box-style-media',
                           label=' ',
                           special_name=_('audio'),
@@ -151,6 +155,7 @@ boolean operators from Numbers palette'))
         MEDIA_SHAPES.append('audioon')
 
         palette.add_block('video',
+                          hidden=True,
                           style='box-style-media',
                           label=' ',
                           special_name=_('video'),
@@ -163,6 +168,7 @@ boolean operators from Numbers palette'))
         MEDIA_SHAPES.append('videoon')
 
         palette.add_block('description',
+                          hidden=True,
                           style='box-style-media',
                           label=' ',
                           special_name=_('description'),
@@ -175,6 +181,7 @@ boolean operators from Numbers palette'))
         MEDIA_SHAPES.append('descriptionon')
 
         palette.add_block('string',
+                          hidden=True,
                           style='box-style',
                           label=_('text'),
                           default=_('text'),
@@ -183,6 +190,7 @@ boolean operators from Numbers palette'))
 
         primitive_dictionary['show'] = self._prim_show
         palette.add_block('show',
+                          hidden=True,
                           style='basic-style-1arg',
                           label=_('show'),
                           default=_('text'),
@@ -226,6 +234,7 @@ Journal'))
 
         primitive_dictionary['setscale'] = self._prim_setscale
         palette.add_block('setscale',
+                          hidden=True,
                           style='basic-style-1arg',
                           label=_('set scale'),
                           prim_name='setscale',
@@ -238,6 +247,7 @@ Journal'))
 
         primitive_dictionary['savepix'] = self._prim_save_picture
         palette.add_block('savepix',
+                          hidden=True,
                           style='basic-style-1arg',
                           label=_('save picture'),
                           prim_name='savepix',
@@ -249,6 +259,7 @@ Journal'))
 
         primitive_dictionary['savesvg'] = self._prim_save_svg
         palette.add_block('savesvg',
+                          hidden=True,
                           style='basic-style-1arg',
                           label=_('save SVG'),
                           prim_name='savesvg',
@@ -259,6 +270,7 @@ in the Sugar Journal'))
                             lambda self, x: primitive_dictionary['savesvg'](x))
 
         palette.add_block('scale',
+                          hidden=True,
                           style='box-style',
                           label=_('scale'),
                           prim_name='scale',
@@ -268,6 +280,7 @@ in the Sugar Journal'))
         self.tw.lc.def_prim('scale', 0, lambda self: self.tw.lc.scale)
 
         palette.add_block('mediawait',
+                          hidden=True,
                           style='basic-style-extended-vertical',
                           label=_('media wait'),
                           prim_name='mediawait',
@@ -276,6 +289,7 @@ complete'))
         self.tw.lc.def_prim('mediawait', 0, self.tw.lc.media_wait, True)
 
         palette.add_block('mediastop',
+                          hidden=True,
                           style='basic-style-extended-vertical',
                           label=_('media stop'),
                           prim_name='mediastop',
@@ -283,6 +297,7 @@ complete'))
         self.tw.lc.def_prim('mediastop', 0, self.tw.lc.media_stop, True)
 
         palette.add_block('mediapause',
+                          hidden=True,
                           style='basic-style-extended-vertical',
                           label=_('media pause'),
                           prim_name='mediapause',
@@ -290,6 +305,7 @@ complete'))
         self.tw.lc.def_prim('mediapause', 0, self.tw.lc.media_pause, True)
 
         palette.add_block('mediaplay',
+                          hidden=True,
                           style='basic-style-extended-vertical',
                           label=_('media resume'),
                           prim_name='mediaplay',
@@ -298,6 +314,7 @@ complete'))
 
         primitive_dictionary['speak'] = self._prim_speak
         palette.add_block('speak',
+                          hidden=True,
                           style='basic-style-1arg',
                           label=_('speak'),
                           prim_name='speak',
@@ -308,6 +325,7 @@ complete'))
 
         primitive_dictionary['sinewave'] = self._prim_sinewave
         palette.add_block('sinewave',
+                          hidden=True,
                           style='basic-style-3arg',
                           # TRANS: pitch, duration, amplitude
                           label=[_('sinewave') + '\n\n', _('pitch'),
@@ -322,10 +340,9 @@ amplitude, and duration (in seconds)'))
 
     def _sensor_palette(self):
 
-        palette = make_palette('sensor',
-                               colors=["#FF6060", "#A06060"],
-                               help_string=_('Palette of sensor blocks'),
-                               position=6)
+        palette = make_palette('flow',
+                               colors=["#FFC000", "#A08000"],
+                               help_string=_('Palette of flow operators'))
 
         primitive_dictionary['mousebutton'] = self._prim_mouse_button
         palette.add_block('mousebutton',
@@ -341,6 +358,7 @@ pressed'))
 
         primitive_dictionary['mousebutton2'] = self._prim_mouse_button_bool
         palette.add_block('mousebutton2',
+                          hidden=True,
                           style='boolean-block-style',
                           label=_('button down'),
                           prim_name='mousebutton2',
@@ -352,6 +370,7 @@ pressed'))
                             primitive_dictionary['mousebutton2']())
 
         palette.add_block('mousex',
+                          hidden=True,
                           style='box-style',
                           label=_('mouse x'),
                           prim_name='mousex',
@@ -362,6 +381,7 @@ pressed'))
                             self.tw.mouse_x - (self.tw.canvas.width / 2))
 
         palette.add_block('mousey',
+                          hidden=True,
                           style='box-style',
                           label=_('mouse y'),
                           prim_name='mousey',
@@ -373,6 +393,7 @@ pressed'))
 
         primitive_dictionary['kbinput'] = self._prim_kbinput
         palette.add_block('kbinput',
+                          hidden=True,
                           style='basic-style-extended-vertical',
                           label=_('query keyboard'),
                           prim_name='kbinput',
@@ -382,6 +403,7 @@ stored in keyboard block)'))
                             lambda self: primitive_dictionary['kbinput']())
 
         palette.add_block('keyboard',
+                          hidden=True,
                           style='box-style',
                           label=_('keyboard'),
                           prim_name='keyboard',
@@ -418,6 +440,7 @@ block as number'))
 
         primitive_dictionary['readpixel'] = self._prim_readpixel
         palette.add_block('readpixel',
+                          hidden=True,
                           style='basic-style-extended-vertical',
                           label=_('read pixel'),
                           prim_name='readpixel',
@@ -429,6 +452,7 @@ to the stack'))
 
         primitive_dictionary['see'] = self._prim_see
         palette.add_block('see',
+                          hidden=True,
                           style='box-style',
                           label=_('turtle sees'),
                           prim_name='see',
@@ -452,11 +476,11 @@ program started'))
 
         palette = make_palette('extras',
                                colors=["#FF0000", "#A00000"],
-                               help_string=_('Palette of extra options'),
-                               position=8)
+                               help_string=_('Palette of extra options'))
 
         primitive_dictionary['push'] = self._prim_push
         palette.add_block('push',
+                          hidden=True,
                           style='basic-style-1arg',
                           #TRANS: push adds a new item to the program stack
                           label=_('push'),
@@ -471,6 +495,7 @@ last-out heap)'))
 
         primitive_dictionary['printheap'] = self._prim_printheap
         palette.add_block('printheap',
+                          hidden=True,
                           style='basic-style-extended-vertical',
                           label=_('show heap'),
                           prim_name='printheap',
@@ -484,6 +509,7 @@ end\n')
 
         primitive_dictionary['clearheap'] = self._prim_emptyheap
         palette.add_block('clearheap',
+                          hidden=True,
                           style='basic-style-extended-vertical',
                           label=_('empty heap'),
                           prim_name='clearheap',
@@ -497,6 +523,7 @@ end\n')
 
         primitive_dictionary['pop'] = self._prim_pop
         palette.add_block('pop',
+                          hidden=True,
                           style='box-style',
                           #TRANS: pop removes a new item from the program stack
                           label=_('pop'),
@@ -523,6 +550,7 @@ make "tmp first :taheap\nmake "taheap butfirst :taheap\noutput :tmp\nend\n')
 
         primitive_dictionary['isheapempty2'] = self._prim_is_heap_empty_bool
         palette.add_block('isheapempty2',
+                          hidden=True,
                           style='boolean-block-style',
                           label=_('empty heap?'),
                           prim_name='isheapempty2',
@@ -534,6 +562,7 @@ make "tmp first :taheap\nmake "taheap butfirst :taheap\noutput :tmp\nend\n')
 
         primitive_dictionary['print'] = self._prim_print
         palette.add_block('comment',
+                          hidden=True,
                           style='basic-style-1arg',
                           label=_('comment'),
                           prim_name='comment',
@@ -558,6 +587,7 @@ bottom of the screen'))
 
         primitive_dictionary['chr'] = self._prim_chr
         palette.add_block('chr',
+                          hidden=True,
                           style='number-style-1arg',
                           label='chr',
                           prim_name='chr',
@@ -567,6 +597,7 @@ bottom of the screen'))
 
         primitive_dictionary['int'] = self._prim_int
         palette.add_block('int',
+                          hidden=True,
                           style='number-style-1arg',
                           label='int',
                           prim_name='int',
@@ -576,6 +607,7 @@ bottom of the screen'))
 
         primitive_dictionary['myfunction'] = self._prim_myfunction
         palette.add_block('myfunc1arg',
+                          hidden=True,
                           style='number-style-var-arg',
                           label=[_('Python'), 'f(x)', 'x'],
                           prim_name='myfunction',
@@ -617,6 +649,7 @@ advanced multi-variable math equations, e.g., sin(x+y+z)'))
 
         primitive_dictionary['userdefined'] = self._prim_myblock
         palette.add_block('userdefined',
+                          hidden=True,
                           style='basic-style-var-arg',
                           label=' ',
                           prim_name='userdefined',
@@ -685,6 +718,7 @@ module found in the Journal'))
                             lambda self: self.tw.set_polar(True))
 
         palette.add_block('addturtle',
+                          hidden=True,
                           style='basic-style-1arg',
                           label=_('turtle'),
                           prim_name='turtle',
@@ -697,6 +731,7 @@ module found in the Journal'))
 
         primitive_dictionary['activeturtle'] = self._prim_active_turtle
         palette.add_block('activeturtle',
+                          hidden=True,
                           style='box-style',
                           #TRANS: pop removes a new item from the program stack
                           label=_('active turtle'),
@@ -721,6 +756,7 @@ module found in the Journal'))
 
         # macro
         palette.add_block('reskin',
+                          hidden=True,
                           style='basic-style-1arg',
                           label=_('turtle shell'),
                           help_string=_("put a custom 'shell' on the turtle"))
@@ -735,6 +771,7 @@ module found in the Journal'))
 
         primitive_dictionary['loadblock'] = self._prim_load_block
         palette.add_block('loadblock',
+                          hidden=True,
                           style='basic-style-var-arg',
                           label=_('load'),
                           prim_name='loadblock',
@@ -745,8 +782,8 @@ module found in the Journal'))
                             primitive_dictionary['loadblock'](x))
 
         palette.add_block('loadblock2arg',
-                          style='basic-style-var-arg',
                           hidden=True,
+                          style='basic-style-var-arg',
                           label=_('load'),
                           prim_name='loadblock2',
                           string_or_number=True,
@@ -757,8 +794,8 @@ module found in the Journal'))
                             primitive_dictionary['loadblock']([x, y]))
 
         palette.add_block('loadblock3arg',
-                          style='basic-style-var-arg',
                           hidden=True,
+                          style='basic-style-var-arg',
                           label=_('load'),
                           string_or_number=True,
                           prim_name='loadblock3',
@@ -770,6 +807,7 @@ module found in the Journal'))
 
         primitive_dictionary['loadpalette'] = self._prim_load_palette
         palette.add_block('loadpalette',
+                          hidden=True,
                           style='basic-style-1arg',
                           string_or_number=True,
                           label=_('palette'),
@@ -782,14 +820,13 @@ module found in the Journal'))
 
     def _portfolio_palette(self):
 
-        palette = make_palette('portfolio',
-                               colors=["#0606FF", "#0606A0"],
-                               help_string=_('Palette of presentation \
-templates'),
-                               position=9)
+        palette = make_palette('extras',
+                               colors=["#FF0000", "#A00000"],
+                               help_string=_('Palette of extra options'))
 
         primitive_dictionary['hideblocks'] = self._prim_hideblocks
         palette.add_block('hideblocks',
+                          hidden=True,
                           style='basic-style-extended-vertical',
                           label=_('hide blocks'),
                           prim_name='hideblocks',
@@ -799,6 +836,7 @@ templates'),
 
         primitive_dictionary['showblocks'] = self._prim_showblocks
         palette.add_block('showblocks',
+                          hidden=True,
                           style='basic-style-extended-vertical',
                           label=_('show blocks'),
                           prim_name='showblocks',
@@ -807,6 +845,7 @@ templates'),
                             lambda self: primitive_dictionary['showblocks']())
 
         palette.add_block('fullscreen',
+                          hidden=True,
                           style='basic-style-extended-vertical',
                           label=_('Fullscreen').lower(),
                           prim_name='fullscreen',
@@ -829,6 +868,7 @@ templates'),
 
         # macros
         palette.add_block('picturelist',
+                          hidden=True,
                           style='basic-style-extended',
                           label=' ',
                           help_string=_('presentation template: list of \
@@ -836,6 +876,7 @@ bullets'))
         MEDIA_SHAPES.append('list')
 
         palette.add_block('picture1x1a',
+                          hidden=True,
                           style='basic-style-extended',
                           label=' ',
                           help_string=_('presentation template: select \
@@ -843,6 +884,7 @@ Journal object (no description)'))
         MEDIA_SHAPES.append('1x1a')
 
         palette.add_block('picture1x1',
+                          hidden=True,
                           style='basic-style-extended',
                           label=' ',
                           help_string=_('presentation template: select \
@@ -850,6 +892,7 @@ Journal object (with description)'))
         MEDIA_SHAPES.append('1x1')
 
         palette.add_block('picture2x2',
+                          hidden=True,
                           style='basic-style-extended',
                           label=' ',
                           help_string=_('presentation template: select four \
@@ -857,6 +900,7 @@ Journal objects'))
         MEDIA_SHAPES.append('2x2')
 
         palette.add_block('picture2x1',
+                          hidden=True,
                           style='basic-style-extended',
                           label=' ',
                           help_string=_('presentation template: select two \
@@ -864,6 +908,7 @@ Journal objects'))
         MEDIA_SHAPES.append('2x1')
 
         palette.add_block('picture1x2',
+                          hidden=True,
                           style='basic-style-extended',
                           label=' ',
                           help_string=_('presentation template: select two \
@@ -872,6 +917,7 @@ Journal objects'))
 
         # Display-dependent constants
         palette.add_block('leftpos',
+                          hidden=True,
                           style='box-style',
                           label=_('left'),
                           prim_name='lpos',
@@ -880,6 +926,7 @@ Journal objects'))
         self.tw.lc.def_prim('lpos', 0, lambda self: CONSTANTS['leftpos'])
 
         palette.add_block('bottompos',
+                          hidden=True,
                           style='box-style',
                           label=_('bottom'),
                           prim_name='bpos',
@@ -888,6 +935,7 @@ Journal objects'))
         self.tw.lc.def_prim('bpos', 0, lambda self: CONSTANTS['bottompos'])
 
         palette.add_block('width',
+                          hidden=True,
                           style='box-style',
                           label=_('width'),
                           prim_name='hres',
@@ -896,6 +944,7 @@ Journal objects'))
         self.tw.lc.def_prim('hres', 0, lambda self: CONSTANTS['width'])
 
         palette.add_block('rightpos',
+                          hidden=True,
                           style='box-style',
                           label=_('right'),
                           prim_name='rpos',
@@ -904,6 +953,7 @@ Journal objects'))
         self.tw.lc.def_prim('rpos', 0, lambda self: CONSTANTS['rightpos'])
 
         palette.add_block('toppos',
+                          hidden=True,
                           style='box-style',
                           label=_('top'),
                           prim_name='tpos',
@@ -912,6 +962,7 @@ Journal objects'))
         self.tw.lc.def_prim('tpos', 0, lambda self: CONSTANTS['toppos'])
 
         palette.add_block('height',
+                          hidden=True,
                           style='box-style',
                           label=_('height'),
                           prim_name='vres',

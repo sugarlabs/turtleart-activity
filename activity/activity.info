@@ -1,8 +1,8 @@
 [Activity]
-name = TurtleBlocks
+name = Amazonas Tortuga
 activity_version = 179
 license = MIT
-bundle_id = org.laptop.TurtleArtActivity
+bundle_id = org.sugarlabs.AmazonasTortuga
 exec = sugar-activity TurtleArtActivity.TurtleArtActivity
 icon = activity-turtleart
 show_launcher = yes
