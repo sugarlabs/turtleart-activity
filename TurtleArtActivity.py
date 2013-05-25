@@ -199,6 +199,9 @@ class TurtleArtActivity(activity.Activity):
 
     def _load_ta_project(self, dsobject):
         ''' Load a TA project from the datastore. '''
+        if dsobject is None:
+            self.restore_cursor()
+            return
         try:
             _logger.debug('Opening %s ' % (dsobject.file_path))
             self.read_file(dsobject.file_path, plugin=False)
@@ -217,6 +220,9 @@ class TurtleArtActivity(activity.Activity):
 
     def _load_ta_plugin(self, dsobject):
         ''' Load a TA plugin from the datastore. '''
+        if dsobject is None:
+            self.restore_cursor()
+            return
         _logger.debug('Opening %s ' % (dsobject.file_path))
         self.read_file(dsobject.file_path, plugin=True)
 

@@ -342,12 +342,12 @@ def chooser_dialog(parent_window, filter, action):
             chooser.destroy()
             del chooser
 
-    if dsobject is not None:
-        gobject.idle_add(_take_action, action, dsobject)
+    gobject.idle_add(_take_action, action, dsobject)
 
 def _take_action(action, dsobject):
     action(dsobject)
-    dsobject.destroy()
+    if dsobject is not None:
+        dsobject.destroy()
 
 def data_from_file(ta_file):
     ''' Open the .ta file, ignoring any .png file that might be present. '''

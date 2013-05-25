@@ -3370,8 +3370,9 @@ before making changes to your Turtle Blocks program'))
 
     def _update_media_blk(self, dsobject):
         ''' Called from the chooser to load a media block '''
-        self._update_media_icon(self.selected_blk, dsobject,
-                                dsobject.object_id)
+        if dsobject is not None:
+            self._update_media_icon(self.selected_blk, dsobject,
+                                    dsobject.object_id)
 
     def _update_media_icon(self, blk, name, value=''):
         ''' Update the icon on a 'loaded' media block. '''
@@ -3700,6 +3701,8 @@ before making changes to your Turtle Blocks program'))
     def load_python_code_from_journal(self, dsobject, blk=None):
         ''' Read the Python code from the Journal object '''
         self.python_code = None
+        if dsobject is None:
+            return
         try:
             file_handle = open(dsobject.file_path, "r")
             self.python_code = file_handle.read()
