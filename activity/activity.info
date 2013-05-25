@@ -1,11 +1,11 @@
 [Activity]
-name = TurtleBlocks
+name = Turtle Art Mini
 activity_version = 178
 license = MIT
-bundle_id = org.laptop.TurtleArtActivity
+bundle_id = org.laptop.TurtleArtMiniActivity
 exec = sugar-activity TurtleArtActivity.TurtleArtActivity
 icon = activity-turtleart
 show_launcher = yes
-website = http://wiki.sugarlabs.org/go/Activities/Turtle_Art
-mime_types = application/x-turtle-art;application/vnd.turtleblocks
+update_url = http://wiki.laptop.org/go/Activities/G1G1
+mime_types = application/x-turtle-art
 summary = A Logo-inspired turtle that draws colorful pictures with snap-together visual programming blocks
