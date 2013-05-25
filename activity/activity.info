@@ -1,8 +1,8 @@
 [Activity]
-name = TurtleBlocks
+name = Turtle Confusion
 activity_version = 179
 license = MIT
-bundle_id = org.laptop.TurtleArtActivity
+bundle_id = org.laptop.TurtleConfusionActivity
 exec = sugar-activity TurtleArtActivity.TurtleArtActivity
 icon = activity-turtleart
 show_launcher = yes
