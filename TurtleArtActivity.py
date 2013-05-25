@@ -204,6 +204,7 @@ class TurtleArtActivity(activity.Activity):
             return
         try:
             _logger.debug('Opening %s ' % (dsobject.file_path))
+            self._tmp_dsobject = dsobject
             self.read_file(dsobject.file_path, plugin=False)
         except:
             _logger.debug("Couldn't open %s" % (dsobject.file_path))
@@ -225,6 +226,7 @@ class TurtleArtActivity(activity.Activity):
             return
         _logger.debug('Opening %s ' % (dsobject.file_path))
         self.read_file(dsobject.file_path, plugin=True)
+        dsobject.destroy()
 
     def do_load_python_cb(self, button):
         ''' Load Python code from the Journal. '''
@@ -1350,6 +1352,11 @@ in order to use the plugin.'))
         _logger.debug('Opening:' + file_path)
         self.tw.load_files(file_path, False)
         self.restore_cursor()
+        if hasattr(self, '_tmp_dsobject') and self._tmp_dsobject is not None:
+            _logger.debug('cleaning up after %s' %
+                          (self._tmp_dsobject.file_path))
+            self._tmp_dsobject.destroy()
+            self._tmp_dsobject = None
 
     def jobject_new_patch(self):
         ''' Save instance to Journal. '''

@@ -3373,6 +3373,7 @@ before making changes to your Turtle Blocks program'))
         if dsobject is not None:
             self._update_media_icon(self.selected_blk, dsobject,
                                     dsobject.object_id)
+            dsobject.destroy()
 
     def _update_media_icon(self, blk, name, value=''):
         ''' Update the icon on a 'loaded' media block. '''
@@ -3724,6 +3725,7 @@ before making changes to your Turtle Blocks program'))
         if self.running_sugar:
             chooser_dialog(self.parent, 'org.laptop.Pippy',
                            self.load_python_code_from_journal)
+            dsobject.destroy()
         else:
             self.load_python_code_from_file(fname=None, add_new_block=False)
 
