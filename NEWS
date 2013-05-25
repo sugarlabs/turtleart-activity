@@ -40,7 +40,7 @@ BUG FIXES:
 
 176
 
-ENHANCEMENT:
+ENHANCEMENTS:
 * Add facility for saving and restoring individual stacks
 * Save status of hover help between sessions
 * New translations
