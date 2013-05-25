@@ -31,6 +31,7 @@ import getopt
 import sys
 import os
 import os.path
+import glob
 import cStringIO
 import errno
 import ConfigParser
@@ -424,6 +425,15 @@ return %s(self)" % (p, P, P)
         turtle_menu = MenuBuilder.make_sub_menu(menu, _('Turtle'))
 
         menu = gtk.Menu()
+        self._level = 0
+        self._levels = self._get_levels()
+        self._custom_filepath = None
+        for i in range(len(self._levels)):
+            MenuBuilder.make_menu_item(menu, _('Challenge') + ' ' + str(i + 1),
+                                       self._do_level_cb, i)
+        turtle_menu = MenuBuilder.make_sub_menu(menu, _('Challenges'))
+
+        menu = gtk.Menu()
         MenuBuilder.make_menu_item(menu, _('About...'), self._do_about_cb)
         help_menu = MenuBuilder.make_sub_menu(menu, _('Help'))
 
@@ -647,6 +657,70 @@ Would you like to save before quitting?'))
         else:
             self.win.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.HAND1))
             self.tw.deleting_blocks = True
+
+
+    def restore_challenge(self):
+        ''' Restore the current challange after a clear screen '''
+        if self._custom_filepath is None:
+            self._load_level()
+        else:
+            self._load_level(custom=True)
+
+    def _load_level(self, custom=False):
+        self.tw.canvas.clearscreen()
+        if custom:
+            self.tw.canvas.setxy(0, 0, pendown=False)
+            self.tw.lc.insert_image(center=True,
+                                    filepath=self._custom_filepath,
+                                    resize=True, offset=False)
+        else:
+            self.tw.canvas.setxy(int(-gtk.gdk.screen_width() / 2), 0,
+                                 pendown=False)
+            self.tw.lc.insert_image(center=False, resize=False,
+                                    filepath=os.path.join(
+                    self._get_execution_dir(), 'images',
+                    'mexico-tortuga.png'))
+            # Slight offset to account for stroke width
+            if self._level + 1 in self.offsets:
+                xoffset = self.offsets[self._level + 1][0]
+                yoffset = self.offsets[self._level + 1][1]
+            else:
+                xoffset = 0
+                yoffset = 0
+            self.tw.canvas.setxy(-2.5 + xoffset, -2.5 + yoffset, pendown=False)
+            self.tw.lc.insert_image(center=False,
+                                    filepath=os.path.join(
+                    self._get_execution_dir(), 'challenges',
+                    self._levels[self._level] + '.svg'), resize=False,
+                                    offset=True)
+        self.tw.canvas.setxy(0, 0, pendown=False)
+
+    def _do_level_cb(self, widget, level):
+        ''' Callback to resize blocks. '''
+        self._level = level
+        self._load_level()
+
+    def _get_levels(self):
+        ''' Look for level files in lessons directory. '''
+        levels = glob.glob(os.path.join(self._get_execution_dir(),
+                                        'challenges', '*.svg'))
+
+        level_files = []
+        for i in range(len(levels)):
+            level_files.append('mexico-%d' % (i+1))
+
+        self.offsets = {}
+        offset_fd = open(os.path.join(self._get_execution_dir(), 'challenges',
+                                      'offsets'))
+        for line in offset_fd:
+            try:
+                idx, offsets = line.strip('\n').split(':')
+                xoffset, yoffset = offsets.split(',')
+                self.offsets[int(idx)] = (int(xoffset), int(yoffset))
+            except ValueError:
+                pass
+        offset_fd.close()
+        return level_files
 
     def _do_copy_cb(self, button):
         ''' Callback for copy button. '''
