@@ -1,3 +1,9 @@
+179
+
+BUG FIXES:
+* Restore cursor after aborted chooser dialog
+* Fix problem with loading projects from Sugar Journal
+
 178
 
 BUG FIX:
