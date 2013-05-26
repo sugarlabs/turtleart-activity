@@ -604,6 +604,7 @@ Would you like to save before quitting?'))
     def _do_eraser_cb(self, widget):
         ''' Callback for eraser button. '''
         self.tw.eraser_button()
+        self.restore_challenge()
         return
 
     def _do_run_cb(self, widget=None):
@@ -657,7 +658,6 @@ Would you like to save before quitting?'))
         else:
             self.win.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.HAND1))
             self.tw.deleting_blocks = True
-
 
     def restore_challenge(self):
         ''' Restore the current challange after a clear screen '''
