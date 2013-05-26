@@ -370,6 +370,7 @@ return %s(self)" % (p, P, P)
         menu = gtk.Menu()
         MenuBuilder.make_menu_item(menu, _('New'), self._do_new_cb)
         MenuBuilder.make_menu_item(menu, _('Open'), self._do_open_cb)
+        MenuBuilder.make_menu_item(menu, _('Load project'), self._do_load_cb)
         MenuBuilder.make_menu_item(menu, _('Save'), self._do_save_cb)
         MenuBuilder.make_menu_item(menu, _('Save as'), self._do_save_as_cb)
         MenuBuilder.make_menu_item(menu, _('Save as image'),
@@ -484,6 +485,10 @@ Would you like to save before quitting?'))
     def _do_open_cb(self, widget):
         ''' Callback for open project. '''
         self.tw.load_file_from_chooser(True)
+
+    def _do_load_cb(self, widget):
+        ''' Callback for load project (add to current project). '''
+        self.tw.load_file_from_chooser(False)
 
     def _do_save_cb(self, widget):
         ''' Callback for save project. '''
