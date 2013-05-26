@@ -187,8 +187,9 @@ class TurtleArtActivity(activity.Activity):
         gobject.timeout_add(250, self.save_as_logo.set_icon, 'logo-saveoff')
         self._notify_successful_save(title=_('Save as Logo'))
 
-    def do_load_ta_project_cb(self, button):
+    def do_load_ta_project_cb(self, button, new=False):
         ''' Load a project from the Journal. '''
+        self._create_new = new
         if hasattr(self, 'get_window'):
             _logger.debug('setting watch cursor')
             if hasattr(self.get_window(), 'get_cursor'):
@@ -950,8 +951,11 @@ class TurtleArtActivity(activity.Activity):
                                            button_box)
 
             self.load_ta_project, label = self._add_button_and_label(
+                'load-from-journal', _('Open'),
+                self.do_load_ta_project_cb, True, button_box)
+            self.load_ta_project, label = self._add_button_and_label(
                 'load-from-journal', _('Load project'),
-                self.do_load_ta_project_cb, None, button_box)
+                self.do_load_ta_project_cb, False, button_box)
             # Only enable plugin loading if installed in $HOME
             if activity.get_bundle_path()[0:len(home)] == home:
                 self.load_ta_plugin, label = self._add_button_and_label(
@@ -1350,7 +1354,9 @@ in order to use the plugin.'))
     def _project_loader(self, file_path):
         ''' Load the turtle file and then restore cursor '''
         _logger.debug('Opening:' + file_path)
-        self.tw.load_files(file_path, False)
+        if not hasattr(self, '_create_new'):
+            self._create_new = False
+        self.tw.load_files(file_path, self._create_new)
         self.restore_cursor()
         if hasattr(self, '_tmp_dsobject') and self._tmp_dsobject is not None:
             _logger.debug('cleaning up after %s' %
