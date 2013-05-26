@@ -31,6 +31,7 @@ import getopt
 import sys
 import os
 import os.path
+import glob
 import cStringIO
 import errno
 import ConfigParser
@@ -427,7 +428,7 @@ return %s(self)" % (p, P, P)
         self._level = 0
         self._levels = self._get_levels()
         self._custom_filepath = None
-        for i in range(40):
+        for i in range(len(self._levels)):
             MenuBuilder.make_menu_item(menu, _('Challenge') + ' ' + str(i + 1),
                                        self._do_level_cb, i)
         turtle_menu = MenuBuilder.make_sub_menu(menu, _('Challenges'))
@@ -701,9 +702,11 @@ Would you like to save before quitting?'))
 
     def _get_levels(self):
         ''' Look for level files in lessons directory. '''
-        level_files = []
+        levels = glob.glob(os.path.join(activity.get_bundle_path(),
+                                        'challenges', '*.svg'))
 
-        for i in range(40):
+        level_files = []
+        for i in range(len(levels)):
             level_files.append('amazonas-%d' % (i+1))
 
         self.offsets = {}
