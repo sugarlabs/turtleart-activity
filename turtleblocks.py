@@ -604,6 +604,7 @@ Would you like to save before quitting?'))
     def _do_eraser_cb(self, widget):
         ''' Callback for eraser button. '''
         self.tw.eraser_button()
+        self.restore_challenge()
         return
 
     def _do_run_cb(self, widget=None):
