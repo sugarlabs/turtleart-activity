@@ -51,6 +51,7 @@ from sugar.datastore import datastore
 from sugar import profile
 
 import os
+import glob
 import tarfile
 import subprocess
 import ConfigParser
@@ -1573,18 +1574,13 @@ in order to use the plugin.'))
 
     def _get_levels(self, path):
         ''' Look for level files in lessons directory. '''
+        levels = glob.glob(os.path.join(activity.get_bundle_path(),
+                                        'challenges', '*.svg'))
+
         level_files = []
-        """
-        if path is not None:
-            candidates = os.listdir(os.path.join(path, 'challenges'))
-            for filename in candidates:
-                level_files.append(filename.split('.')[0])
-        """
-        for i in range(40):
+        for i in range(len(levels)):
             level_files.append('confusion-%d' % (i+1))
 
-        '''
-        '''
         self.offsets = {}
         offset_fd = open(os.path.join(activity.get_bundle_path(), 'challenges',
                                       'offsets'))
