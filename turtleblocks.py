@@ -702,7 +702,7 @@ Would you like to save before quitting?'))
 
     def _get_levels(self):
         ''' Look for level files in lessons directory. '''
-        levels = glob.glob(os.path.join(activity.get_bundle_path(),
+        levels = glob.glob(os.path.join(self._get_execution_dir(),
                                         'challenges', '*.svg'))
 
         level_files = []
