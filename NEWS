@@ -1,5 +1,9 @@
 179
 
+ENHANCEMENT:
+* Add option to either open a new project or load a project into an
+  existing project
+
 BUG FIXES:
 * Restore cursor after aborted chooser dialog
 * Fix problem with loading projects from Sugar Journal
