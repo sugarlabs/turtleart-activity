@@ -269,26 +269,36 @@ class TurtleArtWindow():
         self._configure_cb(None)
 
         self._icon_paths = [os.path.join(self.path, 'icons')]
-        self.turtleart_plugins = []
 
-        self._init_plugins()
         self.lc = LogoCode(self)
+
+        self.turtleart_plugins = []
+        self.saved_pictures = []
+        self.block_operation = ''
 
         from tabasics import Palettes
         Palettes(self)
-        self._setup_plugins()
 
         if self.interactive_mode:
-            self._setup_misc()
-            for name in palette_init_on_start:
-                debug_output('initing palette %s' % (name), self.running_sugar)
-                self.show_toolbar_palette(palette_names.index(name),
-                                          init_only=False, regenerate=True,
-                                          show=False)
-            self.show_toolbar_palette(0, init_only=False, regenerate=True,
-                                      show=True)
-        self.saved_pictures = []
-        self.block_operation = ''
+            gobject.idle_add(self._lazy_init)
+        else:
+            self._init_plugins()
+            self._setup_plugins()
+
+    def _lazy_init(self):
+        self._init_plugins()
+        self._setup_plugins()
+        self._setup_misc()
+        for name in palette_init_on_start:
+            debug_output('initing palette %s' % (name), self.running_sugar)
+            self.show_toolbar_palette(palette_names.index(name),
+                                      init_only=False, regenerate=True,
+                                      show=False)
+
+        self.show_toolbar_palette(0, init_only=False, regenerate=True,
+                                  show=True)
+        if self.running_sugar:
+            self.activity.check_buttons_for_fit()
 
     def _set_screen_dpi(self):
         dpi = get_screen_dpi()
@@ -688,6 +698,8 @@ class TurtleArtWindow():
         self.width = event.width
         self.height = event.height
         for name in OVERLAY_SHAPES:
+            if not name in self.overlay_shapes:
+                continue
             shape = self.overlay_shapes[name]
             showing = False
             if shape in shape._sprites.list:

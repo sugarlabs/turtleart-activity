@@ -52,7 +52,11 @@ import subprocess
 import ConfigParser
 import shutil
 import tempfile
-import gconf
+try:
+    import gconf
+    HAS_GCONF = True
+except ImportError:
+    HAS_GCONF = False
 
 from gettext import gettext as _
 
@@ -85,6 +89,7 @@ class TurtleArtActivity(activity.Activity):
         self.init_complete = False
 
         self.palette_buttons = []
+        self._palette_names = []
         self._overflow_buttons = []
 
         self._check_ver_change(get_path(activity, 'data'))
@@ -119,10 +124,12 @@ class TurtleArtActivity(activity.Activity):
             self.metadata['activity count'] = str(count)
 
         self._defer_palette_move = False
-        self.check_buttons_for_fit()
-        self.client = gconf.client_get_default()
-        if self.client.get_int(self._HOVER_HELP) == 1:
-            self._do_hover_help_toggle(None)
+        # Now called from lazy_init
+        # self.check_buttons_for_fit()
+        if HAS_GCONF:
+            self.client = gconf.client_get_default()
+            if self.client.get_int(self._HOVER_HELP) == 1:
+                self._do_hover_help_toggle(None)
         self.init_complete = True
 
     def check_buttons_for_fit(self):
@@ -845,15 +852,12 @@ class TurtleArtActivity(activity.Activity):
                 self._overflow_sw.set_policy(gtk.POLICY_AUTOMATIC,
                                              gtk.POLICY_NEVER)
                 self._overflow_sw.add_with_viewport(self._overflow_box)
+            elif len(self.palette_buttons) < len(palette_names):
+                # add new buttons for palettes generated since last time
+                self._generate_palette_buttons(add_buttons=True)
+                self._remove_palette_buttons()
             else:  # remove the radio buttons and overflow buttons
-                for button in self.palette_buttons:
-                    if button in self._palette_toolbar:
-                        self._palette_toolbar.remove(button)
-                for button in self._overflow_buttons:
-                    if button in self._overflow_box:
-                        self._overflow_box.remove(button)
-                if self._overflow_palette_button in self._palette_toolbar:
-                    self._palette_toolbar.remove(self._overflow_palette_button)
+                self._remove_palette_buttons()
 
             for i in range(len(self.palette_buttons)):
                 if i < max_palettes:
@@ -876,9 +880,22 @@ class TurtleArtActivity(activity.Activity):
             self._overflow_box.show_all()
             self._overflow_palette.set_content(self._overflow_sw)
 
-    def _generate_palette_buttons(self):
+    def _remove_palette_buttons(self):
+        for button in self.palette_buttons:
+            if button in self._palette_toolbar:
+                self._palette_toolbar.remove(button)
+        for button in self._overflow_buttons:
+            if button in self._overflow_box:
+                self._overflow_box.remove(button)
+        if self._overflow_palette_button in self._palette_toolbar:
+            self._palette_toolbar.remove(self._overflow_palette_button)
+
+    def _generate_palette_buttons(self, add_buttons=False):
         ''' Create a radio button and a normal button for each palette '''
         for i, palette_name in enumerate(palette_names):
+            if palette_name in self._palette_names:
+                continue
+            self._palette_names.append(palette_name)
             if i == 0:
                 palette_group = None
             else:
@@ -899,14 +916,16 @@ class TurtleArtActivity(activity.Activity):
                     self.do_palette_buttons_cb,
                     None,
                     arg=i))
-        # And we need an extra button for the overflow
-        self._overflow_palette_button = self._radio_button_factory(
-            'overflow',
-            None,
-            self._overflow_palette_cb,
-            None,
-            _('Palettes'),
-            palette_group)
+
+        if not add_buttons:
+            # And we need an extra button for the overflow
+            self._overflow_palette_button = self._radio_button_factory(
+                'overflow',
+                None,
+                self._overflow_palette_cb,
+                None,
+                _('Palettes'),
+                palette_group)
 
     def _overflow_palette_cb(self, button):
         _logger.debug('overflow palette cb')

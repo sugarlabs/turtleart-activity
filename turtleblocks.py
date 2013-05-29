@@ -577,7 +577,8 @@ Would you like to save before quitting?'))
         ''' Turn hover help off '''
         self.tw.no_help = True
         self.tw.last_label = None
-        self.tw.status_spr.hide()
+        if self.tw.status_spr is not None:
+            self.tw.status_spr.hide()
         self.hover.set_active(False)
         self.client.set_int(self._HOVER_HELP, 1)
 

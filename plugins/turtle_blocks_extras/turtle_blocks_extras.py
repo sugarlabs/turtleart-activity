@@ -120,7 +120,6 @@ boolean operators from Numbers palette'))
         self.tw.lc.def_prim('clamp', 1, primitive_dictionary['clamp'], True)
 
     def _media_palette(self):
-
         palette = make_palette('media',
                                colors=["#A0FF00", "#80A000"],
                                help_string=_('Palette of media objects'),
@@ -321,7 +320,6 @@ amplitude, and duration (in seconds)'))
                             primitive_dictionary['sinewave'](x, y, z))
 
     def _sensor_palette(self):
-
         palette = make_palette('sensor',
                                colors=["#FF6060", "#A06060"],
                                help_string=_('Palette of sensor blocks'),
@@ -449,7 +447,6 @@ program started'))
                             lambda self: primitive_dictionary['time']())
 
     def _extras_palette(self):
-
         palette = make_palette('extras',
                                colors=["#FF0000", "#A00000"],
                                help_string=_('Palette of extra options'),
@@ -781,7 +778,6 @@ module found in the Journal'))
                             primitive_dictionary['loadpalette'](x))
 
     def _portfolio_palette(self):
-
         palette = make_palette('portfolio',
                                colors=["#0606FF", "#0606A0"],
                                help_string=_('Palette of presentation \
@@ -1074,7 +1070,7 @@ bullets'))
 
         if os.path.exists(self.tw.macros_path):
             files = glob.glob(os.path.join(self.tw.macros_path, '*.tb'))
-            print 'creating macros palette'
+            debug_output('making myblocks palette', self.tw.running_sugar)
             if len(files) > 0:
                 palette = make_palette(
                     'myblocks',
