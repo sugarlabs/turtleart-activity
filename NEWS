@@ -1,3 +1,13 @@
+180
+
+ENHANCEMENT:
+* Faster launch time
+* New translations
+
+BUG FIXES:
+* Catch exception raised when gconf is not available (prevented launch
+  on some old systems, e.g., Peru 802)
+
 179
 
 ENHANCEMENT:
