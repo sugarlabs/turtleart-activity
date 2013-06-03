@@ -107,6 +107,7 @@ class Palettes():
 
         self._blocks_palette()
 
+    def make_trash_palette(self):
         self._trash_palette()
 
     # Palette definitions

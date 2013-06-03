@@ -277,7 +277,7 @@ class TurtleArtWindow():
         self.block_operation = ''
 
         from tabasics import Palettes
-        Palettes(self)
+        self._basic_palettes = Palettes(self)
 
         if self.interactive_mode:
             gobject.idle_add(self._lazy_init)
@@ -295,8 +295,11 @@ class TurtleArtWindow():
                                       init_only=False, regenerate=True,
                                       show=False)
 
+        self._basic_palettes.make_trash_palette()
+
         self.show_toolbar_palette(0, init_only=False, regenerate=True,
                                   show=True)
+
         if self.running_sugar:
             self.activity.check_buttons_for_fit()
 
@@ -934,7 +937,7 @@ class TurtleArtWindow():
                                  self.running_sugar)
             else:
                 blk.spr.hide()
-        if n == palette_names.index('trash'):
+        if 'trash' in palette_names and n == palette_names.index('trash'):
             for blk in self.trash_stack:
                 # Deprecated
                 for gblk in find_group(blk):
@@ -1210,7 +1213,8 @@ class TurtleArtWindow():
                     and not self.activity.has_toolbarbox:
                 self.activity.palette_buttons[palette].set_icon(
                     palette_names[palette] + 'off')
-            if palette == palette_names.index('trash'):
+            if 'trash' in palette_names and \
+                    palette == palette_names.index('trash'):
                 for blk in self.trash_stack:
                     for gblk in find_group(blk):
                         gblk.spr.hide()
@@ -1290,7 +1294,8 @@ class TurtleArtWindow():
             if self.orientation == HORIZONTAL_PALETTE:
                 x, y = _BUTTON_SIZE, self.toolbar_offset + _MARGIN
                 x, y, max_w = self._horizontal_layout(x, y, self.palettes[n])
-                if n == palette_names.index('trash'):
+                if 'trash' in palette_names and \
+                        n == palette_names.index('trash'):
                     x, y, max_w = self._horizontal_layout(x + max_w, y,
                                                           self.trash_stack)
                 w = x + max_w + _BUTTON_SIZE + _MARGIN
@@ -1306,7 +1311,8 @@ class TurtleArtWindow():
             else:
                 x, y = _MARGIN, self.toolbar_offset + _BUTTON_SIZE + _MARGIN
                 x, y, max_h = self._vertical_layout(x, y, self.palettes[n])
-                if n == palette_names.index('trash'):
+                if 'trash' in palette_names and \
+                        n == palette_names.index('trash'):
                     x, y, max_h = self._vertical_layout(x, y + max_h,
                                                         self.trash_stack)
                 h = y + max_h + _BUTTON_SIZE + _MARGIN - self.toolbar_offset
@@ -1351,7 +1357,8 @@ class TurtleArtWindow():
                     'category-shift-vertical'
             else:
                 self.palette_sprs[n][self.orientation].type = 'category'
-            if n == palette_names.index('trash'):
+            if 'trash' in palette_names and \
+                    n == palette_names.index('trash'):
                 svg = SVG()
                 self.palette_sprs[n][self.orientation].set_shape(
                     svg_str_to_pixbuf(svg.palette(w, h)))
@@ -1931,7 +1938,8 @@ before making changes to your Turtle Blocks program'))
             if gblk.name in BLOCKS_WITH_SKIN:
                 self._resize_skin(gblk)
 
-        if self.selected_palette != palette_names.index('trash'):
+        if not 'trash' in palette_names or \
+                self.selected_palette != palette_names.index('trash'):
             for gblk in group:
                 gblk.spr.hide()
 
