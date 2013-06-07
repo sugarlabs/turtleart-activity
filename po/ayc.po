@@ -7,10 +7,10 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-05-17 00:31-0400\n"
-"PO-Revision-Date: 2012-09-25 11:26+0200\n"
-"Last-Translator: Chris <cjl@laptop.org>\n"
+"PO-Revision-Date: 2013-06-05 10:43+0200\n"
+"Last-Translator: EdgarQuispeChambi <quispedgar@yahoo.es>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: aym\n"
+"Language: ayc\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -18,9 +18,8 @@ msgstr ""
 "X-Generator: Pootle 2.0.5\n"
 
 #. TRANS: "name" option from activity.info file
-#, fuzzy
 msgid "TurtleBlocks"
-msgstr "TurtleBots wakichata"
+msgstr "TortuBlocks wakichata"
 
 #. TRANS: "summary" option from activity.info file
 #. TRANS: "description" option from activity.info file
@@ -28,6 +27,8 @@ msgid ""
 "A Logo-inspired turtle that draws colorful pictures with snap-together "
 "visual programming blocks"
 msgstr ""
+"Maya tortuga wakichatawa uka kunaymana rixitanaka wakichiri chimpupana utji "
+"uka uñjañanaka wakichata chika"
 
 #: TurtleArt/tabasics.py:119
 msgid "Palette of turtle commands"
@@ -834,6 +835,8 @@ msgid ""
 "Please hit the Stop Button before making changes to your Turtle Blocks "
 "program"
 msgstr ""
+"Mira suma, uka TortuBlocks wakichatana janirara mayjt'äwinka lurkasa "
+"sayt'ayaña limiña limt'ma"
 
 #: TurtleArt/tawindow.py:1369
 msgid "Select blocks to share"
@@ -842,11 +845,11 @@ msgstr "Siqichata wakichatanakampi khuyapayañataki chhijllma"
 #: TurtleArt/tawindow.py:1530 TurtleArtActivity.py:632
 #: TurtleArtActivity.py:781 turtleblocks.py:397
 msgid "Save stack"
-msgstr ""
+msgstr "Pila imaña"
 
 #: TurtleArt/tawindow.py:1531 TurtleArt/tawindow.py:1546
 msgid "Really overwrite stack?"
-msgstr ""
+msgstr "¿pila wakichataru qillqxataña muntati?"
 
 #  "Cancelar"
 #: TurtleArt/tawindow.py:1534 TurtleArt/tawindow.py:1574
@@ -856,16 +859,16 @@ msgstr "Tukuyaña"
 
 #: TurtleArt/tawindow.py:1538 TurtleArt/tawindow.py:1549
 msgid "Overwrite stack"
-msgstr ""
+msgstr "pila wakichataru qillqxataña"
 
 #: TurtleArt/tawindow.py:1570 TurtleArt/tawindow.py:1578
 #: TurtleArt/tawindow.py:1588 TurtleArtActivity.py:634 turtleblocks.py:399
 msgid "Delete stack"
-msgstr ""
+msgstr "pila wakichata chhaqtayaña"
 
 #: TurtleArt/tawindow.py:1571 TurtleArt/tawindow.py:1585
 msgid "Really delete stack?"
-msgstr ""
+msgstr "¿pila wakichata chhaqtayaña muntati?"
 
 #  "imagen"
 #: TurtleArt/tawindow.py:4215
@@ -1035,9 +1038,8 @@ msgid "Load Python block"
 msgstr "Python siqi wakichata sartayaña"
 
 #: TurtleArtActivity.py:895
-#, fuzzy
 msgid "Palettes"
-msgstr "limiña"
+msgstr "limiñanaka"
 
 #: TurtleArtActivity.py:912
 msgid "Sharing blocks disabled"
@@ -1160,7 +1162,7 @@ msgstr "Ch'amanchaña"
 
 #: gnome_plugins/fb_plugin.py:87
 msgid "Facebook wall post"
-msgstr ""
+msgstr "Facebook taypita qillqaña"
 
 #: gnome_plugins/uploader_plugin.py:68
 msgid "Upload to Web"
@@ -1747,11 +1749,11 @@ msgstr "tortuga wakichata apnaqaña chhijllma"
 #. TRANS: pop removes a new item from the program stack
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:703
 msgid "active turtle"
-msgstr ""
+msgstr "tortuga wakichata qhantayata"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:706
 msgid "the name of the active turtle"
-msgstr ""
+msgstr "tortuga wakichata qhantayatana sutipa"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:715
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:724
@@ -1948,30 +1950,32 @@ msgstr "2x2 uñachayäwi"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1073
 msgid "Palette of user-defined operators"
-msgstr ""
+msgstr "Apnaqirina wakichata sarayañanaka limt'aña"
 
 #: pysamples/brain.py:43
 msgid "Please install the Speak Activity and try again."
-msgstr ""
+msgstr "Mira suma Arsuña Luräwi wakichma ukata mayampi yant'ma."
 
 #: pysamples/brain.py:54
 msgid "Spanish"
-msgstr ""
+msgstr "Kastilla aru"
 
 #: pysamples/brain.py:58 pysamples/brain.py:72 pysamples/brain.py:74
 #: pysamples/brain.py:80
 msgid "English"
-msgstr ""
+msgstr "Inglés aru"
 
 #: pysamples/brain.py:91
 msgid "Sorry, I can't understand what you are asking about."
-msgstr ""
+msgstr "Jichhasti kamacharakiñäni, jiskht'atama janiwa suma katuqsmati."
 
 #: pysamples/brain.py:100
 msgid ""
 "Sorry, there is no free memory to load my brain. Close other activities and "
 "try once more."
 msgstr ""
+"Jichhasti kamacharakiñäni, Juk'ampi p'iqijataki ch'amanchäwi katuqañataki "
+"janiwa wakichata utjiti. Yaqha luräwinaka tukuyma ukata mayampi yant'ma."
 
 #: pysamples/forward_push.py:45
 msgid "push destination rgb value to heap"
@@ -2087,7 +2091,7 @@ msgstr "Tortuga wakichata"
 
 #: turtleblocks.py:421
 msgid "About..."
-msgstr ""
+msgstr "Uka tuqita..."
 
 #  "Hay trabajo sin guardar. ¿Le gustaría guardar antes de salir?"
 #: turtleblocks.py:461
