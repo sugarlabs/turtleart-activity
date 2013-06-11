@@ -1,10 +1,15 @@
+181
+
+BUG FIX:
+* Make sure trash is last palette
+
 180
 
 ENHANCEMENT:
 * Faster launch time
 * New translations
 
-BUG FIXES:
+BUG FIX:
 * Catch exception raised when gconf is not available (prevented launch
   on some old systems, e.g., Peru 802)
 
