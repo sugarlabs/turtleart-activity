@@ -285,20 +285,22 @@ class TurtleArtWindow():
             self._init_plugins()
             self._setup_plugins()
 
-    def _lazy_init(self):
+    def _lazy_init(self, init_palettes=True):
         self._init_plugins()
         self._setup_plugins()
         self._setup_misc()
-        for name in palette_init_on_start:
-            debug_output('initing palette %s' % (name), self.running_sugar)
-            self.show_toolbar_palette(palette_names.index(name),
-                                      init_only=False, regenerate=True,
-                                      show=False)
-
-        self._basic_palettes.make_trash_palette()
-
-        self.show_toolbar_palette(0, init_only=False, regenerate=True,
-                                  show=True)
+        
+        if init_palettes:
+            for name in palette_init_on_start:
+                debug_output('initing palette %s' % (name), self.running_sugar)
+                self.show_toolbar_palette(palette_names.index(name),
+                                          init_only=False, regenerate=True,
+                                          show=False)
+    
+            self._basic_palettes.make_trash_palette()
+    
+            self.show_toolbar_palette(0, init_only=False, regenerate=True,
+                                      show=True)
 
         if self.running_sugar:
             self.activity.check_buttons_for_fit()
