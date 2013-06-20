@@ -285,10 +285,10 @@ class TurtleArtWindow():
             self._init_plugins()
             self._setup_plugins()
 
-    def _lazy_init(self, init_palettes=True):
+    def _lazy_init(self, init_palettes=True, load_toolbar_shapes=True):
         self._init_plugins()
         self._setup_plugins()
-        self._setup_misc()
+        self._setup_misc(load_toolbar_shapes=load_toolbar_shapes)
         
         if init_palettes:
             for name in palette_init_on_start:
@@ -488,7 +488,7 @@ class TurtleArtWindow():
                             os.path.join(self.path, path, filename + '.svg')))
                     break
 
-    def _setup_misc(self):
+    def _setup_misc(self, load_toolbar_shapes=True):
         ''' Misc. sprites for status, overlays, etc. '''
         self.load_media_shapes()
         for i, name in enumerate(STATUS_SHAPES):
@@ -517,7 +517,7 @@ class TurtleArtWindow():
             self.overlay_shapes[name].hide()
             self.overlay_shapes[name].type = 'overlay'
 
-        if not self.running_sugar:
+        if load_toolbar_shapes and not self.running_sugar:
             # offset = 2 * self.width - 55 * len(TOOLBAR_SHAPES)
             offset = 55 * (1 + len(palette_blocks))
             for i, name in enumerate(TOOLBAR_SHAPES):
