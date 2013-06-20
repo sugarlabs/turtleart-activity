@@ -286,6 +286,10 @@ class TurtleArtWindow():
             self._setup_plugins()
 
     def _lazy_init(self, init_palettes=True, load_toolbar_shapes=True):
+        """init_palettes -- whether to initialize the palettes (should always 
+                            be True in TA)
+        load_toolbar_shapes -- passed on to _setup_misc()
+        """
         self._init_plugins()
         self._setup_plugins()
         self._setup_misc(load_toolbar_shapes=load_toolbar_shapes)
@@ -489,7 +493,10 @@ class TurtleArtWindow():
                     break
 
     def _setup_misc(self, load_toolbar_shapes=True):
-        ''' Misc. sprites for status, overlays, etc. '''
+        ''' Misc. sprites for status, overlays, etc.
+        load_toolbar_shapes -- whether to load the toolbar shapes/ icons if 
+                               we're not in sugar (should always be True in TA)
+        '''
         self.load_media_shapes()
         for i, name in enumerate(STATUS_SHAPES):
             # Temporary hack to use wider shapes
