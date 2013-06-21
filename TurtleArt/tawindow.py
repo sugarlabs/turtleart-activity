@@ -99,9 +99,13 @@ _MACROS_SUBPATH = 'macros'
 class TurtleArtWindow():
     ''' TurtleArt Window class abstraction  '''
 
-    def __init__(self, canvas_window, path, parent=None,
+    def __init__(self, canvas_window, path, parent=None, activity=None,
                  mycolors=None, mynick=None, turtle_canvas=None,
                  running_sugar=True):
+        """parent -- the GTK Window that TA runs in
+        activity -- the object that instantiated this TurtleArtWindow (in 
+                    GNOME, a TurtleMain instance)
+        """
         self.parent = parent
         self.turtle_canvas = turtle_canvas
         self._loaded_project = ''
@@ -135,7 +139,11 @@ class TurtleArtWindow():
             self.interactive_mode = False
             self.window = canvas_window
             self.running_sugar = False
-        self.activity = parent
+
+        if activity is not None:
+            self.activity = activity
+        else:
+            self.activity = parent
 
         self.path = path
         self.load_save_folder = os.path.join(path, 'samples')

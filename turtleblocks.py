@@ -217,7 +217,7 @@ return %s(self)" % (p, P, P)
             max(768, gtk.gdk.screen_height() * 2))
         self.tw = TurtleArtWindow(self.canvas, self._execdirname,
                                   turtle_canvas=self.turtle_canvas,
-                                  parent=self, running_sugar=False)
+                                  activity=self, running_sugar=False)
         self.tw.save_folder = self._abspath  # os.path.expanduser('~')
         if self.client.get_int(self._HOVER_HELP) == 1:
             self.hover.set_active(False)
