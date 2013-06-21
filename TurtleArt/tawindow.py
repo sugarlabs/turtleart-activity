@@ -285,19 +285,28 @@ class TurtleArtWindow():
             self._init_plugins()
             self._setup_plugins()
 
-    def _lazy_init(self):
+    def _lazy_init(self, init_palettes=True, load_toolbar_shapes=True):
+        """init_palettes -- whether to initialize the palettes (should always 
+                            be True in TA)
+        load_toolbar_shapes -- passed on to _setup_misc()
+        """
         self._init_plugins()
         self._setup_plugins()
-        self._setup_misc()
-        self._basic_palettes.make_trash_palette()
-        for name in palette_init_on_start:
-            debug_output('initing palette %s' % (name), self.running_sugar)
-            self.show_toolbar_palette(palette_names.index(name),
-                                      init_only=False, regenerate=True,
-                                      show=False)
+        self._setup_misc(load_toolbar_shapes=load_toolbar_shapes)
 
-        self.show_toolbar_palette(0, init_only=False, regenerate=True,
-                                  show=True)
+        if init_palettes:
+            self._basic_palettes.make_trash_palette()
+            for name in palette_init_on_start:
+                debug_output('initing palette %s' % (name), self.running_sugar)
+                self.show_toolbar_palette(palette_names.index(name),
+                                          init_only=False,
+                                          regenerate=True,
+                                          show=False)
+
+            self.show_toolbar_palette(0,
+                                      init_only=False,
+                                      regenerate=True,
+                                      show=True)
 
         if self.running_sugar:
             self.activity.check_buttons_for_fit()
@@ -485,8 +494,11 @@ class TurtleArtWindow():
                             os.path.join(self.path, path, filename + '.svg')))
                     break
 
-    def _setup_misc(self):
-        ''' Misc. sprites for status, overlays, etc. '''
+    def _setup_misc(self, load_toolbar_shapes=True):
+        ''' Misc. sprites for status, overlays, etc.
+        load_toolbar_shapes -- whether to load the toolbar shapes/ icons if 
+                               we're not in sugar (should always be True in TA)
+        '''
         self.load_media_shapes()
         for i, name in enumerate(STATUS_SHAPES):
             # Temporary hack to use wider shapes
@@ -514,7 +526,7 @@ class TurtleArtWindow():
             self.overlay_shapes[name].hide()
             self.overlay_shapes[name].type = 'overlay'
 
-        if not self.running_sugar:
+        if load_toolbar_shapes and not self.running_sugar:
             # offset = 2 * self.width - 55 * len(TOOLBAR_SHAPES)
             offset = 55 * (1 + len(palette_blocks))
             for i, name in enumerate(TOOLBAR_SHAPES):
