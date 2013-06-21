@@ -139,7 +139,11 @@ class TurtleArtWindow():
             self.interactive_mode = False
             self.window = canvas_window
             self.running_sugar = False
-        self.activity = activity
+
+        if activity is not None:
+            self.activity = activity
+        else:
+            self.activity = parent
 
         self.path = path
         self.load_save_folder = os.path.join(path, 'samples')
@@ -297,17 +301,19 @@ class TurtleArtWindow():
         self._init_plugins()
         self._setup_plugins()
         self._setup_misc(load_toolbar_shapes=load_toolbar_shapes)
-        
+
         if init_palettes:
+            self._basic_palettes.make_trash_palette()
             for name in palette_init_on_start:
                 debug_output('initing palette %s' % (name), self.running_sugar)
                 self.show_toolbar_palette(palette_names.index(name),
-                                          init_only=False, regenerate=True,
+                                          init_only=False,
+                                          regenerate=True,
                                           show=False)
-    
-            self._basic_palettes.make_trash_palette()
-    
-            self.show_toolbar_palette(0, init_only=False, regenerate=True,
+
+            self.show_toolbar_palette(0,
+                                      init_only=False,
+                                      regenerate=True,
                                       show=True)
 
         if self.running_sugar:
