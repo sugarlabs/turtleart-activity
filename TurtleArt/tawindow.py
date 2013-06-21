@@ -341,7 +341,7 @@ class TurtleArtWindow():
                 pname = os.path.join(path, dirname, dirname + '.py')
                 if os.path.exists(pname):
                     plugin_files.append(dirname)
-            return plugin_files
+        return plugin_files
 
     def _init_plugins(self):
         ''' Try importing plugin files from the plugin dir. '''
