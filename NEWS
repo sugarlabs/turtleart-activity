@@ -1,3 +1,14 @@
+182
+
+ENHANCEMENT:
+* New translations
+
+BUG FIXES:
+* Fixed problem with initializing trash palette when init_on_start
+  flag is set (Alan Aguiar)
+* Disambiguation of parent vs activity (Marion Zepf)
+* Isolation of GUI to enable non-interactive use of canvas (Marion Zepf)
+
 181
 
 BUG FIX:
