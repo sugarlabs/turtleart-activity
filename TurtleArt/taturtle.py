@@ -124,7 +124,7 @@ class Turtles:
         return [self.width / 2.0 + pos[0], self._invert_y_coordinate(pos[1])]
 
     def screen_to_turtle_coordinates(self, pos):
-        ''' The origin of the screen coordinates is the upper left corner '''
+        ''' The origin of the screen coordinates is the upper-left corner '''
         return [pos[0] - self.width / 2.0, self._invert_y_coordinate(pos[1])]
 
     def _invert_y_coordinate(self, y):
@@ -187,6 +187,7 @@ class Turtle:
     def __init__(self, turtles, turtle_name, turtle_colors=None):
         ''' The turtle is not a block, just a sprite with an orientation '''
         self.turtles = turtles
+        self.spr = None
         self.hidden = False
         self.shapes = []
         self.custom_shapes = False
@@ -196,6 +197,8 @@ class Turtle:
         self.x = 0.0
         self.y = 0.0
         self.heading = 0.0
+        self.half_width = 0
+        self.half_height = 0
         self.pen_shade = 50
         self.pen_color = 0
         self.pen_gray = 100
@@ -207,23 +210,28 @@ class Turtle:
 
         self._prep_shapes(turtle_name, self.turtles, turtle_colors)
 
-        # Choose a random angle from which to attach the turtle label.
+        # Create a sprite for the turtle in interactive mode.
         if turtles.sprite_list is not None:
             self.spr = Sprite(self.turtles.sprite_list, 0, 0, self.shapes[0])
+
+            self.half_width = int(self.spr.rect.width / 2.0)
+            self.half_height = int(self.spr.rect.height / 2.0)
+
+            # Choose a random angle from which to attach the turtle
+            # label to be used when sharing.
             angle = uniform(0, pi * 4 / 3.0)  # 240 degrees
-            w = self.shapes[0].get_width()
-            r = w * 0.67
+            width = self.shapes[0].get_width()
+            radius = width * 0.67
             # Restrict the angle to the sides: 30-150; 210-330
             if angle > pi * 2 / 3.0:
                 angle += pi / 2.0  # + 90
-                self.label_xy = [int(r * sin(angle)),
-                                 int(r * cos(angle) + w / 2.0)]
+                self.label_xy = [int(radius * sin(angle)),
+                                 int(radius * cos(angle) + width / 2.0)]
             else:
                 angle += pi / 6.0  # + 30
-                self.label_xy = [int(r * sin(angle) + w / 2.0),
-                                 int(r * cos(angle) + w / 2.0)]
-        else:
-            self.spr = None
+                self.label_xy = [int(radius * sin(angle) + width / 2.0),
+                                 int(radius * cos(angle) + width / 2.0)]
+
         self.turtles.add_to_dict(turtle_name, self)
 
     def set_remote(self):
@@ -482,9 +490,10 @@ class Turtle:
         # self.x, self.y = pos[0], pos[1]
         pos = self.turtles.turtle_to_screen_coordinates(pos)
 
-        if self.turtles.turtle_window.interactive_mode:
-            pos[0] -= int(self.spr.rect.width / 2.0)
-            pos[1] -= int(self.spr.rect.height / 2.0)
+        # In interactive mode, center the sprite around the turtle position
+        if self.spr is not None:
+            pos[0] -= self.half_width
+            pos[1] -= self.half_height
 
             if not self.hidden and self.spr is not None:
                 self.spr.move(pos)

@@ -1719,10 +1719,8 @@ before making changes to your Turtle Blocks program'))
             if self.remote_turtle(turtle.get_name()):
                 return True
             self.selected_turtle = turtle
-            print self.turtles.get_turtle_key(turtle)
             self.turtles.set_turtle(self.turtles.get_turtle_key(turtle))
             self._turtle_pressed(x, y)
-            print x, y
             self.update_counter = 0
             return True
         return False
@@ -2434,30 +2432,23 @@ before making changes to your Turtle Blocks program'))
                 self._adjust_dock_positions(c)
 
     def _turtle_pressed(self, x, y):
-        print 'xy', x, y
         pos = self.selected_turtle.get_xy()
         tpos = self.turtles.turtle_to_screen_coordinates(pos)
-        print 'txy', tpos[0], tpos[1]
-        w = self.selected_turtle.spr.rect.width / 2
-        h = self.selected_turtle.spr.rect.height / 2
-        print 'wh', w, h
-        dx = x - tpos[0] # - w
-        dy = y - tpos[1] # - h
-        print 'dxy', dx, dy
-        # if x, y is near the edge, rotate
+        w = self.selected_turtle.half_width
+        h = self.selected_turtle.half_height
+        dx = x - tpos[0]
+        dy = y - tpos[1]
         if not hasattr(self.lc, 'value_blocks'):
             self.lc.find_value_blocks()
         self.lc.update_values = True
-        print 'a > b?', (dx * dx) + (dy * dy), ((w * w) + (h * h)) / 6
+        # Compare distance squared of drag position to sprite radius.
+        # If x, y is near the edge, rotate.
         if (dx * dx) + (dy * dy) > ((w * w) + (h * h)) / 6:
-            print 'turn'
             self.drag_turtle = (
                 'turn',
-                self.selected_turtle.get_heading()
-                - atan2(dy, dx) / DEGTOR,
+                self.selected_turtle.get_heading() - atan2(dy, dx) / DEGTOR,
                 0)
         else:
-            print 'move', x - tpos[0], y - tpos[1]
             self.drag_turtle = ('move', x - tpos[0], y - tpos[1])
 
     def _move_cb(self, win, event):
@@ -2510,18 +2501,13 @@ before making changes to your Turtle Blocks program'))
 
         # First, check to see if we are dragging or rotating a turtle.
         if self.selected_turtle is not None:
-            dtype, dragx, dragy = self.drag_turtle
-            spos = self.selected_turtle.get_xy()
-            # self.set_turtle(self.selected_turtle.get_name())
+            drag_type, dragx, dragy = self.drag_turtle
             self.update_counter += 1
-            if dtype == 'move':
-                dx = x - dragx - spos[0] + \
-                    self.selected_turtle.spr.rect.width / 2
-                dy = y - dragy - spos[1] + \
-                    self.selected_turtle.spr.rect.height / 2
+            if drag_type == 'move':
+                dx = x - dragx
+                dy = y - dragy
                 self.selected_turtle.spr.set_layer(TOP_LAYER)
-                pos = self.turtles.screen_to_turtle_coordinates(
-                    (spos[0] + dx, spos[1] + dy))
+                pos = self.turtles.screen_to_turtle_coordinates((dx, dy))
                 if self.selected_turtle.get_pen_state():
                     self.selected_turtle.set_pen_state(False)
                     self.selected_turtle.set_xy(pos, share=False)
@@ -2533,11 +2519,13 @@ before making changes to your Turtle Blocks program'))
                         'xcor', self.selected_turtle.get_xy()[0] /
                         self.coord_scale)
                     self.lc.update_label_value(
-                        'ycor', self.selected.get_xy()[1] /
+                        'ycor', self.selected_turtle.get_xy()[1] /
                         self.coord_scale)
             else:
-                dx = x - sx - self.selected_turtle.spr.rect.width / 2
-                dy = y - sy - self.selected_turtle.spr.rect.height / 2
+                spos = self.turtles.turtle_to_screen_coordinates(
+                    self.selected_turtle.get_xy())
+                dx = x - spos[0]
+                dy = y - spos[1]
                 self.turtles.get_active_turtle().set_heading(
                     int(dragx + atan2(dy, dx) / DEGTOR + 5) / 10 * 10,
                     share=False)
@@ -2700,27 +2688,23 @@ before making changes to your Turtle Blocks program'))
 
         # We may have been moving the turtle
         if self.selected_turtle is not None:
-            tpos = self.selected_turtle.get_xy()
-            k = self.turtles.get_turtle_key(self.selected_turtle)
-
+            pos = self.selected_turtle.get_xy()
+            spos = self.turtles.turtle_to_screen_coordinates(pos)
+            turtle_name = self.turtles.get_turtle_key(self.selected_turtle)
             # Remove turtles by dragging them onto the trash palette.
-            if self._in_the_trash(tpos[0], tpos[1]):
+            if self._in_the_trash(spos[0], spos[1]):
                 # If it is the default turtle, just recenter it.
-                if k == self.turtles.get_default_turtle_name():
+                if turtle_name == self.turtles.get_default_turtle_name():
                     self._move_turtle(0, 0)
-                    self.turtles.get_active_turtle().set_heading(0)
-                    # self.canvas.turn_turtle()
+                    self.selected_turtle.set_heading(0)
                     self.lc.update_label_value('heading', 0)
                 else:
                     self.selected_turtle.hide()
-                    self.turtles.remove_from_dict(k)
+                    self.turtles.remove_from_dict(turtle_name)
                     self.turtles.set_active_turtle(None)
             else:
-                self._move_turtle(
-                    tx - self.canvas.width / 2.0 +
-                    self.turtles.get_active_turtle().spr.rect.width / 2.0,
-                    self.canvas.height / 2.0 - ty -
-                    self.turtles.get_active_turtle().spr.rect.height / 2.0)
+                self._move_turtle(pos[0], pos[1])
+
             self.selected_turtle = None
             if self.turtles.get_active_turtle() is None:
                 self.turtles.set_turtle(self.turtles.get_default_turtle_name())
@@ -2804,15 +2788,18 @@ before making changes to your Turtle Blocks program'))
 
     def _move_turtle(self, x, y):
         ''' Move the selected turtle to (x, y). '''
-        self.turtles.get_active_turtle().move_turtle()
+        if self.drag_turtle[0] == 'move':
+            self.turtles.get_active_turtle().move_turtle((x, y))
         if self.interactive_mode:
             self.display_coordinates()
         if self.running_sugar:
             self.selected_turtle.spr.set_layer(TURTLE_LAYER)
             self.lc.update_label_value(
-                'xcor', self.turtles.get_active_turtle().get_xy()[0] / self.coord_scale)
+                'xcor', self.turtles.get_active_turtle().get_xy()[0] /
+                self.coord_scale)
             self.lc.update_label_value(
-                'ycor', self.turtles.get_active_turtle().get_xy()[1] / self.coord_scale)
+                'ycor', self.turtles.get_active_turtle().get_xy()[1] /
+                self.coord_scale)
 
     def _click_block(self, x, y):
         ''' Click block: lots of special cases to handle... '''
