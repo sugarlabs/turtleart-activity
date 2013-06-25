@@ -260,18 +260,17 @@ class TurtleArtWindow():
         if self.interactive_mode:
             self.sprite_list.set_cairo_context(self.canvas.canvas)
 
-        self.turtles = Turtles(self.sprite_list)
-        if self.nick is None:
-            self.default_turtle_name = DEFAULT_TURTLE
-        else:
-            self.default_turtle_name = self.nick
+        self.turtles = Turtles(self)
+        if self.nick is not None:
+            self.turtles.set_default_turtle_name(self.nick)
         if mycolors is None:
-            Turtle(self, self.turtles, self.default_turtle_name)
+            Turtle(self.turtles, self.turtles.get_default_turtle_name())
         else:
-            Turtle(self, self.turtles, self.default_turtle_name,
+            Turtle(self.turtles, self.turtles.get_default_turtle_name(),
                    mycolors.split(','))
-        self.active_turtle = self.turtles.get_turtle(self.default_turtle_name)
-        self.active_turtle.show()
+        self.turtles.set_active_turtle(self.turtles.get_turtle(
+                self.turtles.get_default_turtle_name()))
+        self.turtles.get_active_turtle().show()
 
         self.canvas.clearscreen(False)
 
@@ -706,15 +705,18 @@ class TurtleArtWindow():
 
     def draw_overlay(self, overlay):
         ''' Draw a coordinate grid onto the canvas. '''
-        save_heading = self.canvas.heading
-        self.canvas.heading = 0
-        w = self.overlay_shapes[overlay].rect[2]
-        h = self.overlay_shapes[overlay].rect[3]
+        width = self.overlay_shapes[overlay].rect[2]
+        height = self.overlay_shapes[overlay].rect[3]
+        if self.running_sugar:
+            y_offset = 0
+        else:
+            y_offset = ICON_SIZE
         self.canvas.draw_surface(
             self.overlay_shapes[overlay].cached_surfaces[0],
-            (self.canvas.width - w) / 2.,
-            (self.canvas.height - h) / 2., w, h)
-        self.canvas.heading = save_heading
+            (self.canvas.width - width) / 2.0,
+            (self.canvas.height - height + y_offset) / 2.0,
+            width,
+            height)
 
     def update_overlay_position(self, widget, event):
         ''' Reposition the overlays when window size changes '''
@@ -744,7 +746,7 @@ class TurtleArtWindow():
         self.metric = False
         self.canvas.width = self.width
         self.canvas.height = self.height
-        self.active_turtle.move_turtle()
+        self.turtles.get_active_turtle().move_turtle()
 
     def hideshow_button(self):
         ''' Hide/show button '''
@@ -1711,14 +1713,16 @@ before making changes to your Turtle Blocks program'))
 
     def _look_for_a_turtle(self, spr, x, y):
         # Next, look for a turtle
-        t = self.turtles.spr_to_turtle(spr)
-        if t is not None:
+        turtle = self.turtles.spr_to_turtle(spr)
+        if turtle is not None:
             # If turtle is shared, ignore click
-            if self.remote_turtle(t.get_name()):
+            if self.remote_turtle(turtle.get_name()):
                 return True
-            self.selected_turtle = t
-            self.set_turtle(self.turtles.get_turtle_key(t))
+            self.selected_turtle = turtle
+            print self.turtles.get_turtle_key(turtle)
+            self.turtles.set_turtle(self.turtles.get_turtle_key(turtle))
             self._turtle_pressed(x, y)
+            print x, y
             self.update_counter = 0
             return True
         return False
@@ -2430,19 +2434,29 @@ before making changes to your Turtle Blocks program'))
                 self._adjust_dock_positions(c)
 
     def _turtle_pressed(self, x, y):
+        x, y = self.turtles.screen_to_turtle_coordinates(x, y)
+        print 'xy', x, y
         (tx, ty) = self.selected_turtle.get_xy()
+        print 'txy', tx, ty
         w = self.selected_turtle.spr.rect.width / 2
         h = self.selected_turtle.spr.rect.height / 2
         dx = x - tx - w
         dy = y - ty - h
+        print 'dxy', dx, dy
         # if x, y is near the edge, rotate
         if not hasattr(self.lc, 'value_blocks'):
             self.lc.find_value_blocks()
         self.lc.update_values = True
+        print 'a > b?', (dx * dx) + (dy * dy), ((w * w) + (h * h)) / 6
         if (dx * dx) + (dy * dy) > ((w * w) + (h * h)) / 6:
-            self.drag_turtle = \
-                ('turn', self.canvas.heading - atan2(dy, dx) / DEGTOR, 0)
+            print 'turn'
+            self.drag_turtle = (
+                'turn',
+                self.selected_turtle.get_heading()
+                - atan2(dy, dx) / DEGTOR,
+                0)
         else:
+            print 'move', x - tx, y - ty
             self.drag_turtle = ('move', x - tx, y - ty)
 
     def _move_cb(self, win, event):
@@ -2456,18 +2470,19 @@ before making changes to your Turtle Blocks program'))
         ''' Share turtle movement and rotation after button up '''
         if self.sharing():
             nick = self.turtle_movement_to_share.get_name()
-            self.send_event("r|%s" %
-                            (data_to_string([nick,
-                                             round_int(self.canvas.heading)])))
+            self.send_event("r|%s" % (data_to_string([nick,
+                                                      round_int(
+                self.turtles.get_active_turtle().get_heading())])))
             if self.canvas.pen_down:
                 self.send_event('p|%s' % (data_to_string([nick, False])))
                 put_pen_back_down = True
             else:
                 put_pen_back_down = False
             self.send_event("x|%s" %
-                            (data_to_string([nick,
-                                             [round_int(self.canvas.xcor),
-                                              round_int(self.canvas.ycor)]])))
+                            (data_to_string(
+                        [nick,
+                         [round_int(self.turtles.get_active_turtle().get_xy()[0]),
+                          round_int(self.turtles.get_active_turtle().get_xy()[1])]])))
             if put_pen_back_down:
                 self.send_event('p|%s' % (data_to_string([nick, True])))
         self.turtle_movement_to_share = None
@@ -2502,26 +2517,31 @@ before making changes to your Turtle Blocks program'))
                 dx = x - dragx - sx + self.selected_turtle.spr.rect.width / 2
                 dy = y - dragy - sy + self.selected_turtle.spr.rect.height / 2
                 self.selected_turtle.spr.set_layer(TOP_LAYER)
-                tx, ty = self.canvas.screen_to_turtle_coordinates(sx + dx,
-                                                                  sy + dy)
-                if self.active_turtle.get_pen_state():
-                    self.active_turtle.set_pen_state(False)
-                    self.active_turtle.set_xy(tx, ty, share=False)
-                    self.active_turtle.set_pen_state(True)
+                tx, ty = self.turtles.screen_to_turtle_coordinates(sx + dx,
+                                                                   sy + dy)
+                debug_output('DRAG %f, %f' % (tx, ty), self.running_sugar)
+                if self.turtles.get_active_turtle().get_pen_state():
+                    self.turtles.get_active_turtle().set_pen_state(False)
+                    self.turtles.get_active_turtle().set_xy(tx, ty, share=False)
+                    self.turtles.get_active_turtle().set_pen_state(True)
                 else:
-                    self.active_turtle.set_xy(tx, ty, share=False)
+                    self.turtles.get_active_turtle().set_xy(tx, ty, share=False)
                 if self.update_counter % 5:
                     self.lc.update_label_value(
-                        'xcor', self.canvas.xcor / self.coord_scale)
+                        'xcor', self.turtles.get_active_turtle().get_xy()[0] /
+                        self.coord_scale)
                     self.lc.update_label_value(
-                        'ycor', self.canvas.ycor / self.coord_scale)
+                        'ycor', self.turtles.get_active_turtle().get_xy()[1] /
+                        self.coord_scale)
             else:
                 dx = x - sx - self.selected_turtle.spr.rect.width / 2
                 dy = y - sy - self.selected_turtle.spr.rect.height / 2
-                self.canvas.seth(int(dragx + atan2(dy, dx) / DEGTOR + 5) /
-                                 10 * 10, share=False)
+                self.turtles.get_active_turtle().set_heading(
+                    int(dragx + atan2(dy, dx) / DEGTOR + 5) / 10 * 10,
+                    share=False)
                 if self.update_counter % 5:
-                    self.lc.update_label_value('heading', self.canvas.heading)
+                    self.lc.update_label_value(
+                        'heading', self.turtles.get_active_turtle().get_heading())
             if self.update_counter % 20:
                 self.display_coordinates()
             self.turtle_movement_to_share = self.selected_turtle
@@ -2684,24 +2704,24 @@ before making changes to your Turtle Blocks program'))
             # Remove turtles by dragging them onto the trash palette.
             if self._in_the_trash(tx, ty):
                 # If it is the default turtle, just recenter it.
-                if k == self.default_turtle_name:
+                if k == self.turtles.get_default_turtle_name():
                     self._move_turtle(0, 0)
-                    self.canvas.heading = 0
-                    self.canvas.turn_turtle()
-                    self.lc.update_label_value('heading', self.canvas.heading)
+                    self.turtles.get_active_turtle().set_heading(0)
+                    # self.canvas.turn_turtle()
+                    self.lc.update_label_value('heading', 0)
                 else:
                     self.selected_turtle.hide()
                     self.turtles.remove_from_dict(k)
-                    self.active_turtle = None
+                    self.turtles.set_active_turtle(None)
             else:
                 self._move_turtle(
-                    tx - self.canvas.width / 2. +
-                    self.active_turtle.spr.rect.width / 2.,
-                    self.canvas.height / 2. - ty -
-                    self.active_turtle.spr.rect.height / 2.)
+                    tx - self.canvas.width / 2.0 +
+                    self.turtles.get_active_turtle().spr.rect.width / 2.0,
+                    self.canvas.height / 2.0 - ty -
+                    self.turtles.get_active_turtle().spr.rect.height / 2.0)
             self.selected_turtle = None
-            if self.active_turtle is None:
-                self.set_turtle(self.default_turtle_name)
+            if self.turtles.get_active_turtle() is None:
+                self.turtles.set_turtle(self.turtles.get_default_turtle_name())
             self.display_coordinates()
             return
 
@@ -2777,21 +2797,20 @@ before making changes to your Turtle Blocks program'))
                 turtle.label_block.spr.set_label(name[0:4] + '…')
             else:
                 turtle.label_block.spr.set_label(name)
+            turtle.set_remote()
             turtle.show()
 
     def _move_turtle(self, x, y):
         ''' Move the selected turtle to (x, y). '''
-        self.canvas.xcor = x
-        self.canvas.ycor = y
-        self.active_turtle.move_turtle()
+        self.turtles.get_active_turtle().move_turtle()
         if self.interactive_mode:
             self.display_coordinates()
         if self.running_sugar:
             self.selected_turtle.spr.set_layer(TURTLE_LAYER)
-            self.lc.update_label_value('xcor',
-                                       self.canvas.xcor / self.coord_scale)
-            self.lc.update_label_value('ycor',
-                                       self.canvas.ycor / self.coord_scale)
+            self.lc.update_label_value(
+                'xcor', self.turtles.get_active_turtle().get_xy()[0] / self.coord_scale)
+            self.lc.update_label_value(
+                'ycor', self.turtles.get_active_turtle().get_xy()[1] / self.coord_scale)
 
     def _click_block(self, x, y):
         ''' Click block: lots of special cases to handle... '''
@@ -3546,13 +3565,15 @@ before making changes to your Turtle Blocks program'))
     def _jog_turtle(self, dx, dy):
         ''' Jog turtle '''
         if dx == -1 and dy == -1:
-            self.canvas.xcor = 0
-            self.canvas.ycor = 0
+            x = 0
+            y = 0
         else:
-            self.canvas.xcor += dx
-            self.canvas.ycor += dy
-        self.active_turtle = self.turtles.spr_to_turtle(self.selected_spr)
-        self.active_turtle.move_turtle()
+            x, y = self.turtles.get_active_turtle().get_xy()
+            x += dx
+            y += dy
+        self.turtles.set_active_turtle(
+            self.turtles.spr_to_turtle(self.selected_spr))
+        self.turtles.get_active_turtle().move_turtle(x, y)
         self.display_coordinates()
         self.selected_turtle = None
 
@@ -3718,7 +3739,7 @@ before making changes to your Turtle Blocks program'))
 
             if add_new_block:
                 # add a new block for this code at turtle position
-                (tx, ty) = self.active_turtle.get_xy()
+                (tx, ty) = self.turtles.get_active_turtle().get_xy()
                 self._new_block('userdefined', tx, ty)
                 self.myblock[self.block_list.list.index(self.drag_group[0])] =\
                     self.python_code
@@ -3845,13 +3866,13 @@ before making changes to your Turtle Blocks program'))
     def load_turtle(self, blk, key=1):
         ''' Restore a turtle from its saved state '''
         tid, name, xcor, ycor, heading, color, shade, pensize = blk
-        self.set_turtle(key)
-        self.active_turtle.setxy(xcor, ycor, pendown=False)
-        self.active_turtle.set_heading(heading)
-        self.active_turtle.set_color(color)
-        self.active_turtle.set_shade(shade)
-        self.active_turtle.set_gray(100)
-        self.active_turtle.set_pen_size(pensize)
+        self.turtles.set_turtle(key)
+        self.turtles.get_active_turtle().set_xy(xcor, ycor, pendown=False)
+        self.turtles.get_active_turtle().set_heading(heading)
+        self.turtles.get_active_turtle().set_color(color)
+        self.turtles.get_active_turtle().set_shade(shade)
+        self.turtles.get_active_turtle().set_gray(100)
+        self.turtles.get_active_turtle().set_pen_size(pensize)
 
     def load_block(self, b, offset=0):
         ''' Restore individual blocks from saved state '''
@@ -3954,8 +3975,8 @@ before making changes to your Turtle Blocks program'))
             btype = OLD_NAMES[btype]
 
         blk = Block(self.block_list, self.sprite_list, btype,
-                    b[2] + self.canvas.cx + offset,
-                    b[3] + self.canvas.cy + offset,
+                    b[2] + offset,
+                    b[3] + offset,
                     'block', values, self.block_scale)
 
         # If it was an unknown block type, we need to match the number
@@ -4188,8 +4209,7 @@ before making changes to your Turtle Blocks program'))
             if not save_project:
                 sx += 20
                 sy += 20
-            data.append((blk.id, name, sx - self.canvas.cx,
-                         sy - self.canvas.cy, connections))
+            data.append((blk.id, name, sx, sy, connections))
         if save_turtle:
             for turtle in iter(self.turtles.dict):
                 # Don't save remote turtles
@@ -4197,12 +4217,15 @@ before making changes to your Turtle Blocks program'))
                     # Save default turtle as 'Yertle'
                     if turtle == self.nick:
                         turtle = DEFAULT_TURTLE
+                    x, y = self.turtles.get_active_turtle().get_xy()
                     data.append(
                         (-1,
-                         ['turtle', turtle],
-                         self.canvas.xcor, self.canvas.ycor,
-                         self.canvas.heading, self.canvas.color,
-                         self.canvas.shade, self.canvas.pensize))
+                          ['turtle', turtle],
+                          x, y,
+                          self.turtles.get_active_turtle().get_heading(),
+                          self.turtles.get_active_turtle().get_color(),
+                          self.turtles.get_active_turtle().get_shade(),
+                          self.turtles.get_active_turtle().get_pen_size()))
         return data
 
     def display_coordinates(self, clear=False):
@@ -4214,9 +4237,11 @@ before making changes to your Turtle Blocks program'))
             elif self.interactive_mode:
                 self.parent.set_title('')
         else:
-            x = round_int(float(self.canvas.xcor) / self.coord_scale)
-            y = round_int(float(self.canvas.ycor) / self.coord_scale)
-            h = round_int(self.canvas.heading)
+            x = round_int(float(self.turtles.get_active_turtle().get_xy()[0]) /
+                          self.coord_scale)
+            y = round_int(float(self.turtles.get_active_turtle().get_xy()[1]) /
+                          self.coord_scale)
+            h = round_int(self.turtles.get_active_turtle().get_heading())
             if self.running_sugar:
                 if int(x) == x and int(y) == y and int(h) == h:
                     formatting = '(%d, %d) %d'
@@ -4659,50 +4684,3 @@ variable'))
         (b1x, b1y) = block1.spr.get_xy()
         (b2x, b2y) = block2.spr.get_xy()
         return ((b1x + d1x) - (b2x + d2x), (b1y + d1y) - (b2y + d2y))
-
-    def reset_turtles(self):
-        for turtle_key in iter(self.turtles.dict):
-            # Don't reset remote turtles
-            if not self.remote_turtle(turtle_key):
-                self.set_turtle(turtle_key)
-                self.active_turtle.set_color(0)
-                self.active_turtle.set_shade(50)
-                self.active_turtle.set_gray(100)
-                self.active_turtle.set_pen_size(5)
-                self.active_turtle.reset_shapes()
-                self.active_turtle.set_heading(0.0)
-                self.active_turtle.set_pen_state(False)
-                self.active_turtle.move((0.0, 0.0))
-                self.active_turtle.set_pen_state(True)
-                self.active_turtle.set_fill(False)
-                self.active_turtle.hide()
-        self.set_turtle(self.default_turtle_name)
-
-    def set_turtle(self, key, colors=None):
-        ''' Select the current turtle and associated pen status '''
-        if key not in self.turtles.dict:
-            # if it is a new turtle, start it in the center of the screen
-            self.active_turtle = self.turtles.get_turtle(k, True, colors)
-            self.active_turtle.set_heading(0.0, False)
-            self.active_turtle.set_xy(0.0, 0.0, False, pendown=False)
-            self.active_turtle.set_pen_state(True)
-        elif colors is not None:
-            self.active_turtle = self.turtles.get_turtle(key, False)
-            self.active_turtle.set_turtle_colors(colors)
-        else:
-            self.active_turtle = self.turtles.get_turtle(key, False)
-        self.active_turtle.show()
-        tx, ty = self.active_turtle.get_xy()
-        x, y = self.canvas.screen_to_turtle_coordinates(tx, ty)
-        self.canvas.set_xy(x, y)
-        if self.interactive_mode:
-            x, y = self.canvas.get_xy()
-            debug_output('%f %f' % (x, y), self.running_sugar) 
-            self.canvas.set_xy(x + self.active_turtle.spr.rect.width / 2.,
-                               y - self.active_turtle.spr.rect.height / 2.)
-        self.heading = self.active_turtle.get_heading()
-        self.active_turtle.set_color(share=False)
-        self.active_turtle.set_gray(share=False)
-        self.active_turtle.set_shade(share=False)
-        self.active_turtle.set_pen_size(share=False)
-        self.active_turtle.set_pen_state(share=False)

@@ -21,15 +21,13 @@
 #THE SOFTWARE.
 
 import gtk
-import gobject
-from math import sin, cos, pi
+from math import pi
 import os
 import pango
 import cairo
 import pangocairo
 
-from tautils import (image_to_base64, get_path, data_to_string, round_int,
-                     debug_output)
+from tautils import get_path
 from taconstants import COLORDICT
 
 
@@ -112,21 +110,15 @@ class TurtleGraphics:
         cr = gtk.gdk.CairoContext(self.canvas)
         cr.set_line_cap(1)  # Set the line cap to be round
         self.cr_svg = None  # Surface used for saving to SVG
-        self.cx = 0
-        self.cy = 0
         self.fgrgb = [255, 0, 0]
         self.bgrgb = [255, 248, 222]
-        self.textsize = 48  # deprecated
         self.shade = 0
-        self.pen_down = False
-        self.xcor = 0
-        self.ycor = 0
-        self.heading = 0
-        self.pen_size = 5
         self.color = 0
         self.gray = 100
-        self.fill = False
-        self.poly_points = []
+        self.textsize = 48
+        self.cx = 0
+        self.cy = 0
+        self.set_pen_size(5)
 
     def setup_svg_surface(self):
         ''' Set up a surface for saving to SVG '''
@@ -197,10 +189,10 @@ class TurtleGraphics:
             cr.arc_negative(x, y, r, h * DEGTOR, (h - a) * DEGTOR)
             cr.stroke()
 
-        _larc(self.canvas, x, y, r, a, self.heading)
+        _larc(self.canvas, x, y, r, a, heading)
         self.inval()
         if self.cr_svg is not None:
-            _larc(self.cr_svg, x, y, r, a, self.heading)
+            _larc(self.cr_svg, x, y, r, a, heading)
 
     def set_pen_size(self, pen_size):
         ''' Set the pen size '''
@@ -215,23 +207,31 @@ class TurtleGraphics:
     def fillscreen_with_gray(self, color, shade, gray):
         ''' Fill screen with color/shade/gray and reset to defaults '''
 
+        save_rgb = self.fgrgb[:]
+
         # Special case for color blocks
         if color in COLORDICT:
             if COLORDICT[color][0] is None:
                 self.shade = COLORDICT[color][1]
             else:
                 self.color = COLORDICT[color][0]
+        else:
+            self.color = color
         if shade in COLORDICT:
             self.shade = COLORDICT[shade][1]
+        else:
+            self.shade = shade
         if gray in COLORDICT:
             self.gray = COLORDICT[gray][2]
+        else:
+            self.gray = gray
 
         if self.gray < 0:
             self.gray = 0
         if self.gray > 100:
             self.gray = 100
 
-        self.set_fgcolor(self)
+        self.set_fgcolor(shade=self.shade, gray=self.gray, color=self.color)
         self.bgrgb = self.fgrgb[:]
 
         def _fillscreen(cr, rgb, w, h):
@@ -244,16 +244,16 @@ class TurtleGraphics:
         if self.cr_svg is not None:
             _fillscreen(self.cr_svg, self.fgrgb, self.width, self.height)
 
-        # self.tw.active_turtle.set_fill(state=False)
+        self.fgrgb = save_rgb[:]
 
     def set_fgcolor(self, shade=None, gray=None, color=None):
         ''' Set the foreground color '''
         if shade is not None:
-            self.shade=shade
+            self.shade = shade
         if gray is not None:
-            self.gray=gray
+            self.gray = gray
         if color is not None:
-            self.color=color
+            self.color = color
         sh = (wrap100(self.shade) - 50) / 50.0
         rgb = COLOR_TABLE[wrap100(self.color)]
         r = (rgb >> 8) & 0xff00
@@ -266,10 +266,6 @@ class TurtleGraphics:
         b = calc_gray(b, self.gray)
         b = calc_shade(b, sh)
         self.fgrgb = [r >> 8, g >> 8, b >> 8]
-
-    def set_pen(self, state):
-        ''' Lower or raise the pen '''
-        self.pen_down = state
 
     def draw_surface(self, surface, x, y, w, h):
         ''' Draw a surface '''
@@ -285,7 +281,7 @@ class TurtleGraphics:
         if self.cr_svg is not None:
             _draw_surface(self.cr_svg, surface, x, y, w, h)
 
-    def draw_pixbuf(self, pixbuf, a, b, x, y, w, h, path, share=True):
+    def draw_pixbuf(self, pixbuf, a, b, x, y, w, h, heading):
         ''' Draw a pixbuf '''
 
         def _draw_pixbuf(cr, pixbuf, a, b, x, y, w, h, heading):
@@ -302,35 +298,13 @@ class TurtleGraphics:
             cc.fill()
             cc.restore()
 
-        _draw_pixbuf(self.canvas, pixbuf, a, b, x, y, w, h, self.heading)
+        _draw_pixbuf(self.canvas, pixbuf, a, b, x, y, w, h, heading)
         self.inval()
         if self.cr_svg is not None:
-            _draw_pixbuf(self.cr_svg, pixbuf, a, b, x, y, w, h, self.heading)
-        if self.tw.sharing() and share:
-            if self.tw.running_sugar:
-                tmp_path = get_path(self.tw.activity, 'instance')
-            else:
-                tmp_path = '/tmp'
-            tmp_file = os.path.join(get_path(self.tw.activity, 'instance'),
-                                    'tmpfile.png')
-            pixbuf.save(tmp_file, 'png', {'quality': '100'})
-            data = image_to_base64(tmp_file, tmp_path)
-            height = pixbuf.get_height()
-            width = pixbuf.get_width()
-            x, y = self.screen_to_turtle_coordinates(x, y)
-            event = 'P|%s' % (data_to_string([self._get_my_nick(),
-                                              [round_int(a), round_int(b),
-                                               round_int(x), round_int(y),
-                                               round_int(w), round_int(h),
-                                               round_int(width),
-                                               round_int(height),
-                                               data]]))
-            gobject.idle_add(self.tw.send_event, event)
-            os.remove(tmp_file)
+            _draw_pixbuf(self.cr_svg, pixbuf, a, b, x, y, w, h, heading)
 
-    def draw_text(self, label, x, y, size, w, share=True):
+    def draw_text(self, label, x, y, size, w, heading):
         ''' Draw text '''
-        w *= self.tw.coord_scale
 
         def _draw_text(cr, label, x, y, size, w, scale, heading, rgb):
             cc = pangocairo.CairoContext(cr)
@@ -354,47 +328,19 @@ class TurtleGraphics:
             cc.restore()
 
         _draw_text(self.canvas, label, x, y, size, w, self.tw.coord_scale,
-                   self.heading, self.fgrgb)
+                   heading, self.fgrgb)
         self.inval()
         if self.cr_svg is not None:  # and self.pendown:
             _draw_text(self.cr_svg, label, x, y, size, w, self.tw.coord_scale,
-                       self.heading, self.fgrgb)
-        if self.tw.sharing() and share:
-            event = 'W|%s' % (data_to_string([self._get_my_nick(),
-                                              [label, round_int(x),
-                                               round_int(y), round_int(size),
-                                               round_int(w)]]))
-            self.tw.send_event(event)
-
-    def turtle_to_screen_coordinates(self, x, y):
-        ''' The origin of turtle coordinates is the center of the screen '''
-        return self.width / 2. + x, self.invert_y_coordinate(y)
-
-    def screen_to_turtle_coordinates(self, x, y):
-        ''' The origin of the screen coordinates is the upper left corner '''
-        return x - self.width / 2., self.invert_y_coordinate(y)
-
-    def invert_y_coordinate(self, y):
-        ''' Positive y goes up in turtle coordinates, down in sceeen
-        coordinates '''
-        return self.height / 2. - y
+                       heading, self.fgrgb)
 
     def set_rgb(self, r, g, b):
         self.canvas.set_source_rgb(r, g, b)
         if self.cr_svg is not None:
             self.cr_svg.set_source_rgb(r, g, b)
 
-    def set_xy(self, x, y):
-        self.xcor = x
-        self.ycor = y
-
-    def get_xy(self):
-        return self.xcor, self.ycor
-
     def draw_line(self, x1, y1, x2, y2):
         ''' Draw a line '''
-        x1, y1 = self.turtle_to_screen_coordinates(x1, y1)
-        x2, y2 = self.turtle_to_screen_coordinates(x2, y2)
 
         def _draw_line(cr, x1, y1, x2, y2):
             cr.move_to(x1, y1)
@@ -439,10 +385,9 @@ class TurtleGraphics:
                 closest_color = i
         return closest_color
 
-    def get_pixel(self):
+    def get_pixel(self, x, y):
         ''' Read the pixel at x, y '''
         if self.tw.interactive_mode:
-            x, y = self.turtle_to_screen_coordinates(self.xcor, self.ycor)
             x = int(x)
             y = int(y)
             w = self.tw.turtle_canvas.get_width()
@@ -469,9 +414,6 @@ class TurtleGraphics:
     def svg_reset(self):
         ''' Reset svg flags '''
         self.cr_svg = None
-
-    def _get_my_nick(self):
-        return self.tw.nick
 
     def inval(self):
         ''' Invalidate a region for gtk '''
