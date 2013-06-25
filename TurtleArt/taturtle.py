@@ -345,12 +345,12 @@ class Turtle:
             else:
                 color = self.pen_color
 
-            try:
-                self.pen_color = color
-            except (TypeError, ValueError):
-                debug_output('bad value sent to %s' % (__name__),
-                             self.turtles.turtle_window.running_sugar)
-                return
+        try:
+            self.pen_color = color
+        except (TypeError, ValueError):
+            debug_output('bad value sent to %s' % (__name__),
+                         self.turtles.turtle_window.running_sugar)
+            return
 
         self.turtles.turtle_window.canvas.set_fgcolor(shade=self.pen_shade,
                                                       gray=self.pen_gray,
@@ -728,5 +728,5 @@ class Turtle:
 
     def get_pixel(self):
         x, y = self.get_xy()
-        pos = self.turtle_to_screen_coordinates((x, y))
+        pos = self.turtles.turtle_to_screen_coordinates((x, y))
         return self.turtles.turtle_window.canvas.get_pixel(pos[0], pos[1])
