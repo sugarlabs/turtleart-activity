@@ -104,20 +104,19 @@ class TurtleGraphics:
         self.turtle_window = turtle_window
         self.width = width
         self.height = height
+        self.textsize = 48
+        self._fgrgb = [255, 0, 0]
+        self._bgrgb = [255, 248, 222]
+        self._shade = 0
+        self._color = 0
+        self._gray = 100
+        self.cr_svg = None  # Surface used for saving to SVG
 
         # Build a cairo.Context from a cairo.XlibSurface
         self.canvas = cairo.Context(self.turtle_window.turtle_canvas)
         cr = gtk.gdk.CairoContext(self.canvas)
         cr.set_line_cap(1)  # Set the line cap to be round
-        self.cr_svg = None  # Surface used for saving to SVG
-        self.fgrgb = [255, 0, 0]
-        self.bgrgb = [255, 248, 222]
-        self.shade = 0
-        self.color = 0
-        self.gray = 100
-        self.textsize = 48
-        self.cx = 0
-        self.cy = 0
+
         self.set_pen_size(5)
 
     def setup_svg_surface(self):
@@ -159,10 +158,10 @@ class TurtleGraphics:
 
         def _clearscreen(cr):
             cr.move_to(0, 0)
-            self.bgrgb = [255, 248, 222]
-            cr.set_source_rgb(self.bgrgb[0] / 255.,
-                              self.bgrgb[1] / 255.,
-                              self.bgrgb[2] / 255.)
+            self._bgrgb = [255, 248, 222]
+            cr.set_source_rgb(self._bgrgb[0] / 255.,
+                              self._bgrgb[1] / 255.,
+                              self._bgrgb[2] / 255.)
             cr.rectangle(0, 0, self.width * 2, self.height * 2)
             cr.fill()
 
@@ -202,70 +201,70 @@ class TurtleGraphics:
 
     def fillscreen(self, c, s):
         ''' Deprecated method: Fill screen with color/shade '''
-        self.fillscreen_with_gray(c, s, self.gray)
+        self.fillscreen_with_gray(c, s, self._gray)
 
     def fillscreen_with_gray(self, color, shade, gray):
         ''' Fill screen with color/shade/gray and reset to defaults '''
 
-        save_rgb = self.fgrgb[:]
+        save_rgb = self._fgrgb[:]
 
         # Special case for color blocks
         if color in COLORDICT:
             if COLORDICT[color][0] is None:
-                self.shade = COLORDICT[color][1]
+                self._shade = COLORDICT[color][1]
             else:
-                self.color = COLORDICT[color][0]
+                self._color = COLORDICT[color][0]
         else:
-            self.color = color
+            self._color = color
         if shade in COLORDICT:
-            self.shade = COLORDICT[shade][1]
+            self._shade = COLORDICT[shade][1]
         else:
-            self.shade = shade
+            self._shade = shade
         if gray in COLORDICT:
-            self.gray = COLORDICT[gray][2]
+            self._gray = COLORDICT[gray][2]
         else:
-            self.gray = gray
+            self._gray = gray
 
-        if self.gray < 0:
-            self.gray = 0
-        if self.gray > 100:
-            self.gray = 100
+        if self._gray < 0:
+            self._gray = 0
+        if self._gray > 100:
+            self._gray = 100
 
-        self.set_fgcolor(shade=self.shade, gray=self.gray, color=self.color)
-        self.bgrgb = self.fgrgb[:]
+        self.set_fgcolor(shade=self._shade, gray=self._gray, color=self._color)
+        self._bgrgb = self._fgrgb[:]
 
         def _fillscreen(cr, rgb, w, h):
             cr.set_source_rgb(rgb[0] / 255., rgb[1] / 255., rgb[2] / 255.)
             cr.rectangle(0, 0, w * 2, h * 2)
             cr.fill()
 
-        _fillscreen(self.canvas, self.fgrgb, self.width, self.height)
+        _fillscreen(self.canvas, self._fgrgb, self.width, self.height)
         self.inval()
         if self.cr_svg is not None:
-            _fillscreen(self.cr_svg, self.fgrgb, self.width, self.height)
+            _fillscreen(self.cr_svg, self._fgrgb, self.width, self.height)
 
-        self.fgrgb = save_rgb[:]
+        self._fgrgb = save_rgb[:]
 
     def set_fgcolor(self, shade=None, gray=None, color=None):
         ''' Set the foreground color '''
         if shade is not None:
-            self.shade = shade
+            self._shade = shade
         if gray is not None:
-            self.gray = gray
+            self._gray = gray
         if color is not None:
-            self.color = color
-        sh = (wrap100(self.shade) - 50) / 50.0
-        rgb = COLOR_TABLE[wrap100(self.color)]
+            self._color = color
+        sh = (wrap100(self._shade) - 50) / 50.0
+        rgb = COLOR_TABLE[wrap100(self._color)]
         r = (rgb >> 8) & 0xff00
-        r = calc_gray(r, self.gray)
+        r = calc_gray(r, self._gray)
         r = calc_shade(r, sh)
         g = rgb & 0xff00
-        g = calc_gray(g, self.gray)
+        g = calc_gray(g, self._gray)
         g = calc_shade(g, sh)
         b = (rgb << 8) & 0xff00
-        b = calc_gray(b, self.gray)
+        b = calc_gray(b, self._gray)
         b = calc_shade(b, sh)
-        self.fgrgb = [r >> 8, g >> 8, b >> 8]
+        self._fgrgb = [r >> 8, g >> 8, b >> 8]
 
     def draw_surface(self, surface, x, y, w, h):
         ''' Draw a surface '''
@@ -303,10 +302,10 @@ class TurtleGraphics:
         if self.cr_svg is not None:
             _draw_pixbuf(self.cr_svg, pixbuf, a, b, x, y, w, h, heading)
 
-    def draw_text(self, label, x, y, size, w, heading, scale):
+    def draw_text(self, label, x, y, size, width, heading, scale):
         ''' Draw text '''
 
-        def _draw_text(cr, label, x, y, size, w, scale, heading, rgb):
+        def _draw_text(cr, label, x, y, size, width, scale, heading, rgb):
             cc = pangocairo.CairoContext(cr)
             pl = cc.create_layout()
             fd = pango.FontDescription('Sans')
@@ -318,7 +317,7 @@ class TurtleGraphics:
                 pl.set_text(str(label))
             else:
                 pl.set_text(str(label))
-            pl.set_width(int(w) * pango.SCALE)
+            pl.set_width(int(width) * pango.SCALE)
             cc.save()
             cc.translate(x, y)
             cc.rotate(heading * DEGTOR)
@@ -327,15 +326,18 @@ class TurtleGraphics:
             cc.show_layout(pl)
             cc.restore()
 
-        w *= scale
-        _draw_text(self.canvas, label, x, y, size, w, scale, heading,
-                   self.fgrgb)
+        width *= scale
+        _draw_text(self.canvas, label, x, y, size, width, scale, heading,
+                   self._fgrgb)
         self.inval()
         if self.cr_svg is not None:  # and self.pendown:
-            _draw_text(self.cr_svg, label, x, y, size, w, scale, heading,
-                       self.fgrgb)
+            _draw_text(self.cr_svg, label, x, y, size, width, scale, heading,
+                       self._fgrgb)
 
-    def set_rgb(self, r, g, b):
+    def set_source_rgb(self):
+        r = self._fgrgb[0] / 255.
+        g = self._fgrgb[1] / 255.
+        b = self._fgrgb[2] / 255.
         self.canvas.set_source_rgb(r, g, b)
         if self.cr_svg is not None:
             self.cr_svg.set_source_rgb(r, g, b)
@@ -355,19 +357,19 @@ class TurtleGraphics:
 
     def get_color_index(self, r, g, b, a=0):
         ''' Find the closest palette entry to the rgb triplet '''
-        if self.shade != 50 or self.gray != 100:
+        if self._shade != 50 or self._gray != 100:
             r <<= 8
             g <<= 8
             b <<= 8
-            if self.shade != 50:
-                sh = (wrap100(self.shade) - 50) / 50.
+            if self._shade != 50:
+                sh = (wrap100(self._shade) - 50) / 50.
                 r = calc_shade(r, sh, True)
                 g = calc_shade(g, sh, True)
                 b = calc_shade(b, sh, True)
-            if self.gray != 100:
-                r = calc_gray(r, self.gray, True)
-                g = calc_gray(g, self.gray, True)
-                b = calc_gray(b, self.gray, True)
+            if self._gray != 100:
+                r = calc_gray(r, self._gray, True)
+                g = calc_gray(g, self._gray, True)
+                b = calc_gray(b, self._gray, True)
             r >>= 8
             g >>= 8
             b >>= 8

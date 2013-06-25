@@ -518,10 +518,7 @@ class Turtle:
 
     def _draw_line(self, old, new, pendown):
         if self.pen_state and pendown:
-            self.turtles.turtle_window.canvas.set_rgb(
-                self.turtles.turtle_window.canvas.fgrgb[0] / 255.,
-                self.turtles.turtle_window.canvas.fgrgb[1] / 255.,
-                self.turtles.turtle_window.canvas.fgrgb[2] / 255.)
+            self.turtles.turtle_window.canvas.set_source_rgb()
             pos1 = self.turtles.turtle_to_screen_coordinates(old)
             pos2 = self.turtles.turtle_to_screen_coordinates(new)
             self.turtles.turtle_window.canvas.draw_line(pos1[0], pos1[1],
@@ -533,11 +530,6 @@ class Turtle:
 
     def forward(self, distance, share=True):
         scaled_distance = distance * self.turtles.turtle_window.coord_scale
-
-        self.turtles.turtle_window.canvas.set_rgb(
-            self.turtles.turtle_window.canvas.fgrgb[0] / 255.,
-            self.turtles.turtle_window.canvas.fgrgb[1] / 255.,
-            self.turtles.turtle_window.canvas.fgrgb[2] / 255.)
 
         old = self.get_xy()
         try:
@@ -578,10 +570,7 @@ class Turtle:
     def arc(self, a, r, share=True):
         ''' Draw an arc '''
         if self.pen_state:
-            self.turtles.turtle_window.canvas.set_rgb(
-                self.turtles.turtle_window.canvas.fgrgb[0] / 255.,
-                self.turtles.turtle_window.canvas.fgrgb[1] / 255.,
-                self.turtles.turtle_window.canvas.fgrgb[2] / 255.)
+            self.turtles.turtle_window.canvas.set_source_rgb()
         try:
             if a < 0:
                 pos = self.larc(-a, r)

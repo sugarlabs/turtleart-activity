@@ -274,7 +274,7 @@ turtle (can be used in place of a number block)'),
         self.tw.lc.def_prim(
             'heading',
             0,
-            lambda self: self.tw.turtles.get_active_turtle().get_heading)
+            lambda self: self.tw.turtles.get_active_turtle().get_heading())
 
         palette.add_block('turtle-label',
                           hidden=True,
