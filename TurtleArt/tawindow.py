@@ -2465,7 +2465,7 @@ before making changes to your Turtle Blocks program'))
             self.send_event("r|%s" % (data_to_string([nick,
                                                       round_int(
                 self.turtles.get_active_turtle().get_heading())])))
-            if self.canvas.pen_down:
+            if self.get_active_turtle().get_pen_state():
                 self.send_event('p|%s' % (data_to_string([nick, False])))
                 put_pen_back_down = True
             else:
