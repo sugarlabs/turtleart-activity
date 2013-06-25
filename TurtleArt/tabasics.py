@@ -260,7 +260,7 @@ the turtle (can be used in place of a number block)'),
         self.tw.lc.def_prim(
             'ycor',
             0,
-            lambda self: self.tw.turtles.get_active_turtle().get_xy() /
+            lambda self: self.tw.turtles.get_active_turtle().get_xy()[1] /
             self.tw.coord_scale)
 
         palette.add_block('heading',
@@ -489,6 +489,18 @@ in place of a number block)'),
             lambda self: self.tw.turtles.get_active_turtle().get_pen_size)
         define_logo_function('tapensize', 'to tapensize\noutput first round \
 pensize\nend\n')
+
+        # Deprecated
+        palette.add_block('settextsize',
+                          hidden=True,
+                          style='basic-style-1arg',
+                          label=_('set text size'),
+                          prim_name='settextsize',
+                          default=0,
+                          help_string=_('sets size of text drawn by the \
+turtle'))
+        self.tw.lc.def_prim('settextsize', 1,
+                            lambda self, x: self.tw.canvas.settextsize(x))
 
     def _color_palette(self):
         ''' The basic Turtle Art color palette '''
