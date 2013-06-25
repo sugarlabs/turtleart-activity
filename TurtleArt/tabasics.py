@@ -19,7 +19,7 @@
 #OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 #THE SOFTWARE.
 
-"""
+'''
 This file contains the constants that by-in-large determine the
 behavior of Turtle Art. Notably, the block palettes are defined
 below. If you want to add a new block to Turtle Art, you could
@@ -43,9 +43,13 @@ add_block method in the Palette class.
     # Next, you need to define what your block will do:
     # def_prim takes 3 arguments: the primitive name, the number of
     # arguments -- 0 in this case -- and the function to call -- in this
-    # case, the canvas.seth function to set the heading.
-    self.tw.lc.def_prim('uturn', 0,
-        lambda self: self.tw.canvas.seth(self.tw.canvas.heading + 180))
+    # case, we define the _prim_uturn function to set heading += 180.
+    self.tw.lc.def_prim('uturn', 0, lambda self: self._prim_uturn)
+    def _prim_uturn(self):
+        value = self.tw.turtles.get_active_turtle().get_heading() + 180
+        self.tw.turtles.get_active_turtle().set_heading(value)
+        if self.tw.lc.update_values:
+            self.tw.lc.update_label_value('heading', value)
 
 That's it. When you next run Turtle Art, you will have a 'uturn' block
 on the 'mypalette' palette.
@@ -56,7 +60,7 @@ mypaletteoff.svg and mypaletteon.svg, where 'mypalette' is the same
 string as the entry you used in instantiating the Palette class. Note
 that the icons should be the same size (55x55) as the others. (This is
 the default icon size for Sugar toolbars.)
-"""
+'''
 
 from time import time, sleep
 from math import sqrt
@@ -78,22 +82,22 @@ def _color_to_num(c):
 
 
 def _num_type(x):
-    """ Is x a number type? """
+    ''' Is x a number type? '''
     if isinstance(x, (int, float)):
         return True
     return False
 
 
 def _millisecond():
-    """ Current time in milliseconds """
+    ''' Current time in milliseconds '''
     return time() * 1000
 
 
 class Palettes():
-    """ a class for creating the palettes of blocks """
+    ''' a class for creating the palettes of blocks '''
 
-    def __init__(self, parent):
-        self.tw = parent
+    def __init__(self, turtle_window):
+        self.tw = turtle_window
 
         self._turtle_palette()
 
@@ -113,7 +117,7 @@ class Palettes():
     # Palette definitions
 
     def _turtle_palette(self):
-        """ The basic Turtle Art turtle palette """
+        ''' The basic Turtle Art turtle palette '''
 
         palette = make_palette('turtle',
                                colors=["#00FF00", "#00A000"],
@@ -127,10 +131,11 @@ class Palettes():
                           default=100,
                           logo_command='forward',
                           help_string=_('moves turtle forward'))
-        self.tw.lc.def_prim('forward', 1,
-                            lambda self, x:
-                            primitive_dictionary['move']
-                            (self.tw.canvas.forward, x))
+        self.tw.lc.def_prim(
+            'forward',
+            1,
+            lambda self, x: primitive_dictionary['move'](
+                self.tw.turtles.get_active_turtle().forward, x))
 
         palette.add_block('back',
                           style='basic-style-1arg',
@@ -142,9 +147,10 @@ class Palettes():
         self.tw.lc.def_prim('back', 1,
                             lambda self, x:
                             primitive_dictionary['move']
-                            (self.tw.canvas.forward, x, reverse=True))
+                            (self.tw.turtles.get_active_turtle().forward, x,
+                             reverse=True))
 
-        primitive_dictionary['clean'] = self.tw.lc.prim_clear
+        primitive_dictionary['clean'] = self._prim_clear
         palette.add_block('clean',
                           style='basic-style-extended-vertical',
                           label=_('clean'),
@@ -152,8 +158,10 @@ class Palettes():
                           logo_command='clean',
                           help_string=_('clears the screen and reset the \
 turtle'))
-        self.tw.lc.def_prim('clean', 0,
-                            lambda self: primitive_dictionary['clean']())
+        self.tw.lc.def_prim(
+            'clean',
+            0,
+            lambda self: primitive_dictionary['clean']())
 
         primitive_dictionary['right'] = self._prim_right
         palette.add_block('left',
@@ -176,8 +184,10 @@ in degrees)'))
                           logo_command='right',
                           help_string=_('turns turtle clockwise (angle in \
 degrees)'))
-        self.tw.lc.def_prim('right', 1,
-                            lambda self, x: primitive_dictionary['right'](x))
+        self.tw.lc.def_prim(
+            'right',
+            1,
+            lambda self, x: primitive_dictionary['right'](x))
 
         primitive_dictionary['arc'] = self._prim_arc
         palette.add_block('arc',
@@ -187,10 +197,11 @@ degrees)'))
                           default=[90, 100],
                           logo_command='taarc',
                           help_string=_('moves turtle along an arc'))
-        self.tw.lc.def_prim('arc', 2,
-                            lambda self, x, y:
-                            primitive_dictionary['arc']
-                            (self.tw.canvas.arc, x, y))
+        self.tw.lc.def_prim(
+            'arc',
+            2,
+            lambda self, x, y: primitive_dictionary['arc'](
+                self.tw.turtles.get_active_turtle().arc, x, y))
         define_logo_function('taarc', 'to taarc :a :r\nrepeat round :a \
 [right 1 forward (0.0175 * :r)]\nend\n')
 
@@ -202,10 +213,11 @@ degrees)'))
                           default=[0, 0],
                           help_string=_('moves turtle to position xcor, ycor; \
 (0, 0) is in the center of the screen.'))
-        self.tw.lc.def_prim('setxy2', 2,
-                            lambda self, x, y:
-                            primitive_dictionary['move']
-                            (self.tw.canvas.setxy, x, y))
+        self.tw.lc.def_prim(
+            'setxy2',
+            2,
+            lambda self, x, y: primitive_dictionary['move'](
+                self.tw.turtles.get_active_turtle().set_xy, (x, y)))
         define_logo_function('tasetxy', 'to tasetxy :x :y\nsetxy :x :y\nend\n')
 
         primitive_dictionary['set'] = self._prim_set
@@ -217,10 +229,11 @@ degrees)'))
                           logo_command='seth',
                           help_string=_('sets the heading of the turtle (0 is \
 towards the top of the screen.)'))
-        self.tw.lc.def_prim('seth', 1,
-                            lambda self, x:
-                            primitive_dictionary['set']
-                            ('heading', self.tw.canvas.seth, x))
+        self.tw.lc.def_prim(
+            'seth',
+            1,
+            lambda self, x: primitive_dictionary['set'](
+                'heading', self.tw.turtles.get_active_turtle().set_heading, x))
 
         palette.add_block('xcor',
                           style='box-style',
@@ -231,7 +244,10 @@ the turtle (can be used in place of a number block)'),
                           prim_name='xcor',
                           logo_command='xcor')
         self.tw.lc.def_prim(
-            'xcor', 0, lambda self: self.tw.canvas.xcor / self.tw.coord_scale)
+            'xcor',
+            0,
+            lambda self: self.tw.turtles.get_active_turtle().get_xy()[0] /
+            self.tw.coord_scale)
 
         palette.add_block('ycor',
                           style='box-style',
@@ -242,7 +258,10 @@ the turtle (can be used in place of a number block)'),
                           prim_name='ycor',
                           logo_command='ycor')
         self.tw.lc.def_prim(
-            'ycor', 0, lambda self: self.tw.canvas.ycor / self.tw.coord_scale)
+            'ycor',
+            0,
+            lambda self: self.tw.turtles.get_active_turtle().get_xy()[1] /
+            self.tw.coord_scale)
 
         palette.add_block('heading',
                           style='box-style',
@@ -253,7 +272,9 @@ turtle (can be used in place of a number block)'),
                           prim_name='heading',
                           logo_command='heading')
         self.tw.lc.def_prim(
-            'heading', 0, lambda self: self.tw.canvas.heading)
+            'heading',
+            0,
+            lambda self: self.tw.turtles.get_active_turtle().get_heading())
 
         palette.add_block('turtle-label',
                           hidden=True,
@@ -270,15 +291,17 @@ turtle (can be used in place of a number block)'),
                           logo_command='tasetxypenup',
                           help_string=_('moves turtle to position xcor, ycor; \
 (0, 0) is in the center of the screen.'))
-        self.tw.lc.def_prim('setxy', 2,
-                            lambda self, x, y:
-                            primitive_dictionary['move']
-                            (self.tw.canvas.setxy, x, y, pendown=False))
+        self.tw.lc.def_prim(
+            'setxy',
+            2,
+            lambda self, x, y: primitive_dictionary['move'](
+                self.tw.turtles.get_active_turtle().set_xy, (x, y),
+                pendown=False))
         define_logo_function('tasetxypenup', 'to tasetxypenup :x :y\npenup\n\
 setxy :x :y\npendown\nend\n')
 
     def _pen_palette(self):
-        """ The basic Turtle Art pen palette """
+        ''' The basic Turtle Art pen palette '''
 
         palette = make_palette('pen',
                                colors=["#00FFFF", "#00A0A0"],
@@ -293,8 +316,10 @@ setxy :x :y\npendown\nend\n')
                           logo_command='tasetbackground',
                           help_string=_('fills the background with (color, \
 shade)'))
-        self.tw.lc.def_prim('fillscreen', 2,
-                            lambda self, x, y: self.tw.canvas.fillscreen(x, y))
+        self.tw.lc.def_prim(
+            'fillscreen',
+            2,
+            lambda self, x, y: self.tw.canvas.fillscreen(x, y))
 
         palette.add_block('fillscreen2',
                           style='basic-style-3arg',
@@ -305,9 +330,10 @@ shade)'))
                           logo_command='tasetbackground',
                           help_string=_('fills the background with (color, \
 shade)'))
-        self.tw.lc.def_prim('fillscreen2', 3,
-                            lambda self, x, y, z:
-                            self.tw.canvas.fillscreen_with_gray(x, y, z))
+        self.tw.lc.def_prim(
+            'fillscreen2',
+            3,
+            lambda self, x, y, z: self.tw.canvas.fillscreen_with_gray(x, y, z))
 
         define_logo_function('tasetbackground', 'to tasetbackground :color \
 :shade\ntasetshade :shade\nsetbackground :color\nend\n')
@@ -320,10 +346,11 @@ shade)'))
                           logo_command='tasetpencolor',
                           help_string=_('sets color of the line drawn by the \
 turtle'))
-        self.tw.lc.def_prim('setcolor', 1,
-                            lambda self, x:
-                            primitive_dictionary['set']
-                            ('color', self.tw.canvas.setcolor, x))
+        self.tw.lc.def_prim(
+            'setcolor',
+            1,
+            lambda self, x: primitive_dictionary['set'](
+                'color', self.tw.turtles.get_active_turtle().set_color, x))
 
         palette.add_block('setshade',
                           style='basic-style-1arg',
@@ -333,10 +360,11 @@ turtle'))
                           logo_command='tasetshade',
                           help_string=_('sets shade of the line drawn by the \
 turtle'))
-        self.tw.lc.def_prim('setshade', 1,
-                            lambda self, x:
-                            primitive_dictionary['set']
-                            ('shade', self.tw.canvas.setshade, x))
+        self.tw.lc.def_prim(
+            'setshade',
+            1,
+            lambda self, x: primitive_dictionary['set'](
+                'shade', self.tw.turtles.get_active_turtle().set_shade, x))
 
         palette.add_block('setgray',
                           style='basic-style-1arg',
@@ -345,10 +373,11 @@ turtle'))
                           default=100,
                           help_string=_('sets gray level of the line drawn by \
 the turtle'))
-        self.tw.lc.def_prim('setgray', 1,
-                            lambda self, x:
-                            primitive_dictionary['set']
-                            ('gray', self.tw.canvas.setgray, x))
+        self.tw.lc.def_prim(
+            'setgray',
+            1,
+            lambda self, x: primitive_dictionary['set'](
+                'gray', self.tw.turtles.get_active_turtle().set_gray, x))
 
         palette.add_block('color',
                           style='box-style',
@@ -358,7 +387,10 @@ in place of a number block)'),
                           value_block=True,
                           prim_name='color',
                           logo_command='pencolor')
-        self.tw.lc.def_prim('color', 0, lambda self: self.tw.canvas.color)
+        self.tw.lc.def_prim(
+            'color',
+            0,
+            lambda self: self.tw.turtles.get_active_turtle().get_color)
 
         palette.add_block('shade',
                           style='box-style',
@@ -367,7 +399,10 @@ in place of a number block)'),
                           value_block=True,
                           prim_name='shade',
                           logo_command=':shade')
-        self.tw.lc.def_prim('shade', 0, lambda self: self.tw.canvas.shade)
+        self.tw.lc.def_prim(
+            'shade',
+            0,
+            lambda self: self.tw.turtles.get_active_turtle().get_shade)
 
         palette.add_block('gray',
                           style='box-style',
@@ -376,7 +411,8 @@ in place of a number block)'),
 used in place of a number block)'),
                           value_block=True,
                           prim_name='gray')
-        self.tw.lc.def_prim('gray', 0, lambda self: self.tw.canvas.gray)
+        self.tw.lc.def_prim('gray', 0, lambda self:
+                                self.tw.turtles.get_active_turtle().get_gray)
 
         palette.add_block('penup',
                           style='basic-style-extended-vertical',
@@ -384,8 +420,11 @@ used in place of a number block)'),
                           prim_name='penup',
                           logo_command='penup',
                           help_string=_('Turtle will not draw when moved.'))
-        self.tw.lc.def_prim('penup', 0,
-                            lambda self: self.tw.canvas.setpen(False))
+        self.tw.lc.def_prim(
+            'penup',
+            0,
+            lambda self:
+                self.tw.turtles.get_active_turtle().set_pen_state(False))
 
         palette.add_block('pendown',
                           style='basic-style-extended-vertical',
@@ -393,8 +432,11 @@ used in place of a number block)'),
                           prim_name='pendown',
                           logo_command='pendown',
                           help_string=_('Turtle will draw when moved.'))
-        self.tw.lc.def_prim('pendown', 0,
-                            lambda self: self.tw.canvas.setpen(True))
+        self.tw.lc.def_prim(
+            'pendown',
+            0,
+            lambda self:
+                self.tw.turtles.get_active_turtle().set_pen_state(True))
 
         palette.add_block('setpensize',
                           style='basic-style-1arg',
@@ -404,12 +446,12 @@ used in place of a number block)'),
                           logo_command='setpensize',
                           help_string=_('sets size of the line drawn by the \
 turtle'))
-        self.tw.lc.def_prim('setpensize', 1,
-                            lambda self, x:
-                            primitive_dictionary['set']
-                            ('pensize', self.tw.canvas.setpensize, x))
-        define_logo_function('tasetpensize', 'to tasetpensize :a\nsetpensize \
-round :a\nend\n')
+        self.tw.lc.def_prim(
+            'setpensize', 1,
+            lambda self, x: primitive_dictionary['set']
+            ('pensize', self.tw.turtles.get_active_turtle().set_pen_size, x))
+        define_logo_function('tasetpensize',
+                             'to tasetpensize :a\nsetpensize round :a\nend\n')
 
         palette.add_block('startfill',
                           style='basic-style-extended-vertical',
@@ -417,8 +459,10 @@ round :a\nend\n')
                           prim_name='startfill',
                           help_string=_('starts filled polygon (used with end \
 fill block)'))
-        self.tw.lc.def_prim('startfill', 0,
-                            lambda self: self.tw.canvas.start_fill())
+        self.tw.lc.def_prim(
+            'startfill',
+            0,
+            lambda self: self.tw.turtles.get_active_turtle().start_fill())
 
         palette.add_block('stopfill',
                           style='basic-style-extended-vertical',
@@ -426,8 +470,10 @@ fill block)'))
                           prim_name='stopfill',
                           help_string=_('completes filled polygon (used with \
 start fill block)'))
-        self.tw.lc.def_prim('stopfill', 0,
-                            lambda self: self.tw.canvas.stop_fill())
+        self.tw.lc.def_prim(
+            'stopfill',
+            0,
+            lambda self: self.tw.turtles.get_active_turtle().stop_fill())
 
         palette.add_block('pensize',
                           style='box-style',
@@ -437,12 +483,27 @@ in place of a number block)'),
                           value_block=True,
                           prim_name='pensize',
                           logo_command='pensize')
-        self.tw.lc.def_prim('pensize', 0, lambda self: self.tw.canvas.pensize)
+        self.tw.lc.def_prim(
+            'pensize',
+            0,
+            lambda self: self.tw.turtles.get_active_turtle().get_pen_size)
         define_logo_function('tapensize', 'to tapensize\noutput first round \
 pensize\nend\n')
 
+        # Deprecated
+        palette.add_block('settextsize',
+                          hidden=True,
+                          style='basic-style-1arg',
+                          label=_('set text size'),
+                          prim_name='settextsize',
+                          default=0,
+                          help_string=_('sets size of text drawn by the \
+turtle'))
+        self.tw.lc.def_prim('settextsize', 1,
+                            lambda self, x: self.tw.canvas.settextsize(x))
+
     def _color_palette(self):
-        """ The basic Turtle Art color palette """
+        ''' The basic Turtle Art color palette '''
 
         palette = make_palette('colors',
                                colors=["#00FFFF", "#00A0A0"],
@@ -460,29 +521,6 @@ pensize\nend\n')
                             CONSTANTS['purple'])
         self._make_constant(palette, 'white', _('white'), CONSTANTS['white'])
         self._make_constant(palette, 'black', _('black'), CONSTANTS['black'])
-
-        # deprecated blocks
-        palette.add_block('settextcolor',
-                          hidden=True,
-                          style='basic-style-1arg',
-                          label=_('set text color'),
-                          prim_name='settextcolor',
-                          default=0,
-                          help_string=_('sets color of text drawn by the \
-turtle'))
-        self.tw.lc.def_prim('settextcolor', 1,
-                            lambda self, x: self.tw.canvas.settextcolor(x))
-
-        palette.add_block('settextsize',
-                          hidden=True,
-                          style='basic-style-1arg',
-                          label=_('set text size'),
-                          prim_name='settextsize',
-                          default=0,
-                          help_string=_('sets size of text drawn by the \
-turtle'))
-        self.tw.lc.def_prim('settextsize', 1,
-                            lambda self, x: self.tw.canvas.settextsize(x))
 
         # In order to map Turtle Art colors to the standard UCB Logo palette,
         # we need to define a somewhat complex set of functions.
@@ -558,7 +596,7 @@ make "shade  50 \n\
 tasetshade :shade \n')
 
     def _numbers_palette(self):
-        """ The basic Turtle Art numbers palette """
+        ''' The basic Turtle Art numbers palette '''
 
         palette = make_palette('numbers',
                                colors=["#FF00FF", "#A000A0"],
@@ -741,7 +779,7 @@ operators'))
             'or', 2, lambda self, x, y: primitive_dictionary['or'](x, y))
 
     def _flow_palette(self):
-        """ The basic Turtle Art flow palette """
+        ''' The basic Turtle Art flow palette '''
 
         palette = make_palette('flow',
                                colors=["#FFC000", "#A08000"],
@@ -841,7 +879,7 @@ boolean operators from Numbers palette'))
                             lambda self: primitive_dictionary['stopstack']())
 
     def _blocks_palette(self):
-        """ The basic Turtle Art blocks palette """
+        ''' The basic Turtle Art blocks palette '''
 
         palette = make_palette('blocks',
                                colors=["#FFFF00", "#A0A000"],
@@ -1002,7 +1040,7 @@ variable'))
         self.tw.lc.def_prim('stack2', 0, primitive_dictionary['stack2'], True)
 
     def _trash_palette(self):
-        """ The basic Turtle Art turtle palette """
+        ''' The basic Turtle Art turtle palette '''
 
         palette = make_palette('trash',
                                colors=["#FFFF00", "#A0A000"],
@@ -1025,22 +1063,32 @@ variable'))
 
     # Block primitives
 
+    def _prim_clear(self):
+        self.tw.lc.prim_clear()
+        self.tw.turtles.reset_turtles()
+
     def _prim_and(self, x, y):
-        """ Logical and """
+        ''' Logical and '''
         return x & y
 
     def _prim_arc(self, cmd, value1, value2):
-        """ Turtle draws an arc of degree, radius """
+        ''' Turtle draws an arc of degree, radius '''
         cmd(float(value1), float(value2))
         if self.tw.lc.update_values:
             self.tw.lc.update_label_value(
-                'xcor', self.tw.canvas.xcor / self.tw.coord_scale)
+                'xcor',
+                self.tw.turtles.get_active_turtle().get_xy()[0] /
+                self.tw.coord_scale)
             self.tw.lc.update_label_value(
-                'ycor', self.tw.canvas.ycor / self.tw.coord_scale)
-            self.tw.lc.update_label_value('heading', self.tw.canvas.heading)
+                'ycor',
+                self.tw.turtles.get_active_turtle().get_xy()[1] /
+                self.tw.coord_scale)
+            self.tw.lc.update_label_value(
+                'heading',
+                self.tw.turtles.get_active_turtle().get_heading)
 
     def _prim_box(self, x):
-        """ Retrieve value from named box """
+        ''' Retrieve value from named box '''
         if isinstance(convert(x, float, False), float):
             if int(float(x)) == x:
                 x = int(x)
@@ -1050,7 +1098,7 @@ variable'))
             raise logoerror("#emptybox")
 
     def _prim_forever(self, blklist):
-        """ Do list forever """
+        ''' Do list forever '''
         while True:
             self.tw.lc.icall(self.tw.lc.evline, blklist[:])
             yield True
@@ -1060,7 +1108,7 @@ variable'))
         yield True
 
     def _prim_if(self, boolean, blklist):
-        """ If bool, do list """
+        ''' If bool, do list '''
         if boolean:
             self.tw.lc.icall(self.tw.lc.evline, blklist[:])
             yield True
@@ -1068,7 +1116,7 @@ variable'))
         yield True
 
     def _prim_ifelse(self, boolean, list1, list2):
-        """ If bool, do list1, else do list2 """
+        ''' If bool, do list1, else do list2 '''
         if boolean:
             self.tw.lc.ijmp(self.tw.lc.evline, list1[:])
             yield True
@@ -1078,7 +1126,12 @@ variable'))
 
     def _prim_move(self, cmd, value1, value2=None, pendown=True,
                    reverse=False):
-        """ Turtle moves by method specified in value1 """
+        ''' Turtle moves by method specified in value1 '''
+        pos = None
+        if isinstance(value1, (tuple, list)):
+            pos = value1
+            value1 = pos[0]
+            value2 = pos[1]
         if not _num_type(value1):
             raise logoerror("#notanumber")
         if value2 is None:
@@ -1089,19 +1142,26 @@ variable'))
         else:
             if not _num_type(value2):
                 raise logoerror("#notanumber")
-            cmd(float(value1), float(value2), pendown=pendown)
+            if pos is not None:
+                cmd((float(value1), float(value2)), pendown=pendown)
+            else:
+                cmd(float(value1), float(value2), pendown=pendown)
         if self.tw.lc.update_values:
             self.tw.lc.update_label_value(
-                'xcor', self.tw.canvas.xcor / self.tw.coord_scale)
+                'xcor',
+                self.tw.turtles.get_active_turtle().get_xy()[0] /
+                self.tw.coord_scale)
             self.tw.lc.update_label_value(
-                'ycor', self.tw.canvas.ycor / self.tw.coord_scale)
+                'ycor',
+                self.tw.turtles.get_active_turtle().get_xy()[1] /
+                self.tw.coord_scale)
 
     def _prim_or(self, x, y):
-        """ Logical or """
+        ''' Logical or '''
         return x | y
 
     def _prim_repeat(self, num, blklist):
-        """ Repeat list num times. """
+        ''' Repeat list num times. '''
         if not _num_type(num):
             raise logoerror("#notanumber")
         num = self.tw.lc.int(num)
@@ -1114,25 +1174,27 @@ variable'))
         yield True
 
     def _prim_right(self, value, reverse=False):
-        """ Turtle rotates clockwise """
+        ''' Turtle rotates clockwise '''
         if not _num_type(value):
             raise logoerror("#notanumber")
         if reverse:
-            self.tw.canvas.right(float(-value))
+            self.tw.turtles.get_active_turtle().right(float(-value))
         else:
-            self.tw.canvas.right(float(value))
+            self.tw.turtles.get_active_turtle().right(float(value))
         if self.tw.lc.update_values:
-            self.tw.lc.update_label_value('heading', self.tw.canvas.heading)
+            self.tw.lc.update_label_value(
+                'heading',
+                self.tw.turtles.get_active_turtle().get_heading)
 
     def _prim_set(self, name, cmd, value=None):
-        """ Set a value and update the associated value blocks """
+        ''' Set a value and update the associated value blocks '''
         if value is not None:
             cmd(value)
             if self.tw.lc.update_values:
                 self.tw.lc.update_label_value(name, value)
 
     def _prim_setbox(self, name, x, val):
-        """ Define value of named box """
+        ''' Define value of named box '''
         if x is not None:
             if isinstance(convert(x, float, False), float):
                 if int(float(x)) == x:
@@ -1146,7 +1208,7 @@ variable'))
                 self.tw.lc.update_label_value(name, val)
 
     def _prim_stack(self, x):
-        """ Process a named stack """
+        ''' Process a named stack '''
         if isinstance(convert(x, float, False), float):
             if int(float(x)) == x:
                 x = int(x)
@@ -1161,7 +1223,7 @@ variable'))
         yield True
 
     def _prim_stack1(self):
-        """ Process Stack 1 """
+        ''' Process Stack 1 '''
         if self.tw.lc.stacks['stack1'] is None:
             raise logoerror("#nostack")
         self.tw.lc.icall(self.tw.lc.evline,
@@ -1172,7 +1234,7 @@ variable'))
         yield True
 
     def _prim_stack2(self):
-        """ Process Stack 2 """
+        ''' Process Stack 2 '''
         if self.tw.lc.stacks['stack2'] is None:
             raise logoerror("#nostack")
         self.tw.lc.icall(self.tw.lc.evline, self.tw.lc.stacks['stack2'][:])
@@ -1182,29 +1244,29 @@ variable'))
         yield True
 
     def _prim_start(self):
-        """ Start block: recenter """
+        ''' Start block: recenter '''
         if self.tw.running_sugar:
             self.tw.activity.recenter()
 
     def _prim_stopstack(self):
-        """ Stop execution of a stack """
+        ''' Stop execution of a stack '''
         self.tw.lc.procstop = True
 
     def _prim_wait(self, wait_time):
-        """ Show the turtle while we wait """
-        self.tw.active_turtle.show()
+        ''' Show the turtle while we wait '''
+        self.tw.turtles.get_active_turtle().show()
         endtime = _millisecond() + wait_time * 1000.
         while _millisecond() < endtime:
             sleep(wait_time / 10.)
             yield True
-        self.tw.active_turtle.hide()
+        self.tw.turtles.get_active_turtle().hide()
         self.tw.lc.ireturn()
         yield True
 
     # Math primitivies
 
     def _prim_careful_divide(self, x, y):
-        """ Raise error on divide by zero """
+        ''' Raise error on divide by zero '''
         if isinstance(x, list) and _num_type(y):
             z = []
             for i in range(len(x)):
@@ -1228,7 +1290,7 @@ variable'))
                 raise logoerror("#notanumber")
 
     def _prim_equal(self, x, y):
-        """ Numeric and logical equal """
+        ''' Numeric and logical equal '''
         if isinstance(x, list) and isinstance(y, list):
             for i in range(len(x)):
                 if x[i] != y[i]:
@@ -1250,7 +1312,7 @@ variable'))
                 raise logoerror("#syntaxerror")
 
     def _prim_less(self, x, y):
-        """ Compare numbers and strings """
+        ''' Compare numbers and strings '''
         if isinstance(x, list) or isinstance(y, list):
             raise logoerror("#syntaxerror")
         try:
@@ -1269,11 +1331,11 @@ variable'))
                 raise logoerror("#notanumber")
 
     def _prim_more(self, x, y):
-        """ Compare numbers and strings """
+        ''' Compare numbers and strings '''
         return self._prim_less(y, x)
 
     def _prim_plus(self, x, y):
-        """ Add numbers, concat strings """
+        ''' Add numbers, concat strings '''
         if x in COLORDICT:
             x = _color_to_num(x)
         if y in COLORDICT:
@@ -1297,7 +1359,7 @@ variable'))
             return(xx + yy)
 
     def _prim_minus(self, x, y):
-        """ Numerical subtraction """
+        ''' Numerical subtraction '''
         if _num_type(x) and _num_type(y):
             return(x - y)
         elif isinstance(x, list) and isinstance(y, list):
@@ -1311,7 +1373,7 @@ variable'))
             raise logoerror("#notanumber")
 
     def _prim_product(self, x, y):
-        """ Numerical multiplication """
+        ''' Numerical multiplication '''
         if _num_type(x) and _num_type(y):
             return(x * y)
         elif isinstance(x, list) and _num_type(y):
@@ -1330,7 +1392,7 @@ variable'))
             raise logoerror("#notanumber")
 
     def _prim_mod(self, x, y):
-        """ Numerical mod """
+        ''' Numerical mod '''
         if _num_type(x) and _num_type(y):
             return(x % y)
         try:
@@ -1341,7 +1403,7 @@ variable'))
             raise logoerror("#syntaxerror")
 
     def _prim_sqrt(self, x):
-        """ Square root """
+        ''' Square root '''
         if _num_type(x):
             if x < 0:
                 raise logoerror("#negroot")
@@ -1354,7 +1416,7 @@ variable'))
             raise logoerror("#notanumber")
 
     def _prim_random(self, x, y):
-        """ Random integer """
+        ''' Random integer '''
         if _num_type(x) and _num_type(y):
             return(int(round(uniform(x, y), 0)))
         xx, xflag = chr_to_ord(x)
@@ -1371,13 +1433,13 @@ variable'))
             raise logoerror("#notanumber")
 
     def _prim_identity(self, x):
-        """ Identity function """
+        ''' Identity function '''
         return(x)
 
     # Utilities
 
     def _string_to_num(self, x):
-        """ Try to comvert a string to a number """
+        ''' Try to comvert a string to a number '''
         if isinstance(x, (int, float)):
             return(x)
         try:
@@ -1399,7 +1461,7 @@ variable'))
                 raise logoerror("#syntaxerror")
 
     def _make_constant(self, palette, block_name, label, constant):
-        """ Factory for constant blocks """
+        ''' Factory for constant blocks '''
         if constant in COLORDICT:
             if COLORDICT[constant][0] is not None:
                 value = str(COLORDICT[constant][0])
