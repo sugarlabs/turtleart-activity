@@ -1,10 +1,13 @@
-#Copyright (c) 2012, Walter Bender
+#Copyright (c) 2012-2013, Walter Bender
 
 # Usage: Import this code into a Python (user-definable) block; when
-# this code is run, the turtle will draw a line of the length of the
-# numeric argument block docked to the Python block. But before
-# drawing the line, it pushes the rgb values of the destination to the
-# FILO.
+# this code is run, a new block will be added to the Turtle Palette.
+# This block will be named 'name', the value of the argument block
+# docked to the Python block.
+#
+# The new block will cause the turtle to draw a line of the
+# length. But before drawing the line, it pushes the rgb values of the
+# destination to the FILO.
 
 
 def myblock(tw, name):
@@ -15,16 +18,16 @@ def myblock(tw, name):
             line_length = float(line_length)
         except ValueError:
             return
-        penstatus = tw.canvas.pendown
-        tw.canvas.setpen(False)
-        tw.canvas.forward(line_length)
-        r, g, b, a = tw.canvas.get_pixel()
+        penstatus = tw.turtles.get_active_turtle().get_pen_status()
+        tw.turtles.get_active_turtle().set_pen_state(False)
+        tw.turtles.get_active_turtle().forward(line_length)
+        r, g, b, a = tw.turtles.get_active_turtle().get_pixel()
         tw.lc.heap.append(b)
         tw.lc.heap.append(g)
         tw.lc.heap.append(r)
-        tw.canvas.forward(-line_length)
-        tw.canvas.setpen(penstatus)
-        tw.canvas.forward(line_length)
+        tw.turtles.get_active_turtle().forward(-line_length)
+        tw.turtles.get_active_turtle().set_pen_state(penstatus)
+        tw.turtles.get_active_turtle().forward(line_length)
         return
 
     from TurtleArt.tapalette import make_palette, palette_name_to_index
