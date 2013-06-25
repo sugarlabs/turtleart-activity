@@ -217,7 +217,7 @@ degrees)'))
             'setxy2',
             2,
             lambda self, x, y: primitive_dictionary['move'](
-                self.tw.turtles.get_active_turtle().set_xy, x, y))
+                self.tw.turtles.get_active_turtle().set_xy, (x, y)))
         define_logo_function('tasetxy', 'to tasetxy :x :y\nsetxy :x :y\nend\n')
 
         primitive_dictionary['set'] = self._prim_set
@@ -295,7 +295,7 @@ turtle (can be used in place of a number block)'),
             'setxy',
             2,
             lambda self, x, y: primitive_dictionary['move'](
-                self.tw.turtles.get_active_turtle().set_xy, x, y,
+                self.tw.turtles.get_active_turtle().set_xy, (x, y),
                 pendown=False))
         define_logo_function('tasetxypenup', 'to tasetxypenup :x :y\npenup\n\
 setxy :x :y\npendown\nend\n')
@@ -1115,6 +1115,11 @@ variable'))
     def _prim_move(self, cmd, value1, value2=None, pendown=True,
                    reverse=False):
         ''' Turtle moves by method specified in value1 '''
+        pos = None
+        if isinstance(value1, (tuple, list)):
+            pos = value1
+            value1 = pos[0]
+            value2 = pos[1]
         if not _num_type(value1):
             raise logoerror("#notanumber")
         if value2 is None:
@@ -1125,7 +1130,10 @@ variable'))
         else:
             if not _num_type(value2):
                 raise logoerror("#notanumber")
-            cmd(float(value1), float(value2), pendown=pendown)
+            if pos is not None:
+                cmd((float(value1), float(value2)), pendown=pendown)
+            else:
+                cmd(float(value1), float(value2), pendown=pendown)
         if self.tw.lc.update_values:
             self.tw.lc.update_label_value(
                 'xcor',

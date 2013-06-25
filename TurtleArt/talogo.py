@@ -599,6 +599,7 @@ class LogoCode:
             from tagplay import stop_media
             stop_media(self)
         self.tw.canvas.clearscreen()
+        self.tw.turtles.reset_turtles()
         self.scale = DEFAULT_SCALE
         self.hidden_turtle = None
         self.start_time = time()

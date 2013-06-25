@@ -119,15 +119,15 @@ class Turtles:
                 ["#008000", "#00A000"])
         return(self._default_pixbufs)
 
-    def turtle_to_screen_coordinates(self, x, y):
+    def turtle_to_screen_coordinates(self, pos):
         ''' The origin of turtle coordinates is the center of the screen '''
-        return self.width / 2.0 + x, self.invert_y_coordinate(y)
+        return [self.width / 2.0 + pos[0], self._invert_y_coordinate(pos[1])]
 
-    def screen_to_turtle_coordinates(self, x, y):
+    def screen_to_turtle_coordinates(self, pos):
         ''' The origin of the screen coordinates is the upper left corner '''
-        return x - self.width / 2.0, self.invert_y_coordinate(y)
+        return [pos[0] - self.width / 2.0, self._invert_y_coordinate(pos[1])]
 
-    def invert_y_coordinate(self, y):
+    def _invert_y_coordinate(self, y):
         ''' Positive y goes up in turtle coordinates, down in sceeen
         coordinates '''
         return self.height / 2.0 - y
@@ -155,7 +155,7 @@ class Turtles:
             # if it is a new turtle, start it in the center of the screen
             self._active_turtle = self.get_turtle(turtle_name, True, colors)
             self._active_turtle.set_heading(0.0, False)
-            self._active_turtle.set_xy(0.0, 0.0, False, pendown=False)
+            self._active_turtle.set_xy((0.0, 0.0), False, pendown=False)
             self._active_turtle.set_pen_state(True)
         elif colors is not None:
             self._active_turtle = self.get_turtle(turtle_name, False)
@@ -163,7 +163,6 @@ class Turtles:
         else:
             self._active_turtle = self.get_turtle(turtle_name, False)
         self._active_turtle.show()
-        tx, ty = self._active_turtle.get_xy()
         self._active_turtle.set_color(share=False)
         self._active_turtle.set_gray(share=False)
         self._active_turtle.set_shade(share=False)
@@ -448,7 +447,7 @@ class Turtle:
             shared_poly_points = []
             for p in self.poly_points:
                 shared_poly_points.append(
-                    (self.turtles.screen_to_turtle_coordinates(p[0], p[1])))
+                    (self.turtles.screen_to_turtle_coordinates(p)))
                 event = 'F|%s' % (data_to_string(
                         [self.turtles.turtle_window.nick, shared_poly_points]))
             self.turtles.turtle_window.send_event(event)
@@ -471,28 +470,27 @@ class Turtle:
             self.label_block.spr.set_layer(TURTLE_LAYER + 1)
 
     def move_turtle(self, pos=None):
+        ''' Move the turtle's position '''
         if pos is None:
-            x, y = self.get_xy()
-        else:
-            x, y = pos[0], pos[1]
+            pos = self.get_xy()
 
-        self.x, self.y = x, y
-        self.move((x, y))
+        self.x, self.y = pos[0], pos[1]
+        self.move(pos)
 
     def move(self, pos):
+        ''' Move the turtle's sprite '''
         # self.x, self.y = pos[0], pos[1]
-        x, y = self.turtles.turtle_to_screen_coordinates(pos[0], pos[1])
+        pos = self.turtles.turtle_to_screen_coordinates(pos)
 
         if self.turtles.turtle_window.interactive_mode:
-            x -= self.spr.rect.width / 2.0
-            y -= self.spr.rect.height / 2.0
+            pos[0] -= int(self.spr.rect.width / 2.0)
+            pos[1] -= int(self.spr.rect.height / 2.0)
 
-        if not self.hidden and self.spr is not None:
-            self.spr.move((int(x), int(y)))
-        if self.label_block is not None:
-            self.label_block.spr.move((int(x + self.label_xy[0]),
-                                       int(y + self.label_xy[1])))
-        return(self.x, self.y)
+            if not self.hidden and self.spr is not None:
+                self.spr.move(pos)
+            if self.label_block is not None:
+                self.label_block.spr.move((pos[0] + self.label_xy[0],
+                                           pos[1] + self.label_xy[1]))
 
     def right(self, degrees, share=True):
         ''' Rotate turtle clockwise '''
@@ -509,6 +507,21 @@ class Turtle:
                                               round_int(self.heading)]))
             self.turtles.turtle_window.send_event(event)
 
+    def _draw_line(self, old, new, pendown):
+        if self.pen_state and pendown:
+            self.turtles.turtle_window.canvas.set_rgb(
+                self.turtles.turtle_window.canvas.fgrgb[0] / 255.,
+                self.turtles.turtle_window.canvas.fgrgb[1] / 255.,
+                self.turtles.turtle_window.canvas.fgrgb[2] / 255.)
+            pos1 = self.turtles.turtle_to_screen_coordinates(old)
+            pos2 = self.turtles.turtle_to_screen_coordinates(new)
+            self.turtles.turtle_window.canvas.draw_line(pos1[0], pos1[1],
+                                                        pos2[0], pos2[1])
+            if self.pen_fill:
+                if self.poly_points == []:
+                    self.poly_points.append(('move', pos1[0], pos1[1]))
+                self.poly_points.append(('line', pos2[0], pos2[1]))
+
     def forward(self, distance, share=True):
         scaled_distance = distance * self.turtles.turtle_window.coord_scale
 
@@ -517,26 +530,16 @@ class Turtle:
             self.turtles.turtle_window.canvas.fgrgb[1] / 255.,
             self.turtles.turtle_window.canvas.fgrgb[2] / 255.)
 
-        oldx, oldy = self.get_xy()
+        old = self.get_xy()
         try:
-            xcor = oldx + scaled_distance * sin(self.heading * DEGTOR)
-            ycor = oldy + scaled_distance * cos(self.heading * DEGTOR)
+            xcor = old[0] + scaled_distance * sin(self.heading * DEGTOR)
+            ycor = old[1] + scaled_distance * cos(self.heading * DEGTOR)
         except (TypeError, ValueError):
             debug_output('bad value sent to %s' % (__name__),
                          self.turtles.turtle_window.running_sugar)
             return
 
-        if self.pen_state:
-            x1, y1 = self.turtles.turtle_to_screen_coordinates(oldx, oldy)
-            x2, y2 = self.turtles.turtle_to_screen_coordinates(xcor, ycor)
-            self.turtles.turtle_window.canvas.draw_line(x1, y1, x2, y2)
-        if self.pen_fill:
-            if self.poly_points == []:
-                x, y = self.turtles.turtle_to_screen_coordinates(oldx, oldy)
-                self.poly_points.append(('move', x, y))
-            x, y = self.turtles.turtle_to_screen_coordinates(xcor, ycor)
-            self.poly_points.append(('line', x, y))
-
+        self._draw_line(old, (xcor, ycor), True)
         self.move_turtle((xcor, ycor))
 
         if self.turtles.turtle_window.sharing() and share:
@@ -544,31 +547,18 @@ class Turtle:
                                               int(distance)]))
             self.turtles.turtle_window.send_event(event)
 
-    def set_xy(self, x, y, share=True, pendown=True):
-        oldx, oldy = self.get_xy()
+    def set_xy(self, pos, share=True, pendown=True):
+        old = self.get_xy()
+
         try:
-            xcor = x * self.turtles.turtle_window.coord_scale
-            ycor = y * self.turtles.turtle_window.coord_scale
+            xcor = pos[0] * self.turtles.turtle_window.coord_scale
+            ycor = pos[1] * self.turtles.turtle_window.coord_scale
         except (TypeError, ValueError):
             debug_output('bad value sent to %s' % (__name__),
                          self.turtles.turtle_window.running_sugar)
             return
 
-        if self.pen_state and pendown:
-            self.turtles.turtle_window.canvas.set_rgb(
-                self.turtles.turtle_window.canvas.fgrgb[0] / 255.,
-                self.turtles.turtle_window.canvas.fgrgb[1] / 255.,
-                self.turtles.turtle_window.canvas.fgrgb[2] / 255.)
-            x1, y1 = self.turtles.turtle_to_screen_coordinates(oldx, oldy)
-            x2, y2 = self.turtles.turtle_to_screen_coordinates(xcor, ycor)
-            self.turtles.turtle_window.canvas.draw_line(x1, y1, x2, y2)
-        if self.pen_fill:
-            if self.poly_points == []:
-                x, y = self.turtles.turtle_to_screen_coordinates(oldx, oldy)
-                self.poly_points.append(('move', x, y))
-            x, y = self.turtles.turtle_to_screen_coordinates(xcor, ycor)
-            self.poly_points.append(('line', x, y))
-
+        self._draw_line(old, (xcor, ycor), pendown)
         self.move_turtle((xcor, ycor))
 
         if self.turtles.turtle_window.sharing() and share:
@@ -585,15 +575,15 @@ class Turtle:
                 self.turtles.turtle_window.canvas.fgrgb[2] / 255.)
         try:
             if a < 0:
-                xcor, ycor = self.larc(-a, r)
+                pos = self.larc(-a, r)
             else:
-                xcor, ycor = self.rarc(a, r)
+                pos = self.rarc(a, r)
         except (TypeError, ValueError):
             debug_output('bad value sent to %s' % (__name__),
                          self.turtles.turtle_window.running_sugar)
             return
 
-        self.move_turtle((xcor, ycor))
+        self.move_turtle(pos)
 
         if self.turtles.turtle_window.sharing() and share:
             event = 'a|%s' % (data_to_string([self.turtles.turtle_window.nick,
@@ -606,24 +596,24 @@ class Turtle:
         if r < 0:
             r = -r
             a = -a
-        xcor, ycor = self.get_xy()
-        cx = xcor + r * cos(self.heading * DEGTOR)
-        cy = ycor - r * sin(self.heading * DEGTOR)
+        pos = self.get_xy()
+        cx = pos[0] + r * cos(self.heading * DEGTOR)
+        cy = pos[1] - r * sin(self.heading * DEGTOR)
         if self.pen_state:
-            x, y = self.turtles.turtle_to_screen_coordinates(cx, cy)
-            self.turtles.turtle_window.canvas.rarc(x, y, r, a, self.heading)
+            npos = self.turtles.turtle_to_screen_coordinates((cx, cy))
+            self.turtles.turtle_window.canvas.rarc(npos[0], npos[1], r, a,
+                                                   self.heading)
 
-        if self.pen_fill:
-            x, y = self.turtles.turtle_to_screen_coordinates(x, y)
-            if self.poly_points == []:
-                self.poly_points.append(('move', x, y))
-            self.poly_points.append(('rarc', x, y, r,
-                                     (self.heading - 180) * DEGTOR,
-                                     (self.heading - 180 + a) * DEGTOR))
+            if self.pen_fill:
+                if self.poly_points == []:
+                    self.poly_points.append(('move', npos[0], npos[1]))
+                    self.poly_points.append(('rarc', npos[0], npos[1], r,
+                                             (self.heading - 180) * DEGTOR,
+                                             (self.heading - 180 + a) * DEGTOR))
 
         self.right(a, False)
-        return cx - r * cos(self.heading * DEGTOR), \
-            cy + r * sin(self.heading * DEGTOR)
+        return [cx - r * cos(self.heading * DEGTOR),
+                cy + r * sin(self.heading * DEGTOR)]
 
     def larc(self, a, r):
         ''' draw a counter-clockwise arc '''
@@ -631,24 +621,24 @@ class Turtle:
         if r < 0:
             r = -r
             a = -a
-        xcor, ycor = self.get_xy()
-        cx = xcor - r * cos(self.heading * DEGTOR)
-        cy = ycor + r * sin(self.heading * DEGTOR)
+        pos = self.get_xy()
+        cx = pos[0] - r * cos(self.heading * DEGTOR)
+        cy = pos[1] + r * sin(self.heading * DEGTOR)
         if self.pen_state:
-            x, y = self.turtles.turtle_to_screen_coordinates(cx, cy)
-            self.turtles.turtle_window.canvas.larc(x, y, r, a, self.heading)
+            npos = self.turtles.turtle_to_screen_coordinates((cx, cy))
+            self.turtles.turtle_window.canvas.larc(npos[0], npos[1], r, a,
+                                                   self.heading)
 
-        if self.pen_fill:
-            x, y = self.turtles.turtle_to_screen_coordinates(x, y)
-            if self.poly_points == []:
-                self.poly_points.append(('move', x, y))
-            self.poly_points.append(('larc', x, y, r,
-                                     (self.heading) * DEGTOR,
-                                     (self.heading - a) * DEGTOR))
+            if self.pen_fill:
+                if self.poly_points == []:
+                    self.poly_points.append(('move', npos[0], npos[1]))
+                    self.poly_points.append(('larc', npos[0], npos[1], r,
+                                             (self.heading) * DEGTOR,
+                                             (self.heading - a) * DEGTOR))
 
         self.right(-a, False)
-        return cx + r * cos(self.heading * DEGTOR), \
-            cy - r * sin(self.heading * DEGTOR)
+        return [cx + r * cos(self.heading * DEGTOR),
+                cy - r * sin(self.heading * DEGTOR)]
 
     def draw_pixbuf(self, pixbuf, a, b, x, y, w, h, path, share=True):
         ''' Draw a pixbuf '''
@@ -670,11 +660,12 @@ class Turtle:
             height = pixbuf.get_height()
             width = pixbuf.get_width()
 
-            x, y = self.screen_to_turtle_coordinates(x, y)
+            pos = self.screen_to_turtle_coordinates((x, y))
 
             event = 'P|%s' % (data_to_string([self.turtles.turtle_window.nick,
                                               [round_int(a), round_int(b),
-                                               round_int(x), round_int(y),
+                                               round_int(pos[0]),
+                                               round_int(pos[1]),
                                                round_int(w), round_int(h),
                                                round_int(width),
                                                round_int(height),
@@ -700,33 +691,33 @@ class Turtle:
         return self.name
 
     def get_xy(self):
-        return(self.x, self.y)
+        return [self.x, self.y]
 
     def get_heading(self):
-        return(self.heading)
+        return self.heading
 
     def get_color(self):
-        return(self.pen_color)
+        return self.pen_color
 
     def get_gray(self):
-        return(self.pen_gray)
+        return self.pen_gray
 
     def get_shade(self):
-        return(self.pen_shade)
+        return self.pen_shade
 
     def get_pen_size(self):
-        return(self.pen_size)
+        return self.pen_size
 
     def get_pen_state(self):
-        return(self.pen_state)
+        return self.pen_state
 
     def get_fill(self):
-        return(self.pen_fill)
+        return self.pen_fill
 
     def get_poly_points(self):
-        return(self.poly_points)
+        return self.poly_points
 
     def get_pixel(self):
         x, y = self.get_xy()
-        x, y = self.turtle_to_screen_coordinates(x, y)
-        return self.turtles.turtle_window.canvas.get_pixel(x, y)
+        pos = self.turtle_to_screen_coordinates((x, y))
+        return self.turtles.turtle_window.canvas.get_pixel(pos[0], pos[1])

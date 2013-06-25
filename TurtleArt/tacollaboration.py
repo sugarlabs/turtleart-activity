@@ -322,9 +322,9 @@ class Collaboration():
                 file_name = base64_to_image(data, tmp_path)
                 pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(file_name,
                                                               width, height)
-                x, y = self._tw.turtles.turtle_to_screen_coordinates(x, y)
-                self._tw.turtles.get_active_turtle().draw_pixbuf(pixbuf, a, b, x, y, w, h,
-                                            file_name, False)
+                pos = self._tw.turtles.turtle_to_screen_coordinates((x, y))
+                self._tw.turtles.get_active_turtle().draw_pixbuf(
+                    pixbuf, a, b, pos[0], pos[1], w, h, file_name, False)
 
     def _move_forward(self, payload):
         if len(payload) > 0:
@@ -396,7 +396,6 @@ class Collaboration():
                 self._tw.turtles.get_active_turtle().set_pen_state(x, False)
 
     def _fill_polygon(self, payload):
-        # TODO: FIXME
         if len(payload) > 0:
             [nick, poly_points] = data_from_string(payload)
             shared_poly_points = []
@@ -404,7 +403,11 @@ class Collaboration():
                 shared_poly_points.append(
                     (self._tw.turtles.turtle_to_screen_coordinates
                      (poly_points[i][0], poly_points[i][1])))
-            self._tw.turtles.get_active_turtle().fill_polygon(shared_poly_points)
+            if nick != self._tw.nick:
+                self._tw.turtles.set_turtle(nick)
+                self._tw.turtles.get_active_turtle().set_poly_points(
+                    shared_poly_points)
+                self._tw.turtles.get_active_turtle().stop_fill(False)
 
     def _speak(self, payload):
         if len(payload) > 0:

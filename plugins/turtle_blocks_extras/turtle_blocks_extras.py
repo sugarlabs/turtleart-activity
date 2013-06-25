@@ -1465,14 +1465,14 @@ Journal objects'))
         # Place the block at the active turtle (x, y) and move the turtle
         # into position to place the next block in the stack.
         # TODO: Add expandable argument
-        x, y = self.tw.turtles.get_active_turtle().get_xy()
+        pos = self.tw.turtles.get_active_turtle().get_xy()
         if isinstance(blkname, list):
             name = blkname[0]
             if len(blkname) > 1:
                 value = blkname[1:]
-                dy = int(self._find_block(name, x, y, value))
+                dy = int(self._find_block(name, pos[0], pos[1], value))
             else:
-                dy = int(self._find_block(name, x, y))
+                dy = int(self._find_block(name, pos[0], pos[1]))
         else:
             name = blkname
             if name == 'delete':
@@ -1482,11 +1482,12 @@ Journal objects'))
                         blk.spr.hide()
                 dy = 0
             else:
-                dy = int(self._find_block(name, x, y))
+                dy = int(self._find_block(name, pos[0], pos[1]))
 
         # Reposition turtle to end of flow
-        self.tw.turtles.get_active_turtle().get_xy()[1] -= dy
-        self.tw.turtles.get_active_turtle().move_turtle()
+        pos = self.tw.turtles.get_active_turtle().get_xy()
+        pos[1] -= dy
+        self.tw.turtles.get_active_turtle().move_turtle(pos)
 
     def _make_block(self, name, x, y, defaults):
         if defaults is None:
