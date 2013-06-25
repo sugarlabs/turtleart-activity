@@ -285,16 +285,16 @@ class Collaboration():
             put_pen_back_down = True
         else:
             put_pen_back_down = False
-        self.send_event('x|%s' %
-                        (data_to_string([self._get_nick(),
-                                         [int(self._tw.turtles.get_active_turtle().get_xy()[0]),
-                                          int(self._tw.turtles.get_active_turtle().get_xy()[1])]])))
+        self.send_event('x|%s' % (data_to_string(
+                    [self._get_nick(),
+                     [int(self._tw.turtles.get_active_turtle().get_xy()[0]),
+                      int(self._tw.turtles.get_active_turtle().get_xy()[1])]])))
         if put_pen_back_down:
             self.send_event('p|%s' % (data_to_string([self._get_nick(),
                                                       True])))
-        self.send_event('r|%s' %
-                        (data_to_string([self._get_nick(),
-                                         int(self._tw.turtles.get_active_turtle().get_heading())])))
+        self.send_event('r|%s' % (data_to_string(
+                    [self._get_nick(),
+                     int(self._tw.turtles.get_active_turtle().get_heading())])))
 
     def _reskin_turtle(self, payload):
         if len(payload) > 0:
@@ -358,7 +358,8 @@ class Collaboration():
         if len(payload) > 0:
             [nick, [label, x, y, size, w]] = data_from_string(payload)
             if nick != self._tw.nick:
-                self._tw.turtles.get_active_turtle().draw_text(label, x, y, size, w, False)
+                self._tw.turtles.get_active_turtle().draw_text(
+                    label, x, y, size, w, False)
 
     def _set_pen_color(self, payload):
         if len(payload) > 0:

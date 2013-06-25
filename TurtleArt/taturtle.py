@@ -685,9 +685,9 @@ class Turtle:
 
     def draw_text(self, label, x, y, size, w, share=True):
         ''' Draw text '''
-        w *= self.turtles.turtle_window.coord_scale
-        self.turtles.turtle_window.canvas.draw_text(label, x, y, size, w,
-                                                    self.heading)
+        self.turtles.turtle_window.canvas.draw_text(
+            label, x, y, size, w, self.heading,
+            self.turtles.turtle_window.coord_scale)
 
         if self.turtles.turtle_window.sharing() and share:
             event = 'W|%s' % (data_to_string([self.turtles.turtle_window.nick,
@@ -727,6 +727,5 @@ class Turtle:
         return self.poly_points
 
     def get_pixel(self):
-        x, y = self.get_xy()
-        pos = self.turtles.turtle_to_screen_coordinates((x, y))
+        pos = self.turtles.turtle_to_screen_coordinates(self.get_xy())
         return self.turtles.turtle_window.canvas.get_pixel(pos[0], pos[1])

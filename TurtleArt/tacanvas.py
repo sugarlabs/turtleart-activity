@@ -99,14 +99,14 @@ COLOR_TABLE = (
 class TurtleGraphics:
     ''' A class for the Turtle graphics canvas '''
 
-    def __init__(self, tw, width, height):
+    def __init__(self, turtle_window, width, height):
         ''' Create a sprite to hold the canvas. '''
-        self.tw = tw
+        self.turtle_window = turtle_window
         self.width = width
         self.height = height
 
         # Build a cairo.Context from a cairo.XlibSurface
-        self.canvas = cairo.Context(self.tw.turtle_canvas)
+        self.canvas = cairo.Context(self.turtle_window.turtle_canvas)
         cr = gtk.gdk.CairoContext(self.canvas)
         cr.set_line_cap(1)  # Set the line cap to be round
         self.cr_svg = None  # Surface used for saving to SVG
@@ -122,9 +122,9 @@ class TurtleGraphics:
 
     def setup_svg_surface(self):
         ''' Set up a surface for saving to SVG '''
-        if self.tw.running_sugar:
+        if self.turtle_window.running_sugar:
             svg_surface = cairo.SVGSurface(
-                os.path.join(get_path(self.tw.activity, 'instance'),
+                os.path.join(get_path(self.turtle_window.activity, 'instance'),
                              'output.svg'), self.width, self.height)
         else:
             svg_surface = cairo.SVGSurface(
@@ -303,7 +303,7 @@ class TurtleGraphics:
         if self.cr_svg is not None:
             _draw_pixbuf(self.cr_svg, pixbuf, a, b, x, y, w, h, heading)
 
-    def draw_text(self, label, x, y, size, w, heading):
+    def draw_text(self, label, x, y, size, w, heading, scale):
         ''' Draw text '''
 
         def _draw_text(cr, label, x, y, size, w, scale, heading, rgb):
@@ -327,12 +327,13 @@ class TurtleGraphics:
             cc.show_layout(pl)
             cc.restore()
 
-        _draw_text(self.canvas, label, x, y, size, w, self.tw.coord_scale,
-                   heading, self.fgrgb)
+        w *= scale
+        _draw_text(self.canvas, label, x, y, size, w, scale, heading,
+                   self.fgrgb)
         self.inval()
         if self.cr_svg is not None:  # and self.pendown:
-            _draw_text(self.cr_svg, label, x, y, size, w, self.tw.coord_scale,
-                       heading, self.fgrgb)
+            _draw_text(self.cr_svg, label, x, y, size, w, scale, heading,
+                       self.fgrgb)
 
     def set_rgb(self, r, g, b):
         self.canvas.set_source_rgb(r, g, b)
@@ -387,17 +388,17 @@ class TurtleGraphics:
 
     def get_pixel(self, x, y):
         ''' Read the pixel at x, y '''
-        if self.tw.interactive_mode:
+        if self.turtle_window.interactive_mode:
             x = int(x)
             y = int(y)
-            w = self.tw.turtle_canvas.get_width()
-            h = self.tw.turtle_canvas.get_height()
+            w = self.turtle_window.turtle_canvas.get_width()
+            h = self.turtle_window.turtle_canvas.get_height()
             if x < 0 or x > (w - 1) or y < 0 or y > (h - 1):
                 return(-1, -1, -1, -1)
             # create a new 1x1 cairo surface
             cs = cairo.ImageSurface(cairo.FORMAT_RGB24, 1, 1)
             cr = cairo.Context(cs)
-            cr.set_source_surface(self.tw.turtle_canvas, -x, -y)
+            cr.set_source_surface(self.turtle_window.turtle_canvas, -x, -y)
             cr.rectangle(0, 0, 1, 1)
             cr.set_operator(cairo.OPERATOR_SOURCE)
             cr.fill()
@@ -417,4 +418,4 @@ class TurtleGraphics:
 
     def inval(self):
         ''' Invalidate a region for gtk '''
-        self.tw.inval_all()
+        self.turtle_window.inval_all()
