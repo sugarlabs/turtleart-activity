@@ -279,22 +279,22 @@ class Collaboration():
         ''' Set xy location so joiner can sync turtle positions. Should be
         used to sync positions after turtle drag. '''
         self._tw.turtles.set_turtle(self._get_nick())
-        if self._tw.turtles.get_active_turtle().pendown:
+        if self._tw.turtles.get_active_turtle().get_pen_state():
             self.send_event('p|%s' % (data_to_string([self._get_nick(),
                                                       False])))
             put_pen_back_down = True
         else:
             put_pen_back_down = False
         self.send_event('x|%s' % (data_to_string(
-            [self._get_nick(),
-             [int(self._tw.turtles.get_active_turtle().get_xy()[0]),
-              int(self._tw.turtles.get_active_turtle().get_xy()[1])]])))
+                    [self._get_nick(),
+                     [int(self._tw.turtles.get_active_turtle().get_xy()[0]),
+                      int(self._tw.turtles.get_active_turtle().get_xy()[1])]])))
         if put_pen_back_down:
             self.send_event('p|%s' % (data_to_string([self._get_nick(),
                                                       True])))
         self.send_event('r|%s' % (data_to_string(
-            [self._get_nick(),
-             int(self._tw.turtles.get_active_turtle().get_heading())])))
+                    [self._get_nick(),
+                     int(self._tw.turtles.get_active_turtle().get_heading())])))
 
     def _reskin_turtle(self, payload):
         if len(payload) > 0:

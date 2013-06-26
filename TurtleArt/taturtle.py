@@ -666,7 +666,7 @@ class Turtle:
             height = pixbuf.get_height()
             width = pixbuf.get_width()
 
-            pos = self.screen_to_turtle_coordinates((x, y))
+            pos = self._turtles.screen_to_turtle_coordinates((x, y))
 
             event = 'P|%s' % (data_to_string([self._turtles.turtle_window.nick,
                                               [round_int(a), round_int(b),
