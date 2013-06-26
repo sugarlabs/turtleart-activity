@@ -360,8 +360,8 @@ class Turtle:
             return
 
         self._turtles.turtle_window.canvas.set_fgcolor(shade=self._pen_shade,
-                                                      gray=self._pen_gray,
-                                                      color=self._pen_color)
+                                                       gray=self._pen_gray,
+                                                       color=self._pen_color)
 
         if self._turtles.turtle_window.sharing() and share:
             event = 'c|%s' % (data_to_string([self._turtles.turtle_window.nick,
@@ -384,8 +384,8 @@ class Turtle:
             self._pen_gray = 100
 
         self._turtles.turtle_window.canvas.set_fgcolor(shade=self._pen_shade,
-                                                      gray=self._pen_gray,
-                                                      color=self._pen_color)
+                                                       gray=self._pen_gray,
+                                                       color=self._pen_color)
 
         if self._turtles.turtle_window.sharing() and share:
             event = 'g|%s' % (data_to_string([self._turtles.turtle_window.nick,
@@ -403,8 +403,8 @@ class Turtle:
                 return
 
         self._turtles.turtle_window.canvas.set_fgcolor(shade=self._pen_shade,
-                                                      gray=self._pen_gray,
-                                                      color=self._pen_color)
+                                                       gray=self._pen_gray,
+                                                       color=self._pen_color)
 
         if self._turtles.turtle_window.sharing() and share:
             event = 's|%s' % (data_to_string([self._turtles.turtle_window.nick,
@@ -464,7 +464,8 @@ class Turtle:
                 shared_poly_points.append(
                     (self._turtles.screen_to_turtle_coordinates(p)))
                 event = 'F|%s' % (data_to_string(
-                        [self._turtles.turtle_window.nick, shared_poly_points]))
+                        [self._turtles.turtle_window.nick,
+                         shared_poly_points]))
             self._turtles.turtle_window.send_event(event)
         self._poly_points = []
 
@@ -527,7 +528,7 @@ class Turtle:
             pos1 = self._turtles.turtle_to_screen_coordinates(old)
             pos2 = self._turtles.turtle_to_screen_coordinates(new)
             self._turtles.turtle_window.canvas.draw_line(pos1[0], pos1[1],
-                                                        pos2[0], pos2[1])
+                                                         pos2[0], pos2[1])
             if self._pen_fill:
                 if self._poly_points == []:
                     self._poly_points.append(('move', pos1[0], pos1[1]))
@@ -569,7 +570,8 @@ class Turtle:
 
         if self._turtles.turtle_window.sharing() and share:
             event = 'x|%s' % (data_to_string([self._turtles.turtle_window.nick,
-                                              [round_int(x), round_int(y)]]))
+                                              [round_int(xcor),
+                                               round_int(ycor)]]))
             self._turtles.turtle_window.send_event(event)
 
     def arc(self, a, r, share=True):
@@ -605,15 +607,15 @@ class Turtle:
         if self._pen_state:
             npos = self._turtles.turtle_to_screen_coordinates((cx, cy))
             self._turtles.turtle_window.canvas.rarc(npos[0], npos[1], r, a,
-                                                   self._heading)
+                                                    self._heading)
 
             if self._pen_fill:
                 if self._poly_points == []:
                     self._poly_points.append(('move', npos[0], npos[1]))
                     self._poly_points.append(('rarc', npos[0], npos[1], r,
                                               (self._heading - 180) * DEGTOR,
-                                              (self._heading - 180 + a) \
-                                                  * DEGTOR))
+                                              (self._heading - 180 + a)
+                                              * DEGTOR))
 
         self.right(a, False)
         return [cx - r * cos(self._heading * DEGTOR),
@@ -631,7 +633,7 @@ class Turtle:
         if self._pen_state:
             npos = self._turtles.turtle_to_screen_coordinates((cx, cy))
             self._turtles.turtle_window.canvas.larc(npos[0], npos[1], r, a,
-                                                   self._heading)
+                                                    self._heading)
 
             if self._pen_fill:
                 if self._poly_points == []:
