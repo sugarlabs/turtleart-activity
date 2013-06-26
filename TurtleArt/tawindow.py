@@ -2434,8 +2434,6 @@ before making changes to your Turtle Blocks program'))
     def _turtle_pressed(self, x, y):
         pos = self.selected_turtle.get_xy()
         tpos = self.turtles.turtle_to_screen_coordinates(pos)
-        w = self.selected_turtle.half_width
-        h = self.selected_turtle.half_height
         dx = x - tpos[0]
         dy = y - tpos[1]
         if not hasattr(self.lc, 'value_blocks'):
@@ -2443,7 +2441,7 @@ before making changes to your Turtle Blocks program'))
         self.lc.update_values = True
         # Compare distance squared of drag position to sprite radius.
         # If x, y is near the edge, rotate.
-        if (dx * dx) + (dy * dy) > ((w * w) + (h * h)) / 6:
+        if (dx * dx) + (dy * dy) > self.selected_turtle.get_drag_radius():
             self.drag_turtle = (
                 'turn',
                 self.selected_turtle.get_heading() - atan2(dy, dx) / DEGTOR,
