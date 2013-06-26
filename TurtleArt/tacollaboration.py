@@ -286,15 +286,15 @@ class Collaboration():
         else:
             put_pen_back_down = False
         self.send_event('x|%s' % (data_to_string(
-                    [self._get_nick(),
-                     [int(self._tw.turtles.get_active_turtle().get_xy()[0]),
-                      int(self._tw.turtles.get_active_turtle().get_xy()[1])]])))
+            [self._get_nick(),
+             [int(self._tw.turtles.get_active_turtle().get_xy()[0]),
+              int(self._tw.turtles.get_active_turtle().get_xy()[1])]])))
         if put_pen_back_down:
             self.send_event('p|%s' % (data_to_string([self._get_nick(),
                                                       True])))
         self.send_event('r|%s' % (data_to_string(
-                    [self._get_nick(),
-                     int(self._tw.turtles.get_active_turtle().get_heading())])))
+            [self._get_nick(),
+             int(self._tw.turtles.get_active_turtle().get_heading())])))
 
     def _reskin_turtle(self, payload):
         if len(payload) > 0:

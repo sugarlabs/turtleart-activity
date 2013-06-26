@@ -102,10 +102,10 @@ class TurtleArtWindow():
     def __init__(self, canvas_window, path, parent=None, activity=None,
                  mycolors=None, mynick=None, turtle_canvas=None,
                  running_sugar=True):
-        """parent -- the GTK Window that TA runs in
-        activity -- the object that instantiated this TurtleArtWindow (in 
+        '''parent -- the GTK Window that TA runs in
+        activity -- the object that instantiated this TurtleArtWindow (in
                     GNOME, a TurtleMain instance)
-        """
+        '''
         self.parent = parent
         self.turtle_canvas = turtle_canvas
         self._loaded_project = ''
@@ -268,8 +268,8 @@ class TurtleArtWindow():
         else:
             Turtle(self.turtles, self.turtles.get_default_turtle_name(),
                    mycolors.split(','))
-        self.turtles.set_active_turtle(self.turtles.get_turtle(
-                self.turtles.get_default_turtle_name()))
+        self.turtles.set_active_turtle(
+            self.turtles.get_turtle(self.turtles.get_default_turtle_name()))
         self.turtles.get_active_turtle().show()
 
         self.canvas.clearscreen(False)
@@ -294,10 +294,10 @@ class TurtleArtWindow():
             self._setup_plugins()
 
     def _lazy_init(self, init_palettes=True, load_toolbar_shapes=True):
-        """init_palettes -- whether to initialize the palettes (should always 
+        '''init_palettes -- whether to initialize the palettes (should always
                             be True in TA)
         load_toolbar_shapes -- passed on to _setup_misc()
-        """
+        '''
         self._init_plugins()
         self._setup_plugins()
         self._setup_misc(load_toolbar_shapes=load_toolbar_shapes)
@@ -504,7 +504,7 @@ class TurtleArtWindow():
 
     def _setup_misc(self, load_toolbar_shapes=True):
         ''' Misc. sprites for status, overlays, etc.
-        load_toolbar_shapes -- whether to load the toolbar shapes/ icons if 
+        load_toolbar_shapes -- whether to load the toolbar shapes/ icons if
                                we're not in sugar (should always be True in TA)
         '''
         self.load_media_shapes()
@@ -2460,19 +2460,18 @@ before making changes to your Turtle Blocks program'))
         ''' Share turtle movement and rotation after button up '''
         if self.sharing():
             nick = self.turtle_movement_to_share.get_name()
-            self.send_event("r|%s" % (data_to_string([nick,
-                                                      round_int(
-                self.turtles.get_active_turtle().get_heading())])))
+            self.send_event("r|%s" % (data_to_string(
+                [nick,
+                 round_int(self.turtles.get_active_turtle().get_heading())])))
             if self.turtles.get_active_turtle().get_pen_state():
                 self.send_event('p|%s' % (data_to_string([nick, False])))
                 put_pen_back_down = True
             else:
                 put_pen_back_down = False
-            self.send_event("x|%s" %
-                            (data_to_string(
-                        [nick,
-                         [round_int(self.turtles.get_active_turtle().get_xy()[0]),
-                          round_int(self.turtles.get_active_turtle().get_xy()[1])]])))
+            self.send_event("x|%s" % (data_to_string(
+                [nick,
+                 [round_int(self.turtles.get_active_turtle().get_xy()[0]),
+                  round_int(self.turtles.get_active_turtle().get_xy()[1])]])))
             if put_pen_back_down:
                 self.send_event('p|%s' % (data_to_string([nick, True])))
         self.turtle_movement_to_share = None
@@ -3773,7 +3772,6 @@ before making changes to your Turtle Blocks program'))
         if self.running_sugar:
             chooser_dialog(self.parent, 'org.laptop.Pippy',
                            self.load_python_code_from_journal)
-            dsobject.destroy()
         else:
             self.load_python_code_from_file(fname=None, add_new_block=False)
 
@@ -4208,12 +4206,12 @@ before making changes to your Turtle Blocks program'))
                     pos = self.turtles.get_active_turtle().get_xy()
                     data.append(
                         (-1,
-                          ['turtle', turtle],
-                          pos[0], pos[1],
-                          self.turtles.get_active_turtle().get_heading(),
-                          self.turtles.get_active_turtle().get_color(),
-                          self.turtles.get_active_turtle().get_shade(),
-                          self.turtles.get_active_turtle().get_pen_size()))
+                         ['turtle', turtle],
+                         pos[0], pos[1],
+                         self.turtles.get_active_turtle().get_heading(),
+                         self.turtles.get_active_turtle().get_color(),
+                         self.turtles.get_active_turtle().get_shade(),
+                         self.turtles.get_active_turtle().get_pen_size()))
         return data
 
     def display_coordinates(self, clear=False):
@@ -4610,7 +4608,7 @@ variable'))
             raise logoerror("#emptybox")
 
     def _prim_setbox(self, name, x, val):
-        """ Define value of named box """
+        ''' Define value of named box '''
         if x is not None:
             if isinstance(convert(x, float, False), float):
                 if int(float(x)) == x:
