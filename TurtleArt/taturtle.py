@@ -428,7 +428,7 @@ class Turtle:
 
         if self.turtles.turtle_window.sharing() and share:
             event = 'p|%s' % (data_to_string([self.turtles.turtle_window.nick,
-                                              self._pen_state]))
+                                              self.pen_state]))
             self.turtles.turtle_window.send_event(event)
 
     def set_fill(self, state=False):
