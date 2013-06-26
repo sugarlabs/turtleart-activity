@@ -490,18 +490,6 @@ in place of a number block)'),
         define_logo_function('tapensize', 'to tapensize\noutput first round \
 pensize\nend\n')
 
-        # Deprecated
-        palette.add_block('settextsize',
-                          hidden=True,
-                          style='basic-style-1arg',
-                          label=_('set text size'),
-                          prim_name='settextsize',
-                          default=0,
-                          help_string=_('sets size of text drawn by the \
-turtle'))
-        self.tw.lc.def_prim('settextsize', 1,
-                            lambda self, x: self.tw.canvas.settextsize(x))
-
     def _color_palette(self):
         ''' The basic Turtle Art color palette '''
 

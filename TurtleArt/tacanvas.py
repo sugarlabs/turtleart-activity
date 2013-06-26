@@ -421,12 +421,3 @@ class TurtleGraphics:
     def inval(self):
         ''' Invalidate a region for gtk '''
         self.turtle_window.inval_all()
-
-    # Deprecated
-    def settextsize(self, size):
-        ''' Set the text size '''
-        try:
-            self.turtle_window.textsize = size
-        except (TypeError, ValueError):
-            debug_output('bad value sent to %s' % (__name__),
-                         self.tw.running_sugar)
