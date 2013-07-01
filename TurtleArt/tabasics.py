@@ -350,7 +350,7 @@ turtle'))
             'setcolor',
             1,
             lambda self, x: primitive_dictionary['set'](
-                'color', self.tw.turtles.get_active_turtle().set_color, x))
+                'color', self.tw.turtles.get_active_turtle().set_color(x)))
 
         palette.add_block('setshade',
                           style='basic-style-1arg',
@@ -364,7 +364,7 @@ turtle'))
             'setshade',
             1,
             lambda self, x: primitive_dictionary['set'](
-                'shade', self.tw.turtles.get_active_turtle().set_shade, x))
+                'shade', self.tw.turtles.get_active_turtle().set_shade(x)))
 
         palette.add_block('setgray',
                           style='basic-style-1arg',
@@ -377,7 +377,7 @@ the turtle'))
             'setgray',
             1,
             lambda self, x: primitive_dictionary['set'](
-                'gray', self.tw.turtles.get_active_turtle().set_gray, x))
+                'gray', self.tw.turtles.get_active_turtle().set_gray(x)))
 
         palette.add_block('color',
                           style='box-style',
@@ -390,7 +390,7 @@ in place of a number block)'),
         self.tw.lc.def_prim(
             'color',
             0,
-            lambda self: self.tw.turtles.get_active_turtle().get_color)
+            lambda self: self.tw.turtles.get_active_turtle().get_color())
 
         palette.add_block('shade',
                           style='box-style',
@@ -402,7 +402,7 @@ in place of a number block)'),
         self.tw.lc.def_prim(
             'shade',
             0,
-            lambda self: self.tw.turtles.get_active_turtle().get_shade)
+            lambda self: self.tw.turtles.get_active_turtle().get_shade())
 
         palette.add_block('gray',
                           style='box-style',
@@ -412,7 +412,7 @@ used in place of a number block)'),
                           value_block=True,
                           prim_name='gray')
         self.tw.lc.def_prim('gray', 0, lambda self:
-                                self.tw.turtles.get_active_turtle().get_gray)
+                                self.tw.turtles.get_active_turtle().get_gray())
 
         palette.add_block('penup',
                           style='basic-style-extended-vertical',

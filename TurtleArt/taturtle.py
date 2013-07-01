@@ -27,7 +27,6 @@ import cairo
 
 from random import uniform
 from math import sin, cos, pi, sqrt
-
 from taconstants import (TURTLE_LAYER, DEFAULT_TURTLE_COLORS, DEFAULT_TURTLE,
                          COLORDICT)
 from tasprite_factory import SVG, svg_str_to_pixbuf
