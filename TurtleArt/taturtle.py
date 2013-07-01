@@ -350,6 +350,8 @@ class Turtle:
                 color = COLORDICT[color][0]
             else:
                 color = self._pen_color
+        elif color is None:
+            color = self._pen_color
 
         try:
             self._pen_color = color
