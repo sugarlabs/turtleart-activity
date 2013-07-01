@@ -350,7 +350,7 @@ turtle'))
             'setcolor',
             1,
             lambda self, x: primitive_dictionary['set'](
-                'color', self.tw.turtles.get_active_turtle().set_color(x)))
+                'color', self.tw.turtles.get_active_turtle().set_color, x))
 
         palette.add_block('setshade',
                           style='basic-style-1arg',
@@ -364,7 +364,7 @@ turtle'))
             'setshade',
             1,
             lambda self, x: primitive_dictionary['set'](
-                'shade', self.tw.turtles.get_active_turtle().set_shade(x)))
+                'shade', self.tw.turtles.get_active_turtle().set_shade, x))
 
         palette.add_block('setgray',
                           style='basic-style-1arg',
@@ -377,7 +377,7 @@ the turtle'))
             'setgray',
             1,
             lambda self, x: primitive_dictionary['set'](
-                'gray', self.tw.turtles.get_active_turtle().set_gray(x)))
+                'gray', self.tw.turtles.get_active_turtle().set_gray, x))
 
         palette.add_block('color',
                           style='box-style',
@@ -486,7 +486,7 @@ in place of a number block)'),
         self.tw.lc.def_prim(
             'pensize',
             0,
-            lambda self: self.tw.turtles.get_active_turtle().get_pen_size)
+            lambda self: self.tw.turtles.get_active_turtle().get_pen_size())
         define_logo_function('tapensize', 'to tapensize\noutput first round \
 pensize\nend\n')
 
