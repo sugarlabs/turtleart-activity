@@ -101,10 +101,11 @@ class TurtleArtWindow():
 
     def __init__(self, canvas_window, path, parent=None, activity=None,
                  mycolors=None, mynick=None, turtle_canvas=None,
-                 running_sugar=True):
+                 running_sugar=True, running_turtleart=True):
         '''parent -- the GTK Window that TA runs in
         activity -- the object that instantiated this TurtleArtWindow (in
                     GNOME, a TurtleMain instance)
+        running_turtleart -- are we running TA or exported python code?
         '''
         self.parent = parent
         self.turtle_canvas = turtle_canvas
@@ -115,6 +116,7 @@ class TurtleArtWindow():
         self.gst_available = _GST_AVAILABLE
         self.running_sugar = False
         self.nick = None
+        self.running_turtleart = running_turtleart
         if isinstance(canvas_window, gtk.DrawingArea):
             self.interactive_mode = True
             self.window = canvas_window
@@ -145,6 +147,7 @@ class TurtleArtWindow():
         else:
             self.activity = parent
 
+        # loading and saving
         self.path = path
         self.load_save_folder = os.path.join(path, 'samples')
         self.py_load_save_folder = os.path.join(path, 'pysamples')
@@ -152,6 +155,8 @@ class TurtleArtWindow():
         self.used_block_list = []  # Which blocks has the user used?
         self.save_folder = None
         self.save_file_name = None
+        
+        # dimensions
         self.width = gtk.gdk.screen_width()
         self.height = gtk.gdk.screen_height()
         self.rect = gtk.gdk.Rectangle(0, 0, 0, 0)
@@ -174,6 +179,7 @@ class TurtleArtWindow():
         self.sharing_blocks = False
         self.deleting_blocks = False
 
+        # find out which character to use as decimal point
         try:
             locale.setlocale(locale.LC_NUMERIC, '')
         except locale.Error:
@@ -182,8 +188,8 @@ class TurtleArtWindow():
         if self.decimal_point == '' or self.decimal_point is None:
             self.decimal_point = '.'
 
+        # settings that depend on the hardware
         self.orientation = HORIZONTAL_PALETTE
-
         self.hw = get_hardware()
         self.lead = 1.0
         if self.hw in (XO1, XO15, XO175, XO4):
@@ -208,8 +214,9 @@ class TurtleArtWindow():
         self.nop = 'nop'
         self.loaded = 0
         self.step_time = 0
-        self.hide = False
-        self.palette = True
+        # show/ hide palettes depending on whether we're running in TA or not
+        self.hide = not self.running_turtleart
+        self.palette = self.running_turtleart
         self.coord_scale = 1
         self.buddies = []
         self._saved_string = ''
@@ -247,6 +254,7 @@ class TurtleArtWindow():
         self.turtle_movement_to_share = None
         self.paste_offset = 20  # Don't paste on top of where you copied.
 
+        # common properties of all blocks (font size, decimal point, ...)
         self.block_list = Blocks(font_scale_factor=self.scale,
                                  decimal_point=self.decimal_point)
         if self.interactive_mode:
@@ -254,6 +262,7 @@ class TurtleArtWindow():
         else:
             self.sprite_list = None
 
+        # canvas object that supports the basic drawing functionality
         self.canvas = TurtleGraphics(self, self.width, self.height)
         if self.hw == XO175 and self.canvas.width == 1024:
             self.hw = XO30
@@ -284,8 +293,10 @@ class TurtleArtWindow():
         self.saved_pictures = []
         self.block_operation = ''
 
-        from tabasics import Palettes
-        self._basic_palettes = Palettes(self)
+        # only in TA: setup basic palettes
+        if self.running_turtleart:
+            from tabasics import Palettes
+            self._basic_palettes = Palettes(self)
 
         if self.interactive_mode:
             gobject.idle_add(self._lazy_init)
@@ -293,16 +304,12 @@ class TurtleArtWindow():
             self._init_plugins()
             self._setup_plugins()
 
-    def _lazy_init(self, init_palettes=True, load_toolbar_shapes=True):
-        '''init_palettes -- whether to initialize the palettes (should always
-                            be True in TA)
-        load_toolbar_shapes -- passed on to _setup_misc()
-        '''
+    def _lazy_init(self):
         self._init_plugins()
         self._setup_plugins()
-        self._setup_misc(load_toolbar_shapes=load_toolbar_shapes)
+        self._setup_misc()
 
-        if init_palettes:
+        if self.running_turtleart:
             self._basic_palettes.make_trash_palette()
             for name in palette_init_on_start:
                 debug_output('initing palette %s' % (name), self.running_sugar)
@@ -502,11 +509,8 @@ class TurtleArtWindow():
                             os.path.join(self.path, path, filename + '.svg')))
                     break
 
-    def _setup_misc(self, load_toolbar_shapes=True):
-        ''' Misc. sprites for status, overlays, etc.
-        load_toolbar_shapes -- whether to load the toolbar shapes/ icons if
-                               we're not in sugar (should always be True in TA)
-        '''
+    def _setup_misc(self):
+        ''' Misc. sprites for status, overlays, etc. '''
         self.load_media_shapes()
         for i, name in enumerate(STATUS_SHAPES):
             # Temporary hack to use wider shapes
@@ -534,7 +538,7 @@ class TurtleArtWindow():
             self.overlay_shapes[name].hide()
             self.overlay_shapes[name].type = 'overlay'
 
-        if load_toolbar_shapes and not self.running_sugar:
+        if self.running_turtleart and not self.running_sugar:
             # offset = 2 * self.width - 55 * len(TOOLBAR_SHAPES)
             offset = 55 * (1 + len(palette_blocks))
             for i, name in enumerate(TOOLBAR_SHAPES):
