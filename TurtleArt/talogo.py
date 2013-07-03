@@ -166,7 +166,7 @@ class LogoCode:
         if self.tw.gst_available:
             from tagplay import stop_media
             stop_media(self)
-        self.tw.active_turtle.show()
+        self.tw.turtles.get_active_turtle().show()
         self.tw.running_blocks = False
         # If we disabled hover help, reenable it
         if self._disable_help:
@@ -327,7 +327,7 @@ class LogoCode:
 
     def _setup_cmd(self, string):
         """ Execute the psuedocode. """
-        self.hidden_turtle = self.tw.active_turtle
+        self.hidden_turtle = self.tw.turtles.get_active_turtle()
         self.hidden_turtle.hide()  # Hide the turtle while we are running.
         self.procstop = False
         blklist = self._readline(string)
@@ -417,12 +417,12 @@ class LogoCode:
 
             # In debugging modes, we pause between steps and show the turtle.
             if self.tw.step_time > 0:
-                self.tw.active_turtle.show()
+                self.tw.turtles.get_active_turtle().show()
                 endtime = _millisecond() + self.tw.step_time * 100.
                 while _millisecond() < endtime:
                     sleep(0.1)
                     yield True
-                self.tw.active_turtle.hide()
+                self.tw.turtles.get_active_turtle().hide()
 
             # 'Stand-alone' booleans are handled here.
             if token == self.symopar:
@@ -541,7 +541,7 @@ class LogoCode:
                         self.hidden_turtle.show()
                         self.hidden_turtle = None
                     else:
-                        self.tw.active_turtle.show()
+                        self.tw.turtles.get_active_turtle().show()
                     self.tw.running_blocks = False
                     return False
         except logoerror, e:
@@ -603,6 +603,7 @@ class LogoCode:
             from tagplay import stop_media
             stop_media(self)
         self.tw.canvas.clearscreen()
+        self.tw.turtles.reset_turtles()
         self.scale = DEFAULT_SCALE
         self.hidden_turtle = None
         self.start_time = time()
@@ -693,11 +694,13 @@ class LogoCode:
 
     def x2tx(self):
         """ Convert screen coordinates to turtle coordinates """
-        return int(self.tw.canvas.width / 2) + int(self.tw.canvas.xcor)
+        return int(self.tw.canvas.width / 2) + \
+            int(self.tw.turtles.get_active_turtle().get_xy()[0])
 
     def y2ty(self):
         """ Convert screen coordinates to turtle coordinates """
-        return int(self.tw.canvas.height / 2) - int(self.tw.canvas.ycor)
+        return int(self.tw.canvas.height / 2) - \
+            int(self.tw.turtles.get_active_turtle().get_xy()[1])
 
     def wpercent(self):
         """ width as a percentage of screen coordinates """
@@ -746,20 +749,23 @@ class LogoCode:
             w *= self.tw.coord_scale
             h *= self.tw.coord_scale
             if center:
-                self.tw.canvas.draw_pixbuf(self.pixbuf, 0, 0,
-                                           self.x2tx() - int(w / 2),
-                                           self.y2ty() - int(h / 2), w, h,
-                                           self.filepath)
+                self.tw.turtles.get_active_turtle().draw_pixbuf(
+                    self.pixbuf, 0, 0,
+                    self.x2tx() - int(w / 2),
+                    self.y2ty() - int(h / 2), w, h,
+                    self.filepath)
             elif offset:
-                self.tw.canvas.draw_pixbuf(self.pixbuf, 0, 0,
-                                           self.x2tx(),
-                                           self.y2ty() - h,
-                                           w, h, self.filepath)
+                self.tw.turtles.get_active_turtle().draw_pixbuf(
+                    self.pixbuf, 0, 0,
+                    self.x2tx(),
+                    self.y2ty() - h,
+                    w, h, self.filepath)
             else:
-                self.tw.canvas.draw_pixbuf(self.pixbuf, 0, 0,
-                                           self.x2tx(),
-                                           self.y2ty(),
-                                           w, h, self.filepath)
+                self.tw.turtles.get_active_turtle().draw_pixbuf(
+                    self.pixbuf, 0, 0,
+                    self.x2tx(),
+                    self.y2ty(),
+                    w, h, self.filepath)
 
     def insert_desc(self, mimetype=None, description=None):
         """ Description text only (at current x, y) """
@@ -790,8 +796,8 @@ class LogoCode:
             else:
                 text = self.filepath
         if text is not None:
-            self.tw.canvas.draw_text(text, self.x2tx(), self.y2ty(),
-                                     self.body_height, w)
+            self.tw.turtles.get_active_turtle().draw_text(
+                text, self.x2tx(), self.y2ty(), self.body_height, w)
 
     def media_wait(self):
         """ Wait for media to stop playing """

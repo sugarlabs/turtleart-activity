@@ -200,7 +200,7 @@ class Collaboration():
             return
 
        # Save active Turtle
-        save_active_turtle = self._tw.active_turtle
+        save_active_turtle = self._tw.turtles.get_active_turtle()
 
         try:
             command, payload = event_message.split('|', 2)
@@ -211,7 +211,7 @@ class Collaboration():
         self._processing_methods[command](payload)
 
         # Restore active Turtle
-        self._tw.canvas.set_turtle(
+        self._tw.turtles.set_turtle(
             self._tw.turtles.get_turtle_key(save_active_turtle))
 
     def send_event(self, entry):
@@ -229,13 +229,13 @@ class Collaboration():
                     # Make sure it is not a "rejoin".
                     if not nick in self._tw.remote_turtle_dictionary:
                         # Add new turtle for the joiner.
-                        self._tw.canvas.set_turtle(nick, colors)
+                        self._tw.turtles.set_turtle(nick, colors)
                         self._tw.label_remote_turtle(nick, colors)
                     self._tw.remote_turtle_dictionary[nick] = colors
                 else:
                     self._tw.remote_turtle_dictionary = self._get_dictionary()
                     # Add new turtle for the joiner.
-                    self._tw.canvas.set_turtle(nick, colors)
+                    self._tw.turtles.set_turtle(nick, colors)
                     self._tw.label_remote_turtle(nick, colors)
 
         # Sharer should send the updated remote turtle dictionary to everyone.
@@ -264,7 +264,7 @@ class Collaboration():
                         # Add new the turtle.
                         colors = remote_turtle_dictionary[nick]
                         self._tw.remote_turtle_dictionary[nick] = colors
-                        self._tw.canvas.set_turtle(nick, colors)
+                        self._tw.turtles.set_turtle(nick, colors)
                         # Label the remote turtle.
                         self._tw.label_remote_turtle(nick, colors)
                         debug_output('adding %s to remote turtle dictionary' %
@@ -278,23 +278,23 @@ class Collaboration():
     def send_my_xy(self):
         ''' Set xy location so joiner can sync turtle positions. Should be
         used to sync positions after turtle drag. '''
-        self._tw.canvas.set_turtle(self._get_nick())
-        if self._tw.canvas.pendown:
+        self._tw.turtles.set_turtle(self._get_nick())
+        if self._tw.turtles.get_active_turtle().get_pen_state():
             self.send_event('p|%s' % (data_to_string([self._get_nick(),
                                                       False])))
             put_pen_back_down = True
         else:
             put_pen_back_down = False
-        self.send_event('x|%s' %
-                        (data_to_string([self._get_nick(),
-                                         [int(self._tw.canvas.xcor),
-                                          int(self._tw.canvas.ycor)]])))
+        self.send_event('x|%s' % (data_to_string(
+                    [self._get_nick(),
+                     [int(self._tw.turtles.get_active_turtle().get_xy()[0]),
+                      int(self._tw.turtles.get_active_turtle().get_xy()[1])]])))
         if put_pen_back_down:
             self.send_event('p|%s' % (data_to_string([self._get_nick(),
                                                       True])))
-        self.send_event('r|%s' %
-                        (data_to_string([self._get_nick(),
-                                         int(self._tw.canvas.heading)])))
+        self.send_event('r|%s' % (data_to_string(
+                    [self._get_nick(),
+                     int(self._tw.turtles.get_active_turtle().get_heading())])))
 
     def _reskin_turtle(self, payload):
         if len(payload) > 0:
@@ -307,8 +307,8 @@ class Collaboration():
                 file_name = base64_to_image(data, tmp_path)
                 pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(file_name,
                                                               width, height)
-                self._tw.canvas.set_turtle(nick)
-                self._tw.active_turtle.set_shapes([pixbuf])
+                self._tw.turtles.set_turtle(nick)
+                self._tw.turtles.get_active_turtle().set_shapes([pixbuf])
 
     def _draw_pixbuf(self, payload):
         if len(payload) > 0:
@@ -322,89 +322,93 @@ class Collaboration():
                 file_name = base64_to_image(data, tmp_path)
                 pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(file_name,
                                                               width, height)
-                x, y = self._tw.canvas.turtle_to_screen_coordinates(x, y)
-                self._tw.canvas.draw_pixbuf(pixbuf, a, b, x, y, w, h,
-                                            file_name, False)
+                pos = self._tw.turtles.turtle_to_screen_coordinates((x, y))
+                self._tw.turtles.get_active_turtle().draw_pixbuf(
+                    pixbuf, a, b, pos[0], pos[1], w, h, file_name, False)
 
     def _move_forward(self, payload):
         if len(payload) > 0:
             [nick, x] = data_from_string(payload)
             if nick != self._tw.nick:
-                self._tw.canvas.set_turtle(nick)
-                self._tw.canvas.forward(x, False)
+                self._tw.turtles.set_turtle(nick)
+                self._tw.turtles.get_active_turtle().forward(x, False)
 
     def _move_in_arc(self, payload):
         if len(payload) > 0:
             [nick, [a, r]] = data_from_string(payload)
             if nick != self._tw.nick:
-                self._tw.canvas.set_turtle(nick)
-                self._tw.canvas.arc(a, r, False)
+                self._tw.turtles.set_turtle(nick)
+                self._tw.turtles.get_active_turtle().arc(a, r, False)
 
     def _rotate_turtle(self, payload):
         if len(payload) > 0:
             [nick, h] = data_from_string(payload)
             if nick != self._tw.nick:
-                self._tw.canvas.set_turtle(nick)
-                self._tw.canvas.seth(h, False)
+                self._tw.turtles.set_turtle(nick)
+                self._tw.turtles.get_active_turtle().set_heading(h, False)
 
     def _setxy(self, payload):
         if len(payload) > 0:
             [nick, [x, y]] = data_from_string(payload)
             if nick != self._tw.nick:
-                self._tw.canvas.set_turtle(nick)
-                self._tw.canvas.setxy(x, y, False)
+                self._tw.turtles.set_turtle(nick)
+                self._tw.turtles.get_active_turtle().set_xy(x, y, False)
 
     def _draw_text(self, payload):
         if len(payload) > 0:
             [nick, [label, x, y, size, w]] = data_from_string(payload)
             if nick != self._tw.nick:
-                self._tw.canvas.draw_text(label, x, y, size, w, False)
+                self._tw.turtles.get_active_turtle().draw_text(
+                    label, x, y, size, w, False)
 
     def _set_pen_color(self, payload):
         if len(payload) > 0:
             [nick, x] = data_from_string(payload)
             if nick != self._tw.nick:
-                self._tw.canvas.set_turtle(nick)
-                self._tw.canvas.setcolor(x, False)
+                self._tw.turtles.set_turtle(nick)
+                self._tw.turtles.get_active_turtle().set_color(x, False)
 
     def _set_pen_gray_level(self, payload):
         if len(payload) > 0:
             [nick, x] = data_from_string(payload)
             if nick != self._tw.nick:
-                self._tw.canvas.set_turtle(nick)
-                self._tw.canvas.setgray(x, False)
+                self._tw.turtles.set_turtle(nick)
+                self._tw.turtles.get_active_turtle().set_gray(x, False)
 
     def _set_pen_shade(self, payload):
         if len(payload) > 0:
             [nick, x] = data_from_string(payload)
             if nick != self._tw.nick:
-                self._tw.canvas.set_turtle(nick)
-                self._tw.canvas.setshade(x, False)
+                self._tw.turtles.set_turtle(nick)
+                self._tw.turtles.get_active_turtle().set_shade(x, False)
 
     def _set_pen_width(self, payload):
         if len(payload) > 0:
             [nick, x] = data_from_string(payload)
             if nick != self._tw.nick:
-                self._tw.canvas.set_turtle(nick)
-                self._tw.canvas.setpensize(x, False)
+                self._tw.turtles.set_turtle(nick)
+                self._tw.turtles.get_active_turtle().set_pen_size(x, False)
 
     def _set_pen_state(self, payload):
         if len(payload) > 0:
             [nick, x] = data_from_string(payload)
             if nick != self._tw.nick:
-                self._tw.canvas.set_turtle(nick)
-                self._tw.canvas.setpen(x, False)
+                self._tw.turtles.set_turtle(nick)
+                self._tw.turtles.get_active_turtle().set_pen_state(x, False)
 
     def _fill_polygon(self, payload):
-        # Check to make sure that the poly_point array is passed properly
         if len(payload) > 0:
             [nick, poly_points] = data_from_string(payload)
             shared_poly_points = []
             for i in range(len(poly_points)):
                 shared_poly_points.append(
-                    (self._tw.canvas.turtle_to_screen_coordinates
+                    (self._tw.turtles.turtle_to_screen_coordinates
                      (poly_points[i][0], poly_points[i][1])))
-            self._tw.canvas.fill_polygon(shared_poly_points)
+            if nick != self._tw.nick:
+                self._tw.turtles.set_turtle(nick)
+                self._tw.turtles.get_active_turtle().set_poly_points(
+                    shared_poly_points)
+                self._tw.turtles.get_active_turtle().stop_fill(False)
 
     def _speak(self, payload):
         if len(payload) > 0:
