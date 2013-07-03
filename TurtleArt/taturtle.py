@@ -698,6 +698,12 @@ class Turtle:
 
     def get_xy(self):
         return [self._x, self._y]
+    
+    def get_x(self):
+        return self._x
+    
+    def get_y(self):
+        return self._y
 
     def get_heading(self):
         return self._heading
