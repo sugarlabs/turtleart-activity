@@ -1230,7 +1230,6 @@ def generator(datapath):
     f.write(svg_str)
     close_file(f)
 
-    '''
     svg = SVG()
     f = open_file(datapath, "boolean_notnot.svg")
     svg.set_scale(2)
@@ -1480,7 +1479,6 @@ def generator(datapath):
     svg_str = svg.clamp()
     f.write(svg_str)
     close_file(f)
-    '''
 
 
 def main():
