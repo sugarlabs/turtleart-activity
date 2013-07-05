@@ -390,7 +390,7 @@ in place of a number block)'),
         self.tw.lc.def_prim(
             'color',
             0,
-            lambda self: self.tw.turtles.get_active_turtle().get_color)
+            lambda self: self.tw.turtles.get_active_turtle().get_color())
 
         palette.add_block('shade',
                           style='box-style',
@@ -402,7 +402,7 @@ in place of a number block)'),
         self.tw.lc.def_prim(
             'shade',
             0,
-            lambda self: self.tw.turtles.get_active_turtle().get_shade)
+            lambda self: self.tw.turtles.get_active_turtle().get_shade())
 
         palette.add_block('gray',
                           style='box-style',
@@ -412,7 +412,7 @@ used in place of a number block)'),
                           value_block=True,
                           prim_name='gray')
         self.tw.lc.def_prim('gray', 0, lambda self:
-                                self.tw.turtles.get_active_turtle().get_gray)
+                                self.tw.turtles.get_active_turtle().get_gray())
 
         palette.add_block('penup',
                           style='basic-style-extended-vertical',
@@ -486,7 +486,7 @@ in place of a number block)'),
         self.tw.lc.def_prim(
             'pensize',
             0,
-            lambda self: self.tw.turtles.get_active_turtle().get_pen_size)
+            lambda self: self.tw.turtles.get_active_turtle().get_pen_size())
         define_logo_function('tapensize', 'to tapensize\noutput first round \
 pensize\nend\n')
 
