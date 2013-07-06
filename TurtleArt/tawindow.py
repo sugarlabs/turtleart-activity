@@ -3072,10 +3072,8 @@ before making changes to your Turtle Blocks program'))
         if blk is None:
             return
         self.lc.find_value_blocks()  # Are there blocks to update?
-        # Is there a savesvg block?
-        if len(self.block_list.get_similar_blocks('block', 'savesvg')) > 0:
-            if self.canvas.cr_svg is None:
-                self.canvas.setup_svg_surface()
+        if self.canvas.cr_svg is None:
+            self.canvas.setup_svg_surface()
         self.running_blocks = True
         self._start_plugins()  # Let the plugins know we are running.
         top = find_top_block(blk)
