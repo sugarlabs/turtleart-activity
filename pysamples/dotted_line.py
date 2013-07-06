@@ -1,4 +1,4 @@
-#Copyright (c) 2009-11, Walter Bender
+#Copyright (c) 2009-13, Walter Bender
 
 # This procedure is invoked when the user-definable block on the "extras"
 # palette is selected. Some examples of how to use this block are included
@@ -52,43 +52,57 @@
 # clearscreen(self)		tw.canvas.clearscreen()
 # Note: Clears the screen and resets all turtle and
 #       pen attributes to default values
-# setpen(self, flag)		tw.canvas.setpen(True)
+#
+#
+# Class Turtles -- useful properties and methods (from within
+# tamyblock.py, tw.turtles is the class instance)
+#
+# self.set_turtle(name)		tw.turltes.set_turtle(1)
+# Note: Set the current turtle to turtle '1'
+# self.get_active_turtle()	tw.turltes.get_active_turtle()
+# Note: Returns active turtle (See Class Turtle below)
+#
+# Class Turtle -- useful properties and methods (from within
+# tamyblock.py, tw.turtles.get_active_turtle() is the class instance)
+#
+# set_pen_state(self, flag)
+#	tw.turtles.get_active_turtle().set_pen_state(True)
 # Note: True will set the pen "down", enabling drawing;
 #       False will set the pen "up"
-# forward(self, n)		tw.canvas.forward(100)
+# forward(self, n)		tw.turtles.get_active_turtle().forward(100)
 # Note: Move the turtle forward 100 units
-# arc(self, a, r)		tw.canvas.arc(120, 50)
+# arc(self, a, r)		tw.turtles.get_active_turtle().arc(120, 50)
 # Note: Move the turtle along an arc of 120 degrees
 #       (clockwise) and radius of 50 units
-# setheading(self, a)		tw.canvas.setheading(180)
+# set_heading(self, a)		tw.turtles.get_active_turtle().set_heading(180)
 # Note: Set the turtle heading to 180
 #       (towards the bottom of the screen)
-# self.heading			tw.canvas.heading
+# self.get_heading()		tw.turtles.get_active_turtle().get_heading()
 # Note: The current heading
-# setpensize(self, n)		tw.canvas.setpensize(25)
+# set_pen_size(self, n)		tw.turtles.get_active_turtle().set_pen_size(25)
 # Note: Set the turtle pensize to 25 units
-# self.pensize			tw.canvas.pensize
-# Note: The current pensize
-# setcolor(self, c)		tw.canvas.color(70)
+# self.get_pen_size()		tw.turtles.get_active_turtle().get_pen_size()
+# Note: The current pen size
+# self.set_color(self, c)	tw.turtles.get_active_turtle().set_color(70)
 # Note:	Set the pen color to 70 (blue)
-# self.color			tw.canvas.color
+# self.color()			tw.turtles.get_active_turtle().get_color()
 # Note: The current pen color
-# setshade(self, s)		tw.canvas.shade(50)
+# self.set_shade(self, s)	tw.turtles.get_active_turtle().set_shade(50)
 # Note:	Set the pen shade to 50
-# self.shade			tw.canvas.shade
+# self.get_shade()		tw.turtles.get_active_turtle().get_shade()
 # Note: The current pen shade
-# fillscreen(self, c, s)	tw.canvas.fillscreen(70, 90)
+# fillscreen(self, c, s)
+#	tw.turtles.get_active_turtle().fillscreen(70, 90)
 # Note: Fill the screen with color 70, shade 90 (light blue)
-# setxy(self, x, y)		tw.canvas.setxy(100,100)
+# self.set_xy(self, (x, y))
+#		tw.turtles.get_active_turtle().set_xy((100,100))
 # Note: Move the turtle to position (100, 100)
-# self.xcor			tw.canvas.xcor
+# self.get_xy			tw.turtles.get_active_turtle().get_xy()[0]
 # Note: The current x coordinate of the turtle
 #       (scaled to current units)
-# self.ycor			tw.canvas.ycor
+# self.get_xy			tw.turtles.get_active_turtle().get_xy()[1]
 # Note: The current y coordinate of the turtle
 #       (scaled to current units)
-# self.set_turtle(name)		tw.canvas.set_turtle(1)
-# Note: Set the current turtle to turtle '1'
 #
 #
 # Other useful Python functions
@@ -117,17 +131,18 @@ def myblock(tw, line_length):
         line_length = float(line_length)
     except ValueError:
         return
-    if tw.canvas.pendown:
+    if tw.turtles.get_active_turtle().get_pen_state():
         dist = 0
-        while dist + tw.canvas.pensize < line_length:  # repeat drawing dots
-            tw.canvas.setpen(True)
-            tw.canvas.forward(1)
-            tw.canvas.setpen(False)
-            tw.canvas.forward((tw.canvas.pensize * 2) - 1)
-            dist += (tw.canvas.pensize * 2)
+        pen_size = tw.turtles.get_active_turtle().get_pen_size()
+        while dist + pen_size < line_length:  # repeat drawing dots
+            tw.turtles.get_active_turtle().set_pen_state(True)
+            tw.turtles.get_active_turtle().forward(1)
+            tw.turtles.get_active_turtle().set_pen_state(False)
+            tw.turtles.get_active_turtle().forward(pen_size * 2 - 1)
+            dist += pen_size * 2
         # make sure we have moved exactly line_length
-        tw.canvas.forward(line_length - dist)
-        tw.canvas.setpen(True)
+        tw.turtles.get_active_turtle().forward(line_length - dist)
+        tw.turtles.get_active_turtle().set_pen_state(True)
     else:
-        tw.canvas.forward(line_length)
+        tw.turtles.get_active_turtle().forward(line_length)
     return
