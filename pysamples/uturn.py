@@ -34,7 +34,7 @@ def myblock(tw, arg):
                       style='basic-style-extended-vertical',
                       label=_('uturn'),
                       prim_name='uturn',
-                      help_string=_('make a uturn'))
+                      help_string=_('turns the turtle 180 degrees'))
 
     # Add its primitive to the LogoCode dictionary.
     tw.lc.def_prim('uturn', 0, lambda self: _prim_uturn(tw))
@@ -42,9 +42,3 @@ def myblock(tw, arg):
     # Regenerate the palette, which will now include the new block.
     tw.show_toolbar_palette(palette_name_to_index('turtle'),
                             regenerate=True)
-
-    palette.add_block('uturn',  # the name of your block
-                      style='basic-style',  # the block style
-                      label=_('u turn'),  # the label for the block
-                      prim_name='uturn',  # code reference (see below)
-                      help_string=_('turns the turtle 180 degrees'))
