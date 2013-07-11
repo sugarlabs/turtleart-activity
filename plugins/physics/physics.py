@@ -58,6 +58,7 @@ class Physics(Plugin):
                       'controllerlist': [],
                       'additional_vars': {}}
         self._prim_box2d_reset()
+        self._gear_radius = 0
 
     def setup(self):
         # set up physics specific blocks
@@ -69,6 +70,7 @@ class Physics(Plugin):
         primitive_dictionary['box2dtriangle'] = self._prim_box2d_triangle
         primitive_dictionary['box2drectangle'] = self._prim_box2d_rectangle
         primitive_dictionary['box2dgear'] = self._prim_box2d_gear
+        primitive_dictionary['box2dradius'] = self._prim_box2d_radius
         primitive_dictionary['savebox2d'] = self._prim_save_box2d
         primitive_dictionary['box2ddensity'] = self._prim_box2d_density
         primitive_dictionary['box2dfriction'] = self._prim_box2d_friction
@@ -203,6 +205,15 @@ project.'),
         self._tw.lc.def_prim(
             'box2dgear', 1,
             lambda self, x: primitive_dictionary['box2dgear'](x))
+        palette.add_block('gearradius',
+                          style='number-style-1arg',
+                          label=_('gear radius'),
+                          default=12,
+                          help_string=_('Return the radius of a gear.'),
+                          prim_name='box2dradius')
+        self._tw.lc.def_prim(
+            'box2dradius', 1,
+            lambda self, x: primitive_dictionary['box2dradius'](x))
         palette.add_block('reset',
                           hidden=True,
                           style='basic-style-extended-vertical',
@@ -625,6 +636,22 @@ a Physics activity.'),
         if self._tw.canvas.heading != 0:
             self._rotate_polygon(x, y, self._tw.canvas.heading * pi / 180.)
         self._prim_box2d_end_filled_polygon()
+
+    def _prim_box2d_radius(self, tooth_count):
+        ''' calculate gear radius '''
+        try:
+            if abs(int(tooth_count)) < 2:
+                raise ValueError
+        except ValueError:
+            debug_output('bad argument to gear: tooth count must be int > 1',
+                         self._tw.running_sugar)
+
+        points = self._gear(int(tooth_count))
+        max_x = 0
+        for p in points:
+            max_x = max(p[0], max_x)
+        radius = int(max(0, max_x - self.TOOTH_SCALE / 4.))
+        return radius
 
     def _prim_box2d_gear(self, tooth_count):
         ''' add a gear object to box2d dictionary '''
