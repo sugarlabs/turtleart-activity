@@ -1519,6 +1519,7 @@ Journal objects'))
         (1) translate the label name into the internal block name;
         (2) 'dock' the block onto a stack where appropriate; and
         (3) disassociate the new block from the mouse. """
+        x, y = self.tw.turtles.turtle_to_screen_coordinates((x, y))
         for name in block_names:
             # Translate label name into block/prim name.
             if blkname in block_names[name]:
