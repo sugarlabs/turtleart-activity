@@ -438,6 +438,16 @@ used in place of a number block)'),
             lambda self:
                 self.tw.turtles.get_active_turtle().set_pen_state(True))
 
+        palette.add_block('penstate',
+                          style='boolean-block-style',
+                          label=_('pen down?'),
+                          prim_name='penstate',
+                          help_string=_('returns True if pen is down'))
+        self.tw.lc.def_prim(
+            'penstate',
+            0,
+            lambda self: self.tw.turtles.get_active_turtle().get_pen_state())
+
         palette.add_block('setpensize',
                           style='basic-style-1arg',
                           label=_('set pen size'),
