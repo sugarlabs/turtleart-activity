@@ -30,6 +30,20 @@ from taconstants import HIT_RED, HIT_GREEN, HIDE_WHITE, SHOW_WHITE, \
 
 
 class SVG:
+    """ Interface to the graphical representation of blocks, turtles, 
+    palettes, etc. on screen
+    
+    terms used here:
+    docks -- list of connection points of a block to other blocks
+    innies -- right hand side docks of a block, argument slots
+    outie -- left hand side dock of a block
+    slot -- top dock of a block that can be attached to other blocks
+    cap -- top dock of a block that cannot be attached to other blocks
+    tab -- bottom dock of a block if other blocks can be attached
+    tail -- bottom dock of a block if no other blocks can be attached
+    arm -- connection point of a branching block (if-then, loops) where
+        inner blocks are attached
+    else -- optional second `arm' for if-then-else blocks """
 
     def __init__(self):
         self._x = 0
