@@ -1068,7 +1068,7 @@ class TurtleArtActivity(activity.Activity):
             self._levels = self._get_levels(activity.get_bundle_path())
             level_names = []
             for level in self._levels:
-                level_names.append(_(os.path.basename(level)))
+                level_names.append(_(os.path.basename(level).replace('_', ' ')))
             self._levels_combo, self._levels_tool  = \
                 self._combo_factory(level_names,
                                     _('Select a challenge'),
