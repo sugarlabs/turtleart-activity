@@ -125,7 +125,26 @@ class Blocks:
 
 
 class Block:
-    """ A class for the individual blocks """
+    """ A class for the individual blocks
+    
+    Attributes:
+    docks -- a list of docks, i.e. connection points where other blocks
+        could be attached. Each dock is a list whose first element is a
+        string representing the type of dock:
+        flow -- connect to the previous or next block ('slot' or 'tab')
+        bool, media, number, string -- argument slot ('innie') or return
+            value ('outie') of the given kind
+        unavailable -- nothing can be attached here ('cap' or 'tail')
+        # TODO what do the other list elements mean?
+    connections -- a list of blocks that are attached to this one (or that
+        this one is attached to). This list corresponds to the docks list
+        as it uses the same indices. Slots where nothing is attached are
+        None on this list.
+    primitive -- a callable that is called when the block is executed
+    type -- type of the block:
+        block -- block that is part of the user's program
+        proto -- block on a palette, used to generate other blocks
+        trash -- block in the trash """
 
     def __init__(self, block_list, sprite_list, name, x, y, type='block',
                  values=[], scale=BLOCK_SCALE[0],
