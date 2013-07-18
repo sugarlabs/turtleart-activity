@@ -322,7 +322,7 @@ class Turtle:
         try:
             self._heading = heading
         except (TypeError, ValueError):
-            debug_output('bad value sent to %s' % (__name__),
+            debug_output('set_heading: bad value sent to %s' % (__name__),
                          self._turtles.turtle_window.running_sugar)
             return
         self._heading %= 360
@@ -356,7 +356,7 @@ class Turtle:
         try:
             self._pen_color = color
         except (TypeError, ValueError):
-            debug_output('bad value sent to %s' % (__name__),
+            debug_output('set_color: bad value sent to %s' % (__name__),
                          self._turtles.turtle_window.running_sugar)
             return
 
@@ -375,7 +375,7 @@ class Turtle:
             try:
                 self._pen_gray = gray
             except (TypeError, ValueError):
-                debug_output('bad value sent to %s' % (__name__),
+                debug_output('set_gray: bad value sent to %s' % (__name__),
                              self._turtles.turtle_window.running_sugar)
                 return
 
@@ -399,7 +399,7 @@ class Turtle:
             try:
                 self._pen_shade = shade
             except (TypeError, ValueError):
-                debug_output('bad value sent to %s' % (__name__),
+                debug_output('set_shade: bad value sent to %s' % (__name__),
                              self._turtles.turtle_window.running_sugar)
                 return
 
@@ -418,7 +418,7 @@ class Turtle:
             try:
                 self._pen_size = max(0, pen_size)
             except (TypeError, ValueError):
-                debug_output('bad value sent to %s' % (__name__),
+                debug_output('set_pen_size: bad value sent to %s' % (__name__),
                              self._turtles.turtle_window.running_sugar)
                 return
 
@@ -513,7 +513,7 @@ class Turtle:
         try:
             self._heading += degrees
         except (TypeError, ValueError):
-            debug_output('bad value sent to %s' % (__name__),
+            debug_output('right: bad value sent to %s' % (__name__),
                          self._turtles.turtle_window.running_sugar)
             return
         self._heading %= 360
@@ -543,7 +543,7 @@ class Turtle:
             xcor = old[0] + scaled_distance * sin(self._heading * DEGTOR)
             ycor = old[1] + scaled_distance * cos(self._heading * DEGTOR)
         except (TypeError, ValueError):
-            debug_output('bad value sent to %s' % (__name__),
+            debug_output('forward: bad value sent to %s' % (__name__),
                          self._turtles.turtle_window.running_sugar)
             return
 
@@ -562,7 +562,7 @@ class Turtle:
             xcor = pos[0] * self._turtles.turtle_window.coord_scale
             ycor = pos[1] * self._turtles.turtle_window.coord_scale
         except (TypeError, ValueError):
-            debug_output('bad value sent to %s' % (__name__),
+            debug_output('set_xy: bad value sent to %s' % (__name__),
                          self._turtles.turtle_window.running_sugar)
             return
 
@@ -585,7 +585,7 @@ class Turtle:
             else:
                 pos = self.rarc(a, r)
         except (TypeError, ValueError):
-            debug_output('bad value sent to %s' % (__name__),
+            debug_output('arc: bad value sent to %s' % (__name__),
                          self._turtles.turtle_window.running_sugar)
             return
 

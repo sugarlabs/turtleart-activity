@@ -6,6 +6,9 @@ ENHANCEMENTS:
 * Added pen state boolean
 * Added new sensor-record example (generates turtle art program from mouse movements)
 
+BUG FIX:
+* Fixed problem with load block introduced by turtle-centric rebase
+
 184
 
 ENHANCEMENTS:

@@ -28,6 +28,7 @@ import gtk
 import cairo
 import gobject
 import dbus
+import glob
 
 import logging
 _logger = logging.getLogger('turtleart-activity')
@@ -43,6 +44,10 @@ from sugar.graphics.toolbutton import ToolButton
 from sugar.graphics.radiotoolbutton import RadioToolButton
 from sugar.graphics.alert import (ConfirmationAlert, NotifyAlert)
 from sugar.graphics import style
+from sugar.graphics.combobox import ComboBox
+from sugar.graphics.toolcombobox import ToolComboBox
+from sugar.graphics.objectchooser import ObjectChooser
+from sugar import mime
 from sugar.datastore import datastore
 from sugar import profile
 
@@ -87,6 +92,7 @@ class TurtleArtActivity(activity.Activity):
 
         self.tw = None
         self.init_complete = False
+        self._stop_help = False
 
         self.palette_buttons = []
         self._palette_names = []
@@ -94,6 +100,9 @@ class TurtleArtActivity(activity.Activity):
 
         self._check_ver_change(get_path(activity, 'data'))
         self.connect("notify::active", self._notify_active_cb)
+
+        self._level = 0
+        self._custom_filepath = None
 
         self.has_toolbarbox = HAS_TOOLBARBOX
         _logger.debug('_setup_toolbar')
@@ -131,6 +140,8 @@ class TurtleArtActivity(activity.Activity):
             if self.client.get_int(self._HOVER_HELP) == 1:
                 self._do_hover_help_toggle(None)
         self.init_complete = True
+
+        self._load_level()
 
     def check_buttons_for_fit(self):
         ''' Check to see which set of buttons to display '''
@@ -300,8 +311,10 @@ class TurtleArtActivity(activity.Activity):
                 return
         if not self.has_toolbarbox:
             self.palette_buttons[i].set_icon(palette_names[i] + 'on')
+        '''
         else:
             self._help_button.set_current_palette(palette_names[i])
+        '''
         self.tw.show_palette(n=i)
         self.do_showpalette()
 
@@ -348,7 +361,15 @@ class TurtleArtActivity(activity.Activity):
         self.eraser_button.set_icon('eraseroff')
         self.recenter()
         self.tw.eraser_button()
+        self.restore_challenge()
         gobject.timeout_add(250, self.eraser_button.set_icon, 'eraseron')
+
+    def restore_challenge(self):
+        ''' Restore the current challange after a clear screen '''
+        if self._custom_filepath is None:
+            self._load_level()
+        else:
+            self._load_level(custom=True)
 
     def do_run_cb(self, button):
         ''' Callback for run button (rabbit) '''
@@ -371,6 +392,13 @@ class TurtleArtActivity(activity.Activity):
 
     def do_stop_cb(self, button):
         ''' Callback for stop button. '''
+        if not self._stop_help:
+            self._stop_help = True
+            self.tw.showblocks()
+            self.stop_turtle_button.set_icon('hideshowoff')
+            self.stop_turtle_button.set_tooltip(_('Hide blocks'))
+            return
+
         # Auto show blocks after stop
         if not self.tw.hide and not self.tw.running_blocks:
             self.tw.hideblocks()
@@ -509,6 +537,14 @@ class TurtleArtActivity(activity.Activity):
         # Given the change in how overlays are handled (v123), there is no way
         # to erase and then redraw the overlays.
 
+    def _do_help_cb(self, button):
+        if os.path.exists(os.path.join(
+                activity.get_bundle_path(), 'challenges',
+                'help-' + str(self._level + 1) + '.ta')):
+            self.read_file(os.path.join(
+                    activity.get_bundle_path(), 'challenges',
+                    'help-' + str(self._level + 1) + '.ta'))
+
     def get_document_path(self, async_cb, async_err_cb):
         '''  View TA code as part of view source.  '''
         ta_code_path = self._dump_ta_code()
@@ -606,7 +642,11 @@ class TurtleArtActivity(activity.Activity):
             self.palette_toolbar_button = ToolbarButton(
                 page=self._palette_toolbar, icon_name='palette')
 
-            self._help_button = HelpButton(self)
+            self._help_button = self._add_button('help-toolbar',
+                                                 _('Help'),
+                                                 self._do_help_cb,
+                                                 None)
+            # self._help_button = HelpButton(self)
 
             self._make_load_save_buttons(self.activity_toolbar_button)
 
@@ -876,6 +916,8 @@ class TurtleArtActivity(activity.Activity):
             if self.tw.hw in [XO1, XO15, XO175, XO4]:
                 self._make_palette_buttons(self._palette_toolbar)
             '''
+            self._make_confusion_combo(self._palette_toolbar)
+
             self._palette_toolbar.show()
             self._overflow_box.show_all()
             self._overflow_palette.set_content(self._overflow_sw)
@@ -889,6 +931,9 @@ class TurtleArtActivity(activity.Activity):
                 self._overflow_box.remove(button)
         if self._overflow_palette_button in self._palette_toolbar:
             self._palette_toolbar.remove(self._overflow_palette_button)
+        if hasattr(self, '_levels_combo') and \
+                self._levels_tool in self._palette_toolbar:
+            self._palette_toolbar.remove(self._levels_tool)
 
     def _generate_palette_buttons(self, add_buttons=False):
         ''' Create a radio button and a normal button for each palette '''
@@ -1015,6 +1060,20 @@ class TurtleArtActivity(activity.Activity):
             else:
                 self._palette.popdown(immediate=True)
             return
+
+    def _make_confusion_combo(self, toolbar):
+        if hasattr(self, '_levels_tools'):
+            toolbar.insert(self._levels_tools, -1)
+        else:
+            self._levels = self._get_levels(activity.get_bundle_path())
+            level_names = []
+            for level in self._levels:
+                level_names.append(_(os.path.basename(level)))
+            self._levels_combo, self._levels_tool  = \
+                self._combo_factory(level_names,
+                                    _('Select a challenge'),
+                                    toolbar,
+                                    self._levels_cb)
 
     def _make_palette_buttons(self, toolbar, palette_button=False):
         ''' Creates the palette and block buttons for both toolbar types'''
@@ -1533,6 +1592,64 @@ in order to use the plugin.'))
         if not name in help_strings:
             help_strings[name] = tooltip
         return button
+
+    def _combo_factory(self, options, tooltip, toolbar, callback, default=0):
+        ''' Combo box factory '''
+        combo = ComboBox()
+        if hasattr(combo, 'set_tooltip_text'):
+            combo.set_tooltip_text(tooltip)
+        combo.connect('changed', callback)
+        for i, option in enumerate(options):
+            combo.append_item(i, option.replace('-', ' '), None)
+        combo.set_active(default)
+        combo.show()
+        tool = ToolComboBox(combo)
+        tool.show()
+        if hasattr(toolbar, 'insert'):
+            toolbar.insert(tool, -1)
+        else:
+            toolbar.props.page.insert(tool, -1)
+        return combo, tool
+
+    def _get_levels(self, path):
+        ''' Look for level files in lessons directory. '''
+        levels = glob.glob(os.path.join(activity.get_bundle_path(),
+                                        'flags', '*.png'))
+
+        level_files = []
+        for level in levels:
+            level_files.append(level[:-4])
+
+        return level_files
+
+    def _levels_cb(self, combobox=None):
+        ''' The combo box has changed. '''
+        if hasattr(self, '_levels_combo'):
+            i = self._levels_combo.get_active()
+            if i != -1: # and i != self._level:
+                self._level = i
+                self._load_level()
+            self._custom_filepath = None
+
+    def _load_level(self, custom=False):
+        self.tw.canvas.clearscreen()
+        if custom:
+            self.tw.turtles.get_active_turtle().set_xy((0, 0), pendown=False)
+            self.tw.lc.insert_image(center=True,
+                                    filepath=self._custom_filepath,
+                                    resize=True, offset=False)
+        else:
+            xoffset = 0
+            yoffset = 0
+            self.tw.turtles.get_active_turtle().set_xy((0, 0), pendown=False)
+            self.tw.lc.insert_image(center=False,
+                                    filepath=os.path.join
+                                    (activity.get_bundle_path(),
+                                     'flags',
+                                     self._levels[self._level] + '.png'),
+                                    resize=True,
+                                    offset=True)
+            self.tw.turtles.get_active_turtle().set_xy((0, 0), pendown=False)
 
     def _radio_button_factory(self, button_name, toolbar, cb, arg, tooltip,
                               group, position=-1):
