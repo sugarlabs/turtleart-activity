@@ -3,6 +3,8 @@
 ENHANCEMENTS:
 * New translations
 * More sample graphics from turtleart.org
+* Added pen state boolean
+* Added new sensor-record example (generates turtle art program from mouse movements)
 
 184
 
