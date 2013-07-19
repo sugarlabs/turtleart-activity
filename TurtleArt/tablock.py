@@ -129,13 +129,18 @@ class Block:
     
     Attributes:
     docks -- a list of docks, i.e. connection points where other blocks
-        could be attached. Each dock is a list whose first element is a
-        string representing the type of dock:
-        flow -- connect to the previous or next block ('slot' or 'tab')
-        bool, media, number, string -- argument slot ('innie') or return
-            value ('outie') of the given kind
-        unavailable -- nothing can be attached here ('cap' or 'tail')
-        # TODO what do the other list elements mean?
+        could be attached. Each dock is a list of the form
+        [type_of_dock, flow_is_in, x, y, parenthesis]
+        with the last element being optional.
+        type_of_dock may be one of the following strings:
+            flow -- connect to the previous or next block ('slot' or 'tab')
+            bool, media, number, string -- argument slot ('innie') or
+                return value ('outie') of the given kind
+            unavailable -- nothing can be attached here ('cap' or 'tail')
+        flow_is_in is True if the flow is into the block, or False for out.
+        x and y are coodinates for positioning the block on the dock.
+        parenthesis is only used with arguments and ensures a known order
+            of arguments for arithmetic and logical operations.
     connections -- a list of blocks that are attached to this one (or that
         this one is attached to). This list corresponds to the docks list
         as it uses the same indices. Slots where nothing is attached are
