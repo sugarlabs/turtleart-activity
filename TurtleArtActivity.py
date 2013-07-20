@@ -141,6 +141,11 @@ class TurtleArtActivity(activity.Activity):
                 self._do_hover_help_toggle(None)
         self.init_complete = True
 
+        self._selected_challenge = os.path.join(activity.get_bundle_path(),
+                                                'flags',
+                                                'Peru.png')
+        self._challenge_window = None
+
         self._load_level()
 
     def check_buttons_for_fit(self):
@@ -1065,6 +1070,7 @@ class TurtleArtActivity(activity.Activity):
         if hasattr(self, '_levels_tools'):
             toolbar.insert(self._levels_tools, -1)
         else:
+            '''
             self._levels = self._get_levels(activity.get_bundle_path())
             level_names = []
             for level in self._levels:
@@ -1074,6 +1080,11 @@ class TurtleArtActivity(activity.Activity):
                                     _('Select a challenge'),
                                     toolbar,
                                     self._levels_cb)
+            '''
+            self._levels_tools = self._add_button('challenges',
+                                                  _('Load challenges'),
+                                                  self._create_store,
+                                                  toolbar)
 
     def _make_palette_buttons(self, toolbar, palette_button=False):
         ''' Creates the palette and block buttons for both toolbar types'''
@@ -1642,6 +1653,7 @@ in order to use the plugin.'))
             xoffset = 0
             yoffset = 0
             self.tw.turtles.get_active_turtle().set_xy((0, 0), pendown=False)
+            '''
             self.tw.lc.insert_image(center=False,
                                     filepath=os.path.join
                                     (activity.get_bundle_path(),
@@ -1649,6 +1661,17 @@ in order to use the plugin.'))
                                      self._levels[self._level] + '.png'),
                                     resize=True,
                                     offset=True)
+            '''
+            self.tw.lc.insert_image(center=False,
+                                    filepath=self._selected_challenge,
+                                    resize=True,
+                                    offset=True)
+            pos = self.tw.turtles.turtle_to_screen_coordinates((0, -50))
+            self.tw.turtles.get_active_turtle().draw_text(
+                os.path.basename(self._selected_challenge)[:-4].replace(
+                    '_', ' '),
+                pos[0], pos[1], 24, gtk.gdk.screen_width() / 2)
+
             self.tw.turtles.get_active_turtle().set_xy((0, 0), pendown=False)
 
     def _radio_button_factory(self, button_name, toolbar, cb, arg, tooltip,
@@ -1697,3 +1720,77 @@ in order to use the plugin.'))
         alert.props.msg = msg
         self.add_alert(alert)
         alert.show()
+
+    def _hide_store(self, widget=None):
+        if self._challenge_window is not None:
+            self._challenge_window.hide()
+
+    def _create_store(self, widget=None):
+        if self._challenge_window is None:
+            self._challenge_window = gtk.ScrolledWindow()
+            self._challenge_window.set_shadow_type(gtk.SHADOW_ETCHED_IN)
+            self._challenge_window.set_policy(gtk.POLICY_NEVER,
+                                              gtk.POLICY_AUTOMATIC)
+            width = gtk.gdk.screen_width() / 2
+            height = gtk.gdk.screen_height() / 2
+            self._challenge_window.set_size_request(width, height)
+            self._challenge_window.show()
+
+            store = gtk.ListStore(gtk.gdk.Pixbuf, str)
+
+            icon_view = gtk.IconView()
+            icon_view.set_model(store)
+            icon_view.set_selection_mode(gtk.SELECTION_SINGLE)
+            icon_view.connect('selection-changed', self._challenge_selected,
+                              store)
+            icon_view.set_pixbuf_column(0)
+            icon_view.grab_focus()
+            self._challenge_window.add_with_viewport(icon_view)
+            icon_view.show()
+            self._fill_challenges_list(store)
+
+            width = gtk.gdk.screen_width() / 4
+            height = gtk.gdk.screen_height() / 4
+            self.fixed.put(self._challenge_window, width, height)
+
+        self._challenge_window.show()
+
+    def _get_selected_path(self, widget, store):
+        try:
+            iter_ = store.get_iter(widget.get_selected_items()[0])
+            image_path = store.get(iter_, 1)[0]
+
+            return image_path, iter_
+        except:
+            return None
+
+    def _challenge_selected(self, widget, store):
+        selected = self._get_selected_path(widget, store)
+
+        if selected is None:
+            self._selected_challenge = None
+            self._challenge_window.hide()
+            return
+
+        image_path, _iter = selected
+        iter_ = store.get_iter(widget.get_selected_items()[0])
+        image_path = store.get(iter_, 1)[0]
+
+        self._selected_challenge = image_path
+        self._challenge_window.hide()
+        self._load_level()
+
+    def _fill_challenges_list(self, store):
+        '''
+        Append images from the artwork_paths to the store.
+        '''
+        for filepath in self._scan_for_challenges():
+            pixbuf = None
+            pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(
+                filepath, 100, 100)
+            store.append([pixbuf, filepath])
+
+    def _scan_for_challenges(self):
+        return glob.glob(os.path.join(activity.get_bundle_path(),
+                                      'flags', '*.png'))
+

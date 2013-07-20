@@ -1,5 +1,5 @@
 [Activity]
-name = TurtleFlags
+name = Turtle Flags
 activity_version = 185
 license = MIT
 bundle_id = org.laptop.TurtleFlags

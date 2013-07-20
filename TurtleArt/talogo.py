@@ -608,6 +608,7 @@ class LogoCode:
         self.hidden_turtle = None
         self.start_time = time()
         self.clear_value_blocks()
+        self.tw.activity.restore_challenge()
 
     def clear_value_blocks(self):
         if not hasattr(self, 'value_blocks_to_update'):

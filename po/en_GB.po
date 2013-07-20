@@ -23,7 +23,10 @@ msgstr ""
 
 #. TRANS: "name" option from activity.info file
 msgid "TurtleBlocks"
-msgstr "TurtleBlocks"
+msgstr "TurtleFlags"
+
+msgid "TurtleFlags"
+msgstr "TurtleFlags"
 
 #. TRANS: "summary" option from activity.info file
 #. TRANS: "description" option from activity.info file
@@ -3101,3 +3104,9 @@ msgstr "Save project?"
 
 #~ msgid "1×1 pictures"
 #~ msgstr "1×1 pictures"
+
+msgid "Cote dIvorie"
+msgstr "Ivory Coast"
+
+msgid "Peoples Republic of China"
+msgstr "People's Republic of China"
