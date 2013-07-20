@@ -141,9 +141,11 @@ class TurtleArtActivity(activity.Activity):
                 self._do_hover_help_toggle(None)
         self.init_complete = True
 
-        self._selected_challenge = os.path.join(activity.get_bundle_path(),
-                                                'flags',
-                                                'Peru.png')
+        if not hasattr(self, '_selected_challenge'):
+            self._selected_challenge = os.path.join(activity.get_bundle_path(),
+                                                    'flags',
+                                                    'Peru.png')
+        self._challenge_box = None
         self._challenge_window = None
 
         self._load_level()
@@ -543,12 +545,15 @@ class TurtleArtActivity(activity.Activity):
         # to erase and then redraw the overlays.
 
     def _do_help_cb(self, button):
+        if self._selected_challenge is None:
+            return
+        flag = os.path.basename(self._selected_challenge)[:-4]
         if os.path.exists(os.path.join(
                 activity.get_bundle_path(), 'challenges',
-                'help-' + str(self._level + 1) + '.ta')):
+                'help-' + flag + '.ta')):
             self.read_file(os.path.join(
                     activity.get_bundle_path(), 'challenges',
-                    'help-' + str(self._level + 1) + '.ta'))
+                    'help-' + flag + '.ta'))
 
     def get_document_path(self, async_cb, async_err_cb):
         '''  View TA code as part of view source.  '''
@@ -921,7 +926,7 @@ class TurtleArtActivity(activity.Activity):
             if self.tw.hw in [XO1, XO15, XO175, XO4]:
                 self._make_palette_buttons(self._palette_toolbar)
             '''
-            self._make_confusion_combo(self._palette_toolbar)
+            self._make_challenge_store(self._palette_toolbar)
 
             self._palette_toolbar.show()
             self._overflow_box.show_all()
@@ -1066,21 +1071,10 @@ class TurtleArtActivity(activity.Activity):
                 self._palette.popdown(immediate=True)
             return
 
-    def _make_confusion_combo(self, toolbar):
+    def _make_challenge_store(self, toolbar):
         if hasattr(self, '_levels_tools'):
             toolbar.insert(self._levels_tools, -1)
         else:
-            '''
-            self._levels = self._get_levels(activity.get_bundle_path())
-            level_names = []
-            for level in self._levels:
-                level_names.append(_(os.path.basename(level).replace('_', ' ')))
-            self._levels_combo, self._levels_tool  = \
-                self._combo_factory(level_names,
-                                    _('Select a challenge'),
-                                    toolbar,
-                                    self._levels_cb)
-            '''
             self._levels_tools = self._add_button('challenges',
                                                   _('Load challenges'),
                                                   self._create_store,
@@ -1250,6 +1244,9 @@ class TurtleArtActivity(activity.Activity):
     def write_file(self, file_path):
         ''' Write the project to the Journal. '''
         data_to_file(self.tw.assemble_data_to_save(), file_path)
+        if self._selected_challenge is not None:
+            self.metadata['challenge'] = os.path.basename(
+                self._selected_challenge)[:-4]
         self.metadata['mime_type'] = MIMETYPE[0]
         self.metadata['turtle blocks'] = ''.join(self.tw.used_block_list)
         self.metadata['public'] = data_to_string(['activity count',
@@ -1386,6 +1383,13 @@ in order to use the plugin.'))
 
     def read_file(self, file_path, plugin=False):
         ''' Open a project or plugin and then run it. '''
+        if 'challenge' in self.metadata and \
+                (not hasattr(self, '_selected_challenge') is None or
+                 self._selected_challenge is None):
+            self._selected_challenge = os.path.join(
+                activity.get_bundle_path(),
+                'flags',
+                self.metadata['challenge'] + '.png')
         if hasattr(self, 'tw') and self.tw is not None:
             if not hasattr(self, '_old_cursor'):
                 self._old_cursor = gtk.gdk.Cursor(gtk.gdk.LEFT_PTR)
@@ -1727,6 +1731,7 @@ in order to use the plugin.'))
 
     def _create_store(self, widget=None):
         if self._challenge_window is None:
+            self._challenge_box = gtk.EventBox()
             self._challenge_window = gtk.ScrolledWindow()
             self._challenge_window.set_shadow_type(gtk.SHADOW_ETCHED_IN)
             self._challenge_window.set_policy(gtk.POLICY_NEVER,
@@ -1751,9 +1756,11 @@ in order to use the plugin.'))
 
             width = gtk.gdk.screen_width() / 4
             height = gtk.gdk.screen_height() / 4
-            self.fixed.put(self._challenge_window, width, height)
+            self._challenge_box.add(self._challenge_window)
+            self.fixed.put(self._challenge_box, width, height)
 
         self._challenge_window.show()
+        self._challenge_box.show()
 
     def _get_selected_path(self, widget, store):
         try:

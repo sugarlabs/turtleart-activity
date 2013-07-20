@@ -778,12 +778,12 @@ Would you like to save before quitting?'))
 
     def _hide_store(self, widget=None):
         if self._challenge_window is not None:
-            self._challenge_window.hide()
+            self._challenge_box.hide()
 
     def _create_store(self, widget=None):
         if self._challenge_window is None:
+            self._challenge_box = gtk.EventBox()
             self._challenge_window = gtk.ScrolledWindow()
-            self._challenge_window.set_shadow_type(gtk.SHADOW_ETCHED_IN)
             self._challenge_window.set_policy(gtk.POLICY_NEVER,
                                               gtk.POLICY_AUTOMATIC)
             width = gtk.gdk.screen_width() / 2
@@ -806,9 +806,12 @@ Would you like to save before quitting?'))
 
             width = gtk.gdk.screen_width() / 4
             height = gtk.gdk.screen_height() / 4
-            self.fixed.put(self._challenge_window, width, height)
+
+            self._challenge_box.add(self._challenge_window)
+            self.fixed.put(self._challenge_box, width, height)
 
         self._challenge_window.show()
+        self._challenge_box.show()
 
     def _get_selected_path(self, widget, store):
         try:
