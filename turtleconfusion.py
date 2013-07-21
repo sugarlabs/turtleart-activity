@@ -99,6 +99,8 @@ class TurtleMain():
         self._parse_command_line()
         self._ensure_sugar_paths()
         self._gnome_plugins = []
+        self._selected_challenge = None
+        self._challenge_window = None
 
         if self._output_png:
             # Outputing to file, so no need for a canvas
@@ -218,7 +220,7 @@ return %s(self)" % (p, P, P)
             max(768, gtk.gdk.screen_height() * 2))
         self.tw = TurtleArtWindow(self.canvas, self._execdirname,
                                   turtle_canvas=self.turtle_canvas,
-                                  parent=self, running_sugar=False)
+                                  activity=self, running_sugar=False)
         self.tw.save_folder = self._abspath  # os.path.expanduser('~')
         if self.client.get_int(self._HOVER_HELP) == 1:
             self.hover.set_active(False)
@@ -371,6 +373,7 @@ return %s(self)" % (p, P, P)
         menu = gtk.Menu()
         MenuBuilder.make_menu_item(menu, _('New'), self._do_new_cb)
         MenuBuilder.make_menu_item(menu, _('Open'), self._do_open_cb)
+        MenuBuilder.make_menu_item(menu, _('Load project'), self._do_load_cb)
         MenuBuilder.make_menu_item(menu, _('Save'), self._do_save_cb)
         MenuBuilder.make_menu_item(menu, _('Save as'), self._do_save_as_cb)
         MenuBuilder.make_menu_item(menu, _('Save as image'),
@@ -425,13 +428,12 @@ return %s(self)" % (p, P, P)
         turtle_menu = MenuBuilder.make_sub_menu(menu, _('Turtle'))
 
         menu = gtk.Menu()
-        self._level = 0
-        self._levels = self._get_levels()
         self._custom_filepath = None
-        for i in range(len(self._levels)):
-            MenuBuilder.make_menu_item(menu, _('Challenge') + ' ' + str(i + 1),
-                                       self._do_level_cb, i)
-        turtle_menu = MenuBuilder.make_sub_menu(menu, _('Challenges'))
+        MenuBuilder.make_menu_item(menu, _('Show challenges'),
+                                   self._create_store)
+        MenuBuilder.make_menu_item(menu, _('Hide challenges'),
+                                   self._hide_store) 
+        challenges_menu = MenuBuilder.make_sub_menu(menu, _('Challenges'))
 
         menu = gtk.Menu()
         MenuBuilder.make_menu_item(menu, _('About...'), self._do_about_cb)
@@ -443,6 +445,7 @@ return %s(self)" % (p, P, P)
         menu_bar.append(view_menu)
         menu_bar.append(tool_menu)
         menu_bar.append(turtle_menu)
+        menu_bar.append(challenges_menu)
 
         # Add menus for plugins
         for p in self._gnome_plugins:
@@ -494,6 +497,10 @@ Would you like to save before quitting?'))
     def _do_open_cb(self, widget):
         ''' Callback for open project. '''
         self.tw.load_file_from_chooser(True)
+
+    def _do_load_cb(self, widget):
+        ''' Callback for load project (add to current project). '''
+        self.tw.load_file_from_chooser(False)
 
     def _do_save_cb(self, widget):
         ''' Callback for save project. '''
@@ -582,7 +589,8 @@ Would you like to save before quitting?'))
         ''' Turn hover help off '''
         self.tw.no_help = True
         self.tw.last_label = None
-        self.tw.status_spr.hide()
+        if self.tw.status_spr is not None:
+            self.tw.status_spr.hide()
         self.hover.set_active(False)
         self.client.set_int(self._HOVER_HELP, 1)
 
@@ -669,58 +677,36 @@ Would you like to save before quitting?'))
     def _load_level(self, custom=False):
         self.tw.canvas.clearscreen()
         if custom:
-            self.tw.canvas.setxy(0, 0, pendown=False)
+            self.tw.turtles.get_active_turtle().set_xy((0, 0), pendown=False)
             self.tw.lc.insert_image(center=True,
                                     filepath=self._custom_filepath,
                                     resize=True, offset=False)
         else:
-            self.tw.canvas.setxy(int(-gtk.gdk.screen_width() / 2), 0,
-                                 pendown=False)
-            self.tw.lc.insert_image(center=False, resize=False,
-                                    filepath=os.path.join(
-                    self._get_execution_dir(), 'images',
-                    'turtle-a.png'))
-            # Slight offset to account for stroke width
-            if self._level + 1 in self.offsets:
-                xoffset = self.offsets[self._level + 1][0]
-                yoffset = self.offsets[self._level + 1][1]
+            basename = os.path.basename(self._selected_challenge)[:-4]
+            if basename in self.offsets:
+                offset = [self.offsets[basename][0] - 3,
+                          self.offsets[basename][1] - 33]
+                scale = self.offsets[basename][2]
             else:
-                xoffset = 0
-                yoffset = 0
-            self.tw.canvas.setxy(-2.5 + xoffset, -2.5 + yoffset, pendown=False)
+                offset = [-3, -33]
+                scale = 33
+            save_scale = self.tw.lc.scale
+            self.tw.turtles.get_active_turtle().set_xy((offset), pendown=False)
+
+            self.tw.lc.scale = scale
             self.tw.lc.insert_image(center=False,
-                                    filepath=os.path.join(
-                    self._get_execution_dir(), 'challenges',
-                    self._levels[self._level] + '.svg'), resize=False,
+                                    filepath=self._selected_challenge,
+                                    resize=True,
                                     offset=True)
-        self.tw.canvas.setxy(0, 0, pendown=False)
-
-    def _do_level_cb(self, widget, level):
-        ''' Callback to resize blocks. '''
-        self._level = level
-        self._load_level()
-
-    def _get_levels(self):
-        ''' Look for level files in lessons directory. '''
-        levels = glob.glob(os.path.join(self._get_execution_dir(),
-                                        'challenges', '*.svg'))
-
-        level_files = []
-        for i in range(len(levels)):
-            level_files.append('confusion-%d' % (i+1))
-
-        self.offsets = {}
-        offset_fd = open(os.path.join(self._get_execution_dir(), 'challenges',
-                                      'offsets'))
-        for line in offset_fd:
-            try:
-                idx, offsets = line.strip('\n').split(':')
-                xoffset, yoffset = offsets.split(',')
-                self.offsets[int(idx)] = (int(xoffset), int(yoffset))
-            except ValueError:
-                pass
-        offset_fd.close()
-        return level_files
+            '''
+            pos = self.tw.turtles.turtle_to_screen_coordinates((0, -50))
+            self.tw.turtles.get_active_turtle().draw_text(
+                os.path.basename(self._selected_challenge)[:-4].replace(
+                    '_', ' '),
+                pos[0], pos[1], 24, gtk.gdk.screen_width() / 2)
+            '''
+            self.tw.lc.scale = save_scale
+        self.tw.turtles.get_active_turtle().set_xy((0, 0), pendown=False)
 
     def _do_copy_cb(self, button):
         ''' Callback for copy button. '''
@@ -803,6 +789,99 @@ Would you like to save before quitting?'))
                 return os.path.abspath('.')
         else:
             return os.path.abspath(dirname)
+
+    def _hide_store(self, widget=None):
+        if self._challenge_window is not None:
+            self._challenge_box.hide()
+
+    def _create_store(self, widget=None):
+        if self._challenge_window is None:
+            self._challenge_box = gtk.EventBox()
+            self._challenge_window = gtk.ScrolledWindow()
+            self._challenge_window.set_policy(gtk.POLICY_NEVER,
+                                              gtk.POLICY_AUTOMATIC)
+            width = gtk.gdk.screen_width() / 2
+            height = gtk.gdk.screen_height() / 2
+            self._challenge_window.set_size_request(width, height)
+            self._challenge_window.show()
+
+            store = gtk.ListStore(gtk.gdk.Pixbuf, str)
+
+            icon_view = gtk.IconView()
+            icon_view.set_model(store)
+            icon_view.set_selection_mode(gtk.SELECTION_SINGLE)
+            icon_view.connect('selection-changed', self._challenge_selected,
+                              store)
+            icon_view.set_pixbuf_column(0)
+            icon_view.grab_focus()
+            self._challenge_window.add_with_viewport(icon_view)
+            icon_view.show()
+            self._fill_challenges_list(store)
+
+            width = gtk.gdk.screen_width() / 4
+            height = gtk.gdk.screen_height() / 4
+
+            self._challenge_box.add(self._challenge_window)
+            self.fixed.put(self._challenge_box, width, height)
+
+            self.offsets = {}
+            offset_fd = open(os.path.join(self._get_execution_dir(),
+                                          'challenges',
+                                          'offsets'))
+            for line in offset_fd:
+                try:
+                    idx, offsets = line.strip('\n').split(':')
+                    xoffset, yoffset, scale = offsets.split(',')
+                    self.offsets['confusion-' + idx] = (int(xoffset),
+                                                        int(yoffset),
+                                                        int(scale))
+                except ValueError:
+                    pass
+            offset_fd.close()
+
+        self._challenge_window.show()
+        self._challenge_box.show()
+
+    def _get_selected_path(self, widget, store):
+        try:
+            iter_ = store.get_iter(widget.get_selected_items()[0])
+            image_path = store.get(iter_, 1)[0]
+
+            return image_path, iter_
+        except:
+            return None
+
+    def _challenge_selected(self, widget, store):
+        selected = self._get_selected_path(widget, store)
+
+        if selected is None:
+            self._selected_challenge = None
+            self._challenge_window.hide()
+            return
+
+        image_path, _iter = selected
+        iter_ = store.get_iter(widget.get_selected_items()[0])
+        image_path = store.get(iter_, 1)[0]
+
+        self._selected_challenge = image_path
+        self._challenge_window.hide()
+        self._load_level()
+
+    def _fill_challenges_list(self, store):
+        '''
+        Append images from the artwork_paths to the store.
+        '''
+        for filepath in self._scan_for_challenges():
+            pixbuf = None
+            pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(
+                filepath, 100, 100)
+            store.append([pixbuf, filepath])
+
+    def _scan_for_challenges(self):
+        file_list = list(glob.glob(os.path.join(self._get_execution_dir(),
+                                           'challenges', '*.svg')))
+        file_list.sort()
+        return file_list
 
 
 if __name__ == '__main__':

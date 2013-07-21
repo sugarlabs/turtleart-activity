@@ -30,6 +30,20 @@ from taconstants import HIT_RED, HIT_GREEN, HIDE_WHITE, SHOW_WHITE, \
 
 
 class SVG:
+    """ Interface to the graphical representation of blocks, turtles, 
+    palettes, etc. on screen
+    
+    terms used here:
+    docks -- list of connection points of a block to other blocks
+    innies -- right hand side docks of a block, argument slots
+    outie -- left hand side dock of a block
+    slot -- top dock of a block that can be attached to other blocks
+    cap -- top dock of a block that cannot be attached to other blocks
+    tab -- bottom dock of a block if other blocks can be attached
+    tail -- bottom dock of a block if no other blocks can be attached
+    arm -- connection point of a branching block (if-then, loops) where
+        inner blocks are attached
+    else -- optional second `arm' for if-then-else blocks """
 
     def __init__(self):
         self._x = 0
@@ -496,13 +510,13 @@ C 36.1 12.6 43.1 20.6 43.1 30.4 Z" stroke-width="3.5" \
 fill="%s" stroke="%s" />\n' % (self._fill, self._stroke)
         svg += '   <path d="M 25.9 33.8 L 24.3 29.1 \
 L 27.5 26.5 L 31.1 29.2 L 29.6 33.8 Z" stroke-width="3.5" \
-fill="%s" stroke="%s" />\n' % (self._fill, self._stroke)
+fill="%s" stroke="none" />\n' % (self._stroke)
         svg += '  <path d="M 27.5 41.6 C 23.5 41.4 22.0 39.5 22.0 39.5 \
 L 25.5 35.4 L 30.0 35.5 L 33.1 39.7 C 33.1 39.7 30.2 41.7 27.5 41.6 Z" \
-stroke-width="3.5" fill="%s" stroke="%s" />\n' % (self._fill, self._stroke)
+stroke-width="3.5" fill="%s" stroke="none" />\n' % (self._stroke)
         svg += '   <path d="M 18.5 33.8 C 17.6 30.9 18.6 27.0 18.6 27.0 \
 L 22.6 29.1 L 24.1 33.8 L 20.5 38.0 C 20.5 38.0 19.1 36.0 18.4 33.8 Z" \
-stroke-width="3.5" fill="%s" stroke="%s" />\n' % (self._fill, self._stroke)
+stroke-width="3.5" fill="%s" stroke="none" />\n' % (self._stroke)
         svg += '   <path d="M 19.5 25.1 C 19.5 25.1 20.0 23.2 22.5 21.3 \
 C 24.7 19.7 27.0 19.6 27.0 19.6 L 26.9 24.6 L 23.4 27.3 L 19.5 25.1 Z" \
 stroke-width="3.5" fill="%s" stroke="none" />\n' % (self._stroke)
@@ -1224,6 +1238,13 @@ def close_file(f):
 def generator(datapath):
 
     svg = SVG()
+    f = open_file(datapath, "turtle.svg")
+    svg.set_scale(2)
+    svg_str = svg.turtle(['#00FF00','#00AA00'])
+    f.write(svg_str)
+    close_file(f)
+
+    svg = SVG()
     f = open_file(datapath, "boolean_notnot.svg")
     svg.set_scale(2)
     svg.expand(30, 0, 0, 0)
@@ -1248,7 +1269,6 @@ def generator(datapath):
     f.write(svg_str)
     close_file(f)
 
-    '''
     svg = SVG()
     f = open_file(datapath, "basic.svg")
     svg.set_scale(2)
@@ -1473,7 +1493,6 @@ def generator(datapath):
     svg_str = svg.clamp()
     f.write(svg_str)
     close_file(f)
-    '''
 
 
 def main():

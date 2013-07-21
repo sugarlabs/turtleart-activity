@@ -22,7 +22,11 @@
 
 import gtk
 import gobject
-import gconf
+try:
+    import gconf
+    HAS_GCONF = True
+except ImportError:
+    HAS_GCONF = False
 import dbus
 import cairo
 import pickle
@@ -877,6 +881,9 @@ def power_manager_off(status):
          power_manager_off(True) --> Disable power manager
          power_manager_off(False) --> Use custom power manager
     '''
+    if not HAS_GCONF:
+        return
+
     global FIRST_TIME
 
     OHM_SERVICE_NAME = 'org.freedesktop.ohm'
