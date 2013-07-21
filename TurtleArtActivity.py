@@ -28,6 +28,7 @@ import gtk
 import cairo
 import gobject
 import dbus
+import glob
 
 import logging
 _logger = logging.getLogger('turtleart-activity')
@@ -51,13 +52,16 @@ from sugar.datastore import datastore
 from sugar import profile
 
 import os
-import glob
 import tarfile
 import subprocess
 import ConfigParser
 import shutil
 import tempfile
-import gconf
+try:
+    import gconf
+    HAS_GCONF = True
+except ImportError:
+    HAS_GCONF = False
 
 from gettext import gettext as _
 
@@ -88,8 +92,10 @@ class TurtleArtActivity(activity.Activity):
 
         self.tw = None
         self.init_complete = False
+        self._stop_help = False
 
         self.palette_buttons = []
+        self._palette_names = []
         self._overflow_buttons = []
 
         self._check_ver_change(get_path(activity, 'data'))
@@ -127,11 +133,24 @@ class TurtleArtActivity(activity.Activity):
             self.metadata['activity count'] = str(count)
 
         self._defer_palette_move = False
-        self.check_buttons_for_fit()
-        self.client = gconf.client_get_default()
-        if self.client.get_int(self._HOVER_HELP) == 1:
-            self._do_hover_help_toggle(None)
+        # Now called from lazy_init
+        # self.check_buttons_for_fit()
+        if HAS_GCONF:
+            self.client = gconf.client_get_default()
+            if self.client.get_int(self._HOVER_HELP) == 1:
+                self._do_hover_help_toggle(None)
         self.init_complete = True
+
+        if not hasattr(self, '_offsets'):
+            self._offsets = {}
+        if not hasattr(self, '_selected_challenge'):
+            self._offsets = {'confusion-01': [0, 0, 29]}
+            self._selected_challenge = os.path.join(activity.get_bundle_path(),
+                                                    'challenges',
+                                                    'confusion-01.svg')
+        self._challenge_box = None
+        self._challenge_window = None
+        self._load_level()
 
     def check_buttons_for_fit(self):
         ''' Check to see which set of buttons to display '''
@@ -195,8 +214,9 @@ class TurtleArtActivity(activity.Activity):
         gobject.timeout_add(250, self.save_as_logo.set_icon, 'logo-saveoff')
         self._notify_successful_save(title=_('Save as Logo'))
 
-    def do_load_ta_project_cb(self, button):
+    def do_load_ta_project_cb(self, button, new=False):
         ''' Load a project from the Journal. '''
+        self._create_new = new
         if hasattr(self, 'get_window'):
             _logger.debug('setting watch cursor')
             if hasattr(self.get_window(), 'get_cursor'):
@@ -317,7 +337,8 @@ class TurtleArtActivity(activity.Activity):
         else:
             self.tw.no_help = True
             self.tw.last_label = None
-            self.tw.status_spr.hide()
+            if self.tw.status_spr is not None:
+                self.tw.status_spr.hide()
             self._hover_help_toggle.set_icon('help-on')
             self._hover_help_toggle.set_tooltip(_('Turn on hover help'))
             self.client.set_int(self._HOVER_HELP, 1)
@@ -380,6 +401,13 @@ class TurtleArtActivity(activity.Activity):
 
     def do_stop_cb(self, button):
         ''' Callback for stop button. '''
+        if not self._stop_help:
+            self._stop_help = True
+            self.tw.showblocks()
+            self.stop_turtle_button.set_icon('hideshowoff')
+            self.stop_turtle_button.set_tooltip(_('Hide blocks'))
+            return
+
         # Auto show blocks after stop
         if not self.tw.hide and not self.tw.running_blocks:
             self.tw.hideblocks()
@@ -519,12 +547,15 @@ class TurtleArtActivity(activity.Activity):
         # to erase and then redraw the overlays.
 
     def _do_help_cb(self, button):
+        if self._selected_challenge is None:
+            return
+        flag = os.path.basename(self._selected_challenge)[:-4]
         if os.path.exists(os.path.join(
                 activity.get_bundle_path(), 'challenges',
-                'help-' + str(self._level + 1) + '.ta')):
+                'help-' + flag + '.ta')):
             self.read_file(os.path.join(
                     activity.get_bundle_path(), 'challenges',
-                    'help-' + str(self._level + 1) + '.ta'))
+                    'help-' + flag + '.ta'))
 
     def get_document_path(self, async_cb, async_err_cb):
         '''  View TA code as part of view source.  '''
@@ -873,18 +904,12 @@ class TurtleArtActivity(activity.Activity):
                 self._overflow_sw.set_policy(gtk.POLICY_AUTOMATIC,
                                              gtk.POLICY_NEVER)
                 self._overflow_sw.add_with_viewport(self._overflow_box)
+            elif len(self.palette_buttons) < len(palette_names):
+                # add new buttons for palettes generated since last time
+                self._generate_palette_buttons(add_buttons=True)
+                self._remove_palette_buttons()
             else:  # remove the radio buttons and overflow buttons
-                for button in self.palette_buttons:
-                    if button in self._palette_toolbar:
-                        self._palette_toolbar.remove(button)
-                for button in self._overflow_buttons:
-                    if button in self._overflow_box:
-                        self._overflow_box.remove(button)
-                if self._overflow_palette_button in self._palette_toolbar:
-                    self._palette_toolbar.remove(self._overflow_palette_button)
-                if hasattr(self, '_levels_combo') and \
-                        self._levels_tool in self._palette_toolbar:
-                    self._palette_toolbar.remove(self._levels_tool)
+                self._remove_palette_buttons()
 
             for i in range(len(self.palette_buttons)):
                 if i < max_palettes:
@@ -903,15 +928,31 @@ class TurtleArtActivity(activity.Activity):
             if self.tw.hw in [XO1, XO15, XO175, XO4]:
                 self._make_palette_buttons(self._palette_toolbar)
             '''
-            self._make_confusion_combo(self._palette_toolbar)
+            self._make_challenge_store(self._palette_toolbar)
 
             self._palette_toolbar.show()
             self._overflow_box.show_all()
             self._overflow_palette.set_content(self._overflow_sw)
 
-    def _generate_palette_buttons(self):
+    def _remove_palette_buttons(self):
+        for button in self.palette_buttons:
+            if button in self._palette_toolbar:
+                self._palette_toolbar.remove(button)
+        for button in self._overflow_buttons:
+            if button in self._overflow_box:
+                self._overflow_box.remove(button)
+        if self._overflow_palette_button in self._palette_toolbar:
+            self._palette_toolbar.remove(self._overflow_palette_button)
+        if hasattr(self, '_levels_combo') and \
+                self._levels_tool in self._palette_toolbar:
+            self._palette_toolbar.remove(self._levels_tool)
+
+    def _generate_palette_buttons(self, add_buttons=False):
         ''' Create a radio button and a normal button for each palette '''
         for i, palette_name in enumerate(palette_names):
+            if palette_name in self._palette_names:
+                continue
+            self._palette_names.append(palette_name)
             if i == 0:
                 palette_group = None
             else:
@@ -932,14 +973,16 @@ class TurtleArtActivity(activity.Activity):
                     self.do_palette_buttons_cb,
                     None,
                     arg=i))
-        # And we need an extra button for the overflow
-        self._overflow_palette_button = self._radio_button_factory(
-            'overflow',
-            None,
-            self._overflow_palette_cb,
-            None,
-            _('Palettes'),
-            palette_group)
+
+        if not add_buttons:
+            # And we need an extra button for the overflow
+            self._overflow_palette_button = self._radio_button_factory(
+                'overflow',
+                None,
+                self._overflow_palette_cb,
+                None,
+                _('Palettes'),
+                palette_group)
 
     def _overflow_palette_cb(self, button):
         _logger.debug('overflow palette cb')
@@ -985,8 +1028,11 @@ class TurtleArtActivity(activity.Activity):
                                            button_box)
 
             self.load_ta_project, label = self._add_button_and_label(
+                'load-from-journal', _('Open'),
+                self.do_load_ta_project_cb, True, button_box)
+            self.load_ta_project, label = self._add_button_and_label(
                 'load-from-journal', _('Load project'),
-                self.do_load_ta_project_cb, None, button_box)
+                self.do_load_ta_project_cb, False, button_box)
             # Only enable plugin loading if installed in $HOME
             if activity.get_bundle_path()[0:len(home)] == home:
                 self.load_ta_plugin, label = self._add_button_and_label(
@@ -1027,16 +1073,14 @@ class TurtleArtActivity(activity.Activity):
                 self._palette.popdown(immediate=True)
             return
 
-    def _make_confusion_combo(self, toolbar):
+    def _make_challenge_store(self, toolbar):
         if hasattr(self, '_levels_tools'):
             toolbar.insert(self._levels_tools, -1)
         else:
-            self._levels = self._get_levels(activity.get_bundle_path())
-            self._levels_combo, self._levels_tool  = \
-                self._combo_factory(self._levels,
-                                    _('Select a challenge'),
-                                    toolbar,
-                                    self._levels_cb)
+            self._levels_tools = self._add_button('challenges',
+                                                  _('Load challenges'),
+                                                  self._create_store,
+                                                  toolbar)
 
     def _make_palette_buttons(self, toolbar, palette_button=False):
         ''' Creates the palette and block buttons for both toolbar types'''
@@ -1202,6 +1246,14 @@ class TurtleArtActivity(activity.Activity):
     def write_file(self, file_path):
         ''' Write the project to the Journal. '''
         data_to_file(self.tw.assemble_data_to_save(), file_path)
+        if self._selected_challenge is not None:
+            basename =  os.path.basename(self._selected_challenge)[:-4]
+            self.metadata['challenge'] = basename
+            if basename in self._offsets:
+                self.metadata['offsets'] = '[%d, %d, %d]' % (
+                    self._offsets[basename][0],
+                    self._offsets[basename][1],
+                    self._offsets[basename][2])
         self.metadata['mime_type'] = MIMETYPE[0]
         self.metadata['turtle blocks'] = ''.join(self.tw.used_block_list)
         self.metadata['public'] = data_to_string(['activity count',
@@ -1338,6 +1390,19 @@ in order to use the plugin.'))
 
     def read_file(self, file_path, plugin=False):
         ''' Open a project or plugin and then run it. '''
+        if 'challenge' in self.metadata and \
+                (not hasattr(self, '_selected_challenge') is None or
+                 self._selected_challenge is None):
+            self._selected_challenge = os.path.join(
+                activity.get_bundle_path(),
+                'challenges',
+                self.metadata['challenge'] + '.svg')
+            if 'offsets' in self.metadata:
+                x, y, s = self.metadata['offsets'][1:-1].split(',')
+                self._offsets = {self.metadata['challenge']: [int(x), int(y),
+                                                              int(s)]}
+            else:
+                self._offsers = {self.metadata['challenge']: [0, 0, 33]}
         if hasattr(self, 'tw') and self.tw is not None:
             if not hasattr(self, '_old_cursor'):
                 self._old_cursor = gtk.gdk.Cursor(gtk.gdk.LEFT_PTR)
@@ -1396,7 +1461,9 @@ in order to use the plugin.'))
     def _project_loader(self, file_path):
         ''' Load the turtle file and then restore cursor '''
         _logger.debug('Opening:' + file_path)
-        self.tw.load_files(file_path, False)
+        if not hasattr(self, '_create_new'):
+            self._create_new = False
+        self.tw.load_files(file_path, self._create_new)
         self.restore_cursor()
         if hasattr(self, '_tmp_dsobject') and self._tmp_dsobject is not None:
             _logger.debug('cleaning up after %s' %
@@ -1575,23 +1642,12 @@ in order to use the plugin.'))
     def _get_levels(self, path):
         ''' Look for level files in lessons directory. '''
         levels = glob.glob(os.path.join(activity.get_bundle_path(),
-                                        'challenges', '*.svg'))
+                                        'flags', '*.png'))
 
         level_files = []
-        for i in range(len(levels)):
-            level_files.append('confusion-%d' % (i+1))
+        for level in levels:
+            level_files.append(level[:-4])
 
-        self.offsets = {}
-        offset_fd = open(os.path.join(activity.get_bundle_path(), 'challenges',
-                                      'offsets'))
-        for line in offset_fd:
-            try:
-                idx, offsets = line.strip('\n').split(':')
-                xoffset, yoffset = offsets.split(',')
-                self.offsets[int(idx)] = (int(xoffset), int(yoffset))
-            except ValueError:
-                pass
-        offset_fd.close()
         return level_files
 
     def _levels_cb(self, combobox=None):
@@ -1606,31 +1662,29 @@ in order to use the plugin.'))
     def _load_level(self, custom=False):
         self.tw.canvas.clearscreen()
         if custom:
-            self.tw.canvas.setxy(0, 0, pendown=False)
+            self.tw.turtles.get_active_turtle().set_xy((0, 0), pendown=False)
             self.tw.lc.insert_image(center=True,
                                     filepath=self._custom_filepath,
                                     resize=True, offset=False)
         else:
-            self.tw.canvas.setxy(int(-gtk.gdk.screen_width() / 2), 0,
-                                 pendown=False)
-            self.tw.lc.insert_image(center=False, resize=False,
-                                    filepath=os.path.join(
-                    activity.get_bundle_path(), 'images',
-                    'turtle-a.png'))
-            # Slight offset to account for stroke width
-            if self._level + 1 in self.offsets:
-                xoffset = self.offsets[self._level + 1][0]
-                yoffset = self.offsets[self._level + 1][1]
+            basename = os.path.basename(self._selected_challenge)[:-4]
+            if basename in self._offsets:
+                offset = [self._offsets[basename][0] - 3,
+                          self._offsets[basename][1] - 3]
+                scale = self._offsets[basename][2]
             else:
-                xoffset = 0
-                yoffset = 0
-            self.tw.canvas.setxy(-2.5 + xoffset, -2.5 + yoffset, pendown=False)
+                offset = [-3, -3]
+                scale = 33
+            save_scale = self.tw.lc.scale
+            self.tw.turtles.get_active_turtle().set_xy((offset), pendown=False)
+
+            self.tw.lc.scale = scale
             self.tw.lc.insert_image(center=False,
-                                    filepath=os.path.join(
-                    activity.get_bundle_path(), 'challenges',
-                    self._levels[self._level] + '.svg'), resize=False,
+                                    filepath=self._selected_challenge,
+                                    resize=True,
                                     offset=True)
-        self.tw.canvas.setxy(0, 0, pendown=False)
+            self.tw.lc.scale = save_scale
+        self.tw.turtles.get_active_turtle().set_xy((0, 0), pendown=False)
 
     def _radio_button_factory(self, button_name, toolbar, cb, arg, tooltip,
                               group, position=-1):
@@ -1678,3 +1732,96 @@ in order to use the plugin.'))
         alert.props.msg = msg
         self.add_alert(alert)
         alert.show()
+
+    def _hide_store(self, widget=None):
+        if self._challenge_window is not None:
+            self._challenge_box.hide()
+
+    def _create_store(self, widget=None):
+        if self._challenge_window is None:
+            self._challenge_box = gtk.EventBox()
+            self._challenge_window = gtk.ScrolledWindow()
+            self._challenge_window.set_policy(gtk.POLICY_NEVER,
+                                              gtk.POLICY_AUTOMATIC)
+            width = gtk.gdk.screen_width() / 2
+            height = gtk.gdk.screen_height() / 2
+            self._challenge_window.set_size_request(width, height)
+            self._challenge_window.show()
+
+            store = gtk.ListStore(gtk.gdk.Pixbuf, str)
+
+            icon_view = gtk.IconView()
+            icon_view.set_model(store)
+            icon_view.set_selection_mode(gtk.SELECTION_SINGLE)
+            icon_view.connect('selection-changed', self._challenge_selected,
+                              store)
+            icon_view.set_pixbuf_column(0)
+            icon_view.grab_focus()
+            self._challenge_window.add_with_viewport(icon_view)
+            icon_view.show()
+            self._fill_challenges_list(store)
+
+            width = gtk.gdk.screen_width() / 4
+            height = gtk.gdk.screen_height() / 4
+
+            self._challenge_box.add(self._challenge_window)
+            self.fixed.put(self._challenge_box, width, height)
+
+            self._offsets = {}
+            offset_fd = open(os.path.join(activity.get_bundle_path(),
+                                          'challenges',
+                                          'offsets'))
+            for line in offset_fd:
+                try:
+                    idx, offsets = line.strip('\n').split(':')
+                    xoffset, yoffset, scale = offsets.split(',')
+                    self._offsets['confusion-' + idx] = (int(xoffset),
+                                                        int(yoffset),
+                                                        int(scale))
+                except ValueError:
+                    pass
+            offset_fd.close()
+
+        self._challenge_window.show()
+        self._challenge_box.show()
+
+    def _get_selected_path(self, widget, store):
+        try:
+            iter_ = store.get_iter(widget.get_selected_items()[0])
+            image_path = store.get(iter_, 1)[0]
+
+            return image_path, iter_
+        except:
+            return None
+
+    def _challenge_selected(self, widget, store):
+        selected = self._get_selected_path(widget, store)
+
+        if selected is None:
+            self._selected_challenge = None
+            self._challenge_window.hide()
+            return
+
+        image_path, _iter = selected
+        iter_ = store.get_iter(widget.get_selected_items()[0])
+        image_path = store.get(iter_, 1)[0]
+
+        self._selected_challenge = image_path
+        self._challenge_window.hide()
+        self._load_level()
+
+    def _fill_challenges_list(self, store):
+        '''
+        Append images from the artwork_paths to the store.
+        '''
+        for filepath in self._scan_for_challenges():
+            pixbuf = None
+            pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(
+                filepath, 100, 100)
+            store.append([pixbuf, filepath])
+
+    def _scan_for_challenges(self):
+        file_list = list(glob.glob(os.path.join(activity.get_bundle_path(),
+                                                'challenges', '*.svg')))
+        file_list.sort()
+        return file_list
