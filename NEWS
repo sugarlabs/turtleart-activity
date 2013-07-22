@@ -1,3 +1,8 @@
+186
+
+BUG FIX:
+* Use /tmp for creating SVG surface when running from GNOME
+
 185
 
 ENHANCEMENTS:
