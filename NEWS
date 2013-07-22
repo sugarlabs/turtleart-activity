@@ -1,3 +1,55 @@
+185
+
+ENHANCEMENTS:
+* New translations
+* More sample graphics from turtleart.org
+* Added pen state boolean
+* Added new sensor-record example (generates turtle art program from mouse movements)
+* Some comments added to the code by Marion Zepf
+
+BUG FIX:
+* Fixed problem with load block introduced by turtle-centric rebase
+
+BUG FIX:
+* Fixed problem with load block introduced by turtle-centric rebase
+
+184
+
+ENHANCEMENTS:
+* New translations
+* Internal refactoring in support of a turtle-centric approach to programming
+
+183
+
+ENHANCEMENT:
+* New translations
+
+182
+
+ENHANCEMENT:
+* New translations
+
+BUG FIXES:
+* Fixed problem with initializing trash palette when init_on_start
+  flag is set (Alan Aguiar)
+* Disambiguation of parent vs activity (Marion Zepf)
+* Isolation of GUI to enable non-interactive use of canvas (Marion Zepf)
+
+181
+
+BUG FIX:
+* Make sure trash is last palette
+
+180
+
+ENHANCEMENT:
+* Faster launch time
+* New translations
+
+BUG FIX:
+* Catch exception raised when gconf is not available (prevented launch
+  on some old systems, e.g., Peru 802)
+
 179
 
 BUG FIXES:

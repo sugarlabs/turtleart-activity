@@ -1675,6 +1675,7 @@ in order to use the plugin.'))
             else:
                 offset = [-3, -3]
                 scale = 33
+            _logger.debug('%d, %d, %d' % (offset[0], offset[1], scale))
             save_scale = self.tw.lc.scale
             self.tw.turtles.get_active_turtle().set_xy((offset), pendown=False)
 
