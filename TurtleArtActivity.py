@@ -1580,3 +1580,7 @@ in order to use the plugin.'))
         alert.props.msg = msg
         self.add_alert(alert)
         alert.show()
+
+    def restore_state(self):
+        ''' Anything that needs restoring after a clear screen can go here '''
+        pass

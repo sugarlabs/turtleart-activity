@@ -736,6 +736,10 @@ Would you like to save before quitting?'))
         else:
             return os.path.abspath(dirname)
 
+    def restore_state(self):
+        ''' Anything that needs restoring after a clear screen can go here '''
+        pass
+
 
 if __name__ == '__main__':
     TurtleMain()
