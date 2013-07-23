@@ -1203,7 +1203,6 @@ Journal objects'))
 
     def _prim_save_svg(self, name):
         """ Save SVG to file """
-        self.tw.canvas.svg_close()
         self.tw.save_as_image(name, svg=True)
 
     def _prim_speak(self, text):

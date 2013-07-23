@@ -28,7 +28,7 @@ import cairo
 import pangocairo
 
 from tautils import get_path
-from taconstants import COLORDICT
+from taconstants import COLORDICT, TMP_SVG_PATH
 
 
 def wrap100(n):
@@ -127,8 +127,7 @@ class TurtleGraphics:
                              'output.svg'), self.width, self.height)
         else:
             svg_surface = cairo.SVGSurface(
-                os.path.join('/tmp', 'turtle_output.svg'),
-                self.width, self.height)
+                TMP_SVG_PATH, self.width, self.height)
         self.cr_svg = cairo.Context(svg_surface)
         self.cr_svg.set_line_cap(1)  # Set the line cap to be round
 
