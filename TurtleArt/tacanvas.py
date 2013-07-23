@@ -1,4 +1,4 @@
-#Copyright (c) 2007-8, Playful Invention Company.
+31#Copyright (c) 2007-8, Playful Invention Company.
 #Copyright (c) 2008-11, Walter Bender
 #Copyright (c) 2011 Collabora Ltd. <http://www.collabora.co.uk/>
 
@@ -127,7 +127,7 @@ class TurtleGraphics:
                              'output.svg'), self.width, self.height)
         else:
             svg_surface = cairo.SVGSurface(
-                os.path.join(os.getcwd(), 'output.svg'),
+                os.path.join('/tmp', 'turtle_output.svg'),
                 self.width, self.height)
         self.cr_svg = cairo.Context(svg_surface)
         self.cr_svg.set_line_cap(1)  # Set the line cap to be round
