@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-07 00:31-0400\n"
-"PO-Revision-Date: 2013-07-09 18:47+0200\n"
-"Last-Translator: Chris <cjl@laptop.org>\n"
+"POT-Creation-Date: 2013-07-18 00:30-0400\n"
+"PO-Revision-Date: 2013-07-24 14:11+0200\n"
+"Last-Translator: anushnur <anush.mkrtchyan@ca1492.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hy\n"
 "MIME-Version: 1.0\n"
@@ -247,320 +247,328 @@ msgid "Turtle will draw when moved."
 msgstr "Շարժելիս` Կրիան կնկարի:"
 
 #: TurtleArt/tabasics.py:443
+msgid "pen down?"
+msgstr "գրիչը վար"
+
+#: TurtleArt/tabasics.py:445
+msgid "returns True if pen is down"
+msgstr "դառնում է Ճիշտ, եթե գրիչը վար է"
+
+#: TurtleArt/tabasics.py:453
 msgid "set pen size"
 msgstr "Սահմանել գրչի չափսը"
 
-#: TurtleArt/tabasics.py:447
+#: TurtleArt/tabasics.py:457
 msgid "sets size of the line drawn by the turtle"
 msgstr "Սահմանում է կրիայի գծած գծի չափսը"
 
-#: TurtleArt/tabasics.py:458
+#: TurtleArt/tabasics.py:468
 msgid "start fill"
 msgstr "Սկսել լցումը"
 
-#: TurtleArt/tabasics.py:460
+#: TurtleArt/tabasics.py:470
 msgid "starts filled polygon (used with end fill block)"
 msgstr ""
 "Սկսում է գծագրել գունավոր մակերեսով բազմանկյուն(օգտագործվում է \"ավարտել "
 "լցումը\" մասնիկով):"
 
-#: TurtleArt/tabasics.py:469
+#: TurtleArt/tabasics.py:479
 msgid "end fill"
 msgstr "ավարտել լցումը"
 
-#: TurtleArt/tabasics.py:471
+#: TurtleArt/tabasics.py:481
 msgid "completes filled polygon (used with start fill block)"
 msgstr ""
 "Ավարտում է գունավոր մակերեսով բազմանկյան գծագրումը (օգտագործվում է \"Սկսել "
 "գունալցումը\" մասնիկների հետ):"
 
-#: TurtleArt/tabasics.py:480
+#: TurtleArt/tabasics.py:490
 msgid "pen size"
 msgstr "Գրչի չափս"
 
-#: TurtleArt/tabasics.py:481
+#: TurtleArt/tabasics.py:491
 msgid "holds current pen size (can be used in place of a number block)"
 msgstr ""
 "Պահում է գրչի ներկայիս չափսը (կարող է օգտագործվել թվային արժեք պարունակող "
 "մասնիկի փոխարեն):"
 
-#: TurtleArt/tabasics.py:498
+#: TurtleArt/tabasics.py:508
 msgid "Palette of pen colors"
 msgstr "Գրչածայրի գույների ներկապնակը"
 
-#: TurtleArt/tabasics.py:500
+#: TurtleArt/tabasics.py:510
 msgid "red"
 msgstr "կարմիր"
 
-#: TurtleArt/tabasics.py:501
+#: TurtleArt/tabasics.py:511
 msgid "orange"
 msgstr "նարնջագույն"
 
-#: TurtleArt/tabasics.py:503
+#: TurtleArt/tabasics.py:513
 msgid "yellow"
 msgstr "դեղին"
 
-#: TurtleArt/tabasics.py:505
+#: TurtleArt/tabasics.py:515
 msgid "green"
 msgstr "կանաչ"
 
-#: TurtleArt/tabasics.py:506
+#: TurtleArt/tabasics.py:516
 msgid "cyan"
 msgstr "երկնագույն"
 
-#: TurtleArt/tabasics.py:507
+#: TurtleArt/tabasics.py:517
 msgid "blue"
 msgstr "կապույտ"
 
-#: TurtleArt/tabasics.py:508
+#: TurtleArt/tabasics.py:518
 msgid "purple"
 msgstr "բոսոր"
 
-#: TurtleArt/tabasics.py:510
+#: TurtleArt/tabasics.py:520
 msgid "white"
 msgstr "սպիտակ"
 
-#: TurtleArt/tabasics.py:511
+#: TurtleArt/tabasics.py:521
 msgid "black"
 msgstr "սև"
 
-#: TurtleArt/tabasics.py:591
+#: TurtleArt/tabasics.py:601
 msgid "Palette of numeric operators"
 msgstr "Թվային օպերատորների պահոց"
 
-#: TurtleArt/tabasics.py:597
+#: TurtleArt/tabasics.py:607
 msgid "plus"
 msgstr "գումարել"
 
-#: TurtleArt/tabasics.py:601
+#: TurtleArt/tabasics.py:611
 msgid "adds two alphanumeric inputs"
 msgstr "Ավելացնում է երկու տառաթվային ներմուծում"
 
-#: TurtleArt/tabasics.py:609
+#: TurtleArt/tabasics.py:619
 msgid "minus"
 msgstr "հանել"
 
-#: TurtleArt/tabasics.py:612
+#: TurtleArt/tabasics.py:622
 msgid "subtracts bottom numeric input from top numeric input"
 msgstr "Վերին թվային ներմուծումից հանում է ստորին թվային ներմուծումը"
 
-#: TurtleArt/tabasics.py:623
+#: TurtleArt/tabasics.py:633
 msgid "multiply"
 msgstr "բազմապատկել"
 
-#: TurtleArt/tabasics.py:626
+#: TurtleArt/tabasics.py:636
 msgid "multiplies two numeric inputs"
 msgstr "բազմապատկում է երկու թվային ներմուծումները"
 
-#: TurtleArt/tabasics.py:635
+#: TurtleArt/tabasics.py:645
 msgid "divide"
 msgstr "բաժանել"
 
-#: TurtleArt/tabasics.py:638
+#: TurtleArt/tabasics.py:648
 msgid ""
 "divides top numeric input (numerator) by bottom numeric input (denominator)"
 msgstr ""
 "բաժանում է վերին թվային արժեքը(համարիչը ) ստորին թվային արժեքի (հայտարարը "
 ")վրա :"
 
-#: TurtleArt/tabasics.py:648
+#: TurtleArt/tabasics.py:658
 msgid "identity"
 msgstr "ինքնություն"
 
-#: TurtleArt/tabasics.py:650
+#: TurtleArt/tabasics.py:660
 msgid "identity operator used for extending blocks"
 msgstr "Մասնիկներն ընդլայնելու համար կիրառվող ինքնության օպերատորը:"
 
 # Մոդուլ
-#: TurtleArt/tabasics.py:658 TurtleArt/tabasics.py:659
+#: TurtleArt/tabasics.py:668 TurtleArt/tabasics.py:669
 msgid "mod"
 msgstr "mod"
 
-#: TurtleArt/tabasics.py:662
+#: TurtleArt/tabasics.py:672
 msgid "modular (remainder) operator"
 msgstr "Մոդուլային օպերատոր(մնացորդային)"
 
-#: TurtleArt/tabasics.py:670
+#: TurtleArt/tabasics.py:680
 msgid "√"
 msgstr "√"
 
-#: TurtleArt/tabasics.py:671
+#: TurtleArt/tabasics.py:681
 msgid "square root"
 msgstr "քառակուսի արմատ"
 
-#: TurtleArt/tabasics.py:674
+#: TurtleArt/tabasics.py:684
 msgid "calculates square root"
 msgstr "հաշվում է քառակուսի արմատը"
 
-#: TurtleArt/tabasics.py:681
+#: TurtleArt/tabasics.py:691
 msgid "random"
 msgstr "պատահական"
 
-#: TurtleArt/tabasics.py:681
+#: TurtleArt/tabasics.py:691
 msgid "min"
 msgstr "նվազագույն"
 
-#: TurtleArt/tabasics.py:681
+#: TurtleArt/tabasics.py:691
 msgid "max"
 msgstr "առավելագույն"
 
-#: TurtleArt/tabasics.py:685
+#: TurtleArt/tabasics.py:695
 msgid "returns random number between minimum (top) and maximum (bottom) values"
 msgstr ""
 "Վերադարձնում է նվազագույն (վերին) եւ առավելագույն(ստորին)արժեքների միջեւ "
 "պատահական որևէ թիվ"
 
-#: TurtleArt/tabasics.py:697
+#: TurtleArt/tabasics.py:707
 msgid "number"
 msgstr "թիվ"
 
-#: TurtleArt/tabasics.py:698
+#: TurtleArt/tabasics.py:708
 msgid "used as numeric input in mathematic operators"
 msgstr "Մաթեմատիկական օպերատորներում օգտագործվում է որպես թվային ներմուծում"
 
-#: TurtleArt/tabasics.py:706
+#: TurtleArt/tabasics.py:716
 msgid "greater than"
 msgstr "մեծ է քան"
 
-#: TurtleArt/tabasics.py:709
+#: TurtleArt/tabasics.py:719
 msgid "logical greater-than operator"
 msgstr "տրամաբանական greater-than/մեծ է քան /օպերատոր"
 
-#: TurtleArt/tabasics.py:718
+#: TurtleArt/tabasics.py:728
 msgid "less than"
 msgstr "փոքր է քան"
 
-#: TurtleArt/tabasics.py:722
+#: TurtleArt/tabasics.py:732
 msgid "logical less-than operator"
 msgstr "տրամաբանական less-than /փոքր է քան/ օպերատոր"
 
-#: TurtleArt/tabasics.py:730
+#: TurtleArt/tabasics.py:740
 msgid "equal"
 msgstr "հավասար"
 
-#: TurtleArt/tabasics.py:734
+#: TurtleArt/tabasics.py:744
 msgid "logical equal-to operator"
 msgstr "﻿ տրամաբանական equal-to/հավասար է/օպերատոր"
 
-#: TurtleArt/tabasics.py:741
+#: TurtleArt/tabasics.py:751
 msgid "not"
 msgstr "ոչ"
 
-#: TurtleArt/tabasics.py:744
+#: TurtleArt/tabasics.py:754
 msgid "logical NOT operator"
 msgstr "տրամաբանական ՈՉ օպերատոր"
 
-#: TurtleArt/tabasics.py:750 TurtleArt/tabasics.py:753
+#: TurtleArt/tabasics.py:760 TurtleArt/tabasics.py:763
 msgid "and"
 msgstr "և"
 
-#: TurtleArt/tabasics.py:754
+#: TurtleArt/tabasics.py:764
 msgid "logical AND operator"
 msgstr "տրամաբանական AND /և/օպերատոր"
 
-#: TurtleArt/tabasics.py:761 TurtleArt/tabasics.py:764
+#: TurtleArt/tabasics.py:771 TurtleArt/tabasics.py:774
 msgid "or"
 msgstr "կամ"
 
-#: TurtleArt/tabasics.py:765
+#: TurtleArt/tabasics.py:775
 msgid "logical OR operator"
 msgstr "տրամաբանական OR /կամ/ օպերատոր"
 
-#: TurtleArt/tabasics.py:774
+#: TurtleArt/tabasics.py:784
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:91
 msgid "Palette of flow operators"
 msgstr "Հոսքի օպերատորների պահոցը"
 
-#: TurtleArt/tabasics.py:779
+#: TurtleArt/tabasics.py:789
 msgid "wait"
 msgstr "սպասել"
 
-#: TurtleArt/tabasics.py:783
+#: TurtleArt/tabasics.py:793
 msgid "pauses program execution a specified number of seconds"
 msgstr "Ծրագրի գործարկման ընթացքը կասեցնում է սահմանված որոշակի վայրկյաններով:"
 
-#: TurtleArt/tabasics.py:790
+#: TurtleArt/tabasics.py:800
 msgid "forever"
 msgstr "Անդադար"
 
-#: TurtleArt/tabasics.py:794
+#: TurtleArt/tabasics.py:804
 msgid "loops forever"
 msgstr "կրկնել անընդմեջ"
 
-#: TurtleArt/tabasics.py:801 TurtleArt/tabasics.py:805
+#: TurtleArt/tabasics.py:811 TurtleArt/tabasics.py:815
 msgid "repeat"
 msgstr "կրկնել"
 
-#: TurtleArt/tabasics.py:806
+#: TurtleArt/tabasics.py:816
 msgid "loops specified number of times"
 msgstr "Կրկնել սահմանված անգամներ"
 
-#: TurtleArt/tabasics.py:812 TurtleArt/tabasics.py:825
+#: TurtleArt/tabasics.py:822 TurtleArt/tabasics.py:835
 msgid "if"
 msgstr "եթե"
 
-#: TurtleArt/tabasics.py:812 TurtleArt/tabasics.py:825
+#: TurtleArt/tabasics.py:822 TurtleArt/tabasics.py:835
 msgid "then"
 msgstr "ապա"
 
-#: TurtleArt/tabasics.py:815
+#: TurtleArt/tabasics.py:825
 msgid "if then"
 msgstr "եթե ..."
 
-#: TurtleArt/tabasics.py:817
+#: TurtleArt/tabasics.py:827
 msgid "if-then operator that uses boolean operators from Numbers palette"
 msgstr "Եթե-ապա օպերատորը, որը բուլյան օպերատորներ է օգտագործում Թվապնակից"
 
-#: TurtleArt/tabasics.py:825
+#: TurtleArt/tabasics.py:835
 msgid "else"
 msgstr "այլապես"
 
-#: TurtleArt/tabasics.py:829 TurtleArt/tabasics.py:837
+#: TurtleArt/tabasics.py:839 TurtleArt/tabasics.py:847
 msgid "if then else"
 msgstr "եթե ուրեմն մեկ այլ"
 
-#: TurtleArt/tabasics.py:830 TurtleArt/tabasics.py:838
+#: TurtleArt/tabasics.py:840 TurtleArt/tabasics.py:848
 msgid "if-then-else operator that uses boolean operators from Numbers palette"
 msgstr "եթե-ապա-կամ օպերատորը, որը բուլյան օպերատորներ է օգտագործում Թվապնակից"
 
-#: TurtleArt/tabasics.py:847
+#: TurtleArt/tabasics.py:857
 msgid "horizontal space"
 msgstr "Հորիզոնական տարածություն"
 
-#: TurtleArt/tabasics.py:848
+#: TurtleArt/tabasics.py:858
 msgid "jogs stack right"
 msgstr "Ագուցված մասնիկների շարանը հրվում է դեպի աջ"
 
-#: TurtleArt/tabasics.py:855
+#: TurtleArt/tabasics.py:865
 msgid "vertical space"
 msgstr "Ուղղահայաց տարածություն"
 
-#: TurtleArt/tabasics.py:856
+#: TurtleArt/tabasics.py:866
 msgid "jogs stack down"
 msgstr "Ագուցված մասնիկների շարանը քաշում է դեպի վար:"
 
-#: TurtleArt/tabasics.py:862
+#: TurtleArt/tabasics.py:872
 msgid "stop action"
 msgstr "Կանգնեցնել գործողությունը"
 
-#: TurtleArt/tabasics.py:865
+#: TurtleArt/tabasics.py:875
 msgid "stops current action"
 msgstr "Կանգնեցնում է ընթացիկ գործողությունը"
 
-#: TurtleArt/tabasics.py:874
+#: TurtleArt/tabasics.py:884
 msgid "Palette of variable blocks"
 msgstr "Փոփոխականներով մասնիկների պահոց"
 
-#: TurtleArt/tabasics.py:879 pysamples/grecord.py:214
+#: TurtleArt/tabasics.py:889 pysamples/grecord.py:214
 msgid "start"
 msgstr "Մեկնարկ"
 
-#: TurtleArt/tabasics.py:882
+#: TurtleArt/tabasics.py:892
 msgid "connects action to toolbar run buttons"
 msgstr "Գործողությունը կապում է գործիքաշարի գործարկման կոճակներին"
 
-#: TurtleArt/tabasics.py:889 TurtleArt/tabasics.py:890
-#: TurtleArt/tabasics.py:891
+#: TurtleArt/tabasics.py:899 TurtleArt/tabasics.py:900
+#: TurtleArt/tabasics.py:901
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:178
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:179
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:180
@@ -569,13 +577,13 @@ msgstr "Գործողությունը կապում է գործիքաշարի գո
 msgid "text"
 msgstr "Տեքստ"
 
-#: TurtleArt/tabasics.py:892
+#: TurtleArt/tabasics.py:902
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:181
 msgid "string value"
 msgstr "Տողի արժեքը"
 
-#: TurtleArt/tabasics.py:896 TurtleArt/tabasics.py:899
-#: TurtleArt/tabasics.py:907 TurtleArt/tabasics.py:911
+#: TurtleArt/tabasics.py:906 TurtleArt/tabasics.py:909
+#: TurtleArt/tabasics.py:917 TurtleArt/tabasics.py:921
 #: TurtleArt/tawindow.py:1449 TurtleArt/tawindow.py:1546
 #: TurtleArt/tawindow.py:1559 TurtleArt/tawindow.py:2178
 #: TurtleArt/tawindow.py:4507
@@ -583,122 +591,122 @@ msgid "action"
 msgstr "Գործողություն"
 
 # կույտի-ագուցված մասնիկների շարան
-#: TurtleArt/tabasics.py:901
+#: TurtleArt/tabasics.py:911
 msgid "top of nameable action stack"
 msgstr "Անվանակոչվող գործողությունների կույտի ամենվերին մասը"
 
-#: TurtleArt/tabasics.py:912 TurtleArt/tawindow.py:4521
+#: TurtleArt/tabasics.py:922 TurtleArt/tawindow.py:4521
 msgid "invokes named action stack"
 msgstr "Կանչում է անվանակոչված գործողությունների ագուցված մասնիկների շարանը:"
 
-#: TurtleArt/tabasics.py:919
+#: TurtleArt/tabasics.py:929
 msgid "store in box 1"
 msgstr "Պահեստավորել տուփ 1-ի մեջ"
 
-#: TurtleArt/tabasics.py:924
+#: TurtleArt/tabasics.py:934
 msgid "stores numeric value in Variable 1"
 msgstr "Թվային արժեքը պահում է Փոփոխական 1-ում"
 
-#: TurtleArt/tabasics.py:933
+#: TurtleArt/tabasics.py:943
 msgid "store in box 2"
 msgstr "Պահել տուփ 2-ի մեջ"
 
-#: TurtleArt/tabasics.py:938
+#: TurtleArt/tabasics.py:948
 msgid "stores numeric value in Variable 2"
 msgstr "Թվային արժեքը պահում է Փոփոխական 2-ում"
 
-#: TurtleArt/tabasics.py:947
+#: TurtleArt/tabasics.py:957
 msgid "box 1"
 msgstr "տուփ 1"
 
-#: TurtleArt/tabasics.py:950
+#: TurtleArt/tabasics.py:960
 msgid "Variable 1 (numeric value)"
 msgstr "Փոփոխական 1 ﻿ ( թվային արժեքը )"
 
-#: TurtleArt/tabasics.py:957
+#: TurtleArt/tabasics.py:967
 msgid "box 2"
 msgstr "տուփ 2"
 
-#: TurtleArt/tabasics.py:960
+#: TurtleArt/tabasics.py:970
 msgid "Variable 2 (numeric value)"
 msgstr "Փոփոխական 2 ﻿ ( թվային արժեքը )"
 
-#: TurtleArt/tabasics.py:966 TurtleArt/tawindow.py:4571
+#: TurtleArt/tabasics.py:976 TurtleArt/tawindow.py:4571
 msgid "store in"
 msgstr "պահել ... մեջ"
 
-#: TurtleArt/tabasics.py:966 TurtleArt/tabasics.py:982
+#: TurtleArt/tabasics.py:976 TurtleArt/tabasics.py:992
 msgid "box"
 msgstr "Տուփ"
 
-#: TurtleArt/tabasics.py:966 TurtleArt/tawindow.py:4571
+#: TurtleArt/tabasics.py:976 TurtleArt/tawindow.py:4571
 msgid "value"
 msgstr "Արժեք"
 
-#: TurtleArt/tabasics.py:970 TurtleArt/tabasics.py:985
+#: TurtleArt/tabasics.py:980 TurtleArt/tabasics.py:995
 #: TurtleArt/tawindow.py:1453 TurtleArt/tawindow.py:1585
 #: TurtleArt/tawindow.py:2182 TurtleArt/tawindow.py:4534
 #: TurtleArt/tawindow.py:4562
 msgid "my box"
 msgstr "Իմ տուփը"
 
-#: TurtleArt/tabasics.py:971 TurtleArt/tawindow.py:4576
+#: TurtleArt/tabasics.py:981 TurtleArt/tawindow.py:4576
 msgid "stores numeric value in named variable"
 msgstr "Թվային արժեքը պահում է անվանակոչված փոփոխականում"
 
-#: TurtleArt/tabasics.py:988 TurtleArt/tawindow.py:4548
+#: TurtleArt/tabasics.py:998 TurtleArt/tawindow.py:4548
 msgid "named variable (numeric value)"
 msgstr "Անվանված փոփոխական (թվային արժեքը)"
 
-#: TurtleArt/tabasics.py:995 TurtleArt/tabasics.py:1014
+#: TurtleArt/tabasics.py:1005 TurtleArt/tabasics.py:1024
 msgid "action 1"
 msgstr "Գործողություն 1"
 
-#: TurtleArt/tabasics.py:998
+#: TurtleArt/tabasics.py:1008
 msgid "top of Action 1 stack"
 msgstr "1 գործողության շարանի վերին մասը"
 
-#: TurtleArt/tabasics.py:1004 TurtleArt/tabasics.py:1024
+#: TurtleArt/tabasics.py:1014 TurtleArt/tabasics.py:1034
 msgid "action 2"
 msgstr "Գործողություն 2"
 
-#: TurtleArt/tabasics.py:1007
+#: TurtleArt/tabasics.py:1017
 msgid "top of Action 2 stack"
 msgstr "2 գործողության մասնիկաշարանի վերին մասը"
 
-#: TurtleArt/tabasics.py:1017
+#: TurtleArt/tabasics.py:1027
 msgid "invokes Action 1 stack"
 msgstr "Կանչում է Գործողություն 1 մասնիկների շարանը"
 
-#: TurtleArt/tabasics.py:1027
+#: TurtleArt/tabasics.py:1037
 msgid "invokes Action 2 stack"
 msgstr "Կանչում է Գործողություն 2 շարանը"
 
-#: TurtleArt/tabasics.py:1035
+#: TurtleArt/tabasics.py:1045
 msgid "trash"
 msgstr "Խոտան"
 
-#: TurtleArt/tabasics.py:1039
+#: TurtleArt/tabasics.py:1049
 msgid "empty trash"
 msgstr "Դատարկել աղբամանը"
 
-#: TurtleArt/tabasics.py:1040
+#: TurtleArt/tabasics.py:1050
 msgid "permanently deletes items in trash"
 msgstr "Անվերադարձ ջնջում է աղբամանի պարունակությունը"
 
-#: TurtleArt/tabasics.py:1044
+#: TurtleArt/tabasics.py:1054
 msgid "restore all"
 msgstr "Վերականգնել բոլորը"
 
-#: TurtleArt/tabasics.py:1045
+#: TurtleArt/tabasics.py:1055
 msgid "restore all blocks from trash"
 msgstr "Վերականգնել աղբարկղից բոլոր մասնիկները"
 
-#: TurtleArt/tabasics.py:1049
+#: TurtleArt/tabasics.py:1059
 msgid "clear all"
 msgstr "Ջնջել բոլորը"
 
-#: TurtleArt/tabasics.py:1050
+#: TurtleArt/tabasics.py:1060
 msgid "move all blocks to trash"
 msgstr "Բոլոր մասնիկները տեղափոխել աղբարկղ"
 
@@ -1860,15 +1868,6 @@ msgid "uturn"
 msgstr "Շրջադարձ U տառի ձևով"
 
 #: pysamples/uturn.py:37
-msgid "make a uturn"
-msgstr "Կատարել լրիվ շրջադարձ U տառի ձևով"
-
-# լրիվ շրջադարձ
-#: pysamples/uturn.py:48
-msgid "u turn"
-msgstr "Շրջադարձ U տառի ձևով"
-
-#: pysamples/uturn.py:50
 msgid "turns the turtle 180 degrees"
 msgstr "շրջում է կրիային 180 աստիճանով"
 
@@ -1945,6 +1944,13 @@ msgstr "﻿Դուք չպահպանված աշխատանք ունեք: Ցանկա
 #: turtleblocks.py:469
 msgid "Save project?"
 msgstr "Պահպանե՞լ նախագիծը"
+
+#~ msgid "make a uturn"
+#~ msgstr "Կատարել լրիվ շրջադարձ U տառի ձևով"
+
+# լրիվ շրջադարձ
+#~ msgid "u turn"
+#~ msgstr "Շրջադարձ U տառի ձևով"
 
 #~ msgid "set text color"
 #~ msgstr "Սահմանել տեքստի գույնը"
