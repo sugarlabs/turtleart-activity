@@ -31,6 +31,7 @@ import getopt
 import sys
 import os
 import os.path
+import glob
 import cStringIO
 import errno
 import ConfigParser
@@ -98,6 +99,8 @@ class TurtleMain():
         self._parse_command_line()
         self._ensure_sugar_paths()
         self._gnome_plugins = []
+        self._selected_sample = None
+        self._sample_window = None
 
         if self._output_png:
             # Outputing to file, so no need for a canvas
@@ -370,6 +373,10 @@ return %s(self)" % (p, P, P)
         ''' Instead of Sugar toolbars, use GNOME menus. '''
         menu = gtk.Menu()
         MenuBuilder.make_menu_item(menu, _('New'), self._do_new_cb)
+        MenuBuilder.make_menu_item(menu, _('Show sample projects'),
+                                   self._create_store)
+        MenuBuilder.make_menu_item(menu, _('Hide sample projects'),
+                                   self._hide_store) 
         MenuBuilder.make_menu_item(menu, _('Open'), self._do_open_cb)
         MenuBuilder.make_menu_item(menu, _('Load project'), self._do_load_cb)
         MenuBuilder.make_menu_item(menu, _('Save'), self._do_save_cb)
@@ -740,6 +747,90 @@ Would you like to save before quitting?'))
     def restore_state(self):
         ''' Anything that needs restoring after a clear screen can go here '''
         pass
+
+    def _hide_store(self, widget=None):
+        if self._sample_window is not None:
+            self._sample_box.hide()
+
+    def _create_store(self, widget=None):
+        if self._sample_window is None:
+            self._sample_box = gtk.EventBox()
+            self._sample_window = gtk.ScrolledWindow()
+            self._sample_window.set_policy(gtk.POLICY_NEVER,
+                                              gtk.POLICY_AUTOMATIC)
+            width = gtk.gdk.screen_width() / 2
+            height = gtk.gdk.screen_height() / 2
+            self._sample_window.set_size_request(width, height)
+            self._sample_window.show()
+
+            store = gtk.ListStore(gtk.gdk.Pixbuf, str)
+
+            icon_view = gtk.IconView()
+            icon_view.set_model(store)
+            icon_view.set_selection_mode(gtk.SELECTION_SINGLE)
+            icon_view.connect('selection-changed', self._sample_selected,
+                              store)
+            icon_view.set_pixbuf_column(0)
+            icon_view.grab_focus()
+            self._sample_window.add_with_viewport(icon_view)
+            icon_view.show()
+            self._fill_samples_list(store)
+
+            width = gtk.gdk.screen_width() / 4
+            height = gtk.gdk.screen_height() / 4
+
+            self._sample_box.add(self._sample_window)
+            self.fixed.put(self._sample_box, width, height)
+
+        self._sample_window.show()
+        self._sample_box.show()
+
+    def _get_selected_path(self, widget, store):
+        try:
+            iter_ = store.get_iter(widget.get_selected_items()[0])
+            image_path = store.get(iter_, 1)[0]
+
+            return image_path, iter_
+        except:
+            return None
+
+    def _sample_selected(self, widget, store):
+        selected = self._get_selected_path(widget, store)
+
+        if selected is None:
+            self._selected_sample = None
+            self._sample_window.hide()
+            return
+
+        image_path, _iter = selected
+        iter_ = store.get_iter(widget.get_selected_items()[0])
+        image_path = store.get(iter_, 1)[0]
+
+        self._selected_sample = image_path
+        self._sample_window.hide()
+
+        # Convert from thumbnail path to sample path
+        basename = os.path.basename(self._selected_sample)[:-4]
+        for suffix in ['.ta', '.tb']:
+            file_path = os.path.join(self._execdirname,
+                                     'samples', basename + suffix)
+            if os.path.exists(file_path):
+                self.tw.load_files(file_path)
+                break
+
+    def _fill_samples_list(self, store):
+        '''
+        Append images from the artwork_paths to the store.
+        '''
+        for filepath in self._scan_for_samples():
+            pixbuf = None
+            pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(
+                filepath, 100, 100)
+            store.append([pixbuf, filepath])
+
+    def _scan_for_samples(self):
+        return glob.glob(os.path.join(self._get_execution_dir(),
+                                      'samples', 'thumbnails', '*.png'))
 
 
 if __name__ == '__main__':
