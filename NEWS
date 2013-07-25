@@ -1,10 +1,13 @@
 187
 
 ENHANCEMENTS:
+* Use icon view for browsing sample projects
 * New translations
+* New sample progams
 
 BUG FIX:
 * Fixed more bugs in SVG save
+* Fixed several bugs in non-interactive mode
 
 186
 
