@@ -957,7 +957,8 @@ Journal objects'))
         ''' User-defined macros are saved as a json-encoded file;
         these get loaded into a palette on startup '''
 
-        if os.path.exists(self.tw.macros_path):
+        if hasattr(self.tw, 'macros_path') and \
+                os.path.exists(self.tw.macros_path):
             files = glob.glob(os.path.join(self.tw.macros_path, '*.tb'))
             debug_output('making myblocks palette', self.tw.running_sugar)
             if len(files) > 0:

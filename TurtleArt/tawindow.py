@@ -4480,6 +4480,8 @@ before making changes to your Turtle Blocks program'))
 
     def _find_proto_name(self, name, label, palette='blocks'):
         ''' Look for a protoblock with this name '''
+        if not self.interactive_mode:
+            return False
         if isinstance(name, unicode):
             name = name.encode('ascii', 'replace')
         if isinstance(label, unicode):
@@ -4502,6 +4504,8 @@ before making changes to your Turtle Blocks program'))
 
     def _new_stack_block(self, name):
         ''' Add a stack block to the 'blocks' palette '''
+        if not self.interactive_mode:
+            return
         if isinstance(name, (float, int)):
             return
         if isinstance(name, unicode):
@@ -4529,6 +4533,8 @@ before making changes to your Turtle Blocks program'))
 
     def _new_box_block(self, name):
         ''' Add a box block to the 'blocks' palette '''
+        if not self.interactive_mode:
+            return
         if isinstance(name, (float, int)):
             return
         if isinstance(name, unicode):
@@ -4557,6 +4563,8 @@ before making changes to your Turtle Blocks program'))
 
     def _new_storein_block(self, name):
         ''' Add a storin block to the 'blocks' palette '''
+        if not self.interactive_mode:
+            return
         if isinstance(name, (float, int)):
             return
         if isinstance(name, unicode):

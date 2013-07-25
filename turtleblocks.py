@@ -219,7 +219,8 @@ return %s(self)" % (p, P, P)
                                   turtle_canvas=self.turtle_canvas,
                                   activity=self, running_sugar=False)
         self.tw.save_folder = self._abspath  # os.path.expanduser('~')
-        if self.client.get_int(self._HOVER_HELP) == 1:
+        if hasattr(self, 'client') and \
+                self.client.get_int(self._HOVER_HELP) == 1:
             self.hover.set_active(False)
             self._do_hover_help_off_cb(None)
 
