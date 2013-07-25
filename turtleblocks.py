@@ -829,8 +829,10 @@ Would you like to save before quitting?'))
             store.append([pixbuf, filepath])
 
     def _scan_for_samples(self):
-        return glob.glob(os.path.join(self._get_execution_dir(),
+        samples = glob.glob(os.path.join(self._get_execution_dir(),
                                       'samples', 'thumbnails', '*.png'))
+        samples.sort()
+        return samples
 
 
 if __name__ == '__main__':
