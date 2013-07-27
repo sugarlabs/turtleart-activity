@@ -114,6 +114,7 @@ class TurtleMain():
             self._setup_gtk()
             self._build_window()
             self._run_gnome_plugins()
+            self._draw_cartoon()
             self._start_gtk()
 
     def _get_gconf_settings(self):
@@ -674,8 +675,18 @@ Would you like to save before quitting?'))
         else:
             self._load_level(custom=True)
 
+    def _draw_cartoon(self):
+        pos = self.tw.turtles.get_active_turtle().get_xy()
+        self.tw.turtles.get_active_turtle().set_xy(
+            (int(-gtk.gdk.screen_width() / 2), 0), pendown=False)
+        self.tw.lc.insert_image(center=False, resize=False,
+                                filepath=os.path.join(
+                self._get_execution_dir(), 'images', 'turtle-a.png'))
+        self.tw.turtles.get_active_turtle().set_xy(pos, pendown=False)
+
     def _load_level(self, custom=False):
         self.tw.canvas.clearscreen()
+        self._draw_cartoon()
         if custom:
             self.tw.turtles.get_active_turtle().set_xy((0, 0), pendown=False)
             self.tw.lc.insert_image(center=True,

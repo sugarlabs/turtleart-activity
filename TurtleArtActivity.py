@@ -44,8 +44,6 @@ from sugar.graphics.toolbutton import ToolButton
 from sugar.graphics.radiotoolbutton import RadioToolButton
 from sugar.graphics.alert import (ConfirmationAlert, NotifyAlert)
 from sugar.graphics import style
-from sugar.graphics.combobox import ComboBox
-from sugar.graphics.toolcombobox import ToolComboBox
 from sugar.graphics.objectchooser import ObjectChooser
 from sugar import mime
 from sugar.datastore import datastore
@@ -144,7 +142,7 @@ class TurtleArtActivity(activity.Activity):
         if not hasattr(self, '_offsets'):
             self._offsets = {}
         if not hasattr(self, '_selected_challenge'):
-            self._offsets = {'confusion-01': [0, 0, 29]}
+            self._offsets = {'confusion-01': [0, 0, 33]}
             self._selected_challenge = os.path.join(activity.get_bundle_path(),
                                                     'challenges',
                                                     'confusion-01.svg')
@@ -379,6 +377,15 @@ class TurtleArtActivity(activity.Activity):
             self._load_level()
         else:
             self._load_level(custom=True)
+
+    def _draw_cartoon(self):
+        pos = self.tw.turtles.get_active_turtle().get_xy()
+        self.tw.turtles.get_active_turtle().set_xy(
+            (int(-gtk.gdk.screen_width() / 2), 0), pendown=False)
+        self.tw.lc.insert_image(center=False, resize=False,
+                                filepath=os.path.join(
+                activity.get_bundle_path(), 'images', 'turtle-a.png'))
+        self.tw.turtles.get_active_turtle().set_xy(pos, pendown=False)
 
     def do_run_cb(self, button):
         ''' Callback for run button (rabbit) '''
@@ -943,7 +950,7 @@ class TurtleArtActivity(activity.Activity):
                 self._overflow_box.remove(button)
         if self._overflow_palette_button in self._palette_toolbar:
             self._palette_toolbar.remove(self._overflow_palette_button)
-        if hasattr(self, '_levels_combo') and \
+        if hasattr(self, '_levels_tool') and \
                 self._levels_tool in self._palette_toolbar:
             self._palette_toolbar.remove(self._levels_tool)
 
@@ -1621,46 +1628,9 @@ in order to use the plugin.'))
             help_strings[name] = tooltip
         return button
 
-    def _combo_factory(self, options, tooltip, toolbar, callback, default=0):
-        ''' Combo box factory '''
-        combo = ComboBox()
-        if hasattr(combo, 'set_tooltip_text'):
-            combo.set_tooltip_text(tooltip)
-        combo.connect('changed', callback)
-        for i, option in enumerate(options):
-            combo.append_item(i, option.replace('-', ' '), None)
-        combo.set_active(default)
-        combo.show()
-        tool = ToolComboBox(combo)
-        tool.show()
-        if hasattr(toolbar, 'insert'):
-            toolbar.insert(tool, -1)
-        else:
-            toolbar.props.page.insert(tool, -1)
-        return combo, tool
-
-    def _get_levels(self, path):
-        ''' Look for level files in lessons directory. '''
-        levels = glob.glob(os.path.join(activity.get_bundle_path(),
-                                        'flags', '*.png'))
-
-        level_files = []
-        for level in levels:
-            level_files.append(level[:-4])
-
-        return level_files
-
-    def _levels_cb(self, combobox=None):
-        ''' The combo box has changed. '''
-        if hasattr(self, '_levels_combo'):
-            i = self._levels_combo.get_active()
-            if i != -1: # and i != self._level:
-                self._level = i
-                self._load_level()
-            self._custom_filepath = None
-
     def _load_level(self, custom=False):
         self.tw.canvas.clearscreen()
+        self._draw_cartoon()
         if custom:
             self.tw.turtles.get_active_turtle().set_xy((0, 0), pendown=False)
             self.tw.lc.insert_image(center=True,
@@ -1682,7 +1652,7 @@ in order to use the plugin.'))
             self.tw.lc.scale = scale
             self.tw.lc.insert_image(center=False,
                                     filepath=self._selected_challenge,
-                                    resize=True,
+                                    resize=False,
                                     offset=True)
             self.tw.lc.scale = save_scale
         self.tw.turtles.get_active_turtle().set_xy((0, 0), pendown=False)
