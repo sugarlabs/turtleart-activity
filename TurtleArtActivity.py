@@ -370,10 +370,10 @@ class TurtleArtActivity(activity.Activity):
         self.eraser_button.set_icon('eraseroff')
         self.recenter()
         self.tw.eraser_button()
-        self.restore_challenge()
+        self.restore_state()
         gobject.timeout_add(250, self.eraser_button.set_icon, 'eraseron')
 
-    def restore_challenge(self):
+    def restore_state(self):
         ''' Restore the current challange after a clear screen '''
         if self._custom_filepath is None:
             self._load_level()

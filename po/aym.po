@@ -82,7 +82,8 @@ msgstr "kupi"
 
 #: TurtleArt/tabasics.py:170
 msgid "turns turtle clockwise (angle in degrees)"
-msgstr "tortuga wakichata kupi tuqiru sarayma (ángulo de grados) wakichatarjama"
+msgstr ""
+"tortuga wakichata kupi tuqiru sarayma (ángulo de grados) wakichatarjama"
 
 #: TurtleArt/tabasics.py:178
 msgid "arc"
@@ -435,8 +436,7 @@ msgstr "jilata sipana"
 #: TurtleArt/tabasics.py:647
 msgid "returns random number between minimum (top) and maximum (bottom) values"
 msgstr ""
-"maski kawkïri maya jakhu juk'ata sipansa (alaya) ukata jilata sipansa "
-"kutiyma"
+"maski kawkïri maya jakhu juk'ata sipansa (alaya) ukata jilata sipansa kutiyma"
 
 #  "número"
 #: TurtleArt/tabasics.py:659
@@ -1591,8 +1591,7 @@ msgstr "apsuña"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:508
 msgid "pops value off FILO (first-in last-out heap)"
 msgstr ""
-"FILO siqi wakichatana chanipa apsma (nayraqata mantañana, qhipraki "
-"mistuñana)"
+"FILO siqi wakichatana chanipa apsma (nayraqata mantañana, qhipraki mistuñana)"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:519
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:529
@@ -3080,8 +3079,7 @@ msgstr "PANTJATA: JILA jani ukaxa PISI chaniñapawa."
 #: taextras.py:388
 msgid "ERROR: The mode must be either INPUT, OUTPUT, PWM or SERVO."
 msgstr ""
-"PANTJATA: uñanaqapaxa KATUQIRI, MISTUYIRI, PWM jani ukaxa SERVO "
-"ukhamañapawa."
+"PANTJATA: uñanaqapaxa KATUQIRI, MISTUYIRI, PWM jani ukaxa SERVO ukhamañapawa."
 
 #. TRANS: pin mode is used to specify the mode (INPUT, OUTPUT, etc)
 #. in which an I/O pin is being used.
@@ -3309,7 +3307,8 @@ msgstr "¿Wakichäwinaka imaña?"
 #  "entre 0 y 1023."
 #, fuzzy
 #~ msgid ""
-#~ "returns the object gray level encountered him as a number between 0 and 1023"
+#~ "returns the object gray level encountered him as a number between 0 and "
+#~ "1023"
 #~ msgstr "Uqi qutayaña kunaki sensor nayrapanki 0 ukjata 1023 uqakama."
 
 #  "Importar / Exportar"

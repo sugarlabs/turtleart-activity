@@ -77,6 +77,7 @@ XO175 = 'xo1.75'
 XO30 = 'xo3.0'
 XO4 = 'xo4'
 UNKNOWN = 'unknown'
+TMP_SVG_PATH = '/tmp/turtle_output.svg'
 
 CONSTANTS = {'leftpos': None, 'toppos': None, 'rightpos': None,
              'bottompos': None, 'width': None, 'height': None,

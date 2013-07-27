@@ -612,7 +612,7 @@ Would you like to save before quitting?'))
     def _do_eraser_cb(self, widget):
         ''' Callback for eraser button. '''
         self.tw.eraser_button()
-        self.restore_challenge()
+        self.restore_state()
         return
 
     def _do_run_cb(self, widget=None):
@@ -667,7 +667,7 @@ Would you like to save before quitting?'))
             self.win.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.HAND1))
             self.tw.deleting_blocks = True
 
-    def restore_challenge(self):
+    def restore_state(self):
         ''' Restore the current challange after a clear screen '''
         if self._custom_filepath is None:
             self._load_level()
@@ -696,15 +696,8 @@ Would you like to save before quitting?'))
             self.tw.lc.scale = scale
             self.tw.lc.insert_image(center=False,
                                     filepath=self._selected_challenge,
-                                    resize=True,
+                                    resize=False,
                                     offset=True)
-            '''
-            pos = self.tw.turtles.turtle_to_screen_coordinates((0, -50))
-            self.tw.turtles.get_active_turtle().draw_text(
-                os.path.basename(self._selected_challenge)[:-4].replace(
-                    '_', ' '),
-                pos[0], pos[1], 24, gtk.gdk.screen_width() / 2)
-            '''
             self.tw.lc.scale = save_scale
         self.tw.turtles.get_active_turtle().set_xy((0, 0), pendown=False)
 
