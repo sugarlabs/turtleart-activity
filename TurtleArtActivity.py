@@ -471,7 +471,7 @@ class TurtleArtActivity(activity.Activity):
         if self.tw.block_scale in BLOCK_SCALE:
             i = BLOCK_SCALE.index(self.tw.block_scale) + inc
         else:
-            i = BLOCK_SCALE[3]  # 2.0
+            i = 3
         if i < 0:
             self.tw.block_scale = BLOCK_SCALE[0]
         elif i == len(BLOCK_SCALE):
