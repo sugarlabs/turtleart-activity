@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-26 00:31-0400\n"
-"PO-Revision-Date: 2013-07-29 15:58+0200\n"
-"Last-Translator: EdgarQuispeChambi <quispedgar@yahoo.es>\n"
+"PO-Revision-Date: 2013-08-01 05:01+0200\n"
+"Last-Translator: Chris <cjl@laptop.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ayc\n"
 "MIME-Version: 1.0\n"
@@ -1967,7 +1967,7 @@ msgstr "U uñanaqaru muyta"
 
 #: pysamples/uturn.py:37
 msgid "turns the turtle 180 degrees"
-msgstr "180 grados chani tortuga wakichata muyti "
+msgstr "180 grados chani tortuga wakichata muyti"
 
 #  "el uso es"
 #: turtleblocks.py:91
@@ -1997,7 +1997,7 @@ msgstr "Machaqa"
 
 #: turtleblocks.py:376
 msgid "Show sample projects"
-msgstr "Wakichäwinaka uñachayäwi uñachayaña "
+msgstr "Wakichäwinaka uñachayäwi uñachayaña"
 
 #: turtleblocks.py:378
 msgid "Hide sample projects"
