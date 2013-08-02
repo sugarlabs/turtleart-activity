@@ -817,6 +817,7 @@ Would you like to save before quitting?'))
             if os.path.exists(file_path):
                 self.tw.load_files(file_path)
                 break
+        self.tw.load_save_folder = os.path.dirname(self._selected_sample)
 
     def _fill_samples_list(self, store):
         '''
