@@ -1083,7 +1083,7 @@ variable'))
                 self.tw.coord_scale)
             self.tw.lc.update_label_value(
                 'heading',
-                self.tw.turtles.get_active_turtle().get_heading)
+                self.tw.turtles.get_active_turtle().get_heading())
 
     def _prim_box(self, x):
         ''' Retrieve value from named box '''
@@ -1182,7 +1182,7 @@ variable'))
         if self.tw.lc.update_values:
             self.tw.lc.update_label_value(
                 'heading',
-                self.tw.turtles.get_active_turtle().get_heading)
+                self.tw.turtles.get_active_turtle().get_heading())
 
     def _prim_set(self, name, cmd, value=None):
         ''' Set a value and update the associated value blocks '''
