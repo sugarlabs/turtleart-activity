@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-26 00:31-0400\n"
-"PO-Revision-Date: 2013-08-07 00:34+0200\n"
+"PO-Revision-Date: 2013-08-07 03:02+0200\n"
 "Last-Translator: Irma  <sankaypillo@gmail.com>\n"
 "Language-Team: Voluntarios Quechua Sugar\n"
 "Language: quz\n"
@@ -319,9 +319,8 @@ msgstr "Charapa puriptinqa chapipuni siq'ichanqa."
 
 # "bajar pluma"
 #: TurtleArt/tabasics.py:443
-#, fuzzy
 msgid "pen down?"
-msgstr "qillqanata urayachiy"
+msgstr "qillqanata urayachinki?"
 
 #: TurtleArt/tabasics.py:445
 msgid "returns True if pen is down"
@@ -1230,9 +1229,8 @@ msgstr "Pythonta wicharichiy"
 
 # [ES] "paleta"
 #: TurtleArtActivity.py:933
-#, fuzzy
 msgid "Palettes"
-msgstr "llimp'ikunap marun"
+msgstr "Llimp'ikunap marun"
 
 #  "Compartir bloques deshabilitado"
 #: TurtleArtActivity.py:951
@@ -2062,7 +2060,7 @@ msgstr "Llamk'aq Charapa"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:686
 msgid "the name of the active turtle"
-msgstr ""
+msgstr "Charapa llamk'aqpa sutin"
 
 #  "caparazón de la tortuga"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:696
@@ -2253,30 +2251,32 @@ msgstr "uraypi Y"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:968
 msgid "Palette of user-defined operators"
-msgstr ""
+msgstr "Haykuqmasi churasqan llamk'anapaq maru"
 
 #: pysamples/brain.py:43
 msgid "Please install the Speak Activity and try again."
-msgstr ""
+msgstr "Mira, churariy Rimay ruwanata, chaymantaqa wakmanta ruwariy."
 
 #: pysamples/brain.py:52
 msgid "Spanish"
-msgstr ""
+msgstr "Español simi"
 
 #: pysamples/brain.py:56 pysamples/brain.py:69 pysamples/brain.py:71
 #: pysamples/brain.py:77
 msgid "English"
-msgstr ""
+msgstr "Inglés simi"
 
 #: pysamples/brain.py:88
 msgid "Sorry, I can't understand what you are asking about."
-msgstr ""
+msgstr "Pampachaway mana yachachkanichu tapuwasqaykitaqa."
 
 #: pysamples/brain.py:97
 msgid ""
 "Sorry, there is no free memory to load my brain. Close other activities and "
 "try once more."
 msgstr ""
+"Pampachaway, umachayqa hunt'añam kachkan. Huk ruwanakunata wisq'ay, ichaqa "
+"wakmanta qhallariwaq."
 
 #  [ES] "empujar el valor rgb de destino a la pila"
 #: pysamples/forward_push.py:48
@@ -2310,7 +2310,7 @@ msgstr "U hinata muyuchiy"
 
 #: pysamples/uturn.py:37
 msgid "turns the turtle 180 degrees"
-msgstr ""
+msgstr "charapachata 180 grados nisqata muyurichiy"
 
 #  "el uso es"
 #: turtleblocks.py:91
@@ -2340,11 +2340,11 @@ msgstr "Musuq"
 
 #: turtleblocks.py:376
 msgid "Show sample projects"
-msgstr ""
+msgstr "Huk wakichinakunata qhawarichiy"
 
 #: turtleblocks.py:378
 msgid "Hide sample projects"
-msgstr ""
+msgstr "Wakichinakunata pakariy"
 
 #  "Guardar"
 #: turtleblocks.py:382
@@ -2398,7 +2398,7 @@ msgstr "Charapa"
 
 #: turtleblocks.py:436
 msgid "About..."
-msgstr ""
+msgstr "Kaymanta..."
 
 #  "Hay trabajo sin guardar. ¿Le gustaría guardar antes de salir?"
 #: turtleblocks.py:475
