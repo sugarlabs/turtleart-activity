@@ -241,7 +241,6 @@ return %s(self)" % (p, P, P)
             self.tw.coord_scale = 1
         else:
             self._do_rescale_cb(None)
-        print 'set override after', self.tw.coord_scale
         if self.tw.coord_scale != 1:
             self._setting_gconf_overrides = True
             self.coords.set_active(True)
