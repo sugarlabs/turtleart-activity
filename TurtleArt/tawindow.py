@@ -3819,7 +3819,6 @@ before making changes to your Turtle Blocks program'))
                          (self._loaded_project), self.running_sugar)
             saved_project_data = ''
         current_project_data = data_to_string(self.assemble_data_to_save())
-
         return saved_project_data != current_project_data
 
     def load_files(self, ta_file, create_new_project=True):
@@ -4143,6 +4142,7 @@ before making changes to your Turtle Blocks program'))
                   [None, None]]])
         else:
             self.process_data(data_from_file(ta_file))
+            self._loaded_project = ta_file
 
     def save_file(self, file_name=None):
         ''' Start a project to a file '''
