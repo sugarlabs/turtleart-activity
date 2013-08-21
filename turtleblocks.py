@@ -54,6 +54,7 @@ from gettext import gettext as _
 from TurtleArt.taconstants import (OVERLAY_LAYER, DEFAULT_TURTLE_COLORS,
                                    TAB_LAYER, SUFFIX)
 from TurtleArt.tautils import (data_from_string, get_save_name)
+from TurtleArt.tapalette import default_values
 from TurtleArt.tawindow import TurtleArtWindow
 from TurtleArt.taexportlogo import save_logo
 
@@ -68,8 +69,10 @@ class TurtleMain():
     _ICON_SUBPATH = 'images/turtle.png'
     _GNOME_PLUGIN_SUBPATH = 'gnome_plugins'
     _HOVER_HELP = '/desktop/sugar/activities/turtleart/hoverhelp'
+    _COORDINATE_SCALE = '/desktop/sugar/activities/turtleart/coordinatescale'
 
     def __init__(self):
+        self._setting_gconf_overrides = False
         self._abspath = os.path.abspath('.')
         self._execdirname = self._get_execution_dir()
         if self._execdirname is not None:
@@ -187,6 +190,7 @@ return %s(self)" % (p, P, P)
         else:
             self.win.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.WATCH))
             gobject.idle_add(self._project_loader, self._ta_file)
+        self._set_gconf_overrides()
         gtk.main()
 
     def _project_loader(self, file_name):
@@ -222,10 +226,26 @@ return %s(self)" % (p, P, P)
                                   turtle_canvas=self.turtle_canvas,
                                   activity=self, running_sugar=False)
         self.tw.save_folder = self._abspath  # os.path.expanduser('~')
-        if hasattr(self, 'client') and \
-                self.client.get_int(self._HOVER_HELP) == 1:
-            self.hover.set_active(False)
-            self._do_hover_help_off_cb(None)
+
+        if hasattr(self, 'client'):
+            if self.client.get_int(self._HOVER_HELP) == 1:
+                self.hover.set_active(False)
+                self._do_hover_help_off_cb(None)
+            if self.client.get_int(self._COORDINATE_SCALE) != 1:
+                self.tw.coord_scale = 1
+            else:
+                self.tw.coord_scale = 0
+
+    def _set_gconf_overrides(self):
+        if self.tw.coord_scale == 0:
+            self.tw.coord_scale = 1
+        else:
+            self._do_rescale_cb(None)
+        print 'set override after', self.tw.coord_scale
+        if self.tw.coord_scale != 1:
+            self._setting_gconf_overrides = True
+            self.coords.set_active(True)
+            self._setting_gconf_overrides = False
 
     def _init_vars(self):
         ''' If we are invoked to start a project from Gnome, we should make
@@ -393,8 +413,9 @@ return %s(self)" % (p, P, P)
                                    self._do_cartesian_cb)
         MenuBuilder.make_menu_item(menu, _('Polar coordinates'),
                                    self._do_polar_cb)
-        MenuBuilder.make_menu_item(menu, _('Rescale coordinates'),
-                                   self._do_rescale_cb)
+        self.coords = MenuBuilder.make_checkmenu_item(
+            menu, _('Rescale coordinates'),
+            self._do_rescale_cb, status=False)
         MenuBuilder.make_menu_item(menu, _('Grow blocks'),
                                    self._do_resize_cb, 1.5)
         MenuBuilder.make_menu_item(menu, _('Shrink blocks'),
@@ -553,20 +574,27 @@ Would you like to save before quitting?'))
 
     def _do_rescale_cb(self, button):
         ''' Callback to rescale coordinate space. '''
+        if self._setting_gconf_overrides:
+            return
         if self.tw.coord_scale == 1:
-            self.tw.coord_scale = self.tw.height / 200
-            self.tw.eraser_button()
+            self.tw.coord_scale = self.tw.height / 40
             if self.tw.cartesian is True:
                 self.tw.overlay_shapes['Cartesian_labeled'].hide()
                 self.tw.overlay_shapes['Cartesian'].set_layer(OVERLAY_LAYER)
+            default_values['forward'] = [10]
+            default_values['back'] = [10]
+            default_values['arc'] = [90, 10]
         else:
             self.tw.coord_scale = 1
-            self.tw.eraser_button()
             if self.tw.cartesian is True:
                 self.tw.overlay_shapes['Cartesian'].hide()
                 self.tw.overlay_shapes['Cartesian_labeled'].set_layer(
                     OVERLAY_LAYER)
-
+            default_values['forward'] = [100]
+            default_values['back'] = [100]
+            default_values['arc'] = [90, 100]
+        self.client.set_int(self._COORDINATE_SCALE, int(self.tw.coord_scale))
+        
     def _do_toggle_hover_help_cb(self, button):
         ''' Toggle hover help on/off '''
         self.tw.no_help = not self.tw.no_help
@@ -579,7 +607,8 @@ Would you like to save before quitting?'))
         ''' Turn hover help on '''
         self.tw.no_help = False
         self.hover.set_active(True)
-        self.client.set_int(self._HOVER_HELP, 0)
+        if hasattr(self, 'client'):
+            self.client.set_int(self._HOVER_HELP, 0)
 
     def _do_hover_help_off_cb(self, button):
         ''' Turn hover help off '''
@@ -588,7 +617,8 @@ Would you like to save before quitting?'))
         if self.tw.status_spr is not None:
             self.tw.status_spr.hide()
         self.hover.set_active(False)
-        self.client.set_int(self._HOVER_HELP, 1)
+        if hasattr(self, 'client'):
+            self.client.set_int(self._HOVER_HELP, 1)
 
     def _do_palette_cb(self, widget):
         ''' Callback to show/hide palette of blocks. '''

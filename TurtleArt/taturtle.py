@@ -555,12 +555,16 @@ class Turtle:
                                               int(distance)]))
             self._turtles.turtle_window.send_event(event)
 
-    def set_xy(self, pos, share=True, pendown=True):
+    def set_xy(self, pos, share=True, pendown=True, dragging=False):
         old = self.get_xy()
 
         try:
-            xcor = pos[0] * self._turtles.turtle_window.coord_scale
-            ycor = pos[1] * self._turtles.turtle_window.coord_scale
+            if dragging:
+                xcor = pos[0]
+                ycor = pos[1]
+            else:
+                xcor = pos[0] * self._turtles.turtle_window.coord_scale
+                ycor = pos[1] * self._turtles.turtle_window.coord_scale
         except (TypeError, ValueError):
             debug_output('bad value sent to %s' % (__name__),
                          self._turtles.turtle_window.running_sugar)

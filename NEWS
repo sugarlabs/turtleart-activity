@@ -4,6 +4,8 @@ ENHANCEMENTS:
 * Use icon view for browsing sample projects
 * New translations
 * New sample progams
+* Save coordinate scale with gconf
+* Make scaled coordinates +-20 instead of +-100
 
 BUG FIX:
 * Fixed more bugs in SVG save

@@ -62,7 +62,7 @@ except ImportError:
 from gettext import gettext as _
 
 from TurtleArt.tapalette import (palette_names, help_strings, help_palettes,
-                                 help_windows)
+                                 help_windows, default_values)
 from TurtleArt.taconstants import (BLOCK_SCALE, XO1, XO15, XO175, XO4,
                                    MIMETYPE)
 from TurtleArt.taexportlogo import save_logo
@@ -78,6 +78,7 @@ if HAS_TOOLBARBOX:
 class TurtleArtActivity(activity.Activity):
     ''' Activity subclass for Turtle Art '''
     _HOVER_HELP = '/desktop/sugar/activities/turtleart/hoverhelp'
+    _COORDINATE_SCALE = '/desktop/sugar/activities/turtleart/coordinatescale'
 
     def __init__(self, handle):
         ''' Set up the toolbars, canvas, sharing, etc. '''
@@ -131,6 +132,12 @@ class TurtleArtActivity(activity.Activity):
             self.client = gconf.client_get_default()
             if self.client.get_int(self._HOVER_HELP) == 1:
                 self._do_hover_help_toggle(None)
+            if self.client.get_int(self._COORDINATE_SCALE) != 1:
+                self.tw.coord_scale = 1
+                self.do_rescale_cb(None)
+            else:
+                self.tw.coord_scale = 0
+                self.do_rescale_cb(None)
 
         self._selected_sample = None
         self._sample_window = None
@@ -316,7 +323,8 @@ class TurtleArtActivity(activity.Activity):
             self.tw.no_help = False
             self._hover_help_toggle.set_icon('help-off')
             self._hover_help_toggle.set_tooltip(_('Turn off hover help'))
-            self.client.set_int(self._HOVER_HELP, 0)
+            if HAS_GCONF:
+                self.client.set_int(self._HOVER_HELP, 0)
         else:
             self.tw.no_help = True
             self.tw.last_label = None
@@ -324,7 +332,8 @@ class TurtleArtActivity(activity.Activity):
                 self.tw.status_spr.hide()
             self._hover_help_toggle.set_icon('help-on')
             self._hover_help_toggle.set_tooltip(_('Turn on hover help'))
-            self.client.set_int(self._HOVER_HELP, 1)
+            if HAS_GCONF:
+                self.client.set_int(self._HOVER_HELP, 1)
 
     # These methods are called both from toolbar buttons and blocks.
 
@@ -502,16 +511,23 @@ class TurtleArtActivity(activity.Activity):
             self.tw.set_metric(True)
 
     def do_rescale_cb(self, button):
-        ''' Rescale coordinate system (100==height/2 or 100 pixels). '''
+        ''' Rescale coordinate system (20==height/2 or 100 pixels). '''
         if self.tw.coord_scale == 1:
-            self.tw.coord_scale = self.tw.height / 200
+            self.tw.coord_scale = self.tw.height / 40
             self.rescale_button.set_icon('contract-coordinates')
             self.rescale_button.set_tooltip(_('Rescale coordinates down'))
+            default_values['forward'] = [10]
+            default_values['back'] = [10]
+            default_values['arc'] = [90, 10]
         else:
             self.tw.coord_scale = 1
             self.rescale_button.set_icon('expand-coordinates')
             self.rescale_button.set_tooltip(_('Rescale coordinates up'))
-        self.tw.eraser_button()
+            default_values['forward'] = [100]
+            default_values['back'] = [100]
+            default_values['arc'] = [90, 100]
+        if HAS_GCONF:
+            self.client.set_int(self._COORDINATE_SCALE, self.tw.coord_scale)
         # Given the change in how overlays are handled (v123), there is no way
         # to erase and then redraw the overlays.
 

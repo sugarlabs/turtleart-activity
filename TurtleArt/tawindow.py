@@ -102,10 +102,12 @@ class TurtleArtWindow():
     def __init__(self, canvas_window, path, parent=None, activity=None,
                  mycolors=None, mynick=None, turtle_canvas=None,
                  running_sugar=True, running_turtleart=True):
-        '''parent -- the GTK Window that TA runs in
-        activity -- the object that instantiated this TurtleArtWindow (in
-                    GNOME, a TurtleMain instance)
-        running_turtleart -- are we running TA or exported python code?
+        '''
+        parent: the GTK Window that TA runs in
+        activity: the object that instantiated this TurtleArtWindow (in
+                  GNOME, a TurtleMain instance, in Sugar, the Activity
+                  instance)
+        running_turtleart: are we running TA or exported python code?
         '''
         self.parent = parent
         self.turtle_canvas = turtle_canvas
@@ -1410,6 +1412,13 @@ class TurtleArtWindow():
             if spr is not None:
                 blk = self.block_list.spr_to_block(spr)
                 if blk is not None:
+                    # Make sure stop button is visible
+                    if self.running_sugar:
+                        self.activity.stop_turtle_button.set_icon("stopiton")
+                        self.activity.stop_turtle_button.set_tooltip(
+                            _('Stop turtle'))
+                    elif self.interactive_mode:
+                        self.toolbar_shapes['stopiton'].set_layer(TAB_LAYER)
                     self.showlabel('status',
                                    label=_('Please hit the Stop Button \
 before making changes to your Turtle Blocks program'))
@@ -2511,10 +2520,10 @@ before making changes to your Turtle Blocks program'))
                 pos = self.turtles.screen_to_turtle_coordinates((dx, dy))
                 if self.selected_turtle.get_pen_state():
                     self.selected_turtle.set_pen_state(False)
-                    self.selected_turtle.set_xy(pos, share=False)
+                    self.selected_turtle.set_xy(pos, share=False, dragging=True)
                     self.selected_turtle.set_pen_state(True)
                 else:
-                    self.selected_turtle.set_xy(pos, share=False)
+                    self.selected_turtle.set_xy(pos, share=False, dragging=True)
                 if self.update_counter % 5:
                     self.lc.update_label_value(
                         'xcor', self.selected_turtle.get_xy()[0] /
