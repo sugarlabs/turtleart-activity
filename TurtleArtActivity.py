@@ -642,7 +642,6 @@ class TurtleArtActivity(activity.Activity):
             self._toolbox.toolbar.insert(self.palette_toolbar_button, -1)
 
             self.set_toolbar_box(self._toolbox)
-            self.palette_toolbar_button.set_expanded(True)
         else:
             self._toolbox = activity.ActivityToolbox(self)
             self.set_toolbox(self._toolbox)
@@ -708,7 +707,11 @@ class TurtleArtActivity(activity.Activity):
         self._view_toolbar.show()
         self._toolbox.show()
 
-        if not self.has_toolbarbox:
+        if self.has_toolbarbox:
+            self.edit_toolbar_button.set_expanded(True) 
+            self.edit_toolbar_button.set_expanded(False)
+            self.palette_toolbar_button.set_expanded(True)
+        else:
             self._toolbox.set_current_toolbar(1)
 
     def _setup_extra_controls(self):
