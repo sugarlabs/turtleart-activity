@@ -804,6 +804,7 @@ class TurtleArtWindow():
         if not self.running_sugar or not self.activity.has_toolbarbox:
             self.toolbar_spr.set_layer(CATEGORY_LAYER)
         self.palette = True
+        self._set_coordinates_label(palette_names[n])
 
     def hide_palette(self):
         ''' Hide the palette. '''
@@ -4228,11 +4229,7 @@ before making changes to your Turtle Blocks program'))
     def display_coordinates(self, clear=False):
         ''' Display the coordinates of the current turtle on the toolbar '''
         if clear:
-            if self.running_sugar:
-                self.activity.coordinates_label.set_text('')
-                self.activity.coordinates_label.show()
-            elif self.interactive_mode:
-                self.parent.set_title('')
+            self._set_coordinates_label('')
         else:
             x = round_int(float(self.turtles.get_active_turtle().get_xy()[0]) /
                           self.coord_scale)
@@ -4244,18 +4241,24 @@ before making changes to your Turtle Blocks program'))
                     formatting = '(%d, %d) %d'
                 else:
                     formatting = '(%0.2f, %0.2f) %0.2f'
-                self.activity.coordinates_label.set_text(
-                    formatting % (x, y, h))
-                self.activity.coordinates_label.show()
+                self._set_coordinates_label(formatting % (x, y, h))
             elif self.interactive_mode:
                 if int(x) == x and int(y) == y and int(h) == h:
                     formatting = '%s — %s: %d %s: %d %s: %d'
                 else:
                     formatting = '%s — %s: %0.2f %s: %0.2f %s: %0.2f'
-                self.parent.set_title(
+                self._set_coordinates_label(
                     formatting % (self.activity.name, _('xcor'), x,
                                   _('ycor'), y, _('heading'), h))
         self.update_counter = 0
+
+    def _set_coordinates_label(self, text):
+        if self.running_sugar:
+            self.activity.coordinates_label.set_text(text)
+            self.activity.coordinates_label.show()
+        elif self.interactive_mode:
+            self.parent.set_title(text)
+
 
     def showlabel(self, shp, label=''):
         ''' Display a message on a status block '''
