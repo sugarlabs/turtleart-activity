@@ -10,6 +10,7 @@ ENHANCEMENTS:
 BUG FIX:
 * Fixed more bugs in SVG save
 * Fixed several bugs in non-interactive mode
+* Fixed problem with erratic Cntl-V (SL #2751)
 
 186
 
