@@ -519,6 +519,8 @@ class TurtleArtActivity(activity.Activity):
             default_values['forward'] = [10]
             default_values['back'] = [10]
             default_values['arc'] = [90, 10]
+            default_values['setpensize'] = [1]
+            self.tw.turtles.get_active_turtle().set_pen_size(1)
         else:
             self.tw.coord_scale = 1
             self.rescale_button.set_icon('expand-coordinates')
@@ -526,6 +528,8 @@ class TurtleArtActivity(activity.Activity):
             default_values['forward'] = [100]
             default_values['back'] = [100]
             default_values['arc'] = [90, 100]
+            default_values['setpensize'] = [5]
+            self.tw.turtles.get_active_turtle().set_pen_size(5)
         if HAS_GCONF:
             self.client.set_int(self._COORDINATE_SCALE, self.tw.coord_scale)
         # Given the change in how overlays are handled (v123), there is no way

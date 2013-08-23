@@ -138,7 +138,10 @@ class Turtles:
                 self._active_turtle.set_color(0)
                 self._active_turtle.set_shade(50)
                 self._active_turtle.set_gray(100)
-                self._active_turtle.set_pen_size(5)
+                if self.turtle_window.coord_scale == 1:
+                    self._active_turtle.set_pen_size(5)
+                else:
+                    self._active_turtle.set_pen_size(1)
                 self._active_turtle.reset_shapes()
                 self._active_turtle.set_heading(0.0)
                 self._active_turtle.set_pen_state(False)
@@ -202,7 +205,10 @@ class Turtle:
         self._pen_shade = 50
         self._pen_color = 0
         self._pen_gray = 100
-        self._pen_size = 5
+        if self._turtles.turtle_window.coord_scale == 1:
+            self._pen_size = 5
+        else:
+            self._pen_size = 1
         self._pen_state = True
         self._pen_fill = False
         self._poly_points = []
@@ -422,7 +428,8 @@ class Turtle:
                              self._turtles.turtle_window.running_sugar)
                 return
 
-        self._turtles.turtle_window.canvas.set_pen_size(self._pen_size)
+        self._turtles.turtle_window.canvas.set_pen_size(
+            self._pen_size * self._turtles.turtle_window.coord_scale)
 
         if self._turtles.turtle_window.sharing() and share:
             event = 'w|%s' % (data_to_string([self._turtles.turtle_window.nick,

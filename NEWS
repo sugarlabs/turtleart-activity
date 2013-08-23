@@ -1,3 +1,8 @@
+188
+
+BUG FIX:
+* Adjust pen size to coordinate scale
+
 187
 
 ENHANCEMENTS:
@@ -7,10 +12,12 @@ ENHANCEMENTS:
 * Save coordinate scale with gconf
 * Make scaled coordinates +-20 instead of +-100
 
-BUG FIX:
+BUG FIXES:
 * Fixed more bugs in SVG save
 * Fixed several bugs in non-interactive mode
 * Fixed problem with erratic Cntl-V (SL #2751)
+* Fixed problem with missing Stop button when malformed block encountered
+  (SL #4522)
 
 186
 

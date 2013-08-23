@@ -583,6 +583,8 @@ Would you like to save before quitting?'))
             default_values['forward'] = [10]
             default_values['back'] = [10]
             default_values['arc'] = [90, 10]
+            default_values['setpensize'] = [1]
+            self.tw.turtles.get_active_turtle().set_pen_size(1)
         else:
             self.tw.coord_scale = 1
             if self.tw.cartesian is True:
@@ -592,8 +594,10 @@ Would you like to save before quitting?'))
             default_values['forward'] = [100]
             default_values['back'] = [100]
             default_values['arc'] = [90, 100]
+            default_values['setpensize'] = [5]
+            self.tw.turtles.get_active_turtle().set_pen_size(5)
         self.client.set_int(self._COORDINATE_SCALE, int(self.tw.coord_scale))
-        
+
     def _do_toggle_hover_help_cb(self, button):
         ''' Toggle hover help on/off '''
         self.tw.no_help = not self.tw.no_help
