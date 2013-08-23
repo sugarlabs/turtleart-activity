@@ -132,7 +132,7 @@ class TurtleArtActivity(activity.Activity):
             self.client = gconf.client_get_default()
             if self.client.get_int(self._HOVER_HELP) == 1:
                 self._do_hover_help_toggle(None)
-            if self.client.get_int(self._COORDINATE_SCALE) != 1:
+            if not self.client.get_int(self._COORDINATE_SCALE) in [0, 1]:
                 self.tw.coord_scale = 1
                 self.do_rescale_cb(None)
             else:

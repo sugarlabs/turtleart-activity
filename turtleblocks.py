@@ -231,7 +231,7 @@ return %s(self)" % (p, P, P)
             if self.client.get_int(self._HOVER_HELP) == 1:
                 self.hover.set_active(False)
                 self._do_hover_help_off_cb(None)
-            if self.client.get_int(self._COORDINATE_SCALE) != 1:
+            if not self.client.get_int(self._COORDINATE_SCALE) in [0, 1]:
                 self.tw.coord_scale = 1
             else:
                 self.tw.coord_scale = 0
