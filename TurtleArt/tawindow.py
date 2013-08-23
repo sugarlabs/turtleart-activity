@@ -531,6 +531,8 @@ class TurtleArtWindow():
         self._autohide_shape = True
 
         for name in OVERLAY_SHAPES:
+            if name == 'Cartesian':
+                continue
             self.overlay_shapes[name] = Sprite(
                 self.sprite_list,
                 int(self.width / 2 - 600),
@@ -539,6 +541,8 @@ class TurtleArtWindow():
                     svg_from_file('%s/images/%s.svg' % (self.path, name))))
             self.overlay_shapes[name].hide()
             self.overlay_shapes[name].type = 'overlay'
+
+        self._create_scaled_cartesian_coordinates()
 
         if self.running_turtleart and not self.running_sugar:
             # offset = 2 * self.width - 55 * len(TOOLBAR_SHAPES)
@@ -554,6 +558,26 @@ class TurtleArtWindow():
                 self.toolbar_shapes[name].name = name
                 self.toolbar_shapes[name].type = 'toolbar'
             self.toolbar_shapes['stopiton'].hide()
+
+    def _create_scaled_cartesian_coordinates(self):
+        # Cartesian overlay has to be scaled to match the coordinate_scale
+        # 200 pixels in the graphic == height / 4. (10 units)
+        pixbuf = svg_str_to_pixbuf(
+            svg_from_file('%s/images/%s.svg' % (self.path, 'Cartesian')))
+        
+        if self.running_sugar:
+            scale = self.height / 800.
+        else:
+            scale = (self.height + ICON_SIZE) / 800.
+        self.overlay_shapes['Cartesian'] = Sprite(
+            self.sprite_list,
+            int(self.width / 2 - 600),
+            int(self.height / 2 - 450),
+            pixbuf.scale_simple(int(1200 * scale),
+                                int(900 * scale),
+                                gtk.gdk.INTERP_BILINEAR))
+        self.overlay_shapes['Cartesian'].set_layer(TAB_LAYER)
+        self.overlay_shapes['Cartesian'].hide()
 
     def set_sharing(self, shared):
         self._sharing = shared
