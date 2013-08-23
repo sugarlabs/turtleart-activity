@@ -1,6 +1,7 @@
 188
 
-BUG FIX:
+BUG FIXES:
+* Ensure that default coordinate scale is 1 (pixel mode)
 * Adjust pen size to coordinate scale
 
 187
