@@ -850,7 +850,7 @@ Would you like to save before quitting?'))
             if os.path.exists(file_path):
                 self.tw.load_files(file_path)
                 break
-        self.tw.load_save_folder = os.path.join(activity.get_bundle_path(),
+        self.tw.load_save_folder = os.path.join(self._get_execution_dir(),
                                                 'samples')
 
     def _fill_samples_list(self, store):
