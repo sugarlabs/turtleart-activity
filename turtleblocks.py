@@ -220,8 +220,11 @@ return %s(self)" % (p, P, P)
             cr = cairo.Context(img_surface)
             surface = cr.get_target()
         self.turtle_canvas = surface.create_similar(
-            cairo.CONTENT_COLOR, max(1024, gtk.gdk.screen_width() * 2),
-            max(768, gtk.gdk.screen_height() * 2))
+            cairo.CONTENT_COLOR,
+            # max(1024, gtk.gdk.screen_width() * 2),
+            # max(768, gtk.gdk.screen_height() * 2))
+            gtk.gdk.screen_width() * 2,
+            gtk.gdk.screen_height() * 2)
         self.tw = TurtleArtWindow(self.canvas, self._execdirname,
                                   turtle_canvas=self.turtle_canvas,
                                   activity=self, running_sugar=False)
@@ -577,6 +580,7 @@ Would you like to save before quitting?'))
             return
         if self.tw.coord_scale == 1:
             self.tw.coord_scale = self.tw.height / 40
+            self.tw.update_overlay_position()
             if self.tw.cartesian is True:
                 self.tw.overlay_shapes['Cartesian_labeled'].hide()
                 self.tw.overlay_shapes['Cartesian'].set_layer(OVERLAY_LAYER)

@@ -568,7 +568,8 @@ class TurtleArtWindow():
         if self.running_sugar:
             scale = self.height / 800.
         else:
-            scale = (self.height + ICON_SIZE) / 800.
+            scale = self.height / 800.
+            # scale = (self.height + ICON_SIZE) / 800.
         self.overlay_shapes['Cartesian'] = Sprite(
             self.sprite_list,
             int(self.width / 2 - 600),
@@ -740,7 +741,8 @@ class TurtleArtWindow():
         if self.running_sugar:
             y_offset = 0
         else:
-            y_offset = ICON_SIZE
+            y_offset = 0
+            # y_offset = ICON_SIZE
         self.canvas.draw_surface(
             self.overlay_shapes[overlay].cached_surfaces[0],
             (self.canvas.width - width) / 2.0,
@@ -748,10 +750,13 @@ class TurtleArtWindow():
             width,
             height)
 
-    def update_overlay_position(self, widget, event):
+    def update_overlay_position(self, widget=None, event=None):
         ''' Reposition the overlays when window size changes '''
-        self.width = event.width
-        self.height = event.height
+        # self.width = event.width
+        # self.height = event.height
+        self.width = gtk.gdk.screen_width()
+        self.height = gtk.gdk.screen_height()
+
         for name in OVERLAY_SHAPES:
             if not name in self.overlay_shapes:
                 continue
@@ -760,17 +765,24 @@ class TurtleArtWindow():
             if shape in shape._sprites.list:
                 shape.hide()
                 showing = True
+            self.overlay_shapes[name].move((int(self.width / 2 - 600),
+                                            int(self.height / 2 - 450)))
+            '''
             self.overlay_shapes[name] = Sprite(
                 self.sprite_list,
                 int(self.width / 2 - 600),
                 int(self.height / 2 - 450),
                 svg_str_to_pixbuf(
                     svg_from_file('%s/images/%s.svg' % (self.path, name))))
+            '''
             if showing:
                 self.overlay_shapes[name].set_layer(OVERLAY_LAYER)
             else:
                 self.overlay_shapes[name].hide()
+            '''
             self.overlay_shapes[name].type = 'overlay'
+            '''
+
         self.cartesian = False
         self.polar = False
         self.metric = False
