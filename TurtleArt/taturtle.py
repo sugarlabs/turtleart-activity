@@ -154,7 +154,7 @@ class Turtles:
             # if it is a new turtle, start it in the center of the screen
             self._active_turtle = self.get_turtle(turtle_name, True, colors)
             self._active_turtle.set_heading(0.0, False)
-            self._active_turtle.set_xy((0.0, 0.0), False, pendown=False)
+            self._active_turtle.set_xy(0.0, 0.0, False, pendown=False)
             self._active_turtle.set_pen_state(True)
         elif colors is not None:
             self._active_turtle = self.get_turtle(turtle_name, False)
@@ -555,12 +555,12 @@ class Turtle:
                                               int(distance)]))
             self._turtles.turtle_window.send_event(event)
 
-    def set_xy(self, pos, share=True, pendown=True):
+    def set_xy(self, x, y, share=True, pendown=True):
         old = self.get_xy()
 
         try:
-            xcor = pos[0] * self._turtles.turtle_window.coord_scale
-            ycor = pos[1] * self._turtles.turtle_window.coord_scale
+            xcor = x * self._turtles.turtle_window.coord_scale
+            ycor = y * self._turtles.turtle_window.coord_scale
         except (TypeError, ValueError):
             debug_output('bad value sent to %s' % (__name__),
                          self._turtles.turtle_window.running_sugar)

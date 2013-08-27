@@ -94,8 +94,8 @@
 # fillscreen(self, c, s)
 #	tw.turtles.get_active_turtle().fillscreen(70, 90)
 # Note: Fill the screen with color 70, shade 90 (light blue)
-# self.set_xy(self, (x, y))
-#		tw.turtles.get_active_turtle().set_xy((100,100))
+# self.set_xy(self, x, y)
+#		tw.turtles.get_active_turtle().set_xy(100,100)
 # Note: Move the turtle to position (100, 100)
 # self.get_xy			tw.turtles.get_active_turtle().get_xy()[0]
 # Note: The current x coordinate of the turtle
