@@ -47,6 +47,7 @@ from sugar.datastore import datastore
 from sugar import profile
 
 import os
+import glob
 import tarfile
 import subprocess
 import ConfigParser
@@ -61,7 +62,7 @@ except ImportError:
 from gettext import gettext as _
 
 from TurtleArt.tapalette import (palette_names, help_strings, help_palettes,
-                                 help_windows)
+                                 help_windows, default_values)
 from TurtleArt.taconstants import (BLOCK_SCALE, XO1, XO15, XO175, XO4,
                                    MIMETYPE)
 from TurtleArt.taexportlogo import save_logo
@@ -77,6 +78,7 @@ if HAS_TOOLBARBOX:
 class TurtleArtActivity(activity.Activity):
     ''' Activity subclass for Turtle Art '''
     _HOVER_HELP = '/desktop/sugar/activities/turtleart/hoverhelp'
+    _COORDINATE_SCALE = '/desktop/sugar/activities/turtleart/coordinatescale'
 
     def __init__(self, handle):
         ''' Set up the toolbars, canvas, sharing, etc. '''
@@ -130,6 +132,16 @@ class TurtleArtActivity(activity.Activity):
             self.client = gconf.client_get_default()
             if self.client.get_int(self._HOVER_HELP) == 1:
                 self._do_hover_help_toggle(None)
+            if not self.client.get_int(self._COORDINATE_SCALE) in [0, 1]:
+                self.tw.coord_scale = 1
+                self.do_rescale_cb(None)
+            else:
+                self.tw.coord_scale = 0
+                self.do_rescale_cb(None)
+
+        self._selected_sample = None
+        self._sample_window = None
+
         self.init_complete = True
 
     def check_buttons_for_fit(self):
@@ -311,7 +323,8 @@ class TurtleArtActivity(activity.Activity):
             self.tw.no_help = False
             self._hover_help_toggle.set_icon('help-off')
             self._hover_help_toggle.set_tooltip(_('Turn off hover help'))
-            self.client.set_int(self._HOVER_HELP, 0)
+            if HAS_GCONF:
+                self.client.set_int(self._HOVER_HELP, 0)
         else:
             self.tw.no_help = True
             self.tw.last_label = None
@@ -319,7 +332,8 @@ class TurtleArtActivity(activity.Activity):
                 self.tw.status_spr.hide()
             self._hover_help_toggle.set_icon('help-on')
             self._hover_help_toggle.set_tooltip(_('Turn on hover help'))
-            self.client.set_int(self._HOVER_HELP, 1)
+            if HAS_GCONF:
+                self.client.set_int(self._HOVER_HELP, 1)
 
     # These methods are called both from toolbar buttons and blocks.
 
@@ -394,7 +408,8 @@ class TurtleArtActivity(activity.Activity):
             if hasattr(self.get_window(), 'get_cursor'):
                 self._old_cursor = self.get_window().get_cursor()
             self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.WATCH))
-        self.tw.load_file_from_chooser(True)
+        self._create_store()
+        # self.tw.load_file_from_chooser(True)
         # Now that the file is loaded, restore the cursor
         _logger.debug('restoring cursor')
         self.restore_cursor()
@@ -465,7 +480,7 @@ class TurtleArtActivity(activity.Activity):
         if self.tw.block_scale in BLOCK_SCALE:
             i = BLOCK_SCALE.index(self.tw.block_scale) + inc
         else:
-            i = BLOCK_SCALE[3]  # 2.0
+            i = 3
         if i < 0:
             self.tw.block_scale = BLOCK_SCALE[0]
         elif i == len(BLOCK_SCALE):
@@ -496,16 +511,27 @@ class TurtleArtActivity(activity.Activity):
             self.tw.set_metric(True)
 
     def do_rescale_cb(self, button):
-        ''' Rescale coordinate system (100==height/2 or 100 pixels). '''
+        ''' Rescale coordinate system (20==height/2 or 100 pixels). '''
         if self.tw.coord_scale == 1:
-            self.tw.coord_scale = self.tw.height / 200
+            self.tw.coord_scale = self.tw.height / 40
             self.rescale_button.set_icon('contract-coordinates')
             self.rescale_button.set_tooltip(_('Rescale coordinates down'))
+            default_values['forward'] = [10]
+            default_values['back'] = [10]
+            default_values['arc'] = [90, 10]
+            default_values['setpensize'] = [1]
+            self.tw.turtles.get_active_turtle().set_pen_size(1)
         else:
             self.tw.coord_scale = 1
             self.rescale_button.set_icon('expand-coordinates')
             self.rescale_button.set_tooltip(_('Rescale coordinates up'))
-        self.tw.eraser_button()
+            default_values['forward'] = [100]
+            default_values['back'] = [100]
+            default_values['arc'] = [90, 100]
+            default_values['setpensize'] = [5]
+            self.tw.turtles.get_active_turtle().set_pen_size(5)
+        if HAS_GCONF:
+            self.client.set_int(self._COORDINATE_SCALE, self.tw.coord_scale)
         # Given the change in how overlays are handled (v123), there is no way
         # to erase and then redraw the overlays.
 
@@ -620,7 +646,6 @@ class TurtleArtActivity(activity.Activity):
             self._toolbox.toolbar.insert(self.palette_toolbar_button, -1)
 
             self.set_toolbar_box(self._toolbox)
-            self.palette_toolbar_button.set_expanded(True)
         else:
             self._toolbox = activity.ActivityToolbox(self)
             self.set_toolbox(self._toolbox)
@@ -686,7 +711,11 @@ class TurtleArtActivity(activity.Activity):
         self._view_toolbar.show()
         self._toolbox.show()
 
-        if not self.has_toolbarbox:
+        if self.has_toolbarbox:
+            self.edit_toolbar_button.set_expanded(True) 
+            self.edit_toolbar_button.set_expanded(False)
+            self.palette_toolbar_button.set_expanded(True)
+        else:
             self._toolbox.set_current_toolbar(1)
 
     def _setup_extra_controls(self):
@@ -1580,3 +1609,95 @@ in order to use the plugin.'))
         alert.props.msg = msg
         self.add_alert(alert)
         alert.show()
+
+    def restore_state(self):
+        ''' Anything that needs restoring after a clear screen can go here '''
+        pass
+
+    def _hide_store(self, widget=None):
+        if self._sample_window is not None:
+            self._sample_box.hide()
+
+    def _create_store(self, widget=None):
+        if self._sample_window is None:
+            self._sample_box = gtk.EventBox()
+            self._sample_window = gtk.ScrolledWindow()
+            self._sample_window.set_policy(gtk.POLICY_NEVER,
+                                              gtk.POLICY_AUTOMATIC)
+            width = gtk.gdk.screen_width() / 2
+            height = gtk.gdk.screen_height() / 2
+            self._sample_window.set_size_request(width, height)
+            self._sample_window.show()
+
+            store = gtk.ListStore(gtk.gdk.Pixbuf, str)
+
+            icon_view = gtk.IconView()
+            icon_view.set_model(store)
+            icon_view.set_selection_mode(gtk.SELECTION_SINGLE)
+            icon_view.connect('selection-changed', self._sample_selected,
+                              store)
+            icon_view.set_pixbuf_column(0)
+            icon_view.grab_focus()
+            self._sample_window.add_with_viewport(icon_view)
+            icon_view.show()
+            self._fill_samples_list(store)
+
+            width = gtk.gdk.screen_width() / 4
+            height = gtk.gdk.screen_height() / 4
+
+            self._sample_box.add(self._sample_window)
+            self.fixed.put(self._sample_box, width, height)
+
+        self._sample_window.show()
+        self._sample_box.show()
+
+    def _get_selected_path(self, widget, store):
+        try:
+            iter_ = store.get_iter(widget.get_selected_items()[0])
+            image_path = store.get(iter_, 1)[0]
+
+            return image_path, iter_
+        except:
+            return None
+
+    def _sample_selected(self, widget, store):
+        selected = self._get_selected_path(widget, store)
+
+        if selected is None:
+            self._selected_sample = None
+            self._sample_window.hide()
+            return
+
+        image_path, _iter = selected
+        iter_ = store.get_iter(widget.get_selected_items()[0])
+        image_path = store.get(iter_, 1)[0]
+
+        self._selected_sample = image_path
+        self._sample_window.hide()
+
+        # Convert from thumbnail path to sample path
+        basename = os.path.basename(self._selected_sample)[:-4]
+        for suffix in ['.ta', '.tb']:
+            file_path = os.path.join(activity.get_bundle_path(),
+                                     'samples', basename + suffix)
+            if os.path.exists(file_path):
+                self.tw.load_files(file_path)
+                break
+        self.tw.load_save_folder = os.path.join(activity.get_bundle_path(),
+                                                'samples')
+
+    def _fill_samples_list(self, store):
+        '''
+        Append images from the artwork_paths to the store.
+        '''
+        for filepath in self._scan_for_samples():
+            pixbuf = None
+            pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(
+                filepath, 100, 100)
+            store.append([pixbuf, filepath])
+
+    def _scan_for_samples(self):
+        samples = glob.glob(os.path.join(activity.get_bundle_path(),
+                                         'samples', 'thumbnails', '*.png'))
+        samples.sort()
+        return samples

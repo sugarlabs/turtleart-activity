@@ -31,6 +31,7 @@ import getopt
 import sys
 import os
 import os.path
+import glob
 import cStringIO
 import errno
 import ConfigParser
@@ -53,6 +54,7 @@ from gettext import gettext as _
 from TurtleArt.taconstants import (OVERLAY_LAYER, DEFAULT_TURTLE_COLORS,
                                    TAB_LAYER, SUFFIX)
 from TurtleArt.tautils import (data_from_string, get_save_name)
+from TurtleArt.tapalette import default_values
 from TurtleArt.tawindow import TurtleArtWindow
 from TurtleArt.taexportlogo import save_logo
 
@@ -67,8 +69,10 @@ class TurtleMain():
     _ICON_SUBPATH = 'images/turtle.png'
     _GNOME_PLUGIN_SUBPATH = 'gnome_plugins'
     _HOVER_HELP = '/desktop/sugar/activities/turtleart/hoverhelp'
+    _COORDINATE_SCALE = '/desktop/sugar/activities/turtleart/coordinatescale'
 
     def __init__(self):
+        self._setting_gconf_overrides = False
         self._abspath = os.path.abspath('.')
         self._execdirname = self._get_execution_dir()
         if self._execdirname is not None:
@@ -98,6 +102,8 @@ class TurtleMain():
         self._parse_command_line()
         self._ensure_sugar_paths()
         self._gnome_plugins = []
+        self._selected_sample = None
+        self._sample_window = None
 
         if self._output_png:
             # Outputing to file, so no need for a canvas
@@ -184,6 +190,7 @@ return %s(self)" % (p, P, P)
         else:
             self.win.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.WATCH))
             gobject.idle_add(self._project_loader, self._ta_file)
+        self._set_gconf_overrides()
         gtk.main()
 
     def _project_loader(self, file_name):
@@ -213,15 +220,34 @@ return %s(self)" % (p, P, P)
             cr = cairo.Context(img_surface)
             surface = cr.get_target()
         self.turtle_canvas = surface.create_similar(
-            cairo.CONTENT_COLOR, max(1024, gtk.gdk.screen_width() * 2),
-            max(768, gtk.gdk.screen_height() * 2))
+            cairo.CONTENT_COLOR,
+            # max(1024, gtk.gdk.screen_width() * 2),
+            # max(768, gtk.gdk.screen_height() * 2))
+            gtk.gdk.screen_width() * 2,
+            gtk.gdk.screen_height() * 2)
         self.tw = TurtleArtWindow(self.canvas, self._execdirname,
                                   turtle_canvas=self.turtle_canvas,
-                                  parent=self, running_sugar=False)
+                                  activity=self, running_sugar=False)
         self.tw.save_folder = self._abspath  # os.path.expanduser('~')
-        if self.client.get_int(self._HOVER_HELP) == 1:
-            self.hover.set_active(False)
-            self._do_hover_help_off_cb(None)
+
+        if hasattr(self, 'client'):
+            if self.client.get_int(self._HOVER_HELP) == 1:
+                self.hover.set_active(False)
+                self._do_hover_help_off_cb(None)
+            if not self.client.get_int(self._COORDINATE_SCALE) in [0, 1]:
+                self.tw.coord_scale = 1
+            else:
+                self.tw.coord_scale = 0
+
+    def _set_gconf_overrides(self):
+        if self.tw.coord_scale == 0:
+            self.tw.coord_scale = 1
+        else:
+            self._do_rescale_cb(None)
+        if self.tw.coord_scale != 1:
+            self._setting_gconf_overrides = True
+            self.coords.set_active(True)
+            self._setting_gconf_overrides = False
 
     def _init_vars(self):
         ''' If we are invoked to start a project from Gnome, we should make
@@ -369,6 +395,10 @@ return %s(self)" % (p, P, P)
         ''' Instead of Sugar toolbars, use GNOME menus. '''
         menu = gtk.Menu()
         MenuBuilder.make_menu_item(menu, _('New'), self._do_new_cb)
+        MenuBuilder.make_menu_item(menu, _('Show sample projects'),
+                                   self._create_store)
+        MenuBuilder.make_menu_item(menu, _('Hide sample projects'),
+                                   self._hide_store) 
         MenuBuilder.make_menu_item(menu, _('Open'), self._do_open_cb)
         MenuBuilder.make_menu_item(menu, _('Load project'), self._do_load_cb)
         MenuBuilder.make_menu_item(menu, _('Save'), self._do_save_cb)
@@ -385,8 +415,9 @@ return %s(self)" % (p, P, P)
                                    self._do_cartesian_cb)
         MenuBuilder.make_menu_item(menu, _('Polar coordinates'),
                                    self._do_polar_cb)
-        MenuBuilder.make_menu_item(menu, _('Rescale coordinates'),
-                                   self._do_rescale_cb)
+        self.coords = MenuBuilder.make_checkmenu_item(
+            menu, _('Rescale coordinates'),
+            self._do_rescale_cb, status=False)
         MenuBuilder.make_menu_item(menu, _('Grow blocks'),
                                    self._do_resize_cb, 1.5)
         MenuBuilder.make_menu_item(menu, _('Shrink blocks'),
@@ -545,19 +576,31 @@ Would you like to save before quitting?'))
 
     def _do_rescale_cb(self, button):
         ''' Callback to rescale coordinate space. '''
+        if self._setting_gconf_overrides:
+            return
         if self.tw.coord_scale == 1:
-            self.tw.coord_scale = self.tw.height / 200
-            self.tw.eraser_button()
+            self.tw.coord_scale = int(self.tw.height / 40.)
+            self.tw.update_overlay_position()
             if self.tw.cartesian is True:
                 self.tw.overlay_shapes['Cartesian_labeled'].hide()
                 self.tw.overlay_shapes['Cartesian'].set_layer(OVERLAY_LAYER)
+            default_values['forward'] = [10]
+            default_values['back'] = [10]
+            default_values['arc'] = [90, 10]
+            default_values['setpensize'] = [1]
+            self.tw.turtles.get_active_turtle().set_pen_size(1)
         else:
             self.tw.coord_scale = 1
-            self.tw.eraser_button()
             if self.tw.cartesian is True:
                 self.tw.overlay_shapes['Cartesian'].hide()
                 self.tw.overlay_shapes['Cartesian_labeled'].set_layer(
                     OVERLAY_LAYER)
+            default_values['forward'] = [100]
+            default_values['back'] = [100]
+            default_values['arc'] = [90, 100]
+            default_values['setpensize'] = [5]
+            self.tw.turtles.get_active_turtle().set_pen_size(5)
+        self.client.set_int(self._COORDINATE_SCALE, int(self.tw.coord_scale))
 
     def _do_toggle_hover_help_cb(self, button):
         ''' Toggle hover help on/off '''
@@ -571,7 +614,8 @@ Would you like to save before quitting?'))
         ''' Turn hover help on '''
         self.tw.no_help = False
         self.hover.set_active(True)
-        self.client.set_int(self._HOVER_HELP, 0)
+        if hasattr(self, 'client'):
+            self.client.set_int(self._HOVER_HELP, 0)
 
     def _do_hover_help_off_cb(self, button):
         ''' Turn hover help off '''
@@ -580,7 +624,8 @@ Would you like to save before quitting?'))
         if self.tw.status_spr is not None:
             self.tw.status_spr.hide()
         self.hover.set_active(False)
-        self.client.set_int(self._HOVER_HELP, 1)
+        if hasattr(self, 'client'):
+            self.client.set_int(self._HOVER_HELP, 1)
 
     def _do_palette_cb(self, widget):
         ''' Callback to show/hide palette of blocks. '''
@@ -735,6 +780,98 @@ Would you like to save before quitting?'))
                 return os.path.abspath('.')
         else:
             return os.path.abspath(dirname)
+
+    def restore_state(self):
+        ''' Anything that needs restoring after a clear screen can go here '''
+        pass
+
+    def _hide_store(self, widget=None):
+        if self._sample_window is not None:
+            self._sample_box.hide()
+
+    def _create_store(self, widget=None):
+        if self._sample_window is None:
+            self._sample_box = gtk.EventBox()
+            self._sample_window = gtk.ScrolledWindow()
+            self._sample_window.set_policy(gtk.POLICY_NEVER,
+                                              gtk.POLICY_AUTOMATIC)
+            width = gtk.gdk.screen_width() / 2
+            height = gtk.gdk.screen_height() / 2
+            self._sample_window.set_size_request(width, height)
+            self._sample_window.show()
+
+            store = gtk.ListStore(gtk.gdk.Pixbuf, str)
+
+            icon_view = gtk.IconView()
+            icon_view.set_model(store)
+            icon_view.set_selection_mode(gtk.SELECTION_SINGLE)
+            icon_view.connect('selection-changed', self._sample_selected,
+                              store)
+            icon_view.set_pixbuf_column(0)
+            icon_view.grab_focus()
+            self._sample_window.add_with_viewport(icon_view)
+            icon_view.show()
+            self._fill_samples_list(store)
+
+            width = gtk.gdk.screen_width() / 4
+            height = gtk.gdk.screen_height() / 4
+
+            self._sample_box.add(self._sample_window)
+            self.fixed.put(self._sample_box, width, height)
+
+        self._sample_window.show()
+        self._sample_box.show()
+
+    def _get_selected_path(self, widget, store):
+        try:
+            iter_ = store.get_iter(widget.get_selected_items()[0])
+            image_path = store.get(iter_, 1)[0]
+
+            return image_path, iter_
+        except:
+            return None
+
+    def _sample_selected(self, widget, store):
+        selected = self._get_selected_path(widget, store)
+
+        if selected is None:
+            self._selected_sample = None
+            self._sample_window.hide()
+            return
+
+        image_path, _iter = selected
+        iter_ = store.get_iter(widget.get_selected_items()[0])
+        image_path = store.get(iter_, 1)[0]
+
+        self._selected_sample = image_path
+        self._sample_window.hide()
+
+        # Convert from thumbnail path to sample path
+        basename = os.path.basename(self._selected_sample)[:-4]
+        for suffix in ['.ta', '.tb']:
+            file_path = os.path.join(self._execdirname,
+                                     'samples', basename + suffix)
+            if os.path.exists(file_path):
+                self.tw.load_files(file_path)
+                break
+        self.tw.load_save_folder = os.path.join(self._get_execution_dir(),
+                                                'samples')
+
+    def _fill_samples_list(self, store):
+        '''
+        Append images from the artwork_paths to the store.
+        '''
+        for filepath in self._scan_for_samples():
+            pixbuf = None
+            pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(
+                filepath, 100, 100)
+            store.append([pixbuf, filepath])
+
+    def _scan_for_samples(self):
+        samples = glob.glob(os.path.join(self._get_execution_dir(),
+                                      'samples', 'thumbnails', '*.png'))
+        samples.sort()
+        return samples
 
 
 if __name__ == '__main__':

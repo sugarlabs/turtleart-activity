@@ -1,4 +1,4 @@
-#Copyright (c) 2007-8, Playful Invention Company.
+31#Copyright (c) 2007-8, Playful Invention Company.
 #Copyright (c) 2008-11, Walter Bender
 #Copyright (c) 2011 Collabora Ltd. <http://www.collabora.co.uk/>
 
@@ -21,16 +21,14 @@
 #THE SOFTWARE.
 
 import gtk
-import gobject
-from math import sin, cos, pi
+from math import pi
 import os
 import pango
 import cairo
 import pangocairo
 
-from tautils import (image_to_base64, get_path, data_to_string, round_int,
-                     debug_output)
-from taconstants import COLORDICT
+from tautils import get_path
+from taconstants import COLORDICT, TMP_SVG_PATH
 
 
 def wrap100(n):
@@ -101,66 +99,37 @@ COLOR_TABLE = (
 class TurtleGraphics:
     ''' A class for the Turtle graphics canvas '''
 
-    def __init__(self, tw, width, height):
+    def __init__(self, turtle_window, width, height):
         ''' Create a sprite to hold the canvas. '''
-        self.tw = tw
+        self.turtle_window = turtle_window
         self.width = width
         self.height = height
+        self.textsize = 48
+        self._fgrgb = [255, 0, 0]
+        self._bgrgb = [255, 248, 222]
+        self._shade = 0
+        self._color = 0
+        self._gray = 100
+        self.cr_svg = None  # Surface used for saving to SVG
 
         # Build a cairo.Context from a cairo.XlibSurface
-        self.canvas = cairo.Context(self.tw.turtle_canvas)
+        self.canvas = cairo.Context(self.turtle_window.turtle_canvas)
         cr = gtk.gdk.CairoContext(self.canvas)
         cr.set_line_cap(1)  # Set the line cap to be round
-        self.cr_svg = None  # Surface used for saving to SVG
-        self.cx = 0
-        self.cy = 0
-        self.fgrgb = [255, 0, 0]
-        self.bgrgb = [255, 248, 222]
-        self.textsize = 48  # deprecated
-        self.shade = 0
-        self.pendown = False
-        self.xcor = 0
-        self.ycor = 0
-        self.heading = 0
-        self.pensize = 5
-        self.color = 0
-        self.gray = 100
-        self.fill = False
-        self.poly_points = []
+
+        self.set_pen_size(5)
 
     def setup_svg_surface(self):
         ''' Set up a surface for saving to SVG '''
-        if self.tw.running_sugar:
+        if self.turtle_window.running_sugar:
             svg_surface = cairo.SVGSurface(
-                os.path.join(get_path(self.tw.activity, 'instance'),
+                os.path.join(get_path(self.turtle_window.activity, 'instance'),
                              'output.svg'), self.width, self.height)
         else:
             svg_surface = cairo.SVGSurface(
-                os.path.join(os.getcwd(), 'output.svg'),
-                self.width, self.height)
+                TMP_SVG_PATH, self.width, self.height)
         self.cr_svg = cairo.Context(svg_surface)
         self.cr_svg.set_line_cap(1)  # Set the line cap to be round
-
-    def start_fill(self):
-        ''' Start accumulating points of a polygon to fill. '''
-        self.fill = True
-        self.poly_points = []
-
-    def stop_fill(self):
-        ''' Fill the polygon. '''
-        self.fill = False
-        if len(self.poly_points) == 0:
-            return
-        self.fill_polygon(self.poly_points)
-        if self.tw.sharing():
-            shared_poly_points = []
-            for p in self.poly_points:
-                shared_poly_points.append((self.screen_to_turtle_coordinates
-                                           (p[0], p[1])))
-                event = 'F|%s' % (data_to_string([self._get_my_nick(),
-                                                  shared_poly_points]))
-            self.tw.send_event(event)
-        self.poly_points = []
 
     def fill_polygon(self, poly_points):
         ''' Draw the polygon... '''
@@ -188,10 +157,10 @@ class TurtleGraphics:
 
         def _clearscreen(cr):
             cr.move_to(0, 0)
-            self.bgrgb = [255, 248, 222]
-            cr.set_source_rgb(self.bgrgb[0] / 255.,
-                              self.bgrgb[1] / 255.,
-                              self.bgrgb[2] / 255.)
+            self._bgrgb = [255, 248, 222]
+            cr.set_source_rgb(self._bgrgb[0] / 255.,
+                              self._bgrgb[1] / 255.,
+                              self._bgrgb[2] / 255.)
             cr.rectangle(0, 0, self.width * 2, self.height * 2)
             cr.fill()
 
@@ -200,359 +169,101 @@ class TurtleGraphics:
         if self.cr_svg is not None:
             _clearscreen(self.cr_svg)
 
-        self.setpensize(5, share)
-        self.setgray(100, share)
-        self.setcolor(0, share)
-        self.setshade(50, share)
-        self.fill = False
-        self.poly_points = []
-        for turtle_key in iter(self.tw.turtles.dict):
-            # Don't reset remote turtles
-            if not self.tw.remote_turtle(turtle_key):
-                self.set_turtle(turtle_key)
-                self.tw.active_turtle.set_color(0)
-                self.tw.active_turtle.set_shade(50)
-                self.tw.active_turtle.set_gray(100)
-                self.tw.active_turtle.set_pen_size(5)
-                self.tw.active_turtle.reset_shapes()
-                self.seth(0.0, share)
-                self.setpen(False, share)
-                self.setxy(0.0, 0.0, share)
-                self.setpen(True, share)
-                self.tw.active_turtle.hide()
-        self.set_turtle(self.tw.default_turtle_name)
+    def rarc(self, x, y, r, a, heading):
+        ''' draw a clockwise arc '''
+        def _rarc(cr, x, y, r, a, h):
+            cr.arc(x, y, r, (h - 180) * DEGTOR, (h - 180 + a) * DEGTOR)
+            cr.stroke()
 
-    def forward(self, n, share=True):
-        ''' Move the turtle forward.'''
-        nn = n * self.tw.coord_scale
-        self.canvas.set_source_rgb(self.fgrgb[0] / 255., self.fgrgb[1] / 255.,
-                                   self.fgrgb[2] / 255.)
-        if self.cr_svg is not None:
-            debug_output('in forward', True)
-            self.cr_svg.set_source_rgb(self.fgrgb[0] / 255.,
-                                       self.fgrgb[1] / 255.,
-                                       self.fgrgb[2] / 255.)
-        oldx, oldy = self.xcor, self.ycor
-        try:
-            self.xcor += nn * sin(self.heading * DEGTOR)
-            self.ycor += nn * cos(self.heading * DEGTOR)
-        except (TypeError, ValueError):
-            debug_output('bad value sent to %s' % (__name__),
-                         self.tw.running_sugar)
-            return
-        if self.pendown:
-            self.draw_line(oldx, oldy, self.xcor, self.ycor)
-
-        self.move_turtle()
-
-        if self.tw.sharing() and share:
-            event = 'f|%s' % (data_to_string([self._get_my_nick(), int(n)]))
-            self.tw.send_event(event)
+        _rarc(self.canvas, x, y, r, a, heading)
         self.inval()
 
-    def seth(self, n, share=True):
-        ''' Set the turtle heading. '''
-        try:
-            self.heading = n
-        except (TypeError, ValueError):
-            debug_output('bad value sent to %s' % (__name__),
-                         self.tw.running_sugar)
-            return
-        self.heading %= 360
-        self.turn_turtle()
-        if self.tw.sharing() and share:
-            event = 'r|%s' % (data_to_string([self._get_my_nick(),
-                                              round_int(self.heading)]))
-            self.tw.send_event(event)
-
-    def right(self, n, share=True):
-        ''' Rotate turtle clockwise '''
-        try:
-            self.heading += n
-        except (TypeError, ValueError):
-            debug_output('bad value sent to %s' % (__name__),
-                         self.tw.running_sugar)
-            return
-        self.heading %= 360
-        self.turn_turtle()
-        if self.tw.sharing() and share:
-            event = 'r|%s' % (data_to_string([self._get_my_nick(),
-                                              round_int(self.heading)]))
-            self.tw.send_event(event)
-
-    def arc(self, a, r, share=True):
-        ''' Draw an arc '''
-        self.canvas.set_source_rgb(self.fgrgb[0] / 255., self.fgrgb[1] / 255.,
-                                   self.fgrgb[2] / 255.)
         if self.cr_svg is not None:
-            self.cr_svg.set_source_rgb(self.fgrgb[0] / 255.,
-                                       self.fgrgb[1] / 255.,
-                                       self.fgrgb[2] / 255.)
-        try:
-            if a < 0:
-                self.larc(-a, r)
-            else:
-                self.rarc(a, r)
-        except (TypeError, ValueError):
-            debug_output('bad value sent to %s' % (__name__),
-                         self.tw.running_sugar)
-            return
-        self.move_turtle()
-        if self.tw.sharing() and share:
-            event = 'a|%s' % (data_to_string([self._get_my_nick(),
-                                              [round_int(a), round_int(r)]]))
-            self.tw.send_event(event)
+            _rarc(self.cr_svg, x, y, r, a, heading)
 
-    def rarc(self, a, r):
-        ''' draw a clockwise arc '''
-        r *= self.tw.coord_scale
-        if r < 0:
-            r = -r
-            a = -a
-        oldx, oldy = self.xcor, self.ycor
-        cx = self.xcor + r * cos(self.heading * DEGTOR)
-        cy = self.ycor - r * sin(self.heading * DEGTOR)
-        if self.pendown:
-            x, y = self.turtle_to_screen_coordinates(cx, cy)
-
-            def _rarc(cr, x, y, r, a, h):
-                cr.arc(x, y, r, (h - 180) * DEGTOR, (h - 180 + a) * DEGTOR)
-                cr.stroke()
-
-            _rarc(self.canvas, x, y, r, a, self.heading)
-            self.inval()
-            if self.cr_svg is not None:
-                _rarc(self.cr_svg, x, y, r, a, self.heading)
-
-        if self.fill:
-            if self.poly_points == []:
-                self.poly_points.append(('move', x, y))
-            self.poly_points.append(('rarc', x, y, r,
-                                     (self.heading - 180) * DEGTOR,
-                                     (self.heading - 180 + a) * DEGTOR))
-
-        self.right(a, False)
-        self.xcor = cx - r * cos(self.heading * DEGTOR)
-        self.ycor = cy + r * sin(self.heading * DEGTOR)
-
-    def larc(self, a, r):
+    def larc(self, x, y, r, a, heading):
         ''' draw a counter-clockwise arc '''
-        r *= self.tw.coord_scale
-        if r < 0:
-            r = -r
-            a = -a
-        oldx, oldy = self.xcor, self.ycor
-        cx = self.xcor - r * cos(self.heading * DEGTOR)
-        cy = self.ycor + r * sin(self.heading * DEGTOR)
-        if self.pendown:
-            x, y = self.turtle_to_screen_coordinates(cx, cy)
+        def _larc(cr, x, y, r, a, h):
+            cr.arc_negative(x, y, r, h * DEGTOR, (h - a) * DEGTOR)
+            cr.stroke()
 
-            def _larc(cr, x, y, r, a, h):
-                cr.arc_negative(x, y, r, h * DEGTOR, (h - a) * DEGTOR)
-                cr.stroke()
-
-            _larc(self.canvas, x, y, r, a, self.heading)
-            self.inval()
-            if self.cr_svg is not None:
-                _larc(self.cr_svg, x, y, r, a, self.heading)
-
-        if self.fill:
-            if self.poly_points == []:
-                self.poly_points.append(('move', x, y))
-            self.poly_points.append(('larc', x, y, r,
-                                     (self.heading) * DEGTOR,
-                                     (self.heading - a) * DEGTOR))
-
-        self.right(-a, False)
-        self.xcor = cx + r * cos(self.heading * DEGTOR)
-        self.ycor = cy - r * sin(self.heading * DEGTOR)
-
-    def setxy(self, x, y, share=True, pendown=True):
-        ''' Move turtle to position x,y '''
-        oldx, oldy = self.xcor, self.ycor
-        x *= self.tw.coord_scale
-        y *= self.tw.coord_scale
-        try:
-            self.xcor, self.ycor = x, y
-        except (TypeError, ValueError):
-            debug_output('bad value sent to %s' % (__name__),
-                         self.tw.running_sugar)
-            return
-
-        if self.pendown and pendown:
-            self.canvas.set_source_rgb(self.fgrgb[0] / 255.,
-                                       self.fgrgb[1] / 255.,
-                                       self.fgrgb[2] / 255.)
-            if self.cr_svg is not None:
-                self.cr_svg.set_source_rgb(self.fgrgb[0] / 255.,
-                                           self.fgrgb[1] / 255.,
-                                           self.fgrgb[2] / 255.)
-            self.draw_line(oldx, oldy, self.xcor, self.ycor)
-            self.inval()
-        self.move_turtle()
-
-        if self.tw.sharing() and share:
-            event = 'x|%s' % (data_to_string([self._get_my_nick(),
-                                              [round_int(x), round_int(y)]]))
-            self.tw.send_event(event)
-
-    def setpensize(self, ps, share=True):
-        ''' Set the pen size '''
-        try:
-            if ps < 0:
-                ps = 0
-            self.pensize = ps
-        except (TypeError, ValueError):
-            debug_output('bad value sent to %s' % (__name__),
-                         self.tw.running_sugar)
-            return
-        self.tw.active_turtle.set_pen_size(ps)
-        self.canvas.set_line_width(ps)
+        _larc(self.canvas, x, y, r, a, heading)
+        self.inval()
         if self.cr_svg is not None:
-            self.cr_svg.set_line_width(ps)
-        if self.tw.sharing() and share:
-            event = 'w|%s' % (data_to_string([self._get_my_nick(),
-                                              round_int(ps)]))
-            self.tw.send_event(event)
+            _larc(self.cr_svg, x, y, r, a, heading)
 
-    def setcolor(self, c, share=True):
-        ''' Set the pen color '''
-
-        # Special case for color blocks
-        if c in COLORDICT:
-            self.setshade(COLORDICT[c][1], share)
-            self.setgray(COLORDICT[c][2], share)
-            if COLORDICT[c][0] is not None:
-                self.setcolor(COLORDICT[c][0], share)
-                c = COLORDICT[c][0]
-            else:
-                c = self.color
-
-        try:
-            self.color = c
-        except (TypeError, ValueError):
-            debug_output('bad value sent to %s' % (__name__),
-                         self.tw.running_sugar)
-            return
-        self.tw.active_turtle.set_color(c)
-        self.set_fgcolor()
-        if self.tw.sharing() and share:
-            event = 'c|%s' % (data_to_string([self._get_my_nick(),
-                                              round_int(c)]))
-            self.tw.send_event(event)
-
-    def setgray(self, g, share=True):
-        ''' Set the gray level '''
-        try:
-            self.gray = g
-        except (TypeError, ValueError):
-            debug_output('bad value sent to %s' % (__name__),
-                         self.tw.running_sugar)
-            return
-        if self.gray < 0:
-            self.gray = 0
-        if self.gray > 100:
-            self.gray = 100
-        self.set_fgcolor()
-        self.tw.active_turtle.set_gray(self.gray)
-        if self.tw.sharing() and share:
-            event = 'g|%s' % (data_to_string([self._get_my_nick(),
-                                              round_int(self.gray)]))
-            self.tw.send_event(event)
-
-    def set_textcolor(self):
-        ''' Deprecated: Set the text color to foreground color. '''
-        return
-
-    def settextcolor(self, c):  # deprecated
-        ''' Set the text color '''
-        return
-
-    def settextsize(self, c):  # deprecated
-        ''' Set the text size '''
-        try:
-            self.tw.textsize = c
-        except (TypeError, ValueError):
-            debug_output('bad value sent to %s' % (__name__),
-                         self.tw.running_sugar)
-
-    def setshade(self, s, share=True):
-        ''' Set the color shade '''
-        try:
-            self.shade = s
-        except (TypeError, ValueError):
-            debug_output('bad value sent to %s' % (__name__),
-                         self.tw.running_sugar)
-            return
-        self.tw.active_turtle.set_shade(s)
-        self.set_fgcolor()
-        if self.tw.sharing() and share:
-            event = 's|%s' % (data_to_string([self._get_my_nick(),
-                                              round_int(s)]))
-            self.tw.send_event(event)
+    def set_pen_size(self, pen_size):
+        ''' Set the pen size '''
+        self.canvas.set_line_width(pen_size)
+        if self.cr_svg is not None:
+            self.cr_svg.set_line_width(pen_size)
 
     def fillscreen(self, c, s):
         ''' Deprecated method: Fill screen with color/shade '''
-        self.fillscreen_with_gray(c, s, self.gray)
+        self.fillscreen_with_gray(c, s, self._gray)
 
-    def fillscreen_with_gray(self, c, s, g):
+    def fillscreen_with_gray(self, color, shade, gray):
         ''' Fill screen with color/shade/gray and reset to defaults '''
-        oldc, olds, oldg = self.color, self.shade, self.gray
+
+        save_rgb = self._fgrgb[:]
 
         # Special case for color blocks
-        if c in COLORDICT:
-            if COLORDICT[c][0] is None:
-                s = COLORDICT[c][1]
-                c = self.color
+        if color in COLORDICT:
+            if COLORDICT[color][0] is None:
+                self._shade = COLORDICT[color][1]
             else:
-                c = COLORDICT[c][0]
-        if s in COLORDICT:
-            s = COLORDICT[s][1]
-        if g in COLORDICT:
-            g = COLORDICT[g][2]
+                self._color = COLORDICT[color][0]
+        else:
+            self._color = color
+        if shade in COLORDICT:
+            self._shade = COLORDICT[shade][1]
+        else:
+            self._shade = shade
+        if gray in COLORDICT:
+            self._gray = COLORDICT[gray][2]
+        else:
+            self._gray = gray
 
-        self.setcolor(c, False)
-        self.setshade(s, False)
-        self.setgray(g, False)
-        self.bgrgb = self.fgrgb[:]
+        if self._gray < 0:
+            self._gray = 0
+        if self._gray > 100:
+            self._gray = 100
+
+        self.set_fgcolor(shade=self._shade, gray=self._gray, color=self._color)
+        self._bgrgb = self._fgrgb[:]
 
         def _fillscreen(cr, rgb, w, h):
             cr.set_source_rgb(rgb[0] / 255., rgb[1] / 255., rgb[2] / 255.)
             cr.rectangle(0, 0, w * 2, h * 2)
             cr.fill()
 
-        _fillscreen(self.canvas, self.fgrgb, self.width, self.height)
+        _fillscreen(self.canvas, self._fgrgb, self.width, self.height)
         self.inval()
         if self.cr_svg is not None:
-            _fillscreen(self.cr_svg, self.fgrgb, self.width, self.height)
-        self.setcolor(oldc, False)
-        self.setshade(olds, False)
-        self.setgray(oldg, False)
-        self.fill = False
-        self.poly_points = []
+            _fillscreen(self.cr_svg, self._fgrgb, self.width, self.height)
 
-    def set_fgcolor(self):
+        self._fgrgb = save_rgb[:]
+
+    def set_fgcolor(self, shade=None, gray=None, color=None):
         ''' Set the foreground color '''
-        sh = (wrap100(self.shade) - 50) / 50.0
-        rgb = COLOR_TABLE[wrap100(self.color)]
+        if shade is not None:
+            self._shade = shade
+        if gray is not None:
+            self._gray = gray
+        if color is not None:
+            self._color = color
+        sh = (wrap100(self._shade) - 50) / 50.0
+        rgb = COLOR_TABLE[wrap100(self._color)]
         r = (rgb >> 8) & 0xff00
-        r = calc_gray(r, self.gray)
+        r = calc_gray(r, self._gray)
         r = calc_shade(r, sh)
         g = rgb & 0xff00
-        g = calc_gray(g, self.gray)
+        g = calc_gray(g, self._gray)
         g = calc_shade(g, sh)
         b = (rgb << 8) & 0xff00
-        b = calc_gray(b, self.gray)
+        b = calc_gray(b, self._gray)
         b = calc_shade(b, sh)
-        self.fgrgb = [r >> 8, g >> 8, b >> 8]
-
-    def setpen(self, bool, share=True):
-        ''' Lower or raise the pen '''
-        self.pendown = bool
-        self.tw.active_turtle.set_pen_state(bool)
-        if self.tw.sharing() and share:
-            event = 'p|%s' % (data_to_string([self._get_my_nick(), bool]))
-            self.tw.send_event(event)
+        self._fgrgb = [r >> 8, g >> 8, b >> 8]
 
     def draw_surface(self, surface, x, y, w, h):
         ''' Draw a surface '''
@@ -568,7 +279,7 @@ class TurtleGraphics:
         if self.cr_svg is not None:
             _draw_surface(self.cr_svg, surface, x, y, w, h)
 
-    def draw_pixbuf(self, pixbuf, a, b, x, y, w, h, path, share=True):
+    def draw_pixbuf(self, pixbuf, a, b, x, y, w, h, heading):
         ''' Draw a pixbuf '''
 
         def _draw_pixbuf(cr, pixbuf, a, b, x, y, w, h, heading):
@@ -585,37 +296,15 @@ class TurtleGraphics:
             cc.fill()
             cc.restore()
 
-        _draw_pixbuf(self.canvas, pixbuf, a, b, x, y, w, h, self.heading)
+        _draw_pixbuf(self.canvas, pixbuf, a, b, x, y, w, h, heading)
         self.inval()
         if self.cr_svg is not None:
-            _draw_pixbuf(self.cr_svg, pixbuf, a, b, x, y, w, h, self.heading)
-        if self.tw.sharing() and share:
-            if self.tw.running_sugar:
-                tmp_path = get_path(self.tw.activity, 'instance')
-            else:
-                tmp_path = '/tmp'
-            tmp_file = os.path.join(get_path(self.tw.activity, 'instance'),
-                                    'tmpfile.png')
-            pixbuf.save(tmp_file, 'png', {'quality': '100'})
-            data = image_to_base64(tmp_file, tmp_path)
-            height = pixbuf.get_height()
-            width = pixbuf.get_width()
-            x, y = self.screen_to_turtle_coordinates(x, y)
-            event = 'P|%s' % (data_to_string([self._get_my_nick(),
-                                              [round_int(a), round_int(b),
-                                               round_int(x), round_int(y),
-                                               round_int(w), round_int(h),
-                                               round_int(width),
-                                               round_int(height),
-                                               data]]))
-            gobject.idle_add(self.tw.send_event, event)
-            os.remove(tmp_file)
+            _draw_pixbuf(self.cr_svg, pixbuf, a, b, x, y, w, h, heading)
 
-    def draw_text(self, label, x, y, size, w, share=True):
+    def draw_text(self, label, x, y, size, width, heading, scale):
         ''' Draw text '''
-        w *= self.tw.coord_scale
 
-        def _draw_text(cr, label, x, y, size, w, scale, heading, rgb):
+        def _draw_text(cr, label, x, y, size, width, scale, heading, rgb):
             cc = pangocairo.CairoContext(cr)
             pl = cc.create_layout()
             fd = pango.FontDescription('Sans')
@@ -627,7 +316,7 @@ class TurtleGraphics:
                 pl.set_text(str(label))
             else:
                 pl.set_text(str(label))
-            pl.set_width(int(w) * pango.SCALE)
+            pl.set_width(int(width) * pango.SCALE)
             cc.save()
             cc.translate(x, y)
             cc.rotate(heading * DEGTOR)
@@ -636,36 +325,24 @@ class TurtleGraphics:
             cc.show_layout(pl)
             cc.restore()
 
-        _draw_text(self.canvas, label, x, y, size, w, self.tw.coord_scale,
-                   self.heading, self.fgrgb)
+        width *= scale
+        _draw_text(self.canvas, label, x, y, size, width, scale, heading,
+                   self._fgrgb)
         self.inval()
         if self.cr_svg is not None:  # and self.pendown:
-            _draw_text(self.cr_svg, label, x, y, size, w, self.tw.coord_scale,
-                       self.heading, self.fgrgb)
-        if self.tw.sharing() and share:
-            event = 'W|%s' % (data_to_string([self._get_my_nick(),
-                                              [label, round_int(x),
-                                               round_int(y), round_int(size),
-                                               round_int(w)]]))
-            self.tw.send_event(event)
+            _draw_text(self.cr_svg, label, x, y, size, width, scale, heading,
+                       self._fgrgb)
 
-    def turtle_to_screen_coordinates(self, x, y):
-        ''' The origin of turtle coordinates is the center of the screen '''
-        return self.width / 2. + x, self.invert_y_coordinate(y)
-
-    def screen_to_turtle_coordinates(self, x, y):
-        ''' The origin of the screen coordinates is the upper left corner '''
-        return x - self.width / 2., self.invert_y_coordinate(y)
-
-    def invert_y_coordinate(self, y):
-        ''' Positive y goes up in turtle coordinates, down in sceeen
-        coordinates '''
-        return self.height / 2. - y
+    def set_source_rgb(self):
+        r = self._fgrgb[0] / 255.
+        g = self._fgrgb[1] / 255.
+        b = self._fgrgb[2] / 255.
+        self.canvas.set_source_rgb(r, g, b)
+        if self.cr_svg is not None:
+            self.cr_svg.set_source_rgb(r, g, b)
 
     def draw_line(self, x1, y1, x2, y2):
         ''' Draw a line '''
-        x1, y1 = self.turtle_to_screen_coordinates(x1, y1)
-        x2, y2 = self.turtle_to_screen_coordinates(x2, y2)
 
         def _draw_line(cr, x1, y1, x2, y2):
             cr.move_to(x1, y1)
@@ -675,40 +352,23 @@ class TurtleGraphics:
         _draw_line(self.canvas, x1, y1, x2, y2)
         if self.cr_svg is not None:
             _draw_line(self.cr_svg, x1, y1, x2, y2)
-        if self.fill:
-            if self.poly_points == []:
-                self.poly_points.append(('move', x1, y1))
-            self.poly_points.append(('line', x2, y2))
-
-    def turn_turtle(self):
-        ''' Change the orientation of the turtle '''
-        self.tw.active_turtle.set_heading(self.heading)
-
-    def move_turtle(self):
-        ''' Move the turtle '''
-        x, y = self.turtle_to_screen_coordinates(self.xcor, self.ycor)
-        if self.tw.interactive_mode:
-            self.tw.active_turtle.move(
-                (self.cx + x - self.tw.active_turtle.spr.rect.width / 2.,
-                 self.cy + y - self.tw.active_turtle.spr.rect.height / 2.))
-        else:
-            self.tw.active_turtle.move((self.cx + x, self.cy + y))
+        self.inval()
 
     def get_color_index(self, r, g, b, a=0):
         ''' Find the closest palette entry to the rgb triplet '''
-        if self.shade != 50 or self.gray != 100:
+        if self._shade != 50 or self._gray != 100:
             r <<= 8
             g <<= 8
             b <<= 8
-            if self.shade != 50:
-                sh = (wrap100(self.shade) - 50) / 50.
+            if self._shade != 50:
+                sh = (wrap100(self._shade) - 50) / 50.
                 r = calc_shade(r, sh, True)
                 g = calc_shade(g, sh, True)
                 b = calc_shade(b, sh, True)
-            if self.gray != 100:
-                r = calc_gray(r, self.gray, True)
-                g = calc_gray(g, self.gray, True)
-                b = calc_gray(b, self.gray, True)
+            if self._gray != 100:
+                r = calc_gray(r, self._gray, True)
+                g = calc_gray(g, self._gray, True)
+                b = calc_gray(b, self._gray, True)
             r >>= 8
             g >>= 8
             b >>= 8
@@ -727,20 +387,19 @@ class TurtleGraphics:
                 closest_color = i
         return closest_color
 
-    def get_pixel(self):
+    def get_pixel(self, x, y):
         ''' Read the pixel at x, y '''
-        if self.tw.interactive_mode:
-            x, y = self.turtle_to_screen_coordinates(self.xcor, self.ycor)
+        if self.turtle_window.interactive_mode:
             x = int(x)
             y = int(y)
-            w = self.tw.turtle_canvas.get_width()
-            h = self.tw.turtle_canvas.get_height()
+            w = self.turtle_window.turtle_canvas.get_width()
+            h = self.turtle_window.turtle_canvas.get_height()
             if x < 0 or x > (w - 1) or y < 0 or y > (h - 1):
                 return(-1, -1, -1, -1)
             # create a new 1x1 cairo surface
             cs = cairo.ImageSurface(cairo.FORMAT_RGB24, 1, 1)
             cr = cairo.Context(cs)
-            cr.set_source_surface(self.tw.turtle_canvas, -x, -y)
+            cr.set_source_surface(self.turtle_window.turtle_canvas, -x, -y)
             cr.rectangle(0, 0, 1, 1)
             cr.set_operator(cairo.OPERATOR_SOURCE)
             cr.fill()
@@ -750,32 +409,6 @@ class TurtleGraphics:
         else:
             return(-1, -1, -1, -1)
 
-    def set_turtle(self, k, colors=None):
-        ''' Select the current turtle and associated pen status '''
-        if k not in self.tw.turtles.dict:
-            # if it is a new turtle, start it in the center of the screen
-            self.tw.active_turtle = self.tw.turtles.get_turtle(k, True, colors)
-            self.seth(0.0, False)
-            self.setxy(0.0, 0.0, False, pendown=False)
-            self.tw.active_turtle.set_pen_state(True)
-        elif colors is not None:
-            self.tw.active_turtle = self.tw.turtles.get_turtle(k, False)
-            self.tw.active_turtle.set_turtle_colors(colors)
-        else:
-            self.tw.active_turtle = self.tw.turtles.get_turtle(k, False)
-        self.tw.active_turtle.show()
-        tx, ty = self.tw.active_turtle.get_xy()
-        self.xcor, self.ycor = self.screen_to_turtle_coordinates(tx, ty)
-        if self.tw.interactive_mode:
-            self.xcor += self.tw.active_turtle.spr.rect.width / 2.
-            self.ycor -= self.tw.active_turtle.spr.rect.height / 2.
-        self.heading = self.tw.active_turtle.get_heading()
-        self.setcolor(self.tw.active_turtle.get_color(), False)
-        self.setgray(self.tw.active_turtle.get_gray(), False)
-        self.setshade(self.tw.active_turtle.get_shade(), False)
-        self.setpensize(self.tw.active_turtle.get_pen_size(), False)
-        self.setpen(self.tw.active_turtle.get_pen_state(), False)
-
     def svg_close(self):
         ''' Close current SVG graphic '''
         self.cr_svg.show_page()
@@ -784,9 +417,6 @@ class TurtleGraphics:
         ''' Reset svg flags '''
         self.cr_svg = None
 
-    def _get_my_nick(self):
-        return self.tw.nick
-
     def inval(self):
         ''' Invalidate a region for gtk '''
-        self.tw.inval_all()
+        self.turtle_window.inval_all()

@@ -58,7 +58,7 @@ from taconstants import (HORIZONTAL_PALETTE, VERTICAL_PALETTE, BLOCK_SCALE,
                          PYTHON_SKIN, PALETTE_HEIGHT, STATUS_LAYER, OLD_DOCK,
                          EXPANDABLE_ARGS, XO1, XO15, XO175, XO30, XO4, TITLEXY,
                          CONTENT_ARGS, CONSTANTS, EXPAND_SKIN, PROTO_LAYER,
-                         EXPANDABLE_FLOW, SUFFIX)
+                         EXPANDABLE_FLOW, SUFFIX, TMP_SVG_PATH)
 from tapalette import (palette_names, palette_blocks, expandable_blocks,
                        block_names, content_blocks, default_values,
                        special_names, block_styles, help_strings,
@@ -99,9 +99,16 @@ _MACROS_SUBPATH = 'macros'
 class TurtleArtWindow():
     ''' TurtleArt Window class abstraction  '''
 
-    def __init__(self, canvas_window, path, parent=None,
+    def __init__(self, canvas_window, path, parent=None, activity=None,
                  mycolors=None, mynick=None, turtle_canvas=None,
-                 running_sugar=True):
+                 running_sugar=True, running_turtleart=True):
+        '''
+        parent: the GTK Window that TA runs in
+        activity: the object that instantiated this TurtleArtWindow (in
+                  GNOME, a TurtleMain instance, in Sugar, the Activity
+                  instance)
+        running_turtleart: are we running TA or exported python code?
+        '''
         self.parent = parent
         self.turtle_canvas = turtle_canvas
         self._loaded_project = ''
@@ -111,6 +118,7 @@ class TurtleArtWindow():
         self.gst_available = _GST_AVAILABLE
         self.running_sugar = False
         self.nick = None
+        self.running_turtleart = running_turtleart
         if isinstance(canvas_window, gtk.DrawingArea):
             self.interactive_mode = True
             self.window = canvas_window
@@ -135,8 +143,13 @@ class TurtleArtWindow():
             self.interactive_mode = False
             self.window = canvas_window
             self.running_sugar = False
-        self.activity = parent
 
+        if activity is not None:
+            self.activity = activity
+        else:
+            self.activity = parent
+
+        # loading and saving
         self.path = path
         self.load_save_folder = os.path.join(path, 'samples')
         self.py_load_save_folder = os.path.join(path, 'pysamples')
@@ -144,6 +157,8 @@ class TurtleArtWindow():
         self.used_block_list = []  # Which blocks has the user used?
         self.save_folder = None
         self.save_file_name = None
+        
+        # dimensions
         self.width = gtk.gdk.screen_width()
         self.height = gtk.gdk.screen_height()
         self.rect = gtk.gdk.Rectangle(0, 0, 0, 0)
@@ -166,6 +181,7 @@ class TurtleArtWindow():
         self.sharing_blocks = False
         self.deleting_blocks = False
 
+        # find out which character to use as decimal point
         try:
             locale.setlocale(locale.LC_NUMERIC, '')
         except locale.Error:
@@ -174,8 +190,8 @@ class TurtleArtWindow():
         if self.decimal_point == '' or self.decimal_point is None:
             self.decimal_point = '.'
 
+        # settings that depend on the hardware
         self.orientation = HORIZONTAL_PALETTE
-
         self.hw = get_hardware()
         self.lead = 1.0
         if self.hw in (XO1, XO15, XO175, XO4):
@@ -200,8 +216,9 @@ class TurtleArtWindow():
         self.nop = 'nop'
         self.loaded = 0
         self.step_time = 0
-        self.hide = False
-        self.palette = True
+        # show/ hide palettes depending on whether we're running in TA or not
+        self.hide = not self.running_turtleart
+        self.palette = self.running_turtleart
         self.coord_scale = 1
         self.buddies = []
         self._saved_string = ''
@@ -239,6 +256,7 @@ class TurtleArtWindow():
         self.turtle_movement_to_share = None
         self.paste_offset = 20  # Don't paste on top of where you copied.
 
+        # common properties of all blocks (font size, decimal point, ...)
         self.block_list = Blocks(font_scale_factor=self.scale,
                                  decimal_point=self.decimal_point)
         if self.interactive_mode:
@@ -246,23 +264,24 @@ class TurtleArtWindow():
         else:
             self.sprite_list = None
 
+        # canvas object that supports the basic drawing functionality
         self.canvas = TurtleGraphics(self, self.width, self.height)
         if self.hw == XO175 and self.canvas.width == 1024:
             self.hw = XO30
         if self.interactive_mode:
             self.sprite_list.set_cairo_context(self.canvas.canvas)
 
-        self.turtles = Turtles(self.sprite_list)
-        if self.nick is None:
-            self.default_turtle_name = DEFAULT_TURTLE
-        else:
-            self.default_turtle_name = self.nick
+        self.turtles = Turtles(self)
+        if self.nick is not None:
+            self.turtles.set_default_turtle_name(self.nick)
         if mycolors is None:
-            Turtle(self.turtles, self.default_turtle_name)
+            Turtle(self.turtles, self.turtles.get_default_turtle_name())
         else:
-            Turtle(self.turtles, self.default_turtle_name, mycolors.split(','))
-        self.active_turtle = self.turtles.get_turtle(self.default_turtle_name)
-        self.active_turtle.show()
+            Turtle(self.turtles, self.turtles.get_default_turtle_name(),
+                   mycolors.split(','))
+        self.turtles.set_active_turtle(
+            self.turtles.get_turtle(self.turtles.get_default_turtle_name()))
+        self.turtles.get_active_turtle().show()
 
         self.canvas.clearscreen(False)
 
@@ -276,8 +295,10 @@ class TurtleArtWindow():
         self.saved_pictures = []
         self.block_operation = ''
 
-        from tabasics import Palettes
-        self._basic_palettes = Palettes(self)
+        # only in TA: setup basic palettes
+        if self.running_turtleart:
+            from tabasics import Palettes
+            self._basic_palettes = Palettes(self)
 
         if self.interactive_mode:
             gobject.idle_add(self._lazy_init)
@@ -289,16 +310,20 @@ class TurtleArtWindow():
         self._init_plugins()
         self._setup_plugins()
         self._setup_misc()
-        for name in palette_init_on_start:
-            debug_output('initing palette %s' % (name), self.running_sugar)
-            self.show_toolbar_palette(palette_names.index(name),
-                                      init_only=False, regenerate=True,
-                                      show=False)
 
-        self._basic_palettes.make_trash_palette()
+        if self.running_turtleart:
+            self._basic_palettes.make_trash_palette()
+            for name in palette_init_on_start:
+                debug_output('initing palette %s' % (name), self.running_sugar)
+                self.show_toolbar_palette(palette_names.index(name),
+                                          init_only=False,
+                                          regenerate=True,
+                                          show=False)
 
-        self.show_toolbar_palette(0, init_only=False, regenerate=True,
-                                  show=True)
+            self.show_toolbar_palette(0,
+                                      init_only=False,
+                                      regenerate=True,
+                                      show=True)
 
         if self.running_sugar:
             self.activity.check_buttons_for_fit()
@@ -331,7 +356,7 @@ class TurtleArtWindow():
                 pname = os.path.join(path, dirname, dirname + '.py')
                 if os.path.exists(pname):
                     plugin_files.append(dirname)
-            return plugin_files
+        return plugin_files
 
     def _init_plugins(self):
         ''' Try importing plugin files from the plugin dir. '''
@@ -342,7 +367,7 @@ class TurtleArtWindow():
     def init_plugin(self, plugin_dir):
         ''' Initialize plugin in plugin_dir '''
         plugin_class = plugin_dir.capitalize()
-        f = "def f(self): from plugins.%s.%s import %s; return %s(self)" \
+        f = 'def f(self): from plugins.%s.%s import %s; return %s(self)' \
             % (plugin_dir, plugin_dir, plugin_class, plugin_class)
         plugins = {}
         # NOTE: When debugging plugins, it may be useful to not trap errors
@@ -418,15 +443,15 @@ class TurtleArtWindow():
         self.window.add_events(gtk.gdk.BUTTON_RELEASE_MASK)
         self.window.add_events(gtk.gdk.POINTER_MOTION_MASK)
         self.window.add_events(gtk.gdk.KEY_PRESS_MASK)
-        self.window.connect("expose-event", self._expose_cb)
-        self.window.connect("button-press-event", self._buttonpress_cb)
-        self.window.connect("button-release-event", self._buttonrelease_cb)
-        self.window.connect("motion-notify-event", self._move_cb)
-        self.window.connect("key-press-event", self._keypress_cb)
+        self.window.connect('expose-event', self._expose_cb)
+        self.window.connect('button-press-event', self._buttonpress_cb)
+        self.window.connect('button-release-event', self._buttonrelease_cb)
+        self.window.connect('motion-notify-event', self._move_cb)
+        self.window.connect('key-press-event', self._keypress_cb)
         gtk.gdk.screen_get_default().connect('size-changed',
                                              self._configure_cb)
 
-        target = [("text/plain", 0, 0)]
+        target = [('text/plain', 0, 0)]
         self.window.drag_dest_set(gtk.DEST_DEFAULT_ALL, target,
                                   gtk.gdk.ACTION_COPY | gtk.gdk.ACTION_MOVE)
         self.window.connect('drag_data_received', self._drag_data_received)
@@ -506,16 +531,20 @@ class TurtleArtWindow():
         self._autohide_shape = True
 
         for name in OVERLAY_SHAPES:
+            if name == 'Cartesian':
+                continue
             self.overlay_shapes[name] = Sprite(
                 self.sprite_list,
                 int(self.width / 2 - 600),
                 int(self.height / 2 - 450),
                 svg_str_to_pixbuf(
-                    svg_from_file("%s/images/%s.svg" % (self.path, name))))
+                    svg_from_file('%s/images/%s.svg' % (self.path, name))))
             self.overlay_shapes[name].hide()
             self.overlay_shapes[name].type = 'overlay'
 
-        if not self.running_sugar:
+        self._create_scaled_cartesian_coordinates()
+
+        if self.running_turtleart and not self.running_sugar:
             # offset = 2 * self.width - 55 * len(TOOLBAR_SHAPES)
             offset = 55 * (1 + len(palette_blocks))
             for i, name in enumerate(TOOLBAR_SHAPES):
@@ -529,6 +558,27 @@ class TurtleArtWindow():
                 self.toolbar_shapes[name].name = name
                 self.toolbar_shapes[name].type = 'toolbar'
             self.toolbar_shapes['stopiton'].hide()
+
+    def _create_scaled_cartesian_coordinates(self):
+        # Cartesian overlay has to be scaled to match the coordinate_scale
+        # 200 pixels in the graphic == height / 4. (10 units)
+        pixbuf = svg_str_to_pixbuf(
+            svg_from_file('%s/images/%s.svg' % (self.path, 'Cartesian')))
+        
+        if self.running_sugar:
+            scale = self.height / 800.
+        else:
+            scale = self.height / 800.
+            # scale = (self.height + ICON_SIZE) / 800.
+        self.overlay_shapes['Cartesian'] = Sprite(
+            self.sprite_list,
+            int(self.width / 2 - 600),
+            int(self.height / 2 - 450),
+            pixbuf.scale_simple(int(1200 * scale),
+                                int(900 * scale),
+                                gtk.gdk.INTERP_BILINEAR))
+        self.overlay_shapes['Cartesian'].set_layer(TAB_LAYER)
+        self.overlay_shapes['Cartesian'].hide()
 
     def set_sharing(self, shared):
         self._sharing = shared
@@ -625,7 +675,7 @@ class TurtleArtWindow():
             if find_start_stack(blk):
                 self.step_time = time
                 if self.running_sugar:
-                    debug_output("running stack starting from %s" % (blk.name),
+                    debug_output('running stack starting from %s' % (blk.name),
                                  self.running_sugar)
                 if running_from_button_push:
                     self.selected_blk = None
@@ -639,7 +689,7 @@ class TurtleArtWindow():
             if find_block_to_run(blk):
                 self.step_time = time
                 if self.running_sugar:
-                    debug_output("running stack starting from %s" % (blk.name),
+                    debug_output('running stack starting from %s' % (blk.name),
                                  self.running_sugar)
                 if running_from_button_push:
                     self.selected_blk = None
@@ -686,20 +736,27 @@ class TurtleArtWindow():
 
     def draw_overlay(self, overlay):
         ''' Draw a coordinate grid onto the canvas. '''
-        save_heading = self.canvas.heading
-        self.canvas.heading = 0
-        w = self.overlay_shapes[overlay].rect[2]
-        h = self.overlay_shapes[overlay].rect[3]
+        width = self.overlay_shapes[overlay].rect[2]
+        height = self.overlay_shapes[overlay].rect[3]
+        if self.running_sugar:
+            y_offset = 0
+        else:
+            y_offset = 0
+            # y_offset = ICON_SIZE
         self.canvas.draw_surface(
             self.overlay_shapes[overlay].cached_surfaces[0],
-            (self.canvas.width - w) / 2.,
-            (self.canvas.height - h) / 2., w, h)
-        self.canvas.heading = save_heading
+            (self.canvas.width - width) / 2.0,
+            (self.canvas.height - height + y_offset) / 2.0,
+            width,
+            height)
 
-    def update_overlay_position(self, widget, event):
+    def update_overlay_position(self, widget=None, event=None):
         ''' Reposition the overlays when window size changes '''
-        self.width = event.width
-        self.height = event.height
+        # self.width = event.width
+        # self.height = event.height
+        self.width = gtk.gdk.screen_width()
+        self.height = gtk.gdk.screen_height()
+
         for name in OVERLAY_SHAPES:
             if not name in self.overlay_shapes:
                 continue
@@ -708,23 +765,30 @@ class TurtleArtWindow():
             if shape in shape._sprites.list:
                 shape.hide()
                 showing = True
+            self.overlay_shapes[name].move((int(self.width / 2 - 600),
+                                            int(self.height / 2 - 450)))
+            '''
             self.overlay_shapes[name] = Sprite(
                 self.sprite_list,
                 int(self.width / 2 - 600),
                 int(self.height / 2 - 450),
                 svg_str_to_pixbuf(
-                    svg_from_file("%s/images/%s.svg" % (self.path, name))))
+                    svg_from_file('%s/images/%s.svg' % (self.path, name))))
+            '''
             if showing:
                 self.overlay_shapes[name].set_layer(OVERLAY_LAYER)
             else:
                 self.overlay_shapes[name].hide()
+            '''
             self.overlay_shapes[name].type = 'overlay'
+            '''
+
         self.cartesian = False
         self.polar = False
         self.metric = False
         self.canvas.width = self.width
         self.canvas.height = self.height
-        self.canvas.move_turtle()
+        self.turtles.get_active_turtle().move_turtle()
 
     def hideshow_button(self):
         ''' Hide/show button '''
@@ -776,6 +840,7 @@ class TurtleArtWindow():
         if not self.running_sugar or not self.activity.has_toolbarbox:
             self.toolbar_spr.set_layer(CATEGORY_LAYER)
         self.palette = True
+        self._set_coordinates_label(palette_names[n])
 
     def hide_palette(self):
         ''' Hide the palette. '''
@@ -1064,7 +1129,7 @@ class TurtleArtWindow():
                 self.toolbar_offset,
                 svg_str_to_pixbuf(
                     svg_from_file(
-                        "%s/images/palettehorizontal.svg" % (self.path)))))
+                        '%s/images/palettehorizontal.svg' % (self.path)))))
         self.palette_button.append(
             Sprite(
                 self.sprite_list,
@@ -1072,7 +1137,7 @@ class TurtleArtWindow():
                 self.toolbar_offset,
                 svg_str_to_pixbuf(
                     svg_from_file(
-                        "%s/images/palettevertical.svg" % (self.path)))))
+                        '%s/images/palettevertical.svg' % (self.path)))))
         self.palette_button[0].name = _('orientation')
         self.palette_button[1].name = _('orientation')
         self.palette_button[0].type = 'palette'
@@ -1087,7 +1152,7 @@ class TurtleArtWindow():
                 self.toolbar_offset,
                 svg_str_to_pixbuf(
                     svg_from_file(
-                        "%s/images/palettenext.svg" % (self.path)))))
+                        '%s/images/palettenext.svg' % (self.path)))))
         self.palette_button[2].name = _('next')
         self.palette_button[2].type = 'palette'
         self.palette_button[2].set_layer(TAB_LAYER)
@@ -1101,7 +1166,7 @@ class TurtleArtWindow():
                 self.toolbar_offset + dims[1],
                 svg_str_to_pixbuf(
                     svg_from_file(
-                        "%s/images/palettehshift.svg" % (self.path)))))
+                        '%s/images/palettehshift.svg' % (self.path)))))
         self.palette_button.append(
             Sprite(
                 self.sprite_list,
@@ -1109,7 +1174,7 @@ class TurtleArtWindow():
                 self.toolbar_offset,
                 svg_str_to_pixbuf(
                     svg_from_file(
-                        "%s/images/palettevshift.svg" % (self.path)))))
+                        '%s/images/palettevshift.svg' % (self.path)))))
         self.palette_button.append(
             Sprite(
                 self.sprite_list,
@@ -1117,7 +1182,7 @@ class TurtleArtWindow():
                 self.toolbar_offset + dims[1],
                 svg_str_to_pixbuf(
                     svg_from_file(
-                        "%s/images/palettehshift2.svg" % (self.path)))))
+                        '%s/images/palettehshift2.svg' % (self.path)))))
         self.palette_button.append(
             Sprite(
                 self.sprite_list,
@@ -1125,7 +1190,7 @@ class TurtleArtWindow():
                 self.toolbar_offset,
                 svg_str_to_pixbuf(
                     svg_from_file(
-                        "%s/images/palettevshift2.svg" % (self.path)))))
+                        '%s/images/palettevshift2.svg' % (self.path)))))
         for i in range(4):
             self.palette_button[3 + i].name = _('shift')
             self.palette_button[3 + i].type = 'palette'
@@ -1384,6 +1449,13 @@ class TurtleArtWindow():
             if spr is not None:
                 blk = self.block_list.spr_to_block(spr)
                 if blk is not None:
+                    # Make sure stop button is visible
+                    if self.running_sugar:
+                        self.activity.stop_turtle_button.set_icon("stopiton")
+                        self.activity.stop_turtle_button.set_tooltip(
+                            _('Stop turtle'))
+                    elif self.interactive_mode:
+                        self.toolbar_shapes['stopiton'].set_layer(TAB_LAYER)
                     self.showlabel('status',
                                    label=_('Please hit the Stop Button \
 before making changes to your Turtle Blocks program'))
@@ -1691,13 +1763,13 @@ before making changes to your Turtle Blocks program'))
 
     def _look_for_a_turtle(self, spr, x, y):
         # Next, look for a turtle
-        t = self.turtles.spr_to_turtle(spr)
-        if t is not None:
+        turtle = self.turtles.spr_to_turtle(spr)
+        if turtle is not None:
             # If turtle is shared, ignore click
-            if self.remote_turtle(t.get_name()):
+            if self.remote_turtle(turtle.get_name()):
                 return True
-            self.selected_turtle = t
-            self.canvas.set_turtle(self.turtles.get_turtle_key(t))
+            self.selected_turtle = turtle
+            self.turtles.set_turtle(self.turtles.get_turtle_key(turtle))
             self._turtle_pressed(x, y)
             self.update_counter = 0
             return True
@@ -2245,7 +2317,7 @@ before making changes to your Turtle Blocks program'))
                 self.used_block_list.append(newblk.spr.labels[0])
 
     def new_macro(self, name, x, y):
-        ''' Create a "macro" (predefined stack of blocks). '''
+        ''' Create a 'macro' (predefined stack of blocks). '''
         macro = MACROS[name]
         macro[0][2] = x
         macro[0][3] = y
@@ -2295,7 +2367,7 @@ before making changes to your Turtle Blocks program'))
                         else:
                             cons.append(blocks[c])
                 else:
-                    debug_output("connection error %s" %
+                    debug_output('connection error %s' %
                                  (str(self._process_block_data[i])),
                                  self.running_sugar)
                     cons.append(None)
@@ -2322,7 +2394,7 @@ before making changes to your Turtle Blocks program'))
                             blocks[c].connections[3] = None
                         else:
                             # Connection was to a block we haven't seen yet.
-                            debug_output("Warning: dock to the future",
+                            debug_output('Warning: dock to the future',
                                          self.running_sugar)
                 else:
                     if self._process_block_data[i][4][0] is not None:
@@ -2338,10 +2410,10 @@ before making changes to your Turtle Blocks program'))
                             blocks[c].connections[1] = None
                         else:
                             # Connection was to a block we haven't seen yet.
-                            debug_output("Warning: dock to the future",
+                            debug_output('Warning: dock to the future',
                                          self.running_sugar)
             else:
-                debug_output("Warning: unknown connection state %s" %
+                debug_output('Warning: unknown connection state %s' %
                              (str(blk.connections)), self.running_sugar)
             blk.connections = cons[:]
 
@@ -2410,20 +2482,22 @@ before making changes to your Turtle Blocks program'))
                 self._adjust_dock_positions(c)
 
     def _turtle_pressed(self, x, y):
-        (tx, ty) = self.selected_turtle.get_xy()
-        w = self.selected_turtle.spr.rect.width / 2
-        h = self.selected_turtle.spr.rect.height / 2
-        dx = x - tx - w
-        dy = y - ty - h
-        # if x, y is near the edge, rotate
+        pos = self.selected_turtle.get_xy()
+        tpos = self.turtles.turtle_to_screen_coordinates(pos)
+        dx = x - tpos[0]
+        dy = y - tpos[1]
         if not hasattr(self.lc, 'value_blocks'):
             self.lc.find_value_blocks()
         self.lc.update_values = True
-        if (dx * dx) + (dy * dy) > ((w * w) + (h * h)) / 6:
-            self.drag_turtle = \
-                ('turn', self.canvas.heading - atan2(dy, dx) / DEGTOR, 0)
+        # Compare distance squared of drag position to sprite radius.
+        # If x, y is near the edge, rotate.
+        if (dx * dx) + (dy * dy) > self.selected_turtle.get_drag_radius():
+            self.drag_turtle = (
+                'turn',
+                self.selected_turtle.get_heading() - atan2(dy, dx) / DEGTOR,
+                0)
         else:
-            self.drag_turtle = ('move', x - tx, y - ty)
+            self.drag_turtle = ('move', x - tpos[0], y - tpos[1])
 
     def _move_cb(self, win, event):
         x, y = xy(event)
@@ -2436,18 +2510,18 @@ before making changes to your Turtle Blocks program'))
         ''' Share turtle movement and rotation after button up '''
         if self.sharing():
             nick = self.turtle_movement_to_share.get_name()
-            self.send_event("r|%s" %
-                            (data_to_string([nick,
-                                             round_int(self.canvas.heading)])))
-            if self.canvas.pendown:
+            self.send_event('r|%s' % (data_to_string(
+                [nick,
+                 round_int(self.turtles.get_active_turtle().get_heading())])))
+            if self.turtles.get_active_turtle().get_pen_state():
                 self.send_event('p|%s' % (data_to_string([nick, False])))
                 put_pen_back_down = True
             else:
                 put_pen_back_down = False
-            self.send_event("x|%s" %
-                            (data_to_string([nick,
-                                             [round_int(self.canvas.xcor),
-                                              round_int(self.canvas.ycor)]])))
+            self.send_event('x|%s' % (data_to_string(
+                [nick,
+                 [round_int(self.turtles.get_active_turtle().get_xy()[0]),
+                  round_int(self.turtles.get_active_turtle().get_xy()[1])]])))
             if put_pen_back_down:
                 self.send_event('p|%s' % (data_to_string([nick, True])))
         self.turtle_movement_to_share = None
@@ -2474,34 +2548,37 @@ before making changes to your Turtle Blocks program'))
 
         # First, check to see if we are dragging or rotating a turtle.
         if self.selected_turtle is not None:
-            dtype, dragx, dragy = self.drag_turtle
-            (sx, sy) = self.selected_turtle.get_xy()
-            # self.canvas.set_turtle(self.selected_turtle.get_name())
+            drag_type, dragx, dragy = self.drag_turtle
             self.update_counter += 1
-            if dtype == 'move':
-                dx = x - dragx - sx + self.selected_turtle.spr.rect.width / 2
-                dy = y - dragy - sy + self.selected_turtle.spr.rect.height / 2
+            if drag_type == 'move':
+                dx = x - dragx
+                dy = y - dragy
                 self.selected_turtle.spr.set_layer(TOP_LAYER)
-                tx, ty = self.canvas.screen_to_turtle_coordinates(sx + dx,
-                                                                  sy + dy)
-                if self.canvas.pendown:
-                    self.canvas.setpen(False)
-                    self.canvas.setxy(tx, ty, share=False)
-                    self.canvas.setpen(True)
+                pos = self.turtles.screen_to_turtle_coordinates((dx, dy))
+                if self.selected_turtle.get_pen_state():
+                    self.selected_turtle.set_pen_state(False)
+                    self.selected_turtle.set_xy(pos, share=False, dragging=True)
+                    self.selected_turtle.set_pen_state(True)
                 else:
-                    self.canvas.setxy(tx, ty, share=False)
+                    self.selected_turtle.set_xy(pos, share=False, dragging=True)
                 if self.update_counter % 5:
                     self.lc.update_label_value(
-                        'xcor', self.canvas.xcor / self.coord_scale)
+                        'xcor', self.selected_turtle.get_xy()[0] /
+                        self.coord_scale)
                     self.lc.update_label_value(
-                        'ycor', self.canvas.ycor / self.coord_scale)
+                        'ycor', self.selected_turtle.get_xy()[1] /
+                        self.coord_scale)
             else:
-                dx = x - sx - self.selected_turtle.spr.rect.width / 2
-                dy = y - sy - self.selected_turtle.spr.rect.height / 2
-                self.canvas.seth(int(dragx + atan2(dy, dx) / DEGTOR + 5) /
-                                 10 * 10, share=False)
+                spos = self.turtles.turtle_to_screen_coordinates(
+                    self.selected_turtle.get_xy())
+                dx = x - spos[0]
+                dy = y - spos[1]
+                self.turtles.get_active_turtle().set_heading(
+                    int(dragx + atan2(dy, dx) / DEGTOR + 5) / 10 * 10,
+                    share=False)
                 if self.update_counter % 5:
-                    self.lc.update_label_value('heading', self.canvas.heading)
+                    self.lc.update_label_value(
+                        'heading', self.selected_turtle.get_heading())
             if self.update_counter % 20:
                 self.display_coordinates()
             self.turtle_movement_to_share = self.selected_turtle
@@ -2658,30 +2735,26 @@ before making changes to your Turtle Blocks program'))
 
         # We may have been moving the turtle
         if self.selected_turtle is not None:
-            (tx, ty) = self.selected_turtle.get_xy()
-            k = self.turtles.get_turtle_key(self.selected_turtle)
-
+            pos = self.selected_turtle.get_xy()
+            spos = self.turtles.turtle_to_screen_coordinates(pos)
+            turtle_name = self.turtles.get_turtle_key(self.selected_turtle)
             # Remove turtles by dragging them onto the trash palette.
-            if self._in_the_trash(tx, ty):
+            if self._in_the_trash(spos[0], spos[1]):
                 # If it is the default turtle, just recenter it.
-                if k == self.default_turtle_name:
+                if turtle_name == self.turtles.get_default_turtle_name():
                     self._move_turtle(0, 0)
-                    self.canvas.heading = 0
-                    self.canvas.turn_turtle()
-                    self.lc.update_label_value('heading', self.canvas.heading)
+                    self.selected_turtle.set_heading(0)
+                    self.lc.update_label_value('heading', 0)
                 else:
                     self.selected_turtle.hide()
-                    self.turtles.remove_from_dict(k)
-                    self.active_turtle = None
+                    self.turtles.remove_from_dict(turtle_name)
+                    self.turtles.set_active_turtle(None)
             else:
-                self._move_turtle(
-                    tx - self.canvas.width / 2. +
-                    self.active_turtle.spr.rect.width / 2.,
-                    self.canvas.height / 2. - ty -
-                    self.active_turtle.spr.rect.height / 2.)
+                self._move_turtle(pos[0], pos[1])
+
             self.selected_turtle = None
-            if self.active_turtle is None:
-                self.canvas.set_turtle(self.default_turtle_name)
+            if self.turtles.get_active_turtle() is None:
+                self.turtles.set_turtle(self.turtles.get_default_turtle_name())
             self.display_coordinates()
             return
 
@@ -2757,21 +2830,23 @@ before making changes to your Turtle Blocks program'))
                 turtle.label_block.spr.set_label(name[0:4] + '…')
             else:
                 turtle.label_block.spr.set_label(name)
+            turtle.set_remote()
             turtle.show()
 
     def _move_turtle(self, x, y):
         ''' Move the selected turtle to (x, y). '''
-        self.canvas.xcor = x
-        self.canvas.ycor = y
-        self.canvas.move_turtle()
+        if self.drag_turtle[0] == 'move':
+            self.turtles.get_active_turtle().move_turtle((x, y))
         if self.interactive_mode:
             self.display_coordinates()
         if self.running_sugar:
             self.selected_turtle.spr.set_layer(TURTLE_LAYER)
-            self.lc.update_label_value('xcor',
-                                       self.canvas.xcor / self.coord_scale)
-            self.lc.update_label_value('ycor',
-                                       self.canvas.ycor / self.coord_scale)
+            self.lc.update_label_value(
+                'xcor', self.turtles.get_active_turtle().get_xy()[0] /
+                self.coord_scale)
+            self.lc.update_label_value(
+                'ycor', self.turtles.get_active_turtle().get_xy()[1] /
+                self.coord_scale)
 
     def _click_block(self, x, y):
         ''' Click block: lots of special cases to handle... '''
@@ -3043,10 +3118,8 @@ before making changes to your Turtle Blocks program'))
         if blk is None:
             return
         self.lc.find_value_blocks()  # Are there blocks to update?
-        # Is there a savesvg block?
-        if len(self.block_list.get_similar_blocks('block', 'savesvg')) > 0:
-            if self.canvas.cr_svg is None:
-                self.canvas.setup_svg_surface()
+        if self.canvas.cr_svg is None:
+            self.canvas.setup_svg_surface()
         self.running_blocks = True
         self._start_plugins()  # Let the plugins know we are running.
         top = find_top_block(blk)
@@ -3328,7 +3401,7 @@ before making changes to your Turtle Blocks program'))
             else:
                 dy += delta
             gblk = gblk.connections[-1]
-        # Clamp has room for one "standard" block by default
+        # Clamp has room for one 'standard' block by default
         if dy > 0:
             dy -= 21  # Fixme: don't hardcode
         if blk.name in block_styles['clamp-style-else'] and dockn == 3:
@@ -3456,7 +3529,7 @@ before making changes to your Turtle Blocks program'))
         self.keypress = keyname
 
         if alt_mask:
-            if keyname == "p":
+            if keyname == 'p':
                 self.hideshow_button()
             elif keyname == 'q':
                 self.quit_plugins()
@@ -3526,13 +3599,15 @@ before making changes to your Turtle Blocks program'))
     def _jog_turtle(self, dx, dy):
         ''' Jog turtle '''
         if dx == -1 and dy == -1:
-            self.canvas.xcor = 0
-            self.canvas.ycor = 0
+            x = 0
+            y = 0
         else:
-            self.canvas.xcor += dx
-            self.canvas.ycor += dy
-        self.active_turtle = self.turtles.spr_to_turtle(self.selected_spr)
-        self.canvas.move_turtle()
+            pos = self.turtles.get_active_turtle().get_xy()
+            x = pos[0] + dx
+            y = pos[1] + dy
+        self.turtles.set_active_turtle(
+            self.turtles.spr_to_turtle(self.selected_spr))
+        self.turtles.get_active_turtle().move_turtle((x, y))
         self.display_coordinates()
         self.selected_turtle = None
 
@@ -3604,15 +3679,15 @@ before making changes to your Turtle Blocks program'))
                 num = float(text.replace(self.decimal_point, '.'))
                 if num > 1000000:
                     num = 1
-                    self.showlabel("#overflowerror")
+                    self.showlabel('#overflowerror')
                 elif num < -1000000:
                     num = -1
-                    self.showlabel("#overflowerror")
+                    self.showlabel('#overflowerror')
                 if int(num) == num:
                     num = int(num)
             except ValueError:
                 num = 0
-                self.showlabel("#notanumber")
+                self.showlabel('#notanumber')
         else:
             num = 0
         self.selected_blk.spr.set_label(str(num))
@@ -3664,7 +3739,7 @@ before making changes to your Turtle Blocks program'))
             f.close()
             id = fname
         except IOError:
-            error_output("Unable to read Python code from %s" % (fname),
+            error_output('Unable to read Python code from %s' % (fname),
                          self.running_sugar)
             return id
 
@@ -3686,20 +3761,20 @@ before making changes to your Turtle Blocks program'))
                 try:
                     datastore.write(dsobject)
                     id = dsobject.object_id
-                    debug_output("Copied %s to the datastore" % (fname),
+                    debug_output('Copied %s to the datastore' % (fname),
                                  self.running_sugar)
                     # Don't copy the same file more than once
                     self._py_cache[fname] = id
                 except IOError:
-                    error_output("Error copying %s to the datastore" % (fname),
+                    error_output('Error copying %s to the datastore' % (fname),
                                  self.running_sugar)
                     id = None
                 dsobject.destroy()
 
             if add_new_block:
                 # add a new block for this code at turtle position
-                (tx, ty) = self.active_turtle.get_xy()
-                self._new_block('userdefined', tx, ty)
+                pos = self.turtles.get_active_turtle().get_xy()
+                self._new_block('userdefined', pos[0], pos[1])
                 self.myblock[self.block_list.list.index(self.drag_group[0])] =\
                     self.python_code
                 self.set_userdefined(self.drag_group[0])
@@ -3725,11 +3800,11 @@ before making changes to your Turtle Blocks program'))
         if dsobject is None:
             return
         try:
-            file_handle = open(dsobject.file_path, "r")
+            file_handle = open(dsobject.file_path, 'r')
             self.python_code = file_handle.read()
             file_handle.close()
         except IOError:
-            debug_output("couldn't open %s" % dsobject.file_path,
+            debug_output('Could not open %s' % dsobject.file_path,
                          self.running_sugar)
         # Save the object id as the block value
         if blk is None:
@@ -3745,7 +3820,6 @@ before making changes to your Turtle Blocks program'))
         if self.running_sugar:
             chooser_dialog(self.parent, 'org.laptop.Pippy',
                            self.load_python_code_from_journal)
-            dsobject.destroy()
         else:
             self.load_python_code_from_file(fname=None, add_new_block=False)
 
@@ -3757,7 +3831,7 @@ before making changes to your Turtle Blocks program'))
     def new_project(self):
         ''' Start a new project '''
         self.lc.stop_logo()
-        self._loaded_project = ""
+        self._loaded_project = ''
         # Put current project in the trash.
         while len(self.just_blocks()) > 0:
             blk = self.just_blocks()[0]
@@ -3768,7 +3842,7 @@ before making changes to your Turtle Blocks program'))
 
     def is_new_project(self):
         ''' Is this a new project or was a old project loaded from a file? '''
-        return self._loaded_project == ""
+        return self._loaded_project == ''
 
     def project_has_changed(self):
         ''' WARNING: order of JSON serialized data may have changed. '''
@@ -3777,11 +3851,10 @@ before making changes to your Turtle Blocks program'))
             saved_project_data = f.read()
             f.close()
         except:
-            debug_output("problem loading saved project data from %s" %
+            debug_output('problem loading saved project data from %s' %
                          (self._loaded_project), self.running_sugar)
-            saved_project_data = ""
+            saved_project_data = ''
         current_project_data = data_to_string(self.assemble_data_to_save())
-
         return saved_project_data != current_project_data
 
     def load_files(self, ta_file, create_new_project=True):
@@ -3825,12 +3898,13 @@ before making changes to your Turtle Blocks program'))
     def load_turtle(self, blk, key=1):
         ''' Restore a turtle from its saved state '''
         tid, name, xcor, ycor, heading, color, shade, pensize = blk
-        self.canvas.set_turtle(key)
-        self.canvas.setxy(xcor, ycor, pendown=False)
-        self.canvas.seth(heading)
-        self.canvas.setcolor(color)
-        self.canvas.setshade(shade)
-        self.canvas.setpensize(pensize)
+        self.turtles.set_turtle(key)
+        self.turtles.get_active_turtle().set_xy(xcor, ycor, pendown=False)
+        self.turtles.get_active_turtle().set_heading(heading)
+        self.turtles.get_active_turtle().set_color(color)
+        self.turtles.get_active_turtle().set_shade(shade)
+        self.turtles.get_active_turtle().set_gray(100)
+        self.turtles.get_active_turtle().set_pen_size(pensize)
 
     def load_block(self, b, offset=0):
         ''' Restore individual blocks from saved state '''
@@ -3933,8 +4007,8 @@ before making changes to your Turtle Blocks program'))
             btype = OLD_NAMES[btype]
 
         blk = Block(self.block_list, self.sprite_list, btype,
-                    b[2] + self.canvas.cx + offset,
-                    b[3] + self.canvas.cy + offset,
+                    b[2] + offset,
+                    b[3] + offset,
                     'block', values, self.block_scale)
 
         # If it was an unknown block type, we need to match the number
@@ -3966,7 +4040,7 @@ before making changes to your Turtle Blocks program'))
                             dsobject = datastore.get(value)
                         except:  # Should be IOError, but dbus error is raised
                             dsobject = None
-                            debug_output("couldn't get dsobject %s" % (value),
+                            debug_output('Could not get dsobject %s' % (value),
                                          self.running_sugar)
                         if dsobject is not None:
                             self.load_python_code_from_journal(dsobject, blk)
@@ -4018,7 +4092,7 @@ before making changes to your Turtle Blocks program'))
                         x, y = self._calc_image_offset('', blk.spr)
                         blk.set_image(pixbuf, x, y)
                     except:
-                        debug_output("Couldn't open dsobject (%s)" %
+                        debug_output('Could not open dsobject (%s)' %
                                      (blk.values[0]), self.running_sugar)
                         self._block_skin('journaloff', blk)
             else:
@@ -4098,11 +4172,13 @@ before making changes to your Turtle Blocks program'))
     def load_start(self, ta_file=None):
         ''' Start a new project with a 'start' brick '''
         if ta_file is None:
-            self.process_data([[0, "start", PALETTE_WIDTH + 20,
-                                self.toolbar_offset + PALETTE_HEIGHT + 20,
-                                [None, None]]])
+            self.process_data(
+                [[0, 'start', PALETTE_WIDTH + 20,
+                  self.toolbar_offset + PALETTE_HEIGHT + 20 + ICON_SIZE,
+                  [None, None]]])
         else:
             self.process_data(data_from_file(ta_file))
+            self._loaded_project = ta_file
 
     def save_file(self, file_name=None):
         ''' Start a project to a file '''
@@ -4167,8 +4243,7 @@ before making changes to your Turtle Blocks program'))
             if not save_project:
                 sx += 20
                 sy += 20
-            data.append((blk.id, name, sx - self.canvas.cx,
-                         sy - self.canvas.cy, connections))
+            data.append((blk.id, name, sx, sy, connections))
         if save_turtle:
             for turtle in iter(self.turtles.dict):
                 # Don't save remote turtles
@@ -4176,43 +4251,50 @@ before making changes to your Turtle Blocks program'))
                     # Save default turtle as 'Yertle'
                     if turtle == self.nick:
                         turtle = DEFAULT_TURTLE
+                    pos = self.turtles.get_active_turtle().get_xy()
                     data.append(
                         (-1,
                          ['turtle', turtle],
-                         self.canvas.xcor, self.canvas.ycor,
-                         self.canvas.heading, self.canvas.color,
-                         self.canvas.shade, self.canvas.pensize))
+                         pos[0], pos[1],
+                         self.turtles.get_active_turtle().get_heading(),
+                         self.turtles.get_active_turtle().get_color(),
+                         self.turtles.get_active_turtle().get_shade(),
+                         self.turtles.get_active_turtle().get_pen_size()))
         return data
 
     def display_coordinates(self, clear=False):
         ''' Display the coordinates of the current turtle on the toolbar '''
         if clear:
-            if self.running_sugar:
-                self.activity.coordinates_label.set_text('')
-                self.activity.coordinates_label.show()
-            elif self.interactive_mode:
-                self.parent.set_title('')
+            self._set_coordinates_label('')
         else:
-            x = round_int(float(self.canvas.xcor) / self.coord_scale)
-            y = round_int(float(self.canvas.ycor) / self.coord_scale)
-            h = round_int(self.canvas.heading)
+            x = round_int(float(self.turtles.get_active_turtle().get_xy()[0]) /
+                          self.coord_scale)
+            y = round_int(float(self.turtles.get_active_turtle().get_xy()[1]) /
+                          self.coord_scale)
+            h = round_int(self.turtles.get_active_turtle().get_heading())
             if self.running_sugar:
                 if int(x) == x and int(y) == y and int(h) == h:
                     formatting = '(%d, %d) %d'
                 else:
                     formatting = '(%0.2f, %0.2f) %0.2f'
-                self.activity.coordinates_label.set_text(
-                    formatting % (x, y, h))
-                self.activity.coordinates_label.show()
+                self._set_coordinates_label(formatting % (x, y, h))
             elif self.interactive_mode:
                 if int(x) == x and int(y) == y and int(h) == h:
                     formatting = '%s — %s: %d %s: %d %s: %d'
                 else:
                     formatting = '%s — %s: %0.2f %s: %0.2f %s: %0.2f'
-                self.parent.set_title(
+                self._set_coordinates_label(
                     formatting % (self.activity.name, _('xcor'), x,
                                   _('ycor'), y, _('heading'), h))
         self.update_counter = 0
+
+    def _set_coordinates_label(self, text):
+        if self.running_sugar:
+            self.activity.coordinates_label.set_text(text)
+            self.activity.coordinates_label.show()
+        elif self.interactive_mode:
+            self.parent.set_title(text)
+
 
     def showlabel(self, shp, label=''):
         ''' Display a message on a status block '''
@@ -4278,16 +4360,17 @@ before making changes to your Turtle Blocks program'))
         save_picture(self.canvas, image_file)
         return ta_file, image_file
 
-    def save_as_image(self, name="", svg=False):
+    def save_as_image(self, name='', svg=False):
         ''' Grab the current canvas and save it. '''
         if svg:
             suffix = '.svg'
         else:
             suffix = '.png'
 
-        if not self.interactive_mode:
+        if not self.interactive_mode:  # png only
             save_picture(self.canvas, name[:-3] + suffix)
             return
+
         if self.running_sugar:
             if len(name) == 0:
                 filename = 'turtleblocks' + suffix
@@ -4304,6 +4387,7 @@ before making changes to your Turtle Blocks program'))
         else:
             datapath = os.getcwd()
             filename = name + suffix
+
         if filename is None:
             return
 
@@ -4311,6 +4395,7 @@ before making changes to your Turtle Blocks program'))
         if svg:
             if self.canvas.cr_svg is None:
                 return
+            self.canvas.svg_close()
             self.canvas.svg_reset()
         else:
             save_picture(self.canvas, file_path)
@@ -4321,14 +4406,14 @@ before making changes to your Turtle Blocks program'))
 
             dsobject = datastore.create()
             if len(name) == 0:
-                dsobject.metadata['title'] = "%s %s" % \
-                    (self.activity.metadata['title'], _("image"))
+                dsobject.metadata['title'] = '%s %s' % \
+                    (self.activity.metadata['title'], _('image'))
             else:
                 dsobject.metadata['title'] = name
             dsobject.metadata['icon-color'] = profile.get_color().to_string()
             if svg:
                 dsobject.metadata['mime_type'] = 'image/svg+xml'
-                dsobject.set_file_path(os.path.join(datapath, 'output.svg'))
+                dsobject.set_file_path(TMP_SVG_PATH)
             else:
                 dsobject.metadata['mime_type'] = 'image/png'
                 dsobject.set_file_path(file_path)
@@ -4336,14 +4421,13 @@ before making changes to your Turtle Blocks program'))
             dsobject.destroy()
             self.saved_pictures.append((dsobject.object_id, svg))
             if svg:
-                os.remove(os.path.join(datapath, 'output.svg'))
+                os.remove(TMP_SVG_PATH)
             else:
                 os.remove(file_path)
         else:
             if svg:
                 subprocess.check_output(
-                    ['mv', os.path.join(datapath, 'output.svg'),
-                     os.path.join(datapath, filename)])
+                    ['cp', TMP_SVG_PATH, os.path.join(datapath, filename)])
             self.saved_pictures.append((file_path, svg))
 
     def just_blocks(self):
@@ -4444,6 +4528,8 @@ before making changes to your Turtle Blocks program'))
 
     def _find_proto_name(self, name, label, palette='blocks'):
         ''' Look for a protoblock with this name '''
+        if not self.interactive_mode:
+            return False
         if isinstance(name, unicode):
             name = name.encode('ascii', 'replace')
         if isinstance(label, unicode):
@@ -4466,6 +4552,8 @@ before making changes to your Turtle Blocks program'))
 
     def _new_stack_block(self, name):
         ''' Add a stack block to the 'blocks' palette '''
+        if not self.interactive_mode:
+            return
         if isinstance(name, (float, int)):
             return
         if isinstance(name, unicode):
@@ -4493,6 +4581,8 @@ before making changes to your Turtle Blocks program'))
 
     def _new_box_block(self, name):
         ''' Add a box block to the 'blocks' palette '''
+        if not self.interactive_mode:
+            return
         if isinstance(name, (float, int)):
             return
         if isinstance(name, unicode):
@@ -4521,6 +4611,8 @@ before making changes to your Turtle Blocks program'))
 
     def _new_storein_block(self, name):
         ''' Add a storin block to the 'blocks' palette '''
+        if not self.interactive_mode:
+            return
         if isinstance(name, (float, int)):
             return
         if isinstance(name, unicode):
@@ -4557,7 +4649,7 @@ variable'))
                 x = int(x)
         if 'stack3' + str(x) not in self.lc.stacks or \
            self.lc.stacks['stack3' + str(x)] is None:
-            raise logoerror("#nostack")
+            raise logoerror('#nostack')
         self.lc.icall(self.lc.evline,
                       self.lc.stacks['stack3' + str(x)][:])
         yield True
@@ -4573,10 +4665,10 @@ variable'))
         try:
             return self.lc.boxes['box3' + str(x)]
         except KeyError:
-            raise logoerror("#emptybox")
+            raise logoerror('#emptybox')
 
     def _prim_setbox(self, name, x, val):
-        """ Define value of named box """
+        ''' Define value of named box '''
         if x is not None:
             if isinstance(convert(x, float, False), float):
                 if int(float(x)) == x:
