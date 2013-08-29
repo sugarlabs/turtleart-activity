@@ -614,6 +614,8 @@ class TurtleArtActivity(activity.Activity):
     def _setup_toolbar(self):
         ''' Setup toolbar according to Sugar version. '''
         if self.has_toolbarbox:
+            self.max_participants = 4
+
             self._setup_toolbar_help()
             self._toolbox = ToolbarBox()
 
