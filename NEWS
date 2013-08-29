@@ -1,3 +1,67 @@
+188
+
+ENHANCEMENT:
+* Add labels to Cartesian coordinate grid
+
+BUG FIXES:
+* Ensure that default coordinate scale is 1 (pixel mode)
+* Adjust pen size to coordinate scale
+
+187
+
+ENHANCEMENTS:
+* Use icon view for browsing sample projects
+* New translations
+* New sample progams
+* Save coordinate scale with gconf
+* Make scaled coordinates +-20 instead of +-100
+
+BUG FIXES:
+* Fixed more bugs in SVG save
+* Fixed several bugs in non-interactive mode
+* Fixed problem with erratic Cntl-V (SL #2751)
+* Fixed problem with missing Stop button when malformed block encountered
+  (SL #4522)
+
+186
+
+BUG FIX:
+* Use /tmp for creating SVG surface when running from GNOME
+
+185
+
+ENHANCEMENTS:
+* New translations
+* More sample graphics from turtleart.org
+* Added pen state boolean
+* Added new sensor-record example (generates turtle art program from mouse movements)
+* Some comments added to the code by Marion Zepf
+
+BUG FIX:
+* Fixed problem with load block introduced by turtle-centric rebase
+
+184
+
+ENHANCEMENTS:
+* New translations
+* Internal refactoring in support of a turtle-centric approach to programming
+
+183
+
+ENHANCEMENT:
+* New translations
+
+182
+
+ENHANCEMENT:
+* New translations
+
+BUG FIXES:
+* Fixed problem with initializing trash palette when init_on_start
+  flag is set (Alan Aguiar)
+* Disambiguation of parent vs activity (Marion Zepf)
+* Isolation of GUI to enable non-interactive use of canvas (Marion Zepf)
+
 181
 
 BUG FIX:
@@ -40,7 +104,7 @@ BUG FIXES:
 
 176
 
-ENHANCEMENTS:
+ENHANCEMENT:
 * Add facility for saving and restoring individual stacks
 * Save status of hover help between sessions
 * New translations
