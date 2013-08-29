@@ -1,6 +1,6 @@
 [[0, ["start", 2.0], 165, 175, [null, 30]],
 [1, "show", 165, 385, [24, 2, 6]],
-[2, ["journal", "/tmp/turtlepic.jpg"], 223, 385, [1, null]],
+[2, ["journal", "./samples/images/me.jpg"], 223, 385, [1, null]],
 [3, "see", 367, 797, [15, null]],
 [4, "repeat", 165, 553, [27, 5, 10, null]],
 [5, ["number", 200], 213, 553, [4, null]],
