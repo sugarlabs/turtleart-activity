@@ -217,7 +217,7 @@ degrees)'))
             'setxy2',
             2,
             lambda self, x, y: primitive_dictionary['move'](
-                self.tw.turtles.get_active_turtle().set_xy, (x, y)))
+                self.tw.turtles.get_active_turtle().set_xy, x, y))
         define_logo_function('tasetxy', 'to tasetxy :x :y\nsetxy :x :y\nend\n')
 
         primitive_dictionary['set'] = self._prim_set
@@ -295,7 +295,7 @@ turtle (can be used in place of a number block)'),
             'setxy',
             2,
             lambda self, x, y: primitive_dictionary['move'](
-                self.tw.turtles.get_active_turtle().set_xy, (x, y),
+                self.tw.turtles.get_active_turtle().set_xy, x, y,
                 pendown=False))
         define_logo_function('tasetxypenup', 'to tasetxypenup :x :y\npenup\n\
 setxy :x :y\npendown\nend\n')

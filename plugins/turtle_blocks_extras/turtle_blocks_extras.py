@@ -1403,8 +1403,10 @@ Journal objects'))
 
     def _prim_showlist(self, sarray):
         """ Display list of media objects """
-        x = self.tw.turtles.get_active_turtle.get_xy()[0] / self.tw.coord_scale
-        y = self.tw.turtles.get_active_turtle.get_xy()[1] / self.tw.coord_scale
+        x = (self.tw.turtles.get_active_turtle().get_xy()[0] /
+             self.tw.coord_scale)
+        y = (self.tw.turtles.get_active_turtle().get_xy()[1] /
+             self.tw.coord_scale)
         for s in sarray:
             self.tw.turtles.get_active_turtle().set_xy(x, y, pendown=False)
             self._prim_show(s)

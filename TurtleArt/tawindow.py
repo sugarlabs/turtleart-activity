@@ -2557,10 +2557,12 @@ before making changes to your Turtle Blocks program'))
                 pos = self.turtles.screen_to_turtle_coordinates((dx, dy))
                 if self.selected_turtle.get_pen_state():
                     self.selected_turtle.set_pen_state(False)
-                    self.selected_turtle.set_xy(pos, share=False, dragging=True)
+                    self.selected_turtle.set_xy(*pos, share=False,
+                                                dragging=True)
                     self.selected_turtle.set_pen_state(True)
                 else:
-                    self.selected_turtle.set_xy(pos, share=False, dragging=True)
+                    self.selected_turtle.set_xy(*pos, share=False,
+                                                dragging=True)
                 if self.update_counter % 5:
                     self.lc.update_label_value(
                         'xcor', self.selected_turtle.get_xy()[0] /
