@@ -3,6 +3,10 @@
 ENHANCEMENT:
 * Set maximum number of participants
 
+BUG FIX:
+* Fix problem with null index when action and store-in blocks are
+  missing arguments.
+
 189
 
 ENHANCEMENT:
