@@ -3979,16 +3979,19 @@ before making changes to your Turtle Blocks program'))
                                                  dblk[2], dblk[3], dblk[4]]
             self._new_stack_block(name)
         elif btype == 'storein':
+            name = None
             if b[4][1] < len(self._process_block_data):
                 i = b[4][1]
-                name = self._process_block_data[i][1][1]
+                if i is not None:
+                    name = self._process_block_data[i][1][1]
             else:
                 i = b[4][1] - len(self._process_block_data)
                 name = self._extra_block_data[i][1][1]
-            if not self._find_proto_name('storein_%s' % (name), name):
-                self._new_storein_block(name)
-            if not self._find_proto_name('box_%s' % (name), name):
-                self._new_box_block(name)
+            if name is not None:
+                if not self._find_proto_name('storein_%s' % (name), name):
+                    self._new_storein_block(name)
+                if not self._find_proto_name('box_%s' % (name), name):
+                    self._new_box_block(name)
 
         if btype in content_blocks:
             if btype == 'number':
