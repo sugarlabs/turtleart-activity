@@ -3961,23 +3961,28 @@ before making changes to your Turtle Blocks program'))
                 self._process_block_data[b[0]] = [
                     b[0], b[1], b[2], b[3], [b[4][0], i, b[4][1]]]
         elif btype == 'hat':
+            name = None
             if b[4][1] < len(self._process_block_data):
                 i = b[4][1]
-                name = self._process_block_data[i][1][1]
+                if i is not None:
+                    name = self._process_block_data[i][1][1]
             else:
                 i = b[4][1] - len(self._process_block_data)
                 name = self._extra_block_data[i][1][1]
-            while self._find_proto_name('stack_%s' % (name), name):
-                name = increment_name(name)
-                if b[4][1] < len(self._process_block_data):
-                    dblk = self._process_block_data[i]
-                    self._process_block_data[i] = [dblk[0], (dblk[1][0], name),
-                                                   dblk[2], dblk[3], dblk[4]]
-                else:
-                    dblk = self._extra_block_data[i]
-                    self._extra_block_data[i] = [dblk[0], (dblk[1][0], name),
-                                                 dblk[2], dblk[3], dblk[4]]
-            self._new_stack_block(name)
+            if name is not None:
+                while self._find_proto_name('stack_%s' % (name), name):
+                    name = increment_name(name)
+                    if b[4][1] < len(self._process_block_data):
+                        dblk = self._process_block_data[i]
+                        self._process_block_data[i] = [
+                            dblk[0], (dblk[1][0], name), dblk[2], dblk[3],
+                            dblk[4]]
+                    else:
+                        dblk = self._extra_block_data[i]
+                        self._extra_block_data[i] = [
+                            dblk[0], (dblk[1][0], name), dblk[2], dblk[3],
+                            dblk[4]]
+                self._new_stack_block(name)
         elif btype == 'storein':
             name = None
             if b[4][1] < len(self._process_block_data):
