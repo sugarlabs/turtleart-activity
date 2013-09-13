@@ -333,17 +333,21 @@ class Turtle:
             return
         self._heading %= 360
 
+        self._update_sprite_heading()
+
+        if self._turtles.turtle_window.sharing() and share:
+            event = 'r|%s' % (data_to_string([self._turtles.turtle_window.nick,
+                                              round_int(self._heading)]))
+            self._turtles.turtle_window.send_event(event)
+
+    def _update_sprite_heading(self):
+        ''' Update the sprite to reflect the current heading '''
         i = (int(self._heading + 5) % 360) / (360 / SHAPES)
         if not self._hidden and self.spr is not None:
             try:
                 self.spr.set_shape(self._shapes[i])
             except IndexError:
                 self.spr.set_shape(self._shapes[0])
-
-        if self._turtles.turtle_window.sharing() and share:
-            event = 'r|%s' % (data_to_string([self._turtles.turtle_window.nick,
-                                              round_int(self._heading)]))
-            self._turtles.turtle_window.send_event(event)
 
     def set_color(self, color=None, share=True):
         ''' Set the pen color for this turtle. '''
@@ -524,6 +528,8 @@ class Turtle:
                          self._turtles.turtle_window.running_sugar)
             return
         self._heading %= 360
+
+        self._update_sprite_heading()
 
         if self._turtles.turtle_window.sharing() and share:
             event = 'r|%s' % (data_to_string([self._turtles.turtle_window.nick,
