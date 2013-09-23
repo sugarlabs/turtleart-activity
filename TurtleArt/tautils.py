@@ -186,7 +186,7 @@ def find_hat(data):
 def _to_str(text):
     ''' Convert whatever to a str type '''
     if isinstance(text, unicode):
-        return text.encode('ascii', 'replace')
+        return text.encode('utf-8')
     elif isinstance(text, str):
         return text
     else:
@@ -371,7 +371,7 @@ def data_from_string(text):
     if isinstance(text, str):
         return json_load(text.replace(']],\n', ']], '))
     elif isinstance(text, unicode):
-        text = text.encode('ascii', 'replace')
+        text = text.encode('utf-8')
         return json_load(text.replace(']],\n', ']], '))
     else:
         print 'type error (%s) in data_from_string' % (type(text))
@@ -415,7 +415,7 @@ def save_picture(canvas, file_name):
     cr.set_source_surface(x_surface)
     cr.paint()
     if isinstance(file_name, unicode):
-        img_surface.write_to_png(str(file_name.encode('ascii', 'replace')))
+        img_surface.write_to_png(str(file_name.encode('utf-8')))
     else:
         img_surface.write_to_png(str(file_name))
 

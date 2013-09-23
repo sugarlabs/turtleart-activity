@@ -1552,7 +1552,7 @@ Journal objects'))
                 self.tw.show_toolbar_palette(int(arg))
         else:
             if type(arg) == unicode:
-                arg = arg.encode('ascii', 'replace')
+                arg = arg.encode('utf-8')
             if arg in palette_names:
                 self.tw.show_toolbar_palette(palette_name_to_index(arg))
             else:

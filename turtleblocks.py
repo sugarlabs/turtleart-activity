@@ -552,7 +552,7 @@ Would you like to save before quitting?'))
         filename, self.tw.load_save_folder = get_save_name(
             save_type, self.tw.load_save_folder, 'logosession')
         if isinstance(filename, unicode):
-            filename = filename.encode('ascii', 'replace')
+            filename = filename.encode('utf-8')
         if filename is not None:
             f = file(filename, 'w')
             f.write(logocode)
