@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-26 00:31-0400\n"
-"PO-Revision-Date: 2013-09-30 23:17+0200\n"
+"PO-Revision-Date: 2013-09-30 23:33+0200\n"
 "Last-Translator: Eduardo H. <hoboprimate@gmail.com>\n"
 "Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
 "Language: pt\n"
@@ -18,9 +18,8 @@ msgstr ""
 "X-Generator: Pootle 2.0.5\n"
 
 #. TRANS: "name" option from activity.info file
-#, fuzzy
 msgid "TurtleBlocks"
-msgstr "blocos de tartaruga"
+msgstr "BlocosTartaruga"
 
 #. TRANS: "summary" option from activity.info file
 #. TRANS: "description" option from activity.info file
@@ -785,7 +784,7 @@ msgid ""
 "program"
 msgstr ""
 "Por favor, carrega no botão Parar antes de fazeres mudanças ao teu programa "
-"TurtleBlocks"
+"BlocosTartaruga"
 
 #: TurtleArt/tawindow.py:1467
 msgid "Select blocks to share"
