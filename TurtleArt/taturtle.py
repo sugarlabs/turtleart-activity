@@ -157,7 +157,7 @@ class Turtles:
             # if it is a new turtle, start it in the center of the screen
             self._active_turtle = self.get_turtle(turtle_name, True, colors)
             self._active_turtle.set_heading(0.0, False)
-            self._active_turtle.set_xy(0.0, 0.0, False, pendown=False)
+            self._active_turtle.set_xy(0.0, 0.0, share=False, pendown=False)
             self._active_turtle.set_pen_state(True)
         elif colors is not None:
             self._active_turtle = self.get_turtle(turtle_name, False)
@@ -493,7 +493,7 @@ class Turtle:
             self.spr.set_layer(TURTLE_LAYER)
             self._hidden = False
         self.move_turtle_spr((self._x, self._y))
-        self.set_heading(self._heading)
+        self.set_heading(self._heading, share=False)
         if self.label_block is not None:
             self.label_block.spr.set_layer(TURTLE_LAYER + 1)
 

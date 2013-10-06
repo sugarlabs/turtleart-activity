@@ -1458,7 +1458,7 @@ class TurtleArtWindow():
                         self.toolbar_shapes['stopiton'].set_layer(TAB_LAYER)
                     self.showlabel('status',
                                    label=_('Please hit the Stop Button \
-before making changes to your Turtle Blocks program'))
+before making changes to your program'))
                     self._autohide_shape = True
                     return True
 
@@ -3901,7 +3901,8 @@ before making changes to your Turtle Blocks program'))
         ''' Restore a turtle from its saved state '''
         tid, name, xcor, ycor, heading, color, shade, pensize = blk
         self.turtles.set_turtle(key)
-        self.turtles.get_active_turtle().set_xy(xcor, ycor, pendown=False)
+        self.turtles.get_active_turtle().set_xy(xcor, ycor, share=True,
+                                                pendown=False)
         self.turtles.get_active_turtle().set_heading(heading)
         self.turtles.get_active_turtle().set_color(color)
         self.turtles.get_active_turtle().set_shade(shade)
