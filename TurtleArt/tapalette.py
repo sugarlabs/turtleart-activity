@@ -133,7 +133,7 @@ class Palette():
 
         # Insert new palette just before the trash
         if 'trash' in palette_names:
-            i = palette_names.index('trash')
+            i = palette_names.index(_('trash'))
         else:
             i = len(palette_names)
 
