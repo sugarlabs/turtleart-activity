@@ -1002,7 +1002,8 @@ class TurtleArtWindow():
                                  self.running_sugar)
             else:
                 blk.spr.hide()
-        if 'trash' in palette_names and n == palette_names.index('trash'):
+        if _('trash') in palette_names and \
+           n == palette_names.index(_('trash')):
             for blk in self.trash_stack:
                 # Deprecated
                 for gblk in find_group(blk):
@@ -1278,8 +1279,8 @@ class TurtleArtWindow():
                     and not self.activity.has_toolbarbox:
                 self.activity.palette_buttons[palette].set_icon(
                     palette_names[palette] + 'off')
-            if 'trash' in palette_names and \
-                    palette == palette_names.index('trash'):
+            if _('trash') in palette_names and \
+                    palette == palette_names.index(_('trash')):
                 for blk in self.trash_stack:
                     for gblk in find_group(blk):
                         gblk.spr.hide()
@@ -1359,8 +1360,8 @@ class TurtleArtWindow():
             if self.orientation == HORIZONTAL_PALETTE:
                 x, y = _BUTTON_SIZE, self.toolbar_offset + _MARGIN
                 x, y, max_w = self._horizontal_layout(x, y, self.palettes[n])
-                if 'trash' in palette_names and \
-                        n == palette_names.index('trash'):
+                if _('trash') in palette_names and \
+                        n == palette_names.index(_('trash')):
                     x, y, max_w = self._horizontal_layout(x + max_w, y,
                                                           self.trash_stack)
                 w = x + max_w + _BUTTON_SIZE + _MARGIN
@@ -1376,8 +1377,8 @@ class TurtleArtWindow():
             else:
                 x, y = _MARGIN, self.toolbar_offset + _BUTTON_SIZE + _MARGIN
                 x, y, max_h = self._vertical_layout(x, y, self.palettes[n])
-                if 'trash' in palette_names and \
-                        n == palette_names.index('trash'):
+                if _('trash') in palette_names and \
+                        n == palette_names.index(_('trash')):
                     x, y, max_h = self._vertical_layout(x, y + max_h,
                                                         self.trash_stack)
                 h = y + max_h + _BUTTON_SIZE + _MARGIN - self.toolbar_offset
@@ -1422,8 +1423,8 @@ class TurtleArtWindow():
                     'category-shift-vertical'
             else:
                 self.palette_sprs[n][self.orientation].type = 'category'
-            if 'trash' in palette_names and \
-                    n == palette_names.index('trash'):
+            if _('trash') in palette_names and \
+                    n == palette_names.index(_('trash')):
                 svg = SVG()
                 self.palette_sprs[n][self.orientation].set_shape(
                     svg_str_to_pixbuf(svg.palette(w, h)))
@@ -1569,8 +1570,9 @@ before making changes to your program'))
                                     self._put_in_trash(b1)
                             else:
                                 self._put_in_trash(find_top_block(b))
-                    self.show_toolbar_palette(palette_names.index('trash'),
-                                              regenerate=True)
+                    if _('trash') in palette_names:
+                       self.show_toolbar_palette(
+                           palette_names.index(_('trash')), regenerate=True)
                 elif blk.name in MACROS:
                     self.new_macro(blk.name, x + 20, y + 20)
                 else:
@@ -2010,8 +2012,8 @@ before making changes to your program'))
             if gblk.name in BLOCKS_WITH_SKIN:
                 self._resize_skin(gblk)
 
-        if not 'trash' in palette_names or \
-                self.selected_palette != palette_names.index('trash'):
+        if not _('trash') in palette_names or \
+                self.selected_palette != palette_names.index(_('trash')):
             for gblk in group:
                 gblk.spr.hide()
 
@@ -2117,8 +2119,9 @@ before making changes to your program'))
                 blk.type = 'deleted'
                 blk.spr.hide()
         self.trash_stack = []
-        self.show_toolbar_palette(palette_names.index('trash'),
-                                  regenerate=True)
+        if _('trash') in palette_names:
+            self.show_toolbar_palette(palette_names.index(_('trash')),
+                                      regenerate=True)
 
     def _in_the_trash(self, x, y):
         ''' Is x, y over a palette? '''
@@ -4572,7 +4575,7 @@ before making changes to your program'))
         if name == _('action'):
             return
         # Choose a palette for the new block.
-        palette = make_palette('blocks')
+        palette = make_palette(_('blocks'))
 
         # Create a new block prototype.
         primitive_dictionary['stack'] = self._prim_stack
@@ -4601,7 +4604,7 @@ before making changes to your program'))
         if name == _('my box'):
             return
         # Choose a palette for the new block.
-        palette = make_palette('blocks')
+        palette = make_palette(_('blocks'))
 
         # Create a new block prototype.
         primitive_dictionary['box'] = self._prim_box
@@ -4631,7 +4634,7 @@ before making changes to your program'))
         if name == _('my box'):
             return
         # Choose a palette for the new block.
-        palette = make_palette('blocks')
+        palette = make_palette(_('blocks'))
 
         # Create a new block prototype.
         primitive_dictionary['setbox'] = self._prim_setbox

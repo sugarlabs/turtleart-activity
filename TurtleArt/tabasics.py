@@ -119,7 +119,7 @@ class Palettes():
     def _turtle_palette(self):
         ''' The basic Turtle Art turtle palette '''
 
-        palette = make_palette('turtle',
+        palette = make_palette(_('turtle'),
                                colors=["#00FF00", "#00A000"],
                                help_string=_('Palette of turtle commands'))
 
@@ -303,7 +303,7 @@ setxy :x :y\npendown\nend\n')
     def _pen_palette(self):
         ''' The basic Turtle Art pen palette '''
 
-        palette = make_palette('pen',
+        palette = make_palette(_('pen'),
                                colors=["#00FFFF", "#00A0A0"],
                                help_string=_('Palette of pen commands'))
 
@@ -503,7 +503,7 @@ pensize\nend\n')
     def _color_palette(self):
         ''' The basic Turtle Art color palette '''
 
-        palette = make_palette('colors',
+        palette = make_palette(_('colors'),
                                colors=["#00FFFF", "#00A0A0"],
                                help_string=_('Palette of pen colors'))
 
@@ -596,7 +596,7 @@ tasetshade :shade \n')
     def _numbers_palette(self):
         ''' The basic Turtle Art numbers palette '''
 
-        palette = make_palette('numbers',
+        palette = make_palette(_('numbers'),
                                colors=["#FF00FF", "#A000A0"],
                                help_string=_('Palette of numeric operators'))
 
@@ -779,7 +779,7 @@ operators'))
     def _flow_palette(self):
         ''' The basic Turtle Art flow palette '''
 
-        palette = make_palette('flow',
+        palette = make_palette(_('flow'),
                                colors=["#FFC000", "#A08000"],
                                help_string=_('Palette of flow operators'))
 
@@ -879,7 +879,7 @@ boolean operators from Numbers palette'))
     def _blocks_palette(self):
         ''' The basic Turtle Art blocks palette '''
 
-        palette = make_palette('blocks',
+        palette = make_palette(_('blocks'),
                                colors=["#FFFF00", "#A0A000"],
                                help_string=_('Palette of variable blocks'))
 
@@ -1040,7 +1040,7 @@ variable'))
     def _trash_palette(self):
         ''' The basic Turtle Art turtle palette '''
 
-        palette = make_palette('trash',
+        palette = make_palette(_('trash'),
                                colors=["#FFFF00", "#A0A000"],
                                help_string=_('trash'))
 

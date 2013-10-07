@@ -86,7 +86,7 @@ class Turtle_blocks_extras(Plugin):
     # Palette definitions
 
     def _flow_palette(self):
-        palette = make_palette('flow',
+        palette = make_palette(_('flow'),
                                colors=["#FFC000", "#A08000"],
                                help_string=_('Palette of flow operators'))
 
@@ -120,7 +120,7 @@ boolean operators from Numbers palette'))
         self.tw.lc.def_prim('clamp', 1, primitive_dictionary['clamp'], True)
 
     def _media_palette(self):
-        palette = make_palette('media',
+        palette = make_palette(_('media'),
                                colors=["#A0FF00", "#80A000"],
                                help_string=_('Palette of media objects'),
                                position=7)
@@ -304,7 +304,7 @@ amplitude, and duration (in seconds)'))
                             primitive_dictionary['sinewave'](x, y, z))
 
     def _sensor_palette(self):
-        palette = make_palette('sensor',
+        palette = make_palette(_('sensor'),
                                colors=["#FF6060", "#A06060"],
                                help_string=_('Palette of sensor blocks'),
                                position=6)
@@ -431,7 +431,7 @@ program started'))
                             lambda self: primitive_dictionary['time']())
 
     def _extras_palette(self):
-        palette = make_palette('extras',
+        palette = make_palette(_('extras'),
                                colors=["#FF0000", "#A00000"],
                                help_string=_('Palette of extra options'),
                                position=8)
@@ -783,7 +783,7 @@ module found in the Journal'))
         palette.add_block('loadpalette',
                           style='basic-style-1arg',
                           string_or_number=True,
-                          label=_('palette'),
+                          label=_('select palette'),
                           prim_name='loadpalette',
                           default=_('turtle'),
                           help_string=_('selects a palette'))
@@ -792,7 +792,7 @@ module found in the Journal'))
                             primitive_dictionary['loadpalette'](x))
 
     def _portfolio_palette(self):
-        palette = make_palette('portfolio',
+        palette = make_palette(_('portfolio'),
                                colors=["#0606FF", "#0606A0"],
                                help_string=_('Palette of presentation \
 templates'),
@@ -993,7 +993,7 @@ Journal objects'))
             debug_output('making myblocks palette', self.tw.running_sugar)
             if len(files) > 0:
                 palette = make_palette(
-                    'myblocks',
+                    _('myblocks'),
                     colors=["#FFFF00", "#A0A000"],
                     help_string=_('Palette of user-defined operators'))
 

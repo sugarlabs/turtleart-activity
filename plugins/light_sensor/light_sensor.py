@@ -44,7 +44,7 @@ class Light_sensor(Plugin):
 
     def setup(self):
         # set up light-sensor specific blocks
-        palette = make_palette('sensor',
+        palette = make_palette(_('sensor'),
                                colors=["#FF6060", "#A06060"],
                                help_string=_('Palette of sensor blocks'),
                                position=6)
