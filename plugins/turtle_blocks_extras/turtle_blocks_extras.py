@@ -676,6 +676,26 @@ module found in the Journal'))
                             lambda self, x:
                             self.tw.turtles.set_turtle(x))
 
+        primitive_dictionary['turtlex'] = self._prim_turtle_x
+        palette.add_block('turtlex',
+                          style='number-style-1arg',
+                          label=_('turtle x'),
+                          prim_name='turtlex',
+                          default=['Yertle'],
+                          help_string=_('Returns x coordinate of turtle'))
+        self.tw.lc.def_prim('turtlex', 1,
+                            lambda self, t: primitive_dictionary['turtlex'](t))
+
+        primitive_dictionary['turtley'] = self._prim_turtle_y
+        palette.add_block('turtley',
+                          style='number-style-1arg',
+                          label=_('turtle y'),
+                          prim_name='turtley',
+                          default=['Yertle'],
+                          help_string=_('Returns y coordinate of turtle'))
+        self.tw.lc.def_prim('turtley', 1,
+                            lambda self, t: primitive_dictionary['turtley'](t))
+
         primitive_dictionary['activeturtle'] = self._prim_active_turtle
         palette.add_block('activeturtle',
                           style='box-style',
@@ -687,6 +707,16 @@ module found in the Journal'))
         self.tw.lc.def_prim('activeturtle', 0,
                             lambda self:
                             primitive_dictionary['activeturtle']())
+
+        primitive_dictionary['turtleh'] = self._prim_turtle_h
+        palette.add_block('turtleh',
+                          style='number-style-1arg',
+                          label=_('turtle heading'),
+                          prim_name='turtleh',
+                          default=['Yertle'],
+                          help_string=_('Returns heading of turtle'))
+        self.tw.lc.def_prim('turtleh', 1,
+                            lambda self, t: primitive_dictionary['turtleh'](t))
 
         primitive_dictionary['skin'] = self._prim_reskin
         palette.add_block('skin',
@@ -1453,6 +1483,18 @@ Journal objects'))
         except ValueError:
             self.tw.lc.stop_logo()
             raise logoerror("#notanumber")
+
+    def _prim_turtle_x(self, t):
+        """ Return x coordinate of turtle t """
+        return self.tw.turtles.get_turtle_x(t)
+
+    def _prim_turtle_y(self, t):
+        """ Return y coordinate of turtle t """
+        return self.tw.turtles.get_turtle_y(t)
+
+    def _prim_turtle_h(self, t):
+        """ Return heading of turtle t """
+        return self.tw.turtles.get_turtle_heading(t)
 
     def _prim_clamp(self, blklist):
         """ Run clamp blklist """
