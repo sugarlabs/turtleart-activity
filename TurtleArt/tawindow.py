@@ -1458,7 +1458,7 @@ class TurtleArtWindow():
                         self.toolbar_shapes['stopiton'].set_layer(TAB_LAYER)
                     self.showlabel('status',
                                    label=_('Please hit the Stop Button \
-before making changes to your Turtle Blocks program'))
+before making changes to your program'))
                     self._autohide_shape = True
                     return True
 
@@ -1591,13 +1591,13 @@ before making changes to your Turtle Blocks program'))
                         found_the_action_block = False
                         bname = _('action')
                         if isinstance(bname, unicode):
-                            bname = bname.encode('ascii', 'replace')
+                            bname = bname.encode('utf-8')
                         for sblk in similars:
                             cblk = sblk.connections[1]
                             if cblk is not None:
                                 blabel = cblk.spr.labels[0]
                                 if isinstance(blabel, unicode):
-                                    blabel = blabel.encode('ascii', 'replace')
+                                    blabel = blabel.encode('utf-8')
                                 if bname == blabel:
                                     found_the_action_block = True
                         # If there is an action block in use, change the name
@@ -1825,7 +1825,7 @@ before making changes to your Turtle Blocks program'))
         if isinstance(name, (float, int)):
             return
         if isinstance(name, unicode):
-            name = name.encode('ascii', 'replace')
+            name = name.encode('utf-8')
         for blk in self.just_blocks():
             if self._action_name(blk, hat=False):
                 if blk.spr.labels[0] == self._saved_action_name:
@@ -1843,7 +1843,7 @@ before making changes to your Turtle Blocks program'))
         if isinstance(name, (float, int)):
             return
         if isinstance(name, unicode):
-            name = name.encode('ascii', 'replace')
+            name = name.encode('utf-8')
         for blk in self.just_blocks():
             if self._box_name(blk, storein=False):
                 if blk.spr.labels[0] == self._saved_box_name:
@@ -1861,7 +1861,7 @@ before making changes to your Turtle Blocks program'))
         if isinstance(name, (float, int)):
             return
         if isinstance(name, unicode):
-            name = name.encode('ascii', 'replace')
+            name = name.encode('utf-8')
         for blk in self.just_blocks():
             if self._box_name(blk, storein=True):
                 if blk.spr.labels[0] == self._saved_box_name:
@@ -1884,11 +1884,11 @@ before making changes to your Turtle Blocks program'))
         # (3) The list of proto blocks on the palette
         # (4) The list of block names
         if isinstance(name, unicode):
-            name = name.encode('ascii', 'replace')
+            name = name.encode('utf-8')
         if isinstance(old, unicode):
-            old = old.encode('ascii', 'replace')
+            old = old.encode('utf-8')
         if isinstance(new, unicode):
-            new = new.encode('ascii', 'replace')
+            new = new.encode('utf-8')
 
         if old == new:
             '''
@@ -3901,7 +3901,8 @@ before making changes to your Turtle Blocks program'))
         ''' Restore a turtle from its saved state '''
         tid, name, xcor, ycor, heading, color, shade, pensize = blk
         self.turtles.set_turtle(key)
-        self.turtles.get_active_turtle().set_xy(xcor, ycor, pendown=False)
+        self.turtles.get_active_turtle().set_xy(xcor, ycor, share=True,
+                                                pendown=False)
         self.turtles.get_active_turtle().set_heading(heading)
         self.turtles.get_active_turtle().set_color(color)
         self.turtles.get_active_turtle().set_shade(shade)
@@ -4066,7 +4067,7 @@ before making changes to your Turtle Blocks program'))
         if btype == 'string' and blk.spr is not None:
             value = blk.values[0]
             if isinstance(value, unicode):
-                value = value.encode('ascii', 'replace')
+                value = value.encode('utf-8')
             blk.spr.set_label(value.replace('\n', RETURN))
         elif btype == 'start':  # block size is saved in start block
             if value is not None:
@@ -4541,16 +4542,16 @@ before making changes to your Turtle Blocks program'))
         if not self.interactive_mode:
             return False
         if isinstance(name, unicode):
-            name = name.encode('ascii', 'replace')
+            name = name.encode('utf-8')
         if isinstance(label, unicode):
-            label = label.encode('ascii', 'replace')
+            label = label.encode('utf-8')
         i = palette_name_to_index(palette)
         for blk in self.palettes[i]:
             blk_label = blk.spr.labels[0]
             if isinstance(blk.name, unicode):
-                blk.name = blk.name.encode('ascii', 'replace')
+                blk.name = blk.name.encode('utf-8')
             if isinstance(blk_label, unicode):
-                blk_label = blk_label.encode('ascii', 'replace')
+                blk_label = blk_label.encode('utf-8')
             if blk.name == name and blk_label == label:
                 return True
             # Check labels[1] too (e.g., store in block)
@@ -4567,7 +4568,7 @@ before making changes to your Turtle Blocks program'))
         if isinstance(name, (float, int)):
             return
         if isinstance(name, unicode):
-            name = name.encode('ascii', 'replace')
+            name = name.encode('utf-8')
         if name == _('action'):
             return
         # Choose a palette for the new block.
@@ -4596,7 +4597,7 @@ before making changes to your Turtle Blocks program'))
         if isinstance(name, (float, int)):
             return
         if isinstance(name, unicode):
-            name = name.encode('ascii', 'replace')
+            name = name.encode('utf-8')
         if name == _('my box'):
             return
         # Choose a palette for the new block.
@@ -4626,7 +4627,7 @@ before making changes to your Turtle Blocks program'))
         if isinstance(name, (float, int)):
             return
         if isinstance(name, unicode):
-            name = name.encode('ascii', 'replace')
+            name = name.encode('utf-8')
         if name == _('my box'):
             return
         # Choose a palette for the new block.

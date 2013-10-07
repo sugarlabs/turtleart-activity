@@ -75,7 +75,7 @@ class Collaboration():
             'f': self._move_forward,
             'a': self._move_in_arc,
             'r': self._rotate_turtle,
-            'x': self._setxy,
+            'x': self._set_xy,
             'W': self._draw_text,
             'c': self._set_pen_color,
             'g': self._set_pen_gray_level,
@@ -347,12 +347,12 @@ class Collaboration():
                 self._tw.turtles.set_turtle(nick)
                 self._tw.turtles.get_active_turtle().set_heading(h, False)
 
-    def _setxy(self, payload):
+    def _set_xy(self, payload):
         if len(payload) > 0:
             [nick, [x, y]] = data_from_string(payload)
             if nick != self._tw.nick:
                 self._tw.turtles.set_turtle(nick)
-                self._tw.turtles.get_active_turtle().set_xy(x, y, False)
+                self._tw.turtles.get_active_turtle().set_xy(x, y, share=False)
 
     def _draw_text(self, payload):
         if len(payload) > 0:

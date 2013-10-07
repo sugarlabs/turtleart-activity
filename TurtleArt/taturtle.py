@@ -157,7 +157,7 @@ class Turtles:
             # if it is a new turtle, start it in the center of the screen
             self._active_turtle = self.get_turtle(turtle_name, True, colors)
             self._active_turtle.set_heading(0.0, False)
-            self._active_turtle.set_xy((0.0, 0.0), False, pendown=False)
+            self._active_turtle.set_xy(0.0, 0.0, share=False, pendown=False)
             self._active_turtle.set_pen_state(True)
         elif colors is not None:
             self._active_turtle = self.get_turtle(turtle_name, False)
@@ -333,17 +333,21 @@ class Turtle:
             return
         self._heading %= 360
 
+        self._update_sprite_heading()
+
+        if self._turtles.turtle_window.sharing() and share:
+            event = 'r|%s' % (data_to_string([self._turtles.turtle_window.nick,
+                                              round_int(self._heading)]))
+            self._turtles.turtle_window.send_event(event)
+
+    def _update_sprite_heading(self):
+        ''' Update the sprite to reflect the current heading '''
         i = (int(self._heading + 5) % 360) / (360 / SHAPES)
         if not self._hidden and self.spr is not None:
             try:
                 self.spr.set_shape(self._shapes[i])
             except IndexError:
                 self.spr.set_shape(self._shapes[0])
-
-        if self._turtles.turtle_window.sharing() and share:
-            event = 'r|%s' % (data_to_string([self._turtles.turtle_window.nick,
-                                              round_int(self._heading)]))
-            self._turtles.turtle_window.send_event(event)
 
     def set_color(self, color=None, share=True):
         ''' Set the pen color for this turtle. '''
@@ -489,7 +493,7 @@ class Turtle:
             self.spr.set_layer(TURTLE_LAYER)
             self._hidden = False
         self.move_turtle_spr((self._x, self._y))
-        self.set_heading(self._heading)
+        self.set_heading(self._heading, share=False)
         if self.label_block is not None:
             self.label_block.spr.set_layer(TURTLE_LAYER + 1)
 
@@ -524,6 +528,8 @@ class Turtle:
                          self._turtles.turtle_window.running_sugar)
             return
         self._heading %= 360
+
+        self._update_sprite_heading()
 
         if self._turtles.turtle_window.sharing() and share:
             event = 'r|%s' % (data_to_string([self._turtles.turtle_window.nick,
@@ -562,16 +568,15 @@ class Turtle:
                                               int(distance)]))
             self._turtles.turtle_window.send_event(event)
 
-    def set_xy(self, pos, share=True, pendown=True, dragging=False):
+    def set_xy(self, x, y, share=True, pendown=True, dragging=False):
         old = self.get_xy()
-
         try:
             if dragging:
-                xcor = pos[0]
-                ycor = pos[1]
+                xcor = x
+                ycor = y
             else:
-                xcor = pos[0] * self._turtles.turtle_window.coord_scale
-                ycor = pos[1] * self._turtles.turtle_window.coord_scale
+                xcor = x * self._turtles.turtle_window.coord_scale
+                ycor = y * self._turtles.turtle_window.coord_scale
         except (TypeError, ValueError):
             debug_output('bad value sent to %s' % (__name__),
                          self._turtles.turtle_window.running_sugar)

@@ -1,3 +1,31 @@
+191
+
+ENHANCEMENTS:
+* New sample programs (Kyoto flowers)
+* New translations
+
+BUG FIX:
+* Fixed collaboration bug (#4631)
+
+190
+
+ENHANCEMENT:
+* Set maximum number of participants
+
+BUG FIX:
+* Fix problem with null index when action and store-in blocks are
+  missing arguments.
+
+189
+
+ENHANCEMENT:
+* New sample project
+
+BUG FIXES:
+* Fix alignment problem with GNOME version
+* Fix problem with default coordinate system
+
+
 188
 
 ENHANCEMENT:

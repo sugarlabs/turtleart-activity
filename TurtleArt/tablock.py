@@ -555,7 +555,7 @@ class Block:
         if self.spr is None:
             return
         if isinstance(self.name, unicode):
-            self.name = self.name.encode('ascii', 'replace')
+            self.name = self.name.encode('utf-8')
         if self.name in content_blocks:
             n = len(self.values)
             if n == 0:
@@ -636,7 +636,7 @@ class Block:
         self.svg.set_stroke_width(STANDARD_STROKE_WIDTH)
         self.svg.clear_docks()
         if isinstance(self.name, unicode):
-            self.name = self.name.encode('ascii', 'replace')
+            self.name = self.name.encode('utf-8')
         for k in block_styles.keys():
             if self.name in block_styles[k]:
                 if isinstance(self.block_methods[k], list):

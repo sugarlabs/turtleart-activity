@@ -552,7 +552,7 @@ Would you like to save before quitting?'))
         filename, self.tw.load_save_folder = get_save_name(
             save_type, self.tw.load_save_folder, 'logosession')
         if isinstance(filename, unicode):
-            filename = filename.encode('ascii', 'replace')
+            filename = filename.encode('utf-8')
         if filename is not None:
             f = file(filename, 'w')
             f.write(logocode)
@@ -579,7 +579,7 @@ Would you like to save before quitting?'))
         if self._setting_gconf_overrides:
             return
         if self.tw.coord_scale == 1:
-            self.tw.coord_scale = int(self.tw.height / 40.)
+            self.tw.coord_scale = self.tw.height / 40
             self.tw.update_overlay_position()
             if self.tw.cartesian is True:
                 self.tw.overlay_shapes['Cartesian_labeled'].hide()
