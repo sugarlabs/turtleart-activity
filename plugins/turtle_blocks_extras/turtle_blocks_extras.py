@@ -998,7 +998,6 @@ Journal objects'))
         if hasattr(self.tw, 'macros_path') and \
                 os.path.exists(self.tw.macros_path):
             files = glob.glob(os.path.join(self.tw.macros_path, '*.tb'))
-            debug_output('making myblocks palette', self.tw.running_sugar)
             if len(files) > 0:
                 debug_output('creating %s palette' % _('my blocks'),
                              self.tw.running_sugar)
