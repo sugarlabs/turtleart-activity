@@ -619,6 +619,8 @@ Would you like to save before quitting?'))
 
     def _do_hover_help_off_cb(self, button):
         ''' Turn hover help off '''
+        if self.tw.no_help:  # Debounce
+            return
         self.tw.no_help = True
         self.tw.last_label = None
         if self.tw.status_spr is not None:
