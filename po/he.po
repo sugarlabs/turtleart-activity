@@ -2,8 +2,21 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#, fuzzy
 msgid ""
 msgstr ""
+"#-#-#-#-#  he.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-06-19 00:33-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 1.7.0\n"
+"#-#-#-#-#  he.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-05-17 00:31-0400\n"
@@ -18,161 +31,141 @@ msgstr ""
 "X-Generator: Pootle 2.0.5\n"
 
 #. TRANS: "name" option from activity.info file
-#, fuzzy
-msgid "TurtleBlocks"
-msgstr "בלוקי צב"
-
 #. TRANS: "summary" option from activity.info file
 #. TRANS: "description" option from activity.info file
-msgid ""
-"A Logo-inspired turtle that draws colorful pictures with snap-together "
-"visual programming blocks"
+msgid "turtleart-extras (master)"
 msgstr ""
 
-#: TurtleArt/tabasics.py:119
-msgid "Palette of turtle commands"
-msgstr "לוח פקודות-צב"
-
-#: TurtleArt/tabasics.py:124
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:740
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:751
-msgid "forward"
-msgstr "קדימה"
-
-#: TurtleArt/tabasics.py:128
-msgid "moves turtle forward"
-msgstr "מזיז את הצב קדימה"
-
-#: TurtleArt/tabasics.py:135
-msgid "back"
-msgstr "אחורה"
-
-#: TurtleArt/tabasics.py:139
-msgid "moves turtle backward"
-msgstr "מזיז את הצב אחורה"
-
-#: TurtleArt/tabasics.py:147
-msgid "clean"
-msgstr "נקה"
-
-#: TurtleArt/tabasics.py:150
-msgid "clears the screen and reset the turtle"
-msgstr "מנקה את המסך ומחזיר את הצב למצב התחלתי"
-
-#: TurtleArt/tabasics.py:158
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:871
-msgid "left"
-msgstr "שמאלה"
-
-#: TurtleArt/tabasics.py:162
-msgid "turns turtle counterclockwise (angle in degrees)"
-msgstr "מסובב את הצב נגד כיוון השעון (זווית במעלות)"
-
-#: TurtleArt/tabasics.py:170
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:895
-msgid "right"
-msgstr "ימינה"
-
-#: TurtleArt/tabasics.py:174
-msgid "turns turtle clockwise (angle in degrees)"
-msgstr "מסובב את הצב עם כיוון השעון (זווית במעלות)"
-
-#: TurtleArt/tabasics.py:182
-msgid "arc"
-msgstr "קשת"
-
-#: TurtleArt/tabasics.py:182
-msgid "angle"
-msgstr "זווית"
-
-#: TurtleArt/tabasics.py:182
-msgid "radius"
-msgstr "רדיוס"
-
-#: TurtleArt/tabasics.py:186
-msgid "moves turtle along an arc"
-msgstr "מזיז את הצב לאורך קשת"
-
-#: TurtleArt/tabasics.py:195 TurtleArt/tabasics.py:261
-msgid "set xy"
-msgstr "קבע ערך XY"
-
-#: TurtleArt/tabasics.py:195 TurtleArt/tabasics.py:261
-msgid "x"
-msgstr "x"
-
-#: TurtleArt/tabasics.py:195 TurtleArt/tabasics.py:261
-msgid "y"
-msgstr "y"
-
-#: TurtleArt/tabasics.py:199 TurtleArt/tabasics.py:265
-msgid ""
-"moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
-msgstr "מזיז את הצב למיקום xcor,ycor;(0,0) הוא מיקום מרכז המסך."
-
-#: TurtleArt/tabasics.py:209
-msgid "set heading"
-msgstr "קבע אזימוט (כיוון)"
-
-#: TurtleArt/tabasics.py:213
-msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
-msgstr "קובע ערך לכיוון (אזימוט) של הצב (0 הוא הכיוון של חלקו העליון של המסך)."
-
-#: TurtleArt/tabasics.py:221 TurtleArt/tawindow.py:4105
-msgid "xcor"
-msgstr "xcor"
-
-#: TurtleArt/tabasics.py:222
-msgid ""
-"holds current x-coordinate value of the turtle (can be used in place of a "
-"number block)"
-msgstr "מכיל את קוארדינטת x הנוכחית של הצב (יכול לשמש במקום בלוק מסוג מספר)"
-
-#: TurtleArt/tabasics.py:232 TurtleArt/tawindow.py:4106
-msgid "ycor"
-msgstr "ycor"
-
-#: TurtleArt/tabasics.py:233
-msgid ""
-"holds current y-coordinate value of the turtle (can be used in place of a "
-"number block)"
-msgstr "מכיל את קוארדינטת y הנוכחית של הצב (יכול לשמש במקום בלוק מסוג מספר)"
-
-#: TurtleArt/tabasics.py:243 TurtleArt/tawindow.py:4106
-msgid "heading"
-msgstr "כיוון (אזימוט)"
-
-#: TurtleArt/tabasics.py:244
-msgid ""
-"holds current heading value of the turtle (can be used in place of a number "
-"block)"
+#: taextras.py:37
+msgid "Turtle Blocks"
 msgstr ""
-"מכיל את הערך הנוכחי של כיוון (אזימוט) הצב (יכול לשמש במקום בלוק מסוג מספר)"
 
-#: TurtleArt/tabasics.py:278
-msgid "Palette of pen commands"
-msgstr "לוח פקודות עט"
+#: taextras.py:38
+msgid "Turtle Art"
+msgstr "ציורי צב"
 
-#: TurtleArt/tabasics.py:283 TurtleArt/tabasics.py:294
-msgid "fill screen"
-msgstr "מלא מסך"
+#: taextras.py:42
+msgid "Turtle Art Mini"
+msgstr "מיני ציור-צב"
 
-#: TurtleArt/tabasics.py:283 TurtleArt/tabasics.py:294
-#: TurtleArt/tabasics.py:344
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1197
-msgid "color"
-msgstr "צבע"
+#: taextras.py:46
+msgid "Turtle Confusion"
+msgstr "בלבול צב"
 
-#: TurtleArt/tabasics.py:283 TurtleArt/tabasics.py:295
-#: TurtleArt/tabasics.py:354
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1193
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1198
-msgid "shade"
-msgstr "גוון צבע"
+#: taextras.py:47 taextras.py:52
+msgid "Select a challenge"
+msgstr "בחר אתגר"
 
-#: TurtleArt/tabasics.py:287 TurtleArt/tabasics.py:299
-msgid "fills the background with (color, shade)"
-msgstr "מלא את הרקע עם (צבע, גוון)"
+#: taextras.py:51
+msgid "Amazonas Tortuga"
+msgstr ""
+
+#: taextras.py:58
+msgid "Palette of Mexican pesos"
+msgstr ""
+
+#: taextras.py:59
+msgid "Palette of Colombian pesos"
+msgstr ""
+
+#: taextras.py:60
+msgid "Palette of Rwandan francs"
+msgstr ""
+
+#: taextras.py:61
+msgid "Palette of US dollars"
+msgstr ""
+
+#: taextras.py:62
+msgid "Palette of Australian dollars"
+msgstr ""
+
+#: taextras.py:63
+msgid "Palette of Paraguayan Guaranies"
+msgstr ""
+
+#: taextras.py:64
+msgid "Palette of Peruvian Nuevo Soles"
+msgstr ""
+
+#: taextras.py:65
+msgid "Palette of Uruguayan Pesos"
+msgstr ""
+
+#. TRANS: Butia is a Robot Project from Uruguay
+#. (http://www.fing.edu.uy/inco/proyectos/butia/)
+#: taextras.py:71
+msgid "TurtleBots"
+msgstr ""
+
+#. TRANS: summary of TurtleBots activity
+#: taextras.py:73
+msgid "TurtleBlocks with Butia, Lego NxT, WeDo, Arduino, FollowMe plugins"
+msgstr ""
+
+#: taextras.py:74
+msgid "ERROR: The speed must be a value between 0 and 1023"
+msgstr ""
+
+#: taextras.py:75
+msgid "ERROR: The pin must be between 1 and 8"
+msgstr ""
+
+#: taextras.py:76
+msgid "ERROR: The value must be 0 or 1, LOW or HIGH"
+msgstr ""
+
+#: taextras.py:77
+msgid "ERROR: The mode must be INPUT or OUTPUT."
+msgstr ""
+
+#: taextras.py:78 taextras.py:79
+msgid "turns LED on and off: 1 means on, 0 means off"
+msgstr ""
+
+#: taextras.py:80
+msgid "returns the gray level as a value between 0 and 65535"
+msgstr ""
+
+#: taextras.py:81
+msgid "returns 1 when the button is pressed and 0 otherwise"
+msgstr ""
+
+#: taextras.py:82
+msgid "returns the light level as a value between 0 and 65535"
+msgstr ""
+
+#: taextras.py:83
+msgid "returns the distance as a value between 0 and 65535"
+msgstr ""
+
+#: taextras.py:84
+msgid "returns the resistance value (ohms)"
+msgstr ""
+
+#: taextras.py:85
+msgid "returns the voltage value (volts)"
+msgstr ""
+
+#: taextras.py:86
+msgid "returns the temperature"
+msgstr ""
+
+#: taextras.py:87
+#, fuzzy
+msgid "returns 1 when the sensors detects a magnetic field, 0 otherwise"
+msgstr ""
+"#-#-#-#-#  he.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  he.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"מחזיר 1 כאשר החיישן מזהה שדה מגנטי, 0 אחרת."
+
+#: taextras.py:88
+msgid "LED"
+msgstr "נורית LED"
+
+#: taextras.py:89
+msgid "button"
+msgstr ""
 
 #: TurtleArt/tabasics.py:295 TurtleArt/tabasics.py:363
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1194
@@ -180,526 +173,1467 @@ msgstr "מלא את הרקע עם (צבע, גוון)"
 msgid "gray"
 msgstr "אפור"
 
-#: TurtleArt/tabasics.py:309
-msgid "set color"
-msgstr "קבע צבע"
+#: taextras.py:91 taextras.py:356
+#, fuzzy
+msgid "light"
+msgstr "ימינה"
 
-#: TurtleArt/tabasics.py:313
-msgid "sets color of the line drawn by the turtle"
-msgstr "קבע את צבע הקו שמצייר הצב"
+#: taextras.py:92
+msgid "temperature"
+msgstr "טמפרטורה"
 
-#: TurtleArt/tabasics.py:321
-msgid "set shade"
-msgstr "קבע גוון"
+#: taextras.py:93 taextras.py:330
+msgid "distance"
+msgstr "מרחק"
 
-#: TurtleArt/tabasics.py:325
-msgid "sets shade of the line drawn by the turtle"
-msgstr "קובע את הגוון לצבע הקו שמצייר הצב"
+#: taextras.py:94 plugins/audio_sensors/audio_sensors.py:151
+#: plugins/audio_sensors/audio_sensors.py:165
+#: plugins/audio_sensors/audio_sensors.py:179
+#: plugins/audio_sensors/audio_sensors.py:193
+msgid "resistance"
+msgstr "התנגדות"
 
-#: TurtleArt/tabasics.py:333
-msgid "set gray"
-msgstr "קבע אפור"
+#: taextras.py:95 plugins/audio_sensors/audio_sensors.py:157
+#: plugins/audio_sensors/audio_sensors.py:171
+#: plugins/audio_sensors/audio_sensors.py:185
+#: plugins/audio_sensors/audio_sensors.py:199
+msgid "voltage"
+msgstr "רמת מתח"
 
-#: TurtleArt/tabasics.py:336
-msgid "sets gray level of the line drawn by the turtle"
-msgstr "קובע את גוון האפור של הקו שמצייר הצב"
+#: taextras.py:96
+msgid "Butia Robot"
+msgstr "רובוט Butia"
 
-#: TurtleArt/tabasics.py:345
-msgid "holds current pen color (can be used in place of a number block)"
-msgstr "מכיל את הערך הנוכחי של צבע העט (יכול לשמש במקום בלוק מסוג מספר)"
-
-#: TurtleArt/tabasics.py:355
-msgid "holds current pen shade"
-msgstr "מכיל את הערך הנוכחי של גוון הצבע של העט"
-
-#: TurtleArt/tabasics.py:364
-msgid "holds current gray level (can be used in place of a number block)"
-msgstr "מכיל את הערך הנוכחי של גוון האפור (יכול לשמש במקום בלוק מסוג מספר)"
-
-#: TurtleArt/tabasics.py:372
-msgid "pen up"
-msgstr "הרם עט"
-
-#: TurtleArt/tabasics.py:375
-msgid "Turtle will not draw when moved."
-msgstr "מסלול הצב כאשר הוא נע יהיה מוסתר."
-
-#: TurtleArt/tabasics.py:381
-msgid "pen down"
-msgstr "הורד עט"
-
-#: TurtleArt/tabasics.py:384
-msgid "Turtle will draw when moved."
-msgstr "מסלול הצב כאשר הוא נע ייראה על המסך."
-
-#: TurtleArt/tabasics.py:390
-msgid "set pen size"
-msgstr "קבע עובי עט"
-
-#: TurtleArt/tabasics.py:394
-msgid "sets size of the line drawn by the turtle"
-msgstr "קבע את עובי הקו שהצב יצייר"
-
-#: TurtleArt/tabasics.py:404
-msgid "start fill"
-msgstr "התחל מילוי"
-
-#: TurtleArt/tabasics.py:406
-msgid "starts filled polygon (used with end fill block)"
-msgstr "התחל מצולע עם מילוי-צבע (משמש יחד עם בלוק סיים מצולע עם מילוי-צבע)"
-
-#: TurtleArt/tabasics.py:413
-msgid "end fill"
-msgstr "סיים מילוי"
-
-#: TurtleArt/tabasics.py:415
-msgid "completes filled polygon (used with start fill block)"
-msgstr "משלים מצולע עם מילוי-צבע (משמש יחד עם בלוק התחל מצולע עם מילוי-צבע)"
-
-#: TurtleArt/tabasics.py:422
-msgid "pen size"
-msgstr "עובי עט"
-
-#: TurtleArt/tabasics.py:423
-msgid "holds current pen size (can be used in place of a number block)"
-msgstr "מכיל את הערך הנוכחי של עובי העט (יכול לשמש במקום בלוק מסוג מספר)"
-
-#: TurtleArt/tabasics.py:437
-msgid "Palette of pen colors"
-msgstr "לוח צבעי עט"
-
-#: TurtleArt/tabasics.py:439
-msgid "red"
-msgstr "אדום"
-
-#: TurtleArt/tabasics.py:440
-msgid "orange"
-msgstr "כתום"
-
-#: TurtleArt/tabasics.py:442
-msgid "yellow"
-msgstr "צהוב"
-
-#: TurtleArt/tabasics.py:444
-msgid "green"
-msgstr "ירוק"
-
-#: TurtleArt/tabasics.py:445
-msgid "cyan"
-msgstr "ציאן"
-
-#: TurtleArt/tabasics.py:446
-msgid "blue"
-msgstr "כחול"
-
-#: TurtleArt/tabasics.py:447
-msgid "purple"
-msgstr "סגול"
-
-#: TurtleArt/tabasics.py:449
-msgid "white"
-msgstr "לבן"
-
-#: TurtleArt/tabasics.py:450
-msgid "black"
-msgstr "שחור"
-
-#: TurtleArt/tabasics.py:456
-msgid "set text color"
-msgstr "קבע צבע טקסט (מלל)"
-
-#: TurtleArt/tabasics.py:459
-msgid "sets color of text drawn by the turtle"
-msgstr "קבע את בצע הטקסט (מלל) שיצייר הצב"
-
-#: TurtleArt/tabasics.py:467
-msgid "set text size"
-msgstr "קבע גודל טקסט (מלל)"
-
-#: TurtleArt/tabasics.py:470
-msgid "sets size of text drawn by the turtle"
-msgstr "קובע את גודל הטקסט (מלל) שיצייר הצב"
-
-#: TurtleArt/tabasics.py:553
-msgid "Palette of numeric operators"
-msgstr "לוח פעולות חשבון"
-
-#: TurtleArt/tabasics.py:559
-msgid "plus"
-msgstr "פלוס"
-
-#: TurtleArt/tabasics.py:563
-msgid "adds two alphanumeric inputs"
-msgstr "סכום שתי כניסות אלפא-נומריות"
-
-#: TurtleArt/tabasics.py:571
-msgid "minus"
-msgstr "מינוס"
-
-#: TurtleArt/tabasics.py:574
-msgid "subtracts bottom numeric input from top numeric input"
-msgstr "מחסיר ערך מספרי של כניסה תחתונה מערך מספרי של כניסה עליונה"
-
-#: TurtleArt/tabasics.py:585
-msgid "multiply"
-msgstr "כפל"
-
-#: TurtleArt/tabasics.py:588
-msgid "multiplies two numeric inputs"
-msgstr "מכפיל שתי כניסות מספריות"
-
-#: TurtleArt/tabasics.py:597
-msgid "divide"
-msgstr "חילוק"
-
-#: TurtleArt/tabasics.py:600
-msgid ""
-"divides top numeric input (numerator) by bottom numeric input (denominator)"
+#: taextras.py:97
+msgid "refresh Butia"
 msgstr ""
-"מחלק את הערך המספרי של הכניסה העליונה (מונה) בזו של הכניסה התחתונה (מכנה)"
 
-#: TurtleArt/tabasics.py:610
-msgid "identity"
-msgstr "זהות (יחידה)"
+#: taextras.py:98
+msgid "refresh the state of the Butia palette and blocks"
+msgstr ""
 
-#: TurtleArt/tabasics.py:612
-msgid "identity operator used for extending blocks"
-msgstr "אופרטור זהות (יחידה) משמש להרחבת פונקציונליות של בלוקים"
+#. TRANS: This string is shorthand for "battery charge of Butia"
+#: taextras.py:100
+msgid "battery charge Butia"
+msgstr ""
 
-#: TurtleArt/tabasics.py:620 TurtleArt/tabasics.py:621
-msgid "mod"
+#: taextras.py:101
+msgid ""
+"returns the battery charge in volts. If no motors present, it returns 255"
+msgstr ""
+
+#. TRANS: This string is shorthand for "speed of Butia"
+#: taextras.py:103
+msgid "speed Butia"
+msgstr ""
+
+#: taextras.py:104
+msgid "set the speed of the Butia motors"
+msgstr ""
+
+#: taextras.py:105
+msgid "move Butia"
+msgstr ""
+
+#: taextras.py:106 TurtleArt/tabasics.py:158
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:871
+msgid "left"
+msgstr "שמאלה"
+
+#: TurtleArt/tabasics.py:170
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:895
+msgid "right"
+msgstr "ימינה"
+
+#: taextras.py:108
+msgid "moves the Butia motors at the specified speed"
+msgstr ""
+
+#: taextras.py:109
+msgid "stop Butia"
+msgstr ""
+
+#: taextras.py:110
+msgid "stop the Butia robot"
+msgstr ""
+
+#. TRANS: This string is shorthand for "move Butia forward"
+#: taextras.py:112
+msgid "forward Butia"
+msgstr ""
+
+#: taextras.py:113
+msgid "move the Butia robot forward"
+msgstr ""
+
+#. TRANS: This string is shorthand for "turn Butia left"
+#: taextras.py:115
+msgid "left Butia"
+msgstr ""
+
+#: taextras.py:116
+msgid "turn the Butia robot at left"
+msgstr ""
+
+#. TRANS: This string is shorthand for "turn Butia right"
+#: taextras.py:118
+msgid "right Butia"
+msgstr ""
+
+#: taextras.py:119
+msgid "turn the Butia robot at right"
+msgstr ""
+
+#. TRANS: This string is shorthand for "move Butia backward"
+#: taextras.py:121
+msgid "backward Butia"
+msgstr ""
+
+#: taextras.py:122
+msgid "move the Butia robot backward"
+msgstr ""
+
+#: taextras.py:123
+msgid "Butia Robot extra blocks"
+msgstr ""
+
+#: taextras.py:124
+msgid "hack pin mode"
+msgstr ""
+
+#: taextras.py:125 taextras.py:293 taextras.py:459
+msgid "pin"
+msgstr ""
+
+#: taextras.py:126 taextras.py:460
+#, fuzzy
+msgid "mode"
 msgstr "מודולו"
 
-#: TurtleArt/tabasics.py:624
-msgid "modular (remainder) operator"
-msgstr "אופרטור מודולו (שארית)"
-
-#: TurtleArt/tabasics.py:631
-msgid "√"
-msgstr "√"
-
-#: TurtleArt/tabasics.py:632
-msgid "square root"
-msgstr "שורש ריבועי"
-
-#: TurtleArt/tabasics.py:635
-msgid "calculates square root"
-msgstr "חשב שורש ריבועי"
-
-#: TurtleArt/tabasics.py:642
-msgid "random"
-msgstr "מספר אקראי"
-
-#: TurtleArt/tabasics.py:642
-msgid "min"
-msgstr "מינימום"
-
-#: TurtleArt/tabasics.py:642
-msgid "max"
-msgstr "מקסימום"
-
-#: TurtleArt/tabasics.py:646
-msgid "returns random number between minimum (top) and maximum (bottom) values"
+#: taextras.py:127
+msgid "Select the pin function (INPUT, OUTPUT)."
 msgstr ""
-"החזר מספר אקראי בין ערך מינימום (כניסה עליונה) לערך מקסימום (כניסה תחתונה)"
 
-#: TurtleArt/tabasics.py:658
-msgid "number"
-msgstr "מספר"
-
-#: TurtleArt/tabasics.py:659
-msgid "used as numeric input in mathematic operators"
-msgstr "משמש כערך מספרי בכניסה לפעולות חשבון"
-
-#: TurtleArt/tabasics.py:667
-msgid "greater than"
-msgstr "גדול מ"
-
-#: TurtleArt/tabasics.py:670
-msgid "logical greater-than operator"
-msgstr "גדול מ (אופרטור לוגי)"
-
-#: TurtleArt/tabasics.py:679
-msgid "less than"
-msgstr "קטן מ"
-
-#: TurtleArt/tabasics.py:683
-msgid "logical less-than operator"
-msgstr "קטן מ (אופרטור לוגי)"
-
-#: TurtleArt/tabasics.py:691
-msgid "equal"
-msgstr "שווה"
-
-#: TurtleArt/tabasics.py:695
-msgid "logical equal-to operator"
-msgstr "שווה (אופרטור לוגי)"
-
-#: TurtleArt/tabasics.py:701
-msgid "not"
-msgstr "לא"
-
-#: TurtleArt/tabasics.py:704
-msgid "logical NOT operator"
-msgstr "אופרטור לוגי NOT (~)"
-
-#: TurtleArt/tabasics.py:710 TurtleArt/tabasics.py:713
-msgid "and"
-msgstr "and"
-
-#: TurtleArt/tabasics.py:714
-msgid "logical AND operator"
-msgstr "אופרטור לוגי AND (&&)"
-
-#: TurtleArt/tabasics.py:721 TurtleArt/tabasics.py:724
-msgid "or"
-msgstr "or"
-
-#: TurtleArt/tabasics.py:725
-msgid "logical OR operator"
-msgstr "אופרטור לוגי OR (||)"
-
-#: TurtleArt/tabasics.py:734
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:104
-msgid "Palette of flow operators"
-msgstr "לוח פעולות בקרת זרימה"
-
-#: TurtleArt/tabasics.py:739
-msgid "wait"
-msgstr "המתן"
-
-#: TurtleArt/tabasics.py:743
-msgid "pauses program execution a specified number of seconds"
-msgstr "משהה את ריצת התוכנית למספר השניות הנקוב"
-
-#: TurtleArt/tabasics.py:750
-msgid "forever"
-msgstr "בלי-סוף"
-
-#: TurtleArt/tabasics.py:754
-msgid "loops forever"
-msgstr "חוזר על פעולות הלולאה בלי-סוף"
-
-#: TurtleArt/tabasics.py:761 TurtleArt/tabasics.py:765
-msgid "repeat"
-msgstr "חזור"
-
-#: TurtleArt/tabasics.py:766
-msgid "loops specified number of times"
-msgstr "חוזר על ביצוע הלולאה מספר נקוב של פעמים"
-
-#: TurtleArt/tabasics.py:772 TurtleArt/tabasics.py:785
-msgid "if"
-msgstr "אם"
-
-#: TurtleArt/tabasics.py:772 TurtleArt/tabasics.py:785
-msgid "then"
-msgstr "אז"
-
-#: TurtleArt/tabasics.py:775
-msgid "if then"
-msgstr "אם-אז"
-
-#: TurtleArt/tabasics.py:777
-msgid "if-then operator that uses boolean operators from Numbers palette"
-msgstr "אופרטור אם\\אז שמשתמש בבלוקים של אופרטורים בוליאניים מלוח פעולות מספריות"
-
-#: TurtleArt/tabasics.py:785
-msgid "else"
-msgstr "ואם לא"
-
-# אחרת ואם לא will be understood more easily by children is more formal, but
-#: TurtleArt/tabasics.py:789 TurtleArt/tabasics.py:797
-msgid "if then else"
-msgstr "אם-אז-ואם לא"
-
-#: TurtleArt/tabasics.py:790 TurtleArt/tabasics.py:798
-msgid "if-then-else operator that uses boolean operators from Numbers palette"
+#: taextras.py:128
+msgid "write hack pin Butia"
 msgstr ""
-"אופרטור אם-אז-אחרת שמשתמש בבלוקים של אופרטורים בוליאניים מלוח פעולות מספריות"
 
-#: TurtleArt/tabasics.py:807
-msgid "horizontal space"
-msgstr "רווח אופקי"
-
-#: TurtleArt/tabasics.py:808
-msgid "jogs stack right"
-msgstr "מסיט את המחסנית ימינה"
-
-#: TurtleArt/tabasics.py:815
-msgid "vertical space"
-msgstr "רווח אנכי"
-
-#: TurtleArt/tabasics.py:816
-msgid "jogs stack down"
-msgstr "מסיט את המחסנית מטה"
-
-#: TurtleArt/tabasics.py:822
-msgid "stop action"
-msgstr "עצור פעולה"
-
-#: TurtleArt/tabasics.py:825
-msgid "stops current action"
-msgstr "עוצר את הפעולה הנוכחית"
-
-#: TurtleArt/tabasics.py:834
-msgid "Palette of variable blocks"
-msgstr "לוח של בלוקי משתנים"
-
-#: TurtleArt/tabasics.py:839 pysamples/grecord.py:213
-msgid "start"
-msgstr "התחל"
-
-#: TurtleArt/tabasics.py:842
-msgid "connects action to toolbar run buttons"
-msgstr "מחבר את הפעולה לכפתורי ריצה בסרגל-כלים"
-
-#: TurtleArt/tabasics.py:849 TurtleArt/tabasics.py:850
-#: TurtleArt/tabasics.py:851
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:192
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:193
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:194
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:201
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:214
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:229
-msgid "text"
-msgstr "טקסט (מלל)"
-
-#: TurtleArt/tabasics.py:852
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:195
-msgid "string value"
-msgstr "ערך מחרוזת"
-
-#: TurtleArt/tabasics.py:856 TurtleArt/tabasics.py:859
-#: TurtleArt/tabasics.py:867 TurtleArt/tabasics.py:871
-#: TurtleArt/tawindow.py:1351 TurtleArt/tawindow.py:1448
-#: TurtleArt/tawindow.py:1461 TurtleArt/tawindow.py:2077
-#: TurtleArt/tawindow.py:4363
-msgid "action"
-msgstr "פעולה"
-
-#: TurtleArt/tabasics.py:861
-msgid "top of nameable action stack"
-msgstr "ראש מחסנית פעולות"
-
-#: TurtleArt/tabasics.py:872 TurtleArt/tawindow.py:4377
-msgid "invokes named action stack"
-msgstr "קורא למחסנית פעולות עם שם"
-
-#: TurtleArt/tabasics.py:879
-msgid "store in box 1"
-msgstr "שמור בקופסה 1"
-
-#: TurtleArt/tabasics.py:884
-msgid "stores numeric value in Variable 1"
-msgstr "שומר את הערך המספרי במשתנה 1"
-
-#: TurtleArt/tabasics.py:892
-msgid "store in box 2"
-msgstr "שמור בקופסה 2"
-
-#: TurtleArt/tabasics.py:897
-msgid "stores numeric value in Variable 2"
-msgstr "שומר את הערך המספרי במשתנה 2"
-
-#: TurtleArt/tabasics.py:905
-msgid "box 1"
-msgstr "תיבה 1"
-
-#: TurtleArt/tabasics.py:908
-msgid "Variable 1 (numeric value)"
-msgstr "משתנה 1 (ערך מספרי)"
-
-#: TurtleArt/tabasics.py:915
-msgid "box 2"
-msgstr "תיבה 2"
-
-#: TurtleArt/tabasics.py:918
-msgid "Variable 2 (numeric value)"
-msgstr "משתנה 2 (ערך מספרי)"
-
-#: TurtleArt/tabasics.py:924 TurtleArt/tawindow.py:4427
-msgid "store in"
-msgstr "שמור ב"
-
-#: TurtleArt/tabasics.py:924 TurtleArt/tabasics.py:939
-msgid "box"
-msgstr "תיבה"
-
-#: TurtleArt/tabasics.py:924 TurtleArt/tawindow.py:4427
+#: taextras.py:129 taextras.py:463 TurtleArt/tabasics.py:924
+#: TurtleArt/tawindow.py:4427
 msgid "value"
 msgstr "ערך"
 
-#: TurtleArt/tabasics.py:928 TurtleArt/tabasics.py:942
-#: TurtleArt/tawindow.py:1355 TurtleArt/tawindow.py:1486
-#: TurtleArt/tawindow.py:2081 TurtleArt/tawindow.py:4390
-#: TurtleArt/tawindow.py:4418
-msgid "my box"
-msgstr "התיבה שלי"
+#: taextras.py:130
+msgid "set a hack pin to 0 or 1"
+msgstr ""
 
-#: TurtleArt/tabasics.py:929 TurtleArt/tawindow.py:4432
-msgid "stores numeric value in named variable"
-msgstr "שומר את הערך המספרי במשתנה עם שם"
+#: taextras.py:131
+msgid "read hack pin Butia"
+msgstr ""
 
-#: TurtleArt/tabasics.py:945 TurtleArt/tawindow.py:4404
-msgid "named variable (numeric value)"
-msgstr "משתנה עם שם (ערך מספרי)"
+#: taextras.py:132
+msgid "read the value of a hack pin"
+msgstr ""
 
-#: TurtleArt/tabasics.py:952 TurtleArt/tabasics.py:971
-msgid "action 1"
-msgstr "פעולה 1"
+#: taextras.py:133 taextras.py:435
+msgid "HIGH"
+msgstr ""
 
-#: TurtleArt/tabasics.py:955
-msgid "top of Action 1 stack"
-msgstr "ראש מחסנית פעולה 1"
+#: taextras.py:134 taextras.py:472
+msgid "Set HIGH value for digital port."
+msgstr ""
 
-#: TurtleArt/tabasics.py:961 TurtleArt/tabasics.py:981
-msgid "action 2"
-msgstr "פעולה 2"
+#: taextras.py:135 taextras.py:437
+msgid "INPUT"
+msgstr ""
 
-#: TurtleArt/tabasics.py:964
-msgid "top of Action 2 stack"
-msgstr "ראש מחסנית פעולה 2"
+#: taextras.py:136
+msgid "Configure hack port for digital input."
+msgstr ""
 
-#: TurtleArt/tabasics.py:974
-msgid "invokes Action 1 stack"
-msgstr "קורא למחסנית פעולות 1"
+#: taextras.py:137 taextras.py:436
+msgid "LOW"
+msgstr ""
 
-#: TurtleArt/tabasics.py:984
-msgid "invokes Action 2 stack"
-msgstr "קורא למחסנית פעולות 2"
+#: taextras.py:138 taextras.py:475
+msgid "Set LOW value for digital port."
+msgstr ""
 
-#: TurtleArt/tabasics.py:992
-msgid "trash"
-msgstr "פח-אשפה"
+#: taextras.py:139 taextras.py:438
+msgid "OUTPUT"
+msgstr ""
 
-#: TurtleArt/tabasics.py:996
-msgid "empty trash"
-msgstr "רוקן פח-אשפה"
+#: taextras.py:140
+msgid "Configure hack port for digital output."
+msgstr ""
 
-#: TurtleArt/tabasics.py:997
-msgid "permanently deletes items in trash"
-msgstr "מחק סופית את כל הפריטים מפח האשפה"
+#: taextras.py:141
+msgid "Butia"
+msgstr ""
 
-#: TurtleArt/tabasics.py:1001
-msgid "restore all"
-msgstr "שחזר הכל"
+#: taextras.py:142
+#, python-format
+msgid "ERROR: The pin %s must be in OUTPUT mode."
+msgstr ""
 
-#: TurtleArt/tabasics.py:1002
-msgid "restore all blocks from trash"
-msgstr "שחזר את כל הבלוקים מפח האשפה"
+#: taextras.py:143
+#, python-format
+msgid "ERROR: The pin %s must be in INPUT mode."
+msgstr ""
 
-#: TurtleArt/tabasics.py:1006
-msgid "clear all"
-msgstr "נקה הכל"
+#: taextras.py:147
+msgid "Error importing Pygame. This plugin require Pygame 1.9"
+msgstr ""
 
-#: TurtleArt/tabasics.py:1007
-msgid "move all blocks to trash"
-msgstr "העבר את כל הבלוקים לפח האשפה"
+#: taextras.py:148
+#, fuzzy
+msgid "Error on initialization of the camera"
+msgstr ""
+"#-#-#-#-#  he.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  he.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"שגיאה באתחול המצלמה."
 
-#: TurtleArt/tacollaboration.py:152 TurtleArt/tawindow.py:2055
-#: TurtleArtActivity.py:751
-msgid "Share selected blocks"
+#: taextras.py:149
+msgid "No camera was found"
+msgstr ""
+
+#: taextras.py:150
+msgid "Error stopping camera"
+msgstr ""
+
+#: taextras.py:151
+msgid "Error starting camera"
+msgstr ""
+
+#. TRANS: The "mask" is used to restrict processing to a region in the image
+#: taextras.py:153
+msgid "Error in get mask"
+msgstr ""
+
+#: taextras.py:154
+msgid "FollowMe"
+msgstr "עקוב-אחרי"
+
+#: taextras.py:155
+msgid "refresh FollowMe"
+msgstr ""
+
+#: taextras.py:156
+msgid "Search for a connected camera."
+msgstr ""
+
+#. TRANS: the calibration is used to match an RGB color to a target
+#: taextras.py:158
+msgid "calibration"
+msgstr ""
+
+#: taextras.py:159
+msgid "store a personalized calibration"
+msgstr ""
+
+#: taextras.py:160
+msgid "return a personalized calibration"
+msgstr ""
+
+#: taextras.py:161
+msgid "follow"
+msgstr ""
+
+#: taextras.py:162
+msgid "follow a color or calibration"
+msgstr ""
+
+#: taextras.py:163 plugins/camera_sensor/camera_sensor.py:80
+#: plugins/camera_sensor/camera_sensor.py:93
+#: plugins/camera_sensor/camera_sensor.py:128
+#: plugins/camera_sensor/camera_sensor.py:141
+#: plugins/light_sensor/light_sensor.py:56
+#: plugins/light_sensor/light_sensor.py:63
+msgid "brightness"
+msgstr "בהירות"
+
+#: taextras.py:164
+msgid "set the camera brightness as a value between 0 to 255."
+msgstr ""
+
+#: taextras.py:165
+msgid "minimum pixels"
+msgstr ""
+
+#: taextras.py:166
+msgid "set the minimal number of pixels to follow"
+msgstr ""
+
+#: taextras.py:167
+msgid "threshold"
+msgstr ""
+
+#. TRANS: RGB color space (red, green, blue)
+#: taextras.py:169
+msgid "set a threshold for a RGB color"
+msgstr ""
+
+#: taextras.py:170
+msgid "camera mode"
+msgstr ""
+
+#. TRANS: RGB, YUV, and HSV are color spaces
+#: taextras.py:172
+msgid "set the color mode of the camera: RGB; YUV or HSV"
+msgstr ""
+
+#: taextras.py:173
+msgid "get brightness"
+msgstr ""
+
+#: taextras.py:174
+msgid "get the brightness of the ambient light"
+msgstr ""
+
+#: taextras.py:175
+msgid "average color"
+msgstr ""
+
+#: taextras.py:176
+msgid ""
+"if set to 0 then color averaging is off during calibration; for other values "
+"it is on"
+msgstr ""
+
+#: taextras.py:178
+msgid "x position"
+msgstr ""
+
+#: taextras.py:179
+msgid "return x position"
+msgstr ""
+
+#: taextras.py:180
+msgid "y position"
+msgstr ""
+
+#: taextras.py:181
+msgid "return y position"
+msgstr ""
+
+#: taextras.py:182
+msgid "pixels"
+msgstr ""
+
+#: taextras.py:183
+msgid "return the number of pixels of the biggest blob"
+msgstr ""
+
+#. TRANS: RGB color space (red, green, blue)
+#: taextras.py:185
+msgid "set the color mode of the camera to RGB"
+msgstr ""
+
+#. TRANS: YUV color space (luminance, chrominance)
+#: taextras.py:187
+msgid "set the color mode of the camera to YUV"
+msgstr ""
+
+#. TRANS: HSV color space (hue, saturation, value)
+#: taextras.py:189
+msgid "set the color mode of the camera to HSV"
+msgstr ""
+
+#: taextras.py:190
+msgid "empty calibration"
+msgstr ""
+
+#: taextras.py:191
+msgid "error in string conversion"
+msgstr ""
+
+#. TRANS: Pattern detection is a plugin that allow detect signals
+#. with the camera
+#: taextras.py:197
+msgid "Pattern detection"
+msgstr ""
+
+#: taextras.py:198
+msgid "Seeing signal"
+msgstr ""
+
+#: taextras.py:199
+msgid "Returns True if the signal is in front of the camera"
+msgstr ""
+
+#: taextras.py:200
+msgid "Distance to signal"
+msgstr ""
+
+#: taextras.py:201
+msgid "Returns the distance of the signal to the camera in millimeters"
+msgstr ""
+
+#. TRANS: SumBot is a robot programmed for "Sumo wrestling"
+#: taextras.py:206
+msgid "SumBot"
+msgstr ""
+
+#: taextras.py:207
+msgid "speed SumBot"
+msgstr ""
+
+#: taextras.py:208
+msgid "submit the speed to the SumBot"
+msgstr ""
+
+#: taextras.py:209
+msgid "set the default speed for the movement commands"
+msgstr ""
+
+#. TRANS: This string is shorthand for "move SumBot forward"
+#: taextras.py:211
+msgid "forward SumBot"
+msgstr ""
+
+#: taextras.py:212
+msgid "move SumBot forward"
+msgstr ""
+
+#. TRANS: This string is shorthand for "move SumBot backward"
+#: taextras.py:214
+msgid "backward SumBot"
+msgstr ""
+
+#: taextras.py:215
+msgid "move SumBot backward"
+msgstr ""
+
+#: taextras.py:216
+msgid "stop SumBot"
+msgstr ""
+
+#: taextras.py:217
+msgid "stop the SumBot"
+msgstr ""
+
+#. TRANS: This string is shorthand for "turn SumBot left"
+#: taextras.py:219
+msgid "left SumBot"
+msgstr ""
+
+#: taextras.py:220
+msgid "turn left the SumBot"
+msgstr ""
+
+#. TRANS: This string is shorthand for "move SumBot right"
+#: taextras.py:222
+msgid "right SumBot"
+msgstr ""
+
+#: taextras.py:223
+msgid "turn right the SumBot"
+msgstr ""
+
+#. TRANS: The angle to the center is the angle SumBot must turn to
+#. face the center of the playing field
+#: taextras.py:226
+msgid "angle to center"
+msgstr ""
+
+#. TRANS: dohyo is the playing field
+#: taextras.py:228
+msgid "get the angle to the center of the dohyo"
+msgstr ""
+
+#. TRANS: The angle to the center is the angle SumBot must turn to
+#. face the Enemy (opponent)
+#: taextras.py:231
+msgid "angle to Enemy"
+msgstr ""
+
+#: taextras.py:232
+msgid "get the angle to the Enemy"
+msgstr ""
+
+#. TRANS: This string is shorthand for "x coordinate of SumBot"
+#: taextras.py:234
+msgid "x coor. SumBot"
+msgstr ""
+
+#: taextras.py:235
+msgid "get the x coordinate of the SumBot"
+msgstr ""
+
+#. TRANS: This string is shorthand for "y coordinate of SumBot"
+#: taextras.py:237
+msgid "y coor. SumBot"
+msgstr ""
+
+#: taextras.py:238
+msgid "get the y coordinate of the SumBot"
+msgstr ""
+
+#. TRANS: This string is shorthand for "x coordinate of SumBot's enemy"
+#: taextras.py:240
+msgid "x coor. Enemy"
+msgstr ""
+
+#: taextras.py:241
+msgid "get the x coordinate of the Enemy"
+msgstr ""
+
+#. TRANS: This string is shorthand for "y coordinate of SumBot's enemy"
+#: taextras.py:243
+msgid "y coor. Enemy"
+msgstr ""
+
+#: taextras.py:244
+msgid "get the y coordinate of the Enemy"
+msgstr ""
+
+#. TRANS: This string is shorthand for "rotation of SumBot"
+#: taextras.py:246
+msgid "rotation SumBot"
+msgstr ""
+
+#: taextras.py:247
+msgid "get the rotation of the Sumbot"
+msgstr ""
+
+#. TRANS: This string is shorthand for "rotation of SumBot's enemy"
+#: taextras.py:249
+msgid "rotation Enemy"
+msgstr ""
+
+#: taextras.py:250
+msgid "get the rotation of the Enemy"
+msgstr ""
+
+#: taextras.py:251
+msgid "distance to center"
+msgstr ""
+
+#. TRANS: dohyo is the playing field
+#: taextras.py:253
+msgid "get the distance to the center of the dohyo"
+msgstr ""
+
+#: taextras.py:254
+msgid "distance to Enemy"
+msgstr ""
+
+#: taextras.py:255
+msgid "get the distance to the Enemy"
+msgstr ""
+
+#: taextras.py:256
+msgid "update information"
+msgstr "עדכן מידע"
+
+#: taextras.py:257
+#, fuzzy
+msgid "update information from the server"
+msgstr ""
+"#-#-#-#-#  he.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  he.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"מעדכן מידע מהשרת."
+
+#. #-#-#-#-#  he.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: Please use similar terms to those used in the Physics Activity
+#: taextras.py:262
+msgid "Palette of physics blocks"
+msgstr "לוח של בלוקי פיזיקה"
+
+#: taextras.py:263
+msgid "start polygon"
+msgstr "התחל מצולע"
+
+#: taextras.py:264
+msgid "Begin defining a new polygon based on the current Turtle xy position."
+msgstr "התחל להגדיר מצולע בהתבסס על מיקומו הנוכחי של הצב."
+
+#: taextras.py:266
+msgid "add point"
+msgstr "הוסף נקודה"
+
+#: taextras.py:267
+msgid ""
+"Add a new point to the current polygon based on the current Turtle xy "
+"position."
+msgstr "הוסף נקודה חדשה למצולע הנוכחי בהתבסס על מיקומו הנוכחי של הצב."
+
+#: taextras.py:269
+msgid "end polygon"
+msgstr "סיים מצולע"
+
+#: taextras.py:270
+msgid "Define a new polygon."
+msgstr "הגדר מצולע חדש."
+
+#: taextras.py:271
+msgid "end filled polygon"
+msgstr "סיים מצולע עם מילוי"
+
+#: taextras.py:272
+msgid "Not a simple polygon"
+msgstr "זהו אינו מצולע פשוט"
+
+#: taextras.py:273
+msgid "Define a new filled polygon."
+msgstr "הגדר מצולע חדש עם מילוי."
+
+#: taextras.py:274
+msgid "triangle"
+msgstr "משולש"
+
+#. #-#-#-#-#  he.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: base of a triangle
+#: taextras.py:276
+msgid "base"
+msgstr "בסיס"
+
+#: taextras.py:277 taextras.py:283
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:911
+msgid "height"
+msgstr "גובה"
+
+#: taextras.py:278
+msgid "Add a triangle object to the project."
+msgstr "הוסף אובייקט משולש לפרוייקט."
+
+#: taextras.py:279
+msgid "circle"
+msgstr "עיגול"
+
+#: taextras.py:280
+msgid "Add a circle object to the project."
+msgstr "הוסף אובייקט עיגול לפרוייקט."
+
+#: taextras.py:281
+msgid "rectangle"
+msgstr "מרובע"
+
+#: taextras.py:282 plugins/turtle_blocks_extras/turtle_blocks_extras.py:887
+msgid "width"
+msgstr "רוחב"
+
+#: taextras.py:284
+msgid "Add a rectangle object to the project."
+msgstr "הוסף אובייקט מרובע לפרוייקט."
+
+#: taextras.py:285
+msgid "reset"
+msgstr "אתחל"
+
+#: taextras.py:286
+msgid "Reset the project; clear the object list."
+msgstr "אתחל את הפרוייקט. נקה את רשימת האובייקטים."
+
+#: taextras.py:287
+msgid "motor"
+msgstr "מנוע"
+
+#. #-#-#-#-#  he.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: torque as in engine torque
+#: taextras.py:289
+msgid "torque"
+msgstr "מומנט-סיבוב"
+
+#: taextras.py:290
+msgid "speed"
+msgstr "מהירות"
+
+#: taextras.py:291
+msgid ""
+"Motor torque and speed range from 0 (off) to positive numbers; motor is "
+"placed on the most recent object created."
+msgstr ""
+
+#: taextras.py:294
+msgid "Pin an object down so that it cannot fall."
+msgstr ""
+
+#: taextras.py:295
+msgid "joint"
+msgstr ""
+
+#: taextras.py:296 TurtleArt/tabasics.py:195 TurtleArt/tabasics.py:261
+msgid "x"
+msgstr "x"
+
+#: taextras.py:297 TurtleArt/tabasics.py:195 TurtleArt/tabasics.py:261
+msgid "y"
+msgstr "y"
+
+#: taextras.py:298
+msgid ""
+"Join two objects together (the most recent object created and the object at "
+"point x, y)."
+msgstr "צרף שני אובייקטים (האובייקט האחרון שנוצר והאובייקט בנקודה x,y)."
+
+#: taextras.py:300
+msgid "save as Physics activity"
+msgstr ""
+
+#: taextras.py:301
+msgid "Save the project to the Journal as a Physics activity."
+msgstr "שמור את הפרוייקט ביומן כפעילות פיזיקה."
+
+#. TRANS: Here, gear means a toothed wheel, as in a clock-works
+#: taextras.py:303
+msgid "gear"
+msgstr ""
+
+#: taextras.py:304
+#, fuzzy
+msgid "Add a gear object to the project."
+msgstr "הוסף אובייקט עיגול לפרוייקט."
+
+#: taextras.py:305
+msgid "density"
+msgstr "צפיפות"
+
+#: taextras.py:306
+msgid ""
+"Set the density property for objects (density can be any positive number)."
+msgstr "קבע ערך לתכונת הצפיפות של אובייקטים (מספר חיובי)."
+
+#: taextras.py:308
+msgid "friction"
+msgstr "חיכוך"
+
+#: taextras.py:309
+msgid ""
+"Set the friction property for objects (value from 0 to 1, where 0 turns "
+"friction off and 1 is strong friction)."
+msgstr ""
+"קבע ערך לתכונת החיכוך של אובייקטים (ערכים בין 0 ל-1, 0 משמעו ללא חיכוך, 1 "
+"משמעו חיכוך רב)."
+
+#. #-#-#-#-#  he.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: bounciness is coefficient of restitution
+#: taextras.py:312
+msgid "bounciness"
+msgstr "מקדם תקומה"
+
+#: taextras.py:313
+msgid ""
+"Set the bounciness property for objects (a value from 0 to 1, where 0 means "
+"no bounce and 1 is very bouncy)."
+msgstr ""
+"קבע ערך למקדם התקומה של אובייקטים (ערכים בין 0 ל-1, 0 משמעו ללא קיפוץ, 1 "
+"משמעו נטייה חזקה לקיפוץ)."
+
+#. #-#-#-#-#  he.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: dynamic here means moving vs in a fixed position
+#: taextras.py:316
+msgid "dynamic"
+msgstr "דינאמי"
+
+#: taextras.py:317
+msgid ""
+"If dynamic = 1, the object can move; if dynamic = 0, it is fixed in position."
+msgstr "אם דינאמי=1 , האובייקט מסוגל לזוז. אם דינאמי=0, האובייקט רתוק למקומו."
+
+#. #-#-#-#-#  he.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: WeDo is a robotics product of the LEGO company
+#: taextras.py:323
+#, fuzzy
+msgid "Palette of WeDo blocks"
+msgstr "לוח של בלוקי חיישנים"
+
+#: taextras.py:324
+msgid "WeDo"
+msgstr ""
+
+#: taextras.py:325
+msgid "set current WeDo device"
+msgstr ""
+
+#: taextras.py:326
+msgid "number of WeDo devices"
+msgstr ""
+
+#: taextras.py:327
+msgid "tilt"
+msgstr "הטייה"
+
+#: taextras.py:328
+msgid ""
+"tilt sensor output: (-1 == no tilt, 0 == tilt forward, 3 == tilt back, 1 == "
+"tilt left, 2 == tilt right)"
+msgstr ""
+
+#. TRANS: This string is shorthand for "output of the distance sensor"
+#: taextras.py:332
+msgid "distance sensor output"
+msgstr ""
+
+#: taextras.py:333
+msgid "Motor A"
+msgstr ""
+
+#: taextras.py:334
+msgid "returns the current value of Motor A"
+msgstr ""
+
+#: taextras.py:335
+msgid "Motor B"
+msgstr ""
+
+#: taextras.py:336
+msgid "returns the current value of Motor B"
+msgstr ""
+
+#: taextras.py:337
+msgid "set the value for Motor A"
+msgstr ""
+
+#: taextras.py:338
+msgid "set the value for Motor B"
+msgstr ""
+
+#: taextras.py:339
+msgid "WeDo is unavailable"
+msgstr ""
+
+#. TRANS: e.g., Wedo 2 is unavailable, defaulting to 1
+#: taextras.py:341
+#, python-format
+msgid "WeDo %d is unavailable; defaulting to 1"
+msgstr ""
+
+#. TRANS: %(device)s and %(wedo_number)d are substitution strings;
+#. please leave untranslated
+#: taextras.py:344
+#, python-format
+msgid "%(device)s is unavailable on WeDo %(wedo_number)d"
+msgstr ""
+
+#. TRANS: Lego NXT is a robotics product of the LEGO company
+#: taextras.py:349
+msgid "Palette of LEGO NXT blocks of motors"
+msgstr ""
+
+#: taextras.py:350
+msgid "Palette of LEGO NXT blocks of sensors"
+msgstr ""
+
+#. TRANS: touch sensor (implemented as a button)
+#: taextras.py:352
+msgid "touch"
+msgstr ""
+
+#. TRANS: distance sensor (implemented using ultrasonics)
+#: taextras.py:354
+msgid "ultrasonic"
+msgstr ""
+
+#: taextras.py:355 TurtleArt/tabasics.py:283 TurtleArt/tabasics.py:294
+#: TurtleArt/tabasics.py:344
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1197
+msgid "color"
+msgstr "צבע"
+
+#: taextras.py:357 plugins/audio_sensors/audio_sensors.py:83
+#: plugins/audio_sensors/audio_sensors.py:98 pysamples/grecord.py:205
+msgid "sound"
+msgstr "צליל"
+
+#. TRANS: The brick is the NXT controller
+#: taextras.py:360
+msgid "Please check the connection with the brick"
+msgstr ""
+
+#: taextras.py:361
+#, python-format
+msgid "Invalid port '%s'. Port must be: PORT A, B or C"
+msgstr ""
+
+#: taextras.py:362
+#, python-format
+msgid "Invalid port '%s'. Port must be: PORT 1, 2, 3 or 4"
+msgstr ""
+
+#: taextras.py:363
+msgid "The value of power must be between -127 to 127"
+msgstr ""
+
+#: taextras.py:364
+#, python-format
+msgid "The parameter must be a integer, not '%s'"
+msgstr ""
+
+#: taextras.py:365
+msgid "An error has occurred: check all connections and try to reconnect"
+msgstr ""
+
+#: taextras.py:366
+#, python-format
+msgid "NXT found %s bricks"
+msgstr ""
+
+#: taextras.py:367
+msgid "NXT not found"
+msgstr ""
+
+#: taextras.py:368
+#, python-format
+msgid "Brick number %s was not found"
+msgstr ""
+
+#: taextras.py:369
+msgid "refresh NXT"
+msgstr ""
+
+#: taextras.py:370
+msgid "Search for a connected NXT brick."
+msgstr ""
+
+#: taextras.py:371
+msgid "NXT"
+msgstr ""
+
+#: taextras.py:372
+msgid "set current NXT device"
+msgstr ""
+
+#: taextras.py:373
+msgid "number of NXT devices"
+msgstr ""
+
+#: taextras.py:374
+msgid "brick name"
+msgstr ""
+
+#: taextras.py:375
+msgid "Get the name of a brick."
+msgstr ""
+
+#: taextras.py:376
+msgid "play tone"
+msgstr ""
+
+#: taextras.py:377
+msgid "frequency"
+msgstr ""
+
+#: taextras.py:378 plugins/turtle_blocks_extras/turtle_blocks_extras.py:451
+msgid "time"
+msgstr "זמן"
+
+#: taextras.py:379
+msgid "Play a tone at frequency for time."
+msgstr ""
+
+#. TRANS: turn is the action
+#: taextras.py:381
+msgid ""
+"turn motor\n"
+"\n"
+msgstr ""
+
+#: taextras.py:382
+#, fuzzy
+msgid "port"
+msgstr "פורט"
+
+#: taextras.py:383
+msgid "power"
+msgstr ""
+
+#. TRANS: rotations is quantity of turns
+#: taextras.py:385
+msgid "rotations"
+msgstr ""
+
+#: taextras.py:386
+msgid "turn a motor"
+msgstr ""
+
+#: taextras.py:387
+msgid ""
+"synchronize\n"
+"\n"
+"motors"
+msgstr ""
+
+#: taextras.py:388
+msgid "steering"
+msgstr ""
+
+#: taextras.py:389
+msgid "synchronize two motors connected in PORT B and PORT C"
+msgstr ""
+
+#: taextras.py:390
+msgid "PORT A"
+msgstr ""
+
+#: taextras.py:391
+msgid "PORT A of the brick"
+msgstr ""
+
+#: taextras.py:392
+msgid "PORT B"
+msgstr ""
+
+#: taextras.py:393
+msgid "PORT B of the brick"
+msgstr ""
+
+#: taextras.py:394
+msgid "PORT C"
+msgstr ""
+
+#: taextras.py:395
+msgid "PORT C of the brick"
+msgstr ""
+
+#: taextras.py:396
+msgid ""
+"synchronize\n"
+"motors"
+msgstr ""
+
+#: taextras.py:397
+msgid "start motor"
+msgstr ""
+
+#: taextras.py:398
+msgid "Run a motor forever."
+msgstr ""
+
+#: taextras.py:399
+msgid "brake motor"
+msgstr ""
+
+#: taextras.py:400
+msgid "Stop a specified motor."
+msgstr ""
+
+#. TRANS: reset is used to reset the counter associated with the motor
+#: taextras.py:402
+msgid "reset motor"
+msgstr ""
+
+#: taextras.py:403
+msgid "Reset the motor counter."
+msgstr ""
+
+#: taextras.py:404
+msgid "motor position"
+msgstr ""
+
+#: taextras.py:405
+msgid "Get the motor position."
+msgstr ""
+
+#: taextras.py:406
+msgid "PORT 1"
+msgstr ""
+
+#: taextras.py:407
+msgid "PORT 1 of the brick"
+msgstr ""
+
+#: taextras.py:408
+#, fuzzy
+msgid "read"
+msgstr "אדום"
+
+#: taextras.py:409
+msgid "sensor"
+msgstr ""
+
+#: taextras.py:410
+msgid "Read sensor output."
+msgstr ""
+
+#: taextras.py:411
+msgid "PORT 2"
+msgstr ""
+
+#: taextras.py:412
+msgid "PORT 2 of the brick"
+msgstr ""
+
+#: taextras.py:413
+msgid "light sensor"
+msgstr ""
+
+#: taextras.py:414
+msgid "gray sensor"
+msgstr ""
+
+#: taextras.py:415
+msgid "PORT 3"
+msgstr ""
+
+#: taextras.py:416
+msgid "PORT 3 of the brick"
+msgstr ""
+
+#: taextras.py:417
+msgid "touch sensor"
+msgstr ""
+
+#: taextras.py:418
+msgid "distance sensor"
+msgstr ""
+
+#: taextras.py:419
+msgid "PORT 4"
+msgstr ""
+
+#: taextras.py:420
+msgid "PORT 4 of the brick"
+msgstr ""
+
+#: taextras.py:421
+msgid "sound sensor"
+msgstr ""
+
+#: taextras.py:422
+msgid "color sensor"
+msgstr ""
+
+#. TRANS: set light is used to set the light level associated with
+#. the color sensor (which can emit light as well as sense it)
+#: taextras.py:425
+msgid "set light"
+msgstr ""
+
+#: taextras.py:426
+msgid "Set color sensor light."
+msgstr ""
+
+#. TRANS: the battery level is the charge level of the brick
+#: taextras.py:428
+msgid "battery level"
+msgstr ""
+
+#: taextras.py:429
+msgid "Get the battery level of the brick in millivolts"
+msgstr ""
+
+#. #-#-#-#-#  he.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: Arduino plugin to control an Arduino board
+#: taextras.py:434
+#, fuzzy
+msgid "Palette of Arduino blocks"
+msgstr "לוח של בלוקי חיישנים"
+
+#. TRANS: PWM is pulse-width modulation
+#: taextras.py:440
+msgid "PWM"
+msgstr ""
+
+#: taextras.py:441
+msgid "SERVO"
+msgstr ""
+
+#: taextras.py:442
+msgid "ERROR: Check the Arduino and the number of port."
+msgstr ""
+
+#: taextras.py:443
+msgid "ERROR: Value must be a number from 0 to 255."
+msgstr ""
+
+#: taextras.py:444
+msgid "ERROR: Value must be either HIGH or LOW, 0 or 1"
+msgstr ""
+
+#: taextras.py:445
+msgid "ERROR: The mode must be either INPUT, OUTPUT, PWM or SERVO."
+msgstr ""
+
+#: taextras.py:446
+msgid "ERROR: The value must be an integer."
+msgstr ""
+
+#: taextras.py:447
+msgid "ERROR: The pin must be an integer."
+msgstr ""
+
+#: taextras.py:448
+msgid "refresh Arduino"
+msgstr ""
+
+#: taextras.py:449
+msgid "Search for connected Arduinos."
+msgstr ""
+
+#: taextras.py:450
+msgid "Arduino"
+msgstr ""
+
+#: taextras.py:451
+msgid "set current Arduino board"
+msgstr ""
+
+#: taextras.py:452
+msgid "number of Arduinos"
+msgstr ""
+
+#: taextras.py:453
+msgid "number of Arduino boards"
+msgstr ""
+
+#: taextras.py:454
+msgid "Arduino name"
+msgstr ""
+
+#: taextras.py:455
+msgid "Get the name of an Arduino."
+msgstr ""
+
+#. TRANS: pin mode is used to specify the mode (INPUT, OUTPUT, etc)
+#. in which an I/O pin is being used.
+#: taextras.py:458
+msgid "pin mode"
+msgstr ""
+
+#: taextras.py:461
+msgid "Select the pin function (INPUT, OUTPUT, PWM, SERVO)."
+msgstr ""
+
+#: taextras.py:462
+msgid "analog write"
+msgstr ""
+
+#: taextras.py:464
+msgid "Write analog value in specified port."
+msgstr ""
+
+#: taextras.py:465
+msgid "analog read"
+msgstr ""
+
+#: taextras.py:466
+msgid ""
+"Read value from analog port. Value may be between 0 and 1023. Use Vref to "
+"determine voltage. For USB, volt=((read)*5)/1024) approximately."
+msgstr ""
+
+#: taextras.py:468
+msgid "digital write"
+msgstr ""
+
+#: taextras.py:469
+msgid "Write digital value to specified port."
+msgstr ""
+
+#: taextras.py:470
+msgid "digital read"
+msgstr ""
+
+#: taextras.py:471
+msgid "Read value from digital port."
+msgstr ""
+
+#: taextras.py:473
+msgid "Configure Arduino port for digital input."
+msgstr ""
+
+#: taextras.py:474
+msgid "Configure Arduino port to drive a servo."
+msgstr ""
+
+#: taextras.py:476
+msgid "Configure Arduino port for digital output."
+msgstr ""
+
+#: taextras.py:477
+msgid "Configure Arduino port for PWM (pulse-width modulation)."
+msgstr ""
+
+#: taextras.py:478
+#, python-format
+msgid "Not found Arduino %s"
+msgstr ""
+
+#: taextras.py:479
+msgid "The pin must be an integer"
+msgstr ""
+
+#: taextras.py:480
+msgid "The device must be an integer"
+msgstr ""
+
+#. #-#-#-#-#  he.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: plugin to control an ExpEyes device
+#: taextras.py:485
+#, fuzzy
+msgid "Palette of Expeyes blocks"
+msgstr ""
+"#-#-#-#-#  he.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"לוח של בלוקי פיזיקה\n"
+"#-#-#-#-#  he.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"לוח של בלוקי חיישנים"
+
+#. TRANS: Programmable voltage output
+#: taextras.py:487
+msgid "set PVS"
+msgstr ""
+
+#: taextras.py:488
+msgid "set programmable voltage output"
+msgstr ""
+
+#. TRANS: Square wave 1 voltage output
+#: taextras.py:490
+msgid "set SQR1 voltage"
+msgstr ""
+
+#: taextras.py:491
+msgid "set square wave 1 voltage output"
+msgstr ""
+
+#. TRANS: Square wave 2 voltage output
+#: taextras.py:493
+msgid "set SQR2 voltage"
+msgstr ""
+
+#: taextras.py:494
+msgid "set square wave 2 voltage output"
+msgstr ""
+
+#. TRANS: Digital output level
+#: taextras.py:496
+msgid "set OD1"
+msgstr ""
+
+#: taextras.py:497
+msgid "set digital output level (OD1) low (0) or high (1)"
+msgstr ""
+
+#. TRANS: Input 1 voltage level
+#: taextras.py:499
+msgid "IN1 level"
+msgstr ""
+
+#: taextras.py:500
+msgid ""
+"returns 1 if IN1 voltage level >2.5 volts, 0 if IN1 voltage level <= 2.5 "
+"volts"
+msgstr ""
+
+#. TRANS: Input 2 voltage level
+#: taextras.py:503
+msgid "IN2 level"
+msgstr ""
+
+#: taextras.py:504
+msgid ""
+"returns 1 if IN2 voltage level >2.5 volts, 0 if IN2 voltage level <= 2.5 "
+"volts"
+msgstr ""
+
+#. TRANS: Resistive sensor voltage level
+#: taextras.py:507
+msgid "SEN level"
+msgstr ""
+
+#: taextras.py:508
+msgid ""
+"returns 1 if resistive sensor (SEN) voltage level > 2.5 volts, 0 if SEN "
+"voltage level <= 2.5 volts"
+msgstr ""
+
+#: taextras.py:510
+msgid "capture"
+msgstr ""
+
+#: taextras.py:511
+msgid "input"
+msgstr ""
+
+#: taextras.py:512
+msgid "samples"
+msgstr ""
+
+#: taextras.py:513
+msgid "interval"
+msgstr ""
+
+#. TRANS: MS is microseconds
+#: taextras.py:515
+msgid ""
+"capture multiple samples from input at interval (MS); results pushed to FIFO"
+msgstr ""
+
+#. TRANS: Analog input 1 voltage level
+#: taextras.py:518
+msgid "A1"
+msgstr ""
+
+#: taextras.py:519
+msgid "read analog input 1 voltage"
+msgstr ""
+
+#. TRANS: Analog input 2 voltage level
+#: taextras.py:521
+msgid "A2"
+msgstr ""
+
+#: taextras.py:522
+msgid "read analog input 2 voltage"
+msgstr ""
+
+#. TRANS: Read input 1 voltage
+#: taextras.py:524
+msgid "IN1"
+msgstr ""
+
+#: taextras.py:525
+msgid "read input 1 voltage"
+msgstr ""
+
+#. TRANS: Read input 2 voltage
+#: taextras.py:527
+msgid "IN2"
+msgstr ""
+
+#: taextras.py:528
+msgid "read input 2 voltage"
+msgstr ""
+
+#. TRANS: Read analog sensor input voltage
+#: taextras.py:530
+msgid "SEN"
+msgstr ""
+
+#: taextras.py:531
+msgid "read analog sensor input voltage"
+msgstr ""
+
+#. TRANS: Read square wave 1 input voltage
+#: taextras.py:533
+msgid "SQR1"
+msgstr ""
+
+#: taextras.py:534
+msgid "read square wave 1 voltage"
+msgstr ""
+
+#. TRANS: Read square wave 2 input voltage
+#: taextras.py:536
+msgid "SQR2"
+msgstr ""
+
+#: taextras.py:537
+msgid "read square wave 2 voltage"
+msgstr ""
+
+#. TRANS: Read programmable voltage
+#: taextras.py:539
+msgid "PVS"
+msgstr ""
+
+#: taextras.py:540
+msgid "read programmable voltage"
+msgstr ""
+
+#: taextras.py:541
+msgid "Expeyes device not found"
 msgstr ""
 
 #: TurtleArt/taconstants.py:209 TurtleArt/taconstants.py:231
@@ -714,64 +1648,1610 @@ msgstr ""
 msgid "Title"
 msgstr "כותרת"
 
-#: TurtleArt/talogo.py:370 TurtleArtActivity.py:731
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1538
-msgid "Stop turtle"
-msgstr "עצור צב"
+#: plugins/camera_sensor/camera_sensor.py:95
+#: plugins/camera_sensor/camera_sensor.py:143
+msgid "Average RGB color from camera is pushed to the stack"
+msgstr "צבע RGB ממוצע מהמצלמה יישמר למחסנית"
+
+#: TurtleArt/tabasics.py:442
+msgid "yellow"
+msgstr "צהוב"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:685
+msgid "displays polar coordinates"
+msgstr "הצג קוארדינטות פולריות"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:499
+msgid "emptys FILO (first-in-last-out heap)"
+msgstr "מרוקן את מחסנית הFILO"
+
+#: plugins/camera_sensor/camera_sensor.py:106
+#: plugins/camera_sensor/camera_sensor.py:113
+#: plugins/camera_sensor/camera_sensor.py:121
+#: plugins/camera_sensor/camera_sensor.py:155
+#: plugins/camera_sensor/camera_sensor.py:163
+msgid "camera output"
+msgstr "אות היציאה מהמצלמה"
+
+#: plugins/accelerometer/accelerometer.py:58
+#: plugins/accelerometer/accelerometer.py:65
+msgid "push acceleration in x, y, z to heap"
+msgstr "שמור את התאוצה בx, y, z במחסנית LIFO"
+
+#: TurtleArt/tabasics.py:777
+msgid "if-then operator that uses boolean operators from Numbers palette"
+msgstr ""
+"אופרטור אם\\אז שמשתמש בבלוקים של אופרטורים בוליאניים מלוח פעולות מספריות"
+
+#: TurtleArt/tabasics.py:808
+msgid "jogs stack right"
+msgstr "מסיט את המחסנית ימינה"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:147
+msgid "Sugar Journal media object"
+msgstr "אובייקט מדיה של יומן Sugar"
+
+#: TurtleArt/tabasics.py:915
+msgid "box 2"
+msgstr "תיבה 2"
+
+#: TurtleArt/tabasics.py:905
+msgid "box 1"
+msgstr "תיבה 1"
+
+#: TurtleArtActivity.py:730 TurtleArtActivity.py:994 turtleblocks.py:415
+msgid "Step"
+msgstr "צעד"
+
+#: TurtleArt/tabasics.py:588
+msgid "multiplies two numeric inputs"
+msgstr "מכפיל שתי כניסות מספריות"
+
+#: turtleblocks.py:408
+msgid "Show/hide blocks"
+msgstr "הצג\\הסתר בלוקים"
+
+#: TurtleArtActivity.py:318 TurtleArtActivity.py:984 turtleblocks.py:406
+msgid "Hide palette"
+msgstr "הסתר לוח"
+
+#: gnome_plugins/collaboration_plugin.py:125
+msgid "Buddies"
+msgstr "חברים"
+
+#: gnome_plugins/collaboration_plugin.py:67
+msgid "My Turtle Art session"
+msgstr "פעילות ציורי-צב שלי"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:171
+msgid "Sugar Journal video object"
+msgstr "אובייקט וידאו של יומן Sugar"
+
+#: TurtleArt/tabasics.py:445
+msgid "cyan"
+msgstr "ציאן"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:898
+msgid "xcor of right of screen"
+msgstr "קוארדינטת X של צידו הימני של המסך"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:463
+msgid "Palette of extra options"
+msgstr "לוח של אפשרויות נוספות"
+
+#: TurtleArtActivity.py:678 TurtleArtActivity.py:695 TurtleArtActivity.py:734
+#: TurtleArtActivity.py:934
+msgid "Load example"
+msgstr "פתח דוגמא"
+
+#: TurtleArt/tabasics.py:1007
+msgid "move all blocks to trash"
+msgstr "העבר את כל הבלוקים לפח האשפה"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:817
+msgid "list"
+msgstr "רשימה"
+
+#: turtleblocks.py:289
+#, python-format
+msgid "Configuration directory not writable: %s"
+msgstr "אין הרשאה לכתיבה בספריית קונפיגורציה: %s"
+
+#: TurtleArt/tabasics.py:243 TurtleArt/tawindow.py:4106
+msgid "heading"
+msgstr "כיוון (אזימוט)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:265
+msgid "saves turtle graphics as an SVG file in the Sugar Journal"
+msgstr "שומר ציור-צב בפורמט SVG ביומן Sugar"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:204
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:217
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:232
+msgid "draws text or show media from the Journal"
+msgstr "מצייר טקסט (מלל) או מראה מדיה מהיומן"
+
+#: plugins/rfid/rfid.py:92 plugins/rfid/rfid.py:100
+msgid "RFID"
+msgstr "תג-רדיו (RFID)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:169
+msgid "video"
+msgstr "וידאו"
+
+#: TurtleArt/tabasics.py:446
+msgid "blue"
+msgstr "כחול"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:677
+msgid "displays Cartesian coordinates"
+msgstr "הצג קוארדינטות קרטזיאניות"
+
+#: TurtleArt/tabasics.py:816
+msgid "jogs stack down"
+msgstr "מסיט את המחסנית מטה"
+
+#: TurtleArt/tabasics.py:624
+msgid "modular (remainder) operator"
+msgstr "אופרטור מודולו (שארית)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:966
+msgid "bottom y"
+msgstr "תחתית Y"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:262
+msgid "save SVG"
+msgstr "שמור SVG"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:630
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:646
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:662
+msgid "runs code found in the tamyblock.py module found in the Journal"
+msgstr "מריץ קוד שנמצא במודול tamyblock.py ביומן"
+
+#: TurtleArt/tabasics.py:381
+msgid "pen down"
+msgstr "הורד עט"
+
+#: TurtleArt/tabasics.py:739
+msgid "wait"
+msgstr "המתן"
+
+#: TurtleArt/tabasics.py:924 TurtleArt/tabasics.py:939
+msgid "box"
+msgstr "תיבה"
+
+#: gnome_plugins/uploader_plugin.py:203
+msgid "Failed to upload!"
+msgstr "נסיון ההעלאה נכשל!"
+
+#: TurtleArt/tabasics.py:872 TurtleArt/tawindow.py:4377
+msgid "invokes named action stack"
+msgstr "קורא למחסנית פעולות עם שם"
+
+#: TurtleArt/tabasics.py:856 TurtleArt/tabasics.py:859
+#: TurtleArt/tabasics.py:867 TurtleArt/tabasics.py:871
+#: TurtleArt/tawindow.py:1351 TurtleArt/tawindow.py:1448
+#: TurtleArt/tawindow.py:1461 TurtleArt/tawindow.py:2077
+#: TurtleArt/tawindow.py:4363
+msgid "action"
+msgstr "פעולה"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:123
+msgid "do-until-True operator that uses boolean operators from Numbers palette"
+msgstr "אופרטור עד-ש-אמת שמשתמש באופרטורים בוליאניים מלוח פעולות חשבוניות"
+
+#: TurtleArt/tabasics.py:918
+msgid "Variable 2 (numeric value)"
+msgstr "משתנה 2 (ערך מספרי)"
+
+#: TurtleArt/tabasics.py:597
+msgid "divide"
+msgstr "חילוק"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:253
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:264
+msgid "picture name"
+msgstr "שם התמונה"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:109
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:112
+msgid "while"
+msgstr "כל-עוד"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:890
+msgid "the canvas width"
+msgstr "רוחב היריעה"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:525
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:535
+#, fuzzy
+msgid "empty heap?"
+msgstr "רוקן מחסנית FILO"
+
+#: TurtleArt/tabasics.py:945 TurtleArt/tawindow.py:4404
+msgid "named variable (numeric value)"
+msgstr "משתנה עם שם (ערך מספרי)"
+
+#: TurtleArt/tawindow.py:1044 TurtleArt/tawindow.py:1644
+msgid "next"
+msgstr "הבא"
+
+#: TurtleArt/tabasics.py:775
+msgid "if then"
+msgstr "אם-אז"
+
+#: TurtleArt/tabasics.py:390
+msgid "set pen size"
+msgstr "קבע עובי עט"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:836
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:998
+msgid "presentation template: select Journal object (no description)"
+msgstr "דוגמת-בסיס למצגת - בחר אובייקט מהיומן (בלי תיאור)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:119
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:122
+msgid "until"
+msgstr "עד_ש"
+
+#: TurtleArt/tabasics.py:997
+msgid "permanently deletes items in trash"
+msgstr "מחק סופית את כל הפריטים מפח האשפה"
+
+#: pysamples/uturn.py:24
+msgid "uturn"
+msgstr "פניית-פרסה"
+
+#: TurtleArt/tabasics.py:955
+msgid "top of Action 1 stack"
+msgstr "ראש מחסנית פעולה 1"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:589
+msgid ""
+"a programmable block: used to add advanced single-variable math equations, e."
+"g., sin(x)"
+msgstr ""
+"בלוק ניתן לתכנות: משמש להוספת משוואות מתמטיות במשתנה אחד, לדוגמה sin(x)"
+
+#: TurtleArt/tabasics.py:734
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:104
+msgid "Palette of flow operators"
+msgstr "לוח פעולות בקרת זרימה"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:733
+msgid "top of a collapsed stack"
+msgstr "ראש המחסנית המצומצמת"
+
+#: TurtleArt/tabasics.py:790 TurtleArt/tabasics.py:798
+msgid "if-then-else operator that uses boolean operators from Numbers palette"
+msgstr ""
+"אופרטור אם-אז-אחרת שמשתמש בבלוקים של אופרטורים בוליאניים מלוח פעולות מספריות"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:377
+msgid "returns mouse y coordinate"
+msgstr "מחזיר את הערך הנוכחי של קוארדינטת y של העכבר"
+
+#: TurtleArt/tabasics.py:355
+msgid "holds current pen shade"
+msgstr "מכיל את הערך הנוכחי של גוון הצבע של העט"
+
+#. #-#-#-#-#  he.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: pitch, duration, amplitude
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:322
+msgid "sinewave"
+msgstr "גל סינוס"
+
+#: gnome_plugins/uploader_plugin.py:166
+msgid "Login failed"
+msgstr "נסיון הכניסה למערכת נכשל"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:939
+msgid "left x"
+msgstr "שמאל X"
+
+#: TurtleArt/tabasics.py:209
+msgid "set heading"
+msgstr "קבע אזימוט (כיוון)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:433
+msgid "RGB color under the turtle is pushed to the stack"
+msgstr "ערך RGB של הפיקסל שנמצא תחת הצב נשמר במחסנית"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:791
+msgid "declutters canvas by hiding blocks"
+msgstr "מסיר בלוקים מיותרים מהיריעה ע\"מ להקל על אי-סדר"
+
+#: TurtleArt/tabasics.py:807
+msgid "horizontal space"
+msgstr "רווח אופקי"
+
+#: TurtleArtActivity.py:645 TurtleArtActivity.py:802
+msgid "Metric coordinates"
+msgstr "קוארדינטות מטריות"
+
+#: TurtleArt/tabasics.py:852
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:195
+msgid "string value"
+msgstr "ערך מחרוזת"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:181
+msgid "description"
+msgstr "תיאור"
+
+#: TurtleArt/talogo.py:567
+msgid "I don't know how to"
+msgstr "אני לא יודע איך לבצע"
+
+#: TurtleArt/tabasics.py:467
+msgid "set text size"
+msgstr "קבע גודל טקסט (מלל)"
+
+#: gnome_plugins/uploader_plugin.py:99
+msgid "Username:"
+msgstr "שם משתמש:"
+
+#: TurtleArt/tabasics.py:406
+msgid "starts filled polygon (used with end fill block)"
+msgstr "התחל מצולע עם מילוי-צבע (משמש יחד עם בלוק סיים מצולע עם מילוי-צבע)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:850
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1043
+msgid "presentation template: select four Journal objects"
+msgstr "דוגמת-בסיס למצגת - בחר ארבעה אובייקטים מהיומן"
+
+#: TurtleArtActivity.py:584 TurtleArtActivity.py:613 TurtleArtActivity.py:726
+#: TurtleArtActivity.py:796 turtleblocks.py:392
+msgid "View"
+msgstr "תצוגה"
+
+#: TurtleArt/tabasics.py:336
+msgid "sets gray level of the line drawn by the turtle"
+msgstr "קובע את גוון האפור של הקו שמצייר הצב"
+
+#: gnome_plugins/uploader_plugin.py:109
+msgid "Password:"
+msgstr "סיסמה:"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:441
+msgid "turtle sees"
+msgstr "צב רואה צבע"
+
+#: TurtleArt/tabasics.py:822
+msgid "stop action"
+msgstr "עצור פעולה"
+
+#: TurtleArt/tabasics.py:444
+msgid "green"
+msgstr "ירוק"
+
+#: TurtleArt/tabasics.py:283 TurtleArt/tabasics.py:295
+#: TurtleArt/tabasics.py:354
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1193
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1198
+msgid "shade"
+msgstr "גוון צבע"
+
+#: TurtleArt/tabasics.py:287 TurtleArt/tabasics.py:299
+msgid "fills the background with (color, shade)"
+msgstr "מלא את הרקע עם (צבע, גוון)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:251
+msgid "save picture"
+msgstr "שמור תמונה"
+
+#: plugins/audio_sensors/audio_sensors.py:119
+#: plugins/audio_sensors/audio_sensors.py:127
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:322
+msgid "pitch"
+msgstr "גובה צליל"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:346
+msgid "returns 1 if mouse button is pressed"
+msgstr "מחזיר 1 אם המשתמש לוחץ כעת על כפתור העכבר"
+
+#: TurtleArtActivity.py:489 TurtleArtActivity.py:648 TurtleArtActivity.py:804
+msgid "Rescale coordinates up"
+msgstr "הגדל קנה-מידה של קוארדינטות"
+
+#: TurtleArt/tabasics.py:440
+msgid "orange"
+msgstr "כתום"
+
+#: TurtleArt/tabasics.py:743
+msgid "pauses program execution a specified number of seconds"
+msgstr "משהה את ריצת התוכנית למספר השניות הנקוב"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:473
+msgid "pushes value onto FILO (first-in last-out heap)"
+msgstr "שומר ערך במחסנית FILO (ראשון-בפנים אחרון-בחוץ)"
+
+#: TurtleArt/tabasics.py:1006
+msgid "clear all"
+msgstr "נקה הכל"
+
+#: TurtleArt/tabasics.py:772 TurtleArt/tabasics.py:785
+msgid "then"
+msgstr "אז"
+
+#: gnome_plugins/collaboration_plugin.py:302
+msgid "Register"
+msgstr "הירשם"
+
+#: TurtleArt/tabasics.py:701
+#, fuzzy
+msgid "not"
+msgstr ""
+"#-#-#-#-#  he.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"not\n"
+"#-#-#-#-#  he.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"לא"
+
+# #-#-#-#-#  he.po (PACKAGE VERSION)  #-#-#-#-#
+# אחרת ואם לא will be understood more easily by children is more formal, but
+#: TurtleArt/tabasics.py:789 TurtleArt/tabasics.py:797
+#, fuzzy
+msgid "if then else"
+msgstr ""
+"#-#-#-#-#  he.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"אם-אז-אחרת\n"
+"#-#-#-#-#  he.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"אם-אז-ואם לא"
+
+#: TurtleArt/tabasics.py:825
+msgid "stops current action"
+msgstr "עוצר את הפעולה הנוכחית"
+
+#: TurtleArt/tabasics.py:174
+msgid "turns turtle clockwise (angle in degrees)"
+msgstr "מסובב את הצב עם כיוון השעון (זווית במעלות)"
+
+#: TurtleArt/tabasics.py:364
+msgid "holds current gray level (can be used in place of a number block)"
+msgstr "מכיל את הערך הנוכחי של גוון האפור (יכול לשמש במקום בלוק מסוג מספר)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:874
+msgid "xcor of left of screen"
+msgstr "קוארדינטת X של צידו השמאלי של המסך"
+
+#: turtleblocks.py:387
+msgid "Reset block size"
+msgstr "שנה גודל בלוקים לברירת מחדל"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:691
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:773
+msgid "turtle"
+msgstr "צב"
+
+#: TurtleArt/tapalette.py:97
+msgid "displays next palette"
+msgstr "מציג את הלוח הבא"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:789
+msgid "hide blocks"
+msgstr "הסתר בלוקים"
+
+#: plugins/camera_sensor/camera_sensor.py:82
+#: plugins/camera_sensor/camera_sensor.py:130
+msgid "light level detected by camera"
+msgstr "עוצמת אור שנמדדה ע\"י המצלמה"
+
+#: TurtleArt/tabasics.py:683
+msgid "logical less-than operator"
+msgstr "קטן מ (אופרטור לוגי)"
+
+#: TurtleArt/tabasics.py:1002
+msgid "restore all blocks from trash"
+msgstr "שחזר את כל הבלוקים מפח האשפה"
+
+#: turtleblocks.py:367
+msgid "Save"
+msgstr "שמור"
+
+#: TurtleArt/tabasics.py:879
+msgid "store in box 1"
+msgstr "שמור בקופסה 1"
+
+#: TurtleArt/tabasics.py:892
+msgid "store in box 2"
+msgstr "שמור בקופסה 2"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:808
+msgid "hides the Sugar toolbars"
+msgstr "הסתר סרגלי כלים של Sugar"
+
+#: TurtleArt/tabasics.py:222
+msgid ""
+"holds current x-coordinate value of the turtle (can be used in place of a "
+"number block)"
+msgstr "מכיל את קוארדינטת x הנוכחית של הצב (יכול לשמש במקום בלוק מסוג מספר)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:555
+msgid "print"
+msgstr "הודעה"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:367
+msgid "returns mouse x coordinate"
+msgstr "מחזיר את הערך הנוכחי של קוארדינטת x של העכבר"
+
+#: TurtleArtActivity.py:188 TurtleArtActivity.py:757 TurtleArtActivity.py:925
+#: TurtleArtActivity.py:955 turtleblocks.py:371
+msgid "Save as Logo"
+msgstr "שמור כ-LOGO"
+
+#: TurtleArt/tabasics.py:313
+msgid "sets color of the line drawn by the turtle"
+msgstr "קבע את צבע הקו שמצייר הצב"
+
+#: TurtleArt/tabasics.py:456
+msgid "set text color"
+msgstr "קבע צבע טקסט (מלל)"
+
+#: plugins/audio_sensors/audio_sensors.py:90
+#: plugins/audio_sensors/audio_sensors.py:105
+msgid "loudness"
+msgstr "עוצמת קול"
+
+#: gnome_plugins/collaboration_plugin.py:115
+msgid "Enable collaboration"
+msgstr "אפשר שיתוף-פעולה"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:357
+#, fuzzy
+msgid "returns True if mouse button is pressed"
+msgstr "מחזיר 1 אם המשתמש לוחץ כעת על כפתור העכבר"
+
+#: TurtleArt/tabasics.py:658
+msgid "number"
+msgstr "מספר"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:385
+msgid "query keyboard"
+msgstr "קלט מקלדת"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:130
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:732
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:903
+msgid "top"
+msgstr "ראש"
+
+#: gnome_plugins/uploader_plugin.py:140
+msgid "Submit to Web"
+msgstr "שלח לאינטרנט"
+
+#: TurtleArtActivity.py:640 TurtleArtActivity.py:798 turtleblocks.py:377
+msgid "Cartesian coordinates"
+msgstr "קוארדינטות קרטזיות"
+
+#: gnome_plugins/collaboration_plugin.py:292
+msgid "Nickname"
+msgstr "כינוי"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:240
+msgid "set scale"
+msgstr "קבע קנה מידה"
+
+#: TurtleArt/tabasics.py:449
+msgid "white"
+msgstr "לבן"
+
+#: TurtleArt/tabasics.py:842
+msgid "connects action to toolbar run buttons"
+msgstr "מחבר את הפעולה לכפתורי ריצה בסרגל-כלים"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:454
+msgid "elapsed time (in seconds) since program started"
+msgstr "זמן שחלף (בשניות) מאז הפעלת התוכנה"
+
+#: TurtleArt/tawindow.py:1534 TurtleArt/tawindow.py:1574
+#: gnome_plugins/uploader_plugin.py:144
+msgid "Cancel"
+msgstr "ביטול"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:914
+msgid "the canvas height"
+msgstr "גובה היריעה"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1011
+msgid "presentation 2x1"
+msgstr "מצגת 2x1"
+
+#: TurtleArt/tabasics.py:571
+msgid "minus"
+msgstr "מינוס"
+
+#: TurtleArt/tabasics.py:710 TurtleArt/tabasics.py:713
+msgid "and"
+msgstr "and"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:132
+msgid "top of a collapsible stack"
+msgstr "ראש של מחסנית ניתנת לצמצום"
+
+#: TurtleArt/talogo.py:623
+msgid "as input"
+msgstr "כקלט (כניסה)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:628
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:644
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:659
+msgid "Python block"
+msgstr "בלוק פייתון (Python)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:281
+msgid "media wait"
+msgstr "מתן למדיה"
+
+#: plugins/accelerometer/accelerometer.py:56
+#: plugins/accelerometer/accelerometer.py:63
+msgid "acceleration"
+msgstr "תאוצה"
+
+#: TurtleArt/tabasics.py:423
+msgid "holds current pen size (can be used in place of a number block)"
+msgstr "מכיל את הערך הנוכחי של עובי העט (יכול לשמש במקום בלוק מסוג מספר)"
+
+#: TurtleArt/tabasics.py:309
+msgid "set color"
+msgstr "קבע צבע"
+
+#: TurtleArt/tabasics.py:642
+msgid "min"
+msgstr "מינימום"
+
+#: TurtleArt/tabasics.py:278
+msgid "Palette of pen commands"
+msgstr "לוח פקודות עט"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:486
+msgid "shows values in FILO (first-in last-out heap)"
+msgstr "מציג את הערכים השמורים במחסנית FILO (ראשון-בפנים אחרון-בחוץ)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:113
+msgid "do-while-True operator that uses boolean operators from Numbers palette"
+msgstr "אופרטור כל-עוד-אמת שמשתמש באופרטורים בוליאניים מלוח פעולות חשבוניות"
+
+#: turtleblocks.py:374
+msgid "File"
+msgstr "קובץ"
+
+#: TurtleArt/tabasics.py:704
+msgid "logical NOT operator"
+msgstr "אופרטור לוגי NOT (~)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:882
+msgid "ycor of bottom of screen"
+msgstr "קוארדינטת Y של צידו התחתון של המסך"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:843
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:983
+msgid "presentation template: select Journal object (with description)"
+msgstr "דוגמת-בסיס למצגת - בחר אובייקט מהיומן (עם תיאור)"
+
+#: TurtleArt/tabasics.py:553
+msgid "Palette of numeric operators"
+msgstr "לוח פעולות חשבון"
+
+#: TurtleArt/tabasics.py:585
+msgid "multiply"
+msgstr "כפל"
+
+#: TurtleArt/tabasics.py:750
+msgid "forever"
+msgstr "בלי-סוף"
+
+#: TurtleArt/tabasics.py:325
+msgid "sets shade of the line drawn by the turtle"
+msgstr "קובע את הגוון לצבע הקו שמצייר הצב"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:314
+msgid "speaks text"
+msgstr "אומר את הטקסט (מלל) הנתון"
+
+#: TurtleArtActivity.py:243
+msgid "snapshot"
+msgstr "לכידת-מסך"
+
+#: TurtleArt/tabasics.py:147
+msgid "clean"
+msgstr "נקה"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:857
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:864
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1013
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1028
+msgid "presentation template: select two Journal objects"
+msgstr "דוגמת-בסיס למצגת - בחר שני אובייקטים מהיומן"
+
+#: TurtleArtActivity.py:651 TurtleArtActivity.py:806 turtleblocks.py:383
+msgid "Grow blocks"
+msgstr "הגדל בלוקים"
+
+#: TurtleArtActivity.py:637 TurtleArtActivity.py:797
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:806
+msgid "Fullscreen"
+msgstr "מסך מלא"
+
+#: turtleblocks.py:265
+msgid "File not found"
+msgstr "הקובץ לא נמצא"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:200
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:228
+msgid "show"
+msgstr "הצג"
+
+#: TurtleArt/tabasics.py:849 TurtleArt/tabasics.py:850
+#: TurtleArt/tabasics.py:851
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:192
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:193
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:194
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:201
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:214
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:229
+msgid "text"
+msgstr "טקסט (מלל)"
+
+#: TurtleArt/tabasics.py:642
+msgid "random"
+msgstr "מספר אקראי"
+
+#: TurtleArt/tabasics.py:670
+msgid "logical greater-than operator"
+msgstr "גדול מ (אופרטור לוגי)"
+
+#: TurtleArt/tabasics.py:162
+msgid "turns turtle counterclockwise (angle in degrees)"
+msgstr "מסובב את הצב נגד כיוון השעון (זווית במעלות)"
+
+#: TurtleArt/tabasics.py:450
+msgid "black"
+msgstr "שחור"
+
+#: TurtleArt/tabasics.py:635
+msgid "calculates square root"
+msgstr "חשב שורש ריבועי"
+
+#: TurtleArt/tabasics.py:233
+msgid ""
+"holds current y-coordinate value of the turtle (can be used in place of a "
+"number block)"
+msgstr "מכיל את קוארדינטת y הנוכחית של הצב (יכול לשמש במקום בלוק מסוג מספר)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:364
+msgid "mouse x"
+msgstr "עכבר-x"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:374
+msgid "mouse y"
+msgstr "עכבר-y"
+
+#: pysamples/grecord.py:215
+msgid "stop"
+msgstr "הפסק"
+
+#: TurtleArt/tabasics.py:667
+msgid "greater than"
+msgstr "גדול מ"
+
+#: TurtleArt/tabasics.py:221 TurtleArt/tawindow.py:4105
+msgid "xcor"
+msgstr "xcor"
+
+#: TurtleArtActivity.py:735 turtleblocks.py:422 util/helpbutton.py:45
+msgid "Help"
+msgstr "עזרה"
+
+#: turtleblocks.py:462
+msgid "Save project?"
+msgstr "לשמור פרוייקט?"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:695
+msgid "chooses which turtle to command"
+msgstr "בחר באיזה צב להשתמש"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:957
+msgid "right x"
+msgstr "ימין X"
+
+#: TurtleArt/tabasics.py:459
+msgid "sets color of text drawn by the turtle"
+msgstr "קבע את בצע הטקסט (מלל) שיצייר הצב"
+
+#: plugins/light_sensor/light_sensor.py:58
+#: plugins/light_sensor/light_sensor.py:65
+msgid "light level detected by light sensor"
+msgstr "עוצמת אור שנמדדה ע\"י חיישן האור"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:394
+msgid "keyboard"
+msgstr "מקלדת"
+
+#: TurtleArt/tabasics.py:182
+msgid "arc"
+msgstr "קשת"
+
+#: TurtleArt/tabasics.py:182
+msgid "radius"
+msgstr "רדיוס"
+
+#: TurtleArtActivity.py:642 TurtleArtActivity.py:800 turtleblocks.py:379
+msgid "Polar coordinates"
+msgstr "קוארדינטות פולריות"
+
+#: TurtleArt/tabasics.py:321
+msgid "set shade"
+msgstr "קבע גוון"
+
+#: TurtleArt/tabasics.py:714
+msgid "logical AND operator"
+msgstr "אופרטור לוגי AND (&&)"
+
+#: gnome_plugins/uploader_plugin.py:90
+msgid ""
+"You must have an account at http://turtleartsite.sugarlabs.org to upload "
+"your project."
+msgstr ""
+"את\\ה צריכ\\ה לפתוח חשבון באתר http://turtleartsite.sugarlabs.org לפני שתוכל"
+"\\י להעלות את הפרוייקט לאתר."
+
+#: TurtleArtActivity.py:729 TurtleArtActivity.py:992 turtleblocks.py:414
+msgid "Run"
+msgstr "רוץ!"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:483
+msgid "show heap"
+msgstr "הצג מחסנית FILO"
+
+#: TurtleArt/tabasics.py:213
+msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
+msgstr "קובע ערך לכיוון (אזימוט) של הצב (0 הוא הכיוון של חלקו העליון של המסך)."
+
+#: plugins/audio_sensors/audio_sensors.py:91
+#: plugins/audio_sensors/audio_sensors.py:106
+msgid "microphone input volume"
+msgstr "עוצמת קול של כניסת מיקרופון"
+
+#: gnome_plugins/uploader_plugin.py:120
+msgid "Title:"
+msgstr "כותרת:"
+
+#: plugins/camera_sensor/camera_sensor.py:67
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:139
+msgid "Palette of media objects"
+msgstr "לוח של בלוקי מדיה"
+
+#: TurtleArtActivity.py:629
+#, fuzzy
+msgid "Restore blocks from trash"
+msgstr "שחזר את כל הבלוקים מפח האשפה"
+
+#: TurtleArt/tabasics.py:834
+msgid "Palette of variable blocks"
+msgstr "לוח של בלוקי משתנים"
+
+#: TurtleArt/tabasics.py:659
+msgid "used as numeric input in mathematic operators"
+msgstr "משמש כערך מספרי בכניסה לפעולות חשבון"
+
+#: gnome_plugins/fb_plugin.py:82 gnome_plugins/fb_plugin.py:83
+#: gnome_plugins/fb_plugin.py:92 gnome_plugins/uploader_plugin.py:63
+#: gnome_plugins/uploader_plugin.py:64 gnome_plugins/uploader_plugin.py:73
+msgid "Upload"
+msgstr "העלאה"
+
+#: gnome_plugins/collaboration_plugin.py:296
+msgid "Server"
+msgstr "שרת"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1041
+msgid "presentation 2x2"
+msgstr "מצגת 2x2"
+
+#: TurtleArt/tabasics.py:908
+msgid "Variable 1 (numeric value)"
+msgstr "משתנה 1 (ערך מספרי)"
+
+#: gnome_plugins/collaboration_plugin.py:132
+msgid "Neighborhood"
+msgstr "שכונה"
+
+#: TurtleArt/tabasics.py:563
+msgid "adds two alphanumeric inputs"
+msgstr "סכום שתי כניסות אלפא-נומריות"
+
+#: TurtleArt/tabasics.py:691
+msgid "equal"
+msgstr "שווה"
+
+#: TurtleArt/talogo.py:623
+msgid "doesn't like"
+msgstr "לא מחבב"
+
+#: turtleblocks.py:461
+msgid "You have unsaved work. Would you like to save before quitting?"
+msgstr "יש לך עבודה שטרם נשמרה. האם תרצה לשמור אותה לפני יציאה מהתוכנית?"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:800
+msgid "restores hidden blocks"
+msgstr "הצג בלוקים מוסתרים"
+
+#: TurtleArt/tabasics.py:375
+msgid "Turtle will not draw when moved."
+msgstr "מסלול הצב כאשר הוא נע יהיה מוסתר."
+
+#. #-#-#-#-#  he.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: pop removes a new item from the program stack
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:510
+msgid "pop"
+msgstr "שלוף\\טען ערך"
+
+#: TurtleArt/tabasics.py:422
+msgid "pen size"
+msgstr "עובי עט"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:715
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:724
+msgid "turtle shell"
+msgstr "שריון צב"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:326
+msgid "plays a sinewave at frequency, amplitude, and duration (in seconds)"
+msgstr "משמיע צליל סינוס בתדירות, עוצמה ומשך זמן (בשניות) נתונים"
+
+#: TurtleArt/tabasics.py:631
+msgid "√"
+msgstr "√"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:311
+msgid "speak"
+msgstr "דבר"
+
+#: plugins/rfid/rfid.py:93 plugins/rfid/rfid.py:101
+msgid "read value from RFID device"
+msgstr "קרא ערך מהתקן RFID"
+
+#: TurtleArt/tabasics.py:186
+msgid "moves turtle along an arc"
+msgstr "מזיז את הצב לאורך קשת"
+
+#: pysamples/uturn.py:26
+msgid "make a uturn"
+msgstr "בצע פניית-פרסה"
+
+#: TurtleArt/tabasics.py:695
+msgid "logical equal-to operator"
+msgstr "שווה (אופרטור לוגי)"
+
+#: TurtleArt/tabasics.py:437
+msgid "Palette of pen colors"
+msgstr "לוח צבעי עט"
+
+#: TurtleArt/tabasics.py:884
+msgid "stores numeric value in Variable 1"
+msgstr "שומר את הערך המספרי במשתנה 1"
+
+#: TurtleArt/tabasics.py:897
+msgid "stores numeric value in Variable 2"
+msgstr "שומר את הערך המספרי במשתנה 2"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:717
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:725
+msgid "put a custom 'shell' on the turtle"
+msgstr "התאם אישית את השריון שעל הצב"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:343
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:354
+msgid "button down"
+msgstr "כפתור לחוץ"
+
+#: TurtleArt/tabasics.py:139
+msgid "moves turtle backward"
+msgstr "מזיז את הצב אחורה"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:906
+msgid "ycor of top of screen"
+msgstr "קוארדינטת Y של צידו העליון של המסך"
 
 #: TurtleArt/talogo.py:380 TurtleArtActivity.py:360 TurtleArtActivity.py:732
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1529
 msgid "Show blocks"
 msgstr "הראה בלוקים"
 
-#: TurtleArt/talogo.py:384 TurtleArtActivity.py:364 TurtleArtActivity.py:996
-msgid "Hide blocks"
-msgstr "הסתר בלוקים"
+#: pysamples/grecord.py:217
+msgid "play"
+msgstr "נגן"
+
+#: pysamples/grecord.py:219
+msgid "save"
+msgstr "שמור"
+
+#: gnome_plugins/collaboration_plugin.py:304
+msgid "Colors"
+msgstr "צבעים"
+
+#: TurtleArt/tabasics.py:394
+msgid "sets size of the line drawn by the turtle"
+msgstr "קבע את עובי הקו שהצב יצייר"
+
+#: turtleblocks.py:366
+msgid "Open"
+msgstr "פתח"
+
+#: TurtleArt/tawindow.py:1033 TurtleArt/tawindow.py:1034
+msgid "orientation"
+msgstr "אוריינטציה"
+
+#: TurtleArt/tabasics.py:232 TurtleArt/tawindow.py:4106
+msgid "ycor"
+msgstr "ycor"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:602
+msgid ""
+"a programmable block: used to add advanced multi-variable math equations, e."
+"g., sqrt(x*x+y*y)"
+msgstr ""
+"בלוק ניתן לתכנות: משמש להוספת משוואות מתמטיות במספר משתנים, לדוגמה sqrt(x*x"
+"+y*y)"
+
+#: TurtleArt/tabasics.py:772 TurtleArt/tabasics.py:785
+msgid "if"
+msgstr "אם"
+
+#: TurtleArt/tabasics.py:199 TurtleArt/tabasics.py:265
+msgid ""
+"moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
+msgstr "מזיז את הצב למיקום xcor,ycor;(0,0) הוא מיקום מרכז המסך."
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:585
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:598
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:612
+msgid "Python"
+msgstr "פייתון (Python)"
+
+#: TurtleArtActivity.py:736 turtleblocks.py:417
+msgid "Stop"
+msgstr "עצור"
+
+#: TurtleArt/tabasics.py:961 TurtleArt/tabasics.py:981
+msgid "action 2"
+msgstr "פעולה 2"
+
+#: TurtleArt/tabasics.py:952 TurtleArt/tabasics.py:971
+msgid "action 1"
+msgstr "פעולה 1"
+
+#: TurtleArt/tabasics.py:413
+msgid "end fill"
+msgstr "סיים מילוי"
+
+#: TurtleArtActivity.py:625 TurtleArtActivity.py:779 turtleblocks.py:395
+msgid "Copy"
+msgstr "העתק"
+
+#: TurtleArtActivity.py:627 TurtleArtActivity.py:780 turtleblocks.py:396
+msgid "Paste"
+msgstr "הדבק"
 
 #: TurtleArt/talogo.py:508
 msgid "did not output to"
 msgstr "נכשל נסיון שליחת הפלט ל"
 
-#: TurtleArt/talogo.py:567
-msgid "I don't know how to"
-msgstr "אני לא יודע איך לבצע"
+#: gnome_plugins/collaboration_plugin.py:120
+msgid "Activities"
+msgstr "פעילויות"
 
-#: TurtleArt/talogo.py:623
-msgid "doesn't like"
-msgstr "לא מחבב"
+#: gnome_plugins/uploader_plugin.py:68
+msgid "Upload to Web"
+msgstr "העלה לאינטרנט"
 
-#: TurtleArt/talogo.py:623
-msgid "as input"
-msgstr "כקלט (כניסה)"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:496
+msgid "empty heap"
+msgstr "רוקן מחסנית FILO"
 
-#: TurtleArt/tapalette.py:97
-msgid "displays next palette"
-msgstr "מציג את הלוח הבא"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:514
+msgid "pops value off FILO (first-in last-out heap)"
+msgstr "שולף ערך ממחסנית LIFO (ראשון-בפנים אחרון-בחוץ)"
 
-#: TurtleArt/tapalette.py:98
-msgid "changes the orientation of the palette of blocks"
-msgstr "משנה את האוריינטציה של לוח הבלוקים"
+#: TurtleArtActivity.py:728 TurtleArtActivity.py:990 turtleblocks.py:413
+msgid "Clean"
+msgstr "נקה"
 
-#: TurtleArt/tautils.py:295
-msgid "Load..."
-msgstr "פתח..."
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:782
+msgid "Palette of presentation templates"
+msgstr "לוח של דוגמאות-בסיס למצגת"
 
-#: TurtleArt/tautils.py:305
-msgid "Save..."
-msgstr "שמור..."
+#: TurtleArt/tabasics.py:182
+msgid "angle"
+msgstr "זווית"
+
+#: TurtleArt/tabasics.py:610
+msgid "identity"
+msgstr "זהות (יחידה)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:948
+msgid "top y"
+msgstr "מעלה Y"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:157
+msgid "audio"
+msgstr "צליל"
+
+#: turtleblocks.py:410
+msgid "Tools"
+msgstr "כלים"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:545
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:547
+msgid "comment"
+msgstr "הערה"
+
+#: TurtleArt/tabasics.py:574
+msgid "subtracts bottom numeric input from top numeric input"
+msgstr "מחסיר ערך מספרי של כניסה תחתונה מערך מספרי של כניסה עליונה"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:387
+msgid "query for keyboard input (results stored in keyboard block)"
+msgstr "מבקש קלט מהמקלדת (התוצאה נשמרת בבלוק מקלדת)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:675
+msgid "Cartesian"
+msgstr "קרטזיאני"
+
+#: TurtleArt/tabasics.py:150
+msgid "clears the screen and reset the turtle"
+msgstr "מנקה את המסך ומחזיר את הצב למצב התחלתי"
+
+#: plugins/audio_sensors/audio_sensors.py:84
+#: plugins/audio_sensors/audio_sensors.py:99
+msgid "raw microphone input signal"
+msgstr "אות כניסה ישיר מהמיקרופון"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:443
+msgid "returns the color that the turtle \"sees\""
+msgstr "מחזיר את הצבע שהצב \"רואה\""
+
+#: TurtleArt/tabasics.py:974
+msgid "invokes Action 1 stack"
+msgstr "קורא למחסנית פעולות 1"
+
+#: TurtleArt/tabasics.py:119
+msgid "Palette of turtle commands"
+msgstr "לוח פקודות-צב"
+
+#: TurtleArt/tabasics.py:754
+msgid "loops forever"
+msgstr "חוזר על פעולות הלולאה בלי-סוף"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:213
+msgid "show aligned"
+msgstr "הצג עם יישור"
+
+#: TurtleArtActivity.py:611 TurtleArtActivity.py:727
+msgid "Project"
+msgstr "פרוייקט"
+
+#: turtleblocks.py:416
+msgid "Debug"
+msgstr "נפה שגיאות"
+
+#: gnome_plugins/collaboration_plugin.py:300
+msgid "Password"
+msgstr "סיסמה"
+
+#: TurtleArt/tabasics.py:815
+msgid "vertical space"
+msgstr "רווח אנכי"
+
+#: TurtleArt/tabasics.py:415
+msgid "completes filled polygon (used with start fill block)"
+msgstr "משלים מצולע עם מילוי-צבע (משמש יחד עם בלוק התחל מצולע עם מילוי-צבע)"
+
+#: gnome_plugins/collaboration_plugin.py:128
+msgid "Share"
+msgstr "שתף"
+
+#: TurtleArt/tabasics.py:679
+msgid "less than"
+msgstr "קטן מ"
+
+#: TurtleArt/tabasics.py:632
+msgid "square root"
+msgstr "שורש ריבועי"
+
+#: turtleblocks.py:381
+msgid "Rescale coordinates"
+msgstr "שנה קנה מידה של קוארדינטות"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:798
+msgid "show blocks"
+msgstr "הראה בלוקים"
+
+#: turtleblocks.py:373
+msgid "Quit"
+msgstr "יציאה"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:183
+msgid "Sugar Journal description field"
+msgstr "שדה תיאור של יומן Sugar"
+
+#: TurtleArt/tabasics.py:333
+msgid "set gray"
+msgstr "קבע אפור"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:821
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1056
+msgid "presentation bulleted list"
+msgstr "רשימת פריטים עם סימון למצגת"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:323
+msgid "duration"
+msgstr "משך זמן"
+
+#: turtleblocks.py:365
+msgid "New"
+msgstr "חדש"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:549
+msgid "places a comment in your code"
+msgstr "מציב הערה בקוד שלך"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:430
+msgid "read pixel"
+msgstr "קרא פיקסל"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:272
+msgid "scale"
+msgstr "קנה-מידה"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:879
+msgid "bottom"
+msgstr "תחתית"
+
+#: TurtleArt/tabasics.py:447
+msgid "purple"
+msgstr "סגול"
+
+#: TurtleArtActivity.py:485
+msgid "Rescale coordinates down"
+msgstr "הקטן קנה-מידה של קוארדינטות"
 
 #: TurtleArt/tautils.py:586
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:730
 msgid "click to open"
 msgstr "הקלק כדי לפתוח"
 
-#: TurtleArt/tawindow.py:1033 TurtleArt/tawindow.py:1034
-msgid "orientation"
-msgstr "אוריינטציה"
+#: plugins/audio_sensors/audio_sensors.py:120
+#: plugins/audio_sensors/audio_sensors.py:128
+msgid "microphone input pitch"
+msgstr "גובה צליל מכניסת מיקרופון"
 
-#: TurtleArt/tawindow.py:1044 TurtleArt/tawindow.py:1644
-msgid "next"
-msgstr "הבא"
+#: gnome_plugins/collaboration_plugin.py:129
+msgid "Configuration"
+msgstr "קונפיגורציה"
+
+#: gnome_plugins/uploader_plugin.py:130
+msgid "Description:"
+msgstr "תיאור:"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:146
+msgid "journal"
+msgstr "יומן"
+
+#: TurtleArt/tabasics.py:996
+msgid "empty trash"
+msgstr "רוקן פח-אשפה"
+
+#: TurtleArt/tabasics.py:384
+msgid "Turtle will draw when moved."
+msgstr "מסלול הצב כאשר הוא נע ייראה על המסך."
+
+#: TurtleArt/tautils.py:295
+msgid "Load..."
+msgstr "פתח..."
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:159
+msgid "Sugar Journal audio object"
+msgstr "אובייקט צליל של יומן Sugar"
+
+#: TurtleArt/talogo.py:370 TurtleArtActivity.py:731
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1538
+msgid "Stop turtle"
+msgstr "עצור צב"
+
+#: turtleblocks.py:418
+msgid "Turtle"
+msgstr "צב"
+
+#: TurtleArt/tapalette.py:98
+msgid "changes the orientation of the palette of blocks"
+msgstr "משנה את האוריינטציה של לוח הבלוקים"
+
+#: TurtleArt/tabasics.py:924 TurtleArt/tawindow.py:4427
+msgid "store in"
+msgstr "שמור ב"
+
+#: TurtleArt/talogo.py:384 TurtleArtActivity.py:364 TurtleArtActivity.py:996
+msgid "Hide blocks"
+msgstr "הסתר בלוקים"
+
+#: TurtleArtActivity.py:762 TurtleArtActivity.py:946 TurtleArtActivity.py:968
+msgid "Load Python block"
+msgstr "טען בלוק פייתון (Python)"
+
+#: TurtleArt/tabasics.py:559
+msgid "plus"
+msgstr "פלוס"
+
+#: TurtleArt/tabasics.py:721 TurtleArt/tabasics.py:724
+msgid "or"
+msgstr "or"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:829
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1058
+msgid "presentation template: list of bullets"
+msgstr "דוגמת-בסיס למצגת - רשימת פריטים עם סימן"
+
+#: TurtleArt/tabasics.py:612
+msgid "identity operator used for extending blocks"
+msgstr "אופרטור זהות (יחידה) משמש להרחבת פונקציונליות של בלוקים"
+
+#: TurtleArtActivity.py:654 TurtleArtActivity.py:807 turtleblocks.py:385
+msgid "Shrink blocks"
+msgstr "הקטן בלוקים"
+
+#: TurtleArt/tabasics.py:470
+msgid "sets size of text drawn by the turtle"
+msgstr "קובע את גודל הטקסט (מלל) שיצייר הצב"
+
+#: TurtleArt/tabasics.py:244
+msgid ""
+"holds current heading value of the turtle (can be used in place of a number "
+"block)"
+msgstr ""
+"מכיל את הערך הנוכחי של כיוון (אזימוט) הצב (יכול לשמש במקום בלוק מסוג מספר)"
+
+#: TurtleArt/tawindow.py:4215
+msgid "image"
+msgstr "תמונה"
+
+#: TurtleArt/tabasics.py:646
+msgid "returns random number between minimum (top) and maximum (bottom) values"
+msgstr ""
+"החזר מספר אקראי בין ערך מינימום (כניסה עליונה) לערך מקסימום (כניסה תחתונה)"
+
+#: TurtleArt/tabasics.py:345
+msgid "holds current pen color (can be used in place of a number block)"
+msgstr "מכיל את הערך הנוכחי של צבע העט (יכול לשמש במקום בלוק מסוג מספר)"
+
+#: TurtleArtActivity.py:312 turtleblocks.py:404
+msgid "Show palette"
+msgstr "הראה לוח"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:254
+msgid "saves a picture to the Sugar Journal"
+msgstr "שמור את התמונה ליומן Sugar"
+
+#: TurtleArtActivity.py:251 TurtleArtActivity.py:691 TurtleArtActivity.py:733
+#: TurtleArtActivity.py:931 TurtleArtActivity.py:958
+msgid "Save snapshot"
+msgstr "שמור לכידת-מסך"
+
+#: TurtleArt/tabasics.py:839 pysamples/grecord.py:213
+msgid "start"
+msgstr "התחל"
+
+#: TurtleArt/tabasics.py:128
+msgid "moves turtle forward"
+msgstr "מזיז את הצב קדימה"
+
+#: TurtleArt/tabasics.py:124
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:740
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:751
+msgid "forward"
+msgstr "קדימה"
+
+#: TurtleArt/tabasics.py:928 TurtleArt/tabasics.py:942
+#: TurtleArt/tawindow.py:1355 TurtleArt/tawindow.py:1486
+#: TurtleArt/tawindow.py:2081 TurtleArt/tawindow.py:4390
+#: TurtleArt/tawindow.py:4418
+msgid "my box"
+msgstr "התיבה שלי"
+
+#: gnome_plugins/collaboration_plugin.py:294
+msgid "Account ID"
+msgstr "שם משתמש בחשבון"
+
+#: TurtleArt/tabasics.py:135
+msgid "back"
+msgstr "אחורה"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:244
+msgid "sets the scale of media"
+msgstr "קובע את קנה המידה של המדיה"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:276
+msgid "holds current scale value"
+msgstr "מכיל את הערך הנוכחי של קנה המידה"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:981
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:996
+msgid "presentation 1x1"
+msgstr "מצגת 1x1"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1026
+msgid "presentation 1x2"
+msgstr "מצגת 1x2"
+
+#: TurtleArt/tabasics.py:861
+msgid "top of nameable action stack"
+msgstr "ראש מחסנית פעולות"
+
+#: TurtleArt/tabasics.py:929 TurtleArt/tawindow.py:4432
+msgid "stores numeric value in named variable"
+msgstr "שומר את הערך המספרי במשתנה עם שם"
+
+#: TurtleArt/tabasics.py:725
+msgid "logical OR operator"
+msgstr "אופרטור לוגי OR (||)"
+
+#: plugins/audio_sensors/audio_sensors.py:158
+#: plugins/audio_sensors/audio_sensors.py:172
+#: plugins/audio_sensors/audio_sensors.py:186
+#: plugins/audio_sensors/audio_sensors.py:200
+msgid "microphone input voltage"
+msgstr "רמת מתח של כניסת מיקרופון"
+
+#: TurtleArt/tabasics.py:766
+msgid "loops specified number of times"
+msgstr "חוזר על ביצוע הלולאה מספר נקוב של פעמים"
+
+#: TurtleArt/tautils.py:305
+msgid "Save..."
+msgstr "שמור..."
+
+#: TurtleArt/tabasics.py:984
+msgid "invokes Action 2 stack"
+msgstr "קורא למחסנית פעולות 2"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:762
+#, fuzzy
+msgid "setxy"
+msgstr "קבע ערך XY"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:930
+msgid "title y"
+msgstr "כותרת Y"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:921
+msgid "title x"
+msgstr "כותרת X"
+
+#: TurtleArt/tabasics.py:283 TurtleArt/tabasics.py:294
+msgid "fill screen"
+msgstr "מלא מסך"
+
+#: turtleblocks.py:368
+msgid "Save as"
+msgstr "שמור בשם"
+
+#: TurtleArt/tabasics.py:195 TurtleArt/tabasics.py:261
+msgid "set xy"
+msgstr "קבע ערך XY"
+
+#: TurtleArt/tabasics.py:992
+msgid "trash"
+msgstr "פח-אשפה"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:683
+msgid "polar"
+msgstr "פולרי"
+
+#: TurtleArt/tabasics.py:761 TurtleArt/tabasics.py:765
+msgid "repeat"
+msgstr "חזור"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:283
+msgid "wait for current video or audio to complete"
+msgstr "ממתין עד סיום הוידאו או הצליל הנוכחי"
+
+#: TurtleArtActivity.py:235 TurtleArtActivity.py:756 TurtleArtActivity.py:922
+#: TurtleArtActivity.py:952 turtleblocks.py:369
+msgid "Save as image"
+msgstr "שמור כתמונה"
+
+#: TurtleArtActivity.py:579 TurtleArtActivity.py:615 TurtleArtActivity.py:725
+#: TurtleArtActivity.py:778 turtleblocks.py:401
+msgid "Edit"
+msgstr "עריכה"
+
+#: plugins/audio_sensors/audio_sensors.py:152
+#: plugins/audio_sensors/audio_sensors.py:166
+#: plugins/audio_sensors/audio_sensors.py:180
+#: plugins/audio_sensors/audio_sensors.py:194
+msgid "microphone input resistance"
+msgstr "התנגדות כניסה של המיקרופון"
+
+#: TurtleArt/tabasics.py:964
+msgid "top of Action 2 stack"
+msgstr "ראש מחסנית פעולה 2"
+
+#: TurtleArt/tabasics.py:600
+msgid ""
+"divides top numeric input (numerator) by bottom numeric input (denominator)"
+msgstr ""
+"מחלק את הערך המספרי של הכניסה העליונה (מונה) בזו של הכניסה התחתונה (מכנה)"
+
+#: TurtleArt/tabasics.py:642
+msgid "max"
+msgstr "מקסימום"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:559
+msgid "prints value in status block at bottom of the screen"
+msgstr "מציג ערך בבלוק סטטוס בתחתית המסך"
+
+#: TurtleArt/tabasics.py:404
+msgid "start fill"
+msgstr "התחל מילוי"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:398
+#, fuzzy
+msgid "holds results of query-keyboard block as ASCII"
+msgstr "מחזיק את תוצאת הבלוק קלט מקלדת"
+
+#. #-#-#-#-#  he.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: push adds a new item to the program stack
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:470
+msgid "push"
+msgstr "דחוף\\שמור ערך"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:616
+msgid ""
+"a programmable block: used to add advanced multi-variable math equations, e."
+"g., sin(x+y+z)"
+msgstr ""
+"בלוק ניתן לתכנות: משמש להוספת משוואות מתמטיות במספר משתנים, לדוגמה sin(x+y+z)"
+
+#: TurtleArt/tabasics.py:1001
+msgid "restore all"
+msgstr "שחזר הכל"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:313
+msgid "hello"
+msgstr "שלום"
+
+#. TRANS: "name" option from activity.info file
+#, fuzzy
+msgid "TurtleBlocks"
+msgstr "בלוקי צב"
+
+#. TRANS: "summary" option from activity.info file
+#. TRANS: "description" option from activity.info file
+msgid ""
+"A Logo-inspired turtle that draws colorful pictures with snap-together "
+"visual programming blocks"
+msgstr ""
+
+#: TurtleArt/tabasics.py:372
+msgid "pen up"
+msgstr "הרם עט"
+
+#: TurtleArt/tabasics.py:439
+msgid "red"
+msgstr "אדום"
+
+#: TurtleArt/tabasics.py:620 TurtleArt/tabasics.py:621
+msgid "mod"
+msgstr "מודולו"
+
+#: TurtleArt/tabasics.py:785
+msgid "else"
+msgstr "ואם לא"
+
+#: TurtleArt/tacollaboration.py:152 TurtleArt/tawindow.py:2055
+#: TurtleArtActivity.py:751
+msgid "Share selected blocks"
+msgstr ""
 
 #: TurtleArt/tawindow.py:1063 TurtleArt/tawindow.py:1664
 msgid "shift"
@@ -796,11 +3276,6 @@ msgstr ""
 msgid "Really overwrite stack?"
 msgstr ""
 
-#: TurtleArt/tawindow.py:1534 TurtleArt/tawindow.py:1574
-#: gnome_plugins/uploader_plugin.py:144
-msgid "Cancel"
-msgstr "ביטול"
-
 #: TurtleArt/tawindow.py:1538 TurtleArt/tawindow.py:1549
 msgid "Overwrite stack"
 msgstr ""
@@ -814,29 +3289,6 @@ msgstr ""
 msgid "Really delete stack?"
 msgstr ""
 
-#: TurtleArt/tawindow.py:4215
-msgid "image"
-msgstr "תמונה"
-
-#: TurtleArtActivity.py:188 TurtleArtActivity.py:757 TurtleArtActivity.py:925
-#: TurtleArtActivity.py:955 turtleblocks.py:371
-msgid "Save as Logo"
-msgstr "שמור כ-LOGO"
-
-#: TurtleArtActivity.py:235 TurtleArtActivity.py:756 TurtleArtActivity.py:922
-#: TurtleArtActivity.py:952 turtleblocks.py:369
-msgid "Save as image"
-msgstr "שמור כתמונה"
-
-#: TurtleArtActivity.py:243
-msgid "snapshot"
-msgstr "לכידת-מסך"
-
-#: TurtleArtActivity.py:251 TurtleArtActivity.py:691 TurtleArtActivity.py:733
-#: TurtleArtActivity.py:931 TurtleArtActivity.py:958
-msgid "Save snapshot"
-msgstr "שמור לכידת-מסך"
-
 #: TurtleArtActivity.py:296 TurtleArtActivity.py:657 TurtleArtActivity.py:808
 msgid "Turn off hover help"
 msgstr ""
@@ -845,103 +3297,10 @@ msgstr ""
 msgid "Turn on hover help"
 msgstr ""
 
-#: TurtleArtActivity.py:312 turtleblocks.py:404
-msgid "Show palette"
-msgstr "הראה לוח"
-
-#: TurtleArtActivity.py:318 TurtleArtActivity.py:984 turtleblocks.py:406
-msgid "Hide palette"
-msgstr "הסתר לוח"
-
-#: TurtleArtActivity.py:485
-msgid "Rescale coordinates down"
-msgstr "הקטן קנה-מידה של קוארדינטות"
-
-#: TurtleArtActivity.py:489 TurtleArtActivity.py:648 TurtleArtActivity.py:804
-msgid "Rescale coordinates up"
-msgstr "הגדל קנה-מידה של קוארדינטות"
-
-#: TurtleArtActivity.py:579 TurtleArtActivity.py:615 TurtleArtActivity.py:725
-#: TurtleArtActivity.py:778 turtleblocks.py:401
-msgid "Edit"
-msgstr "עריכה"
-
-#: TurtleArtActivity.py:584 TurtleArtActivity.py:613 TurtleArtActivity.py:726
-#: TurtleArtActivity.py:796 turtleblocks.py:392
-msgid "View"
-msgstr "תצוגה"
-
-#: TurtleArtActivity.py:611 TurtleArtActivity.py:727
-msgid "Project"
-msgstr "פרוייקט"
-
 #: TurtleArtActivity.py:617 TurtleArtActivity.py:724 TurtleArtActivity.py:753
 #: TurtleArtActivity.py:755 TurtleArtActivity.py:917
 msgid "Save/Load"
 msgstr ""
-
-#: TurtleArtActivity.py:625 TurtleArtActivity.py:779 turtleblocks.py:395
-msgid "Copy"
-msgstr "העתק"
-
-#: TurtleArtActivity.py:627 TurtleArtActivity.py:780 turtleblocks.py:396
-msgid "Paste"
-msgstr "הדבק"
-
-#: TurtleArtActivity.py:629
-#, fuzzy
-msgid "Restore blocks from trash"
-msgstr "שחזר את כל הבלוקים מפח האשפה"
-
-#: TurtleArtActivity.py:637 TurtleArtActivity.py:797
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:806
-msgid "Fullscreen"
-msgstr "מסך מלא"
-
-#: TurtleArtActivity.py:640 TurtleArtActivity.py:798 turtleblocks.py:377
-msgid "Cartesian coordinates"
-msgstr "קוארדינטות קרטזיות"
-
-#: TurtleArtActivity.py:642 TurtleArtActivity.py:800 turtleblocks.py:379
-msgid "Polar coordinates"
-msgstr "קוארדינטות פולריות"
-
-#: TurtleArtActivity.py:645 TurtleArtActivity.py:802
-msgid "Metric coordinates"
-msgstr "קוארדינטות מטריות"
-
-#: TurtleArtActivity.py:651 TurtleArtActivity.py:806 turtleblocks.py:383
-msgid "Grow blocks"
-msgstr "הגדל בלוקים"
-
-#: TurtleArtActivity.py:654 TurtleArtActivity.py:807 turtleblocks.py:385
-msgid "Shrink blocks"
-msgstr "הקטן בלוקים"
-
-#: TurtleArtActivity.py:678 TurtleArtActivity.py:695 TurtleArtActivity.py:734
-#: TurtleArtActivity.py:934
-msgid "Load example"
-msgstr "פתח דוגמא"
-
-#: TurtleArtActivity.py:728 TurtleArtActivity.py:990 turtleblocks.py:413
-msgid "Clean"
-msgstr "נקה"
-
-#: TurtleArtActivity.py:729 TurtleArtActivity.py:992 turtleblocks.py:414
-msgid "Run"
-msgstr "רוץ!"
-
-#: TurtleArtActivity.py:730 TurtleArtActivity.py:994 turtleblocks.py:415
-msgid "Step"
-msgstr "צעד"
-
-#: TurtleArtActivity.py:735 turtleblocks.py:422 util/helpbutton.py:45
-msgid "Help"
-msgstr "עזרה"
-
-#: TurtleArtActivity.py:736 turtleblocks.py:417
-msgid "Stop"
-msgstr "עצור"
 
 #: TurtleArtActivity.py:758 TurtleArtActivity.py:938 TurtleArtActivity.py:960
 msgid "Load project"
@@ -950,10 +3309,6 @@ msgstr ""
 #: TurtleArtActivity.py:761 TurtleArtActivity.py:943 TurtleArtActivity.py:965
 msgid "Load plugin"
 msgstr ""
-
-#: TurtleArtActivity.py:762 TurtleArtActivity.py:946 TurtleArtActivity.py:968
-msgid "Load Python block"
-msgstr "טען בלוק פייתון (Python)"
 
 #: TurtleArtActivity.py:895
 msgid "Palettes"
@@ -1002,111 +3357,13 @@ msgstr ""
 msgid "Do you want to reinstall %s?"
 msgstr ""
 
-#: gnome_plugins/collaboration_plugin.py:67
-msgid "My Turtle Art session"
-msgstr "פעילות ציורי-צב שלי"
-
-#: gnome_plugins/collaboration_plugin.py:115
-msgid "Enable collaboration"
-msgstr "אפשר שיתוף-פעולה"
-
-#: gnome_plugins/collaboration_plugin.py:120
-msgid "Activities"
-msgstr "פעילויות"
-
-#: gnome_plugins/collaboration_plugin.py:125
-msgid "Buddies"
-msgstr "חברים"
-
-#: gnome_plugins/collaboration_plugin.py:128
-msgid "Share"
-msgstr "שתף"
-
-#: gnome_plugins/collaboration_plugin.py:129
-msgid "Configuration"
-msgstr "קונפיגורציה"
-
-#: gnome_plugins/collaboration_plugin.py:132
-msgid "Neighborhood"
-msgstr "שכונה"
-
-#: gnome_plugins/collaboration_plugin.py:292
-msgid "Nickname"
-msgstr "כינוי"
-
-#: gnome_plugins/collaboration_plugin.py:294
-msgid "Account ID"
-msgstr "שם משתמש בחשבון"
-
-#: gnome_plugins/collaboration_plugin.py:296
-msgid "Server"
-msgstr "שרת"
-
 #: gnome_plugins/collaboration_plugin.py:298
 msgid "Port"
 msgstr "פורט"
 
-#: gnome_plugins/collaboration_plugin.py:300
-msgid "Password"
-msgstr "סיסמה"
-
-#: gnome_plugins/collaboration_plugin.py:302
-msgid "Register"
-msgstr "הירשם"
-
-#: gnome_plugins/collaboration_plugin.py:304
-msgid "Colors"
-msgstr "צבעים"
-
-#: gnome_plugins/fb_plugin.py:82 gnome_plugins/fb_plugin.py:83
-#: gnome_plugins/fb_plugin.py:92 gnome_plugins/uploader_plugin.py:63
-#: gnome_plugins/uploader_plugin.py:64 gnome_plugins/uploader_plugin.py:73
-msgid "Upload"
-msgstr "העלאה"
-
 #: gnome_plugins/fb_plugin.py:87
 msgid "Facebook wall post"
 msgstr ""
-
-#: gnome_plugins/uploader_plugin.py:68
-msgid "Upload to Web"
-msgstr "העלה לאינטרנט"
-
-#: gnome_plugins/uploader_plugin.py:90
-msgid ""
-"You must have an account at http://turtleartsite.sugarlabs.org to upload "
-"your project."
-msgstr ""
-"את\\ה צריכ\\ה לפתוח חשבון באתר http://turtleartsite.sugarlabs.org לפני שתוכל\\י "
-"להעלות את הפרוייקט לאתר."
-
-#: gnome_plugins/uploader_plugin.py:99
-msgid "Username:"
-msgstr "שם משתמש:"
-
-#: gnome_plugins/uploader_plugin.py:109
-msgid "Password:"
-msgstr "סיסמה:"
-
-#: gnome_plugins/uploader_plugin.py:120
-msgid "Title:"
-msgstr "כותרת:"
-
-#: gnome_plugins/uploader_plugin.py:130
-msgid "Description:"
-msgstr "תיאור:"
-
-#: gnome_plugins/uploader_plugin.py:140
-msgid "Submit to Web"
-msgstr "שלח לאינטרנט"
-
-#: gnome_plugins/uploader_plugin.py:166
-msgid "Login failed"
-msgstr "נסיון הכניסה למערכת נכשל"
-
-#: gnome_plugins/uploader_plugin.py:203
-msgid "Failed to upload!"
-msgstr "נסיון ההעלאה נכשל!"
 
 #: plugins/accelerometer/accelerometer.py:49
 #: plugins/audio_sensors/audio_sensors.py:75
@@ -1115,240 +3372,6 @@ msgstr "נסיון ההעלאה נכשל!"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:336
 msgid "Palette of sensor blocks"
 msgstr "לוח של בלוקי חיישנים"
-
-#: plugins/accelerometer/accelerometer.py:56
-#: plugins/accelerometer/accelerometer.py:63
-msgid "acceleration"
-msgstr "תאוצה"
-
-#: plugins/accelerometer/accelerometer.py:58
-#: plugins/accelerometer/accelerometer.py:65
-msgid "push acceleration in x, y, z to heap"
-msgstr "שמור את התאוצה בx, y, z במחסנית LIFO"
-
-#: plugins/audio_sensors/audio_sensors.py:83
-#: plugins/audio_sensors/audio_sensors.py:98 pysamples/grecord.py:205
-msgid "sound"
-msgstr "צליל"
-
-#: plugins/audio_sensors/audio_sensors.py:84
-#: plugins/audio_sensors/audio_sensors.py:99
-msgid "raw microphone input signal"
-msgstr "אות כניסה ישיר מהמיקרופון"
-
-#: plugins/audio_sensors/audio_sensors.py:90
-#: plugins/audio_sensors/audio_sensors.py:105
-msgid "loudness"
-msgstr "עוצמת קול"
-
-#: plugins/audio_sensors/audio_sensors.py:91
-#: plugins/audio_sensors/audio_sensors.py:106
-msgid "microphone input volume"
-msgstr "עוצמת קול של כניסת מיקרופון"
-
-#: plugins/audio_sensors/audio_sensors.py:119
-#: plugins/audio_sensors/audio_sensors.py:127
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:322
-msgid "pitch"
-msgstr "גובה צליל"
-
-#: plugins/audio_sensors/audio_sensors.py:120
-#: plugins/audio_sensors/audio_sensors.py:128
-msgid "microphone input pitch"
-msgstr "גובה צליל מכניסת מיקרופון"
-
-#: plugins/audio_sensors/audio_sensors.py:151
-#: plugins/audio_sensors/audio_sensors.py:165
-#: plugins/audio_sensors/audio_sensors.py:179
-#: plugins/audio_sensors/audio_sensors.py:193
-msgid "resistance"
-msgstr "התנגדות"
-
-#: plugins/audio_sensors/audio_sensors.py:152
-#: plugins/audio_sensors/audio_sensors.py:166
-#: plugins/audio_sensors/audio_sensors.py:180
-#: plugins/audio_sensors/audio_sensors.py:194
-msgid "microphone input resistance"
-msgstr "התנגדות כניסה של המיקרופון"
-
-#: plugins/audio_sensors/audio_sensors.py:157
-#: plugins/audio_sensors/audio_sensors.py:171
-#: plugins/audio_sensors/audio_sensors.py:185
-#: plugins/audio_sensors/audio_sensors.py:199
-msgid "voltage"
-msgstr "רמת מתח"
-
-#: plugins/audio_sensors/audio_sensors.py:158
-#: plugins/audio_sensors/audio_sensors.py:172
-#: plugins/audio_sensors/audio_sensors.py:186
-#: plugins/audio_sensors/audio_sensors.py:200
-msgid "microphone input voltage"
-msgstr "רמת מתח של כניסת מיקרופון"
-
-#: plugins/camera_sensor/camera_sensor.py:67
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:139
-msgid "Palette of media objects"
-msgstr "לוח של בלוקי מדיה"
-
-#: plugins/camera_sensor/camera_sensor.py:80
-#: plugins/camera_sensor/camera_sensor.py:93
-#: plugins/camera_sensor/camera_sensor.py:128
-#: plugins/camera_sensor/camera_sensor.py:141
-#: plugins/light_sensor/light_sensor.py:56
-#: plugins/light_sensor/light_sensor.py:63
-msgid "brightness"
-msgstr "בהירות"
-
-#: plugins/camera_sensor/camera_sensor.py:82
-#: plugins/camera_sensor/camera_sensor.py:130
-msgid "light level detected by camera"
-msgstr "עוצמת אור שנמדדה ע\"י המצלמה"
-
-#: plugins/camera_sensor/camera_sensor.py:95
-#: plugins/camera_sensor/camera_sensor.py:143
-msgid "Average RGB color from camera is pushed to the stack"
-msgstr "צבע RGB ממוצע מהמצלמה יישמר למחסנית"
-
-#: plugins/camera_sensor/camera_sensor.py:106
-#: plugins/camera_sensor/camera_sensor.py:113
-#: plugins/camera_sensor/camera_sensor.py:121
-#: plugins/camera_sensor/camera_sensor.py:155
-#: plugins/camera_sensor/camera_sensor.py:163
-msgid "camera output"
-msgstr "אות היציאה מהמצלמה"
-
-#: plugins/light_sensor/light_sensor.py:58
-#: plugins/light_sensor/light_sensor.py:65
-msgid "light level detected by light sensor"
-msgstr "עוצמת אור שנמדדה ע\"י חיישן האור"
-
-#: plugins/rfid/rfid.py:92 plugins/rfid/rfid.py:100
-msgid "RFID"
-msgstr "תג-רדיו (RFID)"
-
-#: plugins/rfid/rfid.py:93 plugins/rfid/rfid.py:101
-msgid "read value from RFID device"
-msgstr "קרא ערך מהתקן RFID"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:109
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:112
-msgid "while"
-msgstr "כל-עוד"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:113
-msgid "do-while-True operator that uses boolean operators from Numbers palette"
-msgstr "אופרטור כל-עוד-אמת שמשתמש באופרטורים בוליאניים מלוח פעולות חשבוניות"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:119
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:122
-msgid "until"
-msgstr "עד_ש"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:123
-msgid "do-until-True operator that uses boolean operators from Numbers palette"
-msgstr "אופרטור עד-ש-אמת שמשתמש באופרטורים בוליאניים מלוח פעולות חשבוניות"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:130
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:732
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:903
-msgid "top"
-msgstr "ראש"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:132
-msgid "top of a collapsible stack"
-msgstr "ראש של מחסנית ניתנת לצמצום"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:146
-msgid "journal"
-msgstr "יומן"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:147
-msgid "Sugar Journal media object"
-msgstr "אובייקט מדיה של יומן Sugar"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:157
-msgid "audio"
-msgstr "צליל"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:159
-msgid "Sugar Journal audio object"
-msgstr "אובייקט צליל של יומן Sugar"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:169
-msgid "video"
-msgstr "וידאו"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:171
-msgid "Sugar Journal video object"
-msgstr "אובייקט וידאו של יומן Sugar"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:181
-msgid "description"
-msgstr "תיאור"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:183
-msgid "Sugar Journal description field"
-msgstr "שדה תיאור של יומן Sugar"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:200
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:228
-msgid "show"
-msgstr "הצג"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:204
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:217
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:232
-msgid "draws text or show media from the Journal"
-msgstr "מצייר טקסט (מלל) או מראה מדיה מהיומן"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:213
-msgid "show aligned"
-msgstr "הצג עם יישור"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:240
-msgid "set scale"
-msgstr "קבע קנה מידה"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:244
-msgid "sets the scale of media"
-msgstr "קובע את קנה המידה של המדיה"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:251
-msgid "save picture"
-msgstr "שמור תמונה"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:253
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:264
-msgid "picture name"
-msgstr "שם התמונה"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:254
-msgid "saves a picture to the Sugar Journal"
-msgstr "שמור את התמונה ליומן Sugar"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:262
-msgid "save SVG"
-msgstr "שמור SVG"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:265
-msgid "saves turtle graphics as an SVG file in the Sugar Journal"
-msgstr "שומר ציור-צב בפורמט SVG ביומן Sugar"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:272
-msgid "scale"
-msgstr "קנה-מידה"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:276
-msgid "holds current scale value"
-msgstr "מכיל את הערך הנוכחי של קנה המידה"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:281
-msgid "media wait"
-msgstr "מתן למדיה"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:283
-msgid "wait for current video or audio to complete"
-msgstr "ממתין עד סיום הוידאו או הצליל הנוכחי"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:289
 msgid "media stop"
@@ -1374,171 +3397,14 @@ msgstr "המשך מדיה"
 msgid "resume playing video or audio"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:311
-msgid "speak"
-msgstr "דבר"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:313
-msgid "hello"
-msgstr "שלום"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:314
-msgid "speaks text"
-msgstr "אומר את הטקסט (מלל) הנתון"
-
-#. TRANS: pitch, duration, amplitude
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:322
-msgid "sinewave"
-msgstr "גל סינוס"
-
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:323
 msgid "amplitude"
 msgstr "עוצמה"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:323
-msgid "duration"
-msgstr "משך זמן"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:326
-msgid "plays a sinewave at frequency, amplitude, and duration (in seconds)"
-msgstr "משמיע צליל סינוס בתדירות, עוצמה ומשך זמן (בשניות) נתונים"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:343
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:354
-msgid "button down"
-msgstr "כפתור לחוץ"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:346
-msgid "returns 1 if mouse button is pressed"
-msgstr "מחזיר 1 אם המשתמש לוחץ כעת על כפתור העכבר"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:357
-#, fuzzy
-msgid "returns True if mouse button is pressed"
-msgstr "מחזיר 1 אם המשתמש לוחץ כעת על כפתור העכבר"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:364
-msgid "mouse x"
-msgstr "עכבר-x"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:367
-msgid "returns mouse x coordinate"
-msgstr "מחזיר את הערך הנוכחי של קוארדינטת x של העכבר"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:374
-msgid "mouse y"
-msgstr "עכבר-y"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:377
-msgid "returns mouse y coordinate"
-msgstr "מחזיר את הערך הנוכחי של קוארדינטת y של העכבר"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:385
-msgid "query keyboard"
-msgstr "קלט מקלדת"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:387
-msgid "query for keyboard input (results stored in keyboard block)"
-msgstr "מבקש קלט מהמקלדת (התוצאה נשמרת בבלוק מקלדת)"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:394
-msgid "keyboard"
-msgstr "מקלדת"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:398
-#, fuzzy
-msgid "holds results of query-keyboard block as ASCII"
-msgstr "מחזיק את תוצאת הבלוק קלט מקלדת"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:430
-msgid "read pixel"
-msgstr "קרא פיקסל"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:433
-msgid "RGB color under the turtle is pushed to the stack"
-msgstr "ערך RGB של הפיקסל שנמצא תחת הצב נשמר במחסנית"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:441
-msgid "turtle sees"
-msgstr "צב רואה צבע"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:443
-msgid "returns the color that the turtle \"sees\""
-msgstr "מחזיר את הצבע שהצב \"רואה\""
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:451
-msgid "time"
-msgstr "זמן"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:454
-msgid "elapsed time (in seconds) since program started"
-msgstr "זמן שחלף (בשניות) מאז הפעלת התוכנה"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:463
-msgid "Palette of extra options"
-msgstr "לוח של אפשרויות נוספות"
-
-#. TRANS: push adds a new item to the program stack
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:470
-msgid "push"
-msgstr "דחוף\\שמור ערך"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:473
-msgid "pushes value onto FILO (first-in last-out heap)"
-msgstr "שומר ערך במחסנית FILO (ראשון-בפנים אחרון-בחוץ)"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:483
-msgid "show heap"
-msgstr "הצג מחסנית FILO"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:486
-msgid "shows values in FILO (first-in last-out heap)"
-msgstr "מציג את הערכים השמורים במחסנית FILO (ראשון-בפנים אחרון-בחוץ)"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:496
-msgid "empty heap"
-msgstr "רוקן מחסנית FILO"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:499
-msgid "emptys FILO (first-in-last-out heap)"
-msgstr "מרוקן את מחסנית הFILO"
-
-#. TRANS: pop removes a new item from the program stack
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:510
-msgid "pop"
-msgstr "שלוף\\טען ערך"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:514
-msgid "pops value off FILO (first-in last-out heap)"
-msgstr "שולף ערך ממחסנית LIFO (ראשון-בפנים אחרון-בחוץ)"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:525
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:535
-#, fuzzy
-msgid "empty heap?"
-msgstr "רוקן מחסנית FILO"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:528
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:538
 msgid "returns True if heap is empty"
 msgstr ""
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:545
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:547
-msgid "comment"
-msgstr "הערה"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:549
-msgid "places a comment in your code"
-msgstr "מציב הערה בקוד שלך"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:555
-msgid "print"
-msgstr "הודעה"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:559
-msgid "prints value in status block at bottom of the screen"
-msgstr "מציג ערך בבלוק סטטוס בתחתית המסך"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:569
 msgid "Python chr operator"
@@ -1548,71 +3414,6 @@ msgstr ""
 msgid "Python int operator"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:585
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:598
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:612
-msgid "Python"
-msgstr "פייתון (Python)"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:589
-msgid ""
-"a programmable block: used to add advanced single-variable math equations, e."
-"g., sin(x)"
-msgstr "בלוק ניתן לתכנות: משמש להוספת משוואות מתמטיות במשתנה אחד, לדוגמה sin(x)"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:602
-msgid ""
-"a programmable block: used to add advanced multi-variable math equations, e."
-"g., sqrt(x*x+y*y)"
-msgstr ""
-"בלוק ניתן לתכנות: משמש להוספת משוואות מתמטיות במספר משתנים, לדוגמה "
-"sqrt(x*x+y*y)"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:616
-msgid ""
-"a programmable block: used to add advanced multi-variable math equations, e."
-"g., sin(x+y+z)"
-msgstr ""
-"בלוק ניתן לתכנות: משמש להוספת משוואות מתמטיות במספר משתנים, לדוגמה "
-"sin(x+y+z)"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:628
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:644
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:659
-msgid "Python block"
-msgstr "בלוק פייתון (Python)"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:630
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:646
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:662
-msgid "runs code found in the tamyblock.py module found in the Journal"
-msgstr "מריץ קוד שנמצא במודול tamyblock.py ביומן"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:675
-msgid "Cartesian"
-msgstr "קרטזיאני"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:677
-msgid "displays Cartesian coordinates"
-msgstr "הצג קוארדינטות קרטזיאניות"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:683
-msgid "polar"
-msgstr "פולרי"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:685
-msgid "displays polar coordinates"
-msgstr "הצג קוארדינטות פולריות"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:691
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:773
-msgid "turtle"
-msgstr "צב"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:695
-msgid "chooses which turtle to command"
-msgstr "בחר באיזה צב להשתמש"
-
 #. TRANS: pop removes a new item from the program stack
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:703
 msgid "active turtle"
@@ -1621,20 +3422,6 @@ msgstr ""
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:706
 msgid "the name of the active turtle"
 msgstr ""
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:715
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:724
-msgid "turtle shell"
-msgstr "שריון צב"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:717
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:725
-msgid "put a custom 'shell' on the turtle"
-msgstr "התאם אישית את השריון שעל הצב"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:733
-msgid "top of a collapsed stack"
-msgstr "ראש המחסנית המצומצמת"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:738
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:748
@@ -1648,11 +3435,6 @@ msgstr ""
 msgid "loads a block"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:762
-#, fuzzy
-msgid "setxy"
-msgstr "קבע ערך XY"
-
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:771
 msgid "palette"
 msgstr ""
@@ -1660,143 +3442,6 @@ msgstr ""
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:774
 msgid "selects a palette"
 msgstr ""
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:782
-msgid "Palette of presentation templates"
-msgstr "לוח של דוגמאות-בסיס למצגת"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:789
-msgid "hide blocks"
-msgstr "הסתר בלוקים"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:791
-msgid "declutters canvas by hiding blocks"
-msgstr "מסיר בלוקים מיותרים מהיריעה ע\"מ להקל על אי-סדר"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:798
-msgid "show blocks"
-msgstr "הראה בלוקים"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:800
-msgid "restores hidden blocks"
-msgstr "הצג בלוקים מוסתרים"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:808
-msgid "hides the Sugar toolbars"
-msgstr "הסתר סרגלי כלים של Sugar"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:817
-msgid "list"
-msgstr "רשימה"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:821
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1056
-msgid "presentation bulleted list"
-msgstr "רשימת פריטים עם סימון למצגת"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:829
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1058
-msgid "presentation template: list of bullets"
-msgstr "דוגמת-בסיס למצגת - רשימת פריטים עם סימן"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:836
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:998
-msgid "presentation template: select Journal object (no description)"
-msgstr "דוגמת-בסיס למצגת - בחר אובייקט מהיומן (בלי תיאור)"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:843
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:983
-msgid "presentation template: select Journal object (with description)"
-msgstr "דוגמת-בסיס למצגת - בחר אובייקט מהיומן (עם תיאור)"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:850
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1043
-msgid "presentation template: select four Journal objects"
-msgstr "דוגמת-בסיס למצגת - בחר ארבעה אובייקטים מהיומן"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:857
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:864
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1013
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1028
-msgid "presentation template: select two Journal objects"
-msgstr "דוגמת-בסיס למצגת - בחר שני אובייקטים מהיומן"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:874
-msgid "xcor of left of screen"
-msgstr "קוארדינטת X של צידו השמאלי של המסך"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:879
-msgid "bottom"
-msgstr "תחתית"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:882
-msgid "ycor of bottom of screen"
-msgstr "קוארדינטת Y של צידו התחתון של המסך"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:887
-msgid "width"
-msgstr "רוחב"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:890
-msgid "the canvas width"
-msgstr "רוחב היריעה"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:898
-msgid "xcor of right of screen"
-msgstr "קוארדינטת X של צידו הימני של המסך"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:906
-msgid "ycor of top of screen"
-msgstr "קוארדינטת Y של צידו העליון של המסך"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:911
-msgid "height"
-msgstr "גובה"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:914
-msgid "the canvas height"
-msgstr "גובה היריעה"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:921
-msgid "title x"
-msgstr "כותרת X"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:930
-msgid "title y"
-msgstr "כותרת Y"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:939
-msgid "left x"
-msgstr "שמאל X"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:948
-msgid "top y"
-msgstr "מעלה Y"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:957
-msgid "right x"
-msgstr "ימין X"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:966
-msgid "bottom y"
-msgstr "תחתית Y"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:981
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:996
-msgid "presentation 1x1"
-msgstr "מצגת 1x1"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1011
-msgid "presentation 2x1"
-msgstr "מצגת 2x1"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1026
-msgid "presentation 1x2"
-msgstr "מצגת 1x2"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1041
-msgid "presentation 2x2"
-msgstr "מצגת 2x2"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1073
 msgid "Palette of user-defined operators"
@@ -1829,29 +3474,9 @@ msgstr ""
 msgid "push destination rgb value to heap"
 msgstr ""
 
-#: pysamples/grecord.py:215
-msgid "stop"
-msgstr "הפסק"
-
-#: pysamples/grecord.py:217
-msgid "play"
-msgstr "נגן"
-
-#: pysamples/grecord.py:219
-msgid "save"
-msgstr "שמור"
-
 #: pysamples/journal-stats.py:78
 msgid "other"
 msgstr ""
-
-#: pysamples/uturn.py:24
-msgid "uturn"
-msgstr "פניית-פרסה"
-
-#: pysamples/uturn.py:26
-msgid "make a uturn"
-msgstr "בצע פניית-פרסה"
 
 #: turtleblocks.py:89
 msgid "usage is"
@@ -1861,86 +3486,21 @@ msgstr ""
 msgid "No option action:"
 msgstr ""
 
-#: turtleblocks.py:265
-msgid "File not found"
-msgstr "הקובץ לא נמצא"
-
-#: turtleblocks.py:289
-#, python-format
-msgid "Configuration directory not writable: %s"
-msgstr "אין הרשאה לכתיבה בספריית קונפיגורציה: %s"
-
-#: turtleblocks.py:365
-msgid "New"
-msgstr "חדש"
-
-#: turtleblocks.py:366
-msgid "Open"
-msgstr "פתח"
-
-#: turtleblocks.py:367
-msgid "Save"
-msgstr "שמור"
-
-#: turtleblocks.py:368
-msgid "Save as"
-msgstr "שמור בשם"
-
-#: turtleblocks.py:373
-msgid "Quit"
-msgstr "יציאה"
-
-#: turtleblocks.py:374
-msgid "File"
-msgstr "קובץ"
-
-#: turtleblocks.py:381
-msgid "Rescale coordinates"
-msgstr "שנה קנה מידה של קוארדינטות"
-
-#: turtleblocks.py:387
-msgid "Reset block size"
-msgstr "שנה גודל בלוקים לברירת מחדל"
-
-#: turtleblocks.py:408
-msgid "Show/hide blocks"
-msgstr "הצג\\הסתר בלוקים"
-
-#: turtleblocks.py:410
-msgid "Tools"
-msgstr "כלים"
-
-#: turtleblocks.py:416
-msgid "Debug"
-msgstr "נפה שגיאות"
-
-#: turtleblocks.py:418
-msgid "Turtle"
-msgstr "צב"
-
 #: turtleblocks.py:421
 msgid "About..."
 msgstr ""
 
-#: turtleblocks.py:461
-msgid "You have unsaved work. Would you like to save before quitting?"
-msgstr "יש לך עבודה שטרם נשמרה. האם תרצה לשמור אותה לפני יציאה מהתוכנית?"
+#~ msgid "grayscale"
+#~ msgstr "גווני אפור"
 
-#: turtleblocks.py:462
-msgid "Save project?"
-msgstr "לשמור פרוייקט?"
+#~ msgid "ambient light"
+#~ msgstr "אור-רקע"
 
-#~ msgid "Turtle Art"
-#~ msgstr "ציורי צב"
+#~ msgid "magnetic induction"
+#~ msgstr "השראה מגנטית"
 
-#~ msgid "Turtle Art Mini"
-#~ msgstr "מיני ציור-צב"
-
-#~ msgid "Turtle Confusion"
-#~ msgstr "בלבול צב"
-
-#~ msgid "Select a challenge"
-#~ msgstr "בחר אתגר"
+#~ msgid "vibration"
+#~ msgstr "רעד"
 
 #, fuzzy
 #~ msgid "adjust LED intensity between 0 and 255"
@@ -1967,206 +3527,24 @@ msgstr "לשמור פרוייקט?"
 #~ "returns the distance from the object in front of the sensor as a number "
 #~ "between 0 and 255"
 #~ msgstr ""
-#~ "מחזיר את הערך הנוכחי של מדידת המרחק מהאובייקט שמול החיישן כמספר בין 0 ל 255."
+#~ "מחזיר את הערך הנוכחי של מדידת המרחק מהאובייקט שמול החיישן כמספר בין 0 ל "
+#~ "255."
 
 #, fuzzy
 #~ msgid "returns 0 or 1 depending on the sensor inclination"
 #~ msgstr "מחזיר 0 או 1 ע\"פ הטיית החיישן."
 
 #, fuzzy
-#~ msgid "returns 1 when the sensors detects a magnetic field, 0 otherwise"
-#~ msgstr "מחזיר 1 כאשר החיישן מזהה שדה מגנטי, 0 אחרת."
-
-#, fuzzy
 #~ msgid "switches from 0 to 1, the frequency depends on the vibration"
 #~ msgstr "מתחלף בין 0 ל-1 בתדירות שנקבעת ע\"פ הרעדה."
-
-#~ msgid "LED"
-#~ msgstr "נורית LED"
-
-#~ msgid "grayscale"
-#~ msgstr "גווני אפור"
-
-#~ msgid "ambient light"
-#~ msgstr "אור-רקע"
-
-#~ msgid "temperature"
-#~ msgstr "טמפרטורה"
-
-#~ msgid "distance"
-#~ msgstr "מרחק"
-
-#~ msgid "tilt"
-#~ msgstr "הטייה"
-
-#~ msgid "magnetic induction"
-#~ msgstr "השראה מגנטית"
-
-#~ msgid "vibration"
-#~ msgstr "רעד"
-
-#~ msgid "Butia Robot"
-#~ msgstr "רובוט Butia"
 
 #, fuzzy
 #~ msgid "returns the battery charge as a number between 0 and 255"
 #~ msgstr "מחזיר את הערך הנוכחי של טמפרטורת החדר כמספר בין 0 ל255."
 
 #, fuzzy
-#~ msgid "Error on initialization of the camera"
-#~ msgstr "שגיאה באתחול המצלמה."
-
-#~ msgid "FollowMe"
-#~ msgstr "עקוב-אחרי"
-
-#~ msgid "update information"
-#~ msgstr "עדכן מידע"
-
-#, fuzzy
-#~ msgid "update information from the server"
-#~ msgstr "מעדכן מידע מהשרת."
-
-#~ msgid "Palette of physics blocks"
-#~ msgstr "לוח של בלוקי פיזיקה"
-
-#~ msgid "start polygon"
-#~ msgstr "התחל מצולע"
-
-#~ msgid "Begin defining a new polygon based on the current Turtle xy position."
-#~ msgstr "התחל להגדיר מצולע בהתבסס על מיקומו הנוכחי של הצב."
-
-#~ msgid "add point"
-#~ msgstr "הוסף נקודה"
-
-#~ msgid ""
-#~ "Add a new point to the current polygon based on the current Turtle xy "
-#~ "position."
-#~ msgstr "הוסף נקודה חדשה למצולע הנוכחי בהתבסס על מיקומו הנוכחי של הצב."
-
-#~ msgid "end polygon"
-#~ msgstr "סיים מצולע"
-
-#~ msgid "Define a new polygon."
-#~ msgstr "הגדר מצולע חדש."
-
-#~ msgid "end filled polygon"
-#~ msgstr "סיים מצולע עם מילוי"
-
-#~ msgid "Not a simple polygon"
-#~ msgstr "זהו אינו מצולע פשוט"
-
-#~ msgid "Define a new filled polygon."
-#~ msgstr "הגדר מצולע חדש עם מילוי."
-
-#~ msgid "triangle"
-#~ msgstr "משולש"
-
-#~ msgid "base"
-#~ msgstr "בסיס"
-
-#~ msgid "Add a triangle object to the project."
-#~ msgstr "הוסף אובייקט משולש לפרוייקט."
-
-#~ msgid "circle"
-#~ msgstr "עיגול"
-
-#~ msgid "Add a circle object to the project."
-#~ msgstr "הוסף אובייקט עיגול לפרוייקט."
-
-#~ msgid "rectangle"
-#~ msgstr "מרובע"
-
-#~ msgid "Add a rectangle object to the project."
-#~ msgstr "הוסף אובייקט מרובע לפרוייקט."
-
-#~ msgid "reset"
-#~ msgstr "אתחל"
-
-#~ msgid "Reset the project; clear the object list."
-#~ msgstr "אתחל את הפרוייקט. נקה את רשימת האובייקטים."
-
-#~ msgid "motor"
-#~ msgstr "מנוע"
-
-#~ msgid "torque"
-#~ msgstr "מומנט-סיבוב"
-
-#~ msgid "speed"
-#~ msgstr "מהירות"
-
-#~ msgid ""
-#~ "Join two objects together (the most recent object created and the object at "
-#~ "point x, y)."
-#~ msgstr "צרף שני אובייקטים (האובייקט האחרון שנוצר והאובייקט בנקודה x,y)."
-
-#~ msgid "Save the project to the Journal as a Physics activity."
-#~ msgstr "שמור את הפרוייקט ביומן כפעילות פיזיקה."
-
-#, fuzzy
-#~ msgid "Add a gear object to the project."
-#~ msgstr "הוסף אובייקט עיגול לפרוייקט."
-
-#~ msgid "density"
-#~ msgstr "צפיפות"
-
-#~ msgid ""
-#~ "Set the density property for objects (density can be any positive number)."
-#~ msgstr "קבע ערך לתכונת הצפיפות של אובייקטים (מספר חיובי)."
-
-#~ msgid "friction"
-#~ msgstr "חיכוך"
-
-#~ msgid ""
-#~ "Set the friction property for objects (value from 0 to 1, where 0 turns "
-#~ "friction off and 1 is strong friction)."
-#~ msgstr ""
-#~ "קבע ערך לתכונת החיכוך של אובייקטים (ערכים בין 0 ל-1, 0 משמעו ללא חיכוך, 1 "
-#~ "משמעו חיכוך רב)."
-
-#~ msgid "bounciness"
-#~ msgstr "מקדם תקומה"
-
-#~ msgid ""
-#~ "Set the bounciness property for objects (a value from 0 to 1, where 0 means "
-#~ "no bounce and 1 is very bouncy)."
-#~ msgstr ""
-#~ "קבע ערך למקדם התקומה של אובייקטים (ערכים בין 0 ל-1, 0 משמעו ללא קיפוץ, 1 "
-#~ "משמעו נטייה חזקה לקיפוץ)."
-
-#~ msgid "dynamic"
-#~ msgstr "דינאמי"
-
-#~ msgid ""
-#~ "If dynamic = 1, the object can move; if dynamic = 0, it is fixed in position."
-#~ msgstr "אם דינאמי=1 , האובייקט מסוגל לזוז. אם דינאמי=0, האובייקט רתוק למקומו."
-
-#, fuzzy
-#~ msgid "Palette of WeDo blocks"
-#~ msgstr "לוח של בלוקי חיישנים"
-
-#, fuzzy
-#~ msgid "light"
-#~ msgstr "ימינה"
-
-#, fuzzy
 #~ msgid "grey"
 #~ msgstr "gray"
-
-#, fuzzy
-#~ msgid "port"
-#~ msgstr "פורט"
-
-#, fuzzy
-#~ msgid "read"
-#~ msgstr "אדום"
-
-#, fuzzy
-#~ msgid "mode"
-#~ msgstr "מודולו"
-
-#, fuzzy
-#~ msgid "Palette of Expeyes blocks"
-#~ msgstr "לוח של בלוקי חיישנים"
 
 #, fuzzy
 #~ msgid "display Butia"
@@ -2174,10 +3552,6 @@ msgstr "לשמור פרוייקט?"
 
 #~ msgid "follow a RGB color"
 #~ msgstr "עקוב אחר צבע RGB"
-
-#, fuzzy
-#~ msgid "Palette of Arduino blocks"
-#~ msgstr "לוח של בלוקי חיישנים"
 
 #~ msgid "delay Butia"
 #~ msgstr "השהה Butia"
@@ -2227,7 +3601,8 @@ msgstr "לשמור פרוייקט?"
 
 #, fuzzy
 #~ msgid ""
-#~ "returns the object gray level encountered him as a number between 0 and 1023"
+#~ "returns the object gray level encountered him as a number between 0 and "
+#~ "1023"
 #~ msgstr ""
 #~ "מחזיר את הערך הנוכחי של גוון האפור של האובייקט שזיהה החיישן כמספר בין 0 ל "
 #~ "1024."

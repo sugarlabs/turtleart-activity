@@ -22,6 +22,7 @@
 help_palettes = {}
 help_windows = {}
 palette_names = []
+palette_i18n_names = []
 palette_init_on_start = []
 palette_blocks = []
 block_colors = []
@@ -128,12 +129,14 @@ class Palette():
 
     def add_palette(self, position=None, init_on_start=False):
         if self._name is None:
-            debug_output('You must specify a name for your palette')
+            print 'You must specify a name for your palette'
             return
 
         # Insert new palette just before the trash
         if 'trash' in palette_names:
             i = palette_names.index('trash')
+        elif _('trash') in palette_i18n_names:
+            i = palette_i18n_names.index(_('trash'))
         else:
             i = len(palette_names)
 
@@ -142,6 +145,7 @@ class Palette():
 
         if self._name not in palette_names:
             palette_names.insert(i, self._name)
+            palette_i18n_names.insert(i, _(self._name))
             palette_blocks.insert(i, [])
             block_colors.insert(i, self._colors)
             if init_on_start:
@@ -236,6 +240,8 @@ def palette_name_to_index(palette_name):
     ''' Find the index associated with palette_name. '''
     if palette_name in palette_names:
         return palette_names.index(palette_name)
+    elif palette_name in palette_i18n_names:
+        return palette_i18n_names.index(palette_name)
     else:
         return None
 
@@ -267,7 +273,7 @@ class Block():
 
     def add_block(self, position=None):
         if self._name is None:
-            debug_output('You must specify a name for your block')
+            print 'You must specify a name for your block'
             return
 
         # FIXME: Does the block already exist? A block can live on
@@ -276,7 +282,7 @@ class Block():
         # all lists except palettes before regeneration.
 
         if self._style is None:
-            debug_output('You must specify a style for your block')
+            print 'You must specify a style for your block'
             return
         else:
             block_styles[self._style].append(self._name)
@@ -293,8 +299,8 @@ class Block():
         if self._palette is not None:
             i = palette_names.index(self._palette)
             if self._name in palette_blocks[i]:
-                debug_output('%s already in palette %s, skipping...' %
-                             (self._name, self._palette))
+                print '%s already in palette %s, skipping...' % \
+                    (self._name, self._palette)
             else:
                 if position is not None and isinstance(position, int) and \
                         position < len(palette_blocks[i]):
@@ -302,8 +308,7 @@ class Block():
                 else:
                     palette_blocks[i].append(self._name)
                     if position is not None:
-                        debug_output('Ignoring position (%s)' %
-                                     (str(position)))
+                        print 'Ignoring position (%s)' % (str(position))
 
         if self._help is not None:
             help_strings[self._name] = self._help
@@ -357,7 +362,7 @@ class Block():
 
     def set_palette(self, palette):
         if not palette in palette_names:
-            debug_output('Could not find palette %s' % (palette))
+            print 'Could not find palette %s' % (palette)
         else:
             self._palette = palette
 
@@ -381,7 +386,7 @@ class Block():
 
     def set_style(self, style):
         if style not in block_styles:
-            debug_output('Unknown style: %s' % (style))
+            print 'Unknown style: %s' % (style)
         else:
             self._style = style
 

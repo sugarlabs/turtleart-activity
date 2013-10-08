@@ -34,6 +34,7 @@ from tacanvas import wrap100, COLOR_TABLE
 from sprites import Sprite
 from tautils import (debug_output, data_to_string, round_int, get_path,
                      image_to_base64)
+from TurtleArt.talogo import logoerror
 
 SHAPES = 36
 DEGTOR = pi / 180.
@@ -150,6 +151,27 @@ class Turtles:
                 self._active_turtle.set_fill(False)
                 self._active_turtle.hide()
         self.set_turtle(self._default_turtle_name)
+
+    def get_turtle_x(self, turtle_name):
+        if turtle_name not in self.dict:
+            debug_output('%s not found in turtle dictionary' % (turtle_name),
+                         self.turtle_window.running_sugar)
+            raise logoerror("#syntaxerror")
+        return self.dict[turtle_name].get_x()
+
+    def get_turtle_y(self, turtle_name):
+        if turtle_name not in self.dict:
+            debug_output('%s not found in turtle dictionary' % (turtle_name),
+                         self.turtle_window.running_sugar)
+            raise logoerror("#syntaxerror")
+        return self.dict[turtle_name].get_y()
+
+    def get_turtle_heading(self, turtle_name):
+        if turtle_name not in self.dict:
+            debug_output('%s not found in turtle dictionary' % (turtle_name),
+                         self.turtle_window.running_sugar)
+            raise logoerror("#syntaxerror")
+        return self.dict[turtle_name].get_heading()
 
     def set_turtle(self, turtle_name, colors=None):
         ''' Select the current turtle and associated pen status '''

@@ -70,7 +70,7 @@ from gettext import gettext as _
 
 from tapalette import (make_palette, define_logo_function)
 from talogo import (primitive_dictionary, logoerror)
-from tautils import (convert, chr_to_ord, round_int, strtype)
+from tautils import (convert, chr_to_ord, round_int, strtype, debug_output)
 from taconstants import (COLORDICT, CONSTANTS)
 
 
@@ -119,6 +119,8 @@ class Palettes():
     def _turtle_palette(self):
         ''' The basic Turtle Art turtle palette '''
 
+        debug_output('creating %s palette' % _('turtle'),
+                     self.tw.running_sugar)
         palette = make_palette('turtle',
                                colors=["#00FF00", "#00A000"],
                                help_string=_('Palette of turtle commands'))
@@ -276,10 +278,11 @@ turtle (can be used in place of a number block)'),
             0,
             lambda self: self.tw.turtles.get_active_turtle().get_heading())
 
+        # This block is used for holding the remote turtle name
         palette.add_block('turtle-label',
                           hidden=True,
                           style='blank-style',
-                          label=['turtle'])
+                          label=['remote turtle name'])
 
         # Deprecated
         palette.add_block('setxy',
@@ -303,6 +306,8 @@ setxy :x :y\npendown\nend\n')
     def _pen_palette(self):
         ''' The basic Turtle Art pen palette '''
 
+        debug_output('creating %s palette' % _('pen'),
+                     self.tw.running_sugar)
         palette = make_palette('pen',
                                colors=["#00FFFF", "#00A0A0"],
                                help_string=_('Palette of pen commands'))
@@ -503,6 +508,8 @@ pensize\nend\n')
     def _color_palette(self):
         ''' The basic Turtle Art color palette '''
 
+        debug_output('creating %s palette' % _('colors'),
+                     self.tw.running_sugar)
         palette = make_palette('colors',
                                colors=["#00FFFF", "#00A0A0"],
                                help_string=_('Palette of pen colors'))
@@ -596,6 +603,8 @@ tasetshade :shade \n')
     def _numbers_palette(self):
         ''' The basic Turtle Art numbers palette '''
 
+        debug_output('creating %s palette' % _('numbers'),
+                     self.tw.running_sugar)
         palette = make_palette('numbers',
                                colors=["#FF00FF", "#A000A0"],
                                help_string=_('Palette of numeric operators'))
@@ -779,6 +788,8 @@ operators'))
     def _flow_palette(self):
         ''' The basic Turtle Art flow palette '''
 
+        debug_output('creating %s palette' % _('flow'),
+                     self.tw.running_sugar)
         palette = make_palette('flow',
                                colors=["#FFC000", "#A08000"],
                                help_string=_('Palette of flow operators'))
@@ -879,6 +890,8 @@ boolean operators from Numbers palette'))
     def _blocks_palette(self):
         ''' The basic Turtle Art blocks palette '''
 
+        debug_output('creating %s palette' % _('blocks'),
+                     self.tw.running_sugar)
         palette = make_palette('blocks',
                                colors=["#FFFF00", "#A0A000"],
                                help_string=_('Palette of variable blocks'))
@@ -1040,6 +1053,8 @@ variable'))
     def _trash_palette(self):
         ''' The basic Turtle Art turtle palette '''
 
+        debug_output('creating %s palette' % _('trash'),
+                     self.tw.running_sugar)
         palette = make_palette('trash',
                                colors=["#FFFF00", "#A0A000"],
                                help_string=_('trash'))

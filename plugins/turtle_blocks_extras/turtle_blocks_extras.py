@@ -27,7 +27,7 @@ from plugins.plugin import Plugin
 from TurtleArt.tapalette import (make_palette, define_logo_function,
                                  block_names, block_primitives, special_names,
                                  content_blocks, palette_name_to_index,
-                                 palette_names)
+                                 palette_names, palette_i18n_names)
 from TurtleArt.talogo import (primitive_dictionary, logoerror,
                               media_blocks_dictionary)
 from TurtleArt.taconstants import (DEFAULT_SCALE, ICON_SIZE, CONSTANTS,
@@ -120,6 +120,8 @@ boolean operators from Numbers palette'))
         self.tw.lc.def_prim('clamp', 1, primitive_dictionary['clamp'], True)
 
     def _media_palette(self):
+        debug_output('creating %s palette' % _('media'),
+                     self.tw.running_sugar)
         palette = make_palette('media',
                                colors=["#A0FF00", "#80A000"],
                                help_string=_('Palette of media objects'),
@@ -304,6 +306,8 @@ amplitude, and duration (in seconds)'))
                             primitive_dictionary['sinewave'](x, y, z))
 
     def _sensor_palette(self):
+        debug_output('creating %s palette' % _('sensor'),
+                     self.tw.running_sugar)
         palette = make_palette('sensor',
                                colors=["#FF6060", "#A06060"],
                                help_string=_('Palette of sensor blocks'),
@@ -431,6 +435,8 @@ program started'))
                             lambda self: primitive_dictionary['time']())
 
     def _extras_palette(self):
+        debug_output('creating %s palette' % _('extras'),
+                     self.tw.running_sugar)
         palette = make_palette('extras',
                                colors=["#FF0000", "#A00000"],
                                help_string=_('Palette of extra options'),
@@ -668,13 +674,33 @@ module found in the Journal'))
         palette.add_block('addturtle',
                           style='basic-style-1arg',
                           label=_('turtle'),
-                          prim_name='turtle',
+                          prim_name='addturtle',
                           default=1,
                           string_or_number=True,
                           help_string=_('chooses which turtle to command'))
-        self.tw.lc.def_prim('turtle', 1,
+        self.tw.lc.def_prim('addturtle', 1,
                             lambda self, x:
                             self.tw.turtles.set_turtle(x))
+
+        primitive_dictionary['turtlex'] = self._prim_turtle_x
+        palette.add_block('turtlex',
+                          style='number-style-1arg',
+                          label=_('turtle x'),
+                          prim_name='turtlex',
+                          default=['Yertle'],
+                          help_string=_('Returns x coordinate of turtle'))
+        self.tw.lc.def_prim('turtlex', 1,
+                            lambda self, t: primitive_dictionary['turtlex'](t))
+
+        primitive_dictionary['turtley'] = self._prim_turtle_y
+        palette.add_block('turtley',
+                          style='number-style-1arg',
+                          label=_('turtle y'),
+                          prim_name='turtley',
+                          default=['Yertle'],
+                          help_string=_('Returns y coordinate of turtle'))
+        self.tw.lc.def_prim('turtley', 1,
+                            lambda self, t: primitive_dictionary['turtley'](t))
 
         primitive_dictionary['activeturtle'] = self._prim_active_turtle
         palette.add_block('activeturtle',
@@ -687,6 +713,16 @@ module found in the Journal'))
         self.tw.lc.def_prim('activeturtle', 0,
                             lambda self:
                             primitive_dictionary['activeturtle']())
+
+        primitive_dictionary['turtleh'] = self._prim_turtle_h
+        palette.add_block('turtleh',
+                          style='number-style-1arg',
+                          label=_('turtle heading'),
+                          prim_name='turtleh',
+                          default=['Yertle'],
+                          help_string=_('Returns heading of turtle'))
+        self.tw.lc.def_prim('turtleh', 1,
+                            lambda self, t: primitive_dictionary['turtleh'](t))
 
         primitive_dictionary['skin'] = self._prim_reskin
         palette.add_block('skin',
@@ -753,7 +789,7 @@ module found in the Journal'))
         palette.add_block('loadpalette',
                           style='basic-style-1arg',
                           string_or_number=True,
-                          label=_('palette'),
+                          label=_('select palette'),
                           prim_name='loadpalette',
                           default=_('turtle'),
                           help_string=_('selects a palette'))
@@ -762,6 +798,8 @@ module found in the Journal'))
                             primitive_dictionary['loadpalette'](x))
 
     def _portfolio_palette(self):
+        debug_output('creating %s palette' % _('portfolio'),
+                     self.tw.running_sugar)
         palette = make_palette('portfolio',
                                colors=["#0606FF", "#0606A0"],
                                help_string=_('Palette of presentation \
@@ -960,17 +998,18 @@ Journal objects'))
         if hasattr(self.tw, 'macros_path') and \
                 os.path.exists(self.tw.macros_path):
             files = glob.glob(os.path.join(self.tw.macros_path, '*.tb'))
-            debug_output('making myblocks palette', self.tw.running_sugar)
             if len(files) > 0:
+                debug_output('creating %s palette' % _('my blocks'),
+                             self.tw.running_sugar)
                 palette = make_palette(
-                    'myblocks',
+                    'my blocks',
                     colors=["#FFFF00", "#A0A000"],
                     help_string=_('Palette of user-defined operators'))
 
             for tafile in files:
                 data = data_from_file(tafile)
                 name = os.path.basename(tafile)[:-3]
-                print 'loading macro %s' % (name)
+                # print 'loading macro %s' % (name)
                 MACROS['user-defined-' + name] = hat_on_top(listify(data))
                 palette.add_block('user-defined-' + name,
                                   style='basic-style-extended-vertical',
@@ -1454,6 +1493,18 @@ Journal objects'))
             self.tw.lc.stop_logo()
             raise logoerror("#notanumber")
 
+    def _prim_turtle_x(self, t):
+        """ Return x coordinate of turtle t """
+        return self.tw.turtles.get_turtle_x(t)
+
+    def _prim_turtle_y(self, t):
+        """ Return y coordinate of turtle t """
+        return self.tw.turtles.get_turtle_y(t)
+
+    def _prim_turtle_h(self, t):
+        """ Return heading of turtle t """
+        return self.tw.turtles.get_turtle_heading(t)
+
     def _prim_clamp(self, blklist):
         """ Run clamp blklist """
         self.tw.lc.icall(self.tw.lc.evline, blklist[:])
@@ -1524,13 +1575,16 @@ Journal objects'))
         x, y = self.tw.turtles.turtle_to_screen_coordinates((x, y))
         for name in block_names:
             # Translate label name into block/prim name.
-            if blkname in block_names[name]:
+            if blkname in block_names[name]:  # block label is an array
+                # print 'found a match', blkname, name, block_names[name]
                 if name in content_blocks or \
                         (name in block_primitives and
                          block_primitives[name] == name):
+                    # print '_make_block', blkname, name
                     return self._make_block(name, x, y, defaults)
             elif blkname in block_names:
-                    return self._make_block(blkname, x, y, defaults)
+                # print '_make_block', blkname
+                return self._make_block(blkname, x, y, defaults)
         for name in special_names:
             # Translate label name into block/prim name.
             if blkname in special_names[name]:
@@ -1553,7 +1607,7 @@ Journal objects'))
         else:
             if type(arg) == unicode:
                 arg = arg.encode('utf-8')
-            if arg in palette_names:
+            if arg in palette_names or arg in palette_i18n_names:
                 self.tw.show_toolbar_palette(palette_name_to_index(arg))
             else:
                 raise logoerror("#syntaxerror")

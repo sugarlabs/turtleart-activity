@@ -235,9 +235,8 @@ class GstPlayer(gobject.GObject):
         elif t == gst.MESSAGE_STATE_CHANGED:
             old, new, pen = message.parse_state_changed()
             if old == gst.STATE_READY and new == gst.STATE_PAUSED:
-                if hasattr(self.player.props, 'stream_info_value_array'):
-                    self.emit('stream-info',
-                              self.player.props.stream_info_value_array)
+                self.emit('stream-info',
+                          self.player.props.stream_info_value_array)
         # else:
         #     logging.debug(message.type)
 

@@ -1,3 +1,9 @@
+# #-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# #-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
@@ -6,8 +12,23 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#, fuzzy
 msgid ""
 msgstr ""
+"#-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-06-19 00:33-0400\n"
+"PO-Revision-Date: 2013-06-20 20:21+0200\n"
+"Last-Translator: lite <litekok@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Pootle 2.0.5\n"
+"#-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-05-17 00:31-0400\n"
@@ -22,684 +43,1644 @@ msgstr ""
 "X-Generator: Pootle 2.0.5\n"
 
 #. TRANS: "name" option from activity.info file
-msgid "TurtleBlocks"
-msgstr "海龟积木"
-
 #. TRANS: "summary" option from activity.info file
 #. TRANS: "description" option from activity.info file
+msgid "turtleart-extras (master)"
+msgstr "海龟绘图附加组件（主）"
+
+#: taextras.py:37
+msgid "Turtle Blocks"
+msgstr "海龟方块"
+
+#: taextras.py:38
+msgid "Turtle Art"
+msgstr "海龟绘画"
+
+#: taextras.py:42
+msgid "Turtle Art Mini"
+msgstr "迷你海龟绘图"
+
+#: taextras.py:46
+msgid "Turtle Confusion"
+msgstr "海龟谜题"
+
+#: taextras.py:47 taextras.py:52
+msgid "Select a challenge"
+msgstr "选择一个挑战"
+
+#: taextras.py:51
+msgid "Amazonas Tortuga"
+msgstr "亚马逊托尔图加"
+
+#: taextras.py:58
+msgid "Palette of Mexican pesos"
+msgstr "墨西哥比索模板"
+
+#: taextras.py:59
+msgid "Palette of Colombian pesos"
+msgstr "哥伦比亚比索模板"
+
+#: taextras.py:60
+msgid "Palette of Rwandan francs"
+msgstr "卢旺达法郎模板"
+
+#: taextras.py:61
+msgid "Palette of US dollars"
+msgstr "美元模板"
+
+#: taextras.py:62
+msgid "Palette of Australian dollars"
+msgstr "澳元模板"
+
+#: taextras.py:63
+msgid "Palette of Paraguayan Guaranies"
+msgstr "巴拉圭瓜拉尼模板"
+
+#: taextras.py:64
+msgid "Palette of Peruvian Nuevo Soles"
+msgstr "秘鲁新索尔的模板"
+
+#: taextras.py:65
+msgid "Palette of Uruguayan Pesos"
+msgstr "乌拉圭比索模板"
+
+#. TRANS: Butia is a Robot Project from Uruguay
+#. (http://www.fing.edu.uy/inco/proyectos/butia/)
+#: taextras.py:71
+msgid "TurtleBots"
+msgstr "海龟机器人"
+
+#. TRANS: summary of TurtleBots activity
+#: taextras.py:73
+msgid "TurtleBlocks with Butia, Lego NxT, WeDo, Arduino, FollowMe plugins"
+msgstr "海龟方块含有Butia, Lego NxT, WeDo, Arduino, FollowMe插件"
+
+#: taextras.py:74
+msgid "ERROR: The speed must be a value between 0 and 1023"
+msgstr "错误：速度必须是0到1023之间的值"
+
+#: taextras.py:75
+msgid "ERROR: The pin must be between 1 and 8"
+msgstr "错误：该引脚必须在1和8之间"
+
+#: taextras.py:76
+msgid "ERROR: The value must be 0 or 1, LOW or HIGH"
+msgstr "错误：该值必须为0或1，“低”或“高"
+
+#: taextras.py:77
+msgid "ERROR: The mode must be INPUT or OUTPUT."
+msgstr "错误：该模式必须是输入或输出。"
+
+#: taextras.py:78 taextras.py:79
+msgid "turns LED on and off: 1 means on, 0 means off"
+msgstr "开关LED：1 是开, 0是关"
+
+#: taextras.py:80
+msgid "returns the gray level as a value between 0 and 65535"
+msgstr "返回灰度等级，为0和65536之间的一个数值"
+
+#: taextras.py:81
+msgid "returns 1 when the button is pressed and 0 otherwise"
+msgstr "当按钮按下返回1，否则为0"
+
+#: taextras.py:82
+msgid "returns the light level as a value between 0 and 65535"
+msgstr "返回光照等级，为0和65536之间的一个数值"
+
+#: taextras.py:83
+msgid "returns the distance as a value between 0 and 65535"
+msgstr "返回距离，为0和65536之间的一个数值"
+
+#: taextras.py:84
+msgid "returns the resistance value (ohms)"
+msgstr "返回电阻值（欧姆）"
+
+#: taextras.py:85
+msgid "returns the voltage value (volts)"
+msgstr "返回电压值（伏特）"
+
+#: taextras.py:86
+msgid "returns the temperature"
+msgstr "返回温度"
+
+#: taextras.py:87
+msgid "returns 1 when the sensors detects a magnetic field, 0 otherwise"
+msgstr "当传感器检测到磁场返回1，否则为0"
+
+#: taextras.py:88
+msgid "LED"
+msgstr "指示灯"
+
+#: taextras.py:89
+msgid "button"
+msgstr "按钮"
+
+#: taextras.py:90 taextras.py:358 TurtleArt/tabasics.py:295
+#: TurtleArt/tabasics.py:363
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1194
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1199
+#, fuzzy
+msgid "gray"
+msgstr ""
+"#-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"灰色\n"
+"#-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"灰度"
+
+#: taextras.py:91 taextras.py:356
+msgid "light"
+msgstr "灯光"
+
+#: taextras.py:92
+msgid "temperature"
+msgstr "温度"
+
+#: taextras.py:93 taextras.py:330
+msgid "distance"
+msgstr "距离"
+
+#: taextras.py:94 plugins/audio_sensors/audio_sensors.py:151
+#: plugins/audio_sensors/audio_sensors.py:165
+#: plugins/audio_sensors/audio_sensors.py:179
+#: plugins/audio_sensors/audio_sensors.py:193
+msgid "resistance"
+msgstr "电阻"
+
+#: taextras.py:95 plugins/audio_sensors/audio_sensors.py:157
+#: plugins/audio_sensors/audio_sensors.py:171
+#: plugins/audio_sensors/audio_sensors.py:185
+#: plugins/audio_sensors/audio_sensors.py:199
+msgid "voltage"
+msgstr "电压"
+
+#: taextras.py:96
+msgid "Butia Robot"
+msgstr "布迪机器人"
+
+#: taextras.py:97
+msgid "refresh Butia"
+msgstr "刷新布迪"
+
+#: taextras.py:98
+msgid "refresh the state of the Butia palette and blocks"
+msgstr "刷新布迪模板和拼块的状态"
+
+#. #-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "battery charge of Butia"
+#: taextras.py:100
+msgid "battery charge Butia"
+msgstr "布迪充电"
+
+#: taextras.py:101
 msgid ""
-"A Logo-inspired turtle that draws colorful pictures with snap-together "
-"visual programming blocks"
-msgstr "一个受Logo启发连接可视化编程块并画有彩色图片的海龟"
+"returns the battery charge in volts. If no motors present, it returns 255"
+msgstr "返回电池充电（单位为伏）。如果没有电机，返回255"
 
-#: TurtleArt/tabasics.py:119
-msgid "Palette of turtle commands"
-msgstr "海龟指令模板"
+#. #-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "speed of Butia"
+#: taextras.py:103
+msgid "speed Butia"
+msgstr "布迪加速"
 
-#: TurtleArt/tabasics.py:124
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:740
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:751
-msgid "forward"
-msgstr "前进"
+#: taextras.py:104
+msgid "set the speed of the Butia motors"
+msgstr "设置布迪的马达速度"
 
-#: TurtleArt/tabasics.py:128
-msgid "moves turtle forward"
-msgstr "向前移动海龟"
+#: taextras.py:105
+msgid "move Butia"
+msgstr "移动布迪"
 
-#: TurtleArt/tabasics.py:135
-msgid "back"
-msgstr "后退"
-
-#: TurtleArt/tabasics.py:139
-msgid "moves turtle backward"
-msgstr "向后移动海龟"
-
-#: TurtleArt/tabasics.py:147
-msgid "clean"
-msgstr "清屏"
-
-#: TurtleArt/tabasics.py:150
-msgid "clears the screen and reset the turtle"
-msgstr "清空屏幕并重置海龟"
-
-#: TurtleArt/tabasics.py:158
+#: taextras.py:106 TurtleArt/tabasics.py:158
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:871
 msgid "left"
 msgstr "左边"
 
-#: TurtleArt/tabasics.py:162
-msgid "turns turtle counterclockwise (angle in degrees)"
-msgstr "逆时针转动海龟（角度）"
-
-#: TurtleArt/tabasics.py:170
+#: taextras.py:107 TurtleArt/tabasics.py:170
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:895
 msgid "right"
 msgstr "右边"
 
-#: TurtleArt/tabasics.py:174
-msgid "turns turtle clockwise (angle in degrees)"
-msgstr "顺时针转动海龟（角度）"
+#: taextras.py:108
+msgid "moves the Butia motors at the specified speed"
+msgstr "以指定速度移动布迪电机"
 
-#: TurtleArt/tabasics.py:182
-msgid "arc"
-msgstr "走弧形"
+#: taextras.py:109
+msgid "stop Butia"
+msgstr "停止布迪"
 
-#: TurtleArt/tabasics.py:182
-msgid "angle"
-msgstr "角度"
+#: taextras.py:110
+msgid "stop the Butia robot"
+msgstr "停止布迪机器人"
 
-#: TurtleArt/tabasics.py:182
-msgid "radius"
-msgstr "半径"
+#. #-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "move Butia forward"
+#: taextras.py:112
+msgid "forward Butia"
+msgstr "布迪前进"
 
-#: TurtleArt/tabasics.py:186
-msgid "moves turtle along an arc"
-msgstr "延弧形移动海龟"
+#: taextras.py:113
+msgid "move the Butia robot forward"
+msgstr "向前移动布迪机器人"
 
-#: TurtleArt/tabasics.py:195 TurtleArt/tabasics.py:261
-msgid "set xy"
-msgstr "设置 坐标"
+#. #-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "turn Butia left"
+#: taextras.py:115
+msgid "left Butia"
+msgstr "布迪左转"
 
-#: TurtleArt/tabasics.py:195 TurtleArt/tabasics.py:261
+#: taextras.py:116
+msgid "turn the Butia robot at left"
+msgstr "向左转动布迪机器人"
+
+#. #-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "turn Butia right"
+#: taextras.py:118
+msgid "right Butia"
+msgstr "布迪右转"
+
+#: taextras.py:119
+msgid "turn the Butia robot at right"
+msgstr "向右转动布迪机器人"
+
+#. #-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "move Butia backward"
+#: taextras.py:121
+msgid "backward Butia"
+msgstr "布迪后退"
+
+#: taextras.py:122
+msgid "move the Butia robot backward"
+msgstr "先后移动布迪机器人"
+
+#: taextras.py:123
+msgid "Butia Robot extra blocks"
+msgstr "布迪机器人额外模块"
+
+#: taextras.py:124
+msgid "hack pin mode"
+msgstr "破解引脚模式"
+
+#: taextras.py:125 taextras.py:293 taextras.py:459
+#, fuzzy
+msgid "pin"
+msgstr ""
+"#-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"引脚\n"
+"#-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"图钉"
+
+#: taextras.py:126 taextras.py:460
+msgid "mode"
+msgstr "模式"
+
+#: taextras.py:127
+msgid "Select the pin function (INPUT, OUTPUT)."
+msgstr "选择引脚功能（输入，输出）。"
+
+#: taextras.py:128
+msgid "write hack pin Butia"
+msgstr "写入破解引脚布迪"
+
+#: taextras.py:129 taextras.py:463 TurtleArt/tabasics.py:924
+#: TurtleArt/tawindow.py:4427
+msgid "value"
+msgstr "值"
+
+#: taextras.py:130
+msgid "set a hack pin to 0 or 1"
+msgstr "设置破解引脚到0或1"
+
+#: taextras.py:131
+msgid "read hack pin Butia"
+msgstr "读取破解引脚布迪"
+
+#: taextras.py:132
+msgid "read the value of a hack pin"
+msgstr "读取一个破解引脚的值"
+
+#: taextras.py:133 taextras.py:435
+msgid "HIGH"
+msgstr "高"
+
+#: taextras.py:134 taextras.py:472
+msgid "Set HIGH value for digital port."
+msgstr "设置数字端口为高值。"
+
+#: taextras.py:135 taextras.py:437
+msgid "INPUT"
+msgstr "输入"
+
+#: taextras.py:136
+msgid "Configure hack port for digital input."
+msgstr "为数字输入配置破解端口。"
+
+#: taextras.py:137 taextras.py:436
+msgid "LOW"
+msgstr "低"
+
+#: taextras.py:138 taextras.py:475
+msgid "Set LOW value for digital port."
+msgstr "设置数字端口为低值。"
+
+#: taextras.py:139 taextras.py:438
+msgid "OUTPUT"
+msgstr "输出"
+
+#: taextras.py:140
+msgid "Configure hack port for digital output."
+msgstr "为数字输出配置破解端口。"
+
+#: taextras.py:141
+msgid "Butia"
+msgstr "布迪"
+
+#: taextras.py:142
+#, python-format
+msgid "ERROR: The pin %s must be in OUTPUT mode."
+msgstr "错误：引脚 %s 必须在输出模式。"
+
+#: taextras.py:143
+#, python-format
+msgid "ERROR: The pin %s must be in INPUT mode."
+msgstr "错误：引脚 %s 必须在输入模式。"
+
+#: taextras.py:147
+msgid "Error importing Pygame. This plugin require Pygame 1.9"
+msgstr "导入Pygame出错。该插件需要Pygame 1.9"
+
+#: taextras.py:148
+msgid "Error on initialization of the camera"
+msgstr "摄像头初始化出错"
+
+#: taextras.py:149
+msgid "No camera was found"
+msgstr "没有找到摄像头"
+
+#: taextras.py:150
+msgid "Error stopping camera"
+msgstr "停止摄像头出错"
+
+#: taextras.py:151
+msgid "Error starting camera"
+msgstr "启动摄像头出错"
+
+#. TRANS: The "mask" is used to restrict processing to a region in the image
+#: taextras.py:153
+msgid "Error in get mask"
+msgstr "获取面罩出错"
+
+#: taextras.py:154
+msgid "FollowMe"
+msgstr "跟我来"
+
+#: taextras.py:155
+msgid "refresh FollowMe"
+msgstr "刷新 FollowMe"
+
+#: taextras.py:156
+msgid "Search for a connected camera."
+msgstr "搜寻一个已连接的相机。"
+
+#. #-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: the calibration is used to match an RGB color to a target
+#: taextras.py:158
+msgid "calibration"
+msgstr "校准"
+
+#: taextras.py:159
+msgid "store a personalized calibration"
+msgstr "存储个性化的校准"
+
+#: taextras.py:160
+msgid "return a personalized calibration"
+msgstr "返回个性化校准"
+
+#: taextras.py:161
+msgid "follow"
+msgstr "跟随"
+
+#: taextras.py:162
+msgid "follow a color or calibration"
+msgstr "跟随颜色或校准"
+
+#: taextras.py:163 plugins/camera_sensor/camera_sensor.py:80
+#: plugins/camera_sensor/camera_sensor.py:93
+#: plugins/camera_sensor/camera_sensor.py:128
+#: plugins/camera_sensor/camera_sensor.py:141
+#: plugins/light_sensor/light_sensor.py:56
+#: plugins/light_sensor/light_sensor.py:63
+msgid "brightness"
+msgstr "亮度"
+
+#: taextras.py:164
+msgid "set the camera brightness as a value between 0 to 255."
+msgstr "设置摄像头亮度为0到255之间的值。"
+
+#: taextras.py:165
+msgid "minimum pixels"
+msgstr "最小值像素"
+
+#: taextras.py:166
+msgid "set the minimal number of pixels to follow"
+msgstr "设置要跟随的最小像素数目"
+
+#: taextras.py:167
+msgid "threshold"
+msgstr "阀门"
+
+#. #-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: RGB color space (red, green, blue)
+#: taextras.py:169
+msgid "set a threshold for a RGB color"
+msgstr "为RGB颜色设置一个阀门"
+
+#: taextras.py:170
+msgid "camera mode"
+msgstr "摄像头模式"
+
+#. TRANS: RGB, YUV, and HSV are color spaces
+#: taextras.py:172
+msgid "set the color mode of the camera: RGB; YUV or HSV"
+msgstr "设置摄像头的颜色模式：RGB，YUV或HSV"
+
+#: taextras.py:173
+msgid "get brightness"
+msgstr "获得亮度"
+
+#: taextras.py:174
+msgid "get the brightness of the ambient light"
+msgstr "获得环境光的亮度"
+
+#: taextras.py:175
+msgid "average color"
+msgstr "平均颜色"
+
+#: taextras.py:176
+msgid ""
+"if set to 0 then color averaging is off during calibration; for other values "
+"it is on"
+msgstr "如果设置为0，在校准过程中颜色平均为关，其他值则为开"
+
+#: taextras.py:178
+msgid "x position"
+msgstr "x 位置"
+
+#: taextras.py:179
+msgid "return x position"
+msgstr "返回 x 位置"
+
+#: taextras.py:180
+msgid "y position"
+msgstr "y 位置"
+
+#: taextras.py:181
+msgid "return y position"
+msgstr "返回 y 位置"
+
+#: taextras.py:182
+msgid "pixels"
+msgstr "像素"
+
+#: taextras.py:183
+msgid "return the number of pixels of the biggest blob"
+msgstr "返回最大块的像素数目"
+
+#. #-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: RGB color space (red, green, blue)
+#: taextras.py:185
+msgid "set the color mode of the camera to RGB"
+msgstr "设置摄像头的颜色模式为RGB"
+
+#. #-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: YUV color space (luminance, chrominance)
+#: taextras.py:187
+msgid "set the color mode of the camera to YUV"
+msgstr "设置摄像头的颜色模式为YUV"
+
+#. #-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: HSV color space (hue, saturation, value)
+#: taextras.py:189
+msgid "set the color mode of the camera to HSV"
+msgstr "设置摄像头的颜色模式为HSV"
+
+#: taextras.py:190
+msgid "empty calibration"
+msgstr "空校准"
+
+#: taextras.py:191
+msgid "error in string conversion"
+msgstr "字符串转换错误"
+
+#. TRANS: Pattern detection is a plugin that allow detect signals
+#. with the camera
+#: taextras.py:197
+msgid "Pattern detection"
+msgstr "模式检测"
+
+#: taextras.py:198
+msgid "Seeing signal"
+msgstr "发现信号"
+
+#: taextras.py:199
+msgid "Returns True if the signal is in front of the camera"
+msgstr "如果信号在摄像头前面返回True"
+
+#: taextras.py:200
+msgid "Distance to signal"
+msgstr "信号的距离"
+
+#: taextras.py:201
+msgid "Returns the distance of the signal to the camera in millimeters"
+msgstr "返回距摄像头的毫米单位的信号距离"
+
+#. #-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: SumBot is a robot programmed for "Sumo wrestling"
+#: taextras.py:206
+msgid "SumBot"
+msgstr "桑博"
+
+#: taextras.py:207
+msgid "speed SumBot"
+msgstr "加速桑博"
+
+#: taextras.py:208
+msgid "submit the speed to the SumBot"
+msgstr "提交桑博的速度"
+
+#: taextras.py:209
+msgid "set the default speed for the movement commands"
+msgstr "设置移动命令的默认速度"
+
+#. #-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "move SumBot forward"
+#: taextras.py:211
+msgid "forward SumBot"
+msgstr "向前桑博"
+
+#: taextras.py:212
+msgid "move SumBot forward"
+msgstr "移动桑博向前"
+
+#. #-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "move SumBot backward"
+#: taextras.py:214
+msgid "backward SumBot"
+msgstr "向后桑博"
+
+#: taextras.py:215
+msgid "move SumBot backward"
+msgstr "移动桑博向后"
+
+#: taextras.py:216
+msgid "stop SumBot"
+msgstr "停止桑博"
+
+#: taextras.py:217
+msgid "stop the SumBot"
+msgstr "让桑博停下来"
+
+#. #-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "turn SumBot left"
+#: taextras.py:219
+msgid "left SumBot"
+msgstr "左转桑博"
+
+#: taextras.py:220
+msgid "turn left the SumBot"
+msgstr "让桑博向左转"
+
+#. #-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "move SumBot right"
+#: taextras.py:222
+msgid "right SumBot"
+msgstr "右转桑博"
+
+#: taextras.py:223
+msgid "turn right the SumBot"
+msgstr "让桑博向右转"
+
+#. #-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: The angle to the center is the angle SumBot must turn to
+#. face the center of the playing field
+#: taextras.py:226
+msgid "angle to center"
+msgstr "与中心的角度"
+
+#. #-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: dohyo is the playing field
+#: taextras.py:228
+msgid "get the angle to the center of the dohyo"
+msgstr "得到相对圆环中心的角度"
+
+#. #-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: The angle to the center is the angle SumBot must turn to
+#. face the Enemy (opponent)
+#: taextras.py:231
+msgid "angle to Enemy"
+msgstr "与敌人的角度"
+
+#: taextras.py:232
+msgid "get the angle to the Enemy"
+msgstr "得到相对敌人的角度"
+
+#. #-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "x coordinate of SumBot"
+#: taextras.py:234
+msgid "x coor. SumBot"
+msgstr "桑博x坐标"
+
+#: taextras.py:235
+msgid "get the x coordinate of the SumBot"
+msgstr "得到桑博的x坐标"
+
+#. #-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "y coordinate of SumBot"
+#: taextras.py:237
+msgid "y coor. SumBot"
+msgstr "桑博y坐标"
+
+#: taextras.py:238
+msgid "get the y coordinate of the SumBot"
+msgstr "得到桑博的y坐标"
+
+#. #-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "x coordinate of SumBot's enemy"
+#: taextras.py:240
+msgid "x coor. Enemy"
+msgstr "敌人x坐标"
+
+#: taextras.py:241
+msgid "get the x coordinate of the Enemy"
+msgstr "得到敌人的x坐标"
+
+#. #-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "y coordinate of SumBot's enemy"
+#: taextras.py:243
+msgid "y coor. Enemy"
+msgstr "敌人y坐标"
+
+#: taextras.py:244
+msgid "get the y coordinate of the Enemy"
+msgstr "得到敌人的y坐标"
+
+#. #-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "rotation of SumBot"
+#: taextras.py:246
+msgid "rotation SumBot"
+msgstr "转动桑博"
+
+#: taextras.py:247
+msgid "get the rotation of the Sumbot"
+msgstr "得到桑博的转动"
+
+#. #-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "rotation of SumBot's enemy"
+#: taextras.py:249
+msgid "rotation Enemy"
+msgstr "转动敌人"
+
+#: taextras.py:250
+msgid "get the rotation of the Enemy"
+msgstr "得到敌人的转动"
+
+#: taextras.py:251
+msgid "distance to center"
+msgstr "与中心的距离"
+
+#. #-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: dohyo is the playing field
+#: taextras.py:253
+msgid "get the distance to the center of the dohyo"
+msgstr "得到与圆环中心的距离"
+
+#: taextras.py:254
+msgid "distance to Enemy"
+msgstr "与敌人的距离"
+
+#: taextras.py:255
+msgid "get the distance to the Enemy"
+msgstr "得到与敌人的距离"
+
+#: taextras.py:256
+msgid "update information"
+msgstr "更新信息"
+
+#: taextras.py:257
+msgid "update information from the server"
+msgstr "从服务器更新信息"
+
+#. #-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: Please use similar terms to those used in the Physics Activity
+#: taextras.py:262
+msgid "Palette of physics blocks"
+msgstr "物理块模板"
+
+#: taextras.py:263
+msgid "start polygon"
+msgstr "定义多边形"
+
+#: taextras.py:264
+msgid "Begin defining a new polygon based on the current Turtle xy position."
+msgstr "根据当前海龟xy方向的位置开始定义新的多边形。"
+
+#: taextras.py:266
+msgid "add point"
+msgstr "添加点"
+
+#: taextras.py:267
+msgid ""
+"Add a new point to the current polygon based on the current Turtle xy "
+"position."
+msgstr "根据当前海龟xy方向的位置添加新的点到当前的多边形。"
+
+#: taextras.py:269
+msgid "end polygon"
+msgstr "完成多边形"
+
+#: taextras.py:270
+msgid "Define a new polygon."
+msgstr "定义一个新的多边形。"
+
+#: taextras.py:271
+msgid "end filled polygon"
+msgstr "结束填充多边形的绘制"
+
+#: taextras.py:272
+msgid "Not a simple polygon"
+msgstr "不是一个简单多边形"
+
+#: taextras.py:273
+msgid "Define a new filled polygon."
+msgstr "定义一个新的填充多边形。"
+
+#: taextras.py:274
+msgid "triangle"
+msgstr "三角形"
+
+#. #-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: base of a triangle
+#: taextras.py:276
+msgid "base"
+msgstr "基地"
+
+#: taextras.py:277 taextras.py:283
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:911
+msgid "height"
+msgstr "高度"
+
+#: taextras.py:278
+msgid "Add a triangle object to the project."
+msgstr "添加一个三角形对象到项目。"
+
+#: taextras.py:279
+msgid "circle"
+msgstr "圆形"
+
+#: taextras.py:280
+msgid "Add a circle object to the project."
+msgstr "添加一个圆形对象到项目。"
+
+#: taextras.py:281
+msgid "rectangle"
+msgstr "长方形"
+
+#: taextras.py:282 plugins/turtle_blocks_extras/turtle_blocks_extras.py:887
+msgid "width"
+msgstr "宽度"
+
+#: taextras.py:284
+msgid "Add a rectangle object to the project."
+msgstr "添加一个长方形对象到项目。"
+
+#: taextras.py:285
+msgid "reset"
+msgstr "重置"
+
+#: taextras.py:286
+msgid "Reset the project; clear the object list."
+msgstr "重置项目;清除对象列表。"
+
+#: taextras.py:287
+msgid "motor"
+msgstr "电机"
+
+#. #-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: torque as in engine torque
+#: taextras.py:289
+msgid "torque"
+msgstr "转矩"
+
+#: taextras.py:290
+msgid "speed"
+msgstr "速度"
+
+#: taextras.py:291
+msgid ""
+"Motor torque and speed range from 0 (off) to positive numbers; motor is "
+"placed on the most recent object created."
+msgstr "电机转矩和速度范围是从0（关）到正数，电机放置在最近被创建的对象上。"
+
+#: taextras.py:294
+msgid "Pin an object down so that it cannot fall."
+msgstr "用图钉固定一个对象，防止掉落。"
+
+#: taextras.py:295
+msgid "joint"
+msgstr "联合"
+
+#: taextras.py:296 TurtleArt/tabasics.py:195 TurtleArt/tabasics.py:261
 msgid "x"
 msgstr "横"
 
-#: TurtleArt/tabasics.py:195 TurtleArt/tabasics.py:261
+#: taextras.py:297 TurtleArt/tabasics.py:195 TurtleArt/tabasics.py:261
 msgid "y"
 msgstr "纵"
 
-#: TurtleArt/tabasics.py:199 TurtleArt/tabasics.py:265
+#: taextras.py:298
 msgid ""
-"moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
-msgstr "移动海龟到座标（x，y）；（0，0）是屏幕中心。"
+"Join two objects together (the most recent object created and the object at "
+"point x, y)."
+msgstr "把两个对象连接到一起（在点x，y处最近创建的对象）。"
 
-#: TurtleArt/tabasics.py:209
-msgid "set heading"
-msgstr "设置朝向"
+#: taextras.py:300
+msgid "save as Physics activity"
+msgstr "保存为“物理”活动"
 
-#: TurtleArt/tabasics.py:213
-msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
-msgstr "设置海龟朝向（0表示朝向屏幕上方）"
+#: taextras.py:301
+msgid "Save the project to the Journal as a Physics activity."
+msgstr "当作一个物理活动保存该项目到日志。"
 
-#: TurtleArt/tabasics.py:221 TurtleArt/tawindow.py:4105
-msgid "xcor"
-msgstr "横坐标"
+#. #-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: Here, gear means a toothed wheel, as in a clock-works
+#: taextras.py:303
+msgid "gear"
+msgstr "齿轮"
 
-#: TurtleArt/tabasics.py:222
+#: taextras.py:304
+msgid "Add a gear object to the project."
+msgstr "添加一个齿轮对象到项目。"
+
+#: taextras.py:305
+msgid "density"
+msgstr "密度"
+
+#: taextras.py:306
 msgid ""
-"holds current x-coordinate value of the turtle (can be used in place of a "
-"number block)"
-msgstr "包含海龟当前位置的X座标值（可以用来替换数字块）"
+"Set the density property for objects (density can be any positive number)."
+msgstr "设置对象的密度属性（密度可以是任何正数）。"
 
-#: TurtleArt/tabasics.py:232 TurtleArt/tawindow.py:4106
-msgid "ycor"
-msgstr "纵坐标"
+#: taextras.py:308
+msgid "friction"
+msgstr "摩擦"
 
-#: TurtleArt/tabasics.py:233
+#: taextras.py:309
 msgid ""
-"holds current y-coordinate value of the turtle (can be used in place of a "
-"number block)"
-msgstr "包含海龟当前位置的Y座标值（可以用来替换数字块）"
+"Set the friction property for objects (value from 0 to 1, where 0 turns "
+"friction off and 1 is strong friction)."
+msgstr "设置对象的摩擦系数（值从0到1，0无摩擦，1强摩擦）。"
 
-#: TurtleArt/tabasics.py:243 TurtleArt/tawindow.py:4106
-msgid "heading"
-msgstr "朝向"
+#. #-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: bounciness is coefficient of restitution
+#: taextras.py:312
+msgid "bounciness"
+msgstr "弹力"
 
-#: TurtleArt/tabasics.py:244
+#: taextras.py:313
 msgid ""
-"holds current heading value of the turtle (can be used in place of a number "
-"block)"
-msgstr "包含海龟当前的朝向的角度值（可以用来替换数字块）"
+"Set the bounciness property for objects (a value from 0 to 1, where 0 means "
+"no bounce and 1 is very bouncy)."
+msgstr "设置对象的弹性系数（值从0到1，0无弹性，1强弹性）。"
 
-#: TurtleArt/tabasics.py:278
-msgid "Palette of pen commands"
-msgstr "画笔指令模板"
+#. #-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: dynamic here means moving vs in a fixed position
+#: taextras.py:316
+msgid "dynamic"
+msgstr "动态"
 
-#: TurtleArt/tabasics.py:283 TurtleArt/tabasics.py:294
-msgid "fill screen"
-msgstr "涂满全屏"
+#: taextras.py:317
+msgid ""
+"If dynamic = 1, the object can move; if dynamic = 0, it is fixed in position."
+msgstr "动态值为1时对象可以移动；为0时位置是固定的。"
 
-#: TurtleArt/tabasics.py:283 TurtleArt/tabasics.py:294
+#. #-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: WeDo is a robotics product of the LEGO company
+#: taextras.py:323
+msgid "Palette of WeDo blocks"
+msgstr "乐高WeDo模板"
+
+#: taextras.py:324
+msgid "WeDo"
+msgstr "乐高WeDo"
+
+#: taextras.py:325
+msgid "set current WeDo device"
+msgstr "设置当前的乐高WeDo设备"
+
+#: taextras.py:326
+msgid "number of WeDo devices"
+msgstr "乐高WeDo设备的数量"
+
+#: taextras.py:327
+msgid "tilt"
+msgstr "斜度"
+
+#: taextras.py:328
+msgid ""
+"tilt sensor output: (-1 == no tilt, 0 == tilt forward, 3 == tilt back, 1 == "
+"tilt left, 2 == tilt right)"
+msgstr ""
+"倾斜传感器输出：（-1 ==没有倾斜，0 ==向前倾斜，3 ==向后倾斜，1 ==向左倾斜，2 "
+"==向左倾斜）"
+
+#. #-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "output of the distance sensor"
+#: taextras.py:332
+msgid "distance sensor output"
+msgstr "距离传感器输出"
+
+#: taextras.py:333
+msgid "Motor A"
+msgstr "电机 A"
+
+#: taextras.py:334
+msgid "returns the current value of Motor A"
+msgstr "返回电机A的当前值"
+
+#: taextras.py:335
+msgid "Motor B"
+msgstr "电机B"
+
+#: taextras.py:336
+msgid "returns the current value of Motor B"
+msgstr "返回电机B的当前值"
+
+#: taextras.py:337
+msgid "set the value for Motor A"
+msgstr "设置电机A的值"
+
+#: taextras.py:338
+msgid "set the value for Motor B"
+msgstr "设置电机B的值"
+
+#: taextras.py:339
+msgid "WeDo is unavailable"
+msgstr "乐高WeDo不可用"
+
+#. TRANS: e.g., Wedo 2 is unavailable, defaulting to 1
+#: taextras.py:341
+#, python-format
+msgid "WeDo %d is unavailable; defaulting to 1"
+msgstr "乐高WeDo %d 不可用; 缺省为1"
+
+#. TRANS: %(device)s and %(wedo_number)d are substitution strings;
+#. please leave untranslated
+#: taextras.py:344
+#, python-format
+msgid "%(device)s is unavailable on WeDo %(wedo_number)d"
+msgstr "%(device)s 不可用于乐高 WeDo %(wedo_number)d"
+
+#. #-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: Lego NXT is a robotics product of the LEGO company
+#: taextras.py:349
+msgid "Palette of LEGO NXT blocks of motors"
+msgstr "乐高NXT马达部件模板"
+
+#: taextras.py:350
+msgid "Palette of LEGO NXT blocks of sensors"
+msgstr "乐高NXT传感器部件模板"
+
+#. #-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: touch sensor (implemented as a button)
+#: taextras.py:352
+msgid "touch"
+msgstr "触摸"
+
+#. #-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: distance sensor (implemented using ultrasonics)
+#: taextras.py:354
+msgid "ultrasonic"
+msgstr "超声波"
+
+#: taextras.py:355 TurtleArt/tabasics.py:283 TurtleArt/tabasics.py:294
 #: TurtleArt/tabasics.py:344
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1197
 msgid "color"
 msgstr "颜色"
 
-#: TurtleArt/tabasics.py:283 TurtleArt/tabasics.py:295
-#: TurtleArt/tabasics.py:354
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1193
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1198
-msgid "shade"
-msgstr "深度"
+#: taextras.py:357 plugins/audio_sensors/audio_sensors.py:83
+#: plugins/audio_sensors/audio_sensors.py:98 pysamples/grecord.py:205
+msgid "sound"
+msgstr "声音"
 
-#: TurtleArt/tabasics.py:287 TurtleArt/tabasics.py:299
-msgid "fills the background with (color, shade)"
-msgstr "以（颜色，阴影）填充背景"
+#. TRANS: The brick is the NXT controller
+#: taextras.py:360
+msgid "Please check the connection with the brick"
+msgstr "请检查该块的连接"
 
-#: TurtleArt/tabasics.py:295 TurtleArt/tabasics.py:363
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1194
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1199
-msgid "gray"
-msgstr "灰度"
+#: taextras.py:361
+#, python-format
+msgid "Invalid port '%s'. Port must be: PORT A, B or C"
+msgstr "无效的端口'%s'。端口必须是：A，B或C"
 
-#: TurtleArt/tabasics.py:309
-msgid "set color"
-msgstr "设置颜色"
+#: taextras.py:362
+#, python-format
+msgid "Invalid port '%s'. Port must be: PORT 1, 2, 3 or 4"
+msgstr "无效的端口'%s'。端口必须是：1，2，3或4"
 
-#: TurtleArt/tabasics.py:313
-msgid "sets color of the line drawn by the turtle"
-msgstr "设置海龟绘制的线条的颜色"
+#: taextras.py:363
+msgid "The value of power must be between -127 to 127"
+msgstr "功率值必须位于-127到127之间"
 
-#: TurtleArt/tabasics.py:321
-msgid "set shade"
-msgstr "设置深度"
+#: taextras.py:364
+#, python-format
+msgid "The parameter must be a integer, not '%s'"
+msgstr "该参数必须是一个整数，而不是 '%s'"
 
-#: TurtleArt/tabasics.py:325
-msgid "sets shade of the line drawn by the turtle"
-msgstr "设置海龟绘制的线条的深度"
+#: taextras.py:365
+msgid "An error has occurred: check all connections and try to reconnect"
+msgstr "发生了一个错误：检查所有连接​​，并尝试重新连接"
 
-#: TurtleArt/tabasics.py:333
-msgid "set gray"
-msgstr "设置灰度"
+#: taextras.py:366
+#, python-format
+msgid "NXT found %s bricks"
+msgstr "NXT找到  %s 块"
 
-#: TurtleArt/tabasics.py:336
-msgid "sets gray level of the line drawn by the turtle"
-msgstr "设置海龟绘制的线条的灰度"
+#: taextras.py:367
+msgid "NXT not found"
+msgstr "没找到 NXT"
 
-#: TurtleArt/tabasics.py:345
-msgid "holds current pen color (can be used in place of a number block)"
-msgstr "包含当前画笔的颜色（可以用来替换数字块）"
+#: taextras.py:368
+#, python-format
+msgid "Brick number %s was not found"
+msgstr "没有找到块 %s"
 
-#: TurtleArt/tabasics.py:355
-msgid "holds current pen shade"
-msgstr "设置当前画笔的深度"
+#: taextras.py:369
+msgid "refresh NXT"
+msgstr "刷新 NXT"
 
-#: TurtleArt/tabasics.py:364
-msgid "holds current gray level (can be used in place of a number block)"
-msgstr "包含当前的灰度值（可以用来替换数字块）"
+#: taextras.py:370
+msgid "Search for a connected NXT brick."
+msgstr "搜索已连接的NXT积木。"
 
-#: TurtleArt/tabasics.py:372
-msgid "pen up"
-msgstr "抬笔"
+#: taextras.py:371
+msgid "NXT"
+msgstr "NXT"
 
-#: TurtleArt/tabasics.py:375
-msgid "Turtle will not draw when moved."
-msgstr "海龟将不会在移动时绘图。"
+#: taextras.py:372
+msgid "set current NXT device"
+msgstr "设置当前的NXT设备"
 
-#: TurtleArt/tabasics.py:381
-msgid "pen down"
-msgstr "落笔"
+#: taextras.py:373
+msgid "number of NXT devices"
+msgstr "NXT设备的数量"
 
-#: TurtleArt/tabasics.py:384
-msgid "Turtle will draw when moved."
-msgstr "海龟将在移动时绘图。"
+#: taextras.py:374
+msgid "brick name"
+msgstr "块名称"
 
-#: TurtleArt/tabasics.py:390
-msgid "set pen size"
-msgstr "设置笔的粗细"
+#: taextras.py:375
+msgid "Get the name of a brick."
+msgstr "得到块的名称"
 
-#: TurtleArt/tabasics.py:394
-msgid "sets size of the line drawn by the turtle"
-msgstr "设置海龟绘制的线条的宽度"
+#: taextras.py:376
+msgid "play tone"
+msgstr "播放音调"
 
-#: TurtleArt/tabasics.py:404
-msgid "start fill"
-msgstr "开始填充"
+#: taextras.py:377
+msgid "frequency"
+msgstr "频率"
 
-#: TurtleArt/tabasics.py:406
-msgid "starts filled polygon (used with end fill block)"
-msgstr "开始填充多边形的绘制（和完成填充一起使用）"
+#: taextras.py:378 plugins/turtle_blocks_extras/turtle_blocks_extras.py:451
+msgid "time"
+msgstr "时间"
 
-#: TurtleArt/tabasics.py:413
-msgid "end fill"
-msgstr "完成填充"
+#: taextras.py:379
+msgid "Play a tone at frequency for time."
+msgstr "以时间频率播放音调。"
 
-#: TurtleArt/tabasics.py:415
-msgid "completes filled polygon (used with start fill block)"
-msgstr "完成填充多边形的绘制（和开始填充一起使用）"
-
-#: TurtleArt/tabasics.py:422
-msgid "pen size"
-msgstr "笔的粗细"
-
-#: TurtleArt/tabasics.py:423
-msgid "holds current pen size (can be used in place of a number block)"
-msgstr "包含当前画笔的大小（可以用来替换数字块）"
-
-#: TurtleArt/tabasics.py:437
-msgid "Palette of pen colors"
-msgstr "画笔颜色模板"
-
-#: TurtleArt/tabasics.py:439
-msgid "red"
-msgstr "红色"
-
-#: TurtleArt/tabasics.py:440
-msgid "orange"
-msgstr "橙黄色"
-
-#: TurtleArt/tabasics.py:442
-msgid "yellow"
-msgstr "黄色"
-
-#: TurtleArt/tabasics.py:444
-msgid "green"
-msgstr "绿色"
-
-#: TurtleArt/tabasics.py:445
-msgid "cyan"
-msgstr "青色"
-
-#: TurtleArt/tabasics.py:446
-msgid "blue"
-msgstr "蓝色"
-
-#: TurtleArt/tabasics.py:447
-msgid "purple"
-msgstr "紫色"
-
-#: TurtleArt/tabasics.py:449
-msgid "white"
-msgstr "白色"
-
-#: TurtleArt/tabasics.py:450
-msgid "black"
-msgstr "黑色"
-
-#: TurtleArt/tabasics.py:456
-msgid "set text color"
-msgstr "设置文字颜色"
-
-#: TurtleArt/tabasics.py:459
-msgid "sets color of text drawn by the turtle"
-msgstr "设置海龟绘制文字的颜色"
-
-#: TurtleArt/tabasics.py:467
-msgid "set text size"
-msgstr "设置文字大小"
-
-#: TurtleArt/tabasics.py:470
-msgid "sets size of text drawn by the turtle"
-msgstr "设置海龟绘制的文字的大小"
-
-#: TurtleArt/tabasics.py:553
-msgid "Palette of numeric operators"
-msgstr "数值运算模板"
-
-#: TurtleArt/tabasics.py:559
-msgid "plus"
-msgstr "加"
-
-#: TurtleArt/tabasics.py:563
-msgid "adds two alphanumeric inputs"
-msgstr "将两个字符数值型输入相加"
-
-#: TurtleArt/tabasics.py:571
-msgid "minus"
-msgstr "减"
-
-#: TurtleArt/tabasics.py:574
-msgid "subtracts bottom numeric input from top numeric input"
-msgstr "将顶部输入减去底部输入"
-
-#: TurtleArt/tabasics.py:585
-msgid "multiply"
-msgstr "乘"
-
-#: TurtleArt/tabasics.py:588
-msgid "multiplies two numeric inputs"
-msgstr "将两个数值型输入相乘"
-
-#: TurtleArt/tabasics.py:597
-msgid "divide"
-msgstr "除"
-
-#: TurtleArt/tabasics.py:600
+#. TRANS: turn is the action
+#: taextras.py:381
 msgid ""
-"divides top numeric input (numerator) by bottom numeric input (denominator)"
-msgstr "将顶部输入（分子）除以底部输入（分母）"
-
-#: TurtleArt/tabasics.py:610
-msgid "identity"
-msgstr "自身"
-
-#: TurtleArt/tabasics.py:612
-msgid "identity operator used for extending blocks"
-msgstr "用来拉长积木块的“自身”操作符"
-
-#: TurtleArt/tabasics.py:620 TurtleArt/tabasics.py:621
-msgid "mod"
-msgstr "同余"
-
-#: TurtleArt/tabasics.py:624
-msgid "modular (remainder) operator"
-msgstr "取模（余数）操作符"
-
-#: TurtleArt/tabasics.py:631
-msgid "√"
-msgstr "√"
-
-#: TurtleArt/tabasics.py:632
-msgid "square root"
-msgstr "平方根"
-
-#: TurtleArt/tabasics.py:635
-msgid "calculates square root"
-msgstr "计算平方根"
-
-#: TurtleArt/tabasics.py:642
-msgid "random"
-msgstr "随机值"
-
-#: TurtleArt/tabasics.py:642
-msgid "min"
-msgstr "最小值"
-
-#: TurtleArt/tabasics.py:642
-msgid "max"
-msgstr "最大值"
-
-#: TurtleArt/tabasics.py:646
-msgid "returns random number between minimum (top) and maximum (bottom) values"
-msgstr "返回最小值（顶部）和最大值（底部）之间的随机数"
-
-#: TurtleArt/tabasics.py:658
-msgid "number"
-msgstr "数字"
-
-#: TurtleArt/tabasics.py:659
-msgid "used as numeric input in mathematic operators"
-msgstr "在数学运算符中作为数值型输入"
-
-#: TurtleArt/tabasics.py:667
-msgid "greater than"
-msgstr "大于"
-
-#: TurtleArt/tabasics.py:670
-msgid "logical greater-than operator"
-msgstr "逻辑“大于”运算符"
-
-#: TurtleArt/tabasics.py:679
-msgid "less than"
-msgstr "小于"
-
-#: TurtleArt/tabasics.py:683
-msgid "logical less-than operator"
-msgstr "逻辑“小于”运算符"
-
-#: TurtleArt/tabasics.py:691
-msgid "equal"
-msgstr "等于"
-
-#: TurtleArt/tabasics.py:695
-msgid "logical equal-to operator"
-msgstr "逻辑“等于”运算符"
-
-#: TurtleArt/tabasics.py:701
-msgid "not"
-msgstr "非"
-
-#: TurtleArt/tabasics.py:704
-msgid "logical NOT operator"
-msgstr "逻辑“非”运算符"
-
-#: TurtleArt/tabasics.py:710 TurtleArt/tabasics.py:713
-msgid "and"
-msgstr "与"
-
-#: TurtleArt/tabasics.py:714
-msgid "logical AND operator"
-msgstr "逻辑“与”运算符"
-
-#: TurtleArt/tabasics.py:721 TurtleArt/tabasics.py:724
-msgid "or"
-msgstr "或"
-
-#: TurtleArt/tabasics.py:725
-msgid "logical OR operator"
-msgstr "逻辑“或”运算符"
-
-#: TurtleArt/tabasics.py:734
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:104
-msgid "Palette of flow operators"
-msgstr "流程控制模板"
-
-#: TurtleArt/tabasics.py:739
-msgid "wait"
-msgstr "等待"
-
-#: TurtleArt/tabasics.py:743
-msgid "pauses program execution a specified number of seconds"
-msgstr "暂停程序执行指定秒数"
-
-# Here, 'forever' means 'forever repeat'.
-#: TurtleArt/tabasics.py:750
-msgid "forever"
-msgstr "永远执行"
-
-#: TurtleArt/tabasics.py:754
-msgid "loops forever"
-msgstr "永远执行的循环"
-
-#: TurtleArt/tabasics.py:761 TurtleArt/tabasics.py:765
-msgid "repeat"
-msgstr "重复"
-
-#: TurtleArt/tabasics.py:766
-msgid "loops specified number of times"
-msgstr "循环指定次数"
-
-#: TurtleArt/tabasics.py:772 TurtleArt/tabasics.py:785
-msgid "if"
-msgstr "如果"
-
-#: TurtleArt/tabasics.py:772 TurtleArt/tabasics.py:785
-msgid "then"
-msgstr "那么"
-
-#: TurtleArt/tabasics.py:775
-msgid "if then"
-msgstr "如果 那么"
-
-#: TurtleArt/tabasics.py:777
-msgid "if-then operator that uses boolean operators from Numbers palette"
-msgstr "“如果-那么”运算符，会用到数值模板中的布尔运算符"
-
-#: TurtleArt/tabasics.py:785
-msgid "else"
-msgstr "否则"
-
-#: TurtleArt/tabasics.py:789 TurtleArt/tabasics.py:797
-msgid "if then else"
-msgstr "如果 那么 或者"
-
-#: TurtleArt/tabasics.py:790 TurtleArt/tabasics.py:798
-msgid "if-then-else operator that uses boolean operators from Numbers palette"
-msgstr "“如果-那么-或者”运算符，会用到数值模板中的布尔运算符"
-
-#: TurtleArt/tabasics.py:807
-msgid "horizontal space"
-msgstr "水平空白"
-
-#: TurtleArt/tabasics.py:808
-msgid "jogs stack right"
-msgstr "将块堆向右推"
-
-#: TurtleArt/tabasics.py:815
-msgid "vertical space"
-msgstr "竖直空白"
-
-#: TurtleArt/tabasics.py:816
-msgid "jogs stack down"
-msgstr "将积木堆向下推"
-
-#: TurtleArt/tabasics.py:822
-msgid "stop action"
-msgstr "停止动作"
-
-#: TurtleArt/tabasics.py:825
-msgid "stops current action"
-msgstr "停止当前动作"
-
-#: TurtleArt/tabasics.py:834
-msgid "Palette of variable blocks"
-msgstr "可变块模板"
-
-#: TurtleArt/tabasics.py:839 pysamples/grecord.py:213
-msgid "start"
-msgstr "开始"
-
-#: TurtleArt/tabasics.py:842
-msgid "connects action to toolbar run buttons"
-msgstr "关联动作到工具栏中的运行按钮"
-
-#: TurtleArt/tabasics.py:849 TurtleArt/tabasics.py:850
-#: TurtleArt/tabasics.py:851
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:192
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:193
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:194
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:201
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:214
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:229
-msgid "text"
-msgstr "文本"
-
-#: TurtleArt/tabasics.py:852
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:195
-msgid "string value"
-msgstr "字符串值"
-
-#: TurtleArt/tabasics.py:856 TurtleArt/tabasics.py:859
-#: TurtleArt/tabasics.py:867 TurtleArt/tabasics.py:871
-#: TurtleArt/tawindow.py:1351 TurtleArt/tawindow.py:1448
-#: TurtleArt/tawindow.py:1461 TurtleArt/tawindow.py:2077
-#: TurtleArt/tawindow.py:4363
-msgid "action"
-msgstr "动作"
-
-#: TurtleArt/tabasics.py:861
-msgid "top of nameable action stack"
-msgstr "可命名动作堆的顶部"
-
-#: TurtleArt/tabasics.py:872 TurtleArt/tawindow.py:4377
-msgid "invokes named action stack"
-msgstr "执行可命名动作堆"
-
-#: TurtleArt/tabasics.py:879
-msgid "store in box 1"
-msgstr "保存到盒子1"
-
-#: TurtleArt/tabasics.py:884
-msgid "stores numeric value in Variable 1"
-msgstr "保存数值到变量1"
-
-#: TurtleArt/tabasics.py:892
-msgid "store in box 2"
-msgstr "保存到盒子2"
-
-#: TurtleArt/tabasics.py:897
-msgid "stores numeric value in Variable 2"
-msgstr "保存数值到变量2"
-
-#: TurtleArt/tabasics.py:905
-msgid "box 1"
-msgstr "盒子1"
-
-#: TurtleArt/tabasics.py:908
-msgid "Variable 1 (numeric value)"
-msgstr "变量1（数值）"
-
-#: TurtleArt/tabasics.py:915
-msgid "box 2"
-msgstr "盒子2"
-
-#: TurtleArt/tabasics.py:918
-msgid "Variable 2 (numeric value)"
-msgstr "变量2（数值）"
-
-#: TurtleArt/tabasics.py:924 TurtleArt/tawindow.py:4427
-msgid "store in"
-msgstr "放入"
-
-#: TurtleArt/tabasics.py:924 TurtleArt/tabasics.py:939
-msgid "box"
-msgstr "盒子"
-
-#: TurtleArt/tabasics.py:924 TurtleArt/tawindow.py:4427
-msgid "value"
-msgstr "值"
-
-#: TurtleArt/tabasics.py:928 TurtleArt/tabasics.py:942
-#: TurtleArt/tawindow.py:1355 TurtleArt/tawindow.py:1486
-#: TurtleArt/tawindow.py:2081 TurtleArt/tawindow.py:4390
-#: TurtleArt/tawindow.py:4418
-msgid "my box"
-msgstr "我的盒子"
-
-#: TurtleArt/tabasics.py:929 TurtleArt/tawindow.py:4432
-msgid "stores numeric value in named variable"
-msgstr "保存数值到命名的变量"
-
-#: TurtleArt/tabasics.py:945 TurtleArt/tawindow.py:4404
-msgid "named variable (numeric value)"
-msgstr "命名的变量（数值）"
-
-#: TurtleArt/tabasics.py:952 TurtleArt/tabasics.py:971
-msgid "action 1"
-msgstr "动作1"
-
-#: TurtleArt/tabasics.py:955
-msgid "top of Action 1 stack"
-msgstr "动作堆1的顶部"
-
-#: TurtleArt/tabasics.py:961 TurtleArt/tabasics.py:981
-msgid "action 2"
-msgstr "动作2"
-
-#: TurtleArt/tabasics.py:964
-msgid "top of Action 2 stack"
-msgstr "动作堆2的顶部"
-
-#: TurtleArt/tabasics.py:974
-msgid "invokes Action 1 stack"
-msgstr "执行动作堆1"
-
-#: TurtleArt/tabasics.py:984
-msgid "invokes Action 2 stack"
-msgstr "执行动作堆2"
-
-#: TurtleArt/tabasics.py:992
-msgid "trash"
-msgstr "回收站"
-
-#: TurtleArt/tabasics.py:996
-msgid "empty trash"
-msgstr "清空回收站"
-
-#: TurtleArt/tabasics.py:997
-msgid "permanently deletes items in trash"
-msgstr "永久性地删除回收站中的项"
-
-#: TurtleArt/tabasics.py:1001
-msgid "restore all"
-msgstr "全部还原"
-
-#: TurtleArt/tabasics.py:1002
-msgid "restore all blocks from trash"
-msgstr "还原回收站中的所有积木块"
-
-#: TurtleArt/tabasics.py:1006
-msgid "clear all"
-msgstr "全部清除"
-
-#: TurtleArt/tabasics.py:1007
-msgid "move all blocks to trash"
-msgstr "将所有积木块移入回收站"
-
-#: TurtleArt/tacollaboration.py:152 TurtleArt/tawindow.py:2055
-#: TurtleArtActivity.py:751
-msgid "Share selected blocks"
-msgstr "分享选中积木块"
+"turn motor\n"
+"\n"
+msgstr ""
+"转动电机\n"
+"\n"
+
+#: taextras.py:382
+msgid "port"
+msgstr "端口"
+
+#: taextras.py:383
+msgid "power"
+msgstr "电源"
+
+#. #-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: rotations is quantity of turns
+#: taextras.py:385
+msgid "rotations"
+msgstr "旋转"
+
+#: taextras.py:386
+msgid "turn a motor"
+msgstr "转动电机"
+
+#: taextras.py:387
+msgid ""
+"synchronize\n"
+"\n"
+"motors"
+msgstr ""
+"同步\n"
+"\n"
+"电机"
+
+#: taextras.py:388
+msgid "steering"
+msgstr "转向"
+
+#: taextras.py:389
+msgid "synchronize two motors connected in PORT B and PORT C"
+msgstr "同步连接在端口B和端口C的两个电机"
+
+#: taextras.py:390
+msgid "PORT A"
+msgstr "端口 A"
+
+#: taextras.py:391
+msgid "PORT A of the brick"
+msgstr "积木的端口 A"
+
+#: taextras.py:392
+msgid "PORT B"
+msgstr "端口 B"
+
+#: taextras.py:393
+msgid "PORT B of the brick"
+msgstr "积木的端口 B"
+
+#: taextras.py:394
+msgid "PORT C"
+msgstr "端口 C"
+
+#: taextras.py:395
+msgid "PORT C of the brick"
+msgstr "积木的端口 C"
+
+#: taextras.py:396
+msgid ""
+"synchronize\n"
+"motors"
+msgstr ""
+"同步\n"
+"电机"
+
+#: taextras.py:397
+msgid "start motor"
+msgstr "启动电机"
+
+#: taextras.py:398
+msgid "Run a motor forever."
+msgstr "持续运行电机。"
+
+#: taextras.py:399
+msgid "brake motor"
+msgstr "制动电机"
+
+#: taextras.py:400
+msgid "Stop a specified motor."
+msgstr "停止指定的电机。"
+
+#. #-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: reset is used to reset the counter associated with the motor
+#: taextras.py:402
+msgid "reset motor"
+msgstr "复位电机"
+
+#: taextras.py:403
+msgid "Reset the motor counter."
+msgstr "复位电机计数器。"
+
+#: taextras.py:404
+msgid "motor position"
+msgstr "电机位置"
+
+#: taextras.py:405
+msgid "Get the motor position."
+msgstr "得到电机位置。"
+
+#: taextras.py:406
+msgid "PORT 1"
+msgstr "端口 1"
+
+#: taextras.py:407
+msgid "PORT 1 of the brick"
+msgstr "积木的端口 1"
+
+#: taextras.py:408
+msgid "read"
+msgstr "读取"
+
+#: taextras.py:409
+msgid "sensor"
+msgstr "传感器"
+
+#: taextras.py:410
+msgid "Read sensor output."
+msgstr "读取传感器输出。"
+
+#: taextras.py:411
+msgid "PORT 2"
+msgstr "端口 2"
+
+#: taextras.py:412
+msgid "PORT 2 of the brick"
+msgstr "积木的端口 2"
+
+#: taextras.py:413
+msgid "light sensor"
+msgstr "灯光传感器"
+
+#: taextras.py:414
+msgid "gray sensor"
+msgstr "灰色传感器"
+
+#: taextras.py:415
+msgid "PORT 3"
+msgstr "端口 3"
+
+#: taextras.py:416
+msgid "PORT 3 of the brick"
+msgstr "积木的端口 3"
+
+#: taextras.py:417
+msgid "touch sensor"
+msgstr "触控传感器"
+
+#: taextras.py:418
+msgid "distance sensor"
+msgstr "距离传感器"
+
+#: taextras.py:419
+msgid "PORT 4"
+msgstr "端口 4"
+
+#: taextras.py:420
+msgid "PORT 4 of the brick"
+msgstr "积木的端口 4"
+
+#: taextras.py:421
+msgid "sound sensor"
+msgstr "声音传感器"
+
+#: taextras.py:422
+msgid "color sensor"
+msgstr "颜色传感器"
+
+#. #-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: set light is used to set the light level associated with
+#. the color sensor (which can emit light as well as sense it)
+#: taextras.py:425
+msgid "set light"
+msgstr "设置灯"
+
+#: taextras.py:426
+msgid "Set color sensor light."
+msgstr "设置颜色感应灯。"
+
+#. #-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: the battery level is the charge level of the brick
+#: taextras.py:428
+msgid "battery level"
+msgstr "电池电量"
+
+#: taextras.py:429
+msgid "Get the battery level of the brick in millivolts"
+msgstr "得到拼块的电池电量（单位为毫伏）"
+
+#. #-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: Arduino plugin to control an Arduino board
+#: taextras.py:434
+msgid "Palette of Arduino blocks"
+msgstr "Arduino模板"
+
+#. #-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: PWM is pulse-width modulation
+#: taextras.py:440
+msgid "PWM"
+msgstr "调速"
+
+#: taextras.py:441
+msgid "SERVO"
+msgstr "伺服"
+
+#: taextras.py:442
+msgid "ERROR: Check the Arduino and the number of port."
+msgstr "错误：请检查的Arduino和端口号。"
+
+#: taextras.py:443
+msgid "ERROR: Value must be a number from 0 to 255."
+msgstr "错误：数值必须从0到255。"
+
+#: taextras.py:444
+msgid "ERROR: Value must be either HIGH or LOW, 0 or 1"
+msgstr "错误：值必须是高或低，0或1"
+
+#: taextras.py:445
+msgid "ERROR: The mode must be either INPUT, OUTPUT, PWM or SERVO."
+msgstr "错误：模式必须是输入，输出，调速或伺服。"
+
+#: taextras.py:446
+msgid "ERROR: The value must be an integer."
+msgstr "错误：值必须是一个整数。"
+
+#: taextras.py:447
+msgid "ERROR: The pin must be an integer."
+msgstr "错误：pin值必须是一个整数。"
+
+#: taextras.py:448
+msgid "refresh Arduino"
+msgstr "刷新Arduino"
+
+#: taextras.py:449
+msgid "Search for connected Arduinos."
+msgstr "搜索已连接的Arduino。"
+
+#: taextras.py:450
+msgid "Arduino"
+msgstr "Arduino"
+
+#: taextras.py:451
+msgid "set current Arduino board"
+msgstr "设置当前的Arduino板"
+
+#: taextras.py:452
+msgid "number of Arduinos"
+msgstr "Arduino 的数量"
+
+#: taextras.py:453
+msgid "number of Arduino boards"
+msgstr "Arduino 板的数量"
+
+#: taextras.py:454
+msgid "Arduino name"
+msgstr "Arduino 名称"
+
+#: taextras.py:455
+msgid "Get the name of an Arduino."
+msgstr "得到一个 Arduino 的名称。"
+
+#. #-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: pin mode is used to specify the mode (INPUT, OUTPUT, etc)
+#. in which an I/O pin is being used.
+#: taextras.py:458
+msgid "pin mode"
+msgstr "引脚模式"
+
+#: taextras.py:461
+msgid "Select the pin function (INPUT, OUTPUT, PWM, SERVO)."
+msgstr "选择引脚功能（输入，输出，调速，伺服）。"
+
+#: taextras.py:462
+msgid "analog write"
+msgstr "模拟写"
+
+#: taextras.py:464
+msgid "Write analog value in specified port."
+msgstr "写模拟值到指定的端口。"
+
+#: taextras.py:465
+msgid "analog read"
+msgstr "模拟读"
+
+#: taextras.py:466
+msgid ""
+"Read value from analog port. Value may be between 0 and 1023. Use Vref to "
+"determine voltage. For USB, volt=((read)*5)/1024) approximately."
+msgstr ""
+"从模拟端口读值。值可能是0到1023之间。使用Vref来确定电压。对于USB，电压大约等"
+"于 ((read)*5)/1024。"
+
+#: taextras.py:468
+msgid "digital write"
+msgstr "数字写"
+
+#: taextras.py:469
+msgid "Write digital value to specified port."
+msgstr "写数字值到指定的端口。"
+
+#: taextras.py:470
+msgid "digital read"
+msgstr "数字读"
+
+#: taextras.py:471
+msgid "Read value from digital port."
+msgstr "从数字端口读取值。"
+
+#: taextras.py:473
+msgid "Configure Arduino port for digital input."
+msgstr "配置用于数字输入的Arduino端口。"
+
+#: taextras.py:474
+msgid "Configure Arduino port to drive a servo."
+msgstr "配置用于驱动伺服电机的Arduino端口。"
+
+#: taextras.py:476
+msgid "Configure Arduino port for digital output."
+msgstr "配置用于数字输出的Arduino端口。"
+
+#: taextras.py:477
+msgid "Configure Arduino port for PWM (pulse-width modulation)."
+msgstr "配置用于调速（脉宽调制）的Arduino端口"
+
+#: taextras.py:478
+#, python-format
+msgid "Not found Arduino %s"
+msgstr "未找到Arduino %s"
+
+#: taextras.py:479
+msgid "The pin must be an integer"
+msgstr "pin值必须为一个整数"
+
+#: taextras.py:480
+msgid "The device must be an integer"
+msgstr "device值必须为一个整数"
+
+#. TRANS: plugin to control an ExpEyes device
+#: taextras.py:485
+msgid "Palette of Expeyes blocks"
+msgstr "Expeyes 块模板"
+
+#. TRANS: Programmable voltage output
+#: taextras.py:487
+msgid "set PVS"
+msgstr "设置 PVS"
+
+#: taextras.py:488
+msgid "set programmable voltage output"
+msgstr "设置可编程电压输出"
+
+#. TRANS: Square wave 1 voltage output
+#: taextras.py:490
+msgid "set SQR1 voltage"
+msgstr "设置 SQR1 电压"
+
+#: taextras.py:491
+msgid "set square wave 1 voltage output"
+msgstr "设置方波1电压输出"
+
+#. TRANS: Square wave 2 voltage output
+#: taextras.py:493
+msgid "set SQR2 voltage"
+msgstr "设置 SQR2 电压"
+
+#: taextras.py:494
+msgid "set square wave 2 voltage output"
+msgstr "设置方波2电压输出"
+
+#. TRANS: Digital output level
+#: taextras.py:496
+msgid "set OD1"
+msgstr "设置 OD1"
+
+#: taextras.py:497
+msgid "set digital output level (OD1) low (0) or high (1)"
+msgstr "设置数字输出电平 (OD1) 高 (0) 或低 (1)"
+
+#. TRANS: Input 1 voltage level
+#: taextras.py:499
+msgid "IN1 level"
+msgstr "IN1 电平"
+
+#: taextras.py:500
+msgid ""
+"returns 1 if IN1 voltage level >2.5 volts, 0 if IN1 voltage level <= 2.5 "
+"volts"
+msgstr "如果 IN1 电平>2.5伏返回1，如果<=2.5伏返回0"
+
+#. TRANS: Input 2 voltage level
+#: taextras.py:503
+msgid "IN2 level"
+msgstr "IN2 电平"
+
+#: taextras.py:504
+msgid ""
+"returns 1 if IN2 voltage level >2.5 volts, 0 if IN2 voltage level <= 2.5 "
+"volts"
+msgstr "如果 IN2 电平>2.5伏返回1，如果 <=2.5伏返回0"
+
+#. TRANS: Resistive sensor voltage level
+#: taextras.py:507
+msgid "SEN level"
+msgstr "SEN 电平"
+
+#: taextras.py:508
+msgid ""
+"returns 1 if resistive sensor (SEN) voltage level > 2.5 volts, 0 if SEN "
+"voltage level <= 2.5 volts"
+msgstr "如果电阻式传感器（SEN）电压电平>2.5伏返回1，如果<=2.5伏返回0"
+
+#: taextras.py:510
+msgid "capture"
+msgstr "捕获"
+
+#: taextras.py:511
+msgid "input"
+msgstr "输入"
+
+#: taextras.py:512
+msgid "samples"
+msgstr "采样"
+
+#: taextras.py:513
+msgid "interval"
+msgstr "间隔"
+
+#. TRANS: MS is microseconds
+#: taextras.py:515
+msgid ""
+"capture multiple samples from input at interval (MS); results pushed to FIFO"
+msgstr "从输入捕获时间间隔（MS）的多个样本，结果放入 FIFO"
+
+#. TRANS: Analog input 1 voltage level
+#: taextras.py:518
+msgid "A1"
+msgstr "A1"
+
+#: taextras.py:519
+msgid "read analog input 1 voltage"
+msgstr "读取模拟输入1的电压"
+
+#. TRANS: Analog input 2 voltage level
+#: taextras.py:521
+msgid "A2"
+msgstr "A2"
+
+#: taextras.py:522
+msgid "read analog input 2 voltage"
+msgstr "读取模拟输入2的电压"
+
+#. TRANS: Read input 1 voltage
+#: taextras.py:524
+msgid "IN1"
+msgstr "IN1"
+
+#: taextras.py:525
+msgid "read input 1 voltage"
+msgstr "读取输入1的电压"
+
+#. TRANS: Read input 2 voltage
+#: taextras.py:527
+msgid "IN2"
+msgstr "IN2"
+
+#: taextras.py:528
+msgid "read input 2 voltage"
+msgstr "读取输入2的电压"
+
+#. TRANS: Read analog sensor input voltage
+#: taextras.py:530
+msgid "SEN"
+msgstr "SEN"
+
+#: taextras.py:531
+msgid "read analog sensor input voltage"
+msgstr "读取模拟传感器输入电压"
+
+#. TRANS: Read square wave 1 input voltage
+#: taextras.py:533
+msgid "SQR1"
+msgstr "SQR1"
+
+#: taextras.py:534
+msgid "read square wave 1 voltage"
+msgstr "读取方波1电压"
+
+#. TRANS: Read square wave 2 input voltage
+#: taextras.py:536
+msgid "SQR2"
+msgstr "SQR2"
+
+#: taextras.py:537
+msgid "read square wave 2 voltage"
+msgstr "读取方波2电压"
+
+#. TRANS: Read programmable voltage
+#: taextras.py:539
+msgid "PVS"
+msgstr "PVS"
+
+#: taextras.py:540
+msgid "read programmable voltage"
+msgstr "读取可编程电压"
+
+#: taextras.py:541
+msgid "Expeyes device not found"
+msgstr "未找到Expeyes设备"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:305
+msgid "resume playing video or audio"
+msgstr "恢复播放视频或音频"
 
 #: TurtleArt/taconstants.py:209 TurtleArt/taconstants.py:231
 #: TurtleArt/taconstants.py:252 TurtleArt/taconstants.py:294
@@ -713,78 +1694,1747 @@ msgstr "分享选中积木块"
 msgid "Title"
 msgstr "标题"
 
-#: TurtleArt/talogo.py:370 TurtleArtActivity.py:731
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1538
-msgid "Stop turtle"
+#: plugins/camera_sensor/camera_sensor.py:95
+#: plugins/camera_sensor/camera_sensor.py:143
+msgid "Average RGB color from camera is pushed to the stack"
+msgstr "相机的平均色彩RGB值已压入堆栈"
+
+#: TurtleArt/tabasics.py:442
+msgid "yellow"
+msgstr "黄色"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:685
+msgid "displays polar coordinates"
+msgstr "显示极坐标"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:499
+msgid "emptys FILO (first-in-last-out heap)"
+msgstr "清空FILO（先进后出堆）"
+
+#: plugins/camera_sensor/camera_sensor.py:106
+#: plugins/camera_sensor/camera_sensor.py:113
+#: plugins/camera_sensor/camera_sensor.py:121
+#: plugins/camera_sensor/camera_sensor.py:155
+#: plugins/camera_sensor/camera_sensor.py:163
+msgid "camera output"
+msgstr "相机输出"
+
+#: plugins/accelerometer/accelerometer.py:58
+#: plugins/accelerometer/accelerometer.py:65
+msgid "push acceleration in x, y, z to heap"
+msgstr "把沿x，y，z方向加速度放入堆中"
+
+#: TurtleArt/tabasics.py:777
+msgid "if-then operator that uses boolean operators from Numbers palette"
+msgstr "“如果-那么”运算符，会用到数值模板中的布尔运算符"
+
+#: TurtleArt/tabasics.py:808
+msgid "jogs stack right"
+msgstr "将块堆向右推"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:147
+msgid "Sugar Journal media object"
+msgstr "Sugar日志中的多媒体文件"
+
+#: TurtleArt/tabasics.py:915
+msgid "box 2"
+msgstr "盒子2"
+
+#: TurtleArt/tabasics.py:905
+msgid "box 1"
+msgstr "盒子1"
+
+#: TurtleArtActivity.py:730 TurtleArtActivity.py:994 turtleblocks.py:415
+msgid "Step"
+msgstr "单步"
+
+#: TurtleArt/tabasics.py:588
+msgid "multiplies two numeric inputs"
+msgstr "将两个数值型输入相乘"
+
+#: turtleblocks.py:408
+msgid "Show/hide blocks"
+msgstr "显示/隐藏块"
+
+#: TurtleArtActivity.py:318 TurtleArtActivity.py:984 turtleblocks.py:406
+msgid "Hide palette"
+msgstr "隐藏模板"
+
+#: gnome_plugins/collaboration_plugin.py:125
+msgid "Buddies"
+msgstr "伙伴"
+
+#: gnome_plugins/collaboration_plugin.py:67
+msgid "My Turtle Art session"
+msgstr "我的海龟绘图会话"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:171
+msgid "Sugar Journal video object"
+msgstr "Sugar日志中的视频文件"
+
+#: TurtleArt/tabasics.py:445
+msgid "cyan"
+msgstr "青色"
+
+#. #-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: "summary" option from activity.info file
+#. TRANS: "description" option from activity.info file
+msgid ""
+"A Logo-inspired turtle that draws colorful pictures with snap-together "
+"visual programming blocks"
+msgstr "一个受Logo启发连接可视化编程块并画有彩色图片的海龟"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:898
+msgid "xcor of right of screen"
+msgstr "屏幕右方的X座标"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:463
+msgid "Palette of extra options"
+msgstr "额外选项模板"
+
+#: TurtleArtActivity.py:678 TurtleArtActivity.py:695 TurtleArtActivity.py:734
+#: TurtleArtActivity.py:934
+msgid "Load example"
+msgstr "载入示例"
+
+#: TurtleArt/tabasics.py:1007
+msgid "move all blocks to trash"
+msgstr "将所有积木块移入回收站"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:817
+msgid "list"
+msgstr "列表"
+
+#: turtleblocks.py:289
+#, python-format
+msgid "Configuration directory not writable: %s"
+msgstr "配置不可写的目录：%s"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:303
+msgid "media resume"
+msgstr "恢复媒体"
+
+#: TurtleArt/tabasics.py:243 TurtleArt/tawindow.py:4106
+msgid "heading"
+msgstr "朝向"
+
+#: TurtleArtActivity.py:912
+msgid "Sharing blocks disabled"
+msgstr "分享积木块被禁用"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:265
+msgid "saves turtle graphics as an SVG file in the Sugar Journal"
+msgstr "以SVG格式保存海龟图形到Sugar日志中"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:204
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:217
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:232
+msgid "draws text or show media from the Journal"
+msgstr "绘制日志中的文本或多媒体"
+
+#: plugins/rfid/rfid.py:92 plugins/rfid/rfid.py:100
+msgid "RFID"
+msgstr "RFID"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:169
+msgid "video"
+msgstr "视频"
+
+#: TurtleArt/tabasics.py:446
+msgid "blue"
+msgstr "蓝色"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:677
+msgid "displays Cartesian coordinates"
+msgstr "显示直角坐标"
+
+#: turtleblocks.py:250
+msgid "No option action:"
+msgstr "无选项的动作："
+
+#: TurtleArt/tabasics.py:816
+msgid "jogs stack down"
+msgstr "将积木堆向下推"
+
+#: TurtleArt/tabasics.py:624
+msgid "modular (remainder) operator"
+msgstr "取模（余数）操作符"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:966
+msgid "bottom y"
+msgstr "底部Y坐标"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:262
+msgid "save SVG"
+msgstr "保存SVG"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:630
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:646
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:662
+msgid "runs code found in the tamyblock.py module found in the Journal"
+msgstr "执行日志中tamyblock.py模块中的代码"
+
+#: TurtleArt/tabasics.py:381
+msgid "pen down"
+msgstr "落笔"
+
+#: TurtleArt/tabasics.py:739
+msgid "wait"
+msgstr "等待"
+
+#: TurtleArt/tabasics.py:924 TurtleArt/tabasics.py:939
+msgid "box"
+msgstr "盒子"
+
+#: gnome_plugins/uploader_plugin.py:203
+msgid "Failed to upload!"
+msgstr "上传失败！"
+
+#: TurtleArt/tawindow.py:1063 TurtleArt/tawindow.py:1664
+msgid "shift"
+msgstr "移动"
+
+#: TurtleArt/tabasics.py:872 TurtleArt/tawindow.py:4377
+msgid "invokes named action stack"
+msgstr "执行可命名动作堆"
+
+#: TurtleArt/tabasics.py:856 TurtleArt/tabasics.py:859
+#: TurtleArt/tabasics.py:867 TurtleArt/tabasics.py:871
+#: TurtleArt/tawindow.py:1351 TurtleArt/tawindow.py:1448
+#: TurtleArt/tawindow.py:1461 TurtleArt/tawindow.py:2077
+#: TurtleArt/tawindow.py:4363
+msgid "action"
+msgstr "动作"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:123
+msgid "do-until-True operator that uses boolean operators from Numbers palette"
+msgstr "“执行-直到-真”操作符，会用到数值模板中的布尔运算符"
+
+#: turtleblocks.py:89
+msgid "usage is"
+msgstr "用法是"
+
+#: TurtleArt/tabasics.py:918
+msgid "Variable 2 (numeric value)"
+msgstr "变量2（数值）"
+
+#: TurtleArt/tabasics.py:597
+msgid "divide"
+msgstr "除"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:253
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:264
+msgid "picture name"
+msgstr "图片名称"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:109
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:112
+msgid "while"
+msgstr "当"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:890
+msgid "the canvas width"
+msgstr "画布宽度"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:525
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:535
+msgid "empty heap?"
+msgstr "堆空的吗？"
+
+#: TurtleArt/tabasics.py:945 TurtleArt/tawindow.py:4404
+msgid "named variable (numeric value)"
+msgstr "命名的变量（数值）"
+
+#: TurtleArt/tawindow.py:1044 TurtleArt/tawindow.py:1644
+msgid "next"
+msgstr "下一个"
+
+#: TurtleArt/tabasics.py:775
+msgid "if then"
+msgstr "如果 那么"
+
+#: TurtleArt/tabasics.py:390
+msgid "set pen size"
+msgstr "设置笔的粗细"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:836
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:998
+msgid "presentation template: select Journal object (no description)"
+msgstr "演示模板：选择日志中的物品（无描述）"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:119
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:122
+msgid "until"
+msgstr "直到"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:289
+msgid "media stop"
+msgstr "停止媒体"
+
+#: TurtleArtActivity.py:303 turtleblocks.py:390
+msgid "Turn on hover help"
+msgstr "开启悬停帮助"
+
+#: TurtleArt/tabasics.py:997
+msgid "permanently deletes items in trash"
+msgstr "永久性地删除回收站中的项"
+
+#: pysamples/uturn.py:24
+msgid "uturn"
+msgstr "翻转"
+
+#: TurtleArt/tabasics.py:955
+msgid "top of Action 1 stack"
+msgstr "动作堆1的顶部"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:589
+msgid ""
+"a programmable block: used to add advanced single-variable math equations, e."
+"g., sin(x)"
+msgstr "一个可编程积木块：用于加入单变量的高级数学等式，例如sin(x)"
+
+#: TurtleArt/tabasics.py:734
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:104
+msgid "Palette of flow operators"
+msgstr "流程控制模板"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:733
+msgid "top of a collapsed stack"
+msgstr "折叠积木堆的顶部"
+
+#: TurtleArt/tabasics.py:790 TurtleArt/tabasics.py:798
+msgid "if-then-else operator that uses boolean operators from Numbers palette"
+msgstr "“如果-那么-或者”运算符，会用到数值模板中的布尔运算符"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:377
+msgid "returns mouse y coordinate"
+msgstr "返回鼠标位置的Y坐标"
+
+#: TurtleArt/tabasics.py:355
+msgid "holds current pen shade"
+msgstr "设置当前画笔的深度"
+
+#. #-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: pitch, duration, amplitude
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:322
+msgid "sinewave"
+msgstr "正弦波"
+
+#: gnome_plugins/uploader_plugin.py:166
+msgid "Login failed"
+msgstr "登录失败"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:939
+msgid "left x"
+msgstr "左侧X坐标"
+
+#: TurtleArt/tabasics.py:209
+msgid "set heading"
+msgstr "设置朝向"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:433
+msgid "RGB color under the turtle is pushed to the stack"
+msgstr "海龟所在位置的颜色RGB值将被压入堆栈"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:791
+msgid "declutters canvas by hiding blocks"
+msgstr "隐藏积木块使画布整洁一些"
+
+#: TurtleArtActivity.py:994
+msgid "<Ctrl>w"
+msgstr "<Ctrl>w"
+
+#: TurtleArtActivity.py:992
+msgid "<Ctrl>r"
+msgstr "<Ctrl>r"
+
+#: TurtleArtActivity.py:997
+msgid "<Ctrl>s"
+msgstr "<Ctrl>s"
+
+#: TurtleArtActivity.py:985
+msgid "<Ctrl>p"
+msgstr "<Ctrl>p"
+
+#: TurtleArtActivity.py:990
+msgid "<Ctrl>e"
+msgstr "<Ctrl>e"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:569
+msgid "Python chr operator"
+msgstr "Python chr 操作符"
+
+#: TurtleArt/tabasics.py:807
+msgid "horizontal space"
+msgstr "水平空白"
+
+#: TurtleArtActivity.py:645 TurtleArtActivity.py:802
+msgid "Metric coordinates"
+msgstr "公制坐标"
+
+#: TurtleArt/tabasics.py:852
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:195
+msgid "string value"
+msgstr "字符串值"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:181
+msgid "description"
+msgstr "描述"
+
+#: TurtleArt/talogo.py:567
+msgid "I don't know how to"
+msgstr "我不知道怎样"
+
+#: TurtleArt/tabasics.py:467
+msgid "set text size"
+msgstr "设置文字大小"
+
+#: gnome_plugins/uploader_plugin.py:99
+msgid "Username:"
+msgstr "用户名："
+
+#: TurtleArt/tabasics.py:406
+msgid "starts filled polygon (used with end fill block)"
+msgstr "开始填充多边形的绘制（和完成填充一起使用）"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:850
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1043
+msgid "presentation template: select four Journal objects"
+msgstr "演示模板：选择四件日志中的物品"
+
+#: TurtleArtActivity.py:584 TurtleArtActivity.py:613 TurtleArtActivity.py:726
+#: TurtleArtActivity.py:796 turtleblocks.py:392
+msgid "View"
+msgstr "视图"
+
+#: TurtleArt/tabasics.py:336
+msgid "sets gray level of the line drawn by the turtle"
+msgstr "设置海龟绘制的线条的灰度"
+
+#: gnome_plugins/uploader_plugin.py:109
+msgid "Password:"
+msgstr "密码："
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:441
+msgid "turtle sees"
+msgstr "海龟看到"
+
+#: TurtleArt/tabasics.py:822
+msgid "stop action"
+msgstr "停止动作"
+
+#: TurtleArt/tabasics.py:444
+msgid "green"
+msgstr "绿色"
+
+#: TurtleArt/tabasics.py:283 TurtleArt/tabasics.py:295
+#: TurtleArt/tabasics.py:354
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1193
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1198
+msgid "shade"
+msgstr "深度"
+
+#: TurtleArt/tabasics.py:287 TurtleArt/tabasics.py:299
+msgid "fills the background with (color, shade)"
+msgstr "以（颜色，阴影）填充背景"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:251
+msgid "save picture"
+msgstr "保存图片"
+
+#: plugins/audio_sensors/audio_sensors.py:119
+#: plugins/audio_sensors/audio_sensors.py:127
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:322
+msgid "pitch"
+msgstr "强度"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:346
+msgid "returns 1 if mouse button is pressed"
+msgstr "返回1如果鼠标被按下"
+
+#: TurtleArtActivity.py:489 TurtleArtActivity.py:648 TurtleArtActivity.py:804
+msgid "Rescale coordinates up"
+msgstr "增大坐标轴比例"
+
+#: TurtleArt/tabasics.py:372
+msgid "pen up"
+msgstr "抬笔"
+
+#: TurtleArt/tabasics.py:440
+msgid "orange"
+msgstr "橙黄色"
+
+#: TurtleArt/tabasics.py:743
+msgid "pauses program execution a specified number of seconds"
+msgstr "暂停程序执行指定秒数"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:473
+msgid "pushes value onto FILO (first-in last-out heap)"
+msgstr "将值压入FILO（先进后出堆）"
+
+#: TurtleArt/tabasics.py:1006
+msgid "clear all"
+msgstr "全部清除"
+
+#: TurtleArt/tabasics.py:772 TurtleArt/tabasics.py:785
+msgid "then"
+msgstr "那么"
+
+#: gnome_plugins/collaboration_plugin.py:302
+msgid "Register"
+msgstr "注册"
+
+#: TurtleArt/tabasics.py:701
+msgid "not"
+msgstr "非"
+
+#: TurtleArt/tabasics.py:789 TurtleArt/tabasics.py:797
+msgid "if then else"
+msgstr "如果 那么 或者"
+
+#: TurtleArt/tabasics.py:825
+msgid "stops current action"
+msgstr "停止当前动作"
+
+#: TurtleArt/tabasics.py:174
+msgid "turns turtle clockwise (angle in degrees)"
+msgstr "顺时针转动海龟（角度）"
+
+#: TurtleArt/tabasics.py:364
+msgid "holds current gray level (can be used in place of a number block)"
+msgstr "包含当前的灰度值（可以用来替换数字块）"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:874
+msgid "xcor of left of screen"
+msgstr "屏幕左方的X座标"
+
+#: turtleblocks.py:387
+msgid "Reset block size"
+msgstr "复位块大小"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:691
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:773
+msgid "turtle"
+msgstr "海龟"
+
+#: TurtleArt/tapalette.py:97
+msgid "displays next palette"
+msgstr "显示下一个模板"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:789
+msgid "hide blocks"
+msgstr "隐藏积木块"
+
+#: plugins/camera_sensor/camera_sensor.py:82
+#: plugins/camera_sensor/camera_sensor.py:130
+msgid "light level detected by camera"
+msgstr "相机侦测到的光照水平"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:578
+msgid "Python int operator"
+msgstr "Python int 操作符"
+
+#: TurtleArt/tabasics.py:683
+msgid "logical less-than operator"
+msgstr "逻辑“小于”运算符"
+
+#: TurtleArt/tabasics.py:1002
+msgid "restore all blocks from trash"
+msgstr "还原回收站中的所有积木块"
+
+#: turtleblocks.py:367
+msgid "Save"
+msgstr "保存"
+
+#: TurtleArt/tabasics.py:879
+msgid "store in box 1"
+msgstr "保存到盒子1"
+
+#: TurtleArt/tabasics.py:892
+msgid "store in box 2"
+msgstr "保存到盒子2"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:808
+msgid "hides the Sugar toolbars"
+msgstr "隐藏Sugar工具栏"
+
+#: TurtleArt/tabasics.py:222
+msgid ""
+"holds current x-coordinate value of the turtle (can be used in place of a "
+"number block)"
+msgstr "包含海龟当前位置的X座标值（可以用来替换数字块）"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:555
+msgid "print"
+msgstr "打印"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:367
+msgid "returns mouse x coordinate"
+msgstr "返回鼠标位置的X坐标"
+
+#: TurtleArt/tabasics.py:439
+msgid "red"
+msgstr "红色"
+
+#: TurtleArtActivity.py:188 TurtleArtActivity.py:757 TurtleArtActivity.py:925
+#: TurtleArtActivity.py:955 turtleblocks.py:371
+msgid "Save as Logo"
+msgstr "另存为Logo"
+
+#: TurtleArt/tabasics.py:313
+msgid "sets color of the line drawn by the turtle"
+msgstr "设置海龟绘制的线条的颜色"
+
+#: TurtleArt/tabasics.py:456
+msgid "set text color"
+msgstr "设置文字颜色"
+
+#: plugins/audio_sensors/audio_sensors.py:90
+#: plugins/audio_sensors/audio_sensors.py:105
+msgid "loudness"
+msgstr "音量"
+
+#: gnome_plugins/collaboration_plugin.py:115
+msgid "Enable collaboration"
+msgstr "启用协作"
+
+#: plugins/accelerometer/accelerometer.py:49
+#: plugins/audio_sensors/audio_sensors.py:75
+#: plugins/camera_sensor/camera_sensor.py:63
+#: plugins/light_sensor/light_sensor.py:49 plugins/rfid/rfid.py:86
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:336
+msgid "Palette of sensor blocks"
+msgstr "传感器模板"
+
+#: TurtleArtActivity.py:761 TurtleArtActivity.py:943 TurtleArtActivity.py:965
+msgid "Load plugin"
+msgstr "加载插件"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:357
+msgid "returns True if mouse button is pressed"
+msgstr "返回True如果鼠标被按下"
+
+#: TurtleArt/tabasics.py:658
+msgid "number"
+msgstr "数字"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:385
+msgid "query keyboard"
+msgstr "查询键盘"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:130
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:732
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:903
+msgid "top"
+msgstr "顶部"
+
+#: gnome_plugins/uploader_plugin.py:140
+msgid "Submit to Web"
+msgstr "提交到网站"
+
+#: TurtleArtActivity.py:640 TurtleArtActivity.py:798 turtleblocks.py:377
+msgid "Cartesian coordinates"
+msgstr "直角坐标"
+
+#: gnome_plugins/collaboration_plugin.py:292
+msgid "Nickname"
+msgstr "昵称"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:240
+msgid "set scale"
+msgstr "设置比例"
+
+#: TurtleArt/tacollaboration.py:152 TurtleArt/tawindow.py:2055
+#: TurtleArtActivity.py:751
+msgid "Share selected blocks"
+msgstr "分享选中积木块"
+
+#: TurtleArt/tabasics.py:449
+msgid "white"
+msgstr "白色"
+
+#: TurtleArt/tabasics.py:842
+msgid "connects action to toolbar run buttons"
+msgstr "关联动作到工具栏中的运行按钮"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:454
+msgid "elapsed time (in seconds) since program started"
+msgstr "程序启动后已经过的时间（秒）"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:323
+msgid "amplitude"
+msgstr "波幅"
+
+#: TurtleArt/tawindow.py:1534 TurtleArt/tawindow.py:1574
+#: gnome_plugins/uploader_plugin.py:144
+msgid "Cancel"
+msgstr "取消"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:914
+msgid "the canvas height"
+msgstr "画布高度"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1011
+msgid "presentation 2x1"
+msgstr "以 2x1 方式演示"
+
+#: TurtleArt/tabasics.py:571
+msgid "minus"
+msgstr "减"
+
+#: TurtleArt/tabasics.py:710 TurtleArt/tabasics.py:713
+msgid "and"
+msgstr "与"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:132
+msgid "top of a collapsible stack"
+msgstr "折叠积木堆的顶部"
+
+#: TurtleArt/talogo.py:623
+msgid "as input"
+msgstr "作为输入"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:628
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:644
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:659
+msgid "Python block"
+msgstr "Python积木块"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:281
+msgid "media wait"
+msgstr "等待多媒体"
+
+#: plugins/accelerometer/accelerometer.py:56
+#: plugins/accelerometer/accelerometer.py:63
+msgid "acceleration"
+msgstr "加速度"
+
+#: TurtleArt/tabasics.py:423
+msgid "holds current pen size (can be used in place of a number block)"
+msgstr "包含当前画笔的大小（可以用来替换数字块）"
+
+#: TurtleArt/tabasics.py:309
+msgid "set color"
+msgstr "设置颜色"
+
+#: TurtleArt/tabasics.py:642
+msgid "min"
+msgstr "最小值"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:741
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:752
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:763
+msgid "loads a block"
+msgstr "载入一个积木块"
+
+#: TurtleArt/tabasics.py:278
+msgid "Palette of pen commands"
+msgstr "画笔指令模板"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:486
+msgid "shows values in FILO (first-in last-out heap)"
+msgstr "显示FILO（先进后出堆）中的值"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:113
+msgid "do-while-True operator that uses boolean operators from Numbers palette"
+msgstr "“当-为真时-执行”操作符，会用到数值模板中的布尔运算符"
+
+#: turtleblocks.py:374
+msgid "File"
+msgstr "文件"
+
+#: TurtleArt/tabasics.py:704
+msgid "logical NOT operator"
+msgstr "逻辑“非”运算符"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:882
+msgid "ycor of bottom of screen"
+msgstr "屏幕下方的Y座标"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:843
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:983
+msgid "presentation template: select Journal object (with description)"
+msgstr "演示模板：选择日志中的物品（有描述）"
+
+#: TurtleArt/tabasics.py:553
+msgid "Palette of numeric operators"
+msgstr "数值运算模板"
+
+#: TurtleArt/tabasics.py:585
+msgid "multiply"
+msgstr "乘"
+
+# Here, 'forever' means 'forever repeat'.
+#: TurtleArt/tabasics.py:750
+msgid "forever"
+msgstr "永远执行"
+
+#: TurtleArtActivity.py:1252
+#, python-format
+msgid "Plugin %s already installed."
+msgstr "插件 %s 已经被安装。"
+
+#: TurtleArt/tabasics.py:325
+msgid "sets shade of the line drawn by the turtle"
+msgstr "设置海龟绘制的线条的深度"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:314
+msgid "speaks text"
+msgstr "朗读文本"
+
+#: TurtleArtActivity.py:243
+msgid "snapshot"
+msgstr "屏幕截图"
+
+#: TurtleArt/tabasics.py:147
+msgid "clean"
+msgstr "清屏"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:857
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:864
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1013
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1028
+msgid "presentation template: select two Journal objects"
+msgstr "演示模板：选择两件日志中的物品"
+
+#: TurtleArtActivity.py:651 TurtleArtActivity.py:806 turtleblocks.py:383
+msgid "Grow blocks"
+msgstr "增大积木块"
+
+#: TurtleArtActivity.py:637 TurtleArtActivity.py:797
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:806
+msgid "Fullscreen"
+msgstr "全屏"
+
+#: turtleblocks.py:265
+msgid "File not found"
+msgstr "文件未找到"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:200
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:228
+msgid "show"
+msgstr "显示"
+
+#: TurtleArt/tabasics.py:849 TurtleArt/tabasics.py:850
+#: TurtleArt/tabasics.py:851
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:192
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:193
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:194
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:201
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:214
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:229
+msgid "text"
+msgstr "文本"
+
+#: TurtleArt/tabasics.py:642
+msgid "random"
+msgstr "随机值"
+
+#: TurtleArt/tabasics.py:670
+msgid "logical greater-than operator"
+msgstr "逻辑“大于”运算符"
+
+#: TurtleArt/tabasics.py:162
+msgid "turns turtle counterclockwise (angle in degrees)"
+msgstr "逆时针转动海龟（角度）"
+
+#: TurtleArt/tabasics.py:450
+msgid "black"
+msgstr "黑色"
+
+#: TurtleArt/tabasics.py:635
+msgid "calculates square root"
+msgstr "计算平方根"
+
+#: TurtleArt/tabasics.py:233
+msgid ""
+"holds current y-coordinate value of the turtle (can be used in place of a "
+"number block)"
+msgstr "包含海龟当前位置的Y座标值（可以用来替换数字块）"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:364
+msgid "mouse x"
+msgstr "鼠标X坐标"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:374
+msgid "mouse y"
+msgstr "鼠标Y坐标"
+
+#: pysamples/grecord.py:215
+msgid "stop"
 msgstr "停止"
+
+#: TurtleArt/tabasics.py:667
+msgid "greater than"
+msgstr "大于"
+
+#: TurtleArt/tabasics.py:221 TurtleArt/tawindow.py:4105
+msgid "xcor"
+msgstr "横坐标"
+
+#: TurtleArtActivity.py:735 turtleblocks.py:422 util/helpbutton.py:45
+msgid "Help"
+msgstr "帮助"
+
+#: turtleblocks.py:462
+msgid "Save project?"
+msgstr "保存项目？"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:695
+msgid "chooses which turtle to command"
+msgstr "选择由哪个海龟执行命令"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:957
+msgid "right x"
+msgstr "右侧X坐标"
+
+#: TurtleArt/tabasics.py:459
+msgid "sets color of text drawn by the turtle"
+msgstr "设置海龟绘制文字的颜色"
+
+#: plugins/light_sensor/light_sensor.py:58
+#: plugins/light_sensor/light_sensor.py:65
+msgid "light level detected by light sensor"
+msgstr "光线感应器侦测到的光照水平"
+
+#: TurtleArtActivity.py:1152 TurtleArtActivity.py:1157
+#: TurtleArtActivity.py:1238
+msgid "Plugin could not be installed."
+msgstr "插件不能安装。"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:394
+msgid "keyboard"
+msgstr "键盘"
+
+#: TurtleArt/tabasics.py:182
+msgid "arc"
+msgstr "走弧形"
+
+#: TurtleArt/tabasics.py:182
+msgid "radius"
+msgstr "半径"
+
+#: TurtleArtActivity.py:642 TurtleArtActivity.py:800 turtleblocks.py:379
+msgid "Polar coordinates"
+msgstr "极坐标"
+
+#: TurtleArt/tabasics.py:321
+msgid "set shade"
+msgstr "设置深度"
+
+#: TurtleArt/tabasics.py:714
+msgid "logical AND operator"
+msgstr "逻辑“与”运算符"
+
+#: gnome_plugins/uploader_plugin.py:90
+msgid ""
+"You must have an account at http://turtleartsite.sugarlabs.org to upload "
+"your project."
+msgstr ""
+"你必须在 http://turtleartsite.sugarlabs.org 中注册一个帐号才能上传你的作品。"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:771
+msgid "palette"
+msgstr "模块"
+
+#: TurtleArtActivity.py:729 TurtleArtActivity.py:992 turtleblocks.py:414
+msgid "Run"
+msgstr "运行"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:483
+msgid "show heap"
+msgstr "显示堆"
+
+#: TurtleArt/tabasics.py:213
+msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
+msgstr "设置海龟朝向（0表示朝向屏幕上方）"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:774
+msgid "selects a palette"
+msgstr "选择一个模块"
+
+#: plugins/audio_sensors/audio_sensors.py:91
+#: plugins/audio_sensors/audio_sensors.py:106
+msgid "microphone input volume"
+msgstr "麦克风输入音量"
+
+#: gnome_plugins/uploader_plugin.py:120
+msgid "Title:"
+msgstr "标题："
+
+#: plugins/camera_sensor/camera_sensor.py:67
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:139
+msgid "Palette of media objects"
+msgstr "多媒体模板"
+
+#: TurtleArtActivity.py:629
+msgid "Restore blocks from trash"
+msgstr "还原回收站中的所有拼块"
+
+#: TurtleArt/tabasics.py:834
+msgid "Palette of variable blocks"
+msgstr "可变块模板"
+
+#: TurtleArt/tabasics.py:659
+msgid "used as numeric input in mathematic operators"
+msgstr "在数学运算符中作为数值型输入"
+
+#: gnome_plugins/fb_plugin.py:82 gnome_plugins/fb_plugin.py:83
+#: gnome_plugins/fb_plugin.py:92 gnome_plugins/uploader_plugin.py:63
+#: gnome_plugins/uploader_plugin.py:64 gnome_plugins/uploader_plugin.py:73
+msgid "Upload"
+msgstr "上传"
+
+#: gnome_plugins/collaboration_plugin.py:296
+msgid "Server"
+msgstr "服务器"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1041
+msgid "presentation 2x2"
+msgstr "以 2x2 方式演示"
+
+#: TurtleArt/tabasics.py:908
+msgid "Variable 1 (numeric value)"
+msgstr "变量1（数值）"
+
+#: gnome_plugins/collaboration_plugin.py:132
+msgid "Neighborhood"
+msgstr "邻居"
+
+#: TurtleArt/tabasics.py:563
+msgid "adds two alphanumeric inputs"
+msgstr "将两个字符数值型输入相加"
+
+#: TurtleArt/tabasics.py:691
+msgid "equal"
+msgstr "等于"
+
+#: TurtleArt/tabasics.py:785
+msgid "else"
+msgstr "否则"
+
+#: TurtleArt/talogo.py:623
+msgid "doesn't like"
+msgstr "不喜欢"
+
+#: turtleblocks.py:461
+msgid "You have unsaved work. Would you like to save before quitting?"
+msgstr "你有尚未保存的工作。想退出前保存吗？"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:800
+msgid "restores hidden blocks"
+msgstr "恢复隐藏的积木块"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:738
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:748
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:759
+msgid "load"
+msgstr "载入"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:291
+msgid "stop video or audio"
+msgstr "停止视频或音频"
+
+#: TurtleArt/tabasics.py:375
+msgid "Turtle will not draw when moved."
+msgstr "海龟将不会在移动时绘图。"
+
+#. #-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: pop removes a new item from the program stack
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:510
+msgid "pop"
+msgstr "弹出"
+
+#: TurtleArt/tabasics.py:422
+msgid "pen size"
+msgstr "笔的粗细"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:715
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:724
+msgid "turtle shell"
+msgstr "海龟外壳"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:326
+msgid "plays a sinewave at frequency, amplitude, and duration (in seconds)"
+msgstr "播放一个指定频率、波幅和持续时间（秒）的正弦波"
+
+#: TurtleArt/tabasics.py:631
+msgid "√"
+msgstr "√"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:311
+msgid "speak"
+msgstr "朗读"
+
+#: plugins/rfid/rfid.py:93 plugins/rfid/rfid.py:101
+msgid "read value from RFID device"
+msgstr "从RFID设备中读取值"
+
+#: TurtleArt/tabasics.py:186
+msgid "moves turtle along an arc"
+msgstr "延弧形移动海龟"
+
+#: pysamples/uturn.py:26
+msgid "make a uturn"
+msgstr "做一个翻转"
+
+#: TurtleArt/tabasics.py:695
+msgid "logical equal-to operator"
+msgstr "逻辑“等于”运算符"
+
+#: TurtleArt/tabasics.py:437
+msgid "Palette of pen colors"
+msgstr "画笔颜色模板"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:298
+msgid "pause video or audio"
+msgstr "暂停视频或音频"
+
+#: TurtleArt/tabasics.py:884
+msgid "stores numeric value in Variable 1"
+msgstr "保存数值到变量1"
+
+#: TurtleArt/tabasics.py:897
+msgid "stores numeric value in Variable 2"
+msgstr "保存数值到变量2"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:717
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:725
+msgid "put a custom 'shell' on the turtle"
+msgstr "替海龟穿上一个自定义的“外壳”"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:343
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:354
+msgid "button down"
+msgstr "鼠标按下"
+
+#: TurtleArt/tabasics.py:139
+msgid "moves turtle backward"
+msgstr "向后移动海龟"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:906
+msgid "ycor of top of screen"
+msgstr "屏幕上方的Y座标"
 
 #: TurtleArt/talogo.py:380 TurtleArtActivity.py:360 TurtleArtActivity.py:732
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1529
 msgid "Show blocks"
 msgstr "显示积木块"
 
-#: TurtleArt/talogo.py:384 TurtleArtActivity.py:364 TurtleArtActivity.py:996
-msgid "Hide blocks"
-msgstr "隐藏积木块"
+#: pysamples/grecord.py:217
+msgid "play"
+msgstr "播放"
+
+#: pysamples/grecord.py:219
+msgid "save"
+msgstr "保存"
+
+#: gnome_plugins/collaboration_plugin.py:304
+msgid "Colors"
+msgstr "颜色"
+
+#: TurtleArt/tabasics.py:394
+msgid "sets size of the line drawn by the turtle"
+msgstr "设置海龟绘制的线条的宽度"
+
+#: turtleblocks.py:366
+msgid "Open"
+msgstr "打开"
+
+#: TurtleArt/tawindow.py:1033 TurtleArt/tawindow.py:1034
+msgid "orientation"
+msgstr "方向"
+
+#: TurtleArt/tabasics.py:232 TurtleArt/tawindow.py:4106
+msgid "ycor"
+msgstr "纵坐标"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:602
+msgid ""
+"a programmable block: used to add advanced multi-variable math equations, e."
+"g., sqrt(x*x+y*y)"
+msgstr "一个可编程积木块：用于加入多变量的高级数学等式，例如sqrt(x*x+y*y)"
+
+#: TurtleArt/tabasics.py:772 TurtleArt/tabasics.py:785
+msgid "if"
+msgstr "如果"
+
+#: TurtleArt/tabasics.py:199 TurtleArt/tabasics.py:265
+msgid ""
+"moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
+msgstr "移动海龟到座标（x，y）；（0，0）是屏幕中心。"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:585
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:598
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:612
+msgid "Python"
+msgstr "Python"
+
+#: TurtleArtActivity.py:736 turtleblocks.py:417
+msgid "Stop"
+msgstr "停止"
+
+#: TurtleArt/tabasics.py:961 TurtleArt/tabasics.py:981
+msgid "action 2"
+msgstr "动作2"
+
+#: TurtleArt/tabasics.py:952 TurtleArt/tabasics.py:971
+msgid "action 1"
+msgstr "动作1"
+
+#: TurtleArt/tabasics.py:413
+msgid "end fill"
+msgstr "完成填充"
+
+#: TurtleArtActivity.py:625 TurtleArtActivity.py:779 turtleblocks.py:395
+msgid "Copy"
+msgstr "复制"
+
+#: TurtleArtActivity.py:627 TurtleArtActivity.py:780 turtleblocks.py:396
+msgid "Paste"
+msgstr "粘贴"
 
 #: TurtleArt/talogo.py:508
 msgid "did not output to"
 msgstr "没有输出到"
 
-#: TurtleArt/talogo.py:567
-msgid "I don't know how to"
-msgstr "我不知道怎样"
+#: gnome_plugins/collaboration_plugin.py:120
+msgid "Activities"
+msgstr "活动"
 
-#: TurtleArt/talogo.py:623
-msgid "doesn't like"
-msgstr "不喜欢"
+#: gnome_plugins/uploader_plugin.py:68
+msgid "Upload to Web"
+msgstr "上传到网站"
 
-#: TurtleArt/talogo.py:623
-msgid "as input"
-msgstr "作为输入"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:496
+msgid "empty heap"
+msgstr "清空堆"
 
-#: TurtleArt/tapalette.py:97
-msgid "displays next palette"
-msgstr "显示下一个模板"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:514
+msgid "pops value off FILO (first-in last-out heap)"
+msgstr "从FILO（先进后出堆）中弹出值"
 
-#: TurtleArt/tapalette.py:98
-msgid "changes the orientation of the palette of blocks"
-msgstr "改变积木块模板的方向"
+#: TurtleArtActivity.py:728 TurtleArtActivity.py:990 turtleblocks.py:413
+msgid "Clean"
+msgstr "清屏"
 
-#: TurtleArt/tautils.py:295
-msgid "Load..."
-msgstr "载入..."
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:782
+msgid "Palette of presentation templates"
+msgstr "演示模板"
 
-#: TurtleArt/tautils.py:305
-msgid "Save..."
-msgstr "保存..."
+#: TurtleArt/tabasics.py:182
+msgid "angle"
+msgstr "角度"
+
+#: TurtleArt/tabasics.py:610
+msgid "identity"
+msgstr "自身"
+
+#: TurtleArtActivity.py:617 TurtleArtActivity.py:724 TurtleArtActivity.py:753
+#: TurtleArtActivity.py:755 TurtleArtActivity.py:917
+msgid "Save/Load"
+msgstr "保存/读取"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:948
+msgid "top y"
+msgstr "顶部Y坐标"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:157
+msgid "audio"
+msgstr "音频"
+
+#: turtleblocks.py:410
+msgid "Tools"
+msgstr "工具"
+
+#: gnome_plugins/collaboration_plugin.py:298
+msgid "Port"
+msgstr "端口"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:545
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:547
+msgid "comment"
+msgstr "注释"
+
+#: TurtleArt/tabasics.py:574
+msgid "subtracts bottom numeric input from top numeric input"
+msgstr "将顶部输入减去底部输入"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:296
+msgid "media pause"
+msgstr "暂停媒体"
+
+#: pysamples/forward_push.py:45
+msgid "push destination rgb value to heap"
+msgstr "把目标RGB值放入堆中"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:387
+msgid "query for keyboard input (results stored in keyboard block)"
+msgstr "查询键盘输入（结果保存在“键盘”积木块中）"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:675
+msgid "Cartesian"
+msgstr "直角坐标"
+
+#: TurtleArt/tabasics.py:150
+msgid "clears the screen and reset the turtle"
+msgstr "清空屏幕并重置海龟"
+
+#: plugins/audio_sensors/audio_sensors.py:84
+#: plugins/audio_sensors/audio_sensors.py:99
+msgid "raw microphone input signal"
+msgstr "麦克风原始输入信号"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:443
+msgid "returns the color that the turtle \"sees\""
+msgstr "返回海龟“看到”的颜色"
+
+#: TurtleArt/tabasics.py:974
+msgid "invokes Action 1 stack"
+msgstr "执行动作堆1"
+
+#: TurtleArt/tabasics.py:119
+msgid "Palette of turtle commands"
+msgstr "海龟指令模板"
+
+#: TurtleArt/tabasics.py:754
+msgid "loops forever"
+msgstr "永远执行的循环"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:213
+msgid "show aligned"
+msgstr "对齐显示"
+
+#: TurtleArtActivity.py:1253
+#, python-format
+msgid "Do you want to reinstall %s?"
+msgstr "想重新 %s 吗？"
+
+#: TurtleArtActivity.py:758 TurtleArtActivity.py:938 TurtleArtActivity.py:960
+msgid "Load project"
+msgstr "加载作品"
+
+#: TurtleArtActivity.py:611 TurtleArtActivity.py:727
+msgid "Project"
+msgstr "项目"
+
+#: turtleblocks.py:416
+msgid "Debug"
+msgstr "调试"
+
+#: TurtleArtActivity.py:296 TurtleArtActivity.py:657 TurtleArtActivity.py:808
+msgid "Turn off hover help"
+msgstr "关闭悬停帮助"
+
+#: TurtleArt/tabasics.py:620 TurtleArt/tabasics.py:621
+msgid "mod"
+msgstr "同余"
+
+#: gnome_plugins/collaboration_plugin.py:300
+msgid "Password"
+msgstr "密码"
+
+#: TurtleArt/tabasics.py:815
+msgid "vertical space"
+msgstr "竖直空白"
+
+#: TurtleArtActivity.py:1234
+msgid "Please restart Turtle Art in order to use the plugin."
+msgstr "使用该插件，请重新启动龟背艺术。"
+
+#: TurtleArt/tabasics.py:415
+msgid "completes filled polygon (used with start fill block)"
+msgstr "完成填充多边形的绘制（和开始填充一起使用）"
+
+#: gnome_plugins/collaboration_plugin.py:128
+msgid "Share"
+msgstr "分享"
+
+#: TurtleArt/tabasics.py:679
+msgid "less than"
+msgstr "小于"
+
+#: TurtleArt/tabasics.py:632
+msgid "square root"
+msgstr "平方根"
+
+#: turtleblocks.py:381
+msgid "Rescale coordinates"
+msgstr "重新调整坐标"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:798
+msgid "show blocks"
+msgstr "显示积木块"
+
+#: turtleblocks.py:373
+msgid "Quit"
+msgstr "退出"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:183
+msgid "Sugar Journal description field"
+msgstr "Sugar日志描述字段"
+
+#: TurtleArt/tabasics.py:333
+msgid "set gray"
+msgstr "设置灰度"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:821
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1056
+msgid "presentation bulleted list"
+msgstr "演示项目列表"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:323
+msgid "duration"
+msgstr "持续时间"
+
+#: turtleblocks.py:365
+msgid "New"
+msgstr "新建"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:549
+msgid "places a comment in your code"
+msgstr "在你的代码中加入注释"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:430
+msgid "read pixel"
+msgstr "读取像素"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:272
+msgid "scale"
+msgstr "比例"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:879
+msgid "bottom"
+msgstr "底部"
+
+#: TurtleArt/tabasics.py:447
+msgid "purple"
+msgstr "紫色"
+
+#: TurtleArtActivity.py:485
+msgid "Rescale coordinates down"
+msgstr "缩小坐标轴比例"
 
 #: TurtleArt/tautils.py:586
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:730
 msgid "click to open"
 msgstr "点击打开"
 
-#: TurtleArt/tawindow.py:1033 TurtleArt/tawindow.py:1034
-msgid "orientation"
-msgstr "方向"
+#: plugins/audio_sensors/audio_sensors.py:120
+#: plugins/audio_sensors/audio_sensors.py:128
+msgid "microphone input pitch"
+msgstr "麦克风输入音高"
 
-#: TurtleArt/tawindow.py:1044 TurtleArt/tawindow.py:1644
-msgid "next"
-msgstr "下一个"
+#: gnome_plugins/collaboration_plugin.py:129
+msgid "Configuration"
+msgstr "设置"
 
-#: TurtleArt/tawindow.py:1063 TurtleArt/tawindow.py:1664
-msgid "shift"
-msgstr "移动"
+#: gnome_plugins/uploader_plugin.py:130
+msgid "Description:"
+msgstr "描述："
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:146
+msgid "journal"
+msgstr "日志"
+
+#: TurtleArt/tabasics.py:996
+msgid "empty trash"
+msgstr "清空回收站"
+
+#: TurtleArt/tabasics.py:384
+msgid "Turtle will draw when moved."
+msgstr "海龟将在移动时绘图。"
+
+#: TurtleArt/tautils.py:295
+msgid "Load..."
+msgstr "载入..."
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:159
+msgid "Sugar Journal audio object"
+msgstr "Sugar日志中的音频文件"
+
+#: TurtleArt/talogo.py:370 TurtleArtActivity.py:731
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1538
+msgid "Stop turtle"
+msgstr "停止"
+
+#: turtleblocks.py:418
+msgid "Turtle"
+msgstr "海龟"
+
+#: TurtleArt/tapalette.py:98
+msgid "changes the orientation of the palette of blocks"
+msgstr "改变积木块模板的方向"
+
+#: TurtleArt/tabasics.py:924 TurtleArt/tawindow.py:4427
+msgid "store in"
+msgstr "放入"
+
+#: TurtleArt/talogo.py:384 TurtleArtActivity.py:364 TurtleArtActivity.py:996
+msgid "Hide blocks"
+msgstr "隐藏积木块"
+
+#: TurtleArtActivity.py:762 TurtleArtActivity.py:946 TurtleArtActivity.py:968
+msgid "Load Python block"
+msgstr "载入Python积木块"
+
+#: TurtleArt/tabasics.py:559
+msgid "plus"
+msgstr "加"
+
+#: TurtleArt/tabasics.py:721 TurtleArt/tabasics.py:724
+msgid "or"
+msgstr "或"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:829
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1058
+msgid "presentation template: list of bullets"
+msgstr "演示模板：项目列表"
+
+#: TurtleArt/tabasics.py:612
+msgid "identity operator used for extending blocks"
+msgstr "用来拉长积木块的“自身”操作符"
+
+#: TurtleArtActivity.py:654 TurtleArtActivity.py:807 turtleblocks.py:385
+msgid "Shrink blocks"
+msgstr "缩小积木块"
+
+#: TurtleArt/tabasics.py:470
+msgid "sets size of text drawn by the turtle"
+msgstr "设置海龟绘制的文字的大小"
+
+#: TurtleArt/tabasics.py:244
+msgid ""
+"holds current heading value of the turtle (can be used in place of a number "
+"block)"
+msgstr "包含海龟当前的朝向的角度值（可以用来替换数字块）"
+
+#: TurtleArt/tawindow.py:4215
+msgid "image"
+msgstr "图片"
+
+#: TurtleArt/tabasics.py:646
+msgid "returns random number between minimum (top) and maximum (bottom) values"
+msgstr "返回最小值（顶部）和最大值（底部）之间的随机数"
+
+#: TurtleArt/tabasics.py:345
+msgid "holds current pen color (can be used in place of a number block)"
+msgstr "包含当前画笔的颜色（可以用来替换数字块）"
+
+#: TurtleArtActivity.py:312 turtleblocks.py:404
+msgid "Show palette"
+msgstr "显示模板"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:254
+msgid "saves a picture to the Sugar Journal"
+msgstr "保存图片到Sugar日志中"
+
+#: TurtleArtActivity.py:251 TurtleArtActivity.py:691 TurtleArtActivity.py:733
+#: TurtleArtActivity.py:931 TurtleArtActivity.py:958
+msgid "Save snapshot"
+msgstr "保存屏幕截图"
+
+#: TurtleArt/tabasics.py:839 pysamples/grecord.py:213
+msgid "start"
+msgstr "开始"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:528
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:538
+msgid "returns True if heap is empty"
+msgstr "在堆为空时返回“真”"
+
+#: TurtleArt/tabasics.py:128
+msgid "moves turtle forward"
+msgstr "向前移动海龟"
+
+#: TurtleArt/tabasics.py:124
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:740
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:751
+msgid "forward"
+msgstr "前进"
+
+#: TurtleArt/tabasics.py:928 TurtleArt/tabasics.py:942
+#: TurtleArt/tawindow.py:1355 TurtleArt/tawindow.py:1486
+#: TurtleArt/tawindow.py:2081 TurtleArt/tawindow.py:4390
+#: TurtleArt/tawindow.py:4418
+msgid "my box"
+msgstr "我的盒子"
+
+#: gnome_plugins/collaboration_plugin.py:294
+msgid "Account ID"
+msgstr "帐号ID"
+
+#: TurtleArt/tawindow.py:1369
+msgid "Select blocks to share"
+msgstr "选择要分享的积木块"
+
+#: TurtleArt/tabasics.py:135
+msgid "back"
+msgstr "后退"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:244
+msgid "sets the scale of media"
+msgstr "设置多媒体的显示比例"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:276
+msgid "holds current scale value"
+msgstr "包含当前的比例"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:981
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:996
+msgid "presentation 1x1"
+msgstr "以 1x1 方式演示"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1026
+msgid "presentation 1x2"
+msgstr "以 1x2 方式演示"
+
+#: TurtleArt/tabasics.py:861
+msgid "top of nameable action stack"
+msgstr "可命名动作堆的顶部"
+
+#: TurtleArt/tabasics.py:929 TurtleArt/tawindow.py:4432
+msgid "stores numeric value in named variable"
+msgstr "保存数值到命名的变量"
+
+#: TurtleArt/tabasics.py:725
+msgid "logical OR operator"
+msgstr "逻辑“或”运算符"
+
+#: plugins/audio_sensors/audio_sensors.py:158
+#: plugins/audio_sensors/audio_sensors.py:172
+#: plugins/audio_sensors/audio_sensors.py:186
+#: plugins/audio_sensors/audio_sensors.py:200
+msgid "microphone input voltage"
+msgstr "麦克风输入电压"
+
+#: TurtleArt/tabasics.py:766
+msgid "loops specified number of times"
+msgstr "循环指定次数"
+
+#: TurtleArt/tautils.py:305
+msgid "Save..."
+msgstr "保存..."
+
+#: TurtleArt/tabasics.py:984
+msgid "invokes Action 2 stack"
+msgstr "执行动作堆2"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:762
+msgid "setxy"
+msgstr "设置坐标xy"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:930
+msgid "title y"
+msgstr "标题Y坐标"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:921
+msgid "title x"
+msgstr "标题X坐标"
+
+#: TurtleArt/tabasics.py:283 TurtleArt/tabasics.py:294
+msgid "fill screen"
+msgstr "涂满全屏"
+
+#: pysamples/journal-stats.py:78
+msgid "other"
+msgstr "其他"
+
+#: turtleblocks.py:368
+msgid "Save as"
+msgstr "另存为"
+
+#: TurtleArt/tabasics.py:195 TurtleArt/tabasics.py:261
+msgid "set xy"
+msgstr "设置 坐标"
+
+#: TurtleArt/tabasics.py:992
+msgid "trash"
+msgstr "回收站"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:683
+msgid "polar"
+msgstr "极坐标"
+
+#: TurtleArt/tabasics.py:761 TurtleArt/tabasics.py:765
+msgid "repeat"
+msgstr "重复"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:283
+msgid "wait for current video or audio to complete"
+msgstr "等待当前的视频或音频结束"
+
+#: TurtleArtActivity.py:235 TurtleArtActivity.py:756 TurtleArtActivity.py:922
+#: TurtleArtActivity.py:952 turtleblocks.py:369
+msgid "Save as image"
+msgstr "另存为图片"
+
+#: TurtleArtActivity.py:579 TurtleArtActivity.py:615 TurtleArtActivity.py:725
+#: TurtleArtActivity.py:778 turtleblocks.py:401
+msgid "Edit"
+msgstr "编辑"
+
+#: plugins/audio_sensors/audio_sensors.py:152
+#: plugins/audio_sensors/audio_sensors.py:166
+#: plugins/audio_sensors/audio_sensors.py:180
+#: plugins/audio_sensors/audio_sensors.py:194
+msgid "microphone input resistance"
+msgstr "麦克风输入电阻"
+
+#: TurtleArt/tabasics.py:964
+msgid "top of Action 2 stack"
+msgstr "动作堆2的顶部"
+
+#: TurtleArt/tabasics.py:600
+msgid ""
+"divides top numeric input (numerator) by bottom numeric input (denominator)"
+msgstr "将顶部输入（分子）除以底部输入（分母）"
+
+#: TurtleArt/tabasics.py:642
+msgid "max"
+msgstr "最大值"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:559
+msgid "prints value in status block at bottom of the screen"
+msgstr "在位于屏幕底部的状态积木块中打印值"
+
+#: TurtleArt/tabasics.py:404
+msgid "start fill"
+msgstr "开始填充"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:398
+msgid "holds results of query-keyboard block as ASCII"
+msgstr "QWERTY-键盘积木块的结果保持为ASCII"
+
+#. #-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: push adds a new item to the program stack
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:470
+msgid "push"
+msgstr "压入"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:616
+msgid ""
+"a programmable block: used to add advanced multi-variable math equations, e."
+"g., sin(x+y+z)"
+msgstr "一个可编程积木块：用于加入多变量的高级数学等式，例如sin(x+y+z)"
+
+#: TurtleArt/tabasics.py:1001
+msgid "restore all"
+msgstr "全部还原"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:313
+msgid "hello"
+msgstr "你好"
+
+#. TRANS: "name" option from activity.info file
+msgid "TurtleBlocks"
+msgstr "海龟积木"
 
 #: TurtleArt/tawindow.py:1316
 msgid ""
 "Please hit the Stop Button before making changes to your Turtle Blocks "
 "program"
 msgstr "在海龟方块中要让修改立即生效，请按“停止”按钮"
-
-#: TurtleArt/tawindow.py:1369
-msgid "Select blocks to share"
-msgstr "选择要分享的积木块"
 
 #: TurtleArt/tawindow.py:1530 TurtleArtActivity.py:632
 #: TurtleArtActivity.py:781 turtleblocks.py:397
@@ -794,11 +3444,6 @@ msgstr "保存堆"
 #: TurtleArt/tawindow.py:1531 TurtleArt/tawindow.py:1546
 msgid "Really overwrite stack?"
 msgstr "确定要覆盖堆？"
-
-#: TurtleArt/tawindow.py:1534 TurtleArt/tawindow.py:1574
-#: gnome_plugins/uploader_plugin.py:144
-msgid "Cancel"
-msgstr "取消"
 
 #: TurtleArt/tawindow.py:1538 TurtleArt/tawindow.py:1549
 msgid "Overwrite stack"
@@ -813,794 +3458,13 @@ msgstr "删除堆"
 msgid "Really delete stack?"
 msgstr "确定要删除堆？"
 
-#: TurtleArt/tawindow.py:4215
-msgid "image"
-msgstr "图片"
-
-#: TurtleArtActivity.py:188 TurtleArtActivity.py:757 TurtleArtActivity.py:925
-#: TurtleArtActivity.py:955 turtleblocks.py:371
-msgid "Save as Logo"
-msgstr "另存为Logo"
-
-#: TurtleArtActivity.py:235 TurtleArtActivity.py:756 TurtleArtActivity.py:922
-#: TurtleArtActivity.py:952 turtleblocks.py:369
-msgid "Save as image"
-msgstr "另存为图片"
-
-#: TurtleArtActivity.py:243
-msgid "snapshot"
-msgstr "屏幕截图"
-
-#: TurtleArtActivity.py:251 TurtleArtActivity.py:691 TurtleArtActivity.py:733
-#: TurtleArtActivity.py:931 TurtleArtActivity.py:958
-msgid "Save snapshot"
-msgstr "保存屏幕截图"
-
-#: TurtleArtActivity.py:296 TurtleArtActivity.py:657 TurtleArtActivity.py:808
-msgid "Turn off hover help"
-msgstr "关闭悬停帮助"
-
-#: TurtleArtActivity.py:303 turtleblocks.py:390
-msgid "Turn on hover help"
-msgstr "开启悬停帮助"
-
-#: TurtleArtActivity.py:312 turtleblocks.py:404
-msgid "Show palette"
-msgstr "显示模板"
-
-#: TurtleArtActivity.py:318 TurtleArtActivity.py:984 turtleblocks.py:406
-msgid "Hide palette"
-msgstr "隐藏模板"
-
-#: TurtleArtActivity.py:485
-msgid "Rescale coordinates down"
-msgstr "缩小坐标轴比例"
-
-#: TurtleArtActivity.py:489 TurtleArtActivity.py:648 TurtleArtActivity.py:804
-msgid "Rescale coordinates up"
-msgstr "增大坐标轴比例"
-
-#: TurtleArtActivity.py:579 TurtleArtActivity.py:615 TurtleArtActivity.py:725
-#: TurtleArtActivity.py:778 turtleblocks.py:401
-msgid "Edit"
-msgstr "编辑"
-
-#: TurtleArtActivity.py:584 TurtleArtActivity.py:613 TurtleArtActivity.py:726
-#: TurtleArtActivity.py:796 turtleblocks.py:392
-msgid "View"
-msgstr "视图"
-
-#: TurtleArtActivity.py:611 TurtleArtActivity.py:727
-msgid "Project"
-msgstr "项目"
-
-#: TurtleArtActivity.py:617 TurtleArtActivity.py:724 TurtleArtActivity.py:753
-#: TurtleArtActivity.py:755 TurtleArtActivity.py:917
-msgid "Save/Load"
-msgstr "保存/读取"
-
-#: TurtleArtActivity.py:625 TurtleArtActivity.py:779 turtleblocks.py:395
-msgid "Copy"
-msgstr "复制"
-
-#: TurtleArtActivity.py:627 TurtleArtActivity.py:780 turtleblocks.py:396
-msgid "Paste"
-msgstr "粘贴"
-
-#: TurtleArtActivity.py:629
-msgid "Restore blocks from trash"
-msgstr "还原回收站中的所有拼块"
-
-#: TurtleArtActivity.py:637 TurtleArtActivity.py:797
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:806
-msgid "Fullscreen"
-msgstr "全屏"
-
-#: TurtleArtActivity.py:640 TurtleArtActivity.py:798 turtleblocks.py:377
-msgid "Cartesian coordinates"
-msgstr "直角坐标"
-
-#: TurtleArtActivity.py:642 TurtleArtActivity.py:800 turtleblocks.py:379
-msgid "Polar coordinates"
-msgstr "极坐标"
-
-#: TurtleArtActivity.py:645 TurtleArtActivity.py:802
-msgid "Metric coordinates"
-msgstr "公制坐标"
-
-#: TurtleArtActivity.py:651 TurtleArtActivity.py:806 turtleblocks.py:383
-msgid "Grow blocks"
-msgstr "增大积木块"
-
-#: TurtleArtActivity.py:654 TurtleArtActivity.py:807 turtleblocks.py:385
-msgid "Shrink blocks"
-msgstr "缩小积木块"
-
-#: TurtleArtActivity.py:678 TurtleArtActivity.py:695 TurtleArtActivity.py:734
-#: TurtleArtActivity.py:934
-msgid "Load example"
-msgstr "载入示例"
-
-#: TurtleArtActivity.py:728 TurtleArtActivity.py:990 turtleblocks.py:413
-msgid "Clean"
-msgstr "清屏"
-
-#: TurtleArtActivity.py:729 TurtleArtActivity.py:992 turtleblocks.py:414
-msgid "Run"
-msgstr "运行"
-
-#: TurtleArtActivity.py:730 TurtleArtActivity.py:994 turtleblocks.py:415
-msgid "Step"
-msgstr "单步"
-
-#: TurtleArtActivity.py:735 turtleblocks.py:422 util/helpbutton.py:45
-msgid "Help"
-msgstr "帮助"
-
-#: TurtleArtActivity.py:736 turtleblocks.py:417
-msgid "Stop"
-msgstr "停止"
-
-#: TurtleArtActivity.py:758 TurtleArtActivity.py:938 TurtleArtActivity.py:960
-msgid "Load project"
-msgstr "加载作品"
-
-#: TurtleArtActivity.py:761 TurtleArtActivity.py:943 TurtleArtActivity.py:965
-msgid "Load plugin"
-msgstr "加载插件"
-
-#: TurtleArtActivity.py:762 TurtleArtActivity.py:946 TurtleArtActivity.py:968
-msgid "Load Python block"
-msgstr "载入Python积木块"
-
 #: TurtleArtActivity.py:895
 msgid "Palettes"
 msgstr "调色板"
 
-#: TurtleArtActivity.py:912
-msgid "Sharing blocks disabled"
-msgstr "分享积木块被禁用"
-
-#: TurtleArtActivity.py:985
-msgid "<Ctrl>p"
-msgstr "<Ctrl>p"
-
-#: TurtleArtActivity.py:990
-msgid "<Ctrl>e"
-msgstr "<Ctrl>e"
-
-#: TurtleArtActivity.py:992
-msgid "<Ctrl>r"
-msgstr "<Ctrl>r"
-
-#: TurtleArtActivity.py:994
-msgid "<Ctrl>w"
-msgstr "<Ctrl>w"
-
-#: TurtleArtActivity.py:997
-msgid "<Ctrl>s"
-msgstr "<Ctrl>s"
-
-#: TurtleArtActivity.py:1152 TurtleArtActivity.py:1157
-#: TurtleArtActivity.py:1238
-msgid "Plugin could not be installed."
-msgstr "插件不能安装。"
-
-#: TurtleArtActivity.py:1234
-msgid "Please restart Turtle Art in order to use the plugin."
-msgstr "使用该插件，请重新启动龟背艺术。"
-
-#: TurtleArtActivity.py:1252
-#, python-format
-msgid "Plugin %s already installed."
-msgstr "插件 %s 已经被安装。"
-
-#: TurtleArtActivity.py:1253
-#, python-format
-msgid "Do you want to reinstall %s?"
-msgstr "想重新 %s 吗？"
-
-#: gnome_plugins/collaboration_plugin.py:67
-msgid "My Turtle Art session"
-msgstr "我的海龟绘图会话"
-
-#: gnome_plugins/collaboration_plugin.py:115
-msgid "Enable collaboration"
-msgstr "启用协作"
-
-#: gnome_plugins/collaboration_plugin.py:120
-msgid "Activities"
-msgstr "活动"
-
-#: gnome_plugins/collaboration_plugin.py:125
-msgid "Buddies"
-msgstr "伙伴"
-
-#: gnome_plugins/collaboration_plugin.py:128
-msgid "Share"
-msgstr "分享"
-
-#: gnome_plugins/collaboration_plugin.py:129
-msgid "Configuration"
-msgstr "设置"
-
-#: gnome_plugins/collaboration_plugin.py:132
-msgid "Neighborhood"
-msgstr "邻居"
-
-#: gnome_plugins/collaboration_plugin.py:292
-msgid "Nickname"
-msgstr "昵称"
-
-#: gnome_plugins/collaboration_plugin.py:294
-msgid "Account ID"
-msgstr "帐号ID"
-
-#: gnome_plugins/collaboration_plugin.py:296
-msgid "Server"
-msgstr "服务器"
-
-#: gnome_plugins/collaboration_plugin.py:298
-msgid "Port"
-msgstr "端口"
-
-#: gnome_plugins/collaboration_plugin.py:300
-msgid "Password"
-msgstr "密码"
-
-#: gnome_plugins/collaboration_plugin.py:302
-msgid "Register"
-msgstr "注册"
-
-#: gnome_plugins/collaboration_plugin.py:304
-msgid "Colors"
-msgstr "颜色"
-
-#: gnome_plugins/fb_plugin.py:82 gnome_plugins/fb_plugin.py:83
-#: gnome_plugins/fb_plugin.py:92 gnome_plugins/uploader_plugin.py:63
-#: gnome_plugins/uploader_plugin.py:64 gnome_plugins/uploader_plugin.py:73
-msgid "Upload"
-msgstr "上传"
-
 #: gnome_plugins/fb_plugin.py:87
 msgid "Facebook wall post"
 msgstr "发布到 Facebook 墙"
-
-#: gnome_plugins/uploader_plugin.py:68
-msgid "Upload to Web"
-msgstr "上传到网站"
-
-#: gnome_plugins/uploader_plugin.py:90
-msgid ""
-"You must have an account at http://turtleartsite.sugarlabs.org to upload "
-"your project."
-msgstr "你必须在 http://turtleartsite.sugarlabs.org 中注册一个帐号才能上传你的作品。"
-
-#: gnome_plugins/uploader_plugin.py:99
-msgid "Username:"
-msgstr "用户名："
-
-#: gnome_plugins/uploader_plugin.py:109
-msgid "Password:"
-msgstr "密码："
-
-#: gnome_plugins/uploader_plugin.py:120
-msgid "Title:"
-msgstr "标题："
-
-#: gnome_plugins/uploader_plugin.py:130
-msgid "Description:"
-msgstr "描述："
-
-#: gnome_plugins/uploader_plugin.py:140
-msgid "Submit to Web"
-msgstr "提交到网站"
-
-#: gnome_plugins/uploader_plugin.py:166
-msgid "Login failed"
-msgstr "登录失败"
-
-#: gnome_plugins/uploader_plugin.py:203
-msgid "Failed to upload!"
-msgstr "上传失败！"
-
-#: plugins/accelerometer/accelerometer.py:49
-#: plugins/audio_sensors/audio_sensors.py:75
-#: plugins/camera_sensor/camera_sensor.py:63
-#: plugins/light_sensor/light_sensor.py:49 plugins/rfid/rfid.py:86
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:336
-msgid "Palette of sensor blocks"
-msgstr "传感器模板"
-
-#: plugins/accelerometer/accelerometer.py:56
-#: plugins/accelerometer/accelerometer.py:63
-msgid "acceleration"
-msgstr "加速度"
-
-#: plugins/accelerometer/accelerometer.py:58
-#: plugins/accelerometer/accelerometer.py:65
-msgid "push acceleration in x, y, z to heap"
-msgstr "把沿x，y，z方向加速度放入堆中"
-
-#: plugins/audio_sensors/audio_sensors.py:83
-#: plugins/audio_sensors/audio_sensors.py:98 pysamples/grecord.py:205
-msgid "sound"
-msgstr "声音"
-
-#: plugins/audio_sensors/audio_sensors.py:84
-#: plugins/audio_sensors/audio_sensors.py:99
-msgid "raw microphone input signal"
-msgstr "麦克风原始输入信号"
-
-#: plugins/audio_sensors/audio_sensors.py:90
-#: plugins/audio_sensors/audio_sensors.py:105
-msgid "loudness"
-msgstr "音量"
-
-#: plugins/audio_sensors/audio_sensors.py:91
-#: plugins/audio_sensors/audio_sensors.py:106
-msgid "microphone input volume"
-msgstr "麦克风输入音量"
-
-#: plugins/audio_sensors/audio_sensors.py:119
-#: plugins/audio_sensors/audio_sensors.py:127
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:322
-msgid "pitch"
-msgstr "强度"
-
-#: plugins/audio_sensors/audio_sensors.py:120
-#: plugins/audio_sensors/audio_sensors.py:128
-msgid "microphone input pitch"
-msgstr "麦克风输入音高"
-
-#: plugins/audio_sensors/audio_sensors.py:151
-#: plugins/audio_sensors/audio_sensors.py:165
-#: plugins/audio_sensors/audio_sensors.py:179
-#: plugins/audio_sensors/audio_sensors.py:193
-msgid "resistance"
-msgstr "电阻"
-
-#: plugins/audio_sensors/audio_sensors.py:152
-#: plugins/audio_sensors/audio_sensors.py:166
-#: plugins/audio_sensors/audio_sensors.py:180
-#: plugins/audio_sensors/audio_sensors.py:194
-msgid "microphone input resistance"
-msgstr "麦克风输入电阻"
-
-#: plugins/audio_sensors/audio_sensors.py:157
-#: plugins/audio_sensors/audio_sensors.py:171
-#: plugins/audio_sensors/audio_sensors.py:185
-#: plugins/audio_sensors/audio_sensors.py:199
-msgid "voltage"
-msgstr "电压"
-
-#: plugins/audio_sensors/audio_sensors.py:158
-#: plugins/audio_sensors/audio_sensors.py:172
-#: plugins/audio_sensors/audio_sensors.py:186
-#: plugins/audio_sensors/audio_sensors.py:200
-msgid "microphone input voltage"
-msgstr "麦克风输入电压"
-
-#: plugins/camera_sensor/camera_sensor.py:67
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:139
-msgid "Palette of media objects"
-msgstr "多媒体模板"
-
-#: plugins/camera_sensor/camera_sensor.py:80
-#: plugins/camera_sensor/camera_sensor.py:93
-#: plugins/camera_sensor/camera_sensor.py:128
-#: plugins/camera_sensor/camera_sensor.py:141
-#: plugins/light_sensor/light_sensor.py:56
-#: plugins/light_sensor/light_sensor.py:63
-msgid "brightness"
-msgstr "亮度"
-
-#: plugins/camera_sensor/camera_sensor.py:82
-#: plugins/camera_sensor/camera_sensor.py:130
-msgid "light level detected by camera"
-msgstr "相机侦测到的光照水平"
-
-#: plugins/camera_sensor/camera_sensor.py:95
-#: plugins/camera_sensor/camera_sensor.py:143
-msgid "Average RGB color from camera is pushed to the stack"
-msgstr "相机的平均色彩RGB值已压入堆栈"
-
-#: plugins/camera_sensor/camera_sensor.py:106
-#: plugins/camera_sensor/camera_sensor.py:113
-#: plugins/camera_sensor/camera_sensor.py:121
-#: plugins/camera_sensor/camera_sensor.py:155
-#: plugins/camera_sensor/camera_sensor.py:163
-msgid "camera output"
-msgstr "相机输出"
-
-#: plugins/light_sensor/light_sensor.py:58
-#: plugins/light_sensor/light_sensor.py:65
-msgid "light level detected by light sensor"
-msgstr "光线感应器侦测到的光照水平"
-
-#: plugins/rfid/rfid.py:92 plugins/rfid/rfid.py:100
-msgid "RFID"
-msgstr "RFID"
-
-#: plugins/rfid/rfid.py:93 plugins/rfid/rfid.py:101
-msgid "read value from RFID device"
-msgstr "从RFID设备中读取值"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:109
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:112
-msgid "while"
-msgstr "当"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:113
-msgid "do-while-True operator that uses boolean operators from Numbers palette"
-msgstr "“当-为真时-执行”操作符，会用到数值模板中的布尔运算符"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:119
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:122
-msgid "until"
-msgstr "直到"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:123
-msgid "do-until-True operator that uses boolean operators from Numbers palette"
-msgstr "“执行-直到-真”操作符，会用到数值模板中的布尔运算符"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:130
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:732
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:903
-msgid "top"
-msgstr "顶部"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:132
-msgid "top of a collapsible stack"
-msgstr "折叠积木堆的顶部"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:146
-msgid "journal"
-msgstr "日志"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:147
-msgid "Sugar Journal media object"
-msgstr "Sugar日志中的多媒体文件"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:157
-msgid "audio"
-msgstr "音频"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:159
-msgid "Sugar Journal audio object"
-msgstr "Sugar日志中的音频文件"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:169
-msgid "video"
-msgstr "视频"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:171
-msgid "Sugar Journal video object"
-msgstr "Sugar日志中的视频文件"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:181
-msgid "description"
-msgstr "描述"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:183
-msgid "Sugar Journal description field"
-msgstr "Sugar日志描述字段"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:200
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:228
-msgid "show"
-msgstr "显示"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:204
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:217
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:232
-msgid "draws text or show media from the Journal"
-msgstr "绘制日志中的文本或多媒体"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:213
-msgid "show aligned"
-msgstr "对齐显示"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:240
-msgid "set scale"
-msgstr "设置比例"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:244
-msgid "sets the scale of media"
-msgstr "设置多媒体的显示比例"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:251
-msgid "save picture"
-msgstr "保存图片"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:253
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:264
-msgid "picture name"
-msgstr "图片名称"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:254
-msgid "saves a picture to the Sugar Journal"
-msgstr "保存图片到Sugar日志中"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:262
-msgid "save SVG"
-msgstr "保存SVG"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:265
-msgid "saves turtle graphics as an SVG file in the Sugar Journal"
-msgstr "以SVG格式保存海龟图形到Sugar日志中"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:272
-msgid "scale"
-msgstr "比例"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:276
-msgid "holds current scale value"
-msgstr "包含当前的比例"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:281
-msgid "media wait"
-msgstr "等待多媒体"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:283
-msgid "wait for current video or audio to complete"
-msgstr "等待当前的视频或音频结束"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:289
-msgid "media stop"
-msgstr "停止媒体"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:291
-msgid "stop video or audio"
-msgstr "停止视频或音频"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:296
-msgid "media pause"
-msgstr "暂停媒体"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:298
-msgid "pause video or audio"
-msgstr "暂停视频或音频"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:303
-msgid "media resume"
-msgstr "恢复媒体"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:305
-msgid "resume playing video or audio"
-msgstr "恢复播放视频或音频"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:311
-msgid "speak"
-msgstr "朗读"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:313
-msgid "hello"
-msgstr "你好"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:314
-msgid "speaks text"
-msgstr "朗读文本"
-
-#. TRANS: pitch, duration, amplitude
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:322
-msgid "sinewave"
-msgstr "正弦波"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:323
-msgid "amplitude"
-msgstr "波幅"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:323
-msgid "duration"
-msgstr "持续时间"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:326
-msgid "plays a sinewave at frequency, amplitude, and duration (in seconds)"
-msgstr "播放一个指定频率、波幅和持续时间（秒）的正弦波"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:343
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:354
-msgid "button down"
-msgstr "鼠标按下"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:346
-msgid "returns 1 if mouse button is pressed"
-msgstr "返回1如果鼠标被按下"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:357
-msgid "returns True if mouse button is pressed"
-msgstr "返回True如果鼠标被按下"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:364
-msgid "mouse x"
-msgstr "鼠标X坐标"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:367
-msgid "returns mouse x coordinate"
-msgstr "返回鼠标位置的X坐标"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:374
-msgid "mouse y"
-msgstr "鼠标Y坐标"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:377
-msgid "returns mouse y coordinate"
-msgstr "返回鼠标位置的Y坐标"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:385
-msgid "query keyboard"
-msgstr "查询键盘"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:387
-msgid "query for keyboard input (results stored in keyboard block)"
-msgstr "查询键盘输入（结果保存在“键盘”积木块中）"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:394
-msgid "keyboard"
-msgstr "键盘"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:398
-msgid "holds results of query-keyboard block as ASCII"
-msgstr "QWERTY-键盘积木块的结果保持为ASCII"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:430
-msgid "read pixel"
-msgstr "读取像素"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:433
-msgid "RGB color under the turtle is pushed to the stack"
-msgstr "海龟所在位置的颜色RGB值将被压入堆栈"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:441
-msgid "turtle sees"
-msgstr "海龟看到"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:443
-msgid "returns the color that the turtle \"sees\""
-msgstr "返回海龟“看到”的颜色"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:451
-msgid "time"
-msgstr "时间"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:454
-msgid "elapsed time (in seconds) since program started"
-msgstr "程序启动后已经过的时间（秒）"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:463
-msgid "Palette of extra options"
-msgstr "额外选项模板"
-
-#. TRANS: push adds a new item to the program stack
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:470
-msgid "push"
-msgstr "压入"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:473
-msgid "pushes value onto FILO (first-in last-out heap)"
-msgstr "将值压入FILO（先进后出堆）"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:483
-msgid "show heap"
-msgstr "显示堆"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:486
-msgid "shows values in FILO (first-in last-out heap)"
-msgstr "显示FILO（先进后出堆）中的值"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:496
-msgid "empty heap"
-msgstr "清空堆"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:499
-msgid "emptys FILO (first-in-last-out heap)"
-msgstr "清空FILO（先进后出堆）"
-
-#. TRANS: pop removes a new item from the program stack
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:510
-msgid "pop"
-msgstr "弹出"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:514
-msgid "pops value off FILO (first-in last-out heap)"
-msgstr "从FILO（先进后出堆）中弹出值"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:525
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:535
-msgid "empty heap?"
-msgstr "堆空的吗？"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:528
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:538
-msgid "returns True if heap is empty"
-msgstr "在堆为空时返回“真”"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:545
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:547
-msgid "comment"
-msgstr "注释"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:549
-msgid "places a comment in your code"
-msgstr "在你的代码中加入注释"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:555
-msgid "print"
-msgstr "打印"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:559
-msgid "prints value in status block at bottom of the screen"
-msgstr "在位于屏幕底部的状态积木块中打印值"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:569
-msgid "Python chr operator"
-msgstr "Python chr 操作符"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:578
-msgid "Python int operator"
-msgstr "Python int 操作符"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:585
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:598
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:612
-msgid "Python"
-msgstr "Python"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:589
-msgid ""
-"a programmable block: used to add advanced single-variable math equations, e."
-"g., sin(x)"
-msgstr "一个可编程积木块：用于加入单变量的高级数学等式，例如sin(x)"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:602
-msgid ""
-"a programmable block: used to add advanced multi-variable math equations, e."
-"g., sqrt(x*x+y*y)"
-msgstr "一个可编程积木块：用于加入多变量的高级数学等式，例如sqrt(x*x+y*y)"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:616
-msgid ""
-"a programmable block: used to add advanced multi-variable math equations, e."
-"g., sin(x+y+z)"
-msgstr "一个可编程积木块：用于加入多变量的高级数学等式，例如sin(x+y+z)"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:628
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:644
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:659
-msgid "Python block"
-msgstr "Python积木块"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:630
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:646
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:662
-msgid "runs code found in the tamyblock.py module found in the Journal"
-msgstr "执行日志中tamyblock.py模块中的代码"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:675
-msgid "Cartesian"
-msgstr "直角坐标"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:677
-msgid "displays Cartesian coordinates"
-msgstr "显示直角坐标"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:683
-msgid "polar"
-msgstr "极坐标"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:685
-msgid "displays polar coordinates"
-msgstr "显示极坐标"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:691
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:773
-msgid "turtle"
-msgstr "海龟"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:695
-msgid "chooses which turtle to command"
-msgstr "选择由哪个海龟执行命令"
 
 #. TRANS: pop removes a new item from the program stack
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:703
@@ -1610,181 +3474,6 @@ msgstr "活动的海龟"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:706
 msgid "the name of the active turtle"
 msgstr "活动海龟的名称"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:715
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:724
-msgid "turtle shell"
-msgstr "海龟外壳"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:717
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:725
-msgid "put a custom 'shell' on the turtle"
-msgstr "替海龟穿上一个自定义的“外壳”"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:733
-msgid "top of a collapsed stack"
-msgstr "折叠积木堆的顶部"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:738
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:748
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:759
-msgid "load"
-msgstr "载入"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:741
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:752
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:763
-msgid "loads a block"
-msgstr "载入一个积木块"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:762
-msgid "setxy"
-msgstr "设置坐标xy"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:771
-msgid "palette"
-msgstr "模块"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:774
-msgid "selects a palette"
-msgstr "选择一个模块"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:782
-msgid "Palette of presentation templates"
-msgstr "演示模板"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:789
-msgid "hide blocks"
-msgstr "隐藏积木块"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:791
-msgid "declutters canvas by hiding blocks"
-msgstr "隐藏积木块使画布整洁一些"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:798
-msgid "show blocks"
-msgstr "显示积木块"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:800
-msgid "restores hidden blocks"
-msgstr "恢复隐藏的积木块"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:808
-msgid "hides the Sugar toolbars"
-msgstr "隐藏Sugar工具栏"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:817
-msgid "list"
-msgstr "列表"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:821
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1056
-msgid "presentation bulleted list"
-msgstr "演示项目列表"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:829
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1058
-msgid "presentation template: list of bullets"
-msgstr "演示模板：项目列表"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:836
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:998
-msgid "presentation template: select Journal object (no description)"
-msgstr "演示模板：选择日志中的物品（无描述）"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:843
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:983
-msgid "presentation template: select Journal object (with description)"
-msgstr "演示模板：选择日志中的物品（有描述）"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:850
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1043
-msgid "presentation template: select four Journal objects"
-msgstr "演示模板：选择四件日志中的物品"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:857
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:864
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1013
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1028
-msgid "presentation template: select two Journal objects"
-msgstr "演示模板：选择两件日志中的物品"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:874
-msgid "xcor of left of screen"
-msgstr "屏幕左方的X座标"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:879
-msgid "bottom"
-msgstr "底部"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:882
-msgid "ycor of bottom of screen"
-msgstr "屏幕下方的Y座标"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:887
-msgid "width"
-msgstr "宽度"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:890
-msgid "the canvas width"
-msgstr "画布宽度"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:898
-msgid "xcor of right of screen"
-msgstr "屏幕右方的X座标"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:906
-msgid "ycor of top of screen"
-msgstr "屏幕上方的Y座标"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:911
-msgid "height"
-msgstr "高度"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:914
-msgid "the canvas height"
-msgstr "画布高度"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:921
-msgid "title x"
-msgstr "标题X坐标"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:930
-msgid "title y"
-msgstr "标题Y坐标"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:939
-msgid "left x"
-msgstr "左侧X坐标"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:948
-msgid "top y"
-msgstr "顶部Y坐标"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:957
-msgid "right x"
-msgstr "右侧X坐标"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:966
-msgid "bottom y"
-msgstr "底部Y坐标"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:981
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:996
-msgid "presentation 1x1"
-msgstr "以 1x1 方式演示"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1011
-msgid "presentation 2x1"
-msgstr "以 2x1 方式演示"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1026
-msgid "presentation 1x2"
-msgstr "以 1x2 方式演示"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1041
-msgid "presentation 2x2"
-msgstr "以 2x2 方式演示"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1073
 msgid "Palette of user-defined operators"
@@ -1813,155 +3502,85 @@ msgid ""
 "try once more."
 msgstr "很抱歉，没有空余内存来加载我的大脑。请关闭其他活动，并再试一次。"
 
-#: pysamples/forward_push.py:45
-msgid "push destination rgb value to heap"
-msgstr "把目标RGB值放入堆中"
-
-#: pysamples/grecord.py:215
-msgid "stop"
-msgstr "停止"
-
-#: pysamples/grecord.py:217
-msgid "play"
-msgstr "播放"
-
-#: pysamples/grecord.py:219
-msgid "save"
-msgstr "保存"
-
-#: pysamples/journal-stats.py:78
-msgid "other"
-msgstr "其他"
-
-#: pysamples/uturn.py:24
-msgid "uturn"
-msgstr "翻转"
-
-#: pysamples/uturn.py:26
-msgid "make a uturn"
-msgstr "做一个翻转"
-
-#: turtleblocks.py:89
-msgid "usage is"
-msgstr "用法是"
-
-#: turtleblocks.py:250
-msgid "No option action:"
-msgstr "无选项的动作："
-
-#: turtleblocks.py:265
-msgid "File not found"
-msgstr "文件未找到"
-
-#: turtleblocks.py:289
-#, python-format
-msgid "Configuration directory not writable: %s"
-msgstr "配置不可写的目录：%s"
-
-#: turtleblocks.py:365
-msgid "New"
-msgstr "新建"
-
-#: turtleblocks.py:366
-msgid "Open"
-msgstr "打开"
-
-#: turtleblocks.py:367
-msgid "Save"
-msgstr "保存"
-
-#: turtleblocks.py:368
-msgid "Save as"
-msgstr "另存为"
-
-#: turtleblocks.py:373
-msgid "Quit"
-msgstr "退出"
-
-#: turtleblocks.py:374
-msgid "File"
-msgstr "文件"
-
-#: turtleblocks.py:381
-msgid "Rescale coordinates"
-msgstr "重新调整坐标"
-
-#: turtleblocks.py:387
-msgid "Reset block size"
-msgstr "复位块大小"
-
-#: turtleblocks.py:408
-msgid "Show/hide blocks"
-msgstr "显示/隐藏块"
-
-#: turtleblocks.py:410
-msgid "Tools"
-msgstr "工具"
-
-#: turtleblocks.py:416
-msgid "Debug"
-msgstr "调试"
-
-#: turtleblocks.py:418
-msgid "Turtle"
-msgstr "海龟"
-
 #: turtleblocks.py:421
 msgid "About..."
 msgstr "关于..."
 
-#: turtleblocks.py:461
-msgid "You have unsaved work. Would you like to save before quitting?"
-msgstr "你有尚未保存的工作。想退出前保存吗？"
+#~ msgid "gpio"
+#~ msgstr "gpio"
 
-#: turtleblocks.py:462
-msgid "Save project?"
-msgstr "保存项目？"
+#~ msgid "Turn LED on and off: 0 is off; 1 is on"
+#~ msgstr "开关LED：0为关；1为开"
 
-#~ msgid "Turtle Art"
-#~ msgstr "海龟绘画"
+#~ msgid "returns the gray level"
+#~ msgstr "返回灰度等级"
 
-#~ msgid "Turtle Art Mini"
-#~ msgstr "迷你海龟绘图"
+#~ msgid "returns the light level"
+#~ msgstr "返回灯光等级"
 
-#~ msgid "Turtle Confusion"
-#~ msgstr "海龟谜题"
+#~ msgid "returns the distance from the object in front of the sensor"
+#~ msgstr "返回物体和传感器的距离"
 
-#~ msgid "Select a challenge"
-#~ msgstr "选择一个挑战"
+#~ msgid "returns the value of the resistance"
+#~ msgstr "返回电阻值"
 
-#~ msgid "Palette of Mexican pesos"
-#~ msgstr "墨西哥比索模板"
+#~ msgid "returns the value of the voltage"
+#~ msgstr "返回电压值"
 
-#~ msgid "Palette of Colombian pesos"
-#~ msgstr "哥伦比亚比索模板"
+#~ msgid "returns the battery charge as a number between 0 and 255"
+#~ msgstr "返回电池充电度（0到255之间）"
 
-#~ msgid "Palette of Rwandan francs"
-#~ msgstr "卢旺达法郎模板"
-
-#~ msgid "Palette of US dollars"
-#~ msgstr "美元模板"
-
-#~ msgid "Palette of Australian dollars"
-#~ msgstr "澳元模板"
-
-#~ msgid "Palette of Paraguayan Guaranies"
-#~ msgstr "巴拉圭瓜拉尼模板"
-
-#~ msgid "Palette of Peruvian Nuevo Soles"
-#~ msgstr "秘鲁新索尔的模板"
-
-#~ msgid "Palette of Uruguayan Pesos"
-#~ msgstr "乌拉圭比索模板"
+#~ msgid "Get battery level of the brick"
+#~ msgstr "得到块的电池电量"
 
 #~ msgid "adjust LED intensity between 0 and 255"
 #~ msgstr "调整指示灯的光强度（0到255之间）"
 
+#~ msgid "returns the ambient light level"
+#~ msgstr "返回环境光等级"
+
+#~ msgid "returns the ambient temperature"
+#~ msgstr "返回环境温度"
+
+#~ msgid "returns 0 or 1 depending on the sensor inclination"
+#~ msgstr "返回传感器方位角（0或者1）"
+
+#~ msgid "switches from 0 to 1, the frequency depends on the vibration"
+#~ msgstr "从0切换到1，频率取决于振动"
+
+#~ msgid "grayscale"
+#~ msgstr "灰度"
+
+#~ msgid "ambient light"
+#~ msgstr "环境光"
+
+#~ msgid ""
+#~ "TurtleBlocks with some robot plugins: Butia, Lego NxT, WeDo, FollowMe"
+#~ msgstr "海龟积木支持一些机器人插件：Butia, Lego NxT, WeDo, FollowMe"
+
+#~ msgid "magnetic induction"
+#~ msgstr "磁场感应"
+
+#~ msgid "vibration"
+#~ msgstr "振动"
+
+#~ msgid "move the Butia robot forward a predefined distance"
+#~ msgstr "布迪机器人向前移动一个预先设定的距离"
+
+#~ msgid "move the Butia robot backward a predefined distance"
+#~ msgstr "布迪机器人向后移动一个预先设定的距离"
+
+#~ msgid "turn Butia"
+#~ msgstr "转动布迪"
+
+#~ msgid "turn the Butia robot x degrees"
+#~ msgstr "将布迪机器人转动X角度"
+
+#~ msgid "moves the Butia at specify speed motors"
+#~ msgstr "电机用指定速度移动布迪"
+
 #~ msgid "returns the object gray level as a number between 0 and 1023"
 #~ msgstr "返回对象灰度（0到1023之间）"
-
-#~ msgid "returns 1 when the button is press and 0 otherwise"
-#~ msgstr "当按钮按下返回1，否则为0"
 
 #~ msgid "returns the ambient light level as a number between 0 and 1023"
 #~ msgstr "返回环境光亮度（0到1023之间）"
@@ -1974,729 +3593,20 @@ msgstr "保存项目？"
 #~ "between 0 and 255"
 #~ msgstr "返回传感器前物体的距离（0到255之间）"
 
-#~ msgid "returns 0 or 1 depending on the sensor inclination"
-#~ msgstr "返回传感器方位角（0或者1）"
-
-#~ msgid "returns 1 when the sensors detects a magnetic field, 0 otherwise"
-#~ msgstr "当传感器检测到磁场返回1，否则为0"
-
-#~ msgid "switches from 0 to 1, the frequency depends on the vibration"
-#~ msgstr "从0切换到1，频率取决于振动"
-
-#~ msgid "LED"
-#~ msgstr "指示灯"
-
-#~ msgid "button"
-#~ msgstr "按钮"
-
-#~ msgid "grayscale"
-#~ msgstr "灰度"
-
-#~ msgid "ambient light"
-#~ msgstr "环境光"
-
-#~ msgid "temperature"
-#~ msgstr "温度"
-
-#~ msgid "distance"
-#~ msgstr "距离"
-
-#~ msgid "tilt"
-#~ msgstr "斜度"
-
-#~ msgid "magnetic induction"
-#~ msgstr "磁场感应"
-
-#~ msgid "vibration"
-#~ msgstr "振动"
-
-#~ msgid "Butia Robot"
-#~ msgstr "布迪机器人"
-
-#~ msgid "refresh Butia"
-#~ msgstr "刷新布迪"
-
-#~ msgid "refresh the state of the Butia palette and blocks"
-#~ msgstr "刷新布迪模板和拼块的状态"
-
-#~ msgid "battery charge Butia"
-#~ msgstr "布迪充电"
-
-#~ msgid "returns the battery charge as a number between 0 and 255"
-#~ msgstr "返回电池充电度（0到255之间）"
-
-#~ msgid "speed Butia"
-#~ msgstr "布迪加速"
-
-#~ msgid "forward Butia"
-#~ msgstr "布迪前进"
-
-#~ msgid "move the Butia robot forward"
-#~ msgstr "向前移动布迪机器人"
-
-#~ msgid "move the Butia robot forward a predefined distance"
-#~ msgstr "布迪机器人向前移动一个预先设定的距离"
-
-#~ msgid "left Butia"
-#~ msgstr "布迪左转"
-
-#, fuzzy
-#~ msgid "turn the Butia robot at left"
-#~ msgstr "向右转动布迪机器人"
-
-#~ msgid "backward Butia"
-#~ msgstr "布迪后退"
-
-#~ msgid "move the Butia robot backward"
-#~ msgstr "先后移动布迪机器人"
-
-#~ msgid "move the Butia robot backward a predefined distance"
-#~ msgstr "布迪机器人向后移动一个预先设定的距离"
-
-#~ msgid "right Butia"
-#~ msgstr "布迪右转"
-
-#~ msgid "turn the Butia robot at right"
-#~ msgstr "向右转动布迪机器人"
-
-#~ msgid "turn Butia"
-#~ msgstr "转动布迪"
-
-#~ msgid "turn the Butia robot x degrees"
-#~ msgstr "将布迪机器人转动X角度"
-
-#~ msgid "stop Butia"
-#~ msgstr "停止布迪"
-
-#~ msgid "stop the Butia robot"
-#~ msgstr "停止布迪机器人"
-
-#~ msgid "Butia"
-#~ msgstr "布迪"
-
-#~ msgid "Error on initialization of the camera"
-#~ msgstr "摄像头初始化出错"
-
-#, fuzzy
-#~ msgid "No camera was found"
-#~ msgstr "没有找到摄像头"
-
-#~ msgid "Error stopping camera"
-#~ msgstr "停止摄像头出错"
-
-#~ msgid "Error starting camera"
-#~ msgstr "启动摄像头出错"
-
-#~ msgid "FollowMe"
-#~ msgstr "跟我来"
-
-#, fuzzy
-#~ msgid "Search for a connected camera."
-#~ msgstr "搜索已连接的NXT积木。"
-
-#~ msgid "calibration"
-#~ msgstr "校准"
-
-#, fuzzy
-#~ msgid "store a personalized calibration"
-#~ msgstr "存储个性化校准"
-
-#~ msgid "return a personalized calibration"
-#~ msgstr "返回个性化校准"
-
-#~ msgid "follow"
-#~ msgstr "跟随"
-
-#~ msgid "follow a color or calibration"
-#~ msgstr "跟随颜色或校准"
-
-#~ msgid "minimum pixels"
-#~ msgstr "最小值像素"
-
-#~ msgid "set the minimal number of pixels to follow"
-#~ msgstr "设置要跟随的最小像素数目"
-
-#~ msgid "threshold"
-#~ msgstr "阀门"
-
-#~ msgid "set a threshold for a RGB color"
-#~ msgstr "为RGB颜色设置一个阀门"
-
-#~ msgid "camera mode"
-#~ msgstr "摄像头模式"
-
-#, fuzzy
-#~ msgid "set the color mode of the camera: RGB; YUV or HSV"
-#~ msgstr "设置摄像头的颜色模式：RGB，YUV或HSV"
-
-#~ msgid "x position"
-#~ msgstr "x 位置"
-
-#~ msgid "return x position"
-#~ msgstr "返回 x 位置"
-
-#~ msgid "y position"
-#~ msgstr "y 位置"
-
-#~ msgid "return y position"
-#~ msgstr "返回 y 位置"
-
-#~ msgid "pixels"
-#~ msgstr "像素"
-
-#~ msgid "return the number of pixels of the biggest blob"
-#~ msgstr "返回最大块的像素数目"
-
-#~ msgid "set the color mode of the camera to RGB"
-#~ msgstr "设置摄像头的颜色模式为RGB"
-
-#~ msgid "set the color mode of the camera to YUV"
-#~ msgstr "设置摄像头的颜色模式为YUV"
-
-#~ msgid "set the color mode of the camera to HSV"
-#~ msgstr "设置摄像头的颜色模式为HSV"
-
-#~ msgid "empty calibration"
-#~ msgstr "空校准"
-
-#~ msgid "error in string conversion"
-#~ msgstr "字符串转换错误"
-
-#~ msgid "SumBot"
-#~ msgstr "桑博"
-
-#~ msgid "speed SumBot"
-#~ msgstr "加速桑博"
-
-#~ msgid "submit the speed to the SumBot"
-#~ msgstr "提交桑博的速度"
-
-#~ msgid "set the default speed for the movement commands"
-#~ msgstr "设置移动命令的默认速度"
-
-#~ msgid "forward SumBot"
-#~ msgstr "向前桑博"
-
-#~ msgid "move SumBot forward"
-#~ msgstr "移动桑博向前"
-
-#~ msgid "backward SumBot"
-#~ msgstr "向后桑博"
-
-#~ msgid "move SumBot backward"
-#~ msgstr "移动桑博向后"
-
-#~ msgid "stop SumBot"
-#~ msgstr "停止桑博"
-
-#~ msgid "stop the SumBot"
-#~ msgstr "让桑博停下来"
-
-#~ msgid "left SumBot"
-#~ msgstr "左转桑博"
-
-#~ msgid "turn left the SumBot"
-#~ msgstr "让桑博向左转"
-
-#~ msgid "right SumBot"
-#~ msgstr "右转桑博"
-
-#~ msgid "turn right the SumBot"
-#~ msgstr "让桑博向右转"
-
-#~ msgid "angle to center"
-#~ msgstr "与中心的角度"
-
-#~ msgid "get the angle to the center of the dohyo"
-#~ msgstr "得到相对圆环中心的角度"
-
-#~ msgid "angle to Enemy"
-#~ msgstr "与敌人的角度"
-
-#~ msgid "get the angle to the Enemy"
-#~ msgstr "得到相对敌人的角度"
-
-#~ msgid "x coor. SumBot"
-#~ msgstr "桑博x坐标"
-
-#~ msgid "get the x coordinate of the SumBot"
-#~ msgstr "得到桑博的x坐标"
-
-#~ msgid "y coor. SumBot"
-#~ msgstr "桑博y坐标"
-
-#~ msgid "get the y coordinate of the SumBot"
-#~ msgstr "得到桑博的y坐标"
-
-#~ msgid "x coor. Enemy"
-#~ msgstr "敌人x坐标"
-
-#~ msgid "get the x coordinate of the Enemy"
-#~ msgstr "得到敌人的x坐标"
-
-#~ msgid "y coor. Enemy"
-#~ msgstr "敌人y坐标"
-
-#~ msgid "get the y coordinate of the Enemy"
-#~ msgstr "得到敌人的y坐标"
-
-#~ msgid "rotation SumBot"
-#~ msgstr "转动桑博"
-
-#~ msgid "get the rotation of the Sumbot"
-#~ msgstr "得到桑博的转动"
-
-#~ msgid "rotation Enemy"
-#~ msgstr "转动敌人"
-
-#~ msgid "get the rotation of the Enemy"
-#~ msgstr "得到敌人的转动"
-
-#~ msgid "distance to center"
-#~ msgstr "与中心的距离"
-
-#~ msgid "get the distance to the center of the dohyo"
-#~ msgstr "得到与圆环中心的距离"
-
-#~ msgid "distance to Enemy"
-#~ msgstr "与敌人的距离"
-
-#~ msgid "get the distance to the Enemy"
-#~ msgstr "得到与敌人的距离"
-
-#~ msgid "update information"
-#~ msgstr "更新信息"
-
-#~ msgid "update information from the server"
-#~ msgstr "从服务器更新信息"
-
-#~ msgid "Palette of physics blocks"
-#~ msgstr "物理块模板"
-
-#~ msgid "start polygon"
-#~ msgstr "定义多边形"
-
-#~ msgid "Begin defining a new polygon based on the current Turtle xy position."
-#~ msgstr "根据当前海龟xy方向的位置开始定义新的多边形。"
-
-#~ msgid "add point"
-#~ msgstr "添加点"
-
-#~ msgid ""
-#~ "Add a new point to the current polygon based on the current Turtle xy "
-#~ "position."
-#~ msgstr "根据当前海龟xy方向的位置添加新的点到当前的多边形。"
-
-#~ msgid "end polygon"
-#~ msgstr "完成多边形"
-
-#~ msgid "Define a new polygon."
-#~ msgstr "定义一个新的多边形。"
-
-#~ msgid "end filled polygon"
-#~ msgstr "结束填充多边形的绘制"
-
-#~ msgid "Not a simple polygon"
-#~ msgstr "不是一个简单多边形"
-
-#~ msgid "Define a new filled polygon."
-#~ msgstr "定义一个新的填充多边形。"
-
-#~ msgid "triangle"
-#~ msgstr "三角形"
-
-#~ msgid "base"
-#~ msgstr "基地"
-
-#~ msgid "Add a triangle object to the project."
-#~ msgstr "添加一个三角形对象到项目。"
-
-#~ msgid "circle"
-#~ msgstr "圆形"
-
-#~ msgid "Add a circle object to the project."
-#~ msgstr "添加一个圆形对象到项目。"
-
-#~ msgid "rectangle"
-#~ msgstr "长方形"
-
-#~ msgid "Add a rectangle object to the project."
-#~ msgstr "添加一个长方形对象到项目。"
-
-#~ msgid "reset"
-#~ msgstr "重置"
-
-#~ msgid "Reset the project; clear the object list."
-#~ msgstr "重置项目;清除对象列表。"
-
-#~ msgid "motor"
-#~ msgstr "电机"
-
-#~ msgid "torque"
-#~ msgstr "转矩"
-
-#~ msgid "speed"
-#~ msgstr "速度"
-
-#~ msgid ""
-#~ "Motor torque and speed range from 0 (off) to positive numbers; motor is "
-#~ "placed on the most recent object created."
-#~ msgstr "电机转矩和速度范围是从0（关）到正数，电机放置在最近被创建的对象上。"
-
-#~ msgid "pin"
-#~ msgstr "图钉"
-
-#~ msgid "Pin an object down so that it cannot fall."
-#~ msgstr "用图钉固定一个对象，防止掉落。"
-
-#~ msgid "joint"
-#~ msgstr "联合"
-
-#~ msgid ""
-#~ "Join two objects together (the most recent object created and the object at "
-#~ "point x, y)."
-#~ msgstr "把两个对象连接到一起（在点x，y处最近创建的对象）。"
-
-#~ msgid "save as Physics activity"
-#~ msgstr "保存为“物理”活动"
-
-#~ msgid "Save the project to the Journal as a Physics activity."
-#~ msgstr "当作一个物理活动保存该项目到日志。"
-
-#~ msgid "gear"
-#~ msgstr "齿轮"
-
-#~ msgid "Add a gear object to the project."
-#~ msgstr "添加一个齿轮对象到项目。"
-
-#~ msgid "density"
-#~ msgstr "密度"
-
-#~ msgid ""
-#~ "Set the density property for objects (density can be any positive number)."
-#~ msgstr "设置对象的密度属性（密度可以是任何正数）。"
-
-#~ msgid "friction"
-#~ msgstr "摩擦"
-
-#~ msgid ""
-#~ "Set the friction property for objects (value from 0 to 1, where 0 turns "
-#~ "friction off and 1 is strong friction)."
-#~ msgstr "设置对象的摩擦系数（值从0到1，0无摩擦，1强摩擦）。"
-
-#~ msgid "bounciness"
-#~ msgstr "弹力"
-
-#~ msgid ""
-#~ "Set the bounciness property for objects (a value from 0 to 1, where 0 means "
-#~ "no bounce and 1 is very bouncy)."
-#~ msgstr "设置对象的弹性系数（值从0到1，0无弹性，1强弹性）。"
-
-#~ msgid "dynamic"
-#~ msgstr "动态"
-
-#~ msgid ""
-#~ "If dynamic = 1, the object can move; if dynamic = 0, it is fixed in position."
-#~ msgstr "动态值为1时对象可以移动；为0时位置是固定的。"
-
-#~ msgid "Palette of WeDo blocks"
-#~ msgstr "乐高WeDo模板"
-
-#~ msgid ""
-#~ "tilt sensor output: (-1 == no tilt, 0 == tilt forward, 3 == tilt back, 1 == "
-#~ "tilt left, 2 == tilt right)"
-#~ msgstr "倾斜传感器输出：（-1 ==没有倾斜，0 ==向前倾斜，3 ==向后倾斜，1 ==向左倾斜，2 ==向左倾斜）"
-
-#~ msgid "distance sensor output"
-#~ msgstr "距离传感器输出"
-
-#~ msgid "Motor A"
-#~ msgstr "电机 A"
-
-#~ msgid "returns the current value of Motor A"
-#~ msgstr "返回电机A的当前值"
-
-#~ msgid "Motor B"
-#~ msgstr "电机B"
-
-#~ msgid "returns the current value of Motor B"
-#~ msgstr "返回电机B的当前值"
-
-#~ msgid "set the value for Motor A"
-#~ msgstr "设置电机A的值"
-
-#~ msgid "set the value for Motor B"
-#~ msgstr "设置电机B的值"
-
-#~ msgid "Palette of LEGO NXT blocks of motors"
-#~ msgstr "乐高NXT马达部件模板"
-
-#~ msgid "Palette of LEGO NXT blocks of sensors"
-#~ msgstr "乐高NXT传感器部件模板"
-
-#~ msgid "touch"
-#~ msgstr "触摸"
-
-#~ msgid "ultrasonic"
-#~ msgstr "超声波"
-
-#~ msgid "light"
-#~ msgstr "灯光"
+#~ msgid "returns 1 when the button is press and 0 otherwise"
+#~ msgstr "当按钮按下返回1，否则为0"
 
 #, fuzzy
 #~ msgid "grey"
 #~ msgstr "灰度"
 
-#, fuzzy
-#~ msgid "Please check the connection with the brick"
-#~ msgstr "请检查与积木的连接。"
-
-#, fuzzy
-#~ msgid "The value of power must be between -127 to 127"
-#~ msgstr "功率值必须在-127到127之间。"
-
-#, fuzzy
-#~ msgid "An error has occurred: check all connections and try to reconnect"
-#~ msgstr "发生了一个错误：请检查所有连接并试图重新连接。"
-
-#~ msgid "NXT not found"
-#~ msgstr "没找到 NXT"
-
-#~ msgid "refresh NXT"
-#~ msgstr "刷新 NXT"
-
-#~ msgid "Search for a connected NXT brick."
-#~ msgstr "搜索已连接的NXT积木。"
-
-#~ msgid "play tone"
-#~ msgstr "播放音调"
-
-#~ msgid "frequency"
-#~ msgstr "频率"
-
-#~ msgid "Play a tone at frequency for time."
-#~ msgstr "以时间频率播放音调。"
-
-#~ msgid "port"
-#~ msgstr "端口"
-
-#~ msgid "power"
-#~ msgstr "电源"
-
-#~ msgid "rotations"
-#~ msgstr "旋转"
-
-#~ msgid "turn a motor"
-#~ msgstr "转动电机"
-
-#, fuzzy
-#~ msgid ""
-#~ "synchronize\n"
-#~ "\n"
-#~ "motors"
-#~ msgstr "同步两个电机"
-
-#~ msgid "synchronize two motors connected in PORT B and PORT C"
-#~ msgstr "同步连接在端口B和端口C的两个电机"
-
-#~ msgid "PORT A"
-#~ msgstr "端口 A"
-
-#~ msgid "PORT A of the brick"
-#~ msgstr "积木的端口 A"
-
-#~ msgid "PORT B"
-#~ msgstr "端口 B"
-
-#~ msgid "PORT B of the brick"
-#~ msgstr "积木的端口 B"
-
-#~ msgid "PORT C"
-#~ msgstr "端口 C"
-
-#~ msgid "PORT C of the brick"
-#~ msgstr "积木的端口 C"
-
-#~ msgid "start motor"
-#~ msgstr "启动电机"
-
-#~ msgid "Run a motor forever."
-#~ msgstr "持续运行电机。"
-
-#~ msgid "brake motor"
-#~ msgstr "制动电机"
-
-#~ msgid "Stop a specified motor."
-#~ msgstr "停止指定的电机。"
-
-#~ msgid "reset motor"
-#~ msgstr "复位电机"
-
-#~ msgid "Reset the motor counter."
-#~ msgstr "复位电机计数器。"
-
-#~ msgid "motor position"
-#~ msgstr "电机位置"
-
-#~ msgid "Get the motor position."
-#~ msgstr "得到电机位置。"
-
-#~ msgid "PORT 1"
-#~ msgstr "端口 1"
-
-#~ msgid "PORT 1 of the brick"
-#~ msgstr "积木的端口 1"
-
-#~ msgid "read"
-#~ msgstr "读取"
-
-#~ msgid "sensor"
-#~ msgstr "传感器"
-
-#~ msgid "Read sensor output."
-#~ msgstr "读取传感器输出。"
-
-#~ msgid "PORT 2"
-#~ msgstr "端口 2"
-
-#~ msgid "PORT 2 of the brick"
-#~ msgstr "积木的端口 2"
-
-#~ msgid "light sensor"
-#~ msgstr "灯光传感器"
-
-#~ msgid "PORT 3"
-#~ msgstr "端口 3"
-
-#~ msgid "PORT 3 of the brick"
-#~ msgstr "积木的端口 3"
-
-#~ msgid "touch sensor"
-#~ msgstr "触控传感器"
-
-#~ msgid "distance sensor"
-#~ msgstr "距离传感器"
-
-#~ msgid "PORT 4"
-#~ msgstr "端口 4"
-
-#~ msgid "PORT 4 of the brick"
-#~ msgstr "积木的端口 4"
-
-#~ msgid "sound sensor"
-#~ msgstr "声音传感器"
-
-#~ msgid "color sensor"
-#~ msgstr "颜色传感器"
-
-#~ msgid "set light"
-#~ msgstr "设置灯"
-
-#~ msgid "Set color sensor light."
-#~ msgstr "设置颜色感应灯。"
-
-#~ msgid "battery level"
-#~ msgstr "电池电量"
-
-#, fuzzy
-#~ msgid "Get battery level of the brick"
-#~ msgstr "获取板子的电池电量。"
-
-#~ msgid "HIGH"
-#~ msgstr "高"
-
-#~ msgid "LOW"
-#~ msgstr "低"
-
-#~ msgid "INPUT"
-#~ msgstr "输入"
-
-#~ msgid "OUTPUT"
-#~ msgstr "输出"
-
-#~ msgid "PWM"
-#~ msgstr "调速"
-
-#~ msgid "SERVO"
-#~ msgstr "伺服"
-
-#~ msgid "ERROR: Check the Arduino and the number of port."
-#~ msgstr "错误：请检查的Arduino和端口号。"
-
-#~ msgid "ERROR: Value must be a number from 0 to 255."
-#~ msgstr "错误：数值必须从0到255。"
-
 #~ msgid "ERROR: Value must be either HIGH or LOW."
 #~ msgstr "错误：值必须是高或低。"
 
-#~ msgid "ERROR: The mode must be either INPUT, OUTPUT, PWM or SERVO."
-#~ msgstr "错误：模式必须是输入，输出，调速或伺服。"
-
-#~ msgid "pin mode"
-#~ msgstr "引脚模式"
-
-#~ msgid "mode"
-#~ msgstr "模式"
-
-#~ msgid "Select the pin function (INPUT, OUTPUT, PWM, SERVO)."
-#~ msgstr "选择引脚功能（输入，输出，调速，伺服）。"
-
-#~ msgid "analog write"
-#~ msgstr "模拟写"
-
-#~ msgid "Write analog value in specified port."
-#~ msgstr "写模拟值到指定的端口。"
-
-#~ msgid "analog read"
-#~ msgstr "模拟读"
-
-#~ msgid ""
-#~ "Read value from analog port. Value may be between 0 and 1023. Use Vref to "
-#~ "determine voltage. For USB, volt=((read)*5)/1024) approximately."
-#~ msgstr "从模拟端口读值。值可能是0到1023之间。使用Vref来确定电压。对于USB，电压大约等于 ((read)*5)/1024。"
-
-#~ msgid "digital write"
-#~ msgstr "数字写"
-
-#~ msgid "Write digital value to specified port."
-#~ msgstr "写数字值到指定的端口。"
-
-#~ msgid "digital read"
-#~ msgstr "数字读"
-
-#~ msgid "Read value from digital port."
-#~ msgstr "从数字端口读取值。"
-
-#~ msgid "Set HIGH value for digital port."
-#~ msgstr "设置数字端口为高值。"
-
-#~ msgid "Configure Arduino port for digital input."
-#~ msgstr "配置用于数字输入的Arduino端口。"
-
-#~ msgid "Configure Arduino port to drive a servo."
-#~ msgstr "配置用于驱动伺服电机的Arduino端口。"
-
-#~ msgid "Set LOW value for digital port."
-#~ msgstr "设置数字端口为低值。"
-
-#~ msgid "Configure Arduino port for digital output."
-#~ msgstr "配置用于数字输出的Arduino端口。"
-
-#~ msgid "Configure Arduino port for PWM (pulse-width modulation)."
-#~ msgstr "配置用于调速（脉宽调制）的Arduino端口"
-
-#, fuzzy
-#~ msgid "Palette of Expeyes blocks"
-#~ msgstr "乐高WeDo模板"
-
-#, fuzzy
-#~ msgid "samples"
-#~ msgstr "例子"
-
 #, fuzzy
 #~ msgid ""
-#~ "set the speed of the Butia motors as a value between 0 and 1023, passed by "
-#~ "an argument"
+#~ "set the speed of the Butia motors as a value between 0 and 1023, passed "
+#~ "by an argument"
 #~ msgstr "通过传递参数设置布迪的电机速度（0到1023之间）"
 
 #~ msgid "turn the Butia robot to the left"
@@ -2778,9 +3688,6 @@ msgstr "保存项目？"
 #~ msgstr ""
 #~ "同步电机\n"
 #~ "转向装置"
-
-#~ msgid "Palette of Arduino blocks"
-#~ msgstr "Arduino模板"
 
 #~ msgid "delay Butia"
 #~ msgstr "布迪延迟"
