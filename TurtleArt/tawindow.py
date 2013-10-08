@@ -404,38 +404,71 @@ class TurtleArtWindow():
     def _setup_plugins(self):
         ''' Initial setup -- called just once. '''
         for plugin in self.turtleart_plugins:
-            plugin.setup()
+            try:
+                plugin.setup()
+            except Exception as e:
+                debug_output('Plugin %s failed during setup: %s' %
+                             (plugin_class, str(e)), self.running_sugar)
 
     def _start_plugins(self):
         ''' Start is called everytime we execute blocks. '''
         for plugin in self.turtleart_plugins:
-            plugin.start()
+            if hasattr(plugin, 'start'):
+                try:
+                    plugin.start()
+                except Exception as e:
+                    debug_output('Plugin %s failed during start: %s' %
+                                 (plugin_class, str(e)), self.running_sugar)
 
     def stop_plugins(self):
         ''' Stop is called whenever we stop execution. '''
         for plugin in self.turtleart_plugins:
-            plugin.stop()
+            if hasattr(plugin, 'stop'):
+                try:
+                    plugin.stop()
+                except Exception as e:
+                    debug_output('Plugin %s failed during stop: %s' %
+                                 (plugin_class, str(e)), self.running_sugar)
 
     def clear_plugins(self):
         ''' Clear is called from the clean block and erase button. '''
         for plugin in self.turtleart_plugins:
             if hasattr(plugin, 'clear'):
-                plugin.clear()
+                try:
+                    plugin.clear()
+                except Exception as e:
+                    debug_output('Plugin %s failed during clear: %s' %
+                                 (plugin_class, str(e)), self.running_sugar)
 
     def background_plugins(self):
         ''' Background is called when we are pushed to the background. '''
         for plugin in self.turtleart_plugins:
-            plugin.goto_background()
+            if hasattr(plugin, 'goto_background'):
+                try:
+                    plugin.goto_background()
+                except Exception as e:
+                    debug_output('Plugin %s failed during background: %s' %
+                                 (plugin_class, str(e)), self.running_sugar)
 
     def foreground_plugins(self):
         ''' Foreground is called when we are return from the background. '''
         for plugin in self.turtleart_plugins:
-            plugin.return_to_foreground()
+            if hasattr(plugin, 'return_to_foreground'):
+                try:
+                    plugin.return_to_foreground()
+                except Exception as e:
+                    debug_output('Plugin %s failed during foreground: %s' %
+                                 (plugin_class, str(e)), self.running_sugar)
 
     def quit_plugins(self):
         ''' Quit is called upon program exit. '''
         for plugin in self.turtleart_plugins:
-            plugin.quit()
+            if hasattr(plugin, 'quit'):
+                try:
+                    plugin.quit()
+                except Exception as e:
+                    debug_output('Plugin %s failed during quit: %s' %
+                                 (plugin_class, str(e)), self.running_sugar)
 
     def _setup_events(self):
         ''' Register the events we listen to. '''
