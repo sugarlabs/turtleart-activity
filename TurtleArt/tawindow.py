@@ -382,6 +382,7 @@ class TurtleArtWindow():
         except Exception as e:
             debug_output('Failed to load %s: %s' % (plugin_class, str(e)),
                          self.running_sugar)
+            
 
     def _add_plugin_icon_dir(self, dirname):
         ''' If there is an icon subdir, add it to the search path. '''
@@ -409,6 +410,8 @@ class TurtleArtWindow():
             except Exception as e:
                 debug_output('Plugin %s failed during setup: %s' %
                              (plugin_class, str(e)), self.running_sugar)
+                # If setup fails, remove the plugin from the list
+                self.turtleart_plugins.remove(plugin)
 
     def _start_plugins(self):
         ''' Start is called everytime we execute blocks. '''
