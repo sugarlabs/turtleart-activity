@@ -27,7 +27,7 @@ from plugins.plugin import Plugin
 from TurtleArt.tapalette import (make_palette, define_logo_function,
                                  block_names, block_primitives, special_names,
                                  content_blocks, palette_name_to_index,
-                                 palette_names)
+                                 palette_names, palette_i18n_names)
 from TurtleArt.talogo import (primitive_dictionary, logoerror,
                               media_blocks_dictionary)
 from TurtleArt.taconstants import (DEFAULT_SCALE, ICON_SIZE, CONSTANTS,
@@ -86,7 +86,7 @@ class Turtle_blocks_extras(Plugin):
     # Palette definitions
 
     def _flow_palette(self):
-        palette = make_palette(_('flow'),
+        palette = make_palette('flow',
                                colors=["#FFC000", "#A08000"],
                                help_string=_('Palette of flow operators'))
 
@@ -120,7 +120,9 @@ boolean operators from Numbers palette'))
         self.tw.lc.def_prim('clamp', 1, primitive_dictionary['clamp'], True)
 
     def _media_palette(self):
-        palette = make_palette(_('media'),
+        debug_output('creating %s palette' % _('media'),
+                     self.tw.running_sugar)
+        palette = make_palette('media',
                                colors=["#A0FF00", "#80A000"],
                                help_string=_('Palette of media objects'),
                                position=7)
@@ -304,7 +306,9 @@ amplitude, and duration (in seconds)'))
                             primitive_dictionary['sinewave'](x, y, z))
 
     def _sensor_palette(self):
-        palette = make_palette(_('sensor'),
+        debug_output('creating %s palette' % _('sensor'),
+                     self.tw.running_sugar)
+        palette = make_palette('sensor',
                                colors=["#FF6060", "#A06060"],
                                help_string=_('Palette of sensor blocks'),
                                position=6)
@@ -431,7 +435,9 @@ program started'))
                             lambda self: primitive_dictionary['time']())
 
     def _extras_palette(self):
-        palette = make_palette(_('extras'),
+        debug_output('creating %s palette' % _('extras'),
+                     self.tw.running_sugar)
+        palette = make_palette('extras',
                                colors=["#FF0000", "#A00000"],
                                help_string=_('Palette of extra options'),
                                position=8)
@@ -792,7 +798,9 @@ module found in the Journal'))
                             primitive_dictionary['loadpalette'](x))
 
     def _portfolio_palette(self):
-        palette = make_palette(_('portfolio'),
+        debug_output('creating %s palette' % _('portfolio'),
+                     self.tw.running_sugar)
+        palette = make_palette('portfolio',
                                colors=["#0606FF", "#0606A0"],
                                help_string=_('Palette of presentation \
 templates'),
@@ -992,8 +1000,10 @@ Journal objects'))
             files = glob.glob(os.path.join(self.tw.macros_path, '*.tb'))
             debug_output('making myblocks palette', self.tw.running_sugar)
             if len(files) > 0:
+                debug_output('creating %s palette' % _('my blocks'),
+                             self.tw.running_sugar)
                 palette = make_palette(
-                    _('myblocks'),
+                    'my blocks',
                     colors=["#FFFF00", "#A0A000"],
                     help_string=_('Palette of user-defined operators'))
 
@@ -1595,7 +1605,7 @@ Journal objects'))
         else:
             if type(arg) == unicode:
                 arg = arg.encode('utf-8')
-            if arg in palette_names:
+            if arg in palette_names or arg in palette_i18n_names:
                 self.tw.show_toolbar_palette(palette_name_to_index(arg))
             else:
                 raise logoerror("#syntaxerror")
