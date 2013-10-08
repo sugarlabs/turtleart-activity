@@ -1002,8 +1002,8 @@ class TurtleArtWindow():
                                  self.running_sugar)
             else:
                 blk.spr.hide()
-        if _('trash') in palette_names and \
-           n == palette_names.index(_('trash')):
+        if 'trash' in palette_names and \
+           n == palette_names.index('trash'):
             for blk in self.trash_stack:
                 # Deprecated
                 for gblk in find_group(blk):
@@ -1279,8 +1279,8 @@ class TurtleArtWindow():
                     and not self.activity.has_toolbarbox:
                 self.activity.palette_buttons[palette].set_icon(
                     palette_names[palette] + 'off')
-            if _('trash') in palette_names and \
-                    palette == palette_names.index(_('trash')):
+            if 'trash' in palette_names and \
+                    palette == palette_names.index('trash'):
                 for blk in self.trash_stack:
                     for gblk in find_group(blk):
                         gblk.spr.hide()
@@ -1360,8 +1360,8 @@ class TurtleArtWindow():
             if self.orientation == HORIZONTAL_PALETTE:
                 x, y = _BUTTON_SIZE, self.toolbar_offset + _MARGIN
                 x, y, max_w = self._horizontal_layout(x, y, self.palettes[n])
-                if _('trash') in palette_names and \
-                        n == palette_names.index(_('trash')):
+                if 'trash' in palette_names and \
+                        n == palette_names.index('trash'):
                     x, y, max_w = self._horizontal_layout(x + max_w, y,
                                                           self.trash_stack)
                 w = x + max_w + _BUTTON_SIZE + _MARGIN
@@ -1377,8 +1377,8 @@ class TurtleArtWindow():
             else:
                 x, y = _MARGIN, self.toolbar_offset + _BUTTON_SIZE + _MARGIN
                 x, y, max_h = self._vertical_layout(x, y, self.palettes[n])
-                if _('trash') in palette_names and \
-                        n == palette_names.index(_('trash')):
+                if 'trash' in palette_names and \
+                        n == palette_names.index('trash'):
                     x, y, max_h = self._vertical_layout(x, y + max_h,
                                                         self.trash_stack)
                 h = y + max_h + _BUTTON_SIZE + _MARGIN - self.toolbar_offset
@@ -1423,8 +1423,8 @@ class TurtleArtWindow():
                     'category-shift-vertical'
             else:
                 self.palette_sprs[n][self.orientation].type = 'category'
-            if _('trash') in palette_names and \
-                    n == palette_names.index(_('trash')):
+            if 'trash' in palette_names and \
+                    n == palette_names.index('trash'):
                 svg = SVG()
                 self.palette_sprs[n][self.orientation].set_shape(
                     svg_str_to_pixbuf(svg.palette(w, h)))
@@ -1546,9 +1546,9 @@ before making changes to your program'))
                 self._restore_from_trash(find_top_block(blk))
             elif blk.type == 'proto':
                 if self.deleting_blocks:
-                    if 'myblocks' in palette_names and \
+                    if 'my blocks' in palette_names and \
                             self.selected_palette == \
-                            palette_names.index('myblocks'):
+                            palette_names.index('my blocks'):
                         self._delete_stack_alert(blk)
                     self.parent.get_window().set_cursor(
                         gtk.gdk.Cursor(gtk.gdk.LEFT_PTR))
@@ -1570,9 +1570,9 @@ before making changes to your program'))
                                     self._put_in_trash(b1)
                             else:
                                 self._put_in_trash(find_top_block(b))
-                    if _('trash') in palette_names:
+                    if 'trash' in palette_names:
                        self.show_toolbar_palette(
-                           palette_names.index(_('trash')), regenerate=True)
+                           palette_names.index('trash'), regenerate=True)
                 elif blk.name in MACROS:
                     self.new_macro(blk.name, x + 20, y + 20)
                 else:
@@ -1754,7 +1754,7 @@ before making changes to your program'))
                     error_output('Could not remove macro %s: %s' %
                                  (macro_path, e))
                     return
-                i = palette_names.index('myblocks')
+                i = palette_names.index('my blocks')
                 palette_blocks[i].remove(blk.name)
                 for pblk in self.palettes[i]:
                     if pblk.name == blk.name:
@@ -1877,7 +1877,7 @@ before making changes to your program'))
                                 'storein_%s' % (name), 'basic-style-2arg',
                                 label=1)
 
-    def _update_proto_name(self, name, old, new, style, palette=_('blocks'),
+    def _update_proto_name(self, name, old, new, style, palette='blocks',
                            label=0):
         ''' Change the name of a proto block '''
         # The name change has to happen in multiple places:
@@ -2012,8 +2012,8 @@ before making changes to your program'))
             if gblk.name in BLOCKS_WITH_SKIN:
                 self._resize_skin(gblk)
 
-        if not _('trash') in palette_names or \
-                self.selected_palette != palette_names.index(_('trash')):
+        if not 'trash' in palette_names or \
+                self.selected_palette != palette_names.index('trash'):
             for gblk in group:
                 gblk.spr.hide()
 
@@ -2057,9 +2057,9 @@ before making changes to your program'))
                             'storein_%s' % gblk.connections[1].values[0],
                             'basic-style-2arg')
 
-    def _remove_palette_blocks(self, name, style, palette=_('blocks')):
+    def _remove_palette_blocks(self, name, style, palette='blocks'):
         ''' Remove blocks from palette and block, style lists '''
-        i = palette_name_to_index(_('blocks'))
+        i = palette_name_to_index('blocks')
         if name in palette_blocks[i]:
             palette_blocks[i].remove(name)
             for blk in self.palettes[i]:
@@ -2119,8 +2119,8 @@ before making changes to your program'))
                 blk.type = 'deleted'
                 blk.spr.hide()
         self.trash_stack = []
-        if _('trash') in palette_names:
-            self.show_toolbar_palette(palette_names.index(_('trash')),
+        if 'trash' in palette_names:
+            self.show_toolbar_palette(palette_names.index('trash'),
                                       regenerate=True)
 
     def _in_the_trash(self, x, y):
@@ -3869,7 +3869,7 @@ before making changes to your program'))
         self.process_data(data_from_file(ta_file))
         self._loaded_project = ta_file
         # Always start on the Turtle palette
-        self.show_toolbar_palette(palette_name_to_index(_('turtle')))
+        self.show_toolbar_palette(palette_name_to_index('turtle'))
 
     def load_file_from_chooser(self, create_new_project=True):
         ''' Load a project from file chooser '''
@@ -4540,7 +4540,7 @@ before making changes to your program'))
             x, y = self._calc_image_offset('', blk.spr, w, h)
         blk.scale_image(x, y, w, h)
 
-    def _find_proto_name(self, name, label, palette=_('blocks')):
+    def _find_proto_name(self, name, label, palette='blocks'):
         ''' Look for a protoblock with this name '''
         if not self.interactive_mode:
             return False
@@ -4575,7 +4575,7 @@ before making changes to your program'))
         if name == _('action'):
             return
         # Choose a palette for the new block.
-        palette = make_palette(_('blocks'))
+        palette = make_palette('blocks')
 
         # Create a new block prototype.
         primitive_dictionary['stack'] = self._prim_stack
@@ -4590,7 +4590,7 @@ before making changes to your program'))
         self.lc.def_prim('stack', 1, primitive_dictionary['stack'], True)
 
         # Regenerate the palette, which will now include the new block.
-        self.show_toolbar_palette(palette_name_to_index(_('blocks')),
+        self.show_toolbar_palette(palette_name_to_index('blocks'),
                                   regenerate=True)
 
     def _new_box_block(self, name):
@@ -4604,7 +4604,7 @@ before making changes to your program'))
         if name == _('my box'):
             return
         # Choose a palette for the new block.
-        palette = make_palette(_('blocks'))
+        palette = make_palette('blocks')
 
         # Create a new block prototype.
         primitive_dictionary['box'] = self._prim_box
@@ -4620,7 +4620,7 @@ before making changes to your program'))
                          lambda self, x: primitive_dictionary['box'](x))
 
         # Regenerate the palette, which will now include the new block.
-        self.show_toolbar_palette(palette_name_to_index(_('blocks')),
+        self.show_toolbar_palette(palette_name_to_index('blocks'),
                                   regenerate=True)
 
     def _new_storein_block(self, name):
@@ -4634,7 +4634,7 @@ before making changes to your program'))
         if name == _('my box'):
             return
         # Choose a palette for the new block.
-        palette = make_palette(_('blocks'))
+        palette = make_palette('blocks')
 
         # Create a new block prototype.
         primitive_dictionary['setbox'] = self._prim_setbox
@@ -4653,7 +4653,7 @@ variable'))
             lambda self, x, y: primitive_dictionary['setbox']('box3', x, y))
 
         # Regenerate the palette, which will now include the new block.
-        self.show_toolbar_palette(palette_name_to_index(_('blocks')),
+        self.show_toolbar_palette(palette_name_to_index('blocks'),
                                   regenerate=True)
 
     def _prim_stack(self, x):

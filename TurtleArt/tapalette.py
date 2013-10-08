@@ -22,6 +22,7 @@
 help_palettes = {}
 help_windows = {}
 palette_names = []
+palette_i18n_names = []
 palette_init_on_start = []
 palette_blocks = []
 block_colors = []
@@ -128,12 +129,14 @@ class Palette():
 
     def add_palette(self, position=None, init_on_start=False):
         if self._name is None:
-            debug_output('You must specify a name for your palette')
+            debug_output('You must specify a name for your palette', True)
             return
 
         # Insert new palette just before the trash
         if 'trash' in palette_names:
-            i = palette_names.index(_('trash'))
+            i = palette_names.index('trash')
+        elif _('trash') in palette_i18n_names:
+            i = palette_i18n_names.index(_('trash'))
         else:
             i = len(palette_names)
 
@@ -142,6 +145,9 @@ class Palette():
 
         if self._name not in palette_names:
             palette_names.insert(i, self._name)
+            debug_output('adding %s to palette_i18n_names' % _(self._name),
+                         True)
+            palette_i18n_names.insert(i, _(self._name))
             palette_blocks.insert(i, [])
             block_colors.insert(i, self._colors)
             if init_on_start:
@@ -234,8 +240,11 @@ def make_palette(palette_name, colors=None, help_string=None, position=None,
 
 def palette_name_to_index(palette_name):
     ''' Find the index associated with palette_name. '''
+    debug_output(palette_name, True)
     if palette_name in palette_names:
         return palette_names.index(palette_name)
+    elif palette_name in palette_i18n_names:
+        return palette_i18n_names.index(palette_name)
     else:
         return None
 
