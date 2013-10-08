@@ -3,9 +3,11 @@
 ENHANCEMENTS:
 * New sample programs (Kyoto flowers)
 * New translations
+* Add support for querying remote turtle position, heading
 
 BUG FIX:
 * Fixed collaboration bug (#4631)
+* Fixed i18n problem with 'select palette' block
 
 190
 
