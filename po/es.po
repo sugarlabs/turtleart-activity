@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-10-08 00:30-0400\n"
-"PO-Revision-Date: 2013-10-08 20:06+0200\n"
+"PO-Revision-Date: 2013-10-08 20:09+0200\n"
 "Last-Translator: AlanJAS <alanjas@hotmail.com>\n"
 "Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
 "Language: es\n"
@@ -1719,7 +1719,7 @@ msgstr "caparazón tortuga"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:734
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:743
 msgid "put a custom 'shell' on the turtle"
-msgstr "pone una 'caparazón\" personalizada a la tortuga"
+msgstr "pone una caparazón personalizada a la tortuga"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:751
 msgid "top of a collapsed stack"
