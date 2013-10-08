@@ -57,12 +57,12 @@ class Camera_sensor(Plugin):
 
     def setup(self):
         ''' Set up the palettes '''
-        sensors_palette = make_palette(_('sensor'),
+        sensors_palette = make_palette('sensor',
                                        colors=["#FF6060", "#A06060"],
                                        help_string=_(
                 'Palette of sensor blocks'),
                                        position=6)
-        media_palette = make_palette(_('media'),
+        media_palette = make_palette('media',
                                      colors=["#A0FF00", "#80A000"],
                                      help_string=_('Palette of media objects'),
                                      position=7)

@@ -44,7 +44,7 @@ class Accelerometer(Plugin):
 
     def setup(self):
         # set up accelerometer specific blocks
-        palette = make_palette(_('sensor'),
+        palette = make_palette('sensor',
                                colors=["#FF6060", "#A06060"],
                                help_string=_('Palette of sensor blocks'),
                                position=6)
