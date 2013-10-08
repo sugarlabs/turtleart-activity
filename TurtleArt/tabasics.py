@@ -278,10 +278,11 @@ turtle (can be used in place of a number block)'),
             0,
             lambda self: self.tw.turtles.get_active_turtle().get_heading())
 
+        # This block is used for holding the remote turtle name
         palette.add_block('turtle-label',
                           hidden=True,
                           style='blank-style',
-                          label=['turtle'])
+                          label=['remote turtle name'])
 
         # Deprecated
         palette.add_block('setxy',

@@ -674,11 +674,11 @@ module found in the Journal'))
         palette.add_block('addturtle',
                           style='basic-style-1arg',
                           label=_('turtle'),
-                          prim_name='turtle',
+                          prim_name='addturtle',
                           default=1,
                           string_or_number=True,
                           help_string=_('chooses which turtle to command'))
-        self.tw.lc.def_prim('turtle', 1,
+        self.tw.lc.def_prim('addturtle', 1,
                             lambda self, x:
                             self.tw.turtles.set_turtle(x))
 
@@ -1575,13 +1575,16 @@ Journal objects'))
         x, y = self.tw.turtles.turtle_to_screen_coordinates((x, y))
         for name in block_names:
             # Translate label name into block/prim name.
-            if blkname in block_names[name]:
+            if blkname in block_names[name]:  # block label is an array
+                print 'found a match', blkname, name, block_names[name]
                 if name in content_blocks or \
                         (name in block_primitives and
                          block_primitives[name] == name):
+                    print '_make_block', blkname, name
                     return self._make_block(name, x, y, defaults)
             elif blkname in block_names:
-                    return self._make_block(blkname, x, y, defaults)
+                print '_make_block', blkname
+                return self._make_block(blkname, x, y, defaults)
         for name in special_names:
             # Translate label name into block/prim name.
             if blkname in special_names[name]:
