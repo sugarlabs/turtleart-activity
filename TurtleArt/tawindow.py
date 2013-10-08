@@ -1877,7 +1877,7 @@ before making changes to your program'))
                                 'storein_%s' % (name), 'basic-style-2arg',
                                 label=1)
 
-    def _update_proto_name(self, name, old, new, style, palette='blocks',
+    def _update_proto_name(self, name, old, new, style, palette=_('blocks'),
                            label=0):
         ''' Change the name of a proto block '''
         # The name change has to happen in multiple places:
@@ -2057,9 +2057,9 @@ before making changes to your program'))
                             'storein_%s' % gblk.connections[1].values[0],
                             'basic-style-2arg')
 
-    def _remove_palette_blocks(self, name, style, palette='blocks'):
+    def _remove_palette_blocks(self, name, style, palette=_('blocks')):
         ''' Remove blocks from palette and block, style lists '''
-        i = palette_name_to_index('blocks')
+        i = palette_name_to_index(_('blocks'))
         if name in palette_blocks[i]:
             palette_blocks[i].remove(name)
             for blk in self.palettes[i]:
@@ -3869,7 +3869,7 @@ before making changes to your program'))
         self.process_data(data_from_file(ta_file))
         self._loaded_project = ta_file
         # Always start on the Turtle palette
-        self.show_toolbar_palette(palette_name_to_index('turtle'))
+        self.show_toolbar_palette(palette_name_to_index(_('turtle')))
 
     def load_file_from_chooser(self, create_new_project=True):
         ''' Load a project from file chooser '''
@@ -4540,7 +4540,7 @@ before making changes to your program'))
             x, y = self._calc_image_offset('', blk.spr, w, h)
         blk.scale_image(x, y, w, h)
 
-    def _find_proto_name(self, name, label, palette='blocks'):
+    def _find_proto_name(self, name, label, palette=_('blocks')):
         ''' Look for a protoblock with this name '''
         if not self.interactive_mode:
             return False
@@ -4590,7 +4590,7 @@ before making changes to your program'))
         self.lc.def_prim('stack', 1, primitive_dictionary['stack'], True)
 
         # Regenerate the palette, which will now include the new block.
-        self.show_toolbar_palette(palette_name_to_index('blocks'),
+        self.show_toolbar_palette(palette_name_to_index(_('blocks')),
                                   regenerate=True)
 
     def _new_box_block(self, name):
@@ -4620,7 +4620,7 @@ before making changes to your program'))
                          lambda self, x: primitive_dictionary['box'](x))
 
         # Regenerate the palette, which will now include the new block.
-        self.show_toolbar_palette(palette_name_to_index('blocks'),
+        self.show_toolbar_palette(palette_name_to_index(_('blocks')),
                                   regenerate=True)
 
     def _new_storein_block(self, name):
@@ -4653,7 +4653,7 @@ variable'))
             lambda self, x, y: primitive_dictionary['setbox']('box3', x, y))
 
         # Regenerate the palette, which will now include the new block.
-        self.show_toolbar_palette(palette_name_to_index('blocks'),
+        self.show_toolbar_palette(palette_name_to_index(_('blocks')),
                                   regenerate=True)
 
     def _prim_stack(self, x):
