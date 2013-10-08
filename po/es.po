@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-10-08 00:30-0400\n"
-"PO-Revision-Date: 2013-10-08 19:59+0200\n"
+"PO-Revision-Date: 2013-10-08 20:06+0200\n"
 "Last-Translator: AlanJAS <alanjas@hotmail.com>\n"
 "Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
 "Language: es\n"
@@ -1723,7 +1723,7 @@ msgstr "pone una 'caparazón\" personalizada a la tortuga"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:751
 msgid "top of a collapsed stack"
-msgstr "cima de una pila plegable"
+msgstr "cima de una pila colapsada"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:756
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:767
@@ -1735,7 +1735,7 @@ msgstr "cargar"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:771
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:783
 msgid "loads a block"
-msgstr "cargar un bloque"
+msgstr "carga un bloque"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:782
 msgid "setxy"
@@ -1747,7 +1747,7 @@ msgstr "seleccionar paleta"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:795
 msgid "selects a palette"
-msgstr "seleccionar paleta"
+msgstr "selecciona una paleta"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:801
 msgid "portfolio"
@@ -1759,7 +1759,7 @@ msgstr "Paleta de plantillas de presentaciones"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:812
 msgid "hide blocks"
-msgstr "ocultar los bloques"
+msgstr "ocultar bloques"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:814
 msgid "declutters canvas by hiding blocks"
