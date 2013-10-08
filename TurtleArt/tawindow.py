@@ -409,7 +409,7 @@ class TurtleArtWindow():
                 plugin.setup()
             except Exception as e:
                 debug_output('Plugin %s failed during setup: %s' %
-                             (plugin_class, str(e)), self.running_sugar)
+                             (plugin, str(e)), self.running_sugar)
                 # If setup fails, remove the plugin from the list
                 self.turtleart_plugins.remove(plugin)
 
@@ -421,7 +421,7 @@ class TurtleArtWindow():
                     plugin.start()
                 except Exception as e:
                     debug_output('Plugin %s failed during start: %s' %
-                                 (plugin_class, str(e)), self.running_sugar)
+                                 (plugin, str(e)), self.running_sugar)
 
     def stop_plugins(self):
         ''' Stop is called whenever we stop execution. '''
@@ -431,7 +431,7 @@ class TurtleArtWindow():
                     plugin.stop()
                 except Exception as e:
                     debug_output('Plugin %s failed during stop: %s' %
-                                 (plugin_class, str(e)), self.running_sugar)
+                                 (plugin, str(e)), self.running_sugar)
 
     def clear_plugins(self):
         ''' Clear is called from the clean block and erase button. '''
@@ -441,7 +441,7 @@ class TurtleArtWindow():
                     plugin.clear()
                 except Exception as e:
                     debug_output('Plugin %s failed during clear: %s' %
-                                 (plugin_class, str(e)), self.running_sugar)
+                                 (plugin, str(e)), self.running_sugar)
 
     def background_plugins(self):
         ''' Background is called when we are pushed to the background. '''
@@ -451,7 +451,7 @@ class TurtleArtWindow():
                     plugin.goto_background()
                 except Exception as e:
                     debug_output('Plugin %s failed during background: %s' %
-                                 (plugin_class, str(e)), self.running_sugar)
+                                 (plugin, str(e)), self.running_sugar)
 
     def foreground_plugins(self):
         ''' Foreground is called when we are return from the background. '''
@@ -461,7 +461,7 @@ class TurtleArtWindow():
                     plugin.return_to_foreground()
                 except Exception as e:
                     debug_output('Plugin %s failed during foreground: %s' %
-                                 (plugin_class, str(e)), self.running_sugar)
+                                 (plugin, str(e)), self.running_sugar)
 
     def quit_plugins(self):
         ''' Quit is called upon program exit. '''
@@ -471,7 +471,7 @@ class TurtleArtWindow():
                     plugin.quit()
                 except Exception as e:
                     debug_output('Plugin %s failed during quit: %s' %
-                                 (plugin_class, str(e)), self.running_sugar)
+                                 (plugin, str(e)), self.running_sugar)
 
     def _setup_events(self):
         ''' Register the events we listen to. '''
