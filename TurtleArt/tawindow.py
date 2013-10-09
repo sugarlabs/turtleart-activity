@@ -2864,13 +2864,10 @@ before making changes to your program'))
                                        0,
                                        'label',
                                        [],
-                                       2.0 / self.scale,
+                                       1.5 / self.scale,
                                        colors)
-            turtle.label_block.spr.set_label_attributes(12.0 / self.scale)
-            if len(name) > 6:
-                turtle.label_block.spr.set_label(name[0:4] + '…')
-            else:
-                turtle.label_block.spr.set_label(name)
+            turtle.label_block.spr.set_label_attributes(10.0 / self.scale)
+            turtle.label_block.spr.set_label(name)
             turtle.set_remote()
             turtle.show()
 
