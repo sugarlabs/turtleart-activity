@@ -41,8 +41,10 @@ except ImportError:
     HAS_TOOLBARBOX = False
 from sugar.graphics.toolbutton import ToolButton
 from sugar.graphics.radiotoolbutton import RadioToolButton
-from sugar.graphics.alert import (ConfirmationAlert, NotifyAlert)
+from sugar.graphics.alert import (ConfirmationAlert, NotifyAlert, Alert)
 from sugar.graphics import style
+from sugar.graphics.icon import Icon
+from sugar.graphics.xocolor import XoColor
 from sugar.datastore import datastore
 from sugar import profile
 
@@ -114,6 +116,21 @@ class TurtleArtActivity(activity.Activity):
         self._setup_extra_controls()
 
         _logger.debug('_setup_sharing')
+        if self.shared_activity:
+            # We're joining
+            if not self.get_shared():
+                xocolors = XoColor(profile.get_color().to_string())
+                share_icon = Icon(icon_name='zoom-neighborhood',
+                                  xo_color=xocolors)
+                self._joined_alert = Alert()
+                self._joined_alert.props.icon = share_icon
+                self._joined_alert.props.title = _('Please wait')
+                self._joined_alert.props.msg = _('Starting connection...')
+                self.add_alert(self._joined_alert)
+
+                # Wait for joined signal
+                self.connect("joined", self._joined_cb)
+
         self._setup_sharing()
 
         # Activity count is the number of times this instance has been
@@ -1185,6 +1202,12 @@ class TurtleArtActivity(activity.Activity):
         ''' Setup the Collabora stack. '''
         self._collaboration = Collaboration(self.tw, self)
         self._collaboration.setup()
+
+    def _joined_cb(self, widget):
+        if self._joined_alert is not None:
+            self.remove_alert(self._joined_alert)
+            self._joined_alert = None
+        self.set_canvas(self.fixed)
 
     def send_xy(self):
         ''' Resync xy position (and orientation) of my turtle. '''
