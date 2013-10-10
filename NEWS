@@ -1,3 +1,10 @@
+192
+
+ENHANCEMENTS:
+* Use alert when connecting to a shared instance
+* Fine-tune size of remote turtle labels
+* New translations
+
 191
 
 ENHANCEMENTS:
@@ -29,7 +36,6 @@ ENHANCEMENT:
 BUG FIXES:
 * Fix alignment problem with GNOME version
 * Fix problem with default coordinate system
-
 
 188
 
