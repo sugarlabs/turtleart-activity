@@ -387,6 +387,9 @@ class TurtleGraphics:
                 closest_color = i
         return closest_color
 
+    def get_rgb(self):
+        return self._fgrgb
+
     def get_pixel(self, x, y):
         ''' Read the pixel at x, y '''
         if self.turtle_window.interactive_mode:

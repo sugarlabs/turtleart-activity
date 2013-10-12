@@ -347,13 +347,17 @@ a Physics activity.'),
 
     def _prim_box2d_start_polygon(self):
         ''' start of a collection of points to create a polygon '''
-        self._polygon = [(self._tw.canvas.xcor + self._tw.canvas.width / 2.,
-                          self._tw.canvas.ycor + self._tw.canvas.height / 2.)]
+        x = self._tw.turtles.get_active_turtle().get_x()
+        y = self._tw.turtles.get_active_turtle().get_y()
+        self._polygon = [(x + self._tw.canvas.width / 2.,
+                          y + self._tw.canvas.height / 2.)]
 
     def _prim_box2d_add_point(self):
         ''' add an point to a collection of points to create a polygon '''
-        x = self._tw.canvas.xcor + self._tw.canvas.width / 2.
-        y = self._tw.canvas.ycor + self._tw.canvas.height / 2.
+        x = self._tw.turtles.get_active_turtle().get_x()
+        y = self._tw.turtles.get_active_turtle().get_y()
+        x += self._tw.canvas.width / 2.
+        y += self._tw.canvas.height / 2.
         if self._polygon == []:
             self._polygon.append((x, y))
         elif not (x == self._polygon[-1][0] and y == self._polygon[-1][1]):
@@ -366,8 +370,10 @@ a Physics activity.'),
         if self._polygon == []:
             return
         else:
-            x = self._tw.canvas.xcor + self._tw.canvas.width / 2.
-            y = self._tw.canvas.ycor + self._tw.canvas.height / 2.
+            x = self._tw.turtles.get_active_turtle().get_x()
+            y = self._tw.turtles.get_active_turtle().get_y()
+            x += self._tw.canvas.width / 2.
+            y += self._tw.canvas.height / 2.
 
             # Only append the last point if it is not redundant
             if not self._near((x, y), (self._polygon[-1])):
@@ -383,7 +389,7 @@ a Physics activity.'),
             # Create the Physics object...
             self._id += 1
             self._dict['bodylist'].append(
-                {'userData': {'color': self._tw.canvas.fgrgb,
+                {'userData': {'color': self._tw.canvas.get_rgb(),
                               'saveid': self._id},
                  'linearVelocity': [0.0, 0.0],
                  'dynamic': self._dynamic,
@@ -438,20 +444,17 @@ a Physics activity.'),
                 p0 = p1[:]
 
             # ... and draw the polygon on the Turtle canvas
-            self._tw.canvas.canvas.set_source_rgb(
-                self._tw.canvas.fgrgb[0] / 255.,
-                self._tw.canvas.fgrgb[1] / 255.,
-                self._tw.canvas.fgrgb[2] / 255.)
+            self._tw.canvas.set_source_rgb()
             self._tw.canvas.canvas.set_line_width(1.)
             for s in self._dict['bodylist'][-1]['shapes']:
                 if s['type'] == 'polygon':
                     self._tw.canvas.canvas.new_path()
                     for i, p in enumerate(s['vertices']):
-                        x, y = self._tw.canvas.turtle_to_screen_coordinates(
-                            (p[0] + xpos) / self._scale - \
-                                self._tw.canvas.width / 2.,
-                            (p[1] + ypos) / self._scale - \
-                                self._tw.canvas.height / 2.)
+                        x, y = self._tw.turtles.turtle_to_screen_coordinates(
+                            ((p[0] + xpos) / self._scale - \
+                             self._tw.canvas.width / 2.,
+                             (p[1] + ypos) / self._scale - \
+                             self._tw.canvas.height / 2.))
                         if i == 0:
                             self._tw.canvas.canvas.move_to(x, y)
                         else:
@@ -459,17 +462,18 @@ a Physics activity.'),
                     self._tw.canvas.canvas.close_path()
                     self._tw.canvas.canvas.fill()
                 elif s['type'] == 'circle':
-                    x, y = self._tw.canvas.turtle_to_screen_coordinates(
-                        (s['localPosition'][0] + xpos) / self._scale - \
-                            self._tw.canvas.width / 2.,
-                        (s['localPosition'][1] + ypos) / self._scale - \
-                            self._tw.canvas.height / 2.)
+                    x, y = self._tw.turtles.turtle_to_screen_coordinates(
+                        ((s['localPosition'][0] + xpos) / self._scale - \
+                         self._tw.canvas.width / 2.,
+                         (s['localPosition'][1] + ypos) / self._scale - \
+                         self._tw.canvas.height / 2.))
                     self._tw.canvas.canvas.set_line_width(2. / (
                             self.LINE_SCALE * self._scale))
                     self._tw.canvas.canvas.move_to(x, y)
                     self._tw.canvas.canvas.line_to(x + 1, y + 1)
                     self._tw.canvas.canvas.stroke()
-            self._tw.canvas.canvas.set_line_width(self._tw.canvas.pensize)
+            self._tw.canvas.canvas.set_line_width(
+                self._tw.turtles.get_active_turtle().get_pen_size())
             self._tw.canvas.inval()
 
             self._polygon = []
@@ -481,8 +485,10 @@ a Physics activity.'),
         if self._polygon == []:
             return
         else:
-            x = self._tw.canvas.xcor + self._tw.canvas.width / 2.
-            y = self._tw.canvas.ycor + self._tw.canvas.height / 2.
+            x = self._tw.turtles.get_active_turtle().get_x()
+            y = self._tw.turtles.get_active_turtle().get_y()
+            x += self._tw.canvas.width / 2.
+            y += self._tw.canvas.height / 2.
 
             # Make sure there are no points too near each other
             poly = []
@@ -515,7 +521,7 @@ a Physics activity.'),
             ypos = self._polygon[0][1] * self._scale
             self._id += 1
             self._dict['bodylist'].append(
-                {'userData': {'color': self._tw.canvas.fgrgb,
+                {'userData': {'color': self._tw.canvas.get_rgb(),
                               'saveid': self._id},
                  'linearVelocity': [0.0, 0.0],
                  'dynamic': self._dynamic,
@@ -531,10 +537,7 @@ a Physics activity.'),
                 self._add_shape(self._polygon, xpos, ypos)
 
             # ...and draw it on the Turtle canvas
-            self._tw.canvas.canvas.set_source_rgb(
-                self._tw.canvas.fgrgb[0] / 255.,
-                self._tw.canvas.fgrgb[1] / 255.,
-                self._tw.canvas.fgrgb[2] / 255.)
+            self._tw.canvas.set_source_rgb()
             self._tw.canvas.canvas.set_line_width(1.)
             if triangulate:
                 for triangle in triangles:
@@ -542,13 +545,11 @@ a Physics activity.'),
                     self._randomize_color()
                     self._draw_polygon(triangle)
                 # Restore canvas color
-                self._tw.canvas.canvas.set_source_rgb(
-                    self._tw.canvas.fgrgb[0] / 255.,
-                    self._tw.canvas.fgrgb[1] / 255.,
-                    self._tw.canvas.fgrgb[2] / 255.)
+                self._tw.canvas.set_source_rgb()
             else:
                 self._draw_polygon(self._polygon)
-            self._tw.canvas.canvas.set_line_width(self._tw.canvas.pensize)
+            self._tw.canvas.canvas.set_line_width(
+                self._tw.turtles.get_active_turtle().get_pen_size())
             self._tw.canvas.inval()
 
             self._polygon = []
@@ -566,18 +567,19 @@ a Physics activity.'),
         dr = uniform(-10, 10) / 100.
         dg = uniform(-10, 10) / 100.
         db = uniform(-10, 10) / 100.
+        rgb = self._tw.canvas.get_rgb()
         self._tw.canvas.canvas.set_source_rgb(
-            self._bounds_check((self._tw.canvas.fgrgb[0] / 255.) + dr),
-            self._bounds_check((self._tw.canvas.fgrgb[1] / 255.) + dg),
-            self._bounds_check((self._tw.canvas.fgrgb[2] / 255.) + db))
+            self._bounds_check((rgb[0] / 255.) + dr),
+            self._bounds_check((rgb[1] / 255.) + dg),
+            self._bounds_check((rgb[2] / 255.) + db))
 
     def _draw_polygon(self, polygon):
         ''' Draw a polygon on the turtle canvas '''
         self._tw.canvas.canvas.new_path()
         for i, p in enumerate(polygon):
-            x, y = self._tw.canvas.turtle_to_screen_coordinates(
-                p[0] - self._tw.canvas.width / 2.,
-                p[1] - self._tw.canvas.height / 2.)
+            x, y = self._tw.turtles.turtle_to_screen_coordinates(
+                (p[0] - self._tw.canvas.width / 2.,
+                 p[1] - self._tw.canvas.height / 2.))
             if i == 0:
                 self._tw.canvas.canvas.move_to(x, y)
             else:
@@ -608,13 +610,17 @@ a Physics activity.'),
                 'bad argument to triangle: base, height must be float',
                          self._tw.running_sugar)
         self._polygon = []
-        x = self._tw.canvas.xcor + self._tw.canvas.width / 2.
-        y = self._tw.canvas.ycor + self._tw.canvas.height / 2.
+
+        x = self._tw.turtles.get_active_turtle().get_x()
+        y = self._tw.turtles.get_active_turtle().get_y()
+        x += self._tw.canvas.width / 2.
+        y += self._tw.canvas.height / 2.
         self._polygon.append([x - base / 2., y - height / 2.])
         self._polygon.append([x, y + height / 2.])
         self._polygon.append([x + base / 2., y - height / 2.])
-        if self._tw.canvas.heading != 0:
-            self._rotate_polygon(x, y, self._tw.canvas.heading * pi / 180.)
+        h = self._tw.turtles.get_active_turtle().get_heading()
+        if h != 0:
+            self._rotate_polygon(x, y, h * pi / 180.)
         self._prim_box2d_end_filled_polygon()
 
     def _prim_box2d_rectangle(self, width, height):
@@ -627,14 +633,17 @@ a Physics activity.'),
                 'bad argument to rectangle: width, height must be float',
                          self._tw.running_sugar)
         self._polygon = []
-        x = self._tw.canvas.xcor + self._tw.canvas.width / 2.
-        y = self._tw.canvas.ycor + self._tw.canvas.height / 2.
+        x = self._tw.turtles.get_active_turtle().get_x()
+        y = self._tw.turtles.get_active_turtle().get_y()
+        x += self._tw.canvas.width / 2.
+        y += self._tw.canvas.height / 2.
         self._polygon.append([x - width / 2., y - height / 2.])
         self._polygon.append([x + width / 2., y - height / 2.])
         self._polygon.append([x + width / 2., y + height / 2.])
         self._polygon.append([x - width / 2., y + height / 2.])
-        if self._tw.canvas.heading != 0:
-            self._rotate_polygon(x, y, self._tw.canvas.heading * pi / 180.)
+        h = self._tw.turtles.get_active_turtle().get_heading()
+        if h != 0:
+            self._rotate_polygon(x, y, h * pi / 180.)
         self._prim_box2d_end_filled_polygon()
 
     def _prim_box2d_radius(self, tooth_count):
@@ -663,13 +672,16 @@ a Physics activity.'),
                          self._tw.running_sugar)
 
         self._polygon = []
-        x = self._tw.canvas.xcor + self._tw.canvas.width / 2.
-        y = self._tw.canvas.ycor + self._tw.canvas.height / 2.
+        x = self._tw.turtles.get_active_turtle().get_x()
+        y = self._tw.turtles.get_active_turtle().get_y()
+        x += self._tw.canvas.width / 2.
+        y += self._tw.canvas.height / 2.
         points = self._gear(int(tooth_count))
         for p in points:
             self._polygon.append([x + p[0], y + p[1]])
-        if self._tw.canvas.heading != 0:
-            self._rotate_polygon(x, y, self._tw.canvas.heading * pi / 180.)
+        h = self._tw.turtles.get_active_turtle().get_heading()
+        if h != 0:
+            self._rotate_polygon(x, y, h * pi / 180.)
         self._prim_box2d_end_filled_polygon(triangulate=True)
 
     def _prim_box2d_circle(self, radius):
@@ -681,11 +693,13 @@ a Physics activity.'),
                          self._tw.running_sugar)
 
         # Create the Physics object...
-        x = self._tw.canvas.xcor + self._tw.canvas.width / 2.
-        y = self._tw.canvas.ycor + self._tw.canvas.height / 2.
+        x = self._tw.turtles.get_active_turtle().get_x()
+        y = self._tw.turtles.get_active_turtle().get_y()
+        x += self._tw.canvas.width / 2.
+        y += self._tw.canvas.height / 2.
         self._id += 1
         self._dict['bodylist'].append(
-            {'userData': {'color': self._tw.canvas.fgrgb,
+            {'userData': {'color': self._tw.canvas.get_rgb(),
                           'saveid': self._id},
              'linearVelocity': [0.0, 0.0],
              'dynamic': self._dynamic,
@@ -700,17 +714,16 @@ a Physics activity.'),
              'angle': 0.0})
 
         # ...and draw it on the Turtle canvas
-        x, y = self._tw.canvas.turtle_to_screen_coordinates(
-            self._tw.canvas.xcor, self._tw.canvas.ycor)
-        self._tw.canvas.canvas.set_source_rgb(
-            self._tw.canvas.fgrgb[0] / 255.,
-            self._tw.canvas.fgrgb[1] / 255.,
-            self._tw.canvas.fgrgb[2] / 255.)
+
+        x, y = self._tw.turtles.turtle_to_screen_coordinates(
+            self._tw.turtles.get_active_turtle().get_xy())
+        self._tw.canvas.set_source_rgb()
         self._tw.canvas.canvas.set_line_width(radius)
         self._tw.canvas.canvas.move_to(x, y)
         self._tw.canvas.canvas.line_to(x + 1, y + 1)
         self._tw.canvas.canvas.stroke()
-        self._tw.canvas.canvas.set_line_width(self._tw.canvas.pensize)
+        self._tw.canvas.canvas.set_line_width(
+            self._tw.turtles.get_active_turtle().get_pen_size())
         self._tw.canvas.inval()
 
     def _prim_box2d_motor(self, torque, speed):
@@ -723,8 +736,10 @@ a Physics activity.'),
                          self._tw.running_sugar)
 
         # Create the Physics object...
-        x = self._tw.canvas.xcor + self._tw.canvas.width / 2.
-        y = self._tw.canvas.ycor + self._tw.canvas.height / 2.
+        x = self._tw.turtles.get_active_turtle().get_x()
+        y = self._tw.turtles.get_active_turtle().get_y()
+        x += self._tw.canvas.width / 2.
+        y += self._tw.canvas.height / 2.
         self._dict['jointlist'].append(
             {'userData': None,
              'collideConnected': False,
@@ -747,8 +762,8 @@ a Physics activity.'),
             self._dict['jointlist'][-1]['body2']
 
         # ...and draw it on the Turtle canvas
-        x, y = self._tw.canvas.turtle_to_screen_coordinates(
-            self._tw.canvas.xcor, self._tw.canvas.ycor)
+        x, y = self._tw.turtles.turtle_to_screen_coordinates(
+            self._tw.turtles.get_active_turtle().get_xy())
         if speed == 0:
             self._tw.canvas.canvas.set_source_rgb(0., 0., 0.)
         else:
@@ -757,7 +772,8 @@ a Physics activity.'),
         self._tw.canvas.canvas.move_to(x, y)
         self._tw.canvas.canvas.line_to(x + 1, y + 1)
         self._tw.canvas.canvas.stroke()
-        self._tw.canvas.canvas.set_line_width(self._tw.canvas.pensize)
+        self._tw.canvas.canvas.set_line_width(
+            self._tw.turtles.get_active_turtle().get_pen_size())
         self._tw.canvas.inval()
 
     def _prim_box2d_joint(self, x, y):
@@ -772,8 +788,10 @@ a Physics activity.'),
         # Create the Physics object...
         x1 = x + self._tw.canvas.width / 2.
         y1 = y + self._tw.canvas.height / 2.
-        x2 = self._tw.canvas.xcor + self._tw.canvas.width / 2.
-        y2 = self._tw.canvas.ycor + self._tw.canvas.height / 2.
+        x2 = self._tw.turtles.get_active_turtle().get_x() + \
+             self._tw.canvas.width / 2.
+        y2 = self._tw.turtles.get_active_turtle().get_y() + \
+             self._tw.canvas.height / 2.
         self._dict['jointlist'].append(
             {'userData': None,
              'anchor2': [x1 * self._scale, y1 * self._scale],
@@ -796,15 +814,16 @@ a Physics activity.'),
             self._dict['jointlist'][-1]['body1'] = id
 
         # ...and draw it on the Turtle canvas
-        x1, y1 = self._tw.canvas.turtle_to_screen_coordinates(x, y)
-        x2, y2 = self._tw.canvas.turtle_to_screen_coordinates(
-            self._tw.canvas.xcor, self._tw.canvas.ycor)
+        x1, y1 = self._tw.turtles.turtle_to_screen_coordinates((x, y))
+        x2, y2 = self._tw.turtles.turtle_to_screen_coordinates(
+            self._tw.turtles.get_active_turtle().get_xy())
         self._tw.canvas.canvas.set_source_rgb(0., 0., 0.)
         self._tw.canvas.canvas.set_line_width(3.)
         self._tw.canvas.canvas.move_to(x1, y1)
         self._tw.canvas.canvas.line_to(x2, y2)
         self._tw.canvas.canvas.stroke()
-        self._tw.canvas.canvas.set_line_width(self._tw.canvas.pensize)
+        self._tw.canvas.canvas.set_line_width(
+            self._tw.turtles.get_active_turtle().get_pen_size())
         self._tw.canvas.inval()
 
     def _prim_save_box2d(self, name):
