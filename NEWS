@@ -3,6 +3,8 @@
 ENHANCEMENTS:
 * New sample program (Snake game)
 * New translations
+* Moved save snapshot button to Load/Save palette (Users were confusing it
+  for the save image button.)
 
 BUG FIXES:
 * Fixed regression in Sugar 84 support
