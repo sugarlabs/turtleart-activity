@@ -1,3 +1,13 @@
+192
+
+ENHANCEMENTS:
+* New sample program (Snake game)
+* New translations
+
+BUG FIXES:
+* Fixed regression in Sugar 84 support
+* Fixed problem with GNOME due to Sugar button check (Alan Aguiar)
+
 191
 
 ENHANCEMENTS:
@@ -5,7 +15,7 @@ ENHANCEMENTS:
 * New translations
 * Add support for querying remote turtle position, heading
 
-BUG FIX:
+BUG FIXES:
 * Fixed collaboration bug (#4631)
 * Fixed i18n problem with 'select palette' block
 * Fixed problem with load block 'turtle'
