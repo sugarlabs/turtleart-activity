@@ -389,7 +389,7 @@ a Physics activity.'),
             # Create the Physics object...
             self._id += 1
             self._dict['bodylist'].append(
-                {'userData': {'color': self._tw.canvas.get_rgb(),
+                {'userData': {'color': self._get_rgb(),
                               'saveid': self._id},
                  'linearVelocity': [0.0, 0.0],
                  'dynamic': self._dynamic,
@@ -521,7 +521,7 @@ a Physics activity.'),
             ypos = self._polygon[0][1] * self._scale
             self._id += 1
             self._dict['bodylist'].append(
-                {'userData': {'color': self._tw.canvas.get_rgb(),
+                {'userData': {'color': self._get_rgb(),
                               'saveid': self._id},
                  'linearVelocity': [0.0, 0.0],
                  'dynamic': self._dynamic,
@@ -567,7 +567,7 @@ a Physics activity.'),
         dr = uniform(-10, 10) / 100.
         dg = uniform(-10, 10) / 100.
         db = uniform(-10, 10) / 100.
-        rgb = self._tw.canvas.get_rgb()
+        rgb = self._get_rgb()
         self._tw.canvas.canvas.set_source_rgb(
             self._bounds_check((rgb[0] / 255.) + dr),
             self._bounds_check((rgb[1] / 255.) + dg),
@@ -699,7 +699,7 @@ a Physics activity.'),
         y += self._tw.canvas.height / 2.
         self._id += 1
         self._dict['bodylist'].append(
-            {'userData': {'color': self._tw.canvas.get_rgb(),
+            {'userData': {'color': self._get_rgb(),
                           'saveid': self._id},
              'linearVelocity': [0.0, 0.0],
              'dynamic': self._dynamic,
@@ -1013,3 +1013,10 @@ a Physics activity.'),
         points.append([half * cos(heading) + points[3][0],
                        half * sin(heading) + points[3][1]])
         return points, heading
+
+    def _get_rgb(self):
+        ''' For backward compatibility '''
+        if hasattr(self._tw.canvas, 'get_rgb'):
+            return self._tw.canvas.get_rgb()
+        else:
+            return self._tw.canvas._fgrgb
