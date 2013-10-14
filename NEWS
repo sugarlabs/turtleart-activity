@@ -9,6 +9,7 @@ ENHANCEMENTS:
 BUG FIXES:
 * Fixed regression in Sugar 84 support
 * Fixed problem with GNOME due to Sugar button check (Alan Aguiar)
+* Fixed label updates on mouse x, mouse y, and keyboard
 
 191
 
