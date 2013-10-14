@@ -248,8 +248,8 @@ fall.'),
                           style='basic-style-2arg',
                           label=[_('joint'), _('x'), _('y')],
                           default=[0, 0],
-                          help_string=_('Join two objects together (the most \
-recent object created and the object at point x, y).'),
+                          help_string=_('Join two objects together (the \
+object at the current location and the object at point x, y).'),
                           prim_name='box2djoint')
         self._tw.lc.def_prim(
             'box2djoint', 2,
@@ -619,8 +619,8 @@ a Physics activity.'),
         self._polygon.append([x, y + height / 2.])
         self._polygon.append([x + base / 2., y - height / 2.])
         h = self._tw.turtles.get_active_turtle().get_heading()
-        if h != 0:
-            self._rotate_polygon(x, y, h * pi / 180.)
+        # if h != 0:
+        self._rotate_polygon(x, y, (270 - h) * pi / 180.)
         self._prim_box2d_end_filled_polygon()
 
     def _prim_box2d_rectangle(self, width, height):
@@ -680,8 +680,8 @@ a Physics activity.'),
         for p in points:
             self._polygon.append([x + p[0], y + p[1]])
         h = self._tw.turtles.get_active_turtle().get_heading()
-        if h != 0:
-            self._rotate_polygon(x, y, h * pi / 180.)
+        # if h != 0:
+        self._rotate_polygon(x, y, (90 - h) * pi / 180.)
         self._prim_box2d_end_filled_polygon(triangulate=True)
 
     def _prim_box2d_circle(self, radius):
