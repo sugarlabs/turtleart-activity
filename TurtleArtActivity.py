@@ -170,30 +170,23 @@ class TurtleArtActivity(activity.Activity):
         # scrolling window
         self._setup_palette_toolbar()
 
-        if self.keep_button in self._toolbox.toolbar:
+        if self.samples_button in self._toolbox.toolbar:
             self._toolbox.toolbar.remove(self.extras_separator)
-            self._toolbox.toolbar.remove(self.keep_button)
             self._toolbox.toolbar.remove(self.samples_button)
             self._toolbox.toolbar.remove(self.stop_separator)
         self._toolbox.toolbar.remove(self.stop_button)
         self._view_toolbar.remove(self._coordinates_toolitem)
 
         if gtk.gdk.screen_width() / 14 < style.GRID_CELL_SIZE:
-            self.keep_button2.show()
-            self.keep_label2.show()
             self.samples_button2.show()
             self.samples_label2.show()
             self._toolbox.toolbar.insert(self.stop_button, -1)
         else:
-            self.keep_button2.hide()
-            self.keep_label2.hide()
             self.samples_button2.hide()
             self.samples_label2.hide()
             self._toolbox.toolbar.insert(self.extras_separator, -1)
             self.extras_separator.props.draw = True
             self.extras_separator.show()
-            self._toolbox.toolbar.insert(self.keep_button, -1)
-            self.keep_button.show()
             self._toolbox.toolbar.insert(self.samples_button, -1)
             self.samples_button.show()
             self._toolbox.toolbar.insert(self.stop_separator, -1)
@@ -753,10 +746,6 @@ class TurtleArtActivity(activity.Activity):
         self.extras_separator = self._add_separator(
             self._toolbox.toolbar, expand=False, visible=True)
 
-        self.keep_button = self._add_button(
-            'filesaveoff', _('Save snapshot'), self.do_keep_cb,
-            self._toolbox.toolbar)
-
         self.samples_button = self._add_button(
             'ta-open', _('Load example'), self.do_samples_cb,
             self._toolbox.toolbar)
@@ -796,7 +785,6 @@ class TurtleArtActivity(activity.Activity):
         add_paragraph(help_box, _('Step'), icon='run-slowoff')
         add_paragraph(help_box, _('Stop turtle'), icon='stopitoff')
         add_paragraph(help_box, _('Show blocks'), icon='hideshowoff')
-        add_paragraph(help_box, _('Save snapshot'), icon='filesaveoff')
         add_paragraph(help_box, _('Load example'), icon='ta-open')
         add_paragraph(help_box, _('Help'), icon='help-toolbar')
         add_paragraph(help_box, _('Stop'), icon='activity-stop')
@@ -821,6 +809,7 @@ class TurtleArtActivity(activity.Activity):
             add_section(help_box, _('Save/Load'), icon='turtleoff')
         add_paragraph(help_box, _('Save as image'), icon='image-saveoff')
         add_paragraph(help_box, _('Save as Logo'), icon='logo-saveoff')
+        add_paragraph(help_box, _('Save snapshot'), icon='filesaveoff')
         add_paragraph(help_box, _('Load project'), icon='load-from-journal')
         home = os.environ['HOME']
         if activity.get_bundle_path()[0:len(home)] == home:
@@ -1005,12 +994,12 @@ class TurtleArtActivity(activity.Activity):
             self.save_as_logo, label = self._add_button_and_label(
                 'logo-saveoff', _('Save as Logo'), self.do_save_as_logo_cb,
                 None, button_box)
-
-            # When screen is in portrait mode, the buttons don't fit
-            # on the main toolbar, so put them here.
             self.keep_button2, self.keep_label2 = self._add_button_and_label(
                 'filesaveoff', _('Save snapshot'), self.do_keep_cb,
                 None, button_box)
+
+            # When screen is in portrait mode, the buttons don't fit
+            # on the main toolbar, so put them here.
             self.samples_button2, self.samples_label2 = \
                 self._add_button_and_label('ta-open',
                                            _('Load example'),

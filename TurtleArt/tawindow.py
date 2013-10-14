@@ -498,14 +498,15 @@ class TurtleArtWindow():
             if not self.activity._unfullscreen_button.props.visible:
                 self.activity._unfullscreen_button.show()
         # Reset the timer
-        if self.activity._unfullscreen_button_timeout_id is not None:
-            gobject.source_remove(
-                self.activity._unfullscreen_button_timeout_id)
-            self.activity._unfullscreen_button_timeout_id = None
+        if hasattr(self.activity, '_unfullscreen_button_timeout_id'):
+            if self.activity._unfullscreen_button_timeout_id is not None:
+                gobject.source_remove(
+                    self.activity._unfullscreen_button_timeout_id)
+                self.activity._unfullscreen_button_timeout_id = None
 
-        self.activity._unfullscreen_button_timeout_id = \
-            gobject.timeout_add_seconds(_UNFULLSCREEN_VISIBILITY_TIMEOUT,
-                                        self.__unfullscreen_button_timeout_cb)
+            self.activity._unfullscreen_button_timeout_id = \
+                gobject.timeout_add_seconds(_UNFULLSCREEN_VISIBILITY_TIMEOUT,
+                    self.__unfullscreen_button_timeout_cb)
 
     def __unfullscreen_button_timeout_cb(self):
         self.activity._unfullscreen_button.hide()
@@ -650,7 +651,8 @@ class TurtleArtWindow():
         if event is None:
             return
 
-        self.activity.check_buttons_for_fit()
+        if self.running_sugar:
+            self.activity.check_buttons_for_fit()
 
         # If there are any constant blocks on the canvas, relabel them
         for blk in self.just_blocks():
@@ -4367,6 +4369,8 @@ before making changes to your program'))
         self.status_spr.set_shape(self.status_shapes[shp])
         self.status_spr.set_label_attributes(12.0, rescale=False)
         if shp == 'status':
+            if label in ['True', 'False']:
+                label = _(label)
             self.status_spr.set_label('"%s"' % (str(label)))
         else:
             self.status_spr.set_label(str(label))
