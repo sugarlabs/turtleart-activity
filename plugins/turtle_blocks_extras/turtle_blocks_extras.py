@@ -1002,24 +1002,91 @@ Journal objects'))
 
     def _prim_keyboard(self):
         """ Return last character typed """
-        if self.tw.lc.update_values:
-            self.tw.lc.update_label_value('keyboard', self.tw.lc.keyboard)
         return self.tw.lc.keyboard
 
     def _prim_kbinput(self):
         """ Query keyboard """
+        DICT = {
+            'Left': 1,
+            'KP_Left': 1,
+            'Up': 2,
+            'KP_Up': 2,
+            'Right': 3,
+            'KP_Right': 3,
+            'Down': 4,
+            'KP_Down': 4,
+            'BackSpace': 8,
+            'Tab': 9,
+            'Return': 13,
+            'Escape': 27,
+            'space': 32,
+            ' ': 32,
+            'exclam': 33,
+            'quotedbl': 34,
+            'numbersign': 35,
+            'dollar': 36,
+            'percent': 37,
+            'ampersand': 38,
+            'apostrophe': 39,
+            'parenleft': 40,
+            'parenright': 41,
+            'asterisk': 42,
+            'plus': 43,
+            'comma': 44,
+            'minus': 45,
+            'period': 46,
+            'slash': 47,
+            'colon': 58,
+            'semicolon': 59,
+            'less': 60,
+            'equal': 61,
+            'greater': 62,
+            'question': 63,
+            'at': 64,
+            'underscore': 95,
+            'bracketleft': 91,
+            'backslash': 92,
+            'bracketright': 93,
+            'asciicircum': 94,
+            'grave': 96,
+            'braceleft': 123,
+            'bar': 124,
+            'braceright': 125,
+            'asciitilde': 126,
+            'Delete': 127,
+        }
+        REVERSE_DICT = {
+            1: _('left'),
+            2: _('up'),
+            3: _('right'),
+            4: _('down'),
+            8: _('backspace'),
+            9: _('tab'),
+            # TRANS: enter is the name of the enter (or return) key
+            13: _('enter'),
+            27: 'esc',
+            # TRANS: space is the name of the space key
+            32: _('space'),
+            127: _('delete')
+        }
+        
         if len(self.tw.keypress) == 1:
             self.tw.lc.keyboard = ord(self.tw.keypress[0])
+        elif self.tw.keypress in DICT:
+            self.tw.lc.keyboard = DICT[self.tw.keypress]
         else:
-            try:
-                self.tw.lc.keyboard = {
-                    'Escape': 27, 'space': 32, ' ': 32,
-                    'Return': 13, 'KP_Up': 2, 'KP_Down': 4, 'KP_Left': 1,
-                    'KP_Right': 3}[self.tw.keypress]
-            except KeyError:
-                self.tw.lc.keyboard = 0
+            self.tw.lc.keyboard = 0
         if self.tw.lc.update_values:
-            self.tw.lc.update_label_value('keyboard', self.tw.lc.keyboard)
+            if self.tw.keypress in DICT:
+                if DICT[self.tw.keypress] in REVERSE_DICT:
+                    self.tw.lc.update_label_value(
+                        'keyboard', REVERSE_DICT[DICT[self.tw.keypress]])
+                else:
+                    self.tw.lc.update_label_value('keyboard',
+                                                  chr(DICT[self.tw.keypress]))
+            elif self.tw.lc.keyboard > 0:
+                self.tw.lc.update_label_value('keyboard',
+                                              chr(self.tw.lc.keyboard))
         self.tw.keypress = ''
 
     def _prim_list(self, blklist):
