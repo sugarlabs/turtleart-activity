@@ -337,6 +337,7 @@ pressed'))
                             lambda self:
                             primitive_dictionary['mousebutton2']())
 
+        primitive_dictionary['mousex'] = self._prim_mouse_x
         palette.add_block('mousex',
                           style='box-style',
                           label=_('mouse x'),
@@ -345,8 +346,9 @@ pressed'))
                           help_string=_('returns mouse x coordinate'))
         self.tw.lc.def_prim('mousex', 0,
                             lambda self:
-                            self.tw.mouse_x - (self.tw.canvas.width / 2))
+                            primitive_dictionary['mousex']())
 
+        primitive_dictionary['mousey'] = self._prim_mouse_y
         palette.add_block('mousey',
                           style='box-style',
                           label=_('mouse y'),
@@ -355,7 +357,7 @@ pressed'))
                           help_string=_('returns mouse y coordinate'))
         self.tw.lc.def_prim('mousey', 0,
                             lambda self:
-                            (self.tw.canvas.height / 2) - self.tw.mouse_y)
+                            primitive_dictionary['mousey']())
 
         primitive_dictionary['kbinput'] = self._prim_kbinput
         palette.add_block('kbinput',
@@ -367,6 +369,7 @@ stored in keyboard block)'))
         self.tw.lc.def_prim('kbinput', 0,
                             lambda self: primitive_dictionary['kbinput']())
 
+        primitive_dictionary['keyboard'] = self._prim_keyboard
         palette.add_block('keyboard',
                           style='box-style',
                           label=_('keyboard'),
@@ -375,32 +378,8 @@ stored in keyboard block)'))
                           logo_command='make "keyboard readchar',
                           help_string=_('holds results of query-keyboard \
 block as ASCII'))
-        self.tw.lc.def_prim('keyboard', 0, lambda self: self.tw.lc.keyboard)
-
-        '''
-        palette.add_block('keyboard_chr',
-                          style='box-style',
-                          label='chr(%s)' % (_('keyboard')),
-                          prim_name='keyboard_chr',
-                          value_block=True,
-                          logo_command='make "keyboard readchar',
-                          help_string=_('holds results of query-keyboard \
-block as character'))
-        self.tw.lc.def_prim('keyboard_chr', 0,
-                            lambda self: chr(self.tw.lc.keyboard))
-
-        primitive_dictionary['keyboardnum'] = self._prim_keyboard_num
-        palette.add_block('keyboard_num',
-                          style='box-style',
-                          label='num(%s)' % (_('keyboard')),
-                          prim_name='keyboard_num',
-                          value_block=True,
-                          logo_command='make "keyboard readchar',
-                          help_string=_('holds results of query-keyboard \
-block as number'))
-        self.tw.lc.def_prim('keyboard_num', 0,
-                            lambda self: primitive_dictionary['keyboardnum']())
-        '''
+        self.tw.lc.def_prim('keyboard', 0,
+                            lambda self: primitive_dictionary['keyboard']())
 
         primitive_dictionary['readpixel'] = self._prim_readpixel
         palette.add_block('readpixel',
@@ -1021,6 +1000,12 @@ Journal objects'))
         """ Empty FILO """
         self.tw.lc.heap = []
 
+    def _prim_keyboard(self):
+        """ Return last character typed """
+        if self.tw.lc.update_values:
+            self.tw.lc.update_label_value('keyboard', self.tw.lc.keyboard)
+        return self.tw.lc.keyboard
+
     def _prim_kbinput(self):
         """ Query keyboard """
         if len(self.tw.keypress) == 1:
@@ -1338,6 +1323,20 @@ Journal objects'))
         csd.write("\n</CsScore>\n")
         csd.write("\n</CsoundSynthesizer>")
         csd.close()
+
+    def _prim_mouse_x(self):
+        """ Return mouse x coordinate """
+        mousex = int(self.tw.mouse_x - (self.tw.canvas.width / 2))
+        if self.tw.lc.update_values:
+            self.tw.lc.update_label_value('mousex', mousex)
+        return mousex
+
+    def _prim_mouse_y(self):
+        """ Return mouse y coordinate """
+        mousey = int((self.tw.canvas.height / 2) - self.tw.mouse_y)
+        if self.tw.lc.update_values:
+            self.tw.lc.update_label_value('mousey', mousey)
+        return mousey
 
     def _prim_mouse_button(self):
         """ Return 1 if mouse button is pressed """
