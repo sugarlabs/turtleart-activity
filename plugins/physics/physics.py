@@ -643,7 +643,7 @@ a Physics activity.'),
         self._polygon.append([x - width / 2., y + height / 2.])
         h = self._tw.turtles.get_active_turtle().get_heading()
         if h != 0:
-            self._rotate_polygon(x, y, h * pi / 180.)
+            self._rotate_polygon(x, y, (90 - h) * pi / 180.)
         self._prim_box2d_end_filled_polygon()
 
     def _prim_box2d_radius(self, tooth_count):
