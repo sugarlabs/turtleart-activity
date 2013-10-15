@@ -4369,6 +4369,8 @@ before making changes to your program'))
         self.status_spr.set_shape(self.status_shapes[shp])
         self.status_spr.set_label_attributes(12.0, rescale=False)
         if shp == 'status':
+            if label in ['True', 'False']:
+                label = _(label)
             self.status_spr.set_label('"%s"' % (str(label)))
         else:
             self.status_spr.set_label(str(label))
