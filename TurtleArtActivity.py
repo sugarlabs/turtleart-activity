@@ -1529,8 +1529,8 @@ in order to use the plugin.'))
     def empty_trash_alert(self):
         ''' We get confirmation from the user before emptying the trash '''
         alert = ConfirmationAlert()
-        alert.props.title = _('Empty the trash')
-        alert.props.msg = _('Do you really want to empty trash?')
+        alert.props.title = _('empty trash')
+        alert.props.msg = _('Do you really want to empty the trash?')
 
         def _empty_trash_alert_response_cb(alert, response_id, self):
             if response_id is gtk.RESPONSE_OK:
