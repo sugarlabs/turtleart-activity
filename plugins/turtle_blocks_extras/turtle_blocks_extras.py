@@ -36,7 +36,8 @@ from TurtleArt.taconstants import (DEFAULT_SCALE, ICON_SIZE, CONSTANTS,
                                    MACROS, COLORDICT)
 from TurtleArt.tautils import (round_int, debug_output, get_path,
                                data_to_string, find_group, image_to_base64,
-                               hat_on_top, listify, data_from_file)
+                               hat_on_top, listify, data_from_file,
+                               data_to_file, chooser_dialog, get_load_name)
 from TurtleArt.tajail import (myfunc, myfunc_import)
 
 
@@ -497,6 +498,28 @@ make "tmp first :taheap\nmake "taheap butfirst :taheap\noutput :tmp\nend\n')
         self.tw.lc.def_prim('isheapempty2', 0,
                             lambda self:
                             primitive_dictionary['isheapempty2']())
+
+        primitive_dictionary['saveheap'] = self._prim_save_heap
+        palette.add_block('saveheap',
+                          style='basic-style-1arg',
+                          label=_('save heap to file'),
+                          default=_('filename'),
+                          prim_name='saveheap',
+                          help_string=_('saves FILO (first-in \
+last-out heap) to a file'))
+        self.tw.lc.def_prim('saveheap', 1,
+                            lambda self, x: primitive_dictionary['saveheap'](x))
+
+        primitive_dictionary['loadheap'] = self._prim_load_heap
+        palette.add_block('loadheap',
+                          style='basic-style-1arg',
+                          label=_('load heap from file'),
+                          default=_('filename'),
+                          prim_name='loadheap',
+                          help_string=_('loads FILO (first-in \
+last-out heap) from a file'))
+        self.tw.lc.def_prim('loadheap', 1,
+                            lambda self, x: primitive_dictionary['loadheap'](x))
 
         primitive_dictionary['print'] = self._prim_print
         palette.add_block('comment',
@@ -1216,6 +1239,58 @@ Journal objects'))
             self.tw.showlabel('print', str(self.tw.lc.heap)[0:79] + '…')
         else:
             self.tw.showlabel('print', str(self.tw.lc.heap))
+
+    def _prim_load_heap(self, path):
+        """ Load FILO from file """
+        if type(path) == float:
+            path = ''
+        if self.tw.running_sugar:
+            # Choose a datastore object and push data to heap (Sugar only)
+            chooser_dialog(self.tw.parent, path,
+                           self.tw.lc.push_file_data_to_heap)
+        else:
+            if not os.path.exists(path):
+                path, tw.load_save_folder = get_load_name(
+                    '.*', self.tw.load_save_folder)
+                if path is None:
+                    return
+
+            data = data_from_file(path)
+            if data is not None:
+                for val in data:
+                    self.tw.lc.heap.append(val)
+
+        if len(self.tw.lc.heap) > 0:
+            self.tw.lc.update_label_value('pop', self.tw.lc.heap[-1])
+
+    def _prim_save_heap(self, path):
+        """ save FILO to file """
+        # TODO: add GNOME save
+
+        if self.tw.running_sugar:
+            from sugar import profile
+            from sugar.datastore import datastore
+            from sugar.activity import activity
+
+            # Save JSON-encoded heap to temporary file
+            heap_file = os.path.join(get_path(activity, 'instance'),
+                                     str(path) + '.txt')
+            data_to_file(self.tw.lc.heap, heap_file)
+
+            # Create a datastore object
+            dsobject = datastore.create()
+
+            # Write any metadata (specifically set the title of the file
+            #                     and specify that this is a plain text file).
+            dsobject.metadata['title'] = str(path)
+            dsobject.metadata['icon-color'] = profile.get_color().to_string()
+            dsobject.metadata['mime_type'] = 'text/plain'
+            dsobject.set_file_path(heap_file)
+            datastore.write(dsobject)
+            dsobject.destroy()
+        else:
+            heap_file = path
+            data_to_file(self.tw.lc.heap, heap_file)
 
     def _prim_push(self, val):
         """ Push value onto FILO """
