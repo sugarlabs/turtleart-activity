@@ -489,17 +489,6 @@ make "tmp first :taheap\nmake "taheap butfirst :taheap\noutput :tmp\nend\n')
         self.tw.lc.def_prim('isheapempty', 0,
                             lambda self: primitive_dictionary['isheapempty']())
 
-        primitive_dictionary['isheapempty2'] = self._prim_is_heap_empty_bool
-        palette.add_block('isheapempty2',
-                          style='boolean-block-style',
-                          label=_('empty heap?'),
-                          prim_name='isheapempty2',
-                          value_block=True,
-                          help_string=_('returns True if heap is empty'))
-        self.tw.lc.def_prim('isheapempty2', 0,
-                            lambda self:
-                            primitive_dictionary['isheapempty2']())
-
         primitive_dictionary['saveheap'] = self._prim_save_heap
         palette.add_block('saveheap',
                           style='basic-style-1arg',
@@ -521,6 +510,17 @@ last-out heap) to a file'))
 last-out heap) from a file'))
         self.tw.lc.def_prim('loadheap', 1,
                             lambda self, x: primitive_dictionary['loadheap'](x))
+
+        primitive_dictionary['isheapempty2'] = self._prim_is_heap_empty_bool
+        palette.add_block('isheapempty2',
+                          style='boolean-block-style',
+                          label=_('empty heap?'),
+                          prim_name='isheapempty2',
+                          value_block=True,
+                          help_string=_('returns True if heap is empty'))
+        self.tw.lc.def_prim('isheapempty2', 0,
+                            lambda self:
+                            primitive_dictionary['isheapempty2']())
 
         primitive_dictionary['print'] = self._prim_print
         palette.add_block('comment',
@@ -564,6 +564,14 @@ bottom of the screen'))
         self.tw.lc.def_prim('int', 1,
                             lambda self, x: primitive_dictionary['int'](x))
 
+        palette.add_block('polar',
+                          style='basic-style-extended-vertical',
+                          label=_('polar'),
+                          prim_name='polar',
+                          help_string=_('displays polar coordinates'))
+        self.tw.lc.def_prim('polar', 0,
+                            lambda self: self.tw.set_polar(True))
+
         primitive_dictionary['myfunction'] = self._prim_myfunction
         palette.add_block('myfunc1arg',
                           style='number-style-var-arg',
@@ -604,6 +612,14 @@ advanced multi-variable math equations, e.g., sin(x+y+z)'))
         self.tw.lc.def_prim('myfunction3', 4,
                             lambda self, f, x, y, z:
                             primitive_dictionary['myfunction'](f, [x, y, z]))
+
+        palette.add_block('cartesian',
+                          style='basic-style-extended-vertical',
+                          label=_('Cartesian'),
+                          prim_name='cartesian',
+                          help_string=_('displays Cartesian coordinates'))
+        self.tw.lc.def_prim('cartesian', 0,
+                            lambda self: self.tw.set_cartesian(True))
 
         primitive_dictionary['userdefined'] = self._prim_myblock
         palette.add_block('userdefined',
@@ -658,21 +674,52 @@ module found in the Journal'))
         MEDIA_SHAPES.append('pythonoff')
         MEDIA_SHAPES.append('pythonon')
 
-        palette.add_block('cartesian',
-                          style='basic-style-extended-vertical',
-                          label=_('Cartesian'),
-                          prim_name='cartesian',
-                          help_string=_('displays Cartesian coordinates'))
-        self.tw.lc.def_prim('cartesian', 0,
-                            lambda self: self.tw.set_cartesian(True))
+        primitive_dictionary['loadblock'] = self._prim_load_block
+        palette.add_block('loadblock',
+                          style='basic-style-var-arg',
+                          label=_('load'),
+                          prim_name='loadblock',
+                          default=_('forward'),
+                          help_string=_('loads a block'))
+        self.tw.lc.def_prim('loadblock', 1,
+                            lambda self, x:
+                            primitive_dictionary['loadblock'](x))
 
-        palette.add_block('polar',
-                          style='basic-style-extended-vertical',
-                          label=_('polar'),
-                          prim_name='polar',
-                          help_string=_('displays polar coordinates'))
-        self.tw.lc.def_prim('polar', 0,
-                            lambda self: self.tw.set_polar(True))
+        palette.add_block('loadblock2arg',
+                          style='basic-style-var-arg',
+                          hidden=True,
+                          label=_('load'),
+                          prim_name='loadblock2',
+                          string_or_number=True,
+                          default=[_('forward'), 100],
+                          help_string=_('loads a block'))
+        self.tw.lc.def_prim('loadblock2', 2,
+                            lambda self, x, y:
+                            primitive_dictionary['loadblock']([x, y]))
+
+        palette.add_block('loadblock3arg',
+                          style='basic-style-var-arg',
+                          hidden=True,
+                          label=_('load'),
+                          string_or_number=True,
+                          prim_name='loadblock3',
+                          default=[_('setxy'), 0, 0],
+                          help_string=_('loads a block'))
+        self.tw.lc.def_prim('loadblock3', 3,
+                            lambda self, x, y, z:
+                            primitive_dictionary['loadblock']([x, y, z]))
+
+        primitive_dictionary['loadpalette'] = self._prim_load_palette
+        palette.add_block('loadpalette',
+                          style='basic-style-1arg',
+                          string_or_number=True,
+                          label=_('select palette'),
+                          prim_name='loadpalette',
+                          default=_('turtle'),
+                          help_string=_('selects a palette'))
+        self.tw.lc.def_prim('loadpalette', 1,
+                            lambda self, x:
+                            primitive_dictionary['loadpalette'](x))
 
         palette.add_block('addturtle',
                           style='basic-style-1arg',
@@ -752,53 +799,6 @@ module found in the Journal'))
                           prim_name='clamp',
                           special_name=_('top'),
                           help_string=_('top of a collapsed stack'))
-
-        primitive_dictionary['loadblock'] = self._prim_load_block
-        palette.add_block('loadblock',
-                          style='basic-style-var-arg',
-                          label=_('load'),
-                          prim_name='loadblock',
-                          default=_('forward'),
-                          help_string=_('loads a block'))
-        self.tw.lc.def_prim('loadblock', 1,
-                            lambda self, x:
-                            primitive_dictionary['loadblock'](x))
-
-        palette.add_block('loadblock2arg',
-                          style='basic-style-var-arg',
-                          hidden=True,
-                          label=_('load'),
-                          prim_name='loadblock2',
-                          string_or_number=True,
-                          default=[_('forward'), 100],
-                          help_string=_('loads a block'))
-        self.tw.lc.def_prim('loadblock2', 2,
-                            lambda self, x, y:
-                            primitive_dictionary['loadblock']([x, y]))
-
-        palette.add_block('loadblock3arg',
-                          style='basic-style-var-arg',
-                          hidden=True,
-                          label=_('load'),
-                          string_or_number=True,
-                          prim_name='loadblock3',
-                          default=[_('setxy'), 0, 0],
-                          help_string=_('loads a block'))
-        self.tw.lc.def_prim('loadblock3', 3,
-                            lambda self, x, y, z:
-                            primitive_dictionary['loadblock']([x, y, z]))
-
-        primitive_dictionary['loadpalette'] = self._prim_load_palette
-        palette.add_block('loadpalette',
-                          style='basic-style-1arg',
-                          string_or_number=True,
-                          label=_('select palette'),
-                          prim_name='loadpalette',
-                          default=_('turtle'),
-                          help_string=_('selects a palette'))
-        self.tw.lc.def_prim('loadpalette', 1,
-                            lambda self, x:
-                            primitive_dictionary['loadpalette'](x))
 
     def _portfolio_palette(self):
         debug_output('creating %s palette' % _('portfolio'),
