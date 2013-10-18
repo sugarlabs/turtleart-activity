@@ -1340,7 +1340,7 @@ class TurtleArtWindow():
             for g in find_group(blk):
                 g.spr.move_relative((int(dx), int(dy)))
                 g.spr.save_xy = g.spr.get_xy()
-                if self.running_sugar:  # and not self.hw in [XO1]:
+                if self.running_sugar and not self.hw in [XO1]:
                     g.spr.move_relative((self.activity.hadj_value,
                                          self.activity.vadj_value))
             y += int(h + 3)
@@ -1378,7 +1378,7 @@ class TurtleArtWindow():
             for g in find_group(blk):
                 g.spr.move_relative((dx, dy))
                 g.spr.save_xy = g.spr.get_xy()
-                if self.running_sugar:  # and not self.hw in [XO1]:
+                if self.running_sugar and not self.hw in [XO1]:
                     g.spr.move_relative((self.activity.hadj_value,
                                          self.activity.vadj_value))
             x += int(w + 4)
@@ -1432,7 +1432,7 @@ class TurtleArtWindow():
             if show:
                 self.palette_button[2].save_xy = \
                     self.palette_button[2].get_xy()
-                if self.running_sugar:  # and not self.hw in [XO1]:
+                if self.running_sugar and not self.hw in [XO1]:
                     self.palette_button[2].move_relative(
                         (self.activity.hadj_value, self.activity.vadj_value))
                 self.palette_sprs[n][self.orientation].set_layer(
@@ -1450,7 +1450,7 @@ class TurtleArtWindow():
                 Sprite(self.sprite_list, x, y, svg_str_to_pixbuf(
                     svg.palette(w, h)))
             self.palette_sprs[n][self.orientation].save_xy = (x, y)
-            if self.running_sugar:  # and not self.hw in [XO1]:
+            if self.running_sugar and not self.hw in [XO1]:
                 self.palette_sprs[n][self.orientation].move_relative(
                     (self.activity.hadj_value, self.activity.vadj_value))
             if self.orientation == 0 and w > self.width:
@@ -1480,6 +1480,8 @@ class TurtleArtWindow():
     def button_press(self, mask, x, y):
         if self.running_sugar:
             self._show_unfullscreen_button()
+
+        self.activity.hide_store()
 
         # Find out what was clicked
         spr = self.sprite_list.find_sprite((x, y))

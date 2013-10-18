@@ -1647,7 +1647,7 @@ in order to use the plugin.'))
         ''' Anything that needs restoring after a clear screen can go here '''
         pass
 
-    def _hide_store(self, widget=None):
+    def hide_store(self, widget=None):
         if self._sample_window is not None:
             self._sample_box.hide()
 

@@ -397,8 +397,6 @@ return %s(self)" % (p, P, P)
         MenuBuilder.make_menu_item(menu, _('New'), self._do_new_cb)
         MenuBuilder.make_menu_item(menu, _('Show sample projects'),
                                    self._create_store)
-        MenuBuilder.make_menu_item(menu, _('Hide sample projects'),
-                                   self._hide_store) 
         MenuBuilder.make_menu_item(menu, _('Open'), self._do_open_cb)
         MenuBuilder.make_menu_item(menu, _('Load project'), self._do_load_cb)
         MenuBuilder.make_menu_item(menu, _('Save'), self._do_save_cb)
@@ -787,7 +785,7 @@ Would you like to save before quitting?'))
         ''' Anything that needs restoring after a clear screen can go here '''
         pass
 
-    def _hide_store(self, widget=None):
+    def hide_store(self, widget=None):
         if self._sample_window is not None:
             self._sample_box.hide()
 
