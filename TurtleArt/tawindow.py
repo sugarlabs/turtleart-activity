@@ -1481,6 +1481,8 @@ class TurtleArtWindow():
         if self.running_sugar:
             self._show_unfullscreen_button()
 
+        self.activity.hide_store()
+
         # Find out what was clicked
         spr = self.sprite_list.find_sprite((x, y))
 
@@ -1596,7 +1598,10 @@ before making changes to your program'))
                 elif blk.name == 'restore':
                     self.restore_latest_from_trash()
                 elif blk.name == 'empty':
-                    self._empty_trash()
+                    if self.running_sugar:
+                        self.activity.empty_trash_alert()
+                    else:
+                        self.empty_trash()
                 elif blk.name == 'trashall':
                     for b in self.just_blocks():
                         if b.type != 'trash':
@@ -2150,7 +2155,7 @@ before making changes to your program'))
 
         self.trash_stack.remove(blk)
 
-    def _empty_trash(self):
+    def empty_trash(self):
         ''' Permanently remove all blocks presently in the trash can. '''
         for blk in self.block_list.list:
             if blk.type == 'trash':

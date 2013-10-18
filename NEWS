@@ -1,9 +1,22 @@
 192
 
 ENHANCEMENTS:
-* Use alert when connecting to a shared instance
-* Fine-tune size of remote turtle labels
+* New sample program (Snake game)
+* Refactored sensors-follow-me example
 * New translations
+* Moved save snapshot button to Load/Save palette (Users were confusing it
+  for the save image button.)
+* New blocks on extras palette: load_file_to_heap and save_heap_to_file
+* Added confirmation alert to empty trash block
+* Dismiss samples store by clicking on canvas
+* Reordered layout of extras palette to better commodate new blocks
+
+BUG FIXES:
+* Fixed regression in Sugar 84 support
+* Fixed problem with GNOME due to Sugar button check (Alan Aguiar)
+* Fixed label updates on mouse x, mouse y, and keyboard
+* Fixed bug with see block
+* Fixed bug in sharing filled shapes
 
 191
 
@@ -12,7 +25,7 @@ ENHANCEMENTS:
 * New translations
 * Add support for querying remote turtle position, heading
 
-BUG FIX:
+BUG FIXES:
 * Fixed collaboration bug (#4631)
 * Fixed i18n problem with 'select palette' block
 * Fixed problem with load block 'turtle'
@@ -36,6 +49,7 @@ ENHANCEMENT:
 BUG FIXES:
 * Fix alignment problem with GNOME version
 * Fix problem with default coordinate system
+
 
 188
 

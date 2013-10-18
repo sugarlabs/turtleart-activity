@@ -1526,6 +1526,25 @@ in order to use the plugin.'))
                     self._old_cursor = self.get_window().get_cursor()
                 self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.HAND1))
 
+    def empty_trash_alert(self):
+        ''' We get confirmation from the user before emptying the trash '''
+        alert = ConfirmationAlert()
+        alert.props.title = _('empty trash')
+        alert.props.msg = _('Do you really want to empty the trash?')
+
+        def _empty_trash_alert_response_cb(alert, response_id, self):
+            if response_id is gtk.RESPONSE_OK:
+                _logger.debug('emptying the trash')
+                self.remove_alert(alert)
+                self.tw.empty_trash()
+            elif response_id is gtk.RESPONSE_CANCEL:
+                _logger.debug('cancel emptying the trash')
+                self.remove_alert(alert)
+
+        alert.connect('response', _empty_trash_alert_response_cb, self)
+        self.add_alert(alert)
+        alert.show()
+
     def _add_label(self, string, toolbar, width=None):
         ''' Add a label to a toolbar. '''
         label = gtk.Label(string)
@@ -1628,7 +1647,7 @@ in order to use the plugin.'))
         ''' Anything that needs restoring after a clear screen can go here '''
         pass
 
-    def _hide_store(self, widget=None):
+    def hide_store(self, widget=None):
         if self._sample_window is not None:
             self._sample_box.hide()
 
