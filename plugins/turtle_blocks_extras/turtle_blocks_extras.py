@@ -397,6 +397,7 @@ to the stack'))
         palette.add_block('see',
                           style='box-style',
                           label=_('turtle sees'),
+                          value_block=True,
                           prim_name='see',
                           help_string=_('returns the color that the turtle \
 "sees"'))
