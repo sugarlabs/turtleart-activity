@@ -2,14 +2,21 @@
 
 ENHANCEMENTS:
 * New sample program (Snake game)
+* Refactored sensors-follow-me example
 * New translations
 * Moved save snapshot button to Load/Save palette (Users were confusing it
   for the save image button.)
+* New blocks on extras palette: load_file_to_heap and save_heap_to_file
+* Added confirmation alert to empty trash block
+* Dismiss samples store by clicking on canvas
+* Reordered layout of extras palette to better commodate new blocks
 
 BUG FIXES:
 * Fixed regression in Sugar 84 support
 * Fixed problem with GNOME due to Sugar button check (Alan Aguiar)
 * Fixed label updates on mouse x, mouse y, and keyboard
+* Fixed bug with see block
+* Fixed bug in sharing filled shapes
 
 191
 
