@@ -495,8 +495,12 @@ class Turtle:
         if self._turtles.turtle_window.sharing() and share:
             shared_poly_points = []
             for p in self._poly_points:
-                shared_poly_points.append(
-                    (self._turtles.screen_to_turtle_coordinates(p)))
+                x, y = self._turtles.turtle_to_screen_coordinates(
+                    (p[1], p[2]))
+                if p[0] in ['move', 'line']:
+                    shared_poly_points.append((p[0], x, y))
+                elif p[0] in ['rarc', 'larc']:
+                    shared_poly_points.append((p[0], x, y, p[3], p[4], p[5]))
                 event = 'F|%s' % (data_to_string(
                         [self._turtles.turtle_window.nick,
                          shared_poly_points]))

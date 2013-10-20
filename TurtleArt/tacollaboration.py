@@ -1,4 +1,4 @@
-#Copyright (c) 2011-12 Walter Bender
+#Copyright (c) 2011-13 Walter Bender
 #Copyright (c) 2011 Collabora Ltd. <http://www.collabora.co.uk/>
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -401,9 +401,14 @@ class Collaboration():
             [nick, poly_points] = data_from_string(payload)
             shared_poly_points = []
             for i in range(len(poly_points)):
-                shared_poly_points.append(
-                    (self._tw.turtles.turtle_to_screen_coordinates
-                     (poly_points[i][0], poly_points[i][1])))
+                x, y = self._turtles.screen_to_turtle_coordinates(
+                         (poly_points[i][1], poly_points[i][2]))
+                if poly_points[i][0] in ['move', 'line']:
+                    shared_poly_points.append((poly_points[i][0], x, y))
+                elif poly_points[i][0] in ['rarc', 'larc']:
+                    shared_poly_points.append((poly_points[i][0], x, y,
+                         poly_points[i][3], poly_points[i][4],
+                         poly_points[i][5]))
             if nick != self._tw.nick:
                 self._tw.turtles.set_turtle(nick)
                 self._tw.turtles.get_active_turtle().set_poly_points(
