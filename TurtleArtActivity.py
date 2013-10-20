@@ -159,30 +159,23 @@ class TurtleArtActivity(activity.Activity):
         # scrolling window
         self._setup_palette_toolbar()
 
-        if self.keep_button in self._toolbox.toolbar:
+        if self.samples_button in self._toolbox.toolbar:
             self._toolbox.toolbar.remove(self.extras_separator)
-            self._toolbox.toolbar.remove(self.keep_button)
             self._toolbox.toolbar.remove(self.samples_button)
             self._toolbox.toolbar.remove(self.stop_separator)
         self._toolbox.toolbar.remove(self.stop_button)
         self._view_toolbar.remove(self._coordinates_toolitem)
 
         if gtk.gdk.screen_width() / 14 < style.GRID_CELL_SIZE:
-            self.keep_button2.show()
-            self.keep_label2.show()
             self.samples_button2.show()
             self.samples_label2.show()
             self._toolbox.toolbar.insert(self.stop_button, -1)
         else:
-            self.keep_button2.hide()
-            self.keep_label2.hide()
             self.samples_button2.hide()
             self.samples_label2.hide()
             self._toolbox.toolbar.insert(self.extras_separator, -1)
             self.extras_separator.props.draw = True
             self.extras_separator.show()
-            self._toolbox.toolbar.insert(self.keep_button, -1)
-            self.keep_button.show()
             self._toolbox.toolbar.insert(self.samples_button, -1)
             self.samples_button.show()
             self._toolbox.toolbar.insert(self.stop_separator, -1)
@@ -381,11 +374,12 @@ class TurtleArtActivity(activity.Activity):
     def _draw_cartoon(self):
         pos = self.tw.turtles.get_active_turtle().get_xy()
         self.tw.turtles.get_active_turtle().set_xy(
-            (int(-gtk.gdk.screen_width() / 2), 0), pendown=False)
+            int(-gtk.gdk.screen_width() / 2), 0, pendown=False)
         self.tw.lc.insert_image(center=False, resize=False,
                                 filepath=os.path.join(
                 activity.get_bundle_path(), 'images', 'turtle-a.png'))
-        self.tw.turtles.get_active_turtle().set_xy(pos, pendown=False)
+        self.tw.turtles.get_active_turtle().set_xy(pos[0], pos[1],
+                                                   pendown=False)
 
     def do_run_cb(self, button):
         ''' Callback for run button (rabbit) '''
@@ -752,7 +746,7 @@ class TurtleArtActivity(activity.Activity):
         ''' Add the rest of the buttons to the main toolbar '''
         if not self.has_toolbarbox:
             self.samples_button = self._add_button(
-                'ta-open', _('Load example'), self.do_samples_cb,
+                'ta-open', _('Load challenges'), self._create_store,
                 self._project_toolbar)
             self._add_separator(self._project_toolbar, expand=False,
                                 visible=True)
@@ -764,12 +758,8 @@ class TurtleArtActivity(activity.Activity):
         self.extras_separator = self._add_separator(
             self._toolbox.toolbar, expand=False, visible=True)
 
-        self.keep_button = self._add_button(
-            'filesaveoff', _('Save snapshot'), self.do_keep_cb,
-            self._toolbox.toolbar)
-
         self.samples_button = self._add_button(
-            'ta-open', _('Load example'), self.do_samples_cb,
+            'ta-open', _('Load challenges'), self._create_store,
             self._toolbox.toolbar)
 
         self._toolbox.toolbar.insert(self._help_button, -1)
@@ -935,7 +925,6 @@ class TurtleArtActivity(activity.Activity):
             if self.tw.hw in [XO1, XO15, XO175, XO4]:
                 self._make_palette_buttons(self._palette_toolbar)
             '''
-            self._make_challenge_store(self._palette_toolbar)
 
             self._palette_toolbar.show()
             self._overflow_box.show_all()
@@ -1029,8 +1018,8 @@ class TurtleArtActivity(activity.Activity):
                 None, button_box)
             self.samples_button2, self.samples_label2 = \
                 self._add_button_and_label('ta-open',
-                                           _('Load example'),
-                                           self.do_samples_cb,
+                                           _('Load challenges'),
+                                           self._create_store,
                                            None,
                                            button_box)
 
@@ -1079,15 +1068,6 @@ class TurtleArtActivity(activity.Activity):
             else:
                 self._palette.popdown(immediate=True)
             return
-
-    def _make_challenge_store(self, toolbar):
-        if hasattr(self, '_levels_tools'):
-            toolbar.insert(self._levels_tools, -1)
-        else:
-            self._levels_tools = self._add_button('challenges',
-                                                  _('Load challenges'),
-                                                  self._create_store,
-                                                  toolbar)
 
     def _make_palette_buttons(self, toolbar, palette_button=False):
         ''' Creates the palette and block buttons for both toolbar types'''
@@ -1402,7 +1382,7 @@ in order to use the plugin.'))
                  self._selected_challenge is None):
             self._selected_challenge = os.path.join(
                 activity.get_bundle_path(),
-                'challenges',
+                'samples', 'thumbnails',
                 self.metadata['challenge'] + '.svg')
             if 'offsets' in self.metadata:
                 x, y, s = self.metadata['offsets'][1:-1].split(',')
@@ -1632,7 +1612,7 @@ in order to use the plugin.'))
         self.tw.canvas.clearscreen()
         self._draw_cartoon()
         if custom:
-            self.tw.turtles.get_active_turtle().set_xy((0, 0), pendown=False)
+            self.tw.turtles.get_active_turtle().set_xy(0, 0, pendown=False)
             self.tw.lc.insert_image(center=True,
                                     filepath=self._custom_filepath,
                                     resize=True, offset=False)
@@ -1647,7 +1627,9 @@ in order to use the plugin.'))
                 scale = 33
             _logger.debug('%d, %d, %d' % (offset[0], offset[1], scale))
             save_scale = self.tw.lc.scale
-            self.tw.turtles.get_active_turtle().set_xy((offset), pendown=False)
+            self.tw.turtles.get_active_turtle().set_xy(offset[0],
+                                                       offset[1],
+                                                       pendown=False)
 
             self.tw.lc.scale = scale
             self.tw.lc.insert_image(center=False,
@@ -1655,7 +1637,7 @@ in order to use the plugin.'))
                                     resize=False,
                                     offset=True)
             self.tw.lc.scale = save_scale
-        self.tw.turtles.get_active_turtle().set_xy((0, 0), pendown=False)
+        self.tw.turtles.get_active_turtle().set_xy(0, 0, pendown=False)
 
     def _radio_button_factory(self, button_name, toolbar, cb, arg, tooltip,
                               group, position=-1):
@@ -1704,7 +1686,7 @@ in order to use the plugin.'))
         self.add_alert(alert)
         alert.show()
 
-    def _hide_store(self, widget=None):
+    def hide_store(self, widget=None):
         if self._challenge_window is not None:
             self._challenge_box.hide()
 
@@ -1793,6 +1775,7 @@ in order to use the plugin.'))
 
     def _scan_for_challenges(self):
         file_list = list(glob.glob(os.path.join(activity.get_bundle_path(),
-                                                'challenges', '*.svg')))
+                                                'samples', 'thumbnails',
+                                                '*.svg')))
         file_list.sort()
         return file_list

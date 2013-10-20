@@ -163,12 +163,11 @@ msgstr ""
 msgid "button"
 msgstr ""
 
-#: taextras.py:90 taextras.py:358 TurtleArt/tabasics.py:295
-#: TurtleArt/tabasics.py:363
+#: TurtleArt/tabasics.py:295 TurtleArt/tabasics.py:363
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1194
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1199
 msgid "gray"
-msgstr ""
+msgstr "灰色"
 
 #: taextras.py:91 taextras.py:356
 msgid "light"
@@ -231,15 +230,15 @@ msgstr ""
 msgid "move Butia"
 msgstr ""
 
-#: taextras.py:106 TurtleArt/tabasics.py:158
+#: TurtleArt/tabasics.py:158
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:871
 msgid "left"
-msgstr ""
+msgstr "左"
 
-#: taextras.py:107 TurtleArt/tabasics.py:170
+#: TurtleArt/tabasics.py:170
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:895
 msgid "right"
-msgstr ""
+msgstr "右"
 
 #: taextras.py:108
 msgid "moves the Butia motors at the specified speed"
@@ -313,10 +312,9 @@ msgstr ""
 msgid "write hack pin Butia"
 msgstr ""
 
-#: taextras.py:129 taextras.py:463 TurtleArt/tabasics.py:924
-#: TurtleArt/tawindow.py:4427
+#: TurtleArt/tabasics.py:924 TurtleArt/tawindow.py:4427
 msgid "value"
-msgstr ""
+msgstr "値"
 
 #: taextras.py:130
 msgid "set a hack pin to 0 or 1"
@@ -434,14 +432,14 @@ msgstr ""
 msgid "follow a color or calibration"
 msgstr ""
 
-#: taextras.py:163 plugins/camera_sensor/camera_sensor.py:80
+#: plugins/camera_sensor/camera_sensor.py:80
 #: plugins/camera_sensor/camera_sensor.py:93
 #: plugins/camera_sensor/camera_sensor.py:128
 #: plugins/camera_sensor/camera_sensor.py:141
 #: plugins/light_sensor/light_sensor.py:56
 #: plugins/light_sensor/light_sensor.py:63
 msgid "brightness"
-msgstr ""
+msgstr "明るさ"
 
 #: taextras.py:164
 msgid "set the camera brightness as a value between 0 to 255."
@@ -837,13 +835,13 @@ msgstr ""
 msgid "joint"
 msgstr ""
 
-#: taextras.py:296 TurtleArt/tabasics.py:195 TurtleArt/tabasics.py:261
+#: TurtleArt/tabasics.py:195 TurtleArt/tabasics.py:261
 msgid "x"
-msgstr ""
+msgstr "x"
 
-#: taextras.py:297 TurtleArt/tabasics.py:195 TurtleArt/tabasics.py:261
+#: TurtleArt/tabasics.py:195 TurtleArt/tabasics.py:261
 msgid "y"
-msgstr ""
+msgstr "y"
 
 #: taextras.py:298
 msgid ""
@@ -1000,16 +998,16 @@ msgstr ""
 msgid "ultrasonic"
 msgstr ""
 
-#: taextras.py:355 TurtleArt/tabasics.py:283 TurtleArt/tabasics.py:294
+#: TurtleArt/tabasics.py:283 TurtleArt/tabasics.py:294
 #: TurtleArt/tabasics.py:344
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1197
 msgid "color"
-msgstr ""
+msgstr "色"
 
-#: taextras.py:357 plugins/audio_sensors/audio_sensors.py:83
+#: plugins/audio_sensors/audio_sensors.py:83
 #: plugins/audio_sensors/audio_sensors.py:98 pysamples/grecord.py:205
 msgid "sound"
-msgstr ""
+msgstr "サウンド"
 
 #. TRANS: The brick is the NXT controller
 #: taextras.py:360
@@ -1089,9 +1087,9 @@ msgstr ""
 msgid "frequency"
 msgstr ""
 
-#: taextras.py:378 plugins/turtle_blocks_extras/turtle_blocks_extras.py:451
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:451
 msgid "time"
-msgstr ""
+msgstr "時間"
 
 #: taextras.py:379
 msgid "Play a tone at frequency for time."
@@ -2117,7 +2115,7 @@ msgstr "query-kb（キー入力問い合わせ）ブロックの結果を保持�
 
 #. TRANS: "name" option from activity.info file
 msgid "TurtleBlocks"
-msgstr ""
+msgstr "タートルブロック"
 
 #. TRANS: "summary" option from activity.info file
 #. TRANS: "description" option from activity.info file
@@ -2130,62 +2128,62 @@ msgstr ""
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:740
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:751
 msgid "forward"
-msgstr ""
+msgstr "進む"
 
 #: TurtleArt/tabasics.py:135
 msgid "back"
-msgstr ""
+msgstr "戻る"
 
 #: TurtleArt/tabasics.py:182
 msgid "arc"
-msgstr ""
+msgstr "弧をえがく"
 
 #: TurtleArt/tabasics.py:182
 msgid "angle"
-msgstr ""
+msgstr "角度"
 
 #: TurtleArt/tabasics.py:182
 msgid "radius"
-msgstr ""
+msgstr "半径"
 
 #: TurtleArt/tabasics.py:195 TurtleArt/tabasics.py:261
 msgid "set xy"
-msgstr ""
+msgstr "x,yをセットする"
 
 #: TurtleArt/tabasics.py:209
 msgid "set heading"
-msgstr ""
+msgstr "方向を設定する"
 
 #: TurtleArt/tabasics.py:221 TurtleArt/tawindow.py:4105
 msgid "xcor"
-msgstr ""
+msgstr "x"
 
 #: TurtleArt/tabasics.py:232 TurtleArt/tawindow.py:4106
 msgid "ycor"
-msgstr ""
+msgstr "y"
 
 #: TurtleArt/tabasics.py:243 TurtleArt/tawindow.py:4106
 msgid "heading"
-msgstr ""
+msgstr "角度"
 
 #: TurtleArt/tabasics.py:283 TurtleArt/tabasics.py:295
 #: TurtleArt/tabasics.py:354
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1193
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1198
 msgid "shade"
-msgstr ""
+msgstr "シェード"
 
 #: TurtleArt/tabasics.py:309
 msgid "set color"
-msgstr ""
+msgstr "色を設定"
 
 #: TurtleArt/tabasics.py:321
 msgid "set shade"
-msgstr ""
+msgstr "シェードを設定"
 
 #: TurtleArt/tabasics.py:333
 msgid "set gray"
-msgstr ""
+msgstr "灰色に設定"
 
 #: TurtleArt/tabasics.py:355
 msgid "holds current pen shade"
@@ -2193,19 +2191,19 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:372
 msgid "pen up"
-msgstr ""
+msgstr "ペンを上げる"
 
 #: TurtleArt/tabasics.py:381
 msgid "pen down"
-msgstr ""
+msgstr "ペンを置く"
 
 #: TurtleArt/tabasics.py:390
 msgid "set pen size"
-msgstr ""
+msgstr "ペンの太さを設定する"
 
 #: TurtleArt/tabasics.py:404
 msgid "start fill"
-msgstr ""
+msgstr "塗りつぶし開始"
 
 #: TurtleArt/tabasics.py:406
 msgid "starts filled polygon (used with end fill block)"
@@ -2213,7 +2211,7 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:413
 msgid "end fill"
-msgstr ""
+msgstr "塗りつぶし終了"
 
 #: TurtleArt/tabasics.py:415
 msgid "completes filled polygon (used with start fill block)"
@@ -2221,67 +2219,67 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:422
 msgid "pen size"
-msgstr ""
+msgstr "ペンのサイズ"
 
 #: TurtleArt/tabasics.py:439
 msgid "red"
-msgstr ""
+msgstr "赤"
 
 #: TurtleArt/tabasics.py:440
 msgid "orange"
-msgstr ""
+msgstr "オレンジ色"
 
 #: TurtleArt/tabasics.py:442
 msgid "yellow"
-msgstr ""
+msgstr "黄色"
 
 #: TurtleArt/tabasics.py:444
 msgid "green"
-msgstr ""
+msgstr "緑色"
 
 #: TurtleArt/tabasics.py:445
 msgid "cyan"
-msgstr ""
+msgstr "シアン"
 
 #: TurtleArt/tabasics.py:446
 msgid "blue"
-msgstr ""
+msgstr "青色"
 
 #: TurtleArt/tabasics.py:447
 msgid "purple"
-msgstr ""
+msgstr "紫色"
 
 #: TurtleArt/tabasics.py:449
 msgid "white"
-msgstr ""
+msgstr "白色"
 
 #: TurtleArt/tabasics.py:450
 msgid "black"
-msgstr ""
+msgstr "黒色"
 
 #: TurtleArt/tabasics.py:456
 msgid "set text color"
-msgstr ""
+msgstr "テキストの色を設定"
 
 #: TurtleArt/tabasics.py:467
 msgid "set text size"
-msgstr ""
+msgstr "テキストのサイズを設定"
 
 #: TurtleArt/tabasics.py:559
 msgid "plus"
-msgstr ""
+msgstr "足す"
 
 #: TurtleArt/tabasics.py:571
 msgid "minus"
-msgstr ""
+msgstr "引く"
 
 #: TurtleArt/tabasics.py:585
 msgid "multiply"
-msgstr ""
+msgstr "かける"
 
 #: TurtleArt/tabasics.py:597
 msgid "divide"
-msgstr ""
+msgstr "割る"
 
 #: TurtleArt/tabasics.py:610
 msgid "identity"
@@ -2301,35 +2299,35 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:632
 msgid "square root"
-msgstr ""
+msgstr "平方根"
 
 #: TurtleArt/tabasics.py:642
 msgid "random"
-msgstr ""
+msgstr "ランダム"
 
 #: TurtleArt/tabasics.py:642
 msgid "min"
-msgstr ""
+msgstr "最小"
 
 #: TurtleArt/tabasics.py:642
 msgid "max"
-msgstr ""
+msgstr "最大"
 
 #: TurtleArt/tabasics.py:658
 msgid "number"
-msgstr ""
+msgstr "数"
 
 #: TurtleArt/tabasics.py:667
 msgid "greater than"
-msgstr ""
+msgstr "大なり"
 
 #: TurtleArt/tabasics.py:679
 msgid "less than"
-msgstr ""
+msgstr "小なり"
 
 #: TurtleArt/tabasics.py:691
 msgid "equal"
-msgstr ""
+msgstr "等しい"
 
 #: TurtleArt/tabasics.py:701
 msgid "not"
@@ -2345,7 +2343,7 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:739
 msgid "wait"
-msgstr ""
+msgstr "待つ"
 
 #: TurtleArt/tabasics.py:743
 msgid "pauses program execution a specified number of seconds"
@@ -2353,23 +2351,23 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:750
 msgid "forever"
-msgstr ""
+msgstr "ループ"
 
 #: TurtleArt/tabasics.py:761 TurtleArt/tabasics.py:765
 msgid "repeat"
-msgstr ""
+msgstr "繰り返し"
 
 #: TurtleArt/tabasics.py:772 TurtleArt/tabasics.py:785
 msgid "if"
-msgstr ""
+msgstr "もし"
 
 #: TurtleArt/tabasics.py:772 TurtleArt/tabasics.py:785
 msgid "then"
-msgstr ""
+msgstr "ならば"
 
 #: TurtleArt/tabasics.py:775
 msgid "if then"
-msgstr ""
+msgstr "もし ならば"
 
 #: TurtleArt/tabasics.py:777
 msgid "if-then operator that uses boolean operators from Numbers palette"
@@ -2377,11 +2375,11 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:785
 msgid "else"
-msgstr ""
+msgstr "もしくは"
 
 #: TurtleArt/tabasics.py:789 TurtleArt/tabasics.py:797
 msgid "if then else"
-msgstr ""
+msgstr "もし ならば もしくは"
 
 #: TurtleArt/tabasics.py:790 TurtleArt/tabasics.py:798
 msgid "if-then-else operator that uses boolean operators from Numbers palette"
@@ -2405,7 +2403,7 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:822
 msgid "stop action"
-msgstr ""
+msgstr "アクションを止める"
 
 #: TurtleArt/tabasics.py:825
 msgid "stops current action"
@@ -2413,7 +2411,7 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:839 pysamples/grecord.py:213
 msgid "start"
-msgstr ""
+msgstr "スタート"
 
 #: TurtleArt/tabasics.py:849 TurtleArt/tabasics.py:850
 #: TurtleArt/tabasics.py:851
@@ -2432,7 +2430,7 @@ msgstr ""
 #: TurtleArt/tawindow.py:1461 TurtleArt/tawindow.py:2077
 #: TurtleArt/tawindow.py:4363
 msgid "action"
-msgstr ""
+msgstr "アクション"
 
 #: TurtleArt/tabasics.py:861
 msgid "top of nameable action stack"
@@ -2460,18 +2458,18 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:924 TurtleArt/tawindow.py:4427
 msgid "store in"
-msgstr ""
+msgstr "入れる"
 
 #: TurtleArt/tabasics.py:924 TurtleArt/tabasics.py:939
 msgid "box"
-msgstr ""
+msgstr "ボックス"
 
 #: TurtleArt/tabasics.py:928 TurtleArt/tabasics.py:942
 #: TurtleArt/tawindow.py:1355 TurtleArt/tawindow.py:1486
 #: TurtleArt/tawindow.py:2081 TurtleArt/tawindow.py:4390
 #: TurtleArt/tawindow.py:4418
 msgid "my box"
-msgstr ""
+msgstr "マイボックス"
 
 #: TurtleArt/tabasics.py:952 TurtleArt/tabasics.py:971
 msgid "action 1"
@@ -2876,7 +2874,7 @@ msgstr ""
 #: plugins/audio_sensors/audio_sensors.py:90
 #: plugins/audio_sensors/audio_sensors.py:105
 msgid "loudness"
-msgstr ""
+msgstr "音量"
 
 #: plugins/audio_sensors/audio_sensors.py:91
 #: plugins/audio_sensors/audio_sensors.py:106
@@ -2887,7 +2885,7 @@ msgstr ""
 #: plugins/audio_sensors/audio_sensors.py:127
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:322
 msgid "pitch"
-msgstr ""
+msgstr "ピッチ"
 
 #: plugins/audio_sensors/audio_sensors.py:120
 #: plugins/audio_sensors/audio_sensors.py:128
@@ -2947,7 +2945,7 @@ msgstr ""
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:109
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:112
 msgid "while"
-msgstr ""
+msgstr "の間"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:113
 msgid "do-while-True operator that uses boolean operators from Numbers palette"
@@ -2956,7 +2954,7 @@ msgstr ""
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:119
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:122
 msgid "until"
-msgstr ""
+msgstr "まで"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:123
 msgid "do-until-True operator that uses boolean operators from Numbers palette"
@@ -3088,7 +3086,7 @@ msgstr ""
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:343
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:354
 msgid "button down"
-msgstr ""
+msgstr "ボタンが押されている"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:346
 msgid "returns 1 if mouse button is pressed"
@@ -3100,7 +3098,7 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:364
 msgid "mouse x"
-msgstr ""
+msgstr "マウスx"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:367
 msgid "returns mouse x coordinate"
@@ -3108,7 +3106,7 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:374
 msgid "mouse y"
-msgstr ""
+msgstr "マウスy"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:377
 msgid "returns mouse y coordinate"
@@ -3116,15 +3114,15 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:385
 msgid "query keyboard"
-msgstr ""
+msgstr "キーボード"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:394
 msgid "keyboard"
-msgstr ""
+msgstr "キーボード"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:430
 msgid "read pixel"
-msgstr ""
+msgstr "ピクセルを読む"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:433
 msgid "RGB color under the turtle is pushed to the stack"
@@ -3132,7 +3130,7 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:441
 msgid "turtle sees"
-msgstr ""
+msgstr "タートルが見ているもの"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:443
 msgid "returns the color that the turtle \"sees\""

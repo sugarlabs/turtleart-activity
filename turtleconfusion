@@ -30,7 +30,7 @@ TAPATH = '/usr/share/sugar/activities/TurtleArt.activity'
 if len(argv) > 1:
     argv = argv[1:]
     params = string.join(argv, ' ')
-    os.system(os.path.join(TAPATH, 'turtleblocks.py') + ' ' + params)
+    os.system(os.path.join(TAPATH, 'turtleconfusion.py') + ' ' + params)
 else:
-    os.system(os.path.join(TAPATH, 'turtleblocks.py'))
+    os.system(os.path.join(TAPATH, 'turtleconfusion.py'))
 

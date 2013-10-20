@@ -70,7 +70,7 @@ from gettext import gettext as _
 
 from tapalette import (make_palette, define_logo_function)
 from talogo import (primitive_dictionary, logoerror)
-from tautils import (convert, chr_to_ord, round_int, strtype)
+from tautils import (convert, chr_to_ord, round_int, strtype, debug_output)
 from taconstants import (COLORDICT, CONSTANTS)
 
 
@@ -119,6 +119,8 @@ class Palettes():
     def _turtle_palette(self):
         ''' The basic Turtle Art turtle palette '''
 
+        debug_output('creating %s palette' % _('turtle'),
+                     self.tw.running_sugar)
         palette = make_palette('turtle',
                                colors=["#00FF00", "#00A000"],
                                help_string=_('Palette of turtle commands'))
@@ -217,7 +219,7 @@ degrees)'))
             'setxy2',
             2,
             lambda self, x, y: primitive_dictionary['move'](
-                self.tw.turtles.get_active_turtle().set_xy, (x, y)))
+                self.tw.turtles.get_active_turtle().set_xy, x, y))
         define_logo_function('tasetxy', 'to tasetxy :x :y\nsetxy :x :y\nend\n')
 
         primitive_dictionary['set'] = self._prim_set
@@ -276,10 +278,11 @@ turtle (can be used in place of a number block)'),
             0,
             lambda self: self.tw.turtles.get_active_turtle().get_heading())
 
+        # This block is used for holding the remote turtle name
         palette.add_block('turtle-label',
                           hidden=True,
                           style='blank-style',
-                          label=['turtle'])
+                          label=['remote turtle name'])
 
         # Deprecated
         palette.add_block('setxy',
@@ -295,7 +298,7 @@ turtle (can be used in place of a number block)'),
             'setxy',
             2,
             lambda self, x, y: primitive_dictionary['move'](
-                self.tw.turtles.get_active_turtle().set_xy, (x, y),
+                self.tw.turtles.get_active_turtle().set_xy, x, y,
                 pendown=False))
         define_logo_function('tasetxypenup', 'to tasetxypenup :x :y\npenup\n\
 setxy :x :y\npendown\nend\n')
@@ -303,6 +306,8 @@ setxy :x :y\npendown\nend\n')
     def _pen_palette(self):
         ''' The basic Turtle Art pen palette '''
 
+        debug_output('creating %s palette' % _('pen'),
+                     self.tw.running_sugar)
         palette = make_palette('pen',
                                colors=["#00FFFF", "#00A0A0"],
                                help_string=_('Palette of pen commands'))
@@ -503,6 +508,8 @@ pensize\nend\n')
     def _color_palette(self):
         ''' The basic Turtle Art color palette '''
 
+        debug_output('creating %s palette' % _('colors'),
+                     self.tw.running_sugar)
         palette = make_palette('colors',
                                colors=["#00FFFF", "#00A0A0"],
                                help_string=_('Palette of pen colors'))
@@ -596,6 +603,8 @@ tasetshade :shade \n')
     def _numbers_palette(self):
         ''' The basic Turtle Art numbers palette '''
 
+        debug_output('creating %s palette' % _('numbers'),
+                     self.tw.running_sugar)
         palette = make_palette('numbers',
                                colors=["#FF00FF", "#A000A0"],
                                help_string=_('Palette of numeric operators'))
@@ -779,6 +788,8 @@ operators'))
     def _flow_palette(self):
         ''' The basic Turtle Art flow palette '''
 
+        debug_output('creating %s palette' % _('flow'),
+                     self.tw.running_sugar)
         palette = make_palette('flow',
                                colors=["#FFC000", "#A08000"],
                                help_string=_('Palette of flow operators'))
@@ -879,6 +890,8 @@ boolean operators from Numbers palette'))
     def _blocks_palette(self):
         ''' The basic Turtle Art blocks palette '''
 
+        debug_output('creating %s palette' % _('blocks'),
+                     self.tw.running_sugar)
         palette = make_palette('blocks',
                                colors=["#FFFF00", "#A0A000"],
                                help_string=_('Palette of variable blocks'))
@@ -1040,6 +1053,8 @@ variable'))
     def _trash_palette(self):
         ''' The basic Turtle Art turtle palette '''
 
+        debug_output('creating %s palette' % _('trash'),
+                     self.tw.running_sugar)
         palette = make_palette('trash',
                                colors=["#FFFF00", "#A0A000"],
                                help_string=_('trash'))
@@ -1083,7 +1098,7 @@ variable'))
                 self.tw.coord_scale)
             self.tw.lc.update_label_value(
                 'heading',
-                self.tw.turtles.get_active_turtle().get_heading)
+                self.tw.turtles.get_active_turtle().get_heading())
 
     def _prim_box(self, x):
         ''' Retrieve value from named box '''
@@ -1182,7 +1197,7 @@ variable'))
         if self.tw.lc.update_values:
             self.tw.lc.update_label_value(
                 'heading',
-                self.tw.turtles.get_active_turtle().get_heading)
+                self.tw.turtles.get_active_turtle().get_heading())
 
     def _prim_set(self, name, cmd, value=None):
         ''' Set a value and update the associated value blocks '''

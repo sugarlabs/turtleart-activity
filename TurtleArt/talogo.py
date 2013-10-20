@@ -394,6 +394,7 @@ class LogoCode:
         if self._disable_help:
             self.tw.no_help = False
             self._disable_help = False
+        self.tw.display_coordinates()
 
     def icall(self, fcn, *args):
         """ Add a function and its arguments to the program stack. """

@@ -34,6 +34,7 @@ from tacanvas import wrap100, COLOR_TABLE
 from sprites import Sprite
 from tautils import (debug_output, data_to_string, round_int, get_path,
                      image_to_base64)
+from TurtleArt.talogo import logoerror
 
 SHAPES = 36
 DEGTOR = pi / 180.
@@ -138,7 +139,10 @@ class Turtles:
                 self._active_turtle.set_color(0)
                 self._active_turtle.set_shade(50)
                 self._active_turtle.set_gray(100)
-                self._active_turtle.set_pen_size(5)
+                if self.turtle_window.coord_scale == 1:
+                    self._active_turtle.set_pen_size(5)
+                else:
+                    self._active_turtle.set_pen_size(1)
                 self._active_turtle.reset_shapes()
                 self._active_turtle.set_heading(0.0)
                 self._active_turtle.set_pen_state(False)
@@ -148,13 +152,34 @@ class Turtles:
                 self._active_turtle.hide()
         self.set_turtle(self._default_turtle_name)
 
+    def get_turtle_x(self, turtle_name):
+        if turtle_name not in self.dict:
+            debug_output('%s not found in turtle dictionary' % (turtle_name),
+                         self.turtle_window.running_sugar)
+            raise logoerror("#syntaxerror")
+        return self.dict[turtle_name].get_x()
+
+    def get_turtle_y(self, turtle_name):
+        if turtle_name not in self.dict:
+            debug_output('%s not found in turtle dictionary' % (turtle_name),
+                         self.turtle_window.running_sugar)
+            raise logoerror("#syntaxerror")
+        return self.dict[turtle_name].get_y()
+
+    def get_turtle_heading(self, turtle_name):
+        if turtle_name not in self.dict:
+            debug_output('%s not found in turtle dictionary' % (turtle_name),
+                         self.turtle_window.running_sugar)
+            raise logoerror("#syntaxerror")
+        return self.dict[turtle_name].get_heading()
+
     def set_turtle(self, turtle_name, colors=None):
         ''' Select the current turtle and associated pen status '''
         if turtle_name not in self.dict:
             # if it is a new turtle, start it in the center of the screen
             self._active_turtle = self.get_turtle(turtle_name, True, colors)
             self._active_turtle.set_heading(0.0, False)
-            self._active_turtle.set_xy((0.0, 0.0), False, pendown=False)
+            self._active_turtle.set_xy(0.0, 0.0, share=False, pendown=False)
             self._active_turtle.set_pen_state(True)
         elif colors is not None:
             self._active_turtle = self.get_turtle(turtle_name, False)
@@ -202,7 +227,10 @@ class Turtle:
         self._pen_shade = 50
         self._pen_color = 0
         self._pen_gray = 100
-        self._pen_size = 5
+        if self._turtles.turtle_window.coord_scale == 1:
+            self._pen_size = 5
+        else:
+            self._pen_size = 1
         self._pen_state = True
         self._pen_fill = False
         self._poly_points = []
@@ -327,17 +355,21 @@ class Turtle:
             return
         self._heading %= 360
 
+        self._update_sprite_heading()
+
+        if self._turtles.turtle_window.sharing() and share:
+            event = 'r|%s' % (data_to_string([self._turtles.turtle_window.nick,
+                                              round_int(self._heading)]))
+            self._turtles.turtle_window.send_event(event)
+
+    def _update_sprite_heading(self):
+        ''' Update the sprite to reflect the current heading '''
         i = (int(self._heading + 5) % 360) / (360 / SHAPES)
         if not self._hidden and self.spr is not None:
             try:
                 self.spr.set_shape(self._shapes[i])
             except IndexError:
                 self.spr.set_shape(self._shapes[0])
-
-        if self._turtles.turtle_window.sharing() and share:
-            event = 'r|%s' % (data_to_string([self._turtles.turtle_window.nick,
-                                              round_int(self._heading)]))
-            self._turtles.turtle_window.send_event(event)
 
     def set_color(self, color=None, share=True):
         ''' Set the pen color for this turtle. '''
@@ -422,7 +454,8 @@ class Turtle:
                              self._turtles.turtle_window.running_sugar)
                 return
 
-        self._turtles.turtle_window.canvas.set_pen_size(self._pen_size)
+        self._turtles.turtle_window.canvas.set_pen_size(
+            self._pen_size * self._turtles.turtle_window.coord_scale)
 
         if self._turtles.turtle_window.sharing() and share:
             event = 'w|%s' % (data_to_string([self._turtles.turtle_window.nick,
@@ -462,8 +495,12 @@ class Turtle:
         if self._turtles.turtle_window.sharing() and share:
             shared_poly_points = []
             for p in self._poly_points:
-                shared_poly_points.append(
-                    (self._turtles.screen_to_turtle_coordinates(p)))
+                x, y = self._turtles.turtle_to_screen_coordinates(
+                    (p[1], p[2]))
+                if p[0] in ['move', 'line']:
+                    shared_poly_points.append((p[0], x, y))
+                elif p[0] in ['rarc', 'larc']:
+                    shared_poly_points.append((p[0], x, y, p[3], p[4], p[5]))
                 event = 'F|%s' % (data_to_string(
                         [self._turtles.turtle_window.nick,
                          shared_poly_points]))
@@ -482,7 +519,7 @@ class Turtle:
             self.spr.set_layer(TURTLE_LAYER)
             self._hidden = False
         self.move_turtle_spr((self._x, self._y))
-        self.set_heading(self._heading)
+        self.set_heading(self._heading, share=False)
         if self.label_block is not None:
             self.label_block.spr.set_layer(TURTLE_LAYER + 1)
 
@@ -517,6 +554,8 @@ class Turtle:
                          self._turtles.turtle_window.running_sugar)
             return
         self._heading %= 360
+
+        self._update_sprite_heading()
 
         if self._turtles.turtle_window.sharing() and share:
             event = 'r|%s' % (data_to_string([self._turtles.turtle_window.nick,
@@ -555,12 +594,15 @@ class Turtle:
                                               int(distance)]))
             self._turtles.turtle_window.send_event(event)
 
-    def set_xy(self, pos, share=True, pendown=True):
+    def set_xy(self, x, y, share=True, pendown=True, dragging=False):
         old = self.get_xy()
-
         try:
-            xcor = pos[0] * self._turtles.turtle_window.coord_scale
-            ycor = pos[1] * self._turtles.turtle_window.coord_scale
+            if dragging:
+                xcor = x
+                ycor = y
+            else:
+                xcor = x * self._turtles.turtle_window.coord_scale
+                ycor = y * self._turtles.turtle_window.coord_scale
         except (TypeError, ValueError):
             debug_output('bad value sent to %s' % (__name__),
                          self._turtles.turtle_window.running_sugar)
