@@ -68,6 +68,7 @@ from TurtleArt.tapalette import (palette_names, help_strings, help_palettes,
 from TurtleArt.taconstants import (BLOCK_SCALE, XO1, XO15, XO175, XO4,
                                    MIMETYPE)
 from TurtleArt.taexportlogo import save_logo
+from TurtleArt.taexportpython import save_python
 from TurtleArt.tautils import (data_to_file, data_to_string, data_from_string,
                                get_path, chooser_dialog, get_hardware)
 from TurtleArt.tawindow import TurtleArtWindow
@@ -215,6 +216,37 @@ class TurtleArtActivity(activity.Activity):
         os.remove(logo_code_path)
         gobject.timeout_add(250, self.save_as_logo.set_icon, 'logo-saveoff')
         self._notify_successful_save(title=_('Save as Logo'))
+
+    def do_save_as_python_cb(self, widget):
+        ''' Callback for saving the project as Python code. '''
+        # catch PyExportError and display a user-friendly message instead
+        try:
+            pythoncode = save_python(self.tw)
+        except PyExportError as pyee:
+            if pyee.block is not None:
+                pyee.block.highlight()
+            self.tw.showlabel('status', str(pyee))
+            return
+        if not pythoncode:
+            return
+
+        datapath = get_path(activity, 'instance')
+        python_code_path = os.path.join(datapath, 'tmpfile.py')
+        f = file(python_code_path, 'w')
+        f.write(pythoncode)
+        f.close()
+
+        dsobject = datastore.create()
+        dsobject.metadata['title'] = self.metadata['title'] + '.py'
+        dsobject.metadata['mime_type'] = 'text/x-python'
+        dsobject.metadata['icon-color'] = profile.get_color().to_string()
+        dsobject.set_file_path(python_code_path)
+        datastore.write(dsobject)
+        dsobject.destroy()
+
+        os.remove(python_code_path)
+
+        self._notify_successful_save(title=_('Save as Python'))
 
     def do_load_ta_project_cb(self, button, new=False):
         ''' Load a project from the Journal. '''
@@ -809,6 +841,7 @@ class TurtleArtActivity(activity.Activity):
             add_section(help_box, _('Save/Load'), icon='turtleoff')
         add_paragraph(help_box, _('Save as image'), icon='image-saveoff')
         add_paragraph(help_box, _('Save as Logo'), icon='logo-saveoff')
+        add_paragraph(help_box, _('Save as Python'), icon='python-saveoff')
         add_paragraph(help_box, _('Save snapshot'), icon='filesaveoff')
         add_paragraph(help_box, _('Load project'), icon='load-from-journal')
         home = os.environ['HOME']
@@ -994,6 +1027,10 @@ class TurtleArtActivity(activity.Activity):
             self.save_as_logo, label = self._add_button_and_label(
                 'logo-saveoff', _('Save as Logo'), self.do_save_as_logo_cb,
                 None, button_box)
+            self.save_as_logo, label = self._add_button_and_label(
+                'python-saveoff', _('Save as Python'),
+                self.do_save_as_python_cb,
+                None, button_box)
             self.keep_button2, self.keep_label2 = self._add_button_and_label(
                 'filesaveoff', _('Save snapshot'), self.do_keep_cb,
                 None, button_box)
@@ -1029,6 +1066,10 @@ class TurtleArtActivity(activity.Activity):
                 toolbar)
             self.save_as_logo = self._add_button(
                 'logo-saveoff', _('Save as Logo'), self.do_save_as_logo_cb,
+                toolbar)
+            self.save_as_python = self._add_button(
+                'python-saveoff', _('Save as Python'),
+                self.do_save_as_python_cb,
                 toolbar)
             self.keep_button = self._add_button(
                 'filesaveoff', _('Save snapshot'), self.do_keep_cb, toolbar)
