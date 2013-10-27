@@ -27,7 +27,6 @@ from tacanvas import TurtleGraphics
 from taconstants import (Color, CONSTANTS)
 from talogo import LogoCode
 from taturtle import (Turtle, Turtles)
-from tautils import debug_output
 from tawindow import (global_objects, TurtleArtWindow)
 
 
@@ -49,7 +48,7 @@ class PyExportError(BaseException):
 
 
 class Primitive(object):
-    """ Something that can be called when the block code is executed in TA, 
+    """ Something that can be called when the block code is executed in TA,
     but that can also be transformed into a Python AST.
     """
 
@@ -129,7 +128,7 @@ class Primitive(object):
     def __repr__(self):
         return "Primitive(" + repr(self.func) + ")"
 
-    def _apply_wrappers(self, runtime_args, runtime_kwargs, 
+    def _apply_wrappers(self, runtime_args, runtime_kwargs,
                         convert_to_ast=False):
         """ Apply the slot wrappers """
         # make a map from the start indices of all ranges to their ends
@@ -182,9 +181,11 @@ class Primitive(object):
                     new_arg = value_to_ast(wrapper, arg)
                 else:
                     # apply all contained wrappers, but skip this one
-                    (all_args, unused) = wrapper._add_constant_args([arg],
+                    (all_args, unused) = wrapper._add_constant_args(
+                        [arg],
                         runtime_kwargs={}, convert_to_ast=convert_to_ast)
-                    (my_new_args, unused) = wrapper._apply_wrappers(all_args,
+                    (my_new_args, unused) = wrapper._apply_wrappers(
+                        all_args,
                         runtime_kwargs={}, convert_to_ast=convert_to_ast)
                     new_arg = my_new_args[0]
                 new_args.append(new_arg)
@@ -200,10 +201,12 @@ class Primitive(object):
                     new_value = value_to_ast(wrapper, value)
                 else:
                     # apply all contained wrappers, but skip this one
-                    (unused, all_kwargs) = wrapper._add_constant_args([],
+                    (unused, all_kwargs) = wrapper._add_constant_args(
+                        [],
                         runtime_kwargs={key: value},
                         convert_to_ast=convert_to_ast)
-                    (unused, my_new_kwargs) = wrapper._apply_wrappers([],
+                    (unused, my_new_kwargs) = wrapper._apply_wrappers(
+                        [],
                         runtime_kwargs={key: all_kwargs[key]},
                         convert_to_ast=convert_to_ast)
                     new_value = my_new_kwargs[key]
@@ -214,7 +217,7 @@ class Primitive(object):
         return (new_args, new_kwargs)
 
     def _add_constant_args(self, runtime_args, runtime_kwargs,
-            convert_to_ast=False):
+                           convert_to_ast=False):
         """ Add the constant args and kwargs to the given runtime args and
         kwargs. Return a list containing all args and a dictionary with all
         kwargs.
@@ -224,6 +227,7 @@ class Primitive(object):
 
         # args
         i = 0
+
         def _insert_c_args(i):
             while i in self.constant_args:
                 c_arg = self.constant_args[i]
@@ -256,12 +260,12 @@ class Primitive(object):
         return (all_args, all_kwargs)
 
     def __call__(self, *runtime_args, **runtime_kwargs):
-        """ Execute the function, passing it the arguments received at 
+        """ Execute the function, passing it the arguments received at
         runtime. Also call the function in self.call_afterwards and pass it
         all runtime_args and runtime_kwargs.
         If the very first argument is a LogoCode instance, it may be
-        replaced with the active turtle, the canvas, or nothing (depending 
-        on what this primitive wants as its first arg). This argument is 
+        replaced with the active turtle, the canvas, or nothing (depending
+        on what this primitive wants as its first arg). This argument is
         also exempt from the slot wrappers. """
 
         # remove the first argument if it is a LogoCode instance
@@ -293,7 +297,7 @@ class Primitive(object):
         # constant arguments
         (all_args, all_kwargs) = self._add_constant_args(runtime_args,
                                                          runtime_kwargs)
-        
+
         # slot wrappers
         (new_args, new_kwargs) = self._apply_wrappers(all_args, all_kwargs)
 
@@ -302,24 +306,23 @@ class Primitive(object):
             return_value = self.func(*new_args, **new_kwargs)
         else:
             return_value = self.func(first_arg, *new_args, **new_kwargs)
-        
+
         if self.call_afterwards is not None:
             self.call_afterwards(*new_args, **new_kwargs)
-        
+
         return return_value
 
     def get_ast(self, *arg_asts, **kwarg_asts):
-        """ Transform this object into a Python AST. When serialized and 
+        """ Transform this object into a Python AST. When serialized and
         executed, the AST will do exactly the same as calling this object. """
 
         # constant arguments
-        (all_arg_asts, all_kwarg_asts) = self._add_constant_args(arg_asts,
-                                             kwarg_asts, convert_to_ast=True)
+        (all_arg_asts, all_kwarg_asts) = self._add_constant_args(
+            arg_asts, kwarg_asts, convert_to_ast=True)
 
         # slot wrappers
-        (new_arg_asts, new_kwarg_asts) = self._apply_wrappers(all_arg_asts,
-                                             all_kwarg_asts,
-                                             convert_to_ast=True)
+        (new_arg_asts, new_kwarg_asts) = self._apply_wrappers(
+            all_arg_asts, all_kwarg_asts, convert_to_ast=True)
 
         # SPECIAL HANDLING #
 
@@ -344,8 +347,8 @@ class Primitive(object):
                 elif controller == Primitive.controller_while:
                     condition_ast = new_arg_asts[0].args[0]
                 elif controller == Primitive.controller_until:
-                    condition_ast = ast.UnaryOp(op=ast.Not,
-                                              operand=new_arg_asts[0].args[0])
+                    condition_ast = ast.UnaryOp(
+                        op=ast.Not, operand=new_arg_asts[0].args[0])
                 else:
                     raise ValueError("unknown loop controller: " +
                                      repr(controller))
@@ -475,7 +478,7 @@ class Primitive(object):
         elif callable(other):
             if is_instancemethod(self.func) != is_instancemethod(other):
                 return False
-            elif is_instancemethod(self.func): # and is_instancemethod(other):
+            elif is_instancemethod(self.func):  # and is_instancemethod(other)
                 return (self.func.im_class == other.im_class and
                         self.func.im_func == other.im_func)
             else:
@@ -489,7 +492,7 @@ class Primitive(object):
             return False
 
     def wants_turtle(self):
-        """ Does this Primitive want to get the active turtle as its first 
+        """ Does this Primitive want to get the active turtle as its first
         argument? """
         return self._wants(Turtle)
 
@@ -514,8 +517,8 @@ class Primitive(object):
         return self._wants(TurtleArtWindow)
 
     def wants_nothing(self):
-        """ Does this Primitive want nothing as its first argument? I.e. does 
-        it want to be passed all the arguments of the block and nothing 
+        """ Does this Primitive want nothing as its first argument? I.e. does
+        it want to be passed all the arguments of the block and nothing
         else? """
         return not is_instancemethod(self.func)
 
@@ -530,7 +533,7 @@ class Primitive(object):
 
     @staticmethod
     def make_tuple(*values):
-        """ This method corresponds to a Python tuple consisting of the given 
+        """ This method corresponds to a Python tuple consisting of the given
         values. """
         return tuple(values)
 
@@ -627,7 +630,7 @@ class Primitive(object):
             if not isinstance(val, basestring):
                 if isinstance(val, Color):
                     conv_prim = Primitive(str, slot_wrappers={
-                                    0: Primitive(int)})
+                        0: Primitive(int)})
                 else:
                     conv_prim = Primitive(str)
                 if not convert_to_ast:
@@ -688,7 +691,7 @@ class Primitive(object):
         5. Convert a Color to a float.
         If the value cannot be converted to a number and the value is not
         an AST, return None. If it is an AST, return an AST representing
-        `float(value)'. """ # TODO find a better solution
+        `float(value)'. """  # TODO find a better solution
         # 1. number
         if isinstance(value, (float, int, long, ast.Num)):
             return value
@@ -879,16 +882,18 @@ class Primitive(object):
         return arg1 > arg2
 
 
-
 def is_instancemethod(method):
     # TODO how to access the type `instancemethod` directly?
     return type(method).__name__ == "instancemethod"
 
+
 def is_bound_instancemethod(method):
     return is_instancemethod(method) and method.im_self is not None
 
+
 def is_unbound_instancemethod(method):
     return is_instancemethod(method) and method.im_self is None
+
 
 def is_staticmethod(method):
     # TODO how to access the type `staticmethod` directly?
@@ -935,6 +940,7 @@ def value_to_ast(value, *args_for_prim, **kwargs_for_prim):
     else:
         raise ValueError("unknown type of raw value: " + repr(type(value)))
 
+
 def ast_to_value(ast_object):
     """ Retrieve the value out of a value AST. Supported AST types:
     Num, Str, Name, List, Tuple, Set
@@ -969,10 +975,9 @@ def call_me(something):
     call_me == True """
     return isinstance(something, Primitive) and something.call_me
 
+
 def export_me(something):
     """ Return True iff this is not a Primitive or its export_me attribute
     is True, i.e. everything is exportable except for Primitives with
     export_me == False """
     return not isinstance(something, Primitive) or something.export_me
-
-
