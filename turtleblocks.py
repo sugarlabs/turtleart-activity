@@ -57,6 +57,7 @@ from TurtleArt.tautils import (data_from_string, get_save_name)
 from TurtleArt.tapalette import default_values
 from TurtleArt.tawindow import TurtleArtWindow
 from TurtleArt.taexportlogo import save_logo
+from TurtleArt.taexportpython import save_python
 
 from util.menubuilder import MenuBuilder
 
@@ -405,6 +406,8 @@ return %s(self)" % (p, P, P)
                                    self._do_save_picture_cb)
         MenuBuilder.make_menu_item(menu, _('Save as Logo'),
                                    self._do_save_logo_cb)
+        MenuBuilder.make_menu_item(menu, _('Save as Python'),
+                                   self._do_save_python_cb)
         MenuBuilder.make_menu_item(menu, _('Quit'), self._quit_ta)
         activity_menu = MenuBuilder.make_sub_menu(menu, _('File'))
 
@@ -554,6 +557,34 @@ Would you like to save before quitting?'))
         if filename is not None:
             f = file(filename, 'w')
             f.write(logocode)
+            f.close()
+
+    def _do_save_python_cb(self, widget):
+        ''' Callback for saving the project as Python code. '''
+        # catch PyExportError and display a user-friendly message instead
+        try:
+            pythoncode = save_python(self.tw)
+        except PyExportError as pyee:
+            if pyee.block is not None:
+                pyee.block.highlight()
+            self.tw.showlabel('status', str(pyee))
+            return
+        if not pythoncode:
+            return
+        # use name of TA project if it has been saved already
+        default_name = self.tw.save_file_name
+        if default_name is None:
+            default_name = _("myproject")
+        elif default_name.endswith(".ta") or default_name.endswith(".tb"):
+            default_name = default_name[:-3]
+        save_type = '.py'
+        (filename, self.tw.load_save_folder) = get_save_name(
+            save_type, self.tw.load_save_folder, default_name)
+        if isinstance(filename, unicode):
+            filename = filename.encode('ascii', 'replace')
+        if filename is not None:
+            f = file(filename, 'w')
+            f.write(pythoncode)
             f.close()
 
     def _do_resize_cb(self, widget, factor):

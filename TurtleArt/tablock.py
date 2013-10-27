@@ -24,7 +24,8 @@ import cairo
 
 from taconstants import (EXPANDABLE, EXPANDABLE_ARGS, OLD_NAMES, CONSTANTS,
                          STANDARD_STROKE_WIDTH, BLOCK_SCALE, BOX_COLORS,
-                         GRADIENT_COLOR, EXPANDABLE_FLOW, COLORDICT)
+                         GRADIENT_COLOR, EXPANDABLE_FLOW, Color,
+                         PREFIX_DICTIONARY)
 from tapalette import (palette_blocks, block_colors, expandable_blocks,
                        content_blocks, block_names, block_primitives,
                        block_styles, special_block_colors)
@@ -32,6 +33,9 @@ from tasprite_factory import (SVG, svg_str_to_pixbuf)
 import sprites
 
 from tautils import (debug_output, error_output)
+
+
+media_blocks_dictionary = {}  # new media blocks get added here
 
 
 class Blocks:
@@ -276,6 +280,47 @@ class Block:
                          'sandwichtop', 'sandwichtop_no_label']:
             return False
         return True
+
+    def is_value_block(self):
+        """ Return True iff this block is a value block (numeric, string,
+        media, etc.) """
+        return self.primitive is None and self.values
+
+    def get_value(self, add_type_prefix=True):
+        """ Return the value stored in this value block or None if this is
+        not a value block
+        add_type_prefix -- prepend a prefix to indicate the type of the
+            'raw' value """
+        if not self.is_value_block():
+            return None
+
+        result = ''
+        if self.name == 'number':
+            try:
+                return float(self.values[0])
+            except ValueError:
+                return float(ord(self.values[0][0]))
+        elif (self.name == 'string' or
+                self.name == 'title'):  # deprecated block
+            if add_type_prefix:
+                result = '#s'
+            if isinstance(self.values[0], (float, int)):
+                if int(self.values[0]) == self.values[0]:
+                    self.values[0] = int(self.values[0])
+                result += str(self.values[0])
+            else:
+                result += self.values[0]
+        elif self.name in PREFIX_DICTIONARY:
+            if add_type_prefix:
+                result = PREFIX_DICTIONARY[self.name]
+            result += str(self.values[0])
+        elif self.name in media_blocks_dictionary:
+            if add_type_prefix:
+                result = '#smedia_'
+            result += self.name.upper()
+        else:
+            return None
+        return result
 
     def highlight(self):
         """ We may want to highlight a block... """
@@ -529,10 +574,8 @@ class Block:
                     else:
                         self._set_labels(i, str(v))
         elif self.type == 'block' and self.name in CONSTANTS:
-            if CONSTANTS[self.name] in COLORDICT:
-                v = COLORDICT[CONSTANTS[self.name]][0]
-                if v is None:
-                    v = COLORDICT[CONSTANTS[self.name]][1]
+            if isinstance(CONSTANTS[self.name], Color):
+                v = int(CONSTANTS[self.name])
             else:
                 v = CONSTANTS[self.name]
             self._set_labels(0, block_names[self.name][0] + ' = ' + str(v))
@@ -555,7 +598,7 @@ class Block:
         if self.spr is None:
             return
         if isinstance(self.name, unicode):
-            self.name = self.name.encode('utf-8')
+            self.name = self.name.encode('utf8')
         if self.name in content_blocks:
             n = len(self.values)
             if n == 0:
@@ -636,7 +679,7 @@ class Block:
         self.svg.set_stroke_width(STANDARD_STROKE_WIDTH)
         self.svg.clear_docks()
         if isinstance(self.name, unicode):
-            self.name = self.name.encode('utf-8')
+            self.name = self.name.encode('utf8')
         for k in block_styles.keys():
             if self.name in block_styles[k]:
                 if isinstance(self.block_methods[k], list):

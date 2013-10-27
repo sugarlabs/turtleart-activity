@@ -79,19 +79,100 @@ XO4 = 'xo4'
 UNKNOWN = 'unknown'
 TMP_SVG_PATH = '/tmp/turtle_output.svg'
 
+
+
+class Color(object):
+    """ A color used in block programs (e.g., as pen color). """
+
+    def __init__(self, name, color=0, shade=50, gray=100):
+        """ name -- a string with the name of the color, e.g., 'red'
+        color -- the hue (0-100, or None for white, gray, and black)
+        shade -- the lightness (0 is black, 100 is white)
+        gray -- the saturation (0 is gray, 100 is fully saturated) """
+        self.name = name
+        self.color = color
+        self.shade = shade
+        self.gray = gray
+
+    def __int__(self):
+        if self.color is None:
+            return int(self.shade)
+        else:
+            return int(self.color)
+
+    def __float__(self):
+        return float(int(self))
+
+    def __str__(self):
+        return str(self.name)
+
+    def __repr__(self):
+        return '%s (%s/%d/%d)' % (str(self.name), str(self.color),
+                                  self.shade, self.gray)
+
+    def __eq__(self, other):
+        """ A Color is equivalent to
+        * another Color with the same color, shade, and gray values
+        * an integer, float, or long that equals int(self) """
+        if isinstance(other, Color):
+            return (self.color == other.color and self.shade == other.shade
+                    and self.gray == other.gray)
+        elif isinstance(other, (int, float, long)):
+            return int(self) == other
+        ## * a basestring that equals str(self)
+        #elif isinstance(other, basestring):
+        #    return str(self) == other
+        else:
+            return False
+
+    def __lt__(self, other):
+        """ A Color is less than
+        * another Color whose name appears earlier in the alphabet
+        * a number that is less than int(self)
+        * a string that appears before the underscore in the ASCII table """
+        if isinstance(other, Color):
+            return str(self) < str(other)
+        elif isinstance(other, (int, float, long)):
+            return int(self) < other
+        elif isinstance(other, basestring):
+            return '_' + str(self) < other
+        else:
+            return False
+
+    def __gt__(self, other):
+        """ A Color is greater than
+        * another Color whose name appears later in the alphabet
+        * a number that is greater than int(self)
+        * a string that appears after the underscore in the ASCII table """
+        if isinstance(other, Color):
+            return str(self) > str(other)
+        elif isinstance(other, (int, float, long)):
+            return int(self) > other
+        elif isinstance(other, basestring):
+            return '_' + str(self) > other
+        else:
+            return False
+
+    def is_gray(self):
+        """ Return True iff this color is white, gray, or black, i.e. if its
+        hue is not set or its saturation is zero. """
+        return self.color is None or not self.gray
+
+
+
 CONSTANTS = {'leftpos': None, 'toppos': None, 'rightpos': None,
              'bottompos': None, 'width': None, 'height': None,
-             'black': '_black', 'white': '_white', 'red': '_red',
-             'orange': '_orange', 'yellow': '_yellow', 'green': '_green',
-             'cyan': '_cyan', 'blue': '_blue', 'purple': '_purple',
+             'black':  Color('black', None,   0,   0),
+             'white':  Color('white', None, 100,   0),
+             'red':    Color('red',      0,  50, 100),
+             'orange': Color('orange',  10,  50, 100),
+             'yellow': Color('yellow',  20,  50, 100),
+             'green':  Color('green',   40,  50, 100),
+             'cyan':   Color('cyan',    50,  50, 100),
+             'blue':   Color('blue',    70,  50, 100),
+             'purple': Color('purple',  90,  50, 100),
              'titlex': None, 'titley': None, 'leftx': None,
              'topy': None, 'rightx': None, 'bottomy': None}
-
-COLORDICT = {'_black': [None, 0, 0], '_white': [None, 100, 0],
-             '_red': [0, 50, 100], '_orange': [10, 50, 100],
-             '_yellow': [20, 50, 100], '_green': [40, 50, 100],
-             '_cyan': [50, 50, 100], '_blue': [70, 50, 100],
-             '_purple': [90, 50, 100]}
 
 # Blocks that are expandable
 EXPANDABLE_STYLE = ['boolean-style', 'compare-porch-style', 'compare-style',

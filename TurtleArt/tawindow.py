@@ -95,6 +95,8 @@ _UNFULLSCREEN_VISIBILITY_TIMEOUT = 2
 _PLUGIN_SUBPATH = 'plugins'
 _MACROS_SUBPATH = 'macros'
 
+global_objects = {}  # the global instances of single-instance classes
+
 
 class TurtleArtWindow():
     ''' TurtleArt Window class abstraction  '''
@@ -299,6 +301,11 @@ class TurtleArtWindow():
         if self.running_turtleart:
             from tabasics import Palettes
             self._basic_palettes = Palettes(self)
+
+        global_objects["window"] = self
+        global_objects["canvas"] = self.canvas
+        global_objects["logo"] = self.lc
+        global_objects["turtles"] = self.turtles
 
         if self.interactive_mode:
             gobject.idle_add(self._lazy_init)
@@ -761,6 +768,9 @@ class TurtleArtWindow():
         else:
             self.draw_overlay('Cartesian')
         return
+
+    def get_coord_scale(self):
+        return self.coord_scale
 
     def set_polar(self, flag):
         ''' Turn on/off polar coordinates '''

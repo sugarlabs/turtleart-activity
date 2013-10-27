@@ -33,12 +33,13 @@ from TurtleArt.talogo import (primitive_dictionary, logoerror,
 from TurtleArt.taconstants import (DEFAULT_SCALE, ICON_SIZE, CONSTANTS,
                                    MEDIA_SHAPES, SKIN_PATHS, BLOCKS_WITH_SKIN,
                                    PYTHON_SKIN, PREFIX_DICTIONARY, VOICES,
-                                   MACROS, COLORDICT)
+                                   MACROS, Color)
 from TurtleArt.tautils import (round_int, debug_output, get_path,
                                data_to_string, find_group, image_to_base64,
                                hat_on_top, listify, data_from_file,
                                data_to_file, chooser_dialog, get_load_name)
 from TurtleArt.tajail import (myfunc, myfunc_import)
+from TurtleArt.taprimitive import Primitive
 
 
 def _num_type(x):
@@ -100,6 +101,11 @@ class Turtle_blocks_extras(Plugin):
                           special_name=_('while'),
                           help_string=_('do-while-True operator that uses \
 boolean operators from Numbers palette'))
+        # Primitive is only used for exporting this block, not for running it
+        self.tw.lc.def_prim('while', 2,
+            Primitive(self.tw.lc.prim_loop,
+                slot_wrappers={0: Primitive(Primitive.controller_while)}),
+            True)
 
         # internally expanded macro
         palette.add_block('until',
@@ -110,6 +116,11 @@ boolean operators from Numbers palette'))
                           special_name=_('until'),
                           help_string=_('do-until-True operator that uses \
 boolean operators from Numbers palette'))
+        # Primitive is only used for exporting this block, not for running it
+        self.tw.lc.def_prim('until', 2,
+            Primitive(self.tw.lc.prim_loop,
+                slot_wrappers={0: Primitive(Primitive.controller_until)}),
+            True)
 
         primitive_dictionary['clamp'] = self._prim_clamp
         palette.add_block('sandwichclamp',
@@ -1135,7 +1146,7 @@ Journal objects'))
     def _prim_myfunction(self, f, x):
         """ Programmable block """
         for i, v in enumerate(x):
-            if type(v) == int:  # Pass float values to Python block
+            if isinstance(v, int):  # Pass float values to Python block
                 x[i] = float(v)
         try:
             y = myfunc(f, x)
@@ -1195,20 +1206,20 @@ Journal objects'))
         """ Print object n """
         if flag and (self.tw.hide or self.tw.step_time == 0):
             return
-        if type(n) == list:
+        if isinstance(n, list):
             self.tw.showlabel('print', n)
-        elif type(n) == str or type(n) == unicode:
-            if n in COLORDICT:
-                if COLORDICT[n][0] is None:
-                    self.tw.showlabel('print', '%s %d, %s %d' %
-                                      (_('shade'), COLORDICT[n][1],
-                                       _('gray'), COLORDICT[n][2]))
-                else:
-                    self.tw.showlabel('print', '%s %d, %s %d, %s %d' %
-                                      (_('color'), COLORDICT[n][0],
-                                       _('shade'), COLORDICT[n][1],
-                                       _('gray'), COLORDICT[n][2]))
-            elif n[0:6] == 'media_' and \
+        elif isinstance(n, Color):
+            if n.color is None:
+                self.tw.showlabel('print', '%s %d, %s %d' %
+                                  (_('shade'), n.shade,
+                                   _('gray'), n.gray))
+            else:
+                self.tw.showlabel('print', '%s %d, %s %d, %s %d' %
+                                  (_('color'), n.color,
+                                   _('shade'), n.shade,
+                                   _('gray'), n.gray))
+        elif isinstance(n, basestring):
+            if n[0:6] == 'media_' and \
                     n[6:].lower not in media_blocks_dictionary:
                 try:
                     if self.tw.running_sugar:
@@ -1226,7 +1237,7 @@ Journal objects'))
                     self.tw.showlabel('print', n)
             else:
                 self.tw.showlabel('print', n)
-        elif type(n) == int:
+        elif isinstance(n, int):
             self.tw.showlabel('print', n)
         else:
             self.tw.showlabel(

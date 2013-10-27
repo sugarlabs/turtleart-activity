@@ -28,7 +28,7 @@ import cairo
 from random import uniform
 from math import sin, cos, pi, sqrt
 from taconstants import (TURTLE_LAYER, DEFAULT_TURTLE_COLORS, DEFAULT_TURTLE,
-                         COLORDICT)
+                         Color)
 from tasprite_factory import SVG, svg_str_to_pixbuf
 from tacanvas import wrap100, COLOR_TABLE
 from sprites import Sprite
@@ -373,17 +373,16 @@ class Turtle:
 
     def set_color(self, color=None, share=True):
         ''' Set the pen color for this turtle. '''
+        if color is None:
+            color = self._pen_color
         # Special case for color blocks
-        if color is not None and color in COLORDICT:
-            self.set_shade(COLORDICT[color][1], share)
-            self.set_gray(COLORDICT[color][2], share)
-            if COLORDICT[color][0] is not None:
-                self.set_color(COLORDICT[color][0], share)
-                color = COLORDICT[color][0]
+        elif isinstance(color, Color):
+            self.set_shade(color.shade, share)
+            self.set_gray(color.gray, share)
+            if color.color is not None:
+                color = color.color
             else:
                 color = self._pen_color
-        elif color is None:
-            color = self._pen_color
 
         try:
             self._pen_color = color
