@@ -581,7 +581,7 @@ Would you like to save before quitting?'))
         (filename, self.tw.load_save_folder) = get_save_name(
             save_type, self.tw.load_save_folder, default_name)
         if isinstance(filename, unicode):
-            filename = filename.encode('ascii', 'replace')
+            filename = filename.encode('utf8')
         if filename is not None:
             f = file(filename, 'w')
             f.write(pythoncode)
