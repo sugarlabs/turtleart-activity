@@ -102,14 +102,17 @@ class Turtle_blocks_extras(Plugin):
                           special_name=_('while'),
                           help_string=_('do-while-True operator that uses \
 boolean operators from Numbers palette'))
-        self.tw.lc.def_prim('while', 2,
+        self.tw.lc.def_prim(
+            'while', 2,
             Primitive(self.tw.lc.prim_loop,
-                arg_descs=[
-                    ArgSlot(TYPE_OBJECT,
-                        call_arg=False,
-                        wrapper=Primitive(Primitive.controller_while,
-                            arg_descs=[ArgSlot(TYPE_BOOL, call_arg=False)])),
-                    ArgSlot(TYPE_OBJECT)]),
+                      arg_descs=[
+                          ArgSlot(TYPE_OBJECT,
+                                  call_arg=False,
+                                  wrapper=Primitive(
+                                      Primitive.controller_while,
+                                      arg_descs=[ArgSlot(TYPE_BOOL,
+                                                         call_arg=False)])),
+                          ArgSlot(TYPE_OBJECT)]),
             True)
 
         palette.add_block('until',
@@ -120,15 +123,19 @@ boolean operators from Numbers palette'))
                           special_name=_('until'),
                           help_string=_('do-until-True operator that uses \
 boolean operators from Numbers palette'))
-        self.tw.lc.def_prim('until', 2,
+        self.tw.lc.def_prim(
+            'until', 2,
             Primitive(self.tw.lc.prim_loop,
-                arg_descs=[
-                    ArgSlot(TYPE_OBJECT,
-                        call_arg=False,
-                        # TODO can we use controller_while in combination with not_?
-                        wrapper=Primitive(Primitive.controller_until,
-                            arg_descs=[ArgSlot(TYPE_BOOL, call_arg=False)])),
-                    ArgSlot(TYPE_OBJECT)]),
+                      arg_descs=[
+                          ArgSlot(TYPE_OBJECT,
+                                  call_arg=False,
+                                  # TODO can we use controller_while in
+                                  # combination with not_?
+                                  wrapper=Primitive(
+                                      Primitive.controller_until,
+                                      arg_descs=[ArgSlot(TYPE_BOOL,
+                                                         call_arg=False)])),
+                          ArgSlot(TYPE_OBJECT)]),
             True)
 
         palette.add_block('sandwichclamp',
@@ -138,8 +145,9 @@ boolean operators from Numbers palette'))
                           prim_name='clamp',
                           help_string=_('top of a collapsible stack'))
         self.tw.lc.def_prim('clamp', 1,
-            Primitive(self.tw.lc.prim_clamp, arg_descs=[ArgSlot(TYPE_OBJECT)]),
-            True)
+                            Primitive(self.tw.lc.prim_clamp,
+                                      arg_descs=[ArgSlot(TYPE_OBJECT)]),
+                            True)
 
     def _media_palette(self):
         debug_output('creating %s palette' % _('media'),
@@ -213,8 +221,9 @@ boolean operators from Numbers palette'))
                           help_string=_('draws text or show media from the \
 Journal'))
         self.tw.lc.def_prim('show', 1,
-            Primitive(self.tw.lc.show,
-                arg_descs=[ArgSlot(TYPE_OBJECT), ConstantArg(True)]))
+                            Primitive(self.tw.lc.show,
+                                      arg_descs=[ArgSlot(TYPE_OBJECT),
+                                                 ConstantArg(True)]))
 
         palette.add_block('showaligned',
                           hidden=True,
@@ -227,8 +236,9 @@ Journal'))
                           help_string=_('draws text or show media from the \
 Journal'))
         self.tw.lc.def_prim('showaligned', 1,
-            Primitive(self.tw.lc.show,
-                arg_descs=[ArgSlot(TYPE_OBJECT), ConstantArg(False)]))
+                            Primitive(self.tw.lc.show,
+                                      arg_descs=[ArgSlot(TYPE_OBJECT),
+                                                 ConstantArg(False)]))
 
         primitive_dictionary['setscale'] = self._prim_setscale
         palette.add_block('setscale',
@@ -431,16 +441,20 @@ to the stack'))
                           value_block=True,
                           help_string=_('elapsed time (in seconds) since \
 program started'))
-        self.tw.lc.def_prim('time', 0,
+        self.tw.lc.def_prim(
+            'time', 0,
             Primitive(Primitive.identity,
-                return_type=TYPE_INT,
-                arg_descs=[
-                    ConstantArg(Primitive(int, arg_descs=[
-                        ConstantArg(Primitive(Primitive.minus, arg_descs=[
-                            ConstantArg(Primitive(time)),
-                            ConstantArg(Primitive(self.tw.lc.get_start_time))
-                        ]))]))],
-                call_afterwards=self.after_time))
+                      return_type=TYPE_INT,
+                      arg_descs=[
+                          ConstantArg(Primitive(int, arg_descs=[
+                              ConstantArg(
+                                  Primitive(Primitive.minus,
+                                            arg_descs=[
+                                                ConstantArg(Primitive(time)),
+                                                ConstantArg(Primitive(
+                                                    self.tw.lc.get_start_time))
+                                            ]))]))],
+                      call_afterwards=self.after_time))
 
     def _extras_palette(self):
         debug_output('creating %s palette' % _('extras'),
@@ -458,10 +472,11 @@ program started'))
                           logo_command='tapush',
                           help_string=_('pushes value onto FILO (first-in \
 last-out heap)'))
-        self.tw.lc.def_prim('push', 1,
+        self.tw.lc.def_prim(
+            'push', 1,
             Primitive(self.tw.lc.heap.append,
-                arg_descs=[ArgSlot(TYPE_OBJECT)],
-                call_afterwards=self.after_push))
+                      arg_descs=[ArgSlot(TYPE_OBJECT)],
+                      call_afterwards=self.after_push))
         define_logo_function('tapush', 'to tapush :foo\nmake "taheap fput \
 :foo :taheap\nend\nmake "taheap []\n')
 
@@ -472,10 +487,11 @@ last-out heap)'))
                           logo_command='taprintheap',
                           help_string=_('shows values in FILO (first-in \
 last-out heap)'))
-        self.tw.lc.def_prim('printheap', 0,
+        self.tw.lc.def_prim(
+            'printheap', 0,
             Primitive(self.tw.print_,
-                arg_descs=[ConstantArg(Primitive(self.tw.lc.get_heap)),
-                           ConstantArg(False)]))
+                      arg_descs=[ConstantArg(Primitive(self.tw.lc.get_heap)),
+                                 ConstantArg(False)]))
         define_logo_function('taprintheap', 'to taprintheap \nprint :taheap\n\
 end\n')
 
@@ -486,7 +502,8 @@ end\n')
                           logo_command='taclearheap',
                           help_string=_('emptys FILO (first-in-last-out \
 heap)'))
-        self.tw.lc.def_prim('clearheap', 0,
+        self.tw.lc.def_prim(
+            'clearheap', 0,
             Primitive(self.tw.lc.reset_heap, call_afterwards=self.after_pop))
         define_logo_function('taclearheap', 'to taclearheap\nmake "taheap []\n\
 end\n')
@@ -500,9 +517,10 @@ end\n')
                           logo_command='tapop',
                           help_string=_('pops value off FILO (first-in \
 last-out heap)'))
-        self.tw.lc.def_prim('pop', 0,
+        self.tw.lc.def_prim(
+            'pop', 0,
             Primitive(self.tw.lc.heap.pop, return_type=TYPE_BOX,
-                call_afterwards=self.after_pop))
+                      call_afterwards=self.after_pop))
         define_logo_function('tapop', 'to tapop\nif emptyp :taheap [stop]\n\
 make "tmp first :taheap\nmake "taheap butfirst :taheap\noutput :tmp\nend\n')
 
@@ -513,13 +531,14 @@ make "tmp first :taheap\nmake "taheap butfirst :taheap\noutput :tmp\nend\n')
                           prim_name='isheapempty',
                           value_block=True,
                           help_string=_('returns True if heap is empty'))
-        self.tw.lc.def_prim('isheapempty', 0,
+        self.tw.lc.def_prim(
+            'isheapempty', 0,
             Primitive(int, return_type=TYPE_INT,
-                arg_descs=[ConstantArg(
-                    Primitive(Primitive.not_, return_type=TYPE_BOOL,
-                        arg_descs=[ConstantArg(
-                            Primitive(self.tw.lc.get_heap,
-                                return_type=TYPE_BOOL))]))]))
+                      arg_descs=[ConstantArg(
+                          Primitive(Primitive.not_, return_type=TYPE_BOOL,
+                                    arg_descs=[ConstantArg(
+                                        Primitive(self.tw.lc.get_heap,
+                                                  return_type=TYPE_BOOL))]))]))
 
         primitive_dictionary['saveheap'] = self._prim_save_heap
         palette.add_block('saveheap',
@@ -549,12 +568,14 @@ last-out heap) from a file'))
                           prim_name='isheapempty2',
                           value_block=True,
                           help_string=_('returns True if heap is empty'))
-        self.tw.lc.def_prim('isheapempty2', 0,
+        self.tw.lc.def_prim(
+            'isheapempty2', 0,
             # Python automatically converts the heap to a boolean in contexts
             # where a boolean is needed
             Primitive(Primitive.not_, return_type=TYPE_BOOL,
-                arg_descs=[ConstantArg(
-                    Primitive(self.tw.lc.get_heap, return_type=TYPE_BOOL))]))
+                      arg_descs=[ConstantArg(
+                          Primitive(self.tw.lc.get_heap,
+                                    return_type=TYPE_BOOL))]))
 
         palette.add_block('comment',
                           style='basic-style-1arg',
@@ -563,7 +584,8 @@ last-out heap) from a file'))
                           default=_('comment'),
                           string_or_number=True,
                           help_string=_('places a comment in your code'))
-        self.tw.lc.def_prim('comment', 1,
+        self.tw.lc.def_prim(
+            'comment', 1,
             Primitive(Primitive.comment, arg_descs=[ArgSlot(TYPE_STRING)]))
 
         palette.add_block('print',
@@ -574,29 +596,32 @@ last-out heap) from a file'))
                           string_or_number=True,
                           help_string=_('prints value in status block at \
 bottom of the screen'))
-        self.tw.lc.def_prim('print', 1,
+        self.tw.lc.def_prim(
+            'print', 1,
             Primitive(self.tw.print_,
-                arg_descs=[ArgSlot(TYPE_OBJECT), ConstantArg(False)]))
+                      arg_descs=[ArgSlot(TYPE_OBJECT), ConstantArg(False)]))
 
         palette.add_block('chr',
                           style='number-style-1arg',
                           label='chr',
                           prim_name='chr',
                           help_string=_('Python chr operator'))
-        self.tw.lc.def_prim('chr', 1,
+        self.tw.lc.def_prim(
+            'chr', 1,
             Primitive(chr, return_type=TYPE_CHAR,
-                arg_descs=[ArgSlot(TYPE_INT)]))
+                      arg_descs=[ArgSlot(TYPE_INT)]))
 
         palette.add_block('int',
                           style='number-style-1arg',
                           label='int',
                           prim_name='int',
                           help_string=_('Python int operator'))
-        self.tw.lc.def_prim('int', 1,
+        self.tw.lc.def_prim(
+            'int', 1,
             # leave over the actual work to the type system, and just demand
             # that the argument be converted to an integer
             Primitive(Primitive.identity, return_type=TYPE_INT,
-                arg_descs=[ArgSlot(TYPE_INT)]))
+                      arg_descs=[ArgSlot(TYPE_INT)]))
 
         palette.add_block('polar',
                           style='basic-style-extended-vertical',
@@ -614,9 +639,10 @@ bottom of the screen'))
                           string_or_number=True,
                           help_string=_('a programmable block: used to add \
 advanced single-variable math equations, e.g., sin(x)'))
-        self.tw.lc.def_prim('myfunction', 2,
+        self.tw.lc.def_prim(
+            'myfunction', 2,
             Primitive(self.tw.lc.prim_myfunction, return_type=TYPE_FLOAT,
-                arg_descs=[ArgSlot(TYPE_STRING), ArgSlot(TYPE_FLOAT)]))
+                      arg_descs=[ArgSlot(TYPE_STRING), ArgSlot(TYPE_FLOAT)]))
 
         palette.add_block('myfunc2arg',
                           hidden=True,
@@ -628,10 +654,11 @@ advanced single-variable math equations, e.g., sin(x)'))
                           string_or_number=True,
                           help_string=_('a programmable block: used to add \
 advanced multi-variable math equations, e.g., sqrt(x*x+y*y)'))
-        self.tw.lc.def_prim('myfunction2', 3,
+        self.tw.lc.def_prim(
+            'myfunction2', 3,
             Primitive(self.tw.lc.prim_myfunction, return_type=TYPE_FLOAT,
-                arg_descs=[ArgSlot(TYPE_STRING), ArgSlot(TYPE_FLOAT),
-                    ArgSlot(TYPE_FLOAT)]))
+                      arg_descs=[ArgSlot(TYPE_STRING), ArgSlot(TYPE_FLOAT),
+                                 ArgSlot(TYPE_FLOAT)]))
 
         palette.add_block('myfunc3arg',
                           hidden=True,
@@ -643,10 +670,11 @@ advanced multi-variable math equations, e.g., sqrt(x*x+y*y)'))
                           string_or_number=True,
                           help_string=_('a programmable block: used to add \
 advanced multi-variable math equations, e.g., sin(x+y+z)'))
-        self.tw.lc.def_prim('myfunction3', 4,
+        self.tw.lc.def_prim(
+            'myfunction3', 4,
             Primitive(self.tw.lc.prim_myfunction, return_type=TYPE_FLOAT,
-                arg_descs=[ArgSlot(TYPE_STRING), ArgSlot(TYPE_FLOAT),
-                    ArgSlot(TYPE_FLOAT), ArgSlot(TYPE_FLOAT)]))
+                      arg_descs=[ArgSlot(TYPE_STRING), ArgSlot(TYPE_FLOAT),
+                                 ArgSlot(TYPE_FLOAT), ArgSlot(TYPE_FLOAT)]))
 
         palette.add_block('cartesian',
                           style='basic-style-extended-vertical',
@@ -773,7 +801,8 @@ module found in the Journal'))
                           prim_name='turtlex',
                           default=['Yertle'],
                           help_string=_('Returns x coordinate of turtle'))
-        self.tw.lc.def_prim('turtlex', 1,
+        self.tw.lc.def_prim(
+            'turtlex', 1,
             Primitive(self.tw.turtles.get_turtle_x,
                       arg_descs=[ArgSlot(TYPE_OBJECT)],
                       return_type=TYPE_BOX))
@@ -784,7 +813,8 @@ module found in the Journal'))
                           prim_name='turtley',
                           default=['Yertle'],
                           help_string=_('Returns y coordinate of turtle'))
-        self.tw.lc.def_prim('turtley', 1,
+        self.tw.lc.def_prim(
+            'turtley', 1,
             Primitive(self.tw.turtles.get_turtle_y,
                       arg_descs=[ArgSlot(TYPE_OBJECT)],
                       return_type=TYPE_BOX))
@@ -795,15 +825,10 @@ module found in the Journal'))
                           prim_name='activeturtle',
                           value_block=True,
                           help_string=_('the name of the active turtle'))
-        self.tw.lc.def_prim('activeturtle', 0,
+        self.tw.lc.def_prim(
+            'activeturtle', 0,
             Primitive(Turtle.get_name,
                       return_type=TYPE_BOX))
-
-        '''
-        return(self.tw.turtles.get_active_turtle().get_name())
-                            lambda self:
-                            primitive_dictionary['activeturtle']())
-        '''
 
         palette.add_block('turtleh',
                           style='number-style-1arg',
@@ -811,7 +836,8 @@ module found in the Journal'))
                           prim_name='turtleh',
                           default=['Yertle'],
                           help_string=_('Returns heading of turtle'))
-        self.tw.lc.def_prim('turtleh', 1,
+        self.tw.lc.def_prim(
+            'turtleh', 1,
             Primitive(self.tw.turtles.get_turtle_heading,
                       arg_descs=[ArgSlot(TYPE_OBJECT)],
                       return_type=TYPE_BOX))
@@ -856,7 +882,8 @@ templates'),
                           label=_('hide blocks'),
                           prim_name='hideblocks',
                           help_string=_('declutters canvas by hiding blocks'))
-        self.tw.lc.def_prim('hideblocks', 0,
+        self.tw.lc.def_prim(
+            'hideblocks', 0,
             Primitive(self._prim_hideblocks, export_me=False))
 
         palette.add_block('showblocks',
@@ -864,7 +891,8 @@ templates'),
                           label=_('show blocks'),
                           prim_name='showblocks',
                           help_string=_('restores hidden blocks'))
-        self.tw.lc.def_prim('showblocks', 0,
+        self.tw.lc.def_prim(
+            'showblocks', 0,
             Primitive(self._prim_showblocks, export_me=False))
 
         palette.add_block('fullscreen',
@@ -938,9 +966,10 @@ Journal objects'))
                           prim_name='lpos',
                           logo_command='lpos',
                           help_string=_('xcor of left of screen'))
-        self.tw.lc.def_prim('lpos', 0,
+        self.tw.lc.def_prim(
+            'lpos', 0,
             Primitive(CONSTANTS.get, return_type=TYPE_INT,
-                arg_descs=[ConstantArg('leftpos')]))
+                      arg_descs=[ConstantArg('leftpos')]))
 
         palette.add_block('bottompos',
                           style='box-style',
@@ -948,9 +977,10 @@ Journal objects'))
                           prim_name='bpos',
                           logo_command='bpos',
                           help_string=_('ycor of bottom of screen'))
-        self.tw.lc.def_prim('bpos', 0,
+        self.tw.lc.def_prim(
+            'bpos', 0,
             Primitive(CONSTANTS.get, return_type=TYPE_INT,
-                arg_descs=[ConstantArg('bottompos')]))
+                      arg_descs=[ConstantArg('bottompos')]))
 
         palette.add_block('width',
                           style='box-style',
@@ -958,9 +988,10 @@ Journal objects'))
                           prim_name='hres',
                           logo_command='width',
                           help_string=_('the canvas width'))
-        self.tw.lc.def_prim('hres', 0,
+        self.tw.lc.def_prim(
+            'hres', 0,
             Primitive(CONSTANTS.get, return_type=TYPE_INT,
-                arg_descs=[ConstantArg('width')]))
+                      arg_descs=[ConstantArg('width')]))
 
         palette.add_block('rightpos',
                           style='box-style',
@@ -968,9 +999,10 @@ Journal objects'))
                           prim_name='rpos',
                           logo_command='rpos',
                           help_string=_('xcor of right of screen'))
-        self.tw.lc.def_prim('rpos', 0,
+        self.tw.lc.def_prim(
+            'rpos', 0,
             Primitive(CONSTANTS.get, return_type=TYPE_INT,
-                arg_descs=[ConstantArg('rightpos')]))
+                      arg_descs=[ConstantArg('rightpos')]))
 
         palette.add_block('toppos',
                           style='box-style',
@@ -978,9 +1010,10 @@ Journal objects'))
                           prim_name='tpos',
                           logo_command='tpos',
                           help_string=_('ycor of top of screen'))
-        self.tw.lc.def_prim('tpos', 0,
+        self.tw.lc.def_prim(
+            'tpos', 0,
             Primitive(CONSTANTS.get, return_type=TYPE_INT,
-                arg_descs=[ConstantArg('toppos')]))
+                      arg_descs=[ConstantArg('toppos')]))
 
         palette.add_block('height',
                           style='box-style',
@@ -988,9 +1021,10 @@ Journal objects'))
                           prim_name='vres',
                           logo_command='height',
                           help_string=_('the canvas height'))
-        self.tw.lc.def_prim('vres', 0,
+        self.tw.lc.def_prim(
+            'vres', 0,
             Primitive(CONSTANTS.get, return_type=TYPE_INT,
-                arg_descs=[ConstantArg('height')]))
+                      arg_descs=[ConstantArg('height')]))
 
         palette.add_block('titlex',
                           hidden=True,
@@ -999,9 +1033,10 @@ Journal objects'))
                           label=_('title x'),
                           logo_command='titlex',
                           prim_name='titlex')
-        self.tw.lc.def_prim('titlex', 0,
+        self.tw.lc.def_prim(
+            'titlex', 0,
             Primitive(CONSTANTS.get, return_type=TYPE_INT,
-                arg_descs=[ConstantArg('titlex')]))
+                      arg_descs=[ConstantArg('titlex')]))
 
         palette.add_block('titley',
                           hidden=True,
@@ -1010,9 +1045,10 @@ Journal objects'))
                           label=_('title y'),
                           logo_command='titley',
                           prim_name='titley')
-        self.tw.lc.def_prim('titley', 0,
+        self.tw.lc.def_prim(
+            'titley', 0,
             Primitive(CONSTANTS.get, return_type=TYPE_INT,
-                arg_descs=[ConstantArg('titley')]))
+                      arg_descs=[ConstantArg('titley')]))
 
         palette.add_block('leftx',
                           hidden=True,
@@ -1021,9 +1057,10 @@ Journal objects'))
                           label=_('left x'),
                           prim_name='leftx',
                           logo_command='leftx')
-        self.tw.lc.def_prim('leftx', 0,
+        self.tw.lc.def_prim(
+            'leftx', 0,
             Primitive(CONSTANTS.get, return_type=TYPE_INT,
-                arg_descs=[ConstantArg('leftx')]))
+                      arg_descs=[ConstantArg('leftx')]))
 
         palette.add_block('topy',
                           hidden=True,
@@ -1032,9 +1069,10 @@ Journal objects'))
                           label=_('top y'),
                           prim_name='topy',
                           logo_command='topy')
-        self.tw.lc.def_prim('topy', 0,
+        self.tw.lc.def_prim(
+            'topy', 0,
             Primitive(CONSTANTS.get, return_type=TYPE_INT,
-                arg_descs=[ConstantArg('topy')]))
+                      arg_descs=[ConstantArg('topy')]))
 
         palette.add_block('rightx',
                           hidden=True,
@@ -1043,9 +1081,10 @@ Journal objects'))
                           label=_('right x'),
                           prim_name='rightx',
                           logo_command='rightx')
-        self.tw.lc.def_prim('rightx', 0,
+        self.tw.lc.def_prim(
+            'rightx', 0,
             Primitive(CONSTANTS.get, return_type=TYPE_INT,
-                arg_descs=[ConstantArg('rightx')]))
+                      arg_descs=[ConstantArg('rightx')]))
 
         palette.add_block('bottomy',
                           hidden=True,
@@ -1054,9 +1093,10 @@ Journal objects'))
                           label=_('bottom y'),
                           prim_name='bottomy',
                           logo_command='bottomy')
-        self.tw.lc.def_prim('bottomy', 0,
+        self.tw.lc.def_prim(
+            'bottomy', 0,
             Primitive(CONSTANTS.get, return_type=TYPE_INT,
-                arg_descs=[ConstantArg('bottomy')]))
+                      arg_descs=[ConstantArg('bottomy')]))
 
     def _myblocks_palette(self):
         ''' User-defined macros are saved as a json-encoded file;
@@ -1083,10 +1123,6 @@ Journal objects'))
                                   label=name)
 
     # Block primitives
-
-    def _prim_emptyheap(self):
-        """ Empty FILO """
-        self.tw.lc.heap = []
 
     def _prim_keyboard(self):
         """ Return last character typed """
@@ -1229,20 +1265,6 @@ Journal objects'))
             self.tw.lc.stop_logo()
             raise logoerror("#notanumber")
 
-    def _prim_is_heap_empty(self):
-        """ is FILO empty? """
-        if len(self.tw.lc.heap) == 0:
-            return 1
-        else:
-            return 0
-
-    def _prim_is_heap_empty_bool(self):
-        """ is FILO empty? """
-        if len(self.tw.lc.heap) == 0:
-            return True
-        else:
-            return False
-
     def after_pop(self):
         if self.tw.lc.update_values:
             if not self.tw.lc.heap:
@@ -1253,68 +1275,6 @@ Journal objects'))
     def after_push(self, val):
         if self.tw.lc.update_values:
             self.tw.lc.update_label_value('pop', val)
-
-    def _prim_pop(self):
-        """ Pop value off of FILO """
-        if len(self.tw.lc.heap) == 0:
-            raise logoerror("#emptyheap")
-        else:
-            if self.tw.lc.update_values:
-                if len(self.tw.lc.heap) == 1:
-                    self.tw.lc.update_label_value('pop')
-                else:
-                    self.tw.lc.update_label_value('pop', self.tw.lc.heap[-2])
-            return self.tw.lc.heap.pop(-1)
-
-    def _prim_print(self, n, flag):
-        """ Print object n """
-        if flag and (self.tw.hide or self.tw.step_time == 0):
-            return
-        if isinstance(n, list):
-            self.tw.showlabel('print', n)
-        elif isinstance(n, Color):
-            if n.color is None:
-                self.tw.showlabel('print', '%s %d, %s %d' %
-                                  (_('shade'), n.shade,
-                                   _('gray'), n.gray))
-            else:
-                self.tw.showlabel('print', '%s %d, %s %d, %s %d' %
-                                  (_('color'), n.color,
-                                   _('shade'), n.shade,
-                                   _('gray'), n.gray))
-        elif isinstance(n, basestring):
-            if n[0:6] == 'media_' and \
-                    n[6:].lower not in media_blocks_dictionary:
-                try:
-                    if self.tw.running_sugar:
-                        from sugar.datastore import datastore
-                        try:
-                            dsobject = datastore.get(n[6:])
-                        except:
-                            debug_output("Couldn't open %s" % (n[6:]),
-                                         self.tw.running_sugar)
-                        self.tw.showlabel('print', dsobject.metadata['title'])
-                        dsobject.destroy()
-                    else:
-                        self.tw.showlabel('print', n[6:])
-                except IOError:
-                    self.tw.showlabel('print', n)
-            else:
-                self.tw.showlabel('print', n)
-        elif isinstance(n, int):
-            self.tw.showlabel('print', n)
-        else:
-            self.tw.showlabel(
-                'print',
-                str(round_int(n)).replace('.', self.tw.decimal_point))
-
-    def _prim_printheap(self):
-        """ Display contents of heap """
-        heap_as_string = str(self.tw.lc.heap)
-        if len(heap_as_string) > 80:
-            self.tw.showlabel('print', str(self.tw.lc.heap)[0:79] + '…')
-        else:
-            self.tw.showlabel('print', str(self.tw.lc.heap))
 
     def _prim_load_heap(self, path):
         """ Load FILO from file """
@@ -1368,21 +1328,12 @@ Journal objects'))
             heap_file = path
             data_to_file(self.tw.lc.heap, heap_file)
 
-    def _prim_push(self, val):
-        """ Push value onto FILO """
-        self.tw.lc.heap.append(val)
-        if self.tw.lc.update_values:
-            self.tw.lc.update_label_value('pop', val)
-
     def _prim_readpixel(self):
         """ Read r, g, b, a from the canvas and push b, g, r to the stack """
         r, g, b, a = self.tw.turtles.get_active_turtle().get_pixel()
         self.tw.lc.heap.append(b)
         self.tw.lc.heap.append(g)
         self.tw.lc.heap.append(r)
-
-    def _prim_active_turtle(self):
-        return(self.tw.turtles.get_active_turtle().get_name())
 
     def _prim_reskin(self, media):
         """ Reskin the turtle with an image from a file """
@@ -1674,14 +1625,6 @@ Journal objects'))
         if self.tw.lc.update_values:
             self.tw.lc.update_label_value('time', elapsed_time)
 
-    def _prim_time(self):
-        """ Number of seconds since program execution has started or
-        clean (prim_clear) block encountered """
-        elapsed_time = int(time() - self.tw.lc.start_time)
-        if self.tw.lc.update_values:
-            self.tw.lc.update_label_value('time', elapsed_time)
-        return elapsed_time
-
     def _prim_hideblocks(self):
         """ hide blocks and show showblocks button """
         self.tw.hideblocks()
@@ -1699,42 +1642,6 @@ Journal objects'))
         if self.tw.running_sugar:
             self.tw.activity.stop_turtle_button.set_icon("stopiton")
             self.tw.activity.stop_turtle_button.set_tooltip(_('Stop turtle'))
-
-    def _prim_chr(self, x):
-        """ Chr conversion """
-        try:
-            return chr(int(x))
-        except ValueError:
-            self.tw.lc.stop_logo()
-            raise logoerror("#notanumber")
-
-    def _prim_int(self, x):
-        """ Int conversion """
-        try:
-            return int(x)
-        except ValueError:
-            self.tw.lc.stop_logo()
-            raise logoerror("#notanumber")
-
-    def _prim_turtle_x(self, t):
-        """ Return x coordinate of turtle t """
-        return self.tw.turtles.get_turtle_x(t)
-
-    def _prim_turtle_y(self, t):
-        """ Return y coordinate of turtle t """
-        return self.tw.turtles.get_turtle_y(t)
-
-    def _prim_turtle_h(self, t):
-        """ Return heading of turtle t """
-        return self.tw.turtles.get_turtle_heading(t)
-
-    def _prim_clamp(self, blklist):
-        """ Run clamp blklist """
-        self.tw.lc.icall(self.tw.lc.evline, blklist[:])
-        yield True
-        self.tw.lc.procstop = False
-        self.tw.lc.ireturn()
-        yield True
 
     def _prim_load_block(self, blkname):
         ''' Load a block on to the canvas '''
