@@ -58,6 +58,7 @@ from TurtleArt.tapalette import default_values
 from TurtleArt.tawindow import TurtleArtWindow
 from TurtleArt.taexportlogo import save_logo
 from TurtleArt.taexportpython import save_python
+from TurtleArt.taprimitive import PyExportError
 
 from util.menubuilder import MenuBuilder
 

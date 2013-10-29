@@ -73,6 +73,7 @@ from TurtleArt.tautils import (data_to_file, data_to_string, data_from_string,
                                get_path, chooser_dialog, get_hardware)
 from TurtleArt.tawindow import TurtleArtWindow
 from TurtleArt.tacollaboration import Collaboration
+from TurtleArt.taprimitive import PyExportError
 
 if HAS_TOOLBARBOX:
     from util.helpbutton import (HelpButton, add_section, add_paragraph)
