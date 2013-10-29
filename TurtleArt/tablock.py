@@ -25,7 +25,7 @@ import cairo
 from taconstants import (EXPANDABLE, EXPANDABLE_ARGS, OLD_NAMES, CONSTANTS,
                          STANDARD_STROKE_WIDTH, BLOCK_SCALE, BOX_COLORS,
                          GRADIENT_COLOR, EXPANDABLE_FLOW, Color,
-                         PREFIX_DICTIONARY)
+                         MEDIA_BLOCK2TYPE)
 from tapalette import (palette_blocks, block_colors, expandable_blocks,
                        content_blocks, block_names, block_primitives,
                        block_styles, special_block_colors)
@@ -36,6 +36,33 @@ from tautils import (debug_output, error_output)
 
 
 media_blocks_dictionary = {}  # new media blocks get added here
+
+class Media(object):
+    """ Media objects can be images, audio files, videos, Journal
+    descriptions, or camera snapshots. """
+
+    ALL_TYPES = ('media', 'audio', 'video', 'descr', 'camera', 'camera1')
+
+    def __init__(self, type_, value=None):
+        """
+        type_ --- a string that indicates the kind of media:
+            media --- image
+            audio --- audio file
+            video --- video
+            descr --- Journal description
+            camera, camera1 --- camera snapshot
+        value --- a file path or a reference to a Sugar datastore object """
+        if type_ not in Media.ALL_TYPES:
+            raise ValueError("Media.type must be one of " +
+                             repr(Media.ALL_TYPES))
+        self.type = type_
+        self.value = value
+
+    def __str__(self):
+        return '%s_%s' % (self.type, str(self.value))
+
+    def __repr__(self):
+        return 'Media(type=%s, value=%s)' % (repr(self.type), repr(self.value))
 
 
 class Blocks:
@@ -245,6 +272,13 @@ class Block:
 
         self.block_list.append_to_list(self)
 
+    def __repr__(self):
+        if self.is_value_block():
+            name = self.get_value()
+        else:
+            name = self.name
+        return 'Block(%s)' % (repr(name))
+
     def get_visibility(self):
         ''' Should block be visible on the palette? '''
         return self._visible
@@ -294,7 +328,6 @@ class Block:
         if not self.is_value_block():
             return None
 
-        result = ''
         if self.name == 'number':
             try:
                 return float(self.values[0])
@@ -304,23 +337,21 @@ class Block:
                 self.name == 'title'):  # deprecated block
             if add_type_prefix:
                 result = '#s'
+            else:
+                result = ''
             if isinstance(self.values[0], (float, int)):
                 if int(self.values[0]) == self.values[0]:
                     self.values[0] = int(self.values[0])
                 result += str(self.values[0])
             else:
                 result += self.values[0]
-        elif self.name in PREFIX_DICTIONARY:
-            if add_type_prefix:
-                result = PREFIX_DICTIONARY[self.name]
-            result += str(self.values[0])
+            return result
+        elif self.name in MEDIA_BLOCK2TYPE:
+            return Media(MEDIA_BLOCK2TYPE[self.name], self.values[0])
         elif self.name in media_blocks_dictionary:
-            if add_type_prefix:
-                result = '#smedia_'
-            result += self.name.upper()
+            return Media('media', self.name.upper())
         else:
             return None
-        return result
 
     def highlight(self):
         """ We may want to highlight a block... """
@@ -598,7 +629,7 @@ class Block:
         if self.spr is None:
             return
         if isinstance(self.name, unicode):
-            self.name = self.name.encode('utf8')
+            self.name = self.name.encode('utf-8')
         if self.name in content_blocks:
             n = len(self.values)
             if n == 0:
@@ -679,7 +710,7 @@ class Block:
         self.svg.set_stroke_width(STANDARD_STROKE_WIDTH)
         self.svg.clear_docks()
         if isinstance(self.name, unicode):
-            self.name = self.name.encode('utf8')
+            self.name = self.name.encode('utf-8')
         for k in block_styles.keys():
             if self.name in block_styles[k]:
                 if isinstance(self.block_methods[k], list):
@@ -1016,7 +1047,7 @@ class Block:
         self._make_block_graphics(svg, self.svg.basic_block)
         self.docks = [['flow', True, self.svg.docks[0][0],
                        self.svg.docks[0][1]],
-                      ['unavailable', True, 0, self.svg.docks[0][1] + 10, '['],
+                      ['flow', True, 0, self.svg.docks[0][1] + 10, '['],
                       ['flow', False, self.svg.docks[1][0],
                        self.svg.docks[1][1], ']']]
 

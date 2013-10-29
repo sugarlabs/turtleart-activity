@@ -27,21 +27,11 @@ from math import *
 def myfunc(f, args):
     ''' Run inline Python code '''
     # check to make sure no import calls are made
-    if len(args) == 1:
-        myf = 'def f(x): return ' + f.replace('import', '')
-        userdefined = {}
-        exec myf in globals(), userdefined
-        return userdefined.values()[0](args[0])
-    elif len(args) == 2:
-        myf = 'def f(x, y): return ' + f.replace('import', '')
-        userdefined = {}
-        exec myf in globals(), userdefined
-        return userdefined.values()[0](args[0], args[1])
-    elif len(args) == 3:
-        myf = 'def f(x, y, z): return ' + f.replace('import', '')
-        userdefined = {}
-        exec myf in globals(), userdefined
-        return userdefined.values()[0](args[0], args[1], args[2])
+    params = ", ".join(['x', 'y', 'z'][:len(args)])
+    myf = ''.join(['def f(', params, '): return ', f.replace('import', '')])
+    userdefined = {}
+    exec myf in globals(), userdefined
+    return userdefined.values()[0](*args)
 
 
 def myfunc_import(parent, f, x):

@@ -103,6 +103,9 @@ class Color(object):
     def __float__(self):
         return float(int(self))
 
+    def get_number_string(self):
+        return str(int(self))
+
     def __str__(self):
         return str(self.name)
 
@@ -194,10 +197,10 @@ OLD_DOCK = ['and', 'or', 'plus', 'minus', 'division', 'product', 'remainder']
 CONTENT_ARGS = ['show', 'showaligned', 'push', 'storein', 'storeinbox1',
                 'storeinbox2']
 
-PREFIX_DICTIONARY = {}
+MEDIA_BLOCK2TYPE = {}  # map media blocks to media types
 
-# These blocks get a special skin
-BLOCKS_WITH_SKIN = []
+
+BLOCKS_WITH_SKIN = []  # These blocks get a special skin
 
 PYTHON_SKIN = []
 

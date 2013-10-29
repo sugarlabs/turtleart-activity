@@ -35,6 +35,7 @@
     Modified by Marion Zepf.
 """
 from ast import *
+from ast_extensions import Comment
 
 
 def to_source(node, indent_with=' ' * 4, add_line_information=False):
@@ -67,7 +68,7 @@ class SourceGenerator(NodeVisitor):
     """
 
     UNARYOP_SYMBOLS = {Invert: "~", Not: "not", UAdd: "+", USub: "-"}
-    # TODO avoid turning (-1)**2 into -1**2
+    # TODO use parentheses around expressions only where necessary
     BINOP_SYMBOLS = {Add: "+", Sub: "-", Mult: "*", Div: "/", Mod: "%",
                      LShift: "<<", RShift:">>", BitOr: "|", BitXor: "^",
                      BitAnd: "&", FloorDiv: "//", Pow: "**"}
@@ -219,7 +220,6 @@ class SourceGenerator(NodeVisitor):
                 paren_or_comma()
                 self.write('**')
                 self.visit(node.kwargs)
-        # TODO wtf???
         self.write(have_args and '):' or ':')
         self.body(node.body)
 
@@ -326,8 +326,10 @@ class SourceGenerator(NodeVisitor):
 
     def visit_Return(self, node):
         self.newline(node)
-        self.write('return ')
-        self.visit(node.value)
+        self.write('return')
+        if hasattr(node, "value") and node.value is not None:
+            self.write(' ')
+            self.visit(node.value)
 
     def visit_Break(self, node):
         self.newline(node)
@@ -355,6 +357,10 @@ class SourceGenerator(NodeVisitor):
             if node.tback is not None:
                 self.write(', ')
                 self.visit(node.tback)
+
+    def visit_Comment(self, node):
+        self.newline(node)
+        self.write('#' + str(node.text))
 
     # Expressions
 
@@ -388,9 +394,11 @@ class SourceGenerator(NodeVisitor):
             self.write('**')
             self.visit(node.kwargs)
         self.write(')')
+    visit_TypedCall = visit_Call
 
     def visit_Name(self, node):
         self.write(node.id)
+    visit_TypedName = visit_Name
 
     def visit_Str(self, node):
         self.write(repr(node.s))
@@ -408,7 +416,6 @@ class SourceGenerator(NodeVisitor):
             if idx:
                 self.write(', ')
             self.visit(item)
-        # TODO wtf???
         self.write(idx and ')' or ',)')
 
     def sequence_visit(left, right):
@@ -470,6 +477,10 @@ class SourceGenerator(NodeVisitor):
         self.write('[')
         self.visit(node.slice)
         self.write(']')
+    visit_TypedSubscript = visit_Subscript
+
+    def visit_Index(self, node):
+        self.visit(node.value)
 
     def visit_Slice(self, node):
         if node.lower is not None:
@@ -493,10 +504,21 @@ class SourceGenerator(NodeVisitor):
         self.visit(node.value)
 
     def visit_Lambda(self, node):
-        self.write('lambda ')
+        self.write('(lambda ')
         self.signature(node.args)
         self.write(': ')
         self.visit(node.body)
+        self.write(')')
+
+    def visit_LambdaWithStrBody(self, node):
+        self.write('(lambda ')
+        for idx, arg in enumerate(node.args):
+            if idx:
+                self.write(', ')
+            self.visit(arg)
+        self.write(': ')
+        self.write(node.body_str)
+        self.write(')')
 
     def visit_Ellipsis(self, node):
         self.write('Ellipsis')

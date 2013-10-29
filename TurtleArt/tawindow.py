@@ -58,7 +58,7 @@ from taconstants import (HORIZONTAL_PALETTE, VERTICAL_PALETTE, BLOCK_SCALE,
                          PYTHON_SKIN, PALETTE_HEIGHT, STATUS_LAYER, OLD_DOCK,
                          EXPANDABLE_ARGS, XO1, XO15, XO175, XO30, XO4, TITLEXY,
                          CONTENT_ARGS, CONSTANTS, EXPAND_SKIN, PROTO_LAYER,
-                         EXPANDABLE_FLOW, SUFFIX, TMP_SVG_PATH)
+                         EXPANDABLE_FLOW, SUFFIX, TMP_SVG_PATH, Color)
 from tapalette import (palette_names, palette_blocks, expandable_blocks,
                        block_names, content_blocks, default_values,
                        special_names, block_styles, help_strings,
@@ -67,7 +67,7 @@ from tapalette import (palette_names, palette_blocks, expandable_blocks,
                        palette_init_on_start)
 from talogo import (LogoCode, primitive_dictionary, logoerror)
 from tacanvas import TurtleGraphics
-from tablock import (Blocks, Block)
+from tablock import (Blocks, Block, Media, media_blocks_dictionary)
 from taturtle import (Turtles, Turtle)
 from tautils import (magnitude, get_load_name, get_save_name, data_from_file,
                      data_to_file, round_int, get_id, get_pixbuf_from_journal,
@@ -77,7 +77,7 @@ from tautils import (magnitude, get_load_name, get_save_name, data_from_file,
                      find_block_to_run, find_top_block, journal_check,
                      find_group, find_blk_below, data_to_string,
                      find_start_stack, get_hardware, debug_output,
-                     error_output, convert, find_hat, find_bot_block,
+                     error_output, find_hat, find_bot_block,
                      restore_clamp, collapse_clamp, data_from_string,
                      increment_name, get_screen_dpi)
 from tasprite_factory import (SVG, svg_str_to_pixbuf, svg_from_file)
@@ -4359,6 +4359,60 @@ before making changes to your program'))
         elif self.interactive_mode:
             self.parent.set_title(text)
 
+    def print_(self, n, flag):
+        """ Print object n to the bar at the bottom of the screen """
+        if flag and (self.hide or self.step_time == 0):
+            return
+
+        # list
+        if isinstance(n, list):
+            heap_as_string = str(self.lc.heap)
+            if len(heap_as_string) > 80:
+                self.showlabel('print', str(self.lc.heap)[0:79] + '…')
+            else:
+                self.showlabel('print', str(self.lc.heap))
+        # color
+        elif isinstance(n, Color):
+            if n.color is None:
+                self.showlabel('print', '%s %d, %s %d' %
+                               (_('shade'), n.shade,
+                                _('gray'), n.gray))
+            else:
+                self.showlabel('print', '%s %d, %s %d, %s %d' %
+                               (_('color'), n.color,
+                                _('shade'), n.shade,
+                                _('gray'), n.gray))
+        # media
+        elif isinstance(n, Media):
+            if (n.type == 'media' and
+                    n.value.lower() not in media_blocks_dictionary):
+                try:
+                    if self.running_sugar:
+                        from sugar.datastore import datastore
+                        try:
+                            dsobject = datastore.get(n.value)
+                        except:
+                            debug_output("Couldn't open %s" % (n.value),
+                                         self.running_sugar)
+                        self.showlabel('print', dsobject.metadata['title'])
+                        dsobject.destroy()
+                    else:
+                        self.showlabel('print', n.value)
+                except IOError:
+                    self.showlabel('print', str(n))
+            else:
+                self.showlabel('print', str(n))
+        # string
+        elif isinstance(n, basestring):
+            self.showlabel('print', n)
+        # integer
+        elif isinstance(n, int):
+            self.showlabel('print', n)
+        # other number
+        else:
+            self.showlabel(
+                'print',
+                str(round_int(n)).replace('.', self.decimal_point))
 
     def showlabel(self, shp, label=''):
         ''' Display a message on a status block '''
@@ -4630,7 +4684,6 @@ before making changes to your program'))
         palette = make_palette('blocks')
 
         # Create a new block prototype.
-        primitive_dictionary['stack'] = self._prim_stack
         palette.add_block('stack_%s' % (name),
                           style='basic-style-1arg',
                           label=name,
@@ -4639,7 +4692,6 @@ before making changes to your program'))
                           logo_command='action',
                           default=name,
                           help_string=_('invokes named action stack'))
-        self.lc.def_prim('stack', 1, primitive_dictionary['stack'], True)
 
         # Regenerate the palette, which will now include the new block.
         self.show_toolbar_palette(palette_name_to_index('blocks'),
@@ -4659,7 +4711,6 @@ before making changes to your program'))
         palette = make_palette('blocks')
 
         # Create a new block prototype.
-        primitive_dictionary['box'] = self._prim_box
         palette.add_block('box_%s' % (name),
                           style='number-style-1strarg',
                           label=name,
@@ -4668,8 +4719,6 @@ before making changes to your program'))
                           default=name,
                           logo_command='box',
                           help_string=_('named variable (numeric value)'))
-        self.lc.def_prim('box', 1,
-                         lambda self, x: primitive_dictionary['box'](x))
 
         # Regenerate the palette, which will now include the new block.
         self.show_toolbar_palette(palette_name_to_index('blocks'),
@@ -4689,7 +4738,6 @@ before making changes to your program'))
         palette = make_palette('blocks')
 
         # Create a new block prototype.
-        primitive_dictionary['setbox'] = self._prim_setbox
         palette.add_block('storein_%s' % (name),
                           style='basic-style-2arg',
                           label=[_('store in'), name, _('value')],
@@ -4699,51 +4747,10 @@ before making changes to your program'))
                           default=[name, 100],
                           help_string=_('stores numeric value in named \
 variable'))
-        self.lc.def_prim(
-            'storeinbox',
-            2,
-            lambda self, x, y: primitive_dictionary['setbox']('box3', x, y))
 
         # Regenerate the palette, which will now include the new block.
         self.show_toolbar_palette(palette_name_to_index('blocks'),
                                   regenerate=True)
-
-    def _prim_stack(self, x):
-        ''' Process a named stack '''
-        if isinstance(convert(x, float, False), float):
-            if int(float(x)) == x:
-                x = int(x)
-        if 'stack3' + str(x) not in self.lc.stacks or \
-           self.lc.stacks['stack3' + str(x)] is None:
-            raise logoerror('#nostack')
-        self.lc.icall(self.lc.evline,
-                      self.lc.stacks['stack3' + str(x)][:])
-        yield True
-        self.lc.procstop = False
-        self.lc.ireturn()
-        yield True
-
-    def _prim_box(self, x):
-        ''' Retrieve value from named box '''
-        if isinstance(convert(x, float, False), float):
-            if int(float(x)) == x:
-                x = int(x)
-        try:
-            return self.lc.boxes['box3' + str(x)]
-        except KeyError:
-            raise logoerror('#emptybox')
-
-    def _prim_setbox(self, name, x, val):
-        ''' Define value of named box '''
-        if x is not None:
-            if isinstance(convert(x, float, False), float):
-                if int(float(x)) == x:
-                    x = int(x)
-            self.lc.boxes[name + str(x)] = val
-            self.lc.update_label_value('box', val, label=x)
-        else:
-            self.lc.boxes[name] = val
-            self.lc.update_label_value(name, val)
 
     def dock_dx_dy(self, block1, dock1n, block2, dock2n):
         ''' Find the distance between the dock points of two blocks. '''

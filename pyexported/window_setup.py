@@ -1,65 +1,17 @@
 #!/usr/bin/env python
 
-# TODO remove unused imports and global variables
+import cairo
 import pygtk
 pygtk.require('2.0')
 import gtk
 import gobject
 
-from gettext import gettext as _
-
-try:
-    import gst
-    _GST_AVAILABLE = True
-except ImportError:
-    # Turtle Art should not fail if gst is not available
-    _GST_AVAILABLE = False
-
 import os
-import subprocess
-import errno
 from sys import argv
 
-from random import uniform
-from math import atan2, pi
-DEGTOR = 2 * pi / 360
-
-import locale
-
-from TurtleArt.taconstants import (HORIZONTAL_PALETTE, VERTICAL_PALETTE, BLOCK_SCALE,
-                         MEDIA_SHAPES, STATUS_SHAPES, OVERLAY_SHAPES,
-                         TOOLBAR_SHAPES, TAB_LAYER, RETURN, OVERLAY_LAYER,
-                         CATEGORY_LAYER, BLOCKS_WITH_SKIN, ICON_SIZE,
-                         PALETTE_SCALE, PALETTE_WIDTH, SKIN_PATHS, MACROS,
-                         TOP_LAYER, BLOCK_LAYER, OLD_NAMES, DEFAULT_TURTLE,
-                         TURTLE_LAYER, EXPANDABLE, NO_IMPORT, TEMPLATES,
-                         PYTHON_SKIN, PALETTE_HEIGHT, STATUS_LAYER, OLD_DOCK,
-                         EXPANDABLE_ARGS, XO1, XO15, XO175, XO30, XO4, TITLEXY,
-                         CONTENT_ARGS, CONSTANTS, EXPAND_SKIN, PROTO_LAYER,
-                         EXPANDABLE_FLOW, SUFFIX)
-from TurtleArt.talogo import (LogoCode, primitive_dictionary, logoerror)
-from TurtleArt.tacanvas import TurtleGraphics
-from TurtleArt.tablock import (Blocks, Block)
-from TurtleArt.taturtle import (Turtles, Turtle)
-from TurtleArt.tautils import (magnitude, get_load_name, get_save_name, data_from_file,
-                     data_to_file, round_int, get_id, get_pixbuf_from_journal,
-                     movie_media_type, audio_media_type, image_media_type,
-                     save_picture, calc_image_size, get_path, hide_button_hit,
-                     show_button_hit, arithmetic_check, xy,
-                     find_block_to_run, find_top_block, journal_check,
-                     find_group, find_blk_below, data_to_string,
-                     find_start_stack, get_hardware, debug_output,
-                     error_output, convert, find_bot_block,
-                     restore_clamp, collapse_clamp, data_from_string,
-                     increment_name, get_screen_dpi)
-from TurtleArt.tasprite_factory import (SVG, svg_str_to_pixbuf, svg_from_file)
-from TurtleArt.sprites import (Sprites, Sprite)
-
-if _GST_AVAILABLE:
-    from TurtleArt.tagplay import stop_media
-
-import cairo
-
+from TurtleArt.tablock import Media
+from TurtleArt.taconstants import CONSTANTS
+from TurtleArt.tatype import *
 from TurtleArt.tawindow import TurtleArtWindow
 
 
@@ -174,7 +126,7 @@ def get_tw():
     # win.set_default_size(gui.width, gui.height)
     # win.move(gui.x, gui.y)
     win.maximize()
-    # win.set_title('%s %s' % (gui.name, str(gui.version)))
+    win.set_title(str(gui.name))
     # if os.path.exists(os.path.join(gui._execdirname, gui._ICON_SUBPATH)):
     #     win.set_icon_from_file(os.path.join(gui._execdirname,
     #                                         gui._ICON_SUBPATH))

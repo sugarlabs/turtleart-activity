@@ -20,14 +20,21 @@
 
 import ast
 from gettext import gettext as _
+from math import sqrt
+from random import uniform
+import traceback
 
 #from ast_pprint import * # only used for debugging, safe to comment out
 
+from tablock import Media
 from tacanvas import TurtleGraphics
 from taconstants import (Color, CONSTANTS)
-from talogo import LogoCode
+from talogo import (LogoCode, logoerror, NegativeRootError)
 from taturtle import (Turtle, Turtles)
+from tatype import *
+from tautils import debug_output
 from tawindow import (global_objects, TurtleArtWindow)
+from util import ast_extensions
 
 
 class PyExportError(BaseException):
@@ -48,9 +55,11 @@ class PyExportError(BaseException):
 
 
 class Primitive(object):
-    """ Something that can be called when the block code is executed in TA,
+    """ Something that can be called when the block code is executed in TA, 
     but that can also be transformed into a Python AST.
     """
+
+    _DEBUG = False
 
     STANDARD_OPERATORS = {'plus': (ast.UAdd, ast.Add),
                           'minus': (ast.USub, ast.Sub),
@@ -58,9 +67,6 @@ class Primitive(object):
                           'divide': ast.Div,
                           'modulo': ast.Mod,
                           'power': ast.Pow,
-                          'integer_division': ast.FloorDiv,
-                          'bitwise_and': ast.BitAnd,
-                          'bitwise_or': ast.BitOr,
                           'and_': ast.And,
                           'or_': ast.Or,
                           'not_': ast.Not,
@@ -68,261 +74,253 @@ class Primitive(object):
                           'less': ast.Lt,
                           'greater': ast.Gt}
 
-    def __init__(self, func, constant_args=None, slot_wrappers=None,
-                 call_afterwards=None, call_me=True, export_me=True):
-        """ constant_args -- A dictionary containing constant arguments to be
-            passed to the function. It uses the same key scheme as
-            slot_wrappers, except that argument ranges are not supported.
-            The constant args and kwargs are added to the runtime args and
-            kwargs before the slot wrappers are called.
-        slot_wrappers -- A dictionary mapping from the index of an
-            argument in the args list to another Primitive that should be
-            wrapped around the actual argument value (e.g., to convert a
-            positive number to a negative one). For keyword arguments, the
-            key in slot_wrappers should be the same as the kwargs key. To pass
-            multiple arguments to the slot wrapper, use a tuple of the first
-            and last argument number (the latter increased by 1) as a key.
-            Negative argument indices are not supported.
+    def __init__(self, func, return_type=TYPE_OBJECT, arg_descs=None, kwarg_descs=None,
+                 call_afterwards=None, export_me=True):
+        """ return_type -- the type (from the type hierarchy) that this
+            Primitive will return
+        arg_descs, kwarg_descs -- a list of argument descriptions and
+            a dictionary of keyword argument descriptions. An argument
+            description can be either an ArgSlot or a ConstantArg.
         call_afterwards -- Code to call after this Primitive has been called
             (e.g., for updating labels in LogoCode) (not used for creating
             AST)
-        call_me -- True if this Primitive should be called (default), False
-            if it should be passed on as a Primitive object
         export_me -- True iff this Primitive should be exported to Python
             code (the default case) """
         self.func = func
+        self.return_type = return_type
 
-        if constant_args is None:
-            self.constant_args = {}
+        if arg_descs is None:
+            self.arg_descs = []
         else:
-            self.constant_args = constant_args
+            self.arg_descs = arg_descs
 
-        if slot_wrappers is None:
-            self.slot_wrappers = {}
+        if kwarg_descs is None:
+            self.kwarg_descs = {}
         else:
-            # check for duplicate argument indices
-            msg = ("argument at index %d is associated with multiple slot "
-                   "wrappers")
-            nums = set()
-            tuples = []
-            for k in slot_wrappers.keys():
-                if isinstance(k, int):
-                    nums.add(k)
-                elif isinstance(k, tuple):
-                    tuples.append(k)
-            tuples.sort()
-            prev_tuple = (0, 0)
-            for tuple_ in tuples:
-                if prev_tuple[1] > tuple_[0]:
-                    raise KeyError(msg % (tuple_[0]))
-                for i in range(*tuple_):
-                    if i in nums:
-                        raise KeyError(msg % (i))
-                prev_tuple = tuple_
-            self.slot_wrappers = slot_wrappers
+            self.kwarg_descs = kwarg_descs
 
         self.call_afterwards = call_afterwards
-        self.call_me = call_me
         self.export_me = export_me
 
+    def copy(self):
+        """ Return a Primitive object with the same attributes as this one.
+        Shallow-copy the arg_descs and kwarg_descs attributes. """
+        arg_descs_copy = self.arg_descs[:]
+        if isinstance(self.arg_descs, ArgListDisjunction):
+            arg_descs_copy = ArgListDisjunction(arg_descs_copy)
+        return Primitive(self.func,
+                         return_type=self.return_type,
+                         arg_descs=arg_descs_copy,
+                         kwarg_descs=self.kwarg_descs.copy(),
+                         call_afterwards=self.call_afterwards,
+                         export_me=self.export_me)
+
     def __repr__(self):
-        return "Primitive(" + repr(self.func) + ")"
+        return "Primitive(%s -> %s)" % (repr(self.func), str(self.return_type))
 
-    def _apply_wrappers(self, runtime_args, runtime_kwargs,
-                        convert_to_ast=False):
-        """ Apply the slot wrappers """
-        # make a map from the start indices of all ranges to their ends
-        range_ends = {}
-        for range_tuple in sorted(self.slot_wrappers.keys()):
-            if isinstance(range_tuple, tuple):
-                (start, end) = range_tuple
-                range_ends[start] = end
+    @property
+    def __name__(self):
+        return self.func.__name__
 
+    def get_name_for_export(self):
+        """ Return the expression (as a string) that represents this Primitive
+        in the exported Python code, e.g., 'turtle.forward'. """
+        func_name = ""
+        if self.wants_turtle():
+            func_name = "turtle."
+        elif self.wants_turtles():
+            func_name = "turtles."
+        elif self.wants_canvas():
+            func_name = "canvas."
+        elif self.wants_logocode():
+            func_name = "logo."
+        elif self.wants_heap():
+            func_name = "logo.heap."
+        elif self.wants_tawindow():
+            func_name = "tw."
+        # get the name of the function directly from the function itself
+        func_name += self.func.__name__
+        return func_name
+
+    def are_slots_filled(self):
+        """ Return True iff none of the arg_descs or kwarg_descs is an
+        ArgSlot. """
+        for arg_desc in self.arg_descs:
+            if isinstance(arg_desc, ArgSlot):
+                return False
+        for key in self.kwarg_descs:
+            if isinstance(self.kwarg_descs[key], ArgSlot):
+                return False
+        return True
+
+    def fill_slots(self, arguments=None, keywords=None, convert_to_ast=False,
+            call_my_args=True):
+        """ Return a copy of this Primitive whose ArgSlots are filled with
+        the given arguments, turned into ConstantArgs. Call the arguments,
+        apply their wrappers, and check their types as appropriate. """
+        if arguments is None:
+            arguments = []
+        if keywords is None:
+            keywords = {}
+
+        new_prim = self.copy()
+
+        if isinstance(new_prim.arg_descs, ArgListDisjunction):
+            slot_list_alternatives = list(new_prim.arg_descs)
+        else:
+            slot_list_alternatives = [new_prim.arg_descs]
+
+        # arguments
+        error = None
+        filler = None
+        for slot_list in slot_list_alternatives:
+            error = None
+            new_slot_list = []
+            filler_list = list(arguments[:])
+            for slot in slot_list:
+                if isinstance(slot, ArgSlot):
+                    filler = filler_list.pop(0)
+                    try:
+                        const = slot.fill(filler,
+                            convert_to_ast=convert_to_ast,
+                            call_my_args=call_my_args)
+                    except TATypeError as error:
+                        if Primitive._DEBUG:
+                            traceback.print_exc()
+                        break
+                    else:
+                        new_slot_list.append(const)
+                else:
+                    new_slot_list.append(slot)
+            if error is None:
+                new_prim.arg_descs = new_slot_list
+                break
+        if error is not None:
+            raise error
+
+        # keyword arguments
+        for key in keywords:
+            kwarg_desc = new_prim.kwarg_descs[key]
+            if isinstance(kwarg_desc, ArgSlot):
+                const = kwarg_desc.fill(keywords[key],
+                                        convert_to_ast=convert_to_ast,
+                                        call_my_args=call_my_args)
+                new_prim.kwarg_descs[key] = const
+
+        return new_prim
+
+    def get_values_of_filled_slots(self, exportable_only=False):
+        """ Return the values of all filled argument slots as a list, and
+        the values of all filled keyword argument slots as a dictionary.
+        Ignore all un-filled (keyword) argument slots.
+        exportable_only -- return only exportable values and convert values
+            to ASTs instead of calling them """
         new_args = []
-        i = 0
-        while i < len(runtime_args):
-            arg = runtime_args[i]
-            wrapper = self.slot_wrappers.get(i)
-            if wrapper is None:
-                (start, end) = (i, range_ends.get(i))
-                if end is None:
-                    # no slot wrapper found
-                    # convert to AST, but don't call
-                    if convert_to_ast and isinstance(arg, Primitive):
-                        new_args.append(arg.get_ast())
-                    else:
-                        new_args.append(arg)
-                    i += 1
-                else:
-                    # range -> slot wrapper around a range of arguments
-                    wrapper = self.slot_wrappers.get((start, end))
-                    args_for_wrapper = runtime_args[start:end]
-                    if not convert_to_ast and call_me(wrapper):
-                        wrapper_output = wrapper(*args_for_wrapper)
-                    elif convert_to_ast and export_me(wrapper):
-                        wrapper_output = value_to_ast(wrapper,
-                                                      *args_for_wrapper)
-                    else:
-                        # apply all contained wrappers, but skip this one
-                        (all_args, unused) = wrapper._add_constant_args(
-                            args_for_wrapper, runtime_kwargs={},
-                            convert_to_ast=convert_to_ast)
-                        (my_new_args, unused) = wrapper._apply_wrappers(
-                            all_args, runtime_kwargs={},
-                            convert_to_ast=convert_to_ast)
-                        wrapper_output = my_new_args
-                    new_args.append(wrapper_output)
-                    i += end - start
-            else:
-                # number -> slot wrapper around one argument
-                if not convert_to_ast and call_me(wrapper):
-                    new_arg = wrapper(arg)
-                elif convert_to_ast and export_me(wrapper):
-                    new_arg = value_to_ast(wrapper, arg)
-                else:
-                    # apply all contained wrappers, but skip this one
-                    (all_args, unused) = wrapper._add_constant_args(
-                        [arg],
-                        runtime_kwargs={}, convert_to_ast=convert_to_ast)
-                    (my_new_args, unused) = wrapper._apply_wrappers(
-                        all_args,
-                        runtime_kwargs={}, convert_to_ast=convert_to_ast)
-                    new_arg = my_new_args[0]
-                new_args.append(new_arg)
-                i += 1
-
+        for c_arg in self.arg_descs:
+            if (isinstance(c_arg, ConstantArg)
+                    and (not exportable_only
+                        or export_me(c_arg.value))):
+                new_args.append(c_arg.get(convert_to_ast=exportable_only))
         new_kwargs = {}
-        for (key, value) in runtime_kwargs.iteritems():
-            wrapper = self.slot_wrappers.get(key)
-            if wrapper is not None:
-                if not convert_to_ast and call_me(wrapper):
-                    new_value = wrapper(value)
-                elif convert_to_ast and export_me(wrapper):
-                    new_value = value_to_ast(wrapper, value)
-                else:
-                    # apply all contained wrappers, but skip this one
-                    (unused, all_kwargs) = wrapper._add_constant_args(
-                        [],
-                        runtime_kwargs={key: value},
-                        convert_to_ast=convert_to_ast)
-                    (unused, my_new_kwargs) = wrapper._apply_wrappers(
-                        [],
-                        runtime_kwargs={key: all_kwargs[key]},
-                        convert_to_ast=convert_to_ast)
-                    new_value = my_new_kwargs[key]
-                new_kwargs[key] = new_value
-            else:
-                new_kwargs[key] = value
-
+        for key in self.kwarg_descs:
+            if (isinstance(self.kwarg_descs[key], ConstantArg)
+                    and (not exportable_only
+                        or export_me(self.kwarg_descs[key].value))):
+                new_kwargs[key] = self.kwarg_descs[key].get(
+                    convert_to_ast=exportable_only)
         return (new_args, new_kwargs)
 
-    def _add_constant_args(self, runtime_args, runtime_kwargs,
-                           convert_to_ast=False):
-        """ Add the constant args and kwargs to the given runtime args and
-        kwargs. Return a list containing all args and a dictionary with all
-        kwargs.
-        convert_to_ast -- convert all constant arguments to ASTs? """
-        all_args = []
-        all_kwargs = runtime_kwargs.copy()
-
-        # args
-        i = 0
-
-        def _insert_c_args(i):
-            while i in self.constant_args:
-                c_arg = self.constant_args[i]
-                if not convert_to_ast and call_me(c_arg):
-                    all_args.append(c_arg())
-                elif convert_to_ast:
-                    if export_me(c_arg):
-                        all_args.append(value_to_ast(c_arg))
-                else:
-                    all_args.append(c_arg)
-                i += 1
-            return i
-        for arg in runtime_args:
-            i = _insert_c_args(i)
-            all_args.append(arg)
-            i += 1
-        i = _insert_c_args(i)
-
-        # kwargs
-        for (key, value) in self.constant_args.iteritems():
-            if isinstance(key, basestring):
-                if not convert_to_ast and call_me(value):
-                    all_kwargs[key] = value()
-                elif convert_to_ast:
-                    if export_me(value):
-                        all_kwargs[key] = value_to_ast(value)
-                else:
-                    all_kwargs[key] = value
-
-        return (all_args, all_kwargs)
+    def allow_call_args(self, recursive=False):
+        """ Set call_args attribute of all argument descriptions to True
+        recursive -- recursively call allow_call_args on all constant args
+            that are Primitives """
+        for arg_desc in self.arg_descs:
+            arg_desc.call_arg = True
+            if (recursive and isinstance(arg_desc, ConstantArg) and
+                    isinstance(arg_desc.value, Primitive)):
+                arg_desc.value.allow_call_args(recursive=True)
+        for kwarg_desc in self.kwarg_descs:
+            kwarg_desc.call_arg = True
+            if (recursive and isinstance(kwarg_desc, ConstantArg) and
+                    isinstance(kwarg_desc.value, Primitive)):
+                kwarg_desc.value.allow_call_args(recursive=True)
 
     def __call__(self, *runtime_args, **runtime_kwargs):
-        """ Execute the function, passing it the arguments received at
+        """ Execute the function, passing it the arguments received at 
         runtime. Also call the function in self.call_afterwards and pass it
         all runtime_args and runtime_kwargs.
-        If the very first argument is a LogoCode instance, it may be
-        replaced with the active turtle, the canvas, or nothing (depending
-        on what this primitive wants as its first arg). This argument is
-        also exempt from the slot wrappers. """
+        If the very first argument is a LogoCode instance, it is removed.
+        The active turtle, the Turtles object, the canvas, the LogoCode
+        object, or the TurtleArtWindow object will be prepended to the
+        arguments (depending on what this Primitive wants). """
 
         # remove the first argument if it is a LogoCode instance
         if runtime_args and isinstance(runtime_args[0], LogoCode):
             runtime_args = runtime_args[1:]
 
-        runtime_args_copy = runtime_args[:]
-        runtime_args = []
-        for arg in runtime_args_copy:
-            if isinstance(arg, tuple) and arg and callable(arg[0]):
-                runtime_args.append(arg[0](*arg[1:]))
-            else:
-                runtime_args.append(arg)
+        if Primitive._DEBUG:
+            debug_output(repr(self))
+            debug_output("  runtime_args: " + repr(runtime_args))
+        # fill the ArgSlots with the runtime arguments
+        new_prim = self.fill_slots(runtime_args, runtime_kwargs,
+                                   convert_to_ast=False)
+        if not new_prim.are_slots_filled():
+            raise logoerror("#syntaxerror")
+        if Primitive._DEBUG:
+            debug_output("  new_prim.arg_descs: " + repr(new_prim.arg_descs))
+
+        # extract the actual values from the (now constant) arguments
+        (new_args, new_kwargs) = new_prim.get_values_of_filled_slots()
+        if Primitive._DEBUG:
+            debug_output("  new_args: " + repr(new_args))
+            debug_output("end " + repr(self))
 
         # what does this primitive want as its first argument?
-        if self.wants_turtle():
-            first_arg = global_objects["turtles"].get_active_turtle()
-        elif self.wants_turtles():
-            first_arg = global_objects["turtles"]
-        elif self.wants_canvas():
-            first_arg = global_objects["canvas"]
-        elif self.wants_logocode():
-            first_arg = global_objects["logo"]
-        elif self.wants_tawindow():
-            first_arg = global_objects["window"]
-        else:
-            first_arg = None
-
-        # constant arguments
-        (all_args, all_kwargs) = self._add_constant_args(runtime_args,
-                                                         runtime_kwargs)
-
-        # slot wrappers
-        (new_args, new_kwargs) = self._apply_wrappers(all_args, all_kwargs)
+        first_arg = None
+        if not is_bound_method(new_prim.func):
+            if new_prim.wants_turtle():
+                first_arg = global_objects["turtles"].get_active_turtle()
+            elif new_prim.wants_turtles():
+                first_arg = global_objects["turtles"]
+            elif new_prim.wants_canvas():
+                first_arg = global_objects["canvas"]
+            elif new_prim.wants_logocode():
+                first_arg = global_objects["logo"]
+            elif new_prim.wants_heap():
+                first_arg = global_objects["logo"].heap
+            elif new_prim.wants_tawindow():
+                first_arg = global_objects["window"]
 
         # execute the actual function
-        if first_arg is None or is_bound_instancemethod(self.func):
-            return_value = self.func(*new_args, **new_kwargs)
+        if first_arg is None:
+            return_value = new_prim.func(*new_args, **new_kwargs)
         else:
-            return_value = self.func(first_arg, *new_args, **new_kwargs)
-
-        if self.call_afterwards is not None:
-            self.call_afterwards(*new_args, **new_kwargs)
-
+            return_value = new_prim.func(first_arg, *new_args, **new_kwargs)
+        
+        if new_prim.call_afterwards is not None:
+            new_prim.call_afterwards(*new_args, **new_kwargs)
+        
         return return_value
 
     def get_ast(self, *arg_asts, **kwarg_asts):
-        """ Transform this object into a Python AST. When serialized and
+        """ Transform this object into a Python AST. When serialized and 
         executed, the AST will do exactly the same as calling this object. """
 
-        # constant arguments
-        (all_arg_asts, all_kwarg_asts) = self._add_constant_args(
-            arg_asts, kwarg_asts, convert_to_ast=True)
+        if Primitive._DEBUG:
+            debug_output(repr(self))
+            debug_output("  arg_asts: " + repr(arg_asts))
+        new_prim = self.fill_slots(arg_asts, kwarg_asts, convert_to_ast=True)
+        if not new_prim.are_slots_filled():
+            raise PyExportError("not enough arguments")
+        if Primitive._DEBUG:
+            debug_output("  new_prim.arg_descs: " + repr(new_prim.arg_descs))
 
-        # slot wrappers
-        (new_arg_asts, new_kwarg_asts) = self._apply_wrappers(
-            all_arg_asts, all_kwarg_asts, convert_to_ast=True)
+        # extract the actual values from the (now constant) arguments
+        (new_arg_asts, new_kwarg_asts) = new_prim.get_values_of_filled_slots(
+            exportable_only=True)
+        if Primitive._DEBUG:
+            debug_output("  new_arg_asts: " + repr(new_arg_asts))
+            debug_output("end " + repr(self))
 
         # SPECIAL HANDLING #
 
@@ -347,11 +345,12 @@ class Primitive(object):
                 elif controller == Primitive.controller_while:
                     condition_ast = new_arg_asts[0].args[0]
                 elif controller == Primitive.controller_until:
-                    condition_ast = ast.UnaryOp(
-                        op=ast.Not, operand=new_arg_asts[0].args[0])
+                    pos_cond_ast = new_arg_asts[0].args[0]
+                    condition_ast = ast.UnaryOp(op=ast.Not,
+                                                operand=pos_cond_ast)
                 else:
-                    raise ValueError("unknown loop controller: " +
-                                     repr(controller))
+                    raise PyExportError("unknown loop controller: " +
+                                        repr(controller))
                 loop_ast = ast.While(test=condition_ast,
                                      body=new_arg_asts[1],
                                      orelse=[])
@@ -370,33 +369,41 @@ class Primitive(object):
 
         # boxes
         elif self == LogoCode.prim_set_box:
-            id_str = 'BOX[%s]' % (repr(ast_to_value(new_arg_asts[0])))
-            target_ast = ast.Name(id=id_str, ctx=ast.Store)
-            value_ast = new_arg_asts[1]
-            assign_ast = ast.Assign(targets=[target_ast], value=value_ast)
-            return assign_ast
+            target_ast = ast.Subscript(value=BOX_AST,
+                slice=ast.Index(value=new_arg_asts[0]), ctx=ast.Store)
+            return ast.Assign(targets=[target_ast], value=new_arg_asts[1])
         elif self == LogoCode.prim_get_box:
-            id_str = 'BOX[%s]' % (repr(ast_to_value(new_arg_asts[0])))
-            return ast.Name(id=id_str, ctx=ast.Load)
+            return ast.Subscript(value=BOX_AST,
+                slice=ast.Index(value=new_arg_asts[0]), ctx=ast.Load)
 
         # action stacks
         elif self == LogoCode.prim_define_stack:
             return
         elif self == LogoCode.prim_invoke_stack:
-            stack_name = ast_to_value(new_arg_asts[0])
-            stack_func_name = 'ACTION[%s]' % (repr(stack_name))
-            stack_func = ast.Name(id=stack_func_name, ctx=ast.Load)
-            return get_call_ast('logo.icall', [stack_func])
+            stack_func = ast.Subscript(value=ACTION_AST,
+                slice=ast.Index(value=new_arg_asts[0]), ctx=ast.Load)
+            call_ast = get_call_ast('logo.icall', [stack_func])
+            return [call_ast, ast_yield_true()]
+
+        # stop stack
+        elif self == LogoCode.prim_stop_stack:
+            return ast.Return()
+
+        # sleep/ wait
+        elif self == LogoCode.prim_wait:
+            return [get_call_ast('sleep', new_arg_asts), ast_yield_true()]
 
         # standard operators
         elif self.func.__name__ in Primitive.STANDARD_OPERATORS:
             op = Primitive.STANDARD_OPERATORS[self.func.__name__]
-            # BEGIN hack for 'plus': unpack tuples
-            if (self == Primitive.plus and len(new_arg_asts) == 1 and
-                    isinstance(new_arg_asts[0], (list, tuple)) and
-                    len(new_arg_asts[0]) == 2):
-                new_arg_asts = new_arg_asts[0]
-            # END hack for 'plus'
+            # 'divide': prevent unwanted integer division
+            if self == Primitive.divide:
+                def _is_float(x):
+                    return get_type(x)[0] == TYPE_FLOAT
+                if (    not _is_float(new_arg_asts[0]) and
+                        not _is_float(new_arg_asts[1])):
+                    new_arg_asts[0] = get_call_ast('float', [new_arg_asts[0]],
+                        return_type=TYPE_FLOAT)
             if len(new_arg_asts) == 1:
                 if isinstance(op, tuple):
                     op = op[0]
@@ -412,56 +419,82 @@ class Primitive(object):
                                        comparators=[right])
                 else:
                     return ast.BinOp(op=op, left=left, right=right)
-            else:
-                raise ValueError(("operator Primitive.%s got unexpected"
-                                  " number of arguments (%d)")
-                                 % (str(self.func.__func__.__name__),
-                                    len(new_arg_asts)))
 
-        # type conversion
-        elif self in (Primitive.convert_for_cmp, Primitive.convert_to_number,
-                      Primitive.convert_for_plus):
-            return self.func(*new_arg_asts, **new_kwarg_asts)
+        # f(x)
+        elif self == LogoCode.prim_myfunction:
+            param_asts = []
+            for id_ in ['x', 'y', 'z'][:len(new_arg_asts)-1]:
+                param_asts.append(ast.Name(id=id_, ctx=ast.Param))
+            func_ast = ast_extensions.LambdaWithStrBody(
+                body_str=new_arg_asts[0].s, args=param_asts)
+            return get_call_ast(func_ast, new_arg_asts[1:],
+                return_type=self.return_type)
+
+        # square root
+        elif self == Primitive.square_root:
+            return get_call_ast('sqrt', new_arg_asts, new_kwarg_asts,
+                return_type=self.return_type)
+
+        # random
+        elif self in (Primitive.random_char, Primitive.random_int):
+            uniform_ast = get_call_ast('uniform', new_arg_asts)
+            round_ast = get_call_ast('round', [uniform_ast, ast.Num(n=0)])
+            int_ast = get_call_ast('int', [round_ast], return_type=TYPE_INT)
+            if self == Primitive.random_char:
+                chr_ast = get_call_ast('chr', [int_ast], return_type=TYPE_CHAR)
+                return chr_ast
+            else:
+                return int_ast
 
         # identity
         elif self == Primitive.identity:
-            if len(new_arg_asts) == 1:
-                return new_arg_asts[0]
-            else:
-                raise ValueError("Primitive.identity got unexpected number "
-                                 "of arguments (%d)" % (len(new_arg_asts)))
+            return new_arg_asts[0]
 
-        # tuples
-        elif self == Primitive.make_tuple:
-            if not new_kwarg_asts:
-                return ast.Tuple(elts=new_arg_asts, ctx=ast.Load)
-            else:
-                raise ValueError("tuple constructor (Primitive.make_tuple) "
-                                 "got unexpected arguments: " +
-                                 repr(new_kwarg_asts))
+        # constant
+        elif self == CONSTANTS.get:
+            return TypedSubscript(value=ast.Name(id='CONSTANTS', ctx=ast.Load),
+                                  slice_=ast.Index(value=new_arg_asts[0]),
+                                  return_type=self.return_type)
 
-        # group of Primitives
-        elif self == Primitive.group:
-            return new_arg_asts[0].elts
+        # group of Primitives or sandwich-clamp block
+        elif self in (Primitive.group, LogoCode.prim_clamp):
+            ast_list = []
+            for prim in new_arg_asts[0]:
+                if export_me(prim):
+                    new_ast = value_to_ast(prim)
+                    if isinstance(new_ast, ast.AST):
+                        ast_list.append(new_ast)
+            return ast_list
+
+        # comment
+        elif self == Primitive.comment:
+            if isinstance(new_arg_asts[0], ast.Str):
+                text = ' ' + str(new_arg_asts[0].s)
+            else:
+                text = ' ' + str(new_arg_asts[0])
+            return ast_extensions.Comment(text)
+
+        # print
+        elif self == TurtleArtWindow.print_:
+            func_name = self.get_name_for_export()
+            call_ast = get_call_ast(func_name, new_arg_asts)
+            print_ast = ast.Print(values=new_arg_asts[:1], dest=None, nl=True)
+            return [call_ast, print_ast]
+
+        # heap
+        elif self == LogoCode.get_heap:
+            return TypedName(id_='logo.heap', return_type=self.return_type)
+        elif self == LogoCode.reset_heap:
+            target_ast = ast.Name(id='logo.heap', ctx=ast.Store)
+            value_ast = ast.List(elts=[], ctx=ast.Load)
+            return ast.Assign(targets=[target_ast], value=value_ast)
 
         # NORMAL FUNCTION CALL #
 
         else:
-            func_name = ""
-            if self.wants_turtle():
-                func_name = "turtle."
-            elif self.wants_turtles():
-                func_name = "turtles."
-            elif self.wants_canvas():
-                func_name = "canvas."
-            elif self.wants_logocode():
-                func_name = "logo."
-            elif self.wants_tawindow():
-                func_name = "tw."
-            # get the name of the function directly from the function itself
-            func_name += self.func.__name__
-
-            return get_call_ast(func_name, new_arg_asts, new_kwarg_asts)
+            func_name = self.get_name_for_export()
+            return get_call_ast(func_name, new_arg_asts, new_kwarg_asts,
+                return_type=self.return_type)
 
     def __eq__(self, other):
         """ Two Primitives are equal iff their all their properties are equal.
@@ -469,8 +502,9 @@ class Primitive(object):
         # other is a Primitive
         if isinstance(other, Primitive):
             return (self == other.func and
-                    self.constant_args == other.constant_args and
-                    self.slot_wrappers == other.slot_wrappers and
+                    self.return_type == other.return_type and
+                    self.arg_descs == other.arg_descs and
+                    self.kwarg_descs == other.kwarg_descs and
                     self.call_afterwards == other.call_afterwards and
                     self.export_me == other.export_me)
 
@@ -478,7 +512,7 @@ class Primitive(object):
         elif callable(other):
             if is_instancemethod(self.func) != is_instancemethod(other):
                 return False
-            elif is_instancemethod(self.func):  # and is_instancemethod(other)
+            elif is_instancemethod(self.func):  # and is_instancemethod(other):
                 return (self.func.im_class == other.im_class and
                         self.func.im_func == other.im_func)
             else:
@@ -492,7 +526,7 @@ class Primitive(object):
             return False
 
     def wants_turtle(self):
-        """ Does this Primitive want to get the active turtle as its first
+        """ Does this Primitive want to get the active turtle as its first 
         argument? """
         return self._wants(Turtle)
 
@@ -509,7 +543,13 @@ class Primitive(object):
     def wants_logocode(self):
         """ Does this Primitive want to get the LogoCode instance as its
         first argument? """
-        return self._wants(LogoCode)
+        return (self.func.__name__ == '<lambda>' or self._wants(LogoCode))
+
+    def wants_heap(self):
+        """ Does this Primitive want to get the heap as its first argument? """
+        return ((hasattr(self.func, '__self__') and
+                    isinstance(self.func.__self__, list)) or
+                self.func in list.__dict__.values())
 
     def wants_tawindow(self):
         """ Does this Primitive want to get the TurtleArtWindow instance
@@ -517,25 +557,16 @@ class Primitive(object):
         return self._wants(TurtleArtWindow)
 
     def wants_nothing(self):
-        """ Does this Primitive want nothing as its first argument? I.e. does
-        it want to be passed all the arguments of the block and nothing
+        """ Does this Primitive want nothing as its first argument? I.e. does 
+        it want to be passed all the arguments of the block and nothing 
         else? """
         return not is_instancemethod(self.func)
 
     def _wants(self, theClass):
-        if is_instancemethod(self.func):
-            return self.func.im_class == theClass
-        else:
-            return False
+        return is_instancemethod(self.func) and self.func.im_class == theClass
 
     # treat the following methods in a special way when converting the
     # Primitive to an AST
-
-    @staticmethod
-    def make_tuple(*values):
-        """ This method corresponds to a Python tuple consisting of the given
-        values. """
-        return tuple(values)
 
     @staticmethod
     def controller_repeat(num):
@@ -551,16 +582,22 @@ class Primitive(object):
             yield True
 
     @staticmethod
-    def controller_while(boolean):
-        """ Loop controller for the 'while' block """
-        while boolean:
+    def controller_while(condition):
+        """ Loop controller for the 'while' block
+        condition -- Primitive that is evaluated every time through the
+            loop """
+        condition.allow_call_args(recursive=True)
+        while condition():
             yield True
         yield False
 
     @staticmethod
-    def controller_until(boolean):
-        """ Loop controller for the 'until' block """
-        while not boolean:
+    def controller_until(condition):
+        """ Loop controller for the 'until' block
+        condition -- Primitive that is evaluated every time through the
+            loop """
+        condition.allow_call_args(recursive=True)
+        while not condition():
             yield True
         yield False
 
@@ -574,18 +611,18 @@ class Primitive(object):
             return (callable(candidate)
                     and candidate in Primitive.LOOP_CONTROLLERS)
 
-        # look at the first constant argument
-        first_const = self.constant_args.get(0, None)
-        if _is_loop_controller(first_const):
-            return first_const
-
-        # look at the first slot wrapper
-        first_wrapper = self.slot_wrappers.get(0, None)
-        if _is_loop_controller(first_wrapper):
-            return first_wrapper
+        for desc in self.arg_descs:
+            if isinstance(desc, ConstantArg):
+                value = desc.value
+                if _is_loop_controller(value):
+                    return value
+            elif isinstance(desc, ArgSlot):
+                wrapper = desc.wrapper
+                if _is_loop_controller(wrapper):
+                    return wrapper
 
         # no controller found
-        raise ValueError("found no loop controller for " + repr(self))
+        raise PyExportError("found no loop controller for " + repr(self))
 
     @staticmethod
     def do_nothing():
@@ -606,67 +643,6 @@ class Primitive(object):
         return return_val
 
     @staticmethod
-    def convert_for_plus(value1, value2):
-        """ If at least one value is a string, convert both to a string.
-        Otherwise, convert both to a number. (Colors are converted to an
-        integer before they are converted to a string.) """
-        convert_to_ast = False
-        (value1_ast, value2_ast) = (None, None)
-
-        if isinstance(value1, ast.AST):
-            convert_to_ast = True
-            value1_ast = value1
-            value1 = ast_to_value(value1_ast)
-        if isinstance(value2, ast.AST):
-            value2_ast = value2
-            value2 = ast_to_value(value2_ast)
-
-        def _to_string(val, val_ast):
-            """ Return strings as they are, convert Colors to an integer and
-            then to a string, and convert everything else directly to a
-            string. """
-            val_conv = val
-            val_conv_ast = val_ast
-            if not isinstance(val, basestring):
-                if isinstance(val, Color):
-                    conv_prim = Primitive(str, slot_wrappers={
-                        0: Primitive(int)})
-                else:
-                    conv_prim = Primitive(str)
-                if not convert_to_ast:
-                    val_conv = conv_prim(val)
-                else:
-                    val_conv_ast = conv_prim.get_ast(val_ast)
-            return (val_conv, val_conv_ast)
-
-        def _to_number(val, val_ast):
-            """ Return numbers as they are, and convert everything else to an
-            integer. """
-            val_conv = val
-            val_conv_ast = val_ast
-            if not isinstance(val, (float, int, long)):
-                conv_prim = Primitive(int)
-                if not convert_to_ast:
-                    val_conv = conv_prim(val)
-                else:
-                    val_conv_ast = conv_prim.get_ast(val_ast)
-            return (val_conv, val_conv_ast)
-
-        if isinstance(value1, basestring) or isinstance(value2, basestring):
-            # convert both to strings
-            (value1_conv, value1_conv_ast) = _to_string(value1, value1_ast)
-            (value2_conv, value2_conv_ast) = _to_string(value2, value2_ast)
-        else:
-            # convert both to numbers
-            (value1_conv, value1_conv_ast) = _to_number(value1, value1_ast)
-            (value2_conv, value2_conv_ast) = _to_number(value2, value2_ast)
-
-        if convert_to_ast:
-            return (value1_conv_ast, value2_conv_ast)
-        else:
-            return (value1_conv, value2_conv)
-
-    @staticmethod
     def plus(arg1, arg2=None):
         """ If only one argument is given, prefix it with '+'. If two
         arguments are given, add the second to the first. If the first
@@ -678,77 +654,6 @@ class Primitive(object):
             return + arg1
         else:
             return arg1 + arg2
-
-    @staticmethod
-    def convert_to_number(value, decimal_point='.'):
-        """ Convert value to a number. If value is an AST, another AST is
-        wrapped around it to represent the conversion, e.g.,
-            Str(s='1.2') -> Call(func=Name('float'), args=[Str(s='1.2')])
-        1. Return all numbers (float, int, long) unchanged.
-        2. Convert a string containing a number into a float.
-        3. Convert a single character to its ASCII integer value.
-        4. Extract the first element of a list and convert it to a number.
-        5. Convert a Color to a float.
-        If the value cannot be converted to a number and the value is not
-        an AST, return None. If it is an AST, return an AST representing
-        `float(value)'. """  # TODO find a better solution
-        # 1. number
-        if isinstance(value, (float, int, long, ast.Num)):
-            return value
-
-        converted = None
-        conversion_ast = None
-        convert_to_ast = False
-        if isinstance(value, ast.AST):
-            convert_to_ast = True
-            value_ast = value
-            value = ast_to_value(value_ast)
-        if isinstance(decimal_point, ast.AST):
-            decimal_point = ast_to_value(decimal_point)
-
-        # 2./3. string
-        if isinstance(value, basestring):
-            if convert_to_ast:
-                conversion_ast = Primitive.convert_for_cmp(value_ast,
-                                                           decimal_point)
-                if not isinstance(conversion_ast, ast.Num):
-                    converted = None
-            else:
-                converted = Primitive.convert_for_cmp(value, decimal_point)
-                if not isinstance(converted, (float, int, long)):
-                    converted = None
-        # 4. list
-        elif isinstance(value, list):
-            if value:
-                number = Primitive.convert_to_number(value[0])
-                if convert_to_ast:
-                    conversion_ast = number
-                else:
-                    converted = number
-            else:
-                converted = None
-                if convert_to_ast:
-                    conversion_ast = get_call_ast('float', [value_ast])
-        # 5. Color
-        elif isinstance(value, Color):
-            converted = float(value)
-            if convert_to_ast:
-                conversion_ast = get_call_ast('float', [value_ast])
-        else:
-            converted = None
-            if convert_to_ast:
-                conversion_ast = get_call_ast('float', [value_ast])
-
-        if convert_to_ast:
-            if conversion_ast is None:
-                return value_ast
-            else:
-                return conversion_ast
-        else:
-            if converted is None:
-                return value
-            else:
-                return converted
 
     @staticmethod
     def minus(arg1, arg2=None):
@@ -767,7 +672,7 @@ class Primitive(object):
     @staticmethod
     def divide(arg1, arg2):
         """ Divide the first argument by the second """
-        return arg1 / arg2
+        return float(arg1) / arg2
 
     @staticmethod
     def modulo(arg1, arg2):
@@ -782,20 +687,12 @@ class Primitive(object):
         return arg1 ** arg2
 
     @staticmethod
-    def integer_division(arg1, arg2):
-        """ Divide the first argument by the second and return the integer
-        that is smaller than or equal to the result """
-        return arg1 // arg2
-
-    @staticmethod
-    def bitwise_and(arg1, arg2):
-        """ Return the bitwise AND of the two arguments """
-        return arg1 & arg2
-
-    @staticmethod
-    def bitwise_or(arg1, arg2):
-        """ Return the bitwise OR of the two arguments """
-        return arg1 | arg2
+    def square_root(arg1):
+        """ Return the square root of the argument. If it is a negative
+        number, raise a NegativeRootError. """
+        if arg1 < 0:
+            raise NegativeRootError(neg_value=arg1)
+        return sqrt(arg1)
 
     @staticmethod
     def and_(arg1, arg2):
@@ -814,59 +711,6 @@ class Primitive(object):
         return not arg
 
     @staticmethod
-    def convert_for_cmp(value, decimal_point='.'):
-        """ Convert value such that it can be compared to something else. If
-        value is an AST, another AST is wrapped around it to represent the
-        conversion, e.g.,
-            Str(s='a') -> Call(func=Name('ord'), args=[Str(s='a')])
-        1. Convert a string containing a number into a float.
-        2. Convert a single character to its ASCII integer value.
-        3. Return all other values unchanged. """
-        converted = None
-        conversion_ast = None
-        convert_to_ast = False
-        if isinstance(value, ast.AST):
-            convert_to_ast = True
-            value_ast = value
-            value = ast_to_value(value_ast)
-        if isinstance(decimal_point, ast.AST):
-            decimal_point = ast_to_value(decimal_point)
-
-        if isinstance(value, basestring):
-            # 1. string containing a number
-            replaced = value.replace(decimal_point, '.')
-            try:
-                converted = float(replaced)
-            except ValueError:
-                pass
-            else:
-                if convert_to_ast:
-                    conversion_ast = get_call_ast('float', [value_ast])
-
-            # 2. single character
-            if converted is None:
-                try:
-                    converted = ord(value)
-                except TypeError:
-                    pass
-                else:
-                    if convert_to_ast:
-                        conversion_ast = get_call_ast('ord', [value_ast])
-
-        # 3. normal string or other type of value (nothing to do)
-
-        if convert_to_ast:
-            if conversion_ast is None:
-                return value_ast
-            else:
-                return conversion_ast
-        else:
-            if converted is None:
-                return value
-            else:
-                return converted
-
-    @staticmethod
     def equals(arg1, arg2):
         """ Return arg1 == arg2 """
         return arg1 == arg2
@@ -881,23 +725,339 @@ class Primitive(object):
         """ Return arg1 > arg2 """
         return arg1 > arg2
 
+    @staticmethod
+    def comment(text):
+        """ In 'snail' execution mode, display the comment. Else, do nothing. """
+        tw = global_objects["window"]
+        if not tw.hide and tw.step_time != 0:
+            tw.showlabel('print', text)
 
-def is_instancemethod(method):
-    # TODO how to access the type `instancemethod` directly?
-    return type(method).__name__ == "instancemethod"
+    @staticmethod
+    def random_int(lower, upper):
+        """ Choose a random integer between lower and upper, which must be
+        integers """
+        return int(round(uniform(lower, upper), 0))
+
+    @staticmethod
+    def random_char(lower, upper):
+        """ Choose a random Unicode code point between lower and upper,
+        which must be integers """
+        return chr(Primitive.random_int(lower, upper))
 
 
-def is_bound_instancemethod(method):
-    return is_instancemethod(method) and method.im_self is not None
+class Disjunction(tuple):
+    """ Abstract disjunction class (not to be instantiated directly) """
+
+    def __init__(self, iterable):
+        self = tuple(iterable)
+
+    def __repr__(self):
+        s = ["("]
+        for disj in self:
+            s.append(repr(disj))
+            s.append(" or ")
+        s.pop()
+        s.append(")")
+        return "".join(s)
+
+    def get_alternatives(self):
+        """ Return a tuple of alternatives, i.e. self """
+        return self
 
 
-def is_unbound_instancemethod(method):
-    return is_instancemethod(method) and method.im_self is None
+class PrimitiveDisjunction(Disjunction,Primitive):
+    """ Disjunction of two or more Primitives. PrimitiveDisjunctions may not
+    be nested. """
+
+    @property
+    def return_type(self):
+        """ Tuple of the return_types of all disjuncts """
+        return TypeDisjunction((prim.return_type for prim in self))
+
+    def __call__(self, *runtime_args, **runtime_kwargs):
+        """ Loop over the disjunct Primitives and try to fill their slots
+        with the given args and kwargs. Call the first Primitives whose
+        slots could be filled successfully. If all disjunct Primitives
+        fail, raise the last error that occurred. """
+
+        # remove the first argument if it is a LogoCode instance
+        if runtime_args and isinstance(runtime_args[0], LogoCode):
+            runtime_args = runtime_args[1:]
+
+        error = None
+        for prim in self:
+            try:
+                new_prim = prim.fill_slots(runtime_args, runtime_kwargs,
+                                           convert_to_ast=False)
+            except TATypeError as error:
+                # on failure, try the next one
+                continue
+            else:
+                # on success, call this Primitive
+                return new_prim()
+
+        # if we get here, all disjuncts failed
+        if error is not None:
+            raise error
 
 
-def is_staticmethod(method):
-    # TODO how to access the type `staticmethod` directly?
-    return type(method).__name__ == "staticmethod"
+class ArgListDisjunction(Disjunction):
+    """ Disjunction of two or more argument lists """
+    pass
+
+
+class ArgSlot(object):
+    """ Description of the requirements that a Primitive demands from an
+    argument or keyword argument. An ArgSlot is filled at runtime, based
+    on the block program structure. """
+
+    def __init__(self, type_, call_arg=True, wrapper=None):
+        """
+        type_ -- what type of the type hierarchy the argument should have
+            (after the wrapper has been applied)
+        call_arg -- if this argument is callable, should it be called and
+            its return value passed to the parent Primitive (True, the
+            default), or should it be passed as it is (False)?
+        wrapper -- a Primitive that is 'wrapped around' the argument before
+            it gets passed to its parent Primitive. Wrappers can be nested
+            infinitely. """
+        self.type = type_
+        self.call_arg = call_arg
+        self.wrapper = wrapper
+
+    def __repr__(self):
+        s = ["ArgSlot(type="]
+        s.append(repr(self.type))
+        if not self.call_arg:
+            s.append(", call=")
+            s.append(repr(self.call_arg))
+        if self.wrapper is not None:
+            s.append(", wrapper=")
+            s.append(repr(self.wrapper))
+        s.append(")")
+        return "".join(s)
+
+    def get_alternatives(self):
+        """ Return a tuple of slot alternatives, i.e. (self, ) """
+        return (self, )
+
+    def fill(self, argument, convert_to_ast=False, call_my_args=True):
+        """ Try to fill this argument slot with the given argument. Return
+        a ConstantArg containing the result. If there is a type problem,
+        raise a TATypeError. """
+        if isinstance(argument, ast.AST):
+            convert_to_ast = True
+
+        # 1. can the argument be called?
+        (func_disjunction, args) = (None, [])
+        if (isinstance(argument, tuple) and argument
+                and callable(argument[0])):
+            func_disjunction = argument[0]
+            if len(argument) >= 2 and isinstance(argument[1], LogoCode):
+                args = argument[2:]
+            else:
+                args = argument[1:]
+        elif callable(argument):
+            func_disjunction = argument
+
+        # make sure we can loop over func_disjunction
+        if not isinstance(func_disjunction, PrimitiveDisjunction):
+            func_disjunction = PrimitiveDisjunction((func_disjunction, ))
+
+        error = None
+        bad_value = argument  # the value that caused the TATypeError
+        for func in func_disjunction:
+            error = None
+            for slot in self.get_alternatives():
+
+                if isinstance(slot.wrapper, PrimitiveDisjunction):
+                    wrapper_disjunction = slot.wrapper
+                else:
+                    wrapper_disjunction = PrimitiveDisjunction((slot.wrapper,))
+
+                for wrapper in wrapper_disjunction:
+
+                    # check if the argument can fill this slot (type-wise)
+                    # (lambda functions are always accepted)
+                    if getattr(func, '__name__', None) == '<lambda>':
+                        converter = identity
+                        old_type = TYPE_OBJECT
+                        new_type = slot.type
+                    else:
+                        if wrapper is not None:
+                            arg_types = get_type(wrapper)[0]
+                            bad_value = wrapper
+                        elif func is not None:
+                            arg_types = get_type(func)[0]
+                            bad_value = func
+                        else:
+                            arg_types = get_type(argument)[0]
+                            bad_value = argument
+                        converter = None
+                        if not isinstance(arg_types, TypeDisjunction):
+                            arg_types = TypeDisjunction((arg_types, ))
+                        if isinstance(slot.type, TypeDisjunction):
+                            slot_types = slot.type
+                        else:
+                            slot_types = TypeDisjunction((slot.type, ))
+                        for old_type in arg_types:
+                            for new_type in slot_types:
+                                converter = get_converter(old_type, new_type)
+                                if converter is not None:
+                                    break
+                            if converter is not None:
+                                break
+                        # unable to convert, try next wrapper/ slot/ func
+                        if converter is None:
+                            continue
+
+                    # 1. (cont'd) call the argument or pass it on as a callable
+                    called_argument = argument
+                    if func is not None:
+                        func_prim = func
+                        if not isinstance(func_prim, Primitive):
+                            func_prim = Primitive(func_prim,
+                                [ArgSlot(TYPE_OBJECT)] * len(args))
+                        try:
+                            func_prim = func_prim.fill_slots(args,
+                                convert_to_ast=convert_to_ast,
+                                call_my_args=(slot.call_arg and call_my_args))
+                        except TATypeError as error:
+                            if Primitive._DEBUG:
+                                traceback.print_exc()
+                            # on failure, try next wrapper/ slot/ func
+                            bad_value = error.bad_value
+                            continue
+                        if convert_to_ast:
+                            called_argument = func_prim.get_ast()
+                        else:
+                            if slot.call_arg and call_my_args:
+                                # call and pass on the return value
+                                called_argument = func_prim()
+                            else:
+                                # don't call and pass on the callable
+                                called_argument = func_prim
+
+                    # 2. apply any wrappers
+                    wrapped_argument = called_argument
+                    if wrapper is not None:
+                        if convert_to_ast:
+                            if not hasattr(wrapper, "get_ast"):
+                                raise PyExportError(("cannot convert callable"
+                                    " %s to an AST") % (repr(wrapper)))
+                            wrapped_argument = wrapper.get_ast(
+                                called_argument)
+                        else:
+                            if slot.call_arg and call_my_args:
+                                wrapped_argument = wrapper(called_argument)
+                            else:
+                                wrapped_argument = wrapper.fill_slots(
+                                    [called_argument], call_my_args=False)
+
+                    # last chance to convert raw values to ASTs
+                    # (but not lists of ASTs)
+                    if (convert_to_ast and
+                            not isinstance(wrapped_argument, ast.AST) and
+                            not (isinstance(wrapped_argument, list) and
+                                 wrapped_argument and
+                                 isinstance(wrapped_argument[0], ast.AST))):
+                        wrapped_argument = value_to_ast(wrapped_argument)
+
+                    # 3. check the type and convert the argument if necessary
+                    converted_argument = wrapped_argument
+                    if slot.call_arg and call_my_args:
+                        try:
+                            converted_argument = convert(wrapped_argument,
+                                new_type, old_type=old_type,
+                                converter=converter)
+                        except TATypeError as error:
+                            if Primitive._DEBUG:
+                                traceback.print_exc()
+                            # on failure, try next wrapper/ slot/ func
+                            bad_value = wrapped_argument
+                            continue
+                    elif converter != identity:
+                        converted_argument = Primitive(converter,
+                            return_type=new_type,
+                            arg_descs=[ConstantArg(wrapped_argument,
+                                value_type=old_type, call_arg=False)])
+                    # on success, return the result
+                    return ConstantArg(converted_argument,
+                        value_type=new_type,
+                        call_arg=(slot.call_arg and call_my_args))
+
+        # if we haven't returned anything yet, then all alternatives failed
+        if error is not None:
+            raise error
+        else:
+            raise TATypeError(bad_value=bad_value, bad_type=old_type,
+                              req_type=new_type)
+
+
+class ArgSlotDisjunction(Disjunction,ArgSlot):
+    """ Disjunction of two or more argument slots """
+    pass
+
+
+class ConstantArg(object):
+    """ A constant argument or keyword argument to a Primitive. It is
+    independent of the block program structure. """
+
+    def __init__(self, value, call_arg=True, value_type=None):
+        """ call_arg -- call the value before returning it?
+        value_type -- the type of the value (from the TA type system). This
+            is useful to store e.g., the return type of call ASTs. """
+        self.value = value
+        self.call_arg = call_arg
+        self.value_type = value_type
+
+    def get(self, convert_to_ast=False):
+        """ If call_arg is True and the value is callable, call the value
+        and return its return value. Else, return the value unchanged.
+        convert_to_ast -- return the equivalent AST instead of a raw value """
+        if self.call_arg and callable(self.value):
+            if convert_to_ast:
+                return value_to_ast(self.value)
+            else:
+                return self.value()
+        else:
+            if convert_to_ast and not isinstance(self.value, list):
+                return value_to_ast(self.value)
+            else:
+                return self.value
+
+    def get_value_type(self):
+        """ If this ConstantArg has stored the type of its value, return
+        that. Else, use get_type(...) to guess the type of the value. """
+        if self.value_type is None:
+            return get_type(self.value)[0]
+        else:
+            return self.value_type
+
+    def __repr__(self):
+        s = ["ConstantArg("]
+        s.append(repr(self.value))
+        if not self.call_arg:
+            s.append(", call=")
+            s.append(repr(self.call_arg))
+        s.append(")")
+        return "".join(s)
+
+
+def or_(*disjuncts):
+    """ Return a disjunction object of the same type as the disjuncts. If
+    the item type cannot be linked to a Disjunction class, return a tuple
+    of the disjuncts. """
+    if isinstance(disjuncts[0], Primitive):
+        return PrimitiveDisjunction(disjuncts)
+    elif isinstance(disjuncts[0], (list, ArgListDisjunction)):
+        return ArgListDisjunction(disjuncts)
+    elif isinstance(disjuncts[0], ArgSlot):
+        return ArgSlotDisjunction(disjuncts)
+    elif isinstance(disjuncts[0], Type):
+        return TypeDisjunction(disjuncts)
+    else:
+        return tuple(disjuncts)
 
 
 def value_to_ast(value, *args_for_prim, **kwargs_for_prim):
@@ -905,20 +1065,25 @@ def value_to_ast(value, *args_for_prim, **kwargs_for_prim):
     bool, basestring, list
     If the value is already an AST, return it unchanged.
     If the value is a non-exportable Primitive, return None. """
-    # TODO media
+    # already an AST
     if isinstance(value, ast.AST):
         return value
+    # Primitive
     elif isinstance(value, Primitive):
         if value.export_me:
             return value.get_ast(*args_for_prim, **kwargs_for_prim)
         else:
             return None
+    # boolean
     elif isinstance(value, bool):
         return ast.Name(id=str(value), ctx=ast.Load)
+    # number
     elif isinstance(value, (int, float)):
         return ast.Num(n=value)
+    # string
     elif isinstance(value, basestring):
         return ast.Str(value)
+    # list (recursively transform to an AST)
     elif isinstance(value, list):
         ast_list = []
         for item in value:
@@ -926,54 +1091,24 @@ def value_to_ast(value, *args_for_prim, **kwargs_for_prim):
             if item_ast is not None:
                 ast_list.append(item_ast)
         return ast.List(elts=ast_list, ctx=ast.Load)
+    # color
     elif isinstance(value, Color):
-        if str(value) in CONSTANTS:
-            # repr(str(value)) is necessary; it first converts the Color to a
-            # string and then adds appropriate quotes around that string
-            return ast.Name(id='CONSTANTS[%s]' % repr(str(value)),
-                            ctx=ast.Load)
-        else:
-            # call to the Color constructor with this object's values,
-            # e.g., Color('red', 0, 50, 100)
-            return get_call_ast('Color', [value.name, value.color,
-                                          value.shade, value.gray])
+        # call to the Color constructor with this object's values,
+        # e.g., Color('red', 0, 50, 100)
+        return get_call_ast('Color', [value.name, value.color,
+                                      value.shade, value.gray],
+                            return_type=TYPE_COLOR)
+    # media
+    elif isinstance(value, Media):
+        args = [value_to_ast(value.type), value_to_ast(value.value)]
+        return get_call_ast('Media', args, return_type=TYPE_MEDIA)
+    # unknown
     else:
-        raise ValueError("unknown type of raw value: " + repr(type(value)))
+        raise PyExportError("unknown type of raw value: " + repr(type(value)))
 
 
-def ast_to_value(ast_object):
-    """ Retrieve the value out of a value AST. Supported AST types:
-    Num, Str, Name, List, Tuple, Set
-    If no value can be extracted, return None. """
-    if isinstance(ast_object, ast.Num):
-        return ast_object.n
-    elif isinstance(ast_object, ast.Str):
-        return ast_object.s
-    elif isinstance(ast_object, (ast.List, ast.Tuple, ast.Set)):
-        return ast_object.elts
-    elif (isinstance(ast_object, ast.Name)):
-        try:
-            return eval(ast_object.id)
-        except NameError:
-            return None
-    else:
-        return None
-
-
-def get_call_ast(func_name, args=[], keywords={}):
-    return ast.Call(func=ast.Name(id=func_name,
-                                  ctx=ast.Load),
-                    args=args,
-                    keywords=keywords,
-                    starargs=None,
-                    kwargs=None)
-
-
-def call_me(something):
-    """ Return True iff this is a Primitive and its call_me attribute is
-    True, i.e. nothing is callable except for Primitives with
-    call_me == True """
-    return isinstance(something, Primitive) and something.call_me
+def ast_yield_true():
+    return ast.Yield(value=ast.Name(id='True', ctx=ast.Load))
 
 
 def export_me(something):
@@ -981,3 +1116,5 @@ def export_me(something):
     is True, i.e. everything is exportable except for Primitives with
     export_me == False """
     return not isinstance(something, Primitive) or something.export_me
+
+

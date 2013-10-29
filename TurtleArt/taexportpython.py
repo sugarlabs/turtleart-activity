@@ -30,7 +30,8 @@ import util.codegen as codegen
 #from ast_pprint import * # only used for debugging, safe to comment out
 
 from talogo import LogoCode
-from taprimitive import (Primitive, PyExportError, value_to_ast)
+from taprimitive import (ast_yield_true, Primitive, PyExportError,
+                         value_to_ast)
 from tautils import (debug_output, find_group, find_top_block, get_stack_name)
 
 
@@ -38,8 +39,9 @@ from tautils import (debug_output, find_group, find_top_block, get_stack_name)
 _SETUP_CODE_START = """\
 #!/usr/bin/env python
 
-from math import sqrt
+from time import *
 from random import uniform
+from math import *
 
 from pyexported.window_setup import *
 
@@ -50,21 +52,22 @@ BOX = {}
 ACTION = {}
 
 
-
 """
 _SETUP_CODE_END = """\
 
-
-
 if __name__ == '__main__':
+    tw.lc.start_time = time()
     tw.lc.icall(start)
     gobject.idle_add(tw.lc.doevalstep)
     gtk.main()
-
-
 """
 _ACTION_STACK_START = """\
 def %s():
+"""
+_START_STACK_START_ADD = """\
+    tw.start_plugins()
+"""
+_ACTION_STACK_PREAMBLE = """\
     turtle = tw.turtles.get_active_turtle()
     turtles = tw.turtles
     canvas = tw.canvas
@@ -104,9 +107,15 @@ def save_python(tw):
 def _action_stack_to_python(block, lc, name="start"):
     """ Turn a stack of blocks into python code
     name -- the name of the action stack (defaults to "start") """
+    if isinstance(name, int):
+        name = float(name)
+    if not isinstance(name, basestring):
+        name = str(name)
+
     # traverse the block stack and get the AST for every block
     ast_list = _walk_action_stack(block, lc)
-    ast_list.append(_ast_yield_true())
+    if not isinstance(ast_list[-1], ast.Yield):
+        ast_list.append(ast_yield_true())
     action_stack_ast = ast.Module(body=ast_list)
     #debug_output(str(action_stack_ast))
 
@@ -115,29 +124,44 @@ def _action_stack_to_python(block, lc, name="start"):
 
     # wrap the action stack setup code around everything
     name_id = _make_identifier(name)
+    if name == 'start':
+        pre_preamble = _START_STACK_START_ADD
+    else:
+        pre_preamble = ''
     generated_code = _indent(generated_code, 1)
     if generated_code.endswith(linesep):
         newline = ""
     else:
         newline = linesep
     snippets = [_ACTION_STACK_START % (name_id),
+        pre_preamble,
+        _ACTION_STACK_PREAMBLE,
         generated_code,
         newline,
         _ACTION_STACK_END % (name, name_id)]
     return "".join(snippets)
 
-def _walk_action_stack(top_block, lc):
-    """ Turn a stack of blocks into a list of ASTs """
+def _walk_action_stack(top_block, lc, convert_me=True):
+    """ Turn a stack of blocks into a list of ASTs
+    convert_me -- convert values and Primitives to ASTs or return them
+        unconverted? """
     block = top_block
 
     # value blocks don't have a primitive
+    # (but constant blocks (colors, screen dimensions, etc.) do)
     if block.is_value_block():
         raw_value = block.get_value(add_type_prefix=False)
-        value_ast = value_to_ast(raw_value)
-        if value_ast is not None:
-            return [value_ast]
+        if convert_me:
+            value_ast = value_to_ast(raw_value)
+            if value_ast is not None:
+                return [value_ast]
+            else:
+                return []
         else:
-            return []
+            if raw_value is not None:
+                return [raw_value]
+            else:
+                return []
 
     def _get_prim(block):
         prim = lc.get_prim_callable(block.primitive)
@@ -156,20 +180,23 @@ def _walk_action_stack(top_block, lc):
         PyExportError on failure. """
         if prim is None:
             prim = _get_prim(block)
-        if prim.export_me:
-            try:
-                new_ast = prim.get_ast(*arg_asts)
-            except ValueError:
-                traceback.print_exc()
-                raise PyExportError(_("error while exporting block"),
-                                    block=block)
-            if isinstance(new_ast, (list, tuple)):
-                ast_list.extend(new_ast)
-            elif new_ast is not None:
+        if convert_me:
+            if prim.export_me:
+                try:
+                    new_ast = prim.get_ast(*arg_asts)
+                except ValueError:
+                    traceback.print_exc()
+                    raise PyExportError(_("error while exporting block"),
+                                        block=block)
+                if isinstance(new_ast, (list, tuple)):
+                    ast_list.extend(new_ast)
+                elif new_ast is not None:
+                    ast_list.append(new_ast)
+            elif arg_asts:  # TODO do we ever get here?
+                new_ast = ast.List(elts=arg_asts, ctx=ast.Load)
                 ast_list.append(new_ast)
-        elif arg_asts:
-            new_ast = ast.List(elts=arg_asts, ctx=ast.Load)
-            ast_list.append(new_ast)
+        else:
+            ast_list.append((prim, ) + tuple(arg_asts))
 
     # skip the very first dock/ connection - it's either the previous block or
     # the return value of this block
@@ -192,14 +219,17 @@ def _walk_action_stack(top_block, lc):
         else:
             # embedded stack of blocks (body of conditional or loop) or
             # argument block
-            new_arg_asts = _walk_action_stack(conn, lc)
             if dock[0] == 'flow':
                 # body of conditional or loop
-                if prim == LogoCode.prim_loop:
-                    new_arg_asts.append(_ast_yield_true())
+                new_arg_asts = _walk_action_stack(conn, lc,
+                                                  convert_me=convert_me)
+                if (prim == LogoCode.prim_loop and
+                        not isinstance(new_arg_asts[-1], ast.Yield)):
+                    new_arg_asts.append(ast_yield_true())
                 arg_asts.append(new_arg_asts)
             else:
                 # argument block
+                new_arg_asts = _walk_action_stack(conn, lc, convert_me=False)
                 arg_asts.append(*new_arg_asts)
 
     # finish off last block
@@ -225,8 +255,5 @@ def _indent(code, num_levels=1):
     for line in line_list:
         new_line_list.append(indentation + line)
     return linesep.join(new_line_list)
-
-def _ast_yield_true():
-    return ast.Yield(value=ast.Name(id='True', ctx=ast.Load))
 
 
