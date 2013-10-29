@@ -41,6 +41,7 @@ from TurtleArt.tajail import myfunc_import
 from TurtleArt.taprimitive import (ArgSlot, ConstantArg, Primitive)
 from TurtleArt.tatype import (TYPE_BOOL, TYPE_BOX, TYPE_CHAR, TYPE_INT,
                               TYPE_FLOAT, TYPE_OBJECT, TYPE_STRING)
+from TurtleArt.taturtle import Turtle
 
 
 def _num_type(x):
@@ -766,7 +767,6 @@ module found in the Journal'))
                             lambda self, x:
                             self.tw.turtles.set_turtle(x))
 
-        primitive_dictionary['turtlex'] = self._prim_turtle_x
         palette.add_block('turtlex',
                           style='number-style-1arg',
                           label=_('turtle x'),
@@ -774,9 +774,10 @@ module found in the Journal'))
                           default=['Yertle'],
                           help_string=_('Returns x coordinate of turtle'))
         self.tw.lc.def_prim('turtlex', 1,
-                            lambda self, t: primitive_dictionary['turtlex'](t))
+            Primitive(self.tw.turtles.get_turtle_x,
+                      arg_descs=[ArgSlot(TYPE_OBJECT)],
+                      return_type=TYPE_BOX))
 
-        primitive_dictionary['turtley'] = self._prim_turtle_y
         palette.add_block('turtley',
                           style='number-style-1arg',
                           label=_('turtle y'),
@@ -784,21 +785,26 @@ module found in the Journal'))
                           default=['Yertle'],
                           help_string=_('Returns y coordinate of turtle'))
         self.tw.lc.def_prim('turtley', 1,
-                            lambda self, t: primitive_dictionary['turtley'](t))
+            Primitive(self.tw.turtles.get_turtle_y,
+                      arg_descs=[ArgSlot(TYPE_OBJECT)],
+                      return_type=TYPE_BOX))
 
-        primitive_dictionary['activeturtle'] = self._prim_active_turtle
         palette.add_block('activeturtle',
                           style='box-style',
-                          #TRANS: pop removes a new item from the program stack
                           label=_('active turtle'),
                           prim_name='activeturtle',
                           value_block=True,
                           help_string=_('the name of the active turtle'))
         self.tw.lc.def_prim('activeturtle', 0,
+            Primitive(Turtle.get_name,
+                      return_type=TYPE_BOX))
+
+        '''
+        return(self.tw.turtles.get_active_turtle().get_name())
                             lambda self:
                             primitive_dictionary['activeturtle']())
+        '''
 
-        primitive_dictionary['turtleh'] = self._prim_turtle_h
         palette.add_block('turtleh',
                           style='number-style-1arg',
                           label=_('turtle heading'),
@@ -806,7 +812,9 @@ module found in the Journal'))
                           default=['Yertle'],
                           help_string=_('Returns heading of turtle'))
         self.tw.lc.def_prim('turtleh', 1,
-                            lambda self, t: primitive_dictionary['turtleh'](t))
+            Primitive(self.tw.turtles.get_turtle_heading,
+                      arg_descs=[ArgSlot(TYPE_OBJECT)],
+                      return_type=TYPE_BOX))
 
         primitive_dictionary['skin'] = self._prim_reskin
         palette.add_block('skin',
