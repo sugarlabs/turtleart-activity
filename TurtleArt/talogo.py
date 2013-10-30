@@ -164,7 +164,6 @@ class LogoCode:
 
         self.hidden_turtle = None
 
-        self.keyboard = 0
         self.trace = 0
         self.update_values = False
         self.gplay = None

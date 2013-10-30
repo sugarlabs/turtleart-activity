@@ -33,7 +33,7 @@ from TurtleArt.talogo import (primitive_dictionary, logoerror,
 from TurtleArt.taconstants import (DEFAULT_SCALE, CONSTANTS,
                                    MEDIA_SHAPES, SKIN_PATHS, BLOCKS_WITH_SKIN,
                                    PYTHON_SKIN, MEDIA_BLOCK2TYPE, VOICES,
-                                   MACROS, Color)
+                                   MACROS, Color, KEY_DICT, REVERSE_KEY_DICT)
 from TurtleArt.tautils import (round_int, debug_output, get_path,
                                data_to_string, find_group, image_to_base64,
                                hat_on_top, listify, data_from_file)
@@ -56,7 +56,6 @@ class Turtle_blocks_extras(Plugin):
         SKIN_PATHS.append('plugins/turtle_blocks_extras/images')
 
         self.heap = self.tw.lc.heap
-        self.keyboard = self.tw.lc.keyboard
         self.title_height = int((self.tw.canvas.height / 20) * self.tw.scale)
 
         # set up Turtle Block palettes
@@ -376,7 +375,6 @@ pressed'))
                                       return_type=TYPE_NUMBER,
                                       call_afterwards=self.after_mouse_y))
 
-        primitive_dictionary['kbinput'] = self._prim_kbinput
         palette.add_block('kbinput',
                           style='basic-style-extended-vertical',
                           label=_('query keyboard'),
@@ -384,9 +382,9 @@ pressed'))
                           help_string=_('query for keyboard input (results \
 stored in keyboard block)'))
         self.tw.lc.def_prim('kbinput', 0,
-                            lambda self: primitive_dictionary['kbinput']())
+                            Primitive(self.tw.get_keyboard_input,
+                                      call_afterwards=self.after_keypress))
 
-        primitive_dictionary['keyboard'] = self._prim_keyboard
         palette.add_block('keyboard',
                           style='box-style',
                           label=_('keyboard'),
@@ -396,7 +394,8 @@ stored in keyboard block)'))
                           help_string=_('holds results of query-keyboard \
 block as ASCII'))
         self.tw.lc.def_prim('keyboard', 0,
-                            lambda self: primitive_dictionary['keyboard']())
+                            Primitive(self.tw.get_keyboard,
+                                      return_type=TYPE_NUMBER))
 
         primitive_dictionary['readpixel'] = self._prim_readpixel
         palette.add_block('readpixel',
@@ -1109,93 +1108,19 @@ Journal objects'))
 
     # Block primitives
 
-    def _prim_keyboard(self):
-        """ Return last character typed """
-        return self.tw.lc.keyboard
-
-    def _prim_kbinput(self):
-        """ Query keyboard """
-        DICT = {
-            'Left': 1,
-            'KP_Left': 1,
-            'Up': 2,
-            'KP_Up': 2,
-            'Right': 3,
-            'KP_Right': 3,
-            'Down': 4,
-            'KP_Down': 4,
-            'BackSpace': 8,
-            'Tab': 9,
-            'Return': 13,
-            'Escape': 27,
-            'space': 32,
-            ' ': 32,
-            'exclam': 33,
-            'quotedbl': 34,
-            'numbersign': 35,
-            'dollar': 36,
-            'percent': 37,
-            'ampersand': 38,
-            'apostrophe': 39,
-            'parenleft': 40,
-            'parenright': 41,
-            'asterisk': 42,
-            'plus': 43,
-            'comma': 44,
-            'minus': 45,
-            'period': 46,
-            'slash': 47,
-            'colon': 58,
-            'semicolon': 59,
-            'less': 60,
-            'equal': 61,
-            'greater': 62,
-            'question': 63,
-            'at': 64,
-            'underscore': 95,
-            'bracketleft': 91,
-            'backslash': 92,
-            'bracketright': 93,
-            'asciicircum': 94,
-            'grave': 96,
-            'braceleft': 123,
-            'bar': 124,
-            'braceright': 125,
-            'asciitilde': 126,
-            'Delete': 127,
-        }
-        REVERSE_DICT = {
-            1: _('left'),
-            2: _('up'),
-            3: _('right'),
-            4: _('down'),
-            8: _('backspace'),
-            9: _('tab'),
-            # TRANS: enter is the name of the enter (or return) key
-            13: _('enter'),
-            27: 'esc',
-            # TRANS: space is the name of the space key
-            32: _('space'),
-            127: _('delete')
-        }
-        
-        if len(self.tw.keypress) == 1:
-            self.tw.lc.keyboard = ord(self.tw.keypress[0])
-        elif self.tw.keypress in DICT:
-            self.tw.lc.keyboard = DICT[self.tw.keypress]
-        else:
-            self.tw.lc.keyboard = 0
+    def after_keypress(self):
         if self.tw.lc.update_values:
-            if self.tw.keypress in DICT:
-                if DICT[self.tw.keypress] in REVERSE_DICT:
+            if self.tw.keypress in KEY_DICT:
+                if KEY_DICT[self.tw.keypress] in REVERSE_KEY_DICT:
                     self.tw.lc.update_label_value(
-                        'keyboard', REVERSE_DICT[DICT[self.tw.keypress]])
+                        'keyboard', REVERSE_KEY_DICT[
+                            KEY_DICT[self.tw.keypress]])
                 else:
-                    self.tw.lc.update_label_value('keyboard',
-                                                  chr(DICT[self.tw.keypress]))
-            elif self.tw.lc.keyboard > 0:
+                    self.tw.lc.update_label_value(
+                        'keyboard', chr(KEY_DICT[self.tw.keypress]))
+            elif self.tw.keyboard > 0:
                 self.tw.lc.update_label_value('keyboard',
-                                              chr(self.tw.lc.keyboard))
+                                              chr(self.tw.keyboard))
         self.tw.keypress = ''
 
     def _prim_list(self, blklist):

@@ -58,7 +58,8 @@ from taconstants import (HORIZONTAL_PALETTE, VERTICAL_PALETTE, BLOCK_SCALE,
                          PYTHON_SKIN, PALETTE_HEIGHT, STATUS_LAYER, OLD_DOCK,
                          EXPANDABLE_ARGS, XO1, XO15, XO175, XO30, XO4, TITLEXY,
                          CONTENT_ARGS, CONSTANTS, EXPAND_SKIN, PROTO_LAYER,
-                         EXPANDABLE_FLOW, SUFFIX, TMP_SVG_PATH, Color)
+                         EXPANDABLE_FLOW, SUFFIX, TMP_SVG_PATH, Color,
+                         KEY_DICT)
 from tapalette import (palette_names, palette_blocks, expandable_blocks,
                        block_names, content_blocks, default_values,
                        special_names, block_styles, help_strings,
@@ -170,6 +171,7 @@ class TurtleArtWindow():
         self._autohide_shape = True
         self.keypress = ''
         self.keyvalue = 0
+        self.keyboard = 0
         self._focus_out_id = None
         self._insert_text_id = None
         self._text_to_check = False
@@ -3614,6 +3616,19 @@ before making changes to your program'))
             self._process_keyboard_commands(keyname, block_flag=False)
 
         return True
+
+    def get_keyboard_input(self):
+        """ Query keyboard and update cached keyboard input """
+        if len(self.keypress) == 1:
+            self.keyboard = ord(self.keypress[0])
+        elif self.keypress in KEY_DICT:
+            self.keyboard = KEY_DICT[self.keypress]
+        else:
+            self.keyboard = 0
+
+    def get_keyboard(self):
+        """ Return cached keyboard input """
+        return self.keyboard
 
     def _process_keyboard_commands(self, keyname, block_flag=True):
         ''' Use the keyboard to move blocks and turtle '''
