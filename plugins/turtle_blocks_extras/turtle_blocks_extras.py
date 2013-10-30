@@ -234,7 +234,8 @@ Journal'))
         self.tw.lc.def_prim('setscale', 1,
             Primitive(self.tw.lc.set_scale,
                       arg_descs=[ArgSlot(TYPE_NUMBER)],
-                      call_afterwards=self.after_set_scale))
+                      call_afterwards=lambda value: self.after_set(
+                          'scale', value)))
 
         primitive_dictionary['savepix'] = self._prim_save_picture
         palette.add_block('savepix',
@@ -362,7 +363,7 @@ pressed'))
         self.tw.lc.def_prim('mousex', 0,
                             Primitive(self.tw.get_mouse_x,
                                       return_type=TYPE_NUMBER,
-                                      call_afterwards=self.after_mouse_y))
+                                      call_afterwards=self.after_mouse_x))
 
         palette.add_block('mousey',
                           style='box-style',
@@ -397,7 +398,6 @@ block as ASCII'))
                             Primitive(self.tw.get_keyboard,
                                       return_type=TYPE_NUMBER))
 
-        primitive_dictionary['readpixel'] = self._prim_readpixel
         palette.add_block('readpixel',
                           style='basic-style-extended-vertical',
                           label=_('read pixel'),
@@ -406,9 +406,8 @@ block as ASCII'))
                           help_string=_('RGB color under the turtle is pushed \
 to the stack'))
         self.tw.lc.def_prim('readpixel', 0,
-                            lambda self: primitive_dictionary['readpixel']())
+                            Primitive(Turtle.read_pixel))
 
-        primitive_dictionary['see'] = self._prim_see
         palette.add_block('see',
                           style='box-style',
                           label=_('turtle sees'),
@@ -417,7 +416,9 @@ to the stack'))
                           help_string=_('returns the color that the turtle \
 "sees"'))
         self.tw.lc.def_prim('see', 0,
-                            lambda self: primitive_dictionary['see']())
+                            Primitive(Turtle.get_color_index,
+                                      return_type=TYPE_NUMBER,
+                                      call_afterwards=self.after_see))
 
         palette.add_block('time',
                           style='box-style',
@@ -1205,13 +1206,6 @@ Journal objects'))
             heap_file = path
             data_to_file(self.tw.lc.heap, heap_file)
 
-    def _prim_readpixel(self):
-        """ Read r, g, b, a from the canvas and push b, g, r to the stack """
-        r, g, b, a = self.tw.turtles.get_active_turtle().get_pixel()
-        self.tw.lc.heap.append(b)
-        self.tw.lc.heap.append(g)
-        self.tw.lc.heap.append(r)
-
     def _prim_save_picture(self, name):
         """ Save canvas to file as PNG """
         self.tw.save_as_image(name)
@@ -1315,27 +1309,21 @@ Journal objects'))
         csd.close()
 
     def after_mouse_x(self):
-        """ Return mouse x coordinate """
+        """ Show mouse x coordinate """
         if self.tw.lc.update_values:
-            self.tw.lc.update_label_value('mousex', mousex)
+            self.tw.lc.update_label_value('mousex', self.tw.get_mouse_x())
 
     def after_mouse_y(self):
-        """ Return mouse y coordinate """
+        """ Show mouse y coordinate """
         if self.tw.lc.update_values:
-            self.tw.lc.update_label_value('mousey', mousey)
+            self.tw.lc.update_label_value('mousey', self.tw.get_mouse_y())
 
-    def _prim_see(self):
-        """ Read r, g, b from the canvas and return a corresponding palette
-        color """
-        r, g, b, a = self.tw.turtles.get_active_turtle().get_pixel()
-        color_index = self.tw.canvas.get_color_index(r, g, b)
+    def after_see(self):
+        """ Show color under turtle """
         if self.tw.lc.update_values:
-            self.tw.lc.update_label_value('see', color_index)
-        return color_index
-
-    def after_set_scale(self, val):
-        if self.tw.lc.update_values:
-            self.tw.lc.update_label_value('scale', scale)
+            self.tw.lc.update_label_value(
+                'see',
+                self.tw.turtles.get_active_turtle().get_color_index())
 
     def _prim_show(self, string, center=False):
         """ Show is the general-purpose media-rendering block. """
@@ -1542,3 +1530,9 @@ Journal objects'))
                 self.tw.show_toolbar_palette(palette_name_to_index(arg))
             else:
                 raise logoerror("#syntaxerror")
+
+    def after_set(self, name, value=None):
+        ''' Update the associated value blocks '''
+        if value is not None:
+            if self.tw.lc.update_values:
+                self.tw.lc.update_label_value(name, value)
