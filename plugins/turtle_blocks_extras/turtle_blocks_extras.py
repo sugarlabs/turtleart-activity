@@ -27,7 +27,7 @@ from plugins.plugin import Plugin
 from TurtleArt.tapalette import (make_palette, define_logo_function,
                                  block_names, block_primitives, special_names,
                                  content_blocks, palette_name_to_index,
-                                 palette_names, palette_i18n_names)
+                                 palette_names)
 from TurtleArt.talogo import (primitive_dictionary, logoerror,
                               media_blocks_dictionary)
 from TurtleArt.taconstants import (DEFAULT_SCALE, CONSTANTS,
@@ -726,7 +726,6 @@ module found in the Journal'))
         MEDIA_SHAPES.append('pythonoff')
         MEDIA_SHAPES.append('pythonon')
 
-        primitive_dictionary['loadblock'] = self._prim_load_block
         palette.add_block('loadblock',
                           style='basic-style-var-arg',
                           label=_('load'),
@@ -734,8 +733,8 @@ module found in the Journal'))
                           default=_('forward'),
                           help_string=_('loads a block'))
         self.tw.lc.def_prim('loadblock', 1,
-                            lambda self, x:
-                            primitive_dictionary['loadblock'](x))
+                            Primitive(self.tw.prim_load_block,
+                                      arg_descs=[ArgSlot(TYPE_STRING)]))
 
         palette.add_block('loadblock2arg',
                           style='basic-style-var-arg',
@@ -746,8 +745,9 @@ module found in the Journal'))
                           default=[_('forward'), 100],
                           help_string=_('loads a block'))
         self.tw.lc.def_prim('loadblock2', 2,
-                            lambda self, x, y:
-                            primitive_dictionary['loadblock']([x, y]))
+                            Primitive(self.tw.prim_load_block,
+                                      arg_descs=[ArgSlot(TYPE_STRING),
+                                                 ArgSlot(TYPE_OBJECT)]))
 
         palette.add_block('loadblock3arg',
                           style='basic-style-var-arg',
@@ -758,10 +758,11 @@ module found in the Journal'))
                           default=[_('setxy'), 0, 0],
                           help_string=_('loads a block'))
         self.tw.lc.def_prim('loadblock3', 3,
-                            lambda self, x, y, z:
-                            primitive_dictionary['loadblock']([x, y, z]))
+                            Primitive(self.tw.prim_load_block,
+                                      arg_descs=[ArgSlot(TYPE_STRING),
+                                                 ArgSlot(TYPE_OBJECT),
+                                                 ArgSlot(TYPE_OBJECT)]))
 
-        primitive_dictionary['loadpalette'] = self._prim_load_palette
         palette.add_block('loadpalette',
                           style='basic-style-1arg',
                           string_or_number=True,
@@ -770,8 +771,8 @@ module found in the Journal'))
                           default=_('turtle'),
                           help_string=_('selects a palette'))
         self.tw.lc.def_prim('loadpalette', 1,
-                            lambda self, x:
-                            primitive_dictionary['loadpalette'](x))
+                            Primitive(self.tw.prim_load_palette,
+                                      arg_descs=[ArgSlot(TYPE_STRING)]))
 
         palette.add_block('addturtle',
                           style='basic-style-1arg',
@@ -1372,105 +1373,6 @@ Journal objects'))
         if self.tw.running_sugar:
             self.tw.activity.stop_turtle_button.set_icon("stopiton")
             self.tw.activity.stop_turtle_button.set_tooltip(_('Stop turtle'))
-
-    def _prim_load_block(self, blkname):
-        ''' Load a block on to the canvas '''
-        # Place the block at the active turtle (x, y) and move the turtle
-        # into position to place the next block in the stack.
-        # TODO: Add expandable argument
-        pos = self.tw.turtles.get_active_turtle().get_xy()
-        if isinstance(blkname, list):
-            name = blkname[0]
-            if len(blkname) > 1:
-                value = blkname[1:]
-                dy = int(self._find_block(name, pos[0], pos[1], value))
-            else:
-                dy = int(self._find_block(name, pos[0], pos[1]))
-        else:
-            name = blkname
-            if name == 'delete':
-                for blk in self.tw.just_blocks():
-                    if blk.status == 'load block':
-                        blk.type = 'trash'
-                        blk.spr.hide()
-                dy = 0
-            else:
-                dy = int(self._find_block(name, pos[0], pos[1]))
-
-        # Reposition turtle to end of flow
-        pos = self.tw.turtles.get_active_turtle().get_xy()
-        pos[1] -= dy
-        self.tw.turtles.get_active_turtle().move_turtle(pos)
-
-    def _make_block(self, name, x, y, defaults):
-        if defaults is None:
-            self.tw._new_block(name, x, y, defaults)
-        else:
-            for i, v in enumerate(defaults):
-                if type(v) == float and int(v) == v:
-                    defaults[i] = int(v)
-            self.tw._new_block(name, x, y, defaults)
-
-        # Find the block we just created and attach it to a stack.
-        self.tw.drag_group = None
-        spr = self.tw.sprite_list.find_sprite((x, y))
-        if spr is not None:
-            blk = self.tw.block_list.spr_to_block(spr)
-            if blk is not None:
-                self.tw.drag_group = find_group(blk)
-                for b in self.tw.drag_group:
-                    b.status = 'load block'
-                self.tw._snap_to_dock()
-
-        # Disassociate new block from mouse.
-        self.tw.drag_group = None
-        return blk.docks[-1][3]
-
-    def _find_block(self, blkname, x, y, defaults=None):
-        """ Create a new block. It is a bit more work than just calling
-        _new_block(). We need to:
-        (1) translate the label name into the internal block name;
-        (2) 'dock' the block onto a stack where appropriate; and
-        (3) disassociate the new block from the mouse. """
-        x, y = self.tw.turtles.turtle_to_screen_coordinates((x, y))
-        for name in block_names:
-            # Translate label name into block/prim name.
-            if blkname in block_names[name]:  # block label is an array
-                # print 'found a match', blkname, name, block_names[name]
-                if name in content_blocks or \
-                        (name in block_primitives and
-                         block_primitives[name] == name):
-                    # print '_make_block', blkname, name
-                    return self._make_block(name, x, y, defaults)
-            elif blkname in block_names:
-                # print '_make_block', blkname
-                return self._make_block(blkname, x, y, defaults)
-        for name in special_names:
-            # Translate label name into block/prim name.
-            if blkname in special_names[name]:
-                return self._make_block(name, x, y, defaults)
-        # Check for a macro
-        if blkname in MACROS:
-            self.tw.new_macro(blkname, x, y)
-            return 0  # Fix me: calculate flow position
-        # Block not found
-        raise logoerror("#syntaxerror")
-        return -1
-
-    def _prim_load_palette(self, arg):
-        ''' Select a palette '''
-        if type(arg) in [int, float]:
-            if int(arg) < 0 or int(arg) > len(palette_names):
-                raise logoerror("#syntaxerror")
-            else:
-                self.tw.show_toolbar_palette(int(arg))
-        else:
-            if type(arg) == unicode:
-                arg = arg.encode('utf-8')
-            if arg in palette_names or arg in palette_i18n_names:
-                self.tw.show_toolbar_palette(palette_name_to_index(arg))
-            else:
-                raise logoerror("#syntaxerror")
 
     def after_set(self, name, value=None):
         ''' Update the associated value blocks '''
