@@ -39,7 +39,7 @@ import traceback
 
 from tablock import (Block, Media, media_blocks_dictionary)
 from taconstants import (TAB_LAYER, DEFAULT_SCALE, ICON_SIZE)
-from tajail import myfunc
+from tajail import (myfunc, myfunc_import)
 from tapalette import (block_names, value_blocks)
 from tatype import (TATypeError, TYPES_NUMERIC)
 from tautils import (get_pixbuf_from_journal, data_from_file, get_stack_name,
@@ -831,6 +831,16 @@ class LogoCode:
         # so the object references are preserved
         while self.heap:
             self.heap.pop()
+
+    def prim_myblock(self, *args):
+        """ Run Python code imported from Journal """
+        if self.bindex is not None and self.bindex in self.tw.myblock:
+            # try:
+            myfunc_import(self, self.tw.myblock[self.bindex], args)
+            '''
+            except:
+                raise logoerror("#syntaxerror")
+            '''
 
     def prim_myfunction(self, f, *args):
         """ Programmable block (Call tajail.myfunc and convert any errors to

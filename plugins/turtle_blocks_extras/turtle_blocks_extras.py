@@ -37,7 +37,6 @@ from TurtleArt.taconstants import (DEFAULT_SCALE, CONSTANTS,
 from TurtleArt.tautils import (round_int, debug_output, get_path,
                                data_to_string, find_group, image_to_base64,
                                hat_on_top, listify, data_from_file)
-from TurtleArt.tajail import myfunc_import
 from TurtleArt.taprimitive import (ArgSlot, ConstantArg, Primitive)
 from TurtleArt.tatype import (TYPE_BOOL, TYPE_BOX, TYPE_CHAR, TYPE_INT,
                               TYPE_FLOAT, TYPE_OBJECT, TYPE_STRING,
@@ -670,7 +669,6 @@ advanced multi-variable math equations, e.g., sin(x+y+z)'))
         self.tw.lc.def_prim('cartesian', 0,
                             lambda self: self.tw.set_cartesian(True))
 
-        primitive_dictionary['userdefined'] = self._prim_myblock
         palette.add_block('userdefined',
                           style='basic-style-var-arg',
                           label=' ',
@@ -681,8 +679,8 @@ advanced multi-variable math equations, e.g., sin(x+y+z)'))
                           help_string=_('runs code found in the tamyblock.py \
 module found in the Journal'))
         self.tw.lc.def_prim('userdefined', 1,
-                            lambda self, x:
-                            primitive_dictionary['userdefined']([x]))
+                            Primitive(self.tw.lc.prim_myblock,
+                                      arg_descs=[ArgSlot(TYPE_OBJECT)]))
         BLOCKS_WITH_SKIN.append('userdefined')
         PYTHON_SKIN.append('userdefined')
 
@@ -698,8 +696,9 @@ module found in the Journal'))
                           help_string=_('runs code found in the tamyblock.py \
 module found in the Journal'))
         self.tw.lc.def_prim('userdefined2', 2,
-                            lambda self, x, y:
-                            primitive_dictionary['userdefined']([x, y]))
+                            Primitive(self.tw.lc.prim_myblock,
+                                      arg_descs=[ArgSlot(TYPE_OBJECT),
+                                                 ArgSlot(TYPE_OBJECT)]))
         BLOCKS_WITH_SKIN.append('userdefined2args')
         PYTHON_SKIN.append('userdefined2args')
 
@@ -715,8 +714,10 @@ module found in the Journal'))
                           help_string=_('runs code found in the tamyblock.py \
 module found in the Journal'))
         self.tw.lc.def_prim('userdefined3', 3,
-                            lambda self, x, y, z:
-                            primitive_dictionary['userdefined']([x, y, z]))
+                            Primitive(self.tw.lc.prim_myblock,
+                                      arg_descs=[ArgSlot(TYPE_OBJECT),
+                                                 ArgSlot(TYPE_OBJECT),
+                                                 ArgSlot(TYPE_OBJECT)]))
         BLOCKS_WITH_SKIN.append('userdefined3args')
         PYTHON_SKIN.append('userdefined3args')
         MEDIA_SHAPES.append('pythonsmall')
