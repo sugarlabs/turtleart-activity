@@ -44,7 +44,7 @@ from tapalette import (block_names, value_blocks)
 from tatype import (TATypeError, TYPES_NUMERIC)
 from tautils import (get_pixbuf_from_journal, data_from_file, get_stack_name,
                      text_media_type, round_int, debug_output, find_group,
-                     get_path, image_to_base64, data_to_string)
+                     get_path, image_to_base64, data_to_string, data_to_file)
 
 try:
     from util.RtfParser import RtfTextOnly
@@ -821,6 +821,50 @@ class LogoCode:
             if isinstance(name, (int, long)):
                 name = float(name)
             return 'stack3' + str(name)
+
+    def load_heap(self, path):
+        """ Load FILO from file """
+        if self.tw.running_sugar:
+            # Choose a datastore object and push data to heap (Sugar only)
+            chooser_dialog(self.tw.parent, path, self.push_file_data_to_heap)
+        else:
+            if not os.path.exists(path):
+                path, tw.load_save_folder = get_load_name(
+                    '.*', self.tw.load_save_folder)
+                if path is None:
+                    return
+
+            data = data_from_file(path)
+            if data is not None:
+                for val in data:
+                    self.heap.append(val)
+
+    def save_heap(self, path):
+        """ save FILO to file """
+        if self.tw.running_sugar:
+            from sugar import profile
+            from sugar.datastore import datastore
+            from sugar.activity import activity
+
+            # Save JSON-encoded heap to temporary file
+            heap_file = os.path.join(get_path(activity, 'instance'),
+                                     str(path) + '.txt')
+            data_to_file(self.heap, heap_file)
+
+            # Create a datastore object
+            dsobject = datastore.create()
+
+            # Write any metadata (specifically set the title of the file
+            #                     and specify that this is a plain text file).
+            dsobject.metadata['title'] = str(path)
+            dsobject.metadata['icon-color'] = profile.get_color().to_string()
+            dsobject.metadata['mime_type'] = 'text/plain'
+            dsobject.set_file_path(heap_file)
+            datastore.write(dsobject)
+            dsobject.destroy()
+        else:
+            heap_file = path
+            data_to_file(self.heap, heap_file)
 
     def get_heap(self):
         return self.heap

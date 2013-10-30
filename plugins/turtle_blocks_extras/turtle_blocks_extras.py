@@ -525,7 +525,6 @@ make "tmp first :taheap\nmake "taheap butfirst :taheap\noutput :tmp\nend\n')
                                         Primitive(self.tw.lc.get_heap,
                                                   return_type=TYPE_BOOL))]))]))
 
-        primitive_dictionary['saveheap'] = self._prim_save_heap
         palette.add_block('saveheap',
                           style='basic-style-1arg',
                           label=_('save heap to file'),
@@ -534,9 +533,9 @@ make "tmp first :taheap\nmake "taheap butfirst :taheap\noutput :tmp\nend\n')
                           help_string=_('saves FILO (first-in \
 last-out heap) to a file'))
         self.tw.lc.def_prim('saveheap', 1,
-                            lambda self, x: primitive_dictionary['saveheap'](x))
+                            Primitive(self.tw.lc.save_heap,
+                                      arg_descs=[ArgSlot(TYPE_STRING)]))
 
-        primitive_dictionary['loadheap'] = self._prim_load_heap
         palette.add_block('loadheap',
                           style='basic-style-1arg',
                           label=_('load heap from file'),
@@ -545,7 +544,10 @@ last-out heap) to a file'))
                           help_string=_('loads FILO (first-in \
 last-out heap) from a file'))
         self.tw.lc.def_prim('loadheap', 1,
-                            lambda self, x: primitive_dictionary['loadheap'](x))
+                            Primitive(self.tw.lc.load_heap,
+                                      arg_descs=[ArgSlot(TYPE_STRING)],
+                                      return_type=TYPE_STRING,
+                                      call_afterwards=self.after_push))
 
         palette.add_block('isheapempty2',
                           style='boolean-block-style',
@@ -1131,81 +1133,19 @@ Journal objects'))
         self.tw.lc.ireturn()
         yield True
 
-    def _prim_myblock(self, x):
-        """ Run Python code imported from Journal """
-        if self.tw.lc.bindex is not None and \
-           self.tw.lc.bindex in self.tw.myblock:
-            try:
-                if len(x) == 1:
-                    myfunc_import(self, self.tw.myblock[self.tw.lc.bindex],
-                                  x[0])
-                else:
-                    myfunc_import(self, self.tw.myblock[self.tw.lc.bindex], x)
-            except:
-                raise logoerror("#syntaxerror")
-
-    def after_pop(self):
+    def after_pop(self, *ignored_args):
         if self.tw.lc.update_values:
             if not self.tw.lc.heap:
                 self.tw.lc.update_label_value('pop')
             else:
                 self.tw.lc.update_label_value('pop', self.tw.lc.heap[-1])
 
-    def after_push(self, val):
+    def after_push(self, *ignored_args):
         if self.tw.lc.update_values:
-            self.tw.lc.update_label_value('pop', val)
-
-    def _prim_load_heap(self, path):
-        """ Load FILO from file """
-        if type(path) == float:
-            path = ''
-        if self.tw.running_sugar:
-            # Choose a datastore object and push data to heap (Sugar only)
-            chooser_dialog(self.tw.parent, path,
-                           self.tw.lc.push_file_data_to_heap)
-        else:
-            if not os.path.exists(path):
-                path, tw.load_save_folder = get_load_name(
-                    '.*', self.tw.load_save_folder)
-                if path is None:
-                    return
-
-            data = data_from_file(path)
-            if data is not None:
-                for val in data:
-                    self.tw.lc.heap.append(val)
-
-        if len(self.tw.lc.heap) > 0:
-            self.tw.lc.update_label_value('pop', self.tw.lc.heap[-1])
-
-    def _prim_save_heap(self, path):
-        """ save FILO to file """
-        # TODO: add GNOME save
-
-        if self.tw.running_sugar:
-            from sugar import profile
-            from sugar.datastore import datastore
-            from sugar.activity import activity
-
-            # Save JSON-encoded heap to temporary file
-            heap_file = os.path.join(get_path(activity, 'instance'),
-                                     str(path) + '.txt')
-            data_to_file(self.tw.lc.heap, heap_file)
-
-            # Create a datastore object
-            dsobject = datastore.create()
-
-            # Write any metadata (specifically set the title of the file
-            #                     and specify that this is a plain text file).
-            dsobject.metadata['title'] = str(path)
-            dsobject.metadata['icon-color'] = profile.get_color().to_string()
-            dsobject.metadata['mime_type'] = 'text/plain'
-            dsobject.set_file_path(heap_file)
-            datastore.write(dsobject)
-            dsobject.destroy()
-        else:
-            heap_file = path
-            data_to_file(self.tw.lc.heap, heap_file)
+            if not self.tw.lc.heap:
+                self.tw.lc.update_label_value('pop')
+            else:
+                self.tw.lc.update_label_value('pop', self.tw.lc.heap[-1])
 
     def _prim_save_picture(self, name):
         """ Save canvas to file as PNG """
