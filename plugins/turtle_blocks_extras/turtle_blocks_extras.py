@@ -45,22 +45,6 @@ from TurtleArt.tatype import (TYPE_BOOL, TYPE_BOX, TYPE_CHAR, TYPE_INT,
 from TurtleArt.taturtle import Turtle
 
 
-def _num_type(x):
-    """ Is x a number type? """
-    if type(x) == int:
-        return True
-    if type(x) == float:
-        return True
-    if type(x) == ord:
-        return True
-    return False
-
-
-def _millisecond():
-    """ Current time in milliseconds """
-    return time() * 1000
-
-
 class Turtle_blocks_extras(Plugin):
     """ a class for defining the extra palettes that distinguish Turtle Blocks
     from Turtle Art """
@@ -347,7 +331,6 @@ amplitude, and duration (in seconds)'))
                                help_string=_('Palette of sensor blocks'),
                                position=6)
 
-        primitive_dictionary['mousebutton'] = self._prim_mouse_button
         palette.add_block('mousebutton',
                           hidden=True,
                           style='box-style',
@@ -357,9 +340,9 @@ amplitude, and duration (in seconds)'))
                           help_string=_('returns 1 if mouse button is \
 pressed'))
         self.tw.lc.def_prim('mousebutton', 0,
-                            lambda self: primitive_dictionary['mousebutton']())
+                            Primitive(self.tw.get_mouse_flag,
+                                      return_type=TYPE_NUMBER))
 
-        primitive_dictionary['mousebutton2'] = self._prim_mouse_button_bool
         palette.add_block('mousebutton2',
                           style='boolean-block-style',
                           label=_('button down'),
@@ -368,10 +351,9 @@ pressed'))
                           help_string=_('returns True if mouse button is \
 pressed'))
         self.tw.lc.def_prim('mousebutton2', 0,
-                            lambda self:
-                            primitive_dictionary['mousebutton2']())
+                            Primitive(self.tw.get_mouse_button,
+                                      return_type=TYPE_BOOL))
 
-        primitive_dictionary['mousex'] = self._prim_mouse_x
         palette.add_block('mousex',
                           style='box-style',
                           label=_('mouse x'),
@@ -379,10 +361,10 @@ pressed'))
                           value_block=True,
                           help_string=_('returns mouse x coordinate'))
         self.tw.lc.def_prim('mousex', 0,
-                            lambda self:
-                            primitive_dictionary['mousex']())
+                            Primitive(self.tw.get_mouse_x,
+                                      return_type=TYPE_NUMBER,
+                                      call_afterwards=self.after_mouse_y))
 
-        primitive_dictionary['mousey'] = self._prim_mouse_y
         palette.add_block('mousey',
                           style='box-style',
                           label=_('mouse y'),
@@ -390,8 +372,9 @@ pressed'))
                           value_block=True,
                           help_string=_('returns mouse y coordinate'))
         self.tw.lc.def_prim('mousey', 0,
-                            lambda self:
-                            primitive_dictionary['mousey']())
+                            Primitive(self.tw.get_mouse_y,
+                                      return_type=TYPE_NUMBER,
+                                      call_afterwards=self.after_mouse_y))
 
         primitive_dictionary['kbinput'] = self._prim_kbinput
         palette.add_block('kbinput',
@@ -1234,39 +1217,6 @@ Journal objects'))
             except:
                 raise logoerror("#syntaxerror")
 
-    def _prim_myfunction(self, f, x):
-        """ Programmable block """
-        for i, v in enumerate(x):
-            if isinstance(v, int):  # Pass float values to Python block
-                x[i] = float(v)
-        try:
-            y = myfunc(f, x)
-            if str(y) == 'nan':
-                debug_output('Python function returned NAN',
-                             self.tw.running_sugar)
-                self.tw.lc.stop_logo()
-                raise logoerror("#notanumber")
-            else:
-                return y
-        except ZeroDivisionError:
-            self.tw.lc.stop_logo()
-            raise logoerror("#zerodivide")
-        except ValueError, e:
-            self.tw.lc.stop_logo()
-            raise logoerror('#' + str(e))
-        except SyntaxError, e:
-            self.tw.lc.stop_logo()
-            raise logoerror('#' + str(e))
-        except NameError, e:
-            self.tw.lc.stop_logo()
-            raise logoerror('#' + str(e))
-        except OverflowError:
-            self.tw.lc.stop_logo()
-            raise logoerror("#overflowerror")
-        except TypeError:
-            self.tw.lc.stop_logo()
-            raise logoerror("#notanumber")
-
     def after_pop(self):
         if self.tw.lc.update_values:
             if not self.tw.lc.heap:
@@ -1439,33 +1389,15 @@ Journal objects'))
         csd.write("\n</CsoundSynthesizer>")
         csd.close()
 
-    def _prim_mouse_x(self):
+    def after_mouse_x(self):
         """ Return mouse x coordinate """
-        mousex = int(self.tw.mouse_x - (self.tw.canvas.width / 2))
         if self.tw.lc.update_values:
             self.tw.lc.update_label_value('mousex', mousex)
-        return mousex
 
-    def _prim_mouse_y(self):
+    def after_mouse_y(self):
         """ Return mouse y coordinate """
-        mousey = int((self.tw.canvas.height / 2) - self.tw.mouse_y)
         if self.tw.lc.update_values:
             self.tw.lc.update_label_value('mousey', mousey)
-        return mousey
-
-    def _prim_mouse_button(self):
-        """ Return 1 if mouse button is pressed """
-        if self.tw.mouse_flag == 1:
-            return 1
-        else:
-            return 0
-
-    def _prim_mouse_button_bool(self):
-        """ Return True if mouse button is pressed """
-        if self.tw.mouse_flag == 1:
-            return True
-        else:
-            return False
 
     def _prim_see(self):
         """ Read r, g, b from the canvas and return a corresponding palette

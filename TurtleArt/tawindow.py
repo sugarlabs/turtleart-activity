@@ -1487,6 +1487,18 @@ class TurtleArtWindow():
         self.button_press(event.get_state() & gtk.gdk.CONTROL_MASK, x, y)
         return True
 
+    def get_mouse_flag(self):
+        return self.mouse_flag
+
+    def get_mouse_button(self):
+        return self.mouse_flag == 1
+
+    def get_mouse_x(self):
+        return int(self.mouse_x - (self.canvas.width / 2))
+
+    def get_mouse_y(self):
+        return int((self.canvas.height / 2) - self.mouse_y)
+
     def button_press(self, mask, x, y):
         if self.running_sugar:
             self._show_unfullscreen_button()
