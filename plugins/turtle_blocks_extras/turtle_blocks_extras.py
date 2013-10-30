@@ -30,7 +30,7 @@ from TurtleArt.tapalette import (make_palette, define_logo_function,
                                  palette_names, palette_i18n_names)
 from TurtleArt.talogo import (primitive_dictionary, logoerror,
                               media_blocks_dictionary)
-from TurtleArt.taconstants import (DEFAULT_SCALE, ICON_SIZE, CONSTANTS,
+from TurtleArt.taconstants import (DEFAULT_SCALE, CONSTANTS,
                                    MEDIA_SHAPES, SKIN_PATHS, BLOCKS_WITH_SKIN,
                                    PYTHON_SKIN, MEDIA_BLOCK2TYPE, VOICES,
                                    MACROS, Color)
@@ -845,7 +845,6 @@ module found in the Journal'))
                       arg_descs=[ArgSlot(TYPE_OBJECT)],
                       return_type=TYPE_BOX))
 
-        primitive_dictionary['skin'] = self._prim_reskin
         palette.add_block('skin',
                           hidden=True,
                           colors=["#FF0000", "#A00000"],
@@ -854,8 +853,8 @@ module found in the Journal'))
                           prim_name='skin',
                           help_string=_("put a custom 'shell' on the turtle"))
         self.tw.lc.def_prim('skin', 1,
-                            lambda self, x:
-                            primitive_dictionary['skin'](x))
+                            Primitive(self.tw.lc.reskin,
+                                      arg_descs=[ArgSlot(TYPE_OBJECT)]))
 
         # macro
         palette.add_block('reskin',
@@ -1337,62 +1336,6 @@ Journal objects'))
         self.tw.lc.heap.append(b)
         self.tw.lc.heap.append(g)
         self.tw.lc.heap.append(r)
-
-    def _prim_reskin(self, media):
-        """ Reskin the turtle with an image from a file """
-        scale = int(ICON_SIZE * float(self.tw.lc.scale) / DEFAULT_SCALE)
-        if scale < 1:
-            return
-        self.tw.lc.filepath = None
-        dsobject = None
-        if os.path.exists(media[6:]):  # is it a path?
-            self.tw.lc.filepath = media[6:]
-        elif self.tw.running_sugar:  # is it a datastore object?
-            from sugar.datastore import datastore
-            try:
-                dsobject = datastore.get(media[6:])
-            except:
-                debug_output("Couldn't open skin %s" % (media[6:]),
-                             self.tw.running_sugar)
-            if dsobject is not None:
-                self.tw.lc.filepath = dsobject.file_path
-        if self.tw.lc.filepath is None:
-            self.tw.showlabel('nojournal', self.tw.lc.filepath)
-            return
-        pixbuf = None
-        try:
-            pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(self.tw.lc.filepath,
-                                                          scale, scale)
-        except:
-            self.tw.showlabel('nojournal', self.tw.lc.filepath)
-            debug_output("Couldn't open skin %s" % (self.tw.lc.filepath),
-                         self.tw.running_sugar)
-        if pixbuf is not None:
-            self.tw.turtles.get_active_turtle().set_shapes([pixbuf])
-            pen_state = self.tw.turtles.get_active_turtle().get_pen_state()
-            if pen_state:
-                self.tw.turtles.get_active_turtle().set_pen_state(False)
-            self.tw.turtles.get_active_turtle().forward(0)
-            if pen_state:
-                self.tw.turtles.get_active_turtle().set_pen_state(True)
-
-        if self.tw.sharing():
-            if self.tw.running_sugar:
-                tmp_path = get_path(self.tw.activity, 'instance')
-            else:
-                tmp_path = '/tmp'
-            tmp_file = os.path.join(get_path(self.tw.activity, 'instance'),
-                                    'tmpfile.png')
-            pixbuf.save(tmp_file, 'png', {'quality': '100'})
-            data = image_to_base64(tmp_file, tmp_path)
-            height = pixbuf.get_height()
-            width = pixbuf.get_width()
-            event = 'R|%s' % (data_to_string([self.tw.nick,
-                                              [round_int(width),
-                                               round_int(height),
-                                               data]]))
-            gobject.idle_add(self.tw.send_event, event)
-            os.remove(tmp_file)
 
     def _prim_save_picture(self, name):
         """ Save canvas to file as PNG """

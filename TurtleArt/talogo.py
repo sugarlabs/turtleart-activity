@@ -25,6 +25,7 @@ import gtk
 from time import time, sleep
 
 from operator import isNumberType
+import os
 from os.path import exists as os_path_exists
 from UserDict import UserDict
 
@@ -37,12 +38,13 @@ except ImportError:
 import traceback
 
 from tablock import (Block, Media, media_blocks_dictionary)
-from taconstants import (TAB_LAYER, DEFAULT_SCALE)
+from taconstants import (TAB_LAYER, DEFAULT_SCALE, ICON_SIZE)
 from tajail import myfunc
 from tapalette import (block_names, value_blocks)
 from tatype import (TATypeError, TYPES_NUMERIC)
 from tautils import (get_pixbuf_from_journal, data_from_file, get_stack_name,
-                     text_media_type, round_int, debug_output, find_group)
+                     text_media_type, round_int, debug_output, find_group,
+                     get_path, image_to_base64, data_to_string)
 
 try:
     from util.RtfParser import RtfTextOnly
@@ -936,6 +938,65 @@ class LogoCode:
                         drag_group = find_group(argblk)
                         for blk in drag_group:
                             blk.spr.move_relative((dx, 0))
+
+    def reskin(self, obj):
+        """ Reskin the turtle with an image from a file """
+        scale = int(ICON_SIZE * float(self.scale) / DEFAULT_SCALE)
+        if scale < 1:
+            return
+        self.filepath = None
+        self.dsobject = None
+
+        if os_path_exists(obj.value):  # file path
+            self.filepath = obj.value
+        elif self.tw.running_sugar:  # datastore object
+            from sugar.datastore import datastore
+            try:
+                self.dsobject = datastore.get(obj.value)
+            except:
+                debug_output("Couldn't find dsobject %s" %
+                             (obj.value), self.tw.running_sugar)
+            if self.dsobject is not None:
+                self.filepath = self.dsobject.file_path
+
+        if self.filepath is None:
+            self.tw.showlabel('nojournal', self.filepath)
+            return
+
+        pixbuf = None
+        try:
+            pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(
+                self.filepath, scale, scale)
+        except:
+            self.tw.showlabel('nojournal', self.filepath)
+            debug_output("Couldn't open skin %s" % (self.filepath),
+                         self.tw.running_sugar)
+        if pixbuf is not None:
+            self.tw.turtles.get_active_turtle().set_shapes([pixbuf])
+            pen_state = self.tw.turtles.get_active_turtle().get_pen_state()
+            if pen_state:
+                self.tw.turtles.get_active_turtle().set_pen_state(False)
+            self.tw.turtles.get_active_turtle().forward(0)
+            if pen_state:
+                self.tw.turtles.get_active_turtle().set_pen_state(True)
+
+        if self.tw.sharing():
+            if self.tw.running_sugar:
+                tmp_path = get_path(self.tw.activity, 'instance')
+            else:
+                tmp_path = '/tmp'
+            tmp_file = os.path.join(get_path(self.tw.activity, 'instance'),
+                                    'tmpfile.png')
+            pixbuf.save(tmp_file, 'png', {'quality': '100'})
+            data = image_to_base64(tmp_file, tmp_path)
+            height = pixbuf.get_height()
+            width = pixbuf.get_width()
+            event = 'R|%s' % (data_to_string([self.tw.nick,
+                                              [round_int(width),
+                                               round_int(height),
+                                               data]]))
+            gobject.idle_add(self.tw.send_event, event)
+            os.remove(tmp_file)
 
     def show(self, obj, center=False):
         """ Show is the general-purpose media-rendering block. """
