@@ -722,6 +722,14 @@ class LogoCode:
         self.ireturn()
         yield True
 
+    def set_scale(self, scale):
+        ''' Set scale for media blocks '''
+        self.scale = scale
+
+    def get_scale(self):
+        ''' Set scale for media blocks '''
+        return self.scale
+
     def prim_stop_stack(self):
         """ Stop execution of a stack """
         self.procstop = True

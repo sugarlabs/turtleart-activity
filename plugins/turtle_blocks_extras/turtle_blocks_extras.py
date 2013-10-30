@@ -40,7 +40,8 @@ from TurtleArt.tautils import (round_int, debug_output, get_path,
 from TurtleArt.tajail import myfunc_import
 from TurtleArt.taprimitive import (ArgSlot, ConstantArg, Primitive)
 from TurtleArt.tatype import (TYPE_BOOL, TYPE_BOX, TYPE_CHAR, TYPE_INT,
-                              TYPE_FLOAT, TYPE_OBJECT, TYPE_STRING)
+                              TYPE_FLOAT, TYPE_OBJECT, TYPE_STRING,
+                              TYPE_NUMBER)
 from TurtleArt.taturtle import Turtle
 
 
@@ -240,7 +241,6 @@ Journal'))
                                       arg_descs=[ArgSlot(TYPE_OBJECT),
                                                  ConstantArg(False)]))
 
-        primitive_dictionary['setscale'] = self._prim_setscale
         palette.add_block('setscale',
                           style='basic-style-1arg',
                           label=_('set scale'),
@@ -249,8 +249,9 @@ Journal'))
                           logo_command='setlabelheight',
                           help_string=_('sets the scale of media'))
         self.tw.lc.def_prim('setscale', 1,
-                            lambda self, x:
-                            primitive_dictionary['setscale'](x))
+            Primitive(self.tw.lc.set_scale,
+                      arg_descs=[ArgSlot(TYPE_NUMBER)],
+                      call_afterwards=self.after_set_scale))
 
         primitive_dictionary['savepix'] = self._prim_save_picture
         palette.add_block('savepix',
@@ -281,7 +282,9 @@ in the Sugar Journal'))
                           value_block=True,
                           logo_command='labelsize',
                           help_string=_('holds current scale value'))
-        self.tw.lc.def_prim('scale', 0, lambda self: self.tw.lc.scale)
+        self.tw.lc.def_prim('scale', 0,
+                            Primitive(self.tw.lc.get_scale,
+                                      return_type=TYPE_NUMBER))
 
         palette.add_block('mediawait',
                           style='basic-style-extended-vertical',
@@ -1530,9 +1533,7 @@ Journal objects'))
             self.tw.lc.update_label_value('see', color_index)
         return color_index
 
-    def _prim_setscale(self, scale):
-        """ Set the scale used by the show block """
-        self.tw.lc.scale = scale
+    def after_set_scale(self, val):
         if self.tw.lc.update_values:
             self.tw.lc.update_label_value('scale', scale)
 
