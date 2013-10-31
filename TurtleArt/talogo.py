@@ -818,8 +818,11 @@ class LogoCode:
             return name
         else:
             # make sure '5' and '5.0' point to the same action stack
-            if isinstance(name, (int, long)):
-                name = float(name)
+            if isinstance(name, (int, long, float)):
+                if int(name) == name:
+                    name = int(name)
+                else:
+                    name = float(name)
             return 'stack3' + str(name)
 
     def load_heap(self, path):
