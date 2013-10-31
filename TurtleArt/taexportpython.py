@@ -33,7 +33,7 @@ from talogo import LogoCode
 from taprimitive import (ast_yield_true, Primitive, PyExportError,
                          value_to_ast)
 from tautils import (debug_output, find_group, find_top_block, get_stack_name)
-
+from tawindow import global_objects
 
 
 _SETUP_CODE_START = """\
@@ -68,8 +68,8 @@ _START_STACK_START_ADD = """\
     tw.start_plugins()
 """
 _ACTION_STACK_PREAMBLE = """\
-    turtle = tw.turtles.get_active_turtle()
     turtles = tw.turtles
+    turtle = turtles.get_active_turtle()
     canvas = tw.canvas
     logo = tw.lc
 
@@ -83,7 +83,7 @@ PAT_IDENTIFIER_ILLEGAL_CHAR = re.compile("[^A-Za-z0-9_]")
 
 
 def save_python(tw):
-    """ Find all the action stacks and turn each into python code """
+    """ Find all the action stacks and turn each into Python code """
     all_blocks = tw.just_blocks()
     blocks_covered = set()
     tops_of_stacks = []
@@ -105,7 +105,7 @@ def save_python(tw):
     return "".join(snippets)
 
 def _action_stack_to_python(block, lc, name="start"):
-    """ Turn a stack of blocks into python code
+    """ Turn a stack of blocks into Python code
     name -- the name of the action stack (defaults to "start") """
     if isinstance(name, int):
         name = float(name)
@@ -126,6 +126,11 @@ def _action_stack_to_python(block, lc, name="start"):
     name_id = _make_identifier(name)
     if name == 'start':
         pre_preamble = _START_STACK_START_ADD
+        # TODO: only add the objects we are using
+        for k in global_objects.keys():
+            if k not in ['window', 'canvas', 'logo', 'turtles']:
+                pre_preamble += "    %s = tw.global_objects['%s']\n" % (
+                    k.lower(), k)
     else:
         pre_preamble = ''
     generated_code = _indent(generated_code, 1)
@@ -255,5 +260,3 @@ def _indent(code, num_levels=1):
     for line in line_list:
         new_line_list.append(indentation + line)
     return linesep.join(new_line_list)
-
-
