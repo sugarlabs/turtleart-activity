@@ -422,7 +422,7 @@ class TurtleArtWindow():
                 # If setup fails, remove the plugin from the list
                 self.turtleart_plugins.remove(plugin)
 
-    def _start_plugins(self):
+    def start_plugins(self):
         ''' Start is called everytime we execute blocks. '''
         for plugin in self.turtleart_plugins:
             if hasattr(plugin, 'start'):
@@ -3190,7 +3190,7 @@ before making changes to your program'))
         if self.canvas.cr_svg is None:
             self.canvas.setup_svg_surface()
         self.running_blocks = True
-        self._start_plugins()  # Let the plugins know we are running.
+        self.start_plugins()  # Let the plugins know we are running.
         top = find_top_block(blk)
         code = self.lc.generate_code(top, self.just_blocks())
         self.lc.run_blocks(code)
