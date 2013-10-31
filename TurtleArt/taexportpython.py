@@ -129,7 +129,7 @@ def _action_stack_to_python(block, lc, name="start"):
         # TODO: only add the objects we are using
         for k in global_objects.keys():
             if k not in ['window', 'canvas', 'logo', 'turtles']:
-                pre_preamble += "    %s = tw.global_objects['%s']\n" % (
+                pre_preamble += "    %s = global_objects['%s']\n" % (
                     k.lower(), k)
     else:
         pre_preamble = ''
