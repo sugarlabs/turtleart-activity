@@ -227,6 +227,7 @@ class TurtleArtActivity(activity.Activity):
             if pyee.block is not None:
                 pyee.block.highlight()
             self.tw.showlabel('status', str(pyee))
+            _logger.debug(pyee)
             return
         if not pythoncode:
             return

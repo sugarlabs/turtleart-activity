@@ -8,7 +8,7 @@
 # can use the u-turn block as you would any other block.
 
 
-def myblock(tw, arg):
+def myblock(tw, args):
     ''' Add a uturn block to the 'turtle' palette '''
 
     # def_prim takes 3 arguments: the primitive name, the number of

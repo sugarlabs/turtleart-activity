@@ -819,7 +819,7 @@ def get_stack_name(blk):
         return 'stack2'
     elif top_block.name == 'hat':
         try:
-            return top_block.connections[1].values[0]
+            return str(top_block.connections[1].values[0])
         except (AttributeError, TypeError, IndexError):
             # AttributeError: t_b has no attribute 'connections' or t_b.c[1]
             #   has no attribute 'value'

@@ -28,7 +28,7 @@ def myblock(tw, arg):
     import os
 
     pitch = None
-    if type(arg) == type([]):
+    if len(arg) > 1:
         text = arg[0]
         if len(arg) > 1:
             pitch = int(arg[1])
@@ -37,7 +37,7 @@ def myblock(tw, arg):
             elif pitch < 0:
                 pitch = 0
     else:
-        text = arg
+        text = arg[0]
 
     # Turtle Art numbers are passed as float,
     # but they may be integer values.

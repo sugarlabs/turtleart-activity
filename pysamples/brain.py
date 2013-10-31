@@ -21,7 +21,7 @@
 #     <http://www.gnu.org/licenses/>.
 
 
-def myblock(tw, text):
+def myblock(tw, args):
     ''' Dialog with AIML library: Usage: Load this code into a Python
         Block. Pass text as an argument and the robot's response will
         be pushed to the stack. Use a Pop Block to pop the response
@@ -104,6 +104,7 @@ Close other activities and try once more.'))
 
         return kernel
 
+    text = args[0]
     if not hasattr(tw, 'aiml_kernel'):
         tw.aiml_kernel = brain_load(tw, get_default_voice())
     response_text = brain_respond(tw.aiml_kernel, text)

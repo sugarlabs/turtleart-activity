@@ -569,6 +569,7 @@ Would you like to save before quitting?'))
             if pyee.block is not None:
                 pyee.block.highlight()
             self.tw.showlabel('status', str(pyee))
+            print pyee
             return
         if not pythoncode:
             return
@@ -582,7 +583,7 @@ Would you like to save before quitting?'))
         (filename, self.tw.load_save_folder) = get_save_name(
             save_type, self.tw.load_save_folder, default_name)
         if isinstance(filename, unicode):
-            filename = filename.encode('utf8')
+            filename = filename.encode('utf-8')
         if filename is not None:
             f = file(filename, 'w')
             f.write(pythoncode)

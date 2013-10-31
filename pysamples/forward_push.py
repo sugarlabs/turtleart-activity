@@ -10,7 +10,7 @@
 # destination to the FILO.
 
 
-def myblock(tw, name):
+def myblock(tw, args):
     ''' '''
 
     def _prim_forward_push(tw, line_length):
@@ -42,7 +42,7 @@ def myblock(tw, name):
     # Create a new block prototype.
     palette.add_block('forwardpush',
                       style='basic-style-1arg',
-                      label=name,
+                      label=args[0],
                       default=100,
                       prim_name='forwardpush',
                       help_string=_('push destination rgb value to heap'))

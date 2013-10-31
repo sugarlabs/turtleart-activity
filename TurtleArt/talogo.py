@@ -39,12 +39,12 @@ import traceback
 
 from tablock import (Block, Media, media_blocks_dictionary)
 from taconstants import (TAB_LAYER, DEFAULT_SCALE, ICON_SIZE)
-from tajail import myfunc
+from tajail import (myfunc, myfunc_import)
 from tapalette import (block_names, value_blocks)
 from tatype import (TATypeError, TYPES_NUMERIC)
 from tautils import (get_pixbuf_from_journal, data_from_file, get_stack_name,
                      text_media_type, round_int, debug_output, find_group,
-                     get_path, image_to_base64, data_to_string)
+                     get_path, image_to_base64, data_to_string, data_to_file)
 
 try:
     from util.RtfParser import RtfTextOnly
@@ -164,7 +164,6 @@ class LogoCode:
 
         self.hidden_turtle = None
 
-        self.keyboard = 0
         self.trace = 0
         self.update_values = False
         self.gplay = None
@@ -819,9 +818,56 @@ class LogoCode:
             return name
         else:
             # make sure '5' and '5.0' point to the same action stack
-            if isinstance(name, (int, long)):
-                name = float(name)
+            if isinstance(name, (int, long, float)):
+                if int(name) == name:
+                    name = int(name)
+                else:
+                    name = float(name)
             return 'stack3' + str(name)
+
+    def load_heap(self, path):
+        """ Load FILO from file """
+        if self.tw.running_sugar:
+            # Choose a datastore object and push data to heap (Sugar only)
+            chooser_dialog(self.tw.parent, path, self.push_file_data_to_heap)
+        else:
+            if not os.path.exists(path):
+                path, tw.load_save_folder = get_load_name(
+                    '.*', self.tw.load_save_folder)
+                if path is None:
+                    return
+
+            data = data_from_file(path)
+            if data is not None:
+                for val in data:
+                    self.heap.append(val)
+
+    def save_heap(self, path):
+        """ save FILO to file """
+        if self.tw.running_sugar:
+            from sugar import profile
+            from sugar.datastore import datastore
+            from sugar.activity import activity
+
+            # Save JSON-encoded heap to temporary file
+            heap_file = os.path.join(get_path(activity, 'instance'),
+                                     str(path) + '.txt')
+            data_to_file(self.heap, heap_file)
+
+            # Create a datastore object
+            dsobject = datastore.create()
+
+            # Write any metadata (specifically set the title of the file
+            #                     and specify that this is a plain text file).
+            dsobject.metadata['title'] = str(path)
+            dsobject.metadata['icon-color'] = profile.get_color().to_string()
+            dsobject.metadata['mime_type'] = 'text/plain'
+            dsobject.set_file_path(heap_file)
+            datastore.write(dsobject)
+            dsobject.destroy()
+        else:
+            heap_file = path
+            data_to_file(self.heap, heap_file)
 
     def get_heap(self):
         return self.heap
@@ -832,6 +878,16 @@ class LogoCode:
         # so the object references are preserved
         while self.heap:
             self.heap.pop()
+
+    def prim_myblock(self, *args):
+        """ Run Python code imported from Journal """
+        if self.bindex is not None and self.bindex in self.tw.myblock:
+            # try:
+            myfunc_import(self, self.tw.myblock[self.bindex], args)
+            '''
+            except:
+                raise logoerror("#syntaxerror")
+            '''
 
     def prim_myfunction(self, f, *args):
         """ Programmable block (Call tajail.myfunc and convert any errors to

@@ -17,16 +17,24 @@ def myblock(tw, sound):
     import os
 
     dirs = [os.path.join(
-            os.environ['HOME'],
-            'Activities/TamTamMini.activity/common/Resources/Sounds/')]
+                os.environ['HOME'],
+                'Activities/TamTamMini.activity/common/Resources/Sounds/'),
+            os.path.join(
+                os.environ['HOME'],
+                'Activities/TamTamJam.activity/common/Resources/Sounds/'),
+            os.path.join(
+                os.environ['HOME'],
+                'Activities/TamTamEdit.activity/common/Resources/Sounds/')]
     orchlines = []
     scorelines = []
     instrlist = []
 
     def finddir():
+        print dirs
         for d in dirs:
             if os.path.isdir(d):
                 return d
+        return '.'
 
     def playSine(pitch=1000, amplitude=5000, duration=1, starttime=0,
                  pitch_envelope='default', amplitude_envelope='default'):
@@ -128,18 +136,17 @@ def myblock(tw, sound):
         csd.write("\n</CsoundSynthesizer>")
         csd.close()
 
-    if type(sound) == float:
-        playSine(pitch=float(sound))
-    elif type(sound) == list:  # Create a score by computing a sinewave.
-        if len(sound) == 1:
+    if len(sound) == 1:
+        if isinstance(sound[0], float) or isinstance(sound[0], int):
             playSine(pitch=float(sound[0]))
-        elif len(sound) == 2:
+        else:  # Create a score from a prerecorded Wave file.
+            playWave(sound[0])
+    else:
+        if len(sound) == 2:
             playSine(pitch=float(sound[0]), amplitude=float(sound[1]))
         else:
             playSine(pitch=float(sound[0]), amplitude=float(sound[1]),
                      duration=float(sound[2]))
-    else:  # Create a score from a prerecorded Wave file.
-        playWave(sound)
     if tw.running_sugar:
         path = os.path.join(get_path(tw.activity, 'instance'), 'tmp.csd')
     else:

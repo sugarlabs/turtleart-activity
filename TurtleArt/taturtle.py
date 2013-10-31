@@ -735,6 +735,19 @@ class Turtle:
                                                round_int(w)]]))
             self._turtles.turtle_window.send_event(event)
 
+    def read_pixel(self):
+        """ Read r, g, b, a from the canvas and push b, g, r to the stack """
+        r, g, b, a = self.get_pixel()
+        self._turtles.turtle_window.lc.heap.append(b)
+        self._turtles.turtle_window.lc.heap.append(g)
+        self._turtles.turtle_window.lc.heap.append(r)
+
+    def get_color_index(self):
+        r, g, b, a = self.get_pixel()
+        color_index = self._turtles.turtle_window.canvas.get_color_index(
+            r, g, b)
+        return color_index
+
     def get_name(self):
         return self._name
 

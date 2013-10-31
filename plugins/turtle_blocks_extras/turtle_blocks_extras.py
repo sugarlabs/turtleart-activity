@@ -27,38 +27,21 @@ from plugins.plugin import Plugin
 from TurtleArt.tapalette import (make_palette, define_logo_function,
                                  block_names, block_primitives, special_names,
                                  content_blocks, palette_name_to_index,
-                                 palette_names, palette_i18n_names)
+                                 palette_names)
 from TurtleArt.talogo import (primitive_dictionary, logoerror,
                               media_blocks_dictionary)
 from TurtleArt.taconstants import (DEFAULT_SCALE, CONSTANTS,
                                    MEDIA_SHAPES, SKIN_PATHS, BLOCKS_WITH_SKIN,
                                    PYTHON_SKIN, MEDIA_BLOCK2TYPE, VOICES,
-                                   MACROS, Color)
+                                   MACROS, Color, KEY_DICT, REVERSE_KEY_DICT)
 from TurtleArt.tautils import (round_int, debug_output, get_path,
                                data_to_string, find_group, image_to_base64,
                                hat_on_top, listify, data_from_file)
-from TurtleArt.tajail import myfunc_import
 from TurtleArt.taprimitive import (ArgSlot, ConstantArg, Primitive)
 from TurtleArt.tatype import (TYPE_BOOL, TYPE_BOX, TYPE_CHAR, TYPE_INT,
                               TYPE_FLOAT, TYPE_OBJECT, TYPE_STRING,
                               TYPE_NUMBER)
 from TurtleArt.taturtle import Turtle
-
-
-def _num_type(x):
-    """ Is x a number type? """
-    if type(x) == int:
-        return True
-    if type(x) == float:
-        return True
-    if type(x) == ord:
-        return True
-    return False
-
-
-def _millisecond():
-    """ Current time in milliseconds """
-    return time() * 1000
 
 
 class Turtle_blocks_extras(Plugin):
@@ -72,7 +55,6 @@ class Turtle_blocks_extras(Plugin):
         SKIN_PATHS.append('plugins/turtle_blocks_extras/images')
 
         self.heap = self.tw.lc.heap
-        self.keyboard = self.tw.lc.keyboard
         self.title_height = int((self.tw.canvas.height / 20) * self.tw.scale)
 
         # set up Turtle Block palettes
@@ -251,7 +233,8 @@ Journal'))
         self.tw.lc.def_prim('setscale', 1,
             Primitive(self.tw.lc.set_scale,
                       arg_descs=[ArgSlot(TYPE_NUMBER)],
-                      call_afterwards=self.after_set_scale))
+                      call_afterwards=lambda value: self.after_set(
+                          'scale', value)))
 
         primitive_dictionary['savepix'] = self._prim_save_picture
         palette.add_block('savepix',
@@ -347,7 +330,6 @@ amplitude, and duration (in seconds)'))
                                help_string=_('Palette of sensor blocks'),
                                position=6)
 
-        primitive_dictionary['mousebutton'] = self._prim_mouse_button
         palette.add_block('mousebutton',
                           hidden=True,
                           style='box-style',
@@ -357,9 +339,9 @@ amplitude, and duration (in seconds)'))
                           help_string=_('returns 1 if mouse button is \
 pressed'))
         self.tw.lc.def_prim('mousebutton', 0,
-                            lambda self: primitive_dictionary['mousebutton']())
+                            Primitive(self.tw.get_mouse_flag,
+                                      return_type=TYPE_NUMBER))
 
-        primitive_dictionary['mousebutton2'] = self._prim_mouse_button_bool
         palette.add_block('mousebutton2',
                           style='boolean-block-style',
                           label=_('button down'),
@@ -368,10 +350,9 @@ pressed'))
                           help_string=_('returns True if mouse button is \
 pressed'))
         self.tw.lc.def_prim('mousebutton2', 0,
-                            lambda self:
-                            primitive_dictionary['mousebutton2']())
+                            Primitive(self.tw.get_mouse_button,
+                                      return_type=TYPE_BOOL))
 
-        primitive_dictionary['mousex'] = self._prim_mouse_x
         palette.add_block('mousex',
                           style='box-style',
                           label=_('mouse x'),
@@ -379,10 +360,10 @@ pressed'))
                           value_block=True,
                           help_string=_('returns mouse x coordinate'))
         self.tw.lc.def_prim('mousex', 0,
-                            lambda self:
-                            primitive_dictionary['mousex']())
+                            Primitive(self.tw.get_mouse_x,
+                                      return_type=TYPE_NUMBER,
+                                      call_afterwards=self.after_mouse_x))
 
-        primitive_dictionary['mousey'] = self._prim_mouse_y
         palette.add_block('mousey',
                           style='box-style',
                           label=_('mouse y'),
@@ -390,10 +371,10 @@ pressed'))
                           value_block=True,
                           help_string=_('returns mouse y coordinate'))
         self.tw.lc.def_prim('mousey', 0,
-                            lambda self:
-                            primitive_dictionary['mousey']())
+                            Primitive(self.tw.get_mouse_y,
+                                      return_type=TYPE_NUMBER,
+                                      call_afterwards=self.after_mouse_y))
 
-        primitive_dictionary['kbinput'] = self._prim_kbinput
         palette.add_block('kbinput',
                           style='basic-style-extended-vertical',
                           label=_('query keyboard'),
@@ -401,9 +382,9 @@ pressed'))
                           help_string=_('query for keyboard input (results \
 stored in keyboard block)'))
         self.tw.lc.def_prim('kbinput', 0,
-                            lambda self: primitive_dictionary['kbinput']())
+                            Primitive(self.tw.get_keyboard_input,
+                                      call_afterwards=self.after_keypress))
 
-        primitive_dictionary['keyboard'] = self._prim_keyboard
         palette.add_block('keyboard',
                           style='box-style',
                           label=_('keyboard'),
@@ -413,9 +394,9 @@ stored in keyboard block)'))
                           help_string=_('holds results of query-keyboard \
 block as ASCII'))
         self.tw.lc.def_prim('keyboard', 0,
-                            lambda self: primitive_dictionary['keyboard']())
+                            Primitive(self.tw.get_keyboard,
+                                      return_type=TYPE_NUMBER))
 
-        primitive_dictionary['readpixel'] = self._prim_readpixel
         palette.add_block('readpixel',
                           style='basic-style-extended-vertical',
                           label=_('read pixel'),
@@ -424,9 +405,8 @@ block as ASCII'))
                           help_string=_('RGB color under the turtle is pushed \
 to the stack'))
         self.tw.lc.def_prim('readpixel', 0,
-                            lambda self: primitive_dictionary['readpixel']())
+                            Primitive(Turtle.read_pixel))
 
-        primitive_dictionary['see'] = self._prim_see
         palette.add_block('see',
                           style='box-style',
                           label=_('turtle sees'),
@@ -435,7 +415,9 @@ to the stack'))
                           help_string=_('returns the color that the turtle \
 "sees"'))
         self.tw.lc.def_prim('see', 0,
-                            lambda self: primitive_dictionary['see']())
+                            Primitive(Turtle.get_color_index,
+                                      return_type=TYPE_NUMBER,
+                                      call_afterwards=self.after_see))
 
         palette.add_block('time',
                           style='box-style',
@@ -543,7 +525,6 @@ make "tmp first :taheap\nmake "taheap butfirst :taheap\noutput :tmp\nend\n')
                                         Primitive(self.tw.lc.get_heap,
                                                   return_type=TYPE_BOOL))]))]))
 
-        primitive_dictionary['saveheap'] = self._prim_save_heap
         palette.add_block('saveheap',
                           style='basic-style-1arg',
                           label=_('save heap to file'),
@@ -552,9 +533,9 @@ make "tmp first :taheap\nmake "taheap butfirst :taheap\noutput :tmp\nend\n')
                           help_string=_('saves FILO (first-in \
 last-out heap) to a file'))
         self.tw.lc.def_prim('saveheap', 1,
-                            lambda self, x: primitive_dictionary['saveheap'](x))
+                            Primitive(self.tw.lc.save_heap,
+                                      arg_descs=[ArgSlot(TYPE_STRING)]))
 
-        primitive_dictionary['loadheap'] = self._prim_load_heap
         palette.add_block('loadheap',
                           style='basic-style-1arg',
                           label=_('load heap from file'),
@@ -563,7 +544,10 @@ last-out heap) to a file'))
                           help_string=_('loads FILO (first-in \
 last-out heap) from a file'))
         self.tw.lc.def_prim('loadheap', 1,
-                            lambda self, x: primitive_dictionary['loadheap'](x))
+                            Primitive(self.tw.lc.load_heap,
+                                      arg_descs=[ArgSlot(TYPE_STRING)],
+                                      return_type=TYPE_STRING,
+                                      call_afterwards=self.after_push))
 
         palette.add_block('isheapempty2',
                           style='boolean-block-style',
@@ -687,7 +671,6 @@ advanced multi-variable math equations, e.g., sin(x+y+z)'))
         self.tw.lc.def_prim('cartesian', 0,
                             lambda self: self.tw.set_cartesian(True))
 
-        primitive_dictionary['userdefined'] = self._prim_myblock
         palette.add_block('userdefined',
                           style='basic-style-var-arg',
                           label=' ',
@@ -698,8 +681,8 @@ advanced multi-variable math equations, e.g., sin(x+y+z)'))
                           help_string=_('runs code found in the tamyblock.py \
 module found in the Journal'))
         self.tw.lc.def_prim('userdefined', 1,
-                            lambda self, x:
-                            primitive_dictionary['userdefined']([x]))
+                            Primitive(self.tw.lc.prim_myblock,
+                                      arg_descs=[ArgSlot(TYPE_OBJECT)]))
         BLOCKS_WITH_SKIN.append('userdefined')
         PYTHON_SKIN.append('userdefined')
 
@@ -715,8 +698,9 @@ module found in the Journal'))
                           help_string=_('runs code found in the tamyblock.py \
 module found in the Journal'))
         self.tw.lc.def_prim('userdefined2', 2,
-                            lambda self, x, y:
-                            primitive_dictionary['userdefined']([x, y]))
+                            Primitive(self.tw.lc.prim_myblock,
+                                      arg_descs=[ArgSlot(TYPE_OBJECT),
+                                                 ArgSlot(TYPE_OBJECT)]))
         BLOCKS_WITH_SKIN.append('userdefined2args')
         PYTHON_SKIN.append('userdefined2args')
 
@@ -732,15 +716,16 @@ module found in the Journal'))
                           help_string=_('runs code found in the tamyblock.py \
 module found in the Journal'))
         self.tw.lc.def_prim('userdefined3', 3,
-                            lambda self, x, y, z:
-                            primitive_dictionary['userdefined']([x, y, z]))
+                            Primitive(self.tw.lc.prim_myblock,
+                                      arg_descs=[ArgSlot(TYPE_OBJECT),
+                                                 ArgSlot(TYPE_OBJECT),
+                                                 ArgSlot(TYPE_OBJECT)]))
         BLOCKS_WITH_SKIN.append('userdefined3args')
         PYTHON_SKIN.append('userdefined3args')
         MEDIA_SHAPES.append('pythonsmall')
         MEDIA_SHAPES.append('pythonoff')
         MEDIA_SHAPES.append('pythonon')
 
-        primitive_dictionary['loadblock'] = self._prim_load_block
         palette.add_block('loadblock',
                           style='basic-style-var-arg',
                           label=_('load'),
@@ -748,8 +733,8 @@ module found in the Journal'))
                           default=_('forward'),
                           help_string=_('loads a block'))
         self.tw.lc.def_prim('loadblock', 1,
-                            lambda self, x:
-                            primitive_dictionary['loadblock'](x))
+                            Primitive(self.tw.prim_load_block,
+                                      arg_descs=[ArgSlot(TYPE_STRING)]))
 
         palette.add_block('loadblock2arg',
                           style='basic-style-var-arg',
@@ -760,8 +745,9 @@ module found in the Journal'))
                           default=[_('forward'), 100],
                           help_string=_('loads a block'))
         self.tw.lc.def_prim('loadblock2', 2,
-                            lambda self, x, y:
-                            primitive_dictionary['loadblock']([x, y]))
+                            Primitive(self.tw.prim_load_block,
+                                      arg_descs=[ArgSlot(TYPE_STRING),
+                                                 ArgSlot(TYPE_OBJECT)]))
 
         palette.add_block('loadblock3arg',
                           style='basic-style-var-arg',
@@ -772,10 +758,11 @@ module found in the Journal'))
                           default=[_('setxy'), 0, 0],
                           help_string=_('loads a block'))
         self.tw.lc.def_prim('loadblock3', 3,
-                            lambda self, x, y, z:
-                            primitive_dictionary['loadblock']([x, y, z]))
+                            Primitive(self.tw.prim_load_block,
+                                      arg_descs=[ArgSlot(TYPE_STRING),
+                                                 ArgSlot(TYPE_OBJECT),
+                                                 ArgSlot(TYPE_OBJECT)]))
 
-        primitive_dictionary['loadpalette'] = self._prim_load_palette
         palette.add_block('loadpalette',
                           style='basic-style-1arg',
                           string_or_number=True,
@@ -784,8 +771,8 @@ module found in the Journal'))
                           default=_('turtle'),
                           help_string=_('selects a palette'))
         self.tw.lc.def_prim('loadpalette', 1,
-                            lambda self, x:
-                            primitive_dictionary['loadpalette'](x))
+                            Primitive(self.tw.prim_load_palette,
+                                      arg_descs=[ArgSlot(TYPE_STRING)]))
 
         palette.add_block('addturtle',
                           style='basic-style-1arg',
@@ -1126,93 +1113,19 @@ Journal objects'))
 
     # Block primitives
 
-    def _prim_keyboard(self):
-        """ Return last character typed """
-        return self.tw.lc.keyboard
-
-    def _prim_kbinput(self):
-        """ Query keyboard """
-        DICT = {
-            'Left': 1,
-            'KP_Left': 1,
-            'Up': 2,
-            'KP_Up': 2,
-            'Right': 3,
-            'KP_Right': 3,
-            'Down': 4,
-            'KP_Down': 4,
-            'BackSpace': 8,
-            'Tab': 9,
-            'Return': 13,
-            'Escape': 27,
-            'space': 32,
-            ' ': 32,
-            'exclam': 33,
-            'quotedbl': 34,
-            'numbersign': 35,
-            'dollar': 36,
-            'percent': 37,
-            'ampersand': 38,
-            'apostrophe': 39,
-            'parenleft': 40,
-            'parenright': 41,
-            'asterisk': 42,
-            'plus': 43,
-            'comma': 44,
-            'minus': 45,
-            'period': 46,
-            'slash': 47,
-            'colon': 58,
-            'semicolon': 59,
-            'less': 60,
-            'equal': 61,
-            'greater': 62,
-            'question': 63,
-            'at': 64,
-            'underscore': 95,
-            'bracketleft': 91,
-            'backslash': 92,
-            'bracketright': 93,
-            'asciicircum': 94,
-            'grave': 96,
-            'braceleft': 123,
-            'bar': 124,
-            'braceright': 125,
-            'asciitilde': 126,
-            'Delete': 127,
-        }
-        REVERSE_DICT = {
-            1: _('left'),
-            2: _('up'),
-            3: _('right'),
-            4: _('down'),
-            8: _('backspace'),
-            9: _('tab'),
-            # TRANS: enter is the name of the enter (or return) key
-            13: _('enter'),
-            27: 'esc',
-            # TRANS: space is the name of the space key
-            32: _('space'),
-            127: _('delete')
-        }
-        
-        if len(self.tw.keypress) == 1:
-            self.tw.lc.keyboard = ord(self.tw.keypress[0])
-        elif self.tw.keypress in DICT:
-            self.tw.lc.keyboard = DICT[self.tw.keypress]
-        else:
-            self.tw.lc.keyboard = 0
+    def after_keypress(self):
         if self.tw.lc.update_values:
-            if self.tw.keypress in DICT:
-                if DICT[self.tw.keypress] in REVERSE_DICT:
+            if self.tw.keypress in KEY_DICT:
+                if KEY_DICT[self.tw.keypress] in REVERSE_KEY_DICT:
                     self.tw.lc.update_label_value(
-                        'keyboard', REVERSE_DICT[DICT[self.tw.keypress]])
+                        'keyboard', REVERSE_KEY_DICT[
+                            KEY_DICT[self.tw.keypress]])
                 else:
-                    self.tw.lc.update_label_value('keyboard',
-                                                  chr(DICT[self.tw.keypress]))
-            elif self.tw.lc.keyboard > 0:
+                    self.tw.lc.update_label_value(
+                        'keyboard', chr(KEY_DICT[self.tw.keypress]))
+            elif self.tw.keyboard > 0:
                 self.tw.lc.update_label_value('keyboard',
-                                              chr(self.tw.lc.keyboard))
+                                              chr(self.tw.keyboard))
         self.tw.keypress = ''
 
     def _prim_list(self, blklist):
@@ -1221,121 +1134,19 @@ Journal objects'))
         self.tw.lc.ireturn()
         yield True
 
-    def _prim_myblock(self, x):
-        """ Run Python code imported from Journal """
-        if self.tw.lc.bindex is not None and \
-           self.tw.lc.bindex in self.tw.myblock:
-            try:
-                if len(x) == 1:
-                    myfunc_import(self, self.tw.myblock[self.tw.lc.bindex],
-                                  x[0])
-                else:
-                    myfunc_import(self, self.tw.myblock[self.tw.lc.bindex], x)
-            except:
-                raise logoerror("#syntaxerror")
-
-    def _prim_myfunction(self, f, x):
-        """ Programmable block """
-        for i, v in enumerate(x):
-            if isinstance(v, int):  # Pass float values to Python block
-                x[i] = float(v)
-        try:
-            y = myfunc(f, x)
-            if str(y) == 'nan':
-                debug_output('Python function returned NAN',
-                             self.tw.running_sugar)
-                self.tw.lc.stop_logo()
-                raise logoerror("#notanumber")
-            else:
-                return y
-        except ZeroDivisionError:
-            self.tw.lc.stop_logo()
-            raise logoerror("#zerodivide")
-        except ValueError, e:
-            self.tw.lc.stop_logo()
-            raise logoerror('#' + str(e))
-        except SyntaxError, e:
-            self.tw.lc.stop_logo()
-            raise logoerror('#' + str(e))
-        except NameError, e:
-            self.tw.lc.stop_logo()
-            raise logoerror('#' + str(e))
-        except OverflowError:
-            self.tw.lc.stop_logo()
-            raise logoerror("#overflowerror")
-        except TypeError:
-            self.tw.lc.stop_logo()
-            raise logoerror("#notanumber")
-
-    def after_pop(self):
+    def after_pop(self, *ignored_args):
         if self.tw.lc.update_values:
             if not self.tw.lc.heap:
                 self.tw.lc.update_label_value('pop')
             else:
                 self.tw.lc.update_label_value('pop', self.tw.lc.heap[-1])
 
-    def after_push(self, val):
+    def after_push(self, *ignored_args):
         if self.tw.lc.update_values:
-            self.tw.lc.update_label_value('pop', val)
-
-    def _prim_load_heap(self, path):
-        """ Load FILO from file """
-        if type(path) == float:
-            path = ''
-        if self.tw.running_sugar:
-            # Choose a datastore object and push data to heap (Sugar only)
-            chooser_dialog(self.tw.parent, path,
-                           self.tw.lc.push_file_data_to_heap)
-        else:
-            if not os.path.exists(path):
-                path, tw.load_save_folder = get_load_name(
-                    '.*', self.tw.load_save_folder)
-                if path is None:
-                    return
-
-            data = data_from_file(path)
-            if data is not None:
-                for val in data:
-                    self.tw.lc.heap.append(val)
-
-        if len(self.tw.lc.heap) > 0:
-            self.tw.lc.update_label_value('pop', self.tw.lc.heap[-1])
-
-    def _prim_save_heap(self, path):
-        """ save FILO to file """
-        # TODO: add GNOME save
-
-        if self.tw.running_sugar:
-            from sugar import profile
-            from sugar.datastore import datastore
-            from sugar.activity import activity
-
-            # Save JSON-encoded heap to temporary file
-            heap_file = os.path.join(get_path(activity, 'instance'),
-                                     str(path) + '.txt')
-            data_to_file(self.tw.lc.heap, heap_file)
-
-            # Create a datastore object
-            dsobject = datastore.create()
-
-            # Write any metadata (specifically set the title of the file
-            #                     and specify that this is a plain text file).
-            dsobject.metadata['title'] = str(path)
-            dsobject.metadata['icon-color'] = profile.get_color().to_string()
-            dsobject.metadata['mime_type'] = 'text/plain'
-            dsobject.set_file_path(heap_file)
-            datastore.write(dsobject)
-            dsobject.destroy()
-        else:
-            heap_file = path
-            data_to_file(self.tw.lc.heap, heap_file)
-
-    def _prim_readpixel(self):
-        """ Read r, g, b, a from the canvas and push b, g, r to the stack """
-        r, g, b, a = self.tw.turtles.get_active_turtle().get_pixel()
-        self.tw.lc.heap.append(b)
-        self.tw.lc.heap.append(g)
-        self.tw.lc.heap.append(r)
+            if not self.tw.lc.heap:
+                self.tw.lc.update_label_value('pop')
+            else:
+                self.tw.lc.update_label_value('pop', self.tw.lc.heap[-1])
 
     def _prim_save_picture(self, name):
         """ Save canvas to file as PNG """
@@ -1439,46 +1250,22 @@ Journal objects'))
         csd.write("\n</CsoundSynthesizer>")
         csd.close()
 
-    def _prim_mouse_x(self):
-        """ Return mouse x coordinate """
-        mousex = int(self.tw.mouse_x - (self.tw.canvas.width / 2))
+    def after_mouse_x(self):
+        """ Show mouse x coordinate """
         if self.tw.lc.update_values:
-            self.tw.lc.update_label_value('mousex', mousex)
-        return mousex
+            self.tw.lc.update_label_value('mousex', self.tw.get_mouse_x())
 
-    def _prim_mouse_y(self):
-        """ Return mouse y coordinate """
-        mousey = int((self.tw.canvas.height / 2) - self.tw.mouse_y)
+    def after_mouse_y(self):
+        """ Show mouse y coordinate """
         if self.tw.lc.update_values:
-            self.tw.lc.update_label_value('mousey', mousey)
-        return mousey
+            self.tw.lc.update_label_value('mousey', self.tw.get_mouse_y())
 
-    def _prim_mouse_button(self):
-        """ Return 1 if mouse button is pressed """
-        if self.tw.mouse_flag == 1:
-            return 1
-        else:
-            return 0
-
-    def _prim_mouse_button_bool(self):
-        """ Return True if mouse button is pressed """
-        if self.tw.mouse_flag == 1:
-            return True
-        else:
-            return False
-
-    def _prim_see(self):
-        """ Read r, g, b from the canvas and return a corresponding palette
-        color """
-        r, g, b, a = self.tw.turtles.get_active_turtle().get_pixel()
-        color_index = self.tw.canvas.get_color_index(r, g, b)
+    def after_see(self):
+        """ Show color under turtle """
         if self.tw.lc.update_values:
-            self.tw.lc.update_label_value('see', color_index)
-        return color_index
-
-    def after_set_scale(self, val):
-        if self.tw.lc.update_values:
-            self.tw.lc.update_label_value('scale', scale)
+            self.tw.lc.update_label_value(
+                'see',
+                self.tw.turtles.get_active_turtle().get_color_index())
 
     def _prim_show(self, string, center=False):
         """ Show is the general-purpose media-rendering block. """
@@ -1587,101 +1374,8 @@ Journal objects'))
             self.tw.activity.stop_turtle_button.set_icon("stopiton")
             self.tw.activity.stop_turtle_button.set_tooltip(_('Stop turtle'))
 
-    def _prim_load_block(self, blkname):
-        ''' Load a block on to the canvas '''
-        # Place the block at the active turtle (x, y) and move the turtle
-        # into position to place the next block in the stack.
-        # TODO: Add expandable argument
-        pos = self.tw.turtles.get_active_turtle().get_xy()
-        if isinstance(blkname, list):
-            name = blkname[0]
-            if len(blkname) > 1:
-                value = blkname[1:]
-                dy = int(self._find_block(name, pos[0], pos[1], value))
-            else:
-                dy = int(self._find_block(name, pos[0], pos[1]))
-        else:
-            name = blkname
-            if name == 'delete':
-                for blk in self.tw.just_blocks():
-                    if blk.status == 'load block':
-                        blk.type = 'trash'
-                        blk.spr.hide()
-                dy = 0
-            else:
-                dy = int(self._find_block(name, pos[0], pos[1]))
-
-        # Reposition turtle to end of flow
-        pos = self.tw.turtles.get_active_turtle().get_xy()
-        pos[1] -= dy
-        self.tw.turtles.get_active_turtle().move_turtle(pos)
-
-    def _make_block(self, name, x, y, defaults):
-        if defaults is None:
-            self.tw._new_block(name, x, y, defaults)
-        else:
-            for i, v in enumerate(defaults):
-                if type(v) == float and int(v) == v:
-                    defaults[i] = int(v)
-            self.tw._new_block(name, x, y, defaults)
-
-        # Find the block we just created and attach it to a stack.
-        self.tw.drag_group = None
-        spr = self.tw.sprite_list.find_sprite((x, y))
-        if spr is not None:
-            blk = self.tw.block_list.spr_to_block(spr)
-            if blk is not None:
-                self.tw.drag_group = find_group(blk)
-                for b in self.tw.drag_group:
-                    b.status = 'load block'
-                self.tw._snap_to_dock()
-
-        # Disassociate new block from mouse.
-        self.tw.drag_group = None
-        return blk.docks[-1][3]
-
-    def _find_block(self, blkname, x, y, defaults=None):
-        """ Create a new block. It is a bit more work than just calling
-        _new_block(). We need to:
-        (1) translate the label name into the internal block name;
-        (2) 'dock' the block onto a stack where appropriate; and
-        (3) disassociate the new block from the mouse. """
-        x, y = self.tw.turtles.turtle_to_screen_coordinates((x, y))
-        for name in block_names:
-            # Translate label name into block/prim name.
-            if blkname in block_names[name]:  # block label is an array
-                # print 'found a match', blkname, name, block_names[name]
-                if name in content_blocks or \
-                        (name in block_primitives and
-                         block_primitives[name] == name):
-                    # print '_make_block', blkname, name
-                    return self._make_block(name, x, y, defaults)
-            elif blkname in block_names:
-                # print '_make_block', blkname
-                return self._make_block(blkname, x, y, defaults)
-        for name in special_names:
-            # Translate label name into block/prim name.
-            if blkname in special_names[name]:
-                return self._make_block(name, x, y, defaults)
-        # Check for a macro
-        if blkname in MACROS:
-            self.tw.new_macro(blkname, x, y)
-            return 0  # Fix me: calculate flow position
-        # Block not found
-        raise logoerror("#syntaxerror")
-        return -1
-
-    def _prim_load_palette(self, arg):
-        ''' Select a palette '''
-        if type(arg) in [int, float]:
-            if int(arg) < 0 or int(arg) > len(palette_names):
-                raise logoerror("#syntaxerror")
-            else:
-                self.tw.show_toolbar_palette(int(arg))
-        else:
-            if type(arg) == unicode:
-                arg = arg.encode('utf-8')
-            if arg in palette_names or arg in palette_i18n_names:
-                self.tw.show_toolbar_palette(palette_name_to_index(arg))
-            else:
-                raise logoerror("#syntaxerror")
+    def after_set(self, name, value=None):
+        ''' Update the associated value blocks '''
+        if value is not None:
+            if self.tw.lc.update_values:
+                self.tw.lc.update_label_value(name, value)

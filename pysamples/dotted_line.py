@@ -124,11 +124,11 @@
 # of the numeric argument block docked to the Python block.
 
 
-def myblock(tw, line_length):
+def myblock(tw, args):
     ''' Draw a dotted line of length line_length. '''
 
     try:  # make sure line_length is a number
-        line_length = float(line_length)
+        line_length = float(args[0])
     except ValueError:
         return
     if tw.turtles.get_active_turtle().get_pen_state():

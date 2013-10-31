@@ -1039,11 +1039,11 @@ buttons'))
         self.tw.lc.def_prim(
             'nop3', 1,
             Primitive(self.tw.lc.prim_define_stack,
-                      arg_descs=[ArgSlot(TYPE_STRING)]))
+                      arg_descs=[ArgSlot(TYPE_OBJECT)]))
 
         primitive_dictionary['stack'] = Primitive(
             self.tw.lc.prim_invoke_stack,
-            arg_descs=[ArgSlot(TYPE_STRING)])
+            arg_descs=[ArgSlot(TYPE_OBJECT)])
         palette.add_block('stack',
                           style='basic-style-1arg',
                           label=_('action'),
@@ -1052,7 +1052,8 @@ buttons'))
                           logo_command='action',
                           default=_('action'),
                           help_string=_('invokes named action stack'))
-        self.tw.lc.def_prim('stack', 1, primitive_dictionary['stack'], True)
+        self.tw.lc.def_prim('stack', 1,
+                            primitive_dictionary['stack'], True)
 
         palette.add_block('storeinbox1',
                           hidden=True,

@@ -58,13 +58,14 @@ from taconstants import (HORIZONTAL_PALETTE, VERTICAL_PALETTE, BLOCK_SCALE,
                          PYTHON_SKIN, PALETTE_HEIGHT, STATUS_LAYER, OLD_DOCK,
                          EXPANDABLE_ARGS, XO1, XO15, XO175, XO30, XO4, TITLEXY,
                          CONTENT_ARGS, CONSTANTS, EXPAND_SKIN, PROTO_LAYER,
-                         EXPANDABLE_FLOW, SUFFIX, TMP_SVG_PATH, Color)
+                         EXPANDABLE_FLOW, SUFFIX, TMP_SVG_PATH, Color,
+                         KEY_DICT)
 from tapalette import (palette_names, palette_blocks, expandable_blocks,
                        block_names, content_blocks, default_values,
                        special_names, block_styles, help_strings,
                        hidden_proto_blocks, string_or_number_args,
                        make_palette, palette_name_to_index,
-                       palette_init_on_start)
+                       palette_init_on_start, palette_i18n_names)
 from talogo import (LogoCode, primitive_dictionary, logoerror)
 from tacanvas import TurtleGraphics
 from tablock import (Blocks, Block, Media, media_blocks_dictionary)
@@ -170,6 +171,7 @@ class TurtleArtWindow():
         self._autohide_shape = True
         self.keypress = ''
         self.keyvalue = 0
+        self.keyboard = 0
         self._focus_out_id = None
         self._insert_text_id = None
         self._text_to_check = False
@@ -420,7 +422,7 @@ class TurtleArtWindow():
                 # If setup fails, remove the plugin from the list
                 self.turtleart_plugins.remove(plugin)
 
-    def _start_plugins(self):
+    def start_plugins(self):
         ''' Start is called everytime we execute blocks. '''
         for plugin in self.turtleart_plugins:
             if hasattr(plugin, 'start'):
@@ -1486,6 +1488,18 @@ class TurtleArtWindow():
         self.mouse_y = y
         self.button_press(event.get_state() & gtk.gdk.CONTROL_MASK, x, y)
         return True
+
+    def get_mouse_flag(self):
+        return self.mouse_flag
+
+    def get_mouse_button(self):
+        return self.mouse_flag == 1
+
+    def get_mouse_x(self):
+        return int(self.mouse_x - (self.canvas.width / 2))
+
+    def get_mouse_y(self):
+        return int((self.canvas.height / 2) - self.mouse_y)
 
     def button_press(self, mask, x, y):
         if self.running_sugar:
@@ -3176,7 +3190,7 @@ before making changes to your program'))
         if self.canvas.cr_svg is None:
             self.canvas.setup_svg_surface()
         self.running_blocks = True
-        self._start_plugins()  # Let the plugins know we are running.
+        self.start_plugins()  # Let the plugins know we are running.
         top = find_top_block(blk)
         code = self.lc.generate_code(top, self.just_blocks())
         self.lc.run_blocks(code)
@@ -3602,6 +3616,19 @@ before making changes to your program'))
             self._process_keyboard_commands(keyname, block_flag=False)
 
         return True
+
+    def get_keyboard_input(self):
+        """ Query keyboard and update cached keyboard input """
+        if len(self.keypress) == 1:
+            self.keyboard = ord(self.keypress[0])
+        elif self.keypress in KEY_DICT:
+            self.keyboard = KEY_DICT[self.keypress]
+        else:
+            self.keyboard = 0
+
+    def get_keyboard(self):
+        """ Return cached keyboard input """
+        return self.keyboard
 
     def _process_keyboard_commands(self, keyname, block_flag=True):
         ''' Use the keyboard to move blocks and turtle '''
@@ -4803,3 +4830,100 @@ variable'))
         (b1x, b1y) = block1.spr.get_xy()
         (b2x, b2y) = block2.spr.get_xy()
         return ((b1x + d1x) - (b2x + d2x), (b1y + d1y) - (b2y + d2y))
+
+    def prim_load_block(self, *args):
+        ''' Load a block on to the canvas '''
+        # Place the block at the active turtle (x, y) and move the turtle
+        # into position to place the next block in the stack.
+        # TODO: Add expandable argument, media block arguments
+        name = args[0]
+        pos = self.turtles.get_active_turtle().get_xy()
+        values = []
+        for i in range(len(args) - 1):
+            values.append(args[i + 1])
+        if len(values) > 0:
+            dy = int(self._find_block(name, pos[0], pos[1], values))
+        else:
+            if name == 'delete':
+                for blk in self.just_blocks():
+                    if blk.status == 'load block':
+                        blk.type = 'trash'
+                        blk.spr.hide()
+                dy = 0
+            else:
+                dy = int(self._find_block(name, pos[0], pos[1]))
+
+        # Reposition turtle to end of flow
+        pos = self.turtles.get_active_turtle().get_xy()
+        pos[1] -= dy
+        self.turtles.get_active_turtle().move_turtle(pos)
+
+    def _make_block(self, name, x, y, defaults):
+        if defaults is None:
+            self._new_block(name, x, y, defaults)
+        else:
+            for i, v in enumerate(defaults):
+                if isinstance(v, float) and int(v) == v:
+                    defaults[i] = int(v)
+            self._new_block(name, x, y, defaults)
+
+        # Find the block we just created and attach it to a stack.
+        self.drag_group = None
+        spr = self.sprite_list.find_sprite((x, y))
+        if spr is not None:
+            blk = self.block_list.spr_to_block(spr)
+            if blk is not None:
+                self.drag_group = find_group(blk)
+                for b in self.drag_group:
+                    b.status = 'load block'
+                self._snap_to_dock()
+
+        # Disassociate new block from mouse.
+        self.drag_group = None
+        return blk.docks[-1][3]
+
+    def _find_block(self, blkname, x, y, defaults=None):
+        """ Create a new block. It is a bit more work than just calling
+        _new_block(). We need to:
+        (1) translate the label name into the internal block name;
+        (2) 'dock' the block onto a stack where appropriate; and
+        (3) disassociate the new block from the mouse. """
+        x, y = self.turtles.turtle_to_screen_coordinates((x, y))
+        for name in block_names:
+            # Translate label name into block/prim name.
+            if blkname in block_names[name]:  # block label is an array
+                # print 'found a match', blkname, name, block_names[name]
+                if name in content_blocks or \
+                        (name in block_primitives and
+                         block_primitives[name] == name):
+                    # print '_make_block', blkname, name
+                    return self._make_block(name, x, y, defaults)
+            elif blkname in block_names:
+                # print '_make_block', blkname
+                return self._make_block(blkname, x, y, defaults)
+        for name in special_names:
+            # Translate label name into block/prim name.
+            if blkname in special_names[name]:
+                return self._make_block(name, x, y, defaults)
+        # Check for a macro
+        if blkname in MACROS:
+            self.new_macro(blkname, x, y)
+            return 0  # Fix me: calculate flow position
+        # Block not found
+        raise logoerror("#syntaxerror")
+        return -1
+
+    def prim_load_palette(self, arg):
+        ''' Select a palette '''
+        if type(arg) in [int, float]:
+            if int(arg) < 0 or int(arg) > len(palette_names):
+                raise logoerror("#syntaxerror")
+            else:
+                self.show_toolbar_palette(int(arg))
+        else:
+            if type(arg) == unicode:
+                arg = arg.encode('utf-8')
+            if arg in palette_names or arg in palette_i18n_names:
+                self.show_toolbar_palette(palette_name_to_index(arg))
+            else:
+                raise logoerror("#syntaxerror")
