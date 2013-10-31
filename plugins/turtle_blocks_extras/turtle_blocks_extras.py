@@ -734,6 +734,7 @@ module found in the Journal'))
                           help_string=_('loads a block'))
         self.tw.lc.def_prim('loadblock', 1,
                             Primitive(self.tw.prim_load_block,
+                                      export_me=False,
                                       arg_descs=[ArgSlot(TYPE_STRING)]))
 
         palette.add_block('loadblock2arg',
@@ -746,6 +747,7 @@ module found in the Journal'))
                           help_string=_('loads a block'))
         self.tw.lc.def_prim('loadblock2', 2,
                             Primitive(self.tw.prim_load_block,
+                                      export_me=False,
                                       arg_descs=[ArgSlot(TYPE_STRING),
                                                  ArgSlot(TYPE_OBJECT)]))
 
@@ -759,6 +761,7 @@ module found in the Journal'))
                           help_string=_('loads a block'))
         self.tw.lc.def_prim('loadblock3', 3,
                             Primitive(self.tw.prim_load_block,
+                                      export_me=False,
                                       arg_descs=[ArgSlot(TYPE_STRING),
                                                  ArgSlot(TYPE_OBJECT),
                                                  ArgSlot(TYPE_OBJECT)]))
@@ -772,6 +775,7 @@ module found in the Journal'))
                           help_string=_('selects a palette'))
         self.tw.lc.def_prim('loadpalette', 1,
                             Primitive(self.tw.prim_load_palette,
+                                      export_me=False,
                                       arg_descs=[ArgSlot(TYPE_STRING)]))
 
         palette.add_block('addturtle',
@@ -889,8 +893,9 @@ templates'),
                           label=_('Fullscreen').lower(),
                           prim_name='fullscreen',
                           help_string=_('hides the Sugar toolbars'))
-        self.tw.lc.def_prim('fullscreen', 0,
-                            lambda self: self.tw.set_fullscreen())
+        self.tw.lc.def_prim(
+            'fullscreen', 0,
+            Primitive(self.tw.set_fullscreen, export_me=False))
 
         primitive_dictionary['bulletlist'] = self._prim_list
         palette.add_block('list',
