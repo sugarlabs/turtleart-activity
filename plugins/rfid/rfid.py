@@ -41,6 +41,7 @@ REGEXP_SERUSB = '\/org\/freedesktop\/Hal\/devices\/usb_device['\
 class Rfid(Plugin):
 
     def __init__(self, parent):
+        Plugin.__init__(self)
         self._parent = parent
         self._status = False
 

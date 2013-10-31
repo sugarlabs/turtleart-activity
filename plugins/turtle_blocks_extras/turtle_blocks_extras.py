@@ -49,6 +49,7 @@ class Turtle_blocks_extras(Plugin):
     from Turtle Art """
 
     def __init__(self, turtle_window):
+        Plugin.__init__(self)
         self.tw = turtle_window
 
     def setup(self):
@@ -298,7 +299,6 @@ complete'))
                           help_string=_('resume playing video or audio'))
         self.tw.lc.def_prim('mediaplay', 0, self.tw.lc.media_play, True)
 
-        primitive_dictionary['speak'] = self._prim_speak
         palette.add_block('speak',
                           style='basic-style-1arg',
                           label=_('speak'),
@@ -306,7 +306,8 @@ complete'))
                           default=_('hello'),
                           help_string=_('speaks text'))
         self.tw.lc.def_prim('speak', 1,
-                            lambda self, x: primitive_dictionary['speak'](x))
+                            Primitive(self.prim_speak,
+                                      arg_descs=[ArgSlot(TYPE_STRING)]))
 
         primitive_dictionary['sinewave'] = self._prim_sinewave
         palette.add_block('sinewave',
@@ -1155,7 +1156,7 @@ Journal objects'))
         """ Save SVG to file """
         self.tw.save_as_image(name, svg=True)
 
-    def _prim_speak(self, text):
+    def prim_speak(self, text):
         """ Speak text """
         if type(text) == float and int(text) == text:
             text = int(text)

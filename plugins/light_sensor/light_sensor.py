@@ -35,6 +35,7 @@ LIGHT_SENSOR_DEVICE = '/sys/devices/platform/olpc-ols.0/level'
 class Light_sensor(Plugin):
 
     def __init__(self, parent):
+        Plugin.__init__(self)
         self._parent = parent
         if os.path.exists(LIGHT_SENSOR_DEVICE):
             self._status = True
