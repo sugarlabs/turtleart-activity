@@ -1751,6 +1751,10 @@ in order to use the plugin.'))
         self._selected_sample = image_path
         self._sample_window.hide()
 
+        self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.WATCH))
+        gobject.idle_add(self._sample_loader)
+
+    def _sample_loader(self):
         # Convert from thumbnail path to sample path
         basename = os.path.basename(self._selected_sample)[:-4]
         for suffix in ['.ta', '.tb']:
@@ -1761,6 +1765,7 @@ in order to use the plugin.'))
                 break
         self.tw.load_save_folder = os.path.join(activity.get_bundle_path(),
                                                 'samples')
+        self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.LEFT_PTR))
 
     def _fill_samples_list(self, store):
         '''
