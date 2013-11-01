@@ -237,7 +237,6 @@ Journal'))
                       call_afterwards=lambda value: self.after_set(
                           'scale', value)))
 
-        primitive_dictionary['savepix'] = self._prim_save_picture
         palette.add_block('savepix',
                           style='basic-style-1arg',
                           label=_('save picture'),
@@ -246,9 +245,9 @@ Journal'))
                           help_string=_('saves a picture to the Sugar \
 Journal'))
         self.tw.lc.def_prim('savepix', 1,
-                            lambda self, x: primitive_dictionary['savepix'](x))
+                            Primitive(self.tw.save_as_image,
+                                      arg_descs=[ArgSlot(TYPE_STRING)]))
 
-        primitive_dictionary['savesvg'] = self._prim_save_svg
         palette.add_block('savesvg',
                           style='basic-style-1arg',
                           label=_('save SVG'),
@@ -257,7 +256,9 @@ Journal'))
                           help_string=_('saves turtle graphics as an SVG file \
 in the Sugar Journal'))
         self.tw.lc.def_prim('savesvg', 1,
-                            lambda self, x: primitive_dictionary['savesvg'](x))
+                            Primitive(self.tw.save_as_image,
+                                      arg_descs=[ArgSlot(TYPE_STRING)],
+                                      kwarg_descs={'svg': ConstantArg(True)}))
 
         palette.add_block('scale',
                           style='box-style',
@@ -1148,14 +1149,6 @@ Journal objects'))
                 self.tw.lc.update_label_value('pop')
             else:
                 self.tw.lc.update_label_value('pop', self.tw.lc.heap[-1])
-
-    def _prim_save_picture(self, name):
-        """ Save canvas to file as PNG """
-        self.tw.save_as_image(name)
-
-    def _prim_save_svg(self, name):
-        """ Save SVG to file """
-        self.tw.save_as_image(name, svg=True)
 
     def prim_speak(self, text):
         """ Speak text """
