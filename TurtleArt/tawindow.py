@@ -82,6 +82,7 @@ from tautils import (magnitude, get_load_name, get_save_name, data_from_file,
                      restore_clamp, collapse_clamp, data_from_string,
                      increment_name, get_screen_dpi)
 from tasprite_factory import (SVG, svg_str_to_pixbuf, svg_from_file)
+from tapalette import block_primitives
 from sprites import (Sprites, Sprite)
 
 if _GST_AVAILABLE:
