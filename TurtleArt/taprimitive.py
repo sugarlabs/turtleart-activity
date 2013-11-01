@@ -33,7 +33,7 @@ from talogo import (LogoCode, logoerror, NegativeRootError)
 from taturtle import (Turtle, Turtles)
 from tatype import *
 from tautils import debug_output
-from tawindow import (global_objects, TurtleArtWindow)
+from tawindow import TurtleArtWindow, global_objects
 from util import ast_extensions
 
 

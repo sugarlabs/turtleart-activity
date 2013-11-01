@@ -96,7 +96,8 @@ _UNFULLSCREEN_VISIBILITY_TIMEOUT = 2
 _PLUGIN_SUBPATH = 'plugins'
 _MACROS_SUBPATH = 'macros'
 
-global_objects = {}  # the global instances of single-instance classes
+# the global instances of single-instance classes
+global_objects = {}
 
 
 class TurtleArtWindow():
@@ -314,6 +315,9 @@ class TurtleArtWindow():
         else:
             self._init_plugins()
             self._setup_plugins()
+
+    def get_global_objects(self):
+        return global_objects
 
     def _lazy_init(self):
         self._init_plugins()

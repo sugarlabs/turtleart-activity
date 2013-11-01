@@ -66,6 +66,7 @@ def %s():
 """
 _START_STACK_START_ADD = """\
     tw.start_plugins()
+    global_objects = tw.get_global_objects()
 """
 _ACTION_STACK_PREAMBLE = """\
     turtles = tw.turtles
@@ -98,22 +99,23 @@ def save_python(tw):
     for block in tops_of_stacks:
         stack_name = get_stack_name(block)
         if stack_name:
-            pythoncode = _action_stack_to_python(block, tw.lc, name=stack_name)
+            pythoncode = _action_stack_to_python(block, tw, name=stack_name)
             snippets.append(pythoncode)
             snippets.append(linesep)
     snippets.append(_SETUP_CODE_END)
     return "".join(snippets)
 
-def _action_stack_to_python(block, lc, name="start"):
+def _action_stack_to_python(block, tw, name="start"):
     """ Turn a stack of blocks into Python code
     name -- the name of the action stack (defaults to "start") """
+
     if isinstance(name, int):
         name = float(name)
     if not isinstance(name, basestring):
         name = str(name)
 
     # traverse the block stack and get the AST for every block
-    ast_list = _walk_action_stack(block, lc)
+    ast_list = _walk_action_stack(block, tw.lc)
     if not isinstance(ast_list[-1], ast.Yield):
         ast_list.append(ast_yield_true())
     action_stack_ast = ast.Module(body=ast_list)
