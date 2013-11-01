@@ -319,6 +319,12 @@ class TurtleArtWindow():
     def get_global_objects(self):
         return global_objects
 
+    def get_init_complete(self):
+        if self.running_turtleart:
+            return self.activity.init_complete
+        else:
+            return True
+
     def _lazy_init(self):
         self._init_plugins()
         self._setup_plugins()
@@ -338,8 +344,8 @@ class TurtleArtWindow():
                                       regenerate=True,
                                       show=True)
 
-        if self.running_sugar:
-            self.activity.check_buttons_for_fit()
+            if self.running_sugar:
+                self.activity.check_buttons_for_fit()
 
     def _set_screen_dpi(self):
         dpi = get_screen_dpi()
@@ -1507,10 +1513,12 @@ class TurtleArtWindow():
         return int((self.canvas.height / 2) - self.mouse_y)
 
     def button_press(self, mask, x, y):
-        if self.running_sugar:
-            self._show_unfullscreen_button()
+        if self.running_turtleart:
+            if self.running_sugar:
+                self._show_unfullscreen_button()
 
-        self.activity.hide_store()
+            if self.interactive_mode:
+                self.activity.hide_store()
 
         # Find out what was clicked
         spr = self.sprite_list.find_sprite((x, y))
@@ -1520,7 +1528,7 @@ class TurtleArtWindow():
                 blk = self.block_list.spr_to_block(spr)
                 if blk is not None:
                     # Make sure stop button is visible
-                    if self.running_sugar:
+                    if self.running_sugar and self.running_turtleart:
                         self.activity.stop_turtle_button.set_icon("stopiton")
                         self.activity.stop_turtle_button.set_tooltip(
                             _('Stop turtle'))
