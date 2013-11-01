@@ -96,7 +96,8 @@ _UNFULLSCREEN_VISIBILITY_TIMEOUT = 2
 _PLUGIN_SUBPATH = 'plugins'
 _MACROS_SUBPATH = 'macros'
 
-global_objects = {}  # the global instances of single-instance classes
+# the global instances of single-instance classes
+global_objects = {}
 
 
 class TurtleArtWindow():
@@ -315,6 +316,9 @@ class TurtleArtWindow():
             self._init_plugins()
             self._setup_plugins()
 
+    def get_global_objects(self):
+        return global_objects
+
     def _lazy_init(self):
         self._init_plugins()
         self._setup_plugins()
@@ -388,10 +392,11 @@ class TurtleArtWindow():
             # Add the icon dir to the icon_theme search path
             self._add_plugin_icon_dir(os.path.join(self._get_plugin_home(),
                                                    plugin_dir))
+            # Add the plugin to the list of global objects
+            global_objects[plugin_class] = self.turtleart_plugins[-1]
         except Exception as e:
             debug_output('Failed to load %s: %s' % (plugin_class, str(e)),
                          self.running_sugar)
-            
 
     def _add_plugin_icon_dir(self, dirname):
         ''' If there is an icon subdir, add it to the search path. '''

@@ -35,6 +35,7 @@ ACCELEROMETER_DEVICE = '/sys/devices/platform/lis3lv02d/position'
 class Accelerometer(Plugin):
 
     def __init__(self, parent):
+        Plugin.__init__(self)
         self._parent = parent
         if os.path.exists(ACCELEROMETER_DEVICE):
             self._status = True

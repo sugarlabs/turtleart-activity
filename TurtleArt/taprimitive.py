@@ -33,7 +33,7 @@ from talogo import (LogoCode, logoerror, NegativeRootError)
 from taturtle import (Turtle, Turtles)
 from tatype import *
 from tautils import debug_output
-from tawindow import (global_objects, TurtleArtWindow)
+from tawindow import TurtleArtWindow, global_objects
 from util import ast_extensions
 
 
@@ -138,6 +138,14 @@ class Primitive(object):
             func_name = "logo.heap."
         elif self.wants_tawindow():
             func_name = "tw."
+        else:
+            results, plugin = self.wants_plugin()
+            if results:
+                for k in global_objects.keys():
+                    if k == plugin:
+                        func_name = k.lower() + '.'
+                        break
+
         # get the name of the function directly from the function itself
         func_name += self.func.__name__
         return func_name
@@ -290,6 +298,10 @@ class Primitive(object):
                 first_arg = global_objects["logo"].heap
             elif new_prim.wants_tawindow():
                 first_arg = global_objects["window"]
+            else:
+                result, plugin = new_prim.wants_plugin()
+                if result:
+                    first_arg = plugin
 
         # execute the actual function
         if first_arg is None:
@@ -556,6 +568,14 @@ class Primitive(object):
         as its first argument? """
         return self._wants(TurtleArtWindow)
 
+    def wants_plugin(self):
+        """Does this Primitive want to get a plugin instance as its first
+        argument? """
+        for obj in global_objects.keys():
+            if self._wants(global_objects[obj].__class__):
+                return True, obj
+        return False, None
+
     def wants_nothing(self):
         """ Does this Primitive want nothing as its first argument? I.e. does 
         it want to be passed all the arguments of the block and nothing 
@@ -727,7 +747,8 @@ class Primitive(object):
 
     @staticmethod
     def comment(text):
-        """ In 'snail' execution mode, display the comment. Else, do nothing. """
+        """In 'snail' execution mode, display the comment. Else, do
+        nothing."""
         tw = global_objects["window"]
         if not tw.hide and tw.step_time != 0:
             tw.showlabel('print', text)

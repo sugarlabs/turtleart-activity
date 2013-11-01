@@ -57,6 +57,7 @@ def _avg(array, abs_value=False):
 class Audio_sensors(Plugin):
 
     def __init__(self, parent):
+        Plugin.__init__(self)
         self._parent = parent
         self._status = True  # TODO: test for audio device
         # These flags are referenced by audiograb

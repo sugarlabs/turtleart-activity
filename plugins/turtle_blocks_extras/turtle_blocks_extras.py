@@ -49,6 +49,7 @@ class Turtle_blocks_extras(Plugin):
     from Turtle Art """
 
     def __init__(self, turtle_window):
+        Plugin.__init__(self)
         self.tw = turtle_window
 
     def setup(self):
@@ -298,7 +299,6 @@ complete'))
                           help_string=_('resume playing video or audio'))
         self.tw.lc.def_prim('mediaplay', 0, self.tw.lc.media_play, True)
 
-        primitive_dictionary['speak'] = self._prim_speak
         palette.add_block('speak',
                           style='basic-style-1arg',
                           label=_('speak'),
@@ -306,7 +306,8 @@ complete'))
                           default=_('hello'),
                           help_string=_('speaks text'))
         self.tw.lc.def_prim('speak', 1,
-                            lambda self, x: primitive_dictionary['speak'](x))
+                            Primitive(self.prim_speak,
+                                      arg_descs=[ArgSlot(TYPE_STRING)]))
 
         primitive_dictionary['sinewave'] = self._prim_sinewave
         palette.add_block('sinewave',
@@ -734,6 +735,7 @@ module found in the Journal'))
                           help_string=_('loads a block'))
         self.tw.lc.def_prim('loadblock', 1,
                             Primitive(self.tw.prim_load_block,
+                                      export_me=False,
                                       arg_descs=[ArgSlot(TYPE_STRING)]))
 
         palette.add_block('loadblock2arg',
@@ -746,6 +748,7 @@ module found in the Journal'))
                           help_string=_('loads a block'))
         self.tw.lc.def_prim('loadblock2', 2,
                             Primitive(self.tw.prim_load_block,
+                                      export_me=False,
                                       arg_descs=[ArgSlot(TYPE_STRING),
                                                  ArgSlot(TYPE_OBJECT)]))
 
@@ -759,6 +762,7 @@ module found in the Journal'))
                           help_string=_('loads a block'))
         self.tw.lc.def_prim('loadblock3', 3,
                             Primitive(self.tw.prim_load_block,
+                                      export_me=False,
                                       arg_descs=[ArgSlot(TYPE_STRING),
                                                  ArgSlot(TYPE_OBJECT),
                                                  ArgSlot(TYPE_OBJECT)]))
@@ -772,6 +776,7 @@ module found in the Journal'))
                           help_string=_('selects a palette'))
         self.tw.lc.def_prim('loadpalette', 1,
                             Primitive(self.tw.prim_load_palette,
+                                      export_me=False,
                                       arg_descs=[ArgSlot(TYPE_STRING)]))
 
         palette.add_block('addturtle',
@@ -889,8 +894,9 @@ templates'),
                           label=_('Fullscreen').lower(),
                           prim_name='fullscreen',
                           help_string=_('hides the Sugar toolbars'))
-        self.tw.lc.def_prim('fullscreen', 0,
-                            lambda self: self.tw.set_fullscreen())
+        self.tw.lc.def_prim(
+            'fullscreen', 0,
+            Primitive(self.tw.set_fullscreen, export_me=False))
 
         primitive_dictionary['bulletlist'] = self._prim_list
         palette.add_block('list',
@@ -1128,12 +1134,6 @@ Journal objects'))
                                               chr(self.tw.keyboard))
         self.tw.keypress = ''
 
-    def _prim_list(self, blklist):
-        """ Expandable list block """
-        self._prim_showlist(blklist)
-        self.tw.lc.ireturn()
-        yield True
-
     def after_pop(self, *ignored_args):
         if self.tw.lc.update_values:
             if not self.tw.lc.heap:
@@ -1156,7 +1156,7 @@ Journal objects'))
         """ Save SVG to file """
         self.tw.save_as_image(name, svg=True)
 
-    def _prim_speak(self, text):
+    def prim_speak(self, text):
         """ Speak text """
         if type(text) == float and int(text) == text:
             text = int(text)
@@ -1267,88 +1267,11 @@ Journal objects'))
                 'see',
                 self.tw.turtles.get_active_turtle().get_color_index())
 
-    def _prim_show(self, string, center=False):
-        """ Show is the general-purpose media-rendering block. """
-        if type(string) == str or type(string) == unicode:
-            if string in ['media_', 'descr_', 'audio_', 'video_',
-                          'media_None', 'descr_None', 'audio_None',
-                          'video_None']:
-                pass
-            elif string[0:6] in ['media_', 'descr_', 'audio_', 'video_']:
-                self.tw.lc.filepath = None
-                self.tw.lc.pixbuf = None  # Camera writes directly to pixbuf
-                self.tw.lc.dsobject = None
-                if string[6:].lower() in media_blocks_dictionary:
-                    media_blocks_dictionary[string[6:].lower()]()
-                elif os.path.exists(string[6:]):  # is it a path?
-                    self.tw.lc.filepath = string[6:]
-                elif self.tw.running_sugar:  # is it a datastore object?
-                    from sugar.datastore import datastore
-                    try:
-                        self.tw.lc.dsobject = datastore.get(string[6:])
-                    except:
-                        debug_output("Couldn't find dsobject %s" %
-                                     (string[6:]), self.tw.running_sugar)
-                    if self.tw.lc.dsobject is not None:
-                        self.tw.lc.filepath = self.tw.lc.dsobject.file_path
-                if self.tw.lc.pixbuf is not None:
-                    self.tw.lc.insert_image(center=center, pixbuf=True)
-                elif self.tw.lc.filepath is None:
-                    if self.tw.lc.dsobject is not None:
-                        self.tw.showlabel(
-                            'nojournal',
-                            self.tw.lc.dsobject.metadata['title'])
-                    else:
-                        self.tw.showlabel('nojournal', string[6:])
-                    debug_output("Couldn't open %s" % (string[6:]),
-                                 self.tw.running_sugar)
-                elif string[0:6] == 'media_':
-                    self.tw.lc.insert_image(center=center)
-                elif string[0:6] == 'descr_':
-                    mimetype = None
-                    if self.tw.lc.dsobject is not None and \
-                       'mime_type' in self.tw.lc.dsobject.metadata:
-                        mimetype = self.tw.lc.dsobject.metadata['mime_type']
-                    description = None
-                    if self.tw.lc.dsobject is not None and \
-                       'description' in self.tw.lc.dsobject.metadata:
-                        description = self.tw.lc.dsobject.metadata[
-                            'description']
-                    self.tw.lc.insert_desc(mimetype, description)
-                elif string[0:6] == 'audio_':
-                    self.tw.lc.play_sound()
-                elif string[0:6] == 'video_':
-                    self.tw.lc.play_video()
-                if self.tw.lc.dsobject is not None:
-                    self.tw.lc.dsobject.destroy()
-            else:  # assume it is text to display
-                x, y = self.tw.lc.x2tx(), self.tw.lc.y2ty()
-                if center:
-                    y -= self.tw.canvas.textsize
-                self.tw.turtles.get_active_turtle().draw_text(string, x, y,
-                                         int(self.tw.canvas.textsize *
-                                             self.tw.lc.scale / 100.),
-                                         self.tw.canvas.width - x)
-        elif type(string) == float or type(string) == int:
-            string = round_int(string)
-            x, y = self.tw.lc.x2tx(), self.tw.lc.y2ty()
-            if center:
-                y -= self.tw.canvas.textsize
-            self.tw.turtles.get_active_turtle().draw_text(string, x, y,
-                                     int(self.tw.canvas.textsize *
-                                         self.tw.lc.scale / 100.),
-                                     self.tw.canvas.width - x)
-
-    def _prim_showlist(self, sarray):
-        """ Display list of media objects """
-        x = (self.tw.turtles.get_active_turtle().get_xy()[0] /
-             self.tw.coord_scale)
-        y = (self.tw.turtles.get_active_turtle().get_xy()[1] /
-             self.tw.coord_scale)
-        for s in sarray:
-            self.tw.turtles.get_active_turtle().set_xy(x, y, pendown=False)
-            self._prim_show(s)
-            y -= int(self.tw.canvas.textsize * self.tw.lead)
+    def _prim_list(self, blklist):
+        """ Expandable list block """
+        self.tw.lc.showlist(blklist)
+        self.tw.lc.ireturn()
+        yield True
 
     def after_time(self, elapsed_time):
         """ Update the label of the 'time' block after computing the new

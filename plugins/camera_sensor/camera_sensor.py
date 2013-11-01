@@ -39,6 +39,7 @@ from TurtleArt.taconstants import MEDIA_SHAPES, NO_IMPORT, SKIN_PATHS, \
 class Camera_sensor(Plugin):
 
     def __init__(self, parent):
+        Plugin.__init__(self)
         ''' Make sure there is a camera device '''
         self._parent = parent
         self._status = False

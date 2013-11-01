@@ -1054,6 +1054,17 @@ class LogoCode:
             gobject.idle_add(self.tw.send_event, event)
             os.remove(tmp_file)
 
+    def showlist(self, objects):
+        """ Display list of media objects """
+        x = (self.tw.turtles.get_active_turtle().get_xy()[0] /
+             self.tw.coord_scale)
+        y = (self.tw.turtles.get_active_turtle().get_xy()[1] /
+             self.tw.coord_scale)
+        for obj in objects:
+            self.tw.turtles.get_active_turtle().set_xy(x, y, pendown=False)
+            self.show(obj)
+            y -= int(self.tw.canvas.textsize * self.tw.lead)
+
     def show(self, obj, center=False):
         """ Show is the general-purpose media-rendering block. """
         # media
