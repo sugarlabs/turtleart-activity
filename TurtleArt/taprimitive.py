@@ -33,7 +33,7 @@ from talogo import (LogoCode, logoerror, NegativeRootError)
 from taturtle import (Turtle, Turtles)
 from tatype import *
 from tautils import debug_output
-from tawindow import TurtleArtWindow, global_objects
+from tawindow import (TurtleArtWindow, global_objects, plugins_in_use)
 from util import ast_extensions
 
 
@@ -143,6 +143,8 @@ class Primitive(object):
             if results:
                 for k in global_objects.keys():
                     if k == plugin:
+                        if k not in plugins_in_use:
+                            plugins_in_use.append(k)
                         func_name = k.lower() + '.'
                         break
 

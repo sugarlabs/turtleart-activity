@@ -99,6 +99,7 @@ _MACROS_SUBPATH = 'macros'
 
 # the global instances of single-instance classes
 global_objects = {}
+plugins_in_use = []
 
 
 class TurtleArtWindow():
