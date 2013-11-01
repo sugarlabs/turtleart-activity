@@ -309,7 +309,6 @@ complete'))
                             Primitive(self.prim_speak,
                                       arg_descs=[ArgSlot(TYPE_STRING)]))
 
-        primitive_dictionary['sinewave'] = self._prim_sinewave
         palette.add_block('sinewave',
                           style='basic-style-3arg',
                           # TRANS: pitch, duration, amplitude
@@ -320,8 +319,10 @@ complete'))
                           help_string=_('plays a sinewave at frequency, \
 amplitude, and duration (in seconds)'))
         self.tw.lc.def_prim('sinewave', 3,
-                            lambda self, x, y, z:
-                            primitive_dictionary['sinewave'](x, y, z))
+                            Primitive(self.prim_sinewave,
+                                      arg_descs=[ArgSlot(TYPE_NUMBER),
+                                                 ArgSlot(TYPE_NUMBER),
+                                                 ArgSlot(TYPE_NUMBER)]))
 
     def _sensor_palette(self):
         debug_output('creating %s palette' % _('sensor'),
@@ -1176,7 +1177,7 @@ Journal objects'))
                                                   language_option, text]))
             self.tw.send_event(event)
 
-    def _prim_sinewave(self, pitch, amplitude, duration):
+    def prim_sinewave(self, pitch, amplitude, duration):
         """ Create a Csound score to play a sine wave. """
         self.orchlines = []
         self.scorelines = []
