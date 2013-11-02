@@ -116,7 +116,7 @@ def _action_stack_to_python(block, tw, name="start"):
 
     # traverse the block stack and get the AST for every block
     ast_list = _walk_action_stack(block, tw.lc)
-    if not isinstance(ast_list[-1], ast.Yield):
+    if not ast_list or not isinstance(ast_list[-1], ast.Yield):
         ast_list.append(ast_yield_true())
     action_stack_ast = ast.Module(body=ast_list)
     #debug_output(str(action_stack_ast))
