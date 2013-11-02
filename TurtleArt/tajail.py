@@ -34,7 +34,7 @@ def myfunc(f, args):
     return userdefined.values()[0](*args)
 
 
-def myfunc_import(parent, f, x):
+def myfunc_import(parent, f, args):
     ''' Run Python code imported from Journal '''
     if 'def myblock(lc,' in f:
         base_class = parent.tw.lc  # pre-v107, we passed lc
@@ -43,7 +43,7 @@ def myfunc_import(parent, f, x):
     userdefined = {}
     try:
         exec f in globals(), userdefined
-        return userdefined['myblock'](base_class, x)
+        return userdefined['myblock'](base_class, args)
     except:
         traceback.print_exc()
         return None

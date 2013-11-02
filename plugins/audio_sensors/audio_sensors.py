@@ -59,6 +59,7 @@ class Audio_sensors(Plugin):
     def __init__(self, parent):
         Plugin.__init__(self)
         self._parent = parent
+        self.audio_started = False
         self._status = True  # TODO: test for audio device
         # These flags are referenced by audiograb
         self.hw = self._parent.hw
@@ -211,7 +212,6 @@ class Audio_sensors(Plugin):
         self._parent.lc.def_prim(
             'voltage2', 0, lambda self: primitive_dictionary['voltage'](1))
 
-        self.audio_started = False
         if self.hw in [XO175, XO30, XO4]:
             self.PARAMETERS = {
                 SENSOR_AC_BIAS: (False, True, 80, True),
