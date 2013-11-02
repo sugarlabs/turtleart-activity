@@ -237,7 +237,6 @@ Journal'))
                       call_afterwards=lambda value: self.after_set(
                           'scale', value)))
 
-        primitive_dictionary['savepix'] = self._prim_save_picture
         palette.add_block('savepix',
                           style='basic-style-1arg',
                           label=_('save picture'),
@@ -246,9 +245,9 @@ Journal'))
                           help_string=_('saves a picture to the Sugar \
 Journal'))
         self.tw.lc.def_prim('savepix', 1,
-                            lambda self, x: primitive_dictionary['savepix'](x))
+                            Primitive(self.tw.save_as_image,
+                                      arg_descs=[ArgSlot(TYPE_STRING)]))
 
-        primitive_dictionary['savesvg'] = self._prim_save_svg
         palette.add_block('savesvg',
                           style='basic-style-1arg',
                           label=_('save SVG'),
@@ -257,7 +256,9 @@ Journal'))
                           help_string=_('saves turtle graphics as an SVG file \
 in the Sugar Journal'))
         self.tw.lc.def_prim('savesvg', 1,
-                            lambda self, x: primitive_dictionary['savesvg'](x))
+                            Primitive(self.tw.save_as_image,
+                                      arg_descs=[ArgSlot(TYPE_STRING)],
+                                      kwarg_descs={'svg': ConstantArg(True)}))
 
         palette.add_block('scale',
                           style='box-style',
@@ -309,7 +310,6 @@ complete'))
                             Primitive(self.prim_speak,
                                       arg_descs=[ArgSlot(TYPE_STRING)]))
 
-        primitive_dictionary['sinewave'] = self._prim_sinewave
         palette.add_block('sinewave',
                           style='basic-style-3arg',
                           # TRANS: pitch, duration, amplitude
@@ -320,8 +320,10 @@ complete'))
                           help_string=_('plays a sinewave at frequency, \
 amplitude, and duration (in seconds)'))
         self.tw.lc.def_prim('sinewave', 3,
-                            lambda self, x, y, z:
-                            primitive_dictionary['sinewave'](x, y, z))
+                            Primitive(self.prim_sinewave,
+                                      arg_descs=[ArgSlot(TYPE_NUMBER),
+                                                 ArgSlot(TYPE_NUMBER),
+                                                 ArgSlot(TYPE_NUMBER)]))
 
     def _sensor_palette(self):
         debug_output('creating %s palette' % _('sensor'),
@@ -1148,14 +1150,6 @@ Journal objects'))
             else:
                 self.tw.lc.update_label_value('pop', self.tw.lc.heap[-1])
 
-    def _prim_save_picture(self, name):
-        """ Save canvas to file as PNG """
-        self.tw.save_as_image(name)
-
-    def _prim_save_svg(self, name):
-        """ Save SVG to file """
-        self.tw.save_as_image(name, svg=True)
-
     def prim_speak(self, text):
         """ Speak text """
         if type(text) == float and int(text) == text:
@@ -1176,7 +1170,7 @@ Journal objects'))
                                                   language_option, text]))
             self.tw.send_event(event)
 
-    def _prim_sinewave(self, pitch, amplitude, duration):
+    def prim_sinewave(self, pitch, amplitude, duration):
         """ Create a Csound score to play a sine wave. """
         self.orchlines = []
         self.scorelines = []

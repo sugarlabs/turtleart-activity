@@ -33,7 +33,7 @@ from talogo import LogoCode
 from taprimitive import (ast_yield_true, Primitive, PyExportError,
                          value_to_ast)
 from tautils import (debug_output, find_group, find_top_block, get_stack_name)
-from tawindow import global_objects
+from tawindow import (global_objects, plugins_in_use)
 
 
 _SETUP_CODE_START = """\
@@ -128,11 +128,8 @@ def _action_stack_to_python(block, tw, name="start"):
     name_id = _make_identifier(name)
     if name == 'start':
         pre_preamble = _START_STACK_START_ADD
-        # TODO: only add the objects we are using
-        for k in global_objects.keys():
-            if k not in ['window', 'canvas', 'logo', 'turtles']:
-                pre_preamble += "    %s = global_objects['%s']\n" % (
-                    k.lower(), k)
+        for k in plugins_in_use:
+            pre_preamble += "    %s = global_objects['%s']\n" % (k.lower(), k)
     else:
         pre_preamble = ''
     generated_code = _indent(generated_code, 1)
