@@ -36,6 +36,7 @@ from TurtleArt.taconstants import XO1, XO15, XO175, XO30, XO4
 from TurtleArt.talogo import primitive_dictionary
 from TurtleArt.tautils import debug_output
 from TurtleArt.taprimitive import (ConstantArg, Primitive)
+from TurtleArt.tatype import TYPE_NUMBER
 
 import logging
 _logger = logging.getLogger('turtleart-activity audio sensors plugin')
@@ -115,12 +116,14 @@ class Audio_sensors(Plugin):
         self._parent.lc.def_prim(
             'sound', 0,
             Primitive(self.prim_sound,
+                      return_type=TYPE_NUMBER,
                       kwarg_descs={'channel': ConstantArg(0)},
                       call_afterwards=self.after_sound))
 
         self._parent.lc.def_prim(
             'volume', 0,
             Primitive(self.prim_volume,
+                      return_type=TYPE_NUMBER,
                       kwarg_descs={'channel': ConstantArg(0)},
                       call_afterwards=self.after_volume))
 
@@ -142,6 +145,7 @@ class Audio_sensors(Plugin):
         self._parent.lc.def_prim(
             'pitch', 0,
             Primitive(self.prim_pitch,
+                      return_type=TYPE_NUMBER,
                       kwarg_descs={'channel': ConstantArg(0)},
                       call_afterwards=self.after_pitch))
 
@@ -214,21 +218,25 @@ class Audio_sensors(Plugin):
         self._parent.lc.def_prim(
             'resistance', 0,
             Primitive(self.prim_resistance,
+                      return_type=TYPE_NUMBER,
                       kwarg_descs={'channel': ConstantArg(0)},
                       call_afterwards=self.after_resistance))
         self._parent.lc.def_prim(
             'voltage', 0,
             Primitive(self.prim_voltage,
+                      return_type=TYPE_NUMBER,
                       kwarg_descs={'channel': ConstantArg(0)},
                       call_afterwards=self.after_voltage))
         self._parent.lc.def_prim(
             'resistance2', 0,
             Primitive(self.prim_resistance,
+                      return_type=TYPE_NUMBER,
                       kwarg_descs={'channel': ConstantArg(1)},
                       call_afterwards=self.after_resistance))
         self._parent.lc.def_prim(
             'voltage2', 0,
             Primitive(self.prim_voltage,
+                      return_type=TYPE_NUMBER,
                       kwarg_descs={'channel': ConstantArg(1)},
                       call_afterwards=self.after_voltage))
 

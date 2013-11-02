@@ -25,6 +25,7 @@ from TurtleArt.tapalette import make_palette
 from TurtleArt.talogo import primitive_dictionary
 from TurtleArt.tautils import debug_output
 from TurtleArt.taprimitive import Primitive
+from TurtleArt.tatype import TYPE_NUMBER
 
 import logging
 _logger = logging.getLogger('turtleart-activity light-sensor plugin')
@@ -73,6 +74,7 @@ class Light_sensor(Plugin):
         self._parent.lc.def_prim(
             'lightsensor', 0,
             Primitive(self.prim_lightsensor,
+                      return_type=TYPE_NUMBER,
                       call_afterwards=self.after_light))
 
     def _status_report(self):

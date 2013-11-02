@@ -27,6 +27,7 @@ from TurtleArt.tapalette import make_palette
 from TurtleArt.talogo import primitive_dictionary
 from TurtleArt.tautils import debug_output
 from TurtleArt.taprimitive import Primitive
+from TurtleArt.tatype import TYPE_STRING
 
 import logging
 _logger = logging.getLogger('turtleart-activity RFID plugin')
@@ -106,6 +107,7 @@ class Rfid(Plugin):
         self._parent.lc.def_prim(
             'rfid', 0,
             Primitive(self.prim_read_rfid,
+                      return_type=TYPE_STRING,
                       call_afterwards=self.after_rfid))
 
     def _status_report(self):
