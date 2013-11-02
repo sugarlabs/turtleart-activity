@@ -35,10 +35,7 @@ from TurtleArt.tapalette import make_palette
 from TurtleArt.taconstants import XO1, XO15, XO175, XO30, XO4
 from TurtleArt.talogo import primitive_dictionary
 from TurtleArt.tautils import debug_output
-from TurtleArt.taprimitive import (ArgSlot, ConstantArg, Primitive)
-from TurtleArt.tatype import (TYPE_BOOL, TYPE_BOX, TYPE_CHAR, TYPE_INT,
-                              TYPE_FLOAT, TYPE_OBJECT, TYPE_STRING,
-                              TYPE_NUMBER)
+from TurtleArt.taprimitive import (ConstantArg, Primitive)
 
 import logging
 _logger = logging.getLogger('turtleart-activity audio sensors plugin')
