@@ -2,6 +2,7 @@
 
 ENHANCEMENTS:
 * Add Marian Zepf's export Python
+* Add busy cursor while project is loading from store
 * New translations
 
 192

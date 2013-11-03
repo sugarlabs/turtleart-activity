@@ -34,6 +34,8 @@ from TurtleArt.talogo import media_blocks_dictionary, primitive_dictionary
 from TurtleArt.tautils import get_path, debug_output
 from TurtleArt.taconstants import MEDIA_SHAPES, NO_IMPORT, SKIN_PATHS, \
     BLOCKS_WITH_SKIN
+from TurtleArt.taprimitive import (ConstantArg, Primitive)
+from TurtleArt.tatype import TYPE_NUMBER
 
 
 class Camera_sensor(Plugin):
@@ -46,6 +48,7 @@ class Camera_sensor(Plugin):
         self._ag_control = None
         self.devices = []
         self.cameras = []
+        self.luminance = 0
 
         if os.path.exists('/dev/video0'):
             self.devices.append('/dev/video0')
@@ -69,7 +72,6 @@ class Camera_sensor(Plugin):
                                      position=7)
 
         # set up camera-specific blocks
-        primitive_dictionary['read_camera'] = self.prim_read_camera
         media_blocks_dictionary['camera'] = self.prim_take_picture0
         media_blocks_dictionary['camera1'] = self.prim_take_picture1
 
@@ -83,9 +85,12 @@ class Camera_sensor(Plugin):
                     'light level detected by camera'),
                                       value_block=True,
                                       prim_name='luminance')
-            self._parent.lc.def_prim('luminance', 0,
-                lambda self: primitive_dictionary['read_camera'](
-                    luminance_only=True))
+            self._parent.lc.def_prim(
+                'luminance', 0,
+                Primitive(self.prim_read_camera,
+                          return_type=TYPE_NUMBER,
+                          kwarg_descs={'luminance_only': ConstantArg(True)},
+                          call_afterwards=self.after_luminance))
 
             # Depreciated block
             sensors_palette.add_block('read_camera',
@@ -97,8 +102,10 @@ class Camera_sensor(Plugin):
 is pushed to the stack'),
                                       value_block=True,
                                       prim_name='read_camera')
-            self._parent.lc.def_prim('read_camera', 0,
-                lambda self: primitive_dictionary['read_camera']())
+            self._parent.lc.def_prim(
+                'read_camera', 0,
+                Primitive(self.prim_read_camera,
+                          kwarg_descs={'luminance_only': ConstantArg(False)}))
 
             media_palette.add_block('camera',
                                     style='box-style-media',
@@ -131,9 +138,12 @@ is pushed to the stack'),
                                           _('light level detected by camera'),
                                       value_block=True,
                                       prim_name='read_camera')
-            self._parent.lc.def_prim('luminance', 0,
-                lambda self: primitive_dictionary['read_camera'](
-                    luminance_only=True))
+            self._parent.lc.def_prim(
+                'luminance', 0,
+                Primitive(self.prim_read_camera,
+                          return_type=TYPE_NUMBER,
+                          kwarg_descs={'luminance_only': ConstantArg(True)},
+                          call_afterwards=self.after_luminance))
 
             # Depreciated block
             sensors_palette.add_block('read_camera',
@@ -145,8 +155,11 @@ is pushed to the stack'),
 is pushed to the stack'),
                                       value_block=True,
                                       prim_name='read_camera')
-            self._parent.lc.def_prim('read_camera', 0,
-                lambda self: primitive_dictionary['read_camera']())
+            self._parent.lc.def_prim(
+                'read_camera', 0,
+                Primitive(self.prim_read_camera,
+                          return_type=TYPE_NUMBER,
+                          kwarg_descs={'luminance_only': ConstantArg(False)}))
 
             media_palette.add_block('camera',
                                     hidden=True,
@@ -228,19 +241,19 @@ is pushed to the stack'),
                 self._parent.lc.heap.append(-1)
                 self._parent.lc.heap.append(-1)
                 self._parent.lc.heap.append(-1)
-            return
+                return
 
         array = None
         self._set_autogain(0, camera=camera)  # disable AUTOGAIN
         self._get_pixbuf_from_camera(camera=camera)
         self.calc_luminance(camera=camera)
         if self.luminance_only:
-            self._parent.lc.update_label_value('luminance', self.luminance)
-            return self.luminance
+            return int(self.luminance)
         else:
             self._parent.lc.heap.append(self.b)
             self._parent.lc.heap.append(self.g)
             self._parent.lc.heap.append(self.r)
+            return
 
     def calc_luminance(self, camera=0):
         array = self.cameras[camera].pixbuf.get_pixels()
@@ -281,6 +294,10 @@ is pushed to the stack'),
                 self.r = -1
                 self.g = -1
                 self.b = -1
+
+    def after_luminance(self, luminance_only=False):
+        if self._parent.lc.update_values and luminance_only:
+            self._parent.lc.update_label_value('luminance', self.luminance)
 
     def _set_autogain(self, state, camera=0):
         ''' 0 is off; 1 is on '''

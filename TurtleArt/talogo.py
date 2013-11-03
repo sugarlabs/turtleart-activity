@@ -248,7 +248,6 @@ class LogoCode:
         for b in blocks:
             b.unhighlight()
 
-        '''
         # Hidden macro expansions
         for b in blocks:
             if b.name in ['while', 'until']:
@@ -262,7 +261,6 @@ class LogoCode:
                 blocks = new_blocks[:]
                 if b == blk:
                     blk = action_blk
-        '''
 
         for b in blocks:
             if b.name in ('hat', 'hat1', 'hat2'):
@@ -882,12 +880,10 @@ class LogoCode:
     def prim_myblock(self, *args):
         """ Run Python code imported from Journal """
         if self.bindex is not None and self.bindex in self.tw.myblock:
-            # try:
-            myfunc_import(self, self.tw.myblock[self.bindex], args)
-            '''
+            try:
+                myfunc_import(self, self.tw.myblock[self.bindex], args)
             except:
                 raise logoerror("#syntaxerror")
-            '''
 
     def prim_myfunction(self, f, *args):
         """ Programmable block (Call tajail.myfunc and convert any errors to

@@ -24,6 +24,7 @@ from plugins.plugin import Plugin
 from TurtleArt.tapalette import make_palette
 from TurtleArt.talogo import primitive_dictionary
 from TurtleArt.tautils import debug_output
+from TurtleArt.taprimitive import Primitive
 
 import logging
 _logger = logging.getLogger('turtleart-activity accelerometer plugin')
@@ -50,7 +51,6 @@ class Accelerometer(Plugin):
                                help_string=_('Palette of sensor blocks'),
                                position=6)
 
-        primitive_dictionary['xyz'] = self.prim_xyz
         if self._status:
             palette.add_block('xyz',
                               style='basic-style-extended-vertical',
@@ -68,7 +68,8 @@ class Accelerometer(Plugin):
                               prim_name='xyz')
 
         self._parent.lc.def_prim(
-            'xyz', 0, lambda self: primitive_dictionary['xyz']())
+            'xyz', 0,
+            Primitive(self.prim_xyz))
 
     def _status_report(self):
         debug_output('Reporting accelerator status: %s' % (str(self._status)))
