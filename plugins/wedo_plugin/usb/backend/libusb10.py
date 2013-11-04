@@ -580,7 +580,7 @@ class _LibUSB(usb.backend.IBackend):
         if usb.util.ctrl_direction(bmRequestType) == usb.util.CTRL_OUT:
             buff = data_or_wLength
         else:
-            buff = _interop.as_array((0,) * data_or_wLength)
+            buff = _interop.as_array('\x00' * data_or_wLength)
 
         addr, length = buff.buffer_info()
         length *= buff.itemsize
@@ -629,7 +629,7 @@ class _LibUSB(usb.backend.IBackend):
         return transferred.value
 
     def __read(self, fn, dev_handle, ep, intf, size, timeout):
-        data = _interop.as_array((0,) * size)
+        data = _interop.as_array('\x00' * size)
         address, length = data.buffer_info()
         length *= data.itemsize
         transferred = c_int()
