@@ -561,6 +561,15 @@ class Turtle:
                                               round_int(self._heading)]))
             self._turtles.turtle_window.send_event(event)
 
+    def left(self, degrees, share=True):
+        try:
+            degrees = 0 - degrees
+        except:
+            debug_output('bad value sent to %s' % (__name__),
+                         self._turtles.turtle_window.running_sugar)
+            return
+        self.right(degrees, share)
+
     def _draw_line(self, old, new, pendown):
         if self._pen_state and pendown:
             self._turtles.turtle_window.canvas.set_source_rgb()
@@ -592,6 +601,15 @@ class Turtle:
             event = 'f|%s' % (data_to_string([self._turtles.turtle_window.nick,
                                               int(distance)]))
             self._turtles.turtle_window.send_event(event)
+
+    def backward(self, distance, share=True):
+        try:
+            distance = 0 - distance
+        except:
+            debug_output('bad value sent to %s' % (__name__),
+                         self._turtles.turtle_window.running_sugar)
+            return
+        self.forward(distance, share)
 
     def set_xy(self, x, y, share=True, pendown=True, dragging=False):
         old = self.get_xy()
