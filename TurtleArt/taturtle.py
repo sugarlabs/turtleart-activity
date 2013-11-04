@@ -583,6 +583,7 @@ class Turtle:
                 self._poly_points.append(('line', pos2[0], pos2[1]))
 
     def forward(self, distance, share=True):
+        print distance
         scaled_distance = distance * self._turtles.turtle_window.coord_scale
 
         old = self.get_xy()
