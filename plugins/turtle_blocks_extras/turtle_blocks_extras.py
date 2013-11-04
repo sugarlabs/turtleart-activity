@@ -15,8 +15,6 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
-import gtk
-import gobject
 from time import time
 import os
 import glob
@@ -24,18 +22,13 @@ import glob
 from gettext import gettext as _
 
 from plugins.plugin import Plugin
-from TurtleArt.tapalette import (make_palette, define_logo_function,
-                                 block_names, block_primitives, special_names,
-                                 content_blocks, palette_name_to_index,
-                                 palette_names)
-from TurtleArt.talogo import (primitive_dictionary, logoerror,
-                              media_blocks_dictionary)
-from TurtleArt.taconstants import (DEFAULT_SCALE, CONSTANTS,
-                                   MEDIA_SHAPES, SKIN_PATHS, BLOCKS_WITH_SKIN,
-                                   PYTHON_SKIN, MEDIA_BLOCK2TYPE, VOICES,
-                                   MACROS, Color, KEY_DICT, REVERSE_KEY_DICT)
-from TurtleArt.tautils import (round_int, debug_output, get_path,
-                               data_to_string, find_group, image_to_base64,
+from TurtleArt.tapalette import (make_palette, define_logo_function)
+from TurtleArt.talogo import (primitive_dictionary, logoerror)
+from TurtleArt.taconstants import (CONSTANTS, MACROS, KEY_DICT, MEDIA_SHAPES,
+                                   REVERSE_KEY_DICT, SKIN_PATHS,
+                                   BLOCKS_WITH_SKIN, PYTHON_SKIN,
+                                   MEDIA_BLOCK2TYPE, VOICES)
+from TurtleArt.tautils import (debug_output, get_path, data_to_string,
                                hat_on_top, listify, data_from_file)
 from TurtleArt.taprimitive import (ArgSlot, ConstantArg, Primitive)
 from TurtleArt.tatype import (TYPE_BOOL, TYPE_BOX, TYPE_CHAR, TYPE_INT,
@@ -231,7 +224,8 @@ Journal'))
                           default=33,
                           logo_command='setlabelheight',
                           help_string=_('sets the scale of media'))
-        self.tw.lc.def_prim('setscale', 1,
+        self.tw.lc.def_prim(
+            'setscale', 1,
             Primitive(self.tw.lc.set_scale,
                       arg_descs=[ArgSlot(TYPE_NUMBER)],
                       call_afterwards=lambda value: self.after_set(
@@ -431,18 +425,22 @@ to the stack'))
 program started'))
         self.tw.lc.def_prim(
             'time', 0,
-            Primitive(Primitive.identity,
-                      return_type=TYPE_INT,
-                      arg_descs=[
-                          ConstantArg(Primitive(int, arg_descs=[
-                              ConstantArg(
-                                  Primitive(Primitive.minus,
-                                            arg_descs=[
-                                                ConstantArg(Primitive(time)),
-                                                ConstantArg(Primitive(
-                                                    self.tw.lc.get_start_time))
-                                            ]))]))],
-                      call_afterwards=self.after_time))
+            Primitive(
+                Primitive.identity,
+                return_type=TYPE_INT,
+                arg_descs=[
+                    ConstantArg(
+                        Primitive(
+                            int,
+                            arg_descs=[ConstantArg(
+                                Primitive(Primitive.minus,
+                                          arg_descs=[
+                                              ConstantArg(Primitive(time)),
+                                              ConstantArg(Primitive(
+                                                  self.tw.lc.get_start_time))])
+                            )]
+                        ))],
+                call_afterwards=self.after_time))
 
     def _extras_palette(self):
         debug_output('creating %s palette' % _('extras'),

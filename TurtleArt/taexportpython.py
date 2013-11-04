@@ -32,8 +32,8 @@ import util.codegen as codegen
 from talogo import LogoCode
 from taprimitive import (ast_yield_true, Primitive, PyExportError,
                          value_to_ast)
-from tautils import (debug_output, find_group, find_top_block, get_stack_name)
-from tawindow import (global_objects, plugins_in_use)
+from tautils import (find_group, find_top_block, get_stack_name)
+from tawindow import plugins_in_use
 
 
 _SETUP_CODE_START = """\
@@ -82,7 +82,6 @@ ACTION["%s"] = %s
 PAT_IDENTIFIER_ILLEGAL_CHAR = re.compile("[^A-Za-z0-9_]")
 
 
-
 def save_python(tw):
     """ Find all the action stacks and turn each into Python code """
     all_blocks = tw.just_blocks()
@@ -105,6 +104,7 @@ def save_python(tw):
     snippets.append(_SETUP_CODE_END)
     return "".join(snippets)
 
+
 def _action_stack_to_python(block, tw, name="start"):
     """ Turn a stack of blocks into Python code
     name -- the name of the action stack (defaults to "start") """
@@ -119,7 +119,6 @@ def _action_stack_to_python(block, tw, name="start"):
     if not ast_list or not isinstance(ast_list[-1], ast.Yield):
         ast_list.append(ast_yield_true())
     action_stack_ast = ast.Module(body=ast_list)
-    #debug_output(str(action_stack_ast))
 
     # serialize the ASTs into python code
     generated_code = codegen.to_source(action_stack_ast)
@@ -138,12 +137,13 @@ def _action_stack_to_python(block, tw, name="start"):
     else:
         newline = linesep
     snippets = [_ACTION_STACK_START % (name_id),
-        pre_preamble,
-        _ACTION_STACK_PREAMBLE,
-        generated_code,
-        newline,
-        _ACTION_STACK_END % (name, name_id)]
+                pre_preamble,
+                _ACTION_STACK_PREAMBLE,
+                generated_code,
+                newline,
+                _ACTION_STACK_END % (name, name_id)]
     return "".join(snippets)
+
 
 def _walk_action_stack(top_block, lc, convert_me=True):
     """ Turn a stack of blocks into a list of ASTs
@@ -241,6 +241,7 @@ def _walk_action_stack(top_block, lc, convert_me=True):
 
     return ast_list
 
+
 def _make_identifier(name):
     """ Turn name into a Python identifier name by replacing illegal
     characters """
@@ -249,6 +250,7 @@ def _make_identifier(name):
     if re.match("[0-9]", replaced):
         replaced = "_" + replaced
     return replaced
+
 
 def _indent(code, num_levels=1):
     """ Indent each line of code with num_levels * 4 spaces
