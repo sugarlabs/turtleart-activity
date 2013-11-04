@@ -31,7 +31,12 @@ from tacanvas import TurtleGraphics
 from taconstants import (Color, CONSTANTS)
 from talogo import (LogoCode, logoerror, NegativeRootError)
 from taturtle import (Turtle, Turtles)
-from tatype import *
+from TurtleArt.tatype import (TYPE_CHAR, TYPE_INT, TYPE_FLOAT, TYPE_OBJECT,
+                              TYPE_MEDIA, TYPE_COLOR, BOX_AST, ACTION_AST,
+                              Type, TypeDisjunction, TATypeError, get_type,
+                              TypedSubscript, TypedName, is_bound_method,
+                              is_instancemethod, is_staticmethod,
+                              identity, get_converter, convert, get_call_ast)
 from tautils import debug_output
 from tawindow import (TurtleArtWindow, global_objects, plugins_in_use)
 from util import ast_extensions
@@ -55,9 +60,8 @@ class PyExportError(BaseException):
 
 
 class Primitive(object):
-    """ Something that can be called when the block code is executed in TA, 
-    but that can also be transformed into a Python AST.
-    """
+    """ Something that can be called when the block code is executed in TA,
+    but that can also be transformed into a Python AST."""
 
     _DEBUG = False
 
@@ -74,8 +78,8 @@ class Primitive(object):
                           'less': ast.Lt,
                           'greater': ast.Gt}
 
-    def __init__(self, func, return_type=TYPE_OBJECT, arg_descs=None, kwarg_descs=None,
-                 call_afterwards=None, export_me=True):
+    def __init__(self, func, return_type=TYPE_OBJECT, arg_descs=None,
+                 kwarg_descs=None, call_afterwards=None, export_me=True):
         """ return_type -- the type (from the type hierarchy) that this
             Primitive will return
         arg_descs, kwarg_descs -- a list of argument descriptions and
@@ -164,7 +168,7 @@ class Primitive(object):
         return True
 
     def fill_slots(self, arguments=None, keywords=None, convert_to_ast=False,
-            call_my_args=True):
+                   call_my_args=True):
         """ Return a copy of this Primitive whose ArgSlots are filled with
         the given arguments, turned into ConstantArgs. Call the arguments,
         apply their wrappers, and check their types as appropriate. """
@@ -192,8 +196,8 @@ class Primitive(object):
                     filler = filler_list.pop(0)
                     try:
                         const = slot.fill(filler,
-                            convert_to_ast=convert_to_ast,
-                            call_my_args=call_my_args)
+                                          convert_to_ast=convert_to_ast,
+                                          call_my_args=call_my_args)
                     except TATypeError as error:
                         if Primitive._DEBUG:
                             traceback.print_exc()
@@ -228,14 +232,14 @@ class Primitive(object):
         new_args = []
         for c_arg in self.arg_descs:
             if (isinstance(c_arg, ConstantArg)
-                    and (not exportable_only
-                        or export_me(c_arg.value))):
+                and (not exportable_only
+                     or export_me(c_arg.value))):
                 new_args.append(c_arg.get(convert_to_ast=exportable_only))
         new_kwargs = {}
         for key in self.kwarg_descs:
             if (isinstance(self.kwarg_descs[key], ConstantArg)
-                    and (not exportable_only
-                        or export_me(self.kwarg_descs[key].value))):
+                and (not exportable_only
+                     or export_me(self.kwarg_descs[key].value))):
                 new_kwargs[key] = self.kwarg_descs[key].get(
                     convert_to_ast=exportable_only)
         return (new_args, new_kwargs)
@@ -256,7 +260,7 @@ class Primitive(object):
                 kwarg_desc.value.allow_call_args(recursive=True)
 
     def __call__(self, *runtime_args, **runtime_kwargs):
-        """ Execute the function, passing it the arguments received at 
+        """ Execute the function, passing it the arguments received at
         runtime. Also call the function in self.call_afterwards and pass it
         all runtime_args and runtime_kwargs.
         If the very first argument is a LogoCode instance, it is removed.
@@ -310,15 +314,16 @@ class Primitive(object):
             return_value = new_prim.func(*new_args, **new_kwargs)
         else:
             return_value = new_prim.func(first_arg, *new_args, **new_kwargs)
-        
+
         if new_prim.call_afterwards is not None:
             new_prim.call_afterwards(*new_args, **new_kwargs)
-        
+
         return return_value
 
     def get_ast(self, *arg_asts, **kwarg_asts):
-        """ Transform this object into a Python AST. When serialized and 
-        executed, the AST will do exactly the same as calling this object. """
+        """Transform this object into a Python AST. When serialized and
+        executed, the AST will do exactly the same as calling this
+        object."""
 
         if Primitive._DEBUG:
             debug_output(repr(self))
@@ -384,17 +389,20 @@ class Primitive(object):
         # boxes
         elif self == LogoCode.prim_set_box:
             target_ast = ast.Subscript(value=BOX_AST,
-                slice=ast.Index(value=new_arg_asts[0]), ctx=ast.Store)
+                                       slice=ast.Index(value=new_arg_asts[0]),
+                                       ctx=ast.Store)
             return ast.Assign(targets=[target_ast], value=new_arg_asts[1])
         elif self == LogoCode.prim_get_box:
             return ast.Subscript(value=BOX_AST,
-                slice=ast.Index(value=new_arg_asts[0]), ctx=ast.Load)
+                                 slice=ast.Index(value=new_arg_asts[0]),
+                                 ctx=ast.Load)
 
         # action stacks
         elif self == LogoCode.prim_define_stack:
             return
         elif self == LogoCode.prim_invoke_stack:
-            stack_func = ast.Subscript(value=ACTION_AST,
+            stack_func = ast.Subscript(
+                value=ACTION_AST,
                 slice=ast.Index(value=new_arg_asts[0]), ctx=ast.Load)
             call_ast = get_call_ast('logo.icall', [stack_func])
             return [call_ast, ast_yield_true()]
@@ -414,10 +422,10 @@ class Primitive(object):
             if self == Primitive.divide:
                 def _is_float(x):
                     return get_type(x)[0] == TYPE_FLOAT
-                if (    not _is_float(new_arg_asts[0]) and
+                if (not _is_float(new_arg_asts[0]) and
                         not _is_float(new_arg_asts[1])):
                     new_arg_asts[0] = get_call_ast('float', [new_arg_asts[0]],
-                        return_type=TYPE_FLOAT)
+                                                   return_type=TYPE_FLOAT)
             if len(new_arg_asts) == 1:
                 if isinstance(op, tuple):
                     op = op[0]
@@ -442,12 +450,12 @@ class Primitive(object):
             func_ast = ast_extensions.LambdaWithStrBody(
                 body_str=new_arg_asts[0].s, args=param_asts)
             return get_call_ast(func_ast, new_arg_asts[1:],
-                return_type=self.return_type)
+                                return_type=self.return_type)
 
         # square root
         elif self == Primitive.square_root:
             return get_call_ast('sqrt', new_arg_asts, new_kwarg_asts,
-                return_type=self.return_type)
+                                return_type=self.return_type)
 
         # random
         elif self in (Primitive.random_char, Primitive.random_int):
@@ -508,7 +516,7 @@ class Primitive(object):
         else:
             func_name = self.get_name_for_export()
             return get_call_ast(func_name, new_arg_asts, new_kwarg_asts,
-                return_type=self.return_type)
+                                return_type=self.return_type)
 
     def __eq__(self, other):
         """ Two Primitives are equal iff their all their properties are equal.
@@ -540,8 +548,8 @@ class Primitive(object):
             return False
 
     def wants_turtle(self):
-        """ Does this Primitive want to get the active turtle as its first 
-        argument? """
+        """Does this Primitive want to get the active turtle as its first
+        argument?"""
         return self._wants(Turtle)
 
     def wants_turtles(self):
@@ -562,7 +570,7 @@ class Primitive(object):
     def wants_heap(self):
         """ Does this Primitive want to get the heap as its first argument? """
         return ((hasattr(self.func, '__self__') and
-                    isinstance(self.func.__self__, list)) or
+                 isinstance(self.func.__self__, list)) or
                 self.func in list.__dict__.values())
 
     def wants_tawindow(self):
@@ -579,9 +587,9 @@ class Primitive(object):
         return False, None
 
     def wants_nothing(self):
-        """ Does this Primitive want nothing as its first argument? I.e. does 
-        it want to be passed all the arguments of the block and nothing 
-        else? """
+        """Does this Primitive want nothing as its first argument? I.e. does
+        it want to be passed all the arguments of the block and
+        nothing else?"""
         return not is_instancemethod(self.func)
 
     def _wants(self, theClass):
@@ -788,7 +796,7 @@ class Disjunction(tuple):
         return self
 
 
-class PrimitiveDisjunction(Disjunction,Primitive):
+class PrimitiveDisjunction(Disjunction, Primitive):
     """ Disjunction of two or more Primitives. PrimitiveDisjunctions may not
     be nested. """
 
@@ -939,10 +947,12 @@ class ArgSlot(object):
                     if func is not None:
                         func_prim = func
                         if not isinstance(func_prim, Primitive):
-                            func_prim = Primitive(func_prim,
+                            func_prim = Primitive(
+                                func_prim,
                                 [ArgSlot(TYPE_OBJECT)] * len(args))
                         try:
-                            func_prim = func_prim.fill_slots(args,
+                            func_prim = func_prim.fill_slots(
+                                args,
                                 convert_to_ast=convert_to_ast,
                                 call_my_args=(slot.call_arg and call_my_args))
                         except TATypeError as error:
@@ -966,8 +976,9 @@ class ArgSlot(object):
                     if wrapper is not None:
                         if convert_to_ast:
                             if not hasattr(wrapper, "get_ast"):
-                                raise PyExportError(("cannot convert callable"
-                                    " %s to an AST") % (repr(wrapper)))
+                                raise PyExportError(
+                                    ("cannot convert callable"
+                                     " %s to an AST") % (repr(wrapper)))
                             wrapped_argument = wrapper.get_ast(
                                 called_argument)
                         else:
@@ -990,7 +1001,8 @@ class ArgSlot(object):
                     converted_argument = wrapped_argument
                     if slot.call_arg and call_my_args:
                         try:
-                            converted_argument = convert(wrapped_argument,
+                            converted_argument = convert(
+                                wrapped_argument,
                                 new_type, old_type=old_type,
                                 converter=converter)
                         except TATypeError as error:
@@ -1000,12 +1012,15 @@ class ArgSlot(object):
                             bad_value = wrapped_argument
                             continue
                     elif converter != identity:
-                        converted_argument = Primitive(converter,
+                        converted_argument = Primitive(
+                            converter,
                             return_type=new_type,
                             arg_descs=[ConstantArg(wrapped_argument,
-                                value_type=old_type, call_arg=False)])
+                                                   value_type=old_type,
+                                                   call_arg=False)])
                     # on success, return the result
-                    return ConstantArg(converted_argument,
+                    return ConstantArg(
+                        converted_argument,
                         value_type=new_type,
                         call_arg=(slot.call_arg and call_my_args))
 
@@ -1017,7 +1032,7 @@ class ArgSlot(object):
                               req_type=new_type)
 
 
-class ArgSlotDisjunction(Disjunction,ArgSlot):
+class ArgSlotDisjunction(Disjunction, ArgSlot):
     """ Disjunction of two or more argument slots """
     pass
 
@@ -1139,5 +1154,3 @@ def export_me(something):
     is True, i.e. everything is exportable except for Primitives with
     export_me == False """
     return not isinstance(something, Primitive) or something.export_me
-
-

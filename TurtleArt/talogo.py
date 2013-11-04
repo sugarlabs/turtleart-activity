@@ -22,6 +22,7 @@
 #THE SOFTWARE.
 
 import gtk
+import gobject
 from time import time, sleep
 
 from operator import isNumberType
@@ -44,7 +45,8 @@ from tapalette import (block_names, value_blocks)
 from tatype import (TATypeError, TYPES_NUMERIC)
 from tautils import (get_pixbuf_from_journal, data_from_file, get_stack_name,
                      text_media_type, round_int, debug_output, find_group,
-                     get_path, image_to_base64, data_to_string, data_to_file)
+                     get_path, image_to_base64, data_to_string, data_to_file,
+                     get_load_name, chooser_dialog)
 
 try:
     from util.RtfParser import RtfTextOnly
@@ -496,7 +498,7 @@ class LogoCode:
             raise logoerror("#noinput")
         is_Primitive = type(self.cfun.fcn).__name__ == 'Primitive'
         is_PrimitiveDisjunction = type(self.cfun.fcn).__name__ == \
-                                  'PrimitiveDisjunction'
+            'PrimitiveDisjunction'
         call_args = not (is_Primitive or is_PrimitiveDisjunction)
         for i in range(token.nargs):
             self._no_args_check()
@@ -554,7 +556,7 @@ class LogoCode:
                     if self.tw.running_turtleart:
                         try:
                             self.step.next()
-                        except ValueError, ve:
+                        except ValueError:
                             debug_output('generator already executing',
                                          self.tw.running_sugar)
                             self.tw.running_blocks = False
@@ -830,7 +832,7 @@ class LogoCode:
             chooser_dialog(self.tw.parent, path, self.push_file_data_to_heap)
         else:
             if not os.path.exists(path):
-                path, tw.load_save_folder = get_load_name(
+                path, self.tw.load_save_folder = get_load_name(
                     '.*', self.tw.load_save_folder)
                 if path is None:
                     return
