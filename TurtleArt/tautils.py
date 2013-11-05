@@ -51,7 +51,7 @@ except (ImportError, AttributeError):
 from StringIO import StringIO
 
 from taconstants import (HIT_HIDE, HIT_SHOW, XO1, XO15, XO175, XO4, UNKNOWN,
-                         MAGICNUMBER, SUFFIX)
+                         MAGICNUMBER, SUFFIX, ARG_MUST_BE_NUMBER)
 
 import logging
 _logger = logging.getLogger('turtleart-activity')
@@ -677,14 +677,11 @@ def arithmetic_check(blk1, blk2, dock1, dock2):
                 return False
             if dock1 == 2 and zero_arg(blk2.values[0]):
                 return False
-    elif blk1.name \
-            in ['product2', 'minus2', 'random', 'remainder2', 'string'] and \
-            blk2.name \
-            in ['product2', 'minus2', 'random', 'remainder2', 'string']:
+    elif blk1.name in ARG_MUST_BE_NUMBER and blk2.name in ARG_MUST_BE_NUMBER:
         if blk1.name == 'string':
             if not numeric_arg(blk1.values[0]):
                 return False
-        elif blk1.name == 'string':
+        elif blk2.name == 'string':
             if not numeric_arg(blk2.values[0]):
                 return False
     elif blk1.name in ['greater2', 'less2'] and blk2.name == 'string':

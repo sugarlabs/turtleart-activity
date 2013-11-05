@@ -179,9 +179,8 @@ class Palettes():
                           help_string=_('moves turtle backward'))
         self.tw.lc.def_prim(
             'back', 1,
-            Primitive(Turtle.forward,
-                      arg_descs=[ArgSlot(TYPE_NUMBER,
-                                         wrapper=self.prim_cache["minus"])],
+            Primitive(Turtle.backward,
+                      arg_descs=[ArgSlot(TYPE_NUMBER)],
                       call_afterwards=self.after_move))
 
         palette.add_block('clean',
@@ -214,9 +213,8 @@ turtle'))
 in degrees)'))
         self.tw.lc.def_prim(
             'left', 1,
-            Primitive(Turtle.right,
-                      arg_descs=[ArgSlot(TYPE_NUMBER,
-                                         wrapper=self.prim_cache["minus"])],
+            Primitive(Turtle.left,
+                      arg_descs=[ArgSlot(TYPE_NUMBER)],
                       call_afterwards=self.after_right))
 
         palette.add_block('right',
