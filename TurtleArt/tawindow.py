@@ -66,7 +66,7 @@ from tapalette import (palette_names, palette_blocks, expandable_blocks,
                        hidden_proto_blocks, string_or_number_args,
                        make_palette, palette_name_to_index,
                        palette_init_on_start, palette_i18n_names)
-from talogo import (LogoCode, primitive_dictionary, logoerror)
+from talogo import (LogoCode, logoerror)
 from tacanvas import TurtleGraphics
 from tablock import (Blocks, Block, Media, media_blocks_dictionary)
 from taturtle import (Turtles, Turtle)

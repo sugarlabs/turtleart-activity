@@ -24,7 +24,6 @@ import ast
 
 from tablock import Media
 from taconstants import (Color, CONSTANTS)
-from tautils import debug_output
 
 
 class Type(object):

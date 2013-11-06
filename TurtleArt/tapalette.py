@@ -90,7 +90,6 @@ except ImportError:
     HELP_PALETTE = False
 
 from taconstants import (EXPANDABLE_STYLE, EXPANDABLE_FLOW)
-from tautils import debug_output
 
 from gettext import gettext as _
 
@@ -224,7 +223,7 @@ class Palette():
 
 
 def make_palette(palette_name, colors=None, help_string=None, position=None,
-                 init_on_start=False):
+                 init_on_start=False, translation=None):
     """ Palette helper function """
     if colors is None:
         palette = Palette(palette_name)

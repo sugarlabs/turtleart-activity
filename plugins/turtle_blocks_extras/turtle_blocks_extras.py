@@ -127,12 +127,12 @@ boolean operators from Numbers palette'))
                             True)
 
     def _media_palette(self):
-        debug_output('creating %s palette' % _('media'),
-                     self.tw.running_sugar)
+
         palette = make_palette('media',
                                colors=["#A0FF00", "#80A000"],
                                help_string=_('Palette of media objects'),
-                               position=7)
+                               position=7,
+                               translation=_('media'))
 
         palette.add_block('journal',
                           style='box-style-media',
@@ -320,12 +320,12 @@ amplitude, and duration (in seconds)'))
                                                  ArgSlot(TYPE_NUMBER)]))
 
     def _sensor_palette(self):
-        debug_output('creating %s palette' % _('sensor'),
-                     self.tw.running_sugar)
+
         palette = make_palette('sensor',
                                colors=["#FF6060", "#A06060"],
                                help_string=_('Palette of sensor blocks'),
-                               position=6)
+                               position=6,
+                               translation=_('sensor'))
 
         palette.add_block('mousebutton',
                           hidden=True,
@@ -443,12 +443,12 @@ program started'))
                 call_afterwards=self.after_time))
 
     def _extras_palette(self):
-        debug_output('creating %s palette' % _('extras'),
-                     self.tw.running_sugar)
+
         palette = make_palette('extras',
                                colors=["#FF0000", "#A00000"],
                                help_string=_('Palette of extra options'),
-                               position=8)
+                               position=8,
+                               translation=_('extras'))
 
         palette.add_block('push',
                           style='basic-style-1arg',
@@ -863,13 +863,13 @@ module found in the Journal'))
                           help_string=_('top of a collapsed stack'))
 
     def _portfolio_palette(self):
-        debug_output('creating %s palette' % _('portfolio'),
-                     self.tw.running_sugar)
+
         palette = make_palette('portfolio',
                                colors=["#0606FF", "#0606A0"],
                                help_string=_('Palette of presentation \
 templates'),
-                               position=9)
+                               position=9,
+                               translation=_('portfolio'))
 
         palette.add_block('hideblocks',
                           style='basic-style-extended-vertical',
@@ -1101,12 +1101,11 @@ Journal objects'))
                 os.path.exists(self.tw.macros_path):
             files = glob.glob(os.path.join(self.tw.macros_path, '*.tb'))
             if len(files) > 0:
-                debug_output('creating %s palette' % _('my blocks'),
-                             self.tw.running_sugar)
                 palette = make_palette(
                     'my blocks',
                     colors=["#FFFF00", "#A0A000"],
-                    help_string=_('Palette of user-defined operators'))
+                    help_string=_('Palette of user-defined operators'),
+                    translation=_('my blocks'))
 
             for tafile in files:
                 data = data_from_file(tafile)
