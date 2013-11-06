@@ -3684,7 +3684,7 @@ before making changes to your program'))
                     if block is not None:
                         self.selected_spr = block.spr
                         block.highlight()
-                else:
+                elif blk is not None:
                     self._jog_block(blk, mov_dict[keyname][0],
                                     mov_dict[keyname][1])
             elif not block_flag:
