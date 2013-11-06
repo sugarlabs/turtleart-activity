@@ -546,12 +546,7 @@ class Turtle:
 
     def right(self, degrees, share=True):
         ''' Rotate turtle clockwise '''
-        try:
-            self._heading += degrees
-        except (TypeError, ValueError):
-            debug_output('bad value sent to %s' % (__name__),
-                         self._turtles.turtle_window.running_sugar)
-            return
+        self._heading += degrees
         self._heading %= 360
 
         self._update_sprite_heading()
@@ -562,12 +557,7 @@ class Turtle:
             self._turtles.turtle_window.send_event(event)
 
     def left(self, degrees, share=True):
-        try:
-            degrees = 0 - degrees
-        except:
-            debug_output('bad value sent to %s' % (__name__),
-                         self._turtles.turtle_window.running_sugar)
-            return
+        degrees = 0 - degrees
         self.right(degrees, share)
 
     def _draw_line(self, old, new, pendown):
@@ -583,17 +573,11 @@ class Turtle:
                 self._poly_points.append(('line', pos2[0], pos2[1]))
 
     def forward(self, distance, share=True):
-        print distance
         scaled_distance = distance * self._turtles.turtle_window.coord_scale
 
         old = self.get_xy()
-        try:
-            xcor = old[0] + scaled_distance * sin(self._heading * DEGTOR)
-            ycor = old[1] + scaled_distance * cos(self._heading * DEGTOR)
-        except (TypeError, ValueError):
-            debug_output('bad value sent to %s' % (__name__),
-                         self._turtles.turtle_window.running_sugar)
-            return
+        xcor = old[0] + scaled_distance * sin(self._heading * DEGTOR)
+        ycor = old[1] + scaled_distance * cos(self._heading * DEGTOR)
 
         self._draw_line(old, (xcor, ycor), True)
         self.move_turtle((xcor, ycor))
@@ -604,27 +588,17 @@ class Turtle:
             self._turtles.turtle_window.send_event(event)
 
     def backward(self, distance, share=True):
-        try:
-            distance = 0 - distance
-        except:
-            debug_output('bad value sent to %s' % (__name__),
-                         self._turtles.turtle_window.running_sugar)
-            return
+        distance = 0 - distance
         self.forward(distance, share)
 
     def set_xy(self, x, y, share=True, pendown=True, dragging=False):
         old = self.get_xy()
-        try:
-            if dragging:
-                xcor = x
-                ycor = y
-            else:
-                xcor = x * self._turtles.turtle_window.coord_scale
-                ycor = y * self._turtles.turtle_window.coord_scale
-        except (TypeError, ValueError):
-            debug_output('bad value sent to %s' % (__name__),
-                         self._turtles.turtle_window.running_sugar)
-            return
+        if dragging:
+            xcor = x
+            ycor = y
+        else:
+            xcor = x * self._turtles.turtle_window.coord_scale
+            ycor = y * self._turtles.turtle_window.coord_scale
 
         self._draw_line(old, (xcor, ycor), pendown)
         self.move_turtle((xcor, ycor))
@@ -639,15 +613,10 @@ class Turtle:
         ''' Draw an arc '''
         if self._pen_state:
             self._turtles.turtle_window.canvas.set_source_rgb()
-        try:
-            if a < 0:
-                pos = self.larc(-a, r)
-            else:
-                pos = self.rarc(a, r)
-        except (TypeError, ValueError):
-            debug_output('bad value sent to %s' % (__name__),
-                         self._turtles.turtle_window.running_sugar)
-            return
+        if a < 0:
+            pos = self.larc(-a, r)
+        else:
+            pos = self.rarc(a, r)
 
         self.move_turtle(pos)
 

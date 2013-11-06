@@ -1,9 +1,13 @@
 193
 
 ENHANCEMENTS:
-* Add Marian Zepf's export Python
-* Add busy cursor while project is loading from store
+* Merged Marian Zepf's export Python branch (This is really fun. Give it a try.)
+* Added busy cursor while project is loading from store
+* New sample program from Cynthia Solomon
 * New translations
+
+BUG FIX:
+* Prevent text blocks from docking to blocks requiring numeric arguments
 
 192
 

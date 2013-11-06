@@ -3634,6 +3634,7 @@ before making changes to your program'))
 
     def get_keyboard_input(self):
         """ Query keyboard and update cached keyboard input """
+        self.window.grab_focus()
         if len(self.keypress) == 1:
             self.keyboard = ord(self.keypress[0])
         elif self.keypress in KEY_DICT:
