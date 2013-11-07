@@ -4478,6 +4478,9 @@ before making changes to your program'))
         elif shp[0] == '#':
             shp = shp[1:]
             label = ''
+        if self.running_sugar and \
+           shp not in ['print', 'status', 'info', 'help']:
+            self.activity.error_list.append(shp)
         self.status_spr.set_shape(self.status_shapes[shp])
         self.status_spr.set_label_attributes(12.0, rescale=False)
         if shp == 'status':
