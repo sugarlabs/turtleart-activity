@@ -66,7 +66,7 @@ from tapalette import (palette_names, palette_blocks, expandable_blocks,
                        hidden_proto_blocks, string_or_number_args,
                        make_palette, palette_name_to_index,
                        palette_init_on_start, palette_i18n_names)
-from talogo import (LogoCode, primitive_dictionary, logoerror)
+from talogo import (LogoCode, logoerror)
 from tacanvas import TurtleGraphics
 from tablock import (Blocks, Block, Media, media_blocks_dictionary)
 from taturtle import (Turtles, Turtle)
@@ -3684,7 +3684,7 @@ before making changes to your program'))
                     if block is not None:
                         self.selected_spr = block.spr
                         block.highlight()
-                else:
+                elif blk is not None:
                     self._jog_block(blk, mov_dict[keyname][0],
                                     mov_dict[keyname][1])
             elif not block_flag:
@@ -4478,6 +4478,9 @@ before making changes to your program'))
         elif shp[0] == '#':
             shp = shp[1:]
             label = ''
+        if self.running_sugar and \
+           shp not in ['print', 'status', 'info', 'help']:
+            self.activity.error_list.append(shp)
         self.status_spr.set_shape(self.status_shapes[shp])
         self.status_spr.set_label_attributes(12.0, rescale=False)
         if shp == 'status':

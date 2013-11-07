@@ -108,7 +108,6 @@ from tatype import (TYPE_BOOL, TYPE_BOX, TYPE_CHAR, TYPE_COLOR, TYPE_FLOAT,
                     TYPE_INT, TYPE_NUMBER, TYPE_NUMERIC_STRING, TYPE_OBJECT,
                     TYPE_STRING)
 from taturtle import Turtle
-from tautils import debug_output
 
 
 def _millisecond():
@@ -151,11 +150,10 @@ class Palettes():
     def _turtle_palette(self):
         ''' The basic Turtle Art turtle palette '''
 
-        debug_output('creating %s palette' % _('turtle'),
-                     self.tw.running_sugar)
         palette = make_palette('turtle',
                                colors=["#00FF00", "#00A000"],
-                               help_string=_('Palette of turtle commands'))
+                               help_string=_('Palette of turtle commands'),
+                               translation=_('turtle'))
 
         palette.add_block('forward',
                           style='basic-style-1arg',
@@ -346,11 +344,10 @@ setxy :x :y\npendown\nend\n')
     def _pen_palette(self):
         ''' The basic Turtle Art pen palette '''
 
-        debug_output('creating %s palette' % _('pen'),
-                     self.tw.running_sugar)
         palette = make_palette('pen',
                                colors=["#00FFFF", "#00A0A0"],
-                               help_string=_('Palette of pen commands'))
+                               help_string=_('Palette of pen commands'),
+                               translation=_('pen'))
 
         palette.add_block('fillscreen',
                           hidden=True,
@@ -540,11 +537,10 @@ pensize\nend\n')
     def _color_palette(self):
         ''' The basic Turtle Art color palette '''
 
-        debug_output('creating %s palette' % _('colors'),
-                     self.tw.running_sugar)
         palette = make_palette('colors',
                                colors=["#00FFFF", "#00A0A0"],
-                               help_string=_('Palette of pen colors'))
+                               help_string=_('Palette of pen colors'),
+                               translation=_('colors'))
 
         color_names = ('red', 'orange', 'yellow', 'green', 'cyan', 'blue',
                        'purple', 'white', 'black')
@@ -627,11 +623,10 @@ tasetshade :shade \n')
     def _numbers_palette(self):
         ''' The basic Turtle Art numbers palette '''
 
-        debug_output('creating %s palette' % _('numbers'),
-                     self.tw.running_sugar)
         palette = make_palette('numbers',
                                colors=["#FF00FF", "#A000A0"],
-                               help_string=_('Palette of numeric operators'))
+                               help_string=_('Palette of numeric operators'),
+                               translation=_('numbers'))
 
         palette.add_block('plus2',
                           style='number-style',
@@ -873,11 +868,10 @@ operators'))
     def _flow_palette(self):
         ''' The basic Turtle Art flow palette '''
 
-        debug_output('creating %s palette' % _('flow'),
-                     self.tw.running_sugar)
         palette = make_palette('flow',
                                colors=["#FFC000", "#A08000"],
-                               help_string=_('Palette of flow operators'))
+                               help_string=_('Palette of flow operators'),
+                               translation=_('flow'))
 
         palette.add_block('wait',
                           style='basic-style-1arg',
@@ -998,11 +992,10 @@ boolean operators from Numbers palette'))
     def _blocks_palette(self):
         ''' The basic Turtle Art blocks palette '''
 
-        debug_output('creating %s palette' % _('blocks'),
-                     self.tw.running_sugar)
         palette = make_palette('blocks',
                                colors=["#FFFF00", "#A0A000"],
-                               help_string=_('Palette of variable blocks'))
+                               help_string=_('Palette of variable blocks'),
+                               translation=_('blocks'))
 
         palette.add_block('start',
                           style='basic-style-head',
@@ -1190,11 +1183,10 @@ variable'))
     def _trash_palette(self):
         ''' The basic Turtle Art turtle palette '''
 
-        debug_output('creating %s palette' % _('trash'),
-                     self.tw.running_sugar)
         palette = make_palette('trash',
                                colors=["#FFFF00", "#A0A000"],
-                               help_string=_('trash'))
+                               help_string=_('trash'),
+                               translation=_('trash'))
 
         palette.add_block('empty',
                           style='blank-style',

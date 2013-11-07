@@ -123,6 +123,13 @@ def _action_stack_to_python(block, tw, name="start"):
     # serialize the ASTs into python code
     generated_code = codegen.to_source(action_stack_ast)
 
+    # FIXME: there must be a better way to do this using the AST
+    # patch code to include missing get_active_turtle() calls
+    if generated_code.count('turtles.set_turtle') > 0:
+        generated_code = _insert_extra_code(
+            generated_code, 'turtles.set_turtle',
+            'turtle = turtles.get_active_turtle()\n')
+
     # wrap the action stack setup code around everything
     name_id = _make_identifier(name)
     if name == 'start':
@@ -144,6 +151,27 @@ def _action_stack_to_python(block, tw, name="start"):
                 _ACTION_STACK_END % (name, name_id)]
     return "".join(snippets)
 
+
+def _insert_extra_code(generated_code, target, insert):
+    """ Add extra code when needed """
+    tmp_code = ''
+    while target in generated_code:
+        i = generated_code.index(target)
+        if i == 0:
+            indent = 0
+        else:
+            indent = 0
+            while generated_code[i - 1 - indent] == ' ':
+                indent += 1
+        while generated_code[i] != '\n':
+            i += 1
+        i += 1  # include the newline
+        tmp_code += generated_code[0:i]
+        for j in range(indent):
+            tmp_code += ' '
+        tmp_code += insert
+        generated_code = generated_code[i:]
+    return tmp_code + generated_code
 
 def _walk_action_stack(top_block, lc, convert_me=True):
     """ Turn a stack of blocks into a list of ASTs
