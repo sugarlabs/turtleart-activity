@@ -253,6 +253,7 @@ class TurtleArtWindow():
         self.selected_selector = None
         self.previous_selector = None
         self.selector_shapes = []
+        self._highlighted_blk = None
         self.selected_blk = None
         self.selected_spr = None
         self.selected_turtle = None
@@ -1601,9 +1602,10 @@ before making changes to your program'))
             self.status_spr.hide()
             self._autohide_shape = True
 
-    def _look_for_a_blk(self, spr, x, y):
+    def _look_for_a_blk(self, spr, x, y, blk=None):
         # From the sprite at x, y, look for a corresponding block
-        blk = self.block_list.spr_to_block(spr)
+        if blk is None:
+            blk = self.block_list.spr_to_block(spr)
         ''' If we were copying and didn't click on a block... '''
         if self.copying_blocks or self.sharing_blocks or self.saving_blocks:
             if blk is None or blk.type != 'block':
@@ -3623,9 +3625,42 @@ before making changes to your program'))
             elif keyname == 'g':
                 self._align_to_grid()
 
-        elif self.selected_blk is not None and \
-                self.selected_blk.name != 'proto':
-            self._process_keyboard_commands(keyname, block_flag=True)
+        elif keyname == 'Tab':
+            # For the first pass, just tab through palettes
+            if self.selected_palette is None:
+                print 'selected palette is None'
+                return True
+            else:
+                p = self.palettes[self.selected_palette]
+            i = 0
+            if self._highlighted_blk is not None:
+                self._highlighted_blk.unhighlight()
+                if self._highlighted_blk in p:
+                    i = p.index(self._highlighted_blk)
+                    if i == len(p) - 1:
+                        i = 0
+                    else:
+                        i += 1
+            self._highlighted_blk = p[i]
+            self._highlighted_blk.highlight()
+            self.selected_blk = p[i]
+
+        elif self.selected_blk is not None:
+            if self.selected_blk.type == 'proto':
+                if keyname == 'Return':
+                    (x, y) = self.selected_blk.spr.get_xy()
+                    if self.orientation == 0:
+                        x += 20
+                        y += PALETTE_HEIGHT + self.toolbar_offset
+                    else:
+                        x += PALETTE_WIDTH
+                        y += 20
+                    self._look_for_a_blk(None, x, y, blk=self.selected_blk)
+                    self._unselect_all_blocks()
+                    self.selected_spr = None
+                    self.drag_group = None
+            else:
+                self._process_keyboard_commands(keyname, block_flag=True)
 
         elif self.turtles.spr_to_turtle(self.selected_spr) is not None:
             self._process_keyboard_commands(keyname, block_flag=False)
