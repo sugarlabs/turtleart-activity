@@ -551,6 +551,7 @@ Would you like to save before quitting?'))
         if len(logocode) == 0:
             return
         save_type = '.lg'
+        self.tw.load_save_folder = self._get_execution_dir()
         filename, self.tw.load_save_folder = get_save_name(
             save_type, self.tw.load_save_folder, 'logosession')
         if isinstance(filename, unicode):
@@ -580,7 +581,8 @@ Would you like to save before quitting?'))
         elif default_name.endswith(".ta") or default_name.endswith(".tb"):
             default_name = default_name[:-3]
         save_type = '.py'
-        (filename, self.tw.load_save_folder) = get_save_name(
+        self.tw.load_save_folder = self._get_execution_dir()
+        filename, self.tw.load_save_folder = get_save_name(
             save_type, self.tw.load_save_folder, default_name)
         if isinstance(filename, unicode):
             filename = filename.encode('utf-8')
