@@ -1155,10 +1155,6 @@ def ast_yield_true():
     return ast.Yield(value=ast.Name(id='True', ctx=ast.Load))
 
 
-def ast_turtle():
-    return ast.Turtle(value=None)
-
-
 def export_me(something):
     """ Return True iff this is not a Primitive or its export_me attribute
     is True, i.e. everything is exportable except for Primitives with
