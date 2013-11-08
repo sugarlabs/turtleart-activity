@@ -488,6 +488,12 @@ class Primitive(object):
                         ast_list.append(new_ast)
             return ast_list
 
+        # set turtle
+        elif self == LogoCode.prim_turtle:
+            text = 'turtle = turtles.get_active_turtle()'
+            return [get_call_ast('logo.prim_turtle', new_arg_asts),
+                    ast_extensions.ExtraCode(text)]
+
         # comment
         elif self == Primitive.comment:
             if isinstance(new_arg_asts[0], ast.Str):
@@ -1147,6 +1153,10 @@ def value_to_ast(value, *args_for_prim, **kwargs_for_prim):
 
 def ast_yield_true():
     return ast.Yield(value=ast.Name(id='True', ctx=ast.Load))
+
+
+def ast_turtle():
+    return ast.Turtle(value=None)
 
 
 def export_me(something):

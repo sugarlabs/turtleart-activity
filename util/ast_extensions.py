@@ -24,6 +24,23 @@
 import ast
 
 
+class ExtraCode(ast.stmt):
+    """Adds extra content to a primitive needed in Python code, e.g.,
+    changes to the turtle (e.g., prim_turtle) require the addition of
+    turtle = turtles.get_active_turtle()
+    Extends the Python abstract grammar by the following: stmt
+    = ExtraContent(string text) | ... """
+
+    _fields = ('text')
+
+    def __init__(self, text="", lineno=1, col_offset=0):
+        """ text -- the textual content of the comment, i.e. everything
+            directly following the hashtag until the next newline """
+        self.text = text
+        self.lineno = lineno
+        self.col_offset = col_offset
+
+
 class Comment(ast.stmt):
     """ An inline comment, starting with a hashtag (#).
     Extends the Python abstract grammar by the following:
