@@ -1273,10 +1273,10 @@ class TurtleArtActivity(activity.Activity):
         self.metadata['public'] = data_to_string(['activity count',
                                                   'turtle blocks'])
         if len(self.error_list) > 0:
+            errors = []
             if 'error_list' in self.metadata:
-                errors = data_from_string(self.metadata['error_list'])
-            else:
-                errors = []
+                for error in data_from_string(self.metadata['error_list']):
+                    errors.append(error)
             for error in self.error_list:
                 errors.append(error)
             self.metadata['error_list'] = data_to_string(errors)
