@@ -331,9 +331,9 @@ class Audio_sensors(Plugin):
     def prim_sound(self, channel=0):
         if not self._status:
             return 0
+        self._prim_sound(0)
         # Return average of both channels if sampling in stereo
         if self._channels == 2:
-            self._prim_sound(0)
             self._prim_sound(1)
             return (self._sound[0] + self._sound[1]) / 2.0
         else:
@@ -354,9 +354,9 @@ class Audio_sensors(Plugin):
     def prim_volume(self, channel=0):
         if not self._status:
             return 0
+        self._prim_volume(0)
         # Return average of both channels if sampling in stereo
         if self._channels == 2:
-            self._prim_volume(0)
             self._prim_volume(1)
             return (self._volume[0] + self._volume[1]) / 2.0
         else:
@@ -377,9 +377,9 @@ class Audio_sensors(Plugin):
     def prim_pitch(self, channel=0):
         if not self._status:
             return 0
+        self._prim_pitch(0)
         # Return average of both channels if sampling in stereo
         if self._channels == 2:
-            self._prim_pitch(0)
             self._prim_pitch(1)
             return (self._pitch[0] + self._pitch[1]) / 2.0
         else:
