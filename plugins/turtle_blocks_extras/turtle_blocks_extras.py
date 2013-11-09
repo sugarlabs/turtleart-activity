@@ -787,7 +787,7 @@ module found in the Journal'))
                           string_or_number=True,
                           help_string=_('chooses which turtle to command'))
         self.tw.lc.def_prim('addturtle', 1,
-                            Primitive(self.tw.turtles.set_turtle,
+                            Primitive(self.tw.lc.prim_turtle,
                                       arg_descs=[ArgSlot(TYPE_STRING)]))
 
         palette.add_block('turtlex',

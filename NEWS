@@ -3,7 +3,9 @@
 ENHANCEMENTS:
 * Merged Marian Zepf's export Python branch (This is really fun. Give it a try.)
 * Added busy cursor while project is loading from store
+* Added tabbing through palette proto-blocks
 * New sample program from Cynthia Solomon
+* Logging errors in project metadata for making learning visible
 * New translations
 
 BUG FIX:

@@ -35,7 +35,7 @@
     Modified by Marion Zepf.
 """
 from ast import *
-from ast_extensions import Comment
+from ast_extensions import Comment, ExtraCode
 
 
 def to_source(node, indent_with=' ' * 4, add_line_information=False):
@@ -361,6 +361,10 @@ class SourceGenerator(NodeVisitor):
     def visit_Comment(self, node):
         self.newline(node)
         self.write('#' + str(node.text))
+
+    def visit_ExtraCode(self, node):
+        self.newline(node)
+        self.write(str(node.text))
 
     # Expressions
 

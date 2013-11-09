@@ -735,6 +735,9 @@ class LogoCode:
         """ Stop execution of a stack """
         self.procstop = True
 
+    def prim_turtle(self, name):
+        self.tw.turtles.set_turtle(name)
+
     def prim_wait(self, wait_time):
         """ Show the turtle while we wait """
         self.tw.turtles.get_active_turtle().show()
@@ -1357,7 +1360,7 @@ class LogoCode:
             first_label_blk = HiddenBlock('string', value=action_flow_name)
 
         # Assign new connections and build the docks
-        if inflow is not None:
+        if inflow is not None and b in inflow.connections:
             i = inflow.connections.index(b)
             if until_blk and whileflow is not None:
                 inflow.connections[i] = action_first

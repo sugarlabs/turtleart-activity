@@ -347,12 +347,7 @@ class Turtle:
 
     def set_heading(self, heading, share=True):
         ''' Set the turtle heading (one shape per 360/SHAPES degrees) '''
-        try:
-            self._heading = heading
-        except (TypeError, ValueError):
-            debug_output('bad value sent to %s' % (__name__),
-                         self._turtles.turtle_window.running_sugar)
-            return
+        self._heading = heading
         self._heading %= 360
 
         self._update_sprite_heading()
@@ -384,12 +379,7 @@ class Turtle:
             else:
                 color = self._pen_color
 
-        try:
-            self._pen_color = color
-        except (TypeError, ValueError):
-            debug_output('bad value sent to %s' % (__name__),
-                         self._turtles.turtle_window.running_sugar)
-            return
+        self._pen_color = color
 
         self._turtles.turtle_window.canvas.set_fgcolor(shade=self._pen_shade,
                                                        gray=self._pen_gray,
@@ -403,12 +393,7 @@ class Turtle:
     def set_gray(self, gray=None, share=True):
         ''' Set the pen gray level for this turtle. '''
         if gray is not None:
-            try:
-                self._pen_gray = gray
-            except (TypeError, ValueError):
-                debug_output('bad value sent to %s' % (__name__),
-                             self._turtles.turtle_window.running_sugar)
-                return
+            self._pen_gray = gray
 
         if self._pen_gray < 0:
             self._pen_gray = 0
@@ -427,12 +412,7 @@ class Turtle:
     def set_shade(self, shade=None, share=True):
         ''' Set the pen shade for this turtle. '''
         if shade is not None:
-            try:
-                self._pen_shade = shade
-            except (TypeError, ValueError):
-                debug_output('bad value sent to %s' % (__name__),
-                             self._turtles.turtle_window.running_sugar)
-                return
+            self._pen_shade = shade
 
         self._turtles.turtle_window.canvas.set_fgcolor(shade=self._pen_shade,
                                                        gray=self._pen_gray,
@@ -446,12 +426,7 @@ class Turtle:
     def set_pen_size(self, pen_size=None, share=True):
         ''' Set the pen size for this turtle. '''
         if pen_size is not None:
-            try:
-                self._pen_size = max(0, pen_size)
-            except (TypeError, ValueError):
-                debug_output('bad value sent to %s' % (__name__),
-                             self._turtles.turtle_window.running_sugar)
-                return
+            self._pen_size = max(0, pen_size)
 
         self._turtles.turtle_window.canvas.set_pen_size(
             self._pen_size * self._turtles.turtle_window.coord_scale)
