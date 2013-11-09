@@ -82,36 +82,24 @@ class Audio_sensors(Plugin):
                                colors=["#FF6060", "#A06060"],
                                help_string=_('Palette of sensor blocks'),
                                position=6)
-
+        hidden = True
         if self._status:
-            palette.add_block('sound',
-                              style='box-style',
-                              label=_('sound'),
-                              help_string=_('raw microphone input signal'),
-                              value_block=True,
-                              prim_name='sound')
+            hidden = False
 
-            palette.add_block('volume',
-                              style='box-style',
-                              label=_('loudness'),
-                              help_string=_('microphone input volume'),
-                              value_block=True,
-                              prim_name='volume')
-        else:
-            palette.add_block('sound',
-                              hidden=True,
-                              style='box-style',
-                              label=_('sound'),
-                              help_string=_('raw microphone input signal'),
-                              value_block=True,
-                              prim_name='sound')
-            palette.add_block('volume',
-                              hidden=True,
-                              style='box-style',
-                              label=_('loudness'),
-                              help_string=_('microphone input volume'),
-                              value_block=True,
-                              prim_name='volume')
+        palette.add_block('sound',
+                          hidden=hidden,
+                          style='box-style',
+                          label=_('sound'),
+                          help_string=_('raw microphone input signal'),
+                          value_block=True,
+                          prim_name='sound')
+        palette.add_block('volume',
+                          hidden=hidden,
+                          style='box-style',
+                          label=_('loudness'),
+                          help_string=_('microphone input volume'),
+                          value_block=True,
+                          prim_name='volume')
 
         self._parent.lc.def_prim(
             'sound', 0,
@@ -127,21 +115,17 @@ class Audio_sensors(Plugin):
                       kwarg_descs={'channel': ConstantArg(0)},
                       call_afterwards=self.after_volume))
 
+        hidden = True
         if PITCH_AVAILABLE and self._status:
-            palette.add_block('pitch',
-                              style='box-style',
-                              label=_('pitch'),
-                              help_string=_('microphone input pitch'),
-                              value_block=True,
-                              prim_name='pitch')
-        else:
-            palette.add_block('pitch',
-                              hidden=True,
-                              style='box-style',
-                              label=_('pitch'),
-                              help_string=_('microphone input pitch'),
-                              value_block=True,
-                              prim_name='pitch')
+            hidden = False
+
+        palette.add_block('pitch',
+                          hidden=hidden,
+                          style='box-style',
+                          label=_('pitch'),
+                          help_string=_('microphone input pitch'),
+                          value_block=True,
+                          prim_name='pitch')
         self._parent.lc.def_prim(
             'pitch', 0,
             Primitive(self.prim_pitch,
@@ -149,6 +133,7 @@ class Audio_sensors(Plugin):
                       kwarg_descs={'channel': ConstantArg(0)},
                       call_afterwards=self.after_pitch))
 
+        hidden = True
         if self.hw in [XO1, XO15, XO175, XO4, XO30] and self._status:
             if self.hw == XO1:
                 self.voltage_gain = 0.000022
@@ -162,59 +147,38 @@ class Audio_sensors(Plugin):
             else:  # XO 3.0
                 self.voltage_gain = 0.000077
                 self.voltage_bias = 0.72
-            palette.add_block('resistance',
-                              style='box-style',
-                              label=_('resistance'),
-                              help_string=_('microphone input resistance'),
-                              value_block=True,
-                              prim_name='resistance')
-            palette.add_block('voltage',
-                              style='box-style',
-                              label=_('voltage'),
-                              help_string=_('microphone input voltage'),
-                              value_block=True,
-                              prim_name='voltage')
-        else:
-            palette.add_block('resistance',
-                              hidden=True,
-                              style='box-style',
-                              label=_('resistance'),
-                              help_string=_('microphone input resistance'),
-                              prim_name='resistance')
-            palette.add_block('voltage',
-                              hidden=True,
-                              style='box-style',
-                              label=_('voltage'),
-                              help_string=_('microphone input voltage'),
-                              prim_name='voltage')
+            hidden = False
 
+        palette.add_block('resistance',
+                          hidden=hidden,
+                          style='box-style',
+                          label=_('resistance'),
+                          help_string=_('microphone input resistance'),
+                          prim_name='resistance')
+        palette.add_block('voltage',
+                          hidden=hidden,
+                          style='box-style',
+                          label=_('voltage'),
+                          help_string=_('microphone input voltage'),
+                          prim_name='voltage')
+
+        hidden = True
         # FIXME: Only add stereo capture for XO15 (broken on ARM #3675)
         if self.hw in [XO15] and self._status:
-            palette.add_block('resistance2',
-                              style='box-style',
-                              label=_('resistance') + '2',
-                              help_string=_('microphone input resistance'),
-                              value_block=True,
-                              prim_name='resistance2')
-            palette.add_block('voltage2',
-                              style='box-style',
-                              label=_('voltage') + '2',
-                              help_string=_('microphone input voltage'),
-                              value_block=True,
-                              prim_name='voltage2')
-        else:
-            palette.add_block('resistance2',
-                              hidden=True,
-                              style='box-style',
-                              label=_('resistance') + '2',
-                              help_string=_('microphone input resistance'),
-                              prim_name='resistance2')
-            palette.add_block('voltage2',
-                              hidden=True,
-                              style='box-style',
-                              label=_('voltage') + '2',
-                              help_string=_('microphone input voltage'),
-                              prim_name='voltage2')
+            hidden = False
+
+        palette.add_block('resistance2',
+                          hidden=hidden,
+                          style='box-style',
+                          label=_('resistance') + '2',
+                          help_string=_('microphone input resistance'),
+                          prim_name='resistance2')
+        palette.add_block('voltage2',
+                          hidden=hidden,
+                          style='box-style',
+                          label=_('voltage') + '2',
+                          help_string=_('microphone input voltage'),
+                          prim_name='voltage2')
         self._parent.lc.def_prim(
             'resistance', 0,
             Primitive(self.prim_resistance,
