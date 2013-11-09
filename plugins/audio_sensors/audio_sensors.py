@@ -135,15 +135,19 @@ class Audio_sensors(Plugin):
 
         hidden = True
         if self.hw in [XO1, XO15, XO175, XO4, XO30] and self._status:
+            # Calibration based on http://bugs.sugarlabs.org/ticket/4649
             if self.hw == XO1:
                 self.voltage_gain = 0.000022
                 self.voltage_bias = 1.14
             elif self.hw == XO15:
                 self.voltage_gain = -0.00015
                 self.voltage_bias = 1.70
-            elif self.hw in [XO175, XO4]:  # recalibrate in light of #3675?
-                self.voltage_gain = 0.000071
-                self.voltage_bias = 0.55
+            elif self.hw == XO175:  # Range 0.01V to 3.01V 
+                self.voltage_gain = 0.000101
+                self.voltage_bias = 1.371
+            elif self.hw == XO4:  # Range 0.17V to 3.08V
+                self.voltage_gain = 0.0004073
+                self.voltage_bias = 1.6289
             else:  # XO 3.0
                 self.voltage_gain = 0.000077
                 self.voltage_bias = 0.72
@@ -163,7 +167,7 @@ class Audio_sensors(Plugin):
                           prim_name='voltage')
 
         hidden = True
-        # FIXME: Only add stereo capture for XO15 (broken on ARM #3675)
+        # Only add stereo capture for XO15 (broken on ARM #3675)
         if self.hw in [XO15] and self._status:
             hidden = False
 
@@ -379,7 +383,7 @@ class Audio_sensors(Plugin):
         elif self.hw == XO15:
             self._prim_resistance(channel)
             return self._resistance[channel]
-        # FIXME: For XO175: channel assignment is seemingly random
+        # For XO175: channel assignment is seemingly random
         # (#3675), one of them will be 0
         else:
             self._prim_resistance(0)
@@ -393,8 +397,8 @@ class Audio_sensors(Plugin):
         ''' return resistance sensor value '''
         buf = self.ringbuffer[channel].read(None, self.input_step)
         if len(buf) > 0:
-            # See <http://bugs.sugarlabs.org/ticket/552#comment:7>
-            # TODO: test this calibration on XO 1.5, XO 1.75
+            # See http://bugs.sugarlabs.org/ticket/552#comment:7
+            # and http://bugs.sugarlabs.org/ticket/4649
             avg_buf = float(_avg(buf))
             if self.hw == XO1:
                 self._resistance[channel] = \
@@ -404,16 +408,22 @@ class Audio_sensors(Plugin):
                     self._resistance[channel] = (420000000 / avg_buf) - 13500
                 else:
                     self._resistance[channel] = 420000000
-            elif self.hw in [XO175, XO4]:
+            elif self.hw == XO175:  # Range 0 to inf ohms
                 if avg_buf < 30700:
                     self._resistance[channel] = \
-                        0.12 * ((180000000 / (30700 - avg_buf)) - 3150)
+                        (48000000. / (15740 - avg_buf)) - 1640
+                else:
+                    self._resistance[channel] = 999999999
+            elif self.hw == XO4:  # Range 0 to inf ohms
+                if avg_buf < 6629:
+                    self._resistance[channel] = \
+                        (50000000. / (6629 - avg_buf)) - 3175
                 else:
                     self._resistance[channel] = 999999999
             else:  # XO 3.0
                 if avg_buf < 30514:
                     self._resistance[channel] = \
-                        (46000000 / (30514 - avg_buf)) - 1150
+                        (46000000. / (30514 - avg_buf)) - 1150
                 else:
                     self._resistance[channel] = 999999999
             if self._resistance[channel] < 0:
