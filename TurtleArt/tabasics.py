@@ -544,6 +544,10 @@ pensize\nend\n')
 
         color_names = ('red', 'orange', 'yellow', 'green', 'cyan', 'blue',
                        'purple', 'white', 'black')
+        # Need to make sure color names are included in the PO files
+        color_names_i18n = (_('red'), _('orange'), _('yellow'), _('green'),
+                            _('cyan'), _('blue'), _('purple'), _('white'),
+                            _('black'))
         for name in color_names:
             self._make_constant(palette, name, _(name), name)
 
