@@ -1627,9 +1627,9 @@ before making changes to your program'))
                 self._restore_from_trash(find_top_block(blk))
             elif blk.type == 'proto':
                 if self.deleting_blocks:
-                    if 'my blocks' in palette_names and \
+                    if 'myblocks' in palette_names and \
                             self.selected_palette == \
-                            palette_names.index('my blocks'):
+                            palette_names.index('myblocks'):
                         self._delete_stack_alert(blk)
                     self.parent.get_window().set_cursor(
                         gtk.gdk.Cursor(gtk.gdk.LEFT_PTR))
@@ -1838,7 +1838,7 @@ before making changes to your program'))
                     error_output('Could not remove macro %s: %s' %
                                  (macro_path, e))
                     return
-                i = palette_names.index('my blocks')
+                i = palette_names.index('myblocks')
                 palette_blocks[i].remove(blk.name)
                 for pblk in self.palettes[i]:
                     if pblk.name == blk.name:

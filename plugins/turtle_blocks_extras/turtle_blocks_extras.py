@@ -1102,7 +1102,7 @@ Journal objects'))
             files = glob.glob(os.path.join(self.tw.macros_path, '*.tb'))
             if len(files) > 0:
                 palette = make_palette(
-                    'my blocks',
+                    'myblocks',
                     colors=["#FFFF00", "#A0A000"],
                     help_string=_('Palette of user-defined operators'),
                     translation=_('my blocks'))
