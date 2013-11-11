@@ -18,7 +18,6 @@
 from gettext import gettext as _
 
 try:
-    from numpy import append
     from numpy.fft import rfft
     PITCH_AVAILABLE = True
 except:
@@ -33,7 +32,6 @@ from plugins.audio_sensors.ringbuffer import RingBuffer1d
 
 from TurtleArt.tapalette import make_palette
 from TurtleArt.taconstants import XO1, XO15, XO175, XO30, XO4
-from TurtleArt.talogo import primitive_dictionary
 from TurtleArt.tautils import debug_output
 from TurtleArt.taprimitive import (ConstantArg, Primitive)
 from TurtleArt.tatype import TYPE_NUMBER
@@ -143,8 +141,8 @@ class Audio_sensors(Plugin):
                 self.voltage_gain = -0.00015
                 self.voltage_bias = 1.70
             elif self.hw == XO175:  # Range 0.01V to 3.01V 
-                self.voltage_gain = 0.000101
-                self.voltage_bias = 1.371
+                self.voltage_gain = 0.0000516
+                self.voltage_bias = 1.3598
             elif self.hw == XO4:  # Range 0.17V to 3.08V
                 self.voltage_gain = 0.0004073
                 self.voltage_bias = 1.6289
@@ -409,9 +407,9 @@ class Audio_sensors(Plugin):
                 else:
                     self._resistance[channel] = 420000000
             elif self.hw == XO175:  # Range 0 to inf ohms
-                if avg_buf < 30700:
+                if avg_buf < 30519:
                     self._resistance[channel] = \
-                        (48000000. / (15740 - avg_buf)) - 1640
+                        (92000000. / (30519 - avg_buf)) - 1620
                 else:
                     self._resistance[channel] = 999999999
             elif self.hw == XO4:  # Range 0 to inf ohms
