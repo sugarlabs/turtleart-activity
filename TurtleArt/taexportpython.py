@@ -39,6 +39,13 @@ from tawindow import plugins_in_use
 _SETUP_CODE_START = """\
 #!/usr/bin/env python
 
+import os, sys
+if os.path.exists('../TurtleBlocks.activity'):
+    sys.path.append('../TurtleBlocks.activity')
+else:
+    print 'This code require the TurtleBlocks activity to be installed.'
+    exit(1)
+
 from time import *
 from random import uniform
 from math import *
