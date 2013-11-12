@@ -6,8 +6,10 @@ pygtk.require('2.0')
 import gtk
 import gobject
 
+from gettext import gettext as _
+
 import os
-from sys import argv
+import sys
 
 from TurtleArt.tablock import Media
 from TurtleArt.taconstants import CONSTANTS
@@ -15,11 +17,10 @@ from TurtleArt.tatype import *
 from TurtleArt.tawindow import TurtleArtWindow
 
 
+# search sys.path for a dir containing TurtleArt/tawindow.py
 # path to the toplevel directory of the TA installation
 _TA_INSTALLATION_PATH = None
-# search the PYTHONPATH for a dir containing TurtleArt/tawindow.py
-PYTHONPATH = os.environ["PYTHONPATH"]
-for path in PYTHONPATH.split(":"):
+for path in sys.path:
     try:
         entries = os.listdir(path)
     except OSError:
@@ -113,7 +114,6 @@ class DummyTurtleMain(object):
         exit()
 
 
-
 def get_tw():
     """ Create a GTK window and instantiate a DummyTurtleMain instance. Return
     the TurtleArtWindow object that holds the turtles and the canvas.
@@ -121,7 +121,7 @@ def get_tw():
     # copied from turtleblocks.TurtleMain._setup_gtk()
     
     win = gtk.Window(gtk.WINDOW_TOPLEVEL)
-    gui = DummyTurtleMain(win=win, name=argv[0])
+    gui = DummyTurtleMain(win=win, name=sys.argv[0])
     # TODO re-enable this code (after giving gui the right attributes)
     # win.set_default_size(gui.width, gui.height)
     # win.move(gui.x, gui.y)

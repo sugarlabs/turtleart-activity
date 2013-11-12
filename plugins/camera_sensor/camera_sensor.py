@@ -30,7 +30,7 @@ from plugins.camera_sensor.v4l2 import v4l2_control, V4L2_CID_AUTOGAIN, \
 from plugins.plugin import Plugin
 
 from TurtleArt.tapalette import make_palette
-from TurtleArt.talogo import media_blocks_dictionary, primitive_dictionary
+from TurtleArt.talogo import media_blocks_dictionary
 from TurtleArt.tautils import get_path, debug_output
 from TurtleArt.taconstants import MEDIA_SHAPES, NO_IMPORT, SKIN_PATHS, \
     BLOCKS_WITH_SKIN
