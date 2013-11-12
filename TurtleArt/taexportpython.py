@@ -39,9 +39,21 @@ from tawindow import plugins_in_use
 _SETUP_CODE_START = """\
 #!/usr/bin/env python
 
+_INSTALL_PATH = '/usr/share/sugar/activities/TurtleArt.activity'
+_ALTERNATIVE_INSTALL_PATH = \
+    '/usr/local/share/sugar/activities/TurtleArt.activity'
+
 import os, sys
 if os.path.exists('../TurtleBlocks.activity'):
     sys.path.append('../TurtleBlocks.activity')
+elif os.path.exists(os.path.join(os.path.expanduser('~'), 'Activities',
+                                 'TurtleBlocks.activity')):
+    sys.path.append(os.path.join(os.path.expanduser('~'), 'Activities',
+                    'TurtleBlocks.activity'))
+elif os.path.exists(_INSTALL_PATH):
+    sys.path.append(_INSTALL_PATH)
+elif os.path.exists(_ALTERNATIVE_INSTALL_PATH):
+    sys.path.append(_ALTERNATIVE_INSTALL_PATH)
 else:
     print 'This code require the TurtleBlocks activity to be installed.'
     exit(1)
