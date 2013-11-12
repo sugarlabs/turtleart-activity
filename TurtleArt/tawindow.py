@@ -3645,9 +3645,10 @@ before making changes to your program'))
                             i += 1
                             if i == len(p) - 1:
                                 i = 0
-            self._highlighted_blk = p[i]
-            self._highlighted_blk.highlight()
-            self.selected_blk = p[i]
+            if i < len(p):
+                self._highlighted_blk = p[i]
+                self._highlighted_blk.highlight()
+                self.selected_blk = p[i]
 
         elif self.selected_blk is not None:
             if self.selected_blk.type == 'proto':
