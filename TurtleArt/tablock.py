@@ -25,7 +25,7 @@ import cairo
 from taconstants import (EXPANDABLE, EXPANDABLE_ARGS, OLD_NAMES, CONSTANTS,
                          STANDARD_STROKE_WIDTH, BLOCK_SCALE, BOX_COLORS,
                          GRADIENT_COLOR, EXPANDABLE_FLOW, Color,
-                         MEDIA_BLOCK2TYPE)
+                         MEDIA_BLOCK2TYPE, BLOCKS_WITH_SKIN)
 from tapalette import (palette_blocks, block_colors, expandable_blocks,
                        content_blocks, block_names, block_primitives,
                        block_styles, special_block_colors)
@@ -698,7 +698,7 @@ class Block:
 
 
     def _set_labels(self, i, label):
-        if self.spr is None:
+        if self.spr is None or self.name in BLOCKS_WITH_SKIN:
             return
         self.spr.set_label(label, i)
 
