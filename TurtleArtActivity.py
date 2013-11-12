@@ -208,7 +208,7 @@ class TurtleArtActivity(activity.Activity):
             if hasattr(self.get_window(), 'get_cursor'):
                 self._old_cursor = self.get_window().get_cursor()
                 self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.WATCH))
-        gobject.idle_add(self.__save_as_logo)
+        gobject.timeout_add(250, self.__save_as_logo)
 
     def __save_as_logo(self):
         logo_code_path = self._dump_logo_code()
@@ -232,7 +232,7 @@ class TurtleArtActivity(activity.Activity):
             if hasattr(self.get_window(), 'get_cursor'):
                 self._old_cursor = self.get_window().get_cursor()
                 self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.WATCH))
-        gobject.idle_add(self.__save_as_python)
+        gobject.timeout_add(250, self.__save_as_python)
 
     def __save_as_python(self):
         # catch PyExportError and display a user-friendly message instead
@@ -309,7 +309,7 @@ class TurtleArtActivity(activity.Activity):
         ''' Load Python code from the Journal. '''
         self.load_python.set_icon('pippy-openon')
         self.tw.load_python_code_from_file(fname=None, add_new_block=True)
-        gobject.idle_add(self.load_python.set_icon, 'pippy-openoff')
+        gobject.timeout_add(250, self.load_python.set_icon, 'pippy-openoff')
 
     def do_save_as_image_cb(self, button):
         ''' Save the canvas to the Journal. '''
@@ -319,7 +319,7 @@ class TurtleArtActivity(activity.Activity):
             if hasattr(self.get_window(), 'get_cursor'):
                 self._old_cursor = self.get_window().get_cursor()
                 self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.WATCH))
-        gobject.idle_add(self.__save_as_image)
+        gobject.timeout_add(250, self.__save_as_image)
 
     def __save_as_image(self):
         self.tw.save_as_image()
@@ -333,7 +333,7 @@ class TurtleArtActivity(activity.Activity):
             if hasattr(self.get_window(), 'get_cursor'):
                 self._old_cursor = self.get_window().get_cursor()
                 self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.WATCH))
-        gobject.idle_add(self.__keep)
+        gobject.timeout_add(250, self.__keep)
 
     def __keep(self):
         tmpfile = self._dump_ta_code()
@@ -1058,7 +1058,7 @@ class TurtleArtActivity(activity.Activity):
             self.save_as_logo, label = self._add_button_and_label(
                 'logo-saveoff', _('Save as Logo'), self.do_save_as_logo_cb,
                 None, button_box)
-            self.save_as_logo, label = self._add_button_and_label(
+            self.save_as_python, label = self._add_button_and_label(
                 'python-saveoff', _('Save as Python'),
                 self.do_save_as_python_cb,
                 None, button_box)
