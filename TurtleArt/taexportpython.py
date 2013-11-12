@@ -45,15 +45,15 @@ _ALTERNATIVE_INSTALL_PATH = \
 
 import os, sys
 if os.path.exists('../TurtleBlocks.activity'):
-    sys.path.append('../TurtleBlocks.activity')
+    sys.path.insert(0, '../TurtleBlocks.activity')
 elif os.path.exists(os.path.join(os.path.expanduser('~'), 'Activities',
                                  'TurtleBlocks.activity')):
-    sys.path.append(os.path.join(os.path.expanduser('~'), 'Activities',
+    sys.path.insert(0, os.path.join(os.path.expanduser('~'), 'Activities',
                     'TurtleBlocks.activity'))
 elif os.path.exists(_INSTALL_PATH):
-    sys.path.append(_INSTALL_PATH)
+    sys.path.insert(0, _INSTALL_PATH)
 elif os.path.exists(_ALTERNATIVE_INSTALL_PATH):
-    sys.path.append(_ALTERNATIVE_INSTALL_PATH)
+    sys.path.insert(0, _ALTERNATIVE_INSTALL_PATH)
 else:
     print 'This code require the TurtleBlocks activity to be installed.'
     exit(1)
