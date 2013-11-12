@@ -41,7 +41,7 @@ except ImportError:
     HAS_TOOLBARBOX = False
 from sugar.graphics.toolbutton import ToolButton
 from sugar.graphics.radiotoolbutton import RadioToolButton
-from sugar.graphics.alert import (ConfirmationAlert, NotifyAlert, Alert)
+from sugar.graphics.alert import (ConfirmationAlert, Alert)
 from sugar.graphics import style
 from sugar.graphics.icon import Icon
 from sugar.graphics.xocolor import XoColor
@@ -204,24 +204,37 @@ class TurtleArtActivity(activity.Activity):
     def do_save_as_logo_cb(self, button):
         ''' Write UCB logo code to datastore. '''
         self.save_as_logo.set_icon('logo-saveon')
+        if hasattr(self, 'get_window'):
+            if hasattr(self.get_window(), 'get_cursor'):
+                self._old_cursor = self.get_window().get_cursor()
+                self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.WATCH))
+        gobject.idle_add(self.__save_as_logo)
+
+    def __save_as_logo(self):
         logo_code_path = self._dump_logo_code()
-        if logo_code_path is None:
-            return
-
-        dsobject = datastore.create()
-        dsobject.metadata['title'] = self.metadata['title'] + '.lg'
-        dsobject.metadata['mime_type'] = 'text/plain'
-        dsobject.metadata['icon-color'] = profile.get_color().to_string()
-        dsobject.set_file_path(logo_code_path)
-        datastore.write(dsobject)
-        dsobject.destroy()
-
-        os.remove(logo_code_path)
-        gobject.timeout_add(250, self.save_as_logo.set_icon, 'logo-saveoff')
-        self._notify_successful_save(title=_('Save as Logo'))
+        if logo_code_path is not None:
+            dsobject = datastore.create()
+            dsobject.metadata['title'] = self.metadata['title'] + '.lg'
+            dsobject.metadata['mime_type'] = 'text/plain'
+            dsobject.metadata['icon-color'] = profile.get_color().to_string()
+            dsobject.set_file_path(logo_code_path)
+            datastore.write(dsobject)
+            dsobject.destroy()
+            os.remove(logo_code_path)
+        self.save_as_logo.set_icon('logo-saveoff')
+        if hasattr(self, 'get_window'):
+            self.get_window().set_cursor(self._old_cursor)
 
     def do_save_as_python_cb(self, widget):
         ''' Callback for saving the project as Python code. '''
+        self.save_as_python.set_icon('python-saveon')
+        if hasattr(self, 'get_window'):
+            if hasattr(self.get_window(), 'get_cursor'):
+                self._old_cursor = self.get_window().get_cursor()
+                self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.WATCH))
+        gobject.idle_add(self.__save_as_python)
+
+    def __save_as_python(self):
         # catch PyExportError and display a user-friendly message instead
         try:
             pythoncode = save_python(self.tw)
@@ -230,27 +243,26 @@ class TurtleArtActivity(activity.Activity):
                 pyee.block.highlight()
             self.tw.showlabel('status', str(pyee))
             _logger.debug(pyee)
-            return
-        if not pythoncode:
-            return
 
-        datapath = get_path(activity, 'instance')
-        python_code_path = os.path.join(datapath, 'tmpfile.py')
-        f = file(python_code_path, 'w')
-        f.write(pythoncode)
-        f.close()
+        if pythoncode:
+            datapath = get_path(activity, 'instance')
+            python_code_path = os.path.join(datapath, 'tmpfile.py')
+            f = file(python_code_path, 'w')
+            f.write(pythoncode)
+            f.close()
 
-        dsobject = datastore.create()
-        dsobject.metadata['title'] = self.metadata['title'] + '.py'
-        dsobject.metadata['mime_type'] = 'text/x-python'
-        dsobject.metadata['icon-color'] = profile.get_color().to_string()
-        dsobject.set_file_path(python_code_path)
-        datastore.write(dsobject)
-        dsobject.destroy()
+            dsobject = datastore.create()
+            dsobject.metadata['title'] = self.metadata['title'] + '.py'
+            dsobject.metadata['mime_type'] = 'text/x-python'
+            dsobject.metadata['icon-color'] = profile.get_color().to_string()
+            dsobject.set_file_path(python_code_path)
+            datastore.write(dsobject)
+            dsobject.destroy()
 
-        os.remove(python_code_path)
-
-        self._notify_successful_save(title=_('Save as Python'))
+            os.remove(python_code_path)
+        self.save_as_python.set_icon('python-saveoff')
+        if hasattr(self, 'get_window'):
+            self.get_window().set_cursor(self._old_cursor)
 
     def do_load_ta_project_cb(self, button, new=False):
         ''' Load a project from the Journal. '''
@@ -277,7 +289,6 @@ class TurtleArtActivity(activity.Activity):
 
     def do_load_ta_plugin_cb(self, button):
         ''' Load a plugin from the Journal. '''
-        # While the file is loading, use the watch cursor
         if hasattr(self, 'get_window'):
             if hasattr(self.get_window(), 'get_cursor'):
                 self._old_cursor = self.get_window().get_cursor()
@@ -298,19 +309,33 @@ class TurtleArtActivity(activity.Activity):
         ''' Load Python code from the Journal. '''
         self.load_python.set_icon('pippy-openon')
         self.tw.load_python_code_from_file(fname=None, add_new_block=True)
-        gobject.timeout_add(250, self.load_python.set_icon, 'pippy-openoff')
+        gobject.idle_add(self.load_python.set_icon, 'pippy-openoff')
 
     def do_save_as_image_cb(self, button):
         ''' Save the canvas to the Journal. '''
         self.save_as_image.set_icon('image-saveon')
         _logger.debug('saving image to journal')
+        if hasattr(self, 'get_window'):
+            if hasattr(self.get_window(), 'get_cursor'):
+                self._old_cursor = self.get_window().get_cursor()
+                self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.WATCH))
+        gobject.idle_add(self.__save_as_image)
 
+    def __save_as_image(self):
         self.tw.save_as_image()
-        gobject.timeout_add(250, self.save_as_image.set_icon, 'image-saveoff')
-        self._notify_successful_save(title=_('Save as image'))
+        self.save_as_image.set_icon('image-saveoff')
+        if hasattr(self, 'get_window'):
+            self.get_window().set_cursor(self._old_cursor)
 
     def do_keep_cb(self, button):
         ''' Save a snapshot of the project to the Journal. '''
+        if hasattr(self, 'get_window'):
+            if hasattr(self.get_window(), 'get_cursor'):
+                self._old_cursor = self.get_window().get_cursor()
+                self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.WATCH))
+        gobject.idle_add(self.__keep)
+
+    def __keep(self):
         tmpfile = self._dump_ta_code()
         if tmpfile is not None:
             dsobject = datastore.create()
@@ -323,7 +348,9 @@ class TurtleArtActivity(activity.Activity):
             datastore.write(dsobject)
             dsobject.destroy()
             os.remove(tmpfile)
-            self._notify_successful_save(title=_('Save snapshot'))
+
+        if hasattr(self, 'get_window'):
+            self.get_window().set_cursor(self._old_cursor)
 
     # Main/palette toolbar button callbacks
 
@@ -760,7 +787,7 @@ class TurtleArtActivity(activity.Activity):
         self._toolbox.show()
 
         if self.has_toolbarbox:
-            self.edit_toolbar_button.set_expanded(True) 
+            self.edit_toolbar_button.set_expanded(True)
             self.edit_toolbar_button.set_expanded(False)
             self.palette_toolbar_button.set_expanded(True)
         else:
@@ -1683,19 +1710,6 @@ in order to use the plugin.'))
         button_and_label.show()
         return button, label
 
-    def _notify_successful_save(self, title='', msg=''):
-        ''' Notify user when saves are completed '''
-
-        def _notification_alert_response_cb(alert, response_id, self):
-            self.remove_alert(alert)
-
-        alert = NotifyAlert()
-        alert.props.title = title
-        alert.connect('response', _notification_alert_response_cb, self)
-        alert.props.msg = msg
-        self.add_alert(alert)
-        alert.show()
-
     def restore_state(self):
         ''' Anything that needs restoring after a clear screen can go here '''
         pass
@@ -1709,7 +1723,7 @@ in order to use the plugin.'))
             self._sample_box = gtk.EventBox()
             self._sample_window = gtk.ScrolledWindow()
             self._sample_window.set_policy(gtk.POLICY_NEVER,
-                                              gtk.POLICY_AUTOMATIC)
+                                           gtk.POLICY_AUTOMATIC)
             width = gtk.gdk.screen_width() / 2
             height = gtk.gdk.screen_height() / 2
             self._sample_window.set_size_request(width, height)
