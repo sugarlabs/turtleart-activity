@@ -609,7 +609,8 @@ class Block:
                 v = int(CONSTANTS[self.name])
             else:
                 v = CONSTANTS[self.name]
-            self._set_labels(0, block_names[self.name][0] + ' = ' + str(v))
+            if self.name not in BLOCKS_WITH_SKIN:
+                self._set_labels(0, block_names[self.name][0] + ' = ' + str(v))
 
         elif self.name in block_names:
             for i, n in enumerate(block_names[self.name]):
@@ -635,11 +636,11 @@ class Block:
             if n == 0:
                 n = 1  # Force a scale to be set, even if there is no value.
         else:
+            n = 0
             if self.name in block_names:
                 n = len(block_names[self.name])
-            else:
+            elif self.name not in BLOCKS_WITH_SKIN:
                 debug_output('WARNING: unknown block name %s' % (self.name))
-                n = 0
         for i in range(n):
             if i > 0:
                 size = int(self.font_size[1] + 0.5)
@@ -698,7 +699,7 @@ class Block:
 
 
     def _set_labels(self, i, label):
-        if self.spr is None or self.name in BLOCKS_WITH_SKIN:
+        if self.spr is None:
             return
         self.spr.set_label(label, i)
 
