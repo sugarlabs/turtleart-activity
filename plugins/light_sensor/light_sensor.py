@@ -22,8 +22,9 @@ from gettext import gettext as _
 from plugins.plugin import Plugin
 
 from TurtleArt.tapalette import make_palette
-from TurtleArt.talogo import primitive_dictionary
 from TurtleArt.tautils import debug_output
+from TurtleArt.taprimitive import Primitive
+from TurtleArt.tatype import TYPE_NUMBER
 
 import logging
 _logger = logging.getLogger('turtleart-activity light-sensor plugin')
@@ -35,11 +36,13 @@ LIGHT_SENSOR_DEVICE = '/sys/devices/platform/olpc-ols.0/level'
 class Light_sensor(Plugin):
 
     def __init__(self, parent):
+        Plugin.__init__(self)
         self._parent = parent
         if os.path.exists(LIGHT_SENSOR_DEVICE):
             self._status = True
         else:
             self._status = False
+        self._light = 0
         self.running_sugar = self._parent.running_sugar
 
     def setup(self):
@@ -49,11 +52,11 @@ class Light_sensor(Plugin):
                                help_string=_('Palette of sensor blocks'),
                                position=6)
 
-        primitive_dictionary['lightsensor'] = self.prim_lightsensor
         if self._status:
             palette.add_block('lightsensor',
                               style='box-style',
                               label=_('brightness'),
+                              value_block=True,
                               help_string=\
                                   _('light level detected by light sensor'),
                               prim_name='lightsensor')
@@ -61,6 +64,7 @@ class Light_sensor(Plugin):
             palette.add_block('lightsensor',
                               style='box-style',
                               label=_('brightness'),
+                              value_block=True,
                               help_string=\
                                   _('light level detected by light sensor'),
                               hidden=True,
@@ -68,20 +72,26 @@ class Light_sensor(Plugin):
 
         self._parent.lc.def_prim(
             'lightsensor', 0,
-            lambda self: primitive_dictionary['lightsensor']())
+            Primitive(self.prim_lightsensor,
+                      return_type=TYPE_NUMBER,
+                      call_afterwards=self.after_light))
 
     def _status_report(self):
         debug_output('Reporting light-sensor status: %s' % (str(self._status)))
         return self._status
 
-    # Block primitives used in talogo
+    # Block primitives
 
     def prim_lightsensor(self):
-        ''' push accelerometer xyz to stack '''
         if not self._status:
             return -1
         else:
             fh = open(LIGHT_SENSOR_DEVICE)
             string = fh.read()
             fh.close()
-            return float(string)
+            self._light = float(string)
+            return self._light
+
+    def after_light(self):
+        if self._parent.lc.update_values:
+            self._parent.lc.update_label_value('lightsensor', self._light)

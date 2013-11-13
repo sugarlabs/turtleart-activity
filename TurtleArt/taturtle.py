@@ -28,7 +28,7 @@ import cairo
 from random import uniform
 from math import sin, cos, pi, sqrt
 from taconstants import (TURTLE_LAYER, DEFAULT_TURTLE_COLORS, DEFAULT_TURTLE,
-                         COLORDICT)
+                         Color)
 from tasprite_factory import SVG, svg_str_to_pixbuf
 from tacanvas import wrap100, COLOR_TABLE
 from sprites import Sprite
@@ -347,12 +347,7 @@ class Turtle:
 
     def set_heading(self, heading, share=True):
         ''' Set the turtle heading (one shape per 360/SHAPES degrees) '''
-        try:
-            self._heading = heading
-        except (TypeError, ValueError):
-            debug_output('bad value sent to %s' % (__name__),
-                         self._turtles.turtle_window.running_sugar)
-            return
+        self._heading = heading
         self._heading %= 360
 
         self._update_sprite_heading()
@@ -373,24 +368,18 @@ class Turtle:
 
     def set_color(self, color=None, share=True):
         ''' Set the pen color for this turtle. '''
+        if color is None:
+            color = self._pen_color
         # Special case for color blocks
-        if color is not None and color in COLORDICT:
-            self.set_shade(COLORDICT[color][1], share)
-            self.set_gray(COLORDICT[color][2], share)
-            if COLORDICT[color][0] is not None:
-                self.set_color(COLORDICT[color][0], share)
-                color = COLORDICT[color][0]
+        elif isinstance(color, Color):
+            self.set_shade(color.shade, share)
+            self.set_gray(color.gray, share)
+            if color.color is not None:
+                color = color.color
             else:
                 color = self._pen_color
-        elif color is None:
-            color = self._pen_color
 
-        try:
-            self._pen_color = color
-        except (TypeError, ValueError):
-            debug_output('bad value sent to %s' % (__name__),
-                         self._turtles.turtle_window.running_sugar)
-            return
+        self._pen_color = color
 
         self._turtles.turtle_window.canvas.set_fgcolor(shade=self._pen_shade,
                                                        gray=self._pen_gray,
@@ -404,12 +393,7 @@ class Turtle:
     def set_gray(self, gray=None, share=True):
         ''' Set the pen gray level for this turtle. '''
         if gray is not None:
-            try:
-                self._pen_gray = gray
-            except (TypeError, ValueError):
-                debug_output('bad value sent to %s' % (__name__),
-                             self._turtles.turtle_window.running_sugar)
-                return
+            self._pen_gray = gray
 
         if self._pen_gray < 0:
             self._pen_gray = 0
@@ -428,12 +412,7 @@ class Turtle:
     def set_shade(self, shade=None, share=True):
         ''' Set the pen shade for this turtle. '''
         if shade is not None:
-            try:
-                self._pen_shade = shade
-            except (TypeError, ValueError):
-                debug_output('bad value sent to %s' % (__name__),
-                             self._turtles.turtle_window.running_sugar)
-                return
+            self._pen_shade = shade
 
         self._turtles.turtle_window.canvas.set_fgcolor(shade=self._pen_shade,
                                                        gray=self._pen_gray,
@@ -447,12 +426,7 @@ class Turtle:
     def set_pen_size(self, pen_size=None, share=True):
         ''' Set the pen size for this turtle. '''
         if pen_size is not None:
-            try:
-                self._pen_size = max(0, pen_size)
-            except (TypeError, ValueError):
-                debug_output('bad value sent to %s' % (__name__),
-                             self._turtles.turtle_window.running_sugar)
-                return
+            self._pen_size = max(0, pen_size)
 
         self._turtles.turtle_window.canvas.set_pen_size(
             self._pen_size * self._turtles.turtle_window.coord_scale)
@@ -547,12 +521,7 @@ class Turtle:
 
     def right(self, degrees, share=True):
         ''' Rotate turtle clockwise '''
-        try:
-            self._heading += degrees
-        except (TypeError, ValueError):
-            debug_output('bad value sent to %s' % (__name__),
-                         self._turtles.turtle_window.running_sugar)
-            return
+        self._heading += degrees
         self._heading %= 360
 
         self._update_sprite_heading()
@@ -561,6 +530,10 @@ class Turtle:
             event = 'r|%s' % (data_to_string([self._turtles.turtle_window.nick,
                                               round_int(self._heading)]))
             self._turtles.turtle_window.send_event(event)
+
+    def left(self, degrees, share=True):
+        degrees = 0 - degrees
+        self.right(degrees, share)
 
     def _draw_line(self, old, new, pendown):
         if self._pen_state and pendown:
@@ -578,13 +551,8 @@ class Turtle:
         scaled_distance = distance * self._turtles.turtle_window.coord_scale
 
         old = self.get_xy()
-        try:
-            xcor = old[0] + scaled_distance * sin(self._heading * DEGTOR)
-            ycor = old[1] + scaled_distance * cos(self._heading * DEGTOR)
-        except (TypeError, ValueError):
-            debug_output('bad value sent to %s' % (__name__),
-                         self._turtles.turtle_window.running_sugar)
-            return
+        xcor = old[0] + scaled_distance * sin(self._heading * DEGTOR)
+        ycor = old[1] + scaled_distance * cos(self._heading * DEGTOR)
 
         self._draw_line(old, (xcor, ycor), True)
         self.move_turtle((xcor, ycor))
@@ -594,19 +562,18 @@ class Turtle:
                                               int(distance)]))
             self._turtles.turtle_window.send_event(event)
 
+    def backward(self, distance, share=True):
+        distance = 0 - distance
+        self.forward(distance, share)
+
     def set_xy(self, x, y, share=True, pendown=True, dragging=False):
         old = self.get_xy()
-        try:
-            if dragging:
-                xcor = x
-                ycor = y
-            else:
-                xcor = x * self._turtles.turtle_window.coord_scale
-                ycor = y * self._turtles.turtle_window.coord_scale
-        except (TypeError, ValueError):
-            debug_output('bad value sent to %s' % (__name__),
-                         self._turtles.turtle_window.running_sugar)
-            return
+        if dragging:
+            xcor = x
+            ycor = y
+        else:
+            xcor = x * self._turtles.turtle_window.coord_scale
+            ycor = y * self._turtles.turtle_window.coord_scale
 
         self._draw_line(old, (xcor, ycor), pendown)
         self.move_turtle((xcor, ycor))
@@ -621,15 +588,10 @@ class Turtle:
         ''' Draw an arc '''
         if self._pen_state:
             self._turtles.turtle_window.canvas.set_source_rgb()
-        try:
-            if a < 0:
-                pos = self.larc(-a, r)
-            else:
-                pos = self.rarc(a, r)
-        except (TypeError, ValueError):
-            debug_output('bad value sent to %s' % (__name__),
-                         self._turtles.turtle_window.running_sugar)
-            return
+        if a < 0:
+            pos = self.larc(-a, r)
+        else:
+            pos = self.rarc(a, r)
 
         self.move_turtle(pos)
 
@@ -735,6 +697,19 @@ class Turtle:
                                                round_int(y), round_int(size),
                                                round_int(w)]]))
             self._turtles.turtle_window.send_event(event)
+
+    def read_pixel(self):
+        """ Read r, g, b, a from the canvas and push b, g, r to the stack """
+        r, g, b, a = self.get_pixel()
+        self._turtles.turtle_window.lc.heap.append(b)
+        self._turtles.turtle_window.lc.heap.append(g)
+        self._turtles.turtle_window.lc.heap.append(r)
+
+    def get_color_index(self):
+        r, g, b, a = self.get_pixel()
+        color_index = self._turtles.turtle_window.canvas.get_color_index(
+            r, g, b)
+        return color_index
 
     def get_name(self):
         return self._name

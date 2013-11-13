@@ -24,7 +24,8 @@ import cairo
 
 from taconstants import (EXPANDABLE, EXPANDABLE_ARGS, OLD_NAMES, CONSTANTS,
                          STANDARD_STROKE_WIDTH, BLOCK_SCALE, BOX_COLORS,
-                         GRADIENT_COLOR, EXPANDABLE_FLOW, COLORDICT)
+                         GRADIENT_COLOR, EXPANDABLE_FLOW, Color,
+                         MEDIA_BLOCK2TYPE, BLOCKS_WITH_SKIN)
 from tapalette import (palette_blocks, block_colors, expandable_blocks,
                        content_blocks, block_names, block_primitives,
                        block_styles, special_block_colors)
@@ -32,6 +33,36 @@ from tasprite_factory import (SVG, svg_str_to_pixbuf)
 import sprites
 
 from tautils import (debug_output, error_output)
+
+
+media_blocks_dictionary = {}  # new media blocks get added here
+
+class Media(object):
+    """ Media objects can be images, audio files, videos, Journal
+    descriptions, or camera snapshots. """
+
+    ALL_TYPES = ('media', 'audio', 'video', 'descr', 'camera', 'camera1')
+
+    def __init__(self, type_, value=None):
+        """
+        type_ --- a string that indicates the kind of media:
+            media --- image
+            audio --- audio file
+            video --- video
+            descr --- Journal description
+            camera, camera1 --- camera snapshot
+        value --- a file path or a reference to a Sugar datastore object """
+        if type_ not in Media.ALL_TYPES:
+            raise ValueError("Media.type must be one of " +
+                             repr(Media.ALL_TYPES))
+        self.type = type_
+        self.value = value
+
+    def __str__(self):
+        return '%s_%s' % (self.type, str(self.value))
+
+    def __repr__(self):
+        return 'Media(type=%s, value=%s)' % (repr(self.type), repr(self.value))
 
 
 class Blocks:
@@ -241,6 +272,13 @@ class Block:
 
         self.block_list.append_to_list(self)
 
+    def __repr__(self):
+        if self.is_value_block():
+            name = self.get_value()
+        else:
+            name = self.name
+        return 'Block(%s)' % (repr(name))
+
     def get_visibility(self):
         ''' Should block be visible on the palette? '''
         return self._visible
@@ -276,6 +314,44 @@ class Block:
                          'sandwichtop', 'sandwichtop_no_label']:
             return False
         return True
+
+    def is_value_block(self):
+        """ Return True iff this block is a value block (numeric, string,
+        media, etc.) """
+        return self.primitive is None and self.values
+
+    def get_value(self, add_type_prefix=True):
+        """ Return the value stored in this value block or None if this is
+        not a value block
+        add_type_prefix -- prepend a prefix to indicate the type of the
+            'raw' value """
+        if not self.is_value_block():
+            return None
+
+        if self.name == 'number':
+            try:
+                return float(self.values[0])
+            except ValueError:
+                return float(ord(self.values[0][0]))
+        elif (self.name == 'string' or
+                self.name == 'title'):  # deprecated block
+            if add_type_prefix:
+                result = '#s'
+            else:
+                result = ''
+            if isinstance(self.values[0], (float, int)):
+                if int(self.values[0]) == self.values[0]:
+                    self.values[0] = int(self.values[0])
+                result += str(self.values[0])
+            else:
+                result += self.values[0]
+            return result
+        elif self.name in MEDIA_BLOCK2TYPE:
+            return Media(MEDIA_BLOCK2TYPE[self.name], self.values[0])
+        elif self.name in media_blocks_dictionary:
+            return Media('media', self.name.upper())
+        else:
+            return None
 
     def highlight(self):
         """ We may want to highlight a block... """
@@ -529,13 +605,12 @@ class Block:
                     else:
                         self._set_labels(i, str(v))
         elif self.type == 'block' and self.name in CONSTANTS:
-            if CONSTANTS[self.name] in COLORDICT:
-                v = COLORDICT[CONSTANTS[self.name]][0]
-                if v is None:
-                    v = COLORDICT[CONSTANTS[self.name]][1]
+            if isinstance(CONSTANTS[self.name], Color):
+                v = int(CONSTANTS[self.name])
             else:
                 v = CONSTANTS[self.name]
-            self._set_labels(0, block_names[self.name][0] + ' = ' + str(v))
+            if self.name not in BLOCKS_WITH_SKIN:
+                self._set_labels(0, block_names[self.name][0] + ' = ' + str(v))
 
         elif self.name in block_names:
             for i, n in enumerate(block_names[self.name]):
@@ -561,11 +636,11 @@ class Block:
             if n == 0:
                 n = 1  # Force a scale to be set, even if there is no value.
         else:
+            n = 0
             if self.name in block_names:
                 n = len(block_names[self.name])
-            else:
+            elif self.name not in BLOCKS_WITH_SKIN:
                 debug_output('WARNING: unknown block name %s' % (self.name))
-                n = 0
         for i in range(n):
             if i > 0:
                 size = int(self.font_size[1] + 0.5)
@@ -973,7 +1048,7 @@ class Block:
         self._make_block_graphics(svg, self.svg.basic_block)
         self.docks = [['flow', True, self.svg.docks[0][0],
                        self.svg.docks[0][1]],
-                      ['unavailable', True, 0, self.svg.docks[0][1] + 10, '['],
+                      ['flow', True, 0, self.svg.docks[0][1] + 10, '['],
                       ['flow', False, self.svg.docks[1][0],
                        self.svg.docks[1][1], ']']]
 

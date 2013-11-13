@@ -58,16 +58,17 @@ from taconstants import (HORIZONTAL_PALETTE, VERTICAL_PALETTE, BLOCK_SCALE,
                          PYTHON_SKIN, PALETTE_HEIGHT, STATUS_LAYER, OLD_DOCK,
                          EXPANDABLE_ARGS, XO1, XO15, XO175, XO30, XO4, TITLEXY,
                          CONTENT_ARGS, CONSTANTS, EXPAND_SKIN, PROTO_LAYER,
-                         EXPANDABLE_FLOW, SUFFIX, TMP_SVG_PATH)
+                         EXPANDABLE_FLOW, SUFFIX, TMP_SVG_PATH, Color,
+                         KEY_DICT)
 from tapalette import (palette_names, palette_blocks, expandable_blocks,
                        block_names, content_blocks, default_values,
                        special_names, block_styles, help_strings,
                        hidden_proto_blocks, string_or_number_args,
                        make_palette, palette_name_to_index,
-                       palette_init_on_start)
-from talogo import (LogoCode, primitive_dictionary, logoerror)
+                       palette_init_on_start, palette_i18n_names)
+from talogo import (LogoCode, logoerror)
 from tacanvas import TurtleGraphics
-from tablock import (Blocks, Block)
+from tablock import (Blocks, Block, Media, media_blocks_dictionary)
 from taturtle import (Turtles, Turtle)
 from tautils import (magnitude, get_load_name, get_save_name, data_from_file,
                      data_to_file, round_int, get_id, get_pixbuf_from_journal,
@@ -77,10 +78,11 @@ from tautils import (magnitude, get_load_name, get_save_name, data_from_file,
                      find_block_to_run, find_top_block, journal_check,
                      find_group, find_blk_below, data_to_string,
                      find_start_stack, get_hardware, debug_output,
-                     error_output, convert, find_hat, find_bot_block,
+                     error_output, find_hat, find_bot_block,
                      restore_clamp, collapse_clamp, data_from_string,
                      increment_name, get_screen_dpi)
 from tasprite_factory import (SVG, svg_str_to_pixbuf, svg_from_file)
+from tapalette import block_primitives
 from sprites import (Sprites, Sprite)
 
 if _GST_AVAILABLE:
@@ -94,6 +96,10 @@ _MARGIN = 5
 _UNFULLSCREEN_VISIBILITY_TIMEOUT = 2
 _PLUGIN_SUBPATH = 'plugins'
 _MACROS_SUBPATH = 'macros'
+
+# the global instances of single-instance classes
+global_objects = {}
+plugins_in_use = []
 
 
 class TurtleArtWindow():
@@ -168,6 +174,7 @@ class TurtleArtWindow():
         self._autohide_shape = True
         self.keypress = ''
         self.keyvalue = 0
+        self.keyboard = 0
         self._focus_out_id = None
         self._insert_text_id = None
         self._text_to_check = False
@@ -246,6 +253,7 @@ class TurtleArtWindow():
         self.selected_selector = None
         self.previous_selector = None
         self.selector_shapes = []
+        self._highlighted_blk = None
         self.selected_blk = None
         self.selected_spr = None
         self.selected_turtle = None
@@ -300,11 +308,25 @@ class TurtleArtWindow():
             from tabasics import Palettes
             self._basic_palettes = Palettes(self)
 
+        global_objects["window"] = self
+        global_objects["canvas"] = self.canvas
+        global_objects["logo"] = self.lc
+        global_objects["turtles"] = self.turtles
+
         if self.interactive_mode:
             gobject.idle_add(self._lazy_init)
         else:
             self._init_plugins()
             self._setup_plugins()
+
+    def get_global_objects(self):
+        return global_objects
+
+    def get_init_complete(self):
+        if self.running_turtleart:
+            return self.activity.init_complete
+        else:
+            return True
 
     def _lazy_init(self):
         self._init_plugins()
@@ -325,8 +347,8 @@ class TurtleArtWindow():
                                       regenerate=True,
                                       show=True)
 
-        if self.running_sugar:
-            self.activity.check_buttons_for_fit()
+            if self.running_sugar:
+                self.activity.check_buttons_for_fit()
 
     def _set_screen_dpi(self):
         dpi = get_screen_dpi()
@@ -379,10 +401,11 @@ class TurtleArtWindow():
             # Add the icon dir to the icon_theme search path
             self._add_plugin_icon_dir(os.path.join(self._get_plugin_home(),
                                                    plugin_dir))
+            # Add the plugin to the list of global objects
+            global_objects[plugin_class] = self.turtleart_plugins[-1]
         except Exception as e:
             debug_output('Failed to load %s: %s' % (plugin_class, str(e)),
                          self.running_sugar)
-            
 
     def _add_plugin_icon_dir(self, dirname):
         ''' If there is an icon subdir, add it to the search path. '''
@@ -413,7 +436,7 @@ class TurtleArtWindow():
                 # If setup fails, remove the plugin from the list
                 self.turtleart_plugins.remove(plugin)
 
-    def _start_plugins(self):
+    def start_plugins(self):
         ''' Start is called everytime we execute blocks. '''
         for plugin in self.turtleart_plugins:
             if hasattr(plugin, 'start'):
@@ -761,6 +784,9 @@ class TurtleArtWindow():
         else:
             self.draw_overlay('Cartesian')
         return
+
+    def get_coord_scale(self):
+        return self.coord_scale
 
     def set_polar(self, flag):
         ''' Turn on/off polar coordinates '''
@@ -1477,11 +1503,25 @@ class TurtleArtWindow():
         self.button_press(event.get_state() & gtk.gdk.CONTROL_MASK, x, y)
         return True
 
-    def button_press(self, mask, x, y):
-        if self.running_sugar:
-            self._show_unfullscreen_button()
+    def get_mouse_flag(self):
+        return self.mouse_flag
 
-        self.activity.hide_store()
+    def get_mouse_button(self):
+        return self.mouse_flag == 1
+
+    def get_mouse_x(self):
+        return int(self.mouse_x - (self.canvas.width / 2))
+
+    def get_mouse_y(self):
+        return int((self.canvas.height / 2) - self.mouse_y)
+
+    def button_press(self, mask, x, y):
+        if self.running_turtleart:
+            if self.running_sugar:
+                self._show_unfullscreen_button()
+
+            if self.interactive_mode:
+                self.activity.hide_store()
 
         # Find out what was clicked
         spr = self.sprite_list.find_sprite((x, y))
@@ -1491,7 +1531,7 @@ class TurtleArtWindow():
                 blk = self.block_list.spr_to_block(spr)
                 if blk is not None:
                     # Make sure stop button is visible
-                    if self.running_sugar:
+                    if self.running_sugar and self.running_turtleart:
                         self.activity.stop_turtle_button.set_icon("stopiton")
                         self.activity.stop_turtle_button.set_tooltip(
                             _('Stop turtle'))
@@ -1562,9 +1602,10 @@ before making changes to your program'))
             self.status_spr.hide()
             self._autohide_shape = True
 
-    def _look_for_a_blk(self, spr, x, y):
+    def _look_for_a_blk(self, spr, x, y, blk=None):
         # From the sprite at x, y, look for a corresponding block
-        blk = self.block_list.spr_to_block(spr)
+        if blk is None:
+            blk = self.block_list.spr_to_block(spr)
         ''' If we were copying and didn't click on a block... '''
         if self.copying_blocks or self.sharing_blocks or self.saving_blocks:
             if blk is None or blk.type != 'block':
@@ -1586,9 +1627,9 @@ before making changes to your program'))
                 self._restore_from_trash(find_top_block(blk))
             elif blk.type == 'proto':
                 if self.deleting_blocks:
-                    if 'my blocks' in palette_names and \
+                    if 'myblocks' in palette_names and \
                             self.selected_palette == \
-                            palette_names.index('my blocks'):
+                            palette_names.index('myblocks'):
                         self._delete_stack_alert(blk)
                     self.parent.get_window().set_cursor(
                         gtk.gdk.Cursor(gtk.gdk.LEFT_PTR))
@@ -1797,7 +1838,7 @@ before making changes to your program'))
                     error_output('Could not remove macro %s: %s' %
                                  (macro_path, e))
                     return
-                i = palette_names.index('my blocks')
+                i = palette_names.index('myblocks')
                 palette_blocks[i].remove(blk.name)
                 for pblk in self.palettes[i]:
                     if pblk.name == blk.name:
@@ -3166,7 +3207,7 @@ before making changes to your program'))
         if self.canvas.cr_svg is None:
             self.canvas.setup_svg_surface()
         self.running_blocks = True
-        self._start_plugins()  # Let the plugins know we are running.
+        self.start_plugins()  # Let the plugins know we are running.
         top = find_top_block(blk)
         code = self.lc.generate_code(top, self.just_blocks())
         self.lc.run_blocks(code)
@@ -3584,14 +3625,66 @@ before making changes to your program'))
             elif keyname == 'g':
                 self._align_to_grid()
 
-        elif self.selected_blk is not None and \
-                self.selected_blk.name != 'proto':
-            self._process_keyboard_commands(keyname, block_flag=True)
+        elif keyname == 'Tab':
+            # For the first pass, just tab through palettes
+            if self.selected_palette is None:
+                print 'selected palette is None'
+                return True
+            else:
+                p = self.palettes[self.selected_palette]
+            i = 0
+            if self._highlighted_blk is not None:
+                self._highlighted_blk.unhighlight()
+                if self._highlighted_blk in p:
+                    i = p.index(self._highlighted_blk)
+                    if i == len(p) - 1:
+                        i = 0
+                    else:
+                        i += 1
+                        while(not p[i].get_visibility()):
+                            i += 1
+                            if i == len(p) - 1:
+                                i = 0
+            if i < len(p):
+                self._highlighted_blk = p[i]
+                self._highlighted_blk.highlight()
+                self.selected_blk = p[i]
+
+        elif self.selected_blk is not None:
+            if self.selected_blk.type == 'proto':
+                if keyname == 'Return':
+                    (x, y) = self.selected_blk.spr.get_xy()
+                    if self.orientation == 0:
+                        x += 20
+                        y += PALETTE_HEIGHT + self.toolbar_offset
+                    else:
+                        x += PALETTE_WIDTH
+                        y += 20
+                    self._look_for_a_blk(None, x, y, blk=self.selected_blk)
+                    self._unselect_all_blocks()
+                    self.selected_spr = None
+                    self.drag_group = None
+            else:
+                self._process_keyboard_commands(keyname, block_flag=True)
 
         elif self.turtles.spr_to_turtle(self.selected_spr) is not None:
             self._process_keyboard_commands(keyname, block_flag=False)
 
         return True
+
+    def get_keyboard_input(self):
+        """ Query keyboard and update cached keyboard input """
+        self.window.grab_focus()
+        if len(self.keypress) == 1:
+            self.keyboard = ord(self.keypress[0])
+        elif self.keypress in KEY_DICT:
+            self.keyboard = KEY_DICT[self.keypress]
+        else:
+            self.keyboard = 0
+
+    def get_keyboard(self):
+        """ Return cached keyboard input """
+        return self.keyboard
 
     def _process_keyboard_commands(self, keyname, block_flag=True):
         ''' Use the keyboard to move blocks and turtle '''
@@ -3631,7 +3724,7 @@ before making changes to your program'))
                     if block is not None:
                         self.selected_spr = block.spr
                         block.highlight()
-                else:
+                elif blk is not None:
                     self._jog_block(blk, mov_dict[keyname][0],
                                     mov_dict[keyname][1])
             elif not block_flag:
@@ -4349,6 +4442,60 @@ before making changes to your program'))
         elif self.interactive_mode:
             self.parent.set_title(text)
 
+    def print_(self, n, flag):
+        """ Print object n to the bar at the bottom of the screen """
+        if flag and (self.hide or self.step_time == 0):
+            return
+
+        # list
+        if isinstance(n, list):
+            heap_as_string = str(self.lc.heap)
+            if len(heap_as_string) > 80:
+                self.showlabel('print', str(self.lc.heap)[0:79] + '…')
+            else:
+                self.showlabel('print', str(self.lc.heap))
+        # color
+        elif isinstance(n, Color):
+            if n.color is None:
+                self.showlabel('print', '%s %d, %s %d' %
+                               (_('shade'), n.shade,
+                                _('gray'), n.gray))
+            else:
+                self.showlabel('print', '%s %d, %s %d, %s %d' %
+                               (_('color'), n.color,
+                                _('shade'), n.shade,
+                                _('gray'), n.gray))
+        # media
+        elif isinstance(n, Media):
+            if (n.type == 'media' and
+                    n.value.lower() not in media_blocks_dictionary):
+                try:
+                    if self.running_sugar:
+                        from sugar.datastore import datastore
+                        try:
+                            dsobject = datastore.get(n.value)
+                        except:
+                            debug_output("Couldn't open %s" % (n.value),
+                                         self.running_sugar)
+                        self.showlabel('print', dsobject.metadata['title'])
+                        dsobject.destroy()
+                    else:
+                        self.showlabel('print', n.value)
+                except IOError:
+                    self.showlabel('print', str(n))
+            else:
+                self.showlabel('print', str(n))
+        # string
+        elif isinstance(n, basestring):
+            self.showlabel('print', n)
+        # integer
+        elif isinstance(n, int):
+            self.showlabel('print', n)
+        # other number
+        else:
+            self.showlabel(
+                'print',
+                str(round_int(n)).replace('.', self.decimal_point))
 
     def showlabel(self, shp, label=''):
         ''' Display a message on a status block '''
@@ -4371,6 +4518,9 @@ before making changes to your program'))
         elif shp[0] == '#':
             shp = shp[1:]
             label = ''
+        if self.running_sugar and \
+           shp not in ['print', 'status', 'info', 'help']:
+            self.activity.error_list.append(shp)
         self.status_spr.set_shape(self.status_shapes[shp])
         self.status_spr.set_label_attributes(12.0, rescale=False)
         if shp == 'status':
@@ -4620,7 +4770,6 @@ before making changes to your program'))
         palette = make_palette('blocks')
 
         # Create a new block prototype.
-        primitive_dictionary['stack'] = self._prim_stack
         palette.add_block('stack_%s' % (name),
                           style='basic-style-1arg',
                           label=name,
@@ -4629,7 +4778,6 @@ before making changes to your program'))
                           logo_command='action',
                           default=name,
                           help_string=_('invokes named action stack'))
-        self.lc.def_prim('stack', 1, primitive_dictionary['stack'], True)
 
         # Regenerate the palette, which will now include the new block.
         self.show_toolbar_palette(palette_name_to_index('blocks'),
@@ -4649,7 +4797,6 @@ before making changes to your program'))
         palette = make_palette('blocks')
 
         # Create a new block prototype.
-        primitive_dictionary['box'] = self._prim_box
         palette.add_block('box_%s' % (name),
                           style='number-style-1strarg',
                           label=name,
@@ -4658,8 +4805,6 @@ before making changes to your program'))
                           default=name,
                           logo_command='box',
                           help_string=_('named variable (numeric value)'))
-        self.lc.def_prim('box', 1,
-                         lambda self, x: primitive_dictionary['box'](x))
 
         # Regenerate the palette, which will now include the new block.
         self.show_toolbar_palette(palette_name_to_index('blocks'),
@@ -4679,7 +4824,6 @@ before making changes to your program'))
         palette = make_palette('blocks')
 
         # Create a new block prototype.
-        primitive_dictionary['setbox'] = self._prim_setbox
         palette.add_block('storein_%s' % (name),
                           style='basic-style-2arg',
                           label=[_('store in'), name, _('value')],
@@ -4689,51 +4833,10 @@ before making changes to your program'))
                           default=[name, 100],
                           help_string=_('stores numeric value in named \
 variable'))
-        self.lc.def_prim(
-            'storeinbox',
-            2,
-            lambda self, x, y: primitive_dictionary['setbox']('box3', x, y))
 
         # Regenerate the palette, which will now include the new block.
         self.show_toolbar_palette(palette_name_to_index('blocks'),
                                   regenerate=True)
-
-    def _prim_stack(self, x):
-        ''' Process a named stack '''
-        if isinstance(convert(x, float, False), float):
-            if int(float(x)) == x:
-                x = int(x)
-        if 'stack3' + str(x) not in self.lc.stacks or \
-           self.lc.stacks['stack3' + str(x)] is None:
-            raise logoerror('#nostack')
-        self.lc.icall(self.lc.evline,
-                      self.lc.stacks['stack3' + str(x)][:])
-        yield True
-        self.lc.procstop = False
-        self.lc.ireturn()
-        yield True
-
-    def _prim_box(self, x):
-        ''' Retrieve value from named box '''
-        if isinstance(convert(x, float, False), float):
-            if int(float(x)) == x:
-                x = int(x)
-        try:
-            return self.lc.boxes['box3' + str(x)]
-        except KeyError:
-            raise logoerror('#emptybox')
-
-    def _prim_setbox(self, name, x, val):
-        ''' Define value of named box '''
-        if x is not None:
-            if isinstance(convert(x, float, False), float):
-                if int(float(x)) == x:
-                    x = int(x)
-            self.lc.boxes[name + str(x)] = val
-            self.lc.update_label_value('box', val, label=x)
-        else:
-            self.lc.boxes[name] = val
-            self.lc.update_label_value(name, val)
 
     def dock_dx_dy(self, block1, dock1n, block2, dock2n):
         ''' Find the distance between the dock points of two blocks. '''
@@ -4786,3 +4889,100 @@ variable'))
         (b1x, b1y) = block1.spr.get_xy()
         (b2x, b2y) = block2.spr.get_xy()
         return ((b1x + d1x) - (b2x + d2x), (b1y + d1y) - (b2y + d2y))
+
+    def prim_load_block(self, *args):
+        ''' Load a block on to the canvas '''
+        # Place the block at the active turtle (x, y) and move the turtle
+        # into position to place the next block in the stack.
+        # TODO: Add expandable argument, media block arguments
+        name = args[0]
+        pos = self.turtles.get_active_turtle().get_xy()
+        values = []
+        for i in range(len(args) - 1):
+            values.append(args[i + 1])
+        if len(values) > 0:
+            dy = int(self._find_block(name, pos[0], pos[1], values))
+        else:
+            if name == 'delete':
+                for blk in self.just_blocks():
+                    if blk.status == 'load block':
+                        blk.type = 'trash'
+                        blk.spr.hide()
+                dy = 0
+            else:
+                dy = int(self._find_block(name, pos[0], pos[1]))
+
+        # Reposition turtle to end of flow
+        pos = self.turtles.get_active_turtle().get_xy()
+        pos[1] -= dy
+        self.turtles.get_active_turtle().move_turtle(pos)
+
+    def _make_block(self, name, x, y, defaults):
+        if defaults is None:
+            self._new_block(name, x, y, defaults)
+        else:
+            for i, v in enumerate(defaults):
+                if isinstance(v, float) and int(v) == v:
+                    defaults[i] = int(v)
+            self._new_block(name, x, y, defaults)
+
+        # Find the block we just created and attach it to a stack.
+        self.drag_group = None
+        spr = self.sprite_list.find_sprite((x, y))
+        if spr is not None:
+            blk = self.block_list.spr_to_block(spr)
+            if blk is not None:
+                self.drag_group = find_group(blk)
+                for b in self.drag_group:
+                    b.status = 'load block'
+                self._snap_to_dock()
+
+        # Disassociate new block from mouse.
+        self.drag_group = None
+        return blk.docks[-1][3]
+
+    def _find_block(self, blkname, x, y, defaults=None):
+        """ Create a new block. It is a bit more work than just calling
+        _new_block(). We need to:
+        (1) translate the label name into the internal block name;
+        (2) 'dock' the block onto a stack where appropriate; and
+        (3) disassociate the new block from the mouse. """
+        x, y = self.turtles.turtle_to_screen_coordinates((x, y))
+        for name in block_names:
+            # Translate label name into block/prim name.
+            if blkname in block_names[name]:  # block label is an array
+                # print 'found a match', blkname, name, block_names[name]
+                if name in content_blocks or \
+                        (name in block_primitives and
+                         block_primitives[name] == name):
+                    # print '_make_block', blkname, name
+                    return self._make_block(name, x, y, defaults)
+            elif blkname in block_names:
+                # print '_make_block', blkname
+                return self._make_block(blkname, x, y, defaults)
+        for name in special_names:
+            # Translate label name into block/prim name.
+            if blkname in special_names[name]:
+                return self._make_block(name, x, y, defaults)
+        # Check for a macro
+        if blkname in MACROS:
+            self.new_macro(blkname, x, y)
+            return 0  # Fix me: calculate flow position
+        # Block not found
+        raise logoerror("#syntaxerror")
+        return -1
+
+    def prim_load_palette(self, arg):
+        ''' Select a palette '''
+        if type(arg) in [int, float]:
+            if int(arg) < 0 or int(arg) > len(palette_names):
+                raise logoerror("#syntaxerror")
+            else:
+                self.show_toolbar_palette(int(arg))
+        else:
+            if type(arg) == unicode:
+                arg = arg.encode('utf-8')
+            if arg in palette_names or arg in palette_i18n_names:
+                self.show_toolbar_palette(palette_name_to_index(arg))
+            else:
+                raise logoerror("#syntaxerror")
