@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-#Copyright (c) 2011, Walter Bender
+#Copyright (c) 2011-13, Walter Bender
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -26,11 +26,11 @@ except ImportError:
     pass
 
 from plugins.plugin import Plugin
-from TurtleArt.tapalette import make_palette, define_logo_function
-from TurtleArt.talogo import primitive_dictionary, logoerror, \
-    media_blocks_dictionary
-from TurtleArt.taconstants import MEDIA_SHAPES, NO_IMPORT, SKIN_PATHS, \
-    EXPAND_SKIN, BLOCKS_WITH_SKIN
+from TurtleArt.tapalette import make_palette
+from TurtleArt.taconstants import (MEDIA_SHAPES, NO_IMPORT, SKIN_PATHS,
+                                   EXPAND_SKIN, BLOCKS_WITH_SKIN, CONSTANTS)
+from TurtleArt.taprimitive import (ConstantArg, Primitive)
+from TurtleArt.tatype import TYPE_NUMBER
 
 class Currency(Plugin):
     """ a class for defining palette of money """
@@ -39,8 +39,6 @@ class Currency(Plugin):
         self.tw = parent
 
     def setup(self):
-        self.heap = self.tw.lc.heap
-        self.keyboard = self.tw.lc.keyboard
         self.title_height = int((self.tw.canvas.height / 20) * self.tw.scale)
 
         SKIN_PATHS.append('plugins/currency/images')
@@ -50,7 +48,8 @@ class Currency(Plugin):
     def _currency_palette(self):
         palette = make_palette(
             'currency', colors=["#FFFFFF", "#A0A0A0"],
-            help_string=_('Palette of Australian currencies'))
+            help_string=_('Palette of Australian currencies'),
+            translation=_('currency'))
 
         self._make_constant(palette, '5 cents', 0.05, expand=(0, 10))
         self._make_constant(palette, '10 cents', 0.1, expand=(0, 10))
@@ -67,6 +66,7 @@ class Currency(Plugin):
 
     def _make_constant(self, palette, block_name, constant, expand=(0, 0)):
         """ Factory for constant blocks """
+        CONSTANTS[block_name] = constant
         palette.add_block(block_name,
                           style='box-style-media',
                           label='',
@@ -79,5 +79,8 @@ class Currency(Plugin):
         MEDIA_SHAPES.append(block_name + 'small')
         if expand > 0:
             EXPAND_SKIN[block_name] = expand
-        self.tw.lc.def_prim(block_name, 0, lambda self: constant)
+        self.tw.lc.def_prim(block_name, 0,
+                            Primitive(CONSTANTS.get,
+                                      return_type=TYPE_NUMBER,
+                                      arg_descs=[ConstantArg(block_name)]))
 
