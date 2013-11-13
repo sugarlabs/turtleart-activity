@@ -26,8 +26,9 @@ from sugar import profile
 
 from plugins.plugin import Plugin
 from TurtleArt.tapalette import make_palette
-from TurtleArt.talogo import primitive_dictionary
 from TurtleArt.tautils import debug_output, json_dump, get_path, round_int
+from TurtleArt.taprimitive import (ArgSlot, ConstantArg, Primitive)
+from TurtleArt.tatype import TYPE_NUMBER, TYPE_STRING
 
 import logging
 _logger = logging.getLogger('turtleart-activity physics plugin')
@@ -57,7 +58,7 @@ class Physics(Plugin):
                       'jointlist': [],
                       'controllerlist': [],
                       'additional_vars': {}}
-        self._prim_box2d_reset()
+        self.prim_box2d_reset()
         self._gear_radius = 0
 
     def setup(self):
@@ -65,27 +66,6 @@ class Physics(Plugin):
         palette = make_palette('physics',
                                colors=['#50A000', '#60C020'],
                                help_string=_('Palette of physics blocks'))
-
-        primitive_dictionary['box2dcircle'] = self._prim_box2d_circle
-        primitive_dictionary['box2dtriangle'] = self._prim_box2d_triangle
-        primitive_dictionary['box2drectangle'] = self._prim_box2d_rectangle
-        primitive_dictionary['box2dgear'] = self._prim_box2d_gear
-        primitive_dictionary['box2dradius'] = self._prim_box2d_radius
-        primitive_dictionary['savebox2d'] = self._prim_save_box2d
-        primitive_dictionary['box2ddensity'] = self._prim_box2d_density
-        primitive_dictionary['box2dfriction'] = self._prim_box2d_friction
-        primitive_dictionary['box2dbounce'] = self._prim_box2d_bounce
-        primitive_dictionary['box2ddynamic'] = self._prim_box2d_dynamic
-        primitive_dictionary['box2dmotor'] = self._prim_box2d_motor
-        primitive_dictionary['box2dpin'] = self._prim_box2d_motor
-        primitive_dictionary['box2dreset'] = self._prim_box2d_reset
-        primitive_dictionary['box2djoint'] = self._prim_box2d_joint
-        primitive_dictionary['box2dstartpolygon'] = \
-            self._prim_box2d_start_polygon
-        primitive_dictionary['box2daddpoint'] = self._prim_box2d_add_point
-        primitive_dictionary['box2dendpolygon'] = self._prim_box2d_end_polygon
-        primitive_dictionary['box2dendfilledpolygon'] = \
-            self._prim_box2d_end_filled_polygon
 
         palette.add_block('density',
                           style='basic-style-1arg',
@@ -96,7 +76,10 @@ class Physics(Plugin):
                           prim_name='box2ddensity')
         self._tw.lc.def_prim(
             'box2ddensity', 1,
-            lambda self, x: primitive_dictionary['box2ddensity'](x))
+            Primitive(
+                self.prim_box2d_density,
+                arg_descs=[ArgSlot(TYPE_NUMBER)]))
+
         palette.add_block('friction',
                           style='basic-style-1arg',
                           label=_('friction'),
@@ -107,7 +90,10 @@ friction).'),
                           prim_name='box2dfriction')
         self._tw.lc.def_prim(
             'box2dfriction', 1,
-            lambda self, x: primitive_dictionary['box2dfriction'](x))
+            Primitive(
+                self.prim_box2d_friction,
+                arg_descs=[ArgSlot(TYPE_NUMBER)]))
+
         palette.add_block('bounce',
                           style='basic-style-1arg',
                           label=_('bounciness'),
@@ -118,7 +104,10 @@ bouncy).'),
                           prim_name='box2dbounce')
         self._tw.lc.def_prim(
             'box2dbounce', 1,
-            lambda self, x: primitive_dictionary['box2dbounce'](x))
+            Primitive(
+                self.prim_box2d_bounce,
+                arg_descs=[ArgSlot(TYPE_NUMBER)]))
+
         palette.add_block('dynamic',
                           style='basic-style-1arg',
                           label=_('dynamic'),
@@ -129,7 +118,10 @@ if dynamic = 0, it is fixed in position.'),
                           prim_name='box2ddynamic')
         self._tw.lc.def_prim(
             'box2ddynamic', 1,
-            lambda self, x: primitive_dictionary['box2ddynamic'](x))
+            Primitive(
+                self.prim_box2d_dynamic,
+                arg_descs=[ArgSlot(TYPE_NUMBER)]))
+
         palette.add_block('startpolygon',
                           style='basic-style-extended-vertical',
                           label=_('start polygon'),
@@ -138,7 +130,8 @@ on the current Turtle xy position.'),
                           prim_name='box2dstartpolygon')
         self._tw.lc.def_prim(
             'box2dstartpolygon', 0,
-            lambda self: primitive_dictionary['box2dstartpolygon']())
+            Primitive(self.prim_box2d_start_polygon))
+
         palette.add_block('addpoint',
                           style='basic-style-extended-vertical',
                           label=_('add point'),
@@ -147,7 +140,8 @@ polygon based on the current Turtle xy position.'),
                           prim_name='box2daddpoint')
         self._tw.lc.def_prim(
             'box2daddpoint', 0,
-            lambda self: primitive_dictionary['box2daddpoint']())
+            Primitive(self.prim_box2d_add_point))
+
         palette.add_block('endpolygon',
                           style='basic-style-extended-vertical',
                           label=_('end polygon'),
@@ -155,7 +149,8 @@ polygon based on the current Turtle xy position.'),
                           prim_name='box2dendpolygon')
         self._tw.lc.def_prim(
             'box2dendpolygon', 0,
-            lambda self: primitive_dictionary['box2dendpolygon']())
+            Primitive(self.prim_box2d_end_polygon))
+
         palette.add_block('endfilledpolygon',
                           style='basic-style-extended-vertical',
                           label=_('end filled polygon'),
@@ -164,8 +159,9 @@ polygon based on the current Turtle xy position.'),
                           prim_name='box2dendfilledpolygon')
         self._tw.lc.def_prim(
             'box2dendfilledpolygon', 0,
-            lambda self: primitive_dictionary['box2dendfilledpolygon'](
-                triangulate=True))
+            Primitive(self.prim_box2d_end_filled_polygon,
+                      kwarg_descs={'triangulate': ConstantArg(True)}))
+
         palette.add_block('triangle',
                           style='basic-style-2arg',
                           label=[_('triangle'), _('base'), _('height')],
@@ -176,7 +172,9 @@ project.'),
                           prim_name='box2dtriangle')
         self._tw.lc.def_prim(
             'box2dtriangle', 2,
-            lambda self, x, y: primitive_dictionary['box2dtriangle'](x, y))
+            Primitive(self.prim_box2d_triangle,
+                      arg_descs=[ArgSlot(TYPE_NUMBER), ArgSlot(TYPE_NUMBER)]))
+
         palette.add_block('circle',
                           style='basic-style-1arg',
                           label=_('circle'),
@@ -185,7 +183,9 @@ project.'),
                           prim_name='box2dcircle')
         self._tw.lc.def_prim(
             'box2dcircle', 1,
-            lambda self, x: primitive_dictionary['box2dcircle'](x))
+            Primitive(self.prim_box2d_circle,
+                      arg_descs=[ArgSlot(TYPE_NUMBER)]))
+
         palette.add_block('rectangle',
                           style='basic-style-2arg',
                           label=[_('rectangle'), _('width'), _('height')],
@@ -195,7 +195,9 @@ project.'),
                           prim_name='box2drectangle')
         self._tw.lc.def_prim(
             'box2drectangle', 2,
-            lambda self, x, y: primitive_dictionary['box2drectangle'](x, y))
+            Primitive(self.prim_box2d_rectangle,
+                      arg_descs=[ArgSlot(TYPE_NUMBER), ArgSlot(TYPE_NUMBER)]))
+
         palette.add_block('gear',
                           style='basic-style-1arg',
                           label=_('gear'),
@@ -204,7 +206,9 @@ project.'),
                           prim_name='box2dgear')
         self._tw.lc.def_prim(
             'box2dgear', 1,
-            lambda self, x: primitive_dictionary['box2dgear'](x))
+            Primitive(self.prim_box2d_gear,
+                      arg_descs=[ArgSlot(TYPE_NUMBER)]))
+
         palette.add_block('gearradius',
                           style='number-style-1arg',
                           label=_('gear radius'),
@@ -213,7 +217,10 @@ project.'),
                           prim_name='box2dradius')
         self._tw.lc.def_prim(
             'box2dradius', 1,
-            lambda self, x: primitive_dictionary['box2dradius'](x))
+            Primitive(self.prim_box2d_radius,
+                      arg_descs=[ArgSlot(TYPE_NUMBER)],
+                      return_type=TYPE_NUMBER))
+
         palette.add_block('reset',
                           hidden=True,
                           style='basic-style-extended-vertical',
@@ -223,7 +230,8 @@ list.'),
                           prim_name='box2dreset')
         self._tw.lc.def_prim(
             'box2dreset', 0,
-            lambda self: primitive_dictionary['box2dreset']())
+            Primitive(self.prim_box2d_reset))
+
         palette.add_block('motor',
                           style='basic-style-2arg',
                           label=[_('motor'), _('torque'), _('speed')],
@@ -234,7 +242,9 @@ created.'),
                           prim_name='box2dmotor')
         self._tw.lc.def_prim(
             'box2dmotor', 2,
-            lambda self, x, y: primitive_dictionary['box2dmotor'](x, y))
+            Primitive(self.prim_box2d_motor,
+                      arg_descs=[ArgSlot(TYPE_NUMBER), ArgSlot(TYPE_NUMBER)]))
+
         palette.add_block('pin',
                           style='basic-style-extended-vertical',
                           label=_('pin'),
@@ -243,7 +253,8 @@ fall.'),
                           prim_name='box2dpin')
         self._tw.lc.def_prim(
             'box2dpin', 0,
-            lambda self: primitive_dictionary['box2dmotor'](0, 0))
+            Primitive(self.prim_box2d_pin))
+
         palette.add_block('joint',
                           style='basic-style-2arg',
                           label=[_('joint'), _('x'), _('y')],
@@ -253,7 +264,9 @@ object at the current location and the object at point x, y).'),
                           prim_name='box2djoint')
         self._tw.lc.def_prim(
             'box2djoint', 2,
-            lambda self, x, y: primitive_dictionary['box2djoint'](x, y))
+            Primitive(self.prim_box2d_joint,
+                      arg_descs=[ArgSlot(TYPE_NUMBER), ArgSlot(TYPE_NUMBER)]))
+
         palette.add_block('savebox2d',
                           style='basic-style-1arg',
                           label=_('save as Physics activity'),
@@ -263,7 +276,8 @@ a Physics activity.'),
                           prim_name='savebox2d')
         self._tw.lc.def_prim(
             'savebox2d', 1,
-            lambda self, x: primitive_dictionary['savebox2d'](x))
+            Primitive(self.prim_save_box2d,
+                      arg_descs=[ArgSlot(TYPE_STRING)]))
 
     def _status_report(self):
         ''' Required method '''
@@ -272,11 +286,11 @@ a Physics activity.'),
 
     def clear(self):
         ''' Erase button pressed or clean block executed '''
-        self._prim_box2d_reset()
+        self.prim_box2d_reset()
 
     # Block primitives used in talogo
 
-    def _prim_box2d_reset(self):
+    def prim_box2d_reset(self):
         ''' Clear the body list '''
         self._id = 1
         self._density = 1.
@@ -288,22 +302,22 @@ a Physics activity.'),
         self._dict['jointlist'] = []
         # Always start with a ground plane
         self._dict['bodylist'].append(
-                {'userData': {'color': [114, 114, 185], 'saveid': 1},
-                 'linearVelocity': [0.0, 0.0],
-                 'dynamic': False,
-                 'angularVelocity': 0.0,
-                 'shapes': [{'restitution': 0.15,
-                             'type': 'polygon',
-                             'vertices': [[-50.0, -0.1],
-                                          [50.0, -0.1],
-                                          [50.0, 0.1],
-                                          [-50.0, 0.1]],
-                             'friction': 0.5,
-                             'density': 0.0}],
-                 'position': [-10.0, 0.0],
-                 'angle': 0.0})
+            {'userData': {'color': [114, 114, 185], 'saveid': 1},
+             'linearVelocity': [0.0, 0.0],
+             'dynamic': False,
+             'angularVelocity': 0.0,
+             'shapes': [{'restitution': 0.15,
+                         'type': 'polygon',
+                         'vertices': [[-50.0, -0.1],
+                                      [50.0, -0.1],
+                                      [50.0, 0.1],
+                                      [-50.0, 0.1]],
+                         'friction': 0.5,
+                         'density': 0.0}],
+             'position': [-10.0, 0.0],
+             'angle': 0.0})
 
-    def _prim_box2d_density(self, density):
+    def prim_box2d_density(self, density):
         ''' set the density to be used when creating box2d objects '''
         try:
             self._density = abs(float(density) / 100.)
@@ -312,7 +326,7 @@ a Physics activity.'),
                          self._tw.running_sugar)
             self._density = 1.
 
-    def _prim_box2d_friction(self, friction):
+    def prim_box2d_friction(self, friction):
         ''' set the friction to be used when creating box2d objects '''
         try:
             self._friction = abs(float(friction) / 100.)
@@ -325,7 +339,7 @@ a Physics activity.'),
                          self._tw.running_sugar)
             self._friction = 0.5
 
-    def _prim_box2d_bounce(self, bounce):
+    def prim_box2d_bounce(self, bounce):
         ''' set the bounce to be used when creating box2d objects '''
         try:
             self._bounce = abs(float(bounce) / 100.)
@@ -338,21 +352,21 @@ a Physics activity.'),
                          self._tw.running_sugar)
             self._bounce = 0.5
 
-    def _prim_box2d_dynamic(self, value):
+    def prim_box2d_dynamic(self, value):
         ''' set the dynamic flag to be used when creating box2d objects '''
         if str(value).lower() in [_('false'), _('no'), '0']:
             self._dynamic = False
         else:
             self._dynamic = True
 
-    def _prim_box2d_start_polygon(self):
+    def prim_box2d_start_polygon(self):
         ''' start of a collection of points to create a polygon '''
         x = self._tw.turtles.get_active_turtle().get_x()
         y = self._tw.turtles.get_active_turtle().get_y()
         self._polygon = [(x + self._tw.canvas.width / 2.,
                           y + self._tw.canvas.height / 2.)]
 
-    def _prim_box2d_add_point(self):
+    def prim_box2d_add_point(self):
         ''' add an point to a collection of points to create a polygon '''
         x = self._tw.turtles.get_active_turtle().get_x()
         y = self._tw.turtles.get_active_turtle().get_y()
@@ -363,7 +377,7 @@ a Physics activity.'),
         elif not (x == self._polygon[-1][0] and y == self._polygon[-1][1]):
             self._polygon.append((x, y))
 
-    def _prim_box2d_end_polygon(self):
+    def prim_box2d_end_polygon(self):
         ''' add a polygon object to box2d dictionary '''
         if not self._status:
             return
@@ -404,11 +418,11 @@ a Physics activity.'),
                     continue
                 p1 = p[:]
                 self._dict['bodylist'][-1]['shapes'].append(
-                 {'density': self._density,
-                  'friction': self._friction,
-                  'type': 'polygon',
-                  'vertices': [],
-                  'restitution': self._bounce})
+                    {'density': self._density,
+                     'friction': self._friction,
+                     'type': 'polygon',
+                     'vertices': [],
+                     'restitution': self._bounce})
 
                 a = atan2(p0[1] - p1[1], p0[0] - p1[0])
                 dx = sin(a) / self.LINE_SCALE
@@ -420,7 +434,7 @@ a Physics activity.'),
                         [p1[0] * self._scale - dx - xpos,
                          p1[1] * self._scale - dy - ypos],
                         [p0[0] * self._scale - dx - xpos,
-                        p0[1] * self._scale - dy - ypos]]
+                         p0[1] * self._scale - dy - ypos]]
                 # Make sure points are counter-clockwise
                 if self._cross_product_area(poly) < 0:
                     poly = self._reverse_order(poly)[:]
@@ -451,9 +465,9 @@ a Physics activity.'),
                     self._tw.canvas.canvas.new_path()
                     for i, p in enumerate(s['vertices']):
                         x, y = self._tw.turtles.turtle_to_screen_coordinates(
-                            ((p[0] + xpos) / self._scale - \
+                            ((p[0] + xpos) / self._scale -
                              self._tw.canvas.width / 2.,
-                             (p[1] + ypos) / self._scale - \
+                             (p[1] + ypos) / self._scale -
                              self._tw.canvas.height / 2.))
                         if i == 0:
                             self._tw.canvas.canvas.move_to(x, y)
@@ -463,12 +477,12 @@ a Physics activity.'),
                     self._tw.canvas.canvas.fill()
                 elif s['type'] == 'circle':
                     x, y = self._tw.turtles.turtle_to_screen_coordinates(
-                        ((s['localPosition'][0] + xpos) / self._scale - \
+                        ((s['localPosition'][0] + xpos) / self._scale -
                          self._tw.canvas.width / 2.,
-                         (s['localPosition'][1] + ypos) / self._scale - \
+                         (s['localPosition'][1] + ypos) / self._scale -
                          self._tw.canvas.height / 2.))
-                    self._tw.canvas.canvas.set_line_width(2. / (
-                            self.LINE_SCALE * self._scale))
+                    self._tw.canvas.canvas.set_line_width(
+                        2. / (self.LINE_SCALE * self._scale))
                     self._tw.canvas.canvas.move_to(x, y)
                     self._tw.canvas.canvas.line_to(x + 1, y + 1)
                     self._tw.canvas.canvas.stroke()
@@ -478,7 +492,7 @@ a Physics activity.'),
 
             self._polygon = []
 
-    def _prim_box2d_end_filled_polygon(self, triangulate=False):
+    def prim_box2d_end_filled_polygon(self, triangulate=False):
         ''' add a filled-polygon object to box2d dictionary '''
         if not self._status:
             return
@@ -600,7 +614,7 @@ a Physics activity.'),
                 'vertices'].append([p[0] * self._scale - xpos,
                                     p[1] * self._scale - ypos])
 
-    def _prim_box2d_triangle(self, base, height):
+    def prim_box2d_triangle(self, base, height):
         ''' add a triangle object to box2d dictionary '''
         try:
             float(base)
@@ -608,7 +622,7 @@ a Physics activity.'),
         except ValueError:
             debug_output(
                 'bad argument to triangle: base, height must be float',
-                         self._tw.running_sugar)
+                self._tw.running_sugar)
         self._polygon = []
 
         x = self._tw.turtles.get_active_turtle().get_x()
@@ -621,9 +635,9 @@ a Physics activity.'),
         h = self._tw.turtles.get_active_turtle().get_heading()
         # if h != 0:
         self._rotate_polygon(x, y, (270 - h) * pi / 180.)
-        self._prim_box2d_end_filled_polygon()
+        self.prim_box2d_end_filled_polygon()
 
-    def _prim_box2d_rectangle(self, width, height):
+    def prim_box2d_rectangle(self, width, height):
         ''' add a rectangle object to box2d dictionary '''
         try:
             float(width)
@@ -631,7 +645,7 @@ a Physics activity.'),
         except ValueError:
             debug_output(
                 'bad argument to rectangle: width, height must be float',
-                         self._tw.running_sugar)
+                self._tw.running_sugar)
         self._polygon = []
         x = self._tw.turtles.get_active_turtle().get_x()
         y = self._tw.turtles.get_active_turtle().get_y()
@@ -644,9 +658,9 @@ a Physics activity.'),
         h = self._tw.turtles.get_active_turtle().get_heading()
         if h != 0:
             self._rotate_polygon(x, y, (90 - h) * pi / 180.)
-        self._prim_box2d_end_filled_polygon()
+        self.prim_box2d_end_filled_polygon()
 
-    def _prim_box2d_radius(self, tooth_count):
+    def prim_box2d_radius(self, tooth_count):
         ''' calculate gear radius '''
         try:
             if abs(int(tooth_count)) < 2:
@@ -662,7 +676,7 @@ a Physics activity.'),
         radius = int(max(0, max_x - self.TOOTH_SCALE / 4.))
         return radius
 
-    def _prim_box2d_gear(self, tooth_count):
+    def prim_box2d_gear(self, tooth_count):
         ''' add a gear object to box2d dictionary '''
         try:
             if abs(int(tooth_count)) < 2:
@@ -682,9 +696,9 @@ a Physics activity.'),
         h = self._tw.turtles.get_active_turtle().get_heading()
         # if h != 0:
         self._rotate_polygon(x, y, (90 - h) * pi / 180.)
-        self._prim_box2d_end_filled_polygon(triangulate=True)
+        self.prim_box2d_end_filled_polygon(triangulate=True)
 
-    def _prim_box2d_circle(self, radius):
+    def prim_box2d_circle(self, radius):
         ''' add a circle object to box2d dictionary '''
         try:
             float(radius)
@@ -726,7 +740,10 @@ a Physics activity.'),
             self._tw.turtles.get_active_turtle().get_pen_size())
         self._tw.canvas.inval()
 
-    def _prim_box2d_motor(self, torque, speed):
+    def prim_box2d_pin(self):
+        self.prim_box2d_motor(0, 0)
+
+    def prim_box2d_motor(self, torque, speed):
         ''' add a motor to an object to box2d dictionary '''
         try:
             float(torque)
@@ -776,7 +793,7 @@ a Physics activity.'),
             self._tw.turtles.get_active_turtle().get_pen_size())
         self._tw.canvas.inval()
 
-    def _prim_box2d_joint(self, x, y):
+    def prim_box2d_joint(self, x, y):
         ''' add a joint between two objects '''
         try:
             float(x)
@@ -789,9 +806,9 @@ a Physics activity.'),
         x1 = x + self._tw.canvas.width / 2.
         y1 = y + self._tw.canvas.height / 2.
         x2 = self._tw.turtles.get_active_turtle().get_x() + \
-             self._tw.canvas.width / 2.
+            self._tw.canvas.width / 2.
         y2 = self._tw.turtles.get_active_turtle().get_y() + \
-             self._tw.canvas.height / 2.
+            self._tw.canvas.height / 2.
         self._dict['jointlist'].append(
             {'userData': None,
              'anchor2': [x1 * self._scale, y1 * self._scale],
@@ -826,7 +843,7 @@ a Physics activity.'),
             self._tw.turtles.get_active_turtle().get_pen_size())
         self._tw.canvas.inval()
 
-    def _prim_save_box2d(self, name):
+    def prim_save_box2d(self, name):
         ''' Save bodylist to a Physics project '''
         data = json_dump(self._dict)
         if not self._tw.running_sugar:
@@ -878,8 +895,8 @@ a Physics activity.'),
 
     def _near(self, p1, p2, threshold=THRESHOLD):
         ''' Is point 1 near point 2? '''
-        if sqrt((p1[0] - p2[0]) * (p1[0] - p2[0]) + \
-                    (p1[1] - p2[1]) * (p1[1] - p2[1])) < threshold:
+        if sqrt((p1[0] - p2[0]) * (p1[0] - p2[0]) +
+                (p1[1] - p2[1]) * (p1[1] - p2[1])) < threshold:
             return True
         return False
 
@@ -929,11 +946,11 @@ a Physics activity.'),
         ''' Is the point in the triangle? '''
         return \
             self._cross_product_area(
-            (triangle[0], triangle[1], point)) >= 0 and \
+                (triangle[0], triangle[1], point)) >= 0 and \
             self._cross_product_area(
                 (triangle[1], triangle[2], point)) >= 0 and \
             self._cross_product_area(
-                    (triangle[2], triangle[0], point)) >= 0
+                (triangle[2], triangle[0], point)) >= 0
 
     def _triangulate(self, polygon):
         ''' Convert a polygon into triangles '''
