@@ -1,4 +1,4 @@
-#Copyright (c) 2012, Tony Forster, Ian Daniher, Walter Bender
+#Copyright (c) 2012-13 Tony Forster, Ian Daniher, Walter Bender
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -20,8 +20,9 @@ from plugins.plugin import Plugin
 from WeDoMore import WeDo, scan_for_devices, UNAVAILABLE
 
 from TurtleArt.tapalette import make_palette
-from TurtleArt.taconstants import XO1, XO15
-from TurtleArt.talogo import primitive_dictionary
+from TurtleArt.taprimitive import (ArgSlot, Primitive)
+from TurtleArt.tatype import TYPE_NUMBER, TYPE_INT
+
 
 import logging
 _logger = logging.getLogger('turtleart-activity WeDo plugin')
@@ -47,100 +48,96 @@ class Wedo_plugin(Plugin):
     def setup(self):
         ''' Setup palettes '''
         palette = make_palette('WeDo', colors=["#FF6060", "#A06060"],
-			       help_string=_('Palette of WeDo blocks'))
+                               help_string=_('Palette of WeDo blocks'))
 
-        primitive_dictionary['wedoselect'] = self.wedo_select
         palette.add_block('wedoselect',
                           style='basic-style-1arg',
-                          default = 1,
+                          default=1,
                           label=_('WeDo'),
                           help_string=_('set current WeDo device'),
-                          prim_name = 'wedoselect')
-
+                          prim_name='wedoselect')
         self._parent.lc.def_prim(
             'wedoselect', 1,
-            lambda self, n: primitive_dictionary['wedoselect'](n))
+            Primitive(self.prim_wedo_select,
+                      arg_descs=[ArgSlot(TYPE_NUMBER)]))
 
-        primitive_dictionary['wedocount'] = self.wedo_count
         palette.add_block('wedogetcount',
                           style='box-style',
                           label=_('number of WeDos'),
                           help_string=_('number of WeDo devices'),
-                          prim_name = 'wedocount')
-
+                          prim_name='wedocount')
         self._parent.lc.def_prim(
-            'wedocount', 0, lambda self: primitive_dictionary['wedocount']())
+            'wedocount', 0,
+            Primitive(self.prim_wedo_count, return_type=TYPE_INT))
 
-        primitive_dictionary['wedotilt'] = self.wedo_gettilt
         palette.add_block('tilt',
-                        style='box-style',
-                        label=_('tilt'),
-                        help_string=_('tilt sensor output: (-1 == no tilt,\
- 0 == tilt forward, 3 == tilt back, 1 == tilt left, 2 == tilt right)'),
-                        value_block=True,
-                        prim_name = 'wedotilt')
+                          style='box-style',
+                          label=_('tilt'),
+                          help_string=_('tilt sensor output: (-1 == no tilt, \
+0 == tilt forward, 3 == tilt back, 1 == tilt left, 2 == tilt right)'),
+                          value_block=True,
+                          prim_name='wedotilt')
         self._parent.lc.def_prim(
-            'wedotilt', 0, lambda self: primitive_dictionary['wedotilt']())
+            'wedotilt', 0,
+            Primitive(self.wedo_get_tilt, return_type=TYPE_INT))
 
-        primitive_dictionary['wedodistance'] = self.wedo_getdistance
         palette.add_block('wedodistance',
-                        style='box-style',
-                        label=_('distance'),
-                        help_string=_('distance sensor output'),
-                        value_block=True,
-                        prim_name = 'wedodistance')
+                          style='box-style',
+                          label=_('distance'),
+                          help_string=_('distance sensor output'),
+                          value_block=True,
+                          prim_name='wedodistance')
         self._parent.lc.def_prim(
             'wedodistance', 0,
-            lambda self: primitive_dictionary['wedodistance']())
-        
-        primitive_dictionary['wedogetMotorA'] = self.wedo_getmotora
-        palette.add_block('wedogetMotorA',
-                        style='box-style',
-                        label=_('Motor A'),
-                        help_string=_('returns the current value of Motor A'),
-                        value_block=True,
-                        prim_name = 'wedogetMotorA')
+            Primitive(self.wedo_get_distance, return_type=TYPE_INT))
 
+        palette.add_block('wedogetMotorA',
+                          style='box-style',
+                          label=_('Motor A'),
+                          help_string=_('returns the current value of \
+Motor A'),
+                          value_block=True,
+                          prim_name='wedogetMotorA')
         self._parent.lc.def_prim(
             'wedogetMotorA', 0,
-            lambda self: primitive_dictionary['wedogetMotorA']())
+            Primitive(self.wedo_get_motor_a, return_type=TYPE_INT))
 
-        primitive_dictionary['wedogetMotorB'] = self.wedo_getmotorb
         palette.add_block('wedogetMotorB',
-                        style='box-style',
-                        label=_('Motor B'),
-                        help_string=_('returns the current value of Motor B'),
-                        value_block=True,
-                        prim_name = 'wedogetMotorB')
+                          style='box-style',
+                          label=_('Motor B'),
+                          help_string=_('returns the current value of \
+Motor B'),
+                          value_block=True,
+                          prim_name='wedogetMotorB')
         self._parent.lc.def_prim(
             'wedogetMotorB', 0,
-            lambda self: primitive_dictionary['wedogetMotorB']())
+            Primitive(self.wedo_get_motor_b, return_type=TYPE_INT))
 
-        primitive_dictionary['wedosetMotorA'] = self.wedo_setmotora
         palette.add_block('wedosetMotorA',
-                        style = 'basic-style-1arg',
-                        label = _('Motor A'),
-                        default = 30,
-                        prim_name = 'wedosetMotorA',
-                        help_string = _('set the value for Motor A'))
+                          style='basic-style-1arg',
+                          label=_('Motor A'),
+                          default=30,
+                          prim_name='wedosetMotorA',
+                          help_string=_('set the value for Motor A'))
         self._parent.lc.def_prim(
             'wedosetMotorA', 1,
-            lambda self, a: primitive_dictionary['wedosetMotorA'](a))
+            Primitive(self.prim_wedo_set_motor_a,
+                      arg_descs=[ArgSlot(TYPE_INT)]))
 
-        primitive_dictionary['wedosetMotorB'] = self.wedo_setmotorb
         palette.add_block('wedosetMotorB',
-                        style = 'basic-style-1arg',
-                        label = _('Motor B'),
-                        default = 30,
-                        prim_name = 'wedosetMotorB',
-                        help_string = _('set the value for Motor B'))
+                          style='basic-style-1arg',
+                          label=_('Motor B'),
+                          default=30,
+                          prim_name='wedosetMotorB',
+                          help_string=_('set the value for Motor B'))
         self._parent.lc.def_prim(
             'wedosetMotorB', 1,
-            lambda self, b: primitive_dictionary['wedosetMotorB'](b))
+            Primitive(self.prim_wedo_set_motor_b,
+                      arg_descs=[ArgSlot(TYPE_INT)]))
 
-    def wedo_select(self, i):
+    def prim_wedo_select(self, i):
         ''' Select current device '''
-        if self.wedo_count() == 0:
+        if self.prim_wedo_count() == 0:
             self.active_wedo = None
             self._parent.showlabel(
                 'status', _('WeDo is unavailable'))
@@ -153,15 +150,15 @@ class Wedo_plugin(Plugin):
             i = 1
         if i < 0:
             i = -i
-        if i < 0 or i > self.wedo_count() - 1:
+        if i < 0 or i > self.prim_wedo_count() - 1:
             self._parent.showlabel(
                 'status', _('WeDo %d is unavailable; defaulting to 1') % (i))
         i -= 1  # Userspace counts from 1; internally, we count from 0
-        if i > self.wedo_count() - 1:
+        if i > self.prim_wedo_count() - 1:
             i = 0
         self.active_wedo = i
 
-    def wedo_count(self):
+    def prim_wedo_count(self):
         ''' How many devices are available? '''
         n = len(self.WeDos)
         for wedo in self.WeDos:
@@ -176,7 +173,7 @@ class Wedo_plugin(Plugin):
                 return self.WeDos.index(wedo)
         return None
 
-    def wedo_gettilt(self):
+    def wedo_get_tilt(self):
         if self.active_wedo is None:
             self.active_wedo = self.wedo_find()
             if self.active_wedo is None:
@@ -192,7 +189,7 @@ class Wedo_plugin(Plugin):
         else:
             return tilt
 
-    def wedo_getdistance(self):
+    def wedo_get_distance(self):
         if self.active_wedo is None:
             self.active_wedo = self.wedo_find()
             if self.active_wedo is None:
@@ -208,7 +205,7 @@ class Wedo_plugin(Plugin):
         else:
             return distance
 
-    def wedo_getmotora(self):
+    def wedo_get_motor_a(self):
         if self.active_wedo is None:
             self.active_wedo = self.wedo_find()
             if self.active_wedo is None:
@@ -223,7 +220,7 @@ class Wedo_plugin(Plugin):
         else:
             return speed
 
-    def wedo_getmotorb(self):
+    def wedo_get_motor_b(self):
         if self.active_wedo is None:
             self.active_wedo = self.wedo_find()
             if self.active_wedo is None:
@@ -238,7 +235,7 @@ class Wedo_plugin(Plugin):
         else:
             return speed
 
-    def wedo_setmotora(self, speed):
+    def wedo_set_motor_a(self, speed):
         if self.active_wedo is None:
             self.active_wedo = self.wedo_find()
         if self.active_wedo is None:
@@ -250,7 +247,7 @@ class Wedo_plugin(Plugin):
                 'status', _('%s is unavailable on WeDo %d') % (
                     _('Motor A'), self.active_wedo + 1))
 
-    def wedo_setmotorb(self, speed):
+    def wedo_set_motor_b(self, speed):
         if self.active_wedo is None:
             self.active_wedo = self.wedo_find()
         if self.active_wedo is None:
