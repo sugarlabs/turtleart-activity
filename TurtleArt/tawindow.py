@@ -3643,7 +3643,7 @@ before making changes to your program'))
                         i += 1
                         while(not p[i].get_visibility()):
                             i += 1
-                            if i == len(p) - 1:
+                            if i >= len(p) - 1:
                                 i = 0
             if i < len(p):
                 self._highlighted_blk = p[i]
