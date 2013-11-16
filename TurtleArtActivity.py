@@ -1297,8 +1297,14 @@ class TurtleArtActivity(activity.Activity):
         data_to_file(self.tw.assemble_data_to_save(), file_path)
         self.metadata['mime_type'] = MIMETYPE[0]
         self.metadata['turtle blocks'] = ''.join(self.tw.used_block_list)
-        self.metadata['public'] = data_to_string(['activity count',
-                                                  'turtle blocks'])
+        # Deprecated
+        # self.metadata['public'] = data_to_string(['activity count',
+        #                                           'turtle blocks'])
+        if self.tw.palette:
+            self.metadata['palette'] = str(self.tw.selected_palette)
+        else:
+            self.metadata['palette'] = '-1'
+        self.metadata['orientation'] = str(self.tw.orientation)
         if len(self.error_list) > 0:
             errors = []
             if 'error_list' in self.metadata:
