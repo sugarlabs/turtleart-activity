@@ -349,6 +349,7 @@ class TurtleArtWindow():
 
             if self.running_sugar:
                 self.activity.check_buttons_for_fit()
+                self.activity.update_palette_from_metadata()
 
     def _set_screen_dpi(self):
         dpi = get_screen_dpi()
@@ -1895,16 +1896,20 @@ before making changes to your program'))
                 elif spr.name == _('shift'):
                     self._shift_toolbar_palette(self.selected_palette)
                 else:
-                    self.orientation = 1 - self.orientation
-                    self.palette_button[self.orientation].set_layer(TAB_LAYER)
-                    self.palette_button[1 - self.orientation].hide()
-                    self.palette_sprs[self.selected_palette][
-                        1 - self.orientation].hide()
-                    self._layout_palette(self.selected_palette)
-                    self.show_palette(self.selected_palette)
+                    self.set_orientation(1 - self.orientation)
             elif spr.type == 'toolbar':
                 self._select_toolbar_button(spr)
         return False
+
+    def set_orientation(self, orientation):
+        self.orientation = orientation
+        self.palette_button[self.orientation].set_layer(TAB_LAYER)
+        self.palette_button[1 - self.orientation].hide()
+        spr = self.palette_sprs[self.selected_palette][1 - self.orientation]
+        if spr is not None:
+            spr.hide()
+        self._layout_palette(self.selected_palette)
+        self.show_palette(self.selected_palette)
 
     def _update_action_names(self, name):
         ''' change the label on action blocks of the same name '''
@@ -3643,7 +3648,7 @@ before making changes to your program'))
                         i += 1
                         while(not p[i].get_visibility()):
                             i += 1
-                            if i == len(p) - 1:
+                            if i >= len(p) - 1:
                                 i = 0
             if i < len(p):
                 self._highlighted_blk = p[i]
@@ -4001,8 +4006,6 @@ before making changes to your program'))
             self.new_project()
         self.process_data(data_from_file(ta_file))
         self._loaded_project = ta_file
-        # Always start on the Turtle palette
-        self.show_toolbar_palette(palette_name_to_index('turtle'))
 
     def load_file_from_chooser(self, create_new_project=True):
         ''' Load a project from file chooser '''
