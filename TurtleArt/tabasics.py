@@ -445,7 +445,8 @@ in place of a number block)'),
                           value_block=True,
                           prim_name='shade',
                           logo_command=':shade')
-        self.tw.lc.def_prim('shade', 0, Primitive(Turtle.get_shade))
+        self.tw.lc.def_prim('shade', 0,
+                            Primitive(Turtle.get_shade, return_type=TYPE_NUMBER))
 
         palette.add_block('gray',
                           style='box-style',
