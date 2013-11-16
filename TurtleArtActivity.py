@@ -307,9 +307,9 @@ class TurtleArtActivity(activity.Activity):
 
     def do_load_python_cb(self, button):
         ''' Load Python code from the Journal. '''
-        self.load_python.set_icon('pippy-openon')
+        self.load_python.set_icon('python-saveon')
         self.tw.load_python_code_from_file(fname=None, add_new_block=True)
-        gobject.timeout_add(250, self.load_python.set_icon, 'pippy-openoff')
+        gobject.timeout_add(250, self.load_python.set_icon, 'python-saveoff')
 
     def do_save_as_image_cb(self, button):
         ''' Save the canvas to the Journal. '''
@@ -879,7 +879,7 @@ class TurtleArtActivity(activity.Activity):
         if activity.get_bundle_path()[0:len(home)] == home:
             add_paragraph(help_box, _('Load plugin'), icon='pluginoff')
         add_paragraph(help_box, _('Load Python block'),
-                      icon='pippy-openoff')
+                      icon='python-saveoff')
 
         help_box = gtk.VBox()
         help_box.set_homogeneous(False)
@@ -1087,7 +1087,7 @@ class TurtleArtActivity(activity.Activity):
                     'pluginoff', _('Load plugin'),
                     self.do_load_ta_plugin_cb, None, button_box)
             self.load_python, label = self._add_button_and_label(
-                'pippy-openoff', _('Load Python block'),
+                'python-saveoff', _('Load Python block'),
                 self.do_load_python_cb, None, button_box)
             button_box.show_all()
             self._palette.set_content(button_box)
@@ -1113,7 +1113,7 @@ class TurtleArtActivity(activity.Activity):
                     'pluginoff', _('Load plugin'),
                     self.do_load_ta_plugin_cb, toolbar)
             self.load_python = self._add_button(
-                'pippy-openoff', _('Load Python block'),
+                'python-saveoff', _('Load Python block'),
                 self.do_load_python_cb, toolbar)
 
     def _save_load_palette_cb(self, button):
