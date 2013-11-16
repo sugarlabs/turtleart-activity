@@ -165,6 +165,21 @@ class TurtleArtActivity(activity.Activity):
 
         self.init_complete = True
 
+    def update_palette_from_metadata(self):
+        if 'palette' in self.metadata:
+            n = int(self.metadata['palette'])
+            if n == -1:
+                self.tw.hideshow_palette(False)
+            else:
+                # Set radio button to active
+                if n < len(self.palette_buttons):
+                    self.palette_buttons[n].set_active(True)
+                if 'orientation' in self.metadata:
+                    self.tw.set_orientation(int(self.metadata['orientation']))
+        else:
+            # Else start on the Turtle palette
+            self.tw.show_palette(n=0)
+
     def check_buttons_for_fit(self):
         ''' Check to see which set of buttons to display '''
         if not self.has_toolbarbox:
@@ -359,7 +374,7 @@ class TurtleArtActivity(activity.Activity):
         if self.tw.palette:
             self.tw.hideshow_palette(False)
             self.do_hidepalette()
-            if self.has_toolbarbox and self.tw.selected_palette is not None:
+            if not self.has_toolbarbox and self.tw.selected_palette is not None:
                 self.palette_buttons[self.tw.selected_palette].set_icon(
                     palette_names[self.tw.selected_palette] + 'off')
         else:
