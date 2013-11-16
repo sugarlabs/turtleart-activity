@@ -482,33 +482,36 @@ return %s(self)" % (p, P, P)
         ''' Save changes on exit '''
         project_empty = self.tw.is_project_empty()
         if not project_empty:
-            if self.tw.is_new_project():
-                self._show_save_dialog(True)
-            else:
-                if self.tw.project_has_changed():
-                    self._show_save_dialog(False)
+            resp = self._show_save_dialog(e == None)
+            if resp == gtk.RESPONSE_YES:
+                if self.tw.is_new_project():
+                    self._save_as()
+                else:
+                    if self.tw.project_has_changed():
+                        self._save_changes()
+            elif resp == gtk.RESPONSE_CANCEL:
+                return
+
         for plugin in self.tw.turtleart_plugins:
             if hasattr(plugin, 'quit'):
                 plugin.quit()
         gtk.main_quit()
         exit()
 
-    def _show_save_dialog(self, new_project=True):
+    def _show_save_dialog(self, add_cancel=False):
         ''' Dialog for save project '''
         dlg = gtk.MessageDialog(parent=None, type=gtk.MESSAGE_INFO,
                                 buttons=gtk.BUTTONS_YES_NO,
                                 message_format=_('You have unsaved work. \
 Would you like to save before quitting?'))
+        if add_cancel:
+            dlg.add_button(gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL)
         dlg.set_title(_('Save project?'))
         dlg.set_property('skip-taskbar-hint', False)
 
         resp = dlg.run()
         dlg.destroy()
-        if resp == gtk.RESPONSE_YES:
-            if new_project:
-                self._save_as()
-            else:
-                self._save_changes()
+        return resp
 
     def _do_new_cb(self, widget):
         ''' Callback for new project. '''
