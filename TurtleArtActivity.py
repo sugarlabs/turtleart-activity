@@ -82,6 +82,7 @@ if HAS_TOOLBARBOX:
 class TurtleArtActivity(activity.Activity):
     ''' Activity subclass for Turtle Art '''
     _HOVER_HELP = '/desktop/sugar/activities/turtleart/hoverhelp'
+    _ORIENTATION = '/desktop/sugar/activities/turtleart/orientation'
     _COORDINATE_SCALE = '/desktop/sugar/activities/turtleart/coordinatescale'
 
     def __init__(self, handle):
@@ -166,14 +167,23 @@ class TurtleArtActivity(activity.Activity):
         self.init_complete = True
 
     def update_palette_from_metadata(self):
+        if HAS_GCONF:
+            # We have to wait to set the orientation for the palettes
+            # to be loaded.
+            self.client = gconf.client_get_default()
+            if self.client.get_int(self._ORIENTATION) == 1:
+                self.tw.set_orientation(1)
+
         if 'palette' in self.metadata:
             n = int(self.metadata['palette'])
             if n == -1:
                 self.tw.hideshow_palette(False)
             else:
-                # Set radio button to active
+                # Try to set radio button to active
                 if n < len(self.palette_buttons):
                     self.palette_buttons[n].set_active(True)
+                else:
+                    self.tw.show_palette(n=0)
                 if 'orientation' in self.metadata:
                     self.tw.set_orientation(int(self.metadata['orientation']))
         else:
@@ -1320,6 +1330,8 @@ class TurtleArtActivity(activity.Activity):
         else:
             self.metadata['palette'] = '-1'
         self.metadata['orientation'] = str(self.tw.orientation)
+        if HAS_GCONF:
+            self.client.set_int(self._ORIENTATION, self.tw.orientation)
         if len(self.error_list) > 0:
             errors = []
             if 'error_list' in self.metadata:
