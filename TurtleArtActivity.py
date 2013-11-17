@@ -109,12 +109,7 @@ class TurtleArtActivity(activity.Activity):
         self._setup_toolbar()
 
         _logger.debug('_setup_canvas')
-        self._canvas = self._setup_canvas(self._setup_scrolled_window())
-
-        # FIX ME: not sure how or why self.canvas gets overwritten
-        # It is set to self.sw in _setup_canvas but None here.
-        # We need self.canvas for generating the preview image
-        self.canvas = self.sw
+        self._setup_canvas(self._setup_scrolled_window())
 
         _logger.debug('_setup_palette_toolbar')
         self._setup_palette_toolbar()
