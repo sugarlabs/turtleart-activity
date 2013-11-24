@@ -1640,10 +1640,7 @@ before making changes to your program'))
                 elif blk.name == 'restore':
                     self.restore_latest_from_trash()
                 elif blk.name == 'empty':
-                    if self.running_sugar:
-                        self.activity.empty_trash_alert()
-                    else:
-                        self.empty_trash()
+                    self.empty_trash()
                 elif blk.name == 'trashall':
                     for b in self.just_blocks():
                         if b.type != 'trash':
@@ -2203,6 +2200,19 @@ before making changes to your program'))
 
     def empty_trash(self):
         ''' Permanently remove all blocks presently in the trash can. '''
+        title = _('empty trash')
+        msg = _('Do you really want to empty the trash?')
+        if self.running_sugar:
+            self.activity.empty_trash_alert(title, msg)
+        else:
+            dialog = gtk.MessageDialog(None, 0, gtk.MESSAGE_WARNING, gtk.BUTTONS_OK_CANCEL, msg)
+            dialog.set_title(title)
+            res = dialog.run()
+            dialog.destroy()
+            if res == gtk.RESPONSE_OK:
+                self._empty_trash()
+
+    def _empty_trash(self):
         for blk in self.block_list.list:
             if blk.type == 'trash':
                 blk.type = 'deleted'
@@ -3686,6 +3696,7 @@ before making changes to your program'))
             self.keyboard = KEY_DICT[self.keypress]
         else:
             self.keyboard = 0
+        self.keypress = ''
 
     def get_keyboard(self):
         """ Return cached keyboard input """

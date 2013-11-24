@@ -1634,17 +1634,17 @@ in order to use the plugin.'))
                     self._old_cursor = self.get_window().get_cursor()
                 self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.HAND1))
 
-    def empty_trash_alert(self):
+    def empty_trash_alert(self, title, msg):
         ''' We get confirmation from the user before emptying the trash '''
         alert = ConfirmationAlert()
-        alert.props.title = _('empty trash')
-        alert.props.msg = _('Do you really want to empty the trash?')
+        alert.props.title = title
+        alert.props.msg = msg
 
         def _empty_trash_alert_response_cb(alert, response_id, self):
             if response_id is gtk.RESPONSE_OK:
                 _logger.debug('emptying the trash')
                 self.remove_alert(alert)
-                self.tw.empty_trash()
+                self.tw._empty_trash()
             elif response_id is gtk.RESPONSE_CANCEL:
                 _logger.debug('cancel emptying the trash')
                 self.remove_alert(alert)
