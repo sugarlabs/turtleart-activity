@@ -2217,6 +2217,9 @@ before making changes to your program'))
             if blk.type == 'trash':
                 blk.type = 'deleted'
                 blk.spr.hide()
+        for blk in self.block_list.list:
+            if blk.type == 'deleted':
+                self.block_list.list.remove(blk)
         self.trash_stack = []
         if 'trash' in palette_names:
             self.show_toolbar_palette(palette_names.index('trash'),
