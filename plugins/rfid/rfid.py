@@ -61,7 +61,7 @@ class Rfid(Plugin):
         """
 
         self.rfid_connected = False
-        self.rfid_device = find_device()
+        self.rfid_device = find_device(path=parent.path)
         self.rfid_idn = ''
 
         if self.rfid_device is not None:
@@ -118,7 +118,7 @@ class Rfid(Plugin):
         Called from hal connection when a new device is plugged.
         """
         if not self.rfid_connected:
-            self.rfid_device = find_device()
+            self.rfid_device = find_device(path=parent.path)
             _logger.debug("DEVICE_ADDED: %s" % self.rfid_device)
             if self.rfid_device is not None:
                 _logger.debug("DEVICE_ADDED: RFID device is not None!")
