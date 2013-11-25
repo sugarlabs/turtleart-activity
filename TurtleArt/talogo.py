@@ -736,7 +736,9 @@ class LogoCode:
         self.procstop = True
 
     def active_turtle(self):
-        self.tw.turtles.get_turtle()
+        ''' NOP used to add get_active_turtle to Python export '''
+        # turtle = self.tw.turtles.get_turtle()
+        pass
 
     def prim_turtle(self, name):
         self.tw.turtles.set_turtle(name)
