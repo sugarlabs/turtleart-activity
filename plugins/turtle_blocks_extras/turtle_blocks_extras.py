@@ -75,7 +75,7 @@ class Turtle_blocks_extras(Plugin):
                           style='clamp-style-boolean',
                           label=_('while'),
                           prim_name='while',
-                          default=[None, None, None],
+                          default=[None, None],
                           special_name=_('while'),
                           help_string=_('do-while-True operator that uses \
 boolean operators from Numbers palette'))
@@ -96,7 +96,7 @@ boolean operators from Numbers palette'))
                           style='clamp-style-boolean',
                           label=_('until'),
                           prim_name='until',
-                          default=[None, None, None],
+                          default=[None, None],
                           special_name=_('until'),
                           help_string=_('do-until-True operator that uses \
 boolean operators from Numbers palette'))

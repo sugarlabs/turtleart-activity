@@ -896,7 +896,7 @@ number of seconds'))
                           style='clamp-style',
                           label=_('forever'),
                           prim_name='forever',
-                          default=[None, None],
+                          default=[None],
                           logo_command='forever',
                           help_string=_('loops forever'))
         self.tw.lc.def_prim(
@@ -910,7 +910,7 @@ number of seconds'))
                           style='clamp-style-1arg',
                           label=_('repeat'),
                           prim_name='repeat',
-                          default=[4, None, None],
+                          default=[4, None],
                           logo_command='repeat',
                           special_name=_('repeat'),
                           help_string=_('loops specified number of times'))
@@ -928,7 +928,7 @@ number of seconds'))
                           style='clamp-style-boolean',
                           label=[_('if'), _('then'), ''],
                           prim_name='if',
-                          default=[None, None, None],
+                          default=[None, None],
                           special_name=_('if then'),
                           logo_command='if',
                           help_string=_('if-then operator that uses boolean \
@@ -944,7 +944,7 @@ operators from Numbers palette'))
                           style='clamp-style-else',
                           label=[_('if'), _('then'), _('else')],
                           prim_name='ifelse',
-                          default=[None, None, None, None],
+                          default=[None, None, None],
                           logo_command='ifelse',
                           special_name=_('if then else'),
                           help_string=_('if-then-else operator that uses \
