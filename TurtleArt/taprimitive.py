@@ -486,6 +486,12 @@ class Primitive(object):
                     new_ast = value_to_ast(prim)
                     if isinstance(new_ast, ast.AST):
                         ast_list.append(new_ast)
+            '''
+            # Fix Me: only needed for clean group
+            if self == Primitive.group:
+                text = 'turtle = turtles.get_active_turtle()'
+                ast_list.append(ast_extensions.ExtraCode(text))
+            '''
             return ast_list
 
         # set turtle
@@ -493,6 +499,10 @@ class Primitive(object):
             text = 'turtle = turtles.get_active_turtle()'
             return [get_call_ast('logo.prim_turtle', new_arg_asts),
                     ast_extensions.ExtraCode(text)]
+
+        elif self == LogoCode.active_turtle:
+            text = 'turtle = turtles.get_active_turtle()'
+            return ast_extensions.ExtraCode(text)
 
         # comment
         elif self == Primitive.comment:

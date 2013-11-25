@@ -198,7 +198,8 @@ turtle'))
                                     Primitive(self.tw.lc.clear_value_blocks),
                                     Primitive(self.tw.lc.reset_internals),
                                     Primitive(self.tw.canvas.clearscreen),
-                                    Primitive(self.tw.turtles.reset_turtles)
+                                    Primitive(self.tw.turtles.reset_turtles),
+                                    Primitive(self.tw.lc.active_turtle)
                                 ])]))
 
         palette.add_block('left',

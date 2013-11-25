@@ -735,6 +735,9 @@ class LogoCode:
         """ Stop execution of a stack """
         self.procstop = True
 
+    def active_turtle(self):
+        self.tw.turtles.get_turtle()
+
     def prim_turtle(self, name):
         self.tw.turtles.set_turtle(name)
 
