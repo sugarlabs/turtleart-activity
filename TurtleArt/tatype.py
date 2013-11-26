@@ -439,5 +439,3 @@ def get_call_ast(func_name, args=None, kwargs=None, return_type=None):
     else:
         return TypedCall(func=func_ast, args=args, keywords=keywords,
             return_type=return_type)
-
-
