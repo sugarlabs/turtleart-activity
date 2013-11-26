@@ -79,7 +79,7 @@ class Wedo_plugin(Plugin):
                           prim_name='wedotilt')
         self._parent.lc.def_prim(
             'wedotilt', 0,
-            Primitive(self.wedo_get_tilt, return_type=TYPE_INT))
+            Primitive(self.prim_wedo_get_tilt, return_type=TYPE_INT))
 
         palette.add_block('wedodistance',
                           style='box-style',
@@ -89,7 +89,7 @@ class Wedo_plugin(Plugin):
                           prim_name='wedodistance')
         self._parent.lc.def_prim(
             'wedodistance', 0,
-            Primitive(self.wedo_get_distance, return_type=TYPE_INT))
+            Primitive(self.prim_wedo_get_distance, return_type=TYPE_INT))
 
         palette.add_block('wedogetMotorA',
                           style='box-style',
@@ -100,7 +100,7 @@ Motor A'),
                           prim_name='wedogetMotorA')
         self._parent.lc.def_prim(
             'wedogetMotorA', 0,
-            Primitive(self.wedo_get_motor_a, return_type=TYPE_INT))
+            Primitive(self.prim_wedo_get_motor_a, return_type=TYPE_INT))
 
         palette.add_block('wedogetMotorB',
                           style='box-style',
@@ -111,7 +111,7 @@ Motor B'),
                           prim_name='wedogetMotorB')
         self._parent.lc.def_prim(
             'wedogetMotorB', 0,
-            Primitive(self.wedo_get_motor_b, return_type=TYPE_INT))
+            Primitive(self.prim_wedo_get_motor_b, return_type=TYPE_INT))
 
         palette.add_block('wedosetMotorA',
                           style='basic-style-1arg',
@@ -173,7 +173,7 @@ Motor B'),
                 return self.WeDos.index(wedo)
         return None
 
-    def wedo_get_tilt(self):
+    def prim_wedo_get_tilt(self):
         if self.active_wedo is None:
             self.active_wedo = self.wedo_find()
             if self.active_wedo is None:
@@ -189,7 +189,7 @@ Motor B'),
         else:
             return tilt
 
-    def wedo_get_distance(self):
+    def prim_wedo_get_distance(self):
         if self.active_wedo is None:
             self.active_wedo = self.wedo_find()
             if self.active_wedo is None:
@@ -205,7 +205,7 @@ Motor B'),
         else:
             return distance
 
-    def wedo_get_motor_a(self):
+    def prim_wedo_get_motor_a(self):
         if self.active_wedo is None:
             self.active_wedo = self.wedo_find()
             if self.active_wedo is None:
@@ -220,7 +220,7 @@ Motor B'),
         else:
             return speed
 
-    def wedo_get_motor_b(self):
+    def prim_wedo_get_motor_b(self):
         if self.active_wedo is None:
             self.active_wedo = self.wedo_find()
             if self.active_wedo is None:
@@ -235,7 +235,7 @@ Motor B'),
         else:
             return speed
 
-    def wedo_set_motor_a(self, speed):
+    def prim_wedo_set_motor_a(self, speed):
         if self.active_wedo is None:
             self.active_wedo = self.wedo_find()
         if self.active_wedo is None:
@@ -247,7 +247,7 @@ Motor B'),
                 'status', _('%s is unavailable on WeDo %d') % (
                     _('Motor A'), self.active_wedo + 1))
 
-    def wedo_set_motor_b(self, speed):
+    def prim_wedo_set_motor_b(self, speed):
         if self.active_wedo is None:
             self.active_wedo = self.wedo_find()
         if self.active_wedo is None:
