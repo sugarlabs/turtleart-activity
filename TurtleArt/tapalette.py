@@ -176,7 +176,7 @@ class Palette():
                   logo_command=None, hidden=False, colors=None,
                   string_or_number=False):
         """ Add a new block to the palette """
-        block = Block(block_name)
+        block = _ProtoBlock(block_name)
         block.set_style(style)
         if label is not None:
             block.set_label(label)
@@ -251,7 +251,7 @@ def define_logo_function(key, value):
     logo_functions[key] = value
 
 
-class Block():
+class _ProtoBlock():
     """ a class for defining new block primitives """
 
     def __init__(self, name):

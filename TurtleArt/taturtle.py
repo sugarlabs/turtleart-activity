@@ -653,7 +653,6 @@ class Turtle:
 
     def draw_pixbuf(self, pixbuf, a, b, x, y, w, h, path, share=True):
         ''' Draw a pixbuf '''
-
         self._turtles.turtle_window.canvas.draw_pixbuf(
             pixbuf, a, b, x, y, w, h, self._heading)
 

@@ -71,6 +71,7 @@ class TurtleMain():
     _ICON_SUBPATH = 'images/turtle.png'
     _GNOME_PLUGIN_SUBPATH = 'gnome_plugins'
     _HOVER_HELP = '/desktop/sugar/activities/turtleart/hoverhelp'
+    _ORIENTATION = '/desktop/sugar/activities/turtleart/orientation'
     _COORDINATE_SCALE = '/desktop/sugar/activities/turtleart/coordinatescale'
 
     def __init__(self):
@@ -240,6 +241,8 @@ return %s(self)" % (p, P, P)
                 self.tw.coord_scale = 1
             else:
                 self.tw.coord_scale = 0
+            if self.client.get_int(self._ORIENTATION) == 1:
+                self.tw.orientation = 1
 
     def _set_gconf_overrides(self):
         if self.tw.coord_scale == 0:
@@ -491,6 +494,8 @@ return %s(self)" % (p, P, P)
                         self._save_changes()
             elif resp == gtk.RESPONSE_CANCEL:
                 return
+
+        self.client.set_int(self._ORIENTATION, self.tw.orientation)
 
         for plugin in self.tw.turtleart_plugins:
             if hasattr(plugin, 'quit'):

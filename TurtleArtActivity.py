@@ -82,6 +82,7 @@ if HAS_TOOLBARBOX:
 class TurtleArtActivity(activity.Activity):
     ''' Activity subclass for Turtle Art '''
     _HOVER_HELP = '/desktop/sugar/activities/turtleart/hoverhelp'
+    _ORIENTATION = '/desktop/sugar/activities/turtleart/orientation'
     _COORDINATE_SCALE = '/desktop/sugar/activities/turtleart/coordinatescale'
 
     def __init__(self, handle):
@@ -108,12 +109,7 @@ class TurtleArtActivity(activity.Activity):
         self._setup_toolbar()
 
         _logger.debug('_setup_canvas')
-        self._canvas = self._setup_canvas(self._setup_scrolled_window())
-
-        # FIX ME: not sure how or why self.canvas gets overwritten
-        # It is set to self.sw in _setup_canvas but None here.
-        # We need self.canvas for generating the preview image
-        self.canvas = self.sw
+        self._setup_canvas(self._setup_scrolled_window())
 
         _logger.debug('_setup_palette_toolbar')
         self._setup_palette_toolbar()
@@ -166,14 +162,23 @@ class TurtleArtActivity(activity.Activity):
         self.init_complete = True
 
     def update_palette_from_metadata(self):
+        if HAS_GCONF:
+            # We have to wait to set the orientation for the palettes
+            # to be loaded.
+            self.client = gconf.client_get_default()
+            if self.client.get_int(self._ORIENTATION) == 1:
+                self.tw.set_orientation(1)
+
         if 'palette' in self.metadata:
             n = int(self.metadata['palette'])
             if n == -1:
                 self.tw.hideshow_palette(False)
             else:
-                # Set radio button to active
+                # Try to set radio button to active
                 if n < len(self.palette_buttons):
                     self.palette_buttons[n].set_active(True)
+                else:
+                    self.tw.show_palette(n=0)
                 if 'orientation' in self.metadata:
                     self.tw.set_orientation(int(self.metadata['orientation']))
         else:
@@ -1320,6 +1325,8 @@ class TurtleArtActivity(activity.Activity):
         else:
             self.metadata['palette'] = '-1'
         self.metadata['orientation'] = str(self.tw.orientation)
+        if HAS_GCONF:
+            self.client.set_int(self._ORIENTATION, self.tw.orientation)
         if len(self.error_list) > 0:
             errors = []
             if 'error_list' in self.metadata:
@@ -1627,17 +1634,17 @@ in order to use the plugin.'))
                     self._old_cursor = self.get_window().get_cursor()
                 self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.HAND1))
 
-    def empty_trash_alert(self):
+    def empty_trash_alert(self, title, msg):
         ''' We get confirmation from the user before emptying the trash '''
         alert = ConfirmationAlert()
-        alert.props.title = _('empty trash')
-        alert.props.msg = _('Do you really want to empty the trash?')
+        alert.props.title = title
+        alert.props.msg = msg
 
         def _empty_trash_alert_response_cb(alert, response_id, self):
             if response_id is gtk.RESPONSE_OK:
                 _logger.debug('emptying the trash')
                 self.remove_alert(alert)
-                self.tw.empty_trash()
+                self.tw._empty_trash()
             elif response_id is gtk.RESPONSE_CANCEL:
                 _logger.debug('cancel emptying the trash')
                 self.remove_alert(alert)

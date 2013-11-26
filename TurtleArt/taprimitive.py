@@ -373,7 +373,15 @@ class Primitive(object):
                 loop_ast = ast.While(test=condition_ast,
                                      body=new_arg_asts[1],
                                      orelse=[])
-                return loop_ast
+                # Until always executes its body once.
+                if controller == Primitive.controller_until:
+                    loop_list = []
+                    for arg_ast in new_arg_asts[1]:
+                        loop_list.append(arg_ast)
+                    loop_list.append(loop_ast)
+                    return loop_list
+                else:
+                    return loop_ast
 
         # conditionals
         elif self in (LogoCode.prim_if, LogoCode.prim_ifelse):
@@ -493,6 +501,10 @@ class Primitive(object):
             text = 'turtle = turtles.get_active_turtle()'
             return [get_call_ast('logo.prim_turtle', new_arg_asts),
                     ast_extensions.ExtraCode(text)]
+
+        elif self == LogoCode.active_turtle:
+            text = 'turtle = turtles.get_active_turtle()'
+            return ast_extensions.ExtraCode(text)
 
         # comment
         elif self == Primitive.comment:

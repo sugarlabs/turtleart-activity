@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-import os
+
 import sys
 
 if len(sys.argv) > 1 and '--no-sugar' == sys.argv[1]:
@@ -7,7 +7,7 @@ if len(sys.argv) > 1 and '--no-sugar' == sys.argv[1]:
     # for distutils
     sys.argv.pop(1)
     
-    import glob, os.path, string
+    import glob
     from distutils.core import setup
     
     DATA_FILES = [
