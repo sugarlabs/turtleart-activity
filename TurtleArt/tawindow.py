@@ -2205,7 +2205,8 @@ before making changes to your program'))
         if self.running_sugar:
             self.activity.empty_trash_alert(title, msg)
         else:
-            dialog = gtk.MessageDialog(None, 0, gtk.MESSAGE_WARNING, gtk.BUTTONS_OK_CANCEL, msg)
+            dialog = gtk.MessageDialog(None, 0, gtk.MESSAGE_WARNING,
+                                       gtk.BUTTONS_OK_CANCEL, msg)
             dialog.set_title(title)
             res = dialog.run()
             dialog.destroy()
@@ -2213,12 +2214,9 @@ before making changes to your program'))
                 self._empty_trash()
 
     def _empty_trash(self):
-        for blk in self.block_list.list:
-            if blk.type == 'trash':
-                blk.type = 'deleted'
         remove_list = []
         for blk in self.block_list.list:
-            if blk.type == 'deleted':
+            if blk.type == 'trash':
                 blk.spr.hide()
                 remove_list.append(blk)
         for blk in remove_list:
