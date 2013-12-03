@@ -1,14 +1,15 @@
 194
 
 ENHANCEMENTS:
-* Save/restore palette settings
-* Add confirmation when emptying trash in GNONE version
+* Save/restore palette settings in GConf
+* Add confirmation when emptying trash in GNONE version (Alan Aguiar)
+* Add load/save plugin dialog to GNOME version (Daniel Francis)
 
 BUG FIX:
 * Fix shade block dock settings (Alan Aguiar)
 * Fix bug in empty trash (Alan Aguiar)
-* Set active turtle after clean in exported Python code
-* Execute until body once before entering loop in exported Python code
+* Set active turtle after 'clean' in exported Python code
+* Execute 'until' body once before entering loop in exported Python code
 
 193
 
