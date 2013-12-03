@@ -862,6 +862,18 @@ module found in the Journal'))
                           special_name=_('top'),
                           help_string=_('top of a collapsed stack'))
 
+        palette.add_block('getfromurl',
+                          style='number-style-1arg',
+                          label=_('get data from URL'),
+                          default=\
+'http://wiki.sugarlabs.org/images/2/2c/Logo_alt_3.svg',
+                          prim_name='getfromurl',
+                          help_string=\
+_('gets a text string or image from a URL'))
+        self.tw.lc.def_prim('getfromurl', 1,
+                            Primitive(self.tw.lc.get_from_url,
+                                      arg_descs=[ArgSlot(TYPE_STRING)]))
+
     def _portfolio_palette(self):
 
         palette = make_palette('portfolio',

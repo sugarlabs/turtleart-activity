@@ -29,6 +29,8 @@ from operator import isNumberType
 import os
 from os.path import exists as os_path_exists
 from UserDict import UserDict
+import urllib2
+import tempfile
 
 try:
     from sugar.graphics import style
@@ -1059,6 +1061,26 @@ class LogoCode:
                                                data]]))
             gobject.idle_add(self.tw.send_event, event)
             os.remove(tmp_file)
+
+    def get_from_url(self, url):
+        """ Get contents of URL as text or tempfile to image """
+        if "://" not in url: # no protocol
+            url = "http://" + url # assume HTTP
+        try:
+            req = urllib2.urlopen(url)
+        except urllib2.HTTPError:
+            debug_output("Couldn't open %s" % (url), self.tw.running_sugar)
+            raise logoerror(url)
+
+        if req.info().getheader("Content-Type")[0:5] == "image":
+            # it can't be deleted immediately, or else we won't ever access it
+            tmp = tempfile.NamedTemporaryFile(delete=False)
+            tmp.write(req.read()) # prepare for writing
+            tmp.flush() # actually write it
+            obj = Media('media', value=tmp.name)
+            return obj
+        else:
+            return req.read()
 
     def showlist(self, objects):
         """ Display list of media objects """
