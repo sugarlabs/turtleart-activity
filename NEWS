@@ -1,3 +1,16 @@
+194
+
+ENHANCEMENTS:
+* Save/restore palette settings
+* Add confirmation when emptying trash in GNOME version
+
+BUG FIX:
+* Fix shade block dock settings (Alan Aguiar)
+* Fix bug in empty trash (Alan Aguiar)
+* Set active turtle after clean in exported Python code
+* Execute until body once before entering loop in exported Python code
+* Fix problem with WeDo plugin (Alan Aguiar)
+
 193
 
 ENHANCEMENTS:
