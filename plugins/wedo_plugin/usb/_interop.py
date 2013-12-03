@@ -1,4 +1,4 @@
-# Copyright (C) 2009-2011 Wander Lairson Costa 
+# Copyright (C) 2009-2013 Wander Lairson Costa 
 # 
 # The following terms apply to all files associated
 # with the software unless explicitly disclaimed in individual files.
@@ -129,7 +129,9 @@ def as_array(data=None):
     try:
         return array.array('B', data)
     except TypeError:
-        # When you pass a unicode string, you got a TypeError
-        # if first parameter is not 'u'
-        return array.array('u', data)
+        # When you pass a unicode string or a character sequence,
+        # you get a TypeError if first parameter does not match
+        a = array.array('B')
+        a.fromstring(data)
+        return a
 

@@ -1,8 +1,8 @@
-# Copyright (C) 2009-2011 Wander Lairson Costa 
-# 
+# Copyright (C) 2009-2013 Wander Lairson Costa
+#
 # The following terms apply to all files associated
 # with the software unless explicitly disclaimed in individual files.
-# 
+#
 # The authors hereby grant permission to use, copy, modify, distribute,
 # and license this software and its documentation for any purpose, provided
 # that existing copyright notices are retained in all copies and that this
@@ -12,13 +12,13 @@
 # and need not follow the licensing terms described here, provided that
 # the new terms are clearly indicated on the first page of each file where
 # they apply.
-# 
+#
 # IN NO EVENT SHALL THE AUTHORS OR DISTRIBUTORS BE LIABLE TO ANY PARTY
 # FOR DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
 # ARISING OUT OF THE USE OF THIS SOFTWARE, ITS DOCUMENTATION, OR ANY
 # DERIVATIVES THEREOF, EVEN IF THE AUTHORS HAVE BEEN ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
-# 
+#
 # THE AUTHORS AND DISTRIBUTORS SPECIFICALLY DISCLAIM ANY WARRANTIES,
 # INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY,
 # FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.  THIS SOFTWARE
@@ -53,7 +53,7 @@ _DEFAULT_TIMEOUT = 1000
 
 def _set_attr(input, output, fields):
     for f in fields:
-        setattr(output, f, int(getattr(input, f)))
+       setattr(output, f, getattr(input, f))
 
 class _ResourceManager(object):
     def __init__(self, dev, backend):
@@ -125,12 +125,12 @@ class _ResourceManager(object):
             self._claimed_intf.remove(i)
 
     def managed_set_interface(self, device, intf, alt):
-        if intf is None:
-            i = self.get_interface(device, intf)
-        elif isinstance(intf, Interface):
+        if isinstance(intf, Interface):
             i = intf
         else:
             cfg = self.get_active_configuration(device)
+            if intf is None:
+                intf = cfg[(0,0)].bInterfaceNumber
             if alt is not None:
                 i = util.find_descriptor(cfg, bInterfaceNumber=intf, bAlternateSetting=alt)
             else:
@@ -144,13 +144,12 @@ class _ResourceManager(object):
     def get_interface(self, device, intf):
         # TODO: check the viability of issuing a GET_INTERFACE
         # request when we don't have a alternate setting cached
-        if intf is None:
-            cfg = self.get_active_configuration(device)
-            return cfg[(0,0)]
-        elif isinstance(intf, Interface):
+        if isinstance(intf, Interface):
             return intf
         else:
             cfg = self.get_active_configuration(device)
+            if intf is None:
+                intf = cfg[(0,0)].bInterfaceNumber
             if intf in self._alt_set:
                 return util.find_descriptor(cfg,
                                             bInterfaceNumber=intf,
@@ -197,7 +196,7 @@ class _ResourceManager(object):
 
 class USBError(IOError):
     r"""Exception class for USB errors.
-    
+
     Backends must raise this exception when USB related errors occur.
     The backend specific error code is available through the
     'backend_error_code' member variable.
@@ -276,7 +275,7 @@ class Endpoint(object):
 
     def write(self, data, timeout = None):
         r"""Write data to the endpoint.
-        
+
         The parameter data contains the data to be sent to the endpoint and
         timeout is the time limit of the operation. The transfer type and
         endpoint address are automatically inferred.
@@ -289,7 +288,7 @@ class Endpoint(object):
 
     def read(self, size, timeout = None):
         r"""Read data from the endpoint.
-        
+
         The parameter size is the number of bytes to read and timeout is the
         time limit of the operation.The transfer type and endpoint address
         are automatically inferred.
@@ -388,7 +387,7 @@ class Interface(object):
 
 class Configuration(object):
     r"""Represent a configuration object.
- 
+
     This class contains all fields of the Configuration Descriptor
     according to the USB Specification. You may access them as class
     properties.  For example, to access the field bConfigurationValue
@@ -461,7 +460,7 @@ class Configuration(object):
 
 class Device(object):
     r"""Device object.
-    
+
     This class contains all fields of the Device Descriptor according
     to the USB Specification. You may access them as class properties.
     For example, to access the field bDescriptorType of the device
@@ -528,16 +527,29 @@ class Device(object):
                     'iSerialNumber',
                     'bNumConfigurations',
                     'address',
-                    'bus'
+                    'bus',
+                    'port_number'
                 )
             )
 
-        self.bus = int(desc.bus) if desc.bus is not None else None
-        self.address = int(desc.address) if desc.address is not None else None
+        if desc.bus is not None:
+            self.bus = int(desc.bus)
+        else:
+            self.bus = None
+
+        if desc.address is not None:
+            self.address = int(desc.address)
+        else:
+            self.address = None
+
+        if desc.port_number is not None:
+            self.port_number = int(desc.port_number)
+        else:
+            self.port_number = None
 
     def set_configuration(self, configuration = None):
         r"""Set the active configuration.
-        
+
         The configuration parameter is the bConfigurationValue field of the
         configuration you want to set as active. If you call this method
         without parameter, it will use the first configuration found.
@@ -552,7 +564,7 @@ class Device(object):
 
     def set_interface_altsetting(self, interface = None, alternate_setting = None):
         r"""Set the alternate setting for an interface.
- 
+
         When you want to use an interface and it has more than one alternate setting,
         you should call this method to select the alternate setting you would like
         to use. If you call the method without one or the two parameters, it will
@@ -578,6 +590,7 @@ class Device(object):
 
     def reset(self):
         r"""Reset the device."""
+        self._ctx.managed_open()
         self._ctx.dispose(self, False)
         self._ctx.backend.reset_device(self._ctx.handle)
         self._ctx.dispose(self, True)
@@ -590,7 +603,8 @@ class Device(object):
         communicate with. The interface parameter is the bInterfaceNumber field
         of the interface descriptor which contains the endpoint. If you do not
         provide one, the first one found will be used, as explained in the
-        set_interface_altsetting() method.
+        set_interface_altsetting() method. The bInterfaceNumber parameter is
+        not used for most backends, and often can be ignored.
 
         The data parameter should be a sequence like type convertible to
         array type (see array module).
@@ -627,8 +641,10 @@ class Device(object):
         communicate with. The interface parameter is the bInterfaceNumber field
         of the interface descriptor which contains the endpoint. If you do not
         provide one, the first one found will be used, as explained in the
-        set_interface_altsetting() method. The size parameters tells how many
-        bytes you want to read.
+        set_interface_altsetting() method. The bInterfaceNumber parameter is
+        not used for most backends, and often can be ignored.
+
+        The size parameter tells how many bytes you want to read.
 
         The timeout is specified in miliseconds.
 
@@ -701,7 +717,8 @@ class Device(object):
         If a kernel driver is active, and the object will be unable to perform I/O.
         """
         self._ctx.managed_open()
-        return self._ctx.backend.is_kernel_driver_active(self._ctx.handle, interface)
+        return self._ctx.backend.is_kernel_driver_active(self._ctx.handle,
+                self._ctx.get_interface(self, interface).bInterfaceNumber)
 
     def detach_kernel_driver(self, interface):
         r"""Detach a kernel driver.
@@ -709,13 +726,15 @@ class Device(object):
         If successful, you will then be able to perform I/O.
         """
         self._ctx.managed_open()
-        self._ctx.backend.detach_kernel_driver(self._ctx.handle, interface)
+        self._ctx.backend.detach_kernel_driver(self._ctx.handle,
+            self._ctx.get_interface(self, interface).bInterfaceNumber)
 
     def attach_kernel_driver(self, interface):
         r"""Re-attach an interface's kernel driver, which was previously
         detached using detach_kernel_driver()."""
         self._ctx.managed_open()
-        self._ctx.backend.attach_kernel_driver(self._ctx.handle, interface)
+        self._ctx.backend.attach_kernel_driver(self._ctx.handle,
+            self._ctx.get_interface(self, interface).bInterfaceNumber)
 
     def __iter__(self):
         r"""Iterate over all configurations of the device."""
@@ -820,8 +839,7 @@ def find(find_all=False, backend = None, custom_match = None, **args):
     def device_iter(k, v):
         for dev in backend.enumerate_devices():
             d = Device(dev, backend)
-            if (custom_match is None or custom_match(d)) and \
-                _interop._reduce(
+            if  _interop._reduce(
                         lambda a, b: a and b,
                         map(
                             operator.eq,
@@ -829,15 +847,15 @@ def find(find_all=False, backend = None, custom_match = None, **args):
                             map(lambda i: getattr(d, i), k)
                         ),
                         True
-                    ):
+                    ) and (custom_match is None or custom_match(d)):
                 yield d
 
     if backend is None:
-        import usb.backend.libusb10 as libusb10
-        import usb.backend.libusb01 as libusb01
+        import usb.backend.libusb1 as libusb1
+        import usb.backend.libusb0 as libusb0
         import usb.backend.openusb as openusb
 
-        for m in (libusb10, openusb, libusb01):
+        for m in (libusb1, openusb, libusb0):
             backend = m.get_backend()
             if backend is not None:
                 _logger.info('find(): using backend "%s"', m.__name__)
@@ -846,7 +864,7 @@ def find(find_all=False, backend = None, custom_match = None, **args):
             raise ValueError('No backend available')
 
     k, v = args.keys(), args.values()
-    
+
     if find_all:
         return [d for d in device_iter(k, v)]
     else:

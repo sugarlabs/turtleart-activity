@@ -1,4 +1,4 @@
-# Copyright (C) 2009-2011 Wander Lairson Costa 
+# Copyright (C) 2009-2013 Wander Lairson Costa 
 # 
 # The following terms apply to all files associated
 # with the software unless explicitly disclaimed in individual files.
@@ -224,7 +224,7 @@ def get_string(dev, length, index, langid = None):
     dev is the Device object to which the request will be
     sent to.
 
-    length is the length of string in number of characters.
+    length is the maximum length of the string in number of characters.
 
     index is the string descriptor index and langid is the Language
     ID of the descriptor. If langid is omitted, the string descriptor
@@ -243,7 +243,7 @@ def get_string(dev, length, index, langid = None):
         # Note from libusb 1.0 sources (descriptor.c)
         buf = get_descriptor(
                     dev,
-                    1024,
+                    254,
                     DESC_TYPE_STRING,
                     0
                 )
@@ -257,4 +257,4 @@ def get_string(dev, length, index, langid = None):
                 index,
                 langid
             )
-    return buf[2:].tostring().decode('utf-16-le')
+    return buf[2:buf[0]].tostring().decode('utf-16-le')
