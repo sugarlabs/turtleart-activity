@@ -38,6 +38,7 @@ from tawindow import plugins_in_use
 
 _SETUP_CODE_START = """\
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 _INSTALL_PATH = '/usr/share/sugar/activities/TurtleArt.activity'
 _ALTERNATIVE_INSTALL_PATH = \

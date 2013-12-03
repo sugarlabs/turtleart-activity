@@ -17,14 +17,18 @@
 import os
 import logging
 
-def find_device():
+def find_device(path=None):
     """
     Search for devices.
     Return a device instance or None.
     """
     device = None
-    for i in os.listdir(os.path.join('.', 'plugins/rfid')):
-        if not os.path.isdir(os.path.join('.', 'plugins/rfid', i)):
+    if path is not None:
+        path = os.path.join(path, 'plugins/rfid')
+    else:
+        path = os.path.join('.', 'plugins/rfid')
+    for i in os.listdir(path):
+        if not os.path.isdir(os.path.join(path, i)):
             try:
                 _tempmod = __import__('rfid.%s'%i.split('.')[0], globals(),
                                       locals(), ['RFIDReader'], -1)
