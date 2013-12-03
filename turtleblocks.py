@@ -575,6 +575,7 @@ Would you like to save before quitting?'))
         self.tw.load_file_from_chooser(False)
 
     def _do_load_plugin_cb(self, widget):
+        self.tw.load_save_folder = self._get_execution_dir()
         file_path, loaddir = get_load_name('.tar.gz', self.tw.load_save_folder)
         if file_path is None:
             return
