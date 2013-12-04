@@ -1068,9 +1068,14 @@ class LogoCode:
             url = "http://" + url # assume HTTP
         try:
             req = urllib2.urlopen(url)
-        except urllib2.HTTPError:
-            debug_output("Couldn't open %s" % (url), self.tw.running_sugar)
+        except urllib2.HTTPError, e:
+            debug_output("Couldn't open %s: %s" % (url, e),
+                         self.tw.running_sugar)
             raise logoerror(url)
+        except urllib2.URLError, e:
+            debug_output("Couldn't open %s: %s" % (url, e),
+                         self.tw.running_sugar)
+            raise logoerror('#noconnection')
 
         if req.info().getheader("Content-Type")[0:5] == "image":
             # it can't be deleted immediately, or else we won't ever access it
