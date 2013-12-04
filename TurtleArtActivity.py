@@ -1069,7 +1069,7 @@ class TurtleArtActivity(activity.Activity):
         if self.has_toolbarbox:
             self._add_separator(toolbar, expand=False, visible=True)
             save_button = self._add_button(
-                'save', _('Save'), self._save_palette_cb,
+                'save', _('Save'), self._save_load_palette_cb,
                 toolbar)
             self._save_palette = save_button.get_palette()
             button_box = gtk.VBox()
@@ -1088,7 +1088,7 @@ class TurtleArtActivity(activity.Activity):
                 None, button_box)
 
             load_button = self._add_button(
-                'load', _('Load'), self._load_palette_cb,
+                'load', _('Load'), self._save_load_palette_cb,
                 toolbar)
             button_box.show_all()
             self._save_palette.set_content(button_box)
@@ -1145,21 +1145,13 @@ class TurtleArtActivity(activity.Activity):
                 'pippy-openoff', _('Load Python block'),
                 self.do_load_python_cb, toolbar)
 
-    def _save_palette_cb(self, button):
-        if self._save_palette:
-            if not self._save_palette.is_up():
-                self._save_palette.popup(immediate=True,
-                                    state=self._save_palette.SECONDARY)
+    def _save_load_palette_cb(self, button):
+        palette = button.get_palette()
+        if palette:
+            if not palette.is_up():
+                palette.popup(immediate=True, state=palette.SECONDARY)
             else:
-                self._save_palette.popdown(immediate=True)
-
-    def _load_palette_cb(self, button):
-        if self._load_palette:
-            if not self._load_palette.is_up():
-                self._load_palette.popup(immediate=True,
-                                    state=self._load_palette.SECONDARY)
-            else:
-                self._load_palette.popdown(immediate=True)
+                palette.popdown(immediate=True)
 
     def _make_palette_buttons(self, toolbar, palette_button=False):
         ''' Creates the palette and block buttons for both toolbar types'''
