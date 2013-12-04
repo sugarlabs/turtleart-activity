@@ -331,9 +331,9 @@ class TurtleArtActivity(activity.Activity):
 
     def do_load_python_cb(self, button):
         ''' Load Python code from the Journal. '''
-        self.load_python.set_icon('python-saveon')
+        self.load_python.set_icon('pippy-openon')
         self.tw.load_python_code_from_file(fname=None, add_new_block=True)
-        gobject.timeout_add(250, self.load_python.set_icon, 'python-saveoff')
+        gobject.timeout_add(250, self.load_python.set_icon, 'pippy-openoff')
 
     def do_save_as_image_cb(self, button):
         ''' Save the canvas to the Journal. '''
@@ -890,10 +890,7 @@ class TurtleArtActivity(activity.Activity):
         help_palettes['activity-toolbar'].show()
 
         add_paragraph(help_box, _('Share selected blocks'), icon='shareon')
-        if gtk.gdk.screen_width() < 1024:
-            add_paragraph(help_box, _('Save/Load'), icon='save-load')
-        else:
-            add_section(help_box, _('Save/Load'), icon='turtleoff')
+        add_paragraph(help_box, _('Save/Load'), icon='save-load')
         add_paragraph(help_box, _('Save as image'), icon='image-saveoff')
         add_paragraph(help_box, _('Save as Logo'), icon='logo-saveoff')
         add_paragraph(help_box, _('Save as Python'), icon='python-saveoff')
@@ -903,7 +900,7 @@ class TurtleArtActivity(activity.Activity):
         if activity.get_bundle_path()[0:len(home)] == home:
             add_paragraph(help_box, _('Load plugin'), icon='pluginoff')
         add_paragraph(help_box, _('Load Python block'),
-                      icon='python-saveoff')
+                      icon='pippy-openoff')
 
         help_box = gtk.VBox()
         help_box.set_homogeneous(False)
@@ -1071,10 +1068,10 @@ class TurtleArtActivity(activity.Activity):
                                              self._share_cb, toolbar)
         if self.has_toolbarbox:
             self._add_separator(toolbar, expand=False, visible=True)
-            save_load_button = self._add_button(
-                'save-load', _('Save/Load'), self._save_load_palette_cb,
+            save_button = self._add_button(
+                'save', _('Save'), self._save_palette_cb,
                 toolbar)
-            self._palette = save_load_button.get_palette()
+            self._save_palette = save_button.get_palette()
             button_box = gtk.VBox()
             self.save_as_image, label = self._add_button_and_label(
                 'image-saveoff', _('Save as image'), self.do_save_as_image_cb,
@@ -1090,6 +1087,14 @@ class TurtleArtActivity(activity.Activity):
                 'filesaveoff', _('Save snapshot'), self.do_keep_cb,
                 None, button_box)
 
+            load_button = self._add_button(
+                'load', _('Load'), self._load_palette_cb,
+                toolbar)
+            button_box.show_all()
+            self._save_palette.set_content(button_box)
+
+            self._load_palette = load_button.get_palette()
+            button_box = gtk.VBox()
             # When screen is in portrait mode, the buttons don't fit
             # on the main toolbar, so put them here.
             self.samples_button2, self.samples_label2 = \
@@ -1111,10 +1116,10 @@ class TurtleArtActivity(activity.Activity):
                     'pluginoff', _('Load plugin'),
                     self.do_load_ta_plugin_cb, None, button_box)
             self.load_python, label = self._add_button_and_label(
-                'python-saveoff', _('Load Python block'),
+                'pippy-openoff', _('Load Python block'),
                 self.do_load_python_cb, None, button_box)
             button_box.show_all()
-            self._palette.set_content(button_box)
+            self._load_palette.set_content(button_box)
         else:
             self.save_as_image = self._add_button(
                 'image-saveoff', _('Save as image'), self.do_save_as_image_cb,
@@ -1137,17 +1142,24 @@ class TurtleArtActivity(activity.Activity):
                     'pluginoff', _('Load plugin'),
                     self.do_load_ta_plugin_cb, toolbar)
             self.load_python = self._add_button(
-                'python-saveoff', _('Load Python block'),
+                'pippy-openoff', _('Load Python block'),
                 self.do_load_python_cb, toolbar)
 
-    def _save_load_palette_cb(self, button):
-        if self._palette:
-            if not self._palette.is_up():
-                self._palette.popup(immediate=True,
-                                    state=self._palette.SECONDARY)
+    def _save_palette_cb(self, button):
+        if self._save_palette:
+            if not self._save_palette.is_up():
+                self._save_palette.popup(immediate=True,
+                                    state=self._save_palette.SECONDARY)
             else:
-                self._palette.popdown(immediate=True)
-            return
+                self._save_palette.popdown(immediate=True)
+
+    def _load_palette_cb(self, button):
+        if self._load_palette:
+            if not self._load_palette.is_up():
+                self._load_palette.popup(immediate=True,
+                                    state=self._load_palette.SECONDARY)
+            else:
+                self._load_palette.popdown(immediate=True)
 
     def _make_palette_buttons(self, toolbar, palette_button=False):
         ''' Creates the palette and block buttons for both toolbar types'''
