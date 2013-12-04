@@ -1129,7 +1129,7 @@ class TurtleArtActivity(activity.Activity):
             self.keep_button = self._add_button(
                 'filesaveoff', _('Save snapshot'), self.do_keep_cb, toolbar)
             self.load_ta_project = self._add_button(
-                'load-from-journal', _('Load project'),
+                'load-from-journal', _('Add project'),
                 self.do_load_ta_project_cb, toolbar)
             # Only enable plugin loading if installed in $HOME
             if activity.get_bundle_path()[0:len(home)] == home:

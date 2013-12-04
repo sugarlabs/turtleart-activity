@@ -423,7 +423,7 @@ return %s(self)" % (p, P, P)
         MenuBuilder.make_menu_item(menu, _('Show sample projects'),
                                    self._create_store)
         MenuBuilder.make_menu_item(menu, _('Open'), self._do_open_cb)
-        MenuBuilder.make_menu_item(menu, _('Load project'), self._do_load_cb)
+        MenuBuilder.make_menu_item(menu, _('Add project'), self._do_load_cb)
         MenuBuilder.make_menu_item(menu, _('Load plugin'),
                                    self._do_load_plugin_cb)
         MenuBuilder.make_menu_item(menu, _('Save'), self._do_save_cb)
