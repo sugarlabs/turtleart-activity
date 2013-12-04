@@ -1071,11 +1071,16 @@ class LogoCode:
         except urllib2.HTTPError, e:
             debug_output("Couldn't open %s: %s" % (url, e),
                          self.tw.running_sugar)
-            raise logoerror(url)
+            raise logoerror(url + ' (404)')
         except urllib2.URLError, e:
-            debug_output("Couldn't open %s: %s" % (url, e),
-                         self.tw.running_sugar)
-            raise logoerror('#noconnection')
+            if hasattr(e, 'reason'):
+                debug_output("Couldn't reach server: %s" % (e),
+                             self.tw.running_sugar)
+                raise logoerror('#noconnection')
+            else:  # elif hasattr(e, 'code'):
+                debug_output("Couldn't open %s: %s" % (url, e),
+                             self.tw.running_sugar)
+                raise logoerror(url + ' (404)')
 
         if req.info().getheader("Content-Type")[0:5] == "image":
             # it can't be deleted immediately, or else we won't ever access it
