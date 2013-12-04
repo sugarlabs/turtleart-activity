@@ -864,12 +864,13 @@ module found in the Journal'))
 
         palette.add_block('getfromurl',
                           style='number-style-1arg',
-                          label=_('get data from URL'),
+                          #TRANS: URL is universal resource locator
+                          label=_('URL'),
                           default=\
 'http://wiki.sugarlabs.org/images/2/2c/Logo_alt_3.svg',
                           prim_name='getfromurl',
                           help_string=\
-_('gets a text string or image from a URL'))
+_('gets a text string or an image from a URL'))
         self.tw.lc.def_prim('getfromurl', 1,
                             Primitive(self.tw.lc.get_from_url,
                                       arg_descs=[ArgSlot(TYPE_STRING)]))
