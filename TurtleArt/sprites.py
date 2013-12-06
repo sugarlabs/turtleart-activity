@@ -106,7 +106,7 @@ class Sprites:
 
     def length_of_list(self):
         ''' How many sprites are there? '''
-        return(len(self.list))
+        return len(self.list)
 
     def append_to_list(self, spr):
         ''' Append a new sprite to the end of the list. '''
@@ -122,9 +122,7 @@ class Sprites:
             self.list.insert(i, spr)
 
     def find_in_list(self, spr):
-        if spr in self.list:
-            return True
-        return False
+        return (spr in self.list)
 
     def remove_from_list(self, spr):
         ''' Remove a sprite from the list. '''
@@ -258,7 +256,8 @@ class Sprite:
         if layer is not None:
             self.layer = layer
         for i in range(self._sprites.length_of_list()):
-            if self.layer < self._sprites.get_sprite(i).layer:
+            spr = self._sprites.get_sprite(i)
+            if spr is not None and self.layer < spr.layer:
                 self._sprites.insert_in_list(self, i)
                 self.inval()
                 return
