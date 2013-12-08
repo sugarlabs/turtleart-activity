@@ -95,14 +95,35 @@
        style="fill:#ffe000;fill-opacity:1;stroke:#c0a000;stroke-width:1;stroke-linecap:round;stroke-opacity:1" />
   </g>
   <text
-     x="18.61718"
-     y="4.1250019"
+     x="-15.714066"
+     y="-38.59026"
+     transform="scale(1.0155331,-0.98470448)"
      id="text2474"
-     style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;fill:#ff0000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans">
+     style="font-size:13.9273119px;font-style:normal;font-weight:normal;line-height:125%;fill:#ff0000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans">
     <tspan
-       x="188.61719"
-       y="32.125"
+       x="181.58951"
+       y="-6.0931983"
        id="tspan2476"
-       style="font-size:48px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans">x</tspan>
+       style="font-size:55.70924759px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans">x</tspan>
   </text>
+  <text
+     x="103.1943"
+     y="29.748047"
+     id="text2999"
+     xml:space="preserve"
+     style="font-size:288px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"><tspan
+       x="103.1943"
+       y="29.748047"
+       id="tspan3001"
+       style="font-size:24px">1</tspan></text>
+  <text
+     x="193.72749"
+     y="29.90625"
+     id="text2999-5"
+     xml:space="preserve"
+     style="font-size:288px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"><tspan
+       x="193.72749"
+       y="29.90625"
+       id="tspan3001-1"
+       style="font-size:24px">2</tspan></text>
 </svg>
