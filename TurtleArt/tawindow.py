@@ -2187,7 +2187,7 @@ before making changes to your program'))
         for gblk in group:
             if gblk.name == 'sandwichclampcollapsed':
                 restore_clamp(gblk)
-                self.resize_parent_clamps(gblk)
+                self._resize_parent_clamps(gblk)
 
         for gblk in group:
             gblk.rescale(self.block_scale)
@@ -3228,6 +3228,12 @@ before making changes to your program'))
             if len(self.block_list.get_similar_blocks('block', 'forever')) > 0:
                 debug_output('WARNING: Projects with forever blocks \
  may not terminate.', False)
+        else:
+            self.parent.get_window().set_cursor(
+                gtk.gdk.Cursor(gtk.gdk.WATCH))
+        gobject.idle_add(self.__run_stack, blk)
+
+    def __run_stack(self, blk):
         if self.status_spr is not None:
             self.status_spr.hide()
         self._autohide_shape = True
@@ -3240,6 +3246,9 @@ before making changes to your program'))
         self.start_plugins()  # Let the plugins know we are running.
         top = find_top_block(blk)
         code = self.lc.generate_code(top, self.just_blocks())
+        if self.interactive_mode:
+            self.parent.get_window().set_cursor(
+                gtk.gdk.Cursor(gtk.gdk.LEFT_PTR))
         self.lc.run_blocks(code)
         if self.interactive_mode:
             gobject.idle_add(self.lc.doevalstep)
