@@ -1662,9 +1662,20 @@ before making changes to your program'))
                     name = blk.name
                     # You can only have one instance of some blocks
                     if blk.name in ['start', 'hat1', 'hat2']:
-                        if len(self.block_list.get_similar_blocks(
-                                'block', blk.name)) > 0:
+                        blk_list = self.block_list.get_similar_blocks(
+                            'block', blk.name)
+                        if len(blk_list) > 0:
                             self.showlabel('dupstack')
+                            if blk.name == 'start':
+                                # Recenter the screen and move the start
+                                # stack to the center of the screen
+                                if self.running_sugar:
+                                    self.activity.recenter()
+                                dx = 200 - blk_list[0].spr.get_xy()[0]
+                                dy = 200 - blk_list[0].spr.get_xy()[1]
+                                drag_group = find_group(blk_list[0])
+                                for dblk in drag_group:
+                                    dblk.spr.move_relative((dx, dy))
                             return True
                     # We need to check to see if there is already a
                     # similarly default named stack
