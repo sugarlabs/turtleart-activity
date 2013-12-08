@@ -3246,6 +3246,7 @@ before making changes to your program'))
         else:
             while self.lc.doevalstep():
                 pass
+        self.running_blocks = False
 
     def _snap_to_dock(self):
         ''' Snap a block (selected_block) to the dock of another block
