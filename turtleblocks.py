@@ -36,6 +36,9 @@ import cStringIO
 import errno
 import ConfigParser
 import gconf
+import tarfile
+import tempfile
+import subprocess
 
 try:
     # Try to use XDG Base Directory standard for config files.
@@ -53,12 +56,15 @@ from gettext import gettext as _
 
 from TurtleArt.taconstants import (OVERLAY_LAYER, DEFAULT_TURTLE_COLORS,
                                    TAB_LAYER, SUFFIX)
-from TurtleArt.tautils import (data_from_string, get_save_name)
+from TurtleArt.tautils import (data_from_string, get_load_name,
+                               get_path, get_save_name)
 from TurtleArt.tapalette import default_values
 from TurtleArt.tawindow import TurtleArtWindow
 from TurtleArt.taexportlogo import save_logo
 from TurtleArt.taexportpython import save_python
 from TurtleArt.taprimitive import PyExportError
+from TurtleArt.taplugin import (load_a_plugin, cancel_plugin_install,
+                                complete_plugin_install)
 
 from util.menubuilder import MenuBuilder
 
@@ -89,6 +95,7 @@ class TurtleMain():
         self.summary = file_activity_info.get('Activity', 'summary')
         self.website = file_activity_info.get('Activity', 'website')
         self.icon_name = file_activity_info.get('Activity', 'icon')
+        self.bundle_path = self._abspath
         path = os.path.abspath('./locale/')
         gettext.bindtextdomain(bundle_id, path)
         gettext.textdomain(bundle_id)
@@ -107,6 +114,7 @@ class TurtleMain():
         self._gnome_plugins = []
         self._selected_sample = None
         self._sample_window = None
+        self.has_toolbarbox = False
 
         if self._output_png:
             # Outputing to file, so no need for a canvas
@@ -347,6 +355,18 @@ return %s(self)" % (p, P, P)
         self.vbox.set_size_request(rect[2], rect[3])
         self.menu_height = self.menu_bar.size_request()[1]
 
+    def restore_cursor(self):
+        ''' No longer copying or sharing, so restore standard cursor. '''
+        self.tw.copying_blocks = False
+        self.tw.sharing_blocks = False
+        self.tw.saving_blocks = False
+        self.tw.deleting_blocks = False
+        if hasattr(self, 'get_window'):
+            if hasattr(self.get_window(), 'get_cursor'):
+                self.get_window().set_cursor(self._old_cursor)
+            else:
+                self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.LEFT_PTR))
+
     def _setup_gtk(self):
         ''' Set up a scrolled window in which to run Turtle Blocks. '''
         win = gtk.Window(gtk.WINDOW_TOPLEVEL)
@@ -403,7 +423,9 @@ return %s(self)" % (p, P, P)
         MenuBuilder.make_menu_item(menu, _('Show sample projects'),
                                    self._create_store)
         MenuBuilder.make_menu_item(menu, _('Open'), self._do_open_cb)
-        MenuBuilder.make_menu_item(menu, _('Load project'), self._do_load_cb)
+        MenuBuilder.make_menu_item(menu, _('Add project'), self._do_load_cb)
+        MenuBuilder.make_menu_item(menu, _('Load plugin'),
+                                   self._do_load_plugin_cb)
         MenuBuilder.make_menu_item(menu, _('Save'), self._do_save_cb)
         MenuBuilder.make_menu_item(menu, _('Save as'), self._do_save_as_cb)
         MenuBuilder.make_menu_item(menu, _('Save as image'),
@@ -518,6 +540,27 @@ Would you like to save before quitting?'))
         dlg.destroy()
         return resp
 
+    def _reload_plugin_alert(self, tmp_dir, tmp_path, plugin_path, plugin_name,
+                             file_info):
+        print "Already installed"
+        title = _('Plugin %s already installed') % plugin_name
+        msg = _('Do you want to reinstall %s?') % plugin_name
+        dlg = gtk.MessageDialog(parent=None, type=gtk.MESSAGE_INFO,
+                                buttons=gtk.BUTTONS_YES_NO,
+                                message_format=title)
+        dlg.format_secondary_text(msg)
+        dlg.set_title(title)
+        dlg.set_property('skip-taskbar-hint', False)
+
+        resp = dlg.run()
+        dlg.destroy()
+
+        if resp is gtk.RESPONSE_OK:
+            complete_plugin_install(tmp_dir, tmp_path, plugin_path,
+                                    plugin_name, file_info)
+        elif resp is gtk.RESPONSE_CANCEL:
+            cancel_plugin_install(tmp_dir)
+
     def _do_new_cb(self, widget):
         ''' Callback for new project. '''
         self.tw.new_project()
@@ -530,6 +573,41 @@ Would you like to save before quitting?'))
     def _do_load_cb(self, widget):
         ''' Callback for load project (add to current project). '''
         self.tw.load_file_from_chooser(False)
+
+    def _do_load_plugin_cb(self, widget):
+        self.tw.load_save_folder = self._get_execution_dir()
+        file_path, loaddir = get_load_name('.tar.gz', self.tw.load_save_folder)
+        if file_path is None:
+            return
+        try:
+            # Copy to tmp file since some systems had trouble
+            # with gunzip directly from datastore
+            datapath = get_path(None, 'instance')
+            if not os.path.exists(datapath):
+                os.makedirs(datapath)
+            tmpfile = os.path.join(datapath, 'tmpfile.tar.gz')
+            subprocess.call(['cp', file_path, tmpfile])
+            status = subprocess.call(['gunzip', tmpfile])
+            if status == 0:
+                tar_fd = tarfile.open(tmpfile[:-3], 'r')
+            else:
+                tar_fd = tarfile.open(tmpfile, 'r')
+        except:
+            tar_fd = tarfile.open(file_path, 'r')
+
+        tmp_dir = tempfile.mkdtemp()
+
+        try:
+            tar_fd.extractall(tmp_dir)
+            load_a_plugin(self, tmp_dir)
+            self.restore_cursor()
+        except:
+            self.restore_cursor()
+        finally:
+            tar_fd.close()
+            # Remove tmpfile.tar
+            subprocess.call(['rm',
+                             os.path.join(datapath, 'tmpfile.tar')])
 
     def _do_save_cb(self, widget):
         ''' Callback for save project. '''

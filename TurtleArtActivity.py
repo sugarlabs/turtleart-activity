@@ -63,6 +63,8 @@ except ImportError:
 
 from gettext import gettext as _
 
+from TurtleArt.taplugin import (load_a_plugin, cancel_plugin_install,
+                                complete_plugin_install)
 from TurtleArt.tapalette import (palette_names, help_strings, help_palettes,
                                  help_windows, default_values)
 from TurtleArt.taconstants import (BLOCK_SCALE, XO1, XO15, XO175, XO4,
@@ -94,6 +96,8 @@ class TurtleArtActivity(activity.Activity):
 
         self.tw = None
         self.init_complete = False
+
+        self.bundle_path = activity.get_bundle_path()
 
         self.error_list = []
 
@@ -327,9 +331,9 @@ class TurtleArtActivity(activity.Activity):
 
     def do_load_python_cb(self, button):
         ''' Load Python code from the Journal. '''
-        self.load_python.set_icon('python-saveon')
+        self.load_python.set_icon('pippy-openon')
         self.tw.load_python_code_from_file(fname=None, add_new_block=True)
-        gobject.timeout_add(250, self.load_python.set_icon, 'python-saveoff')
+        gobject.timeout_add(250, self.load_python.set_icon, 'pippy-openoff')
 
     def do_save_as_image_cb(self, button):
         ''' Save the canvas to the Journal. '''
@@ -886,10 +890,7 @@ class TurtleArtActivity(activity.Activity):
         help_palettes['activity-toolbar'].show()
 
         add_paragraph(help_box, _('Share selected blocks'), icon='shareon')
-        if gtk.gdk.screen_width() < 1024:
-            add_paragraph(help_box, _('Save/Load'), icon='save-load')
-        else:
-            add_section(help_box, _('Save/Load'), icon='turtleoff')
+        add_paragraph(help_box, _('Save/Load'), icon='save-load')
         add_paragraph(help_box, _('Save as image'), icon='image-saveoff')
         add_paragraph(help_box, _('Save as Logo'), icon='logo-saveoff')
         add_paragraph(help_box, _('Save as Python'), icon='python-saveoff')
@@ -899,7 +900,7 @@ class TurtleArtActivity(activity.Activity):
         if activity.get_bundle_path()[0:len(home)] == home:
             add_paragraph(help_box, _('Load plugin'), icon='pluginoff')
         add_paragraph(help_box, _('Load Python block'),
-                      icon='python-saveoff')
+                      icon='pippy-openoff')
 
         help_box = gtk.VBox()
         help_box.set_homogeneous(False)
@@ -1067,10 +1068,10 @@ class TurtleArtActivity(activity.Activity):
                                              self._share_cb, toolbar)
         if self.has_toolbarbox:
             self._add_separator(toolbar, expand=False, visible=True)
-            save_load_button = self._add_button(
-                'save-load', _('Save/Load'), self._save_load_palette_cb,
+            save_button = self._add_button(
+                'save', _('Save'), self._save_load_palette_cb,
                 toolbar)
-            self._palette = save_load_button.get_palette()
+            self._save_palette = save_button.get_palette()
             button_box = gtk.VBox()
             self.save_as_image, label = self._add_button_and_label(
                 'image-saveoff', _('Save as image'), self.do_save_as_image_cb,
@@ -1086,6 +1087,14 @@ class TurtleArtActivity(activity.Activity):
                 'filesaveoff', _('Save snapshot'), self.do_keep_cb,
                 None, button_box)
 
+            load_button = self._add_button(
+                'load', _('Load'), self._save_load_palette_cb,
+                toolbar)
+            button_box.show_all()
+            self._save_palette.set_content(button_box)
+
+            self._load_palette = load_button.get_palette()
+            button_box = gtk.VBox()
             # When screen is in portrait mode, the buttons don't fit
             # on the main toolbar, so put them here.
             self.samples_button2, self.samples_label2 = \
@@ -1107,10 +1116,10 @@ class TurtleArtActivity(activity.Activity):
                     'pluginoff', _('Load plugin'),
                     self.do_load_ta_plugin_cb, None, button_box)
             self.load_python, label = self._add_button_and_label(
-                'python-saveoff', _('Load Python block'),
+                'pippy-openoff', _('Load Python block'),
                 self.do_load_python_cb, None, button_box)
             button_box.show_all()
-            self._palette.set_content(button_box)
+            self._load_palette.set_content(button_box)
         else:
             self.save_as_image = self._add_button(
                 'image-saveoff', _('Save as image'), self.do_save_as_image_cb,
@@ -1125,7 +1134,7 @@ class TurtleArtActivity(activity.Activity):
             self.keep_button = self._add_button(
                 'filesaveoff', _('Save snapshot'), self.do_keep_cb, toolbar)
             self.load_ta_project = self._add_button(
-                'load-from-journal', _('Load project'),
+                'load-from-journal', _('Add project'),
                 self.do_load_ta_project_cb, toolbar)
             # Only enable plugin loading if installed in $HOME
             if activity.get_bundle_path()[0:len(home)] == home:
@@ -1133,17 +1142,16 @@ class TurtleArtActivity(activity.Activity):
                     'pluginoff', _('Load plugin'),
                     self.do_load_ta_plugin_cb, toolbar)
             self.load_python = self._add_button(
-                'python-saveoff', _('Load Python block'),
+                'pippy-openoff', _('Load Python block'),
                 self.do_load_python_cb, toolbar)
 
     def _save_load_palette_cb(self, button):
-        if self._palette:
-            if not self._palette.is_up():
-                self._palette.popup(immediate=True,
-                                    state=self._palette.SECONDARY)
+        palette = button.get_palette()
+        if palette:
+            if not palette.is_up():
+                palette.popup(immediate=True, state=palette.SECONDARY)
             else:
-                self._palette.popdown(immediate=True)
-            return
+                palette.popdown(immediate=True)
 
     def _make_palette_buttons(self, toolbar, palette_button=False):
         ''' Creates the palette and block buttons for both toolbar types'''
@@ -1337,109 +1345,6 @@ class TurtleArtActivity(activity.Activity):
             self.metadata['error_list'] = data_to_string(errors)
         _logger.debug('Wrote to file: %s' % (file_path))
 
-    def _load_a_plugin(self, tmp_dir):
-        ''' Load a plugin from the Journal and initialize it '''
-        plugin_path = os.path.join(tmp_dir, 'plugin.info')
-        _logger.debug(plugin_path)
-        file_info = ConfigParser.ConfigParser()
-        if len(file_info.read(plugin_path)) == 0:
-            _logger.debug('Required file plugin.info could not be found.')
-            self.tw.showlabel('status',
-                              label=_('Plugin could not be installed.'))
-        elif not file_info.has_option('Plugin', 'name'):
-            _logger.debug('Required open name not found in \
-Plugin section of plugin.info file.')
-            self.tw.showlabel(
-                'status', label=_('Plugin could not be installed.'))
-        else:
-            plugin_name = file_info.get('Plugin', 'name')
-            _logger.debug('Plugin name: %s' % (plugin_name))
-            tmp_path = os.path.join(tmp_dir, plugin_name)
-            plugin_path = os.path.join(activity.get_bundle_path(), 'plugins')
-            if os.path.exists(os.path.join(plugin_path, plugin_name)):
-                self._reload_plugin_alert(tmp_dir, tmp_path, plugin_path,
-                                          plugin_name, file_info)
-            else:
-                self._complete_plugin_install(tmp_dir, tmp_path, plugin_path,
-                                              plugin_name, file_info)
-
-    def _complete_plugin_install(self, tmp_dir, tmp_path, plugin_path,
-                                 plugin_name, file_info):
-        ''' We complete the installation directly or from ConfirmationAlert '''
-        status = subprocess.call(['cp', '-r', tmp_path, plugin_path + '/'])
-        if status == 0:
-            # Save the plugin.info file in the plugin directory
-            subprocess.call(['cp', os.path.join(tmp_dir, 'plugin.info'),
-                             os.path.join(plugin_path, plugin_name) + '/'])
-            _logger.debug('Plugin installed successfully.')
-            if self.has_toolbarbox:
-                palette_name_list = []
-                if file_info.has_option('Plugin', 'palette'):
-                    palette_name_list = file_info.get(
-                        'Plugin', 'palette').split(',')
-                    create_palette = []
-                    for palette_name in palette_name_list:
-                        if not palette_name.strip() in palette_names:
-                            create_palette.append(True)
-                        else:
-                            create_palette.append(False)
-                _logger.debug('Initializing plugin...')
-                self.tw.init_plugin(plugin_name)
-                self.tw.turtleart_plugins[-1].setup()
-                self.tw.load_media_shapes()
-                for i, palette_name in enumerate(palette_name_list):
-                    if create_palette[i]:
-                        _logger.debug('Creating plugin palette %s (%d)' %
-                                      (palette_name.strip(), i))
-                        j = len(self.palette_buttons)
-                        self.palette_buttons.append(
-                            self._radio_button_factory(
-                                palette_name.strip() + 'off',
-                                self._palette_toolbar,
-                                self.do_palette_buttons_cb,
-                                j - 1,
-                                help_strings[palette_name.strip()],
-                                self.palette_buttons[0]))
-                        self._overflow_buttons.append(
-                            self._add_button(
-                                palette_name.strip() + 'off',
-                                None,
-                                self.do_palette_buttons_cb,
-                                None,
-                                arg=j - 1))
-                        self._overflow_box.pack_start(
-                            self._overflow_buttons[j - 1])
-                        self.tw.palettes.insert(j - 1, [])
-                        self.tw.palette_sprs.insert(j - 1, [None, None])
-                    else:
-                        _logger.debug('Palette already exists... \
-skipping insert')
-                # We need to change the index associated with the
-                # Trash Palette Button.
-                j = len(palette_names)
-                pidx = palette_names.index(palette_name.strip())
-                self.palette_buttons[pidx].connect(
-                    'clicked', self.do_palette_buttons_cb, j - 1)
-                self._overflow_buttons[pidx].connect(
-                    'clicked', self.do_palette_buttons_cb, j - 1)
-                _logger.debug('reinitializing palette toolbar')
-                self._setup_palette_toolbar()
-            else:
-                self.tw.showlabel('status',
-                                  label=_('Please restart Turtle Art \
-in order to use the plugin.'))
-        else:
-            self.tw.showlabel(
-                'status', label=_('Plugin could not be installed.'))
-        status = subprocess.call(['rm', '-r', tmp_path])
-        if status != 0:
-            _logger.debug('Problems cleaning up tmp_path.')
-        shutil.rmtree(tmp_dir)
-
-    def _cancel_plugin_install(self, tmp_dir):
-        ''' If we cancel, just cleanup '''
-        shutil.rmtree(tmp_dir)
-
     def _reload_plugin_alert(self, tmp_dir, tmp_path, plugin_path, plugin_name,
                              file_info):
         ''' We warn the user if the plugin was previously loaded '''
@@ -1453,12 +1358,12 @@ in order to use the plugin.'))
             if response_id is gtk.RESPONSE_OK:
                 _logger.debug('continue to install')
                 self.remove_alert(alert)
-                self._complete_plugin_install(tmp_dir, tmp_path, plugin_path,
-                                              plugin_name, file_info)
+                complete_plugin_install(self, tmp_dir, tmp_path, plugin_path,
+                                        plugin_name, file_info)
             elif response_id is gtk.RESPONSE_CANCEL:
                 _logger.debug('cancel install')
                 self.remove_alert(alert)
-                self._cancel_plugin_install(tmp_dir)
+                cancel_plugin_install(self, tmp_dir)
 
         alert.connect('response', _reload_plugin_alert_response_cb, self,
                       tmp_dir, tmp_path, plugin_path, plugin_name, file_info)
@@ -1501,7 +1406,7 @@ in order to use the plugin.'))
                             gobject.idle_add(self._project_loader, turtle_code)
                     else:
                         _logger.debug('load a plugin from %s' % (tmp_dir))
-                        self._load_a_plugin(tmp_dir)
+                        load_a_plugin(self, tmp_dir)
                         self.restore_cursor()
                 except:
                     _logger.debug('Could not extract files from %s.' %

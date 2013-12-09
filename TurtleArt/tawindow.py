@@ -1662,9 +1662,20 @@ before making changes to your program'))
                     name = blk.name
                     # You can only have one instance of some blocks
                     if blk.name in ['start', 'hat1', 'hat2']:
-                        if len(self.block_list.get_similar_blocks(
-                                'block', blk.name)) > 0:
+                        blk_list = self.block_list.get_similar_blocks(
+                            'block', blk.name)
+                        if len(blk_list) > 0:
                             self.showlabel('dupstack')
+                            if blk.name == 'start':
+                                # Recenter the screen and move the start
+                                # stack to the center of the screen
+                                if self.running_sugar:
+                                    self.activity.recenter()
+                                dx = 200 - blk_list[0].spr.get_xy()[0]
+                                dy = 200 - blk_list[0].spr.get_xy()[1]
+                                drag_group = find_group(blk_list[0])
+                                for dblk in drag_group:
+                                    dblk.spr.move_relative((dx, dy))
                             return True
                     # We need to check to see if there is already a
                     # similarly default named stack
@@ -2176,7 +2187,7 @@ before making changes to your program'))
         for gblk in group:
             if gblk.name == 'sandwichclampcollapsed':
                 restore_clamp(gblk)
-                self.resize_parent_clamps(gblk)
+                self._resize_parent_clamps(gblk)
 
         for gblk in group:
             gblk.rescale(self.block_scale)
@@ -3217,6 +3228,13 @@ before making changes to your program'))
             if len(self.block_list.get_similar_blocks('block', 'forever')) > 0:
                 debug_output('WARNING: Projects with forever blocks \
  may not terminate.', False)
+        else:
+            self._hide_text_entry()
+            self.parent.get_window().set_cursor(
+                gtk.gdk.Cursor(gtk.gdk.WATCH))
+        gobject.idle_add(self.__run_stack, blk)
+
+    def __run_stack(self, blk):
         if self.status_spr is not None:
             self.status_spr.hide()
         self._autohide_shape = True
@@ -3229,12 +3247,16 @@ before making changes to your program'))
         self.start_plugins()  # Let the plugins know we are running.
         top = find_top_block(blk)
         code = self.lc.generate_code(top, self.just_blocks())
+        if self.interactive_mode:
+            self.parent.get_window().set_cursor(
+                gtk.gdk.Cursor(gtk.gdk.LEFT_PTR))
         self.lc.run_blocks(code)
         if self.interactive_mode:
             gobject.idle_add(self.lc.doevalstep)
         else:
             while self.lc.doevalstep():
                 pass
+        self.running_blocks = False
 
     def _snap_to_dock(self):
         ''' Snap a block (selected_block) to the dock of another block
@@ -3810,11 +3832,8 @@ before making changes to your program'))
         self._snap_to_dock()
         self.drag_group = None
 
-    def _test_number(self):
-        ''' Make sure a 'number' block contains a number. '''
+    def _hide_text_entry(self):
         if hasattr(self, '_text_entry'):
-            bounds = self._text_buffer.get_bounds()
-            text = self._text_buffer.get_text(bounds[0], bounds[1])
             if self._focus_out_id is not None:
                 self._text_entry.disconnect(self._focus_out_id)
                 self._focus_out_id = None
@@ -3822,6 +3841,13 @@ before making changes to your program'))
                 self._text_buffer.disconnect(self._insert_text_id)
                 self._insert_text_id = None
             self._text_entry.hide()
+
+    def _test_number(self):
+        ''' Make sure a 'number' block contains a number. '''
+        if hasattr(self, '_text_entry'):
+            bounds = self._text_buffer.get_bounds()
+            text = self._text_buffer.get_text(bounds[0], bounds[1])
+            self._hide_text_entry()
         else:
             text = self.selected_blk.spr.labels[0]
         self._number_check(text)
@@ -3868,12 +3894,9 @@ before making changes to your program'))
 
     def _test_string(self):
         if hasattr(self, '_text_entry'):
-            if self._focus_out_id is not None:
-                self._text_entry.disconnect(self._focus_out_id)
-                self._focus_out_id = None
             bounds = self._text_buffer.get_bounds()
             text = self._text_buffer.get_text(bounds[0], bounds[1])
-            self._text_entry.hide()
+            self._hide_text_entry()
         else:
             text = self.selected_blk.spr.labels[0]
         self.selected_blk.spr.set_label(text.replace('\12', RETURN))

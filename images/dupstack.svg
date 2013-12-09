@@ -47,21 +47,6 @@
          style="font-size:12px">X</tspan>
     </text>
   </g>
-  <path
-     d="m 222.97818,18.999999 0,0 -26,15.000001 0,0 0,3 -13.50001,0 0,-3 c 0,0 -26,-15.000001 -26,-15.000001 0,0 33.00001,-17.9999992 33.00001,-17.9999992 0,0 32.5,17.9999992 32.5,17.9999992 z"
-     id="path2490-6"
-     style="fill:#ffe000;fill-opacity:1;fill-rule:nonzero;stroke:#c0a000;stroke-width:1.33340001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
-  <text
-     x="6.1187973"
-     y="4.1250014"
-     id="text2474"
-     style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;fill:#ff0000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans">
-    <tspan
-       x="176.1188"
-       y="32.125"
-       id="tspan2476"
-       style="font-size:48px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans">x</tspan>
-  </text>
   <g
      transform="translate(6,0)"
      id="g2478">
@@ -91,8 +76,54 @@
        id="tspan2488"
        style="font-size:24px">!</tspan>
   </text>
-  <path
-     d="m 148.5,19 0,0 -26,15 0,0 0,3 -13.5,0 0,-3 c 0,0 -26,-15 -26,-15 0,0 33,-18 33,-18 0,0 32.5,18 32.5,18 z"
-     id="path2490"
-     style="fill:#ffe000;fill-opacity:1;fill-rule:nonzero;stroke:#c0a000;stroke-width:1.33340001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+  <g
+     transform="matrix(1.44,0,0,1.44,70,1)"
+     id="g3061"
+     style="fill:#ffe000;fill-opacity:1;stroke:#c0a000;stroke-opacity:1">
+    <path
+       d="m 0.5,14.5 0,-4 a 4,4 90 0 1 4,-4 l 4,0 5,-6 5,6 30,0 4,0 a 4,4 90 0 1 4,4 l 0,4 0,4 a 4,4 90 0 1 -4,4 l -4,0 -30,0 -1,0 0,2 -8,0 0,-2 -1,0 -4,0 a 4,4 90 0 1 -4,-4 l 0,-4 z"
+       id="path3063"
+       style="fill:#ffe000;fill-opacity:1;stroke:#c0a000;stroke-width:1;stroke-linecap:round;stroke-opacity:1" />
+  </g>
+  <g
+     transform="matrix(1.44,0,0,1.44,160,1)"
+     id="g3061-8"
+     style="fill:#ffe000;fill-opacity:1;stroke:#c0a000;stroke-opacity:1">
+    <path
+       d="m 0.5,14.5 0,-4 a 4,4 90 0 1 4,-4 l 4,0 5,-6 5,6 30,0 4,0 a 4,4 90 0 1 4,4 l 0,4 0,4 a 4,4 90 0 1 -4,4 l -4,0 -30,0 -1,0 0,2 -8,0 0,-2 -1,0 -4,0 a 4,4 90 0 1 -4,-4 l 0,-4 z"
+       id="path3063-7"
+       style="fill:#ffe000;fill-opacity:1;stroke:#c0a000;stroke-width:1;stroke-linecap:round;stroke-opacity:1" />
+  </g>
+  <text
+     x="-15.714066"
+     y="-38.59026"
+     transform="scale(1.0155331,-0.98470448)"
+     id="text2474"
+     style="font-size:13.9273119px;font-style:normal;font-weight:normal;line-height:125%;fill:#ff0000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans">
+    <tspan
+       x="181.58951"
+       y="-6.0931983"
+       id="tspan2476"
+       style="font-size:55.70924759px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans">x</tspan>
+  </text>
+  <text
+     x="103.1943"
+     y="29.748047"
+     id="text2999"
+     xml:space="preserve"
+     style="font-size:288px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"><tspan
+       x="103.1943"
+       y="29.748047"
+       id="tspan3001"
+       style="font-size:24px">1</tspan></text>
+  <text
+     x="193.72749"
+     y="29.90625"
+     id="text2999-5"
+     xml:space="preserve"
+     style="font-size:288px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"><tspan
+       x="193.72749"
+       y="29.90625"
+       id="tspan3001-1"
+       style="font-size:24px">2</tspan></text>
 </svg>
