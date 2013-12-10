@@ -6,6 +6,7 @@ ENHANCEMENTS:
 * Add load/save plugin dialog to GNOME version (Daniel Francis)
 * Add busy cursor when projects are being prepared to run
 * Reworked Duplicate Blocks warning graphic to reflect current block shapes
+* Refactored until block to better reflect flow logic
 * New translations
 
 BUG FIX:
