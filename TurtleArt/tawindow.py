@@ -2553,8 +2553,9 @@ before making changes to your program'))
             if blk is None:
                 continue
             if blk.name in EXPANDABLE_FLOW:
-                if blk.name in block_styles['clamp-style-1arg'] or\
-                   blk.name in block_styles['clamp-style-boolean']:
+                if blk.name in block_styles['clamp-style-1arg'] or \
+                   blk.name in block_styles['clamp-style-boolean'] or \
+                   blk.name in block_styles['clamp-style-until']:
                     if blk.connections[2] is not None:
                         self._resize_clamp(blk, blk.connections[2])
                 elif blk.name in block_styles['clamp-style']:
@@ -3391,7 +3392,9 @@ before making changes to your program'))
                 if best_destination.name in \
                         block_styles['clamp-style-1arg'] or \
                         best_destination.name in \
-                        block_styles['clamp-style-boolean']:
+                        block_styles['clamp-style-boolean'] or \
+                        best_destination.name in \
+                        block_styles['clamp-style-until']:
                     if best_destination_dockn == 2:
                         self._resize_clamp(best_destination,
                                            self.drag_group[0])
@@ -3492,8 +3495,9 @@ before making changes to your program'))
                     self._expand_expandable(blk2, blk, dy)
                 self._cascade_expandable(blk2)
         elif c is not None and blk2.name in EXPANDABLE_FLOW:
-            if blk2.name in block_styles['clamp-style-1arg'] or\
-                    blk2.name in block_styles['clamp-style-boolean']:
+            if blk2.name in block_styles['clamp-style-1arg'] or \
+                    blk2.name in block_styles['clamp-style-boolean'] or \
+                    blk2.name in block_styles['clamp-style-until']:
                 if c == 2:
                     self._resize_clamp(blk2, None, c)
             elif blk2.name in block_styles['clamp-style'] or \
@@ -3542,10 +3546,16 @@ before making changes to your program'))
             drag_group = find_group(blk.connections[-1])
             for gblk in drag_group:
                 gblk.spr.move_relative((0, y2-y1))
-        # We may have to move the else clamp group down too.
+        # We may have to move the else clamp group up or down too.
         if blk.name in block_styles['clamp-style-else'] and dockn == 2:
             if blk.connections[3] is not None:
                 drag_group = find_group(blk.connections[3])
+                for gblk in drag_group:
+                    gblk.spr.move_relative((0, y2 - y1))
+        # We may have to move the bool group up or down too.
+        if blk.name in block_styles['clamp-style-until']:
+            if blk.connections[1] is not None:
+                drag_group = find_group(blk.connections[1])
                 for gblk in drag_group:
                     gblk.spr.move_relative((0, y2 - y1))
 
