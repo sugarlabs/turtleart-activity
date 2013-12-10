@@ -4,12 +4,18 @@ ENHANCEMENTS:
 * Save/restore palette settings in GConf
 * Add confirmation when emptying trash in GNONE version (Alan Aguiar)
 * Add load/save plugin dialog to GNOME version (Daniel Francis)
+* Add busy cursor when projects are being prepared to run
+* Reworked Duplicate Blocks warning graphic to reflect current block shapes
+* New translations
 
 BUG FIX:
-* Fix shade block dock settings (Alan Aguiar)
-* Fix bug in empty trash (Alan Aguiar)
+* Fixed shade block dock settings (Alan Aguiar)
+* Fixed bug in empty trash (Alan Aguiar)
 * Set active turtle after 'clean' in exported Python code
 * Execute 'until' body once before entering loop in exported Python code
+* Fixed problem with running_blocks flag not being cleared (cause of spurious
+  "hit stop button" messages.
+* Fixed problem with errant text entry widget on run.
 
 193
 

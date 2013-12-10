@@ -3229,6 +3229,7 @@ before making changes to your program'))
                 debug_output('WARNING: Projects with forever blocks \
  may not terminate.', False)
         else:
+            self._hide_text_entry()
             self.parent.get_window().set_cursor(
                 gtk.gdk.Cursor(gtk.gdk.WATCH))
         gobject.idle_add(self.__run_stack, blk)
@@ -3831,11 +3832,8 @@ before making changes to your program'))
         self._snap_to_dock()
         self.drag_group = None
 
-    def _test_number(self):
-        ''' Make sure a 'number' block contains a number. '''
+    def _hide_text_entry(self):
         if hasattr(self, '_text_entry'):
-            bounds = self._text_buffer.get_bounds()
-            text = self._text_buffer.get_text(bounds[0], bounds[1])
             if self._focus_out_id is not None:
                 self._text_entry.disconnect(self._focus_out_id)
                 self._focus_out_id = None
@@ -3843,6 +3841,13 @@ before making changes to your program'))
                 self._text_buffer.disconnect(self._insert_text_id)
                 self._insert_text_id = None
             self._text_entry.hide()
+
+    def _test_number(self):
+        ''' Make sure a 'number' block contains a number. '''
+        if hasattr(self, '_text_entry'):
+            bounds = self._text_buffer.get_bounds()
+            text = self._text_buffer.get_text(bounds[0], bounds[1])
+            self._hide_text_entry()
         else:
             text = self.selected_blk.spr.labels[0]
         self._number_check(text)
@@ -3889,12 +3894,9 @@ before making changes to your program'))
 
     def _test_string(self):
         if hasattr(self, '_text_entry'):
-            if self._focus_out_id is not None:
-                self._text_entry.disconnect(self._focus_out_id)
-                self._focus_out_id = None
             bounds = self._text_buffer.get_bounds()
             text = self._text_buffer.get_text(bounds[0], bounds[1])
-            self._text_entry.hide()
+            self._hide_text_entry()
         else:
             text = self.selected_blk.spr.labels[0]
         self.selected_blk.spr.set_label(text.replace('\12', RETURN))
