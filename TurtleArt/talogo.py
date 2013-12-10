@@ -1011,7 +1011,7 @@ class LogoCode:
         self.filepath = None
         self.dsobject = None
 
-        if os_path_exists(obj.value):  # file path
+        if obj.value is not None and os_path_exists(obj.value):
             self.filepath = obj.value
         elif self.tw.running_sugar:  # datastore object
             from sugar.datastore import datastore
