@@ -543,7 +543,7 @@ make "tmp first :taheap\nmake "taheap butfirst :taheap\noutput :tmp\nend\n')
 last-out heap) to a file'))
         self.tw.lc.def_prim('saveheap', 1,
                             Primitive(self.tw.lc.save_heap,
-                                      arg_descs=[ArgSlot(TYPE_STRING)]))
+                                      arg_descs=[ArgSlot(TYPE_OBJECT)]))
 
         palette.add_block('loadheap',
                           style='basic-style-1arg',
@@ -554,8 +554,7 @@ last-out heap) to a file'))
 last-out heap) from a file'))
         self.tw.lc.def_prim('loadheap', 1,
                             Primitive(self.tw.lc.load_heap,
-                                      arg_descs=[ArgSlot(TYPE_STRING)],
-                                      return_type=TYPE_STRING,
+                                      arg_descs=[ArgSlot(TYPE_OBJECT)],
                                       call_afterwards=self.after_push))
 
         palette.add_block('isheapempty2',
