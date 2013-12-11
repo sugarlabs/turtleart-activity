@@ -835,24 +835,35 @@ class LogoCode:
                     name = float(name)
             return 'stack3' + str(name)
 
-    def load_heap(self, path):
+    def load_heap(self, obj):
         """ Load FILO from file """
         if self.tw.running_sugar:
-            # Choose a datastore object and push data to heap (Sugar only)
-            chooser_dialog(self.tw.parent, path, self.push_file_data_to_heap)
+            # Is the object a dsobject?
+            if isinstance(obj, Media) and obj.value:
+                from sugar.datastore import datastore
+                try:
+                    dsobject = datastore.get(obj.value)
+                except:
+                    debug_output("Couldn't find dsobject %s" %
+                                 (obj.value), self.tw.running_sugar)
+                if dsobject is not None:
+                    self.push_file_data_to_heap(dsobject)
+            # Or is it a path?
+            elif os.path.exists(obj):
+                    self.push_file_data_to_heap(None, path=obj)
+            else:
+                # Finally try choosing a datastore object
+                chooser_dialog(self.tw.parent, obj,
+                               self.push_file_data_to_heap)
         else:
-            if not os.path.exists(path):
-                path, self.tw.load_save_folder = get_load_name(
+            # If you cannot find the file, open a chooser.
+            if not os.path.exists(obj):
+                obj, self.tw.load_save_folder = get_load_name(
                     '.*', self.tw.load_save_folder)
-                if path is None:
-                    return
+            if obj is not None:
+                self.push_file_data_to_heap(None, path=obj)
 
-            data = data_from_file(path)
-            if data is not None:
-                for val in data:
-                    self.heap.append(val)
-
-    def save_heap(self, path):
+    def save_heap(self, obj):
         """ save FILO to file """
         if self.tw.running_sugar:
             from sugar import profile
@@ -861,22 +872,23 @@ class LogoCode:
 
             # Save JSON-encoded heap to temporary file
             heap_file = os.path.join(get_path(activity, 'instance'),
-                                     str(path) + '.txt')
+                                     'heap.txt')
             data_to_file(self.heap, heap_file)
 
-            # Create a datastore object
-            dsobject = datastore.create()
-
-            # Write any metadata (specifically set the title of the file
-            #                     and specify that this is a plain text file).
-            dsobject.metadata['title'] = str(path)
-            dsobject.metadata['icon-color'] = profile.get_color().to_string()
-            dsobject.metadata['mime_type'] = 'text/plain'
+            # Write to an existing or new dsobject
+            if isinstance(obj, Media) and obj.value:
+                dsobject = datastore.get(obj.value)
+            else:
+                dsobject = datastore.create()
+                dsobject.metadata['title'] = str(obj)
+                dsobject.metadata['icon-color'] = \
+                    profile.get_color().to_string()
+                dsobject.metadata['mime_type'] = 'text/plain'
             dsobject.set_file_path(heap_file)
             datastore.write(dsobject)
             dsobject.destroy()
         else:
-            heap_file = path
+            heap_file = obj
             data_to_file(self.heap, heap_file)
 
     def get_heap(self):
@@ -1011,7 +1023,7 @@ class LogoCode:
         self.filepath = None
         self.dsobject = None
 
-        if os_path_exists(obj.value):  # file path
+        if obj.value is not None and os_path_exists(obj.value):
             self.filepath = obj.value
         elif self.tw.running_sugar:  # datastore object
             from sugar.datastore import datastore
@@ -1172,9 +1184,15 @@ class LogoCode:
                 int(self.tw.canvas.textsize * self.scale / 100.),
                 self.tw.canvas.width - x)
 
-    def push_file_data_to_heap(self, dsobject):
+    def push_file_data_to_heap(self, dsobject, path=None):
         """ push contents of a data store object (assuming json encoding) """
-        data = data_from_file(dsobject.file_path)
+        if dsobject:
+            data = data_from_file(dsobject.file_path)
+        elif path is not None:
+            data = data_from_file(path)
+        else:
+            data = None
+            debug_output("No file to open", self.tw.running_sugar)
         if data is not None:
             for val in data:
                 self.heap.append(val)

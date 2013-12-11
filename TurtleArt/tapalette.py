@@ -71,6 +71,7 @@ block_styles = {'basic-style': [],
                 'clamp-style-collapsed': [],
                 'clamp-style-1arg': [],
                 'clamp-style-boolean': [],
+                'clamp-style-until': [],
                 'clamp-style-else': [],
                 'portfolio-style-2x2': [],
                 'portfolio-style-1x1': [],
@@ -289,6 +290,7 @@ class _ProtoBlock():
                            'clamp-style-collapsible',
                            'clamp-style-1arg',
                            'clamp-style-boolean',
+                           'clamp-style-until',
                            'clamp-style-else']:
             EXPANDABLE_FLOW.append(self._name)
 

@@ -209,7 +209,7 @@ class Block:
         self._visible = True
         self.unknown = False  # Block is of unknown style
 
-        self.block_methods = {
+        self._block_methods = {
             'basic-style': self._make_basic_style,
             'blank-style': self._make_blank_style,
             'basic-style-head': self._make_basic_style_head,
@@ -241,6 +241,7 @@ class Block:
             'clamp-style-collapsed': self._make_clamp_style_collapsed,
             'clamp-style-1arg': self._make_clamp_style_1arg,
             'clamp-style-boolean': self._make_clamp_style_boolean,
+            'clamp-style-until': self._make_clamp_style_until,
             'clamp-style-else': self._make_clamp_style_else,
             'flow-style-tail': self._make_flow_style_tail,
             'portfolio-style-2x2': self._make_portfolio_style_2x2,
@@ -679,7 +680,8 @@ class Block:
             y = self.docks[1][3] - int(int(self.font_size[0] * 1.3))
             self.spr.set_label_attributes(int(self.font_size[0] + 0.5),
                                           True, 'right', y_pos=y, i=0)
-        elif self.name in block_styles['clamp-style-boolean']:
+        elif self.name in block_styles['clamp-style-boolean'] or \
+             self.name in block_styles['clamp-style-until']:
             y = self.docks[1][3] - int(int(self.font_size[0] * 1.3))
             self.spr.set_label_attributes(int(self.font_size[0] + 0.5),
                                           True, 'right', y_pos=y, i=0)
@@ -709,19 +711,18 @@ class Block:
         self._right = 0
         self._bottom = 0
         self.svg.set_stroke_width(STANDARD_STROKE_WIDTH)
-        self.svg.clear_docks()
         if isinstance(self.name, unicode):
             self.name = self.name.encode('utf-8')
         for k in block_styles.keys():
             if self.name in block_styles[k]:
-                if isinstance(self.block_methods[k], list):
-                    self.block_methods[k][0](svg, self.block_methods[k][1],
-                                             self.block_methods[k][2])
+                if isinstance(self._block_methods[k], list):
+                    self._block_methods[k][0](svg, self._block_methods[k][1],
+                                             self._block_methods[k][2])
                 else:
-                    self.block_methods[k](svg)
+                    self._block_methods[k](svg)
                 return
         error_output('ERROR: block type not found %s' % (self.name))
-        self.block_methods['blank-style'](svg)
+        self._block_methods['blank-style'](svg)
         self.unknown = True
 
     def _set_colors(self, svg):
@@ -1086,6 +1087,24 @@ class Block:
                       ['flow', False, self.svg.docks[4][0],
                                       self.svg.docks[4][1], ']']]
 
+    def _make_clamp_style_until(self, svg, extend_x=0, extend_y=4):
+        self.svg.expand(self.dx + self.ex + extend_x, self.ey + extend_y)
+        self.svg.set_slot(True)
+        self.svg.set_tab(True)
+        self.svg.set_boolean(True)
+        self.svg.second_clamp(False)
+        self._make_block_graphics(svg, self.svg.clamp_until)
+        # Dock positions are flipped
+        self.docks = [['flow', True, self.svg.docks[0][0],
+                                     self.svg.docks[0][1]],
+                      ['bool', False, self.svg.docks[3][0],
+                                        self.svg.docks[3][1]],
+                      ['flow', False, self.svg.docks[1][0],
+                                      self.svg.docks[1][1], '['],
+                      # Skip bottom of clamp
+                      ['flow', False, self.svg.docks[4][0],
+                                      self.svg.docks[4][1], ']']]
+
     def _make_clamp_style_else(self, svg, extend_x=0, extend_y=4):
         self.svg.expand(self.dx + self.ex + extend_x, self.ey + extend_y,
                         self.dx + self.ex + extend_x, self.ey2 + extend_y)
@@ -1194,6 +1213,7 @@ class Block:
     def _make_block_graphics(self, svg, function, arg=None):
         self._set_colors(svg)
         self.svg.set_gradient(True, GRADIENT_COLOR)
+        self.svg.clear_docks()
         if arg is None:
             pixbuf = svg_str_to_pixbuf(function())
         else:
@@ -1203,6 +1223,7 @@ class Block:
         self.shapes[0] = _pixbuf_to_cairo_surface(pixbuf,
                                                   self.width, self.height)
         self.svg.set_gradient(False)
+        self.svg.clear_docks()
         if arg is None:
             pixbuf = svg_str_to_pixbuf(function())
         else:
