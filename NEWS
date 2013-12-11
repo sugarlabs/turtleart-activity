@@ -7,6 +7,7 @@ ENHANCEMENTS:
 * Add busy cursor when projects are being prepared to run
 * Reworked Duplicate Blocks warning graphic to reflect current block shapes
 * Refactor until block shape to better reflect flow logic
+* Enabled load file to heap/save heap to file to use the Sugar journal
 * New translations
 
 BUG FIX:
@@ -17,6 +18,7 @@ BUG FIX:
 * Fixed problem with running_blocks flag not being cleared (cause of spurious
   "hit stop button" messages.
 * Fixed problem with errant text entry widget on run.
+* Fixed problem with text wrap of SVG output #1856 (Jorge Alberto Gómez López)
 
 193
 

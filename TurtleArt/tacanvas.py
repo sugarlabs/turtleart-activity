@@ -305,10 +305,14 @@ class TurtleGraphics:
         ''' Draw text '''
 
         def _draw_text(cr, label, x, y, size, width, scale, heading, rgb):
+            import textwrap
+            final_scale = int(size * scale) * pango.SCALE
+            label = str(label)
+            label = '\n'.join(textwrap.wrap(label, int(width / scale)))
             cc = pangocairo.CairoContext(cr)
             pl = cc.create_layout()
             fd = pango.FontDescription('Sans')
-            fd.set_size(int(size * scale) * pango.SCALE)
+            fd.set_size(final_scale)
             pl.set_font_description(fd)
             if isinstance(label, (str, unicode)):
                 pl.set_text(label.replace('\0', ' '))
