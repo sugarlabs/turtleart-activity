@@ -544,4 +544,10 @@ MACROS = {
      [25, 'description', 0, 0, [24, None]]],
     'reskin':
     [[0, 'skin', 0, 0, [None, 1, None]],
+     [1, 'journal', 0, 0, [0, None]]],
+    'saveheaptojournal':
+    [[0, 'saveheap', 0, 0, [None, 1, None]],
+     [1, 'journal', 0, 0, [0, None]]],
+    'loadheapfromjournal':
+    [[0, 'loadheap', 0, 0, [None, 1, None]],
      [1, 'journal', 0, 0, [0, None]]]}
