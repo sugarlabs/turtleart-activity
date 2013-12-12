@@ -341,8 +341,6 @@ VOICES = {'af': 'afrikaans', 'cy': 'welsh-test', 'el': 'greek',
 MACROS = {
     'ifthenelse':  # Because it is too big to fit on the palette
     [[0, 'ifelse', 0, 0, [None, None, None, None, None]]],
-    'untilmacro':  # Because it is too big to fit on the palette
-    [[0, 'until', 0, 0, [None, None, None, None]]],
     'kbinput':
     [[0, 'until', 0, 0, [None, 1, 4, None]],
      [1, 'greater2', 0, 0, [0, 2, 3, None]],
@@ -544,9 +542,6 @@ MACROS = {
      [25, 'description', 0, 0, [24, None]]],
     'reskin':
     [[0, 'skin', 0, 0, [None, 1, None]],
-     [1, 'journal', 0, 0, [0, None]]],
-    'saveheaptojournal':
-    [[0, 'saveheap', 0, 0, [None, 1, None]],
      [1, 'journal', 0, 0, [0, None]]],
     'loadheapfromjournal':
     [[0, 'loadheap', 0, 0, [None, 1, None]],

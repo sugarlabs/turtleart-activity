@@ -634,22 +634,12 @@ stroke-width="3.5" fill="%s" stroke="none" />\n' % (self._stroke)
         svg += self._inverse_corner(1, 1, 90, 0, 0)
         svg += self._do_slot()
         svg += self._rline_to(self._radius, 0)
-        if self._second_clamp:
-            svg += self._corner(-1, 1)
-            svg += self.line_to(xx, self._y)
-            svg += self._rline_to(-self._expand_x, 0)
-            svg += self._do_tab()
-            svg += self._inverse_corner(-1, 1, 90, 0, 0)
-            svg += self._rline_to(0, self._expand_y2)
-            svg += self._inverse_corner(1, 1, 90, 0, 0)
-            svg += self._do_slot()
-            svg += self._rline_to(self._radius, 0)
         if self._innie[0] is True:
             svg += self._do_innie()
         else:
             self.margins[2] = \
                 int((self._x - self._stroke_width + 0.5) * self._scale)
-        svg += self._rline_to(0, self._radius * 3)
+        svg += self._rline_to(0, self._radius + self._expand_y2)
         if self._bool is True:
             svg += self._do_boolean()
         svg += self._corner(-1, 1)
