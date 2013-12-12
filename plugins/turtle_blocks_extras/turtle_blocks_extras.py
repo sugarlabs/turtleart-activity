@@ -541,17 +541,35 @@ make "tmp first :taheap\nmake "taheap butfirst :taheap\noutput :tmp\nend\n')
                           prim_name='saveheap',
                           help_string=_('saves FILO (first-in \
 last-out heap) to a file'))
+
         self.tw.lc.def_prim('saveheap', 1,
                             Primitive(self.tw.lc.save_heap,
                                       arg_descs=[ArgSlot(TYPE_OBJECT)]))
 
-        palette.add_block('loadheap',
-                          style='basic-style-1arg',
-                          label=_('load heap from file'),
-                          default=_('filename'),
-                          prim_name='loadheap',
-                          help_string=_('loads FILO (first-in \
+        if self.tw.running_sugar:
+            palette.add_block('loadheap',
+                              style='basic-style-1arg',
+                              hidden=True,
+                              label=_('load heap from file'),
+                              default=_('filename'),
+                              prim_name='loadheap',
+                              help_string=_('loads FILO (first-in \
 last-out heap) from a file'))
+            # macro
+            palette.add_block('loadheapfromjournal',
+                              style='basic-style-1arg',
+                              label=_('load heap from file'),
+                              help_string=_('loads FILO (first-in \
+last-out heap) from a file'))
+        else:
+            palette.add_block('loadheap',
+                              style='basic-style-1arg',
+                              label=_('load heap from file'),
+                              default=_('filename'),
+                              prim_name='loadheap',
+                              help_string=_('loads FILO (first-in \
+last-out heap) from a file'))
+
         self.tw.lc.def_prim('loadheap', 1,
                             Primitive(self.tw.lc.load_heap,
                                       arg_descs=[ArgSlot(TYPE_OBJECT)],

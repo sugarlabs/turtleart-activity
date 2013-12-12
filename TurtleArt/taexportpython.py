@@ -45,18 +45,22 @@ _ALTERNATIVE_INSTALL_PATH = \
     '/usr/local/share/sugar/activities/TurtleArt.activity'
 
 import os, sys
-if os.path.exists('../TurtleBlocks.activity'):
-    sys.path.insert(0, '../TurtleBlocks.activity')
-elif os.path.exists(os.path.join(os.path.expanduser('~'), 'Activities',
-                                 'TurtleBlocks.activity')):
-    sys.path.insert(0, os.path.join(os.path.expanduser('~'), 'Activities',
-                    'TurtleBlocks.activity'))
-elif os.path.exists(_INSTALL_PATH):
-    sys.path.insert(0, _INSTALL_PATH)
-elif os.path.exists(_ALTERNATIVE_INSTALL_PATH):
-    sys.path.insert(0, _ALTERNATIVE_INSTALL_PATH)
-else:
-    print 'This code require the TurtleBlocks activity to be installed.'
+paths = []
+paths.append('../%s.activity')
+paths.append(os.path.expanduser('~') + '/Activities/%s.activity')
+paths.append('/usr/share/sugar/activities/%s.activity')
+paths.append('/usr/local/share/sugar/activities/%s.activity')
+
+flag = False
+for path in paths:
+    for activity in ['TurtleBlocks', 'TurtleBots']:
+        p = path % activity
+        if os.path.exists(p):
+            flag = True
+            sys.path.insert(0, p)
+    
+if not flag:
+    print 'This code require the Turtle Blocks/Bots activity to be installed.'
     exit(1)
 
 from time import *
