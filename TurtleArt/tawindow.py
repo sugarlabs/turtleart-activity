@@ -2554,10 +2554,14 @@ before making changes to your program'))
                 continue
             if blk.name in EXPANDABLE_FLOW:
                 if blk.name in block_styles['clamp-style-1arg'] or \
-                   blk.name in block_styles['clamp-style-boolean'] or \
-                   blk.name in block_styles['clamp-style-until']:
+                   blk.name in block_styles['clamp-style-boolean']:
                     if blk.connections[2] is not None:
                         self._resize_clamp(blk, blk.connections[2])
+                elif blk.name in block_styles['clamp-style-until']:
+                    if blk.connections[2] is not None:
+                        self._resize_clamp(blk, blk.connections[2])
+                    if blk.connections[1] is not None:
+                        self._resize_clamp(blk, blk.connections[1], dockn=1)
                 elif blk.name in block_styles['clamp-style']:
                     if blk.connections[1] is not None:
                         self._resize_clamp(blk, blk.connections[1])
@@ -3392,12 +3396,18 @@ before making changes to your program'))
                 if best_destination.name in \
                         block_styles['clamp-style-1arg'] or \
                         best_destination.name in \
-                        block_styles['clamp-style-boolean'] or \
-                        best_destination.name in \
-                        block_styles['clamp-style-until']:
+                        block_styles['clamp-style-boolean']:
                     if best_destination_dockn == 2:
                         self._resize_clamp(best_destination,
                                            self.drag_group[0])
+                elif best_destination.name in \
+                     block_styles['clamp-style-until']:
+                    if best_destination_dockn == 2:
+                        self._resize_clamp(best_destination,
+                                           self.drag_group[0])
+                    elif best_destination_dockn == 1:
+                        self._resize_clamp(best_destination,
+                                           self.drag_group[0], dockn=1)
                 elif best_destination.name in block_styles['clamp-style'] or \
                         best_destination.name in \
                         block_styles['clamp-style-collapsible']:
@@ -3496,16 +3506,18 @@ before making changes to your program'))
                 self._cascade_expandable(blk2)
         elif c is not None and blk2.name in EXPANDABLE_FLOW:
             if blk2.name in block_styles['clamp-style-1arg'] or \
-                    blk2.name in block_styles['clamp-style-boolean'] or \
-                    blk2.name in block_styles['clamp-style-until']:
+                    blk2.name in block_styles['clamp-style-boolean']:
                 if c == 2:
-                    self._resize_clamp(blk2, None, c)
+                    self._resize_clamp(blk2, None, dockn=c)
+            elif blk2.name in block_styles['clamp-style-until']:
+                if c in [1, 2]:
+                    self._resize_clamp(blk2, None, dockn=c)
             elif blk2.name in block_styles['clamp-style'] or \
                     blk2.name in block_styles['clamp-style-collapsible']:
                 if c == 1:
                     self._resize_clamp(blk2, None)
             elif blk2.name in block_styles['clamp-style-else']:
-                if c == 2 or c == 3:
+                if c in [2, 3]:
                     self._resize_clamp(blk2, None, dockn=c)
         while blk3 is not None and blk3.connections[dockn] is not None:
             self._resize_clamp(blk3, blk3.connections[dockn], dockn=dockn)
@@ -3521,21 +3533,34 @@ before making changes to your program'))
         y1 = blk.docks[-1][3]
         if blk.name in block_styles['clamp-style-else'] and dockn == 3:
             blk.reset_y2()
+        elif blk.name in block_styles['clamp-style-until'] and dockn == 1:
+            blk.reset_y2()
         else:
             blk.reset_y()
         dy = 0
         # Calculate height of drag group
-        while gblk is not None:
-            delta = int((gblk.docks[-1][3] - gblk.docks[0][3]) / gblk.scale)
-            if delta == 0:
-                dy += 21  # Fixme: don't hardcode size of stop action block
-            else:
-                dy += delta
-            gblk = gblk.connections[-1]
-        # Clamp has room for one 'standard' block by default
-        if dy > 0:
-            dy -= 21  # Fixme: don't hardcode
+        if blk.name in block_styles['clamp-style-until'] and dockn == 1:
+            if gblk is not None:
+                dy = int(gblk.spr.rect.height / gblk.scale)
+                # Room for part of one 'standard' boolean by default
+                if dy > 0:
+                    dy -= 25  # Fixme: don't hardcode size of slot
+                if dy < 0:
+                    dy = 0
+        else:
+            while gblk is not None:
+                delta = int((gblk.docks[-1][3] - gblk.docks[0][3]) / gblk.scale)
+                if delta == 0:
+                    dy += 21  # Fixme: don't hardcode size of slot
+                else:
+                    dy += delta
+                gblk = gblk.connections[-1]
+            # Clamp has room for one 'standard' block by default
+            if dy > 0:
+                dy -= 21  # Fixme: don't hardcode size of slot
         if blk.name in block_styles['clamp-style-else'] and dockn == 3:
+            blk.expand_in_y2(dy)
+        elif blk.name in block_styles['clamp-style-until'] and dockn == 1:
             blk.expand_in_y2(dy)
         else:
             blk.expand_in_y(dy)

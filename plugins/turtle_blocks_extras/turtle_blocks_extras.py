@@ -93,7 +93,6 @@ boolean operators from Numbers palette'))
             True)
 
         palette.add_block('until',
-                          hidden=True,  # Too big to fit on palette
                           style='clamp-style-until',
                           label=_('until'),
                           prim_name='until',
@@ -115,13 +114,6 @@ boolean operators from Numbers palette'))
                                                          call_arg=False)])),
                           ArgSlot(TYPE_OBJECT)]),
             True)
-
-        # macro
-        palette.add_block('untilmacro',
-                          style='basic-style-extended-vertical',
-                          label=_('until'),
-                          help_string=_('do-until-True operator that uses \
-boolean operators from Numbers palette'))
 
         palette.add_block('sandwichclamp',
                           style='clamp-style-collapsible',
