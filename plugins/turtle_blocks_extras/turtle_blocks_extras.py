@@ -93,7 +93,6 @@ boolean operators from Numbers palette'))
             True)
 
         palette.add_block('until',
-                          hidden=True,  # Too big to fit on palette
                           style='clamp-style-until',
                           label=_('until'),
                           prim_name='until',
@@ -115,13 +114,6 @@ boolean operators from Numbers palette'))
                                                          call_arg=False)])),
                           ArgSlot(TYPE_OBJECT)]),
             True)
-
-        # macro
-        palette.add_block('untilmacro',
-                          style='basic-style-extended-vertical',
-                          label=_('until'),
-                          help_string=_('do-until-True operator that uses \
-boolean operators from Numbers palette'))
 
         palette.add_block('sandwichclamp',
                           style='clamp-style-collapsible',
@@ -541,21 +533,38 @@ make "tmp first :taheap\nmake "taheap butfirst :taheap\noutput :tmp\nend\n')
                           prim_name='saveheap',
                           help_string=_('saves FILO (first-in \
 last-out heap) to a file'))
+
         self.tw.lc.def_prim('saveheap', 1,
                             Primitive(self.tw.lc.save_heap,
-                                      arg_descs=[ArgSlot(TYPE_STRING)]))
+                                      arg_descs=[ArgSlot(TYPE_OBJECT)]))
 
-        palette.add_block('loadheap',
-                          style='basic-style-1arg',
-                          label=_('load heap from file'),
-                          default=_('filename'),
-                          prim_name='loadheap',
-                          help_string=_('loads FILO (first-in \
+        if self.tw.running_sugar:
+            palette.add_block('loadheap',
+                              style='basic-style-1arg',
+                              hidden=True,
+                              label=_('load heap from file'),
+                              default=_('filename'),
+                              prim_name='loadheap',
+                              help_string=_('loads FILO (first-in \
 last-out heap) from a file'))
+            # macro
+            palette.add_block('loadheapfromjournal',
+                              style='basic-style-1arg',
+                              label=_('load heap from file'),
+                              help_string=_('loads FILO (first-in \
+last-out heap) from a file'))
+        else:
+            palette.add_block('loadheap',
+                              style='basic-style-1arg',
+                              label=_('load heap from file'),
+                              default=_('filename'),
+                              prim_name='loadheap',
+                              help_string=_('loads FILO (first-in \
+last-out heap) from a file'))
+
         self.tw.lc.def_prim('loadheap', 1,
                             Primitive(self.tw.lc.load_heap,
-                                      arg_descs=[ArgSlot(TYPE_STRING)],
-                                      return_type=TYPE_STRING,
+                                      arg_descs=[ArgSlot(TYPE_OBJECT)],
                                       call_afterwards=self.after_push))
 
         palette.add_block('isheapempty2',
@@ -735,57 +744,36 @@ module found in the Journal'))
         MEDIA_SHAPES.append('pythonoff')
         MEDIA_SHAPES.append('pythonon')
 
-        palette.add_block('loadblock',
-                          style='basic-style-var-arg',
-                          label=_('load'),
-                          prim_name='loadblock',
-                          default=_('forward'),
-                          help_string=_('loads a block'))
-        self.tw.lc.def_prim('loadblock', 1,
-                            Primitive(self.tw.prim_load_block,
-                                      export_me=False,
+        palette.add_block('getfromurl',
+                          style='number-style-1arg',
+                          #TRANS: URL is universal resource locator
+                          label=_('URL'),
+                          default=\
+'http://wiki.sugarlabs.org/images/2/2c/Logo_alt_3.svg',
+                          prim_name='getfromurl',
+                          help_string=\
+_('gets a text string or an image from a URL'))
+        self.tw.lc.def_prim('getfromurl', 1,
+                            Primitive(self.tw.lc.get_from_url,
                                       arg_descs=[ArgSlot(TYPE_STRING)]))
 
-        palette.add_block('loadblock2arg',
-                          style='basic-style-var-arg',
-                          hidden=True,
-                          label=_('load'),
-                          prim_name='loadblock2',
-                          string_or_number=True,
-                          default=[_('forward'), 100],
-                          help_string=_('loads a block'))
-        self.tw.lc.def_prim('loadblock2', 2,
-                            Primitive(self.tw.prim_load_block,
-                                      export_me=False,
-                                      arg_descs=[ArgSlot(TYPE_STRING),
-                                                 ArgSlot(TYPE_OBJECT)]))
 
-        palette.add_block('loadblock3arg',
-                          style='basic-style-var-arg',
+        palette.add_block('skin',
                           hidden=True,
-                          label=_('load'),
-                          string_or_number=True,
-                          prim_name='loadblock3',
-                          default=[_('setxy'), 0, 0],
-                          help_string=_('loads a block'))
-        self.tw.lc.def_prim('loadblock3', 3,
-                            Primitive(self.tw.prim_load_block,
-                                      export_me=False,
-                                      arg_descs=[ArgSlot(TYPE_STRING),
-                                                 ArgSlot(TYPE_OBJECT),
-                                                 ArgSlot(TYPE_OBJECT)]))
-
-        palette.add_block('loadpalette',
+                          colors=["#FF0000", "#A00000"],
                           style='basic-style-1arg',
-                          string_or_number=True,
-                          label=_('select palette'),
-                          prim_name='loadpalette',
-                          default=_('turtle'),
-                          help_string=_('selects a palette'))
-        self.tw.lc.def_prim('loadpalette', 1,
-                            Primitive(self.tw.prim_load_palette,
-                                      export_me=False,
-                                      arg_descs=[ArgSlot(TYPE_STRING)]))
+                          label=_('turtle shell'),
+                          prim_name='skin',
+                          help_string=_("put a custom 'shell' on the turtle"))
+        self.tw.lc.def_prim('skin', 1,
+                            Primitive(self.tw.lc.reskin,
+                                      arg_descs=[ArgSlot(TYPE_OBJECT)]))
+
+        # macro
+        palette.add_block('reskin',
+                          style='basic-style-1arg',
+                          label=_('turtle shell'),
+                          help_string=_("put a custom 'shell' on the turtle"))
 
         palette.add_block('addturtle',
                           style='basic-style-1arg',
@@ -845,23 +833,6 @@ module found in the Journal'))
                       arg_descs=[ArgSlot(TYPE_OBJECT)],
                       return_type=TYPE_BOX))
 
-        palette.add_block('skin',
-                          hidden=True,
-                          colors=["#FF0000", "#A00000"],
-                          style='basic-style-1arg',
-                          label=_('turtle shell'),
-                          prim_name='skin',
-                          help_string=_("put a custom 'shell' on the turtle"))
-        self.tw.lc.def_prim('skin', 1,
-                            Primitive(self.tw.lc.reskin,
-                                      arg_descs=[ArgSlot(TYPE_OBJECT)]))
-
-        # macro
-        palette.add_block('reskin',
-                          style='basic-style-1arg',
-                          label=_('turtle shell'),
-                          help_string=_("put a custom 'shell' on the turtle"))
-
         palette.add_block('sandwichclampcollapsed',
                           hidden=True,
                           style='clamp-style-collapsed',
@@ -870,17 +841,56 @@ module found in the Journal'))
                           special_name=_('top'),
                           help_string=_('top of a collapsed stack'))
 
-        palette.add_block('getfromurl',
-                          style='number-style-1arg',
-                          #TRANS: URL is universal resource locator
-                          label=_('URL'),
-                          default=\
-'http://wiki.sugarlabs.org/images/2/2c/Logo_alt_3.svg',
-                          prim_name='getfromurl',
-                          help_string=\
-_('gets a text string or an image from a URL'))
-        self.tw.lc.def_prim('getfromurl', 1,
-                            Primitive(self.tw.lc.get_from_url,
+        palette.add_block('loadblock',
+                          style='basic-style-var-arg',
+                          label=_('load'),
+                          prim_name='loadblock',
+                          default=_('forward'),
+                          help_string=_('loads a block'))
+        self.tw.lc.def_prim('loadblock', 1,
+                            Primitive(self.tw.prim_load_block,
+                                      export_me=False,
+                                      arg_descs=[ArgSlot(TYPE_STRING)]))
+
+        palette.add_block('loadblock2arg',
+                          style='basic-style-var-arg',
+                          hidden=True,
+                          label=_('load'),
+                          prim_name='loadblock2',
+                          string_or_number=True,
+                          default=[_('forward'), 100],
+                          help_string=_('loads a block'))
+        self.tw.lc.def_prim('loadblock2', 2,
+                            Primitive(self.tw.prim_load_block,
+                                      export_me=False,
+                                      arg_descs=[ArgSlot(TYPE_STRING),
+                                                 ArgSlot(TYPE_OBJECT)]))
+
+        palette.add_block('loadblock3arg',
+                          style='basic-style-var-arg',
+                          hidden=True,
+                          label=_('load'),
+                          string_or_number=True,
+                          prim_name='loadblock3',
+                          default=[_('setxy'), 0, 0],
+                          help_string=_('loads a block'))
+        self.tw.lc.def_prim('loadblock3', 3,
+                            Primitive(self.tw.prim_load_block,
+                                      export_me=False,
+                                      arg_descs=[ArgSlot(TYPE_STRING),
+                                                 ArgSlot(TYPE_OBJECT),
+                                                 ArgSlot(TYPE_OBJECT)]))
+
+        palette.add_block('loadpalette',
+                          style='basic-style-1arg',
+                          string_or_number=True,
+                          label=_('select palette'),
+                          prim_name='loadpalette',
+                          default=_('turtle'),
+                          help_string=_('selects a palette'))
+        self.tw.lc.def_prim('loadpalette', 1,
+                            Primitive(self.tw.prim_load_palette,
+                                      export_me=False,
                                       arg_descs=[ArgSlot(TYPE_STRING)]))
 
     def _portfolio_palette(self):

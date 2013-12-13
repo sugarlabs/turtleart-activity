@@ -1088,7 +1088,8 @@ class Block:
                                       self.svg.docks[4][1], ']']]
 
     def _make_clamp_style_until(self, svg, extend_x=0, extend_y=4):
-        self.svg.expand(self.dx + self.ex + extend_x, self.ey + extend_y)
+        self.svg.expand(self.dx + self.ex + extend_x, self.ey + extend_y,
+                        0, self.ey2)
         self.svg.set_slot(True)
         self.svg.set_tab(True)
         self.svg.set_boolean(True)
