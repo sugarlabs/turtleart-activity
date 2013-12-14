@@ -183,7 +183,7 @@ class Block:
         trash -- block in the trash """
 
     def __init__(self, block_list, sprite_list, name, x, y, type='block',
-                 values=[], scale=BLOCK_SCALE[0],
+                 values=None, scale=BLOCK_SCALE[0],
                  colors=['#A0A0A0', '#808080']):
 
         self.block_list = block_list
@@ -256,8 +256,9 @@ class Block:
             self.font_size[i] *= self.scale * \
                 self.block_list.font_scale_factor
 
-        for v in (values):
-            self.values.append(v)
+        if values is not None:
+            for v in (values):
+                self.values.append(v)
 
         # If there is already a block with the same name, reuse it
         copy_block = None
