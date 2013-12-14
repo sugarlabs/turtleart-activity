@@ -1,17 +1,3 @@
-# #-#-#-#-#  vi.po (PACKAGE VERSION)  #-#-#-#-#
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# #-#-#-#-#  vi.po (PACKAGE VERSION)  #-#-#-#-#
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #, fuzzy
 msgid ""
 msgstr ""
@@ -40,2127 +26,1174 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Pootle 2.0.5\n"
 
-#. TRANS: "name" option from activity.info file
-#. TRANS: "summary" option from activity.info file
-#. TRANS: "description" option from activity.info file
 msgid "turtleart-extras (master)"
 msgstr ""
 
-#: taextras.py:37
 msgid "Turtle Blocks"
 msgstr ""
 
-# Tên: không nên dịch
-#: taextras.py:38
 msgid "Turtle Art"
 msgstr "Turtle Art"
 
-#: taextras.py:42
 msgid "Turtle Art Mini"
 msgstr ""
 
-#: taextras.py:46
 msgid "Turtle Confusion"
 msgstr ""
 
-#: taextras.py:47 taextras.py:52
 msgid "Select a challenge"
 msgstr ""
 
-#: taextras.py:51
 msgid "Amazonas Tortuga"
 msgstr ""
 
-#: taextras.py:58
 msgid "Palette of Mexican pesos"
 msgstr ""
 
-#: taextras.py:59
 msgid "Palette of Colombian pesos"
 msgstr ""
 
-#: taextras.py:60
 msgid "Palette of Rwandan francs"
 msgstr ""
 
-#: taextras.py:61
 msgid "Palette of US dollars"
 msgstr ""
 
-#: taextras.py:62
 msgid "Palette of Australian dollars"
 msgstr ""
 
-#: taextras.py:63
 msgid "Palette of Paraguayan Guaranies"
 msgstr ""
 
-#: taextras.py:64
 msgid "Palette of Peruvian Nuevo Soles"
 msgstr ""
 
-#: taextras.py:65
 msgid "Palette of Uruguayan Pesos"
 msgstr ""
 
-#. TRANS: Butia is a Robot Project from Uruguay
-#. (http://www.fing.edu.uy/inco/proyectos/butia/)
-#: taextras.py:71
 msgid "TurtleBots"
 msgstr ""
 
-#. TRANS: summary of TurtleBots activity
-#: taextras.py:73
 msgid "TurtleBlocks with Butia, Lego NxT, WeDo, Arduino, FollowMe plugins"
 msgstr ""
 
-#: taextras.py:74
 msgid "ERROR: The speed must be a value between 0 and 1023"
 msgstr ""
 
-#: taextras.py:75
 msgid "ERROR: The pin must be between 1 and 8"
 msgstr ""
 
-#: taextras.py:76
 msgid "ERROR: The value must be 0 or 1, LOW or HIGH"
 msgstr ""
 
-#: taextras.py:77
 msgid "ERROR: The mode must be INPUT or OUTPUT."
 msgstr ""
 
-#: taextras.py:78 taextras.py:79
 msgid "turns LED on and off: 1 means on, 0 means off"
 msgstr ""
 
-#: taextras.py:80
 msgid "returns the gray level as a value between 0 and 65535"
 msgstr ""
 
-#: taextras.py:81
 msgid "returns 1 when the button is pressed and 0 otherwise"
 msgstr ""
 
-#: taextras.py:82
 msgid "returns the light level as a value between 0 and 65535"
 msgstr ""
 
-#: taextras.py:83
 msgid "returns the distance as a value between 0 and 65535"
 msgstr ""
 
-#: taextras.py:84
 msgid "returns the resistance value (ohms)"
 msgstr ""
 
-#: taextras.py:85
 msgid "returns the voltage value (volts)"
 msgstr ""
 
-#: taextras.py:86
 msgid "returns the temperature"
 msgstr ""
 
-#: taextras.py:87
 msgid "returns 1 when the sensors detects a magnetic field, 0 otherwise"
 msgstr ""
 
-#: taextras.py:88
 msgid "LED"
 msgstr ""
 
-#: taextras.py:89
 msgid "button"
 msgstr ""
 
-#: taextras.py:90 taextras.py:358 TurtleArt/tabasics.py:295
-#: TurtleArt/tabasics.py:363
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1194
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1199
 msgid "gray"
 msgstr ""
 
-#: taextras.py:91 taextras.py:356
-#, fuzzy
 msgid "light"
 msgstr "phải"
 
-#: taextras.py:92
 msgid "temperature"
 msgstr ""
 
-#: taextras.py:93 taextras.py:330
 msgid "distance"
 msgstr ""
 
-#: taextras.py:94 plugins/audio_sensors/audio_sensors.py:151
-#: plugins/audio_sensors/audio_sensors.py:165
-#: plugins/audio_sensors/audio_sensors.py:179
-#: plugins/audio_sensors/audio_sensors.py:193
 msgid "resistance"
 msgstr "điện trở"
 
-#: taextras.py:95 plugins/audio_sensors/audio_sensors.py:157
-#: plugins/audio_sensors/audio_sensors.py:171
-#: plugins/audio_sensors/audio_sensors.py:185
-#: plugins/audio_sensors/audio_sensors.py:199
 msgid "voltage"
 msgstr "điện áp"
 
-#: taextras.py:96
 msgid "Butia Robot"
 msgstr ""
 
-#: taextras.py:97
 msgid "refresh Butia"
 msgstr ""
 
-#: taextras.py:98
 msgid "refresh the state of the Butia palette and blocks"
 msgstr ""
 
-#. TRANS: This string is shorthand for "battery charge of Butia"
-#: taextras.py:100
 msgid "battery charge Butia"
 msgstr ""
 
-#: taextras.py:101
 msgid ""
 "returns the battery charge in volts. If no motors present, it returns 255"
 msgstr ""
 
-#. TRANS: This string is shorthand for "speed of Butia"
-#: taextras.py:103
 msgid "speed Butia"
 msgstr ""
 
-#: taextras.py:104
 msgid "set the speed of the Butia motors"
 msgstr ""
 
-#: taextras.py:105
 msgid "move Butia"
 msgstr ""
 
-#: taextras.py:106 TurtleArt/tabasics.py:158
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:871
 msgid "left"
 msgstr "trái"
 
-#: TurtleArt/tabasics.py:170
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:895
 msgid "right"
 msgstr "phải"
 
-#: taextras.py:108
 msgid "moves the Butia motors at the specified speed"
 msgstr ""
 
-#: taextras.py:109
 msgid "stop Butia"
 msgstr ""
 
-#: taextras.py:110
 msgid "stop the Butia robot"
 msgstr ""
 
-#. TRANS: This string is shorthand for "move Butia forward"
-#: taextras.py:112
 msgid "forward Butia"
 msgstr ""
 
-#: taextras.py:113
 msgid "move the Butia robot forward"
 msgstr ""
 
-#. TRANS: This string is shorthand for "turn Butia left"
-#: taextras.py:115
 msgid "left Butia"
 msgstr ""
 
-#: taextras.py:116
 msgid "turn the Butia robot at left"
 msgstr ""
 
-#. TRANS: This string is shorthand for "turn Butia right"
-#: taextras.py:118
 msgid "right Butia"
 msgstr ""
 
-#: taextras.py:119
 msgid "turn the Butia robot at right"
 msgstr ""
 
-#. TRANS: This string is shorthand for "move Butia backward"
-#: taextras.py:121
 msgid "backward Butia"
 msgstr ""
 
-#: taextras.py:122
 msgid "move the Butia robot backward"
 msgstr ""
 
-#: taextras.py:123
 msgid "Butia Robot extra blocks"
 msgstr ""
 
-#: taextras.py:124
 msgid "hack pin mode"
 msgstr ""
 
-#: taextras.py:125 taextras.py:293 taextras.py:459
 msgid "pin"
 msgstr ""
 
-#: taextras.py:126 taextras.py:460
-#, fuzzy
 msgid "mode"
 msgstr "sửa"
 
-#: taextras.py:127
 msgid "Select the pin function (INPUT, OUTPUT)."
 msgstr ""
 
-#: taextras.py:128
 msgid "write hack pin Butia"
 msgstr ""
 
-#: taextras.py:129 taextras.py:463 TurtleArt/tabasics.py:924
-#: TurtleArt/tawindow.py:4427
 msgid "value"
 msgstr "giá trị"
 
-#: taextras.py:130
 msgid "set a hack pin to 0 or 1"
 msgstr ""
 
-#: taextras.py:131
 msgid "read hack pin Butia"
 msgstr ""
 
-#: taextras.py:132
 msgid "read the value of a hack pin"
 msgstr ""
 
-#: taextras.py:133 taextras.py:435
 msgid "HIGH"
 msgstr ""
 
-#: taextras.py:134 taextras.py:472
 msgid "Set HIGH value for digital port."
 msgstr ""
 
-#: taextras.py:135 taextras.py:437
 msgid "INPUT"
 msgstr ""
 
-#: taextras.py:136
 msgid "Configure hack port for digital input."
 msgstr ""
 
-#: taextras.py:137 taextras.py:436
 msgid "LOW"
 msgstr ""
 
-#: taextras.py:138 taextras.py:475
 msgid "Set LOW value for digital port."
 msgstr ""
 
-#: taextras.py:139 taextras.py:438
 msgid "OUTPUT"
 msgstr ""
 
-#: taextras.py:140
 msgid "Configure hack port for digital output."
 msgstr ""
 
-#: taextras.py:141
 msgid "Butia"
 msgstr ""
 
-#: taextras.py:142
-#, python-format
 msgid "ERROR: The pin %s must be in OUTPUT mode."
 msgstr ""
 
-#: taextras.py:143
-#, python-format
 msgid "ERROR: The pin %s must be in INPUT mode."
 msgstr ""
 
-#: taextras.py:147
 msgid "Error importing Pygame. This plugin require Pygame 1.9"
 msgstr ""
 
-#: taextras.py:148
 msgid "Error on initialization of the camera"
 msgstr ""
 
-#: taextras.py:149
 msgid "No camera was found"
 msgstr ""
 
-#: taextras.py:150
 msgid "Error stopping camera"
 msgstr ""
 
-#: taextras.py:151
 msgid "Error starting camera"
 msgstr ""
 
-#. TRANS: The "mask" is used to restrict processing to a region in the image
-#: taextras.py:153
 msgid "Error in get mask"
 msgstr ""
 
-#: taextras.py:154
 msgid "FollowMe"
 msgstr ""
 
-#: taextras.py:155
 msgid "refresh FollowMe"
 msgstr ""
 
-#: taextras.py:156
 msgid "Search for a connected camera."
 msgstr ""
 
-#. TRANS: the calibration is used to match an RGB color to a target
-#: taextras.py:158
 msgid "calibration"
 msgstr ""
 
-#: taextras.py:159
 msgid "store a personalized calibration"
 msgstr ""
 
-#: taextras.py:160
 msgid "return a personalized calibration"
 msgstr ""
 
-#: taextras.py:161
 msgid "follow"
 msgstr ""
 
-#: taextras.py:162
 msgid "follow a color or calibration"
 msgstr ""
 
-#: taextras.py:163 plugins/camera_sensor/camera_sensor.py:80
-#: plugins/camera_sensor/camera_sensor.py:93
-#: plugins/camera_sensor/camera_sensor.py:128
-#: plugins/camera_sensor/camera_sensor.py:141
-#: plugins/light_sensor/light_sensor.py:56
-#: plugins/light_sensor/light_sensor.py:63
 msgid "brightness"
 msgstr "độ sáng"
 
-#: taextras.py:164
 msgid "set the camera brightness as a value between 0 to 255."
 msgstr ""
 
-#: taextras.py:165
 msgid "minimum pixels"
 msgstr ""
 
-#: taextras.py:166
 msgid "set the minimal number of pixels to follow"
 msgstr ""
 
-#: taextras.py:167
 msgid "threshold"
 msgstr ""
 
-#. TRANS: RGB color space (red, green, blue)
-#: taextras.py:169
 msgid "set a threshold for a RGB color"
 msgstr ""
 
-#: taextras.py:170
 msgid "camera mode"
 msgstr ""
 
-#. TRANS: RGB, YUV, and HSV are color spaces
-#: taextras.py:172
 msgid "set the color mode of the camera: RGB; YUV or HSV"
 msgstr ""
 
-#: taextras.py:173
 msgid "get brightness"
 msgstr ""
 
-#: taextras.py:174
 msgid "get the brightness of the ambient light"
 msgstr ""
 
-#: taextras.py:175
 msgid "average color"
 msgstr ""
 
-#: taextras.py:176
 msgid ""
 "if set to 0 then color averaging is off during calibration; for other values "
 "it is on"
 msgstr ""
 
-#: taextras.py:178
 msgid "x position"
 msgstr ""
 
-#: taextras.py:179
 msgid "return x position"
 msgstr ""
 
-#: taextras.py:180
 msgid "y position"
 msgstr ""
 
-#: taextras.py:181
 msgid "return y position"
 msgstr ""
 
-#: taextras.py:182
 msgid "pixels"
 msgstr ""
 
-#: taextras.py:183
 msgid "return the number of pixels of the biggest blob"
 msgstr ""
 
-#. TRANS: RGB color space (red, green, blue)
-#: taextras.py:185
 msgid "set the color mode of the camera to RGB"
 msgstr ""
 
-#. TRANS: YUV color space (luminance, chrominance)
-#: taextras.py:187
 msgid "set the color mode of the camera to YUV"
 msgstr ""
 
-#. TRANS: HSV color space (hue, saturation, value)
-#: taextras.py:189
 msgid "set the color mode of the camera to HSV"
 msgstr ""
 
-#: taextras.py:190
 msgid "empty calibration"
 msgstr ""
 
-#: taextras.py:191
 msgid "error in string conversion"
 msgstr ""
 
-#. TRANS: Pattern detection is a plugin that allow detect signals
-#. with the camera
-#: taextras.py:197
 msgid "Pattern detection"
 msgstr ""
 
-#: taextras.py:198
 msgid "Seeing signal"
 msgstr ""
 
-#: taextras.py:199
 msgid "Returns True if the signal is in front of the camera"
 msgstr ""
 
-#: taextras.py:200
 msgid "Distance to signal"
 msgstr ""
 
-#: taextras.py:201
 msgid "Returns the distance of the signal to the camera in millimeters"
 msgstr ""
 
-#. TRANS: SumBot is a robot programmed for "Sumo wrestling"
-#: taextras.py:206
 msgid "SumBot"
 msgstr ""
 
-#: taextras.py:207
 msgid "speed SumBot"
 msgstr ""
 
-#: taextras.py:208
 msgid "submit the speed to the SumBot"
 msgstr ""
 
-#: taextras.py:209
 msgid "set the default speed for the movement commands"
 msgstr ""
 
-#. TRANS: This string is shorthand for "move SumBot forward"
-#: taextras.py:211
 msgid "forward SumBot"
 msgstr ""
 
-#: taextras.py:212
 msgid "move SumBot forward"
 msgstr ""
 
-#. TRANS: This string is shorthand for "move SumBot backward"
-#: taextras.py:214
 msgid "backward SumBot"
 msgstr ""
 
-#: taextras.py:215
 msgid "move SumBot backward"
 msgstr ""
 
-#: taextras.py:216
 msgid "stop SumBot"
 msgstr ""
 
-#: taextras.py:217
 msgid "stop the SumBot"
 msgstr ""
 
-#. TRANS: This string is shorthand for "turn SumBot left"
-#: taextras.py:219
 msgid "left SumBot"
 msgstr ""
 
-#: taextras.py:220
 msgid "turn left the SumBot"
 msgstr ""
 
-#. TRANS: This string is shorthand for "move SumBot right"
-#: taextras.py:222
 msgid "right SumBot"
 msgstr ""
 
-#: taextras.py:223
 msgid "turn right the SumBot"
 msgstr ""
 
-#. TRANS: The angle to the center is the angle SumBot must turn to
-#. face the center of the playing field
-#: taextras.py:226
 msgid "angle to center"
 msgstr ""
 
-#. TRANS: dohyo is the playing field
-#: taextras.py:228
 msgid "get the angle to the center of the dohyo"
 msgstr ""
 
-#. TRANS: The angle to the center is the angle SumBot must turn to
-#. face the Enemy (opponent)
-#: taextras.py:231
 msgid "angle to Enemy"
 msgstr ""
 
-#: taextras.py:232
 msgid "get the angle to the Enemy"
 msgstr ""
 
-#. TRANS: This string is shorthand for "x coordinate of SumBot"
-#: taextras.py:234
 msgid "x coor. SumBot"
 msgstr ""
 
-#: taextras.py:235
 msgid "get the x coordinate of the SumBot"
 msgstr ""
 
-#. TRANS: This string is shorthand for "y coordinate of SumBot"
-#: taextras.py:237
 msgid "y coor. SumBot"
 msgstr ""
 
-#: taextras.py:238
 msgid "get the y coordinate of the SumBot"
 msgstr ""
 
-#. TRANS: This string is shorthand for "x coordinate of SumBot's enemy"
-#: taextras.py:240
 msgid "x coor. Enemy"
 msgstr ""
 
-#: taextras.py:241
 msgid "get the x coordinate of the Enemy"
 msgstr ""
 
-#. TRANS: This string is shorthand for "y coordinate of SumBot's enemy"
-#: taextras.py:243
 msgid "y coor. Enemy"
 msgstr ""
 
-#: taextras.py:244
 msgid "get the y coordinate of the Enemy"
 msgstr ""
 
-#. TRANS: This string is shorthand for "rotation of SumBot"
-#: taextras.py:246
 msgid "rotation SumBot"
 msgstr ""
 
-#: taextras.py:247
 msgid "get the rotation of the Sumbot"
 msgstr ""
 
-#. TRANS: This string is shorthand for "rotation of SumBot's enemy"
-#: taextras.py:249
 msgid "rotation Enemy"
 msgstr ""
 
-#: taextras.py:250
 msgid "get the rotation of the Enemy"
 msgstr ""
 
-#: taextras.py:251
 msgid "distance to center"
 msgstr ""
 
-#. TRANS: dohyo is the playing field
-#: taextras.py:253
 msgid "get the distance to the center of the dohyo"
 msgstr ""
 
-#: taextras.py:254
 msgid "distance to Enemy"
 msgstr ""
 
-#: taextras.py:255
 msgid "get the distance to the Enemy"
 msgstr ""
 
-#: taextras.py:256
 msgid "update information"
 msgstr ""
 
-#: taextras.py:257
 msgid "update information from the server"
 msgstr ""
 
-#. #-#-#-#-#  vi.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: Please use similar terms to those used in the Physics Activity
-#: taextras.py:262
-#, fuzzy
 msgid "Palette of physics blocks"
 msgstr "Bảng chọn của khối cảm biến"
 
-#: taextras.py:263
 msgid "start polygon"
 msgstr ""
 
-#: taextras.py:264
 msgid "Begin defining a new polygon based on the current Turtle xy position."
 msgstr ""
 
-#: taextras.py:266
 msgid "add point"
 msgstr ""
 
-#: taextras.py:267
 msgid ""
 "Add a new point to the current polygon based on the current Turtle xy "
 "position."
 msgstr ""
 
-#: taextras.py:269
 msgid "end polygon"
 msgstr ""
 
-#: taextras.py:270
-#, fuzzy
 msgid "Define a new polygon."
 msgstr "Định nghĩa một đa giác lồi mới"
 
-#: taextras.py:271
 msgid "end filled polygon"
 msgstr ""
 
-#: taextras.py:272
 msgid "Not a simple polygon"
 msgstr "Không phải là hình đa giác đơn giản"
 
-#: taextras.py:273
 msgid "Define a new filled polygon."
 msgstr "Định nghĩa một đa giác lồi mới"
 
-#: taextras.py:274
 msgid "triangle"
 msgstr ""
 
-#. TRANS: base of a triangle
-#: taextras.py:276
 msgid "base"
 msgstr ""
 
-#: taextras.py:277 taextras.py:283
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:911
 msgid "height"
 msgstr "độ cao"
 
-#: taextras.py:278
 msgid "Add a triangle object to the project."
 msgstr ""
 
-#: taextras.py:279
 msgid "circle"
 msgstr ""
 
-#: taextras.py:280
 msgid "Add a circle object to the project."
 msgstr ""
 
-#: taextras.py:281
 msgid "rectangle"
 msgstr ""
 
-#: taextras.py:282 plugins/turtle_blocks_extras/turtle_blocks_extras.py:887
 msgid "width"
 msgstr "rộng"
 
-#: taextras.py:284
 msgid "Add a rectangle object to the project."
 msgstr ""
 
-#: taextras.py:285
 msgid "reset"
 msgstr ""
 
-#: taextras.py:286
 msgid "Reset the project; clear the object list."
 msgstr ""
 
-#: taextras.py:287
 msgid "motor"
 msgstr ""
 
-#. TRANS: torque as in engine torque
-#: taextras.py:289
 msgid "torque"
 msgstr ""
 
-#: taextras.py:290
 msgid "speed"
 msgstr ""
 
-#: taextras.py:291
 msgid ""
 "Motor torque and speed range from 0 (off) to positive numbers; motor is "
 "placed on the most recent object created."
 msgstr ""
 
-#: taextras.py:294
 msgid "Pin an object down so that it cannot fall."
 msgstr ""
 
-#: taextras.py:295
 msgid "joint"
 msgstr ""
 
-#: taextras.py:296 TurtleArt/tabasics.py:195 TurtleArt/tabasics.py:261
 msgid "x"
 msgstr "x"
 
-#: taextras.py:297 TurtleArt/tabasics.py:195 TurtleArt/tabasics.py:261
 msgid "y"
 msgstr "y"
 
-#: taextras.py:298
 msgid ""
 "Join two objects together (the most recent object created and the object at "
 "point x, y)."
 msgstr ""
 
-#: taextras.py:300
 msgid "save as Physics activity"
 msgstr ""
 
-#: taextras.py:301
 msgid "Save the project to the Journal as a Physics activity."
 msgstr ""
 
-#. TRANS: Here, gear means a toothed wheel, as in a clock-works
-#: taextras.py:303
 msgid "gear"
 msgstr ""
 
-#: taextras.py:304
 msgid "Add a gear object to the project."
 msgstr ""
 
-#: taextras.py:305
-#, fuzzy
 msgid "density"
 msgstr "nhận dạng"
 
-#: taextras.py:306
 msgid ""
 "Set the density property for objects (density can be any positive number)."
 msgstr ""
 
-#: taextras.py:308
 msgid "friction"
 msgstr ""
 
-#: taextras.py:309
 msgid ""
 "Set the friction property for objects (value from 0 to 1, where 0 turns "
 "friction off and 1 is strong friction)."
 msgstr ""
 
-#. TRANS: bounciness is coefficient of restitution
-#: taextras.py:312
 msgid "bounciness"
 msgstr ""
 
-#: taextras.py:313
 msgid ""
 "Set the bounciness property for objects (a value from 0 to 1, where 0 means "
 "no bounce and 1 is very bouncy)."
 msgstr ""
 
-#. TRANS: dynamic here means moving vs in a fixed position
-#: taextras.py:316
 msgid "dynamic"
 msgstr ""
 
-#: taextras.py:317
 msgid ""
 "If dynamic = 1, the object can move; if dynamic = 0, it is fixed in position."
 msgstr ""
 
-#. #-#-#-#-#  vi.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: WeDo is a robotics product of the LEGO company
-#: taextras.py:323
-#, fuzzy
 msgid "Palette of WeDo blocks"
 msgstr "Bảng chọn của khối cảm biến"
 
-#: taextras.py:324
 msgid "WeDo"
 msgstr ""
 
-#: taextras.py:325
 msgid "set current WeDo device"
 msgstr ""
 
-#: taextras.py:326
 msgid "number of WeDo devices"
 msgstr ""
 
-#: taextras.py:327
 msgid "tilt"
 msgstr ""
 
-#: taextras.py:328
 msgid ""
 "tilt sensor output: (-1 == no tilt, 0 == tilt forward, 3 == tilt back, 1 == "
 "tilt left, 2 == tilt right)"
 msgstr ""
 
-#. TRANS: This string is shorthand for "output of the distance sensor"
-#: taextras.py:332
 msgid "distance sensor output"
 msgstr ""
 
-#: taextras.py:333
 msgid "Motor A"
 msgstr ""
 
-#: taextras.py:334
 msgid "returns the current value of Motor A"
 msgstr ""
 
-#: taextras.py:335
 msgid "Motor B"
 msgstr ""
 
-#: taextras.py:336
 msgid "returns the current value of Motor B"
 msgstr ""
 
-#: taextras.py:337
 msgid "set the value for Motor A"
 msgstr ""
 
-#: taextras.py:338
 msgid "set the value for Motor B"
 msgstr ""
 
-#: taextras.py:339
 msgid "WeDo is unavailable"
 msgstr ""
 
-#. TRANS: e.g., Wedo 2 is unavailable, defaulting to 1
-#: taextras.py:341
-#, python-format
 msgid "WeDo %d is unavailable; defaulting to 1"
 msgstr ""
 
-#. TRANS: %(device)s and %(wedo_number)d are substitution strings;
-#. please leave untranslated
-#: taextras.py:344
-#, python-format
 msgid "%(device)s is unavailable on WeDo %(wedo_number)d"
 msgstr ""
 
-#. TRANS: Lego NXT is a robotics product of the LEGO company
-#: taextras.py:349
 msgid "Palette of LEGO NXT blocks of motors"
 msgstr ""
 
-#: taextras.py:350
 msgid "Palette of LEGO NXT blocks of sensors"
 msgstr ""
 
-#. TRANS: touch sensor (implemented as a button)
-#: taextras.py:352
 msgid "touch"
 msgstr ""
 
-#. TRANS: distance sensor (implemented using ultrasonics)
-#: taextras.py:354
 msgid "ultrasonic"
 msgstr ""
 
-#: taextras.py:355 TurtleArt/tabasics.py:283 TurtleArt/tabasics.py:294
-#: TurtleArt/tabasics.py:344
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1197
 msgid "color"
 msgstr "màu"
 
-#: taextras.py:357 plugins/audio_sensors/audio_sensors.py:83
-#: plugins/audio_sensors/audio_sensors.py:98 pysamples/grecord.py:205
 msgid "sound"
 msgstr "âm thanh"
 
-#. TRANS: The brick is the NXT controller
-#: taextras.py:360
 msgid "Please check the connection with the brick"
 msgstr ""
 
-#: taextras.py:361
-#, python-format
 msgid "Invalid port '%s'. Port must be: PORT A, B or C"
 msgstr ""
 
-#: taextras.py:362
-#, python-format
 msgid "Invalid port '%s'. Port must be: PORT 1, 2, 3 or 4"
 msgstr ""
 
-#: taextras.py:363
 msgid "The value of power must be between -127 to 127"
 msgstr ""
 
-#: taextras.py:364
-#, python-format
 msgid "The parameter must be a integer, not '%s'"
 msgstr ""
 
-#: taextras.py:365
 msgid "An error has occurred: check all connections and try to reconnect"
 msgstr ""
 
-#: taextras.py:366
-#, python-format
 msgid "NXT found %s bricks"
 msgstr ""
 
-#: taextras.py:367
 msgid "NXT not found"
 msgstr ""
 
-#: taextras.py:368
-#, python-format
 msgid "Brick number %s was not found"
 msgstr ""
 
-#: taextras.py:369
 msgid "refresh NXT"
 msgstr ""
 
-#: taextras.py:370
 msgid "Search for a connected NXT brick."
 msgstr ""
 
-#: taextras.py:371
 msgid "NXT"
 msgstr ""
 
-#: taextras.py:372
 msgid "set current NXT device"
 msgstr ""
 
-#: taextras.py:373
 msgid "number of NXT devices"
 msgstr ""
 
-#: taextras.py:374
 msgid "brick name"
 msgstr ""
 
-#: taextras.py:375
 msgid "Get the name of a brick."
 msgstr ""
 
-#: taextras.py:376
 msgid "play tone"
 msgstr ""
 
-#: taextras.py:377
 msgid "frequency"
 msgstr ""
 
-#: taextras.py:378 plugins/turtle_blocks_extras/turtle_blocks_extras.py:451
 msgid "time"
 msgstr "Thời gian"
 
-#: taextras.py:379
 msgid "Play a tone at frequency for time."
 msgstr ""
 
-#. TRANS: turn is the action
-#: taextras.py:381
 msgid ""
 "turn motor\n"
 "\n"
 msgstr ""
 
-#: taextras.py:382
-#, fuzzy
 msgid "port"
 msgstr "Cổng"
 
-#: taextras.py:383
 msgid "power"
 msgstr ""
 
-#. TRANS: rotations is quantity of turns
-#: taextras.py:385
 msgid "rotations"
 msgstr ""
 
-#: taextras.py:386
 msgid "turn a motor"
 msgstr ""
 
-#: taextras.py:387
 msgid ""
 "synchronize\n"
 "\n"
 "motors"
 msgstr ""
 
-#: taextras.py:388
 msgid "steering"
 msgstr ""
 
-#: taextras.py:389
 msgid "synchronize two motors connected in PORT B and PORT C"
 msgstr ""
 
-#: taextras.py:390
 msgid "PORT A"
 msgstr ""
 
-#: taextras.py:391
 msgid "PORT A of the brick"
 msgstr ""
 
-#: taextras.py:392
 msgid "PORT B"
 msgstr ""
 
-#: taextras.py:393
 msgid "PORT B of the brick"
 msgstr ""
 
-#: taextras.py:394
 msgid "PORT C"
 msgstr ""
 
-#: taextras.py:395
 msgid "PORT C of the brick"
 msgstr ""
 
-#: taextras.py:396
 msgid ""
 "synchronize\n"
 "motors"
 msgstr ""
 
-#: taextras.py:397
 msgid "start motor"
 msgstr ""
 
-#: taextras.py:398
 msgid "Run a motor forever."
 msgstr ""
 
-#: taextras.py:399
 msgid "brake motor"
 msgstr ""
 
-#: taextras.py:400
 msgid "Stop a specified motor."
 msgstr ""
 
-#. TRANS: reset is used to reset the counter associated with the motor
-#: taextras.py:402
 msgid "reset motor"
 msgstr ""
 
-#: taextras.py:403
 msgid "Reset the motor counter."
 msgstr ""
 
-#: taextras.py:404
 msgid "motor position"
 msgstr ""
 
-#: taextras.py:405
 msgid "Get the motor position."
 msgstr ""
 
-#: taextras.py:406
 msgid "PORT 1"
 msgstr ""
 
-#: taextras.py:407
 msgid "PORT 1 of the brick"
 msgstr ""
 
-#: taextras.py:408
-#, fuzzy
 msgid "read"
 msgstr "đỏ"
 
-#: taextras.py:409
-#, fuzzy
 msgid "sensor"
-msgstr ""
-"#-#-#-#-#  vi.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  vi.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Máy nhạy"
+msgstr "Máy nhạy"
 
-#: taextras.py:410
 msgid "Read sensor output."
 msgstr ""
 
-#: taextras.py:411
 msgid "PORT 2"
 msgstr ""
 
-#: taextras.py:412
 msgid "PORT 2 of the brick"
 msgstr ""
 
-#: taextras.py:413
 msgid "light sensor"
 msgstr ""
 
-#: taextras.py:414
 msgid "gray sensor"
 msgstr ""
 
-#: taextras.py:415
 msgid "PORT 3"
 msgstr ""
 
-#: taextras.py:416
 msgid "PORT 3 of the brick"
 msgstr ""
 
-#: taextras.py:417
 msgid "touch sensor"
 msgstr ""
 
-#: taextras.py:418
 msgid "distance sensor"
 msgstr ""
 
-#: taextras.py:419
 msgid "PORT 4"
 msgstr ""
 
-#: taextras.py:420
 msgid "PORT 4 of the brick"
 msgstr ""
 
-#: taextras.py:421
 msgid "sound sensor"
 msgstr ""
 
-#: taextras.py:422
 msgid "color sensor"
 msgstr ""
 
-#. TRANS: set light is used to set the light level associated with
-#. the color sensor (which can emit light as well as sense it)
-#: taextras.py:425
 msgid "set light"
 msgstr ""
 
-#: taextras.py:426
 msgid "Set color sensor light."
 msgstr ""
 
-#. TRANS: the battery level is the charge level of the brick
-#: taextras.py:428
 msgid "battery level"
 msgstr ""
 
-#: taextras.py:429
 msgid "Get the battery level of the brick in millivolts"
 msgstr ""
 
-#. #-#-#-#-#  vi.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: Arduino plugin to control an Arduino board
-#: taextras.py:434
-#, fuzzy
 msgid "Palette of Arduino blocks"
 msgstr "Bảng chọn của khối cảm biến"
 
-#. TRANS: PWM is pulse-width modulation
-#: taextras.py:440
 msgid "PWM"
 msgstr ""
 
-#: taextras.py:441
 msgid "SERVO"
 msgstr ""
 
-#: taextras.py:442
 msgid "ERROR: Check the Arduino and the number of port."
 msgstr ""
 
-#: taextras.py:443
 msgid "ERROR: Value must be a number from 0 to 255."
 msgstr ""
 
-#: taextras.py:444
 msgid "ERROR: Value must be either HIGH or LOW, 0 or 1"
 msgstr ""
 
-#: taextras.py:445
 msgid "ERROR: The mode must be either INPUT, OUTPUT, PWM or SERVO."
 msgstr ""
 
-#: taextras.py:446
 msgid "ERROR: The value must be an integer."
 msgstr ""
 
-#: taextras.py:447
 msgid "ERROR: The pin must be an integer."
 msgstr ""
 
-#: taextras.py:448
 msgid "refresh Arduino"
 msgstr ""
 
-#: taextras.py:449
 msgid "Search for connected Arduinos."
 msgstr ""
 
-#: taextras.py:450
 msgid "Arduino"
 msgstr ""
 
-#: taextras.py:451
 msgid "set current Arduino board"
 msgstr ""
 
-#: taextras.py:452
 msgid "number of Arduinos"
 msgstr ""
 
-#: taextras.py:453
 msgid "number of Arduino boards"
 msgstr ""
 
-#: taextras.py:454
 msgid "Arduino name"
 msgstr ""
 
-#: taextras.py:455
 msgid "Get the name of an Arduino."
 msgstr ""
 
-#. TRANS: pin mode is used to specify the mode (INPUT, OUTPUT, etc)
-#. in which an I/O pin is being used.
-#: taextras.py:458
 msgid "pin mode"
 msgstr ""
 
-#: taextras.py:461
 msgid "Select the pin function (INPUT, OUTPUT, PWM, SERVO)."
 msgstr ""
 
-#: taextras.py:462
 msgid "analog write"
 msgstr ""
 
-#: taextras.py:464
 msgid "Write analog value in specified port."
 msgstr ""
 
-#: taextras.py:465
 msgid "analog read"
 msgstr ""
 
-#: taextras.py:466
 msgid ""
 "Read value from analog port. Value may be between 0 and 1023. Use Vref to "
 "determine voltage. For USB, volt=((read)*5)/1024) approximately."
 msgstr ""
 
-#: taextras.py:468
 msgid "digital write"
 msgstr ""
 
-#: taextras.py:469
 msgid "Write digital value to specified port."
 msgstr ""
 
-#: taextras.py:470
 msgid "digital read"
 msgstr ""
 
-#: taextras.py:471
 msgid "Read value from digital port."
 msgstr ""
 
-#: taextras.py:473
 msgid "Configure Arduino port for digital input."
 msgstr ""
 
-#: taextras.py:474
 msgid "Configure Arduino port to drive a servo."
 msgstr ""
 
-#: taextras.py:476
 msgid "Configure Arduino port for digital output."
 msgstr ""
 
-#: taextras.py:477
 msgid "Configure Arduino port for PWM (pulse-width modulation)."
 msgstr ""
 
-#: taextras.py:478
-#, python-format
 msgid "Not found Arduino %s"
 msgstr ""
 
-#: taextras.py:479
 msgid "The pin must be an integer"
 msgstr ""
 
-#: taextras.py:480
 msgid "The device must be an integer"
 msgstr ""
 
-#. #-#-#-#-#  vi.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: plugin to control an ExpEyes device
-#: taextras.py:485
-#, fuzzy
 msgid "Palette of Expeyes blocks"
 msgstr "Bảng chọn của khối cảm biến"
 
-#. TRANS: Programmable voltage output
-#: taextras.py:487
 msgid "set PVS"
 msgstr ""
 
-#: taextras.py:488
 msgid "set programmable voltage output"
 msgstr ""
 
-#. TRANS: Square wave 1 voltage output
-#: taextras.py:490
 msgid "set SQR1 voltage"
 msgstr ""
 
-#: taextras.py:491
 msgid "set square wave 1 voltage output"
 msgstr ""
 
-#. TRANS: Square wave 2 voltage output
-#: taextras.py:493
 msgid "set SQR2 voltage"
 msgstr ""
 
-#: taextras.py:494
 msgid "set square wave 2 voltage output"
 msgstr ""
 
-#. TRANS: Digital output level
-#: taextras.py:496
 msgid "set OD1"
 msgstr ""
 
-#: taextras.py:497
 msgid "set digital output level (OD1) low (0) or high (1)"
 msgstr ""
 
-#. TRANS: Input 1 voltage level
-#: taextras.py:499
 msgid "IN1 level"
 msgstr ""
 
-#: taextras.py:500
 msgid ""
 "returns 1 if IN1 voltage level >2.5 volts, 0 if IN1 voltage level <= 2.5 "
 "volts"
 msgstr ""
 
-#. TRANS: Input 2 voltage level
-#: taextras.py:503
 msgid "IN2 level"
 msgstr ""
 
-#: taextras.py:504
 msgid ""
 "returns 1 if IN2 voltage level >2.5 volts, 0 if IN2 voltage level <= 2.5 "
 "volts"
 msgstr ""
 
-#. TRANS: Resistive sensor voltage level
-#: taextras.py:507
 msgid "SEN level"
 msgstr ""
 
-#: taextras.py:508
 msgid ""
 "returns 1 if resistive sensor (SEN) voltage level > 2.5 volts, 0 if SEN "
 "voltage level <= 2.5 volts"
 msgstr ""
 
-#: taextras.py:510
 msgid "capture"
 msgstr ""
 
-#: taextras.py:511
 msgid "input"
 msgstr ""
 
-#: taextras.py:512
-#, fuzzy
 msgid "samples"
-msgstr ""
-"#-#-#-#-#  vi.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  vi.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Mẫu lấy"
+msgstr "Mẫu lấy"
 
-#: taextras.py:513
 msgid "interval"
 msgstr ""
 
-#. TRANS: MS is microseconds
-#: taextras.py:515
 msgid ""
 "capture multiple samples from input at interval (MS); results pushed to FIFO"
 msgstr ""
 
-#. TRANS: Analog input 1 voltage level
-#: taextras.py:518
 msgid "A1"
 msgstr ""
 
-#: taextras.py:519
 msgid "read analog input 1 voltage"
 msgstr ""
 
-#. TRANS: Analog input 2 voltage level
-#: taextras.py:521
 msgid "A2"
 msgstr ""
 
-#: taextras.py:522
 msgid "read analog input 2 voltage"
 msgstr ""
 
-#. TRANS: Read input 1 voltage
-#: taextras.py:524
 msgid "IN1"
 msgstr ""
 
-#: taextras.py:525
 msgid "read input 1 voltage"
 msgstr ""
 
-#. TRANS: Read input 2 voltage
-#: taextras.py:527
 msgid "IN2"
 msgstr ""
 
-#: taextras.py:528
 msgid "read input 2 voltage"
 msgstr ""
 
-#. TRANS: Read analog sensor input voltage
-#: taextras.py:530
 msgid "SEN"
 msgstr ""
 
-#: taextras.py:531
 msgid "read analog sensor input voltage"
 msgstr ""
 
-#. TRANS: Read square wave 1 input voltage
-#: taextras.py:533
 msgid "SQR1"
 msgstr ""
 
-#: taextras.py:534
 msgid "read square wave 1 voltage"
 msgstr ""
 
-#. TRANS: Read square wave 2 input voltage
-#: taextras.py:536
 msgid "SQR2"
 msgstr ""
 
-#: taextras.py:537
 msgid "read square wave 2 voltage"
 msgstr ""
 
-#. TRANS: Read programmable voltage
-#: taextras.py:539
 msgid "PVS"
 msgstr ""
 
-#: taextras.py:540
 msgid "read programmable voltage"
 msgstr ""
 
-#: taextras.py:541
 msgid "Expeyes device not found"
 msgstr ""
 
-#: TurtleArt/taconstants.py:209 TurtleArt/taconstants.py:231
-#: TurtleArt/taconstants.py:252 TurtleArt/taconstants.py:294
-#: TurtleArt/taconstants.py:336 TurtleArt/taconstants.py:378
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:980
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:995
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1010
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1025
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1040
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1055
-msgid "Title"
-msgstr "Tiêu đề"
+msgid "TurtleBlocks"
+msgstr "Khối rùa"
 
-#: plugins/camera_sensor/camera_sensor.py:95
-#: plugins/camera_sensor/camera_sensor.py:143
-msgid "Average RGB color from camera is pushed to the stack"
-msgstr "màu sắc Trung bình RGB từ máy ảnh được đẩy vào ngăp xếp"
+msgid ""
+"A Logo-inspired turtle that draws colorful pictures with snap-together "
+"visual programming blocks"
+msgstr ""
 
-#: TurtleArt/tabasics.py:442
-msgid "yellow"
-msgstr "vàng"
+msgid "Palette of turtle commands"
+msgstr "Bảng chọn lệnh rùa"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:685
-msgid "displays polar coordinates"
-msgstr "hiển thị toạ độ cực"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:499
-msgid "emptys FILO (first-in-last-out heap)"
-msgstr "trống miền FILO ( vào trước, ra sau)"
-
-#: plugins/camera_sensor/camera_sensor.py:106
-#: plugins/camera_sensor/camera_sensor.py:113
-#: plugins/camera_sensor/camera_sensor.py:121
-#: plugins/camera_sensor/camera_sensor.py:155
-#: plugins/camera_sensor/camera_sensor.py:163
-msgid "camera output"
-msgstr "đầu ra máy ảnh"
-
-#: plugins/accelerometer/accelerometer.py:58
-#: plugins/accelerometer/accelerometer.py:65
-msgid "push acceleration in x, y, z to heap"
-msgstr "đẩy gia tốc trong x, y, z xếp thành đống"
-
-#: TurtleArt/tabasics.py:777
-msgid "if-then operator that uses boolean operators from Numbers palette"
-msgstr "toán tử nếu-thì mà sử dụng toán tử lôgic từ bảng chọn Số"
-
-#: TurtleArt/tabasics.py:808
-msgid "jogs stack right"
-msgstr "đẩy nhẹ đống qua phải"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:147
-msgid "Sugar Journal media object"
-msgstr "đối tượng phương tiện truyền thông Nhật ký Sugar"
-
-#: TurtleArt/tabasics.py:915
-msgid "box 2"
-msgstr "hộp 2"
-
-#: TurtleArt/tabasics.py:905
-msgid "box 1"
-msgstr "hộp 1"
-
-#: TurtleArtActivity.py:730 TurtleArtActivity.py:994 turtleblocks.py:415
-msgid "Step"
-msgstr "Bước"
-
-#: TurtleArt/tabasics.py:588
-msgid "multiplies two numeric inputs"
-msgstr "nhân lên nhau hai đầu vào thuộc số"
-
-#: turtleblocks.py:408
-msgid "Show/hide blocks"
-msgstr "Hiện/ẩn khối"
-
-#: TurtleArtActivity.py:318 TurtleArtActivity.py:984 turtleblocks.py:406
-msgid "Hide palette"
-msgstr "Ẩn bảng chọn"
-
-#: gnome_plugins/collaboration_plugin.py:125
-msgid "Buddies"
-msgstr "Bạn"
-
-#: gnome_plugins/collaboration_plugin.py:67
-msgid "My Turtle Art session"
-msgstr "Buổi học Turtle Art của tôi"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:171
-msgid "Sugar Journal video object"
-msgstr "đối tượng hình ảnh chuyển động Nhật ký Sugar"
-
-#: TurtleArt/tabasics.py:445
-msgid "cyan"
-msgstr "lục lam"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:898
-msgid "xcor of right of screen"
-msgstr "xcor bên phải màn hình"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:463
-msgid "Palette of extra options"
-msgstr "Bảng chọn tuỳ chọn bổ sung"
-
-#: TurtleArtActivity.py:678 TurtleArtActivity.py:695 TurtleArtActivity.py:734
-#: TurtleArtActivity.py:934
-msgid "Load example"
-msgstr "Tải ví dụ"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:817
-msgid "list"
-msgstr "danh sách"
-
-#: TurtleArt/tabasics.py:243 TurtleArt/tawindow.py:4106
-msgid "heading"
-msgstr "tiêu đề"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:265
-msgid "saves turtle graphics as an SVG file in the Sugar Journal"
-msgstr "lưu đồ họa rùa dưới dạng một tập tin SVG trong Nhật ký Sugar"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:204
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:217
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:232
-msgid "draws text or show media from the Journal"
-msgstr "vẽ văn bản hoặc hiển thị phương tiện truyền thông từ Nhật ký"
-
-# http://en.wikipedia.org/wiki/Radio-frequency_identification
-#: plugins/rfid/rfid.py:92 plugins/rfid/rfid.py:100
-msgid "RFID"
-msgstr "Nhận dạng tần số vô tuyến"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:169
-msgid "video"
-msgstr "hình ảnh chuyển động"
-
-#: TurtleArt/tabasics.py:446
-msgid "blue"
-msgstr "xanh"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:677
-msgid "displays Cartesian coordinates"
-msgstr "hiển thị toạ độ thuyết Đê-các-tơ"
-
-#: TurtleArt/tabasics.py:816
-msgid "jogs stack down"
-msgstr "đẩy nhẹ đống xuống dưới"
-
-#: TurtleArt/tabasics.py:624
-msgid "modular (remainder) operator"
-msgstr "toán tử đơn thể (phần dư)"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:966
-msgid "bottom y"
-msgstr "tọa độ y phía dưới"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:262
-msgid "save SVG"
-msgstr "lưu SVG"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:630
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:646
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:662
-msgid "runs code found in the tamyblock.py module found in the Journal"
-msgstr "chạy mã nguồn được tìm trong mô-đun tamyblock.py có trong Nhật ký"
-
-#: TurtleArt/tabasics.py:381
-msgid "pen down"
-msgstr "bút xuống"
-
-#: TurtleArt/tabasics.py:739
-msgid "wait"
-msgstr "đợi"
-
-#: TurtleArt/tabasics.py:924 TurtleArt/tabasics.py:939
-msgid "box"
-msgstr "hộp"
-
-#: gnome_plugins/uploader_plugin.py:203
-msgid "Failed to upload!"
-msgstr "tải lên thất bại"
-
-#: TurtleArt/tabasics.py:872 TurtleArt/tawindow.py:4377
-msgid "invokes named action stack"
-msgstr "gọi đống hành vi đặt tên"
-
-#: TurtleArt/tabasics.py:856 TurtleArt/tabasics.py:859
-#: TurtleArt/tabasics.py:867 TurtleArt/tabasics.py:871
-#: TurtleArt/tawindow.py:1351 TurtleArt/tawindow.py:1448
-#: TurtleArt/tawindow.py:1461 TurtleArt/tawindow.py:2077
-#: TurtleArt/tawindow.py:4363
-msgid "action"
-msgstr "hành vi"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:123
-msgid "do-until-True operator that uses boolean operators from Numbers palette"
-msgstr "toán tử làm-đến-khi-Đúng mà sử dụng toán tử lôgic từ bảng chọn Số"
-
-#: TurtleArt/tabasics.py:918
-msgid "Variable 2 (numeric value)"
-msgstr "Biến 2 (giá trị thuộc số)"
-
-#: TurtleArt/tabasics.py:597
-msgid "divide"
-msgstr "chia"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:253
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:264
-msgid "picture name"
-msgstr "tên ảnh"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:109
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:112
-msgid "while"
-msgstr "trong khi"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:890
-msgid "the canvas width"
-msgstr "chiều rộng vùng vẽ"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:525
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:535
-#, fuzzy
-msgid "empty heap?"
-msgstr "miền nhớ trống"
-
-#: TurtleArt/tabasics.py:945 TurtleArt/tawindow.py:4404
-msgid "named variable (numeric value)"
-msgstr "biến đặt tên (giá trị thuộc số)"
-
-#: TurtleArt/tawindow.py:1044 TurtleArt/tawindow.py:1644
-msgid "next"
+msgid "forward"
 msgstr "tiếp"
 
-#: TurtleArt/tabasics.py:775
-msgid "if then"
-msgstr "nếu thì"
+msgid "moves turtle forward"
+msgstr "chuyển rùa đi tới"
 
-#: TurtleArt/tabasics.py:390
-msgid "set pen size"
-msgstr "đặt kích cỡ bút"
+msgid "back"
+msgstr "lùi"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:836
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:998
-msgid "presentation template: select Journal object (no description)"
-msgstr "mẫu trình diễn: chọn đối tượng Nhật ký (không mô tả)"
+msgid "moves turtle backward"
+msgstr "chuyển rùa đi lùi"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:119
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:122
-msgid "until"
-msgstr "đến khi"
+msgid "clean"
+msgstr "gột"
 
-#: TurtleArt/tabasics.py:997
-msgid "permanently deletes items in trash"
-msgstr "xoá hoàn toàn các mục trong thùng rác"
+msgid "clears the screen and reset the turtle"
+msgstr "xoá màn hình và đặt lại rùa"
 
-#: TurtleArt/tabasics.py:955
-msgid "top of Action 1 stack"
-msgstr "đầu của đống Hành vi 1"
+msgid "turns turtle counterclockwise (angle in degrees)"
+msgstr "quay rùa theo ngược chiều kim đồng hồ (góc theo độ)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:589
-msgid ""
-"a programmable block: used to add advanced single-variable math equations, e."
-"g., sin(x)"
-msgstr ""
-"Một cách lập trình:sử dụng bằng cách thêm các phương trình đơn biến như "
-"sin(x)"
-
-#: TurtleArt/tabasics.py:734
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:104
-msgid "Palette of flow operators"
-msgstr "Bảng chọn toán tử luồng"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:733
-msgid "top of a collapsed stack"
-msgstr "đầu của một đống đã thu gọn"
-
-#: TurtleArt/tabasics.py:790 TurtleArt/tabasics.py:798
-msgid "if-then-else operator that uses boolean operators from Numbers palette"
-msgstr "toán tử nếu-thì-không_thì mà sử dụng toán tử lôgic từ bảng chọn Số"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:377
-msgid "returns mouse y coordinate"
-msgstr "Trả về tọa độ y của con trỏ chuột"
-
-#: TurtleArt/tabasics.py:355
-msgid "holds current pen shade"
-msgstr "giữ sắc màu bút hiện thời"
-
-#. #-#-#-#-#  vi.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: pitch, duration, amplitude
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:322
-msgid "sinewave"
-msgstr "Sóng hình sin"
-
-#: gnome_plugins/uploader_plugin.py:166
-msgid "Login failed"
-msgstr "Đăng nhập thất bại"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:939
-msgid "left x"
-msgstr "tọa độ x phía trái"
-
-#
-#: TurtleArt/tabasics.py:209
-msgid "set heading"
-msgstr "đặt hướng về"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:433
-msgid "RGB color under the turtle is pushed to the stack"
-msgstr "Khối màu RGB theo màu mà con rùa nhìn thấy được đưa vào stack"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:791
-msgid "declutters canvas by hiding blocks"
-msgstr "làm sạch sẽ vùng vẽ bằng cách ẩn các khối"
-
-#: TurtleArtActivity.py:994
-msgid "<Ctrl>w"
-msgstr "Tổ hợp phím Ctrl+w"
-
-#: TurtleArtActivity.py:992
-msgid "<Ctrl>r"
-msgstr "Tổ hợp phím Ctrl+r"
-
-#: TurtleArtActivity.py:997
-msgid "<Ctrl>s"
-msgstr "Tổ hợp phím Ctrl+s"
-
-# Phím tắt này tương ứng với hành động nào?
-#: TurtleArtActivity.py:985
-msgid "<Ctrl>p"
-msgstr "Tổ hợp phím Ctrl+p"
-
-#: TurtleArtActivity.py:990
-msgid "<Ctrl>e"
-msgstr "Tổ hợp phím Ctrl+e"
-
-#: TurtleArt/tabasics.py:807
-msgid "horizontal space"
-msgstr "khoảng nằm ngang"
-
-#: TurtleArtActivity.py:645 TurtleArtActivity.py:802
-msgid "Metric coordinates"
-msgstr "Tọa độ theo hệ Mét"
-
-#: TurtleArt/tabasics.py:852
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:195
-msgid "string value"
-msgstr "giá trị chuỗi"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:181
-msgid "description"
-msgstr "mô tả"
-
-#: TurtleArt/talogo.py:567
-msgid "I don't know how to"
-msgstr "Tôi chưa biết cách"
-
-#: TurtleArt/tabasics.py:467
-msgid "set text size"
-msgstr "đặt kích cỡ chữ"
-
-#: gnome_plugins/uploader_plugin.py:99
-msgid "Username:"
-msgstr "Tên người dùng:"
-
-#: TurtleArt/tabasics.py:406
-msgid "starts filled polygon (used with end fill block)"
-msgstr "bắt đầu việc lấp đầy đa giác (bằng cách kết thúc việc lấp đầy khối)"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:850
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1043
-msgid "presentation template: select four Journal objects"
-msgstr "mẫu trình diễn: chọn 4 đối tượng Nhật ký"
-
-#: TurtleArtActivity.py:584 TurtleArtActivity.py:613 TurtleArtActivity.py:726
-#: TurtleArtActivity.py:796 turtleblocks.py:392
-msgid "View"
-msgstr "Xem"
-
-#: TurtleArt/tabasics.py:336
-msgid "sets gray level of the line drawn by the turtle"
-msgstr "tô xám đường được rùa vẽ"
-
-#: gnome_plugins/uploader_plugin.py:109
-msgid "Password:"
-msgstr "Mật khẩu:"
-
-# Số màu rùa thấy được
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:441
-msgid "turtle sees"
-msgstr "Màu mà rùa nhìn thấy"
-
-#: TurtleArt/tabasics.py:822
-msgid "stop action"
-msgstr "dừng hành vi"
-
-#: TurtleArt/tabasics.py:444
-msgid "green"
-msgstr "lục"
-
-#: TurtleArt/tabasics.py:283 TurtleArt/tabasics.py:295
-#: TurtleArt/tabasics.py:354
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1193
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1198
-msgid "shade"
-msgstr "sắc màu"
-
-#: TurtleArt/tabasics.py:287 TurtleArt/tabasics.py:299
-msgid "fills the background with (color, shade)"
-msgstr "tô đầy nền bằng (màu, sắc)"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:251
-msgid "save picture"
-msgstr "lưu ảnh"
-
-#: plugins/audio_sensors/audio_sensors.py:119
-#: plugins/audio_sensors/audio_sensors.py:127
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:322
-msgid "pitch"
-msgstr "cường độ"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:346
-msgid "returns 1 if mouse button is pressed"
-msgstr "trả về 1 nếu nhấn chuột"
-
-#: TurtleArtActivity.py:489 TurtleArtActivity.py:648 TurtleArtActivity.py:804
-msgid "Rescale coordinates up"
-msgstr "Tăng toạ độ theo tỷ lệ"
-
-#: TurtleArt/tabasics.py:372
-msgid "pen up"
-msgstr "bút lên"
-
-#: TurtleArt/tabasics.py:440
-msgid "orange"
-msgstr "cam"
-
-#: TurtleArt/tabasics.py:743
-msgid "pauses program execution a specified number of seconds"
-msgstr "tạm dừng thực hiện chương trình trong một số giây đưa ra"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:473
-msgid "pushes value onto FILO (first-in last-out heap)"
-msgstr "đẩy giá trị vào miền nhớ FILO (vào trước thì ra sau)"
-
-#: TurtleArt/tabasics.py:772 TurtleArt/tabasics.py:785
-msgid "then"
-msgstr "thì"
-
-#: gnome_plugins/collaboration_plugin.py:302
-msgid "Register"
-msgstr "Đăng ký"
-
-#: TurtleArt/tabasics.py:701
-msgid "not"
-msgstr "không phải"
-
-#: TurtleArt/tabasics.py:789 TurtleArt/tabasics.py:797
-msgid "if then else"
-msgstr "nếu thì không thì"
-
-#: TurtleArt/tabasics.py:825
-msgid "stops current action"
-msgstr "dừng hành vi đang làm"
-
-#: TurtleArt/tabasics.py:174
 msgid "turns turtle clockwise (angle in degrees)"
 msgstr "quay rùa theo chiều kim đồng hồ (góc theo độ)"
 
-#: TurtleArt/tabasics.py:364
-#, fuzzy
-msgid "holds current gray level (can be used in place of a number block)"
-msgstr ""
-"giữ giá trị tỷ lệ hiện thời của rùa (cũng có thể được sử dụng để thay thế "
-"một khối con số)"
+msgid "arc"
+msgstr "cung"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:874
-msgid "xcor of left of screen"
-msgstr "xcor bên trái màn hình"
+msgid "angle"
+msgstr "góc"
 
-#: turtleblocks.py:387
-msgid "Reset block size"
-msgstr "Đặt lại kích cỡ khối"
+msgid "radius"
+msgstr "bán kính"
 
-# Tên: không nên dịch
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:691
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:773
-msgid "turtle"
-msgstr "rùa"
+msgid "moves turtle along an arc"
+msgstr "chuyển rùa theo một hình cung"
 
-#: TurtleArt/tapalette.py:97
-msgid "displays next palette"
-msgstr "hiển thị bảng chọn kế tiếp"
+msgid "set xy"
+msgstr "đặt xy"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:789
-msgid "hide blocks"
-msgstr "ẩn khối"
+msgid ""
+"moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
+msgstr "di chuyển rùa tới vị trí xcor, ycor; (0, 0) là trung tâm của màn hình."
 
-#: plugins/camera_sensor/camera_sensor.py:82
-#: plugins/camera_sensor/camera_sensor.py:130
-msgid "light level detected by camera"
-msgstr "mức độ ánh sáng được phát hiện bởi máy ảnh"
+#
+msgid "set heading"
+msgstr "đặt hướng về"
 
-#: TurtleArt/tabasics.py:683
-msgid "logical less-than operator"
-msgstr "toán tử nhỏ hơn lôgic"
+msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
+msgstr "đặt sự hướng về của rùa (0 là hướng về đầu màn hình)"
 
-#: TurtleArt/tabasics.py:1002
-msgid "restore all blocks from trash"
-msgstr "phục hồi từ sọt rác tất cả các khối"
+msgid "xcor"
+msgstr "xcor"
 
-#: turtleblocks.py:367
-msgid "Save"
-msgstr "Lưu"
-
-#: TurtleArt/tabasics.py:879
-msgid "store in box 1"
-msgstr "lưu vào hộp 1"
-
-#: TurtleArt/tabasics.py:892
-msgid "store in box 2"
-msgstr "lưu vào hộp 2"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:808
-msgid "hides the Sugar toolbars"
-msgstr "ẩn các thanh công cụ Sugar"
-
-#: TurtleArt/tabasics.py:222
 msgid ""
 "holds current x-coordinate value of the turtle (can be used in place of a "
 "number block)"
@@ -2168,259 +1201,9 @@ msgstr ""
 "giữ giá trị đồ hoạ X hiện thời của rùa (cũng có thể được sử dụng để thay thế "
 "một khối con số)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:555
-msgid "print"
-msgstr "in"
+msgid "ycor"
+msgstr "ycor"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:367
-msgid "returns mouse x coordinate"
-msgstr "Trả về toạ độ x của con trỏ chuột"
-
-#: TurtleArtActivity.py:188 TurtleArtActivity.py:757 TurtleArtActivity.py:925
-#: TurtleArtActivity.py:955 turtleblocks.py:371
-msgid "Save as Logo"
-msgstr "Lưu dạng Biểu hình"
-
-#: TurtleArt/tabasics.py:313
-msgid "sets color of the line drawn by the turtle"
-msgstr "thiết lập màu sắc cho đường do rùa vẽ"
-
-#: TurtleArt/tabasics.py:456
-msgid "set text color"
-msgstr "đặt màu chữ"
-
-#: plugins/audio_sensors/audio_sensors.py:90
-#: plugins/audio_sensors/audio_sensors.py:105
-msgid "loudness"
-msgstr "độ lớn"
-
-#: gnome_plugins/collaboration_plugin.py:115
-msgid "Enable collaboration"
-msgstr "Kích hoạt tính năng cộng tác"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:357
-#, fuzzy
-msgid "returns True if mouse button is pressed"
-msgstr "trả về 1 nếu nhấn chuột"
-
-#: TurtleArt/tabasics.py:658
-msgid "number"
-msgstr "số"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:385
-msgid "query keyboard"
-msgstr "truy vấn bàn phím"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:130
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:732
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:903
-msgid "top"
-msgstr "trên"
-
-#: gnome_plugins/uploader_plugin.py:140
-msgid "Submit to Web"
-msgstr "Gửi lên web"
-
-#: TurtleArtActivity.py:640 TurtleArtActivity.py:798 turtleblocks.py:377
-msgid "Cartesian coordinates"
-msgstr "Toạ độ thuyết Đê-các-tơ"
-
-#: gnome_plugins/collaboration_plugin.py:292
-msgid "Nickname"
-msgstr "Tên riêng"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:240
-msgid "set scale"
-msgstr "đặt tỷ lệ"
-
-#: TurtleArt/tabasics.py:449
-#, fuzzy
-msgid "white"
-msgstr "trong khi"
-
-#: TurtleArt/tabasics.py:842
-msgid "connects action to toolbar run buttons"
-msgstr "kết nối hành vi đến nút chạy thanh công cụ"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:454
-msgid "elapsed time (in seconds) since program started"
-msgstr "Thời gian trôi qua từ khi khởi động chương trình"
-
-#: TurtleArt/tawindow.py:1534 TurtleArt/tawindow.py:1574
-#: gnome_plugins/uploader_plugin.py:144
-msgid "Cancel"
-msgstr "Hủy bỏ"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:914
-msgid "the canvas height"
-msgstr "chiều cao vùng vẽ"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1011
-msgid "presentation 2x1"
-msgstr "trình diễn 2×1"
-
-#: TurtleArt/tabasics.py:571
-msgid "minus"
-msgstr "trừ"
-
-#: TurtleArt/tabasics.py:710 TurtleArt/tabasics.py:713
-msgid "and"
-msgstr "và"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:132
-msgid "top of a collapsible stack"
-msgstr "đầu của một đống có thể thu gọn"
-
-#: TurtleArt/talogo.py:623
-msgid "as input"
-msgstr "làm đầu vào"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:628
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:644
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:659
-msgid "Python block"
-msgstr "Khối ngôn ngữ lập trình Python"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:281
-msgid "media wait"
-msgstr "Chờ chạy chương trình chơi nhạc"
-
-#: plugins/accelerometer/accelerometer.py:56
-#: plugins/accelerometer/accelerometer.py:63
-msgid "acceleration"
-msgstr "gia tốc"
-
-#: TurtleArt/tabasics.py:423
-msgid "holds current pen size (can be used in place of a number block)"
-msgstr ""
-"giữ kích cỡ bút hiện thời (cũng có thể dùng để thay thế một khối con số)"
-
-#: TurtleArt/tabasics.py:309
-msgid "set color"
-msgstr "đặt màu"
-
-#: TurtleArt/tabasics.py:642
-msgid "min"
-msgstr "tiểu"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:741
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:752
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:763
-#, fuzzy
-msgid "loads a block"
-msgstr "nạp khối của mình"
-
-#: TurtleArt/tabasics.py:278
-msgid "Palette of pen commands"
-msgstr "Bảng chọn lệnh bút"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:486
-msgid "shows values in FILO (first-in last-out heap)"
-msgstr "hiển thị các giá trị trong miền nhớ FILO (vào trước thì ra sau)"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:113
-msgid "do-while-True operator that uses boolean operators from Numbers palette"
-msgstr "toán tử làm-trong-khi-Đúng mà sử dụng toán tử lôgic từ bảng chọn Số"
-
-#: turtleblocks.py:374
-msgid "File"
-msgstr "Tập tin"
-
-#: TurtleArt/tabasics.py:704
-msgid "logical NOT operator"
-msgstr "toán tử KHÔNG_PHẢI lôgic"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:882
-msgid "ycor of bottom of screen"
-msgstr "ycor bên dưới màn hình"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:843
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:983
-msgid "presentation template: select Journal object (with description)"
-msgstr "mẫu trình diễn: chọn đối tượng Nhật ký (với mô tả)"
-
-#: TurtleArt/tabasics.py:553
-msgid "Palette of numeric operators"
-msgstr "Bảng chọn toán tử thuộc số"
-
-#: TurtleArt/tabasics.py:585
-msgid "multiply"
-msgstr "nhân"
-
-#: TurtleArt/tabasics.py:750
-msgid "forever"
-msgstr "hẳn"
-
-#: TurtleArt/tabasics.py:325
-msgid "sets shade of the line drawn by the turtle"
-msgstr "đặt sắc màu của đường được rùa vẽ"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:314
-msgid "speaks text"
-msgstr "Nguyên bản lời nói"
-
-#: TurtleArtActivity.py:243
-msgid "snapshot"
-msgstr "hiện trạng"
-
-#: TurtleArt/tabasics.py:147
-msgid "clean"
-msgstr "gột"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:857
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:864
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1013
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1028
-msgid "presentation template: select two Journal objects"
-msgstr "mẫu trình diễn: chọn 2 đối tượng Nhật ký"
-
-#: TurtleArtActivity.py:651 TurtleArtActivity.py:806 turtleblocks.py:383
-msgid "Grow blocks"
-msgstr "Khối lớn hơn"
-
-#: TurtleArtActivity.py:637 TurtleArtActivity.py:797
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:806
-msgid "Fullscreen"
-msgstr "Toàn màn hình"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:200
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:228
-msgid "show"
-msgstr "hiển thị"
-
-#: TurtleArt/tabasics.py:849 TurtleArt/tabasics.py:850
-#: TurtleArt/tabasics.py:851
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:192
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:193
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:194
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:201
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:214
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:229
-msgid "text"
-msgstr "văn bản"
-
-#: TurtleArt/tabasics.py:642
-msgid "random"
-msgstr "ngẫu nhiên"
-
-#: TurtleArt/tabasics.py:670
-msgid "logical greater-than operator"
-msgstr "toán tử lớn-hơn lôgic"
-
-#: TurtleArt/tabasics.py:162
-msgid "turns turtle counterclockwise (angle in degrees)"
-msgstr "quay rùa theo ngược chiều kim đồng hồ (góc theo độ)"
-
-#: TurtleArt/tabasics.py:450
-#, fuzzy
-msgid "black"
-msgstr "lùi"
-
-#: TurtleArt/tabasics.py:635
-msgid "calculates square root"
-msgstr "tính căn bậc hai"
-
-#: TurtleArt/tabasics.py:233
 msgid ""
 "holds current y-coordinate value of the turtle (can be used in place of a "
 "number block)"
@@ -2428,574 +1211,9 @@ msgstr ""
 "giữ giá trị đồ hoạ Y hiện thời của rùa (cũng có thể được sử dụng để thay thế "
 "một khối con số)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:364
-msgid "mouse x"
-msgstr "Tọa độ x của chuột(vói x là tọa độ của trục hoành)"
+msgid "heading"
+msgstr "tiêu đề"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:374
-msgid "mouse y"
-msgstr "Tọa độ y của chuột(vói y là tọa độ của trục hoành)"
-
-#: pysamples/grecord.py:215
-msgid "stop"
-msgstr "dừng"
-
-#: TurtleArt/tabasics.py:667
-msgid "greater than"
-msgstr "lớn hơn"
-
-#: TurtleArt/tabasics.py:221 TurtleArt/tawindow.py:4105
-msgid "xcor"
-msgstr "xcor"
-
-#: TurtleArtActivity.py:735 turtleblocks.py:422 util/helpbutton.py:45
-msgid "Help"
-msgstr "Trợ giúp"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:695
-msgid "chooses which turtle to command"
-msgstr "chọn con rùa nào cần điều khiển"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:957
-msgid "right x"
-msgstr "tọa độ x phía phải"
-
-#: TurtleArt/tabasics.py:459
-msgid "sets color of text drawn by the turtle"
-msgstr "đặt màu của các chữ được rùa vẽ"
-
-#: plugins/light_sensor/light_sensor.py:58
-#: plugins/light_sensor/light_sensor.py:65
-msgid "light level detected by light sensor"
-msgstr "mức độ ánh sáng được phát hiện bởi bộ cảm biến ánh sáng"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:394
-msgid "keyboard"
-msgstr "bàn phím"
-
-#: TurtleArt/tabasics.py:182
-msgid "arc"
-msgstr "cung"
-
-#: TurtleArt/tabasics.py:182
-msgid "radius"
-msgstr "bán kính"
-
-#: TurtleArtActivity.py:642 TurtleArtActivity.py:800 turtleblocks.py:379
-msgid "Polar coordinates"
-msgstr "Toạ độ cực"
-
-#: TurtleArt/tabasics.py:321
-msgid "set shade"
-msgstr "Tô bóng"
-
-#: TurtleArt/tabasics.py:714
-msgid "logical AND operator"
-msgstr "toán tử VÀ lôgic"
-
-#: gnome_plugins/uploader_plugin.py:90
-msgid ""
-"You must have an account at http://turtleartsite.sugarlabs.org to upload "
-"your project."
-msgstr ""
-"Bạn phải có một tài khoản ở trang Web http://turtleartsite.sugarlabs.org để "
-"tải lên dự án của bạn"
-
-#: TurtleArtActivity.py:729 TurtleArtActivity.py:992 turtleblocks.py:414
-msgid "Run"
-msgstr "Chạy"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:483
-msgid "show heap"
-msgstr "hiện miền nhớ"
-
-#: TurtleArt/tabasics.py:213
-msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
-msgstr "đặt sự hướng về của rùa (0 là hướng về đầu màn hình)"
-
-#: plugins/audio_sensors/audio_sensors.py:91
-#: plugins/audio_sensors/audio_sensors.py:106
-msgid "microphone input volume"
-msgstr "âm lượng đầu vào máy vi âm"
-
-#: gnome_plugins/uploader_plugin.py:120
-msgid "Title:"
-msgstr "Tiêu đề:"
-
-#: plugins/camera_sensor/camera_sensor.py:67
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:139
-msgid "Palette of media objects"
-msgstr "Bảng chọn của đối tượng phương tiện truyền thông"
-
-#: TurtleArtActivity.py:629
-#, fuzzy
-msgid "Restore blocks from trash"
-msgstr "phục hồi từ sọt rác tất cả các khối"
-
-#: TurtleArt/tabasics.py:834
-msgid "Palette of variable blocks"
-msgstr "Bảng chọn khối biến đổi"
-
-#: TurtleArt/tabasics.py:659
-msgid "used as numeric input in mathematic operators"
-msgstr "dùng để nhập thuộc số trong toán tử toán học"
-
-#: gnome_plugins/fb_plugin.py:82 gnome_plugins/fb_plugin.py:83
-#: gnome_plugins/fb_plugin.py:92 gnome_plugins/uploader_plugin.py:63
-#: gnome_plugins/uploader_plugin.py:64 gnome_plugins/uploader_plugin.py:73
-msgid "Upload"
-msgstr "Tải lên"
-
-#: gnome_plugins/collaboration_plugin.py:296
-msgid "Server"
-msgstr "Máy chủ"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1041
-msgid "presentation 2x2"
-msgstr "trình diễn 2×2"
-
-#: TurtleArt/tabasics.py:908
-msgid "Variable 1 (numeric value)"
-msgstr "Biến 1 (giá trị thuộc số)"
-
-#: gnome_plugins/collaboration_plugin.py:132
-msgid "Neighborhood"
-msgstr "Hàng xóm"
-
-#: TurtleArt/tabasics.py:563
-msgid "adds two alphanumeric inputs"
-msgstr "thêm hai đầu vào chữ số, chử cái"
-
-#: TurtleArt/tabasics.py:691
-msgid "equal"
-msgstr "bằng"
-
-#: TurtleArt/tabasics.py:785
-msgid "else"
-msgstr "không thì"
-
-#: TurtleArt/talogo.py:623
-msgid "doesn't like"
-msgstr "không thích"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:800
-msgid "restores hidden blocks"
-msgstr "phục hồi các khối bị ẩn"
-
-#: TurtleArt/tabasics.py:375
-msgid "Turtle will not draw when moved."
-msgstr "Con rùa sẽ không vẽ khi được di chuyển."
-
-#. #-#-#-#-#  vi.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: pop removes a new item from the program stack
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:510
-msgid "pop"
-msgstr "Đẩy"
-
-#: TurtleArt/tabasics.py:422
-msgid "pen size"
-msgstr "kích cỡ bút"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:715
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:724
-msgid "turtle shell"
-msgstr "mai rùa"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:326
-msgid "plays a sinewave at frequency, amplitude, and duration (in seconds)"
-msgstr ""
-"Sử dụng sóng hình sin tai tần số, biên độ và thời gian( tính bằng giây)"
-
-#: TurtleArt/tabasics.py:631
-msgid "√"
-msgstr "√"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:311
-msgid "speak"
-msgstr "Nói"
-
-#: plugins/rfid/rfid.py:93 plugins/rfid/rfid.py:101
-msgid "read value from RFID device"
-msgstr "đọc giá trị từ thiết bị Nhận dạng tần số vô tuyến"
-
-#: TurtleArt/tabasics.py:186
-msgid "moves turtle along an arc"
-msgstr "chuyển rùa theo một hình cung"
-
-#: TurtleArt/tabasics.py:695
-msgid "logical equal-to operator"
-msgstr "toán tử bằng-với lôgic"
-
-#: TurtleArt/tabasics.py:437
-msgid "Palette of pen colors"
-msgstr "Bảng chọn màu sắc bút"
-
-#: TurtleArt/tabasics.py:884
-msgid "stores numeric value in Variable 1"
-msgstr "cất giữ giá trị thuộc số trong Biến 1"
-
-#: TurtleArt/tabasics.py:897
-msgid "stores numeric value in Variable 2"
-msgstr "cất giữ giá trị thuộc số trong Biến 2"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:717
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:725
-msgid "put a custom 'shell' on the turtle"
-msgstr "đặt một chiếc mai tùy thích lên chú rùa"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:343
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:354
-msgid "button down"
-msgstr "nút xuống( trong bàn phím vi tính)"
-
-#: TurtleArt/tabasics.py:139
-msgid "moves turtle backward"
-msgstr "chuyển rùa đi lùi"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:906
-msgid "ycor of top of screen"
-msgstr "ycor bên trên màn hình"
-
-#: TurtleArt/talogo.py:380 TurtleArtActivity.py:360 TurtleArtActivity.py:732
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1529
-msgid "Show blocks"
-msgstr "Hiện khối"
-
-#: pysamples/grecord.py:217
-msgid "play"
-msgstr "chơi"
-
-#: pysamples/grecord.py:219
-msgid "save"
-msgstr "lưu"
-
-#: gnome_plugins/collaboration_plugin.py:304
-msgid "Colors"
-msgstr "Màu"
-
-#: TurtleArt/tabasics.py:394
-msgid "sets size of the line drawn by the turtle"
-msgstr "đặt kích cỡ của đường được rùa vẽ"
-
-#: turtleblocks.py:366
-msgid "Open"
-msgstr "Mở"
-
-#: TurtleArt/tawindow.py:1033 TurtleArt/tawindow.py:1034
-msgid "orientation"
-msgstr "hướng"
-
-#: TurtleArt/tabasics.py:232 TurtleArt/tawindow.py:4106
-msgid "ycor"
-msgstr "ycor"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:602
-msgid ""
-"a programmable block: used to add advanced multi-variable math equations, e."
-"g., sqrt(x*x+y*y)"
-msgstr ""
-"Một phương thức lập trình: được sử dụng để thêm nhiều phương trình toán học "
-"đa biến"
-
-#: TurtleArt/tabasics.py:772 TurtleArt/tabasics.py:785
-msgid "if"
-msgstr "nếu"
-
-#: TurtleArt/tabasics.py:199 TurtleArt/tabasics.py:265
-msgid ""
-"moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
-msgstr "di chuyển rùa tới vị trí xcor, ycor; (0, 0) là trung tâm của màn hình."
-
-# Tên ngôn ngữ lập trình: đừng dịch
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:585
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:598
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:612
-msgid "Python"
-msgstr "Python"
-
-#: TurtleArtActivity.py:736 turtleblocks.py:417
-msgid "Stop"
-msgstr "Dừng"
-
-#: TurtleArt/tabasics.py:961 TurtleArt/tabasics.py:981
-msgid "action 2"
-msgstr "hành vi 2"
-
-#: TurtleArt/tabasics.py:952 TurtleArt/tabasics.py:971
-msgid "action 1"
-msgstr "hành vi 1"
-
-#: TurtleArtActivity.py:625 TurtleArtActivity.py:779 turtleblocks.py:395
-msgid "Copy"
-msgstr "Chép"
-
-#: TurtleArtActivity.py:627 TurtleArtActivity.py:780 turtleblocks.py:396
-msgid "Paste"
-msgstr "Dán"
-
-#: TurtleArt/talogo.py:508
-msgid "did not output to"
-msgstr "đã không xuất tới"
-
-#: gnome_plugins/collaboration_plugin.py:120
-msgid "Activities"
-msgstr "Hoạt động"
-
-#: gnome_plugins/uploader_plugin.py:68
-msgid "Upload to Web"
-msgstr "Tải lên Web"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:496
-msgid "empty heap"
-msgstr "miền nhớ trống"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:514
-msgid "pops value off FILO (first-in last-out heap)"
-msgstr "đẩy giá trị ra miền nhớ FILO (vào trước thì ra sau)"
-
-#: TurtleArtActivity.py:728 TurtleArtActivity.py:990 turtleblocks.py:413
-msgid "Clean"
-msgstr "Làm sạch"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:782
-msgid "Palette of presentation templates"
-msgstr "Bảng chọn mẫu trình diễn"
-
-#: TurtleArt/tabasics.py:182
-msgid "angle"
-msgstr "góc"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:948
-msgid "top y"
-msgstr "tọa độ y phía trên"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:157
-msgid "audio"
-msgstr "âm thanh"
-
-#: turtleblocks.py:410
-msgid "Tools"
-msgstr "Công cụ"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:545
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:547
-msgid "comment"
-msgstr "ghi chú"
-
-#: TurtleArt/tabasics.py:574
-msgid "subtracts bottom numeric input from top numeric input"
-msgstr "trừ đầu vào thuộc số dưới từ đầu vào thuộc số trên"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:387
-msgid "query for keyboard input (results stored in keyboard block)"
-msgstr "yêu cầu đầu vào bàn phím (kết quả được lưu vào khối bàn phím)"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:675
-msgid "Cartesian"
-msgstr "thuyết Đê-các-tơ"
-
-#: TurtleArt/tabasics.py:150
-msgid "clears the screen and reset the turtle"
-msgstr "xoá màn hình và đặt lại rùa"
-
-#: plugins/audio_sensors/audio_sensors.py:84
-#: plugins/audio_sensors/audio_sensors.py:99
-msgid "raw microphone input signal"
-msgstr "tín hiệu thô đầu vào máy vi âm"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:443
-msgid "returns the color that the turtle \"sees\""
-msgstr "trả về màu mà con rùa nhìn thấy"
-
-#: TurtleArt/tabasics.py:974
-msgid "invokes Action 1 stack"
-msgstr "gọi đống Hành vi 1"
-
-#: TurtleArt/tabasics.py:119
-msgid "Palette of turtle commands"
-msgstr "Bảng chọn lệnh rùa"
-
-#: TurtleArt/tabasics.py:754
-msgid "loops forever"
-msgstr "lặp lại vô hạn"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:213
-msgid "show aligned"
-msgstr "hiện liên kết"
-
-#: TurtleArtActivity.py:611 TurtleArtActivity.py:727
-msgid "Project"
-msgstr "Dự án"
-
-#: turtleblocks.py:416
-msgid "Debug"
-msgstr "Gỡ lỗi"
-
-#: gnome_plugins/collaboration_plugin.py:300
-msgid "Password"
-msgstr "Mật khẩu"
-
-#: TurtleArt/tabasics.py:815
-msgid "vertical space"
-msgstr "khoảng nằm dọc"
-
-#: TurtleArt/tabasics.py:415
-#, fuzzy
-msgid "completes filled polygon (used with start fill block)"
-msgstr "bắt đầu việc lấp đầy đa giác (bằng cách kết thúc việc lấp đầy khối)"
-
-#: gnome_plugins/collaboration_plugin.py:128
-msgid "Share"
-msgstr "Chia sẻ"
-
-#: TurtleArt/tabasics.py:679
-msgid "less than"
-msgstr "nhỏ hơn"
-
-#: TurtleArt/tabasics.py:632
-msgid "square root"
-msgstr "căn bậc hai"
-
-#: turtleblocks.py:381
-msgid "Rescale coordinates"
-msgstr "Đặt lại tỷ lệ toạ độ"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:798
-msgid "show blocks"
-msgstr "hiện khối"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:183
-msgid "Sugar Journal description field"
-msgstr "trường mô tả Nhật ký Sugar"
-
-#: TurtleArt/tabasics.py:333
-msgid "set gray"
-msgstr "tô xám"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:821
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1056
-msgid "presentation bulleted list"
-msgstr "trình diễn danh sách nút"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:323
-msgid "duration"
-msgstr "Duy trỳ"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:549
-msgid "places a comment in your code"
-msgstr "đặt một ghi chú vào mã nguồn của bạn"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:430
-msgid "read pixel"
-msgstr "Đọc điểm ảnh"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:272
-msgid "scale"
-msgstr "tỷ lệ"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:879
-msgid "bottom"
-msgstr "dưới"
-
-#: TurtleArt/tabasics.py:447
-msgid "purple"
-msgstr "tím"
-
-#: TurtleArtActivity.py:485
-msgid "Rescale coordinates down"
-msgstr "Giảm toạ độ theo tỷ lệ"
-
-#: TurtleArt/tautils.py:586
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:730
-msgid "click to open"
-msgstr "nhấn để mở"
-
-#: plugins/audio_sensors/audio_sensors.py:120
-#: plugins/audio_sensors/audio_sensors.py:128
-msgid "microphone input pitch"
-msgstr "cường độ đầu vào máy vi âm"
-
-#: gnome_plugins/collaboration_plugin.py:129
-msgid "Configuration"
-msgstr "Cấu hình"
-
-#: gnome_plugins/uploader_plugin.py:130
-msgid "Description:"
-msgstr "Mô tả:"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:146
-msgid "journal"
-msgstr "nhật ký"
-
-#: TurtleArt/tabasics.py:996
-msgid "empty trash"
-msgstr "đổ rác"
-
-#: TurtleArt/tabasics.py:384
-msgid "Turtle will draw when moved."
-msgstr "Con rùa sẽ vẽ khi được di chuyển."
-
-#: TurtleArt/tautils.py:295
-msgid "Load..."
-msgstr "tải xuống"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:159
-msgid "Sugar Journal audio object"
-msgstr "đối tượng âm thanh Nhật ký Sugar"
-
-#: TurtleArt/talogo.py:370 TurtleArtActivity.py:731
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1538
-msgid "Stop turtle"
-msgstr "Dừng rùa"
-
-# Tên: không nên dịch
-#: turtleblocks.py:418
-msgid "Turtle"
-msgstr "Rùa"
-
-#: TurtleArt/tapalette.py:98
-msgid "changes the orientation of the palette of blocks"
-msgstr "thay đổi hướng của bảng chọn khối"
-
-#: TurtleArt/tabasics.py:924 TurtleArt/tawindow.py:4427
-msgid "store in"
-msgstr "lưu vào"
-
-#: TurtleArt/talogo.py:384 TurtleArtActivity.py:364 TurtleArtActivity.py:996
-msgid "Hide blocks"
-msgstr "Ẩn khối"
-
-#: TurtleArtActivity.py:762 TurtleArtActivity.py:946 TurtleArtActivity.py:968
-msgid "Load Python block"
-msgstr "Tải khối Python"
-
-#: TurtleArt/tabasics.py:559
-msgid "plus"
-msgstr "cộng"
-
-#: TurtleArt/tabasics.py:721 TurtleArt/tabasics.py:724
-msgid "or"
-msgstr "hoặc"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:829
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1058
-msgid "presentation template: list of bullets"
-msgstr "mẫu trình diễn: danh sách chấm điểm"
-
-#: TurtleArt/tabasics.py:612
-msgid "identity operator used for extending blocks"
-msgstr "toán tử nhận diện dùng để mở rộng khối"
-
-#: TurtleArtActivity.py:654 TurtleArtActivity.py:807 turtleblocks.py:385
-msgid "Shrink blocks"
-msgstr "Khối nhỏ hơn"
-
-#: TurtleArt/tabasics.py:470
-#, fuzzy
-msgid "sets size of text drawn by the turtle"
-msgstr "đặt kích cỡ của các chữ được rùa vẽ"
-
-#: TurtleArt/tabasics.py:244
 msgid ""
 "holds current heading value of the turtle (can be used in place of a number "
 "block)"
@@ -3003,202 +1221,972 @@ msgstr ""
 "giữ hướng về hiện thời của rùa (cũng có thể được sử dụng để thay thế một "
 "khối con số)"
 
-#: TurtleArt/tawindow.py:4215
-msgid "image"
-msgstr "ảnh"
+msgid "Palette of pen commands"
+msgstr "Bảng chọn lệnh bút"
 
-#: TurtleArt/tabasics.py:646
+msgid "fill screen"
+msgstr "đầy màn hình"
+
+msgid "shade"
+msgstr "sắc màu"
+
+msgid "fills the background with (color, shade)"
+msgstr "tô đầy nền bằng (màu, sắc)"
+
+msgid "set color"
+msgstr "đặt màu"
+
+msgid "sets color of the line drawn by the turtle"
+msgstr "thiết lập màu sắc cho đường do rùa vẽ"
+
+msgid "set shade"
+msgstr "Tô bóng"
+
+msgid "sets shade of the line drawn by the turtle"
+msgstr "đặt sắc màu của đường được rùa vẽ"
+
+msgid "set gray"
+msgstr "tô xám"
+
+msgid "sets gray level of the line drawn by the turtle"
+msgstr "tô xám đường được rùa vẽ"
+
+msgid "holds current pen color (can be used in place of a number block)"
+msgstr "giữ màu bút hiện thời (cũng có thể dùng để thay thế một khối con số)"
+
+msgid "holds current pen shade"
+msgstr "giữ sắc màu bút hiện thời"
+
+msgid "holds current gray level (can be used in place of a number block)"
+msgstr ""
+"giữ giá trị tỷ lệ hiện thời của rùa (cũng có thể được sử dụng để thay thế "
+"một khối con số)"
+
+msgid "pen up"
+msgstr "bút lên"
+
+msgid "Turtle will not draw when moved."
+msgstr "Con rùa sẽ không vẽ khi được di chuyển."
+
+msgid "pen down"
+msgstr "bút xuống"
+
+msgid "Turtle will draw when moved."
+msgstr "Con rùa sẽ vẽ khi được di chuyển."
+
+msgid "set pen size"
+msgstr "đặt kích cỡ bút"
+
+msgid "sets size of the line drawn by the turtle"
+msgstr "đặt kích cỡ của đường được rùa vẽ"
+
+msgid "start fill"
+msgstr "bắt đầu lấp đầy"
+
+msgid "starts filled polygon (used with end fill block)"
+msgstr "bắt đầu việc lấp đầy đa giác (bằng cách kết thúc việc lấp đầy khối)"
+
+msgid "end fill"
+msgstr ""
+
+msgid "completes filled polygon (used with start fill block)"
+msgstr "bắt đầu việc lấp đầy đa giác (bằng cách kết thúc việc lấp đầy khối)"
+
+msgid "pen size"
+msgstr "kích cỡ bút"
+
+msgid "holds current pen size (can be used in place of a number block)"
+msgstr ""
+"giữ kích cỡ bút hiện thời (cũng có thể dùng để thay thế một khối con số)"
+
+msgid "Palette of pen colors"
+msgstr "Bảng chọn màu sắc bút"
+
+msgid "red"
+msgstr "đỏ"
+
+msgid "orange"
+msgstr "cam"
+
+msgid "yellow"
+msgstr "vàng"
+
+msgid "green"
+msgstr "lục"
+
+msgid "cyan"
+msgstr "lục lam"
+
+msgid "blue"
+msgstr "xanh"
+
+msgid "purple"
+msgstr "tím"
+
+msgid "white"
+msgstr "trong khi"
+
+msgid "black"
+msgstr "lùi"
+
+msgid "set text color"
+msgstr "đặt màu chữ"
+
+msgid "sets color of text drawn by the turtle"
+msgstr "đặt màu của các chữ được rùa vẽ"
+
+msgid "set text size"
+msgstr "đặt kích cỡ chữ"
+
+msgid "sets size of text drawn by the turtle"
+msgstr "đặt kích cỡ của các chữ được rùa vẽ"
+
+msgid "Palette of numeric operators"
+msgstr "Bảng chọn toán tử thuộc số"
+
+msgid "plus"
+msgstr "cộng"
+
+msgid "adds two alphanumeric inputs"
+msgstr "thêm hai đầu vào chữ số, chử cái"
+
+msgid "minus"
+msgstr "trừ"
+
+msgid "subtracts bottom numeric input from top numeric input"
+msgstr "trừ đầu vào thuộc số dưới từ đầu vào thuộc số trên"
+
+msgid "multiply"
+msgstr "nhân"
+
+msgid "multiplies two numeric inputs"
+msgstr "nhân lên nhau hai đầu vào thuộc số"
+
+msgid "divide"
+msgstr "chia"
+
+msgid ""
+"divides top numeric input (numerator) by bottom numeric input (denominator)"
+msgstr "chia đầu vào thuộc số trên (tử số) cho đầu vào thuộc số dưới (mẫu số)"
+
+msgid "identity"
+msgstr "nhận dạng"
+
+msgid "identity operator used for extending blocks"
+msgstr "toán tử nhận diện dùng để mở rộng khối"
+
+msgid "mod"
+msgstr "sửa"
+
+msgid "modular (remainder) operator"
+msgstr "toán tử đơn thể (phần dư)"
+
+msgid "√"
+msgstr "√"
+
+msgid "square root"
+msgstr "căn bậc hai"
+
+msgid "calculates square root"
+msgstr "tính căn bậc hai"
+
+msgid "random"
+msgstr "ngẫu nhiên"
+
+msgid "min"
+msgstr "tiểu"
+
+msgid "max"
+msgstr "đại"
+
 msgid "returns random number between minimum (top) and maximum (bottom) values"
 msgstr ""
 "trả lại một số ngẫu nhiên nằm giữa hai giá trị là tối thiểu (bên trên) và "
 "tối đa (bên dưới)"
 
-#: TurtleArt/tabasics.py:345
-msgid "holds current pen color (can be used in place of a number block)"
-msgstr "giữ màu bút hiện thời (cũng có thể dùng để thay thế một khối con số)"
+msgid "number"
+msgstr "số"
 
-#: TurtleArtActivity.py:312 turtleblocks.py:404
-msgid "Show palette"
-msgstr "Hiện bảng chọn"
+msgid "used as numeric input in mathematic operators"
+msgstr "dùng để nhập thuộc số trong toán tử toán học"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:254
-msgid "saves a picture to the Sugar Journal"
-msgstr "lưu một ảnh vào Nhật ký Sugar"
+msgid "greater than"
+msgstr "lớn hơn"
 
-#: TurtleArtActivity.py:251 TurtleArtActivity.py:691 TurtleArtActivity.py:733
-#: TurtleArtActivity.py:931 TurtleArtActivity.py:958
-msgid "Save snapshot"
-msgstr "Lưu ảnh chụp"
+msgid "logical greater-than operator"
+msgstr "toán tử lớn-hơn lôgic"
 
-#: TurtleArt/tabasics.py:839 pysamples/grecord.py:213
-msgid "start"
-msgstr "đầu"
+msgid "less than"
+msgstr "nhỏ hơn"
 
-#: TurtleArt/tabasics.py:128
-msgid "moves turtle forward"
-msgstr "chuyển rùa đi tới"
+msgid "logical less-than operator"
+msgstr "toán tử nhỏ hơn lôgic"
 
-#: TurtleArt/tabasics.py:124
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:740
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:751
-msgid "forward"
-msgstr "tiếp"
+msgid "equal"
+msgstr "bằng"
 
-#: TurtleArt/tabasics.py:928 TurtleArt/tabasics.py:942
-#: TurtleArt/tawindow.py:1355 TurtleArt/tawindow.py:1486
-#: TurtleArt/tawindow.py:2081 TurtleArt/tawindow.py:4390
-#: TurtleArt/tawindow.py:4418
-msgid "my box"
-msgstr "hộp mình"
+msgid "logical equal-to operator"
+msgstr "toán tử bằng-với lôgic"
 
-#: gnome_plugins/collaboration_plugin.py:294
-msgid "Account ID"
-msgstr "Tài khoản"
+msgid "not"
+msgstr "không phải"
 
-#: TurtleArt/tabasics.py:135
-msgid "back"
-msgstr "lùi"
+msgid "logical NOT operator"
+msgstr "toán tử KHÔNG_PHẢI lôgic"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:244
-msgid "sets the scale of media"
-msgstr "đặt tỷ lệ của phương tiện truyền thông"
+msgid "and"
+msgstr "và"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:276
-msgid "holds current scale value"
-msgstr "giữ giá trị tỷ lệ hiện thời"
+msgid "logical AND operator"
+msgstr "toán tử VÀ lôgic"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:981
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:996
-msgid "presentation 1x1"
-msgstr "trình diễn 1×1"
+msgid "or"
+msgstr "hoặc"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1026
-msgid "presentation 1x2"
-msgstr "trình diễn 1×2"
-
-#: TurtleArt/tabasics.py:861
-msgid "top of nameable action stack"
-msgstr "đầu của đống hành vi có thể đặt tên"
-
-#: TurtleArt/tabasics.py:929 TurtleArt/tawindow.py:4432
-msgid "stores numeric value in named variable"
-msgstr "cất giữ giá trị thuộc số trong biến đặt tên"
-
-#: TurtleArt/tabasics.py:725
 msgid "logical OR operator"
 msgstr "toán tử HOẶC lôgic"
 
-#: plugins/audio_sensors/audio_sensors.py:158
-#: plugins/audio_sensors/audio_sensors.py:172
-#: plugins/audio_sensors/audio_sensors.py:186
-#: plugins/audio_sensors/audio_sensors.py:200
-msgid "microphone input voltage"
-msgstr "điện áp đầu vào máy vi âm"
+msgid "Palette of flow operators"
+msgstr "Bảng chọn toán tử luồng"
 
-#: TurtleArt/tabasics.py:766
-msgid "loops specified number of times"
-msgstr "lặp lại một số lần được ghi rõ"
+msgid "wait"
+msgstr "đợi"
 
-#: TurtleArt/tautils.py:305
-msgid "Save..."
-msgstr "lưu lại"
+msgid "pauses program execution a specified number of seconds"
+msgstr "tạm dừng thực hiện chương trình trong một số giây đưa ra"
 
-#: TurtleArt/tabasics.py:984
-msgid "invokes Action 2 stack"
-msgstr "gọi đống Hành vi 2"
+msgid "forever"
+msgstr "hẳn"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:762
-#, fuzzy
-msgid "setxy"
-msgstr "đặt xy"
+msgid "loops forever"
+msgstr "lặp lại vô hạn"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:930
-msgid "title y"
-msgstr "tiêu đề y"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:921
-msgid "title x"
-msgstr "tiêu đề x"
-
-#: TurtleArt/tabasics.py:283 TurtleArt/tabasics.py:294
-msgid "fill screen"
-msgstr "đầy màn hình"
-
-#: turtleblocks.py:368
-#, fuzzy
-msgid "Save as"
-msgstr "Lưu dạng"
-
-#: TurtleArt/tabasics.py:195 TurtleArt/tabasics.py:261
-msgid "set xy"
-msgstr "đặt xy"
-
-#: TurtleArt/tabasics.py:992
-msgid "trash"
-msgstr "thùng rác"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:683
-msgid "polar"
-msgstr "cực"
-
-#: TurtleArt/tabasics.py:761 TurtleArt/tabasics.py:765
 msgid "repeat"
 msgstr "lặp lại"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:283
-msgid "wait for current video or audio to complete"
-msgstr "đợi cho đoạn video hoặc âm thanh chạy hết"
+msgid "loops specified number of times"
+msgstr "lặp lại một số lần được ghi rõ"
 
-#: TurtleArtActivity.py:235 TurtleArtActivity.py:756 TurtleArtActivity.py:922
-#: TurtleArtActivity.py:952 turtleblocks.py:369
-msgid "Save as image"
-msgstr "Lưu dạng ảnh"
+msgid "if"
+msgstr "nếu"
 
-#: TurtleArtActivity.py:579 TurtleArtActivity.py:615 TurtleArtActivity.py:725
-#: TurtleArtActivity.py:778 turtleblocks.py:401
-msgid "Edit"
-msgstr "Sửa"
+msgid "then"
+msgstr "thì"
 
-#: plugins/audio_sensors/audio_sensors.py:152
-#: plugins/audio_sensors/audio_sensors.py:166
-#: plugins/audio_sensors/audio_sensors.py:180
-#: plugins/audio_sensors/audio_sensors.py:194
-msgid "microphone input resistance"
-msgstr "điện trở đầu vào máy vi âm"
+msgid "if then"
+msgstr "nếu thì"
 
-#: TurtleArt/tabasics.py:964
+msgid "if-then operator that uses boolean operators from Numbers palette"
+msgstr "toán tử nếu-thì mà sử dụng toán tử lôgic từ bảng chọn Số"
+
+msgid "else"
+msgstr "không thì"
+
+msgid "if then else"
+msgstr "nếu thì không thì"
+
+msgid "if-then-else operator that uses boolean operators from Numbers palette"
+msgstr "toán tử nếu-thì-không_thì mà sử dụng toán tử lôgic từ bảng chọn Số"
+
+msgid "horizontal space"
+msgstr "khoảng nằm ngang"
+
+msgid "jogs stack right"
+msgstr "đẩy nhẹ đống qua phải"
+
+msgid "vertical space"
+msgstr "khoảng nằm dọc"
+
+msgid "jogs stack down"
+msgstr "đẩy nhẹ đống xuống dưới"
+
+msgid "stop action"
+msgstr "dừng hành vi"
+
+msgid "stops current action"
+msgstr "dừng hành vi đang làm"
+
+msgid "Palette of variable blocks"
+msgstr "Bảng chọn khối biến đổi"
+
+msgid "start"
+msgstr "đầu"
+
+msgid "connects action to toolbar run buttons"
+msgstr "kết nối hành vi đến nút chạy thanh công cụ"
+
+msgid "text"
+msgstr "văn bản"
+
+msgid "string value"
+msgstr "giá trị chuỗi"
+
+msgid "action"
+msgstr "hành vi"
+
+msgid "top of nameable action stack"
+msgstr "đầu của đống hành vi có thể đặt tên"
+
+msgid "invokes named action stack"
+msgstr "gọi đống hành vi đặt tên"
+
+msgid "store in box 1"
+msgstr "lưu vào hộp 1"
+
+msgid "stores numeric value in Variable 1"
+msgstr "cất giữ giá trị thuộc số trong Biến 1"
+
+msgid "store in box 2"
+msgstr "lưu vào hộp 2"
+
+msgid "stores numeric value in Variable 2"
+msgstr "cất giữ giá trị thuộc số trong Biến 2"
+
+msgid "box 1"
+msgstr "hộp 1"
+
+msgid "Variable 1 (numeric value)"
+msgstr "Biến 1 (giá trị thuộc số)"
+
+msgid "box 2"
+msgstr "hộp 2"
+
+msgid "Variable 2 (numeric value)"
+msgstr "Biến 2 (giá trị thuộc số)"
+
+msgid "store in"
+msgstr "lưu vào"
+
+msgid "box"
+msgstr "hộp"
+
+msgid "my box"
+msgstr "hộp mình"
+
+msgid "stores numeric value in named variable"
+msgstr "cất giữ giá trị thuộc số trong biến đặt tên"
+
+msgid "named variable (numeric value)"
+msgstr "biến đặt tên (giá trị thuộc số)"
+
+msgid "action 1"
+msgstr "hành vi 1"
+
+msgid "top of Action 1 stack"
+msgstr "đầu của đống Hành vi 1"
+
+msgid "action 2"
+msgstr "hành vi 2"
+
 msgid "top of Action 2 stack"
 msgstr "đầu của đống Hành vi 2"
 
-#: TurtleArt/tabasics.py:600
+msgid "invokes Action 1 stack"
+msgstr "gọi đống Hành vi 1"
+
+msgid "invokes Action 2 stack"
+msgstr "gọi đống Hành vi 2"
+
+msgid "trash"
+msgstr "thùng rác"
+
+msgid "empty trash"
+msgstr "đổ rác"
+
+msgid "permanently deletes items in trash"
+msgstr "xoá hoàn toàn các mục trong thùng rác"
+
+msgid "restore all"
+msgstr "phục hồi tất cả"
+
+msgid "restore all blocks from trash"
+msgstr "phục hồi từ sọt rác tất cả các khối"
+
+msgid "clear all"
+msgstr ""
+
+msgid "move all blocks to trash"
+msgstr ""
+
+msgid "Share selected blocks"
+msgstr ""
+
+msgid "Title"
+msgstr "Tiêu đề"
+
+msgid "Stop turtle"
+msgstr "Dừng rùa"
+
+msgid "Show blocks"
+msgstr "Hiện khối"
+
+msgid "Hide blocks"
+msgstr "Ẩn khối"
+
+msgid "did not output to"
+msgstr "đã không xuất tới"
+
+msgid "I don't know how to"
+msgstr "Tôi chưa biết cách"
+
+msgid "doesn't like"
+msgstr "không thích"
+
+msgid "as input"
+msgstr "làm đầu vào"
+
+msgid "displays next palette"
+msgstr "hiển thị bảng chọn kế tiếp"
+
+msgid "changes the orientation of the palette of blocks"
+msgstr "thay đổi hướng của bảng chọn khối"
+
+msgid "Load..."
+msgstr "tải xuống"
+
+msgid "Save..."
+msgstr "lưu lại"
+
+msgid "click to open"
+msgstr "nhấn để mở"
+
+msgid "orientation"
+msgstr "hướng"
+
+msgid "next"
+msgstr "tiếp"
+
+msgid "shift"
+msgstr ""
+
 msgid ""
-"divides top numeric input (numerator) by bottom numeric input (denominator)"
-msgstr "chia đầu vào thuộc số trên (tử số) cho đầu vào thuộc số dưới (mẫu số)"
+"Please hit the Stop Button before making changes to your Turtle Blocks "
+"program"
+msgstr ""
 
-#: TurtleArt/tabasics.py:642
-msgid "max"
-msgstr "đại"
+msgid "Select blocks to share"
+msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:559
-msgid "prints value in status block at bottom of the screen"
-msgstr "in giá trị trạng thái ở phần dưới màn hình"
+msgid "Save stack"
+msgstr ""
 
-#: TurtleArt/tabasics.py:404
-msgid "start fill"
-msgstr "bắt đầu lấp đầy"
+msgid "Really overwrite stack?"
+msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:398
-#, fuzzy
+msgid "Cancel"
+msgstr "Hủy bỏ"
+
+msgid "Overwrite stack"
+msgstr ""
+
+msgid "Delete stack"
+msgstr ""
+
+msgid "Really delete stack?"
+msgstr ""
+
+msgid "image"
+msgstr "ảnh"
+
+msgid "Save as Logo"
+msgstr "Lưu dạng Biểu hình"
+
+msgid "Save as image"
+msgstr "Lưu dạng ảnh"
+
+msgid "snapshot"
+msgstr "hiện trạng"
+
+msgid "Save snapshot"
+msgstr "Lưu ảnh chụp"
+
+msgid "Turn off hover help"
+msgstr ""
+
+msgid "Turn on hover help"
+msgstr ""
+
+msgid "Show palette"
+msgstr "Hiện bảng chọn"
+
+msgid "Hide palette"
+msgstr "Ẩn bảng chọn"
+
+msgid "Rescale coordinates down"
+msgstr "Giảm toạ độ theo tỷ lệ"
+
+msgid "Rescale coordinates up"
+msgstr "Tăng toạ độ theo tỷ lệ"
+
+msgid "Edit"
+msgstr "Sửa"
+
+msgid "View"
+msgstr "Xem"
+
+msgid "Project"
+msgstr "Dự án"
+
+msgid "Save/Load"
+msgstr ""
+
+msgid "Copy"
+msgstr "Chép"
+
+msgid "Paste"
+msgstr "Dán"
+
+msgid "Restore blocks from trash"
+msgstr "phục hồi từ sọt rác tất cả các khối"
+
+msgid "Fullscreen"
+msgstr "Toàn màn hình"
+
+msgid "Cartesian coordinates"
+msgstr "Toạ độ thuyết Đê-các-tơ"
+
+msgid "Polar coordinates"
+msgstr "Toạ độ cực"
+
+msgid "Metric coordinates"
+msgstr "Tọa độ theo hệ Mét"
+
+msgid "Grow blocks"
+msgstr "Khối lớn hơn"
+
+msgid "Shrink blocks"
+msgstr "Khối nhỏ hơn"
+
+msgid "Load example"
+msgstr "Tải ví dụ"
+
+msgid "Clean"
+msgstr "Làm sạch"
+
+msgid "Run"
+msgstr "Chạy"
+
+msgid "Step"
+msgstr "Bước"
+
+msgid "Help"
+msgstr "Trợ giúp"
+
+msgid "Stop"
+msgstr "Dừng"
+
+msgid "Load project"
+msgstr ""
+
+msgid "Load plugin"
+msgstr ""
+
+msgid "Load Python block"
+msgstr "Tải khối Python"
+
+msgid "Palettes"
+msgstr ""
+
+msgid "Sharing blocks disabled"
+msgstr ""
+
+msgid "<Ctrl>p"
+msgstr "Tổ hợp phím Ctrl+p"
+
+msgid "<Ctrl>e"
+msgstr "Tổ hợp phím Ctrl+e"
+
+msgid "<Ctrl>r"
+msgstr "Tổ hợp phím Ctrl+r"
+
+msgid "<Ctrl>w"
+msgstr "Tổ hợp phím Ctrl+w"
+
+msgid "<Ctrl>s"
+msgstr "Tổ hợp phím Ctrl+s"
+
+msgid "Plugin could not be installed."
+msgstr ""
+
+msgid "Please restart Turtle Art in order to use the plugin."
+msgstr ""
+
+msgid "Plugin %s already installed."
+msgstr ""
+
+msgid "Do you want to reinstall %s?"
+msgstr ""
+
+msgid "My Turtle Art session"
+msgstr "Buổi học Turtle Art của tôi"
+
+msgid "Enable collaboration"
+msgstr "Kích hoạt tính năng cộng tác"
+
+msgid "Activities"
+msgstr "Hoạt động"
+
+msgid "Buddies"
+msgstr "Bạn"
+
+msgid "Share"
+msgstr "Chia sẻ"
+
+msgid "Configuration"
+msgstr "Cấu hình"
+
+msgid "Neighborhood"
+msgstr "Hàng xóm"
+
+msgid "Nickname"
+msgstr "Tên riêng"
+
+msgid "Account ID"
+msgstr "Tài khoản"
+
+msgid "Server"
+msgstr "Máy chủ"
+
+msgid "Port"
+msgstr "Cổng"
+
+msgid "Password"
+msgstr "Mật khẩu"
+
+msgid "Register"
+msgstr "Đăng ký"
+
+msgid "Colors"
+msgstr "Màu"
+
+msgid "Upload"
+msgstr "Tải lên"
+
+msgid "Facebook wall post"
+msgstr ""
+
+msgid "Upload to Web"
+msgstr "Tải lên Web"
+
+msgid ""
+"You must have an account at http://turtleartsite.sugarlabs.org to upload "
+"your project."
+msgstr ""
+"Bạn phải có một tài khoản ở trang Web http://turtleartsite.sugarlabs.org để "
+"tải lên dự án của bạn"
+
+msgid "Username:"
+msgstr "Tên người dùng:"
+
+msgid "Password:"
+msgstr "Mật khẩu:"
+
+msgid "Title:"
+msgstr "Tiêu đề:"
+
+msgid "Description:"
+msgstr "Mô tả:"
+
+msgid "Submit to Web"
+msgstr "Gửi lên web"
+
+msgid "Login failed"
+msgstr "Đăng nhập thất bại"
+
+msgid "Failed to upload!"
+msgstr "tải lên thất bại"
+
+msgid "Palette of sensor blocks"
+msgstr "Bảng chọn của khối cảm biến"
+
+msgid "acceleration"
+msgstr "gia tốc"
+
+msgid "push acceleration in x, y, z to heap"
+msgstr "đẩy gia tốc trong x, y, z xếp thành đống"
+
+msgid "raw microphone input signal"
+msgstr "tín hiệu thô đầu vào máy vi âm"
+
+msgid "loudness"
+msgstr "độ lớn"
+
+msgid "microphone input volume"
+msgstr "âm lượng đầu vào máy vi âm"
+
+msgid "pitch"
+msgstr "cường độ"
+
+msgid "microphone input pitch"
+msgstr "cường độ đầu vào máy vi âm"
+
+msgid "microphone input resistance"
+msgstr "điện trở đầu vào máy vi âm"
+
+msgid "microphone input voltage"
+msgstr "điện áp đầu vào máy vi âm"
+
+msgid "Palette of media objects"
+msgstr "Bảng chọn của đối tượng phương tiện truyền thông"
+
+msgid "light level detected by camera"
+msgstr "mức độ ánh sáng được phát hiện bởi máy ảnh"
+
+msgid "Average RGB color from camera is pushed to the stack"
+msgstr "màu sắc Trung bình RGB từ máy ảnh được đẩy vào ngăp xếp"
+
+msgid "camera output"
+msgstr "đầu ra máy ảnh"
+
+msgid "light level detected by light sensor"
+msgstr "mức độ ánh sáng được phát hiện bởi bộ cảm biến ánh sáng"
+
+msgid "RFID"
+msgstr "Nhận dạng tần số vô tuyến"
+
+msgid "read value from RFID device"
+msgstr "đọc giá trị từ thiết bị Nhận dạng tần số vô tuyến"
+
+msgid "while"
+msgstr "trong khi"
+
+msgid "do-while-True operator that uses boolean operators from Numbers palette"
+msgstr "toán tử làm-trong-khi-Đúng mà sử dụng toán tử lôgic từ bảng chọn Số"
+
+msgid "until"
+msgstr "đến khi"
+
+msgid "do-until-True operator that uses boolean operators from Numbers palette"
+msgstr "toán tử làm-đến-khi-Đúng mà sử dụng toán tử lôgic từ bảng chọn Số"
+
+msgid "top"
+msgstr "trên"
+
+msgid "top of a collapsible stack"
+msgstr "đầu của một đống có thể thu gọn"
+
+msgid "journal"
+msgstr "nhật ký"
+
+msgid "Sugar Journal media object"
+msgstr "đối tượng phương tiện truyền thông Nhật ký Sugar"
+
+msgid "audio"
+msgstr "âm thanh"
+
+msgid "Sugar Journal audio object"
+msgstr "đối tượng âm thanh Nhật ký Sugar"
+
+msgid "video"
+msgstr "hình ảnh chuyển động"
+
+msgid "Sugar Journal video object"
+msgstr "đối tượng hình ảnh chuyển động Nhật ký Sugar"
+
+msgid "description"
+msgstr "mô tả"
+
+msgid "Sugar Journal description field"
+msgstr "trường mô tả Nhật ký Sugar"
+
+msgid "show"
+msgstr "hiển thị"
+
+msgid "draws text or show media from the Journal"
+msgstr "vẽ văn bản hoặc hiển thị phương tiện truyền thông từ Nhật ký"
+
+msgid "show aligned"
+msgstr "hiện liên kết"
+
+msgid "set scale"
+msgstr "đặt tỷ lệ"
+
+msgid "sets the scale of media"
+msgstr "đặt tỷ lệ của phương tiện truyền thông"
+
+msgid "save picture"
+msgstr "lưu ảnh"
+
+msgid "picture name"
+msgstr "tên ảnh"
+
+msgid "saves a picture to the Sugar Journal"
+msgstr "lưu một ảnh vào Nhật ký Sugar"
+
+msgid "save SVG"
+msgstr "lưu SVG"
+
+msgid "saves turtle graphics as an SVG file in the Sugar Journal"
+msgstr "lưu đồ họa rùa dưới dạng một tập tin SVG trong Nhật ký Sugar"
+
+msgid "scale"
+msgstr "tỷ lệ"
+
+msgid "holds current scale value"
+msgstr "giữ giá trị tỷ lệ hiện thời"
+
+msgid "media wait"
+msgstr "Chờ chạy chương trình chơi nhạc"
+
+msgid "wait for current video or audio to complete"
+msgstr "đợi cho đoạn video hoặc âm thanh chạy hết"
+
+msgid "media stop"
+msgstr ""
+
+msgid "stop video or audio"
+msgstr ""
+
+msgid "media pause"
+msgstr ""
+
+msgid "pause video or audio"
+msgstr ""
+
+msgid "media resume"
+msgstr ""
+
+msgid "resume playing video or audio"
+msgstr ""
+
+msgid "speak"
+msgstr "Nói"
+
+msgid "hello"
+msgstr "Chào"
+
+msgid "speaks text"
+msgstr "Nguyên bản lời nói"
+
+msgid "sinewave"
+msgstr "Sóng hình sin"
+
+msgid "amplitude"
+msgstr ""
+
+msgid "duration"
+msgstr "Duy trỳ"
+
+msgid "plays a sinewave at frequency, amplitude, and duration (in seconds)"
+msgstr ""
+"Sử dụng sóng hình sin tai tần số, biên độ và thời gian( tính bằng giây)"
+
+msgid "button down"
+msgstr "nút xuống( trong bàn phím vi tính)"
+
+msgid "returns 1 if mouse button is pressed"
+msgstr "trả về 1 nếu nhấn chuột"
+
+msgid "returns True if mouse button is pressed"
+msgstr "trả về 1 nếu nhấn chuột"
+
+msgid "mouse x"
+msgstr "Tọa độ x của chuột(vói x là tọa độ của trục hoành)"
+
+msgid "returns mouse x coordinate"
+msgstr "Trả về toạ độ x của con trỏ chuột"
+
+msgid "mouse y"
+msgstr "Tọa độ y của chuột(vói y là tọa độ của trục hoành)"
+
+msgid "returns mouse y coordinate"
+msgstr "Trả về tọa độ y của con trỏ chuột"
+
+msgid "query keyboard"
+msgstr "truy vấn bàn phím"
+
+msgid "query for keyboard input (results stored in keyboard block)"
+msgstr "yêu cầu đầu vào bàn phím (kết quả được lưu vào khối bàn phím)"
+
+msgid "keyboard"
+msgstr "bàn phím"
+
 msgid "holds results of query-keyboard block as ASCII"
 msgstr "giữ kết quả của khối yêu-cầu-bàn-phím"
 
-#. #-#-#-#-#  vi.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: push adds a new item to the program stack
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:470
+msgid "read pixel"
+msgstr "Đọc điểm ảnh"
+
+msgid "RGB color under the turtle is pushed to the stack"
+msgstr "Khối màu RGB theo màu mà con rùa nhìn thấy được đưa vào stack"
+
+msgid "turtle sees"
+msgstr "Màu mà rùa nhìn thấy"
+
+msgid "returns the color that the turtle \"sees\""
+msgstr "trả về màu mà con rùa nhìn thấy"
+
+msgid "elapsed time (in seconds) since program started"
+msgstr "Thời gian trôi qua từ khi khởi động chương trình"
+
+msgid "Palette of extra options"
+msgstr "Bảng chọn tuỳ chọn bổ sung"
+
 msgid "push"
 msgstr "đẩy"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:616
+msgid "pushes value onto FILO (first-in last-out heap)"
+msgstr "đẩy giá trị vào miền nhớ FILO (vào trước thì ra sau)"
+
+msgid "show heap"
+msgstr "hiện miền nhớ"
+
+msgid "shows values in FILO (first-in last-out heap)"
+msgstr "hiển thị các giá trị trong miền nhớ FILO (vào trước thì ra sau)"
+
+msgid "empty heap"
+msgstr "miền nhớ trống"
+
+msgid "emptys FILO (first-in-last-out heap)"
+msgstr "trống miền FILO ( vào trước, ra sau)"
+
+msgid "pop"
+msgstr "Đẩy"
+
+msgid "pops value off FILO (first-in last-out heap)"
+msgstr "đẩy giá trị ra miền nhớ FILO (vào trước thì ra sau)"
+
+msgid "empty heap?"
+msgstr "miền nhớ trống"
+
+msgid "returns True if heap is empty"
+msgstr ""
+
+msgid "comment"
+msgstr "ghi chú"
+
+msgid "places a comment in your code"
+msgstr "đặt một ghi chú vào mã nguồn của bạn"
+
+msgid "print"
+msgstr "in"
+
+msgid "prints value in status block at bottom of the screen"
+msgstr "in giá trị trạng thái ở phần dưới màn hình"
+
+msgid "Python chr operator"
+msgstr ""
+
+msgid "Python int operator"
+msgstr ""
+
+msgid "Python"
+msgstr "Python"
+
+msgid ""
+"a programmable block: used to add advanced single-variable math equations, e."
+"g., sin(x)"
+msgstr ""
+"Một cách lập trình:sử dụng bằng cách thêm các phương trình đơn biến như "
+"sin(x)"
+
+msgid ""
+"a programmable block: used to add advanced multi-variable math equations, e."
+"g., sqrt(x*x+y*y)"
+msgstr ""
+"Một phương thức lập trình: được sử dụng để thêm nhiều phương trình toán học "
+"đa biến"
+
 msgid ""
 "a programmable block: used to add advanced multi-variable math equations, e."
 "g., sin(x+y+z)"
@@ -3206,546 +2194,485 @@ msgstr ""
 "Một cách lập trình:sử dụng bằng cách thêm các phương trình đabiến như sin(x+y"
 "+z)"
 
-#: TurtleArt/tabasics.py:1001
-msgid "restore all"
-msgstr "phục hồi tất cả"
+msgid "Python block"
+msgstr "Khối ngôn ngữ lập trình Python"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:313
-msgid "hello"
-msgstr "Chào"
+msgid "runs code found in the tamyblock.py module found in the Journal"
+msgstr "chạy mã nguồn được tìm trong mô-đun tamyblock.py có trong Nhật ký"
 
-#. TRANS: "name" option from activity.info file
-#, fuzzy
-msgid "TurtleBlocks"
-msgstr "Khối rùa"
+msgid "Cartesian"
+msgstr "thuyết Đê-các-tơ"
 
-#. TRANS: "summary" option from activity.info file
-#. TRANS: "description" option from activity.info file
-msgid ""
-"A Logo-inspired turtle that draws colorful pictures with snap-together "
-"visual programming blocks"
-msgstr ""
+msgid "displays Cartesian coordinates"
+msgstr "hiển thị toạ độ thuyết Đê-các-tơ"
 
-#: TurtleArt/tabasics.py:413
-msgid "end fill"
-msgstr ""
+msgid "polar"
+msgstr "cực"
 
-#: TurtleArt/tabasics.py:439
-msgid "red"
-msgstr "đỏ"
+msgid "displays polar coordinates"
+msgstr "hiển thị toạ độ cực"
 
-#: TurtleArt/tabasics.py:610
-msgid "identity"
-msgstr "nhận dạng"
+msgid "turtle"
+msgstr "rùa"
 
-#: TurtleArt/tabasics.py:620 TurtleArt/tabasics.py:621
-msgid "mod"
-msgstr "sửa"
+msgid "chooses which turtle to command"
+msgstr "chọn con rùa nào cần điều khiển"
 
-#: TurtleArt/tabasics.py:1006
-msgid "clear all"
-msgstr ""
-
-#: TurtleArt/tabasics.py:1007
-msgid "move all blocks to trash"
-msgstr ""
-
-#: TurtleArt/tacollaboration.py:152 TurtleArt/tawindow.py:2055
-#: TurtleArtActivity.py:751
-msgid "Share selected blocks"
-msgstr ""
-
-#: TurtleArt/tawindow.py:1063 TurtleArt/tawindow.py:1664
-msgid "shift"
-msgstr ""
-
-#: TurtleArt/tawindow.py:1316
-msgid ""
-"Please hit the Stop Button before making changes to your Turtle Blocks "
-"program"
-msgstr ""
-
-#: TurtleArt/tawindow.py:1369
-msgid "Select blocks to share"
-msgstr ""
-
-#: TurtleArt/tawindow.py:1530 TurtleArtActivity.py:632
-#: TurtleArtActivity.py:781 turtleblocks.py:397
-msgid "Save stack"
-msgstr ""
-
-#: TurtleArt/tawindow.py:1531 TurtleArt/tawindow.py:1546
-msgid "Really overwrite stack?"
-msgstr ""
-
-#: TurtleArt/tawindow.py:1538 TurtleArt/tawindow.py:1549
-msgid "Overwrite stack"
-msgstr ""
-
-#: TurtleArt/tawindow.py:1570 TurtleArt/tawindow.py:1578
-#: TurtleArt/tawindow.py:1588 TurtleArtActivity.py:634 turtleblocks.py:399
-msgid "Delete stack"
-msgstr ""
-
-#: TurtleArt/tawindow.py:1571 TurtleArt/tawindow.py:1585
-msgid "Really delete stack?"
-msgstr ""
-
-#: TurtleArtActivity.py:296 TurtleArtActivity.py:657 TurtleArtActivity.py:808
-msgid "Turn off hover help"
-msgstr ""
-
-#: TurtleArtActivity.py:303 turtleblocks.py:390
-msgid "Turn on hover help"
-msgstr ""
-
-#: TurtleArtActivity.py:617 TurtleArtActivity.py:724 TurtleArtActivity.py:753
-#: TurtleArtActivity.py:755 TurtleArtActivity.py:917
-msgid "Save/Load"
-msgstr ""
-
-#: TurtleArtActivity.py:758 TurtleArtActivity.py:938 TurtleArtActivity.py:960
-msgid "Load project"
-msgstr ""
-
-#: TurtleArtActivity.py:761 TurtleArtActivity.py:943 TurtleArtActivity.py:965
-msgid "Load plugin"
-msgstr ""
-
-#: TurtleArtActivity.py:895
-msgid "Palettes"
-msgstr ""
-
-#: TurtleArtActivity.py:912
-msgid "Sharing blocks disabled"
-msgstr ""
-
-#: TurtleArtActivity.py:1152 TurtleArtActivity.py:1157
-#: TurtleArtActivity.py:1238
-msgid "Plugin could not be installed."
-msgstr ""
-
-#: TurtleArtActivity.py:1234
-msgid "Please restart Turtle Art in order to use the plugin."
-msgstr ""
-
-#: TurtleArtActivity.py:1252
-#, python-format
-msgid "Plugin %s already installed."
-msgstr ""
-
-#: TurtleArtActivity.py:1253
-#, python-format
-msgid "Do you want to reinstall %s?"
-msgstr ""
-
-#: gnome_plugins/collaboration_plugin.py:298
-msgid "Port"
-msgstr "Cổng"
-
-#: gnome_plugins/fb_plugin.py:87
-msgid "Facebook wall post"
-msgstr ""
-
-#: plugins/accelerometer/accelerometer.py:49
-#: plugins/audio_sensors/audio_sensors.py:75
-#: plugins/camera_sensor/camera_sensor.py:63
-#: plugins/light_sensor/light_sensor.py:49 plugins/rfid/rfid.py:86
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:336
-msgid "Palette of sensor blocks"
-msgstr "Bảng chọn của khối cảm biến"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:289
-msgid "media stop"
-msgstr ""
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:291
-msgid "stop video or audio"
-msgstr ""
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:296
-msgid "media pause"
-msgstr ""
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:298
-msgid "pause video or audio"
-msgstr ""
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:303
-msgid "media resume"
-msgstr ""
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:305
-msgid "resume playing video or audio"
-msgstr ""
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:323
-msgid "amplitude"
-msgstr ""
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:528
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:538
-msgid "returns True if heap is empty"
-msgstr ""
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:569
-msgid "Python chr operator"
-msgstr ""
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:578
-msgid "Python int operator"
-msgstr ""
-
-#. TRANS: pop removes a new item from the program stack
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:703
 msgid "active turtle"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:706
 msgid "the name of the active turtle"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:738
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:748
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:759
+msgid "turtle shell"
+msgstr "mai rùa"
+
+msgid "put a custom 'shell' on the turtle"
+msgstr "đặt một chiếc mai tùy thích lên chú rùa"
+
+msgid "top of a collapsed stack"
+msgstr "đầu của một đống đã thu gọn"
+
 msgid "load"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:771
+msgid "loads a block"
+msgstr "nạp khối của mình"
+
+msgid "setxy"
+msgstr "đặt xy"
+
 msgid "palette"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:774
 msgid "selects a palette"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1073
+msgid "Palette of presentation templates"
+msgstr "Bảng chọn mẫu trình diễn"
+
+msgid "hide blocks"
+msgstr "ẩn khối"
+
+msgid "declutters canvas by hiding blocks"
+msgstr "làm sạch sẽ vùng vẽ bằng cách ẩn các khối"
+
+msgid "show blocks"
+msgstr "hiện khối"
+
+msgid "restores hidden blocks"
+msgstr "phục hồi các khối bị ẩn"
+
+msgid "hides the Sugar toolbars"
+msgstr "ẩn các thanh công cụ Sugar"
+
+msgid "list"
+msgstr "danh sách"
+
+msgid "presentation bulleted list"
+msgstr "trình diễn danh sách nút"
+
+msgid "presentation template: list of bullets"
+msgstr "mẫu trình diễn: danh sách chấm điểm"
+
+msgid "presentation template: select Journal object (no description)"
+msgstr "mẫu trình diễn: chọn đối tượng Nhật ký (không mô tả)"
+
+msgid "presentation template: select Journal object (with description)"
+msgstr "mẫu trình diễn: chọn đối tượng Nhật ký (với mô tả)"
+
+msgid "presentation template: select four Journal objects"
+msgstr "mẫu trình diễn: chọn 4 đối tượng Nhật ký"
+
+msgid "presentation template: select two Journal objects"
+msgstr "mẫu trình diễn: chọn 2 đối tượng Nhật ký"
+
+msgid "xcor of left of screen"
+msgstr "xcor bên trái màn hình"
+
+msgid "bottom"
+msgstr "dưới"
+
+msgid "ycor of bottom of screen"
+msgstr "ycor bên dưới màn hình"
+
+msgid "the canvas width"
+msgstr "chiều rộng vùng vẽ"
+
+msgid "xcor of right of screen"
+msgstr "xcor bên phải màn hình"
+
+msgid "ycor of top of screen"
+msgstr "ycor bên trên màn hình"
+
+msgid "the canvas height"
+msgstr "chiều cao vùng vẽ"
+
+msgid "title x"
+msgstr "tiêu đề x"
+
+msgid "title y"
+msgstr "tiêu đề y"
+
+msgid "left x"
+msgstr "tọa độ x phía trái"
+
+msgid "top y"
+msgstr "tọa độ y phía trên"
+
+msgid "right x"
+msgstr "tọa độ x phía phải"
+
+msgid "bottom y"
+msgstr "tọa độ y phía dưới"
+
+msgid "presentation 1x1"
+msgstr "trình diễn 1×1"
+
+msgid "presentation 2x1"
+msgstr "trình diễn 2×1"
+
+msgid "presentation 1x2"
+msgstr "trình diễn 1×2"
+
+msgid "presentation 2x2"
+msgstr "trình diễn 2×2"
+
 msgid "Palette of user-defined operators"
 msgstr ""
 
-#: pysamples/brain.py:43
 msgid "Please install the Speak Activity and try again."
 msgstr ""
 
-#: pysamples/brain.py:54
 msgid "Spanish"
 msgstr ""
 
-#: pysamples/brain.py:58 pysamples/brain.py:72 pysamples/brain.py:74
-#: pysamples/brain.py:80
 msgid "English"
 msgstr ""
 
-#: pysamples/brain.py:91
 msgid "Sorry, I can't understand what you are asking about."
 msgstr ""
 
-#: pysamples/brain.py:100
 msgid ""
 "Sorry, there is no free memory to load my brain. Close other activities and "
 "try once more."
 msgstr ""
 
-#: pysamples/forward_push.py:45
 msgid "push destination rgb value to heap"
 msgstr ""
 
-#: pysamples/journal-stats.py:78
+msgid "stop"
+msgstr "dừng"
+
+msgid "play"
+msgstr "chơi"
+
+msgid "save"
+msgstr "lưu"
+
 msgid "other"
 msgstr ""
 
-#: pysamples/uturn.py:24
 msgid "uturn"
 msgstr ""
 
-#: pysamples/uturn.py:26
 msgid "make a uturn"
 msgstr ""
 
-#: turtleblocks.py:89
 msgid "usage is"
 msgstr ""
 
-#: turtleblocks.py:250
 msgid "No option action:"
 msgstr ""
 
-#: turtleblocks.py:265
 msgid "File not found"
 msgstr ""
 
-#: turtleblocks.py:289
-#, python-format
 msgid "Configuration directory not writable: %s"
 msgstr ""
 
-#: turtleblocks.py:365
 msgid "New"
 msgstr ""
 
-#: turtleblocks.py:373
+msgid "Open"
+msgstr "Mở"
+
+msgid "Save"
+msgstr "Lưu"
+
+msgid "Save as"
+msgstr "Lưu dạng"
+
 msgid "Quit"
 msgstr ""
 
-#: turtleblocks.py:421
+msgid "File"
+msgstr "Tập tin"
+
+msgid "Rescale coordinates"
+msgstr "Đặt lại tỷ lệ toạ độ"
+
+msgid "Reset block size"
+msgstr "Đặt lại kích cỡ khối"
+
+msgid "Show/hide blocks"
+msgstr "Hiện/ẩn khối"
+
+msgid "Tools"
+msgstr "Công cụ"
+
+msgid "Debug"
+msgstr "Gỡ lỗi"
+
+msgid "Turtle"
+msgstr "Rùa"
+
 msgid "About..."
 msgstr ""
 
-#: turtleblocks.py:461
 msgid "You have unsaved work. Would you like to save before quitting?"
 msgstr ""
 
-#: turtleblocks.py:462
 msgid "Save project?"
 msgstr ""
 
-#~ msgid "then else"
-#~ msgstr "không thì"
+msgid "then else"
+msgstr "không thì"
 
-#~ msgid "bottom of a collapsible stack"
-#~ msgstr "phía dưới của một đống có thể thu gọn"
+msgid "bottom of a collapsible stack"
+msgstr "phía dưới của một đống có thể thu gọn"
 
-#~ msgid "bottom block in a collapsed stack: click to open"
-#~ msgstr "khối dưới trong một đống đã thu gọn: nhấn để mở lại"
+msgid "bottom block in a collapsed stack: click to open"
+msgstr "khối dưới trong một đống đã thu gọn: nhấn để mở lại"
 
-#~ msgid "top of stack"
-#~ msgstr "đầu đống"
+msgid "top of stack"
+msgstr "đầu đống"
 
-#~ msgid "label"
-#~ msgstr "nhãn"
+msgid "label"
+msgstr "nhãn"
 
-#~ msgid "Save as HTML"
-#~ msgstr "Lưu dạng HTML"
+msgid "Save as HTML"
+msgstr "Lưu dạng HTML"
 
-#~ msgid "<Ctrl>d"
-#~ msgstr "Tổ hợp phím Ctrl+d"
+msgid "<Ctrl>d"
+msgstr "Tổ hợp phím Ctrl+d"
 
-#~ msgid "presentation"
-#~ msgstr "trình diễn"
+msgid "presentation"
+msgstr "trình diễn"
 
-# Phím tắt này tương ứng với hành động nào?
-#~ msgid "<Ctrl>b"
-#~ msgstr "Tổ hợp phím Ctrl+b"
+msgid "<Ctrl>b"
+msgstr "Tổ hợp phím Ctrl+b"
 
-#~ msgid "Move the cursor over the orange palette for help."
-#~ msgstr "Di chuyển con trỏ trên bảng chọn màu cam để đượctrợ giúp."
+msgid "Move the cursor over the orange palette for help."
+msgstr "Di chuyển con trỏ trên bảng chọn màu cam để đượctrợ giúp."
 
-#~ msgid "Import/Export"
-#~ msgstr "Nhập/Xuất"
+msgid "Import/Export"
+msgstr "Nhập/Xuất"
 
-#~ msgid "Import project from the Journal"
-#~ msgstr "Nhập dự án từ Nhật ký"
+msgid "Import project from the Journal"
+msgstr "Nhập dự án từ Nhật ký"
 
-#~ msgid "full screen"
-#~ msgstr "toàn màn hình"
+msgid "full screen"
+msgstr "toàn màn hình"
 
-#~ msgid "stack"
-#~ msgstr "đống"
+msgid "stack"
+msgstr "đống"
 
-#~ msgid " clean "
-#~ msgstr " làm sạch "
+msgid " clean "
+msgstr " làm sạch "
 
-#, fuzzy
-#~ msgid "numbers"
-#~ msgstr "số"
+msgid "numbers"
+msgstr "số"
 
-#~ msgid "write"
-#~ msgstr "viết"
+msgid "write"
+msgstr "viết"
 
-#~ msgid "restore last"
-#~ msgstr "phục hồi cái cuối"
+msgid "restore last"
+msgstr "phục hồi cái cuối"
 
-#~ msgid ""
-#~ "a programmable block: used to add advanced math equations, e.g., sin(x)"
-#~ msgstr ""
-#~ "một khối có thể lập trình: dùng để thêm phương trình toán học cấp cao, v."
-#~ "d. sin(x)"
+msgid "a programmable block: used to add advanced math equations, e.g., sin(x)"
+msgstr ""
+"một khối có thể lập trình: dùng để thêm phương trình toán học cấp cao, v.d. "
+"sin(x)"
 
-#, fuzzy
-#~ msgid "blocks"
-#~ msgstr "Khối"
+msgid "blocks"
+msgstr "Khối"
 
-#~ msgid "text size"
-#~ msgstr "kích cỡ chữ"
+msgid "text size"
+msgstr "kích cỡ chữ"
 
-#~ msgid "sensor input resistance"
-#~ msgstr "điện trở đầu vào máy nhạy"
+msgid "sensor input resistance"
+msgstr "điện trở đầu vào máy nhạy"
 
-#~ msgid "holds current text color (can be used in place of a number block)"
-#~ msgstr ""
-#~ "giữ màu chữ hiện thời (cũng có thể dùng để thay thế một khối con số)"
+msgid "holds current text color (can be used in place of a number block)"
+msgstr "giữ màu chữ hiện thời (cũng có thể dùng để thay thế một khối con số)"
 
-#~ msgid "picture top"
-#~ msgstr "trên ảnh"
+msgid "picture top"
+msgstr "trên ảnh"
 
-#, fuzzy
-#~ msgid "flow"
-#~ msgstr "Chảy"
+msgid "flow"
+msgstr "Chảy"
 
-#~ msgid "restores most recent blocks from trash"
-#~ msgstr "phục hồi từ sọt rác các khối vừa đặt"
+msgid "restores most recent blocks from trash"
+msgstr "phục hồi từ sọt rác các khối vừa đặt"
 
-#~ msgid "Load my block"
-#~ msgstr "Nạp khối của mình"
+msgid "Load my block"
+msgstr "Nạp khối của mình"
 
-#~ msgid "picture left"
-#~ msgstr "bên trái ảnh"
+msgid "picture left"
+msgstr "bên trái ảnh"
 
-#~ msgid "Python code"
-#~ msgstr "mã Python"
+msgid "Python code"
+msgstr "mã Python"
 
-#~ msgid "bottom block in a collapsibe stack: click to collapse"
-#~ msgstr "khối dưới trong một đống có thể thu gọn: nhấn để thu gọn"
+msgid "bottom block in a collapsibe stack: click to collapse"
+msgstr "khối dưới trong một đống có thể thu gọn: nhấn để thu gọn"
 
-#~ msgid "Trashcan"
-#~ msgstr "Sọt Rác"
+msgid "Trashcan"
+msgstr "Sọt Rác"
 
-#, fuzzy
-#~ msgid "pen"
-#~ msgstr "Mở"
+msgid "pen"
+msgstr "Mở"
 
-#~ msgid "picture right"
-#~ msgstr "bên phải ảnh"
+msgid "picture right"
+msgstr "bên phải ảnh"
 
-#~ msgid "volume"
-#~ msgstr "âm lượng"
+msgid "volume"
+msgstr "âm lượng"
 
-#~ msgid "picture bottom"
-#~ msgstr "dưới ảnh"
+msgid "picture bottom"
+msgstr "dưới ảnh"
 
-#~ msgid "sensor voltage"
-#~ msgstr "điện áp máy nhạy"
+msgid "sensor voltage"
+msgstr "điện áp máy nhạy"
 
-#~ msgid "holds current text size (can be used in place of a number block)"
-#~ msgstr ""
-#~ "giữ kích cỡ chữ hiện thời (cũng có thể dùng để thay thế một khối con số)"
+msgid "holds current text size (can be used in place of a number block)"
+msgstr ""
+"giữ kích cỡ chữ hiện thời (cũng có thể dùng để thay thế một khối con số)"
 
-#, fuzzy
-#~ msgid "extras"
-#~ msgstr "Bổ sung"
+msgid "extras"
+msgstr "Bổ sung"
 
-#~ msgid "<Alt>d"
-#~ msgstr "<Alt>g"
+msgid "<Alt>d"
+msgstr "<Alt>g"
 
-#~ msgid "Save Logo"
-#~ msgstr "Lưu Biểu hình"
+msgid "Save Logo"
+msgstr "Lưu Biểu hình"
 
-#~ msgid "<Ctrl>o"
-#~ msgstr "<Ctrl>m"
+msgid "<Ctrl>o"
+msgstr "<Ctrl>m"
 
-#~ msgid "bulleted list"
-#~ msgstr "danh sách nút"
+msgid "bulleted list"
+msgstr "danh sách nút"
 
-#~ msgid "picture"
-#~ msgstr "ảnh"
+msgid "picture"
+msgstr "ảnh"
 
-#~ msgid "2×2 pictures"
-#~ msgstr "ảnh 2×2"
+msgid "2×2 pictures"
+msgstr "ảnh 2×2"
 
-#~ msgid "2×1 pictures"
-#~ msgstr "ảnh 2×1"
+msgid "2×1 pictures"
+msgstr "ảnh 2×1"
 
-#~ msgid "1×2 pictures"
-#~ msgstr "ảnh 1×2"
+msgid "1×2 pictures"
+msgstr "ảnh 1×2"
 
-#~ msgid "1×1 picture"
-#~ msgstr "ảnh 1×1"
+msgid "1×1 picture"
+msgstr "ảnh 1×1"
 
-#~ msgid "name"
-#~ msgstr "tên"
+msgid "name"
+msgstr "tên"
 
-#~ msgid "holds current pen shade (can be used in place of a number block)"
-#~ msgstr ""
-#~ "giữ sắc màu bút hiện thời (cũng có thể dùng để thay thế một khối con số)"
+msgid "holds current pen shade (can be used in place of a number block)"
+msgstr ""
+"giữ sắc màu bút hiện thời (cũng có thể dùng để thay thế một khối con số)"
 
-#~ msgid ""
-#~ "a programmable block: add your own math equation in the block, e.g., "
-#~ "sin(x)"
-#~ msgstr ""
-#~ "một khối có thể lập trình: hãy thêm vào khối phương trình toán tử của "
-#~ "mình, v.d. sin(x)"
+msgid ""
+"a programmable block: add your own math equation in the block, e.g., sin(x)"
+msgstr ""
+"một khối có thể lập trình: hãy thêm vào khối phương trình toán tử của mình, "
+"v.d. sin(x)"
 
-#~ msgid "pop value off FILO"
-#~ msgstr "bỏ giá trị ra FILO"
+msgid "pop value off FILO"
+msgstr "bỏ giá trị ra FILO"
 
-#~ msgid "show FILO in status block"
-#~ msgstr "hiện FILO trong khối trạng thái"
+msgid "show FILO in status block"
+msgstr "hiện FILO trong khối trạng thái"
 
-#~ msgid "empty FILO"
-#~ msgstr "đổ FILO"
+msgid "empty FILO"
+msgstr "đổ FILO"
 
-#~ msgid "wait specified number of seconds"
-#~ msgstr "đợi trong một số giây được ghi rõ"
+msgid "wait specified number of seconds"
+msgstr "đợi trong một số giây được ghi rõ"
 
-#~ msgid "do not continue current action"
-#~ msgstr "không tiếp tục hành vi đang làm"
+msgid "do not continue current action"
+msgstr "không tiếp tục hành vi đang làm"
 
-#~ msgid "<Alt>p"
-#~ msgstr "<Alt>p"
+msgid "<Alt>p"
+msgstr "<Alt>p"
 
-#~ msgid "<Alt>b"
-#~ msgstr "<Alt>b"
+msgid "<Alt>b"
+msgstr "<Alt>b"
 
-#~ msgid "<Alt>e"
-#~ msgstr "<Alt>e"
+msgid "<Alt>e"
+msgstr "<Alt>e"
 
-#~ msgid "<Alt>r"
-#~ msgstr "<Alt>r"
+msgid "<Alt>r"
+msgstr "<Alt>r"
 
-#~ msgid "<Alt>w"
-#~ msgstr "<Alt>w"
+msgid "<Alt>w"
+msgstr "<Alt>w"
 
-#~ msgid "<Alt>s"
-#~ msgstr "<Alt>s"
+msgid "<Alt>s"
+msgstr "<Alt>s"
 
-#~ msgid "<Alt>o"
-#~ msgstr "<Alt>o"
+msgid "<Alt>o"
+msgstr "<Alt>o"
 
-#~ msgid "stack 2"
-#~ msgstr "đống 2"
+msgid "stack 2"
+msgstr "đống 2"
 
-#~ msgid "stack 1"
-#~ msgstr "đống 1"
+msgid "stack 1"
+msgstr "đống 1"
 
-#~ msgid "Keyboard"
-#~ msgstr "Bàn phím"
+msgid "Keyboard"
+msgstr "Bàn phím"
 
-#~ msgid "My Blocks"
-#~ msgstr "Khối của mình"
+msgid "My Blocks"
+msgstr "Khối của mình"
 
-#~ msgid "Numbers"
-#~ msgstr "Số"
+msgid "Numbers"
+msgstr "Số"
 
-#~ msgid "Templates"
-#~ msgstr "Mẫu"
+msgid "Templates"
+msgstr "Mẫu"
 
-#~ msgid "read key"
-#~ msgstr "đọc phím"
+msgid "read key"
+msgstr "đọc phím"
 
-# Cần dịch hay không?
-#~ msgid "setyx"
-#~ msgstr "setyx"
+msgid "setyx"
+msgstr "setyx"
 
-#~ msgid "text color"
-#~ msgstr "màu chữ"
+msgid "text color"
+msgstr "màu chữ"
 
-#~ msgid "Pen"
-#~ msgstr "Bút"
+msgid "Pen"
+msgstr "Bút"
 
-#~ msgid "hide palette"
-#~ msgstr "ẩn bảng chọn"
+msgid "hide palette"
+msgstr "ẩn bảng chọn"
 
-#~ msgid "save Logo"
-#~ msgstr "lưu Logo"
+msgid "save Logo"
+msgstr "lưu Logo"
 
-#~ msgid "run"
-#~ msgstr "chạy"
+msgid "run"
+msgstr "chạy"
 
-#~ msgid "stop stack"
-#~ msgstr "dừng đống"
+msgid "stop stack"
+msgstr "dừng đống"
 
-#~ msgid "hres"
-#~ msgstr "hres"
+msgid "hres"
+msgstr "hres"
 
-#~ msgid "vres"
-#~ msgstr "vres"
+msgid "vres"
+msgstr "vres"

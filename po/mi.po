@@ -1,7 +1,3 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #, fuzzy
 msgid ""
 msgstr ""
@@ -30,413 +26,279 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pootle 2.0.5\n"
 
-#. TRANS: "name" option from activity.info file
-#. TRANS: "summary" option from activity.info file
-#. TRANS: "description" option from activity.info file
 msgid "turtleart-extras (master)"
 msgstr ""
 
-#: taextras.py:37
 msgid "Turtle Blocks"
 msgstr ""
 
-#: taextras.py:38
 msgid "Turtle Art"
 msgstr "Toi Honu"
 
-#: taextras.py:42
 msgid "Turtle Art Mini"
 msgstr "Toi Honu Ririki"
 
-#: taextras.py:46
 msgid "Turtle Confusion"
 msgstr "Rangirua Honu"
 
-#: taextras.py:47 taextras.py:52
 msgid "Select a challenge"
 msgstr "Tīpako wero"
 
-#: taextras.py:51
 msgid "Amazonas Tortuga"
 msgstr ""
 
-#: taextras.py:58
 msgid "Palette of Mexican pesos"
 msgstr "Papatā o te pesos Mehikana"
 
-#: taextras.py:59
 msgid "Palette of Colombian pesos"
 msgstr "Papatā o te pesos Kurumupia"
 
-#: taextras.py:60
 msgid "Palette of Rwandan francs"
 msgstr "Papatā o te francs Rewanata"
 
-#: taextras.py:61
 msgid "Palette of US dollars"
 msgstr "Papatā o te tāra Amerikana"
 
-#: taextras.py:62
 msgid "Palette of Australian dollars"
 msgstr "Papatā o te tāra Ahitereiria"
 
-#: taextras.py:63
 msgid "Palette of Paraguayan Guaranies"
 msgstr "Papatā o te guaranies Parakuaiana"
 
-#: taextras.py:64
 msgid "Palette of Peruvian Nuevo Soles"
 msgstr "Papatā o te soles Peruwhiana Nueto"
 
-#: taextras.py:65
 msgid "Palette of Uruguayan Pesos"
 msgstr "Papatā o te pesos Urukuaiana"
 
-#. TRANS: Butia is a Robot Project from Uruguay
-#. (http://www.fing.edu.uy/inco/proyectos/butia/)
-#: taextras.py:71
 msgid "TurtleBots"
 msgstr "HonuKaretao"
 
-#. TRANS: summary of TurtleBots activity
-#: taextras.py:73
 msgid "TurtleBlocks with Butia, Lego NxT, WeDo, Arduino, FollowMe plugins"
 msgstr ""
 
-#: taextras.py:74
 msgid "ERROR: The speed must be a value between 0 and 1023"
 msgstr ""
 
-#: taextras.py:75
 msgid "ERROR: The pin must be between 1 and 8"
 msgstr ""
 
-#: taextras.py:76
 msgid "ERROR: The value must be 0 or 1, LOW or HIGH"
 msgstr ""
 
-#: taextras.py:77
 msgid "ERROR: The mode must be INPUT or OUTPUT."
 msgstr ""
 
-#: taextras.py:78 taextras.py:79
 msgid "turns LED on and off: 1 means on, 0 means off"
 msgstr ""
 
-#: taextras.py:80
 msgid "returns the gray level as a value between 0 and 65535"
 msgstr ""
 
-#: taextras.py:81
-#, fuzzy
 msgid "returns 1 when the button is pressed and 0 otherwise"
 msgstr "ka whakahoki i te 1 i te wā e pēhi ana i te pātene, ka 0 atu i tērā"
 
-#: taextras.py:82
 msgid "returns the light level as a value between 0 and 65535"
 msgstr ""
 
-#: taextras.py:83
 msgid "returns the distance as a value between 0 and 65535"
 msgstr ""
 
-#: taextras.py:84
 msgid "returns the resistance value (ohms)"
 msgstr ""
 
-#: taextras.py:85
 msgid "returns the voltage value (volts)"
 msgstr ""
 
-#: taextras.py:86
 msgid "returns the temperature"
 msgstr ""
 
-#: taextras.py:87
 msgid "returns 1 when the sensors detects a magnetic field, 0 otherwise"
 msgstr ""
 "ka whakahoki i te 1 i te wā ka kite ngā pūoko i tētahi papa autō, ka 0 atu i "
 "tēnā"
 
-#: taextras.py:88
 msgid "LED"
 msgstr "LED"
 
-#: taextras.py:89
 msgid "button"
 msgstr "pātene"
 
-#: TurtleArt/tabasics.py:295 TurtleArt/tabasics.py:363
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1194
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1199
 msgid "gray"
 msgstr "hina"
 
-#: taextras.py:91 taextras.py:356
 msgid "light"
 msgstr "rama"
 
-#: taextras.py:92
 msgid "temperature"
 msgstr "paemahana"
 
-#: taextras.py:93 taextras.py:330
 msgid "distance"
 msgstr "tawhiti"
 
-#: taextras.py:94 plugins/audio_sensors/audio_sensors.py:151
-#: plugins/audio_sensors/audio_sensors.py:165
-#: plugins/audio_sensors/audio_sensors.py:179
-#: plugins/audio_sensors/audio_sensors.py:193
 msgid "resistance"
 msgstr "parenga"
 
-#: taextras.py:95 plugins/audio_sensors/audio_sensors.py:157
-#: plugins/audio_sensors/audio_sensors.py:171
-#: plugins/audio_sensors/audio_sensors.py:185
-#: plugins/audio_sensors/audio_sensors.py:199
 msgid "voltage"
 msgstr "ngaohiko"
 
-#: taextras.py:96
 msgid "Butia Robot"
 msgstr "Karetao Putia"
 
-#: taextras.py:97
 msgid "refresh Butia"
 msgstr "tāmata Putia"
 
-#: taextras.py:98
 msgid "refresh the state of the Butia palette and blocks"
 msgstr "tāmata te tūnga o ngā paraka me te papatā Putia"
 
-#. #-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: This string is shorthand for "battery charge of Butia"
-#: taextras.py:100
 msgid "battery charge Butia"
 msgstr "whakakaha pūkaha Putia"
 
-#: taextras.py:101
 msgid ""
 "returns the battery charge in volts. If no motors present, it returns 255"
 msgstr ""
 
-#. #-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: This string is shorthand for "speed of Butia"
-#: taextras.py:103
 msgid "speed Butia"
 msgstr "terenga Putia"
 
-#: taextras.py:104
 msgid "set the speed of the Butia motors"
 msgstr ""
 
-#: taextras.py:105
 msgid "move Butia"
 msgstr ""
 
-#: taextras.py:106 TurtleArt/tabasics.py:158
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:871
 msgid "left"
 msgstr "mauī"
 
-#: taextras.py:107 TurtleArt/tabasics.py:170
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:895
 msgid "right"
 msgstr "matau"
 
-#: taextras.py:108
 msgid "moves the Butia motors at the specified speed"
 msgstr ""
 
-#: taextras.py:109
 msgid "stop Butia"
 msgstr "whakatū Putia"
 
-#: taextras.py:110
 msgid "stop the Butia robot"
 msgstr "whakatūria te karetao Putia"
 
-#. #-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: This string is shorthand for "move Butia forward"
-#: taextras.py:112
 msgid "forward Butia"
 msgstr "whakamua Putia"
 
-#: taextras.py:113
 msgid "move the Butia robot forward"
 msgstr "neke whakamua te karetao Putia"
 
-#. #-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: This string is shorthand for "turn Butia left"
-#: taextras.py:115
 msgid "left Butia"
 msgstr "mauī Putia"
 
-#: taextras.py:116
-#, fuzzy
 msgid "turn the Butia robot at left"
 msgstr "huri whakatematau te karetao Putia"
 
-#. #-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: This string is shorthand for "turn Butia right"
-#: taextras.py:118
 msgid "right Butia"
 msgstr "matau Putia"
 
-#: taextras.py:119
 msgid "turn the Butia robot at right"
 msgstr "huri whakatematau te karetao Putia"
 
-#. #-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: This string is shorthand for "move Butia backward"
-#: taextras.py:121
 msgid "backward Butia"
 msgstr "whakamuri Putia"
 
-#: taextras.py:122
 msgid "move the Butia robot backward"
 msgstr "neke whakamuri te karetao Putia"
 
-#: taextras.py:123
 msgid "Butia Robot extra blocks"
 msgstr ""
 
-#: taextras.py:124
 msgid "hack pin mode"
 msgstr ""
 
-#: taextras.py:125 taextras.py:293 taextras.py:459
 msgid "pin"
 msgstr "pine"
 
-#: taextras.py:126 taextras.py:460
 msgid "mode"
 msgstr "aratau"
 
-#: taextras.py:127
-#, fuzzy
 msgid "Select the pin function (INPUT, OUTPUT)."
 msgstr "Tīpakohia te taumahi pine (TĀURU, HUAPUTA, PWM, TŪMAU)."
 
-#: taextras.py:128
 msgid "write hack pin Butia"
 msgstr ""
 
-#: taextras.py:129 taextras.py:463 TurtleArt/tabasics.py:924
-#: TurtleArt/tawindow.py:4427
 msgid "value"
 msgstr "uara"
 
-#: taextras.py:130
 msgid "set a hack pin to 0 or 1"
 msgstr ""
 
-#: taextras.py:131
 msgid "read hack pin Butia"
 msgstr ""
 
-#: taextras.py:132
 msgid "read the value of a hack pin"
 msgstr ""
 
-#: taextras.py:133 taextras.py:435
 msgid "HIGH"
 msgstr "TIKETIKE"
 
-#: taextras.py:134 taextras.py:472
 msgid "Set HIGH value for digital port."
 msgstr "Tautuhi uara TIKETIKE hei tauranga mamati."
 
-#: taextras.py:135 taextras.py:437
 msgid "INPUT"
 msgstr "TĀURU"
 
-#: taextras.py:136
-#, fuzzy
 msgid "Configure hack port for digital input."
 msgstr "Whirihora tauranga Atuino mō te tāurunga mamati."
 
-#: taextras.py:137 taextras.py:436
 msgid "LOW"
 msgstr "PĀPAKU"
 
-#: taextras.py:138 taextras.py:475
 msgid "Set LOW value for digital port."
 msgstr "Tautuhi uara PĀPAKU hei tauranga mamati."
 
-#: taextras.py:139 taextras.py:438
 msgid "OUTPUT"
 msgstr "HUAPUTA"
 
-#: taextras.py:140
-#, fuzzy
 msgid "Configure hack port for digital output."
 msgstr "Whirihora tauranga Atuino hei huaputa mamati."
 
-#: taextras.py:141
 msgid "Butia"
 msgstr "Putia"
 
-#: taextras.py:142
-#, python-format
 msgid "ERROR: The pin %s must be in OUTPUT mode."
 msgstr ""
 
-#: taextras.py:143
-#, python-format
 msgid "ERROR: The pin %s must be in INPUT mode."
 msgstr ""
 
-#: taextras.py:147
 msgid "Error importing Pygame. This plugin require Pygame 1.9"
 msgstr ""
 
-#: taextras.py:148
 msgid "Error on initialization of the camera"
 msgstr "He hapa i te arawhititanga o te kāmera"
 
-#: taextras.py:149
-#, fuzzy
 msgid "No camera was found"
-msgstr ""
-"#-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Kāore i kitea he kāmera"
+msgstr "Kāore i kitea he kāmera"
 
-#: taextras.py:150
 msgid "Error stopping camera"
 msgstr "I hapa te whakatū kāmera"
 
-#: taextras.py:151
 msgid "Error starting camera"
 msgstr "I hapa te tīmata kāmera"
 
-#. TRANS: The "mask" is used to restrict processing to a region in the image
-#: taextras.py:153
 msgid "Error in get mask"
 msgstr ""
 
-#: taextras.py:154
 msgid "FollowMe"
 msgstr "TauaruMai"
 
-#: taextras.py:155
 msgid "refresh FollowMe"
 msgstr ""
 
-#: taextras.py:156
-#, fuzzy
 msgid "Search for a connected camera."
 msgstr "Rapu i tētahi pereki NXT kua hono."
 
-#. #-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: the calibration is used to match an RGB color to a target
-#: taextras.py:158
 msgid "calibration"
 msgstr "whakatauritetika"
 
-#: taextras.py:159
 #, fuzzy
 msgid "store a personalized calibration"
 msgstr ""
@@ -445,56 +307,36 @@ msgstr ""
 "#-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "ka penapena i tētahi whakatauritetika whaiaronga"
 
-#: taextras.py:160
 msgid "return a personalized calibration"
 msgstr "ka whakahoki i tētahi whakatauritetika whaiaronga"
 
-#: taextras.py:161
 msgid "follow"
 msgstr "tauaru"
 
-#: taextras.py:162
 msgid "follow a color or calibration"
 msgstr "tauaru i tētahi tae, whakatauritetika rānei"
 
-#: taextras.py:163 plugins/camera_sensor/camera_sensor.py:80
-#: plugins/camera_sensor/camera_sensor.py:93
-#: plugins/camera_sensor/camera_sensor.py:128
-#: plugins/camera_sensor/camera_sensor.py:141
-#: plugins/light_sensor/light_sensor.py:56
-#: plugins/light_sensor/light_sensor.py:63
 msgid "brightness"
 msgstr "tīahotanga"
 
-#: taextras.py:164
 msgid "set the camera brightness as a value between 0 to 255."
 msgstr ""
 
-#: taextras.py:165
 msgid "minimum pixels"
 msgstr "ngā pika mōkito"
 
-#: taextras.py:166
 msgid "set the minimal number of pixels to follow"
 msgstr "tautuhia te mōkito tau pika hei tauaru"
 
-#: taextras.py:167
 msgid "threshold"
 msgstr "paepae"
 
-#. #-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: RGB color space (red, green, blue)
-#: taextras.py:169
 msgid "set a threshold for a RGB color"
 msgstr "tautuhia he paepae mō tētahi tae RGB"
 
-#: taextras.py:170
 msgid "camera mode"
 msgstr "aratau kāmera"
 
-#. #-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: RGB, YUV, and HSV are color spaces
-#: taextras.py:172
 #, fuzzy
 msgid "set the color mode of the camera: RGB; YUV or HSV"
 msgstr ""
@@ -503,293 +345,190 @@ msgstr ""
 "#-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "tautuhia te aratau tae o te kāmera, RGB, YUV, HSV rānei"
 
-#: taextras.py:173
 msgid "get brightness"
 msgstr ""
 
-#: taextras.py:174
 msgid "get the brightness of the ambient light"
 msgstr ""
 
-#: taextras.py:175
 msgid "average color"
 msgstr ""
 
-#: taextras.py:176
 msgid ""
 "if set to 0 then color averaging is off during calibration; for other values "
 "it is on"
 msgstr ""
 
-#: taextras.py:178
 msgid "x position"
 msgstr "tūnga x"
 
-#: taextras.py:179
 msgid "return x position"
 msgstr "whakahoki tūnga x"
 
-#: taextras.py:180
 msgid "y position"
 msgstr "tūnga y"
 
-#: taextras.py:181
 msgid "return y position"
 msgstr "whakahoki tūnga y"
 
-#: taextras.py:182
 msgid "pixels"
 msgstr "ngā pika"
 
-#: taextras.py:183
 msgid "return the number of pixels of the biggest blob"
 msgstr "whakahoki te tau o ngā pika o te pukupuku nui"
 
-#. #-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: RGB color space (red, green, blue)
-#: taextras.py:185
 msgid "set the color mode of the camera to RGB"
 msgstr "tautuhia te aratae tau o te kāmera ki te RGB"
 
-#. #-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: YUV color space (luminance, chrominance)
-#: taextras.py:187
 msgid "set the color mode of the camera to YUV"
 msgstr "tautuhia te aratau tae o te kāmera ki te YUV"
 
-#. #-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: HSV color space (hue, saturation, value)
-#: taextras.py:189
 msgid "set the color mode of the camera to HSV"
 msgstr "tautuhia te aratau tae o te kāmera ki te HSV"
 
-#: taextras.py:190
 msgid "empty calibration"
 msgstr "whakaputu whakatauritetika"
 
-#: taextras.py:191
 msgid "error in string conversion"
 msgstr "he hapa ki te tahuringa aho"
 
-#. TRANS: Pattern detection is a plugin that allow detect signals
-#. with the camera
-#: taextras.py:197
 msgid "Pattern detection"
 msgstr ""
 
-#: taextras.py:198
 msgid "Seeing signal"
 msgstr ""
 
-#: taextras.py:199
 msgid "Returns True if the signal is in front of the camera"
 msgstr ""
 
-#: taextras.py:200
 msgid "Distance to signal"
 msgstr ""
 
-#: taextras.py:201
 msgid "Returns the distance of the signal to the camera in millimeters"
 msgstr ""
 
-#. #-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: SumBot is a robot programmed for "Sumo wrestling"
-#: taextras.py:206
 msgid "SumBot"
 msgstr "KaretaoTāpiri"
 
-#: taextras.py:207
 msgid "speed SumBot"
 msgstr "terenga KaretaoTāpiri"
 
-#: taextras.py:208
 msgid "submit the speed to the SumBot"
 msgstr "tukuna te terenga ki te KaretaoTāpiri"
 
-#: taextras.py:209
 msgid "set the default speed for the movement commands"
 msgstr "tautuhia te terenga taunoa mō ngā tohutohu nekehanga"
 
-#. #-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: This string is shorthand for "move SumBot forward"
-#: taextras.py:211
 msgid "forward SumBot"
 msgstr "whakamua KaretaoTāpiri"
 
-#: taextras.py:212
 msgid "move SumBot forward"
 msgstr "neke whakamua KaretaoTāpiri"
 
-#. #-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: This string is shorthand for "move SumBot backward"
-#: taextras.py:214
 msgid "backward SumBot"
 msgstr "whakamuri KaretaoTāpiri"
 
-#: taextras.py:215
 msgid "move SumBot backward"
 msgstr "neke whakamuri KaretaoTāpiri"
 
-#: taextras.py:216
 msgid "stop SumBot"
 msgstr "whakatū KaretaoTāpiri"
 
-#: taextras.py:217
 msgid "stop the SumBot"
 msgstr "whakatū i te KaretaoTāpiri"
 
-#. #-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: This string is shorthand for "turn SumBot left"
-#: taextras.py:219
 msgid "left SumBot"
 msgstr "whakatemauī KaretaoTāpiri"
 
-#: taextras.py:220
 msgid "turn left the SumBot"
 msgstr "whakaneke mauī i te KaretaoTāpiri"
 
-#. #-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: This string is shorthand for "move SumBot right"
-#: taextras.py:222
 msgid "right SumBot"
 msgstr "whakatematau KaretaoTāpiri"
 
-#: taextras.py:223
 msgid "turn right the SumBot"
 msgstr "whakaneke matau i te KaretaoTāpiri"
 
-#. #-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: The angle to the center is the angle SumBot must turn to
-#. face the center of the playing field
-#: taextras.py:226
 msgid "angle to center"
 msgstr "anga whakatewaenga"
 
-#. #-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: dohyo is the playing field
-#: taextras.py:228
 msgid "get the angle to the center of the dohyo"
 msgstr "tīkina te koki ki waenga o te dohyo"
 
-#. #-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: The angle to the center is the angle SumBot must turn to
-#. face the Enemy (opponent)
-#: taextras.py:231
 msgid "angle to Enemy"
 msgstr "anga ki Hoariri"
 
-#: taextras.py:232
 msgid "get the angle to the Enemy"
 msgstr "tīkina te koki ki te Hoariri"
 
-#. #-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: This string is shorthand for "x coordinate of SumBot"
-#: taextras.py:234
 msgid "x coor. SumBot"
 msgstr "ruruku x. KaretaoTāpiri"
 
-#: taextras.py:235
 msgid "get the x coordinate of the SumBot"
 msgstr "tīkina te ruruku x o te KaretaoTāpiri"
 
-#. #-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: This string is shorthand for "y coordinate of SumBot"
-#: taextras.py:237
 msgid "y coor. SumBot"
 msgstr "ruruku y. KaretaoTāpiri"
 
-#: taextras.py:238
 msgid "get the y coordinate of the SumBot"
 msgstr "tīkina te ruruku y o te KaretaoTāpiri"
 
-#. #-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: This string is shorthand for "x coordinate of SumBot's enemy"
-#: taextras.py:240
 msgid "x coor. Enemy"
 msgstr "ruruku x. Hoariri"
 
-#: taextras.py:241
 msgid "get the x coordinate of the Enemy"
 msgstr "tīkina te ruruku x o te Hoariri"
 
-#. #-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: This string is shorthand for "y coordinate of SumBot's enemy"
-#: taextras.py:243
 msgid "y coor. Enemy"
 msgstr "ruruku y. Hoariri"
 
-#: taextras.py:244
 msgid "get the y coordinate of the Enemy"
 msgstr "tīkina te ruruku y o te Hoariri"
 
-#. #-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: This string is shorthand for "rotation of SumBot"
-#: taextras.py:246
 msgid "rotation SumBot"
 msgstr "tītaka KaretaoTāpiri"
 
-#: taextras.py:247
 msgid "get the rotation of the Sumbot"
 msgstr "tīkina te tītaka o te KaretaoTāpiri"
 
-#. #-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: This string is shorthand for "rotation of SumBot's enemy"
-#: taextras.py:249
 msgid "rotation Enemy"
 msgstr "tītaka Hoariri"
 
-#: taextras.py:250
 msgid "get the rotation of the Enemy"
 msgstr "tīkina te tītaka o te Hoariri"
 
-#: taextras.py:251
 msgid "distance to center"
 msgstr "tawhiti ki te tauwaenga"
 
-#. #-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: dohyo is the playing field
-#: taextras.py:253
 msgid "get the distance to the center of the dohyo"
 msgstr "tīkina te tawhititanga ki waenga o te dohyo"
 
-#: taextras.py:254
 msgid "distance to Enemy"
 msgstr "tawhititanga ki te Hoariri"
 
-#: taextras.py:255
 msgid "get the distance to the Enemy"
 msgstr "tikina te tawhititanga ki te Hoariri"
 
-#: taextras.py:256
 msgid "update information"
 msgstr "whakahōu mōhiohio"
 
-#: taextras.py:257
 msgid "update information from the server"
 msgstr "whakahōu mōhiohio mai i te tūmau"
 
-#. #-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: Please use similar terms to those used in the Physics Activity
-#: taextras.py:262
 msgid "Palette of physics blocks"
 msgstr "Papatā o ngā paraka ahupūngao"
 
-#: taextras.py:263
 msgid "start polygon"
 msgstr "tīmata tapamaha"
 
-#: taextras.py:264
 msgid "Begin defining a new polygon based on the current Turtle xy position."
 msgstr ""
 "Tīmata te tautuhi i tētahi tapamaha hōu e ai ki te tūnga xy o te Honu o "
 "nāianei."
 
-#: taextras.py:266
 msgid "add point"
 msgstr "tāpiri ira"
 
-#: taextras.py:267
 msgid ""
 "Add a new point to the current polygon based on the current Turtle xy "
 "position."
@@ -797,88 +536,63 @@ msgstr ""
 "Tāpiri i tētahi ira hōu ki te tapamaha o nāianei e ai ki te tūnga xy Honu o "
 "nāianei."
 
-#: taextras.py:269
 msgid "end polygon"
 msgstr "whakamutu tapamaha"
 
-#: taextras.py:270
 msgid "Define a new polygon."
 msgstr "Tautuhia he tapamaha hōu."
 
-#: taextras.py:271
 msgid "end filled polygon"
 msgstr "whakakī mutu tapamaha"
 
-#: taextras.py:272
 msgid "Not a simple polygon"
 msgstr "Ehara i te tapamaha mataiti"
 
-#: taextras.py:273
 msgid "Define a new filled polygon."
 msgstr "Tautuhia he tapamaha whakakī hōu."
 
-#: taextras.py:274
 msgid "triangle"
 msgstr "tapatoru"
 
-#. #-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: base of a triangle
-#: taextras.py:276
 msgid "base"
 msgstr "taketake"
 
-#: taextras.py:277 taextras.py:283
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:911
 msgid "height"
 msgstr "teitei"
 
-#: taextras.py:278
 msgid "Add a triangle object to the project."
 msgstr "Tāpiri he ahanoa tapatoru ki te tūmahi."
 
-#: taextras.py:279
 msgid "circle"
 msgstr "porohita"
 
-#: taextras.py:280
 msgid "Add a circle object to the project."
 msgstr "Tāpiri i tētahi ahanoa porohita ki te tūmahi."
 
-#: taextras.py:281
 msgid "rectangle"
 msgstr "tapawhā"
 
-#: taextras.py:282 plugins/turtle_blocks_extras/turtle_blocks_extras.py:887
 msgid "width"
 msgstr "whānui"
 
-#: taextras.py:284
 msgid "Add a rectangle object to the project."
 msgstr "Tāpiri i tētahi ahanoa tapawhā ki te tūmahi."
 
-#: taextras.py:285
 msgid "reset"
 msgstr "tautuhi anō"
 
-#: taextras.py:286
 msgid "Reset the project; clear the object list."
 msgstr "Tautuhi anō i te tūmahi; ūkuia te rārangi ahanoa."
 
-#: taextras.py:287
 msgid "motor"
 msgstr "pūkaha"
 
-#. #-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: torque as in engine torque
-#: taextras.py:289
 msgid "torque"
 msgstr "autōhuri"
 
-#: taextras.py:290
 msgid "speed"
 msgstr "tere"
 
-#: taextras.py:291
 msgid ""
 "Motor torque and speed range from 0 (off) to positive numbers; motor is "
 "placed on the most recent object created."
@@ -886,23 +600,18 @@ msgstr ""
 "Te awhe pūkaha autōhuri me te tere mai i 0 (weto) ki te tau tōrunga; ka "
 "tukuna te pūkaha ki runga i te ahanoa i waihanga muri tata nei."
 
-#: taextras.py:294
 msgid "Pin an object down so that it cannot fall."
 msgstr "Pinea te ahanoa kia kore e taka."
 
-#: taextras.py:295
 msgid "joint"
 msgstr "hononga"
 
-#: taextras.py:296 TurtleArt/tabasics.py:195 TurtleArt/tabasics.py:261
 msgid "x"
 msgstr "x"
 
-#: taextras.py:297 TurtleArt/tabasics.py:195 TurtleArt/tabasics.py:261
 msgid "y"
 msgstr "y"
 
-#: taextras.py:298
 msgid ""
 "Join two objects together (the most recent object created and the object at "
 "point x, y)."
@@ -910,40 +619,30 @@ msgstr ""
 "Honoa ngā ahanoa e rua (te mea i waihanga muri tana nei, me te ahanoa kei te "
 "tūnga x, y)."
 
-#: taextras.py:300
 msgid "save as Physics activity"
 msgstr "tiaki hei hohe Ahupūngao"
 
-#: taextras.py:301
 msgid "Save the project to the Journal as a Physics activity."
 msgstr "Tiakina te tūmahi ki te Tuhitaka hei hohe Ahupūngao."
 
-#. #-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: Here, gear means a toothed wheel, as in a clock-works
-#: taextras.py:303
 msgid "gear"
 msgstr "utauta"
 
-#: taextras.py:304
 msgid "Add a gear object to the project."
 msgstr "Tāpiri he ahanoa utauta ki te tūmahi."
 
-#: taextras.py:305
 msgid "density"
 msgstr "rōrahi"
 
-#: taextras.py:306
 msgid ""
 "Set the density property for objects (density can be any positive number)."
 msgstr ""
 "Tautuhia te āhuatanga mātōtoru mō ngā ahanoa (e āhei ana ngā tau tōrunga "
 "katoa)."
 
-#: taextras.py:308
 msgid "friction"
 msgstr "waku"
 
-#: taextras.py:309
 msgid ""
 "Set the friction property for objects (value from 0 to 1, where 0 turns "
 "friction off and 1 is strong friction)."
@@ -951,13 +650,9 @@ msgstr ""
 "Tautuhia te āhuatanga waku mō ngā ahanoa (uara mai i te 0 ki te 1, ko te 0 "
 "ka whakaweto i te waku ko te 1 he waku kaha)."
 
-#. #-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: bounciness is coefficient of restitution
-#: taextras.py:312
 msgid "bounciness"
 msgstr "hūpeketanga"
 
-#: taextras.py:313
 msgid ""
 "Set the bounciness property for objects (a value from 0 to 1, where 0 means "
 "no bounce and 1 is very bouncy)."
@@ -965,42 +660,30 @@ msgstr ""
 "Tautuhia te āhuatanga hūpeketanga mō ngā ahanoa (uara mai i te 0 ki te 1, ko "
 "te 0 kāore he hūpeketanga ko te 1 he hūpeketanga kaha)."
 
-#. #-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: dynamic here means moving vs in a fixed position
-#: taextras.py:316
 msgid "dynamic"
 msgstr "hihiri"
 
-#: taextras.py:317
 msgid ""
 "If dynamic = 1, the object can move; if dynamic = 0, it is fixed in position."
 msgstr ""
 "Mēnā ko te hihiri = 1, ka taea e te ahanoa te neke; Mēnā ko te hihiri = 0, "
 "kua mau ki te tūnga."
 
-#. #-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: WeDo is a robotics product of the LEGO company
-#: taextras.py:323
 msgid "Palette of WeDo blocks"
 msgstr "Papatā o ngā paraka MahiMātou"
 
-#: taextras.py:324
 msgid "WeDo"
 msgstr ""
 
-#: taextras.py:325
 msgid "set current WeDo device"
 msgstr ""
 
-#: taextras.py:326
 msgid "number of WeDo devices"
 msgstr ""
 
-#: taextras.py:327
 msgid "tilt"
 msgstr "tītaha"
 
-#: taextras.py:328
 msgid ""
 "tilt sensor output: (-1 == no tilt, 0 == tilt forward, 3 == tilt back, 1 == "
 "tilt left, 2 == tilt right)"
@@ -1008,470 +691,326 @@ msgstr ""
 "huaputa pūoko tītaka: (-1 == kore tītaka, 0 == tītaka whakamua, 3 == tītaka "
 "whakamuri, 1 == tītaka mauī, 2 == tītaka matau)"
 
-#. #-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: This string is shorthand for "output of the distance sensor"
-#: taextras.py:332
 msgid "distance sensor output"
 msgstr "huaputa pūoko tawhititanga"
 
-#: taextras.py:333
 msgid "Motor A"
 msgstr "Pūkaha A"
 
-#: taextras.py:334
 msgid "returns the current value of Motor A"
 msgstr "ka whakahoki i te uara o nāianei mō Pūkaha A"
 
-#: taextras.py:335
 msgid "Motor B"
 msgstr "Pūkaha B"
 
-#: taextras.py:336
 msgid "returns the current value of Motor B"
 msgstr "ka whakahoki i te uara o nāianei mō Pūkaha B"
 
-#: taextras.py:337
 msgid "set the value for Motor A"
 msgstr "tautuhia te uara mō Pūkaha A"
 
-#: taextras.py:338
 msgid "set the value for Motor B"
 msgstr "tautuhia te uara mō Pūkaha B"
 
-#: taextras.py:339
 msgid "WeDo is unavailable"
 msgstr ""
 
-#. TRANS: e.g., Wedo 2 is unavailable, defaulting to 1
-#: taextras.py:341
-#, python-format
 msgid "WeDo %d is unavailable; defaulting to 1"
 msgstr ""
 
-#. TRANS: %(device)s and %(wedo_number)d are substitution strings;
-#. please leave untranslated
-#: taextras.py:344
-#, python-format
 msgid "%(device)s is unavailable on WeDo %(wedo_number)d"
 msgstr ""
 
-#. #-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: Lego NXT is a robotics product of the LEGO company
-#: taextras.py:349
 msgid "Palette of LEGO NXT blocks of motors"
 msgstr "Papaptā o ngā paraka LEGO NXT o ngā pūkaha"
 
-#: taextras.py:350
 msgid "Palette of LEGO NXT blocks of sensors"
 msgstr "Papaptā o ngā paraka LEGO NXT o ngā pūoko"
 
-#. #-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: touch sensor (implemented as a button)
-#: taextras.py:352
 msgid "touch"
 msgstr "pā"
 
-#. #-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: distance sensor (implemented using ultrasonics)
-#: taextras.py:354
 msgid "ultrasonic"
 msgstr "pāorooro"
 
-#: taextras.py:355 TurtleArt/tabasics.py:283 TurtleArt/tabasics.py:294
-#: TurtleArt/tabasics.py:344
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1197
 msgid "color"
 msgstr "tae"
 
-#: taextras.py:357 plugins/audio_sensors/audio_sensors.py:83
-#: plugins/audio_sensors/audio_sensors.py:98 pysamples/grecord.py:205
 msgid "sound"
 msgstr "oro"
 
-#. #-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: The brick is the NXT controller
-#: taextras.py:360
-#, fuzzy
 msgid "Please check the connection with the brick"
-msgstr ""
-"#-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Taki koa i te hononga me te pereki."
+msgstr "Taki koa i te hononga me te pereki."
 
-#: taextras.py:361
-#, python-format
 msgid "Invalid port '%s'. Port must be: PORT A, B or C"
 msgstr ""
 
-#: taextras.py:362
-#, python-format
 msgid "Invalid port '%s'. Port must be: PORT 1, 2, 3 or 4"
 msgstr ""
 
-#: taextras.py:363
-#, fuzzy
 msgid "The value of power must be between -127 to 127"
-msgstr ""
-"#-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Ko te uara hiko me noho i waenga i te -127 to 127."
+msgstr "Ko te uara hiko me noho i waenga i te -127 to 127."
 
-#: taextras.py:364
-#, python-format
 msgid "The parameter must be a integer, not '%s'"
 msgstr ""
 
-#: taextras.py:365
-#, fuzzy
 msgid "An error has occurred: check all connections and try to reconnect"
 msgstr ""
-"#-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Kua puta tētahi hapa: taki i ngā hononga katoa ka ngana ki te hono anō."
 
-#: taextras.py:366
-#, python-format
 msgid "NXT found %s bricks"
 msgstr ""
 
-#: taextras.py:367
 msgid "NXT not found"
 msgstr "NXT kāore i kitea"
 
-#: taextras.py:368
-#, python-format
 msgid "Brick number %s was not found"
 msgstr ""
 
-#: taextras.py:369
 msgid "refresh NXT"
 msgstr "tāmata NXT"
 
-#: taextras.py:370
 msgid "Search for a connected NXT brick."
 msgstr "Rapu i tētahi pereki NXT kua hono."
 
-#: taextras.py:371
 msgid "NXT"
 msgstr ""
 
-#: taextras.py:372
 msgid "set current NXT device"
 msgstr ""
 
-#: taextras.py:373
 msgid "number of NXT devices"
 msgstr ""
 
-#: taextras.py:374
 msgid "brick name"
 msgstr ""
 
-#: taextras.py:375
 msgid "Get the name of a brick."
 msgstr ""
 
-#: taextras.py:376
 msgid "play tone"
 msgstr "whakatangi rangi"
 
-#: taextras.py:377
 msgid "frequency"
 msgstr "auautanga"
 
-#: taextras.py:378 plugins/turtle_blocks_extras/turtle_blocks_extras.py:451
 msgid "time"
 msgstr "wā"
 
-#: taextras.py:379
 msgid "Play a tone at frequency for time."
 msgstr "Whakatangi i tētahi rangi ki tētahi auautanga mō te wā kua whakaritea."
 
-#. TRANS: turn is the action
-#: taextras.py:381
 msgid ""
 "turn motor\n"
 "\n"
 msgstr ""
 
-#: taextras.py:382
 msgid "port"
 msgstr "tauranga"
 
-#: taextras.py:383
 msgid "power"
 msgstr "hiko"
 
-#. #-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: rotations is quantity of turns
-#: taextras.py:385
 msgid "rotations"
 msgstr "ngā takahuringa"
 
-#: taextras.py:386
 msgid "turn a motor"
 msgstr "takahuri i tētahi pūkaha"
 
-#: taextras.py:387
 msgid ""
 "synchronize\n"
 "\n"
 "motors"
 msgstr ""
 
-#: taextras.py:388
 msgid "steering"
 msgstr ""
 
-#: taextras.py:389
 msgid "synchronize two motors connected in PORT B and PORT C"
 msgstr ""
 "Tukutahitia ngā pūkaha e rua kua hono ki te TAURANGA B me te TAURANGA C"
 
-#: taextras.py:390
 msgid "PORT A"
 msgstr "TAURANGA A"
 
-#: taextras.py:391
 msgid "PORT A of the brick"
 msgstr "TAURANGA A o te pereki"
 
-#: taextras.py:392
 msgid "PORT B"
 msgstr "TAURANGA B"
 
-#: taextras.py:393
 msgid "PORT B of the brick"
 msgstr "TAURANGA B o te pereki"
 
-#: taextras.py:394
 msgid "PORT C"
 msgstr "TAURANGA C"
 
-#: taextras.py:395
 msgid "PORT C of the brick"
 msgstr "TAURANGA C o te pereki"
 
-#: taextras.py:396
 msgid ""
 "synchronize\n"
 "motors"
 msgstr ""
 
-#: taextras.py:397
 msgid "start motor"
 msgstr "tīmata pūkaha"
 
-#: taextras.py:398
 msgid "Run a motor forever."
 msgstr "Whakahaere i tētahi pūkaha mō ake tonu atu."
 
-#: taextras.py:399
 msgid "brake motor"
 msgstr "whakatū pūkaha"
 
-#: taextras.py:400
 msgid "Stop a specified motor."
 msgstr "Whakatū i tētahi pūkaha kua whakatauria."
 
-#. #-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: reset is used to reset the counter associated with the motor
-#: taextras.py:402
 msgid "reset motor"
 msgstr "tautuhi anō i te pūkaha"
 
-#: taextras.py:403
 msgid "Reset the motor counter."
 msgstr "Tautuhi anō i te kaitatau pūkaha."
 
-#: taextras.py:404
 msgid "motor position"
 msgstr "tūnga pūkaha"
 
-#: taextras.py:405
 msgid "Get the motor position."
 msgstr "Tiki i te tūnga pūkaha."
 
-#: taextras.py:406
 msgid "PORT 1"
 msgstr "TAURANGA 1"
 
-#: taextras.py:407
 msgid "PORT 1 of the brick"
 msgstr "TAURANGA 1 o te pereki"
 
-#: taextras.py:408
 msgid "read"
 msgstr "pānui"
 
-#: taextras.py:409
 msgid "sensor"
 msgstr "pūoko"
 
-#: taextras.py:410
 msgid "Read sensor output."
 msgstr "Pānui huaputa pūoko."
 
-#: taextras.py:411
 msgid "PORT 2"
 msgstr "TAURANGA 2"
 
-#: taextras.py:412
 msgid "PORT 2 of the brick"
 msgstr "TAURANGA 2 o te pereki"
 
-#: taextras.py:413
 msgid "light sensor"
 msgstr "pūoko rama"
 
-#: taextras.py:414
 msgid "gray sensor"
 msgstr ""
 
-#: taextras.py:415
 msgid "PORT 3"
 msgstr "TAURANGA 3"
 
-#: taextras.py:416
 msgid "PORT 3 of the brick"
 msgstr "TAURANGA 3 o te pereki"
 
-#: taextras.py:417
 msgid "touch sensor"
 msgstr "pūoko pā"
 
-#: taextras.py:418
 msgid "distance sensor"
 msgstr "pūoko tawhiti"
 
-#: taextras.py:419
 msgid "PORT 4"
 msgstr "TAURANGA 4"
 
-#: taextras.py:420
 msgid "PORT 4 of the brick"
 msgstr "TAURANGA 4 o te pereki"
 
-#: taextras.py:421
 msgid "sound sensor"
 msgstr "pūoko oro"
 
-#: taextras.py:422
 msgid "color sensor"
 msgstr "pūoko tae"
 
-#. #-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: set light is used to set the light level associated with
-#. the color sensor (which can emit light as well as sense it)
-#: taextras.py:425
 msgid "set light"
 msgstr "tautuhi rama"
 
-#: taextras.py:426
 msgid "Set color sensor light."
 msgstr "Tautuhi rama pūoko tae."
 
-#. #-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: the battery level is the charge level of the brick
-#: taextras.py:428
 msgid "battery level"
 msgstr "taumata pūkaha"
 
-#: taextras.py:429
 msgid "Get the battery level of the brick in millivolts"
 msgstr ""
 
-#. #-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: PWM is pulse-width modulation
-#: taextras.py:440
+#, fuzzy
+msgid "Palette of Arduino blocks"
+msgstr ""
+"#-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Papatā o ngā paraka MahiMātou\n"
+"#-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Papatā o ngā paraka Aratuino"
+
 msgid "PWM"
 msgstr "PWM"
 
-#: taextras.py:441
 msgid "SERVO"
 msgstr "TŪMAU"
 
-#: taextras.py:442
 msgid "ERROR: Check the Arduino and the number of port."
 msgstr "HAPA: Taki i te tau me te Aratuino o te tauranga."
 
-#: taextras.py:443
 msgid "ERROR: Value must be a number from 0 to 255."
 msgstr "HAPA: Me whai tau i waenga i te 0 ki te 255 e te uara."
 
-#: taextras.py:444
-#, fuzzy
 msgid "ERROR: Value must be either HIGH or LOW, 0 or 1"
 msgstr "HAPA: Me TEITEI, PĀPAKU rānei te uara."
 
-#: taextras.py:445
 msgid "ERROR: The mode must be either INPUT, OUTPUT, PWM or SERVO."
 msgstr "HAPA: Me TĀURU, HUAPUTA, PWM, TŪMARU rānei te aratau."
 
-#: taextras.py:446
 msgid "ERROR: The value must be an integer."
 msgstr ""
 
-#: taextras.py:447
 msgid "ERROR: The pin must be an integer."
 msgstr ""
 
-#: taextras.py:448
 msgid "refresh Arduino"
 msgstr ""
 
-#: taextras.py:449
 msgid "Search for connected Arduinos."
 msgstr ""
 
-#: taextras.py:450
 msgid "Arduino"
 msgstr ""
 
-#: taextras.py:451
 msgid "set current Arduino board"
 msgstr ""
 
-#: taextras.py:452
 msgid "number of Arduinos"
 msgstr ""
 
-#: taextras.py:453
 msgid "number of Arduino boards"
 msgstr ""
 
-#: taextras.py:454
 msgid "Arduino name"
 msgstr ""
 
-#: taextras.py:455
 msgid "Get the name of an Arduino."
 msgstr ""
 
-#. #-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: pin mode is used to specify the mode (INPUT, OUTPUT, etc)
-#. in which an I/O pin is being used.
-#: taextras.py:458
 msgid "pin mode"
 msgstr "aratau pine"
 
-#: taextras.py:461
 msgid "Select the pin function (INPUT, OUTPUT, PWM, SERVO)."
 msgstr "Tīpakohia te taumahi pine (TĀURU, HUAPUTA, PWM, TŪMAU)."
 
-#: taextras.py:462
 msgid "analog write"
 msgstr "tuhi tairitenga"
 
-#: taextras.py:464
 msgid "Write analog value in specified port."
 msgstr "Tuhi uara tairitenga ki te tauranga kua whakatauria."
 
-#: taextras.py:465
 msgid "analog read"
 msgstr "pānui tairitenga"
 
-#: taextras.py:466
 msgid ""
 "Read value from analog port. Value may be between 0 and 1023. Use Vref to "
 "determine voltage. For USB, volt=((read)*5)/1024) approximately."
@@ -1480,811 +1019,220 @@ msgstr ""
 "ki te 1023. Whakamahia te Vref hei whakatau ngaohiko. Mō USB, "
 "ngaohiko=((read)*5)/1024) pātata."
 
-#: taextras.py:468
 msgid "digital write"
 msgstr "tuhi mamati"
 
-#: taextras.py:469
 msgid "Write digital value to specified port."
 msgstr "Tuhi uara mamati ki te tauranga kua whakatauria."
 
-#: taextras.py:470
 msgid "digital read"
 msgstr "pānui mamati"
 
-#: taextras.py:471
 msgid "Read value from digital port."
 msgstr "Pānui uara mai i te tauranga mamati."
 
-#: taextras.py:473
 msgid "Configure Arduino port for digital input."
 msgstr "Whirihora tauranga Atuino mō te tāurunga mamati."
 
-#: taextras.py:474
 msgid "Configure Arduino port to drive a servo."
 msgstr "Whirihora tauranga Atuino hei hautū tūmau."
 
-#: taextras.py:476
 msgid "Configure Arduino port for digital output."
 msgstr "Whirihora tauranga Atuino hei huaputa mamati."
 
-#: taextras.py:477
 msgid "Configure Arduino port for PWM (pulse-width modulation)."
 msgstr "Whirihora tauranga Atuino hei PWM (pulse-width modulation)."
 
-#: taextras.py:478
-#, python-format
 msgid "Not found Arduino %s"
 msgstr ""
 
-#: taextras.py:479
 msgid "The pin must be an integer"
 msgstr ""
 
-#: taextras.py:480
 msgid "The device must be an integer"
 msgstr ""
 
-#. #-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: plugin to control an ExpEyes device
-#: taextras.py:485
-#, fuzzy
 msgid "Palette of Expeyes blocks"
 msgstr "Papatā o ngā paraka MahiMātou"
 
-#. TRANS: Programmable voltage output
-#: taextras.py:487
 msgid "set PVS"
 msgstr ""
 
-#: taextras.py:488
 msgid "set programmable voltage output"
 msgstr ""
 
-#. TRANS: Square wave 1 voltage output
-#: taextras.py:490
 msgid "set SQR1 voltage"
 msgstr ""
 
-#: taextras.py:491
 msgid "set square wave 1 voltage output"
 msgstr ""
 
-#. TRANS: Square wave 2 voltage output
-#: taextras.py:493
 msgid "set SQR2 voltage"
 msgstr ""
 
-#: taextras.py:494
 msgid "set square wave 2 voltage output"
 msgstr ""
 
-#. TRANS: Digital output level
-#: taextras.py:496
 msgid "set OD1"
 msgstr ""
 
-#: taextras.py:497
 msgid "set digital output level (OD1) low (0) or high (1)"
 msgstr ""
 
-#. TRANS: Input 1 voltage level
-#: taextras.py:499
 msgid "IN1 level"
 msgstr ""
 
-#: taextras.py:500
 msgid ""
 "returns 1 if IN1 voltage level >2.5 volts, 0 if IN1 voltage level <= 2.5 "
 "volts"
 msgstr ""
 
-#. TRANS: Input 2 voltage level
-#: taextras.py:503
 msgid "IN2 level"
 msgstr ""
 
-#: taextras.py:504
 msgid ""
 "returns 1 if IN2 voltage level >2.5 volts, 0 if IN2 voltage level <= 2.5 "
 "volts"
 msgstr ""
 
-#. TRANS: Resistive sensor voltage level
-#: taextras.py:507
 msgid "SEN level"
 msgstr ""
 
-#: taextras.py:508
 msgid ""
 "returns 1 if resistive sensor (SEN) voltage level > 2.5 volts, 0 if SEN "
 "voltage level <= 2.5 volts"
 msgstr ""
 
-#: taextras.py:510
 msgid "capture"
 msgstr ""
 
-#: taextras.py:511
 msgid "input"
 msgstr ""
 
-#: taextras.py:512
 msgid "samples"
 msgstr ""
 
-#: taextras.py:513
 msgid "interval"
 msgstr ""
 
-#. TRANS: MS is microseconds
-#: taextras.py:515
 msgid ""
 "capture multiple samples from input at interval (MS); results pushed to FIFO"
 msgstr ""
 
-#. TRANS: Analog input 1 voltage level
-#: taextras.py:518
 msgid "A1"
 msgstr ""
 
-#: taextras.py:519
 msgid "read analog input 1 voltage"
 msgstr ""
 
-#. TRANS: Analog input 2 voltage level
-#: taextras.py:521
 msgid "A2"
 msgstr ""
 
-#: taextras.py:522
 msgid "read analog input 2 voltage"
 msgstr ""
 
-#. TRANS: Read input 1 voltage
-#: taextras.py:524
 msgid "IN1"
 msgstr ""
 
-#: taextras.py:525
 msgid "read input 1 voltage"
 msgstr ""
 
-#. TRANS: Read input 2 voltage
-#: taextras.py:527
 msgid "IN2"
 msgstr ""
 
-#: taextras.py:528
 msgid "read input 2 voltage"
 msgstr ""
 
-#. TRANS: Read analog sensor input voltage
-#: taextras.py:530
 msgid "SEN"
 msgstr ""
 
-#: taextras.py:531
 msgid "read analog sensor input voltage"
 msgstr ""
 
-#. TRANS: Read square wave 1 input voltage
-#: taextras.py:533
 msgid "SQR1"
 msgstr ""
 
-#: taextras.py:534
 msgid "read square wave 1 voltage"
 msgstr ""
 
-#. TRANS: Read square wave 2 input voltage
-#: taextras.py:536
 msgid "SQR2"
 msgstr ""
 
-#: taextras.py:537
 msgid "read square wave 2 voltage"
 msgstr ""
 
-#. TRANS: Read programmable voltage
-#: taextras.py:539
 msgid "PVS"
 msgstr ""
 
-#: taextras.py:540
 msgid "read programmable voltage"
 msgstr ""
 
-#: taextras.py:541
 msgid "Expeyes device not found"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:305
-msgid "resume playing video or audio"
-msgstr "haere anō te whakatangi ataata, ororongo rānei"
+msgid "TurtleBlocks"
+msgstr "HonuKaretao"
 
-#: TurtleArt/taconstants.py:209 TurtleArt/taconstants.py:231
-#: TurtleArt/taconstants.py:252 TurtleArt/taconstants.py:294
-#: TurtleArt/taconstants.py:336 TurtleArt/taconstants.py:378
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:980
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:995
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1010
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1025
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1040
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1055
-msgid "Title"
-msgstr "Taitara"
-
-#: plugins/camera_sensor/camera_sensor.py:95
-#: plugins/camera_sensor/camera_sensor.py:143
-msgid "Average RGB color from camera is pushed to the stack"
-msgstr "Tae RGB hea mai i te kāmera kua pēhia ki te tāpae"
-
-#: TurtleArt/tabasics.py:442
-msgid "yellow"
-msgstr "kōwhai"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:685
-msgid "displays polar coordinates"
-msgstr "ka whakaatu i ngā ruruku pitorua"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:499
-msgid "emptys FILO (first-in-last-out heap)"
-msgstr "ka whakaputu i FILO (tāpae first-in-last-out)"
-
-#: plugins/camera_sensor/camera_sensor.py:106
-#: plugins/camera_sensor/camera_sensor.py:113
-#: plugins/camera_sensor/camera_sensor.py:121
-#: plugins/camera_sensor/camera_sensor.py:155
-#: plugins/camera_sensor/camera_sensor.py:163
-msgid "camera output"
-msgstr "huaputa kāmera"
-
-#: plugins/accelerometer/accelerometer.py:58
-#: plugins/accelerometer/accelerometer.py:65
-msgid "push acceleration in x, y, z to heap"
-msgstr "pēhi whakaterenga kei x, y, z ki te pūkai"
-
-#: TurtleArt/tabasics.py:777
-msgid "if-then operator that uses boolean operators from Numbers palette"
-msgstr ""
-"ko te kaimahi mēnā-kātahi ka whakamahi i ngā kaimahi pūreiana mai i te "
-"papatā Tau"
-
-#: TurtleArt/tabasics.py:808
-msgid "jogs stack right"
-msgstr "oma tāpe tika"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:147
-msgid "Sugar Journal media object"
-msgstr "ahanoa pāpāho Tuhitaka Sugar"
-
-#: TurtleArt/tabasics.py:915
-msgid "box 2"
-msgstr "pouaka 2"
-
-#: TurtleArt/tabasics.py:905
-msgid "box 1"
-msgstr "pouaka 1"
-
-#: TurtleArtActivity.py:730 TurtleArtActivity.py:994 turtleblocks.py:415
-msgid "Step"
-msgstr "Hipanga"
-
-#: TurtleArt/tabasics.py:588
-msgid "multiplies two numeric inputs"
-msgstr "ka whakarau i ngā tāurunga tau e rua"
-
-#: turtleblocks.py:408
-msgid "Show/hide blocks"
-msgstr "Whakaatu/huna paraka"
-
-#: TurtleArtActivity.py:318 TurtleArtActivity.py:984 turtleblocks.py:406
-msgid "Hide palette"
-msgstr "Huna papatā"
-
-#: gnome_plugins/collaboration_plugin.py:125
-msgid "Buddies"
-msgstr "Ngā Hoa"
-
-#: gnome_plugins/collaboration_plugin.py:67
-msgid "My Turtle Art session"
-msgstr "Taku wātū Toi Honu"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:171
-msgid "Sugar Journal video object"
-msgstr "ahanoa ataata Tuhitaka Sugar"
-
-#: TurtleArt/tabasics.py:445
-msgid "cyan"
-msgstr "kawariki"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:898
-msgid "xcor of right of screen"
-msgstr "xcor whakatematau o te mata"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:463
-msgid "Palette of extra options"
-msgstr "Papatā o ngā ētahi atu kōwhiringa"
-
-#: TurtleArtActivity.py:678 TurtleArtActivity.py:695 TurtleArtActivity.py:734
-#: TurtleArtActivity.py:934
-msgid "Load example"
-msgstr "Uta tauira"
-
-#: TurtleArt/tabasics.py:1007
-msgid "move all blocks to trash"
-msgstr "nekehia ngā paraka katoa ki te paraurehe"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:817
-msgid "list"
-msgstr "rārangi"
-
-#: turtleblocks.py:289
-#, python-format
-msgid "Configuration directory not writable: %s"
-msgstr "Kāore te wharonga whirihora e āhei ana te tuhi: %s"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:303
-msgid "media resume"
-msgstr "haere anō pāpāho"
-
-#: TurtleArt/tabasics.py:243 TurtleArt/tawindow.py:4106
-msgid "heading"
-msgstr "panekōrero"
-
-#: TurtleArtActivity.py:912
-msgid "Sharing blocks disabled"
-msgstr "Kua monokia ngā paraka tiri"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:265
-msgid "saves turtle graphics as an SVG file in the Sugar Journal"
-msgstr "ka tiaki whakairoiro honu hei kōnae SVG ki te Tuhitaka Sugar"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:204
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:217
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:232
-msgid "draws text or show media from the Journal"
-msgstr "tuhi kupu, whakaatu pāpāho rānei mai i te Tuhitaka"
-
-#: plugins/rfid/rfid.py:92 plugins/rfid/rfid.py:100
-msgid "RFID"
-msgstr "RFID"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:169
-msgid "video"
-msgstr "ataata"
-
-#: TurtleArt/tabasics.py:446
-msgid "blue"
-msgstr "kikorangi"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:677
-msgid "displays Cartesian coordinates"
-msgstr "ka whakaatu ruruku Katihini"
-
-#: turtleblocks.py:250
-msgid "No option action:"
-msgstr "Hohe kōwhiringa kore:"
-
-#: TurtleArt/tabasics.py:816
-msgid "jogs stack down"
-msgstr "oma tāpae raro"
-
-#: TurtleArt/tabasics.py:624
-msgid "modular (remainder) operator"
-msgstr "kaimahi whakakāwai (toenga)"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:966
-msgid "bottom y"
-msgstr "raro y"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:262
-msgid "save SVG"
-msgstr "tiaki SVG"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:630
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:646
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:662
-msgid "runs code found in the tamyblock.py module found in the Journal"
-msgstr ""
-"ka whakahaere i te waehere ka kitea ki te kōwae tamyblock.py kei te Tuhitaka"
-
-#: TurtleArt/tabasics.py:381
-msgid "pen down"
-msgstr "pene ki raro"
-
-#: TurtleArt/tabasics.py:739
-msgid "wait"
-msgstr "taihoa"
-
-#: TurtleArt/tabasics.py:924 TurtleArt/tabasics.py:939
-msgid "box"
-msgstr "pouaka"
-
-#: gnome_plugins/uploader_plugin.py:203
-msgid "Failed to upload!"
-msgstr "I rahu te tukuatu!"
-
-#: TurtleArt/tawindow.py:1063 TurtleArt/tawindow.py:1664
-msgid "shift"
-msgstr "neke"
-
-#: TurtleArt/tabasics.py:872 TurtleArt/tawindow.py:4377
-msgid "invokes named action stack"
-msgstr "ka whakaara tāpae hohenga whai ingoa"
-
-#: TurtleArt/tabasics.py:856 TurtleArt/tabasics.py:859
-#: TurtleArt/tabasics.py:867 TurtleArt/tabasics.py:871
-#: TurtleArt/tawindow.py:1351 TurtleArt/tawindow.py:1448
-#: TurtleArt/tawindow.py:1461 TurtleArt/tawindow.py:2077
-#: TurtleArt/tawindow.py:4363
-msgid "action"
-msgstr "hohenga"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:123
-msgid "do-until-True operator that uses boolean operators from Numbers palette"
-msgstr ""
-"kaimahi mahi-tae-noa-Tūturu ka whamahi i ngā kaimahi pūreana mai i te papatā "
-"Tau"
-
-#: turtleblocks.py:89
-msgid "usage is"
-msgstr "ko te whakamahinga"
-
-#: TurtleArt/tabasics.py:918
-msgid "Variable 2 (numeric value)"
-msgstr "Tāupe 2 (uara tau)"
-
-#: TurtleArt/tabasics.py:597
-msgid "divide"
-msgstr "whakawehe"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:253
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:264
-msgid "picture name"
-msgstr "ingoa pikitia"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:109
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:112
-msgid "while"
-msgstr "i te wā"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:890
-msgid "the canvas width"
-msgstr "te whānuitanga kānawehi"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:525
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:535
-msgid "empty heap?"
-msgstr "whakaputu tāpae?"
-
-#: TurtleArt/tabasics.py:945 TurtleArt/tawindow.py:4404
-msgid "named variable (numeric value)"
-msgstr "tāupe whai ingoa (uara tau)"
-
-#: TurtleArt/tawindow.py:1044 TurtleArt/tawindow.py:1644
-msgid "next"
-msgstr "panuku"
-
-#: TurtleArt/tabasics.py:775
-msgid "if then"
-msgstr "mēna...kātahi ka"
-
-#: TurtleArt/tabasics.py:390
-msgid "set pen size"
-msgstr "tautuhi rahinga pene"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:836
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:998
-msgid "presentation template: select Journal object (no description)"
-msgstr ""
-"tātauira whakaaturanga: tīpako ahanoa Tuhitaka (kāore he whakaahuatanga)"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:119
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:122
-msgid "until"
-msgstr "hei te"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:289
-msgid "media stop"
-msgstr "whakatū pāpāho"
-
-#: TurtleArtActivity.py:303 turtleblocks.py:390
-msgid "Turn on hover help"
-msgstr "Whakakā āwhina topa"
-
-#: TurtleArt/tabasics.py:997
-msgid "permanently deletes items in trash"
-msgstr "ka putu tūemi i te paraurehe mō ake tonu atu"
-
-#: pysamples/uturn.py:24
-msgid "uturn"
-msgstr "huri whakamuri"
-
-#: TurtleArt/tabasics.py:955
-msgid "top of Action 1 stack"
-msgstr "runga o te tāpae Hohenga 1"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:589
 msgid ""
-"a programmable block: used to add advanced single-variable math equations, e."
-"g., sin(x)"
+"A Logo-inspired turtle that draws colorful pictures with snap-together "
+"visual programming blocks"
 msgstr ""
-"he paraka e taea ana te whakapapatono: ka whakamahia hei tāpiri whārite "
-"pāngarau tāupe takitahi ara atu anō, e.g sin(x)"
 
-#: TurtleArt/tabasics.py:734
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:104
-msgid "Palette of flow operators"
-msgstr "Papaptā o ngā kaimahi rere"
+msgid "Palette of turtle commands"
+msgstr "Ngā tohutohu honu papatā"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:733
-msgid "top of a collapsed stack"
-msgstr "te runga o te tāpae kua tiango"
+msgid "forward"
+msgstr "whakamua"
 
-#: TurtleArt/tabasics.py:790 TurtleArt/tabasics.py:798
-msgid "if-then-else operator that uses boolean operators from Numbers palette"
-msgstr ""
-"kaimahi mēnā-kātahi ka-kē atu ka whakamahi i ngā kaimahi pūreiana mai i te "
-"papatā Tau"
+msgid "moves turtle forward"
+msgstr "ka neke whakamua i te honu"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:377
-msgid "returns mouse y coordinate"
-msgstr "ka whakahoki i te ruruku kiore y"
+msgid "back"
+msgstr "whakamuri"
 
-#: TurtleArt/tabasics.py:355
-msgid "holds current pen shade"
-msgstr "ka pupuri i te uriuri pene o nāianei"
+msgid "moves turtle backward"
+msgstr "ka neke whakamuri i te honu"
 
-#. #-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: pitch, duration, amplitude
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:322
-msgid "sinewave"
-msgstr "ngaruaho"
+msgid "clean"
+msgstr "horoia"
 
-#: gnome_plugins/uploader_plugin.py:166
-msgid "Login failed"
-msgstr "Kua rahu te takiuru"
+msgid "clears the screen and reset the turtle"
+msgstr "ka ūkui i te mata me te tautuhi i te honu"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:939
-msgid "left x"
-msgstr "mauī x"
+msgid "turns turtle counterclockwise (angle in degrees)"
+msgstr "ka huri i te honu whakatemauī (koki tākiri)"
 
-#: TurtleArt/tabasics.py:209
-msgid "set heading"
-msgstr "tautuhi panekōrero"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:433
-msgid "RGB color under the turtle is pushed to the stack"
-msgstr "kua peia te tae RGB ki raro i te honu ki te tāpae"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:791
-msgid "declutters canvas by hiding blocks"
-msgstr "ka whakapaipai i te kānawehi mā te huna paraka"
-
-#: TurtleArtActivity.py:994
-msgid "<Ctrl>w"
-msgstr "<Ctrl>w"
-
-#: TurtleArtActivity.py:992
-msgid "<Ctrl>r"
-msgstr "<Ctrl>r"
-
-#: TurtleArtActivity.py:997
-msgid "<Ctrl>s"
-msgstr "<Ctrl>s"
-
-#: TurtleArtActivity.py:985
-msgid "<Ctrl>p"
-msgstr "<Ctrl>p"
-
-#: TurtleArtActivity.py:990
-msgid "<Ctrl>e"
-msgstr "<Ctrl>e"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:569
-msgid "Python chr operator"
-msgstr "Kaimahi Python chr"
-
-#: TurtleArt/tabasics.py:807
-msgid "horizontal space"
-msgstr "mokowā whakapae"
-
-#: TurtleArtActivity.py:645 TurtleArtActivity.py:802
-msgid "Metric coordinates"
-msgstr "Ruruku ā-Ngahuru"
-
-#: TurtleArt/tabasics.py:852
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:195
-msgid "string value"
-msgstr "uara aho"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:181
-msgid "description"
-msgstr "whakaahuatanga"
-
-#: TurtleArt/talogo.py:567
-msgid "I don't know how to"
-msgstr "kāore au e mōhio ki te"
-
-#: TurtleArt/tabasics.py:467
-msgid "set text size"
-msgstr "tautuhi rahinga kupu"
-
-#: gnome_plugins/uploader_plugin.py:99
-msgid "Username:"
-msgstr "Ingoakaiwhakamahi:"
-
-#: TurtleArt/tabasics.py:406
-msgid "starts filled polygon (used with end fill block)"
-msgstr ""
-"ka tīmata i te tapamaha whakakī (ka whakamahia me te paraka whakakī mutunga)"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:850
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1043
-msgid "presentation template: select four Journal objects"
-msgstr "tātauira whakaaturanga: tīpako ahanoa Tuhitaka e whā"
-
-#: TurtleArtActivity.py:584 TurtleArtActivity.py:613 TurtleArtActivity.py:726
-#: TurtleArtActivity.py:796 turtleblocks.py:392
-msgid "View"
-msgstr "Tiro"
-
-#: TurtleArt/tabasics.py:336
-msgid "sets gray level of the line drawn by the turtle"
-msgstr "ka tautuhi i te hinahina o te rārangi ka tuhia e te honu"
-
-#: gnome_plugins/uploader_plugin.py:109
-msgid "Password:"
-msgstr "Kupuhipa:"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:441
-msgid "turtle sees"
-msgstr "ka kite te honu i"
-
-#: TurtleArt/tabasics.py:822
-msgid "stop action"
-msgstr "whakatū hohenga"
-
-#: TurtleArt/tabasics.py:444
-msgid "green"
-msgstr "kākāriki"
-
-#: TurtleArt/tabasics.py:283 TurtleArt/tabasics.py:295
-#: TurtleArt/tabasics.py:354
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1193
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1198
-msgid "shade"
-msgstr "uriuri"
-
-#: TurtleArt/tabasics.py:287 TurtleArt/tabasics.py:299
-msgid "fills the background with (color, shade)"
-msgstr "ka whakakī i te papamuri me te (tae, uriuri)"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:251
-msgid "save picture"
-msgstr "tiaki pikitia"
-
-#: plugins/audio_sensors/audio_sensors.py:119
-#: plugins/audio_sensors/audio_sensors.py:127
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:322
-msgid "pitch"
-msgstr "rangi"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:346
-msgid "returns 1 if mouse button is pressed"
-msgstr "ka whakahoki 1 mēnā ka pēhia te pātene kiore"
-
-#: TurtleArtActivity.py:489 TurtleArtActivity.py:648 TurtleArtActivity.py:804
-msgid "Rescale coordinates up"
-msgstr "Whakakē runga ngā ruruku"
-
-#: TurtleArt/tabasics.py:372
-msgid "pen up"
-msgstr "pene ki runga"
-
-#: TurtleArt/tabasics.py:440
-msgid "orange"
-msgstr "karaka"
-
-#: TurtleArt/tabasics.py:743
-msgid "pauses program execution a specified number of seconds"
-msgstr "tāria kawenga papatono, he tau hēkona kua whakaritea"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:473
-msgid "pushes value onto FILO (first-in last-out heap)"
-msgstr "ka peia te uara ki runga i FILO (tāpae first-in last-out)"
-
-#: TurtleArt/tabasics.py:1006
-msgid "clear all"
-msgstr "ūkui katoa"
-
-#: TurtleArt/tabasics.py:772 TurtleArt/tabasics.py:785
-msgid "then"
-msgstr "kātahi ka"
-
-#: gnome_plugins/collaboration_plugin.py:302
-msgid "Register"
-msgstr "Rēhita"
-
-#: TurtleArt/tabasics.py:701
-msgid "not"
-msgstr "ehara"
-
-#: TurtleArt/tabasics.py:789 TurtleArt/tabasics.py:797
-msgid "if then else"
-msgstr "Mēna...Kātahi ka...kē atu"
-
-#: TurtleArt/tabasics.py:825
-msgid "stops current action"
-msgstr "whakatū hohenga o nāianei"
-
-#: TurtleArt/tabasics.py:174
 msgid "turns turtle clockwise (angle in degrees)"
 msgstr "ka huri i te honu whakatematau (koki tākiri)"
 
-#: TurtleArt/tabasics.py:364
-msgid "holds current gray level (can be used in place of a number block)"
-msgstr ""
-"ka pupuri i te taumata hina o nāianei (ka taea te whakamahi atu i te tau "
-"paraka)"
+msgid "arc"
+msgstr "pewa"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:874
-msgid "xcor of left of screen"
-msgstr "xcor whakatemauī o te mata"
+msgid "angle"
+msgstr "koki"
 
-#: turtleblocks.py:387
-msgid "Reset block size"
-msgstr "Tautuhi anō i te rahinga paraka"
+msgid "radius"
+msgstr "pūtoro"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:691
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:773
-msgid "turtle"
-msgstr "honu"
+msgid "moves turtle along an arc"
+msgstr "ka neke i te honu ki te pewa"
 
-#: TurtleArt/tapalette.py:97
-msgid "displays next palette"
-msgstr "ka whakaatu i te papatā panuku"
+msgid "set xy"
+msgstr "tautuhi xy"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:789
-msgid "hide blocks"
-msgstr "huna paraka"
+msgid ""
+"moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
+msgstr "ka neke i te honu ki te tūnga xcor, ycor; (0, 0) kei waenga i te mata."
 
-#: plugins/camera_sensor/camera_sensor.py:82
-#: plugins/camera_sensor/camera_sensor.py:130
-msgid "light level detected by camera"
-msgstr "taumata rama ka haurapahia e te kāmera"
+msgid "set heading"
+msgstr "tautuhi panekōrero"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:578
-msgid "Python int operator"
-msgstr "Kaimahi Python int"
+msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
+msgstr "ka tautuhi i te panekōrero o te honu (0 kei te taha runga o te mata.)"
 
-#: TurtleArt/tabasics.py:683
-msgid "logical less-than operator"
-msgstr "arorau iti-ake i te kaimahi"
+msgid "xcor"
+msgstr "xcor"
 
-#: TurtleArt/tabasics.py:1002
-msgid "restore all blocks from trash"
-msgstr "whakaora i ngā paraka katoa mai i te paraurehe"
-
-#: turtleblocks.py:367
-msgid "Save"
-msgstr "Tiaki"
-
-#: TurtleArt/tabasics.py:879
-msgid "store in box 1"
-msgstr "penapena ki pouaka 1"
-
-#: TurtleArt/tabasics.py:892
-msgid "store in box 2"
-msgstr "penapena ki pouaka 2"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:808
-msgid "hides the Sugar toolbars"
-msgstr "ka hunaia ngā paeutauta Sugar"
-
-#: TurtleArt/tabasics.py:222
 msgid ""
 "holds current x-coordinate value of the turtle (can be used in place of a "
 "number block)"
@@ -2292,292 +1240,9 @@ msgstr ""
 "kei te pupuri i te uara x-ruruku o nāianei o te honu (ka taea te whakamahi "
 "atu i te tau paraka)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:555
-msgid "print"
-msgstr "tā"
+msgid "ycor"
+msgstr "ycor"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:367
-msgid "returns mouse x coordinate"
-msgstr "ka whakahoki i te ruruku kiore x"
-
-#: TurtleArt/tabasics.py:439
-msgid "red"
-msgstr "whero"
-
-#: TurtleArtActivity.py:188 TurtleArtActivity.py:757 TurtleArtActivity.py:925
-#: TurtleArtActivity.py:955 turtleblocks.py:371
-msgid "Save as Logo"
-msgstr "Tiaki hei Tapanga"
-
-#: TurtleArt/tabasics.py:313
-msgid "sets color of the line drawn by the turtle"
-msgstr "ka tautuhi i te tae o te rārangi ka tuhia e te honu"
-
-#: TurtleArt/tabasics.py:456
-msgid "set text color"
-msgstr "tautuhi tae kupu"
-
-#: plugins/audio_sensors/audio_sensors.py:90
-#: plugins/audio_sensors/audio_sensors.py:105
-msgid "loudness"
-msgstr "hoihoi"
-
-#: gnome_plugins/collaboration_plugin.py:115
-msgid "Enable collaboration"
-msgstr "Whakahohe ngātahitanga"
-
-#: plugins/accelerometer/accelerometer.py:49
-#: plugins/audio_sensors/audio_sensors.py:75
-#: plugins/camera_sensor/camera_sensor.py:63
-#: plugins/light_sensor/light_sensor.py:49 plugins/rfid/rfid.py:86
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:336
-msgid "Palette of sensor blocks"
-msgstr "Papatā o ngā paraka pūoko"
-
-#: TurtleArtActivity.py:761 TurtleArtActivity.py:943 TurtleArtActivity.py:965
-msgid "Load plugin"
-msgstr "Uta monomai"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:357
-msgid "returns True if mouse button is pressed"
-msgstr "ka whakahoki Tika mēnā ka pēhia te pātene kiore"
-
-#: TurtleArt/tabasics.py:658
-msgid "number"
-msgstr "tau"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:385
-msgid "query keyboard"
-msgstr "papapātuhi uiui"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:130
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:732
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:903
-msgid "top"
-msgstr "runga"
-
-#: gnome_plugins/uploader_plugin.py:140
-msgid "Submit to Web"
-msgstr "Tuku ki te Tukutuku"
-
-#: TurtleArtActivity.py:640 TurtleArtActivity.py:798 turtleblocks.py:377
-msgid "Cartesian coordinates"
-msgstr "Ruruku Cartesian"
-
-#: gnome_plugins/collaboration_plugin.py:292
-msgid "Nickname"
-msgstr "Ingoakāinga"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:240
-msgid "set scale"
-msgstr "tautuhi tauine"
-
-#: TurtleArt/tacollaboration.py:152 TurtleArt/tawindow.py:2055
-#: TurtleArtActivity.py:751
-msgid "Share selected blocks"
-msgstr "Tiri i ngā paraka kua tīpakohia"
-
-#: TurtleArt/tabasics.py:449
-msgid "white"
-msgstr "mā"
-
-#: TurtleArt/tabasics.py:842
-msgid "connects action to toolbar run buttons"
-msgstr "ka hono hohenga ki ngā pātene oma paeutauta"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:454
-msgid "elapsed time (in seconds) since program started"
-msgstr "wā hipa (ki ngā hēkona) mai i te wā i tīmata te papatono"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:323
-msgid "amplitude"
-msgstr "pūrahi ngaru"
-
-#: TurtleArt/tawindow.py:1534 TurtleArt/tawindow.py:1574
-#: gnome_plugins/uploader_plugin.py:144
-msgid "Cancel"
-msgstr "Whakakore"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:914
-msgid "the canvas height"
-msgstr "te teiteitanga kānawehi"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1011
-msgid "presentation 2x1"
-msgstr "whakaaturanga 2x1"
-
-#: TurtleArt/tabasics.py:571
-msgid "minus"
-msgstr "tango"
-
-#: TurtleArt/tabasics.py:710 TurtleArt/tabasics.py:713
-msgid "and"
-msgstr " me "
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:132
-msgid "top of a collapsible stack"
-msgstr "te runga o te tāpae e taea ana te tiango"
-
-#: TurtleArt/talogo.py:623
-msgid "as input"
-msgstr "hei tāuru"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:628
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:644
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:659
-msgid "Python block"
-msgstr "Paraka python"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:281
-msgid "media wait"
-msgstr "taihoa pāpāho"
-
-#: plugins/accelerometer/accelerometer.py:56
-#: plugins/accelerometer/accelerometer.py:63
-msgid "acceleration"
-msgstr "whakaterenga"
-
-#: TurtleArt/tabasics.py:423
-msgid "holds current pen size (can be used in place of a number block)"
-msgstr ""
-"ka pupuri i te rahinga pene o nāianei (ka taea te whakamahi atu i te tau "
-"paraka)"
-
-#: TurtleArt/tabasics.py:309
-msgid "set color"
-msgstr "tautuhi tae"
-
-#: TurtleArt/tabasics.py:642
-msgid "min"
-msgstr "mōkito"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:741
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:752
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:763
-msgid "loads a block"
-msgstr "ka uta i tētahi paraka"
-
-#: TurtleArt/tabasics.py:278
-msgid "Palette of pen commands"
-msgstr "Papatā o ngā tono pene"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:486
-msgid "shows values in FILO (first-in last-out heap)"
-msgstr "ka whakaatu i te uara ki runga i FILO (tāpae first-in last-out)"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:113
-msgid "do-while-True operator that uses boolean operators from Numbers palette"
-msgstr ""
-"kaimahi mahi-i-te-wā-Tūturu ka whakamahi i ngā kaimahi pūreana mai i te "
-"papatā Tau"
-
-#: turtleblocks.py:374
-msgid "File"
-msgstr "Kōnae"
-
-#: TurtleArt/tabasics.py:704
-msgid "logical NOT operator"
-msgstr "arorau EHARA i te kaimahi"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:882
-msgid "ycor of bottom of screen"
-msgstr "ycor whakateraro o te mata"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:843
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:983
-msgid "presentation template: select Journal object (with description)"
-msgstr "tātauira whakaaturanga: tīpako ahanoa Tuhitaka (he whakaaturanga)"
-
-#: TurtleArt/tabasics.py:553
-msgid "Palette of numeric operators"
-msgstr "Papatā o ngā kaimahi tau"
-
-#: TurtleArt/tabasics.py:585
-msgid "multiply"
-msgstr "whakarau"
-
-#: TurtleArt/tabasics.py:750
-msgid "forever"
-msgstr "mō ake tonu"
-
-#: TurtleArtActivity.py:1252
-#, python-format
-msgid "Plugin %s already installed."
-msgstr "Kua tāuta kē te monomai %s."
-
-#: TurtleArt/tabasics.py:325
-msgid "sets shade of the line drawn by the turtle"
-msgstr "ka tautuhi i te uriuri o te rārangi ka tuhia e te honu"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:314
-msgid "speaks text"
-msgstr "kōrero kupu"
-
-#: TurtleArtActivity.py:243
-msgid "snapshot"
-msgstr "hopuāhua"
-
-#: TurtleArt/tabasics.py:147
-msgid "clean"
-msgstr "horoia"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:857
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:864
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1013
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1028
-msgid "presentation template: select two Journal objects"
-msgstr "tātauira whakaaturanga: tīpako ahanoa Tuhitaka e rua"
-
-#: TurtleArtActivity.py:651 TurtleArtActivity.py:806 turtleblocks.py:383
-msgid "Grow blocks"
-msgstr "Whakatipu paraka"
-
-#: TurtleArtActivity.py:637 TurtleArtActivity.py:797
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:806
-msgid "Fullscreen"
-msgstr "Matakatoa"
-
-#: turtleblocks.py:265
-msgid "File not found"
-msgstr "Kāore te kōnae i kitea"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:200
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:228
-msgid "show"
-msgstr "whakaatu"
-
-#: TurtleArt/tabasics.py:849 TurtleArt/tabasics.py:850
-#: TurtleArt/tabasics.py:851
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:192
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:193
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:194
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:201
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:214
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:229
-msgid "text"
-msgstr "kupu"
-
-#: TurtleArt/tabasics.py:642
-msgid "random"
-msgstr "tupurangi"
-
-#: TurtleArt/tabasics.py:670
-msgid "logical greater-than operator"
-msgstr "arorau rahi-ake i te kaimahi"
-
-#: TurtleArt/tabasics.py:162
-msgid "turns turtle counterclockwise (angle in degrees)"
-msgstr "ka huri i te honu whakatemauī (koki tākiri)"
-
-#: TurtleArt/tabasics.py:450
-msgid "black"
-msgstr "pango"
-
-#: TurtleArt/tabasics.py:635
-msgid "calculates square root"
-msgstr "ka tatauria te pūtake rua"
-
-#: TurtleArt/tabasics.py:233
 msgid ""
 "holds current y-coordinate value of the turtle (can be used in place of a "
 "number block)"
@@ -2585,663 +1250,9 @@ msgstr ""
 "kei te pupuri i te uara y-coordinate o nāianei o te honu (ka taea te "
 "whakamahi atu i te tau paraka)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:364
-msgid "mouse x"
-msgstr "kiore x"
+msgid "heading"
+msgstr "panekōrero"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:374
-msgid "mouse y"
-msgstr "kiore y"
-
-#: pysamples/grecord.py:215
-msgid "stop"
-msgstr "tū"
-
-#: TurtleArt/tabasics.py:667
-msgid "greater than"
-msgstr "rahi ake i"
-
-#: TurtleArt/tabasics.py:221 TurtleArt/tawindow.py:4105
-msgid "xcor"
-msgstr "xcor"
-
-#: TurtleArtActivity.py:735 turtleblocks.py:422 util/helpbutton.py:45
-msgid "Help"
-msgstr "Āwhina"
-
-#: turtleblocks.py:462
-msgid "Save project?"
-msgstr "Tiaki tūmahi?"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:695
-msgid "chooses which turtle to command"
-msgstr "ka kōwhiri tēwhea honu hei tohutohu"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:957
-msgid "right x"
-msgstr "matau x"
-
-#: TurtleArt/tabasics.py:459
-msgid "sets color of text drawn by the turtle"
-msgstr "ka tautuhi i te tae o te kupu kua tuhia e te honu"
-
-#: plugins/light_sensor/light_sensor.py:58
-#: plugins/light_sensor/light_sensor.py:65
-msgid "light level detected by light sensor"
-msgstr "taumata rama ka haurapahia e te pūoko rama"
-
-#: TurtleArtActivity.py:1152 TurtleArtActivity.py:1157
-#: TurtleArtActivity.py:1238
-msgid "Plugin could not be installed."
-msgstr "Kāore i taea te tāutu monomai."
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:394
-msgid "keyboard"
-msgstr "papapātuhi"
-
-#: TurtleArt/tabasics.py:182
-msgid "arc"
-msgstr "pewa"
-
-#: TurtleArt/tabasics.py:182
-msgid "radius"
-msgstr "pūtoro"
-
-#: TurtleArtActivity.py:642 TurtleArtActivity.py:800 turtleblocks.py:379
-msgid "Polar coordinates"
-msgstr "Ruruku Polar"
-
-#: TurtleArt/tabasics.py:321
-msgid "set shade"
-msgstr "tautuhi uriuri"
-
-#: TurtleArt/tabasics.py:714
-msgid "logical AND operator"
-msgstr "arorau ME te kaimahi"
-
-#: gnome_plugins/uploader_plugin.py:90
-msgid ""
-"You must have an account at http://turtleartsite.sugarlabs.org to upload "
-"your project."
-msgstr ""
-"Me whai pūkete koe ki http://turtleartsite.sugarlabs.org kia tukuatu i tō "
-"kaupapa."
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:771
-msgid "palette"
-msgstr "papa"
-
-#: TurtleArtActivity.py:729 TurtleArtActivity.py:992 turtleblocks.py:414
-msgid "Run"
-msgstr "Whakahaere"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:483
-msgid "show heap"
-msgstr "whakaatu tāpae"
-
-#: TurtleArt/tabasics.py:213
-msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
-msgstr "ka tautuhi i te panekōrero o te honu (0 kei te taha runga o te mata.)"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:774
-msgid "selects a palette"
-msgstr "ka tīpako papa"
-
-#: plugins/audio_sensors/audio_sensors.py:91
-#: plugins/audio_sensors/audio_sensors.py:106
-msgid "microphone input volume"
-msgstr "rōrahi tāuru hopureo"
-
-#: gnome_plugins/uploader_plugin.py:120
-msgid "Title:"
-msgstr "Taitara:"
-
-#: plugins/camera_sensor/camera_sensor.py:67
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:139
-msgid "Palette of media objects"
-msgstr "Papatā o ngā ahanoa pāpāho"
-
-#: TurtleArtActivity.py:629
-msgid "Restore blocks from trash"
-msgstr "Whakaora i ngā paraka katoa mai i te paraurehe"
-
-#: TurtleArt/tabasics.py:834
-msgid "Palette of variable blocks"
-msgstr "Papatā o ngā paraka rerekē"
-
-#: TurtleArt/tabasics.py:659
-msgid "used as numeric input in mathematic operators"
-msgstr "kua whakamahia hei tāurunga tau i roto i ngā kaimahi pāngarau"
-
-#: gnome_plugins/fb_plugin.py:82 gnome_plugins/fb_plugin.py:83
-#: gnome_plugins/fb_plugin.py:92 gnome_plugins/uploader_plugin.py:63
-#: gnome_plugins/uploader_plugin.py:64 gnome_plugins/uploader_plugin.py:73
-msgid "Upload"
-msgstr "Tukuatu"
-
-#: gnome_plugins/collaboration_plugin.py:296
-msgid "Server"
-msgstr "Tūmau"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1041
-msgid "presentation 2x2"
-msgstr "whakaaturanga 2x2"
-
-#: TurtleArt/tabasics.py:908
-msgid "Variable 1 (numeric value)"
-msgstr "Tāupe 1 (uara tau)"
-
-#: gnome_plugins/collaboration_plugin.py:132
-msgid "Neighborhood"
-msgstr "Takiwā"
-
-#: TurtleArt/tabasics.py:563
-msgid "adds two alphanumeric inputs"
-msgstr "ka tāpiri i ngā tāurunga namatau"
-
-#: TurtleArt/tabasics.py:691
-msgid "equal"
-msgstr "ōrite"
-
-#: TurtleArt/tabasics.py:785
-msgid "else"
-msgstr "kē atu"
-
-#: TurtleArt/talogo.py:623
-msgid "doesn't like"
-msgstr "kāore e pai ki"
-
-#: turtleblocks.py:461
-msgid "You have unsaved work. Would you like to save before quitting?"
-msgstr "Kei a koe he mahi kāore anō kia tiaki. Me tiaki i mua i te waihotanga?"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:800
-msgid "restores hidden blocks"
-msgstr "ka whakaora i ngā paraka huna"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:738
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:748
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:759
-msgid "load"
-msgstr "uta"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:291
-msgid "stop video or audio"
-msgstr "whakatū ataata, ororongo rānei"
-
-#: TurtleArt/tabasics.py:375
-msgid "Turtle will not draw when moved."
-msgstr "Ka kore te honu e tuhi mēnā ka neke."
-
-#. #-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: pop removes a new item from the program stack
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:510
-msgid "pop"
-msgstr "pahū"
-
-#: TurtleArt/tabasics.py:422
-msgid "pen size"
-msgstr "rahinga pene"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:715
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:724
-msgid "turtle shell"
-msgstr "anga honu"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:326
-msgid "plays a sinewave at frequency, amplitude, and duration (in seconds)"
-msgstr ""
-"ka whakatangi i tētahi sinewave auautanga, roanga, pūrahi ngaru hoki (ki ngā "
-"hēkona)"
-
-#: TurtleArt/tabasics.py:631
-msgid "√"
-msgstr "√"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:311
-msgid "speak"
-msgstr "whakahua"
-
-#: plugins/rfid/rfid.py:93 plugins/rfid/rfid.py:101
-msgid "read value from RFID device"
-msgstr "pānui uara mai i te pūrere RFID"
-
-#: TurtleArt/tabasics.py:186
-msgid "moves turtle along an arc"
-msgstr "ka neke i te honu ki te pewa"
-
-#: pysamples/uturn.py:26
-msgid "make a uturn"
-msgstr "huri whakamuri"
-
-#: TurtleArt/tabasics.py:695
-msgid "logical equal-to operator"
-msgstr "arorau ōrite ki te kaimahi"
-
-#: TurtleArt/tabasics.py:437
-msgid "Palette of pen colors"
-msgstr "Papatā o ngā tae pene"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:298
-msgid "pause video or audio"
-msgstr "tatari ataata, ororongo rānei"
-
-#: TurtleArt/tabasics.py:884
-msgid "stores numeric value in Variable 1"
-msgstr "ka penapena uara tau ki Tāupe 1"
-
-#: TurtleArt/tabasics.py:897
-msgid "stores numeric value in Variable 2"
-msgstr "ka penapena uara tau ki Tāupe 2"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:717
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:725
-msgid "put a custom 'shell' on the turtle"
-msgstr "meatia he 'anga' ritenga ki runga i te honu"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:343
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:354
-msgid "button down"
-msgstr "pātene raro"
-
-#: TurtleArt/tabasics.py:139
-msgid "moves turtle backward"
-msgstr "ka neke whakamuri i te honu"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:906
-msgid "ycor of top of screen"
-msgstr "ycor whakaterunga o te mata"
-
-#: TurtleArt/talogo.py:380 TurtleArtActivity.py:360 TurtleArtActivity.py:732
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1529
-msgid "Show blocks"
-msgstr "Whakaatu paraka"
-
-#: pysamples/grecord.py:217
-msgid "play"
-msgstr "pūrei"
-
-#: pysamples/grecord.py:219
-msgid "save"
-msgstr "tiaki"
-
-#: gnome_plugins/collaboration_plugin.py:304
-msgid "Colors"
-msgstr "Ngā Tae"
-
-#: TurtleArt/tabasics.py:394
-msgid "sets size of the line drawn by the turtle"
-msgstr "tautuhi rahinga o te rārangi ka tuhia e te honu"
-
-#: turtleblocks.py:366
-msgid "Open"
-msgstr "Whakatuwhera"
-
-#: TurtleArt/tawindow.py:1033 TurtleArt/tawindow.py:1034
-msgid "orientation"
-msgstr "takotoranga"
-
-#: TurtleArt/tabasics.py:232 TurtleArt/tawindow.py:4106
-msgid "ycor"
-msgstr "ycor"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:602
-msgid ""
-"a programmable block: used to add advanced multi-variable math equations, e."
-"g., sqrt(x*x+y*y)"
-msgstr ""
-"he paraka e taea ana te whakapapatono: ka whakamahia hei tāpiri whārite "
-"pāngarau tāupe takitini arā atu anō, e.g., taupūrua(x*x+y*y)"
-
-#: TurtleArt/tabasics.py:772 TurtleArt/tabasics.py:785
-msgid "if"
-msgstr "mēnā"
-
-#: TurtleArt/tabasics.py:199 TurtleArt/tabasics.py:265
-msgid ""
-"moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
-msgstr "ka neke i te honu ki te tūnga xcor, ycor; (0, 0) kei waenga i te mata."
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:585
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:598
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:612
-msgid "Python"
-msgstr "Python"
-
-#: TurtleArtActivity.py:736 turtleblocks.py:417
-msgid "Stop"
-msgstr "Tū"
-
-#: TurtleArt/tabasics.py:961 TurtleArt/tabasics.py:981
-msgid "action 2"
-msgstr "hohenga 2"
-
-#: TurtleArt/tabasics.py:952 TurtleArt/tabasics.py:971
-msgid "action 1"
-msgstr "hohenga 1"
-
-#: TurtleArt/tabasics.py:413
-msgid "end fill"
-msgstr "whakakī mutunga"
-
-#: TurtleArtActivity.py:625 TurtleArtActivity.py:779 turtleblocks.py:395
-msgid "Copy"
-msgstr "Tārua"
-
-#: TurtleArtActivity.py:627 TurtleArtActivity.py:780 turtleblocks.py:396
-msgid "Paste"
-msgstr "Whakapiri"
-
-#: TurtleArt/talogo.py:508
-msgid "did not output to"
-msgstr "kāore i huaputa ki"
-
-#: gnome_plugins/collaboration_plugin.py:120
-msgid "Activities"
-msgstr "Ngā Hohe"
-
-#: gnome_plugins/uploader_plugin.py:68
-msgid "Upload to Web"
-msgstr "Tukuatu ki te Tukutuku"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:496
-msgid "empty heap"
-msgstr "putu tāpae"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:514
-msgid "pops value off FILO (first-in last-out heap)"
-msgstr "ka pahū i te uara mai i FILO (tāpae first-in last-out)"
-
-#: TurtleArtActivity.py:728 TurtleArtActivity.py:990 turtleblocks.py:413
-msgid "Clean"
-msgstr "Horoia"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:782
-msgid "Palette of presentation templates"
-msgstr "Papatā o ngā tātauira whakaaturanga"
-
-#: TurtleArt/tabasics.py:182
-msgid "angle"
-msgstr "koki"
-
-#: TurtleArt/tabasics.py:610
-msgid "identity"
-msgstr "tuakiri"
-
-#: TurtleArtActivity.py:617 TurtleArtActivity.py:724 TurtleArtActivity.py:753
-#: TurtleArtActivity.py:755 TurtleArtActivity.py:917
-msgid "Save/Load"
-msgstr "Tiaki/Utaina"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:948
-msgid "top y"
-msgstr "runga y"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:157
-msgid "audio"
-msgstr "ororongo"
-
-#: turtleblocks.py:410
-msgid "Tools"
-msgstr "Ngā Utauta"
-
-#: gnome_plugins/collaboration_plugin.py:298
-msgid "Port"
-msgstr "Tauranga"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:545
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:547
-msgid "comment"
-msgstr "tākupu"
-
-#: TurtleArt/tabasics.py:574
-msgid "subtracts bottom numeric input from top numeric input"
-msgstr "ka tango i ngā tāurunga tau raro mai i te tāurunga tau runga"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:296
-msgid "media pause"
-msgstr "tatari pāpāho"
-
-#: pysamples/forward_push.py:45
-msgid "push destination rgb value to heap"
-msgstr "peia te taunga rgb ki te pūkai"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:387
-msgid "query for keyboard input (results stored in keyboard block)"
-msgstr "uiui mō te tāuru papapātuhi (hua kua penapena ki te paraka papapātuhi)"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:675
-msgid "Cartesian"
-msgstr "Katihini"
-
-#: TurtleArt/tabasics.py:150
-msgid "clears the screen and reset the turtle"
-msgstr "ka ūkui i te mata me te tautuhi i te honu"
-
-#: plugins/audio_sensors/audio_sensors.py:84
-#: plugins/audio_sensors/audio_sensors.py:99
-msgid "raw microphone input signal"
-msgstr "tohu tāuru hopureo mata"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:443
-msgid "returns the color that the turtle \"sees\""
-msgstr "ka whakahoki i te tae e \"kite\" nei te honu"
-
-#: TurtleArt/tabasics.py:974
-msgid "invokes Action 1 stack"
-msgstr "ka whakaara tāpae Hohenga 1"
-
-#: TurtleArt/tabasics.py:119
-msgid "Palette of turtle commands"
-msgstr "Ngā tohutohu honu papatā"
-
-#: TurtleArt/tabasics.py:754
-msgid "loops forever"
-msgstr "koromeke mō ake tonu"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:213
-msgid "show aligned"
-msgstr "whakaatu tīaroaro"
-
-#: TurtleArtActivity.py:1253
-#, python-format
-msgid "Do you want to reinstall %s?"
-msgstr "E hiahia ana koe ki te tāuta anō i %s?"
-
-#: TurtleArtActivity.py:758 TurtleArtActivity.py:938 TurtleArtActivity.py:960
-msgid "Load project"
-msgstr "Uta kaupapa"
-
-#: TurtleArtActivity.py:611 TurtleArtActivity.py:727
-msgid "Project"
-msgstr "Kaupapa"
-
-#: turtleblocks.py:416
-msgid "Debug"
-msgstr "Patuiro"
-
-#: TurtleArtActivity.py:296 TurtleArtActivity.py:657 TurtleArtActivity.py:808
-msgid "Turn off hover help"
-msgstr "Whakaweto āwhina topa"
-
-#: TurtleArt/tabasics.py:620 TurtleArt/tabasics.py:621
-msgid "mod"
-msgstr "mod"
-
-#: gnome_plugins/collaboration_plugin.py:300
-msgid "Password"
-msgstr "Kupuhipa"
-
-#: TurtleArt/tabasics.py:815
-msgid "vertical space"
-msgstr "mokowā poutū"
-
-#: TurtleArtActivity.py:1234
-msgid "Please restart Turtle Art in order to use the plugin."
-msgstr "Tīmata anō i te Toi Honu kia taea te whakamahi i te monomai."
-
-#: TurtleArt/tabasics.py:415
-msgid "completes filled polygon (used with start fill block)"
-msgstr "whakaoti tapamaha whakakī (ka whakamahia ki te paraka whakakī tīmata)"
-
-#: gnome_plugins/collaboration_plugin.py:128
-msgid "Share"
-msgstr "Tiri"
-
-#: TurtleArt/tabasics.py:679
-msgid "less than"
-msgstr "iti ake"
-
-#: TurtleArt/tabasics.py:632
-msgid "square root"
-msgstr "Pūtake rua"
-
-#: turtleblocks.py:381
-msgid "Rescale coordinates"
-msgstr "Tauine anō i ngā ruruku"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:798
-msgid "show blocks"
-msgstr "whakaatu paraka"
-
-#: turtleblocks.py:373
-msgid "Quit"
-msgstr "Waiho"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:183
-msgid "Sugar Journal description field"
-msgstr "āpure whakaahuatanga Tuhitaka Sugar"
-
-#: TurtleArt/tabasics.py:333
-msgid "set gray"
-msgstr "tautuhi hina"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:821
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1056
-msgid "presentation bulleted list"
-msgstr "rārangi pere whakaaturanga"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:323
-msgid "duration"
-msgstr "roanga"
-
-#: turtleblocks.py:365
-msgid "New"
-msgstr "Hōu"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:549
-msgid "places a comment in your code"
-msgstr "ka tuku tākupu ki tō waehere"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:430
-msgid "read pixel"
-msgstr "pānui pika"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:272
-msgid "scale"
-msgstr "tauine"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:879
-msgid "bottom"
-msgstr "raro"
-
-#: TurtleArt/tabasics.py:447
-msgid "purple"
-msgstr "waiporoporo"
-
-#: TurtleArtActivity.py:485
-msgid "Rescale coordinates down"
-msgstr "Whakakē raro ngā ruruku"
-
-#: TurtleArt/tautils.py:586
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:730
-msgid "click to open"
-msgstr "pāwhiri ki te tuwhera"
-
-#: plugins/audio_sensors/audio_sensors.py:120
-#: plugins/audio_sensors/audio_sensors.py:128
-msgid "microphone input pitch"
-msgstr "rangi tāuru hopureo"
-
-#: gnome_plugins/collaboration_plugin.py:129
-msgid "Configuration"
-msgstr "Whirihoranga"
-
-#: gnome_plugins/uploader_plugin.py:130
-msgid "Description:"
-msgstr "Whakaaturanga:"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:146
-msgid "journal"
-msgstr "tuhitaka"
-
-#: TurtleArt/tabasics.py:996
-msgid "empty trash"
-msgstr "putu paraurehe"
-
-#: TurtleArt/tabasics.py:384
-msgid "Turtle will draw when moved."
-msgstr "Ka tuhi te honu ina ka neke."
-
-#: TurtleArt/tautils.py:295
-msgid "Load..."
-msgstr "Utaina..."
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:159
-msgid "Sugar Journal audio object"
-msgstr "ahanoa ororongo Tuhitaka Sugar"
-
-#: TurtleArt/talogo.py:370 TurtleArtActivity.py:731
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1538
-msgid "Stop turtle"
-msgstr "Whakatū honu"
-
-#: turtleblocks.py:418
-msgid "Turtle"
-msgstr "Honu"
-
-#: TurtleArt/tapalette.py:98
-msgid "changes the orientation of the palette of blocks"
-msgstr "ka huri i te takotoranga o te papatā o ngā paraka"
-
-#: TurtleArt/tabasics.py:924 TurtleArt/tawindow.py:4427
-msgid "store in"
-msgstr "penapena ki"
-
-#: TurtleArt/talogo.py:384 TurtleArtActivity.py:364 TurtleArtActivity.py:996
-msgid "Hide blocks"
-msgstr "Hunaia ngā paraka"
-
-#: TurtleArtActivity.py:762 TurtleArtActivity.py:946 TurtleArtActivity.py:968
-msgid "Load Python block"
-msgstr "Uta paraka Python"
-
-#: TurtleArt/tabasics.py:559
-msgid "plus"
-msgstr "tāpiri"
-
-#: TurtleArt/tabasics.py:721 TurtleArt/tabasics.py:724
-msgid "or"
-msgstr "rānei"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:829
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1058
-msgid "presentation template: list of bullets"
-msgstr "tātauira whakaaturanga: rārangi pere"
-
-#: TurtleArt/tabasics.py:612
-msgid "identity operator used for extending blocks"
-msgstr "kaimahi tuakiri kua whakamahia hei whakatoro paraka"
-
-#: TurtleArtActivity.py:654 TurtleArtActivity.py:807 turtleblocks.py:385
-msgid "Shrink blocks"
-msgstr "Tīngongo paraka"
-
-#: TurtleArt/tabasics.py:470
-msgid "sets size of text drawn by the turtle"
-msgstr "ka tautuhi i te rahinga o te kupu kua tuhia e te honu"
-
-#: TurtleArt/tabasics.py:244
 msgid ""
 "holds current heading value of the turtle (can be used in place of a number "
 "block)"
@@ -3249,215 +1260,986 @@ msgstr ""
 "ka pupuri i te uara panekōrero o nāianei o te honu (ka taea te whakamahi atu "
 "i te tau paraka)"
 
-#: TurtleArt/tawindow.py:4215
-msgid "image"
-msgstr "atahanga"
+msgid "Palette of pen commands"
+msgstr "Papatā o ngā tono pene"
 
-#: TurtleArt/tabasics.py:646
-msgid "returns random number between minimum (top) and maximum (bottom) values"
-msgstr ""
-"ka whakahoki tau tupurangi i waenga i ngā uara mōkito (runga) me ngā uara "
-"mōrahi (raro)"
+msgid "fill screen"
+msgstr "mata whakakī"
 
-#: TurtleArt/tabasics.py:345
+msgid "shade"
+msgstr "uriuri"
+
+msgid "fills the background with (color, shade)"
+msgstr "ka whakakī i te papamuri me te (tae, uriuri)"
+
+msgid "set color"
+msgstr "tautuhi tae"
+
+msgid "sets color of the line drawn by the turtle"
+msgstr "ka tautuhi i te tae o te rārangi ka tuhia e te honu"
+
+msgid "set shade"
+msgstr "tautuhi uriuri"
+
+msgid "sets shade of the line drawn by the turtle"
+msgstr "ka tautuhi i te uriuri o te rārangi ka tuhia e te honu"
+
+msgid "set gray"
+msgstr "tautuhi hina"
+
+msgid "sets gray level of the line drawn by the turtle"
+msgstr "ka tautuhi i te hinahina o te rārangi ka tuhia e te honu"
+
 msgid "holds current pen color (can be used in place of a number block)"
 msgstr ""
 "ka pupuri i te tae pene o nāianei (ka taea te whakamahi atu i te tau paraka)"
 
-#: TurtleArtActivity.py:312 turtleblocks.py:404
-msgid "Show palette"
-msgstr "Whakaatu papatā"
+msgid "holds current pen shade"
+msgstr "ka pupuri i te uriuri pene o nāianei"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:254
-msgid "saves a picture to the Sugar Journal"
-msgstr "tiaki pikitia ki te Tuhitaka Sugar"
+msgid "holds current gray level (can be used in place of a number block)"
+msgstr ""
+"ka pupuri i te taumata hina o nāianei (ka taea te whakamahi atu i te tau "
+"paraka)"
 
-#: TurtleArtActivity.py:251 TurtleArtActivity.py:691 TurtleArtActivity.py:733
-#: TurtleArtActivity.py:931 TurtleArtActivity.py:958
-msgid "Save snapshot"
-msgstr "Tiaki hopuāhua"
+msgid "pen up"
+msgstr "pene ki runga"
 
-#: TurtleArt/tabasics.py:839 pysamples/grecord.py:213
-msgid "start"
-msgstr "tīmata"
+msgid "Turtle will not draw when moved."
+msgstr "Ka kore te honu e tuhi mēnā ka neke."
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:528
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:538
-msgid "returns True if heap is empty"
-msgstr "ka whakahoki Tika mēnā kei te putu te tāpae"
+msgid "pen down"
+msgstr "pene ki raro"
 
-#: TurtleArt/tabasics.py:128
-msgid "moves turtle forward"
-msgstr "ka neke whakamua i te honu"
+msgid "Turtle will draw when moved."
+msgstr "Ka tuhi te honu ina ka neke."
 
-#: TurtleArt/tabasics.py:124
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:740
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:751
-msgid "forward"
-msgstr "whakamua"
+msgid "set pen size"
+msgstr "tautuhi rahinga pene"
 
-#: TurtleArt/tabasics.py:928 TurtleArt/tabasics.py:942
-#: TurtleArt/tawindow.py:1355 TurtleArt/tawindow.py:1486
-#: TurtleArt/tawindow.py:2081 TurtleArt/tawindow.py:4390
-#: TurtleArt/tawindow.py:4418
-msgid "my box"
-msgstr "taku pouaka"
+msgid "sets size of the line drawn by the turtle"
+msgstr "tautuhi rahinga o te rārangi ka tuhia e te honu"
 
-#: gnome_plugins/collaboration_plugin.py:294
-msgid "Account ID"
-msgstr "ID Pūkete"
+msgid "start fill"
+msgstr "tīmata whakakī"
 
-#: TurtleArt/tawindow.py:1369
-msgid "Select blocks to share"
-msgstr "Tīpako paraka hei tiri"
+msgid "starts filled polygon (used with end fill block)"
+msgstr ""
+"ka tīmata i te tapamaha whakakī (ka whakamahia me te paraka whakakī mutunga)"
 
-#: TurtleArt/tabasics.py:135
-msgid "back"
-msgstr "whakamuri"
+msgid "end fill"
+msgstr "whakakī mutunga"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:244
-msgid "sets the scale of media"
-msgstr "ka tautuhi i te tauine o te pāpāho"
+msgid "completes filled polygon (used with start fill block)"
+msgstr "whakaoti tapamaha whakakī (ka whakamahia ki te paraka whakakī tīmata)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:276
-msgid "holds current scale value"
-msgstr "ka pupuri uara tauine o nāianei"
+msgid "pen size"
+msgstr "rahinga pene"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:981
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:996
-msgid "presentation 1x1"
-msgstr "whakaaturanga 1x1"
+msgid "holds current pen size (can be used in place of a number block)"
+msgstr ""
+"ka pupuri i te rahinga pene o nāianei (ka taea te whakamahi atu i te tau "
+"paraka)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1026
-msgid "presentation 1x2"
-msgstr "whakaaturanga 1x2"
+msgid "Palette of pen colors"
+msgstr "Papatā o ngā tae pene"
 
-#: TurtleArt/tabasics.py:861
-msgid "top of nameable action stack"
-msgstr "runga o te tāpae hohenga whai ingoa"
+msgid "red"
+msgstr "whero"
 
-#: TurtleArt/tabasics.py:929 TurtleArt/tawindow.py:4432
-msgid "stores numeric value in named variable"
-msgstr "ka penapena uara tau ki te tāupe ingoa"
+msgid "orange"
+msgstr "karaka"
 
-#: TurtleArt/tabasics.py:725
-msgid "logical OR operator"
-msgstr "arorau, kaimahi RĀNEI"
+msgid "yellow"
+msgstr "kōwhai"
 
-#: plugins/audio_sensors/audio_sensors.py:158
-#: plugins/audio_sensors/audio_sensors.py:172
-#: plugins/audio_sensors/audio_sensors.py:186
-#: plugins/audio_sensors/audio_sensors.py:200
-msgid "microphone input voltage"
-msgstr "ngaohiko tāuru hopureo"
+msgid "green"
+msgstr "kākāriki"
 
-#: TurtleArt/tabasics.py:766
-msgid "loops specified number of times"
-msgstr "koromeke mo ngā wā kua whakaritea"
+msgid "cyan"
+msgstr "kawariki"
 
-#: TurtleArt/tautils.py:305
-msgid "Save..."
-msgstr "Tiaki..."
+msgid "blue"
+msgstr "kikorangi"
 
-#: TurtleArt/tabasics.py:984
-msgid "invokes Action 2 stack"
-msgstr "ka whakaara tāpae Hohenga 2"
+msgid "purple"
+msgstr "waiporoporo"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:762
-msgid "setxy"
-msgstr "tautuhixy"
+msgid "white"
+msgstr "mā"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:930
-msgid "title y"
-msgstr "taitara y"
+msgid "black"
+msgstr "pango"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:921
-msgid "title x"
-msgstr "taitara x"
+msgid "set text color"
+msgstr "tautuhi tae kupu"
 
-#: TurtleArt/tabasics.py:283 TurtleArt/tabasics.py:294
-msgid "fill screen"
-msgstr "mata whakakī"
+msgid "sets color of text drawn by the turtle"
+msgstr "ka tautuhi i te tae o te kupu kua tuhia e te honu"
 
-#: pysamples/journal-stats.py:78
-msgid "other"
-msgstr "ētahi atu"
+msgid "set text size"
+msgstr "tautuhi rahinga kupu"
 
-#: turtleblocks.py:368
-msgid "Save as"
-msgstr "Tiaki hei"
+msgid "sets size of text drawn by the turtle"
+msgstr "ka tautuhi i te rahinga o te kupu kua tuhia e te honu"
 
-#: TurtleArt/tabasics.py:195 TurtleArt/tabasics.py:261
-msgid "set xy"
-msgstr "tautuhi xy"
+msgid "Palette of numeric operators"
+msgstr "Papatā o ngā kaimahi tau"
 
-#: TurtleArt/tabasics.py:992
-msgid "trash"
-msgstr "paraurehe"
+msgid "plus"
+msgstr "tāpiri"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:683
-msgid "polar"
-msgstr "pitorua"
+msgid "adds two alphanumeric inputs"
+msgstr "ka tāpiri i ngā tāurunga namatau"
 
-#: TurtleArt/tabasics.py:761 TurtleArt/tabasics.py:765
-msgid "repeat"
-msgstr "tārua"
+msgid "minus"
+msgstr "tango"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:283
-msgid "wait for current video or audio to complete"
-msgstr "taihoa kia oti te ataata o nāianei, te ororongo rānei"
+msgid "subtracts bottom numeric input from top numeric input"
+msgstr "ka tango i ngā tāurunga tau raro mai i te tāurunga tau runga"
 
-#: TurtleArtActivity.py:235 TurtleArtActivity.py:756 TurtleArtActivity.py:922
-#: TurtleArtActivity.py:952 turtleblocks.py:369
-msgid "Save as image"
-msgstr "Tiaki hei atahanga"
+msgid "multiply"
+msgstr "whakarau"
 
-#: TurtleArtActivity.py:579 TurtleArtActivity.py:615 TurtleArtActivity.py:725
-#: TurtleArtActivity.py:778 turtleblocks.py:401
-msgid "Edit"
-msgstr "Whakatika"
+msgid "multiplies two numeric inputs"
+msgstr "ka whakarau i ngā tāurunga tau e rua"
 
-#: plugins/audio_sensors/audio_sensors.py:152
-#: plugins/audio_sensors/audio_sensors.py:166
-#: plugins/audio_sensors/audio_sensors.py:180
-#: plugins/audio_sensors/audio_sensors.py:194
-msgid "microphone input resistance"
-msgstr "parenga tāuru hopureo"
+msgid "divide"
+msgstr "whakawehe"
 
-#: TurtleArt/tabasics.py:964
-msgid "top of Action 2 stack"
-msgstr "runga o te tāpae Hohenga 2"
-
-#: TurtleArt/tabasics.py:600
 msgid ""
 "divides top numeric input (numerator) by bottom numeric input (denominator)"
 msgstr ""
 "ka whakawehengia te tāurunga tau runga (haurunga) e te tāurunga tau raro "
 "(hauraro)"
 
-#: TurtleArt/tabasics.py:642
+msgid "identity"
+msgstr "tuakiri"
+
+msgid "identity operator used for extending blocks"
+msgstr "kaimahi tuakiri kua whakamahia hei whakatoro paraka"
+
+msgid "mod"
+msgstr "mod"
+
+msgid "modular (remainder) operator"
+msgstr "kaimahi whakakāwai (toenga)"
+
+msgid "√"
+msgstr "√"
+
+msgid "square root"
+msgstr "Pūtake rua"
+
+msgid "calculates square root"
+msgstr "ka tatauria te pūtake rua"
+
+msgid "random"
+msgstr "tupurangi"
+
+msgid "min"
+msgstr "mōkito"
+
 msgid "max"
 msgstr "mōrahi"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:559
-msgid "prints value in status block at bottom of the screen"
-msgstr "ka tā uara ki roto i ngā paraka tūnga kei raro o te mata"
+msgid "returns random number between minimum (top) and maximum (bottom) values"
+msgstr ""
+"ka whakahoki tau tupurangi i waenga i ngā uara mōkito (runga) me ngā uara "
+"mōrahi (raro)"
 
-#: TurtleArt/tabasics.py:404
-msgid "start fill"
-msgstr "tīmata whakakī"
+msgid "number"
+msgstr "tau"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:398
+msgid "used as numeric input in mathematic operators"
+msgstr "kua whakamahia hei tāurunga tau i roto i ngā kaimahi pāngarau"
+
+msgid "greater than"
+msgstr "rahi ake i"
+
+msgid "logical greater-than operator"
+msgstr "arorau rahi-ake i te kaimahi"
+
+msgid "less than"
+msgstr "iti ake"
+
+msgid "logical less-than operator"
+msgstr "arorau iti-ake i te kaimahi"
+
+msgid "equal"
+msgstr "ōrite"
+
+msgid "logical equal-to operator"
+msgstr "arorau ōrite ki te kaimahi"
+
+msgid "not"
+msgstr "ehara"
+
+msgid "logical NOT operator"
+msgstr "arorau EHARA i te kaimahi"
+
+msgid "and"
+msgstr " me "
+
+msgid "logical AND operator"
+msgstr "arorau ME te kaimahi"
+
+msgid "or"
+msgstr "rānei"
+
+msgid "logical OR operator"
+msgstr "arorau, kaimahi RĀNEI"
+
+msgid "Palette of flow operators"
+msgstr "Papaptā o ngā kaimahi rere"
+
+msgid "wait"
+msgstr "taihoa"
+
+msgid "pauses program execution a specified number of seconds"
+msgstr "tāria kawenga papatono, he tau hēkona kua whakaritea"
+
+msgid "forever"
+msgstr "mō ake tonu"
+
+msgid "loops forever"
+msgstr "koromeke mō ake tonu"
+
+msgid "repeat"
+msgstr "tārua"
+
+msgid "loops specified number of times"
+msgstr "koromeke mo ngā wā kua whakaritea"
+
+msgid "if"
+msgstr "mēnā"
+
+msgid "then"
+msgstr "kātahi ka"
+
+msgid "if then"
+msgstr "mēna...kātahi ka"
+
+msgid "if-then operator that uses boolean operators from Numbers palette"
+msgstr ""
+"ko te kaimahi mēnā-kātahi ka whakamahi i ngā kaimahi pūreiana mai i te "
+"papatā Tau"
+
+msgid "else"
+msgstr "kē atu"
+
+msgid "if then else"
+msgstr "Mēna...Kātahi ka...kē atu"
+
+msgid "if-then-else operator that uses boolean operators from Numbers palette"
+msgstr ""
+"kaimahi mēnā-kātahi ka-kē atu ka whakamahi i ngā kaimahi pūreiana mai i te "
+"papatā Tau"
+
+msgid "horizontal space"
+msgstr "mokowā whakapae"
+
+msgid "jogs stack right"
+msgstr "oma tāpe tika"
+
+msgid "vertical space"
+msgstr "mokowā poutū"
+
+msgid "jogs stack down"
+msgstr "oma tāpae raro"
+
+msgid "stop action"
+msgstr "whakatū hohenga"
+
+msgid "stops current action"
+msgstr "whakatū hohenga o nāianei"
+
+msgid "Palette of variable blocks"
+msgstr "Papatā o ngā paraka rerekē"
+
+msgid "start"
+msgstr "tīmata"
+
+msgid "connects action to toolbar run buttons"
+msgstr "ka hono hohenga ki ngā pātene oma paeutauta"
+
+msgid "text"
+msgstr "kupu"
+
+msgid "string value"
+msgstr "uara aho"
+
+msgid "action"
+msgstr "hohenga"
+
+msgid "top of nameable action stack"
+msgstr "runga o te tāpae hohenga whai ingoa"
+
+msgid "invokes named action stack"
+msgstr "ka whakaara tāpae hohenga whai ingoa"
+
+msgid "store in box 1"
+msgstr "penapena ki pouaka 1"
+
+msgid "stores numeric value in Variable 1"
+msgstr "ka penapena uara tau ki Tāupe 1"
+
+msgid "store in box 2"
+msgstr "penapena ki pouaka 2"
+
+msgid "stores numeric value in Variable 2"
+msgstr "ka penapena uara tau ki Tāupe 2"
+
+msgid "box 1"
+msgstr "pouaka 1"
+
+msgid "Variable 1 (numeric value)"
+msgstr "Tāupe 1 (uara tau)"
+
+msgid "box 2"
+msgstr "pouaka 2"
+
+msgid "Variable 2 (numeric value)"
+msgstr "Tāupe 2 (uara tau)"
+
+msgid "store in"
+msgstr "penapena ki"
+
+msgid "box"
+msgstr "pouaka"
+
+msgid "my box"
+msgstr "taku pouaka"
+
+msgid "stores numeric value in named variable"
+msgstr "ka penapena uara tau ki te tāupe ingoa"
+
+msgid "named variable (numeric value)"
+msgstr "tāupe whai ingoa (uara tau)"
+
+msgid "action 1"
+msgstr "hohenga 1"
+
+msgid "top of Action 1 stack"
+msgstr "runga o te tāpae Hohenga 1"
+
+msgid "action 2"
+msgstr "hohenga 2"
+
+msgid "top of Action 2 stack"
+msgstr "runga o te tāpae Hohenga 2"
+
+msgid "invokes Action 1 stack"
+msgstr "ka whakaara tāpae Hohenga 1"
+
+msgid "invokes Action 2 stack"
+msgstr "ka whakaara tāpae Hohenga 2"
+
+msgid "trash"
+msgstr "paraurehe"
+
+msgid "empty trash"
+msgstr "putu paraurehe"
+
+msgid "permanently deletes items in trash"
+msgstr "ka putu tūemi i te paraurehe mō ake tonu atu"
+
+msgid "restore all"
+msgstr "whakaora te katoa"
+
+msgid "restore all blocks from trash"
+msgstr "whakaora i ngā paraka katoa mai i te paraurehe"
+
+msgid "clear all"
+msgstr "ūkui katoa"
+
+msgid "move all blocks to trash"
+msgstr "nekehia ngā paraka katoa ki te paraurehe"
+
+msgid "Share selected blocks"
+msgstr "Tiri i ngā paraka kua tīpakohia"
+
+msgid "Title"
+msgstr "Taitara"
+
+msgid "Stop turtle"
+msgstr "Whakatū honu"
+
+msgid "Show blocks"
+msgstr "Whakaatu paraka"
+
+msgid "Hide blocks"
+msgstr "Hunaia ngā paraka"
+
+msgid "did not output to"
+msgstr "kāore i huaputa ki"
+
+msgid "I don't know how to"
+msgstr "kāore au e mōhio ki te"
+
+msgid "doesn't like"
+msgstr "kāore e pai ki"
+
+msgid "as input"
+msgstr "hei tāuru"
+
+msgid "displays next palette"
+msgstr "ka whakaatu i te papatā panuku"
+
+msgid "changes the orientation of the palette of blocks"
+msgstr "ka huri i te takotoranga o te papatā o ngā paraka"
+
+msgid "Load..."
+msgstr "Utaina..."
+
+msgid "Save..."
+msgstr "Tiaki..."
+
+msgid "click to open"
+msgstr "pāwhiri ki te tuwhera"
+
+msgid "orientation"
+msgstr "takotoranga"
+
+msgid "next"
+msgstr "panuku"
+
+msgid "shift"
+msgstr "neke"
+
+msgid ""
+"Please hit the Stop Button before making changes to your Turtle Blocks "
+"program"
+msgstr ""
+
+msgid "Select blocks to share"
+msgstr "Tīpako paraka hei tiri"
+
+msgid "Save stack"
+msgstr ""
+
+msgid "Really overwrite stack?"
+msgstr ""
+
+msgid "Cancel"
+msgstr "Whakakore"
+
+msgid "Overwrite stack"
+msgstr ""
+
+msgid "Delete stack"
+msgstr ""
+
+msgid "Really delete stack?"
+msgstr ""
+
+msgid "image"
+msgstr "atahanga"
+
+msgid "Save as Logo"
+msgstr "Tiaki hei Tapanga"
+
+msgid "Save as image"
+msgstr "Tiaki hei atahanga"
+
+msgid "snapshot"
+msgstr "hopuāhua"
+
+msgid "Save snapshot"
+msgstr "Tiaki hopuāhua"
+
+msgid "Turn off hover help"
+msgstr "Whakaweto āwhina topa"
+
+msgid "Turn on hover help"
+msgstr "Whakakā āwhina topa"
+
+msgid "Show palette"
+msgstr "Whakaatu papatā"
+
+msgid "Hide palette"
+msgstr "Huna papatā"
+
+msgid "Rescale coordinates down"
+msgstr "Whakakē raro ngā ruruku"
+
+msgid "Rescale coordinates up"
+msgstr "Whakakē runga ngā ruruku"
+
+msgid "Edit"
+msgstr "Whakatika"
+
+msgid "View"
+msgstr "Tiro"
+
+msgid "Project"
+msgstr "Kaupapa"
+
+msgid "Save/Load"
+msgstr "Tiaki/Utaina"
+
+msgid "Copy"
+msgstr "Tārua"
+
+msgid "Paste"
+msgstr "Whakapiri"
+
+msgid "Restore blocks from trash"
+msgstr "Whakaora i ngā paraka katoa mai i te paraurehe"
+
+msgid "Fullscreen"
+msgstr "Matakatoa"
+
+msgid "Cartesian coordinates"
+msgstr "Ruruku Cartesian"
+
+msgid "Polar coordinates"
+msgstr "Ruruku Polar"
+
+msgid "Metric coordinates"
+msgstr "Ruruku ā-Ngahuru"
+
+msgid "Grow blocks"
+msgstr "Whakatipu paraka"
+
+msgid "Shrink blocks"
+msgstr "Tīngongo paraka"
+
+msgid "Load example"
+msgstr "Uta tauira"
+
+msgid "Clean"
+msgstr "Horoia"
+
+msgid "Run"
+msgstr "Whakahaere"
+
+msgid "Step"
+msgstr "Hipanga"
+
+msgid "Help"
+msgstr "Āwhina"
+
+msgid "Stop"
+msgstr "Tū"
+
+msgid "Load project"
+msgstr "Uta kaupapa"
+
+msgid "Load plugin"
+msgstr "Uta monomai"
+
+msgid "Load Python block"
+msgstr "Uta paraka Python"
+
+msgid "Palettes"
+msgstr "papa"
+
+msgid "Sharing blocks disabled"
+msgstr "Kua monokia ngā paraka tiri"
+
+msgid "<Ctrl>p"
+msgstr "<Ctrl>p"
+
+msgid "<Ctrl>e"
+msgstr "<Ctrl>e"
+
+msgid "<Ctrl>r"
+msgstr "<Ctrl>r"
+
+msgid "<Ctrl>w"
+msgstr "<Ctrl>w"
+
+msgid "<Ctrl>s"
+msgstr "<Ctrl>s"
+
+msgid "Plugin could not be installed."
+msgstr "Kāore i taea te tāutu monomai."
+
+msgid "Please restart Turtle Art in order to use the plugin."
+msgstr "Tīmata anō i te Toi Honu kia taea te whakamahi i te monomai."
+
+msgid "Plugin %s already installed."
+msgstr "Kua tāuta kē te monomai %s."
+
+msgid "Do you want to reinstall %s?"
+msgstr "E hiahia ana koe ki te tāuta anō i %s?"
+
+msgid "My Turtle Art session"
+msgstr "Taku wātū Toi Honu"
+
+msgid "Enable collaboration"
+msgstr "Whakahohe ngātahitanga"
+
+msgid "Activities"
+msgstr "Ngā Hohe"
+
+msgid "Buddies"
+msgstr "Ngā Hoa"
+
+msgid "Share"
+msgstr "Tiri"
+
+msgid "Configuration"
+msgstr "Whirihoranga"
+
+msgid "Neighborhood"
+msgstr "Takiwā"
+
+msgid "Nickname"
+msgstr "Ingoakāinga"
+
+msgid "Account ID"
+msgstr "ID Pūkete"
+
+msgid "Server"
+msgstr "Tūmau"
+
+msgid "Port"
+msgstr "Tauranga"
+
+msgid "Password"
+msgstr "Kupuhipa"
+
+msgid "Register"
+msgstr "Rēhita"
+
+msgid "Colors"
+msgstr "Ngā Tae"
+
+msgid "Upload"
+msgstr "Tukuatu"
+
+msgid "Facebook wall post"
+msgstr ""
+
+msgid "Upload to Web"
+msgstr "Tukuatu ki te Tukutuku"
+
+msgid ""
+"You must have an account at http://turtleartsite.sugarlabs.org to upload "
+"your project."
+msgstr ""
+"Me whai pūkete koe ki http://turtleartsite.sugarlabs.org kia tukuatu i tō "
+"kaupapa."
+
+msgid "Username:"
+msgstr "Ingoakaiwhakamahi:"
+
+msgid "Password:"
+msgstr "Kupuhipa:"
+
+msgid "Title:"
+msgstr "Taitara:"
+
+msgid "Description:"
+msgstr "Whakaaturanga:"
+
+msgid "Submit to Web"
+msgstr "Tuku ki te Tukutuku"
+
+msgid "Login failed"
+msgstr "Kua rahu te takiuru"
+
+msgid "Failed to upload!"
+msgstr "I rahu te tukuatu!"
+
+msgid "Palette of sensor blocks"
+msgstr "Papatā o ngā paraka pūoko"
+
+msgid "acceleration"
+msgstr "whakaterenga"
+
+msgid "push acceleration in x, y, z to heap"
+msgstr "pēhi whakaterenga kei x, y, z ki te pūkai"
+
+msgid "raw microphone input signal"
+msgstr "tohu tāuru hopureo mata"
+
+msgid "loudness"
+msgstr "hoihoi"
+
+msgid "microphone input volume"
+msgstr "rōrahi tāuru hopureo"
+
+msgid "pitch"
+msgstr "rangi"
+
+msgid "microphone input pitch"
+msgstr "rangi tāuru hopureo"
+
+msgid "microphone input resistance"
+msgstr "parenga tāuru hopureo"
+
+msgid "microphone input voltage"
+msgstr "ngaohiko tāuru hopureo"
+
+msgid "Palette of media objects"
+msgstr "Papatā o ngā ahanoa pāpāho"
+
+msgid "light level detected by camera"
+msgstr "taumata rama ka haurapahia e te kāmera"
+
+msgid "Average RGB color from camera is pushed to the stack"
+msgstr "Tae RGB hea mai i te kāmera kua pēhia ki te tāpae"
+
+msgid "camera output"
+msgstr "huaputa kāmera"
+
+msgid "light level detected by light sensor"
+msgstr "taumata rama ka haurapahia e te pūoko rama"
+
+msgid "RFID"
+msgstr "RFID"
+
+msgid "read value from RFID device"
+msgstr "pānui uara mai i te pūrere RFID"
+
+msgid "while"
+msgstr "i te wā"
+
+msgid "do-while-True operator that uses boolean operators from Numbers palette"
+msgstr ""
+"kaimahi mahi-i-te-wā-Tūturu ka whakamahi i ngā kaimahi pūreana mai i te "
+"papatā Tau"
+
+msgid "until"
+msgstr "hei te"
+
+msgid "do-until-True operator that uses boolean operators from Numbers palette"
+msgstr ""
+"kaimahi mahi-tae-noa-Tūturu ka whamahi i ngā kaimahi pūreana mai i te papatā "
+"Tau"
+
+msgid "top"
+msgstr "runga"
+
+msgid "top of a collapsible stack"
+msgstr "te runga o te tāpae e taea ana te tiango"
+
+msgid "journal"
+msgstr "tuhitaka"
+
+msgid "Sugar Journal media object"
+msgstr "ahanoa pāpāho Tuhitaka Sugar"
+
+msgid "audio"
+msgstr "ororongo"
+
+msgid "Sugar Journal audio object"
+msgstr "ahanoa ororongo Tuhitaka Sugar"
+
+msgid "video"
+msgstr "ataata"
+
+msgid "Sugar Journal video object"
+msgstr "ahanoa ataata Tuhitaka Sugar"
+
+msgid "description"
+msgstr "whakaahuatanga"
+
+msgid "Sugar Journal description field"
+msgstr "āpure whakaahuatanga Tuhitaka Sugar"
+
+msgid "show"
+msgstr "whakaatu"
+
+msgid "draws text or show media from the Journal"
+msgstr "tuhi kupu, whakaatu pāpāho rānei mai i te Tuhitaka"
+
+msgid "show aligned"
+msgstr "whakaatu tīaroaro"
+
+msgid "set scale"
+msgstr "tautuhi tauine"
+
+msgid "sets the scale of media"
+msgstr "ka tautuhi i te tauine o te pāpāho"
+
+msgid "save picture"
+msgstr "tiaki pikitia"
+
+msgid "picture name"
+msgstr "ingoa pikitia"
+
+msgid "saves a picture to the Sugar Journal"
+msgstr "tiaki pikitia ki te Tuhitaka Sugar"
+
+msgid "save SVG"
+msgstr "tiaki SVG"
+
+msgid "saves turtle graphics as an SVG file in the Sugar Journal"
+msgstr "ka tiaki whakairoiro honu hei kōnae SVG ki te Tuhitaka Sugar"
+
+msgid "scale"
+msgstr "tauine"
+
+msgid "holds current scale value"
+msgstr "ka pupuri uara tauine o nāianei"
+
+msgid "media wait"
+msgstr "taihoa pāpāho"
+
+msgid "wait for current video or audio to complete"
+msgstr "taihoa kia oti te ataata o nāianei, te ororongo rānei"
+
+msgid "media stop"
+msgstr "whakatū pāpāho"
+
+msgid "stop video or audio"
+msgstr "whakatū ataata, ororongo rānei"
+
+msgid "media pause"
+msgstr "tatari pāpāho"
+
+msgid "pause video or audio"
+msgstr "tatari ataata, ororongo rānei"
+
+msgid "media resume"
+msgstr "haere anō pāpāho"
+
+msgid "resume playing video or audio"
+msgstr "haere anō te whakatangi ataata, ororongo rānei"
+
+msgid "speak"
+msgstr "whakahua"
+
+msgid "hello"
+msgstr "kia ora"
+
+msgid "speaks text"
+msgstr "kōrero kupu"
+
+msgid "sinewave"
+msgstr "ngaruaho"
+
+msgid "amplitude"
+msgstr "pūrahi ngaru"
+
+msgid "duration"
+msgstr "roanga"
+
+msgid "plays a sinewave at frequency, amplitude, and duration (in seconds)"
+msgstr ""
+"ka whakatangi i tētahi sinewave auautanga, roanga, pūrahi ngaru hoki (ki ngā "
+"hēkona)"
+
+msgid "button down"
+msgstr "pātene raro"
+
+msgid "returns 1 if mouse button is pressed"
+msgstr "ka whakahoki 1 mēnā ka pēhia te pātene kiore"
+
+msgid "returns True if mouse button is pressed"
+msgstr "ka whakahoki Tika mēnā ka pēhia te pātene kiore"
+
+msgid "mouse x"
+msgstr "kiore x"
+
+msgid "returns mouse x coordinate"
+msgstr "ka whakahoki i te ruruku kiore x"
+
+msgid "mouse y"
+msgstr "kiore y"
+
+msgid "returns mouse y coordinate"
+msgstr "ka whakahoki i te ruruku kiore y"
+
+msgid "query keyboard"
+msgstr "papapātuhi uiui"
+
+msgid "query for keyboard input (results stored in keyboard block)"
+msgstr "uiui mō te tāuru papapātuhi (hua kua penapena ki te paraka papapātuhi)"
+
+msgid "keyboard"
+msgstr "papapātuhi"
+
 msgid "holds results of query-keyboard block as ASCII"
 msgstr "pupuri i ngā hua o te paraka papapātuhi-uiui hei ASCII"
 
-#. #-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: push adds a new item to the program stack
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:470
+msgid "read pixel"
+msgstr "pānui pika"
+
+msgid "RGB color under the turtle is pushed to the stack"
+msgstr "kua peia te tae RGB ki raro i te honu ki te tāpae"
+
+msgid "turtle sees"
+msgstr "ka kite te honu i"
+
+msgid "returns the color that the turtle \"sees\""
+msgstr "ka whakahoki i te tae e \"kite\" nei te honu"
+
+msgid "elapsed time (in seconds) since program started"
+msgstr "wā hipa (ki ngā hēkona) mai i te wā i tīmata te papatono"
+
+msgid "Palette of extra options"
+msgstr "Papatā o ngā ētahi atu kōwhiringa"
+
 msgid "push"
 msgstr "peia"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:616
+msgid "pushes value onto FILO (first-in last-out heap)"
+msgstr "ka peia te uara ki runga i FILO (tāpae first-in last-out)"
+
+msgid "show heap"
+msgstr "whakaatu tāpae"
+
+msgid "shows values in FILO (first-in last-out heap)"
+msgstr "ka whakaatu i te uara ki runga i FILO (tāpae first-in last-out)"
+
+msgid "empty heap"
+msgstr "putu tāpae"
+
+msgid "emptys FILO (first-in-last-out heap)"
+msgstr "ka whakaputu i FILO (tāpae first-in-last-out)"
+
+msgid "pop"
+msgstr "pahū"
+
+msgid "pops value off FILO (first-in last-out heap)"
+msgstr "ka pahū i te uara mai i FILO (tāpae first-in last-out)"
+
+msgid "empty heap?"
+msgstr "whakaputu tāpae?"
+
+msgid "returns True if heap is empty"
+msgstr "ka whakahoki Tika mēnā kei te putu te tāpae"
+
+msgid "comment"
+msgstr "tākupu"
+
+msgid "places a comment in your code"
+msgstr "ka tuku tākupu ki tō waehere"
+
+msgid "print"
+msgstr "tā"
+
+msgid "prints value in status block at bottom of the screen"
+msgstr "ka tā uara ki roto i ngā paraka tūnga kei raro o te mata"
+
+msgid "Python chr operator"
+msgstr "Kaimahi Python chr"
+
+msgid "Python int operator"
+msgstr "Kaimahi Python int"
+
+msgid "Python"
+msgstr "Python"
+
+msgid ""
+"a programmable block: used to add advanced single-variable math equations, e."
+"g., sin(x)"
+msgstr ""
+"he paraka e taea ana te whakapapatono: ka whakamahia hei tāpiri whārite "
+"pāngarau tāupe takitahi ara atu anō, e.g sin(x)"
+
+msgid ""
+"a programmable block: used to add advanced multi-variable math equations, e."
+"g., sqrt(x*x+y*y)"
+msgstr ""
+"he paraka e taea ana te whakapapatono: ka whakamahia hei tāpiri whārite "
+"pāngarau tāupe takitini arā atu anō, e.g., taupūrua(x*x+y*y)"
+
 msgid ""
 "a programmable block: used to add advanced multi-variable math equations, e."
 "g., sin(x+y+z)"
@@ -3465,258 +2247,397 @@ msgstr ""
 "he paraka e taea ana te whakapapatono: ka whakamahia hei tāpiri whārite "
 "pāngarau tāupe takitini arā atu anō, e.g., sin(x*x+y*y)"
 
-#: TurtleArt/tabasics.py:1001
-msgid "restore all"
-msgstr "whakaora te katoa"
+msgid "Python block"
+msgstr "Paraka python"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:313
-msgid "hello"
-msgstr "kia ora"
-
-#. TRANS: "name" option from activity.info file
-#, fuzzy
-msgid "TurtleBlocks"
-msgstr "HonuKaretao"
-
-#. TRANS: "summary" option from activity.info file
-#. TRANS: "description" option from activity.info file
-msgid ""
-"A Logo-inspired turtle that draws colorful pictures with snap-together "
-"visual programming blocks"
+msgid "runs code found in the tamyblock.py module found in the Journal"
 msgstr ""
+"ka whakahaere i te waehere ka kitea ki te kōwae tamyblock.py kei te Tuhitaka"
 
-#: TurtleArt/tawindow.py:1316
-msgid ""
-"Please hit the Stop Button before making changes to your Turtle Blocks "
-"program"
-msgstr ""
+msgid "Cartesian"
+msgstr "Katihini"
 
-#: TurtleArt/tawindow.py:1530 TurtleArtActivity.py:632
-#: TurtleArtActivity.py:781 turtleblocks.py:397
-msgid "Save stack"
-msgstr ""
+msgid "displays Cartesian coordinates"
+msgstr "ka whakaatu ruruku Katihini"
 
-#: TurtleArt/tawindow.py:1531 TurtleArt/tawindow.py:1546
-msgid "Really overwrite stack?"
-msgstr ""
+msgid "polar"
+msgstr "pitorua"
 
-#: TurtleArt/tawindow.py:1538 TurtleArt/tawindow.py:1549
-msgid "Overwrite stack"
-msgstr ""
+msgid "displays polar coordinates"
+msgstr "ka whakaatu i ngā ruruku pitorua"
 
-#: TurtleArt/tawindow.py:1570 TurtleArt/tawindow.py:1578
-#: TurtleArt/tawindow.py:1588 TurtleArtActivity.py:634 turtleblocks.py:399
-msgid "Delete stack"
-msgstr ""
+msgid "turtle"
+msgstr "honu"
 
-#: TurtleArt/tawindow.py:1571 TurtleArt/tawindow.py:1585
-msgid "Really delete stack?"
-msgstr ""
+msgid "chooses which turtle to command"
+msgstr "ka kōwhiri tēwhea honu hei tohutohu"
 
-#: TurtleArtActivity.py:895
-#, fuzzy
-msgid "Palettes"
-msgstr "papa"
-
-#: gnome_plugins/fb_plugin.py:87
-msgid "Facebook wall post"
-msgstr ""
-
-#. TRANS: pop removes a new item from the program stack
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:703
 msgid "active turtle"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:706
 msgid "the name of the active turtle"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1073
+msgid "turtle shell"
+msgstr "anga honu"
+
+msgid "put a custom 'shell' on the turtle"
+msgstr "meatia he 'anga' ritenga ki runga i te honu"
+
+msgid "top of a collapsed stack"
+msgstr "te runga o te tāpae kua tiango"
+
+msgid "load"
+msgstr "uta"
+
+msgid "loads a block"
+msgstr "ka uta i tētahi paraka"
+
+msgid "setxy"
+msgstr "tautuhixy"
+
+msgid "palette"
+msgstr "papa"
+
+msgid "selects a palette"
+msgstr "ka tīpako papa"
+
+msgid "Palette of presentation templates"
+msgstr "Papatā o ngā tātauira whakaaturanga"
+
+msgid "hide blocks"
+msgstr "huna paraka"
+
+msgid "declutters canvas by hiding blocks"
+msgstr "ka whakapaipai i te kānawehi mā te huna paraka"
+
+msgid "show blocks"
+msgstr "whakaatu paraka"
+
+msgid "restores hidden blocks"
+msgstr "ka whakaora i ngā paraka huna"
+
+msgid "hides the Sugar toolbars"
+msgstr "ka hunaia ngā paeutauta Sugar"
+
+msgid "list"
+msgstr "rārangi"
+
+msgid "presentation bulleted list"
+msgstr "rārangi pere whakaaturanga"
+
+msgid "presentation template: list of bullets"
+msgstr "tātauira whakaaturanga: rārangi pere"
+
+msgid "presentation template: select Journal object (no description)"
+msgstr ""
+"tātauira whakaaturanga: tīpako ahanoa Tuhitaka (kāore he whakaahuatanga)"
+
+msgid "presentation template: select Journal object (with description)"
+msgstr "tātauira whakaaturanga: tīpako ahanoa Tuhitaka (he whakaaturanga)"
+
+msgid "presentation template: select four Journal objects"
+msgstr "tātauira whakaaturanga: tīpako ahanoa Tuhitaka e whā"
+
+msgid "presentation template: select two Journal objects"
+msgstr "tātauira whakaaturanga: tīpako ahanoa Tuhitaka e rua"
+
+msgid "xcor of left of screen"
+msgstr "xcor whakatemauī o te mata"
+
+msgid "bottom"
+msgstr "raro"
+
+msgid "ycor of bottom of screen"
+msgstr "ycor whakateraro o te mata"
+
+msgid "the canvas width"
+msgstr "te whānuitanga kānawehi"
+
+msgid "xcor of right of screen"
+msgstr "xcor whakatematau o te mata"
+
+msgid "ycor of top of screen"
+msgstr "ycor whakaterunga o te mata"
+
+msgid "the canvas height"
+msgstr "te teiteitanga kānawehi"
+
+msgid "title x"
+msgstr "taitara x"
+
+msgid "title y"
+msgstr "taitara y"
+
+msgid "left x"
+msgstr "mauī x"
+
+msgid "top y"
+msgstr "runga y"
+
+msgid "right x"
+msgstr "matau x"
+
+msgid "bottom y"
+msgstr "raro y"
+
+msgid "presentation 1x1"
+msgstr "whakaaturanga 1x1"
+
+msgid "presentation 2x1"
+msgstr "whakaaturanga 2x1"
+
+msgid "presentation 1x2"
+msgstr "whakaaturanga 1x2"
+
+msgid "presentation 2x2"
+msgstr "whakaaturanga 2x2"
+
 msgid "Palette of user-defined operators"
 msgstr ""
 
-#: pysamples/brain.py:43
 msgid "Please install the Speak Activity and try again."
 msgstr ""
 
-#: pysamples/brain.py:54
 msgid "Spanish"
 msgstr ""
 
-#: pysamples/brain.py:58 pysamples/brain.py:72 pysamples/brain.py:74
-#: pysamples/brain.py:80
 msgid "English"
 msgstr ""
 
-#: pysamples/brain.py:91
 msgid "Sorry, I can't understand what you are asking about."
 msgstr ""
 
-#: pysamples/brain.py:100
 msgid ""
 "Sorry, there is no free memory to load my brain. Close other activities and "
 "try once more."
 msgstr ""
 
-#: turtleblocks.py:421
+msgid "push destination rgb value to heap"
+msgstr "peia te taunga rgb ki te pūkai"
+
+msgid "stop"
+msgstr "tū"
+
+msgid "play"
+msgstr "pūrei"
+
+msgid "save"
+msgstr "tiaki"
+
+msgid "other"
+msgstr "ētahi atu"
+
+msgid "uturn"
+msgstr "huri whakamuri"
+
+msgid "make a uturn"
+msgstr "huri whakamuri"
+
+msgid "usage is"
+msgstr "ko te whakamahinga"
+
+msgid "No option action:"
+msgstr "Hohe kōwhiringa kore:"
+
+msgid "File not found"
+msgstr "Kāore te kōnae i kitea"
+
+msgid "Configuration directory not writable: %s"
+msgstr "Kāore te wharonga whirihora e āhei ana te tuhi: %s"
+
+msgid "New"
+msgstr "Hōu"
+
+msgid "Open"
+msgstr "Whakatuwhera"
+
+msgid "Save"
+msgstr "Tiaki"
+
+msgid "Save as"
+msgstr "Tiaki hei"
+
+msgid "Quit"
+msgstr "Waiho"
+
+msgid "File"
+msgstr "Kōnae"
+
+msgid "Rescale coordinates"
+msgstr "Tauine anō i ngā ruruku"
+
+msgid "Reset block size"
+msgstr "Tautuhi anō i te rahinga paraka"
+
+msgid "Show/hide blocks"
+msgstr "Whakaatu/huna paraka"
+
+msgid "Tools"
+msgstr "Ngā Utauta"
+
+msgid "Debug"
+msgstr "Patuiro"
+
+msgid "Turtle"
+msgstr "Honu"
+
 msgid "About..."
 msgstr ""
 
-#~ msgid "Palette of Arduino blocks"
-#~ msgstr "Papatā o ngā paraka Aratuino"
+msgid "You have unsaved work. Would you like to save before quitting?"
+msgstr "Kei a koe he mahi kāore anō kia tiaki. Me tiaki i mua i te waihotanga?"
 
-#~ msgid "returns the battery charge as a number between 0 and 255"
-#~ msgstr "ka whakahoki i te whakakaha pūkaha hei tau mai i te 0 ki te 255"
+msgid "Save project?"
+msgstr "Tiaki tūmahi?"
 
-#~ msgid "adjust LED intensity between 0 and 255"
-#~ msgstr "whakarite te kaha o te LED mai i te 0 ki te 255"
+msgid "adjust LED intensity between 0 and 255"
+msgstr "whakarite te kaha o te LED mai i te 0 ki te 255"
 
-#~ msgid "returns 0 or 1 depending on the sensor inclination"
-#~ msgstr "ka whakahoki i te 0, i te 1 rānei e ai ki te hiahiatanga pūoko"
+msgid "returns the object gray level as a number between 0 and 1023"
+msgstr "ka whakahoki i te taumata hina ahanoa hei tau mai i te 0 ki te 1023"
 
-#~ msgid "switches from 0 to 1, the frequency depends on the vibration"
-#~ msgstr "ka huri mai i te 0 ki te 1, ko te auautanga e ai ki te tōiri"
+msgid "returns 1 when the button is press and 0 otherwise"
+msgstr "ka whakahoki i te 1 i te wā e pēhi ana i te pātene, ka 0 atu i tērā"
 
-#~ msgid "grayscale"
-#~ msgstr "tauine hina"
+msgid "returns the ambient light level as a number between 0 and 1023"
+msgstr "ka whakahoki i te taumata rama ngāwari hei tau mai i te 0 ki te 1023"
 
-#~ msgid "ambient light"
-#~ msgstr "rama ngāwari"
+msgid "returns the ambient temperature as a number between 0 and 255"
+msgstr "ka whakahoki i te paemahana ngāwari hei tau mai i te 0 ki te 255"
 
-#~ msgid "magnetic induction"
-#~ msgstr "whakauta autō"
+msgid ""
+"returns the distance from the object in front of the sensor as a number "
+"between 0 and 255"
+msgstr ""
+"ka whakahoki i te tawhititanga mai i te ahanoa i mua i te pūoko hei tau mai "
+"i te 0 ki te 255"
 
-#~ msgid "vibration"
-#~ msgstr "tōiri"
+msgid "returns 0 or 1 depending on the sensor inclination"
+msgstr "ka whakahoki i te 0, i te 1 rānei e ai ki te hiahiatanga pūoko"
 
-#~ msgid "move the Butia robot forward a predefined distance"
-#~ msgstr "neke whakamua te karetao Putia mā te tawhititanga kua whakaritea kē"
+msgid "switches from 0 to 1, the frequency depends on the vibration"
+msgstr "ka huri mai i te 0 ki te 1, ko te auautanga e ai ki te tōiri"
 
-#~ msgid "move the Butia robot backward a predefined distance"
-#~ msgstr ""
-#~ "neke whakamuri te karetao Putia mā te tawhititanga kua whakaritea kē"
+msgid "grayscale"
+msgstr "tauine hina"
 
-#~ msgid "turn Butia"
-#~ msgstr "huri Putia"
+msgid "ambient light"
+msgstr "rama ngāwari"
 
-#~ msgid "turn the Butia robot x degrees"
-#~ msgstr "hurihia te karetao Putia x tīkiri"
+msgid "magnetic induction"
+msgstr "whakauta autō"
 
-#~ msgid "returns the object gray level as a number between 0 and 1023"
-#~ msgstr "ka whakahoki i te taumata hina ahanoa hei tau mai i te 0 ki te 1023"
+msgid "vibration"
+msgstr "tōiri"
 
-#~ msgid "returns the ambient light level as a number between 0 and 1023"
-#~ msgstr ""
-#~ "ka whakahoki i te taumata rama ngāwari hei tau mai i te 0 ki te 1023"
+msgid "returns the battery charge as a number between 0 and 255"
+msgstr "ka whakahoki i te whakakaha pūkaha hei tau mai i te 0 ki te 255"
 
-#~ msgid "returns the ambient temperature as a number between 0 and 255"
-#~ msgstr "ka whakahoki i te paemahana ngāwari hei tau mai i te 0 ki te 255"
+msgid "move the Butia robot forward a predefined distance"
+msgstr "neke whakamua te karetao Putia mā te tawhititanga kua whakaritea kē"
 
-#~ msgid ""
-#~ "returns the distance from the object in front of the sensor as a number "
-#~ "between 0 and 255"
-#~ msgstr ""
-#~ "ka whakahoki i te tawhititanga mai i te ahanoa i mua i te pūoko hei tau "
-#~ "mai i te 0 ki te 255"
+msgid "move the Butia robot backward a predefined distance"
+msgstr "neke whakamuri te karetao Putia mā te tawhititanga kua whakaritea kē"
 
-#~ msgid "returns 1 when the button is press and 0 otherwise"
-#~ msgstr "ka whakahoki i te 1 i te wā e pēhi ana i te pātene, ka 0 atu i tērā"
+msgid "turn Butia"
+msgstr "huri Putia"
 
-#, fuzzy
-#~ msgid "grey"
-#~ msgstr "hina"
+msgid "turn the Butia robot x degrees"
+msgstr "hurihia te karetao Putia x tīkiri"
 
-#, fuzzy
-#~ msgid "Get battery level of the brick"
-#~ msgstr "Tikina te taumata pūkaha o te paraka."
+msgid "grey"
+msgstr "hina"
 
-#~ msgid "ERROR: Value must be either HIGH or LOW."
-#~ msgstr "HAPA: Me TEITEI, PĀPAKU rānei te uara."
+msgid "Get battery level of the brick"
+msgstr "Tikina te taumata pūkaha o te paraka."
 
-#, fuzzy
-#~ msgid ""
-#~ "set the speed of the Butia motors as a value between 0 and 1023, passed "
-#~ "by an argument"
-#~ msgstr ""
-#~ "tautuhia te terenga o ngā pūkaha Putia hei uara mai i te 0 ki te 1023, "
-#~ "kua whakaaetia e tētahi tohe"
+msgid "ERROR: Value must be either HIGH or LOW."
+msgstr "HAPA: Me TEITEI, PĀPAKU rānei te uara."
 
-#~ msgid "turn the Butia robot to the left"
-#~ msgstr "huri whakatemauī te karetao Putia"
+msgid ""
+"set the speed of the Butia motors as a value between 0 and 1023, passed by "
+"an argument"
+msgstr ""
+"tautuhia te terenga o ngā pūkaha Putia hei uara mai i te 0 ki te 1023, kua "
+"whakaaetia e tētahi tohe"
 
-#~ msgid "display Butia"
-#~ msgstr "whakaatu Putia"
+msgid "turn the Butia robot to the left"
+msgstr "huri whakatemauī te karetao Putia"
 
-#~ msgid "Hello World    Butia            "
-#~ msgstr "Kia Ora E Te Ao    Putia            "
+msgid "display Butia"
+msgstr "whakaatu Putia"
 
-#~ msgid "print text in Butia robot 32-character ASCII display"
-#~ msgstr "tā kupu ki te whakaaturanga karetao Putia pūāhua-32 ASCII"
+msgid "Hello World    Butia            "
+msgstr "Kia Ora E Te Ao    Putia            "
 
-#~ msgid "Error making mask"
-#~ msgstr "I hapa te hanga kōruru"
+msgid "print text in Butia robot 32-character ASCII display"
+msgstr "tā kupu ki te whakaaturanga karetao Putia pūāhua-32 ASCII"
 
-#~ msgid "G"
-#~ msgstr "G"
+msgid "Error making mask"
+msgstr "I hapa te hanga kōruru"
 
-#~ msgid "R"
-#~ msgstr "R"
+msgid "G"
+msgstr "G"
 
-#~ msgid "B"
-#~ msgstr "B"
+msgid "R"
+msgstr "R"
 
-#~ msgid "follow a RGB color"
-#~ msgstr "tauaru i tētahi tae RGB"
+msgid "B"
+msgstr "B"
 
-#~ msgid "save calibration 1"
-#~ msgstr "tiaki whakatauritetika 1"
+msgid "follow a RGB color"
+msgstr "tauaru i tētahi tae RGB"
 
-#~ msgid "stores a calibration in calibration 1"
-#~ msgstr "ka penapena i tētahi whakatauritetika ki roto i whakatauritetika 1"
+msgid "save calibration 1"
+msgstr "tiaki whakatauritetika 1"
 
-#~ msgid "save calibration 2"
-#~ msgstr "tiaki whakatauritetika 2"
+msgid "stores a calibration in calibration 1"
+msgstr "ka penapena i tētahi whakatauritetika ki roto i whakatauritetika 1"
 
-#~ msgid "stores a calibration in calibration 2"
-#~ msgstr "ka penapena i tētahi whakatauritetika ki roto i whakatauritetika 2"
+msgid "save calibration 2"
+msgstr "tiaki whakatauritetika 2"
 
-#~ msgid "calibration 1"
-#~ msgstr "whakatauritetika 1"
+msgid "stores a calibration in calibration 2"
+msgstr "ka penapena i tētahi whakatauritetika ki roto i whakatauritetika 2"
 
-#~ msgid "return calibration 1"
-#~ msgstr "whakahoki whakatauritetika 1"
+msgid "calibration 1"
+msgstr "whakatauritetika 1"
 
-#~ msgid "calibration 2"
-#~ msgstr "whakatauritetika 2"
+msgid "return calibration 1"
+msgstr "whakahoki whakatauritetika 1"
 
-#~ msgid "return calibration 2"
-#~ msgstr "whakahoki whakatauritetika 2"
+msgid "calibration 2"
+msgstr "whakatauritetika 2"
 
-#~ msgid "RGB"
-#~ msgstr "RGB"
+msgid "return calibration 2"
+msgstr "whakahoki whakatauritetika 2"
 
-#~ msgid "YUV"
-#~ msgstr "YUV"
+msgid "RGB"
+msgstr "RGB"
 
-#~ msgid "HSV"
-#~ msgstr "HSV"
+msgid "YUV"
+msgstr "YUV"
 
-#~ msgid "Please check the port."
-#~ msgstr "Taki koa i te tauranga."
+msgid "HSV"
+msgstr "HSV"
 
-#~ msgid "NXT found"
-#~ msgstr "NXT kitea"
+msgid "Please check the port."
+msgstr "Taki koa i te tauranga."
 
-#~ msgid ""
-#~ "turn motor\n"
-#~ "rotations"
-#~ msgstr ""
-#~ "takahuri pūkaha\n"
-#~ "ngā takahuringa"
+msgid "NXT found"
+msgstr "NXT kitea"
 
-#~ msgid ""
-#~ "synchronize motors\n"
-#~ "steering"
-#~ msgstr ""
-#~ "tukutahi pūkaha\n"
-#~ "hautū"
+msgid ""
+"turn motor\n"
+"rotations"
+msgstr ""
+"takahuri pūkaha\n"
+"ngā takahuringa"
+
+msgid ""
+"synchronize motors\n"
+"steering"
+msgstr ""
+"tukutahi pūkaha\n"
+"hautū"

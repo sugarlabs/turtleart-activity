@@ -1,7 +1,3 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #, fuzzy
 msgid ""
 msgstr ""
@@ -30,1218 +26,754 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1) ;\n"
 "X-Generator: Pootle 2.0.5\n"
 
-#. TRANS: "name" option from activity.info file
-#. TRANS: "summary" option from activity.info file
-#. TRANS: "description" option from activity.info file
 msgid "turtleart-extras (master)"
 msgstr ""
 
-#: taextras.py:37
 msgid "Turtle Blocks"
 msgstr ""
 
-#: taextras.py:38
 msgid "Turtle Art"
 msgstr "Ubugeni bw'Akanyamashyo"
 
-#: taextras.py:42
 msgid "Turtle Art Mini"
 msgstr ""
 
-#: taextras.py:46
 msgid "Turtle Confusion"
 msgstr ""
 
-#: taextras.py:47 taextras.py:52
 msgid "Select a challenge"
 msgstr ""
 
-#: taextras.py:51
 msgid "Amazonas Tortuga"
 msgstr ""
 
-#: taextras.py:58
 msgid "Palette of Mexican pesos"
 msgstr ""
 
-#: taextras.py:59
 msgid "Palette of Colombian pesos"
 msgstr ""
 
-#: taextras.py:60
 msgid "Palette of Rwandan francs"
 msgstr ""
 
-#: taextras.py:61
 msgid "Palette of US dollars"
 msgstr ""
 
-#: taextras.py:62
 msgid "Palette of Australian dollars"
 msgstr ""
 
-#: taextras.py:63
 msgid "Palette of Paraguayan Guaranies"
 msgstr ""
 
-#: taextras.py:64
 msgid "Palette of Peruvian Nuevo Soles"
 msgstr ""
 
-#: taextras.py:65
 msgid "Palette of Uruguayan Pesos"
 msgstr ""
 
-#. TRANS: Butia is a Robot Project from Uruguay
-#. (http://www.fing.edu.uy/inco/proyectos/butia/)
-#: taextras.py:71
 msgid "TurtleBots"
 msgstr ""
 
-#. TRANS: summary of TurtleBots activity
-#: taextras.py:73
 msgid "TurtleBlocks with Butia, Lego NxT, WeDo, Arduino, FollowMe plugins"
 msgstr ""
 
-#: taextras.py:74
 msgid "ERROR: The speed must be a value between 0 and 1023"
 msgstr ""
 
-#: taextras.py:75
 msgid "ERROR: The pin must be between 1 and 8"
 msgstr ""
 
-#: taextras.py:76
 msgid "ERROR: The value must be 0 or 1, LOW or HIGH"
 msgstr ""
 
-#: taextras.py:77
 msgid "ERROR: The mode must be INPUT or OUTPUT."
 msgstr ""
 
-#: taextras.py:78 taextras.py:79
 msgid "turns LED on and off: 1 means on, 0 means off"
 msgstr ""
 
-#: taextras.py:80
 msgid "returns the gray level as a value between 0 and 65535"
 msgstr ""
 
-#: taextras.py:81
 msgid "returns 1 when the button is pressed and 0 otherwise"
 msgstr ""
 
-#: taextras.py:82
 msgid "returns the light level as a value between 0 and 65535"
 msgstr ""
 
-#: taextras.py:83
 msgid "returns the distance as a value between 0 and 65535"
 msgstr ""
 
-#: taextras.py:84
 msgid "returns the resistance value (ohms)"
 msgstr ""
 
-#: taextras.py:85
 msgid "returns the voltage value (volts)"
 msgstr ""
 
-#: taextras.py:86
 msgid "returns the temperature"
 msgstr ""
 
-#: taextras.py:87
 msgid "returns 1 when the sensors detects a magnetic field, 0 otherwise"
 msgstr ""
 
-#: taextras.py:88
 msgid "LED"
 msgstr "LED"
 
-#: taextras.py:89
 msgid "button"
 msgstr ""
 
-#: taextras.py:90 taextras.py:358 TurtleArt/tabasics.py:295
-#: TurtleArt/tabasics.py:363
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1194
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1199
-#, fuzzy
 msgid "gray"
 msgstr "ikigina"
 
-#: taextras.py:91 taextras.py:356
-#, fuzzy
 msgid "light"
 msgstr "iburyo"
 
-#: taextras.py:92
-#, fuzzy
 msgid "temperature"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"igipimo cyubushyuhe"
+msgstr "igipimo cyubushyuhe"
 
-#: taextras.py:93 taextras.py:330
-#, fuzzy
 msgid "distance"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"intera"
+msgstr "intera"
 
-#: taextras.py:94 plugins/audio_sensors/audio_sensors.py:151
-#: plugins/audio_sensors/audio_sensors.py:165
-#: plugins/audio_sensors/audio_sensors.py:179
-#: plugins/audio_sensors/audio_sensors.py:193
 msgid "resistance"
 msgstr ""
 
-#: taextras.py:95 plugins/audio_sensors/audio_sensors.py:157
-#: plugins/audio_sensors/audio_sensors.py:171
-#: plugins/audio_sensors/audio_sensors.py:185
-#: plugins/audio_sensors/audio_sensors.py:199
 msgid "voltage"
 msgstr ""
 
-#: taextras.py:96
 msgid "Butia Robot"
 msgstr ""
 
-#: taextras.py:97
 msgid "refresh Butia"
 msgstr ""
 
-#: taextras.py:98
 msgid "refresh the state of the Butia palette and blocks"
 msgstr ""
 
-#. TRANS: This string is shorthand for "battery charge of Butia"
-#: taextras.py:100
 msgid "battery charge Butia"
 msgstr ""
 
-#: taextras.py:101
 msgid ""
 "returns the battery charge in volts. If no motors present, it returns 255"
 msgstr ""
 
-#. TRANS: This string is shorthand for "speed of Butia"
-#: taextras.py:103
 msgid "speed Butia"
 msgstr ""
 
-#: taextras.py:104
 msgid "set the speed of the Butia motors"
 msgstr ""
 
-#: taextras.py:105
 msgid "move Butia"
 msgstr ""
 
-#: taextras.py:106 TurtleArt/tabasics.py:158
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:871
 msgid "left"
 msgstr "ibumoso"
 
-#: TurtleArt/tabasics.py:170
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:895
 msgid "right"
 msgstr "iburyo"
 
-#: taextras.py:108
 msgid "moves the Butia motors at the specified speed"
 msgstr ""
 
-#: taextras.py:109
 msgid "stop Butia"
 msgstr ""
 
-#: taextras.py:110
 msgid "stop the Butia robot"
 msgstr ""
 
-#. TRANS: This string is shorthand for "move Butia forward"
-#: taextras.py:112
 msgid "forward Butia"
 msgstr ""
 
-#: taextras.py:113
 msgid "move the Butia robot forward"
 msgstr ""
 
-#. TRANS: This string is shorthand for "turn Butia left"
-#: taextras.py:115
 msgid "left Butia"
 msgstr ""
 
-#: taextras.py:116
 msgid "turn the Butia robot at left"
 msgstr ""
 
-#. TRANS: This string is shorthand for "turn Butia right"
-#: taextras.py:118
 msgid "right Butia"
 msgstr ""
 
-#: taextras.py:119
 msgid "turn the Butia robot at right"
 msgstr ""
 
-#. TRANS: This string is shorthand for "move Butia backward"
-#: taextras.py:121
 msgid "backward Butia"
 msgstr ""
 
-#: taextras.py:122
 msgid "move the Butia robot backward"
 msgstr ""
 
-#: taextras.py:123
 msgid "Butia Robot extra blocks"
 msgstr ""
 
-#: taextras.py:124
 msgid "hack pin mode"
 msgstr ""
 
-#: taextras.py:125 taextras.py:293 taextras.py:459
 msgid "pin"
 msgstr ""
 
-#: taextras.py:126 taextras.py:460
 msgid "mode"
 msgstr ""
 
-#: taextras.py:127
 msgid "Select the pin function (INPUT, OUTPUT)."
 msgstr ""
 
-#: taextras.py:128
 msgid "write hack pin Butia"
 msgstr ""
 
-#: taextras.py:129 taextras.py:463 TurtleArt/tabasics.py:924
-#: TurtleArt/tawindow.py:4427
-#, fuzzy
 msgid "value"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"agaciro"
+msgstr "agaciro"
 
-#: taextras.py:130
 msgid "set a hack pin to 0 or 1"
 msgstr ""
 
-#: taextras.py:131
 msgid "read hack pin Butia"
 msgstr ""
 
-#: taextras.py:132
 msgid "read the value of a hack pin"
 msgstr ""
 
-#: taextras.py:133 taextras.py:435
 msgid "HIGH"
 msgstr ""
 
-#: taextras.py:134 taextras.py:472
 msgid "Set HIGH value for digital port."
 msgstr ""
 
-#: taextras.py:135 taextras.py:437
 msgid "INPUT"
 msgstr ""
 
-#: taextras.py:136
 msgid "Configure hack port for digital input."
 msgstr ""
 
-#: taextras.py:137 taextras.py:436
 msgid "LOW"
 msgstr ""
 
-#: taextras.py:138 taextras.py:475
 msgid "Set LOW value for digital port."
 msgstr ""
 
-#: taextras.py:139 taextras.py:438
 msgid "OUTPUT"
 msgstr ""
 
-#: taextras.py:140
 msgid "Configure hack port for digital output."
 msgstr ""
 
-#: taextras.py:141
 msgid "Butia"
 msgstr ""
 
-#: taextras.py:142
-#, python-format
 msgid "ERROR: The pin %s must be in OUTPUT mode."
 msgstr ""
 
-#: taextras.py:143
-#, python-format
 msgid "ERROR: The pin %s must be in INPUT mode."
 msgstr ""
 
-#: taextras.py:147
 msgid "Error importing Pygame. This plugin require Pygame 1.9"
 msgstr ""
 
-#: taextras.py:148
 msgid "Error on initialization of the camera"
 msgstr ""
 
-#: taextras.py:149
 msgid "No camera was found"
 msgstr ""
 
-#: taextras.py:150
 msgid "Error stopping camera"
 msgstr ""
 
-#: taextras.py:151
 msgid "Error starting camera"
 msgstr ""
 
-#. TRANS: The "mask" is used to restrict processing to a region in the image
-#: taextras.py:153
 msgid "Error in get mask"
 msgstr ""
 
-#: taextras.py:154
-#, fuzzy
 msgid "FollowMe"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Nkurikira"
+msgstr "Nkurikira"
 
-#: taextras.py:155
 msgid "refresh FollowMe"
 msgstr ""
 
-#: taextras.py:156
 msgid "Search for a connected camera."
 msgstr ""
 
-#. TRANS: the calibration is used to match an RGB color to a target
-#: taextras.py:158
 msgid "calibration"
 msgstr ""
 
-#: taextras.py:159
 msgid "store a personalized calibration"
 msgstr ""
 
-#: taextras.py:160
 msgid "return a personalized calibration"
 msgstr ""
 
-#: taextras.py:161
 msgid "follow"
 msgstr ""
 
-#: taextras.py:162
 msgid "follow a color or calibration"
 msgstr ""
 
-#: taextras.py:163 plugins/camera_sensor/camera_sensor.py:80
-#: plugins/camera_sensor/camera_sensor.py:93
-#: plugins/camera_sensor/camera_sensor.py:128
-#: plugins/camera_sensor/camera_sensor.py:141
-#: plugins/light_sensor/light_sensor.py:56
-#: plugins/light_sensor/light_sensor.py:63
-#, fuzzy
 msgid "brightness"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"umucyo"
+msgstr "umucyo"
 
-#: taextras.py:164
 msgid "set the camera brightness as a value between 0 to 255."
 msgstr ""
 
-#: taextras.py:165
 msgid "minimum pixels"
 msgstr ""
 
-#: taextras.py:166
 msgid "set the minimal number of pixels to follow"
 msgstr ""
 
-#: taextras.py:167
 msgid "threshold"
 msgstr ""
 
-#. TRANS: RGB color space (red, green, blue)
-#: taextras.py:169
 msgid "set a threshold for a RGB color"
 msgstr ""
 
-#: taextras.py:170
 msgid "camera mode"
 msgstr ""
 
-#. TRANS: RGB, YUV, and HSV are color spaces
-#: taextras.py:172
 msgid "set the color mode of the camera: RGB; YUV or HSV"
 msgstr ""
 
-#: taextras.py:173
 msgid "get brightness"
 msgstr ""
 
-#: taextras.py:174
 msgid "get the brightness of the ambient light"
 msgstr ""
 
-#: taextras.py:175
 msgid "average color"
 msgstr ""
 
-#: taextras.py:176
 msgid ""
 "if set to 0 then color averaging is off during calibration; for other values "
 "it is on"
 msgstr ""
 
-#: taextras.py:178
-#, fuzzy
 msgid "x position"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"x umwanya"
+msgstr "x umwanya"
 
-#: taextras.py:179
-#, fuzzy
 msgid "return x position"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"garuka mumwanya wa x"
+msgstr "garuka mumwanya wa x"
 
-#: taextras.py:180
-#, fuzzy
 msgid "y position"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"umwanya wa y"
+msgstr "umwanya wa y"
 
-#: taextras.py:181
-#, fuzzy
 msgid "return y position"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"garuka mumwanya wa y"
+msgstr "garuka mumwanya wa y"
 
-#: taextras.py:182
 msgid "pixels"
 msgstr ""
 
-#: taextras.py:183
 msgid "return the number of pixels of the biggest blob"
 msgstr ""
 
-#. TRANS: RGB color space (red, green, blue)
-#: taextras.py:185
 msgid "set the color mode of the camera to RGB"
 msgstr ""
 
-#. TRANS: YUV color space (luminance, chrominance)
-#: taextras.py:187
 msgid "set the color mode of the camera to YUV"
 msgstr ""
 
-#. TRANS: HSV color space (hue, saturation, value)
-#: taextras.py:189
 msgid "set the color mode of the camera to HSV"
 msgstr ""
 
-#: taextras.py:190
 msgid "empty calibration"
 msgstr ""
 
-#: taextras.py:191
 msgid "error in string conversion"
 msgstr ""
 
-#. TRANS: Pattern detection is a plugin that allow detect signals
-#. with the camera
-#: taextras.py:197
 msgid "Pattern detection"
 msgstr ""
 
-#: taextras.py:198
 msgid "Seeing signal"
 msgstr ""
 
-#: taextras.py:199
 msgid "Returns True if the signal is in front of the camera"
 msgstr ""
 
-#: taextras.py:200
 msgid "Distance to signal"
 msgstr ""
 
-#: taextras.py:201
 msgid "Returns the distance of the signal to the camera in millimeters"
 msgstr ""
 
-#. TRANS: SumBot is a robot programmed for "Sumo wrestling"
-#: taextras.py:206
 msgid "SumBot"
 msgstr ""
 
-#: taextras.py:207
 msgid "speed SumBot"
 msgstr ""
 
-#: taextras.py:208
 msgid "submit the speed to the SumBot"
 msgstr ""
 
-#: taextras.py:209
 msgid "set the default speed for the movement commands"
 msgstr ""
 
-#. TRANS: This string is shorthand for "move SumBot forward"
-#: taextras.py:211
 msgid "forward SumBot"
 msgstr ""
 
-#: taextras.py:212
 msgid "move SumBot forward"
 msgstr ""
 
-#. TRANS: This string is shorthand for "move SumBot backward"
-#: taextras.py:214
 msgid "backward SumBot"
 msgstr ""
 
-#: taextras.py:215
 msgid "move SumBot backward"
 msgstr ""
 
-#: taextras.py:216
 msgid "stop SumBot"
 msgstr ""
 
-#: taextras.py:217
 msgid "stop the SumBot"
 msgstr ""
 
-#. TRANS: This string is shorthand for "turn SumBot left"
-#: taextras.py:219
 msgid "left SumBot"
 msgstr ""
 
-#: taextras.py:220
 msgid "turn left the SumBot"
 msgstr ""
 
-#. TRANS: This string is shorthand for "move SumBot right"
-#: taextras.py:222
 msgid "right SumBot"
 msgstr ""
 
-#: taextras.py:223
 msgid "turn right the SumBot"
 msgstr ""
 
-#. TRANS: The angle to the center is the angle SumBot must turn to
-#. face the center of the playing field
-#: taextras.py:226
 msgid "angle to center"
 msgstr ""
 
-#. TRANS: dohyo is the playing field
-#: taextras.py:228
 msgid "get the angle to the center of the dohyo"
 msgstr ""
 
-#. TRANS: The angle to the center is the angle SumBot must turn to
-#. face the Enemy (opponent)
-#: taextras.py:231
 msgid "angle to Enemy"
 msgstr ""
 
-#: taextras.py:232
 msgid "get the angle to the Enemy"
 msgstr ""
 
-#. TRANS: This string is shorthand for "x coordinate of SumBot"
-#: taextras.py:234
 msgid "x coor. SumBot"
 msgstr ""
 
-#: taextras.py:235
 msgid "get the x coordinate of the SumBot"
 msgstr ""
 
-#. TRANS: This string is shorthand for "y coordinate of SumBot"
-#: taextras.py:237
 msgid "y coor. SumBot"
 msgstr ""
 
-#: taextras.py:238
 msgid "get the y coordinate of the SumBot"
 msgstr ""
 
-#. TRANS: This string is shorthand for "x coordinate of SumBot's enemy"
-#: taextras.py:240
 msgid "x coor. Enemy"
 msgstr ""
 
-#: taextras.py:241
 msgid "get the x coordinate of the Enemy"
 msgstr ""
 
-#. TRANS: This string is shorthand for "y coordinate of SumBot's enemy"
-#: taextras.py:243
 msgid "y coor. Enemy"
 msgstr ""
 
-#: taextras.py:244
 msgid "get the y coordinate of the Enemy"
 msgstr ""
 
-#. TRANS: This string is shorthand for "rotation of SumBot"
-#: taextras.py:246
 msgid "rotation SumBot"
 msgstr ""
 
-#: taextras.py:247
 msgid "get the rotation of the Sumbot"
 msgstr ""
 
-#. #-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: This string is shorthand for "rotation of SumBot's enemy"
-#: taextras.py:249
-#, fuzzy
 msgid "rotation Enemy"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"guhindukira kumwanzi"
+msgstr "guhindukira kumwanzi"
 
-#: taextras.py:250
 msgid "get the rotation of the Enemy"
 msgstr ""
 
-#: taextras.py:251
-#, fuzzy
 msgid "distance to center"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"intera ujya hagati"
+msgstr "intera ujya hagati"
 
-#. TRANS: dohyo is the playing field
-#: taextras.py:253
 msgid "get the distance to the center of the dohyo"
 msgstr ""
 
-#: taextras.py:254
-#, fuzzy
 msgid "distance to Enemy"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"intera kumwanzi"
+msgstr "intera kumwanzi"
 
-#: taextras.py:255
 msgid "get the distance to the Enemy"
 msgstr ""
 
-#: taextras.py:256
-#, fuzzy
 msgid "update information"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"inkuru igezweho"
+msgstr "inkuru igezweho"
 
-#: taextras.py:257
 msgid "update information from the server"
 msgstr ""
 
-#. TRANS: Please use similar terms to those used in the Physics Activity
-#: taextras.py:262
 msgid "Palette of physics blocks"
 msgstr ""
 
-#: taextras.py:263
-#, fuzzy
 msgid "start polygon"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"tangira ikinyampande"
+msgstr "tangira ikinyampande"
 
-#: taextras.py:264
 msgid "Begin defining a new polygon based on the current Turtle xy position."
 msgstr ""
 
-#: taextras.py:266
-#, fuzzy
 msgid "add point"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"ongeraho akadomo"
+msgstr "ongeraho akadomo"
 
-#: taextras.py:267
 msgid ""
 "Add a new point to the current polygon based on the current Turtle xy "
 "position."
 msgstr ""
 
-#: taextras.py:269
-#, fuzzy
 msgid "end polygon"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"soza ikinyampande"
+msgstr "soza ikinyampande"
 
-#: taextras.py:270
-#, fuzzy
 msgid "Define a new polygon."
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Sobanura ikinyampande gishyashya."
+msgstr "Sobanura ikinyampande gishyashya."
 
-#: taextras.py:271
 msgid "end filled polygon"
 msgstr ""
 
-#: taextras.py:272
 msgid "Not a simple polygon"
 msgstr ""
 
-#: taextras.py:273
-#, fuzzy
 msgid "Define a new filled polygon."
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Sobanura ikinyampande gishyashya."
+msgstr "Sobanura ikinyampande gishyashya."
 
-#: taextras.py:274
-#, fuzzy
 msgid "triangle"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"mpandeshatu"
+msgstr "mpandeshatu"
 
-#. #-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: base of a triangle
-#: taextras.py:276
-#, fuzzy
 msgid "base"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"ishingiro"
+msgstr "ishingiro"
 
-#: taextras.py:277 taextras.py:283
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:911
-#, fuzzy
 msgid "height"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"ubuhagarike"
+msgstr "ubuhagarike"
 
-#: taextras.py:278
-#, fuzzy
 msgid "Add a triangle object to the project."
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Ongeraho ikintu cyampande eshatu kuruyu mushinga."
+msgstr "Ongeraho ikintu cyampande eshatu kuruyu mushinga."
 
-#: taextras.py:279
-#, fuzzy
 msgid "circle"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"uruziga"
+msgstr "uruziga"
 
-#: taextras.py:280
-#, fuzzy
 msgid "Add a circle object to the project."
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Ongeraho ikintu cyuruziga kuruyu mushinga."
+msgstr "Ongeraho ikintu cyuruziga kuruyu mushinga."
 
-#: taextras.py:281
-#, fuzzy
 msgid "rectangle"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"urukiramende"
+msgstr "urukiramende"
 
-#: taextras.py:282 plugins/turtle_blocks_extras/turtle_blocks_extras.py:887
-#, fuzzy
 msgid "width"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"ubugari"
+msgstr "ubugari"
 
-#: taextras.py:284
-#, fuzzy
 msgid "Add a rectangle object to the project."
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Ongeraho ikintu cyurukiramende kuruyu mushinga."
+msgstr "Ongeraho ikintu cyurukiramende kuruyu mushinga."
 
-#: taextras.py:285
 msgid "reset"
 msgstr ""
 
-#: taextras.py:286
 msgid "Reset the project; clear the object list."
 msgstr ""
 
-#: taextras.py:287
 msgid "motor"
 msgstr ""
 
-#. TRANS: torque as in engine torque
-#: taextras.py:289
 msgid "torque"
 msgstr ""
 
-#: taextras.py:290
-#, fuzzy
 msgid "speed"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"umuvuduko"
+msgstr "umuvuduko"
 
-#: taextras.py:291
 msgid ""
 "Motor torque and speed range from 0 (off) to positive numbers; motor is "
 "placed on the most recent object created."
 msgstr ""
 
-#: taextras.py:294
 msgid "Pin an object down so that it cannot fall."
 msgstr ""
 
-#: taextras.py:295
-#, fuzzy
 msgid "joint"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"huza"
+msgstr "huza"
 
-#: taextras.py:296 TurtleArt/tabasics.py:195 TurtleArt/tabasics.py:261
 msgid "x"
 msgstr "x"
 
-#: taextras.py:297 TurtleArt/tabasics.py:195 TurtleArt/tabasics.py:261
 msgid "y"
 msgstr "y"
 
-#: taextras.py:298
 msgid ""
 "Join two objects together (the most recent object created and the object at "
 "point x, y)."
 msgstr ""
 
-#: taextras.py:300
 msgid "save as Physics activity"
 msgstr ""
 
-#: taextras.py:301
 msgid "Save the project to the Journal as a Physics activity."
 msgstr ""
 
-#. TRANS: Here, gear means a toothed wheel, as in a clock-works
-#: taextras.py:303
 msgid "gear"
 msgstr ""
 
-#: taextras.py:304
-#, fuzzy
 msgid "Add a gear object to the project."
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Ongeraho ikintu cyuruziga kuruyu mushinga."
+msgstr "Ongeraho ikintu cyuruziga kuruyu mushinga."
 
-#: taextras.py:305
-#, fuzzy
 msgid "density"
 msgstr "umwirondoro"
 
-#: taextras.py:306
 msgid ""
 "Set the density property for objects (density can be any positive number)."
 msgstr ""
 
-#: taextras.py:308
 msgid "friction"
 msgstr ""
 
-#: taextras.py:309
 msgid ""
 "Set the friction property for objects (value from 0 to 1, where 0 turns "
 "friction off and 1 is strong friction)."
 msgstr ""
 
-#. TRANS: bounciness is coefficient of restitution
-#: taextras.py:312
 msgid "bounciness"
 msgstr ""
 
-#: taextras.py:313
 msgid ""
 "Set the bounciness property for objects (a value from 0 to 1, where 0 means "
 "no bounce and 1 is very bouncy)."
 msgstr ""
 
-#. TRANS: dynamic here means moving vs in a fixed position
-#: taextras.py:316
 msgid "dynamic"
 msgstr ""
 
-#: taextras.py:317
 msgid ""
 "If dynamic = 1, the object can move; if dynamic = 0, it is fixed in position."
 msgstr ""
 
-#. TRANS: WeDo is a robotics product of the LEGO company
-#: taextras.py:323
 msgid "Palette of WeDo blocks"
 msgstr ""
 
-#: taextras.py:324
 msgid "WeDo"
 msgstr ""
 
-#: taextras.py:325
 msgid "set current WeDo device"
 msgstr ""
 
-#: taextras.py:326
 msgid "number of WeDo devices"
 msgstr ""
 
-#: taextras.py:327
 msgid "tilt"
 msgstr ""
 
-#: taextras.py:328
 msgid ""
 "tilt sensor output: (-1 == no tilt, 0 == tilt forward, 3 == tilt back, 1 == "
 "tilt left, 2 == tilt right)"
 msgstr ""
 
-#. TRANS: This string is shorthand for "output of the distance sensor"
-#: taextras.py:332
 msgid "distance sensor output"
 msgstr ""
 
-#: taextras.py:333
 msgid "Motor A"
 msgstr ""
 
-#: taextras.py:334
 msgid "returns the current value of Motor A"
 msgstr ""
 
-#: taextras.py:335
 msgid "Motor B"
 msgstr ""
 
-#: taextras.py:336
 msgid "returns the current value of Motor B"
 msgstr ""
 
-#: taextras.py:337
 msgid "set the value for Motor A"
 msgstr ""
 
-#: taextras.py:338
 msgid "set the value for Motor B"
 msgstr ""
 
-#: taextras.py:339
 msgid "WeDo is unavailable"
 msgstr ""
 
-#. TRANS: e.g., Wedo 2 is unavailable, defaulting to 1
-#: taextras.py:341
-#, python-format
 msgid "WeDo %d is unavailable; defaulting to 1"
 msgstr ""
 
-#. TRANS: %(device)s and %(wedo_number)d are substitution strings;
-#. please leave untranslated
-#: taextras.py:344
-#, python-format
 msgid "%(device)s is unavailable on WeDo %(wedo_number)d"
 msgstr ""
 
-#. TRANS: Lego NXT is a robotics product of the LEGO company
-#: taextras.py:349
 msgid "Palette of LEGO NXT blocks of motors"
 msgstr ""
 
-#: taextras.py:350
 msgid "Palette of LEGO NXT blocks of sensors"
 msgstr ""
 
-#. TRANS: touch sensor (implemented as a button)
-#: taextras.py:352
 msgid "touch"
 msgstr ""
 
-#. TRANS: distance sensor (implemented using ultrasonics)
-#: taextras.py:354
 msgid "ultrasonic"
 msgstr ""
 
-#: taextras.py:355 TurtleArt/tabasics.py:283 TurtleArt/tabasics.py:294
-#: TurtleArt/tabasics.py:344
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1197
 msgid "color"
 msgstr "ibara"
 
-#: taextras.py:357 plugins/audio_sensors/audio_sensors.py:83
-#: plugins/audio_sensors/audio_sensors.py:98 pysamples/grecord.py:205
-#, fuzzy
 msgid "sound"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"ijwi"
+msgstr "ijwi"
 
-#. TRANS: The brick is the NXT controller
-#: taextras.py:360
 msgid "Please check the connection with the brick"
 msgstr ""
 
-#: taextras.py:361
-#, python-format
 msgid "Invalid port '%s'. Port must be: PORT A, B or C"
 msgstr ""
 
-#: taextras.py:362
-#, python-format
 msgid "Invalid port '%s'. Port must be: PORT 1, 2, 3 or 4"
 msgstr ""
 
-#: taextras.py:363
 msgid "The value of power must be between -127 to 127"
 msgstr ""
 
-#: taextras.py:364
-#, python-format
 msgid "The parameter must be a integer, not '%s'"
 msgstr ""
 
-#: taextras.py:365
 msgid "An error has occurred: check all connections and try to reconnect"
 msgstr ""
 
-#: taextras.py:366
-#, python-format
 msgid "NXT found %s bricks"
 msgstr ""
 
-#: taextras.py:367
-#, fuzzy
 msgid "NXT not found"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"NXT ntiya bonwe"
+msgstr "NXT ntiya bonwe"
 
-#: taextras.py:368
-#, python-format
 msgid "Brick number %s was not found"
 msgstr ""
 
-#: taextras.py:369
 msgid "refresh NXT"
 msgstr ""
 
-#: taextras.py:370
 msgid "Search for a connected NXT brick."
 msgstr ""
 
-#: taextras.py:371
 msgid "NXT"
 msgstr ""
 
-#: taextras.py:372
 msgid "set current NXT device"
 msgstr ""
 
-#: taextras.py:373
 msgid "number of NXT devices"
 msgstr ""
 
-#: taextras.py:374
 msgid "brick name"
 msgstr ""
 
-#: taextras.py:375
 msgid "Get the name of a brick."
 msgstr ""
 
-#: taextras.py:376
 msgid "play tone"
 msgstr ""
 
-#: taextras.py:377
 msgid "frequency"
 msgstr ""
 
-#: taextras.py:378 plugins/turtle_blocks_extras/turtle_blocks_extras.py:451
-#, fuzzy
 msgid "time"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"igihe"
+msgstr "igihe"
 
-#: taextras.py:379
 msgid "Play a tone at frequency for time."
 msgstr ""
 
-#. TRANS: turn is the action
-#: taextras.py:381
 msgid ""
 "turn motor\n"
 "\n"
 msgstr ""
 
-#: taextras.py:382
 #, fuzzy
 msgid "port"
 msgstr ""
@@ -1250,2521 +782,1685 @@ msgstr ""
 "#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "umuhuza"
 
-#: taextras.py:383
-#, fuzzy
 msgid "power"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"ingufu"
+msgstr "ingufu"
 
-#. TRANS: rotations is quantity of turns
-#: taextras.py:385
 msgid "rotations"
 msgstr ""
 
-#: taextras.py:386
 msgid "turn a motor"
 msgstr ""
 
-#: taextras.py:387
 msgid ""
 "synchronize\n"
 "\n"
 "motors"
 msgstr ""
 
-#: taextras.py:388
 msgid "steering"
 msgstr ""
 
-#: taextras.py:389
 msgid "synchronize two motors connected in PORT B and PORT C"
 msgstr ""
 
-#: taextras.py:390
-#, fuzzy
 msgid "PORT A"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"UMUHUZA A"
+msgstr "UMUHUZA A"
 
-#: taextras.py:391
 msgid "PORT A of the brick"
 msgstr ""
 
-#: taextras.py:392
-#, fuzzy
 msgid "PORT B"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"UMUHUZA B"
+msgstr "UMUHUZA B"
 
-#: taextras.py:393
 msgid "PORT B of the brick"
 msgstr ""
 
-#: taextras.py:394
-#, fuzzy
 msgid "PORT C"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"UMUHUZA C"
+msgstr "UMUHUZA C"
 
-#: taextras.py:395
 msgid "PORT C of the brick"
 msgstr ""
 
-#: taextras.py:396
 msgid ""
 "synchronize\n"
 "motors"
 msgstr ""
 
-#: taextras.py:397
 msgid "start motor"
 msgstr ""
 
-#: taextras.py:398
 msgid "Run a motor forever."
 msgstr ""
 
-#: taextras.py:399
 msgid "brake motor"
 msgstr ""
 
-#: taextras.py:400
 msgid "Stop a specified motor."
 msgstr ""
 
-#. TRANS: reset is used to reset the counter associated with the motor
-#: taextras.py:402
 msgid "reset motor"
 msgstr ""
 
-#: taextras.py:403
 msgid "Reset the motor counter."
 msgstr ""
 
-#: taextras.py:404
 msgid "motor position"
 msgstr ""
 
-#: taextras.py:405
 msgid "Get the motor position."
 msgstr ""
 
-#: taextras.py:406
-#, fuzzy
 msgid "PORT 1"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"UMUHUZA 1"
+msgstr "UMUHUZA 1"
 
-#: taextras.py:407
 msgid "PORT 1 of the brick"
 msgstr ""
 
-#: taextras.py:408
-#, fuzzy
 msgid "read"
 msgstr "umutuku"
 
-#: taextras.py:409
 msgid "sensor"
 msgstr ""
 
-#: taextras.py:410
 msgid "Read sensor output."
 msgstr ""
 
-#: taextras.py:411
-#, fuzzy
 msgid "PORT 2"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"UMUHUZA 2"
+msgstr "UMUHUZA 2"
 
-#: taextras.py:412
 msgid "PORT 2 of the brick"
 msgstr ""
 
-#: taextras.py:413
 msgid "light sensor"
 msgstr ""
 
-#: taextras.py:414
 msgid "gray sensor"
 msgstr ""
 
-#: taextras.py:415
-#, fuzzy
 msgid "PORT 3"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"UMUHUZA 3"
+msgstr "UMUHUZA 3"
 
-#: taextras.py:416
 msgid "PORT 3 of the brick"
 msgstr ""
 
-#: taextras.py:417
 msgid "touch sensor"
 msgstr ""
 
-#: taextras.py:418
 msgid "distance sensor"
 msgstr ""
 
-#: taextras.py:419
-#, fuzzy
 msgid "PORT 4"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"UMUHUZA 4"
+msgstr "UMUHUZA 4"
 
-#: taextras.py:420
 msgid "PORT 4 of the brick"
 msgstr ""
 
-#: taextras.py:421
 msgid "sound sensor"
 msgstr ""
 
-#: taextras.py:422
 msgid "color sensor"
 msgstr ""
 
-#. #-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: set light is used to set the light level associated with
-#. the color sensor (which can emit light as well as sense it)
-#: taextras.py:425
-#, fuzzy
 msgid "set light"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"shyiramo urumuri"
+msgstr "shyiramo urumuri"
 
-#: taextras.py:426
 msgid "Set color sensor light."
 msgstr ""
 
-#. TRANS: the battery level is the charge level of the brick
-#: taextras.py:428
 msgid "battery level"
 msgstr ""
 
-#: taextras.py:429
 msgid "Get the battery level of the brick in millivolts"
 msgstr ""
 
-#. TRANS: Arduino plugin to control an Arduino board
-#: taextras.py:434
 msgid "Palette of Arduino blocks"
 msgstr ""
 
-#. TRANS: PWM is pulse-width modulation
-#: taextras.py:440
 msgid "PWM"
 msgstr ""
 
-#: taextras.py:441
 msgid "SERVO"
 msgstr ""
 
-#: taextras.py:442
 msgid "ERROR: Check the Arduino and the number of port."
 msgstr ""
 
-#: taextras.py:443
 msgid "ERROR: Value must be a number from 0 to 255."
 msgstr ""
 
-#: taextras.py:444
 msgid "ERROR: Value must be either HIGH or LOW, 0 or 1"
 msgstr ""
 
-#: taextras.py:445
 msgid "ERROR: The mode must be either INPUT, OUTPUT, PWM or SERVO."
 msgstr ""
 
-#: taextras.py:446
 msgid "ERROR: The value must be an integer."
 msgstr ""
 
-#: taextras.py:447
 msgid "ERROR: The pin must be an integer."
 msgstr ""
 
-#: taextras.py:448
 msgid "refresh Arduino"
 msgstr ""
 
-#: taextras.py:449
 msgid "Search for connected Arduinos."
 msgstr ""
 
-#: taextras.py:450
 msgid "Arduino"
 msgstr ""
 
-#: taextras.py:451
 msgid "set current Arduino board"
 msgstr ""
 
-#: taextras.py:452
 msgid "number of Arduinos"
 msgstr ""
 
-#: taextras.py:453
 msgid "number of Arduino boards"
 msgstr ""
 
-#: taextras.py:454
 msgid "Arduino name"
 msgstr ""
 
-#: taextras.py:455
 msgid "Get the name of an Arduino."
 msgstr ""
 
-#. TRANS: pin mode is used to specify the mode (INPUT, OUTPUT, etc)
-#. in which an I/O pin is being used.
-#: taextras.py:458
 msgid "pin mode"
 msgstr ""
 
-#: taextras.py:461
 msgid "Select the pin function (INPUT, OUTPUT, PWM, SERVO)."
 msgstr ""
 
-#: taextras.py:462
 msgid "analog write"
 msgstr ""
 
-#: taextras.py:464
 msgid "Write analog value in specified port."
 msgstr ""
 
-#: taextras.py:465
 msgid "analog read"
 msgstr ""
 
-#: taextras.py:466
 msgid ""
 "Read value from analog port. Value may be between 0 and 1023. Use Vref to "
 "determine voltage. For USB, volt=((read)*5)/1024) approximately."
 msgstr ""
 
-#: taextras.py:468
 msgid "digital write"
 msgstr ""
 
-#: taextras.py:469
 msgid "Write digital value to specified port."
 msgstr ""
 
-#: taextras.py:470
 msgid "digital read"
 msgstr ""
 
-#: taextras.py:471
 msgid "Read value from digital port."
 msgstr ""
 
-#: taextras.py:473
 msgid "Configure Arduino port for digital input."
 msgstr ""
 
-#: taextras.py:474
 msgid "Configure Arduino port to drive a servo."
 msgstr ""
 
-#: taextras.py:476
 msgid "Configure Arduino port for digital output."
 msgstr ""
 
-#: taextras.py:477
 msgid "Configure Arduino port for PWM (pulse-width modulation)."
 msgstr ""
 
-#: taextras.py:478
-#, python-format
 msgid "Not found Arduino %s"
 msgstr ""
 
-#: taextras.py:479
 msgid "The pin must be an integer"
 msgstr ""
 
-#: taextras.py:480
 msgid "The device must be an integer"
 msgstr ""
 
-#. TRANS: plugin to control an ExpEyes device
-#: taextras.py:485
 msgid "Palette of Expeyes blocks"
 msgstr ""
 
-#. TRANS: Programmable voltage output
-#: taextras.py:487
 msgid "set PVS"
 msgstr ""
 
-#: taextras.py:488
 msgid "set programmable voltage output"
 msgstr ""
 
-#. TRANS: Square wave 1 voltage output
-#: taextras.py:490
 msgid "set SQR1 voltage"
 msgstr ""
 
-#: taextras.py:491
 msgid "set square wave 1 voltage output"
 msgstr ""
 
-#. TRANS: Square wave 2 voltage output
-#: taextras.py:493
 msgid "set SQR2 voltage"
 msgstr ""
 
-#: taextras.py:494
 msgid "set square wave 2 voltage output"
 msgstr ""
 
-#. TRANS: Digital output level
-#: taextras.py:496
 msgid "set OD1"
 msgstr ""
 
-#: taextras.py:497
 msgid "set digital output level (OD1) low (0) or high (1)"
 msgstr ""
 
-#. TRANS: Input 1 voltage level
-#: taextras.py:499
 msgid "IN1 level"
 msgstr ""
 
-#: taextras.py:500
 msgid ""
 "returns 1 if IN1 voltage level >2.5 volts, 0 if IN1 voltage level <= 2.5 "
 "volts"
 msgstr ""
 
-#. TRANS: Input 2 voltage level
-#: taextras.py:503
 msgid "IN2 level"
 msgstr ""
 
-#: taextras.py:504
 msgid ""
 "returns 1 if IN2 voltage level >2.5 volts, 0 if IN2 voltage level <= 2.5 "
 "volts"
 msgstr ""
 
-#. TRANS: Resistive sensor voltage level
-#: taextras.py:507
 msgid "SEN level"
 msgstr ""
 
-#: taextras.py:508
 msgid ""
 "returns 1 if resistive sensor (SEN) voltage level > 2.5 volts, 0 if SEN "
 "voltage level <= 2.5 volts"
 msgstr ""
 
-#: taextras.py:510
 msgid "capture"
 msgstr ""
 
-#: taextras.py:511
 msgid "input"
 msgstr ""
 
-#: taextras.py:512
 msgid "samples"
 msgstr ""
 
-#: taextras.py:513
 msgid "interval"
 msgstr ""
 
-#. TRANS: MS is microseconds
-#: taextras.py:515
 msgid ""
 "capture multiple samples from input at interval (MS); results pushed to FIFO"
 msgstr ""
 
-#. TRANS: Analog input 1 voltage level
-#: taextras.py:518
 msgid "A1"
 msgstr ""
 
-#: taextras.py:519
 msgid "read analog input 1 voltage"
 msgstr ""
 
-#. TRANS: Analog input 2 voltage level
-#: taextras.py:521
 msgid "A2"
 msgstr ""
 
-#: taextras.py:522
 msgid "read analog input 2 voltage"
 msgstr ""
 
-#. TRANS: Read input 1 voltage
-#: taextras.py:524
 msgid "IN1"
 msgstr ""
 
-#: taextras.py:525
 msgid "read input 1 voltage"
 msgstr ""
 
-#. TRANS: Read input 2 voltage
-#: taextras.py:527
 msgid "IN2"
 msgstr ""
 
-#: taextras.py:528
 msgid "read input 2 voltage"
 msgstr ""
 
-#. TRANS: Read analog sensor input voltage
-#: taextras.py:530
 msgid "SEN"
 msgstr ""
 
-#: taextras.py:531
 msgid "read analog sensor input voltage"
 msgstr ""
 
-#. TRANS: Read square wave 1 input voltage
-#: taextras.py:533
 msgid "SQR1"
 msgstr ""
 
-#: taextras.py:534
 msgid "read square wave 1 voltage"
 msgstr ""
 
-#. TRANS: Read square wave 2 input voltage
-#: taextras.py:536
 msgid "SQR2"
 msgstr ""
 
-#: taextras.py:537
 msgid "read square wave 2 voltage"
 msgstr ""
 
-#. TRANS: Read programmable voltage
-#: taextras.py:539
 msgid "PVS"
 msgstr ""
 
-#: taextras.py:540
 msgid "read programmable voltage"
 msgstr ""
 
-#: taextras.py:541
 msgid "Expeyes device not found"
 msgstr ""
 
-#: TurtleArt/taconstants.py:209 TurtleArt/taconstants.py:231
-#: TurtleArt/taconstants.py:252 TurtleArt/taconstants.py:294
-#: TurtleArt/taconstants.py:336 TurtleArt/taconstants.py:378
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:980
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:995
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1010
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1025
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1040
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1055
-#, fuzzy
-msgid "Title"
-msgstr "Umutwe w'amagambo"
-
-#: TurtleArt/tabasics.py:442
-msgid "yellow"
-msgstr "umuhondo"
-
-#: plugins/camera_sensor/camera_sensor.py:106
-#: plugins/camera_sensor/camera_sensor.py:113
-#: plugins/camera_sensor/camera_sensor.py:121
-#: plugins/camera_sensor/camera_sensor.py:155
-#: plugins/camera_sensor/camera_sensor.py:163
-#, fuzzy
-msgid "camera output"
-msgstr "amashusho yakamera"
-
-#: TurtleArt/tabasics.py:915
-msgid "box 2"
-msgstr "ikarito ya 2"
-
-#: TurtleArt/tabasics.py:905
-msgid "box 1"
-msgstr "ikarito ya 1"
-
-#: TurtleArtActivity.py:730 TurtleArtActivity.py:994 turtleblocks.py:415
-msgid "Step"
-msgstr "Intambwe"
-
-#: TurtleArtActivity.py:318 TurtleArtActivity.py:984 turtleblocks.py:406
-#, fuzzy
-msgid "Hide palette"
-msgstr "Guhisha palette"
-
-#: gnome_plugins/collaboration_plugin.py:125
-#, fuzzy
-msgid "Buddies"
-msgstr "Inshuti"
-
-#: TurtleArt/tabasics.py:445
-msgid "cyan"
-msgstr "ubururu bukeye"
-
-#: TurtleArtActivity.py:678 TurtleArtActivity.py:695 TurtleArtActivity.py:734
-#: TurtleArtActivity.py:934
-#, fuzzy
-msgid "Load example"
-msgstr "Shakisha urugero"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:817
-#, fuzzy
-msgid "list"
-msgstr "irondora"
-
-#: TurtleArt/tabasics.py:243 TurtleArt/tawindow.py:4106
-#, fuzzy
-msgid "heading"
-msgstr "umutwempangano"
-
-#: plugins/rfid/rfid.py:92 plugins/rfid/rfid.py:100
-msgid "RFID"
-msgstr "RFID"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:169
-#, fuzzy
-msgid "video"
-msgstr "iyerekanamashusho"
-
-#: TurtleArt/tabasics.py:446
-msgid "blue"
-msgstr "ubururu"
-
-#: turtleblocks.py:250
-#, fuzzy
-msgid "No option action:"
-msgstr "Ntaguhitamo igikorwa:"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:966
-#, fuzzy
-msgid "bottom y"
-msgstr "buto y"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:262
-msgid "save SVG"
-msgstr "bika SVG"
-
-#: TurtleArt/tabasics.py:381
-msgid "pen down"
-msgstr "ikaramu hasi"
-
-#: TurtleArt/tabasics.py:739
-msgid "wait"
-msgstr "tegereza"
-
-#: TurtleArt/tabasics.py:924 TurtleArt/tabasics.py:939
-msgid "box"
-msgstr "ikarito"
-
-#: TurtleArt/tabasics.py:856 TurtleArt/tabasics.py:859
-#: TurtleArt/tabasics.py:867 TurtleArt/tabasics.py:871
-#: TurtleArt/tawindow.py:1351 TurtleArt/tawindow.py:1448
-#: TurtleArt/tawindow.py:1461 TurtleArt/tawindow.py:2077
-#: TurtleArt/tawindow.py:4363
-#, fuzzy
-msgid "action"
-msgstr "igikorwa"
-
-#: TurtleArt/tabasics.py:597
-#, fuzzy
-msgid "divide"
-msgstr "gabanya"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:253
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:264
-#, fuzzy
-msgid "picture name"
-msgstr "izina ry'ifoto"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:109
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:112
-#, fuzzy
-msgid "while"
-msgstr "umweru"
-
-#: TurtleArt/tawindow.py:1044 TurtleArt/tawindow.py:1644
-#, fuzzy
-msgid "next"
-msgstr "inyandiko"
-
-#: TurtleArt/tabasics.py:390
-msgid "set pen size"
-msgstr "tunganya ingano y'ikaramu"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:119
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:122
-#, fuzzy
-msgid "until"
-msgstr "kugeza"
-
-#. #-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: pitch, duration, amplitude
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:322
-#, fuzzy
-msgid "sinewave"
-msgstr "kanda ibuto"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:939
-#, fuzzy
-msgid "left x"
-msgstr "ibumoso x"
-
-#: TurtleArt/tabasics.py:209
-#, fuzzy
-msgid "set heading"
-msgstr "shyiraho umtwe"
-
-#: TurtleArtActivity.py:994
-msgid "<Ctrl>w"
-msgstr "<Ctrl>w"
-
-#: TurtleArtActivity.py:992
-msgid "<Ctrl>r"
-msgstr "<Ctrl>r"
-
-#: TurtleArtActivity.py:997
-msgid "<Ctrl>s"
-msgstr "<Ctrl>s"
-
-#: TurtleArtActivity.py:985
-msgid "<Ctrl>p"
-msgstr "<Ctrl>p"
-
-#: TurtleArtActivity.py:990
-msgid "<Ctrl>e"
-msgstr "<Ctrl>e"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:181
-#, fuzzy
-msgid "description"
-msgstr "kwimenyekanisha"
-
-#: TurtleArt/tabasics.py:467
-#, fuzzy
-msgid "set text size"
-msgstr "tunganya ingano y'ikaramu"
-
-#: gnome_plugins/uploader_plugin.py:99
-#, fuzzy
-msgid "Username:"
-msgstr "izina ry'ukoresha:"
-
-#: TurtleArtActivity.py:584 TurtleArtActivity.py:613 TurtleArtActivity.py:726
-#: TurtleArtActivity.py:796 turtleblocks.py:392
-msgid "View"
-msgstr "Kureba"
-
-#: gnome_plugins/uploader_plugin.py:109
-#, fuzzy
-msgid "Password:"
-msgstr "Ijambobanga:"
-
-#: TurtleArt/tabasics.py:822
-#, fuzzy
-msgid "stop action"
-msgstr "igikorwa cyo guhagarika"
-
-#: TurtleArt/tabasics.py:444
-msgid "green"
-msgstr "icyatsi"
-
-#: TurtleArt/tabasics.py:283 TurtleArt/tabasics.py:295
-#: TurtleArt/tabasics.py:354
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1193
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1198
-#, fuzzy
-msgid "shade"
-msgstr "ubwijime"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:251
-#, fuzzy
-msgid "save picture"
-msgstr "bika ifoto"
-
-#: TurtleArt/tabasics.py:372
-msgid "pen up"
-msgstr "ikaramu hejuru"
-
-#: TurtleArt/tabasics.py:440
-msgid "orange"
-msgstr "oranje"
-
-#: TurtleArt/tabasics.py:1006
-#, fuzzy
-msgid "clear all"
-msgstr "hanagura byose"
-
-#: TurtleArt/tabasics.py:772 TurtleArt/tabasics.py:785
-msgid "then"
-msgstr "hanyuma"
-
-#: gnome_plugins/collaboration_plugin.py:302
-#, fuzzy
-msgid "Register"
-msgstr "Kwiyandikisha"
-
-#: TurtleArt/tabasics.py:701
-msgid "not"
-msgstr "si"
-
-#: TurtleArt/tabasics.py:825
-#, fuzzy
-msgid "stops current action"
-msgstr "guhagaka ibikorwa bya banjye"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:691
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:773
-msgid "turtle"
-msgstr "akanyamashyo"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:789
-#, fuzzy
-msgid "hide blocks"
-msgstr "Hisha amablock"
-
-#: turtleblocks.py:367
-msgid "Save"
-msgstr "Bika"
-
-#: TurtleArt/tabasics.py:879
-msgid "store in box 1"
-msgstr "bika mu ikarito ya 1"
-
-#: TurtleArt/tabasics.py:892
-msgid "store in box 2"
-msgstr "bika mu ikarito ya 2"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:555
-#, fuzzy
-msgid "print"
-msgstr "gucapa"
-
-#: TurtleArtActivity.py:188 TurtleArtActivity.py:757 TurtleArtActivity.py:925
-#: TurtleArtActivity.py:955 turtleblocks.py:371
-msgid "Save as Logo"
-msgstr "Bika nka Logo"
-
-#: TurtleArt/tabasics.py:456
-msgid "set text color"
-msgstr "tunganya ibara ry'inyandiko"
-
-#: plugins/audio_sensors/audio_sensors.py:90
-#: plugins/audio_sensors/audio_sensors.py:105
-#, fuzzy
-msgid "loudness"
-msgstr "imisakurize"
-
-#: TurtleArt/tabasics.py:658
-msgid "number"
-msgstr "umubare"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:130
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:732
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:903
-msgid "top"
-msgstr "hejuru"
-
-#: gnome_plugins/collaboration_plugin.py:292
-#, fuzzy
-msgid "Nickname"
-msgstr "Azina kaka byiniriro"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:240
-#, fuzzy
-msgid "set scale"
-msgstr "shyiramo igipimo"
-
-#: TurtleArt/tabasics.py:449
-msgid "white"
-msgstr "umweru"
-
-#: TurtleArt/tawindow.py:1534 TurtleArt/tawindow.py:1574
-#: gnome_plugins/uploader_plugin.py:144
-msgid "Cancel"
-msgstr "Reka"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1011
-#, fuzzy
-msgid "presentation 2x1"
-msgstr "icyerekezo"
-
-#: TurtleArt/tabasics.py:710 TurtleArt/tabasics.py:713
-msgid "and"
-msgstr "na"
-
-#: TurtleArt/talogo.py:623
-#, fuzzy
-msgid "as input"
-msgstr "nk'inyinjiza"
-
-#: plugins/accelerometer/accelerometer.py:56
-#: plugins/accelerometer/accelerometer.py:63
-#, fuzzy
-msgid "acceleration"
-msgstr "ukwiyongera"
-
-#: TurtleArt/tabasics.py:309
-msgid "set color"
-msgstr "tunganya ibara"
-
-#: TurtleArt/tabasics.py:642
-#, fuzzy
-msgid "min"
-msgstr "min"
-
-#: turtleblocks.py:374
-#, fuzzy
-msgid "File"
-msgstr "File"
-
-#: TurtleArt/tabasics.py:585
-#, fuzzy
-msgid "multiply"
-msgstr "gukuba"
-
-#: TurtleArt/tabasics.py:750
-#, fuzzy
-msgid "forever"
-msgstr "igihe cyose"
-
-#: TurtleArt/tabasics.py:147
-#, fuzzy
-msgid "clean"
-msgstr "gusukura"
-
-#: TurtleArtActivity.py:651 TurtleArtActivity.py:806 turtleblocks.py:383
-#, fuzzy
-msgid "Grow blocks"
-msgstr "Erekana amablock"
-
-#: TurtleArtActivity.py:637 TurtleArtActivity.py:797
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:806
-msgid "Fullscreen"
-msgstr "Ekara nini"
-
-#: turtleblocks.py:265
-#, fuzzy
-msgid "File not found"
-msgstr "File ntiboneka"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:200
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:228
-msgid "show"
-msgstr "erekana"
-
-#: TurtleArt/tabasics.py:849 TurtleArt/tabasics.py:850
-#: TurtleArt/tabasics.py:851
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:192
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:193
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:194
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:201
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:214
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:229
-#, fuzzy
-msgid "text"
-msgstr "inyandiko"
-
-#: TurtleArt/tabasics.py:642
-#, fuzzy
-msgid "random"
-msgstr "binyuranye"
-
-#: TurtleArt/tabasics.py:450
-msgid "black"
-msgstr "umukara"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:364
-#, fuzzy
-msgid "mouse x"
-msgstr "akanyerezo x"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:374
-#, fuzzy
-msgid "mouse y"
-msgstr "akanyerezo y"
-
-#: pysamples/grecord.py:215
-#, fuzzy
-msgid "stop"
-msgstr "hejuru"
-
-#: TurtleArt/tabasics.py:667
-#, fuzzy
-msgid "greater than"
-msgstr "byiza kurenza"
-
-#: TurtleArt/tabasics.py:221 TurtleArt/tawindow.py:4105
-#, fuzzy
-msgid "xcor"
-msgstr "ikirangahuriro X"
-
-#: TurtleArtActivity.py:735 turtleblocks.py:422 util/helpbutton.py:45
-msgid "Help"
-msgstr "Gufasha"
-
-#: turtleblocks.py:462
-#, fuzzy
-msgid "Save project?"
-msgstr "Bika umushinga?"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:957
-#, fuzzy
-msgid "right x"
-msgstr "iburyo x"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:394
-#, fuzzy
-msgid "keyboard"
-msgstr "mwandikisho"
-
-#: TurtleArt/tabasics.py:182
-#, fuzzy
-msgid "arc"
-msgstr "agaheto"
-
-#: TurtleArt/tabasics.py:182
-#, fuzzy
-msgid "radius"
-msgstr "akarambararo"
-
-#: TurtleArt/tabasics.py:321
-#, fuzzy
-msgid "set shade"
-msgstr "shyiramo igipimo"
-
-#: TurtleArtActivity.py:729 TurtleArtActivity.py:992 turtleblocks.py:414
-msgid "Run"
-msgstr "Iruka"
-
-#: gnome_plugins/uploader_plugin.py:120
-#, fuzzy
-msgid "Title:"
-msgstr "Umutwe:"
-
-#: gnome_plugins/fb_plugin.py:82 gnome_plugins/fb_plugin.py:83
-#: gnome_plugins/fb_plugin.py:92 gnome_plugins/uploader_plugin.py:63
-#: gnome_plugins/uploader_plugin.py:64 gnome_plugins/uploader_plugin.py:73
-#, fuzzy
-msgid "Upload"
-msgstr "Irigushakisha"
-
-#: gnome_plugins/collaboration_plugin.py:296
-msgid "Server"
-msgstr "Seriveri"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1041
-#, fuzzy
-msgid "presentation 2x2"
-msgstr "icyerekezo"
-
-#: gnome_plugins/collaboration_plugin.py:132
-#, fuzzy
-msgid "Neighborhood"
-msgstr "Abaturanyi"
-
-#: TurtleArt/tabasics.py:691
-#, fuzzy
-msgid "equal"
-msgstr "bingana"
-
-#: TurtleArt/tabasics.py:422
-msgid "pen size"
-msgstr "ingano y'ikaramu"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:311
-#, fuzzy
-msgid "speak"
-msgstr "vuga"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:343
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:354
-#, fuzzy
-msgid "button down"
-msgstr "kanda ibuto"
-
-#: TurtleArt/talogo.py:380 TurtleArtActivity.py:360 TurtleArtActivity.py:732
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1529
-msgid "Show blocks"
-msgstr "Erekana amablock"
-
-#: pysamples/grecord.py:217
-#, fuzzy
-msgid "play"
-msgstr "kina"
-
-#: pysamples/grecord.py:219
-msgid "save"
-msgstr "bika"
-
-#: gnome_plugins/collaboration_plugin.py:304
-#, fuzzy
-msgid "Colors"
-msgstr "Ibara"
-
-#: turtleblocks.py:366
-msgid "Open"
-msgstr "Fungura"
-
-#: TurtleArt/tawindow.py:1033 TurtleArt/tawindow.py:1034
-msgid "orientation"
-msgstr "icyerekezo"
-
-#: TurtleArt/tabasics.py:232 TurtleArt/tawindow.py:4106
-#, fuzzy
-msgid "ycor"
-msgstr "ikirangahuriro Y"
-
-#: TurtleArt/tabasics.py:772 TurtleArt/tabasics.py:785
-msgid "if"
-msgstr "niba"
-
-#: TurtleArtActivity.py:736 turtleblocks.py:417
-msgid "Stop"
-msgstr "Hagarika"
-
-#: TurtleArt/tabasics.py:961 TurtleArt/tabasics.py:981
-#, fuzzy
-msgid "action 2"
-msgstr "igkorwa 2"
-
-#: TurtleArt/tabasics.py:952 TurtleArt/tabasics.py:971
-#, fuzzy
-msgid "action 1"
-msgstr "igikorwa 1"
-
-#: TurtleArt/tabasics.py:413
-msgid "end fill"
-msgstr "soza kuzuza"
-
-#: TurtleArtActivity.py:625 TurtleArtActivity.py:779 turtleblocks.py:395
-msgid "Copy"
-msgstr "Koporora"
-
-#: TurtleArtActivity.py:627 TurtleArtActivity.py:780 turtleblocks.py:396
-#, fuzzy
-msgid "Paste"
-msgstr "Komeka"
-
-#: gnome_plugins/collaboration_plugin.py:120
-#, fuzzy
-msgid "Activities"
-msgstr "Ibikorwa"
-
-#: TurtleArtActivity.py:728 TurtleArtActivity.py:990 turtleblocks.py:413
-msgid "Clean"
-msgstr "Sukura"
-
-#: TurtleArt/tabasics.py:182
-#, fuzzy
-msgid "angle"
-msgstr "imfuruka"
-
-#: TurtleArtActivity.py:617 TurtleArtActivity.py:724 TurtleArtActivity.py:753
-#: TurtleArtActivity.py:755 TurtleArtActivity.py:917
-#, fuzzy
-msgid "Save/Load"
-msgstr "Bika/Shakisha"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:948
-#, fuzzy
-msgid "top y"
-msgstr "hejuru y"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:157
-#, fuzzy
-msgid "audio"
-msgstr "isohoramajwi"
-
-#: turtleblocks.py:410
-#, fuzzy
-msgid "Tools"
-msgstr "Ibikoresho"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:545
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:547
-#, fuzzy
-msgid "comment"
-msgstr "ibivugwaho"
-
-#: TurtleArtActivity.py:758 TurtleArtActivity.py:938 TurtleArtActivity.py:960
-#, fuzzy
-msgid "Load project"
-msgstr "Shakisha umushinga"
-
-#: TurtleArtActivity.py:611 TurtleArtActivity.py:727
-#, fuzzy
-msgid "Project"
-msgstr "Umushinga"
-
-#: gnome_plugins/collaboration_plugin.py:300
-#, fuzzy
-msgid "Password"
-msgstr "Ijambobanga"
-
-#: gnome_plugins/collaboration_plugin.py:128
-msgid "Share"
-msgstr "Gusangira"
-
-#: TurtleArt/tabasics.py:679
-#, fuzzy
-msgid "less than"
-msgstr "gake ho"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:798
-msgid "show blocks"
-msgstr "erekana amablock"
-
-#: turtleblocks.py:373
-#, fuzzy
-msgid "Quit"
-msgstr "Kuvamo"
-
-#: TurtleArt/tabasics.py:333
-#, fuzzy
-msgid "set gray"
-msgstr "shyiramo ikigina"
-
-#: turtleblocks.py:365
-#, fuzzy
-msgid "New"
-msgstr "Nshyashya"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:272
-#, fuzzy
-msgid "scale"
-msgstr "igipimo"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:879
-#, fuzzy
-msgid "bottom"
-msgstr "buto"
-
-#: TurtleArt/tabasics.py:447
-#, fuzzy
-msgid "purple"
-msgstr "kimurika"
-
-#: TurtleArt/tautils.py:586
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:730
-#, fuzzy
-msgid "click to open"
-msgstr "kanda kugirango ufungure"
-
-#: gnome_plugins/collaboration_plugin.py:129
-#, fuzzy
-msgid "Configuration"
-msgstr "Iboneza"
-
-#: gnome_plugins/uploader_plugin.py:130
-#, fuzzy
-msgid "Description:"
-msgstr "kwimenyekanisha"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:146
-#, fuzzy
-msgid "journal"
-msgstr "ikinyamakuru"
-
-#: TurtleArt/tautils.py:295
-#, fuzzy
-msgid "Load..."
-msgstr "Shakisha..."
-
-#: TurtleArt/talogo.py:370 TurtleArtActivity.py:731
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1538
-msgid "Stop turtle"
-msgstr "Hagarika akanyamashyo"
-
-#: turtleblocks.py:418
-msgid "Turtle"
-msgstr "Akanyamashyo"
-
-#: TurtleArt/tabasics.py:924 TurtleArt/tawindow.py:4427
-#, fuzzy
-msgid "store in"
-msgstr "bika mu"
-
-#: TurtleArt/talogo.py:384 TurtleArtActivity.py:364 TurtleArtActivity.py:996
-#, fuzzy
-msgid "Hide blocks"
-msgstr "Hisha amablock"
-
-#: TurtleArt/tabasics.py:559
-#, fuzzy
-msgid "plus"
-msgstr "ibindi"
-
-#: TurtleArt/tabasics.py:721 TurtleArt/tabasics.py:724
-msgid "or"
-msgstr "cyangwa"
-
-#: TurtleArt/tawindow.py:4215
-#, fuzzy
-msgid "image"
-msgstr "ishusho"
-
-#: TurtleArt/tabasics.py:839 pysamples/grecord.py:213
-msgid "start"
-msgstr "tangira"
-
-#: TurtleArt/tabasics.py:124
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:740
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:751
-msgid "forward"
-msgstr "oherereza"
-
-#: TurtleArt/tabasics.py:928 TurtleArt/tabasics.py:942
-#: TurtleArt/tawindow.py:1355 TurtleArt/tawindow.py:1486
-#: TurtleArt/tawindow.py:2081 TurtleArt/tawindow.py:4390
-#: TurtleArt/tawindow.py:4418
-#, fuzzy
-msgid "my box"
-msgstr "agsanduku kanjye"
-
-#: TurtleArt/tabasics.py:135
-msgid "back"
-msgstr "inyuma"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:244
-#, fuzzy
-msgid "sets the scale of media"
-msgstr "shyiramo igipimo cya media"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:981
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:996
-#, fuzzy
-msgid "presentation 1x1"
-msgstr "icyerekezo"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1026
-#, fuzzy
-msgid "presentation 1x2"
-msgstr "icyerekezo"
-
-#: TurtleArt/tautils.py:305
-msgid "Save..."
-msgstr "Bika..."
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:930
-#, fuzzy
-msgid "title y"
-msgstr "umutwe y"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:921
-#, fuzzy
-msgid "title x"
-msgstr "umutwe x"
-
-#: TurtleArt/tabasics.py:283 TurtleArt/tabasics.py:294
-#, fuzzy
-msgid "fill screen"
-msgstr "ekara nini"
-
-#: turtleblocks.py:368
-#, fuzzy
-msgid "Save as"
-msgstr "Bika nka"
-
-#: TurtleArt/tabasics.py:761 TurtleArt/tabasics.py:765
-msgid "repeat"
-msgstr "subiramo"
-
-#: TurtleArtActivity.py:235 TurtleArtActivity.py:756 TurtleArtActivity.py:922
-#: TurtleArtActivity.py:952 turtleblocks.py:369
-msgid "Save as image"
-msgstr "Bika nka ishusho"
-
-#: TurtleArtActivity.py:579 TurtleArtActivity.py:615 TurtleArtActivity.py:725
-#: TurtleArtActivity.py:778 turtleblocks.py:401
-msgid "Edit"
-msgstr "Hindura"
-
-#: TurtleArt/tabasics.py:642
-#, fuzzy
-msgid "max"
-msgstr "max"
-
-#: TurtleArt/tabasics.py:404
-#, fuzzy
-msgid "start fill"
-msgstr "tangira wuzuze"
-
-#. #-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#
-#. TRANS: push adds a new item to the program stack
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:470
-#, fuzzy
-msgid "push"
-msgstr "sunika"
-
-#: TurtleArt/tabasics.py:1001
-#, fuzzy
-msgid "restore all"
-msgstr "bika byose"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:313
-#, fuzzy
-msgid "hello"
-msgstr "allo"
-
-#. TRANS: "name" option from activity.info file
 msgid "TurtleBlocks"
 msgstr ""
 
-#. TRANS: "summary" option from activity.info file
-#. TRANS: "description" option from activity.info file
 msgid ""
 "A Logo-inspired turtle that draws colorful pictures with snap-together "
 "visual programming blocks"
 msgstr ""
 
-#: TurtleArt/tabasics.py:119
 msgid "Palette of turtle commands"
 msgstr ""
 
-#: TurtleArt/tabasics.py:128
+msgid "forward"
+msgstr "oherereza"
+
 msgid "moves turtle forward"
 msgstr ""
 
-#: TurtleArt/tabasics.py:139
+msgid "back"
+msgstr "inyuma"
+
 msgid "moves turtle backward"
 msgstr ""
 
-#: TurtleArt/tabasics.py:150
+msgid "clean"
+msgstr "gusukura"
+
 msgid "clears the screen and reset the turtle"
 msgstr ""
 
-#: TurtleArt/tabasics.py:162
 msgid "turns turtle counterclockwise (angle in degrees)"
 msgstr ""
 
-#: TurtleArt/tabasics.py:174
 msgid "turns turtle clockwise (angle in degrees)"
 msgstr ""
 
-#: TurtleArt/tabasics.py:186
+msgid "arc"
+msgstr "agaheto"
+
+msgid "angle"
+msgstr "imfuruka"
+
+msgid "radius"
+msgstr "akarambararo"
+
 msgid "moves turtle along an arc"
 msgstr ""
 
-#: TurtleArt/tabasics.py:195 TurtleArt/tabasics.py:261
 msgid "set xy"
 msgstr ""
 
-#: TurtleArt/tabasics.py:199 TurtleArt/tabasics.py:265
 msgid ""
 "moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
 msgstr ""
 
-#: TurtleArt/tabasics.py:213
+msgid "set heading"
+msgstr "shyiraho umtwe"
+
 msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
 msgstr ""
 
-#: TurtleArt/tabasics.py:222
+msgid "xcor"
+msgstr "ikirangahuriro X"
+
 msgid ""
 "holds current x-coordinate value of the turtle (can be used in place of a "
 "number block)"
 msgstr ""
 
-#: TurtleArt/tabasics.py:233
+msgid "ycor"
+msgstr "ikirangahuriro Y"
+
 msgid ""
 "holds current y-coordinate value of the turtle (can be used in place of a "
 "number block)"
 msgstr ""
 
-#: TurtleArt/tabasics.py:244
+msgid "heading"
+msgstr "umutwempangano"
+
 msgid ""
 "holds current heading value of the turtle (can be used in place of a number "
 "block)"
 msgstr ""
 
-#: TurtleArt/tabasics.py:278
 msgid "Palette of pen commands"
 msgstr ""
 
-#: TurtleArt/tabasics.py:287 TurtleArt/tabasics.py:299
+msgid "fill screen"
+msgstr "ekara nini"
+
+msgid "shade"
+msgstr "ubwijime"
+
 msgid "fills the background with (color, shade)"
 msgstr ""
 
-#: TurtleArt/tabasics.py:313
+msgid "set color"
+msgstr "tunganya ibara"
+
 msgid "sets color of the line drawn by the turtle"
 msgstr ""
 
-#: TurtleArt/tabasics.py:325
+msgid "set shade"
+msgstr "shyiramo igipimo"
+
 msgid "sets shade of the line drawn by the turtle"
 msgstr ""
 
-#: TurtleArt/tabasics.py:336
+msgid "set gray"
+msgstr "shyiramo ikigina"
+
 msgid "sets gray level of the line drawn by the turtle"
 msgstr ""
 
-#: TurtleArt/tabasics.py:345
 msgid "holds current pen color (can be used in place of a number block)"
 msgstr ""
 
-#: TurtleArt/tabasics.py:355
 msgid "holds current pen shade"
 msgstr ""
 
-#: TurtleArt/tabasics.py:364
 msgid "holds current gray level (can be used in place of a number block)"
 msgstr ""
 
-#: TurtleArt/tabasics.py:375
+msgid "pen up"
+msgstr "ikaramu hejuru"
+
 msgid "Turtle will not draw when moved."
 msgstr ""
 
-#: TurtleArt/tabasics.py:384
+msgid "pen down"
+msgstr "ikaramu hasi"
+
 msgid "Turtle will draw when moved."
 msgstr ""
 
-#: TurtleArt/tabasics.py:394
+msgid "set pen size"
+msgstr "tunganya ingano y'ikaramu"
+
 msgid "sets size of the line drawn by the turtle"
 msgstr ""
 
-#: TurtleArt/tabasics.py:406
+msgid "start fill"
+msgstr "tangira wuzuze"
+
 msgid "starts filled polygon (used with end fill block)"
 msgstr ""
 
-#: TurtleArt/tabasics.py:415
+msgid "end fill"
+msgstr "soza kuzuza"
+
 msgid "completes filled polygon (used with start fill block)"
 msgstr ""
 
-#: TurtleArt/tabasics.py:423
+msgid "pen size"
+msgstr "ingano y'ikaramu"
+
 msgid "holds current pen size (can be used in place of a number block)"
 msgstr ""
 
-#: TurtleArt/tabasics.py:437
 msgid "Palette of pen colors"
 msgstr ""
 
-#: TurtleArt/tabasics.py:439
 msgid "red"
 msgstr "umutuku"
 
-#: TurtleArt/tabasics.py:459
+msgid "orange"
+msgstr "oranje"
+
+msgid "yellow"
+msgstr "umuhondo"
+
+msgid "green"
+msgstr "icyatsi"
+
+msgid "cyan"
+msgstr "ubururu bukeye"
+
+msgid "blue"
+msgstr "ubururu"
+
+msgid "purple"
+msgstr "kimurika"
+
+msgid "white"
+msgstr "umweru"
+
+msgid "black"
+msgstr "umukara"
+
+msgid "set text color"
+msgstr "tunganya ibara ry'inyandiko"
+
 msgid "sets color of text drawn by the turtle"
 msgstr ""
 
-#: TurtleArt/tabasics.py:470
+msgid "set text size"
+msgstr "tunganya ingano y'ikaramu"
+
 msgid "sets size of text drawn by the turtle"
 msgstr ""
 
-#: TurtleArt/tabasics.py:553
 msgid "Palette of numeric operators"
 msgstr ""
 
-#: TurtleArt/tabasics.py:563
+msgid "plus"
+msgstr "ibindi"
+
 msgid "adds two alphanumeric inputs"
 msgstr ""
 
-#: TurtleArt/tabasics.py:571
 msgid "minus"
 msgstr ""
 
-#: TurtleArt/tabasics.py:574
 msgid "subtracts bottom numeric input from top numeric input"
 msgstr ""
 
-#: TurtleArt/tabasics.py:588
+msgid "multiply"
+msgstr "gukuba"
+
 msgid "multiplies two numeric inputs"
 msgstr ""
 
-#: TurtleArt/tabasics.py:600
+msgid "divide"
+msgstr "gabanya"
+
 msgid ""
 "divides top numeric input (numerator) by bottom numeric input (denominator)"
 msgstr ""
 
-#: TurtleArt/tabasics.py:610
-#, fuzzy
 msgid "identity"
 msgstr "umwirondoro"
 
-#: TurtleArt/tabasics.py:612
 msgid "identity operator used for extending blocks"
 msgstr ""
 
-#: TurtleArt/tabasics.py:620 TurtleArt/tabasics.py:621
 msgid "mod"
 msgstr ""
 
-#: TurtleArt/tabasics.py:624
 msgid "modular (remainder) operator"
 msgstr ""
 
-#: TurtleArt/tabasics.py:631
 msgid "√"
 msgstr ""
 
-#: TurtleArt/tabasics.py:632
 msgid "square root"
 msgstr ""
 
-#: TurtleArt/tabasics.py:635
 msgid "calculates square root"
 msgstr ""
 
-#: TurtleArt/tabasics.py:646
+msgid "random"
+msgstr "binyuranye"
+
+msgid "min"
+msgstr "min"
+
+msgid "max"
+msgstr "max"
+
 msgid "returns random number between minimum (top) and maximum (bottom) values"
 msgstr ""
 
-#: TurtleArt/tabasics.py:659
+msgid "number"
+msgstr "umubare"
+
 msgid "used as numeric input in mathematic operators"
 msgstr ""
 
-#: TurtleArt/tabasics.py:670
+msgid "greater than"
+msgstr "byiza kurenza"
+
 msgid "logical greater-than operator"
 msgstr ""
 
-#: TurtleArt/tabasics.py:683
+msgid "less than"
+msgstr "gake ho"
+
 msgid "logical less-than operator"
 msgstr ""
 
-#: TurtleArt/tabasics.py:695
+msgid "equal"
+msgstr "bingana"
+
 msgid "logical equal-to operator"
 msgstr ""
 
-#: TurtleArt/tabasics.py:704
+msgid "not"
+msgstr "si"
+
 msgid "logical NOT operator"
 msgstr ""
 
-#: TurtleArt/tabasics.py:714
+msgid "and"
+msgstr "na"
+
 msgid "logical AND operator"
 msgstr ""
 
-#: TurtleArt/tabasics.py:725
+msgid "or"
+msgstr "cyangwa"
+
 msgid "logical OR operator"
 msgstr ""
 
-#: TurtleArt/tabasics.py:734
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:104
 msgid "Palette of flow operators"
 msgstr ""
 
-#: TurtleArt/tabasics.py:743
+msgid "wait"
+msgstr "tegereza"
+
 msgid "pauses program execution a specified number of seconds"
 msgstr ""
 
-#: TurtleArt/tabasics.py:754
+msgid "forever"
+msgstr "igihe cyose"
+
 msgid "loops forever"
 msgstr ""
 
-#: TurtleArt/tabasics.py:766
+msgid "repeat"
+msgstr "subiramo"
+
 msgid "loops specified number of times"
 msgstr ""
 
-#: TurtleArt/tabasics.py:775
+msgid "if"
+msgstr "niba"
+
+msgid "then"
+msgstr "hanyuma"
+
 msgid "if then"
 msgstr ""
 
-#: TurtleArt/tabasics.py:777
 msgid "if-then operator that uses boolean operators from Numbers palette"
 msgstr ""
 
-#: TurtleArt/tabasics.py:785
 msgid "else"
 msgstr ""
 
-#: TurtleArt/tabasics.py:789 TurtleArt/tabasics.py:797
 msgid "if then else"
 msgstr ""
 
-#: TurtleArt/tabasics.py:790 TurtleArt/tabasics.py:798
 msgid "if-then-else operator that uses boolean operators from Numbers palette"
 msgstr ""
 
-#: TurtleArt/tabasics.py:807
 msgid "horizontal space"
 msgstr ""
 
-#: TurtleArt/tabasics.py:808
 msgid "jogs stack right"
 msgstr ""
 
-#: TurtleArt/tabasics.py:815
 msgid "vertical space"
 msgstr ""
 
-#: TurtleArt/tabasics.py:816
 msgid "jogs stack down"
 msgstr ""
 
-#: TurtleArt/tabasics.py:834
+msgid "stop action"
+msgstr "igikorwa cyo guhagarika"
+
+msgid "stops current action"
+msgstr "guhagaka ibikorwa bya banjye"
+
 msgid "Palette of variable blocks"
 msgstr ""
 
-#: TurtleArt/tabasics.py:842
+msgid "start"
+msgstr "tangira"
+
 msgid "connects action to toolbar run buttons"
 msgstr ""
 
-#: TurtleArt/tabasics.py:852
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:195
+msgid "text"
+msgstr "inyandiko"
+
 msgid "string value"
 msgstr ""
 
-#: TurtleArt/tabasics.py:861
+msgid "action"
+msgstr "igikorwa"
+
 msgid "top of nameable action stack"
 msgstr ""
 
-#: TurtleArt/tabasics.py:872 TurtleArt/tawindow.py:4377
 msgid "invokes named action stack"
 msgstr ""
 
-#: TurtleArt/tabasics.py:884
+msgid "store in box 1"
+msgstr "bika mu ikarito ya 1"
+
 msgid "stores numeric value in Variable 1"
 msgstr ""
 
-#: TurtleArt/tabasics.py:897
+msgid "store in box 2"
+msgstr "bika mu ikarito ya 2"
+
 msgid "stores numeric value in Variable 2"
 msgstr ""
 
-#: TurtleArt/tabasics.py:908
+msgid "box 1"
+msgstr "ikarito ya 1"
+
 msgid "Variable 1 (numeric value)"
 msgstr ""
 
-#: TurtleArt/tabasics.py:918
+msgid "box 2"
+msgstr "ikarito ya 2"
+
 msgid "Variable 2 (numeric value)"
 msgstr ""
 
-#: TurtleArt/tabasics.py:929 TurtleArt/tawindow.py:4432
+msgid "store in"
+msgstr "bika mu"
+
+msgid "box"
+msgstr "ikarito"
+
+msgid "my box"
+msgstr "agsanduku kanjye"
+
 msgid "stores numeric value in named variable"
 msgstr ""
 
-#: TurtleArt/tabasics.py:945 TurtleArt/tawindow.py:4404
 msgid "named variable (numeric value)"
 msgstr ""
 
-#: TurtleArt/tabasics.py:955
+msgid "action 1"
+msgstr "igikorwa 1"
+
 msgid "top of Action 1 stack"
 msgstr ""
 
-#: TurtleArt/tabasics.py:964
+msgid "action 2"
+msgstr "igkorwa 2"
+
 msgid "top of Action 2 stack"
 msgstr ""
 
-#: TurtleArt/tabasics.py:974
 msgid "invokes Action 1 stack"
 msgstr ""
 
-#: TurtleArt/tabasics.py:984
 msgid "invokes Action 2 stack"
 msgstr ""
 
-#: TurtleArt/tabasics.py:992
 msgid "trash"
 msgstr ""
 
-#: TurtleArt/tabasics.py:996
 msgid "empty trash"
 msgstr ""
 
-#: TurtleArt/tabasics.py:997
 msgid "permanently deletes items in trash"
 msgstr ""
 
-#: TurtleArt/tabasics.py:1002
+msgid "restore all"
+msgstr "bika byose"
+
 msgid "restore all blocks from trash"
 msgstr ""
 
-#: TurtleArt/tabasics.py:1007
+msgid "clear all"
+msgstr "hanagura byose"
+
 msgid "move all blocks to trash"
 msgstr ""
 
-#: TurtleArt/tacollaboration.py:152 TurtleArt/tawindow.py:2055
-#: TurtleArtActivity.py:751
 msgid "Share selected blocks"
 msgstr ""
 
-#: TurtleArt/talogo.py:508
+msgid "Title"
+msgstr "Umutwe w'amagambo"
+
+msgid "Stop turtle"
+msgstr "Hagarika akanyamashyo"
+
+msgid "Show blocks"
+msgstr "Erekana amablock"
+
+msgid "Hide blocks"
+msgstr "Hisha amablock"
+
 msgid "did not output to"
 msgstr ""
 
-#: TurtleArt/talogo.py:567
 msgid "I don't know how to"
 msgstr ""
 
-#: TurtleArt/talogo.py:623
 msgid "doesn't like"
 msgstr ""
 
-#: TurtleArt/tapalette.py:97
+msgid "as input"
+msgstr "nk'inyinjiza"
+
 msgid "displays next palette"
 msgstr ""
 
-#: TurtleArt/tapalette.py:98
 msgid "changes the orientation of the palette of blocks"
 msgstr ""
 
-#: TurtleArt/tawindow.py:1063 TurtleArt/tawindow.py:1664
+msgid "Load..."
+msgstr "Shakisha..."
+
+msgid "Save..."
+msgstr "Bika..."
+
+msgid "click to open"
+msgstr "kanda kugirango ufungure"
+
+msgid "orientation"
+msgstr "icyerekezo"
+
+msgid "next"
+msgstr "inyandiko"
+
 msgid "shift"
 msgstr ""
 
-#: TurtleArt/tawindow.py:1316
 msgid ""
 "Please hit the Stop Button before making changes to your Turtle Blocks "
 "program"
 msgstr ""
 
-#: TurtleArt/tawindow.py:1369
 msgid "Select blocks to share"
 msgstr ""
 
-#: TurtleArt/tawindow.py:1530 TurtleArtActivity.py:632
-#: TurtleArtActivity.py:781 turtleblocks.py:397
 msgid "Save stack"
 msgstr ""
 
-#: TurtleArt/tawindow.py:1531 TurtleArt/tawindow.py:1546
 msgid "Really overwrite stack?"
 msgstr ""
 
-#: TurtleArt/tawindow.py:1538 TurtleArt/tawindow.py:1549
+msgid "Cancel"
+msgstr "Reka"
+
 msgid "Overwrite stack"
 msgstr ""
 
-#: TurtleArt/tawindow.py:1570 TurtleArt/tawindow.py:1578
-#: TurtleArt/tawindow.py:1588 TurtleArtActivity.py:634 turtleblocks.py:399
 msgid "Delete stack"
 msgstr ""
 
-#: TurtleArt/tawindow.py:1571 TurtleArt/tawindow.py:1585
 msgid "Really delete stack?"
 msgstr ""
 
-#: TurtleArtActivity.py:243
+msgid "image"
+msgstr "ishusho"
+
+msgid "Save as Logo"
+msgstr "Bika nka Logo"
+
+msgid "Save as image"
+msgstr "Bika nka ishusho"
+
 msgid "snapshot"
 msgstr ""
 
-#: TurtleArtActivity.py:251 TurtleArtActivity.py:691 TurtleArtActivity.py:733
-#: TurtleArtActivity.py:931 TurtleArtActivity.py:958
 msgid "Save snapshot"
 msgstr ""
 
-#: TurtleArtActivity.py:296 TurtleArtActivity.py:657 TurtleArtActivity.py:808
 msgid "Turn off hover help"
 msgstr ""
 
-#: TurtleArtActivity.py:303 turtleblocks.py:390
 msgid "Turn on hover help"
 msgstr ""
 
-#: TurtleArtActivity.py:312 turtleblocks.py:404
 msgid "Show palette"
 msgstr ""
 
-#: TurtleArtActivity.py:485
+msgid "Hide palette"
+msgstr "Guhisha palette"
+
 msgid "Rescale coordinates down"
 msgstr ""
 
-#: TurtleArtActivity.py:489 TurtleArtActivity.py:648 TurtleArtActivity.py:804
 msgid "Rescale coordinates up"
 msgstr ""
 
-#: TurtleArtActivity.py:629
+msgid "Edit"
+msgstr "Hindura"
+
+msgid "View"
+msgstr "Kureba"
+
+msgid "Project"
+msgstr "Umushinga"
+
+msgid "Save/Load"
+msgstr "Bika/Shakisha"
+
+msgid "Copy"
+msgstr "Koporora"
+
+msgid "Paste"
+msgstr "Komeka"
+
 msgid "Restore blocks from trash"
 msgstr ""
 
-#: TurtleArtActivity.py:640 TurtleArtActivity.py:798 turtleblocks.py:377
+msgid "Fullscreen"
+msgstr "Ekara nini"
+
 msgid "Cartesian coordinates"
 msgstr ""
 
-#: TurtleArtActivity.py:642 TurtleArtActivity.py:800 turtleblocks.py:379
 msgid "Polar coordinates"
 msgstr ""
 
-#: TurtleArtActivity.py:645 TurtleArtActivity.py:802
 msgid "Metric coordinates"
 msgstr ""
 
-#: TurtleArtActivity.py:654 TurtleArtActivity.py:807 turtleblocks.py:385
+msgid "Grow blocks"
+msgstr "Erekana amablock"
+
 msgid "Shrink blocks"
 msgstr ""
 
-#: TurtleArtActivity.py:761 TurtleArtActivity.py:943 TurtleArtActivity.py:965
+msgid "Load example"
+msgstr "Shakisha urugero"
+
+msgid "Clean"
+msgstr "Sukura"
+
+msgid "Run"
+msgstr "Iruka"
+
+msgid "Step"
+msgstr "Intambwe"
+
+msgid "Help"
+msgstr "Gufasha"
+
+msgid "Stop"
+msgstr "Hagarika"
+
+msgid "Load project"
+msgstr "Shakisha umushinga"
+
 msgid "Load plugin"
 msgstr ""
 
-#: TurtleArtActivity.py:762 TurtleArtActivity.py:946 TurtleArtActivity.py:968
 msgid "Load Python block"
 msgstr ""
 
-#: TurtleArtActivity.py:895
 msgid "Palettes"
 msgstr ""
 
-#: TurtleArtActivity.py:912
 msgid "Sharing blocks disabled"
 msgstr ""
 
-#: TurtleArtActivity.py:1152 TurtleArtActivity.py:1157
-#: TurtleArtActivity.py:1238
+msgid "<Ctrl>p"
+msgstr "<Ctrl>p"
+
+msgid "<Ctrl>e"
+msgstr "<Ctrl>e"
+
+msgid "<Ctrl>r"
+msgstr "<Ctrl>r"
+
+msgid "<Ctrl>w"
+msgstr "<Ctrl>w"
+
+msgid "<Ctrl>s"
+msgstr "<Ctrl>s"
+
 msgid "Plugin could not be installed."
 msgstr ""
 
-#: TurtleArtActivity.py:1234
 msgid "Please restart Turtle Art in order to use the plugin."
 msgstr ""
 
-#: TurtleArtActivity.py:1252
-#, python-format
 msgid "Plugin %s already installed."
 msgstr ""
 
-#: TurtleArtActivity.py:1253
-#, python-format
 msgid "Do you want to reinstall %s?"
 msgstr ""
 
-#: gnome_plugins/collaboration_plugin.py:67
 msgid "My Turtle Art session"
 msgstr ""
 
-#: gnome_plugins/collaboration_plugin.py:115
 msgid "Enable collaboration"
 msgstr ""
 
-#: gnome_plugins/collaboration_plugin.py:294
+msgid "Activities"
+msgstr "Ibikorwa"
+
+msgid "Buddies"
+msgstr "Inshuti"
+
+msgid "Share"
+msgstr "Gusangira"
+
+msgid "Configuration"
+msgstr "Iboneza"
+
+msgid "Neighborhood"
+msgstr "Abaturanyi"
+
+msgid "Nickname"
+msgstr "Azina kaka byiniriro"
+
 msgid "Account ID"
 msgstr ""
 
-#: gnome_plugins/collaboration_plugin.py:298
-#, fuzzy
+msgid "Server"
+msgstr "Seriveri"
+
 msgid "Port"
 msgstr "Umuhuza"
 
-#: gnome_plugins/fb_plugin.py:87
+msgid "Password"
+msgstr "Ijambobanga"
+
+msgid "Register"
+msgstr "Kwiyandikisha"
+
+msgid "Colors"
+msgstr "Ibara"
+
+msgid "Upload"
+msgstr "Irigushakisha"
+
 msgid "Facebook wall post"
 msgstr ""
 
-#: gnome_plugins/uploader_plugin.py:68
 msgid "Upload to Web"
 msgstr ""
 
-#: gnome_plugins/uploader_plugin.py:90
 msgid ""
 "You must have an account at http://turtleartsite.sugarlabs.org to upload "
 "your project."
 msgstr ""
 
-#: gnome_plugins/uploader_plugin.py:140
+msgid "Username:"
+msgstr "izina ry'ukoresha:"
+
+msgid "Password:"
+msgstr "Ijambobanga:"
+
+msgid "Title:"
+msgstr "Umutwe:"
+
+msgid "Description:"
+msgstr "kwimenyekanisha"
+
 msgid "Submit to Web"
 msgstr ""
 
-#: gnome_plugins/uploader_plugin.py:166
 msgid "Login failed"
 msgstr ""
 
-#: gnome_plugins/uploader_plugin.py:203
 msgid "Failed to upload!"
 msgstr ""
 
-#: plugins/accelerometer/accelerometer.py:49
-#: plugins/audio_sensors/audio_sensors.py:75
-#: plugins/camera_sensor/camera_sensor.py:63
-#: plugins/light_sensor/light_sensor.py:49 plugins/rfid/rfid.py:86
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:336
 msgid "Palette of sensor blocks"
 msgstr ""
 
-#: plugins/accelerometer/accelerometer.py:58
-#: plugins/accelerometer/accelerometer.py:65
+msgid "acceleration"
+msgstr "ukwiyongera"
+
 msgid "push acceleration in x, y, z to heap"
 msgstr ""
 
-#: plugins/audio_sensors/audio_sensors.py:84
-#: plugins/audio_sensors/audio_sensors.py:99
 msgid "raw microphone input signal"
 msgstr ""
 
-#: plugins/audio_sensors/audio_sensors.py:91
-#: plugins/audio_sensors/audio_sensors.py:106
+msgid "loudness"
+msgstr "imisakurize"
+
 msgid "microphone input volume"
 msgstr ""
 
-#: plugins/audio_sensors/audio_sensors.py:119
-#: plugins/audio_sensors/audio_sensors.py:127
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:322
 msgid "pitch"
 msgstr ""
 
-#: plugins/audio_sensors/audio_sensors.py:120
-#: plugins/audio_sensors/audio_sensors.py:128
 msgid "microphone input pitch"
 msgstr ""
 
-#: plugins/audio_sensors/audio_sensors.py:152
-#: plugins/audio_sensors/audio_sensors.py:166
-#: plugins/audio_sensors/audio_sensors.py:180
-#: plugins/audio_sensors/audio_sensors.py:194
 msgid "microphone input resistance"
 msgstr ""
 
-#: plugins/audio_sensors/audio_sensors.py:158
-#: plugins/audio_sensors/audio_sensors.py:172
-#: plugins/audio_sensors/audio_sensors.py:186
-#: plugins/audio_sensors/audio_sensors.py:200
 msgid "microphone input voltage"
 msgstr ""
 
-#: plugins/camera_sensor/camera_sensor.py:67
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:139
 msgid "Palette of media objects"
 msgstr ""
 
-#: plugins/camera_sensor/camera_sensor.py:82
-#: plugins/camera_sensor/camera_sensor.py:130
 msgid "light level detected by camera"
 msgstr ""
 
-#: plugins/camera_sensor/camera_sensor.py:95
-#: plugins/camera_sensor/camera_sensor.py:143
 msgid "Average RGB color from camera is pushed to the stack"
 msgstr ""
 
-#: plugins/light_sensor/light_sensor.py:58
-#: plugins/light_sensor/light_sensor.py:65
+msgid "camera output"
+msgstr "amashusho yakamera"
+
 msgid "light level detected by light sensor"
 msgstr ""
 
-#: plugins/rfid/rfid.py:93 plugins/rfid/rfid.py:101
+msgid "RFID"
+msgstr "RFID"
+
 msgid "read value from RFID device"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:113
+msgid "while"
+msgstr "umweru"
+
 msgid "do-while-True operator that uses boolean operators from Numbers palette"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:123
+msgid "until"
+msgstr "kugeza"
+
 msgid "do-until-True operator that uses boolean operators from Numbers palette"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:132
+msgid "top"
+msgstr "hejuru"
+
 msgid "top of a collapsible stack"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:147
+msgid "journal"
+msgstr "ikinyamakuru"
+
 msgid "Sugar Journal media object"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:159
+msgid "audio"
+msgstr "isohoramajwi"
+
 msgid "Sugar Journal audio object"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:171
+msgid "video"
+msgstr "iyerekanamashusho"
+
 msgid "Sugar Journal video object"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:183
+msgid "description"
+msgstr "kwimenyekanisha"
+
 msgid "Sugar Journal description field"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:204
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:217
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:232
+msgid "show"
+msgstr "erekana"
+
 msgid "draws text or show media from the Journal"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:213
 msgid "show aligned"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:254
+msgid "set scale"
+msgstr "shyiramo igipimo"
+
+msgid "sets the scale of media"
+msgstr "shyiramo igipimo cya media"
+
+msgid "save picture"
+msgstr "bika ifoto"
+
+msgid "picture name"
+msgstr "izina ry'ifoto"
+
 msgid "saves a picture to the Sugar Journal"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:265
+msgid "save SVG"
+msgstr "bika SVG"
+
 msgid "saves turtle graphics as an SVG file in the Sugar Journal"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:276
+msgid "scale"
+msgstr "igipimo"
+
 msgid "holds current scale value"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:281
 msgid "media wait"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:283
 msgid "wait for current video or audio to complete"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:289
 msgid "media stop"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:291
 msgid "stop video or audio"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:296
 msgid "media pause"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:298
 msgid "pause video or audio"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:303
 msgid "media resume"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:305
 msgid "resume playing video or audio"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:314
+msgid "speak"
+msgstr "vuga"
+
+msgid "hello"
+msgstr "allo"
+
 msgid "speaks text"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:323
+msgid "sinewave"
+msgstr "kanda ibuto"
+
 msgid "amplitude"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:323
 msgid "duration"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:326
 msgid "plays a sinewave at frequency, amplitude, and duration (in seconds)"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:346
+msgid "button down"
+msgstr "kanda ibuto"
+
 msgid "returns 1 if mouse button is pressed"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:357
 msgid "returns True if mouse button is pressed"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:367
+msgid "mouse x"
+msgstr "akanyerezo x"
+
 msgid "returns mouse x coordinate"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:377
+msgid "mouse y"
+msgstr "akanyerezo y"
+
 msgid "returns mouse y coordinate"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:385
 msgid "query keyboard"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:387
 msgid "query for keyboard input (results stored in keyboard block)"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:398
+msgid "keyboard"
+msgstr "mwandikisho"
+
 msgid "holds results of query-keyboard block as ASCII"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:430
 msgid "read pixel"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:433
 msgid "RGB color under the turtle is pushed to the stack"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:441
 msgid "turtle sees"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:443
 msgid "returns the color that the turtle \"sees\""
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:454
 msgid "elapsed time (in seconds) since program started"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:463
 msgid "Palette of extra options"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:473
+msgid "push"
+msgstr "sunika"
+
 msgid "pushes value onto FILO (first-in last-out heap)"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:483
 msgid "show heap"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:486
 msgid "shows values in FILO (first-in last-out heap)"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:496
 msgid "empty heap"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:499
 msgid "emptys FILO (first-in-last-out heap)"
 msgstr ""
 
-#. TRANS: pop removes a new item from the program stack
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:510
 msgid "pop"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:514
 msgid "pops value off FILO (first-in last-out heap)"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:525
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:535
 msgid "empty heap?"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:528
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:538
 msgid "returns True if heap is empty"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:549
+msgid "comment"
+msgstr "ibivugwaho"
+
 msgid "places a comment in your code"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:559
+msgid "print"
+msgstr "gucapa"
+
 msgid "prints value in status block at bottom of the screen"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:569
 msgid "Python chr operator"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:578
 msgid "Python int operator"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:585
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:598
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:612
 msgid "Python"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:589
 msgid ""
 "a programmable block: used to add advanced single-variable math equations, e."
 "g., sin(x)"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:602
 msgid ""
 "a programmable block: used to add advanced multi-variable math equations, e."
 "g., sqrt(x*x+y*y)"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:616
 msgid ""
 "a programmable block: used to add advanced multi-variable math equations, e."
 "g., sin(x+y+z)"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:628
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:644
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:659
 msgid "Python block"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:630
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:646
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:662
 msgid "runs code found in the tamyblock.py module found in the Journal"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:675
 msgid "Cartesian"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:677
 msgid "displays Cartesian coordinates"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:683
 msgid "polar"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:685
 msgid "displays polar coordinates"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:695
+msgid "turtle"
+msgstr "akanyamashyo"
+
 msgid "chooses which turtle to command"
 msgstr ""
 
-#. TRANS: pop removes a new item from the program stack
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:703
 msgid "active turtle"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:706
 msgid "the name of the active turtle"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:715
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:724
 msgid "turtle shell"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:717
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:725
 msgid "put a custom 'shell' on the turtle"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:733
 msgid "top of a collapsed stack"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:738
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:748
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:759
 msgid "load"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:741
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:752
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:763
 msgid "loads a block"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:762
 msgid "setxy"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:771
 msgid "palette"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:774
 msgid "selects a palette"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:782
 msgid "Palette of presentation templates"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:791
+msgid "hide blocks"
+msgstr "Hisha amablock"
+
 msgid "declutters canvas by hiding blocks"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:800
+msgid "show blocks"
+msgstr "erekana amablock"
+
 msgid "restores hidden blocks"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:808
 msgid "hides the Sugar toolbars"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:821
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1056
+msgid "list"
+msgstr "irondora"
+
 msgid "presentation bulleted list"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:829
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1058
 msgid "presentation template: list of bullets"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:836
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:998
 msgid "presentation template: select Journal object (no description)"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:843
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:983
 msgid "presentation template: select Journal object (with description)"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:850
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1043
 msgid "presentation template: select four Journal objects"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:857
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:864
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1013
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1028
 msgid "presentation template: select two Journal objects"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:874
 msgid "xcor of left of screen"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:882
+msgid "bottom"
+msgstr "buto"
+
 msgid "ycor of bottom of screen"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:890
 msgid "the canvas width"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:898
 msgid "xcor of right of screen"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:906
 msgid "ycor of top of screen"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:914
 msgid "the canvas height"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1073
+msgid "title x"
+msgstr "umutwe x"
+
+msgid "title y"
+msgstr "umutwe y"
+
+msgid "left x"
+msgstr "ibumoso x"
+
+msgid "top y"
+msgstr "hejuru y"
+
+msgid "right x"
+msgstr "iburyo x"
+
+msgid "bottom y"
+msgstr "buto y"
+
+msgid "presentation 1x1"
+msgstr "icyerekezo"
+
+msgid "presentation 2x1"
+msgstr "icyerekezo"
+
+msgid "presentation 1x2"
+msgstr "icyerekezo"
+
+msgid "presentation 2x2"
+msgstr "icyerekezo"
+
 msgid "Palette of user-defined operators"
 msgstr ""
 
-#: pysamples/brain.py:43
 msgid "Please install the Speak Activity and try again."
 msgstr ""
 
-#: pysamples/brain.py:54
 msgid "Spanish"
 msgstr ""
 
-#: pysamples/brain.py:58 pysamples/brain.py:72 pysamples/brain.py:74
-#: pysamples/brain.py:80
 msgid "English"
 msgstr ""
 
-#: pysamples/brain.py:91
 msgid "Sorry, I can't understand what you are asking about."
 msgstr ""
 
-#: pysamples/brain.py:100
 msgid ""
 "Sorry, there is no free memory to load my brain. Close other activities and "
 "try once more."
 msgstr ""
 
-#: pysamples/forward_push.py:45
 msgid "push destination rgb value to heap"
 msgstr ""
 
-#: pysamples/journal-stats.py:78
+msgid "stop"
+msgstr "hejuru"
+
+msgid "play"
+msgstr "kina"
+
+msgid "save"
+msgstr "bika"
+
 msgid "other"
 msgstr ""
 
-#: pysamples/uturn.py:24
 msgid "uturn"
 msgstr ""
 
-#: pysamples/uturn.py:26
 msgid "make a uturn"
 msgstr ""
 
-#: turtleblocks.py:89
 msgid "usage is"
 msgstr ""
 
-#: turtleblocks.py:289
-#, python-format
+msgid "No option action:"
+msgstr "Ntaguhitamo igikorwa:"
+
+msgid "File not found"
+msgstr "File ntiboneka"
+
 msgid "Configuration directory not writable: %s"
 msgstr ""
 
-#: turtleblocks.py:381
+msgid "New"
+msgstr "Nshyashya"
+
+msgid "Open"
+msgstr "Fungura"
+
+msgid "Save"
+msgstr "Bika"
+
+msgid "Save as"
+msgstr "Bika nka"
+
+msgid "Quit"
+msgstr "Kuvamo"
+
+msgid "File"
+msgstr "File"
+
 msgid "Rescale coordinates"
 msgstr ""
 
-#: turtleblocks.py:387
 msgid "Reset block size"
 msgstr ""
 
-#: turtleblocks.py:408
 msgid "Show/hide blocks"
 msgstr ""
 
-#: turtleblocks.py:416
+msgid "Tools"
+msgstr "Ibikoresho"
+
 msgid "Debug"
 msgstr ""
 
-#: turtleblocks.py:421
+msgid "Turtle"
+msgstr "Akanyamashyo"
+
 msgid "About..."
 msgstr ""
 
-#: turtleblocks.py:461
 msgid "You have unsaved work. Would you like to save before quitting?"
 msgstr ""
 
-#, fuzzy
-#~ msgid "vibration"
-#~ msgstr "viburasiyo"
+msgid "Save project?"
+msgstr "Bika umushinga?"
 
-#, fuzzy
-#~ msgid "grey"
-#~ msgstr "ikigina"
+msgid "vibration"
+msgstr "viburasiyo"
 
-#, fuzzy
-#~ msgid "NXT found"
-#~ msgstr "NXT yabonetse"
+msgid "grey"
+msgstr "ikigina"
 
-#, fuzzy
-#~ msgid "label"
-#~ msgstr "akarango"
+msgid "NXT found"
+msgstr "NXT yabonetse"
 
-#, fuzzy
-#~ msgid "True"
-#~ msgstr "Nibyo"
+msgid "label"
+msgstr "akarango"
 
-#, fuzzy
-#~ msgid "False"
-#~ msgstr "Sibyo"
+msgid "True"
+msgstr "Nibyo"
 
-#~ msgid "Save as HTML"
-#~ msgstr "Bika nka HTML"
+msgid "False"
+msgstr "Sibyo"
 
-#~ msgid "<Ctrl>d"
-#~ msgstr "<Ctrl>d"
+msgid "Save as HTML"
+msgstr "Bika nka HTML"
 
-#, fuzzy
-#~ msgid "presentation"
-#~ msgstr "icyerekezo"
+msgid "<Ctrl>d"
+msgstr "<Ctrl>d"
 
-#~ msgid "<Ctrl>b"
-#~ msgstr "<Ctrl>b"
+msgid "presentation"
+msgstr "icyerekezo"
 
-#~ msgid "full screen"
-#~ msgstr "Ekara nini"
+msgid "<Ctrl>b"
+msgstr "<Ctrl>b"
 
-#~ msgid " "
-#~ msgstr " "
+msgid "full screen"
+msgstr "Ekara nini"
 
-#~ msgid " clean "
-#~ msgstr " sukura "
+msgid " "
+msgstr " "
 
-#, fuzzy
-#~ msgid "numbers"
-#~ msgstr "umubare"
+msgid " clean "
+msgstr " sukura "
 
-#~ msgid "pen"
-#~ msgstr "ikaramu"
+msgid "numbers"
+msgstr "umubare"
+
+msgid "pen"
+msgstr "ikaramu"
