@@ -1739,3 +1739,15 @@ class TurtleArtActivity(activity.Activity):
                                          'samples', 'thumbnails', '*.png'))
         samples.sort()
         return samples
+
+    def is_toolbar_expanded(self):
+        if self.palette_toolbar_button.is_expanded():
+            return True
+        elif self.edit_toolbar_button.is_expanded():
+            return True
+        elif self.view_toolbar_button.is_expanded():
+            return True
+        elif self.activity_toolbar_button.is_expanded():
+            return True
+        return False
+
