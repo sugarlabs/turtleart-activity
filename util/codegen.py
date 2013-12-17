@@ -447,9 +447,11 @@ class SourceGenerator(NodeVisitor):
         self.write('}')
 
     def visit_BinOp(self, node):
+        self.write('(')
         self.visit(node.left)
         self.write(' %s ' % self.BINOP_SYMBOLS[node.op])
         self.visit(node.right)
+        self.write(')')
 
     def visit_BoolOp(self, node):
         self.write('(')
