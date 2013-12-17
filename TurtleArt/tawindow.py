@@ -4610,13 +4610,19 @@ before making changes to your program'))
             self.status_spr.move((PALETTE_WIDTH, self.height - 400))
         else:
             # Adjust vertical position based on scrolled window adjustment
+            offset_from_bottom = 60
             if self.running_sugar:
+                if self.activity.toolbox.get_property("visible"):
+                    if self.activity.toolbars_expanded():
+                        offset_from_bottom += 110
+                    else:
+                        offset_from_bottom += 60
                 self.status_spr.move(
                     (0,
-                     self.height - 200 +
+                     self.height - offset_from_bottom +
                      self.activity.sw.get_vadjustment().get_value()))
             elif self.interactive_mode:
-                self.status_spr.move((0, self.height - 100))
+                self.status_spr.move((0, self.height - 140))
 
     def calc_position(self, template):
         ''' Relative placement of portfolio objects (deprecated) '''

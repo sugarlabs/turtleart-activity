@@ -198,31 +198,31 @@ class TurtleArtActivity(activity.Activity):
         # scrolling window
         self._setup_palette_toolbar()
 
-        if self.samples_button in self._toolbox.toolbar:
-            self._toolbox.toolbar.remove(self.extras_separator)
-            self._toolbox.toolbar.remove(self.samples_button)
-            self._toolbox.toolbar.remove(self.stop_separator)
-        self._toolbox.toolbar.remove(self.stop_button)
+        if self.samples_button in self.toolbox.toolbar:
+            self.toolbox.toolbar.remove(self.extras_separator)
+            self.toolbox.toolbar.remove(self.samples_button)
+            self.toolbox.toolbar.remove(self.stop_separator)
+        self.toolbox.toolbar.remove(self.stop_button)
         self._view_toolbar.remove(self._coordinates_toolitem)
 
         if gtk.gdk.screen_width() / 14 < style.GRID_CELL_SIZE:
             self.samples_button2.show()
             self.samples_label2.show()
-            self._toolbox.toolbar.insert(self.stop_button, -1)
+            self.toolbox.toolbar.insert(self.stop_button, -1)
         else:
             self.samples_button2.hide()
             self.samples_label2.hide()
-            self._toolbox.toolbar.insert(self.extras_separator, -1)
+            self.toolbox.toolbar.insert(self.extras_separator, -1)
             self.extras_separator.props.draw = True
             self.extras_separator.show()
-            self._toolbox.toolbar.insert(self.samples_button, -1)
+            self.toolbox.toolbar.insert(self.samples_button, -1)
             self.samples_button.show()
-            self._toolbox.toolbar.insert(self.stop_separator, -1)
+            self.toolbox.toolbar.insert(self.stop_separator, -1)
             self.stop_separator.show()
-            self._toolbox.toolbar.insert(self.stop_button, -1)
+            self.toolbox.toolbar.insert(self.stop_button, -1)
             self._view_toolbar.insert(self._coordinates_toolitem, -1)
 
-        self._toolbox.show_all()
+        self.toolbox.show_all()
 
     # Activity toolbar callbacks
     def do_save_as_logo_cb(self, button):
@@ -714,7 +714,7 @@ class TurtleArtActivity(activity.Activity):
             self.max_participants = 4
 
             self._setup_toolbar_help()
-            self._toolbox = ToolbarBox()
+            self.toolbox = ToolbarBox()
 
             self.activity_toolbar_button = ActivityToolbarButton(self)
 
@@ -736,27 +736,27 @@ class TurtleArtActivity(activity.Activity):
             self._make_load_save_buttons(self.activity_toolbar_button)
 
             self.activity_toolbar_button.show()
-            self._toolbox.toolbar.insert(self.activity_toolbar_button, -1)
+            self.toolbox.toolbar.insert(self.activity_toolbar_button, -1)
             self.edit_toolbar_button.show()
-            self._toolbox.toolbar.insert(self.edit_toolbar_button, -1)
+            self.toolbox.toolbar.insert(self.edit_toolbar_button, -1)
             self.view_toolbar_button.show()
-            self._toolbox.toolbar.insert(self.view_toolbar_button, -1)
+            self.toolbox.toolbar.insert(self.view_toolbar_button, -1)
             self.palette_toolbar_button.show()
-            self._toolbox.toolbar.insert(self.palette_toolbar_button, -1)
+            self.toolbox.toolbar.insert(self.palette_toolbar_button, -1)
 
-            self.set_toolbar_box(self._toolbox)
+            self.set_toolbar_box(self.toolbox)
         else:
-            self._toolbox = activity.ActivityToolbox(self)
-            self.set_toolbox(self._toolbox)
+            self.toolbox = activity.ActivityToolbox(self)
+            self.set_toolbox(self.toolbox)
 
             self._project_toolbar = gtk.Toolbar()
-            self._toolbox.add_toolbar(_('Project'), self._project_toolbar)
+            self.toolbox.add_toolbar(_('Project'), self._project_toolbar)
             self._view_toolbar = gtk.Toolbar()
-            self._toolbox.add_toolbar(_('View'), self._view_toolbar)
+            self.toolbox.add_toolbar(_('View'), self._view_toolbar)
             edit_toolbar = gtk.Toolbar()
-            self._toolbox.add_toolbar(_('Edit'), edit_toolbar)
+            self.toolbox.add_toolbar(_('Edit'), edit_toolbar)
             journal_toolbar = gtk.Toolbar()
-            self._toolbox.add_toolbar(_('Save/Load'), journal_toolbar)
+            self.toolbox.add_toolbar(_('Save/Load'), journal_toolbar)
 
             self._make_palette_buttons(self._project_toolbar,
                                        palette_button=True)
@@ -808,14 +808,14 @@ class TurtleArtActivity(activity.Activity):
 
         edit_toolbar.show()
         self._view_toolbar.show()
-        self._toolbox.show()
+        self.toolbox.show()
 
         if self.has_toolbarbox:
             self.edit_toolbar_button.set_expanded(True)
             self.edit_toolbar_button.set_expanded(False)
             self.palette_toolbar_button.set_expanded(True)
         else:
-            self._toolbox.set_current_toolbar(1)
+            self.toolbox.set_current_toolbar(1)
 
     def _setup_extra_controls(self):
         ''' Add the rest of the buttons to the main toolbar '''
@@ -828,24 +828,24 @@ class TurtleArtActivity(activity.Activity):
             self._make_project_buttons(self._project_toolbar)
             return
 
-        self._make_project_buttons(self._toolbox.toolbar)
+        self._make_project_buttons(self.toolbox.toolbar)
 
         self.extras_separator = self._add_separator(
-            self._toolbox.toolbar, expand=False, visible=True)
+            self.toolbox.toolbar, expand=False, visible=True)
 
         self.samples_button = self._add_button(
             'ta-open', _('Load example'), self.do_samples_cb,
-            self._toolbox.toolbar)
+            self.toolbox.toolbar)
 
-        self._toolbox.toolbar.insert(self._help_button, -1)
+        self.toolbox.toolbar.insert(self._help_button, -1)
         self._help_button.show()
 
         self.stop_separator = self._add_separator(
-            self._toolbox.toolbar, expand=True, visible=False)
+            self.toolbox.toolbar, expand=True, visible=False)
 
         self.stop_button = StopButton(self)
         self.stop_button.props.accelerator = '<Ctrl>Q'
-        self._toolbox.toolbar.insert(self.stop_button, -1)
+        self.toolbox.toolbar.insert(self.stop_button, -1)
         self.stop_button.show()
 
     def _setup_toolbar_help(self):
