@@ -1,6 +1,15 @@
+195
+
+ENHANCEMENTS:
+* New translations
+
+BUG FIX:
+* Added missing parens for some binary operations in Python export
+
 194
 
 ENHANCEMENTS:
+* Added URL block (Scimonster)
 * Save/restore palette settings in GConf
 * Add confirmation when emptying trash in GNONE version (Alan Aguiar)
 * Add load/save plugin dialog to GNOME version (Daniel Francis)
@@ -10,7 +19,7 @@ ENHANCEMENTS:
 * Enabled load file to heap/save heap to file to use the Sugar journal
 * New translations
 
-BUG FIX:
+BUG FIXES:
 * Fixed shade block dock settings (Alan Aguiar)
 * Fixed bug in empty trash (Alan Aguiar)
 * Set active turtle after 'clean' in exported Python code
