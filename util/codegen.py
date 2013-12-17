@@ -448,13 +448,13 @@ class SourceGenerator(NodeVisitor):
 
     def visit_BinOp(self, node):
         op = self.BINOP_SYMBOLS[node.op]
-        if op in ['+', '-']:
-            self.write('(')
+        # if op in ['+', '-']:
+        self.write('(')
         self.visit(node.left)
         self.write(' %s ' % op)
         self.visit(node.right)
-        if op in ['+', '-']:
-            self.write(')')
+        # if op in ['+', '-']:
+        self.write(')')
 
     def visit_BoolOp(self, node):
         self.write('(')
