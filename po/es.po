@@ -2095,7 +2095,8 @@ msgid "Save project?"
 msgstr "¿Guardar el proyecto?"
 
 #: turtleblocks.py:546
-#, python-format, 
+#, python-format
+#, python-format,
 msgid "Plugin %s already installed"
 msgstr "El plugin %s ya está instalado."
 
