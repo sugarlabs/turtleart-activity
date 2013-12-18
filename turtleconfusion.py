@@ -36,6 +36,9 @@ import cStringIO
 import errno
 import ConfigParser
 import gconf
+import tarfile
+import tempfile
+import subprocess
 
 try:
     # Try to use XDG Base Directory standard for config files.
@@ -53,9 +56,15 @@ from gettext import gettext as _
 
 from TurtleArt.taconstants import (OVERLAY_LAYER, DEFAULT_TURTLE_COLORS,
                                    TAB_LAYER, SUFFIX)
-from TurtleArt.tautils import (data_from_string, get_save_name)
+from TurtleArt.tautils import (data_from_string, get_load_name,
+                               get_path, get_save_name)
+from TurtleArt.tapalette import default_values
 from TurtleArt.tawindow import TurtleArtWindow
 from TurtleArt.taexportlogo import save_logo
+from TurtleArt.taexportpython import save_python
+from TurtleArt.taprimitive import PyExportError
+from TurtleArt.taplugin import (load_a_plugin, cancel_plugin_install,
+                                complete_plugin_install)
 
 from util.menubuilder import MenuBuilder
 
@@ -68,8 +77,11 @@ class TurtleMain():
     _ICON_SUBPATH = 'images/turtle.png'
     _GNOME_PLUGIN_SUBPATH = 'gnome_plugins'
     _HOVER_HELP = '/desktop/sugar/activities/turtleart/hoverhelp'
+    _ORIENTATION = '/desktop/sugar/activities/turtleart/orientation'
+    _COORDINATE_SCALE = '/desktop/sugar/activities/turtleart/coordinatescale'
 
     def __init__(self):
+        self._setting_gconf_overrides = False
         self._abspath = os.path.abspath('.')
         self._execdirname = self._get_execution_dir()
         if self._execdirname is not None:
@@ -83,6 +95,7 @@ class TurtleMain():
         self.summary = file_activity_info.get('Activity', 'summary')
         self.website = file_activity_info.get('Activity', 'website')
         self.icon_name = file_activity_info.get('Activity', 'icon')
+        self.bundle_path = self._abspath
         path = os.path.abspath('./locale/')
         gettext.bindtextdomain(bundle_id, path)
         gettext.textdomain(bundle_id)
@@ -101,6 +114,7 @@ class TurtleMain():
         self._gnome_plugins = []
         self._selected_challenge = None
         self._challenge_window = None
+        self.has_toolbarbox = False
 
         if self._output_png:
             # Outputing to file, so no need for a canvas
@@ -114,7 +128,6 @@ class TurtleMain():
             self._setup_gtk()
             self._build_window()
             self._run_gnome_plugins()
-            self._draw_cartoon()
             self._start_gtk()
 
     def _get_gconf_settings(self):
@@ -185,9 +198,12 @@ return %s(self)" % (p, P, P)
         self.init_complete = True
         if self._ta_file is None:
             self.tw.load_start()
+            self._create_store()
         else:
             self.win.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.WATCH))
             gobject.idle_add(self._project_loader, self._ta_file)
+        self._set_gconf_overrides()
+        self._draw_cartoon()
         gtk.main()
 
     def _project_loader(self, file_name):
@@ -217,15 +233,36 @@ return %s(self)" % (p, P, P)
             cr = cairo.Context(img_surface)
             surface = cr.get_target()
         self.turtle_canvas = surface.create_similar(
-            cairo.CONTENT_COLOR, max(1024, gtk.gdk.screen_width() * 2),
-            max(768, gtk.gdk.screen_height() * 2))
+            cairo.CONTENT_COLOR,
+            # max(1024, gtk.gdk.screen_width() * 2),
+            # max(768, gtk.gdk.screen_height() * 2))
+            gtk.gdk.screen_width() * 2,
+            gtk.gdk.screen_height() * 2)
         self.tw = TurtleArtWindow(self.canvas, self._execdirname,
                                   turtle_canvas=self.turtle_canvas,
                                   activity=self, running_sugar=False)
         self.tw.save_folder = self._abspath  # os.path.expanduser('~')
-        if self.client.get_int(self._HOVER_HELP) == 1:
-            self.hover.set_active(False)
-            self._do_hover_help_off_cb(None)
+
+        if hasattr(self, 'client'):
+            if self.client.get_int(self._HOVER_HELP) == 1:
+                self.hover.set_active(False)
+                self._do_hover_help_off_cb(None)
+            if not self.client.get_int(self._COORDINATE_SCALE) in [0, 1]:
+                self.tw.coord_scale = 1
+            else:
+                self.tw.coord_scale = 0
+            if self.client.get_int(self._ORIENTATION) == 1:
+                self.tw.orientation = 1
+
+    def _set_gconf_overrides(self):
+        if self.tw.coord_scale == 0:
+            self.tw.coord_scale = 1
+        else:
+            self._do_rescale_cb(None)
+        if self.tw.coord_scale != 1:
+            self._setting_gconf_overrides = True
+            self.coords.set_active(True)
+            self._setting_gconf_overrides = False
 
     def _init_vars(self):
         ''' If we are invoked to start a project from Gnome, we should make
@@ -320,6 +357,18 @@ return %s(self)" % (p, P, P)
         self.vbox.set_size_request(rect[2], rect[3])
         self.menu_height = self.menu_bar.size_request()[1]
 
+    def restore_cursor(self):
+        ''' No longer copying or sharing, so restore standard cursor. '''
+        self.tw.copying_blocks = False
+        self.tw.sharing_blocks = False
+        self.tw.saving_blocks = False
+        self.tw.deleting_blocks = False
+        if hasattr(self, 'get_window'):
+            if hasattr(self.get_window(), 'get_cursor'):
+                self.get_window().set_cursor(self._old_cursor)
+            else:
+                self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.LEFT_PTR))
+
     def _setup_gtk(self):
         ''' Set up a scrolled window in which to run Turtle Blocks. '''
         win = gtk.Window(gtk.WINDOW_TOPLEVEL)
@@ -373,14 +422,20 @@ return %s(self)" % (p, P, P)
         ''' Instead of Sugar toolbars, use GNOME menus. '''
         menu = gtk.Menu()
         MenuBuilder.make_menu_item(menu, _('New'), self._do_new_cb)
+        MenuBuilder.make_menu_item(menu, _('Show challenges'),
+                                   self._create_store)
         MenuBuilder.make_menu_item(menu, _('Open'), self._do_open_cb)
-        MenuBuilder.make_menu_item(menu, _('Load project'), self._do_load_cb)
+        MenuBuilder.make_menu_item(menu, _('Add project'), self._do_load_cb)
+        MenuBuilder.make_menu_item(menu, _('Load plugin'),
+                                   self._do_load_plugin_cb)
         MenuBuilder.make_menu_item(menu, _('Save'), self._do_save_cb)
         MenuBuilder.make_menu_item(menu, _('Save as'), self._do_save_as_cb)
         MenuBuilder.make_menu_item(menu, _('Save as image'),
                                    self._do_save_picture_cb)
         MenuBuilder.make_menu_item(menu, _('Save as Logo'),
                                    self._do_save_logo_cb)
+        MenuBuilder.make_menu_item(menu, _('Save as Python'),
+                                   self._do_save_python_cb)
         MenuBuilder.make_menu_item(menu, _('Quit'), self._quit_ta)
         activity_menu = MenuBuilder.make_sub_menu(menu, _('File'))
 
@@ -389,8 +444,9 @@ return %s(self)" % (p, P, P)
                                    self._do_cartesian_cb)
         MenuBuilder.make_menu_item(menu, _('Polar coordinates'),
                                    self._do_polar_cb)
-        MenuBuilder.make_menu_item(menu, _('Rescale coordinates'),
-                                   self._do_rescale_cb)
+        self.coords = MenuBuilder.make_checkmenu_item(
+            menu, _('Rescale coordinates'),
+            self._do_rescale_cb, status=False)
         MenuBuilder.make_menu_item(menu, _('Grow blocks'),
                                    self._do_resize_cb, 1.5)
         MenuBuilder.make_menu_item(menu, _('Shrink blocks'),
@@ -428,11 +484,13 @@ return %s(self)" % (p, P, P)
         MenuBuilder.make_menu_item(menu, _('Stop'), self._do_stop_cb)
         turtle_menu = MenuBuilder.make_sub_menu(menu, _('Turtle'))
 
-        menu = gtk.Menu()
         self._custom_filepath = None
+        '''
+        menu = gtk.Menu()
         MenuBuilder.make_menu_item(menu, _('Show challenges'),
                                    self._create_store)
         challenges_menu = MenuBuilder.make_sub_menu(menu, _('Challenges'))
+        '''
 
         menu = gtk.Menu()
         MenuBuilder.make_menu_item(menu, _('About...'), self._do_about_cb)
@@ -444,7 +502,7 @@ return %s(self)" % (p, P, P)
         menu_bar.append(view_menu)
         menu_bar.append(tool_menu)
         menu_bar.append(turtle_menu)
-        menu_bar.append(challenges_menu)
+        # menu_bar.append(challenges_menu)
 
         # Add menus for plugins
         for p in self._gnome_plugins:
@@ -460,33 +518,60 @@ return %s(self)" % (p, P, P)
         ''' Save changes on exit '''
         project_empty = self.tw.is_project_empty()
         if not project_empty:
-            if self.tw.is_new_project():
-                self._show_save_dialog(True)
-            else:
-                if self.tw.project_has_changed():
-                    self._show_save_dialog(False)
+            resp = self._show_save_dialog(e == None)
+            if resp == gtk.RESPONSE_YES:
+                if self.tw.is_new_project():
+                    self._save_as()
+                else:
+                    if self.tw.project_has_changed():
+                        self._save_changes()
+            elif resp == gtk.RESPONSE_CANCEL:
+                return
+
+        if hasattr(self, 'client'):
+            self.client.set_int(self._ORIENTATION, self.tw.orientation)
+
         for plugin in self.tw.turtleart_plugins:
             if hasattr(plugin, 'quit'):
                 plugin.quit()
         gtk.main_quit()
         exit()
 
-    def _show_save_dialog(self, new_project=True):
+    def _show_save_dialog(self, add_cancel=False):
         ''' Dialog for save project '''
         dlg = gtk.MessageDialog(parent=None, type=gtk.MESSAGE_INFO,
                                 buttons=gtk.BUTTONS_YES_NO,
                                 message_format=_('You have unsaved work. \
 Would you like to save before quitting?'))
+        if add_cancel:
+            dlg.add_button(gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL)
         dlg.set_title(_('Save project?'))
         dlg.set_property('skip-taskbar-hint', False)
 
         resp = dlg.run()
         dlg.destroy()
-        if resp == gtk.RESPONSE_YES:
-            if new_project:
-                self._save_as()
-            else:
-                self._save_changes()
+        return resp
+
+    def _reload_plugin_alert(self, tmp_dir, tmp_path, plugin_path, plugin_name,
+                             file_info):
+        print "Already installed"
+        title = _('Plugin %s already installed') % plugin_name
+        msg = _('Do you want to reinstall %s?') % plugin_name
+        dlg = gtk.MessageDialog(parent=None, type=gtk.MESSAGE_INFO,
+                                buttons=gtk.BUTTONS_YES_NO,
+                                message_format=title)
+        dlg.format_secondary_text(msg)
+        dlg.set_title(title)
+        dlg.set_property('skip-taskbar-hint', False)
+
+        resp = dlg.run()
+        dlg.destroy()
+
+        if resp is gtk.RESPONSE_OK:
+            complete_plugin_install(tmp_dir, tmp_path, plugin_path,
+                                    plugin_name, file_info)
+        elif resp is gtk.RESPONSE_CANCEL:
+            cancel_plugin_install(tmp_dir)
 
     def _do_new_cb(self, widget):
         ''' Callback for new project. '''
@@ -500,6 +585,41 @@ Would you like to save before quitting?'))
     def _do_load_cb(self, widget):
         ''' Callback for load project (add to current project). '''
         self.tw.load_file_from_chooser(False)
+
+    def _do_load_plugin_cb(self, widget):
+        self.tw.load_save_folder = self._get_execution_dir()
+        file_path, loaddir = get_load_name('.tar.gz', self.tw.load_save_folder)
+        if file_path is None:
+            return
+        try:
+            # Copy to tmp file since some systems had trouble
+            # with gunzip directly from datastore
+            datapath = get_path(None, 'instance')
+            if not os.path.exists(datapath):
+                os.makedirs(datapath)
+            tmpfile = os.path.join(datapath, 'tmpfile.tar.gz')
+            subprocess.call(['cp', file_path, tmpfile])
+            status = subprocess.call(['gunzip', tmpfile])
+            if status == 0:
+                tar_fd = tarfile.open(tmpfile[:-3], 'r')
+            else:
+                tar_fd = tarfile.open(tmpfile, 'r')
+        except:
+            tar_fd = tarfile.open(file_path, 'r')
+
+        tmp_dir = tempfile.mkdtemp()
+
+        try:
+            tar_fd.extractall(tmp_dir)
+            load_a_plugin(self, tmp_dir)
+            self.restore_cursor()
+        except:
+            self.restore_cursor()
+        finally:
+            tar_fd.close()
+            # Remove tmpfile.tar
+            subprocess.call(['rm',
+                             os.path.join(datapath, 'tmpfile.tar')])
 
     def _do_save_cb(self, widget):
         ''' Callback for save project. '''
@@ -529,13 +649,44 @@ Would you like to save before quitting?'))
         if len(logocode) == 0:
             return
         save_type = '.lg'
+        self.tw.load_save_folder = self._get_execution_dir()
         filename, self.tw.load_save_folder = get_save_name(
             save_type, self.tw.load_save_folder, 'logosession')
         if isinstance(filename, unicode):
-            filename = filename.encode('ascii', 'replace')
+            filename = filename.encode('utf-8')
         if filename is not None:
             f = file(filename, 'w')
             f.write(logocode)
+            f.close()
+
+    def _do_save_python_cb(self, widget):
+        ''' Callback for saving the project as Python code. '''
+        # catch PyExportError and display a user-friendly message instead
+        try:
+            pythoncode = save_python(self.tw)
+        except PyExportError as pyee:
+            if pyee.block is not None:
+                pyee.block.highlight()
+            self.tw.showlabel('status', str(pyee))
+            print pyee
+            return
+        if not pythoncode:
+            return
+        # use name of TA project if it has been saved already
+        default_name = self.tw.save_file_name
+        if default_name is None:
+            default_name = _("myproject")
+        elif default_name.endswith(".ta") or default_name.endswith(".tb"):
+            default_name = default_name[:-3]
+        save_type = '.py'
+        self.tw.load_save_folder = self._get_execution_dir()
+        filename, self.tw.load_save_folder = get_save_name(
+            save_type, self.tw.load_save_folder, default_name)
+        if isinstance(filename, unicode):
+            filename = filename.encode('utf-8')
+        if filename is not None:
+            f = file(filename, 'w')
+            f.write(pythoncode)
             f.close()
 
     def _do_resize_cb(self, widget, factor):
@@ -556,19 +707,33 @@ Would you like to save before quitting?'))
 
     def _do_rescale_cb(self, button):
         ''' Callback to rescale coordinate space. '''
+        if self._setting_gconf_overrides:
+            return
         if self.tw.coord_scale == 1:
-            self.tw.coord_scale = self.tw.height / 200
-            self.tw.eraser_button()
+            self.tw.coord_scale = self.tw.height / 40
+            self.tw.update_overlay_position()
             if self.tw.cartesian is True:
                 self.tw.overlay_shapes['Cartesian_labeled'].hide()
                 self.tw.overlay_shapes['Cartesian'].set_layer(OVERLAY_LAYER)
+            default_values['forward'] = [10]
+            default_values['back'] = [10]
+            default_values['arc'] = [90, 10]
+            default_values['setpensize'] = [1]
+            self.tw.turtles.get_active_turtle().set_pen_size(1)
         else:
             self.tw.coord_scale = 1
-            self.tw.eraser_button()
             if self.tw.cartesian is True:
                 self.tw.overlay_shapes['Cartesian'].hide()
                 self.tw.overlay_shapes['Cartesian_labeled'].set_layer(
                     OVERLAY_LAYER)
+            default_values['forward'] = [100]
+            default_values['back'] = [100]
+            default_values['arc'] = [90, 100]
+            default_values['setpensize'] = [5]
+            self.tw.turtles.get_active_turtle().set_pen_size(5)
+        if hasattr(self, 'client'):
+            self.client.set_int(self._COORDINATE_SCALE,
+                                int(self.tw.coord_scale))
 
     def _do_toggle_hover_help_cb(self, button):
         ''' Toggle hover help on/off '''
@@ -582,16 +747,20 @@ Would you like to save before quitting?'))
         ''' Turn hover help on '''
         self.tw.no_help = False
         self.hover.set_active(True)
-        self.client.set_int(self._HOVER_HELP, 0)
+        if hasattr(self, 'client'):
+            self.client.set_int(self._HOVER_HELP, 0)
 
     def _do_hover_help_off_cb(self, button):
         ''' Turn hover help off '''
+        if self.tw.no_help:  # Debounce
+            return
         self.tw.no_help = True
         self.tw.last_label = None
         if self.tw.status_spr is not None:
             self.tw.status_spr.hide()
         self.hover.set_active(False)
-        self.client.set_int(self._HOVER_HELP, 1)
+        if hasattr(self, 'client'):
+            self.client.set_int(self._HOVER_HELP, 1)
 
     def _do_palette_cb(self, widget):
         ''' Callback to show/hide palette of blocks. '''
