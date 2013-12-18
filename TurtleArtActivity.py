@@ -28,7 +28,6 @@ import gtk
 import cairo
 import gobject
 import dbus
-import glob
 
 import logging
 _logger = logging.getLogger('turtleart-activity')
@@ -42,14 +41,17 @@ except ImportError:
     HAS_TOOLBARBOX = False
 from sugar.graphics.toolbutton import ToolButton
 from sugar.graphics.radiotoolbutton import RadioToolButton
-from sugar.graphics.alert import (ConfirmationAlert, NotifyAlert)
+from sugar.graphics.alert import (ConfirmationAlert, Alert)
 from sugar.graphics import style
 from sugar.graphics.objectchooser import ObjectChooser
-from sugar import mime
+from sugar.graphics.icon import Icon
+from sugar.graphics.xocolor import XoColor
 from sugar.datastore import datastore
 from sugar import profile
+from sugar import mime
 
 import os
+import glob
 import tarfile
 import subprocess
 import ConfigParser
@@ -63,15 +65,19 @@ except ImportError:
 
 from gettext import gettext as _
 
+from TurtleArt.taplugin import (load_a_plugin, cancel_plugin_install,
+                                complete_plugin_install)
 from TurtleArt.tapalette import (palette_names, help_strings, help_palettes,
-                                 help_windows)
+                                 help_windows, default_values)
 from TurtleArt.taconstants import (BLOCK_SCALE, XO1, XO15, XO175, XO4,
                                    MIMETYPE)
 from TurtleArt.taexportlogo import save_logo
+from TurtleArt.taexportpython import save_python
 from TurtleArt.tautils import (data_to_file, data_to_string, data_from_string,
                                get_path, chooser_dialog, get_hardware)
 from TurtleArt.tawindow import TurtleArtWindow
 from TurtleArt.tacollaboration import Collaboration
+from TurtleArt.taprimitive import PyExportError
 
 if HAS_TOOLBARBOX:
     from util.helpbutton import (HelpButton, add_section, add_paragraph)
@@ -80,6 +86,8 @@ if HAS_TOOLBARBOX:
 class TurtleArtActivity(activity.Activity):
     ''' Activity subclass for Turtle Art '''
     _HOVER_HELP = '/desktop/sugar/activities/turtleart/hoverhelp'
+    _ORIENTATION = '/desktop/sugar/activities/turtleart/orientation'
+    _COORDINATE_SCALE = '/desktop/sugar/activities/turtleart/coordinatescale'
 
     def __init__(self, handle):
         ''' Set up the toolbars, canvas, sharing, etc. '''
@@ -90,7 +98,12 @@ class TurtleArtActivity(activity.Activity):
 
         self.tw = None
         self.init_complete = False
+
         self._stop_help = False
+
+        self.bundle_path = activity.get_bundle_path()
+
+        self.error_list = []
 
         self.palette_buttons = []
         self._palette_names = []
@@ -107,18 +120,28 @@ class TurtleArtActivity(activity.Activity):
         self._setup_toolbar()
 
         _logger.debug('_setup_canvas')
-        self._canvas = self._setup_canvas(self._setup_scrolled_window())
-
-        # FIX ME: not sure how or why self.canvas gets overwritten
-        # It is set to self.sw in _setup_canvas but None here.
-        # We need self.canvas for generating the preview image
-        self.canvas = self.sw
+        self._setup_canvas(self._setup_scrolled_window())
 
         _logger.debug('_setup_palette_toolbar')
         self._setup_palette_toolbar()
         self._setup_extra_controls()
 
         _logger.debug('_setup_sharing')
+        if self.shared_activity:
+            # We're joining
+            if not self.get_shared():
+                xocolors = XoColor(profile.get_color().to_string())
+                share_icon = Icon(icon_name='zoom-neighborhood',
+                                  xo_color=xocolors)
+                self._joined_alert = Alert()
+                self._joined_alert.props.icon = share_icon
+                self._joined_alert.props.title = _('Please wait')
+                self._joined_alert.props.msg = _('Starting connection...')
+                self.add_alert(self._joined_alert)
+
+                # Wait for joined signal
+                self.connect("joined", self._joined_cb)
+
         self._setup_sharing()
 
         # Activity count is the number of times this instance has been
@@ -137,6 +160,16 @@ class TurtleArtActivity(activity.Activity):
             self.client = gconf.client_get_default()
             if self.client.get_int(self._HOVER_HELP) == 1:
                 self._do_hover_help_toggle(None)
+            if not self.client.get_int(self._COORDINATE_SCALE) in [0, 1]:
+                self.tw.coord_scale = 1
+                self.do_rescale_cb(None)
+            else:
+                self.tw.coord_scale = 0
+                self.do_rescale_cb(None)
+
+        self._selected_sample = None
+        self._sample_window = None
+
         self.init_complete = True
 
         if not hasattr(self, '_offsets'):
@@ -150,6 +183,30 @@ class TurtleArtActivity(activity.Activity):
         self._challenge_window = None
         self._load_level()
 
+    def update_palette_from_metadata(self):
+        if HAS_GCONF:
+            # We have to wait to set the orientation for the palettes
+            # to be loaded.
+            self.client = gconf.client_get_default()
+            if self.client.get_int(self._ORIENTATION) == 1:
+                self.tw.set_orientation(1)
+
+        if 'palette' in self.metadata:
+            n = int(self.metadata['palette'])
+            if n == -1:
+                self.tw.hideshow_palette(False)
+            else:
+                # Try to set radio button to active
+                if n < len(self.palette_buttons):
+                    self.palette_buttons[n].set_active(True)
+                else:
+                    self.tw.show_palette(n=0)
+                if 'orientation' in self.metadata:
+                    self.tw.set_orientation(int(self.metadata['orientation']))
+        else:
+            # Else start on the Turtle palette
+            self.tw.show_palette(n=0)
+
     def check_buttons_for_fit(self):
         ''' Check to see which set of buttons to display '''
         if not self.has_toolbarbox:
@@ -159,51 +216,96 @@ class TurtleArtActivity(activity.Activity):
         # scrolling window
         self._setup_palette_toolbar()
 
-        if self.samples_button in self._toolbox.toolbar:
-            self._toolbox.toolbar.remove(self.extras_separator)
-            self._toolbox.toolbar.remove(self.samples_button)
-            self._toolbox.toolbar.remove(self.stop_separator)
-        self._toolbox.toolbar.remove(self.stop_button)
+        if self.samples_button in self.toolbox.toolbar:
+            self.toolbox.toolbar.remove(self.extras_separator)
+            self.toolbox.toolbar.remove(self.samples_button)
+            self.toolbox.toolbar.remove(self.stop_separator)
+        self.toolbox.toolbar.remove(self.stop_button)
         self._view_toolbar.remove(self._coordinates_toolitem)
 
         if gtk.gdk.screen_width() / 14 < style.GRID_CELL_SIZE:
             self.samples_button2.show()
             self.samples_label2.show()
-            self._toolbox.toolbar.insert(self.stop_button, -1)
+            self.toolbox.toolbar.insert(self.stop_button, -1)
         else:
             self.samples_button2.hide()
             self.samples_label2.hide()
-            self._toolbox.toolbar.insert(self.extras_separator, -1)
+            self.toolbox.toolbar.insert(self.extras_separator, -1)
             self.extras_separator.props.draw = True
             self.extras_separator.show()
-            self._toolbox.toolbar.insert(self.samples_button, -1)
+            self.toolbox.toolbar.insert(self.samples_button, -1)
             self.samples_button.show()
-            self._toolbox.toolbar.insert(self.stop_separator, -1)
+            self.toolbox.toolbar.insert(self.stop_separator, -1)
             self.stop_separator.show()
-            self._toolbox.toolbar.insert(self.stop_button, -1)
+            self.toolbox.toolbar.insert(self.stop_button, -1)
             self._view_toolbar.insert(self._coordinates_toolitem, -1)
 
-        self._toolbox.show_all()
+        self.toolbox.show_all()
 
     # Activity toolbar callbacks
     def do_save_as_logo_cb(self, button):
         ''' Write UCB logo code to datastore. '''
         self.save_as_logo.set_icon('logo-saveon')
+        if hasattr(self, 'get_window'):
+            if hasattr(self.get_window(), 'get_cursor'):
+                self._old_cursor = self.get_window().get_cursor()
+                self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.WATCH))
+        gobject.timeout_add(250, self.__save_as_logo)
+
+    def __save_as_logo(self):
         logo_code_path = self._dump_logo_code()
-        if logo_code_path is None:
-            return
+        if logo_code_path is not None:
+            dsobject = datastore.create()
+            dsobject.metadata['title'] = self.metadata['title'] + '.lg'
+            dsobject.metadata['mime_type'] = 'text/plain'
+            dsobject.metadata['icon-color'] = profile.get_color().to_string()
+            dsobject.set_file_path(logo_code_path)
+            datastore.write(dsobject)
+            dsobject.destroy()
+            os.remove(logo_code_path)
+        self.save_as_logo.set_icon('logo-saveoff')
+        if hasattr(self, 'get_window'):
+            self.get_window().set_cursor(self._old_cursor)
 
-        dsobject = datastore.create()
-        dsobject.metadata['title'] = self.metadata['title'] + '.lg'
-        dsobject.metadata['mime_type'] = 'text/plain'
-        dsobject.metadata['icon-color'] = profile.get_color().to_string()
-        dsobject.set_file_path(logo_code_path)
-        datastore.write(dsobject)
-        dsobject.destroy()
 
-        os.remove(logo_code_path)
-        gobject.timeout_add(250, self.save_as_logo.set_icon, 'logo-saveoff')
-        self._notify_successful_save(title=_('Save as Logo'))
+    def do_save_as_python_cb(self, widget):
+        ''' Callback for saving the project as Python code. '''
+        self.save_as_python.set_icon('python-saveon')
+        if hasattr(self, 'get_window'):
+            if hasattr(self.get_window(), 'get_cursor'):
+                self._old_cursor = self.get_window().get_cursor()
+                self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.WATCH))
+        gobject.timeout_add(250, self.__save_as_python)
+
+    def __save_as_python(self):
+        # catch PyExportError and display a user-friendly message instead
+        try:
+            pythoncode = save_python(self.tw)
+        except PyExportError as pyee:
+            if pyee.block is not None:
+                pyee.block.highlight()
+            self.tw.showlabel('status', str(pyee))
+            _logger.debug(pyee)
+
+        if pythoncode:
+            datapath = get_path(activity, 'instance')
+            python_code_path = os.path.join(datapath, 'tmpfile.py')
+            f = file(python_code_path, 'w')
+            f.write(pythoncode)
+            f.close()
+
+            dsobject = datastore.create()
+            dsobject.metadata['title'] = self.metadata['title'] + '.py'
+            dsobject.metadata['mime_type'] = 'text/x-python'
+            dsobject.metadata['icon-color'] = profile.get_color().to_string()
+            dsobject.set_file_path(python_code_path)
+            datastore.write(dsobject)
+            dsobject.destroy()
+
+            os.remove(python_code_path)
+        self.save_as_python.set_icon('python-saveoff')
+        if hasattr(self, 'get_window'):
+            self.get_window().set_cursor(self._old_cursor)
 
     def do_load_ta_project_cb(self, button, new=False):
         ''' Load a project from the Journal. '''
@@ -230,7 +332,6 @@ class TurtleArtActivity(activity.Activity):
 
     def do_load_ta_plugin_cb(self, button):
         ''' Load a plugin from the Journal. '''
-        # While the file is loading, use the watch cursor
         if hasattr(self, 'get_window'):
             if hasattr(self.get_window(), 'get_cursor'):
                 self._old_cursor = self.get_window().get_cursor()
@@ -257,13 +358,27 @@ class TurtleArtActivity(activity.Activity):
         ''' Save the canvas to the Journal. '''
         self.save_as_image.set_icon('image-saveon')
         _logger.debug('saving image to journal')
+        if hasattr(self, 'get_window'):
+            if hasattr(self.get_window(), 'get_cursor'):
+                self._old_cursor = self.get_window().get_cursor()
+                self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.WATCH))
+        gobject.timeout_add(250, self.__save_as_image)
 
+    def __save_as_image(self):
         self.tw.save_as_image()
-        gobject.timeout_add(250, self.save_as_image.set_icon, 'image-saveoff')
-        self._notify_successful_save(title=_('Save as image'))
+        self.save_as_image.set_icon('image-saveoff')
+        if hasattr(self, 'get_window'):
+            self.get_window().set_cursor(self._old_cursor)
 
     def do_keep_cb(self, button):
         ''' Save a snapshot of the project to the Journal. '''
+        if hasattr(self, 'get_window'):
+            if hasattr(self.get_window(), 'get_cursor'):
+                self._old_cursor = self.get_window().get_cursor()
+                self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.WATCH))
+        gobject.timeout_add(250, self.__keep)
+
+    def __keep(self):
         tmpfile = self._dump_ta_code()
         if tmpfile is not None:
             dsobject = datastore.create()
@@ -276,7 +391,9 @@ class TurtleArtActivity(activity.Activity):
             datastore.write(dsobject)
             dsobject.destroy()
             os.remove(tmpfile)
-            self._notify_successful_save(title=_('Save snapshot'))
+
+        if hasattr(self, 'get_window'):
+            self.get_window().set_cursor(self._old_cursor)
 
     # Main/palette toolbar button callbacks
 
@@ -285,7 +402,7 @@ class TurtleArtActivity(activity.Activity):
         if self.tw.palette:
             self.tw.hideshow_palette(False)
             self.do_hidepalette()
-            if self.has_toolbarbox and self.tw.selected_palette is not None:
+            if not self.has_toolbarbox and self.tw.selected_palette is not None:
                 self.palette_buttons[self.tw.selected_palette].set_icon(
                     palette_names[self.tw.selected_palette] + 'off')
         else:
@@ -324,7 +441,8 @@ class TurtleArtActivity(activity.Activity):
             self.tw.no_help = False
             self._hover_help_toggle.set_icon('help-off')
             self._hover_help_toggle.set_tooltip(_('Turn off hover help'))
-            self.client.set_int(self._HOVER_HELP, 0)
+            if HAS_GCONF:
+                self.client.set_int(self._HOVER_HELP, 0)
         else:
             self.tw.no_help = True
             self.tw.last_label = None
@@ -332,7 +450,8 @@ class TurtleArtActivity(activity.Activity):
                 self.tw.status_spr.hide()
             self._hover_help_toggle.set_icon('help-on')
             self._hover_help_toggle.set_tooltip(_('Turn on hover help'))
-            self.client.set_int(self._HOVER_HELP, 1)
+            if HAS_GCONF:
+                self.client.set_int(self._HOVER_HELP, 1)
 
     # These methods are called both from toolbar buttons and blocks.
 
@@ -503,7 +622,7 @@ class TurtleArtActivity(activity.Activity):
         if self.tw.block_scale in BLOCK_SCALE:
             i = BLOCK_SCALE.index(self.tw.block_scale) + inc
         else:
-            i = BLOCK_SCALE[3]  # 2.0
+            i = 3
         if i < 0:
             self.tw.block_scale = BLOCK_SCALE[0]
         elif i == len(BLOCK_SCALE):
@@ -534,18 +653,30 @@ class TurtleArtActivity(activity.Activity):
             self.tw.set_metric(True)
 
     def do_rescale_cb(self, button):
-        ''' Rescale coordinate system (100==height/2 or 100 pixels). '''
+        ''' Rescale coordinate system (20==height/2 or 100 pixels). '''
         if self.tw.coord_scale == 1:
-            self.tw.coord_scale = self.tw.height / 200
+            self.tw.coord_scale = self.tw.height / 40
             self.rescale_button.set_icon('contract-coordinates')
             self.rescale_button.set_tooltip(_('Rescale coordinates down'))
+            default_values['forward'] = [10]
+            default_values['back'] = [10]
+            default_values['arc'] = [90, 10]
+            default_values['setpensize'] = [1]
+            self.tw.turtles.get_active_turtle().set_pen_size(1)
         else:
             self.tw.coord_scale = 1
             self.rescale_button.set_icon('expand-coordinates')
             self.rescale_button.set_tooltip(_('Rescale coordinates up'))
-        self.tw.eraser_button()
+            default_values['forward'] = [100]
+            default_values['back'] = [100]
+            default_values['arc'] = [90, 100]
+            default_values['setpensize'] = [5]
+            self.tw.turtles.get_active_turtle().set_pen_size(5)
+        if HAS_GCONF:
+            self.client.set_int(self._COORDINATE_SCALE, self.tw.coord_scale)
         # Given the change in how overlays are handled (v123), there is no way
         # to erase and then redraw the overlays.
+        self.tw.eraser_button()
 
     def _do_help_cb(self, button):
         if self._selected_challenge is None:
@@ -637,8 +768,10 @@ class TurtleArtActivity(activity.Activity):
     def _setup_toolbar(self):
         ''' Setup toolbar according to Sugar version. '''
         if self.has_toolbarbox:
+            self.max_participants = 4
+
             self._setup_toolbar_help()
-            self._toolbox = ToolbarBox()
+            self.toolbox = ToolbarBox()
 
             self.activity_toolbar_button = ActivityToolbarButton(self)
 
@@ -659,33 +792,31 @@ class TurtleArtActivity(activity.Activity):
                                                  _('Help'),
                                                  self._do_help_cb,
                                                  None)
-            # self._help_button = HelpButton(self)
 
             self._make_load_save_buttons(self.activity_toolbar_button)
 
             self.activity_toolbar_button.show()
-            self._toolbox.toolbar.insert(self.activity_toolbar_button, -1)
+            self.toolbox.toolbar.insert(self.activity_toolbar_button, -1)
             self.edit_toolbar_button.show()
-            self._toolbox.toolbar.insert(self.edit_toolbar_button, -1)
+            self.toolbox.toolbar.insert(self.edit_toolbar_button, -1)
             self.view_toolbar_button.show()
-            self._toolbox.toolbar.insert(self.view_toolbar_button, -1)
+            self.toolbox.toolbar.insert(self.view_toolbar_button, -1)
             self.palette_toolbar_button.show()
-            self._toolbox.toolbar.insert(self.palette_toolbar_button, -1)
+            self.toolbox.toolbar.insert(self.palette_toolbar_button, -1)
 
-            self.set_toolbar_box(self._toolbox)
-            self.palette_toolbar_button.set_expanded(True)
+            self.set_toolbar_box(self.toolbox)
         else:
-            self._toolbox = activity.ActivityToolbox(self)
-            self.set_toolbox(self._toolbox)
+            self.toolbox = activity.ActivityToolbox(self)
+            self.set_toolbox(self.toolbox)
 
             self._project_toolbar = gtk.Toolbar()
-            self._toolbox.add_toolbar(_('Project'), self._project_toolbar)
+            self.toolbox.add_toolbar(_('Project'), self._project_toolbar)
             self._view_toolbar = gtk.Toolbar()
-            self._toolbox.add_toolbar(_('View'), self._view_toolbar)
+            self.toolbox.add_toolbar(_('View'), self._view_toolbar)
             edit_toolbar = gtk.Toolbar()
-            self._toolbox.add_toolbar(_('Edit'), edit_toolbar)
+            self.toolbox.add_toolbar(_('Edit'), edit_toolbar)
             journal_toolbar = gtk.Toolbar()
-            self._toolbox.add_toolbar(_('Save/Load'), journal_toolbar)
+            self.toolbox.add_toolbar(_('Save/Load'), journal_toolbar)
 
             self._make_palette_buttons(self._project_toolbar,
                                        palette_button=True)
@@ -737,10 +868,14 @@ class TurtleArtActivity(activity.Activity):
 
         edit_toolbar.show()
         self._view_toolbar.show()
-        self._toolbox.show()
+        self.toolbox.show()
 
-        if not self.has_toolbarbox:
-            self._toolbox.set_current_toolbar(1)
+        if self.has_toolbarbox:
+            self.edit_toolbar_button.set_expanded(True)
+            self.edit_toolbar_button.set_expanded(False)
+            self.palette_toolbar_button.set_expanded(True)
+        else:
+            self.toolbox.set_current_toolbar(1)
 
     def _setup_extra_controls(self):
         ''' Add the rest of the buttons to the main toolbar '''
@@ -753,24 +888,24 @@ class TurtleArtActivity(activity.Activity):
             self._make_project_buttons(self._project_toolbar)
             return
 
-        self._make_project_buttons(self._toolbox.toolbar)
+        self._make_project_buttons(self.toolbox.toolbar)
 
         self.extras_separator = self._add_separator(
-            self._toolbox.toolbar, expand=False, visible=True)
+            self.toolbox.toolbar, expand=False, visible=True)
 
         self.samples_button = self._add_button(
             'ta-open', _('Load challenges'), self._create_store,
-            self._toolbox.toolbar)
+            self.toolbox.toolbar)
 
-        self._toolbox.toolbar.insert(self._help_button, -1)
+        self.toolbox.toolbar.insert(self._help_button, -1)
         self._help_button.show()
 
         self.stop_separator = self._add_separator(
-            self._toolbox.toolbar, expand=True, visible=False)
+            self.toolbox.toolbar, expand=True, visible=False)
 
         self.stop_button = StopButton(self)
         self.stop_button.props.accelerator = '<Ctrl>Q'
-        self._toolbox.toolbar.insert(self.stop_button, -1)
+        self.toolbox.toolbar.insert(self.stop_button, -1)
         self.stop_button.show()
 
     def _setup_toolbar_help(self):
@@ -816,12 +951,11 @@ class TurtleArtActivity(activity.Activity):
         help_palettes['activity-toolbar'].show()
 
         add_paragraph(help_box, _('Share selected blocks'), icon='shareon')
-        if gtk.gdk.screen_width() < 1024:
-            add_paragraph(help_box, _('Save/Load'), icon='save-load')
-        else:
-            add_section(help_box, _('Save/Load'), icon='turtleoff')
+        add_paragraph(help_box, _('Save/Load'), icon='save-load')
         add_paragraph(help_box, _('Save as image'), icon='image-saveoff')
         add_paragraph(help_box, _('Save as Logo'), icon='logo-saveoff')
+        add_paragraph(help_box, _('Save as Python'), icon='python-saveoff')
+        add_paragraph(help_box, _('Save snapshot'), icon='filesaveoff')
         add_paragraph(help_box, _('Load project'), icon='load-from-journal')
         home = os.environ['HOME']
         if activity.get_bundle_path()[0:len(home)] == home:
@@ -999,10 +1133,10 @@ class TurtleArtActivity(activity.Activity):
                                              self._share_cb, toolbar)
         if self.has_toolbarbox:
             self._add_separator(toolbar, expand=False, visible=True)
-            save_load_button = self._add_button(
-                'save-load', _('Save/Load'), self._save_load_palette_cb,
+            save_button = self._add_button(
+                'save', _('Save'), self._save_load_palette_cb,
                 toolbar)
-            self._palette = save_load_button.get_palette()
+            self._save_palette = save_button.get_palette()
             button_box = gtk.VBox()
             self.save_as_image, label = self._add_button_and_label(
                 'image-saveoff', _('Save as image'), self.do_save_as_image_cb,
@@ -1010,16 +1144,28 @@ class TurtleArtActivity(activity.Activity):
             self.save_as_logo, label = self._add_button_and_label(
                 'logo-saveoff', _('Save as Logo'), self.do_save_as_logo_cb,
                 None, button_box)
-
-            # When screen is in portrait mode, the buttons don't fit
-            # on the main toolbar, so put them here.
+            self.save_as_python, label = self._add_button_and_label(
+                'python-saveoff', _('Save as Python'),
+                self.do_save_as_python_cb,
+                None, button_box)
             self.keep_button2, self.keep_label2 = self._add_button_and_label(
                 'filesaveoff', _('Save snapshot'), self.do_keep_cb,
                 None, button_box)
+
+            load_button = self._add_button(
+                'load', _('Load'), self._save_load_palette_cb,
+                toolbar)
+            button_box.show_all()
+            self._save_palette.set_content(button_box)
+
+            self._load_palette = load_button.get_palette()
+            button_box = gtk.VBox()
+            # When screen is in portrait mode, the buttons don't fit
+            # on the main toolbar, so put them here.
             self.samples_button2, self.samples_label2 = \
                 self._add_button_and_label('ta-open',
-                                           _('Load challenges'),
-                                           self._create_store,
+                                           _('Load example'),
+                                           self.do_samples_cb,
                                            None,
                                            button_box)
 
@@ -1038,7 +1184,7 @@ class TurtleArtActivity(activity.Activity):
                 'pippy-openoff', _('Load Python block'),
                 self.do_load_python_cb, None, button_box)
             button_box.show_all()
-            self._palette.set_content(button_box)
+            self._load_palette.set_content(button_box)
         else:
             self.save_as_image = self._add_button(
                 'image-saveoff', _('Save as image'), self.do_save_as_image_cb,
@@ -1046,10 +1192,14 @@ class TurtleArtActivity(activity.Activity):
             self.save_as_logo = self._add_button(
                 'logo-saveoff', _('Save as Logo'), self.do_save_as_logo_cb,
                 toolbar)
+            self.save_as_python = self._add_button(
+                'python-saveoff', _('Save as Python'),
+                self.do_save_as_python_cb,
+                toolbar)
             self.keep_button = self._add_button(
                 'filesaveoff', _('Save snapshot'), self.do_keep_cb, toolbar)
             self.load_ta_project = self._add_button(
-                'load-from-journal', _('Load project'),
+                'load-from-journal', _('Add project'),
                 self.do_load_ta_project_cb, toolbar)
             # Only enable plugin loading if installed in $HOME
             if activity.get_bundle_path()[0:len(home)] == home:
@@ -1061,13 +1211,12 @@ class TurtleArtActivity(activity.Activity):
                 self.do_load_python_cb, toolbar)
 
     def _save_load_palette_cb(self, button):
-        if self._palette:
-            if not self._palette.is_up():
-                self._palette.popup(immediate=True,
-                                    state=self._palette.SECONDARY)
+        palette = button.get_palette()
+        if palette:
+            if not palette.is_up():
+                palette.popup(immediate=True, state=palette.SECONDARY)
             else:
-                self._palette.popdown(immediate=True)
-            return
+                palette.popdown(immediate=True)
 
     def _make_palette_buttons(self, toolbar, palette_button=False):
         ''' Creates the palette and block buttons for both toolbar types'''
@@ -1208,6 +1357,12 @@ class TurtleArtActivity(activity.Activity):
         self._collaboration = Collaboration(self.tw, self)
         self._collaboration.setup()
 
+    def _joined_cb(self, widget):
+        if self._joined_alert is not None:
+            self.remove_alert(self._joined_alert)
+            self._joined_alert = None
+        self.set_canvas(self.fixed)
+
     def send_xy(self):
         ''' Resync xy position (and orientation) of my turtle. '''
         self._collaboration.send_my_xy()
@@ -1243,112 +1398,26 @@ class TurtleArtActivity(activity.Activity):
                     self._offsets[basename][2])
         self.metadata['mime_type'] = MIMETYPE[0]
         self.metadata['turtle blocks'] = ''.join(self.tw.used_block_list)
-        self.metadata['public'] = data_to_string(['activity count',
-                                                  'turtle blocks'])
+        # Deprecated
+        # self.metadata['public'] = data_to_string(['activity count',
+        #                                           'turtle blocks'])
+        if self.tw.palette:
+            self.metadata['palette'] = str(self.tw.selected_palette)
+        else:
+            self.metadata['palette'] = '-1'
+        self.metadata['orientation'] = str(self.tw.orientation)
+        if HAS_GCONF:
+            self.client.set_int(self._ORIENTATION, self.tw.orientation)
+        if len(self.error_list) > 0:
+            errors = []
+            if 'error_list' in self.metadata:
+                for error in data_from_string(self.metadata['error_list']):
+                    errors.append(error)
+            for error in self.error_list:
+                errors.append(error)
+            self.metadata['error_list'] = data_to_string(errors)
         _logger.debug('Wrote to file: %s' % (file_path))
 
-    def _load_a_plugin(self, tmp_dir):
-        ''' Load a plugin from the Journal and initialize it '''
-        plugin_path = os.path.join(tmp_dir, 'plugin.info')
-        _logger.debug(plugin_path)
-        file_info = ConfigParser.ConfigParser()
-        if len(file_info.read(plugin_path)) == 0:
-            _logger.debug('Required file plugin.info could not be found.')
-            self.tw.showlabel('status',
-                              label=_('Plugin could not be installed.'))
-        elif not file_info.has_option('Plugin', 'name'):
-            _logger.debug('Required open name not found in \
-Plugin section of plugin.info file.')
-            self.tw.showlabel(
-                'status', label=_('Plugin could not be installed.'))
-        else:
-            plugin_name = file_info.get('Plugin', 'name')
-            _logger.debug('Plugin name: %s' % (plugin_name))
-            tmp_path = os.path.join(tmp_dir, plugin_name)
-            plugin_path = os.path.join(activity.get_bundle_path(), 'plugins')
-            if os.path.exists(os.path.join(plugin_path, plugin_name)):
-                self._reload_plugin_alert(tmp_dir, tmp_path, plugin_path,
-                                          plugin_name, file_info)
-            else:
-                self._complete_plugin_install(tmp_dir, tmp_path, plugin_path,
-                                              plugin_name, file_info)
-
-    def _complete_plugin_install(self, tmp_dir, tmp_path, plugin_path,
-                                 plugin_name, file_info):
-        ''' We complete the installation directly or from ConfirmationAlert '''
-        status = subprocess.call(['cp', '-r', tmp_path, plugin_path + '/'])
-        if status == 0:
-            # Save the plugin.info file in the plugin directory
-            subprocess.call(['cp', os.path.join(tmp_dir, 'plugin.info'),
-                             os.path.join(plugin_path, plugin_name) + '/'])
-            _logger.debug('Plugin installed successfully.')
-            if self.has_toolbarbox:
-                palette_name_list = []
-                if file_info.has_option('Plugin', 'palette'):
-                    palette_name_list = file_info.get(
-                        'Plugin', 'palette').split(',')
-                    create_palette = []
-                    for palette_name in palette_name_list:
-                        if not palette_name.strip() in palette_names:
-                            create_palette.append(True)
-                        else:
-                            create_palette.append(False)
-                _logger.debug('Initializing plugin...')
-                self.tw.init_plugin(plugin_name)
-                self.tw.turtleart_plugins[-1].setup()
-                self.tw.load_media_shapes()
-                for i, palette_name in enumerate(palette_name_list):
-                    if create_palette[i]:
-                        _logger.debug('Creating plugin palette %s (%d)' %
-                                      (palette_name.strip(), i))
-                        j = len(self.palette_buttons)
-                        self.palette_buttons.append(
-                            self._radio_button_factory(
-                                palette_name.strip() + 'off',
-                                self._palette_toolbar,
-                                self.do_palette_buttons_cb,
-                                j - 1,
-                                help_strings[palette_name.strip()],
-                                self.palette_buttons[0]))
-                        self._overflow_buttons.append(
-                            self._add_button(
-                                palette_name.strip() + 'off',
-                                None,
-                                self.do_palette_buttons_cb,
-                                None,
-                                arg=j - 1))
-                        self._overflow_box.pack_start(
-                            self._overflow_buttons[j - 1])
-                        self.tw.palettes.insert(j - 1, [])
-                        self.tw.palette_sprs.insert(j - 1, [None, None])
-                    else:
-                        _logger.debug('Palette already exists... \
-skipping insert')
-                # We need to change the index associated with the
-                # Trash Palette Button.
-                j = len(palette_names)
-                pidx = palette_names.index(palette_name.strip())
-                self.palette_buttons[pidx].connect(
-                    'clicked', self.do_palette_buttons_cb, j - 1)
-                self._overflow_buttons[pidx].connect(
-                    'clicked', self.do_palette_buttons_cb, j - 1)
-                _logger.debug('reinitializing palette toolbar')
-                self._setup_palette_toolbar()
-            else:
-                self.tw.showlabel('status',
-                                  label=_('Please restart Turtle Art \
-in order to use the plugin.'))
-        else:
-            self.tw.showlabel(
-                'status', label=_('Plugin could not be installed.'))
-        status = subprocess.call(['rm', '-r', tmp_path])
-        if status != 0:
-            _logger.debug('Problems cleaning up tmp_path.')
-        shutil.rmtree(tmp_dir)
-
-    def _cancel_plugin_install(self, tmp_dir):
-        ''' If we cancel, just cleanup '''
-        shutil.rmtree(tmp_dir)
 
     def _reload_plugin_alert(self, tmp_dir, tmp_path, plugin_path, plugin_name,
                              file_info):
@@ -1363,8 +1432,8 @@ in order to use the plugin.'))
             if response_id is gtk.RESPONSE_OK:
                 _logger.debug('continue to install')
                 self.remove_alert(alert)
-                self._complete_plugin_install(tmp_dir, tmp_path, plugin_path,
-                                              plugin_name, file_info)
+                complete_plugin_install(self, tmp_dir, tmp_path, plugin_path,
+                                        plugin_name, file_info)
             elif response_id is gtk.RESPONSE_CANCEL:
                 _logger.debug('cancel install')
                 self.remove_alert(alert)
@@ -1424,7 +1493,7 @@ in order to use the plugin.'))
                             gobject.idle_add(self._project_loader, turtle_code)
                     else:
                         _logger.debug('load a plugin from %s' % (tmp_dir))
-                        self._load_a_plugin(tmp_dir)
+                        load_a_plugin(self, tmp_dir)
                         self.restore_cursor()
                 except:
                     _logger.debug('Could not extract files from %s.' %
@@ -1557,6 +1626,25 @@ in order to use the plugin.'))
                     self._old_cursor = self.get_window().get_cursor()
                 self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.HAND1))
 
+    def empty_trash_alert(self, title, msg):
+        ''' We get confirmation from the user before emptying the trash '''
+        alert = ConfirmationAlert()
+        alert.props.title = title
+        alert.props.msg = msg
+
+        def _empty_trash_alert_response_cb(alert, response_id, self):
+            if response_id is gtk.RESPONSE_OK:
+                _logger.debug('emptying the trash')
+                self.remove_alert(alert)
+                self.tw._empty_trash()
+            elif response_id is gtk.RESPONSE_CANCEL:
+                _logger.debug('cancel emptying the trash')
+                self.remove_alert(alert)
+
+        alert.connect('response', _empty_trash_alert_response_cb, self)
+        self.add_alert(alert)
+        alert.show()
+
     def _add_label(self, string, toolbar, width=None):
         ''' Add a label to a toolbar. '''
         label = gtk.Label(string)
@@ -1609,6 +1697,7 @@ in order to use the plugin.'))
         return button
 
     def _load_level(self, custom=False):
+        logging.error('LOAD LEVEL')
         self.tw.canvas.clearscreen()
         self._draw_cartoon()
         if custom:
@@ -1672,19 +1761,6 @@ in order to use the plugin.'))
         box.pack_start(button_and_label)
         button_and_label.show()
         return button, label
-
-    def _notify_successful_save(self, title='', msg=''):
-        ''' Notify user when saves are completed '''
-
-        def _notification_alert_response_cb(alert, response_id, self):
-            self.remove_alert(alert)
-
-        alert = NotifyAlert()
-        alert.props.title = title
-        alert.connect('response', _notification_alert_response_cb, self)
-        alert.props.msg = msg
-        self.add_alert(alert)
-        alert.show()
 
     def hide_store(self, widget=None):
         if self._challenge_window is not None:
@@ -1772,6 +1848,17 @@ in order to use the plugin.'))
             pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(
                 filepath, 100, 100)
             store.append([pixbuf, filepath])
+
+    def is_toolbar_expanded(self):
+        if self.palette_toolbar_button.is_expanded():
+            return True
+        elif self.edit_toolbar_button.is_expanded():
+            return True
+        elif self.view_toolbar_button.is_expanded():
+            return True
+        elif self.activity_toolbar_button.is_expanded():
+            return True
+        return False
 
     def _scan_for_challenges(self):
         file_list = list(glob.glob(os.path.join(activity.get_bundle_path(),

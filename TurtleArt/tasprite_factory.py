@@ -609,6 +609,51 @@ stroke-width="3.5" fill="%s" stroke="none" />\n' % (self._stroke)
         svg += self.footer()
         return self.header() + svg
 
+    def clamp_until(self):
+        ''' Until block is like clamp but docks are flipped '''
+        self.reset_min_max()
+        x = self._stroke_width / 2.0
+        y = self._stroke_width / 2.0 + self._radius
+        self.margins[0] = int((x + self._stroke_width + 0.5) * self._scale)
+        self.margins[1] = int((self._stroke_width + 0.5) * self._scale)
+        self.margins[2] = 0
+        self.margins[3] = 0
+        svg = self.new_path(x, y)
+        svg += self._corner(1, -1)
+        svg += self._do_slot()
+        svg += self._rline_to(self._radius + self._stroke_width, 0)
+        svg += self._rline_to(self._expand_x, 0)
+        xx = self._x
+        svg += self._corner(1, 1, skip=True)
+        svg += self._corner(-1, 1, skip=True)
+        svg += self.line_to(xx, self._y)
+        svg += self._rline_to(-self._expand_x, 0)
+        svg += self._do_tab()
+        svg += self._inverse_corner(-1, 1, 90, 0, 0)
+        svg += self._rline_to(0, self._expand_y)
+        svg += self._inverse_corner(1, 1, 90, 0, 0)
+        svg += self._do_slot()
+        svg += self._rline_to(self._radius, 0)
+        if self._innie[0] is True:
+            svg += self._do_innie()
+        else:
+            self.margins[2] = \
+                int((self._x - self._stroke_width + 0.5) * self._scale)
+        svg += self._rline_to(0, self._radius + self._expand_y2)
+        if self._bool is True:
+            svg += self._do_boolean()
+        svg += self._corner(-1, 1)
+        svg += self._rline_to(-self._radius - self._stroke_width, 0)
+        svg += self._do_tab()
+        svg += self._corner(-1, -1)
+        svg += self._close_path()
+        self.calc_w_h()
+        svg += self.style()
+        if self._collapsible:
+            svg += self._hide_dot()
+        svg += self.footer()
+        return self.header() + svg
+
     def status_block(self, graphic=None):
         ''' Generate a status block '''
         self.reset_min_max()
@@ -950,7 +995,8 @@ stroke-width="3.5" fill="%s" stroke="none" />\n' % (self._stroke)
                                           0)
         return svg_str
 
-    def _corner(self, sign_x, sign_y, a=90, l=0, s=1, start=True, end=True):
+    def _corner(self, sign_x, sign_y, a=90, l=0, s=1, start=True, end=True,
+                skip=False):
         svg_str = ""
         if sign_x == 1 and sign_y == -1:  # Upper-left corner
             self._hide_x = self._x + self._radius + self._stroke_width
@@ -970,7 +1016,7 @@ stroke-width="3.5" fill="%s" stroke="none" />\n' % (self._stroke)
             if start:
                 if sign_x * sign_y == 1:
                     svg_str += self._rline_to(sign_x * r2, 0)
-                else:
+                elif not skip:
                     svg_str += self._rline_to(0, sign_y * r2)
             x = self._x + sign_x * r2
             y = self._y + sign_y * r2
@@ -978,7 +1024,7 @@ stroke-width="3.5" fill="%s" stroke="none" />\n' % (self._stroke)
             if end:
                 if sign_x * sign_y == 1:
                     svg_str += self._rline_to(0, sign_y * r2)
-                else:
+                elif not skip:
                     svg_str += self._rline_to(sign_x * r2, 0)
         return svg_str
 
@@ -1237,6 +1283,7 @@ def close_file(f):
 
 def generator(datapath):
 
+    '''
     svg = SVG()
     f = open_file(datapath, "turtle.svg")
     svg.set_scale(2)
@@ -1471,9 +1518,22 @@ def generator(datapath):
     close_file(f)
 
     svg = SVG()
-    f = open_file(datapath, "clampb.svg")
+    f = open_file(datapath, "clampe.svg")
     svg.set_scale(2)
     svg.expand(30, 0, 0, 0)
+    svg.set_slot(True)
+    svg.set_tab(True)
+    svg.set_boolean(True)
+    svg.second_clamp(True)
+    svg_str = svg.clamp()
+    f.write(svg_str)
+    close_file(f)
+    '''
+
+    svg = SVG()
+    f = open_file(datapath, "clampb.svg")
+    svg.set_scale(2)
+    svg.expand(0, 30, 0, 0)
     svg.set_slot(True)
     svg.set_tab(True)
     svg.set_boolean(True)
@@ -1483,14 +1543,14 @@ def generator(datapath):
     close_file(f)
 
     svg = SVG()
-    f = open_file(datapath, "clampe.svg")
+    f = open_file(datapath, "clampu.svg")
     svg.set_scale(2)
-    svg.expand(30, 0, 0, 0)
+    svg.expand(0, 30, 0, 0)
     svg.set_slot(True)
     svg.set_tab(True)
     svg.set_boolean(True)
-    svg.second_clamp(True)
-    svg_str = svg.clamp()
+    svg.second_clamp(False)
+    svg_str = svg.clamp_until()
     f.write(svg_str)
     close_file(f)
 

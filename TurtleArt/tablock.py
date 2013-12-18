@@ -24,7 +24,8 @@ import cairo
 
 from taconstants import (EXPANDABLE, EXPANDABLE_ARGS, OLD_NAMES, CONSTANTS,
                          STANDARD_STROKE_WIDTH, BLOCK_SCALE, BOX_COLORS,
-                         GRADIENT_COLOR, EXPANDABLE_FLOW, COLORDICT)
+                         GRADIENT_COLOR, EXPANDABLE_FLOW, Color,
+                         MEDIA_BLOCK2TYPE, BLOCKS_WITH_SKIN)
 from tapalette import (palette_blocks, block_colors, expandable_blocks,
                        content_blocks, block_names, block_primitives,
                        block_styles, special_block_colors)
@@ -32,6 +33,36 @@ from tasprite_factory import (SVG, svg_str_to_pixbuf)
 import sprites
 
 from tautils import (debug_output, error_output)
+
+
+media_blocks_dictionary = {}  # new media blocks get added here
+
+class Media(object):
+    """ Media objects can be images, audio files, videos, Journal
+    descriptions, or camera snapshots. """
+
+    ALL_TYPES = ('media', 'audio', 'video', 'descr', 'camera', 'camera1')
+
+    def __init__(self, type_, value=None):
+        """
+        type_ --- a string that indicates the kind of media:
+            media --- image
+            audio --- audio file
+            video --- video
+            descr --- Journal description
+            camera, camera1 --- camera snapshot
+        value --- a file path or a reference to a Sugar datastore object """
+        if type_ not in Media.ALL_TYPES:
+            raise ValueError("Media.type must be one of " +
+                             repr(Media.ALL_TYPES))
+        self.type = type_
+        self.value = value
+
+    def __str__(self):
+        return '%s_%s' % (self.type, str(self.value))
+
+    def __repr__(self):
+        return 'Media(type=%s, value=%s)' % (repr(self.type), repr(self.value))
 
 
 class Blocks:
@@ -152,7 +183,7 @@ class Block:
         trash -- block in the trash """
 
     def __init__(self, block_list, sprite_list, name, x, y, type='block',
-                 values=[], scale=BLOCK_SCALE[0],
+                 values=None, scale=BLOCK_SCALE[0],
                  colors=['#A0A0A0', '#808080']):
 
         self.block_list = block_list
@@ -178,7 +209,7 @@ class Block:
         self._visible = True
         self.unknown = False  # Block is of unknown style
 
-        self.block_methods = {
+        self._block_methods = {
             'basic-style': self._make_basic_style,
             'blank-style': self._make_blank_style,
             'basic-style-head': self._make_basic_style_head,
@@ -210,6 +241,7 @@ class Block:
             'clamp-style-collapsed': self._make_clamp_style_collapsed,
             'clamp-style-1arg': self._make_clamp_style_1arg,
             'clamp-style-boolean': self._make_clamp_style_boolean,
+            'clamp-style-until': self._make_clamp_style_until,
             'clamp-style-else': self._make_clamp_style_else,
             'flow-style-tail': self._make_flow_style_tail,
             'portfolio-style-2x2': self._make_portfolio_style_2x2,
@@ -224,8 +256,9 @@ class Block:
             self.font_size[i] *= self.scale * \
                 self.block_list.font_scale_factor
 
-        for v in (values):
-            self.values.append(v)
+        if values is not None:
+            for v in (values):
+                self.values.append(v)
 
         # If there is already a block with the same name, reuse it
         copy_block = None
@@ -240,6 +273,13 @@ class Block:
             self.primitive = block_primitives[self.name]
 
         self.block_list.append_to_list(self)
+
+    def __repr__(self):
+        if self.is_value_block():
+            name = self.get_value()
+        else:
+            name = self.name
+        return 'Block(%s)' % (repr(name))
 
     def get_visibility(self):
         ''' Should block be visible on the palette? '''
@@ -276,6 +316,44 @@ class Block:
                          'sandwichtop', 'sandwichtop_no_label']:
             return False
         return True
+
+    def is_value_block(self):
+        """ Return True iff this block is a value block (numeric, string,
+        media, etc.) """
+        return self.primitive is None and self.values
+
+    def get_value(self, add_type_prefix=True):
+        """ Return the value stored in this value block or None if this is
+        not a value block
+        add_type_prefix -- prepend a prefix to indicate the type of the
+            'raw' value """
+        if not self.is_value_block():
+            return None
+
+        if self.name == 'number':
+            try:
+                return float(self.values[0])
+            except ValueError:
+                return float(ord(self.values[0][0]))
+        elif (self.name == 'string' or
+                self.name == 'title'):  # deprecated block
+            if add_type_prefix:
+                result = '#s'
+            else:
+                result = ''
+            if isinstance(self.values[0], (float, int)):
+                if int(self.values[0]) == self.values[0]:
+                    self.values[0] = int(self.values[0])
+                result += str(self.values[0])
+            else:
+                result += self.values[0]
+            return result
+        elif self.name in MEDIA_BLOCK2TYPE:
+            return Media(MEDIA_BLOCK2TYPE[self.name], self.values[0])
+        elif self.name in media_blocks_dictionary:
+            return Media('media', self.name.upper())
+        else:
+            return None
 
     def highlight(self):
         """ We may want to highlight a block... """
@@ -529,13 +607,12 @@ class Block:
                     else:
                         self._set_labels(i, str(v))
         elif self.type == 'block' and self.name in CONSTANTS:
-            if CONSTANTS[self.name] in COLORDICT:
-                v = COLORDICT[CONSTANTS[self.name]][0]
-                if v is None:
-                    v = COLORDICT[CONSTANTS[self.name]][1]
+            if isinstance(CONSTANTS[self.name], Color):
+                v = int(CONSTANTS[self.name])
             else:
                 v = CONSTANTS[self.name]
-            self._set_labels(0, block_names[self.name][0] + ' = ' + str(v))
+            if self.name not in BLOCKS_WITH_SKIN:
+                self._set_labels(0, block_names[self.name][0] + ' = ' + str(v))
 
         elif self.name in block_names:
             for i, n in enumerate(block_names[self.name]):
@@ -561,11 +638,11 @@ class Block:
             if n == 0:
                 n = 1  # Force a scale to be set, even if there is no value.
         else:
+            n = 0
             if self.name in block_names:
                 n = len(block_names[self.name])
-            else:
+            elif self.name not in BLOCKS_WITH_SKIN:
                 debug_output('WARNING: unknown block name %s' % (self.name))
-                n = 0
         for i in range(n):
             if i > 0:
                 size = int(self.font_size[1] + 0.5)
@@ -604,7 +681,8 @@ class Block:
             y = self.docks[1][3] - int(int(self.font_size[0] * 1.3))
             self.spr.set_label_attributes(int(self.font_size[0] + 0.5),
                                           True, 'right', y_pos=y, i=0)
-        elif self.name in block_styles['clamp-style-boolean']:
+        elif self.name in block_styles['clamp-style-boolean'] or \
+             self.name in block_styles['clamp-style-until']:
             y = self.docks[1][3] - int(int(self.font_size[0] * 1.3))
             self.spr.set_label_attributes(int(self.font_size[0] + 0.5),
                                           True, 'right', y_pos=y, i=0)
@@ -634,19 +712,18 @@ class Block:
         self._right = 0
         self._bottom = 0
         self.svg.set_stroke_width(STANDARD_STROKE_WIDTH)
-        self.svg.clear_docks()
         if isinstance(self.name, unicode):
             self.name = self.name.encode('utf-8')
         for k in block_styles.keys():
             if self.name in block_styles[k]:
-                if isinstance(self.block_methods[k], list):
-                    self.block_methods[k][0](svg, self.block_methods[k][1],
-                                             self.block_methods[k][2])
+                if isinstance(self._block_methods[k], list):
+                    self._block_methods[k][0](svg, self._block_methods[k][1],
+                                             self._block_methods[k][2])
                 else:
-                    self.block_methods[k](svg)
+                    self._block_methods[k](svg)
                 return
         error_output('ERROR: block type not found %s' % (self.name))
-        self.block_methods['blank-style'](svg)
+        self._block_methods['blank-style'](svg)
         self.unknown = True
 
     def _set_colors(self, svg):
@@ -973,7 +1050,7 @@ class Block:
         self._make_block_graphics(svg, self.svg.basic_block)
         self.docks = [['flow', True, self.svg.docks[0][0],
                        self.svg.docks[0][1]],
-                      ['unavailable', True, 0, self.svg.docks[0][1] + 10, '['],
+                      ['flow', True, 0, self.svg.docks[0][1] + 10, '['],
                       ['flow', False, self.svg.docks[1][0],
                        self.svg.docks[1][1], ']']]
 
@@ -1007,6 +1084,25 @@ class Block:
                                         self.svg.docks[1][1]],
                       ['flow', False, self.svg.docks[2][0],
                                       self.svg.docks[2][1], '['],
+                      # Skip bottom of clamp
+                      ['flow', False, self.svg.docks[4][0],
+                                      self.svg.docks[4][1], ']']]
+
+    def _make_clamp_style_until(self, svg, extend_x=0, extend_y=4):
+        self.svg.expand(self.dx + self.ex + extend_x, self.ey + extend_y,
+                        0, self.ey2)
+        self.svg.set_slot(True)
+        self.svg.set_tab(True)
+        self.svg.set_boolean(True)
+        self.svg.second_clamp(False)
+        self._make_block_graphics(svg, self.svg.clamp_until)
+        # Dock positions are flipped
+        self.docks = [['flow', True, self.svg.docks[0][0],
+                                     self.svg.docks[0][1]],
+                      ['bool', False, self.svg.docks[3][0],
+                                        self.svg.docks[3][1]],
+                      ['flow', False, self.svg.docks[1][0],
+                                      self.svg.docks[1][1], '['],
                       # Skip bottom of clamp
                       ['flow', False, self.svg.docks[4][0],
                                       self.svg.docks[4][1], ']']]
@@ -1119,6 +1215,7 @@ class Block:
     def _make_block_graphics(self, svg, function, arg=None):
         self._set_colors(svg)
         self.svg.set_gradient(True, GRADIENT_COLOR)
+        self.svg.clear_docks()
         if arg is None:
             pixbuf = svg_str_to_pixbuf(function())
         else:
@@ -1128,6 +1225,7 @@ class Block:
         self.shapes[0] = _pixbuf_to_cairo_surface(pixbuf,
                                                   self.width, self.height)
         self.svg.set_gradient(False)
+        self.svg.clear_docks()
         if arg is None:
             pixbuf = svg_str_to_pixbuf(function())
         else:

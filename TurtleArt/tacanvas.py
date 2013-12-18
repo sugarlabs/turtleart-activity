@@ -1,4 +1,4 @@
-31#Copyright (c) 2007-8, Playful Invention Company.
+#Copyright (c) 2007-8, Playful Invention Company.
 #Copyright (c) 2008-11, Walter Bender
 #Copyright (c) 2011 Collabora Ltd. <http://www.collabora.co.uk/>
 
@@ -28,7 +28,7 @@ import cairo
 import pangocairo
 
 from tautils import get_path
-from taconstants import COLORDICT, TMP_SVG_PATH
+from taconstants import Color, TMP_SVG_PATH
 
 
 def wrap100(n):
@@ -208,19 +208,19 @@ class TurtleGraphics:
         save_rgb = self._fgrgb[:]
 
         # Special case for color blocks
-        if color in COLORDICT:
-            if COLORDICT[color][0] is None:
-                self._shade = COLORDICT[color][1]
+        if isinstance(color, Color):
+            if color.color is None:
+                self._shade = color.shade
             else:
-                self._color = COLORDICT[color][0]
+                self._color = color.color
         else:
             self._color = color
-        if shade in COLORDICT:
-            self._shade = COLORDICT[shade][1]
+        if isinstance(shade, Color):
+            self._shade = shade.shade
         else:
             self._shade = shade
-        if gray in COLORDICT:
-            self._gray = COLORDICT[gray][2]
+        if isinstance(gray, Color):
+            self._gray = gray.gray
         else:
             self._gray = gray
 
@@ -305,10 +305,14 @@ class TurtleGraphics:
         ''' Draw text '''
 
         def _draw_text(cr, label, x, y, size, width, scale, heading, rgb):
+            import textwrap
+            final_scale = int(size * scale) * pango.SCALE
+            label = str(label)
+            label = '\n'.join(textwrap.wrap(label, int(width / scale)))
             cc = pangocairo.CairoContext(cr)
             pl = cc.create_layout()
             fd = pango.FontDescription('Sans')
-            fd.set_size(int(size * scale) * pango.SCALE)
+            fd.set_size(final_scale)
             pl.set_font_description(fd)
             if isinstance(label, (str, unicode)):
                 pl.set_text(label.replace('\0', ' '))

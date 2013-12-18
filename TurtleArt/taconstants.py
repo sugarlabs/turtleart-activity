@@ -79,19 +79,172 @@ XO4 = 'xo4'
 UNKNOWN = 'unknown'
 TMP_SVG_PATH = '/tmp/turtle_output.svg'
 
+ARG_MUST_BE_NUMBER = ['product2', 'minus2', 'random', 'remainder2', 'forward',
+                      'back', 'left', 'right', 'arc', 'setxy2', 'setxy',
+                      'fillscreen', 'setscale', 'setpensize', 'wait',
+                      'setcolor', 'seth', 'setgray', 'setshade', 'string',
+                      'fillscreen2']
+
+KEY_DICT = {
+            'Left': 1,
+            'KP_Left': 1,
+            'Up': 2,
+            'KP_Up': 2,
+            'Right': 3,
+            'KP_Right': 3,
+            'Down': 4,
+            'KP_Down': 4,
+            'BackSpace': 8,
+            'Tab': 9,
+            'Return': 13,
+            'Escape': 27,
+            'space': 32,
+            ' ': 32,
+            'exclam': 33,
+            'quotedbl': 34,
+            'numbersign': 35,
+            'dollar': 36,
+            'percent': 37,
+            'ampersand': 38,
+            'apostrophe': 39,
+            'parenleft': 40,
+            'parenright': 41,
+            'asterisk': 42,
+            'plus': 43,
+            'comma': 44,
+            'minus': 45,
+            'period': 46,
+            'slash': 47,
+            'colon': 58,
+            'semicolon': 59,
+            'less': 60,
+            'equal': 61,
+            'greater': 62,
+            'question': 63,
+            'at': 64,
+            'underscore': 95,
+            'bracketleft': 91,
+            'backslash': 92,
+            'bracketright': 93,
+            'asciicircum': 94,
+            'grave': 96,
+            'braceleft': 123,
+            'bar': 124,
+            'braceright': 125,
+            'asciitilde': 126,
+            'Delete': 127,
+        }
+REVERSE_KEY_DICT = {
+            1: _('left'),
+            2: _('up'),
+            3: _('right'),
+            4: _('down'),
+            8: _('backspace'),
+            9: _('tab'),
+            # TRANS: enter is the name of the enter (or return) key
+            13: _('enter'),
+            27: 'esc',
+            # TRANS: space is the name of the space key
+            32: _('space'),
+            127: _('delete')
+        }
+
+
+class Color(object):
+    """ A color used in block programs (e.g., as pen color). """
+
+    def __init__(self, name, color=0, shade=50, gray=100):
+        """ name -- a string with the name of the color, e.g., 'red'
+        color -- the hue (0-100, or None for white, gray, and black)
+        shade -- the lightness (0 is black, 100 is white)
+        gray -- the saturation (0 is gray, 100 is fully saturated) """
+        self.name = name
+        self.color = color
+        self.shade = shade
+        self.gray = gray
+
+    def __int__(self):
+        if self.color is None:
+            return int(self.shade)
+        else:
+            return int(self.color)
+
+    def __float__(self):
+        return float(int(self))
+
+    def get_number_string(self):
+        return str(int(self))
+
+    def __str__(self):
+        return str(self.name)
+
+    def __repr__(self):
+        return '%s (%s/%d/%d)' % (str(self.name), str(self.color),
+                                  self.shade, self.gray)
+
+    def __eq__(self, other):
+        """ A Color is equivalent to
+        * another Color with the same color, shade, and gray values
+        * an integer, float, or long that equals int(self) """
+        if isinstance(other, Color):
+            return (self.color == other.color and self.shade == other.shade
+                    and self.gray == other.gray)
+        elif isinstance(other, (int, float, long)):
+            return int(self) == other
+        ## * a basestring that equals str(self)
+        #elif isinstance(other, basestring):
+        #    return str(self) == other
+        else:
+            return False
+
+    def __lt__(self, other):
+        """ A Color is less than
+        * another Color whose name appears earlier in the alphabet
+        * a number that is less than int(self)
+        * a string that appears before the underscore in the ASCII table """
+        if isinstance(other, Color):
+            return str(self) < str(other)
+        elif isinstance(other, (int, float, long)):
+            return int(self) < other
+        elif isinstance(other, basestring):
+            return '_' + str(self) < other
+        else:
+            return False
+
+    def __gt__(self, other):
+        """ A Color is greater than
+        * another Color whose name appears later in the alphabet
+        * a number that is greater than int(self)
+        * a string that appears after the underscore in the ASCII table """
+        if isinstance(other, Color):
+            return str(self) > str(other)
+        elif isinstance(other, (int, float, long)):
+            return int(self) > other
+        elif isinstance(other, basestring):
+            return '_' + str(self) > other
+        else:
+            return False
+
+    def is_gray(self):
+        """ Return True iff this color is white, gray, or black, i.e. if its
+        hue is not set or its saturation is zero. """
+        return self.color is None or not self.gray
+
+
+
 CONSTANTS = {'leftpos': None, 'toppos': None, 'rightpos': None,
              'bottompos': None, 'width': None, 'height': None,
-             'black': '_black', 'white': '_white', 'red': '_red',
-             'orange': '_orange', 'yellow': '_yellow', 'green': '_green',
-             'cyan': '_cyan', 'blue': '_blue', 'purple': '_purple',
+             'black':  Color('black', None,   0,   0),
+             'white':  Color('white', None, 100,   0),
+             'red':    Color('red',      0,  50, 100),
+             'orange': Color('orange',  10,  50, 100),
+             'yellow': Color('yellow',  20,  50, 100),
+             'green':  Color('green',   40,  50, 100),
+             'cyan':   Color('cyan',    50,  50, 100),
+             'blue':   Color('blue',    70,  50, 100),
+             'purple': Color('purple',  90,  50, 100),
              'titlex': None, 'titley': None, 'leftx': None,
              'topy': None, 'rightx': None, 'bottomy': None}
-
-COLORDICT = {'_black': [None, 0, 0], '_white': [None, 100, 0],
-             '_red': [0, 50, 100], '_orange': [10, 50, 100],
-             '_yellow': [20, 50, 100], '_green': [40, 50, 100],
-             '_cyan': [50, 50, 100], '_blue': [70, 50, 100],
-             '_purple': [90, 50, 100]}
 
 # Blocks that are expandable
 EXPANDABLE_STYLE = ['boolean-style', 'compare-porch-style', 'compare-style',
@@ -113,10 +266,10 @@ OLD_DOCK = ['and', 'or', 'plus', 'minus', 'division', 'product', 'remainder']
 CONTENT_ARGS = ['show', 'showaligned', 'push', 'storein', 'storeinbox1',
                 'storeinbox2']
 
-PREFIX_DICTIONARY = {}
+MEDIA_BLOCK2TYPE = {}  # map media blocks to media types
 
-# These blocks get a special skin
-BLOCKS_WITH_SKIN = []
+
+BLOCKS_WITH_SKIN = []  # These blocks get a special skin
 
 PYTHON_SKIN = []
 
@@ -134,7 +287,7 @@ OVERLAY_SHAPES = ['Cartesian', 'Cartesian_labeled', 'polar', 'metric']
 STATUS_SHAPES = ['status', 'info', 'nostack', 'dupstack', 'noinput',
                  'emptyheap', 'emptybox', 'nomedia', 'nocode', 'overflowerror',
                  'negroot', 'syntaxerror', 'nofile', 'nojournal', 'zerodivide',
-                 'notanumber', 'incompatible', 'help', 'print']
+                 'notanumber', 'incompatible', 'help', 'print', 'noconnection']
 
 # Emulate Sugar toolbar when running from outside of Sugar
 TOOLBAR_SHAPES = ['hideshowoff', 'eraseron', 'run-fastoff',
@@ -197,7 +350,7 @@ MACROS = {
      [5, ['number', '0.1'], 0, 0, [4, None]],
      [6, 'kbinput', 0, 0, [4, None]]],
     'picturelist':
-    [[0, 'sandwichtop_no_label', 0, 0, [None, 1]],
+    [[0, ['sandwichclamp', 252], 0, 0, [None, 1, None]],
      [1, 'penup', 0, 0, [0, 2]],
      [2, 'setxy2', 0, 0, [1, 3, 4, 5]],
      [3, 'titlex', 0, 0, [2, None]],
@@ -214,12 +367,11 @@ MACROS = {
      [14, 'pendown', 0, 0, [11, 15]],
      [15, 'setscale', 0, 0, [14, 16, 17]],
      [16, ['number', '67'], 0, 0, [15, None]],
-     [17, 'list', 0, 0, [15, 18, 19, 20]],
+     [17, 'list', 0, 0, [15, 18, 19, None]],
      [18, ['string', '∙ '], 0, 0, [17, None]],
-     [19, ['string', '∙ '], 0, 0, [17, None]],
-     [20, 'sandwichbottom', 0, 0, [17, None]]],
+     [19, ['string', '∙ '], 0, 0, [17, None]]],
     'picture1x1a':
-    [[0, 'sandwichtop_no_label', 0, 0, [None, 1]],
+    [[0, ['sandwichclamp', 231], 0, 0, [None, 1, None]],
      [1, 'penup', 0, 0, [0, 2]],
      [2, 'setxy2', 0, 0, [1, 3, 4, 5]],
      [3, 'titlex', 0, 0, [2, None]],
@@ -236,11 +388,10 @@ MACROS = {
      [14, 'pendown', 0, 0, [11, 15]],
      [15, 'setscale', 0, 0, [14, 16, 17]],
      [16, ['number', '90'], 0, 0, [15, None]],
-     [17, 'showaligned', 0, 0, [15, 18, 19]],
-     [18, 'journal', 0, 0, [17, None]],
-     [19, 'sandwichbottom', 0, 0, [17, None]]],
+     [17, 'showaligned', 0, 0, [15, 18, None]],
+     [18, 'journal', 0, 0, [17, None]]],
     'picture2x2':
-    [[0, 'sandwichtop_no_label', 0, 0, [None, 1]],
+    [[0, ['sandwichclamp', 546], 0, 0, [None, 1, None]],
      [1, 'penup', 0, 0, [0, 2]],
      [2, 'setxy2', 0, 0, [1, 3, 4, 5]],
      [3, 'titlex', 0, 0, [2, None]],
@@ -278,11 +429,10 @@ MACROS = {
      [35, 'rightx', 0, 0, [34, None]],
      [36, 'bottomy', 0, 0, [34, None]],
      [37, 'pendown', 0, 0, [34, 38]],
-     [38, 'showaligned', 0, 0, [37, 39, 40]],
-     [39, 'journal', 0, 0, [38, None]],
-     [40, 'sandwichbottom', 0, 0, [38, None]]],
+     [38, 'showaligned', 0, 0, [37, 39, None]],
+     [39, 'journal', 0, 0, [38, None]]],
     'picture1x2':
-    [[0, 'sandwichtop_no_label', 0, 0, [None, 1]],
+    [[0, ['sandwichclamp', 546], 0, 0, [None, 1, None]],
      [1, 'penup', 0, 0, [0, 2]],
      [2, 'setxy2', 0, 0, [1, 3, 4, 5]],
      [3, 'titlex', 0, 0, [2, None]],
@@ -320,11 +470,10 @@ MACROS = {
      [35, 'rightx', 0, 0, [34, None]],
      [36, 'bottomy', 0, 0, [34, None]],
      [37, 'pendown', 0, 0, [34, 38]],
-     [38, 'showaligned', 0, 0, [37, 39, 40]],
-     [39, 'description', 0, 0, [38, None]],
-     [40, 'sandwichbottom', 0, 0, [38, None]]],
+     [38, 'showaligned', 0, 0, [37, 39, None]],
+     [39, 'description', 0, 0, [38, None]]],
     'picture2x1':
-    [[0, 'sandwichtop_no_label', 0, 0, [None, 1]],
+    [[0, ['sandwichclamp', 546], 0, 0, [None, 1, None]],
      [1, 'penup', 0, 0, [0, 2]],
      [2, 'setxy2', 0, 0, [1, 3, 4, 5]],
      [3, 'titlex', 0, 0, [2, None]],
@@ -362,11 +511,10 @@ MACROS = {
      [35, 'rightx', 0, 0, [34, None]],
      [36, 'bottomy', 0, 0, [34, None]],
      [37, 'pendown', 0, 0, [34, 38]],
-     [38, 'showaligned', 0, 0, [37, 39, 40]],
-     [39, 'description', 0, 0, [38, None]],
-     [40, 'sandwichbottom', 0, 0, [38, None]]],
+     [38, 'showaligned', 0, 0, [37, 39, None]],
+     [39, 'description', 0, 0, [38, None]]],
     'picture1x1':
-    [[0, 'sandwichtop_no_label', 0, 0, [None, 1]],
+    [[0, ['sandwichclamp', 336], 0, 0, [None, 1, None]],
      [1, 'penup', 0, 0, [0, 2]],
      [2, 'setxy2', 0, 0, [1, 3, 4, 5]],
      [3, 'titlex', 0, 0, [2, None]],
@@ -390,9 +538,11 @@ MACROS = {
      [21, 'rightx', 0, 0, [20, None]],
      [22, 'topy', 0, 0, [20, None]],
      [23, 'pendown', 0, 0, [20, 24]],
-     [24, 'showaligned', 0, 0, [23, 25, 26]],
-     [25, 'description', 0, 0, [24, None]],
-     [26, 'sandwichbottom', 0, 0, [24, None]]],
+     [24, 'showaligned', 0, 0, [23, 25, None]],
+     [25, 'description', 0, 0, [24, None]]],
     'reskin':
     [[0, 'skin', 0, 0, [None, 1, None]],
+     [1, 'journal', 0, 0, [0, None]]],
+    'loadheapfromjournal':
+    [[0, 'loadheap', 0, 0, [None, 1, None]],
      [1, 'journal', 0, 0, [0, None]]]}

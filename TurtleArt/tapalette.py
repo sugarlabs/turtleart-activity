@@ -71,6 +71,7 @@ block_styles = {'basic-style': [],
                 'clamp-style-collapsed': [],
                 'clamp-style-1arg': [],
                 'clamp-style-boolean': [],
+                'clamp-style-until': [],
                 'clamp-style-else': [],
                 'portfolio-style-2x2': [],
                 'portfolio-style-1x1': [],
@@ -90,7 +91,6 @@ except ImportError:
     HELP_PALETTE = False
 
 from taconstants import (EXPANDABLE_STYLE, EXPANDABLE_FLOW)
-from tautils import debug_output
 
 from gettext import gettext as _
 
@@ -177,7 +177,7 @@ class Palette():
                   logo_command=None, hidden=False, colors=None,
                   string_or_number=False):
         """ Add a new block to the palette """
-        block = Block(block_name)
+        block = _ProtoBlock(block_name)
         block.set_style(style)
         if label is not None:
             block.set_label(label)
@@ -224,7 +224,7 @@ class Palette():
 
 
 def make_palette(palette_name, colors=None, help_string=None, position=None,
-                 init_on_start=False):
+                 init_on_start=False, translation=None):
     """ Palette helper function """
     if colors is None:
         palette = Palette(palette_name)
@@ -252,7 +252,7 @@ def define_logo_function(key, value):
     logo_functions[key] = value
 
 
-class Block():
+class _ProtoBlock():
     """ a class for defining new block primitives """
 
     def __init__(self, name):
@@ -290,6 +290,7 @@ class Block():
                            'clamp-style-collapsible',
                            'clamp-style-1arg',
                            'clamp-style-boolean',
+                           'clamp-style-until',
                            'clamp-style-else']:
             EXPANDABLE_FLOW.append(self._name)
 
