@@ -1,3 +1,48 @@
+195
+
+ENHANCEMENTS:
+* New translations
+
+BUG FIX:
+* Added missing parens for some binary operations in Python export
+* Fixed positioning of help messages (#4679)
+
+194
+
+ENHANCEMENTS:
+* Added URL block (Scimonster)
+* Save/restore palette settings in GConf
+* Add confirmation when emptying trash in GNONE version (Alan Aguiar)
+* Add load/save plugin dialog to GNOME version (Daniel Francis)
+* Add busy cursor when projects are being prepared to run
+* Reworked Duplicate Blocks warning graphic to reflect current block shapes
+* Refactor until block shape to better reflect flow logic
+* Enabled load file to heap/save heap to file to use the Sugar journal
+* New translations
+
+BUG FIXES:
+* Fixed shade block dock settings (Alan Aguiar)
+* Fixed bug in empty trash (Alan Aguiar)
+* Set active turtle after 'clean' in exported Python code
+* Execute 'until' body once before entering loop in exported Python code
+* Fixed problem with running_blocks flag not being cleared (cause of spurious
+  "hit stop button" messages.
+* Fixed problem with errant text entry widget on run.
+* Fixed problem with text wrap of SVG output #1856 (Jorge Alberto Gómez López)
+
+193
+
+ENHANCEMENTS:
+* Merged Marian Zepf's export Python branch (This is really fun. Give it a try.)
+* Added busy cursor while project is loading from store
+* Added tabbing through palette proto-blocks
+* New sample program from Cynthia Solomon
+* Logging errors in project metadata for making learning visible
+* New translations
+
+BUG FIX:
+* Prevent text blocks from docking to blocks requiring numeric arguments
+
 192
 
 ENHANCEMENTS:
