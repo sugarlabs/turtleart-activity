@@ -675,9 +675,9 @@ class LogoCode:
         self.reset_scale()
         self.reset_timer()
         self.clear_value_blocks()
-        self.reset_internals()
         self.tw.canvas.clearscreen()
         self.tw.turtles.reset_turtles()
+        self.reset_internals()
 
     def stop_playing_media(self):
         if self.tw.gst_available:

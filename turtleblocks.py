@@ -517,7 +517,8 @@ return %s(self)" % (p, P, P)
             elif resp == gtk.RESPONSE_CANCEL:
                 return
 
-        self.client.set_int(self._ORIENTATION, self.tw.orientation)
+        if hasattr(self, 'client'):
+            self.client.set_int(self._ORIENTATION, self.tw.orientation)
 
         for plugin in self.tw.turtleart_plugins:
             if hasattr(plugin, 'quit'):
@@ -719,7 +720,9 @@ Would you like to save before quitting?'))
             default_values['arc'] = [90, 100]
             default_values['setpensize'] = [5]
             self.tw.turtles.get_active_turtle().set_pen_size(5)
-        self.client.set_int(self._COORDINATE_SCALE, int(self.tw.coord_scale))
+        if hasattr(self, 'client'):
+            self.client.set_int(self._COORDINATE_SCALE,
+                                int(self.tw.coord_scale))
 
     def _do_toggle_hover_help_cb(self, button):
         ''' Toggle hover help on/off '''
