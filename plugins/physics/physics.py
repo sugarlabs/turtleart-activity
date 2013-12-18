@@ -58,6 +58,7 @@ class Physics(Plugin):
                       'jointlist': [],
                       'controllerlist': [],
                       'additional_vars': {}}
+        self._trackinfo = {}
         self.prim_box2d_reset()
         self._gear_radius = 0
 
@@ -254,6 +255,16 @@ fall.'),
         self._tw.lc.def_prim(
             'box2dpin', 0,
             Primitive(self.prim_box2d_pin))
+
+        palette.add_block('pen',
+                          style='basic-style-extended-vertical',
+                          label=_('pen'),
+                          help_string=_('Add a pen to an object so that its \
+movements are traced.'),
+                          prim_name='box2dpen')
+        self._tw.lc.def_prim(
+            'box2dpen', 0,
+            Primitive(self.prim_box2d_pen))
 
         palette.add_block('joint',
                           style='basic-style-2arg',
@@ -793,6 +804,76 @@ a Physics activity.'),
             self._tw.turtles.get_active_turtle().get_pen_size())
         self._tw.canvas.inval()
 
+    def prim_box2d_pen(self):
+        ''' add a pen onto an object '''
+
+        # Create the Physics object...
+        x1 = x2 = self._tw.turtles.get_active_turtle().get_x() + \
+            self._tw.canvas.width / 2.
+        y1 = y2 = self._tw.turtles.get_active_turtle().get_y() + \
+            self._tw.canvas.height / 2.
+
+        # Search for the body to attach to...
+        hostid = self._search((x1 * self._scale, y1 * self._scale))
+        if hostid is None:
+            debug_output('No object found to attach pen',
+                         self._tw.running_sugar)
+            return
+
+        track_index = len(self._trackinfo.keys())
+
+        # Create a small circle to hold the pen
+        radius = 0.01
+        self._id += 1
+        self._dict['bodylist'].append(
+            {'userData': {'color': self._get_rgb(),
+                          'saveid': self._id,
+                          'track_index': track_index},
+             'linearVelocity': [0.0, 0.0],
+             'dynamic': self._dynamic,
+             'angularVelocity': 0.0,
+             'shapes': [{'localPosition': [0, 0],
+                         'density': self._density,
+                         'friction': self._friction,
+                         'radius': radius * self._scale / 2.,
+                         'type': 'circle',
+                         'restitution': self._bounce}],
+             'position': [x1 * self._scale, y1 * self._scale],
+             'angle': 0.0})
+
+        # ...and draw it on the Turtle canvas
+        x, y = self._tw.turtles.turtle_to_screen_coordinates(
+            self._tw.turtles.get_active_turtle().get_xy())
+        self._tw.canvas.canvas.set_source_rgb(0.5, 0.5, 0.5)
+        self._tw.canvas.canvas.set_line_width(3.0)
+        self._tw.canvas.canvas.move_to(x1, y1)
+        self._tw.canvas.canvas.line_to(x1 + 1, y1 + 1)
+        self._tw.canvas.canvas.stroke()
+        self._tw.canvas.canvas.set_line_width(
+            self._tw.turtles.get_active_turtle().get_pen_size())
+        self._tw.canvas.inval()
+
+        self._dict['jointlist'].append(
+            {'userData': None,
+             'anchor2': [x1 * self._scale, y1 * self._scale],
+             'anchor1': [x2 * self._scale, y2 * self._scale],
+             'collideConnected': False,
+             'body1': self._id,  # The pen circle
+             'body2': hostid, # The host object
+             'type': 'distance'})
+
+        self._dict['jointlist'][-1]['body2'] = hostid
+        body = self._dict['bodylist'][hostid]['userData']
+        if 'track_indices' in body:
+            body['track_indices'].append(track_index)
+        else:
+            body['track_indices'] = [track_index]
+
+        # Finally, add the pen to the trackinfo dictionary.
+        self._trackinfo['pen%d' % track_index] = [self._id, hostid,
+                                                 body['color'],
+                                                 False, track_index]
+
     def prim_box2d_joint(self, x, y):
         ''' add a joint between two objects '''
         try:
@@ -845,6 +926,8 @@ a Physics activity.'),
 
     def prim_save_box2d(self, name):
         ''' Save bodylist to a Physics project '''
+        self._dict['additional_vars']['trackinfo'] = self._trackinfo
+        self._dict['additional_vars']['full_pos_list'] = []
         data = json_dump(self._dict)
         if not self._tw.running_sugar:
             print data
