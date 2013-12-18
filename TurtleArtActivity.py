@@ -98,6 +98,7 @@ class TurtleArtActivity(activity.Activity):
 
         self.tw = None
         self.init_complete = False
+        self._selected_challenge = None
 
         self._stop_help = False
 
@@ -167,17 +168,15 @@ class TurtleArtActivity(activity.Activity):
                 self.tw.coord_scale = 0
                 self.do_rescale_cb(None)
 
-        self._selected_sample = None
-        self._sample_window = None
-
         self.init_complete = True
 
         if not hasattr(self, '_offsets'):
             self._offsets = {}
-        if not hasattr(self, '_selected_challenge'):
+        if not hasattr(self, '_selected_challenge') or \
+           self._selected_challenge is None:
             self._offsets = {'confusion-01': [0, 0, 33]}
             self._selected_challenge = os.path.join(activity.get_bundle_path(),
-                                                    'challenges',
+                                                    'samples', 'thumbnails',
                                                     'confusion-01.svg')
         self._challenge_box = None
         self._challenge_window = None
@@ -311,7 +310,6 @@ class TurtleArtActivity(activity.Activity):
         ''' Load a project from the Journal. '''
         self._create_new = new
         if hasattr(self, 'get_window'):
-            _logger.debug('setting watch cursor')
             if hasattr(self.get_window(), 'get_cursor'):
                 self._old_cursor = self.get_window().get_cursor()
                 self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.WATCH))
@@ -547,13 +545,11 @@ class TurtleArtActivity(activity.Activity):
     def do_samples_cb(self, button):
         ''' Sample-projects open dialog '''
         if hasattr(self, 'get_window'):
-            _logger.debug('setting watch cursor')
             if hasattr(self.get_window(), 'get_cursor'):
                 self._old_cursor = self.get_window().get_cursor()
             self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.WATCH))
         self.tw.load_file_from_chooser(True)
         # Now that the file is loaded, restore the cursor
-        _logger.debug('restoring cursor')
         self.restore_cursor()
 
     def adjust_sw(self, dx, dy):
@@ -1340,7 +1336,6 @@ class TurtleArtActivity(activity.Activity):
         # Try restoring an existing project...
         if self._jobject and self._jobject.file_path:
             if hasattr(self, 'get_window'):
-                _logger.debug('setting watch cursor')
                 if hasattr(self.get_window(), 'get_cursor'):
                     self._old_cursor = self.get_window().get_cursor()
                     self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.WATCH))
@@ -1697,7 +1692,6 @@ class TurtleArtActivity(activity.Activity):
         return button
 
     def _load_level(self, custom=False):
-        logging.error('LOAD LEVEL')
         self.tw.canvas.clearscreen()
         self._draw_cartoon()
         if custom:
@@ -1705,7 +1699,8 @@ class TurtleArtActivity(activity.Activity):
             self.tw.lc.insert_image(center=True,
                                     filepath=self._custom_filepath,
                                     resize=True, offset=False)
-        else:
+        elif self._selected_challenge is not None:
+            _logger.debug(self._selected_challenge)
             basename = os.path.basename(self._selected_challenge)[:-4]
             if basename in self._offsets:
                 offset = [self._offsets[basename][0] - 3,
@@ -1714,7 +1709,6 @@ class TurtleArtActivity(activity.Activity):
             else:
                 offset = [-3, -3]
                 scale = 33
-            _logger.debug('%d, %d, %d' % (offset[0], offset[1], scale))
             save_scale = self.tw.lc.scale
             self.tw.turtles.get_active_turtle().set_xy(offset[0],
                                                        offset[1],
