@@ -5,6 +5,7 @@ ENHANCEMENTS:
 
 BUG FIX:
 * Added missing parens for some binary operations in Python export
+* Fixed positioning of help messages (#4679)
 
 194
 
