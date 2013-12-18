@@ -432,8 +432,6 @@ return %s(self)" % (p, P, P)
         self._custom_filepath = None
         MenuBuilder.make_menu_item(menu, _('Show challenges'),
                                    self._create_store)
-        MenuBuilder.make_menu_item(menu, _('Hide challenges'),
-                                   self._hide_store) 
         challenges_menu = MenuBuilder.make_sub_menu(menu, _('Challenges'))
 
         menu = gtk.Menu()
@@ -678,17 +676,18 @@ Would you like to save before quitting?'))
     def _draw_cartoon(self):
         pos = self.tw.turtles.get_active_turtle().get_xy()
         self.tw.turtles.get_active_turtle().set_xy(
-            (int(-gtk.gdk.screen_width() / 2), 0), pendown=False)
+            int(-gtk.gdk.screen_width() / 2), 0, pendown=False)
         self.tw.lc.insert_image(center=False, resize=False,
                                 filepath=os.path.join(
                 self._get_execution_dir(), 'images', 'turtle-a.png'))
-        self.tw.turtles.get_active_turtle().set_xy(pos, pendown=False)
+        self.tw.turtles.get_active_turtle().set_xy(pos[0], pos[1],
+                                                   pendown=False)
 
     def _load_level(self, custom=False):
         self.tw.canvas.clearscreen()
         self._draw_cartoon()
         if custom:
-            self.tw.turtles.get_active_turtle().set_xy((0, 0), pendown=False)
+            self.tw.turtles.get_active_turtle().set_xy(0, 0, pendown=False)
             self.tw.lc.insert_image(center=True,
                                     filepath=self._custom_filepath,
                                     resize=True, offset=False)
@@ -702,7 +701,9 @@ Would you like to save before quitting?'))
                 offset = [-3, -33]
                 scale = 33
             save_scale = self.tw.lc.scale
-            self.tw.turtles.get_active_turtle().set_xy((offset), pendown=False)
+            self.tw.turtles.get_active_turtle().set_xy(offset[0],
+                                                       offset[1],
+                                                       pendown=False)
 
             self.tw.lc.scale = scale
             self.tw.lc.insert_image(center=False,
@@ -710,7 +711,7 @@ Would you like to save before quitting?'))
                                     resize=False,
                                     offset=True)
             self.tw.lc.scale = save_scale
-        self.tw.turtles.get_active_turtle().set_xy((0, 0), pendown=False)
+        self.tw.turtles.get_active_turtle().set_xy(0, 0, pendown=False)
 
     def _do_copy_cb(self, button):
         ''' Callback for copy button. '''
@@ -794,7 +795,7 @@ Would you like to save before quitting?'))
         else:
             return os.path.abspath(dirname)
 
-    def _hide_store(self, widget=None):
+    def hide_store(self, widget=None):
         if self._challenge_window is not None:
             self._challenge_box.hide()
 
@@ -883,7 +884,7 @@ Would you like to save before quitting?'))
 
     def _scan_for_challenges(self):
         file_list = list(glob.glob(os.path.join(self._get_execution_dir(),
-                                           'challenges', '*.svg')))
+                                           'samples', 'thumbnails', '*.svg')))
         file_list.sort()
         return file_list
 
