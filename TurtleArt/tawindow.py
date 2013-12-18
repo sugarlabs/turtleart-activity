@@ -4622,7 +4622,8 @@ before making changes to your program'))
                      self.height - offset_from_bottom +
                      self.activity.sw.get_vadjustment().get_value()))
             elif self.interactive_mode:
-                self.status_spr.move((0, self.height - 140))
+                self.status_spr.move(
+                    (0, self.activity.win.get_window().get_size()[1] - 80))
 
     def calc_position(self, template):
         ''' Relative placement of portfolio objects (deprecated) '''
