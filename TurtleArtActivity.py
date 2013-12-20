@@ -895,7 +895,7 @@ class TurtleArtActivity(activity.Activity):
         add_paragraph(help_box, _('Save as Logo'), icon='logo-saveoff')
         add_paragraph(help_box, _('Save as Python'), icon='python-saveoff')
         add_paragraph(help_box, _('Save snapshot'), icon='filesaveoff')
-        add_paragraph(help_box, _('Load project'), icon='load-from-journal')
+        add_paragraph(help_box, _('Add project'), icon='load-from-journal')
         home = os.environ['HOME']
         if activity.get_bundle_path()[0:len(home)] == home:
             add_paragraph(help_box, _('Load plugin'), icon='pluginoff')
@@ -1108,7 +1108,7 @@ class TurtleArtActivity(activity.Activity):
                 'load-from-journal', _('Open'),
                 self.do_load_ta_project_cb, True, button_box)
             self.load_ta_project, label = self._add_button_and_label(
-                'load-from-journal', _('Load project'),
+                'load-from-journal', _('Add project'),
                 self.do_load_ta_project_cb, False, button_box)
             # Only enable plugin loading if installed in $HOME
             if activity.get_bundle_path()[0:len(home)] == home:
