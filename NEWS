@@ -3,6 +3,7 @@
 ENHANCEMENTS:
 * New translations
 * Add pen to Physics palette
+* Add sample project from Physics palette
 
 BUG FIX:
 * Added missing parens for some binary operations in Python export
