@@ -4642,6 +4642,47 @@ before making changes to your program'))
         save_picture(self.canvas, image_file)
         return ta_file, image_file
 
+    def save_as_icon(self, name=''):
+        from sugariconify import SugarIconify
+
+        icon = SugarIconify()
+        path = self.canvas.get_square_svg_path()
+        self.square_svg(path)
+
+        lst_path = path.split('/')
+        icon.set_use_default_colors(True)
+        output_path = '/'.join(lst_path[:-1])
+
+        icon.set_output_path(output_path)
+        icon.iconify(path)
+
+        file_name_lst = lst_path[-1].split('.')
+        file_name = '.'.join(file_name_lst[:-1]) + '.sugar.svg'
+        lst_path[-1] = file_name
+        path = '/'.join(lst_path)
+
+        if self.running_sugar:
+            from sugar.datastore import datastore
+            from sugar import profile
+
+            dsobject = datastore.create()
+            if len(name) == 0:
+                dsobject.metadata['title'] = '%s %s' % \
+                    (self.activity.metadata['title'], _('icon'))
+            else:
+                dsobject.metadata['title'] = name
+            dsobject.metadata['icon-color'] = profile.get_color().to_string()
+            dsobject.metadata['mime_type'] = 'image/svg+xml'
+            dsobject.set_file_path(path)
+            datastore.write(dsobject)
+            dsobject.destroy()
+            self.saved_pictures.append((dsobject.object_id, True))
+            os.remove(path)
+
+    def write_svg_operation(self):
+        self.canvas.svg_close()
+        self.canvas.svg_reset()
+
     def save_as_image(self, name='', svg=False):
         ''' Grab the current canvas and save it. '''
         if svg:
