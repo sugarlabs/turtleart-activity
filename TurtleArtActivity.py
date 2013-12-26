@@ -906,6 +906,7 @@ class TurtleArtActivity(activity.Activity):
         add_paragraph(help_box, _('Share selected blocks'), icon='shareon')
         add_paragraph(help_box, _('Save/Load'), icon='save-load')
         add_paragraph(help_box, _('Save as image'), icon='image-saveoff')
+        add_paragraph(help_box, _('Save as icon'), icon='image-saveoff')
         add_paragraph(help_box, _('Save as Logo'), icon='logo-saveoff')
         add_paragraph(help_box, _('Save as Python'), icon='python-saveoff')
         add_paragraph(help_box, _('Save snapshot'), icon='filesaveoff')
@@ -1090,6 +1091,9 @@ class TurtleArtActivity(activity.Activity):
             self.save_as_image, label = self._add_button_and_label(
                 'image-saveoff', _('Save as image'), self.do_save_as_image_cb,
                 None, button_box)
+            self.save_as_icon = self._add_button_and_label(
+                'image-saveoff', _('Save as icon'), self.do_save_as_icon_cb,
+                None, button_box)
             self.save_as_logo, label = self._add_button_and_label(
                 'logo-saveoff', _('Save as Logo'), self.do_save_as_logo_cb,
                 None, button_box)
@@ -1099,9 +1103,6 @@ class TurtleArtActivity(activity.Activity):
                 None, button_box)
             self.keep_button2, self.keep_label2 = self._add_button_and_label(
                 'filesaveoff', _('Save snapshot'), self.do_keep_cb,
-                None, button_box)
-            self.save_as_icon = self._add_button_and_label(
-                'image-saveoff', _('Save as sugar icon'), self.do_save_as_icon_cb,
                 None, button_box)
 
             load_button = self._add_button(
@@ -1141,6 +1142,9 @@ class TurtleArtActivity(activity.Activity):
             self.save_as_image = self._add_button(
                 'image-saveoff', _('Save as image'), self.do_save_as_image_cb,
                 toolbar)
+            self.save_as_icon = self._add_button(
+                'image-saveoff', _('Save as icon'), self.do_save_as_icon_cb,
+                toolbar)
             self.save_as_logo = self._add_button(
                 'logo-saveoff', _('Save as Logo'), self.do_save_as_logo_cb,
                 toolbar)
@@ -1150,9 +1154,6 @@ class TurtleArtActivity(activity.Activity):
                 toolbar)
             self.keep_button = self._add_button(
                 'filesaveoff', _('Save snapshot'), self.do_keep_cb, toolbar)
-            self.save_as_icon = self._add_button(
-                'image-saveoff', _('Save as sugar icon'), self.do_save_as_icon_cb,
-                toolbar)
             self.load_ta_project = self._add_button(
                 'load-from-journal', _('Add project'),
                 self.do_load_ta_project_cb, toolbar)

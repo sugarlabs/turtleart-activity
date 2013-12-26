@@ -4650,25 +4650,22 @@ before making changes to your program'))
         return ta_file, image_file
 
     def save_as_icon(self, name=''):
-        from sugariconify import SugarIconify
+        from util.sugariconify import SugarIconify
+
+        path = self.canvas.get_svg_path()
+        self._ensure_square_svg(path)  # icons are square
+
+        output_dir, basename = os.path.split(path)
 
         icon = SugarIconify()
-        path = self.canvas.get_square_svg_path()
-        self.square_svg(path)
-
-        lst_path = path.split('/')
         icon.set_use_default_colors(True)
-        output_path = '/'.join(lst_path[:-1])
-
-        icon.set_output_path(output_path)
+        icon.set_output_path(output_dir)
         icon.set_stroke_color('rgb(0%,0%,0%)')
         icon.set_fill_color('rgb(99.215686%,99.215686%,99.215686%)')
         icon.iconify(path)
 
-        file_name_lst = lst_path[-1].split('.')
-        file_name = '.'.join(file_name_lst[:-1]) + '.sugar.svg'
-        lst_path[-1] = file_name
-        path = '/'.join(lst_path)
+        # replace .svg with .sugar.svg
+        sugarized_path = os.path.join(output_dir, basename[:-4] + '.sugar.svg')
 
         if self.running_sugar:
             from sugar.datastore import datastore
@@ -4682,36 +4679,58 @@ before making changes to your program'))
                 dsobject.metadata['title'] = name
             dsobject.metadata['icon-color'] = profile.get_color().to_string()
             dsobject.metadata['mime_type'] = 'image/svg+xml'
-            dsobject.set_file_path(path)
+            dsobject.set_file_path(sugarized_path)
             datastore.write(dsobject)
             dsobject.destroy()
             self.saved_pictures.append((dsobject.object_id, True))
-            os.remove(path)
+            os.remove(sugarized_path)
+        else:
+            if svg:
+                if len(name) == 0:
+                    name = 'turtleblocks-icon.svg'
+                if self.save_folder is not None:
+                    self.load_save_folder = self.save_folder
+                    name, self.load_save_folder = get_save_name(
+                        '.svg', self.load_save_folder, name)
+                    datapath = self.load_save_folder
+                else:
+                    datapath = os.getcwd()
+                    if '.svg' not in name:
+                        name = name + '.svg'
+                subprocess.check_output(
+                    ['cp', TMP_SVG_PATH, os.path.join(datapath, name)])
 
     def write_svg_operation(self):
         self.canvas.svg_close()
         self.canvas.svg_reset()
 
-    def square_svg(self, path):
+    def _ensure_square_svg(self, path):
         from xml.dom import minidom
+
         fil = open(path, 'r')
         svg_text = fil.read()
         fil.close()
+
         svg_xml = minidom.parseString(svg_text)
         svg_element = svg_xml.getElementsByTagName('svg')[0]
+
         width = int(svg_element.getAttribute('width')[:-2])
         height = int(svg_element.getAttribute('height')[:-2])
-        size = 0
+        size = min(width, height)
 
-        if height > width:
-            size = width
-        else:
-            size = height
         svg_element.setAttribute('width', str(size) + 'pt')
         svg_element.setAttribute('height', str(size) + 'pt')
-        view_box = str(int(size/2)) + ' 0 ' + str(size) + ' ' + str(size)
+
+        if width > height:
+            dx = int((width - size) / 2)
+            view_box = '%d 0 %d %d' % (dx, size, size)
+        else:
+            dy = int((height - size) / 2)
+            view_box = '0 %d %d %d' % (dy, size, size)
+
         svg_element.setAttribute('viewBox', view_box)
         svg_text = svg_xml.toxml()
+
         fil = open(path, 'w+')
         fil.write(svg_text)
         fil.close()

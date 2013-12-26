@@ -121,22 +121,23 @@ class TurtleGraphics:
 
     def setup_svg_surface(self):
         ''' Set up a surface for saving to SVG '''
-        if self.turtle_window.running_sugar:
-            svg_surface = cairo.SVGSurface(
-                os.path.join(get_path(self.turtle_window.activity, 'instance'),
-                             'output.svg'), self.width, self.height)
-        else:
-            svg_surface = cairo.SVGSurface(
-                TMP_SVG_PATH, self.width, self.height)
+        svg_surface = cairo.SVGSurface(self.get_svg_path(),
+                                       self.width, self.height)
         self.svg_surface = svg_surface
         self.cr_svg = cairo.Context(svg_surface)
         self.cr_svg.set_line_cap(1)  # Set the line cap to be round
 
-    def get_square_svg_path(self):
-        return os.path.join(get_path(self.turtle_window.activity, 'instance'),
-                             'output.svg')
+    def get_svg_path(self):
+        '''We use a separate file for the svg used for generating Sugar icons
+        '''
+        if self.turtle_window.running_sugar:
+            return os.path.join(get_path(self.turtle_window.activity,
+                                         'instance'), 'output.svg')
+        else:
+            return TMP_SVG_PATH
 
     def fill_polygon(self, poly_points):
+
         ''' Draw the polygon... '''
         def _fill_polygon(cr, poly_points):
             cr.new_path()
