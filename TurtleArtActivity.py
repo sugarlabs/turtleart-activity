@@ -335,6 +335,20 @@ class TurtleArtActivity(activity.Activity):
         self.tw.load_python_code_from_file(fname=None, add_new_block=True)
         gobject.timeout_add(250, self.load_python.set_icon, 'pippy-openoff')
 
+    def do_save_as_icon_cb(self, button):
+        _logger.debug('saving icon to journal')
+        if hasattr(self, 'get_window'):
+            if hasattr(self.get_window(), 'get_cursor'):
+                self._old_cursor = self.get_window().get_cursor()
+                self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.WATCH))
+        gobject.timeout_add(250, self.__save_as_icon)
+
+    def __save_as_icon(self):
+        self.tw.write_svg_operation()
+        self.tw.save_as_icon()
+        if hasattr(self, 'get_window'):
+            self.get_window().set_cursor(self._old_cursor)
+
     def do_save_as_image_cb(self, button):
         ''' Save the canvas to the Journal. '''
         self.save_as_image.set_icon('image-saveon')
@@ -1086,6 +1100,9 @@ class TurtleArtActivity(activity.Activity):
             self.keep_button2, self.keep_label2 = self._add_button_and_label(
                 'filesaveoff', _('Save snapshot'), self.do_keep_cb,
                 None, button_box)
+            self.save_as_icon = self._add_button_and_label(
+                'image-saveoff', _('Save as sugar icon'), self.do_save_as_icon_cb,
+                None, button_box)
 
             load_button = self._add_button(
                 'load', _('Load'), self._save_load_palette_cb,
@@ -1133,6 +1150,9 @@ class TurtleArtActivity(activity.Activity):
                 toolbar)
             self.keep_button = self._add_button(
                 'filesaveoff', _('Save snapshot'), self.do_keep_cb, toolbar)
+            self.save_as_icon = self._add_button(
+                'image-saveoff', _('Save as sugar icon'), self.do_save_as_icon_cb,
+                toolbar)
             self.load_ta_project = self._add_button(
                 'load-from-journal', _('Add project'),
                 self.do_load_ta_project_cb, toolbar)
