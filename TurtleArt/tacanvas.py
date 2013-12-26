@@ -128,13 +128,8 @@ class TurtleGraphics:
         else:
             svg_surface = cairo.SVGSurface(
                 TMP_SVG_PATH, self.width, self.height)
-        self.svg_surface = svg_surface
         self.cr_svg = cairo.Context(svg_surface)
         self.cr_svg.set_line_cap(1)  # Set the line cap to be round
-
-    def get_square_svg_path(self):
-        return os.path.join(get_path(self.turtle_window.activity, 'instance'),
-                             'output.svg')
 
     def fill_polygon(self, poly_points):
         ''' Draw the polygon... '''
@@ -421,8 +416,6 @@ class TurtleGraphics:
     def svg_close(self):
         ''' Close current SVG graphic '''
         self.cr_svg.show_page()
-        self.svg_surface.flush()
-        self.svg_surface.finish()
 
     def svg_reset(self):
         ''' Reset svg flags '''
