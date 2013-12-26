@@ -4642,6 +4642,73 @@ before making changes to your program'))
         save_picture(self.canvas, image_file)
         return ta_file, image_file
 
+    def save_as_icon(self, name=''):
+        from sugariconify import SugarIconify
+
+        icon = SugarIconify()
+        path = self.canvas.get_square_svg_path()
+        self.square_svg(path)
+
+        lst_path = path.split('/')
+        icon.set_use_default_colors(True)
+        output_path = '/'.join(lst_path[:-1])
+
+        icon.set_output_path(output_path)
+        icon.set_stroke_color('rgb(0%,0%,0%)')
+        icon.set_fill_color('rgb(99.215686%,99.215686%,99.215686%)')
+        icon.iconify(path)
+
+        file_name_lst = lst_path[-1].split('.')
+        file_name = '.'.join(file_name_lst[:-1]) + '.sugar.svg'
+        lst_path[-1] = file_name
+        path = '/'.join(lst_path)
+
+        if self.running_sugar:
+            from sugar.datastore import datastore
+            from sugar import profile
+
+            dsobject = datastore.create()
+            if len(name) == 0:
+                dsobject.metadata['title'] = '%s %s' % \
+                    (self.activity.metadata['title'], _('icon'))
+            else:
+                dsobject.metadata['title'] = name
+            dsobject.metadata['icon-color'] = profile.get_color().to_string()
+            dsobject.metadata['mime_type'] = 'image/svg+xml'
+            dsobject.set_file_path(path)
+            datastore.write(dsobject)
+            dsobject.destroy()
+            self.saved_pictures.append((dsobject.object_id, True))
+            os.remove(path)
+
+    def write_svg_operation(self):
+        self.canvas.svg_close()
+        self.canvas.svg_reset()
+
+    def square_svg(self, path):
+        from xml.dom import minidom
+        fil = open(path, 'r')
+        svg_text = fil.read()
+        fil.close()
+        svg_xml = minidom.parseString(svg_text)
+        svg_element = svg_xml.getElementsByTagName('svg')[0]
+        width = int(svg_element.getAttribute('width')[:-2])
+        height = int(svg_element.getAttribute('height')[:-2])
+        size = 0
+
+        if height > width:
+            size = width
+        else:
+            size = height
+        svg_element.setAttribute('width', str(size) + 'pt')
+        svg_element.setAttribute('height', str(size) + 'pt')
+        view_box = str(int(size/2)) + ' 0 ' + str(size) + ' ' + str(size)
+        svg_element.setAttribute('viewBox', view_box)
+        svg_text = svg_xml.toxml()
+        fil = open(path, 'w+')
+        fil.write(svg_text)
+        fil.close()
+
     def save_as_image(self, name='', svg=False):
         ''' Grab the current canvas and save it. '''
         if svg:
