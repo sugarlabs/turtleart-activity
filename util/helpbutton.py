@@ -115,3 +115,5 @@ def add_paragraph(help_box, text, icon=None):
 
     hbox.show_all()
     help_box.pack_start(hbox, False, False, padding=5)
+
+    return hbox

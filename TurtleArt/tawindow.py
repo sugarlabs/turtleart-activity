@@ -4667,6 +4667,9 @@ before making changes to your program'))
         else:
             for ds_id in self.saved_pictures:
                 path_list.append(ds_id[0])
+        if len(path_list) < 1:
+            debug_output('nothing to save to ODP', self.running_sugar)
+            return
 
         pres = TurtleODP()
         pres.create_presentation(TMP_ODP_PATH, 1024, 768)
