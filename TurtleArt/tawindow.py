@@ -58,8 +58,8 @@ from taconstants import (HORIZONTAL_PALETTE, VERTICAL_PALETTE, BLOCK_SCALE,
                          PYTHON_SKIN, PALETTE_HEIGHT, STATUS_LAYER, OLD_DOCK,
                          EXPANDABLE_ARGS, XO1, XO15, XO175, XO30, XO4, TITLEXY,
                          CONTENT_ARGS, CONSTANTS, EXPAND_SKIN, PROTO_LAYER,
-                         EXPANDABLE_FLOW, SUFFIX, TMP_SVG_PATH, Color,
-                         KEY_DICT)
+                         EXPANDABLE_FLOW, SUFFIX, TMP_SVG_PATH, TMP_ODP_PATH,
+                         Color, KEY_DICT)
 from tapalette import (palette_names, palette_blocks, expandable_blocks,
                        block_names, content_blocks, default_values,
                        special_names, block_styles, help_strings,
@@ -163,7 +163,7 @@ class TurtleArtWindow():
         self.used_block_list = []  # Which blocks has the user used?
         self.save_folder = None
         self.save_file_name = None
-        
+
         # dimensions
         self.width = gtk.gdk.screen_width()
         self.height = gtk.gdk.screen_height()
@@ -529,7 +529,8 @@ class TurtleArtWindow():
                 self.activity._unfullscreen_button_timeout_id = None
 
             self.activity._unfullscreen_button_timeout_id = \
-                gobject.timeout_add_seconds(_UNFULLSCREEN_VISIBILITY_TIMEOUT,
+                gobject.timeout_add_seconds(
+                    _UNFULLSCREEN_VISIBILITY_TIMEOUT,
                     self.__unfullscreen_button_timeout_cb)
 
     def __unfullscreen_button_timeout_cb(self):
@@ -625,7 +626,7 @@ class TurtleArtWindow():
         # 200 pixels in the graphic == height / 4. (10 units)
         pixbuf = svg_str_to_pixbuf(
             svg_from_file('%s/images/%s.svg' % (self.path, 'Cartesian')))
-        
+
         if self.running_sugar:
             scale = self.height / 800.
         else:
@@ -1653,8 +1654,8 @@ before making changes to your program'))
                             else:
                                 self._put_in_trash(find_top_block(b))
                     if 'trash' in palette_names:
-                       self.show_toolbar_palette(
-                           palette_names.index('trash'), regenerate=True)
+                        self.show_toolbar_palette(
+                            palette_names.index('trash'), regenerate=True)
                 elif blk.name in MACROS:
                     self.new_macro(blk.name, x + 20, y + 20)
                 else:
@@ -3549,11 +3550,11 @@ before making changes to your program'))
                     dy = 0
         else:
             while gblk is not None:
-                delta = int((gblk.docks[-1][3] - gblk.docks[0][3]) / gblk.scale)
-                if delta == 0:
+                d = int((gblk.docks[-1][3] - gblk.docks[0][3]) / gblk.scale)
+                if d == 0:
                     dy += 21  # Fixme: don't hardcode size of slot
                 else:
-                    dy += delta
+                    dy += d
                 gblk = gblk.connections[-1]
             # Clamp has room for one 'standard' block by default
             if dy > 0:
@@ -4575,6 +4576,10 @@ before making changes to your program'))
 
     def showlabel(self, shp, label=''):
         ''' Display a message on a status block '''
+        '''dialog = Gtk.MessageDialog(None, 0, Gtk.MessageType.INFO,
+            Gtk.ButtonsType.OK, "This is an INFO MessageDialog")
+        dialog.run()
+        dialog.destroy()'''
         if not self.interactive_mode:
             debug_output(label, self.running_sugar)
             return
@@ -4649,6 +4654,56 @@ before making changes to your program'))
         save_picture(self.canvas, image_file)
         return ta_file, image_file
 
+    def save_as_odp(self, name=''):
+        from util.odp import TurtleODP
+
+        path_list = []
+        if self.running_sugar:
+            from sugar.datastore import datastore
+            from sugar import profile
+            for ds_id in self.saved_pictures:
+                dsobj = datastore.get(ds_id[0])
+                path_list.append(dsobj.file_path)
+        else:
+            for ds_id in self.saved_pictures:
+                path_list.append(ds_id[0])
+
+        pres = TurtleODP()
+        pres.create_presentation(TMP_ODP_PATH, 1024, 768)
+        for file_path in path_list:
+            print file_path
+            pres.add_image(file_path)
+        pres.save_presentation()
+
+        if self.running_sugar:
+            dsobject = datastore.create()
+            if len(name) == 0:
+                dsobject.metadata['title'] = '%s.odp' % \
+                    (self.activity.metadata['title'])
+            else:
+                dsobject.metadata['title'] = name
+            dsobject.metadata['icon-color'] = profile.get_color().to_string()
+            dsobject.metadata['mime_type'] = \
+                'application/vnd.oasis.opendocument.presentation'
+            dsobject.set_file_path(TMP_ODP_PATH)
+            datastore.write(dsobject)
+            dsobject.destroy()
+            os.remove(TMP_ODP_PATH)
+        else:
+            if len(name) == 0:
+                name = 'turtleblocks.odp'
+            if self.save_folder is not None:
+                self.load_save_folder = self.save_folder
+                name, self.load_save_folder = get_save_name(
+                    '.odp', self.load_save_folder, name)
+                datapath = self.load_save_folder
+            else:
+                datapath = os.getcwd()
+                if '.odp' not in name:
+                    name = name + '.odp'
+            subprocess.check_output(
+                ['cp', TMP_ODP_PATH, os.path.join(datapath, name)])
+
     def save_as_icon(self, name=''):
         from util.sugariconify import SugarIconify
 
@@ -4685,20 +4740,19 @@ before making changes to your program'))
             self.saved_pictures.append((dsobject.object_id, True))
             os.remove(sugarized_path)
         else:
-            if svg:
-                if len(name) == 0:
-                    name = 'turtleblocks-icon.svg'
-                if self.save_folder is not None:
-                    self.load_save_folder = self.save_folder
-                    name, self.load_save_folder = get_save_name(
-                        '.svg', self.load_save_folder, name)
-                    datapath = self.load_save_folder
-                else:
-                    datapath = os.getcwd()
-                    if '.svg' not in name:
-                        name = name + '.svg'
-                subprocess.check_output(
-                    ['cp', TMP_SVG_PATH, os.path.join(datapath, name)])
+            if len(name) == 0:
+                name = 'turtleblocks-icon.svg'
+            if self.save_folder is not None:
+                self.load_save_folder = self.save_folder
+                name, self.load_save_folder = get_save_name(
+                    '.svg', self.load_save_folder, name)
+                datapath = self.load_save_folder
+            else:
+                datapath = os.getcwd()
+                if '.svg' not in name:
+                    name = name + '.svg'
+            subprocess.check_output(
+                ['cp', TMP_SVG_PATH, os.path.join(datapath, name)])
 
     def write_svg_operation(self):
         self.canvas.svg_close()

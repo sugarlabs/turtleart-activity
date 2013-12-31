@@ -335,6 +335,21 @@ class TurtleArtActivity(activity.Activity):
         self.tw.load_python_code_from_file(fname=None, add_new_block=True)
         gobject.timeout_add(250, self.load_python.set_icon, 'pippy-openoff')
 
+    def do_save_as_odp_cb(self, button):
+        self.save_as_icon.set_icon('odp-saveon')
+        _logger.debug('saving odp to journal')
+        if hasattr(self, 'get_window'):
+            if hasattr(self.get_window(), 'get_cursor'):
+                self._old_cursor = self.get_window().get_cursor()
+                self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.WATCH))
+        gobject.timeout_add(250, self.__save_as_odp)
+
+    def __save_as_odp(self):
+        self.tw.save_as_odp()
+        self.save_as_icon.set_icon('odp-saveoff')
+        if hasattr(self, 'get_window'):
+            self.get_window().set_cursor(self._old_cursor)
+
     def do_save_as_icon_cb(self, button):
         _logger.debug('saving icon to journal')
         if hasattr(self, 'get_window'):
@@ -397,7 +412,8 @@ class TurtleArtActivity(activity.Activity):
         if self.tw.palette:
             self.tw.hideshow_palette(False)
             self.do_hidepalette()
-            if not self.has_toolbarbox and self.tw.selected_palette is not None:
+            if not self.has_toolbarbox and \
+               self.tw.selected_palette is not None:
                 self.palette_buttons[self.tw.selected_palette].set_icon(
                     palette_names[self.tw.selected_palette] + 'off')
         else:
@@ -907,6 +923,8 @@ class TurtleArtActivity(activity.Activity):
         add_paragraph(help_box, _('Save/Load'), icon='save-load')
         add_paragraph(help_box, _('Save as image'), icon='image-saveoff')
         add_paragraph(help_box, _('Save as icon'), icon='image-saveoff')
+        # TRANS: ODP is Open Office presentation
+        add_paragraph(help_box, _('Save as ODP'), icon='odp-saveoff')
         add_paragraph(help_box, _('Save as Logo'), icon='logo-saveoff')
         add_paragraph(help_box, _('Save as Python'), icon='python-saveoff')
         add_paragraph(help_box, _('Save snapshot'), icon='filesaveoff')
@@ -1094,6 +1112,10 @@ class TurtleArtActivity(activity.Activity):
             self.save_as_icon = self._add_button_and_label(
                 'image-saveoff', _('Save as icon'), self.do_save_as_icon_cb,
                 None, button_box)
+            # TRANS: ODP is Open Office presentation
+            self.save_as_odp = self._add_button_and_label(
+                'odp-saveoff', _('Save as ODP'), self.do_save_as_odp_cb,
+                None, button_box)
             self.save_as_logo, label = self._add_button_and_label(
                 'logo-saveoff', _('Save as Logo'), self.do_save_as_logo_cb,
                 None, button_box)
@@ -1145,6 +1167,10 @@ class TurtleArtActivity(activity.Activity):
             self.save_as_icon = self._add_button(
                 'image-saveoff', _('Save as icon'), self.do_save_as_icon_cb,
                 toolbar)
+            # TRANS: ODP is Open Office presentation
+            self.save_as_odp = self._add_button(
+                'odp-saveoff', _('Save as ODP'), self.do_save_as_odp_cb,
+                toolbar)
             self.save_as_logo = self._add_button(
                 'logo-saveoff', _('Save as Logo'), self.do_save_as_logo_cb,
                 toolbar)
@@ -1157,6 +1183,7 @@ class TurtleArtActivity(activity.Activity):
             self.load_ta_project = self._add_button(
                 'load-from-journal', _('Add project'),
                 self.do_load_ta_project_cb, toolbar)
+
             # Only enable plugin loading if installed in $HOME
             if activity.get_bundle_path()[0:len(home)] == home:
                 self.load_ta_plugin = self._add_button(
@@ -1771,4 +1798,3 @@ class TurtleArtActivity(activity.Activity):
         elif self.activity_toolbar_button.is_expanded():
             return True
         return False
-

@@ -312,9 +312,11 @@ class TurtleGraphics:
 
         def _draw_text(cr, label, x, y, size, width, scale, heading, rgb):
             import textwrap
+
             final_scale = int(size * scale) * pango.SCALE
             label = str(label)
             label = '\n'.join(textwrap.wrap(label, int(width / scale)))
+
             cc = pangocairo.CairoContext(cr)
             pl = cc.create_layout()
             fd = pango.FontDescription('Sans')

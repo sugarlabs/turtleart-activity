@@ -78,6 +78,7 @@ XO30 = 'xo3.0'
 XO4 = 'xo4'
 UNKNOWN = 'unknown'
 TMP_SVG_PATH = '/tmp/turtle_output.svg'
+TMP_ODP_PATH = '/tmp/turtle_presentation'
 
 ARG_MUST_BE_NUMBER = ['product2', 'minus2', 'random', 'remainder2', 'forward',
                       'back', 'left', 'right', 'arc', 'setxy2', 'setxy',
