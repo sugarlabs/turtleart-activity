@@ -5,8 +5,10 @@ ENHANCEMENTS:
 * Export project as Sugar icon (Jorge Alberto Gómez López)
 * Export project as ODP (Jorge Alberto Gómez López)
 
-BUG FIX:
+BUG FIXES:
 * Make save_as_icon button insensitive when no svg output
+  available (Ignacio Rodriguez)
+* Make save_as_ODP button insensitive when no saved pictures
   available (Ignacio Rodriguez)
 
 195
