@@ -920,12 +920,18 @@ class TurtleArtActivity(activity.Activity):
         add_paragraph(help_box, _('Share selected blocks'), icon='shareon')
         add_paragraph(help_box, _('Save/Load'), icon='save-load')
         add_paragraph(help_box, _('Save as image'), icon='image-saveoff')
+
         self.save_as_icon = add_paragraph(
             help_box, _('Save as icon'), icon='image-saveoff')
         self.save_as_icon.connect(
             'expose-event', self._save_as_icon_expose_cb)
+
         # TRANS: ODP is Open Office presentation
-        add_paragraph(help_box, _('Save as ODP'), icon='odp-saveoff')
+        self.save_as_odp = add_paragraph(help_box, _('Save as ODP'),
+            icon='odp-saveoff')
+        self.save_as_odp.connect('expose-event',
+            self._save_as_odp_expose_cb)
+
         add_paragraph(help_box, _('Save as Logo'), icon='logo-saveoff')
         add_paragraph(help_box, _('Save as Python'), icon='python-saveoff')
         add_paragraph(help_box, _('Save snapshot'), icon='filesaveoff')
@@ -984,6 +990,10 @@ class TurtleArtActivity(activity.Activity):
     def _save_as_icon_expose_cb(self, box, context):
         for widget in box.get_children():
             widget.set_sensitive(self.tw.canvas.cr_svg is not None)
+
+    def _save_as_odp_expose_cb(self, box, context):
+        for widget in box.get_children():
+            widget.set_sensitive(len(self.tw.saved_pictures) > 0)
 
     def _setup_palette_toolbar(self):
         ''' The palette toolbar must be setup *after* plugins are loaded. '''
@@ -1123,6 +1133,10 @@ class TurtleArtActivity(activity.Activity):
                 None, button_box)
             self.save_as_icon[0].get_parent().connect('expose-event',
                 self._save_as_icon_expose_cb)
+
+            self.save_as_odp[0].get_parent().connect('expose-event',
+                self._save_as_odp_expose_cb)
+
             self.save_as_logo, label = self._add_button_and_label(
                 'logo-saveoff', _('Save as Logo'), self.do_save_as_logo_cb,
                 None, button_box)
@@ -1178,8 +1192,12 @@ class TurtleArtActivity(activity.Activity):
             self.save_as_odp = self._add_button(
                 'odp-saveoff', _('Save as ODP'), self.do_save_as_odp_cb,
                 toolbar)
+
             self.save_as_icon.connect('expose-event',
                 self._save_as_icon_expose_cb)
+            self.save_as_odp.connect('expose-event',
+                self._save_as_odp_expose_cb)
+
             self.save_as_logo = self._add_button(
                 'logo-saveoff', _('Save as Logo'), self.do_save_as_logo_cb,
                 toolbar)
