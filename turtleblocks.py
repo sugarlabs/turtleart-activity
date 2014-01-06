@@ -428,11 +428,22 @@ return %s(self)" % (p, P, P)
                                    self._do_load_plugin_cb)
         MenuBuilder.make_menu_item(menu, _('Save'), self._do_save_cb)
         MenuBuilder.make_menu_item(menu, _('Save as'), self._do_save_as_cb)
-        MenuBuilder.make_menu_item(menu, _('Save as image'),
+
+        # export submenu
+        export_submenu = gtk.Menu()
+        export_menu = MenuBuilder.make_sub_menu(export_submenu, _('Export as'))
+        menu.append(export_menu)
+
+        MenuBuilder.make_menu_item(export_submenu, _('image'),
                                    self._do_save_picture_cb)
-        MenuBuilder.make_menu_item(menu, _('Save as Logo'),
+        MenuBuilder.make_menu_item(export_submenu, _('icon'),
+                                   self._do_save_as_icon_cb)
+        # TRANS: ODP is Open Office presentation
+        MenuBuilder.make_menu_item(export_submenu, _('ODP'),
+                                   self._do_save_as_odp_cb)
+        MenuBuilder.make_menu_item(export_submenu, _('Logo'),
                                    self._do_save_logo_cb)
-        MenuBuilder.make_menu_item(menu, _('Save as Python'),
+        MenuBuilder.make_menu_item(export_submenu, _('Python'),
                                    self._do_save_python_cb)
         MenuBuilder.make_menu_item(menu, _('Quit'), self._quit_ta)
         activity_menu = MenuBuilder.make_sub_menu(menu, _('File'))
@@ -631,6 +642,15 @@ Would you like to save before quitting?'))
     def _do_save_picture_cb(self, widget):
         ''' Callback for save canvas. '''
         self.tw.save_as_image()
+
+    def _do_save_as_icon_cb(self, widget):
+        ''' Callback for save canvas. '''
+        self.tw.write_svg_operation()
+        self.tw.save_as_icon()
+
+    def _do_save_as_odp_cb(self, widget):
+        ''' Callback for save canvas. '''
+        self.tw.save_as_odp()
 
     def _do_save_logo_cb(self, widget):
         ''' Callback for save project to Logo. '''

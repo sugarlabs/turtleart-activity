@@ -4654,7 +4654,7 @@ before making changes to your program'))
         save_picture(self.canvas, image_file)
         return ta_file, image_file
 
-    def save_as_odp(self, name=''):
+    def save_as_odp(self, name=None):
         from util.odp import TurtleODP
 
         path_list = []
@@ -4674,7 +4674,7 @@ before making changes to your program'))
         pres = TurtleODP()
         pres.create_presentation(TMP_ODP_PATH, 1024, 768)
         for file_path in path_list:
-            print file_path
+            #print file_path
             pres.add_image(file_path)
         pres.save_presentation()
 
@@ -4693,19 +4693,19 @@ before making changes to your program'))
             dsobject.destroy()
             os.remove(TMP_ODP_PATH)
         else:
-            if len(name) == 0:
-                name = 'turtleblocks.odp'
             if self.save_folder is not None:
                 self.load_save_folder = self.save_folder
                 name, self.load_save_folder = get_save_name(
-                    '.odp', self.load_save_folder, name)
+                    '.odp', self.load_save_folder, 'turtleblocks.odp')
                 datapath = self.load_save_folder
             else:
                 datapath = os.getcwd()
                 if '.odp' not in name:
                     name = name + '.odp'
-            subprocess.check_output(
-                ['cp', TMP_ODP_PATH, os.path.join(datapath, name)])
+            if name is not None:
+                res = subprocess.check_output(
+                    ['cp', TMP_ODP_PATH, os.path.join(datapath, name)])
+                
 
     def save_as_icon(self, name=''):
         from util.sugariconify import SugarIconify

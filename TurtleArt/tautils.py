@@ -309,7 +309,7 @@ def get_save_name(filefilter, load_save_folder, save_file_name):
         gtk.FILE_CHOOSER_ACTION_SAVE, (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL,
                                        gtk.STOCK_SAVE, gtk.RESPONSE_OK))
     dialog.set_default_response(gtk.RESPONSE_OK)
-    if filefilter in ['.png', '.svg', '.lg', '.py']:
+    if filefilter in ['.png', '.svg', '.lg', '.py', '.odp']:
         suffix = filefilter
     else:
         suffix = SUFFIX[1]

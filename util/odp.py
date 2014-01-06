@@ -58,12 +58,12 @@ class TurtleODP:
         page.addElement(photoframe)
         href = self.doc.addPicture(path)
         photoframe.addElement(Image(href=href))
-        print 'added image successfully'
+        #print 'added image successfully'
 
     def save_presentation(self):
-        print self.path
+        #print self.path
         self.doc.save(self.path)
-        print 'presentation saved successfully'
+        #print 'presentation saved successfully'
 
     def get_output_path(self):
         return self.path
