@@ -310,12 +310,14 @@ class TurtleGraphics:
     def draw_text(self, label, x, y, size, width, heading, scale):
         ''' Draw text '''
 
-        def _draw_text(cr, label, x, y, size, width, scale, heading, rgb):
+        def _draw_text(cr, label, x, y, size, width, scale, heading, rgb,
+                       wrap=False):
             import textwrap
 
             final_scale = int(size * scale) * pango.SCALE
             label = str(label)
-            label = '\n'.join(textwrap.wrap(label, int(width / scale)))
+            if wrap:
+                label = '\n'.join(textwrap.wrap(label, int(width / scale)))
 
             cc = pangocairo.CairoContext(cr)
             pl = cc.create_layout()
@@ -343,7 +345,7 @@ class TurtleGraphics:
         self.inval()
         if self.cr_svg is not None:  # and self.pendown:
             _draw_text(self.cr_svg, label, x, y, size, width, scale, heading,
-                       self._fgrgb)
+                       self._fgrgb, wrap=True)
 
     def set_source_rgb(self):
         r = self._fgrgb[0] / 255.

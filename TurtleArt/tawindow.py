@@ -1574,16 +1574,22 @@ before making changes to your program'))
     def _unselect_all_blocks(self):
         # Unselect things that may have been selected earlier
         if self.selected_blk is not None:
+            label_with_no_returns = \
+                self.selected_blk.spr.labels[0].replace(RETURN, ' ')
             if self._action_name(self.selected_blk, hat=True):
+                self.selected_blk.values[0] = label_with_no_returns
+                self.selected_blk.spr.labels[0] = label_with_no_returns
                 if self.selected_blk.values[0] == _('action'):
-                    self._new_stack_block(self.selected_blk.spr.labels[0])
-                self._update_action_names(self.selected_blk.spr.labels[0])
+                    self._new_stack_block(label_with_no_returns)
+                self._update_action_names(label_with_no_returns)
             elif self._box_name(self.selected_blk, storein=True):
+                self.selected_blk.values[0] = label_with_no_returns
+                self.selected_blk.spr.labels[0] = label_with_no_returns
                 if self.selected_blk.values[0] == _('my box'):
-                    self._new_storein_block(self.selected_blk.spr.labels[0])
-                    self._new_box_block(self.selected_blk.spr.labels[0])
-                self._update_storein_names(self.selected_blk.spr.labels[0])
-                self._update_box_names(self.selected_blk.spr.labels[0])
+                    self._new_storein_block(label_with_no_returns)
+                    self._new_box_block(label_with_no_returns)
+                self._update_storein_names(label_with_no_returns)
+                self._update_box_names(label_with_no_returns)
             # Un-highlight any blocks in the stack
             grp = find_group(self.selected_blk)
             for blk in grp:
@@ -2338,16 +2344,23 @@ before making changes to your program'))
             if self._text_to_check:
                 self._test_string()
         self._text_to_check = False
+
+        label_with_no_returns = \
+            self.selected_blk.spr.labels[0].replace(RETURN, ' ')
         if self._action_name(self.selected_blk, hat=True):
+            self.selected_blk.spr.labels[0] = label_with_no_returns
+            self.selected_blk.values[0] = label_with_no_returns
             if self._saved_action_name == _('action'):
-                self._new_stack_block(self.selected_blk.spr.labels[0])
-            self._update_action_names(self.selected_blk.spr.labels[0])
+                self._new_stack_block(label_with_no_returns)
+            self._update_action_names(label_with_no_returns)
         elif self._box_name(self.selected_blk, storein=True):
+            self.selected_blk.spr.labels[0] = label_with_no_returns
+            self.selected_blk.values[0] = label_with_no_returns
             if self._saved_box_name == _('my box'):
-                self._new_storein_block(self.selected_blk.spr.labels[0])
-                self._new_box_block(self.selected_blk.spr.labels[0])
-            self._update_storein_names(self.selected_blk.spr.labels[0])
-            self._update_box_names(self.selected_blk.spr.labels[0])
+                self._new_storein_block(label_with_no_returns)
+                self._new_box_block(label_with_no_returns)
+            self._update_storein_names(label_with_no_returns)
+            self._update_box_names(label_with_no_returns)
         self.selected_blk.unhighlight()
         self.selected_blk = None
 
@@ -2993,7 +3006,7 @@ before making changes to your program'))
             if blk.name == 'string':
                 count = self._saved_string.count(RETURN)
                 self._text_buffer.set_text(
-                    self._saved_string.replace(RETURN, '\12'))
+                    self._saved_string.replace(RETURN, '\n'))
                 h = blk.spr.label_safe_height() * (count + 1)
             else:
                 self._text_buffer.set_text(self._saved_string)
@@ -3925,7 +3938,7 @@ before making changes to your program'))
 
     def _insert_text_cb(self, textbuffer, textiter, text, length):
         self._text_to_check = True
-        if '\12' in text:
+        if '\n' in text:
             self._unselect_block()
 
     def _test_string(self):
@@ -3935,9 +3948,9 @@ before making changes to your program'))
             self._hide_text_entry()
         else:
             text = self.selected_blk.spr.labels[0]
-        self.selected_blk.spr.set_label(text.replace('\12', RETURN))
+        self.selected_blk.spr.set_label(text.replace('\n', RETURN))
         self.selected_blk.resize()
-        self.selected_blk.values[0] = text.replace(RETURN, '\12')
+        self.selected_blk.values[0] = text.replace(RETURN, '\n')
         self._saved_string = self.selected_blk.values[0]
 
     def load_python_code_from_file(self, fname=None, add_new_block=True):
