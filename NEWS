@@ -6,6 +6,10 @@ ENHANCEMENTS:
 * Export project as ODP (Jorge Alberto Gómez López)
 
 BUG FIXES:
+* Fixed problem with Returns in action and box names (as reported by quozi)
+* Fixed problem with label positioning on some blocks
+* Fixed rendering problem with filled shapes using arcs
+* Fixed problem with sharing filled shapes using arcs
 * Make save_as_icon button insensitive when no svg output
   available (Ignacio Rodriguez)
 * Make save_as_ODP button insensitive when no saved pictures
