@@ -143,7 +143,9 @@ class TurtleGraphics:
             cr.new_path()
             for i, p in enumerate(poly_points):
                 if p[0] == 'move':
-                    cr.move_to(p[1], p[2])
+                    if i == len(poly_points) - 1 or \
+                       poly_points[i + 1][0] not in ['rarc', 'larc']:
+                        cr.move_to(p[1], p[2])
                 elif p[0] == 'rarc':
                     cr.arc(p[1], p[2], p[3], p[4], p[5])
                 elif p[0] == 'larc':
