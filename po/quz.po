@@ -1,3 +1,5 @@
+# #-#-#-#-#  quz.po (PACKAGE VERSION)  #-#-#-#-#
+# Irma <sankaypillo@gmail.com>, 2011, 2012.
 #, fuzzy
 msgid ""
 msgstr ""
@@ -34,6 +36,8 @@ msgstr "turtleart-extras (master)"
 msgid "Turtle Blocks"
 msgstr "CharapaBlocks"
 
+# #-#-#-#-#  quz.po (PACKAGE VERSION)  #-#-#-#-#
+#  "TortugArte"
 #, fuzzy
 msgid "Turtle Art"
 msgstr ""
@@ -147,6 +151,11 @@ msgstr "LED"
 msgid "button"
 msgstr "rump'u"
 
+# #-#-#-#-#  quz.po (PACKAGE VERSION)  #-#-#-#-#
+#  "gris"
+#: TurtleArt/tabasics.py:327 TurtleArt/tabasics.py:409
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1090
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1095
 msgid "gray"
 msgstr "chiqchi"
 
@@ -156,9 +165,21 @@ msgstr "k'anchana"
 msgid "distance"
 msgstr "karukaynin"
 
+# #-#-#-#-#  quz.po (PACKAGE VERSION)  #-#-#-#-#
+#  "resistencia"
+#: plugins/audio_sensors/audio_sensors.py:151
+#: plugins/audio_sensors/audio_sensors.py:165
+#: plugins/audio_sensors/audio_sensors.py:179
+#: plugins/audio_sensors/audio_sensors.py:193
 msgid "resistance"
 msgstr "sinchikay"
 
+# #-#-#-#-#  quz.po (PACKAGE VERSION)  #-#-#-#-#
+#  "voltaje"
+#: plugins/audio_sensors/audio_sensors.py:157
+#: plugins/audio_sensors/audio_sensors.py:171
+#: plugins/audio_sensors/audio_sensors.py:185
+#: plugins/audio_sensors/audio_sensors.py:199
 #, fuzzy
 msgid "voltage"
 msgstr ""
@@ -206,6 +227,10 @@ msgstr "Butiá utqhay purintanta mat'iy"
 msgid "move Butia"
 msgstr "Butiáta kuyuchiy"
 
+# #-#-#-#-#  quz.po (PACKAGE VERSION)  #-#-#-#-#
+#  "izquierda"
+#: TurtleArt/tabasics.py:169
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:856
 #, fuzzy
 msgid "left"
 msgstr ""
@@ -214,6 +239,10 @@ msgstr ""
 "#-#-#-#-#  quz.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "lluqi"
 
+# #-#-#-#-#  quz.po (PACKAGE VERSION)  #-#-#-#-#
+#  "derecha"
+#: TurtleArt/tabasics.py:181
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:880
 msgid "right"
 msgstr "paña"
 
@@ -274,6 +303,9 @@ msgstr "hack pin nisqap chaninta ñawichan"
 msgid "write hack pin Butia"
 msgstr "hack pin nisqapi qillqay"
 
+# #-#-#-#-#  quz.po (PACKAGE VERSION)  #-#-#-#-#
+#  "valor"
+#: TurtleArt/tabasics.py:976 TurtleArt/tawindow.py:4581
 msgid "value"
 msgstr "chani"
 
@@ -412,6 +444,14 @@ msgstr "qhatiy"
 msgid "follow a color or calibration"
 msgstr "llimp'i kaqta churay"
 
+# #-#-#-#-#  quz.po (PACKAGE VERSION)  #-#-#-#-#
+#  "brillo"
+#: plugins/camera_sensor/camera_sensor.py:80
+#: plugins/camera_sensor/camera_sensor.py:93
+#: plugins/camera_sensor/camera_sensor.py:128
+#: plugins/camera_sensor/camera_sensor.py:141
+#: plugins/light_sensor/light_sensor.py:56
+#: plugins/light_sensor/light_sensor.py:63
 msgid "brightness"
 msgstr "llipipiynin"
 
@@ -649,6 +689,9 @@ msgstr "Kimsak'uchu"
 msgid "base"
 msgstr "t'iqsi"
 
+# #-#-#-#-#  quz.po (PACKAGE VERSION)  #-#-#-#-#
+#  "altura"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:896
 msgid "height"
 msgstr "sayaynin"
 
@@ -664,6 +707,9 @@ msgstr "muyuta churay."
 msgid "rectangle"
 msgstr "suyt'u"
 
+# #-#-#-#-#  quz.po (PACKAGE VERSION)  #-#-#-#-#
+#  "anchura"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:872
 msgid "width"
 msgstr "kinraynin"
 
@@ -698,6 +744,9 @@ msgstr "imaynapas ama urmayananpaqmi ratachin."
 msgid "joint"
 msgstr "Huñukuy"
 
+# #-#-#-#-#  quz.po (PACKAGE VERSION)  #-#-#-#-#
+#  "x"
+#: TurtleArt/tabasics.py:210 TurtleArt/tabasics.py:288
 #, fuzzy
 msgid "x"
 msgstr ""
@@ -706,6 +755,9 @@ msgstr ""
 "#-#-#-#-#  quz.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "x"
 
+# #-#-#-#-#  quz.po (PACKAGE VERSION)  #-#-#-#-#
+#  "y"
+#: TurtleArt/tabasics.py:210 TurtleArt/tabasics.py:288
 #, fuzzy
 msgid "y"
 msgstr ""
@@ -836,9 +888,18 @@ msgstr "llamina"
 msgid "ultrasonic"
 msgstr "ultrasónico uyarina"
 
+# #-#-#-#-#  quz.po (PACKAGE VERSION)  #-#-#-#-#
+#  "color"
+#: TurtleArt/tabasics.py:313 TurtleArt/tabasics.py:326
+#: TurtleArt/tabasics.py:384
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1093
 msgid "color"
 msgstr "llimp'i"
 
+# #-#-#-#-#  quz.po (PACKAGE VERSION)  #-#-#-#-#
+#  "sonido"
+#: plugins/audio_sensors/audio_sensors.py:83
+#: plugins/audio_sensors/audio_sensors.py:98 pysamples/grecord.py:206
 msgid "sound"
 msgstr "uyarina"
 
@@ -902,6 +963,9 @@ msgstr "uyarinap kunkanta uyarichiy"
 msgid "frequency"
 msgstr "frecuencia nisqa"
 
+# #-#-#-#-#  quz.po (PACKAGE VERSION)  #-#-#-#-#
+#  "tiempo"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:425
 msgid "time"
 msgstr "pacha"
 
@@ -1291,9 +1355,14 @@ msgstr "programasqa voltajeta ñawichay"
 msgid "Expeyes device not found"
 msgstr "Expeyes dispositivo sutichakuqqa manam tarikunchu"
 
+#. TRANS: "name" option from activity.info file
 msgid "TurtleBlocks"
 msgstr "CharapaBlocks"
 
+#  [ES] "Una tortuga inspirada en Logo que hace dibujos coloridos junto con bloques "
+#  [ES] "complementarios de programación visual"
+#. TRANS: "summary" option from activity.info file
+#. TRANS: "description" option from activity.info file
 msgid ""
 "A Logo-inspired turtle that draws colorful pictures with snap-together "
 "visual programming blocks"
@@ -1301,64 +1370,112 @@ msgstr ""
 "Charapachaqa Logo nisqata qhawaspam ruwakurqan hinam sumaq siq'ikunata "
 "ruwaspa llimp'in kaqllataq tawqakunatapas ruwarillanmi"
 
+#  "Paleta de comandos de la tortuga"
+#: TurtleArt/tabasics.py:124
 msgid "Palette of turtle commands"
 msgstr "Charapata kamachinapaq"
 
+#  "adelante"
+#: TurtleArt/tabasics.py:129
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:722
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:734
 msgid "forward"
 msgstr "ñawpaqman"
 
+#  "avanzar la tortuga"
+#: TurtleArt/tabasics.py:133
 msgid "moves turtle forward"
 msgstr "ñawpaqman charapata purichiy"
 
+#  "atrás"
+#: TurtleArt/tabasics.py:142
 msgid "back"
 msgstr "kutichiy"
 
+#  "retroceder la tortuga"
+#: TurtleArt/tabasics.py:146
 msgid "moves turtle backward"
 msgstr "qhipaman charapata purichiy"
 
+#  "limpiar"
+#: TurtleArt/tabasics.py:156
 msgid "clean"
 msgstr "pichay"
 
+#  "limpia la pantalla y restaura la tortuga"
+#: TurtleArt/tabasics.py:159
 msgid "clears the screen and reset the turtle"
 msgstr "pichay pantallata charapatataq musuqmanta kamachiy"
 
+#  "gira la tortuga en sentido anti-horario (ángulo en grados)"
+#: TurtleArt/tabasics.py:173
 msgid "turns turtle counterclockwise (angle in degrees)"
 msgstr "charapataqa lluqimanhina muyurichiy ([ángulo en grados nisqapi)"
 
+#   "gira la tortuga en sentido horario (ángulo en grados)"
+#  [es] "gira la tortuga en sentido horario (ángulo en grados)"
+#: TurtleArt/tabasics.py:185
 msgid "turns turtle clockwise (angle in degrees)"
 msgstr "charapataqa pañamanhina muyurichiy ([ángulo en grados nisqapi)"
 
+#  "arco"
+#: TurtleArt/tabasics.py:195
 msgid "arc"
 msgstr "arco nisqa"
 
+#  "ángulo"
+#: TurtleArt/tabasics.py:195
 msgid "angle"
 msgstr "k'uchu"
 
+#  "radio"
+#: TurtleArt/tabasics.py:195
 msgid "radius"
 msgstr "radio nisqa"
 
+#   "mueve la tortuga a lo largo de un arco"
+#  [es] "mueve la tortuga a lo largo de un arco"
+#: TurtleArt/tabasics.py:199
 msgid "moves turtle along an arc"
 msgstr "suni arco nisqantintam charapataqa purichiy"
 
+#  "fijar xy"
+#: TurtleArt/tabasics.py:210 TurtleArt/tabasics.py:288
 msgid "set xy"
 msgstr "xy nisqata churay"
 
+#  "mover la tortuga a la posición xcor, ycor; (0, 0) está en el centro de la "
+#  "pantalla."
+#: TurtleArt/tabasics.py:214 TurtleArt/tabasics.py:292
 msgid ""
 "moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
 msgstr ""
 "charapataq xcor, ycor; (0, 0) nisqaman churay, kayqa pantallap chawpinpi "
 "kachkan."
 
+#  "fijar rumbo"
+#: TurtleArt/tabasics.py:226
 msgid "set heading"
 msgstr "mayman rinantam churay"
 
+#  "fija la orientación de la tortuga (0 es hacia la parte superior de la "
+#  "pantalla.)"
+#: TurtleArt/tabasics.py:230
 msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
 msgstr ""
 "charapap mayman rinanta churay (0 yupanaqa pantallap wichayninmanmi purichin)"
 
+#  "coorx"
+#: TurtleArt/tabasics.py:240 TurtleArt/tawindow.py:4247
 msgid "xcor"
 msgstr "xcor"
 
+#  "contiene la coordenada x actual de la tortuga (se puede usar en vez de un "
+#  "bloque de número)"
+#  [es] ""
+#  [es] "contiene la coordenada x actual de la tortuga (se puede usar en vez de un "
+#  [es] "bloque de número)"
+#: TurtleArt/tabasics.py:241
 msgid ""
 "holds current x-coordinate value of the turtle (can be used in place of a "
 "number block)"
@@ -1366,9 +1483,17 @@ msgstr ""
 "charapap x coordenadawanmi kachkan (yupanakunap bloquenmantaqa "
 "hap'ikullanmanmi)"
 
+#  "coory"
+#: TurtleArt/tabasics.py:254 TurtleArt/tawindow.py:4248
 msgid "ycor"
 msgstr "ycor"
 
+#  "contiene la coordenada y actual de la tortuga (se puede usar en vez de un "
+#  "bloque de número)"
+#  [es] ""
+#  [es] "contiene la coordenada y actual de la tortuga (se puede usar en vez de un "
+#  [es] "bloque de número)"
+#: TurtleArt/tabasics.py:255
 msgid ""
 "holds current y-coordinate value of the turtle (can be used in place of a "
 "number block)"
@@ -1376,9 +1501,17 @@ msgstr ""
 "kunan kaq coordenadawanmi charapaqa kachkan (yupanakunap bloquenmantaqa "
 "hap'ikullanmanmi)"
 
+#  "rumbo"
+#: TurtleArt/tabasics.py:268 TurtleArt/tawindow.py:4248
 msgid "heading"
 msgstr "mayman"
 
+#  "contiene la orientación actual de la tortuga (se puede usar en vez de un "
+#  "bloque de número)"
+#  [es] ""
+#  [es] "contiene la orientación actual de la tortuga (se puede usar en vez de un "
+#  [es] "bloque de número)"
+#: TurtleArt/tabasics.py:269
 msgid ""
 "holds current heading value of the turtle (can be used in place of a number "
 "block)"
@@ -1386,658 +1519,1165 @@ msgstr ""
 "kunan kaq charapap ñanninwanmi kachkan (yupanakunap bloquenmantaqa "
 "hap'ikullanmanmi)"
 
+#  "Paleta de órdenes de la pluma"
+#: TurtleArt/tabasics.py:308
 msgid "Palette of pen commands"
 msgstr "Qillqanawan llamk'anapaq"
 
+#  "rellenar pantalla"
+#: TurtleArt/tabasics.py:313 TurtleArt/tabasics.py:326
 msgid "fill screen"
 msgstr "pantallata hunt'achiy"
 
+#  "tono"
+#: TurtleArt/tabasics.py:313 TurtleArt/tabasics.py:327
+#: TurtleArt/tabasics.py:397
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1089
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1094
 msgid "shade"
 msgstr "llimp'iynin"
 
+#  "rellena el fondo con (color, sombra)"
+#  [es] "rellena el fondo con (color, sombra)"
+#: TurtleArt/tabasics.py:317 TurtleArt/tabasics.py:331
 msgid "fills the background with (color, shade)"
 msgstr "ukhuntaqa hunt'achiy (llimp'iwan, llantuwan ima)"
 
+#  "fijar color"
+#: TurtleArt/tabasics.py:343
 msgid "set color"
 msgstr "llimp'ita akllay"
 
+#  "fija el color de la línea que la tortuga dibuja"
+#: TurtleArt/tabasics.py:347
 msgid "sets color of the line drawn by the turtle"
 msgstr "charapa ima llimp'iwan siq'ichananta churay"
 
+#  "fijar tono"
+#: TurtleArt/tabasics.py:357
 msgid "set shade"
 msgstr "llimp'ita churay"
 
+#  "fijar la oscuridad de la linea que la tortuga dibuja"
+#: TurtleArt/tabasics.py:361
 msgid "sets shade of the line drawn by the turtle"
 msgstr "charapa yana llimp'iwan siq'ichananta churay"
 
+#  "establecer gris"
+#: TurtleArt/tabasics.py:371
 msgid "set gray"
 msgstr "chiqchita churay"
 
+#  "establece el nivel de gris de la línea dibujada por la tortuga"
+#: TurtleArt/tabasics.py:374
 msgid "sets gray level of the line drawn by the turtle"
 msgstr "charapa chiqchi llimp'iwan siq'ichananta churay"
 
+#  "contiene el color actual de la pluma (se puede usar en vez de un bloque de "
+#  "número)"
+#  [es] ""
+#  [es] "contiene el color actual de la pluma (se puede usar en vez de un bloque de "
+#  [es] "número)"
+#: TurtleArt/tabasics.py:385
 msgid "holds current pen color (can be used in place of a number block)"
 msgstr ""
 "kunan kaq qillqanap llimp'inwanmi kachkan (yupanakunap bloquenmantaqa "
 "hap'ikullanmanmi)"
 
+#  "contiene la tonalidad actual de la pluma"
+#  [es] "contiene la tonalidad actual de la pluma"
+#: TurtleArt/tabasics.py:398
 msgid "holds current pen shade"
 msgstr "kunan kaq qillqanap llimp'inwanmi kachkan"
 
+#  "contiene el nivel actual de gris (puede ser utilizado en vez de un bloque "
+#  "numérico)"
+#  [es] ""
+#  [es] "contiene el nivel actual de gris (puede ser utilizado en vez de un bloque "
+#  [es] "numérico)"
+#: TurtleArt/tabasics.py:410
 msgid "holds current gray level (can be used in place of a number block)"
 msgstr ""
 "kunan kaq chiqchi llimp'iwanmi kachkan (yupanakunap bloquenmantaqa "
 "hap'ikullanmanmi)"
 
+#  "subir pluma"
+#: TurtleArt/tabasics.py:419
 msgid "pen up"
 msgstr "qillqanata huqariy"
 
+# "La tortuga dibujará cuando se mueva."
+#: TurtleArt/tabasics.py:422
 msgid "Turtle will not draw when moved."
 msgstr "Charapa puriptinqa chaypipuni siq'ichanqa."
 
+#  "bajar pluma"
+#: TurtleArt/tabasics.py:431
 msgid "pen down"
 msgstr "qillqanata urayachiy"
 
+#  "La tortuga dibujará cuando se mueva."
+#: TurtleArt/tabasics.py:434
 msgid "Turtle will draw when moved."
 msgstr "Charapa puriptinqa chapipuni siq'ichanqa."
 
+# "bajar pluma"
+#: TurtleArt/tabasics.py:443
 msgid "pen down?"
 msgstr "qillqanata urayachinki?"
 
+#: TurtleArt/tabasics.py:445
 msgid "returns True if pen is down"
 msgstr "Qillqana uyarachisqa kaptinqa Chiqay nispan kutichin"
 
+#  "fijar tamaño"
+#: TurtleArt/tabasics.py:453
 msgid "set pen size"
 msgstr "sayayninta akllay"
 
+#  "fija el ancho de la línea que la tortuga dibuja"
+#: TurtleArt/tabasics.py:457
 msgid "sets size of the line drawn by the turtle"
 msgstr "rakhuta utaq ñañuta charapa siq'inanpaq kamachiy"
 
+#  "comenzar a rellenar"
+#: TurtleArt/tabasics.py:468
 msgid "start fill"
 msgstr "hunt'achiyta qallariy"
 
+#  "comenzar a rellenar el poligono (usado con finalizar el relleno del bloque)"
+#  [es] ""
+#  [es] "comenzar a rellenar el poligono (usado con finalizar el relleno del bloque)"
+#: TurtleArt/tabasics.py:470
 msgid "starts filled polygon (used with end fill block)"
 msgstr ""
 "poligono nisqatam llimp'iwan hunt'achiyta qallariy (bloquepa "
 "hunt'achinawanmi ruwakuchkan)"
 
+#  "finalizar rellenado"
+#: TurtleArt/tabasics.py:479
 msgid "end fill"
 msgstr "huntach'iyta tukuy"
 
+#  "completa el polígono relleno (utilizado con comenzar relleno del bloque)"
+#  [es] ""
+#  [es] "completa el polígono relleno (utilizado con comenzar relleno del bloque)"
+#: TurtleArt/tabasics.py:481
 msgid "completes filled polygon (used with start fill block)"
 msgstr ""
 "poligono nisqatam llimp'iwan hunt'achiyta qallariy (bloquepa "
 "hunt'achinawanmi ruwakuchkan)"
 
+#  "tamaño"
+#: TurtleArt/tabasics.py:490
 msgid "pen size"
 msgstr "sayan"
 
+#  "contiene el tamaño actual de la pluma (se puede usar en vez de un bloque de "
+#  "número)"
+#  [es] ""
+#  [es] "contiene el tamaño actual de la pluma (se puede usar en vez de un bloque de "
+#  [es] "número)"
+#: TurtleArt/tabasics.py:491
 msgid "holds current pen size (can be used in place of a number block)"
 msgstr ""
 "kunan kaq qillqanap rakhuyninwanmi kachkan (yupanakunap bloquenmantaqa "
 "hap'ikullanmanmi)"
 
+#  "Paleta de colores de la pluma"
+#: TurtleArt/tabasics.py:508
 msgid "Palette of pen colors"
 msgstr "Siq'inapaq llimp'ikuna"
 
+#  "rojo"
+#  [es] "rojo"
+#: TurtleArt/tabasics.py:510
 msgid "red"
 msgstr "puka"
 
+#  "naranja"
+#  [es] "naranja"
+#: TurtleArt/tabasics.py:511
 msgid "orange"
 msgstr "q'illmu"
 
+#  "amarillo"
+#  [es] "amarillo"
+#: TurtleArt/tabasics.py:513
 msgid "yellow"
 msgstr "q'illu"
 
+#  "verde"
+#  [es] "verde"
+#: TurtleArt/tabasics.py:515
 msgid "green"
 msgstr "q'umer"
 
+#  "cian"
+#  [es] "cian"
+#: TurtleArt/tabasics.py:516
 msgid "cyan"
 msgstr "q'usiq"
 
+#  "azul"
+#  [es] "azul"
+#: TurtleArt/tabasics.py:517
 msgid "blue"
 msgstr "anqas"
 
+#  "morado"
+#  [es] "morado"
+#: TurtleArt/tabasics.py:518
 msgid "purple"
 msgstr "kulli"
 
+#  "blanco"
+#  [es] "blanco"
+#: TurtleArt/tabasics.py:520
 msgid "white"
 msgstr "yuraq"
 
+# "atrás"
+#: TurtleArt/tabasics.py:521
 msgid "black"
 msgstr "yana"
 
+#  "Paleta de operadores numéricos"
+#: TurtleArt/tabasics.py:601
 msgid "Palette of numeric operators"
 msgstr "Yupanakunawan llamk'anapaq"
 
+#  "sumar"
+#: TurtleArt/tabasics.py:607
 msgid "plus"
 msgstr "yapapay"
 
+#  "suma dos entradas alfanuméricas"
+#: TurtleArt/tabasics.py:611
 msgid "adds two alphanumeric inputs"
 msgstr "iskay yupanakunap yapapakuynin"
 
+#  "menos"
+#  [es] "menos"
+#: TurtleArt/tabasics.py:619
 msgid "minus"
 msgstr "qichupay"
 
+#  "sustrae la entrada numérica de abajo de la entrada numérica de arriba"
+#: TurtleArt/tabasics.py:622
 msgid "subtracts bottom numeric input from top numeric input"
 msgstr ""
 "yupanata pisiyachinapaqqa ura kaq yupanam wichay kaq yupanataqa pisiyachinqa"
 
+#  "multiplicar"
+#: TurtleArt/tabasics.py:633
 msgid "multiply"
 msgstr "mirayachiy"
 
+#  "multiplica dos entradas numéricas"
+#: TurtleArt/tabasics.py:636
 msgid "multiplies two numeric inputs"
 msgstr "iskay yupana haykuqta mirayachiy"
 
+#  "dividir"
+#: TurtleArt/tabasics.py:645
 msgid "divide"
 msgstr "t'aqapay"
 
+#  "divide la entrada numérica de arriba (numerador) por la entrada numérica de "
+#  "bajo (denominador)"
+#: TurtleArt/tabasics.py:648
 msgid ""
 "divides top numeric input (numerator) by bottom numeric input (denominator)"
 msgstr "wichay yupanata (numerador) uray yupanawan (denominador) t'aqapay"
 
+#  "identidad"
+#  [es] "identidad"
+#: TurtleArt/tabasics.py:658
 msgid "identity"
 msgstr "pin kasqa"
 
+#  "operador de identidad usado para extender bloques"
+#  [es] "operador de identidad usado para extender bloques"
+#: TurtleArt/tabasics.py:660
 msgid "identity operator used for extending blocks"
 msgstr "bloquekunata mast'arichispa pin kasqata tariq"
 
+# "mover"
+#: TurtleArt/tabasics.py:668 TurtleArt/tabasics.py:669
 msgid "mod"
 msgstr "kuyuchiy"
 
+#  "operador módular (resto)"
+#  [es] "operador módular (resto)"
+#: TurtleArt/tabasics.py:672
 msgid "modular (remainder) operator"
 msgstr "modulo nisqata purichiq (qichupay)"
 
+#  "√"
+#: TurtleArt/tabasics.py:680
 msgid "√"
 msgstr "√"
 
+#  "raiz cuadrada"
+#: TurtleArt/tabasics.py:681
 msgid "square root"
 msgstr "raíz cuadrada nisqa"
 
+#  "calcula la raíz cuadrada"
+#: TurtleArt/tabasics.py:684
 msgid "calculates square root"
 msgstr "raíz cuadrada nisqata tariy"
 
+#  "aleatorio"
+#  [es] "aleatorio"
+#: TurtleArt/tabasics.py:691
 msgid "random"
 msgstr "muyumuyuriq"
 
+#  "min"
+#  [es] "min"
+#: TurtleArt/tabasics.py:691
 msgid "min"
 msgstr "pisi"
 
+# "max"
+#  [es] "max"
+#: TurtleArt/tabasics.py:691
 msgid "max"
 msgstr "achkha"
 
+# "devuelve un número aleatorio entre los valores mínimo (arriba) y máximo "
+# "(abajo)"
+#: TurtleArt/tabasics.py:695
 msgid "returns random number between minimum (top) and maximum (bottom) values"
 msgstr "munasqa pisi (wichaypi) achkha (uraypi)chaniyuq yupanakunatam kutichin"
 
+#  "número"
+#: TurtleArt/tabasics.py:707
 msgid "number"
 msgstr "yupana"
 
+#  "utilizado como entrada numérica en los operadores matemáticos"
+#  [es] "utilizado como entrada numérica en los operadores matemáticos"
+#: TurtleArt/tabasics.py:708
 msgid "used as numeric input in mathematic operators"
 msgstr "matemática llamk'aypi haykuq yupanakuna"
 
+#  "mayor que"
+#: TurtleArt/tabasics.py:716
 msgid "greater than"
 msgstr "kuraq kaq"
 
+#  "operador lógico mayor que"
+#  [es] "operador lógico mayor que"
+#: TurtleArt/tabasics.py:719
 msgid "logical greater-than operator"
 msgstr "kuraq-kaq llamk'ana sutichakuq"
 
+#  "menor que"
+#: TurtleArt/tabasics.py:728
 msgid "less than"
 msgstr "sullk'a kaq"
 
+#  "operador lógico menor que"
+#  [es] "operador lógico menor que"
+#: TurtleArt/tabasics.py:732
 msgid "logical less-than operator"
 msgstr "sullk'a-kaq llamk'ana sutichakuq"
 
+#  "equivalente"
+#: TurtleArt/tabasics.py:740
 msgid "equal"
 msgstr "kikillanmi"
 
+#  "operador lógico de igualdad"
+#  [es] "operador lógico de igualdad"
+#: TurtleArt/tabasics.py:744
 msgid "logical equal-to operator"
 msgstr "kikin-kaq llamk'ana sutichakuq"
 
+#  "no"
+#: TurtleArt/tabasics.py:751
 msgid "not"
 msgstr "mana"
 
+#  [es] "operador NO lógico"
+#: TurtleArt/tabasics.py:754
 msgid "logical NOT operator"
 msgstr "manakikin-kaq llamk'ana sutichakuq"
 
+#  "y"
+#: TurtleArt/tabasics.py:760 TurtleArt/tabasics.py:763
 msgid "and"
 msgstr "hinallataq"
 
+#  "operador Y lógico"
+#  [es] "operador Y lógico"
+#: TurtleArt/tabasics.py:764
 msgid "logical AND operator"
 msgstr "HINALLATAQ llamk'ana sutichakuq"
 
+#  "o"
+#: TurtleArt/tabasics.py:771 TurtleArt/tabasics.py:774
 msgid "or"
 msgstr "utaq"
 
+#  "operador O lógico"
+#  [es] "operador O lógico"
+#: TurtleArt/tabasics.py:775
 msgid "logical OR operator"
 msgstr "UTAQ llamk'ana sutichakuq"
 
+# "Paleta de operadores numéricos"
+#: TurtleArt/tabasics.py:784
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:91
 msgid "Palette of flow operators"
 msgstr "Yupanakunawan llamk'anapap"
 
+#  "esperar"
+#: TurtleArt/tabasics.py:789
 msgid "wait"
 msgstr "suyay"
 
+#  "detiene la ejecución del programa por número determinado de segundos"
+#: TurtleArt/tabasics.py:793
 msgid "pauses program execution a specified number of seconds"
 msgstr "programa purisqantaqa segundukunata churaspam utichin"
 
+#  "por siempre"
+#: TurtleArt/tabasics.py:800
 msgid "forever"
 msgstr "wiñaypaq"
 
+#  "repetir para siempre"
+#: TurtleArt/tabasics.py:804
 msgid "loops forever"
 msgstr "wiñaypaq huktawan kutichiy"
 
+#  "repetir"
+#: TurtleArt/tabasics.py:811 TurtleArt/tabasics.py:815
 msgid "repeat"
 msgstr "huktawan"
 
+#  "repetir el número especificado de veces"
+#: TurtleArt/tabasics.py:816
 msgid "loops specified number of times"
 msgstr "yupana mañakusqantahinam mayk'a kutitapas ruway"
 
+#  "si"
+#: TurtleArt/tabasics.py:822 TurtleArt/tabasics.py:835
 msgid "if"
 msgstr "arí"
 
+#  "entonces"
+#  [es] "entonces"
+#: TurtleArt/tabasics.py:822 TurtleArt/tabasics.py:835
 msgid "then"
 msgstr "chayna-kaptinqa"
 
+#  "si entonces"
+#  [es] "si entonces"
+#: TurtleArt/tabasics.py:825
 msgid "if then"
 msgstr "arí-chayna-kaptinqa"
 
+#  "operador si-entonces que usa operadores lógicos de la paleta de Números"
+#  [es] "operador si-entonces que usa operadores lógicos de la paleta de Números"
+#: TurtleArt/tabasics.py:827
 msgid "if-then operator that uses boolean operators from Numbers palette"
 msgstr "Yupanakuna llamk'anamanta ari-chayna-kaptinqa"
 
+#  [ES] "sino"
+#: TurtleArt/tabasics.py:835
 msgid "else"
 msgstr "mana chayqa"
 
+#  "si entonces sino"
+#  [es] "si entonces sino"
+#: TurtleArt/tabasics.py:839 TurtleArt/tabasics.py:847
 msgid "if then else"
 msgstr "ari-chayna-kaptinqa mana-chayqa"
 
+#  "operador si-entonces-sino que usa operadores lógicos de la paleta de Números"
+#  [es] ""
+#  [es] "operador si-entonces-sino que usa operadores lógicos de la paleta de Números"
+#: TurtleArt/tabasics.py:840 TurtleArt/tabasics.py:848
 msgid "if-then-else operator that uses boolean operators from Numbers palette"
 msgstr "Yupanakuna llamk'anamanta ari-chayna-kaptinqa mana-chauqa"
 
 #
+#  "espacio horizontal"
+#: TurtleArt/tabasics.py:857
 msgid "horizontal space"
 msgstr "kiranpa k'iti"
 
+#  desplaza la pila a la derecha"
+#: TurtleArt/tabasics.py:858
 msgid "jogs stack right"
 msgstr "pañamanmi tawqataqa suchuchiy"
 
 #
+#  "espacio vertical"
+#: TurtleArt/tabasics.py:865
 msgid "vertical space"
 msgstr "sayanpa k'iti"
 
+#  desplazar la pila abajo"
+#: TurtleArt/tabasics.py:866
 msgid "jogs stack down"
 msgstr "uraymanmi tawqataqa suchuchiy"
 
+#  "parar acción"
+#: TurtleArt/tabasics.py:872
 msgid "stop action"
 msgstr "ruwasqanta utichiy"
 
+#  "detiene la acción actual"
+#: TurtleArt/tabasics.py:875
 msgid "stops current action"
 msgstr "kunan kaq ruwasqanta utichiy"
 
+#  "Paleta de bloques de variables"
+#: TurtleArt/tabasics.py:884
 msgid "Palette of variable blocks"
 msgstr "Imaymana bloquekuna"
 
+#  "empezar"
+#: TurtleArt/tabasics.py:889 pysamples/grecord.py:214
 msgid "start"
 msgstr "qallariy"
 
+#  "conecta la acción a los botones de ejecución de la barra de herramientas"
+#: TurtleArt/tabasics.py:892
 msgid "connects action to toolbar run buttons"
 msgstr "llamk'anakunapi llamk'aq rumpukunaman masichiy"
 
+#  "texto"
+#: TurtleArt/tabasics.py:899 TurtleArt/tabasics.py:900
+#: TurtleArt/tabasics.py:901
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:178
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:179
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:180
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:187
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:201
 msgid "text"
 msgstr "qillqa"
 
+#  "valor de cadena"
+#: TurtleArt/tabasics.py:902
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:181
 msgid "string value"
 msgstr "waskarchakuqpa chanin"
 
+#  "acción"
+#: TurtleArt/tabasics.py:906 TurtleArt/tabasics.py:909
+#: TurtleArt/tabasics.py:917 TurtleArt/tabasics.py:921
+#: TurtleArt/tawindow.py:1449 TurtleArt/tawindow.py:1546
+#: TurtleArt/tawindow.py:1559 TurtleArt/tawindow.py:2178
+#: TurtleArt/tawindow.py:4513
 msgid "action"
 msgstr "ruway"
 
+#  "cima de la pila de acción nombrable"
+#: TurtleArt/tabasics.py:911
 msgid "top of nameable action stack"
 msgstr "tawqap patan sutichakuq"
 
+#  "invocar la pila de acción nombrado"
+#: TurtleArt/tabasics.py:922 TurtleArt/tawindow.py:4527
 msgid "invokes named action stack"
 msgstr "sutichasqa tawqata waqyay"
 
+#  "guardar en caja 1"
+#: TurtleArt/tabasics.py:929
 msgid "store in box 1"
 msgstr "1 tawak'uchu kaqpi waqaychay"
 
+#  "guarda valor numérico en la variable 1"
+#: TurtleArt/tabasics.py:934
 msgid "stores numeric value in Variable 1"
 msgstr "yupanap chanintaqa 1 Variable nisqapi waqaychay"
 
+#  "guardar en caja 2"
+#: TurtleArt/tabasics.py:943
 msgid "store in box 2"
 msgstr "2 tawak'uchu kaqpi waqaychay"
 
+#  "guarda valor numérico en la variable 2"
+#: TurtleArt/tabasics.py:948
 msgid "stores numeric value in Variable 2"
 msgstr "yupanap chanintaqa 2 Variable nisqapi waqaychay"
 
+#  "caja 1"
+#: TurtleArt/tabasics.py:957
 msgid "box 1"
 msgstr "1 tawak'uchu"
 
+#  "Variable 1 (valor numérico)"
+#: TurtleArt/tabasics.py:960
 msgid "Variable 1 (numeric value)"
 msgstr "1 variable nisqa (yupanap chanin)"
 
+#  "caja 2"
+#: TurtleArt/tabasics.py:967
 msgid "box 2"
 msgstr "2 tawak'uchu"
 
+#  "Variable 2 (valor numérico)"
+#: TurtleArt/tabasics.py:970
 msgid "Variable 2 (numeric value)"
 msgstr "2 variable nisqa (yupanap chanin)"
 
+#  "guardar en"
+#: TurtleArt/tabasics.py:976 TurtleArt/tawindow.py:4581
 msgid "store in"
 msgstr "imapi waqaychanki"
 
+#  "caja"
+#: TurtleArt/tabasics.py:976 TurtleArt/tabasics.py:992
 msgid "box"
 msgstr "tawak'uchu"
 
+#  "mi caja"
+#: TurtleArt/tabasics.py:980 TurtleArt/tabasics.py:995
+#: TurtleArt/tawindow.py:1453 TurtleArt/tawindow.py:1585
+#: TurtleArt/tawindow.py:2182 TurtleArt/tawindow.py:4542
+#: TurtleArt/tawindow.py:4572
 msgid "my box"
 msgstr "tawak'uchuy"
 
+#  "guarda valor numérico en la variable nombrada"
+#: TurtleArt/tabasics.py:981 TurtleArt/tawindow.py:4586
 msgid "stores numeric value in named variable"
 msgstr "yupanap chanintaqa variable sutichasqapim waqaychay"
 
+#  "variable nombrado (valor numérico)"
+#: TurtleArt/tabasics.py:998 TurtleArt/tawindow.py:4556
 msgid "named variable (numeric value)"
 msgstr "sutichasqa Variable (yupanap chanin)"
 
+#  "acción 1"
+#: TurtleArt/tabasics.py:1005 TurtleArt/tabasics.py:1024
 msgid "action 1"
 msgstr "1 ruway"
 
+#  "primero de la pila de Acción 1"
+#: TurtleArt/tabasics.py:1008
 msgid "top of Action 1 stack"
 msgstr "tawqap 1 Ruwayninpa qallariq"
 
+#  "acción 2"
+#: TurtleArt/tabasics.py:1014 TurtleArt/tabasics.py:1034
 msgid "action 2"
 msgstr "2 ruway"
 
+#  "primero de la pila de Acción 2"
+#: TurtleArt/tabasics.py:1017
 msgid "top of Action 2 stack"
 msgstr "tawqap 2 Ruwayninpa qallariq"
 
+#  "invocar la pila de acción 1"
+#: TurtleArt/tabasics.py:1027
 msgid "invokes Action 1 stack"
 msgstr "tawqap 1 ruwayninta waqyay"
 
+#  "invocar la pila de acción 2"
+#: TurtleArt/tabasics.py:1037
 msgid "invokes Action 2 stack"
 msgstr "tawqap 2 ruwayninta waqyay"
 
+#  "basura"
+#: TurtleArt/tabasics.py:1045
 msgid "trash"
 msgstr "q'upa"
 
+#  "vaciar papelera"
+#: TurtleArt/tabasics.py:1049
 msgid "empty trash"
 msgstr "q'upanata qasichiy"
 
+#  "borra permanentemente elementos de la papelera"
+#: TurtleArt/tabasics.py:1050
 msgid "permanently deletes items in trash"
 msgstr "q'upanapi imaymana kaqtaqa wiñaypaq qasichiy"
 
+#  "restaurar todo"
+#: TurtleArt/tabasics.py:1054
 msgid "restore all"
 msgstr "llapanta kutichiy"
 
+#  "restaura todos los bloques de la papelera"
+#: TurtleArt/tabasics.py:1055
 msgid "restore all blocks from trash"
 msgstr "q'upanapi ima bloque nisqakuna kaqtaqa llipinta kutiyachiy"
 
+#  "borrar todos"
+#: TurtleArt/tabasics.py:1059
 msgid "clear all"
 msgstr "llapanta pichay"
 
+#  "mover todos los bloques a la basura"
+#: TurtleArt/tabasics.py:1060
 msgid "move all blocks to trash"
 msgstr "llapan bloque nisqakunataqa q'upanaman wikch'uy"
 
+#  "Compartir bloques seleccionados"
+#: TurtleArt/tacollaboration.py:152 TurtleArt/tawindow.py:2156
+#: TurtleArtActivity.py:775
 msgid "Share selected blocks"
 msgstr "Akllasqa bloques nisqakunata qunakuy"
 
+#  "Título"
+#: TurtleArt/taconstants.py:209 TurtleArt/taconstants.py:231
+#: TurtleArt/taconstants.py:252 TurtleArt/taconstants.py:294
+#: TurtleArt/taconstants.py:336 TurtleArt/taconstants.py:378
 msgid "Title"
 msgstr "Sutinchaynin"
 
+#  "Parar tortuga"
+#: TurtleArt/talogo.py:374 TurtleArtActivity.py:755
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1437
 msgid "Stop turtle"
 msgstr "Charapata utichiy"
 
+#  "Mostrar bloques"
+#: TurtleArt/talogo.py:384 TurtleArtActivity.py:383 TurtleArtActivity.py:756
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1428
 msgid "Show blocks"
 msgstr "Bloques nisqakunata rikuchiy"
 
+# "ocultar los bloques"
+#: TurtleArt/talogo.py:388 TurtleArtActivity.py:387 TurtleArtActivity.py:1041
 msgid "Hide blocks"
 msgstr "Bloques nisqakunata pakay"
 
+#  "no pudo escribir en"
+#: TurtleArt/talogo.py:512
 msgid "did not output to"
 msgstr "mana atinichu kaypi qillqaytaqa"
 
+#  "No sé como hacerlo"
+#: TurtleArt/talogo.py:572
 msgid "I don't know how to"
 msgstr "Imayna ruwaytaqa mana yachanichu"
 
+#  "no le gusta"
+#: TurtleArt/talogo.py:630
 msgid "doesn't like"
 msgstr "manam munanchu"
 
+#  "como entrada"
+#: TurtleArt/talogo.py:631
 msgid "as input"
 msgstr "haykusqahinataqa"
 
+#  "muestra la siguiente paleta"
+#: TurtleArt/tapalette.py:97
 msgid "displays next palette"
 msgstr "hukaq llamk'anakunata rikuchiy"
 
+#  "cambia la orientación de la paleta de bloques"
+#: TurtleArt/tapalette.py:98
 msgid "changes the orientation of the palette of blocks"
 msgstr "bloque nisqakuna mayman qhawariyninta t'ikrachiy"
 
+#  "Cargar..."
+#: TurtleArt/tautils.py:300
 msgid "Load..."
 msgstr "Purichkanña..."
 
+#  "Guardar..."
+#: TurtleArt/tautils.py:310
 msgid "Save..."
 msgstr "Waqaychay..."
 
+#  "clic para abrir"
+#: TurtleArt/tautils.py:593
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:712
 msgid "click to open"
 msgstr "kicharinapaqqa clickta ruway"
 
+#  "orientación"
+#: TurtleArt/tawindow.py:1102 TurtleArt/tawindow.py:1103
 msgid "orientation"
 msgstr "mayman rinqa"
 
+#  "siguiente"
+#: TurtleArt/tawindow.py:1117 TurtleArt/tawindow.py:1742
 msgid "next"
 msgstr "hamuq"
 
+#  "desplazar"
+#: TurtleArt/tawindow.py:1156 TurtleArt/tawindow.py:1763
 msgid "shift"
 msgstr "purichiy"
 
+#: TurtleArt/tawindow.py:1414
 msgid ""
 "Please hit the Stop Button before making changes to your Turtle Blocks "
 "program"
 msgstr "Mira, amaraq programanta huknirachispaqa Sayachiy nisqa q'apiriy"
 
+#  "Selecciona bloques para compartir"
+#: TurtleArt/tawindow.py:1467
 msgid "Select blocks to share"
 msgstr "Qukunapaq bloques nisqakunata akllay"
 
+#: TurtleArt/tawindow.py:1630 TurtleArtActivity.py:656
+#: TurtleArtActivity.py:805 turtleblocks.py:412
 msgid "Save stack"
 msgstr "Pila nisqata waqaychay"
 
+#: TurtleArt/tawindow.py:1631 TurtleArt/tawindow.py:1645
 msgid "Really overwrite stack?"
 msgstr "Munanchichu Pila nisqata allichayta?"
 
+#  "Cancelar"
+#: TurtleArt/tawindow.py:1634 TurtleArt/tawindow.py:1673
+#: gnome_plugins/uploader_plugin.py:144
 msgid "Cancel"
 msgstr "Chinkachiy"
 
+#: TurtleArt/tawindow.py:1638 TurtleArt/tawindow.py:1648
 msgid "Overwrite stack"
 msgstr "Pila nisqata allichay"
 
+#: TurtleArt/tawindow.py:1669 TurtleArt/tawindow.py:1677
+#: TurtleArt/tawindow.py:1686 TurtleArtActivity.py:658 turtleblocks.py:414
 msgid "Delete stack"
 msgstr "Pila nisqata pichay"
 
+#: TurtleArt/tawindow.py:1670 TurtleArt/tawindow.py:1683
 msgid "Really delete stack?"
 msgstr "Munakichu Pila nisqata pichayta?"
 
+#  "imagen"
+#: TurtleArt/tawindow.py:4362
 msgid "image"
 msgstr "wanki"
 
+#  "Guardar como Logo"
+#: TurtleArtActivity.py:200 TurtleArtActivity.py:781 TurtleArtActivity.py:964
+#: TurtleArtActivity.py:1000 turtleblocks.py:386
 msgid "Save as Logo"
 msgstr "Unancha hinata waqaychay"
 
+#  "Guardar como imagen"
+#: TurtleArtActivity.py:257 TurtleArtActivity.py:780 TurtleArtActivity.py:961
+#: TurtleArtActivity.py:997 turtleblocks.py:384
 msgid "Save as image"
 msgstr "Wanki hinata waqaychay"
 
+#  "instantánea"
+#: TurtleArtActivity.py:265
 msgid "snapshot"
 msgstr "usqachiq"
 
+#  "Guardar instantánea"
+#: TurtleArtActivity.py:273 TurtleArtActivity.py:715 TurtleArtActivity.py:757
+#: TurtleArtActivity.py:970 TurtleArtActivity.py:1003
 msgid "Save snapshot"
 msgstr "Utqaylla waqaychay"
 
+#  "Deshabilitar ayuda flotante"
+#: TurtleArtActivity.py:318 TurtleArtActivity.py:681 TurtleArtActivity.py:832
 msgid "Turn off hover help"
 msgstr "Tuytuq yanapayta chinkachiy"
 
+#  "Habilitar ayuda flotante"
+#: TurtleArtActivity.py:326 turtleblocks.py:405
 msgid "Turn on hover help"
 msgstr "Tuytuq yanapayta rikuchiy"
 
+#  "Mostrar paleta"
+#: TurtleArtActivity.py:335 turtleblocks.py:419
 msgid "Show palette"
 msgstr "Llimp'ikunata rikuchiy"
 
+#  "Ocultar paleta"
+#: TurtleArtActivity.py:341 TurtleArtActivity.py:1029 turtleblocks.py:421
 msgid "Hide palette"
 msgstr "Llimp'ikunata pakay"
 
+#  "Escalar coordenadas hacia abajo"
+#: TurtleArtActivity.py:509
 msgid "Rescale coordinates down"
 msgstr "Coordenadasta urayman churay"
 
+#  "Escalar coordenadas hacia arriba"
+#: TurtleArtActivity.py:513 TurtleArtActivity.py:672 TurtleArtActivity.py:828
 msgid "Rescale coordinates up"
 msgstr "Coordenadasta wichayman t'akyachiy"
 
+#  "Editar"
+#: TurtleArtActivity.py:603 TurtleArtActivity.py:639 TurtleArtActivity.py:749
+#: TurtleArtActivity.py:802 turtleblocks.py:416
 msgid "Edit"
 msgstr "Allinchay"
 
+#  "Ver"
+#: TurtleArtActivity.py:608 TurtleArtActivity.py:637 TurtleArtActivity.py:750
+#: TurtleArtActivity.py:820 turtleblocks.py:407
 msgid "View"
 msgstr "Qhaway"
 
+#  "Proyecto"
+#: TurtleArtActivity.py:635 TurtleArtActivity.py:751
 msgid "Project"
 msgstr "Wakichina"
 
+#  "Guardar/Cargar"
+#: TurtleArtActivity.py:641 TurtleArtActivity.py:748 TurtleArtActivity.py:777
+#: TurtleArtActivity.py:779 TurtleArtActivity.py:956
 msgid "Save/Load"
 msgstr "Waqaychay/Wichachiy"
 
+#  "Copiar"
+#: TurtleArtActivity.py:649 TurtleArtActivity.py:803 turtleblocks.py:410
 msgid "Copy"
 msgstr "Kikinchay"
 
+#  "Pegar"
+#: TurtleArtActivity.py:651 TurtleArtActivity.py:804 turtleblocks.py:411
 msgid "Paste"
 msgstr "K'askachiy"
 
+# "restaura todos los bloques de la papelera"
+#: TurtleArtActivity.py:653
 msgid "Restore blocks from trash"
 msgstr "Q'upanapi ima bloque nisqakuna kaqtaqa llipinta kutiyachiy"
 
+#  "Pantalla completa"
+#: TurtleArtActivity.py:661 TurtleArtActivity.py:821
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:791
 msgid "Fullscreen"
 msgstr "Hunt'asqa pantalla"
 
+#  "Coordenadas cartesianas"
+#: TurtleArtActivity.py:664 TurtleArtActivity.py:822 turtleblocks.py:392
 msgid "Cartesian coordinates"
 msgstr "Coordenadas cartesianas nisqa"
 
+#  "Coordenadas polares"
+#: TurtleArtActivity.py:666 TurtleArtActivity.py:824 turtleblocks.py:394
 msgid "Polar coordinates"
 msgstr "Coordenadas polares nisqa"
 
+#  "Coordenadas centímetros"
+#: TurtleArtActivity.py:669 TurtleArtActivity.py:826
 msgid "Metric coordinates"
 msgstr "Coordenadas centímetros nisqa"
 
+#  "Agrandar bloques"
+#: TurtleArtActivity.py:675 TurtleArtActivity.py:830 turtleblocks.py:398
 msgid "Grow blocks"
 msgstr "Bloques nisqakunata hatunyachiy"
 
+#  "Empequeñecer bloques"
+#: TurtleArtActivity.py:678 TurtleArtActivity.py:831 turtleblocks.py:400
 msgid "Shrink blocks"
 msgstr "Bloques nisqakunata huch'uyachiy"
 
+#  "Cargar ejemplos"
+#: TurtleArtActivity.py:702 TurtleArtActivity.py:719 TurtleArtActivity.py:758
+#: TurtleArtActivity.py:974
 msgid "Load example"
 msgstr "Qhawarichikunata wichachiy"
 
+#  "Limpiar"
+#: TurtleArtActivity.py:752 TurtleArtActivity.py:1035 turtleblocks.py:428
 msgid "Clean"
 msgstr "Pichay"
 
+#  "Ejecutar"
+#: TurtleArtActivity.py:753 TurtleArtActivity.py:1037 turtleblocks.py:429
 msgid "Run"
 msgstr "Ruway"
 
+#  "Dar un paso"
+#: TurtleArtActivity.py:754 TurtleArtActivity.py:1039 turtleblocks.py:430
 msgid "Step"
 msgstr "Puriy"
 
+#  "Ayuda"
+#: TurtleArtActivity.py:759 turtleblocks.py:437 util/helpbutton.py:44
 msgid "Help"
 msgstr "Yanapay"
 
+#  "Parar"
+#: TurtleArtActivity.py:760 turtleblocks.py:432
 msgid "Stop"
 msgstr "Sayachiy"
 
+#  "Cargar proyecto"
+#: TurtleArtActivity.py:782 TurtleArtActivity.py:983 TurtleArtActivity.py:1005
+#: turtleblocks.py:381
 msgid "Load project"
 msgstr "Wakichinata wichachiy"
 
+#  "Cargar plugin"
+#: TurtleArtActivity.py:785 TurtleArtActivity.py:988 TurtleArtActivity.py:1010
 msgid "Load plugin"
 msgstr "Plugin nisqata churay"
 
+#  "Cargar bloque Python"
+#: TurtleArtActivity.py:786 TurtleArtActivity.py:991 TurtleArtActivity.py:1013
 msgid "Load Python block"
 msgstr "Pythonta wicharichiy"
 
+# [ES] "paleta"
+#: TurtleArtActivity.py:933
 msgid "Palettes"
 msgstr "Llimp'ikunap marun"
 
+#  "Compartir bloques deshabilitado"
+#: TurtleArtActivity.py:951
 msgid "Sharing blocks disabled"
 msgstr "Mana llamk'aq bloque nisqakunata qunakuy"
 
+#  "Abrir"
+#: TurtleArtActivity.py:980 turtleblocks.py:380
 msgid "Open"
 msgstr "Kichay"
 
+#  "<Ctrl>p"
+#: TurtleArtActivity.py:1030
 msgid "<Ctrl>p"
 msgstr "<Ctrl>p"
 
+#  "<Ctrl>e"
+#: TurtleArtActivity.py:1035
 msgid "<Ctrl>e"
 msgstr "<Ctrl>e"
 
+#  "<Ctrl>r"
+#: TurtleArtActivity.py:1037
 msgid "<Ctrl>r"
 msgstr "<Ctrl>r"
 
+#  "<Ctrl>w"
+#: TurtleArtActivity.py:1039
 msgid "<Ctrl>w"
 msgstr "<Ctrl>w"
 
+#  "<Ctrl>s"
+#: TurtleArtActivity.py:1042
 msgid "<Ctrl>s"
 msgstr "<Ctrl>s"
 
+#  "El plugin no puede ser instalado."
+#: TurtleArtActivity.py:1203 TurtleArtActivity.py:1208
+#: TurtleArtActivity.py:1288
 msgid "Plugin could not be installed."
 msgstr "Plugin nisqaqa churachiykuytaqa manam atichikunchu."
 
+#  "Reinicie TortugArte para poder usar el plugin."
+#: TurtleArtActivity.py:1284
 msgid "Please restart Turtle Art in order to use the plugin."
 msgstr "Pluginwan kananpaqqa, wakmantam CharapArte sutichakuqtaqa qallarichiy."
 
+#  "El plugin %s ya se encuentra instalado."
+#: TurtleArtActivity.py:1302
+#, python-format
 msgid "Plugin %s already installed."
 msgstr "Plugin %s sutichakuqqa churasqañam kachkan."
 
+#  "¿Desea reinstalar %s?"
+#: TurtleArtActivity.py:1303
+#, python-format
 msgid "Do you want to reinstall %s?"
 msgstr "Munankichu %s sutichakuqta wakmanta churayta?"
 
+#  "Mi TortugArte sesión"
+#: gnome_plugins/collaboration_plugin.py:64
 msgid "My Turtle Art session"
 msgstr "CharapArteyman haykunay"
 
+#  "Permitir la colaboración"
+#: gnome_plugins/collaboration_plugin.py:111
 msgid "Enable collaboration"
 msgstr "Yanapanakupaq kamariy"
 
+#  "Actividades"
+#: gnome_plugins/collaboration_plugin.py:116
 msgid "Activities"
 msgstr "Ruwanakuna"
 
+#  "Amigos"
+#: gnome_plugins/collaboration_plugin.py:121
 msgid "Buddies"
 msgstr "Masikuna"
 
+#  "Compartir"
+#: gnome_plugins/collaboration_plugin.py:124
 msgid "Share"
 msgstr "Qunakuy"
 
+#  "Configuración"
+#: gnome_plugins/collaboration_plugin.py:125
 msgid "Configuration"
 msgstr "Kamachina"
 
+#  "Vecindario"
+#: gnome_plugins/collaboration_plugin.py:128
 msgid "Neighborhood"
 msgstr "Ayllu"
 
+#  "Apodo"
+#: gnome_plugins/collaboration_plugin.py:289
 msgid "Nickname"
 msgstr "Sutichakuy"
 
+#  "Cuenta"
+#: gnome_plugins/collaboration_plugin.py:291
 msgid "Account ID"
 msgstr "Cuentay"
 
+#  "Servidor"
+#: gnome_plugins/collaboration_plugin.py:293
 msgid "Server"
 msgstr "Servidor nisqa"
 
+#  "Puerto"
+#: gnome_plugins/collaboration_plugin.py:295
 msgid "Port"
 msgstr "Puerto nisqa"
 
+#  "Contraseña"
+#: gnome_plugins/collaboration_plugin.py:297
 msgid "Password"
 msgstr "Paka-qillqa"
 
+#  "Registro"
+#: gnome_plugins/collaboration_plugin.py:299
 msgid "Register"
 msgstr "Qillqachikuy"
 
+#  "Colores"
+#: gnome_plugins/collaboration_plugin.py:301
 msgid "Colors"
 msgstr "Llimp'ikuna"
 
+#  "Cargar"
+#: gnome_plugins/fb_plugin.py:82 gnome_plugins/fb_plugin.py:83
+#: gnome_plugins/fb_plugin.py:92 gnome_plugins/uploader_plugin.py:63
+#: gnome_plugins/uploader_plugin.py:64 gnome_plugins/uploader_plugin.py:73
 msgid "Upload"
 msgstr "Wichachiy"
 
+#: gnome_plugins/fb_plugin.py:87
 msgid "Facebook wall post"
 msgstr "Facebookpa pirqan"
 
+#  "Enviar a la Web"
+#: gnome_plugins/uploader_plugin.py:68
 msgid "Upload to Web"
 msgstr "Webman apachiy"
 
+#  "Debe contar con una cuenta en http://turtleartsite.sugarlabs.org para bajar "
+#  "su proyecto."
+#: gnome_plugins/uploader_plugin.py:90
 msgid ""
 "You must have an account at http://turtleartsite.sugarlabs.org to upload "
 "your project."
@@ -2045,317 +2685,564 @@ msgstr ""
 "Ruwasqaykita urayachinapaqqa http://turtleartsite.sugarlabs.org nisqapim "
 "cueta nisqata hurqukuwaq."
 
+#  "Usuario:"
+#: gnome_plugins/uploader_plugin.py:99
 msgid "Username:"
 msgstr "Haykuqpa sutin:"
 
+#  "Contraseña:"
+#: gnome_plugins/uploader_plugin.py:109
 msgid "Password:"
 msgstr "Paka-qillqa:"
 
+#  "Título:"
+#: gnome_plugins/uploader_plugin.py:120
 msgid "Title:"
 msgstr "Sutinchaynin:"
 
+#  "Descripción:"
+#: gnome_plugins/uploader_plugin.py:130
 msgid "Description:"
 msgstr "Imamanta:"
 
+#  "Enviar a la Web"
+#: gnome_plugins/uploader_plugin.py:140
 msgid "Submit to Web"
 msgstr "Webman apachiy"
 
+#  "Error de autentificación"
+#: gnome_plugins/uploader_plugin.py:166
 msgid "Login failed"
 msgstr "Haykunaqa waqllirun"
 
+#  "¡Error al descargar!"
+#: gnome_plugins/uploader_plugin.py:203
 msgid "Failed to upload!"
 msgstr "Urayachiyqa pantarun!"
 
+#  "Paleta de bloques sensor"
+#: plugins/accelerometer/accelerometer.py:49
+#: plugins/audio_sensors/audio_sensors.py:75
+#: plugins/camera_sensor/camera_sensor.py:63
+#: plugins/light_sensor/light_sensor.py:49 plugins/rfid/rfid.py:86
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:309
 msgid "Palette of sensor blocks"
 msgstr "Musyanamanta"
 
+#  "acelerómetro"
+#: plugins/accelerometer/accelerometer.py:56
+#: plugins/accelerometer/accelerometer.py:63
 msgid "acceleration"
 msgstr "utqhay purichinapaq"
 
+#  "pone la aceleración en los ejes x, y z en la pila"
+#: plugins/accelerometer/accelerometer.py:58
+#: plugins/accelerometer/accelerometer.py:65
 msgid "push acceleration in x, y, z to heap"
 msgstr "utqhay puriytaqa tawqap x, y, z tinkuchaypi churay"
 
+#  "señal de entrada de micrófono"
+#: plugins/audio_sensors/audio_sensors.py:84
+#: plugins/audio_sensors/audio_sensors.py:99
 msgid "raw microphone input signal"
 msgstr "microfono uyarisqanmanta"
 
+#  "volumen"
+#: plugins/audio_sensors/audio_sensors.py:90
+#: plugins/audio_sensors/audio_sensors.py:105
 msgid "loudness"
 msgstr "qhapariynin"
 
+#  "volumen de entrada de micrófono"
+#: plugins/audio_sensors/audio_sensors.py:91
+#: plugins/audio_sensors/audio_sensors.py:106
 msgid "microphone input volume"
 msgstr "microfonopi uyarikusqanmanta qhapariynin"
 
+#   "frecuencia"
+#: plugins/audio_sensors/audio_sensors.py:119
+#: plugins/audio_sensors/audio_sensors.py:127
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:296
 msgid "pitch"
 msgstr "hayk'a kuti"
 
+#  "frecuencia de la componente más intensa del sonido presente en la entrada de "
+#  "micrófono"
+#: plugins/audio_sensors/audio_sensors.py:120
+#: plugins/audio_sensors/audio_sensors.py:128
 msgid "microphone input pitch"
 msgstr "microfonopi uyarikusqanmanta sinchi qhaparichiqta qhawachiq"
 
+#  "valor de la resistencia conectada a la entrada de micrófono (rango de "
+#  "medición: 700 a 14000 ohms)"
+#: plugins/audio_sensors/audio_sensors.py:152
+#: plugins/audio_sensors/audio_sensors.py:166
+#: plugins/audio_sensors/audio_sensors.py:180
+#: plugins/audio_sensors/audio_sensors.py:194
 msgid "microphone input resistance"
 msgstr "microfonopi hayk'a uyarikusqanmanta (yupakuq: 700 - 14000 ohms)"
 
+#  "valor del voltaje DC conectado a la entrada de micrófono (rango: 0.40 a 1.90 "
+#  "V)"
+#: plugins/audio_sensors/audio_sensors.py:158
+#: plugins/audio_sensors/audio_sensors.py:172
+#: plugins/audio_sensors/audio_sensors.py:186
+#: plugins/audio_sensors/audio_sensors.py:200
 msgid "microphone input voltage"
 msgstr ""
 "microfonopi uyarikusqanmanta DC voltaje nisqamanta (yupakuq: 0.40 - 1.90 V)"
 
+#  "Paleta de bloques medios
+#: plugins/camera_sensor/camera_sensor.py:67
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:125
 msgid "Palette of media objects"
 msgstr "Media nisqakuna"
 
+#  "nivel de luz detectado por la cámara"
+#: plugins/camera_sensor/camera_sensor.py:82
+#: plugins/camera_sensor/camera_sensor.py:130
 msgid "light level detected by camera"
 msgstr "cámarap mayk'a llipipiy rikusqan"
 
+#  "Promedio de color RGB de la cámara se desplaza a la pila"
+#: plugins/camera_sensor/camera_sensor.py:95
+#: plugins/camera_sensor/camera_sensor.py:143
 msgid "Average RGB color from camera is pushed to the stack"
 msgstr "Hayk'a llimp'i RGB sutiyumi cámarap pilankamaqa chayanqa"
 
+#  "imagen de la cámara"
+#: plugins/camera_sensor/camera_sensor.py:106
+#: plugins/camera_sensor/camera_sensor.py:113
+#: plugins/camera_sensor/camera_sensor.py:121
+#: plugins/camera_sensor/camera_sensor.py:155
+#: plugins/camera_sensor/camera_sensor.py:163
 msgid "camera output"
 msgstr "cámarap wankin"
 
+#  "nivel de luz detectado por el sensor"
+#: plugins/light_sensor/light_sensor.py:58
+#: plugins/light_sensor/light_sensor.py:65
 msgid "light level detected by light sensor"
 msgstr "kayk'a k'anchariy musyasqa"
 
+#  "RFID"
+#: plugins/rfid/rfid.py:92 plugins/rfid/rfid.py:100
 msgid "RFID"
 msgstr "RFID Radio Frecuencia nisqa"
 
+#  "leer el valor del dispositivo de radiofrecuencia (RFID)"
+#: plugins/rfid/rfid.py:93 plugins/rfid/rfid.py:101
 msgid "read value from RFID device"
 msgstr "Radio Frecuenciap (RFID) chaninta ñawiriy"
 
+#  "mientras"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:96
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:99
 msgid "while"
 msgstr "chaykamaqa"
 
+#  "se ejecuta la serie de acciones siguientes al bloque mientras se cumpla la "
+#  "condición fijada al comienzo del mismo"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:100
 msgid "do-while-True operator that uses boolean operators from Numbers palette"
 msgstr "qallariypi kamachikusqantahinam kunan ñawpaqmanqa ruwarinqa"
 
+#  "hasta"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:106
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:109
 msgid "until"
 msgstr "kaykama"
 
+#  "se ejecutan la serie de bloques siguientes hasta que se cumpla la condición"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:110
 msgid "do-until-True operator that uses boolean operators from Numbers palette"
 msgstr "kamachikusqantahinam kunan ñawpaqmanqa ruwarinqa"
 
+#  "encima"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:117
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:714
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:888
 msgid "top"
 msgstr "patannin"
 
+#  "encima de una pila plegable"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:119
 msgid "top of a collapsible stack"
 msgstr "tawqa q'imikuq patanpi"
 
+#  "diario"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:132
 msgid "journal"
 msgstr "p'anqa"
 
+#  "objeto de medios del Diario de Sugar"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:133
 msgid "Sugar Journal media object"
 msgstr "Sugar Panq'amanta media nisqakuna"
 
+#  "audio"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:143
 msgid "audio"
 msgstr "uyarina"
 
+#  "Sugar Journal audio object"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:145
 msgid "Sugar Journal audio object"
 msgstr "Sugar Panq'amanta uyarinakuna"
 
+#  "video"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:155
 msgid "video"
 msgstr "qhawarina"
 
+#  "objeto de video del Diario de Sugar"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:157
 msgid "Sugar Journal video object"
 msgstr "Sugar P'anqamanta videokuna"
 
+# "Descripción:"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:167
 msgid "description"
 msgstr "imamanta"
 
+#  "descripción"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:169
 msgid "Sugar Journal description field"
 msgstr "imamanta"
 
+#  "mostrar"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:186
 msgid "show"
 msgstr "rikuchiy"
 
+#  "dibujar texto o mostrar medios desde el Diario"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:190
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:204
 msgid "draws text or show media from the Journal"
 msgstr ""
 "P'anqamanta imaymana medios nisqakunata rikuchiy, manachayqa qillqata "
 "siq'ipay"
 
 #
+#  "mostrar alineados"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:200
 msgid "show aligned"
 msgstr "sinrichasqakunata rikuchiy"
 
+#  "fijar escala"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:213
 msgid "set scale"
 msgstr "imayna kananpaq tupachiy"
 
+#  "fijar la escala de medios"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:217
 msgid "sets the scale of media"
 msgstr "medios nisqakuna imayna kananpaqqa tupachiy"
 
+#  "guardar imagen"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:225
 msgid "save picture"
 msgstr "wankita waqaychay"
 
+#  "nombre de la imagen"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:227
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:238
 msgid "picture name"
 msgstr "wakip sutin"
 
+#  "guarda una imagen en el Diario de Azúcar"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:228
 msgid "saves a picture to the Sugar Journal"
 msgstr "Sugarpa p'anqanpim huk wankita waqaychay"
 
+#  "guardar SVG"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:236
 msgid "save SVG"
 msgstr "SVG khiputaqa waqaychay"
 
+#  "guarda los gráficos de la tortuga como un archivo SVG en el Diario de Azúcar"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:239
 msgid "saves turtle graphics as an SVG file in the Sugar Journal"
 msgstr "charapap rikchayninkunataqa Sugarpa p'anqanpim waqaychay"
 
+#  "escala"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:246
 msgid "scale"
 msgstr "imayna kananpaq"
 
+#  "mantiene el valor actual de la escala"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:250
 msgid "holds current scale value"
 msgstr "kunan kasqa chaninwan purichkan"
 
+#  "esperar"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:255
 msgid "media wait"
 msgstr "suyariy"
 
+#  "esperar de audio o de vídeo hasta el final"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:257
 msgid "wait for current video or audio to complete"
 msgstr "uyarinata utaq video nisqata tukunankama suyariy"
 
+#  "parar medios"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:263
 msgid "media stop"
 msgstr "mediakunata utichiy"
 
+#  "detiene el video o audio"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:265
 msgid "stop video or audio"
 msgstr "videotawan uyarinatawan utichin"
 
+#  "pausar medios"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:270
 msgid "media pause"
 msgstr "mediakunata utichiy"
 
+#  "pausa el video o audio"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:272
 msgid "pause video or audio"
 msgstr "videotawan uyarinatawan utichin"
 
+#  "continuar medios"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:277
 msgid "media resume"
 msgstr "mediakunata rikuchiq"
 
+#  "reanudar la reproducción de video o audio"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:279
 msgid "resume playing video or audio"
 msgstr "videotawan uyarinatawan puriyachiylla"
 
+#  "hablar"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:285
 msgid "speak"
 msgstr "rimay"
 
+#  "hola"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:287
 msgid "hello"
 msgstr "allillanchu"
 
+#  "dice texto"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:288
 msgid "speaks text"
 msgstr "nisqapa nin qillqaqa"
 
+#  "sinusoide"
+#. TRANS: pitch, duration, amplitude
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:296
 msgid "sinewave"
 msgstr "sinusoide uyarina"
 
+#  [ES] "amplitud"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:297
 msgid "amplitude"
 msgstr "imayna uyarinamanta"
 
+#  "duración"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:297
 msgid "duration"
 msgstr "unayaynin"
 
+#  "reproduce una sinusoide desde frecuencia, amplitud y duración (en segundos)"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:300
 msgid "plays a sinewave at frequency, amplitude, and duration (in seconds)"
 msgstr ""
 "Huk sinusoide uyarinata frecuencianmanta, amplitudmantawan unayayninmantawan "
 "uyarichiy (kayqa segundos pachapi)"
 
+#  "botón presionado"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:316
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:327
 msgid "button down"
 msgstr "rump'u ñit'isqa"
 
+#  "retorna 1 si el botón del ratón está presionado"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:319
 msgid "returns 1 if mouse button is pressed"
 msgstr "huk'uchap rump'un q'apiyasqa kaptinqa 1 yupaytam kutichin"
 
+# "retorna 1 si el botón del ratón está presionado"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:330
 msgid "returns True if mouse button is pressed"
 msgstr "huk'uchap rump'un q'apiyasqa kaptinqa 1 yupaytam kutichin"
 
+#  "cursor x"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:338
 msgid "mouse x"
 msgstr "puripaq X"
 
+#  "devuelve la coordenada x del cursor"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:341
 msgid "returns mouse x coordinate"
 msgstr "puripaq X coordenadanta rikuchin"
 
+#  "cursor y"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:348
 msgid "mouse y"
 msgstr "puripaq Y"
 
+#  "retorna la coordenada y del cursor"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:351
 msgid "returns mouse y coordinate"
 msgstr "puripaq Y coordenadanta rikuchin"
 
+#  "consulta de teclado"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:359
 msgid "query keyboard"
 msgstr "tecladomanta yachanapaq"
 
+#  "consulta para la entrada de teclado (los resultados están almacenados en el "
+#  "bloque del teclado)"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:361
 msgid "query for keyboard input (results stored in keyboard block)"
 msgstr "teclado imayna kananpaq (tecladomanta willakuypim kachkan)"
 
+#  "teclado"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:368
 msgid "keyboard"
 msgstr "teclado nisqa"
 
+#  "contiene los resultados del bloque de consulta de teclado como ASCII"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:372
 msgid "holds results of query-keyboard block as ASCII"
 msgstr "teclados ASCII nisqahina tapukusqamanta kutichiykunatam rikuchin"
 
+#  "leer pixel"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:404
 msgid "read pixel"
 msgstr "pixel nisqata ñawiriy"
 
+#  "Se envia a la pila el color RGB bajo la tortuga"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:407
 msgid "RGB color under the turtle is pushed to the stack"
 msgstr "charapapi RGB llimp'i kasqantam tawqamanqa apachikun"
 
+#  "la tortuga ve"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:415
 msgid "turtle sees"
 msgstr "charapaqa qhawan"
 
+#  "muestra el color que \"ve\" la tortuga"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:417
 msgid "returns the color that the turtle \"sees\""
 msgstr "charapa llimp'i \"qhawasqantam\" rikuchin"
 
+#  "el tiempo transcurrido (en segundos) desde el inicio del programa"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:428
 msgid "elapsed time (in seconds) since program started"
 msgstr "programa qallarisqanmantaraq unayasqan (segundos nisqapi)"
 
+#  "Palette of extra options"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:436
 msgid "Palette of extra options"
 msgstr "Wak akllanakunamanta"
 
+#  "empujar"
+#. TRANS: push adds a new item to the program stack
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:443
 msgid "push"
 msgstr "tanqay"
 
+#  "apila el valor sobre la pila FILO (primero en entrar, último en salir)"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:446
 msgid "pushes value onto FILO (first-in last-out heap)"
 msgstr ""
 "FILO sutichakuq tawqamanmi chanita churapay ( haykuypiqa hukñiq'im, "
 "lluqsiypitaq qhipañiq'im)"
 
+#  "mostrar pila"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:456
 msgid "show heap"
 msgstr "tawqata rikuchiy"
 
+#  "muestra los valores en la pila FILO (primero en entrar, último en salir)"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:459
 msgid "shows values in FILO (first-in last-out heap)"
 msgstr ""
 "FILO sutichakuq tawqap chanintam rikuchin ( haykuypiqa hukñiq'im, "
 "lluqsiypitaq qhipañiq'im)"
 
+#  "vaciar pila"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:469
 msgid "empty heap"
 msgstr "tawqata qasichiy"
 
+#  "vacía la pila FILO (primera-en-entrar último-en-salir)"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:472
 msgid "emptys FILO (first-in-last-out heap)"
 msgstr ""
 "FILO sutichakuq tawqamantam qasichiy ( haykuypiqa hukñiq'im, lluqsiypitaq "
 "qhipañiq'im)"
 
+#  "sacar"
+#. TRANS: pop removes a new item from the program stack
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:483
 msgid "pop"
 msgstr "hurquy"
 
+#  "saca el valor de la pila FILO (primero en entrar, último en salir)"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:487
 msgid "pops value off FILO (first-in last-out heap)"
 msgstr ""
 "FILO sutichakuq tawqamantam chanitaqa hurquy ( haykuypiqa hukñiq'im, "
 "lluqsiypitaq qhipañiq'im)"
 
+#  "pila vacía?"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:498
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:508
 msgid "empty heap?"
 msgstr "ch'usaq tawqa?"
 
+#  "devuelve Verdadero si la pila está vacía"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:501
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:511
 msgid "returns True if heap is empty"
 msgstr "Tawqa ch'usaq kaptinqa CHIQAQMI nispan rikunchin"
 
+#  "comentar"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:519
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:521
 msgid "comment"
 msgstr "rimariy"
 
+#  "coloca un comentario en tu código"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:523
 msgid "places a comment in your code"
 msgstr "ch'inpuykipiqa huy willakuyta churay"
 
+#  "imprimir"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:530
 msgid "print"
 msgstr "ñit'iy"
 
+#  "imprime el valor en el bloque de estado en la parte inferior de la pantalla"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:534
 msgid "prints value in status block at bottom of the screen"
 msgstr "pantallap urayninpim kunan kaq chanitaqa rikuchin"
 
+#  "Operador chr de Python"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:545
 msgid "Python chr operator"
 msgstr "Python nispaq chr operador sutichakuqnin"
 
+#  "Operador int de Python"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:554
 msgid "Python int operator"
 msgstr "Python nispaq int operador sutichakuqnin"
 
+#  "Python"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:561
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:575
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:589
 msgid "Python"
 msgstr "Python"
 
+#  "un bloque programable: utilizado para añadir ecuaciones matemáticas "
+#  "avanzadas de una variable, p.e., seno(x)"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:565
 msgid ""
 "a programmable block: used to add advanced single-variable math equations, e."
 "g., sin(x)"
@@ -2363,6 +3250,9 @@ msgstr ""
 "programakuq bloque: chulla chaniyuq ecuaciones matematicas nisqa "
 "yapanapaqmi, qhawarinapaq hinaqa seno(x)"
 
+#  "un bloque programable: utilizado para agregar ecuaciones matemáticas "
+#  "avanzadas de múltiples variables, i.e., sqrt(x*x+y*y)"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:579
 msgid ""
 "a programmable block: used to add advanced multi-variable math equations, e."
 "g., sqrt(x*x+y*y)"
@@ -2370,6 +3260,9 @@ msgstr ""
 "programakuq bloque: achkha chaniyuq ecuaciones matematicas nisqa "
 "yapanapaqmi, qhawarinapaq hinaqa,  i.e., sqrt(x*x+y*y)"
 
+#  "un bloque programable: utilizado para añadir ecuaciones matemáticas "
+#  "avanzadas multivariables, p.e. seno(x+y+z)"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:593
 msgid ""
 "a programmable block: used to add advanced multi-variable math equations, e."
 "g., sin(x+y+z)"
@@ -2377,153 +3270,259 @@ msgstr ""
 "programakuq bloque: multivariables chaniyuq ecuaciones matematicas nisqa "
 "yapanapaqmi, qhawarinapaq hinaqa, seno(x+y+z)"
 
+#  "bloque Python"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:605
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:622
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:638
 msgid "Python block"
 msgstr "Python nisqamanta"
 
+#  "ejecuta el código del módulo tamyblock.py que se encuentra en el Diario"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:607
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:624
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:641
 msgid "runs code found in the tamyblock.py module found in the Journal"
 msgstr "P'anqapi tamyblock.py sutichakuq kasqantam puriyachin"
 
+#  "Cartesiana"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:654
 msgid "Cartesian"
 msgstr "Cartesiana"
 
+#  "muestra coordenadas cartesianas"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:656
 msgid "displays Cartesian coordinates"
 msgstr "coordenadas cartesianas sutichakuqtam rikuchin"
 
+#  "polar"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:662
 msgid "polar"
 msgstr "polar"
 
+#  "muestra las coordenadas polares"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:664
 msgid "displays polar coordinates"
 msgstr "coordenadas polares sutichakuqtam rikuchin"
 
+#  "tortuga"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:670
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:758
 msgid "turtle"
 msgstr "charapa"
 
+#  "elige la tortuga a ordenar"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:674
 msgid "chooses which turtle to command"
 msgstr "kamachinapaq charapata akllakuy"
 
+#. TRANS: pop removes a new item from the program stack
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:683
 msgid "active turtle"
 msgstr "Llamk'aq Charapa"
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:686
 msgid "the name of the active turtle"
 msgstr "Charapa llamk'aqpa sutin"
 
+#  "caparazón de la tortuga"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:696
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:706
 msgid "turtle shell"
 msgstr "charapap wasaqarachan"
 
+#  "vestir a la tortuga con un caparazón a medida"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:698
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:707
 msgid "put a custom 'shell' on the turtle"
 msgstr "charapamanqa takyaq wasaqarachata churay"
 
+#  "encima de una pila plegable"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:715
 msgid "top of a collapsed stack"
 msgstr "tawqa q'imikuq patanpi"
 
+#  [ES] "cargar"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:720
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:731
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:743
 msgid "load"
 msgstr "wichachiy"
 
+#  [ES] "cargar un bloque"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:723
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:735
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:747
 msgid "loads a block"
 msgstr "bloque nisqata wichachiy"
 
+# "fijar xy"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:746
 msgid "setxy"
 msgstr "xy nisqata churay"
 
+#  [ES] "paleta"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:756
 msgid "palette"
 msgstr "llimp'ikunap marun"
 
+#  [ES] "seleccionar paleta"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:759
 msgid "selects a palette"
 msgstr "maruta akllariy"
 
+#  "Paleta de plantillas de presentaciones"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:767
 msgid "Palette of presentation templates"
 msgstr "Qhawachinakunamanta"
 
+#  "ocultar los bloques"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:774
 msgid "hide blocks"
 msgstr "bloques nisqakunata pakay"
 
+#  "limpia el lienzo ocultando bloques"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:776
 msgid "declutters canvas by hiding blocks"
 msgstr "bloque nisqakunata pakaspaqa hamp'arata pichay"
 
+#  "mostrar bloques"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:783
 msgid "show blocks"
 msgstr "bloques nisqakunata rikuchiy"
 
+#  "restaura bloques ocultos"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:785
 msgid "restores hidden blocks"
 msgstr "bloques pakasqakunataqa wakmanta rikuchiy"
 
+#  "oculta las barras de herramientas de Azúcar"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:793
 msgid "hides the Sugar toolbars"
 msgstr "Sugarpa llamk'anankunata pakay"
 
+#  "lista"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:802
 msgid "list"
 msgstr "sinri"
 
+#  "presentación con lista de viñetas"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:806
 msgid "presentation bulleted list"
 msgstr "sinrichasqakunawan qhawachina"
 
+#  "plantilla de presentación: lista de viñetas"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:814
 msgid "presentation template: list of bullets"
 msgstr "yupi qhawachina: ratachiqkunawan sinri"
 
+#  "plantilla de presentación: seleccionar objeto del Diario (sin descripción)"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:821
 msgid "presentation template: select Journal object (no description)"
 msgstr "yupi qhawachina: P'anqamanta akllariy (mana willayniyuq kaqta)"
 
+#  "plantilla de presentación: seleccionar objeto del Diario (con descripción)"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:828
 msgid "presentation template: select Journal object (with description)"
 msgstr "yupi qhawachina: P'anqamanta akllariy (willayniyuq kaqta)"
 
+#  "plantilla de presentación: seleccionar cuatro objetos del Diario"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:835
 msgid "presentation template: select four Journal objects"
 msgstr "yupi qhawachina: P'anqamanta tawa imaymanakunata akllariy"
 
+#  "plantilla de presentación: seleccionar dos objetos del Diario"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:842
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:849
 msgid "presentation template: select two Journal objects"
 msgstr "yupi qhawachina: P'anqamanta iskay imaymanakunata akllariy"
 
+#  "coorx de la izquierda de la pantalla"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:859
 msgid "xcor of left of screen"
 msgstr "pantallap lluqi XCOR nisqan"
 
+#  "debajo"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:864
 msgid "bottom"
 msgstr "uraynin"
 
+#  "coory del limite inferior de la pantalla"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:867
 msgid "ycor of bottom of screen"
 msgstr "pantallap uray XCOR nisqan"
 
+#  "el ancho del lienzo"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:875
 msgid "the canvas width"
 msgstr "panq'ap kinraynin"
 
+#  "xcor del lado derecho de la pantalla"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:883
 msgid "xcor of right of screen"
 msgstr "pantallap paña XCOR nisqan"
 
+#  "ycor del limite superior de la pantalla"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:891
 msgid "ycor of top of screen"
 msgstr "pantallap wichay XCOR nisqan"
 
+#  "la altura del lienzo"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:899
 msgid "the canvas height"
 msgstr "panq'ap sayaynin"
 
+#  "título x"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:906
 msgid "title x"
 msgstr "x sutinchaynin"
 
+#  "título y"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:915
 msgid "title y"
 msgstr "y sutinchaynin"
 
+#  "izquierda x"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:924
 msgid "left x"
 msgstr "lluq'i X"
 
+#  "arriba y"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:933
 msgid "top y"
 msgstr "wichay Y"
 
+#  "derecha x"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:942
 msgid "right x"
 msgstr "paña X"
 
+#  "debajo y"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:951
 msgid "bottom y"
 msgstr "uraypi Y"
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:968
 msgid "Palette of user-defined operators"
 msgstr "Haykuqmasi churasqan llamk'anapaq maru"
 
+#: pysamples/brain.py:43
 msgid "Please install the Speak Activity and try again."
 msgstr "Mira, churariy Rimay ruwanata, chaymantaqa wakmanta ruwariy."
 
+#: pysamples/brain.py:52
 msgid "Spanish"
 msgstr "Español simi"
 
+#: pysamples/brain.py:56 pysamples/brain.py:69 pysamples/brain.py:71
+#: pysamples/brain.py:77
 msgid "English"
 msgstr "Inglés simi"
 
+#: pysamples/brain.py:88
 msgid "Sorry, I can't understand what you are asking about."
 msgstr "Pampachaway mana yachachkanichu tapuwasqaykitaqa."
 
+#: pysamples/brain.py:97
 msgid ""
 "Sorry, there is no free memory to load my brain. Close other activities and "
 "try once more."
@@ -2531,113 +3530,175 @@ msgstr ""
 "Pampachaway, umachayqa hunt'añam kachkan. Huk ruwanakunata wisq'ay, ichaqa "
 "wakmanta qhallariwaq."
 
+#  [ES] "empujar el valor rgb de destino a la pila"
+#: pysamples/forward_push.py:48
 msgid "push destination rgb value to heap"
 msgstr "tawqamanmi rgb kasqantaqa churay"
 
+#  "parar"
+#: pysamples/grecord.py:216
 msgid "stop"
 msgstr "sayachiy"
 
+#  "reproducir"
+#: pysamples/grecord.py:218
 msgid "play"
 msgstr "purichiy"
 
+#  "guardar"
+#: pysamples/grecord.py:220
 msgid "save"
 msgstr "waqaychay"
 
+#  [ES] "otros"
+#: pysamples/journal-stats.py:80
 msgid "other"
 msgstr "wakkuna"
 
+#  "vuelta en U"
+#: pysamples/uturn.py:35
 msgid "uturn"
 msgstr "U hinata muyuchiy"
 
+#: pysamples/uturn.py:37
 msgid "turns the turtle 180 degrees"
 msgstr "charapachata 180 grados nisqata muyurichiy"
 
+#  "el uso es"
+#: turtleblocks.py:91
 msgid "usage is"
 msgstr "hap'iyqa kan"
 
+#  "Sin acción alternativa:"
+#: turtleblocks.py:260
 msgid "No option action:"
 msgstr "Mana ima ruwayniyuq:"
 
+#  "Fichero no encontrado"
+#: turtleblocks.py:275
 msgid "File not found"
 msgstr "Mana tarisqa khipu"
 
+#  "Directorio de configuración no modificable: %s"
+#: turtleblocks.py:299
+#, python-format
 msgid "Configuration directory not writable: %s"
 msgstr "Mana t'ikranapaq wayaqa: %s"
 
+#  "Nuevo"
+#: turtleblocks.py:375
 msgid "New"
 msgstr "Musuq"
 
+#: turtleblocks.py:376
 msgid "Show sample projects"
 msgstr "Huk wakichinakunata qhawarichiy"
 
+#: turtleblocks.py:378
 msgid "Hide sample projects"
 msgstr "Wakichinakunata pakariy"
 
+#  "Guardar"
+#: turtleblocks.py:382
 msgid "Save"
 msgstr "Waqaychay"
 
+#  "Guardar como"
+#: turtleblocks.py:383
 msgid "Save as"
 msgstr "Kay hinata waqaychay"
 
+#  "Salir"
+#: turtleblocks.py:388
 msgid "Quit"
 msgstr "Lluqsiy"
 
+#  "Archivo"
+#: turtleblocks.py:389
 msgid "File"
 msgstr "Khipu"
 
+#  "Escalar coordenadas"
+#: turtleblocks.py:396
 msgid "Rescale coordinates"
 msgstr "Coordenadasta wichay"
 
+#  "Restaurar el tamaño del bloque"
+#: turtleblocks.py:402
 msgid "Reset block size"
 msgstr "Bloques nisqakunata allinchay"
 
+#  "Mostar/ocultar bloques"
+#: turtleblocks.py:423
 msgid "Show/hide blocks"
 msgstr "Bloques nisqakunata Qhawachiy/Pakay"
 
+#  "Herramientas"
+#: turtleblocks.py:425
 msgid "Tools"
 msgstr "Llamk'anakuna"
 
+#  "Depurar"
+#: turtleblocks.py:431
 msgid "Debug"
 msgstr "Allichay"
 
+#  "Tortuga"
+#: turtleblocks.py:433
 msgid "Turtle"
 msgstr "Charapa"
 
+#: turtleblocks.py:436
 msgid "About..."
 msgstr "Kaymanta..."
 
+#  "Hay trabajo sin guardar. ¿Le gustaría guardar antes de salir?"
+#: turtleblocks.py:475
 msgid "You have unsaved work. Would you like to save before quitting?"
 msgstr "Llamk'asqa mana waqaychasqa kachkan. Munankichu waqaychayta?"
 
+#  "¿Guardar el proyecto?"
+#: turtleblocks.py:477
 msgid "Save project?"
 msgstr "Waqaychakunqachu?"
 
-msgid "make a uturn"
-msgstr "U hinata muyuchiy"
+#  "hacer una vuelta en U"
+#~ msgid "make a uturn"
+#~ msgstr "U hinata muyuchiy"
 
-msgid "u turn"
-msgstr "U hinata muyuchiy"
+# "vuelta en U"
+#, fuzzy
+#~ msgid "u turn"
+#~ msgstr "U hinata muyuchiy"
 
-msgid "set text color"
-msgstr "qillqap llimp'inta churay"
+#  "fijar el color del texto"
+#~ msgid "set text color"
+#~ msgstr "qillqap llimp'inta churay"
 
-msgid "sets color of text drawn by the turtle"
-msgstr "charapaq qillqanantam llimp'ichiy"
+#  "fijar el color del texto que la tortuga dibuja"
+#~ msgid "sets color of text drawn by the turtle"
+#~ msgstr "charapaq qillqanantam llimp'ichiy"
 
-msgid "set text size"
-msgstr "qillqap sayayninta akllay"
+#  "fijar tamaño del texto"
+#~ msgid "set text size"
+#~ msgstr "qillqap sayayninta akllay"
 
-msgid "sets size of text drawn by the turtle"
-msgstr "charapaq qillqananpaq sapan qillqap sayayninta akllay"
+#  "fijar el tamaño del texto que la tortuga dibuja"
+#~ msgid "sets size of text drawn by the turtle"
+#~ msgstr "charapaq qillqananpaq sapan qillqap sayayninta akllay"
 
-msgid "presentation 1x1"
-msgstr "1x1 qhawachiy"
+# "presentación"
+#~ msgid "presentation 1x1"
+#~ msgstr "1x1 qhawachiy"
 
-msgid "presentation 2x1"
-msgstr "2x1 qhawachiy"
+# "presentación"
+#~ msgid "presentation 2x1"
+#~ msgstr "2x1 qhawachiy"
 
-msgid "presentation 1x2"
-msgstr "1x2 qhawachiy"
+# "presentación"
+#~ msgid "presentation 1x2"
+#~ msgstr "1x2 qhawachiy"
 
-msgid "presentation 2x2"
-msgstr "2x2 qhawachiy"
+# "presentación"
+#~ msgid "presentation 2x2"
+#~ msgstr "2x2 qhawachiy"

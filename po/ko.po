@@ -1,3 +1,8 @@
+# #-#-#-#-#  ko.po (PACKAGE VERSION)  #-#-#-#-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #, fuzzy
 msgid ""
 msgstr ""
@@ -137,6 +142,9 @@ msgstr ""
 msgid "button"
 msgstr ""
 
+#: TurtleArt/tabasics.py:327 TurtleArt/tabasics.py:409
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1090
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1095
 msgid "gray"
 msgstr ""
 
@@ -146,9 +154,17 @@ msgstr "오른쪽"
 msgid "distance"
 msgstr ""
 
+#: plugins/audio_sensors/audio_sensors.py:151
+#: plugins/audio_sensors/audio_sensors.py:165
+#: plugins/audio_sensors/audio_sensors.py:179
+#: plugins/audio_sensors/audio_sensors.py:193
 msgid "resistance"
 msgstr "저항"
 
+#: plugins/audio_sensors/audio_sensors.py:157
+#: plugins/audio_sensors/audio_sensors.py:171
+#: plugins/audio_sensors/audio_sensors.py:185
+#: plugins/audio_sensors/audio_sensors.py:199
 msgid "voltage"
 msgstr "전압"
 
@@ -189,9 +205,13 @@ msgstr ""
 msgid "move Butia"
 msgstr ""
 
+#: TurtleArt/tabasics.py:169
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:856
 msgid "left"
 msgstr "왼쪽"
 
+#: TurtleArt/tabasics.py:181
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:880
 msgid "right"
 msgstr "오른쪽"
 
@@ -252,6 +272,7 @@ msgstr ""
 msgid "write hack pin Butia"
 msgstr ""
 
+#: TurtleArt/tabasics.py:976 TurtleArt/tawindow.py:4581
 msgid "value"
 msgstr ""
 
@@ -296,9 +317,6 @@ msgstr ""
 
 msgid "f(x)="
 msgstr ""
-
-msgid "name"
-msgstr "이름"
 
 msgid "Cast a new block"
 msgstr ""
@@ -390,6 +408,12 @@ msgstr ""
 msgid "follow a color or calibration"
 msgstr ""
 
+#: plugins/camera_sensor/camera_sensor.py:80
+#: plugins/camera_sensor/camera_sensor.py:93
+#: plugins/camera_sensor/camera_sensor.py:128
+#: plugins/camera_sensor/camera_sensor.py:141
+#: plugins/light_sensor/light_sensor.py:56
+#: plugins/light_sensor/light_sensor.py:63
 msgid "brightness"
 msgstr ""
 
@@ -622,6 +646,7 @@ msgstr ""
 msgid "base"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:896
 msgid "height"
 msgstr ""
 
@@ -637,6 +662,7 @@ msgstr ""
 msgid "rectangle"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:872
 msgid "width"
 msgstr ""
 
@@ -669,9 +695,11 @@ msgstr ""
 msgid "joint"
 msgstr ""
 
+#: TurtleArt/tabasics.py:210 TurtleArt/tabasics.py:288
 msgid "x"
 msgstr "x"
 
+#: TurtleArt/tabasics.py:210 TurtleArt/tabasics.py:288
 msgid "y"
 msgstr "y"
 
@@ -784,9 +812,14 @@ msgstr ""
 msgid "ultrasonic"
 msgstr ""
 
+#: TurtleArt/tabasics.py:313 TurtleArt/tabasics.py:326
+#: TurtleArt/tabasics.py:384
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1093
 msgid "color"
 msgstr "색"
 
+#: plugins/audio_sensors/audio_sensors.py:83
+#: plugins/audio_sensors/audio_sensors.py:98 pysamples/grecord.py:206
 msgid "sound"
 msgstr "소리"
 
@@ -844,6 +877,7 @@ msgstr ""
 msgid "frequency"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:425
 msgid "time"
 msgstr ""
 
@@ -935,8 +969,12 @@ msgstr ""
 msgid "read"
 msgstr ""
 
+#, fuzzy
 msgid "sensor"
-msgstr "센서"
+msgstr ""
+"#-#-#-#-#  ko.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  ko.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"센서"
 
 msgid "Read sensor output."
 msgstr ""
@@ -1150,8 +1188,12 @@ msgstr ""
 msgid "input"
 msgstr ""
 
+#, fuzzy
 msgid "samples"
-msgstr "예제"
+msgstr ""
+"#-#-#-#-#  ko.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  ko.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"예제"
 
 msgid "interval"
 msgstr ""
@@ -1211,1348 +1253,1902 @@ msgstr ""
 msgid "Expeyes device not found"
 msgstr ""
 
+#. TRANS: "name" option from activity.info file
 msgid "TurtleBlocks"
 msgstr ""
 
+#. TRANS: "summary" option from activity.info file
+#. TRANS: "description" option from activity.info file
 msgid ""
 "A Logo-inspired turtle that draws colorful pictures with snap-together "
 "visual programming blocks"
 msgstr ""
 
+#: TurtleArt/tabasics.py:124
 msgid "Palette of turtle commands"
 msgstr ""
 
+#: TurtleArt/tabasics.py:129
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:722
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:734
 msgid "forward"
 msgstr "전진"
 
+#: TurtleArt/tabasics.py:133
 msgid "moves turtle forward"
 msgstr ""
 
+#: TurtleArt/tabasics.py:142
 msgid "back"
 msgstr "뒤"
 
+#: TurtleArt/tabasics.py:146
 msgid "moves turtle backward"
 msgstr ""
 
+#: TurtleArt/tabasics.py:156
 msgid "clean"
 msgstr "지우기"
 
+#: TurtleArt/tabasics.py:159
 msgid "clears the screen and reset the turtle"
 msgstr ""
 
+#: TurtleArt/tabasics.py:173
 msgid "turns turtle counterclockwise (angle in degrees)"
 msgstr ""
 
+#: TurtleArt/tabasics.py:185
 msgid "turns turtle clockwise (angle in degrees)"
 msgstr ""
 
+#: TurtleArt/tabasics.py:195
 msgid "arc"
 msgstr "arc"
 
+#: TurtleArt/tabasics.py:195
 msgid "angle"
 msgstr "도"
 
+#: TurtleArt/tabasics.py:195
 msgid "radius"
 msgstr "라디우스"
 
+#: TurtleArt/tabasics.py:199
 msgid "moves turtle along an arc"
 msgstr ""
 
+#: TurtleArt/tabasics.py:210 TurtleArt/tabasics.py:288
 msgid "set xy"
 msgstr "xy 지정하기"
 
+#: TurtleArt/tabasics.py:214 TurtleArt/tabasics.py:292
 msgid ""
 "moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
 msgstr ""
 
 #
+#: TurtleArt/tabasics.py:226
 msgid "set heading"
 msgstr "머리방향 지정하기"
 
+#: TurtleArt/tabasics.py:230
 msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
 msgstr ""
 
+#: TurtleArt/tabasics.py:240 TurtleArt/tawindow.py:4247
 msgid "xcor"
 msgstr "xcor"
 
+#: TurtleArt/tabasics.py:241
 msgid ""
 "holds current x-coordinate value of the turtle (can be used in place of a "
 "number block)"
 msgstr ""
 
+#: TurtleArt/tabasics.py:254 TurtleArt/tawindow.py:4248
 msgid "ycor"
 msgstr "ycor"
 
+#: TurtleArt/tabasics.py:255
 msgid ""
 "holds current y-coordinate value of the turtle (can be used in place of a "
 "number block)"
 msgstr ""
 
+#: TurtleArt/tabasics.py:268 TurtleArt/tawindow.py:4248
 msgid "heading"
 msgstr "머리방향"
 
+#: TurtleArt/tabasics.py:269
 msgid ""
 "holds current heading value of the turtle (can be used in place of a number "
 "block)"
 msgstr ""
 
+#: TurtleArt/tabasics.py:308
 msgid "Palette of pen commands"
 msgstr ""
 
+#: TurtleArt/tabasics.py:313 TurtleArt/tabasics.py:326
 msgid "fill screen"
 msgstr "전체 화면"
 
+#: TurtleArt/tabasics.py:313 TurtleArt/tabasics.py:327
+#: TurtleArt/tabasics.py:397
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1089
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1094
 msgid "shade"
 msgstr "명암"
 
+#: TurtleArt/tabasics.py:317 TurtleArt/tabasics.py:331
 msgid "fills the background with (color, shade)"
 msgstr ""
 
+#: TurtleArt/tabasics.py:343
 msgid "set color"
 msgstr "색 지정"
 
+#: TurtleArt/tabasics.py:347
 msgid "sets color of the line drawn by the turtle"
 msgstr ""
 
+#: TurtleArt/tabasics.py:357
 msgid "set shade"
 msgstr "명암 지정"
 
+#: TurtleArt/tabasics.py:361
 msgid "sets shade of the line drawn by the turtle"
 msgstr ""
 
+#: TurtleArt/tabasics.py:371
 msgid "set gray"
 msgstr ""
 
+#: TurtleArt/tabasics.py:374
 msgid "sets gray level of the line drawn by the turtle"
 msgstr ""
 
+#: TurtleArt/tabasics.py:385
 msgid "holds current pen color (can be used in place of a number block)"
 msgstr ""
 
+#: TurtleArt/tabasics.py:398
 msgid "holds current pen shade"
 msgstr ""
 
+#: TurtleArt/tabasics.py:410
 msgid "holds current gray level (can be used in place of a number block)"
 msgstr ""
 
+#: TurtleArt/tabasics.py:419
 msgid "pen up"
 msgstr "펜 그리기 않기"
 
+#: TurtleArt/tabasics.py:422
 msgid "Turtle will not draw when moved."
 msgstr ""
 
+#: TurtleArt/tabasics.py:431
 msgid "pen down"
 msgstr "펜 그리기"
 
+#: TurtleArt/tabasics.py:434
 msgid "Turtle will draw when moved."
 msgstr ""
 
+#: TurtleArt/tabasics.py:443
+#, fuzzy
 msgid "pen down?"
 msgstr "펜 그리기"
 
+#: TurtleArt/tabasics.py:445
 msgid "returns True if pen is down"
 msgstr ""
 
+#: TurtleArt/tabasics.py:453
 msgid "set pen size"
 msgstr "펜 크기 지정"
 
+#: TurtleArt/tabasics.py:457
 msgid "sets size of the line drawn by the turtle"
 msgstr ""
 
+#: TurtleArt/tabasics.py:468
 msgid "start fill"
 msgstr ""
 
+#: TurtleArt/tabasics.py:470
 msgid "starts filled polygon (used with end fill block)"
 msgstr ""
 
+#: TurtleArt/tabasics.py:479
 msgid "end fill"
 msgstr ""
 
+#: TurtleArt/tabasics.py:481
 msgid "completes filled polygon (used with start fill block)"
 msgstr ""
 
+#: TurtleArt/tabasics.py:490
 msgid "pen size"
 msgstr "펜 크기"
 
+#: TurtleArt/tabasics.py:491
 msgid "holds current pen size (can be used in place of a number block)"
 msgstr ""
 
+#: TurtleArt/tabasics.py:508
 msgid "Palette of pen colors"
 msgstr ""
 
+#: TurtleArt/tabasics.py:510
 msgid "red"
 msgstr ""
 
+#: TurtleArt/tabasics.py:511
 msgid "orange"
 msgstr ""
 
+#: TurtleArt/tabasics.py:513
 msgid "yellow"
 msgstr ""
 
+#: TurtleArt/tabasics.py:515
 msgid "green"
 msgstr ""
 
+#: TurtleArt/tabasics.py:516
 msgid "cyan"
 msgstr ""
 
+#: TurtleArt/tabasics.py:517
 msgid "blue"
 msgstr ""
 
+#: TurtleArt/tabasics.py:518
 msgid "purple"
 msgstr ""
 
+#: TurtleArt/tabasics.py:520
 msgid "white"
 msgstr ""
 
+#: TurtleArt/tabasics.py:521
+#, fuzzy
 msgid "black"
 msgstr "뒤"
 
+#: TurtleArt/tabasics.py:601
 msgid "Palette of numeric operators"
 msgstr ""
 
+#: TurtleArt/tabasics.py:607
 msgid "plus"
 msgstr ""
 
+#: TurtleArt/tabasics.py:611
 msgid "adds two alphanumeric inputs"
 msgstr ""
 
+#: TurtleArt/tabasics.py:619
 msgid "minus"
 msgstr ""
 
+#: TurtleArt/tabasics.py:622
 msgid "subtracts bottom numeric input from top numeric input"
 msgstr ""
 
+#: TurtleArt/tabasics.py:633
 msgid "multiply"
 msgstr ""
 
+#: TurtleArt/tabasics.py:636
 msgid "multiplies two numeric inputs"
 msgstr ""
 
+#: TurtleArt/tabasics.py:645
 msgid "divide"
 msgstr ""
 
+#: TurtleArt/tabasics.py:648
 msgid ""
 "divides top numeric input (numerator) by bottom numeric input (denominator)"
 msgstr ""
 
+#: TurtleArt/tabasics.py:658
 msgid "identity"
 msgstr ""
 
+#: TurtleArt/tabasics.py:660
 msgid "identity operator used for extending blocks"
 msgstr ""
 
+#: TurtleArt/tabasics.py:668 TurtleArt/tabasics.py:669
 msgid "mod"
 msgstr "나누기"
 
+#: TurtleArt/tabasics.py:672
 msgid "modular (remainder) operator"
 msgstr ""
 
+#: TurtleArt/tabasics.py:680
 msgid "√"
 msgstr ""
 
+#: TurtleArt/tabasics.py:681
 msgid "square root"
 msgstr ""
 
+#: TurtleArt/tabasics.py:684
 msgid "calculates square root"
 msgstr ""
 
+#: TurtleArt/tabasics.py:691
 msgid "random"
 msgstr "무작위"
 
+#: TurtleArt/tabasics.py:691
 msgid "min"
 msgstr "최소"
 
+#: TurtleArt/tabasics.py:691
 msgid "max"
 msgstr "최대"
 
+#: TurtleArt/tabasics.py:695
 msgid "returns random number between minimum (top) and maximum (bottom) values"
 msgstr ""
 
+#: TurtleArt/tabasics.py:707
 msgid "number"
 msgstr "숫자"
 
+#: TurtleArt/tabasics.py:708
 msgid "used as numeric input in mathematic operators"
 msgstr ""
 
+#: TurtleArt/tabasics.py:716
 msgid "greater than"
 msgstr ""
 
+#: TurtleArt/tabasics.py:719
 msgid "logical greater-than operator"
 msgstr ""
 
+#: TurtleArt/tabasics.py:728
 msgid "less than"
 msgstr ""
 
+#: TurtleArt/tabasics.py:732
 msgid "logical less-than operator"
 msgstr ""
 
+#: TurtleArt/tabasics.py:740
 msgid "equal"
 msgstr ""
 
+#: TurtleArt/tabasics.py:744
 msgid "logical equal-to operator"
 msgstr ""
 
+#: TurtleArt/tabasics.py:751
 msgid "not"
 msgstr "아니다"
 
+#: TurtleArt/tabasics.py:754
 msgid "logical NOT operator"
 msgstr ""
 
+#: TurtleArt/tabasics.py:760 TurtleArt/tabasics.py:763
 msgid "and"
 msgstr "그리고"
 
+#: TurtleArt/tabasics.py:764
 msgid "logical AND operator"
 msgstr ""
 
+#: TurtleArt/tabasics.py:771 TurtleArt/tabasics.py:774
 msgid "or"
 msgstr "또는"
 
+#: TurtleArt/tabasics.py:775
 msgid "logical OR operator"
 msgstr ""
 
+#: TurtleArt/tabasics.py:784
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:91
 msgid "Palette of flow operators"
 msgstr ""
 
+#: TurtleArt/tabasics.py:789
 msgid "wait"
 msgstr "기다리기"
 
+#: TurtleArt/tabasics.py:793
 msgid "pauses program execution a specified number of seconds"
 msgstr ""
 
+#: TurtleArt/tabasics.py:800
 msgid "forever"
 msgstr "언제나"
 
+#: TurtleArt/tabasics.py:804
 msgid "loops forever"
 msgstr ""
 
+#: TurtleArt/tabasics.py:811 TurtleArt/tabasics.py:815
 msgid "repeat"
 msgstr "반복"
 
+#: TurtleArt/tabasics.py:816
 msgid "loops specified number of times"
 msgstr ""
 
+#: TurtleArt/tabasics.py:822 TurtleArt/tabasics.py:835
 msgid "if"
 msgstr "만약"
 
+#: TurtleArt/tabasics.py:822 TurtleArt/tabasics.py:835
 msgid "then"
 msgstr "이면"
 
+#: TurtleArt/tabasics.py:825
 msgid "if then"
 msgstr ""
 
+#: TurtleArt/tabasics.py:827
 msgid "if-then operator that uses boolean operators from Numbers palette"
 msgstr ""
 
+#: TurtleArt/tabasics.py:835
 msgid "else"
 msgstr "아니면"
 
+#: TurtleArt/tabasics.py:839 TurtleArt/tabasics.py:847
 msgid "if then else"
 msgstr ""
 
+#: TurtleArt/tabasics.py:840 TurtleArt/tabasics.py:848
 msgid "if-then-else operator that uses boolean operators from Numbers palette"
 msgstr ""
 
+#: TurtleArt/tabasics.py:857
 msgid "horizontal space"
 msgstr ""
 
+#: TurtleArt/tabasics.py:858
 msgid "jogs stack right"
 msgstr ""
 
+#: TurtleArt/tabasics.py:865
 msgid "vertical space"
 msgstr ""
 
+#: TurtleArt/tabasics.py:866
 msgid "jogs stack down"
 msgstr ""
 
+#: TurtleArt/tabasics.py:872
 msgid "stop action"
 msgstr ""
 
+#: TurtleArt/tabasics.py:875
 msgid "stops current action"
 msgstr ""
 
+#: TurtleArt/tabasics.py:884
 msgid "Palette of variable blocks"
 msgstr ""
 
+#: TurtleArt/tabasics.py:889 pysamples/grecord.py:214
 msgid "start"
 msgstr "시작"
 
+#: TurtleArt/tabasics.py:892
 msgid "connects action to toolbar run buttons"
 msgstr ""
 
+#: TurtleArt/tabasics.py:899 TurtleArt/tabasics.py:900
+#: TurtleArt/tabasics.py:901
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:178
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:179
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:180
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:187
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:201
 msgid "text"
 msgstr "텍스트"
 
+#: TurtleArt/tabasics.py:902
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:181
 msgid "string value"
 msgstr ""
 
+#: TurtleArt/tabasics.py:906 TurtleArt/tabasics.py:909
+#: TurtleArt/tabasics.py:917 TurtleArt/tabasics.py:921
+#: TurtleArt/tawindow.py:1449 TurtleArt/tawindow.py:1546
+#: TurtleArt/tawindow.py:1559 TurtleArt/tawindow.py:2178
+#: TurtleArt/tawindow.py:4513
 msgid "action"
 msgstr ""
 
+#: TurtleArt/tabasics.py:911
 msgid "top of nameable action stack"
 msgstr ""
 
+#: TurtleArt/tabasics.py:922 TurtleArt/tawindow.py:4527
 msgid "invokes named action stack"
 msgstr ""
 
+#: TurtleArt/tabasics.py:929
 msgid "store in box 1"
 msgstr "상자 1에 저장하기"
 
+#: TurtleArt/tabasics.py:934
 msgid "stores numeric value in Variable 1"
 msgstr ""
 
+#: TurtleArt/tabasics.py:943
 msgid "store in box 2"
 msgstr "상자 2에 저장하기"
 
+#: TurtleArt/tabasics.py:948
 msgid "stores numeric value in Variable 2"
 msgstr ""
 
+#: TurtleArt/tabasics.py:957
 msgid "box 1"
 msgstr "상자 1"
 
+#: TurtleArt/tabasics.py:960
 msgid "Variable 1 (numeric value)"
 msgstr ""
 
+#: TurtleArt/tabasics.py:967
 msgid "box 2"
 msgstr "상자 2"
 
+#: TurtleArt/tabasics.py:970
 msgid "Variable 2 (numeric value)"
 msgstr ""
 
+#: TurtleArt/tabasics.py:976 TurtleArt/tawindow.py:4581
 msgid "store in"
 msgstr ""
 
+#: TurtleArt/tabasics.py:976 TurtleArt/tabasics.py:992
 msgid "box"
 msgstr "상자"
 
+#: TurtleArt/tabasics.py:980 TurtleArt/tabasics.py:995
+#: TurtleArt/tawindow.py:1453 TurtleArt/tawindow.py:1585
+#: TurtleArt/tawindow.py:2182 TurtleArt/tawindow.py:4542
+#: TurtleArt/tawindow.py:4572
 msgid "my box"
 msgstr ""
 
+#: TurtleArt/tabasics.py:981 TurtleArt/tawindow.py:4586
 msgid "stores numeric value in named variable"
 msgstr ""
 
+#: TurtleArt/tabasics.py:998 TurtleArt/tawindow.py:4556
 msgid "named variable (numeric value)"
 msgstr ""
 
+#: TurtleArt/tabasics.py:1005 TurtleArt/tabasics.py:1024
 msgid "action 1"
 msgstr ""
 
+#: TurtleArt/tabasics.py:1008
 msgid "top of Action 1 stack"
 msgstr ""
 
+#: TurtleArt/tabasics.py:1014 TurtleArt/tabasics.py:1034
 msgid "action 2"
 msgstr ""
 
+#: TurtleArt/tabasics.py:1017
 msgid "top of Action 2 stack"
 msgstr ""
 
+#: TurtleArt/tabasics.py:1027
 msgid "invokes Action 1 stack"
 msgstr ""
 
+#: TurtleArt/tabasics.py:1037
 msgid "invokes Action 2 stack"
 msgstr ""
 
+#: TurtleArt/tabasics.py:1045
 msgid "trash"
 msgstr ""
 
+#: TurtleArt/tabasics.py:1049
 msgid "empty trash"
 msgstr ""
 
+#: TurtleArt/tabasics.py:1050
 msgid "permanently deletes items in trash"
 msgstr ""
 
+#: TurtleArt/tabasics.py:1054
 msgid "restore all"
 msgstr ""
 
+#: TurtleArt/tabasics.py:1055
 msgid "restore all blocks from trash"
 msgstr ""
 
+#: TurtleArt/tabasics.py:1059
 msgid "clear all"
 msgstr ""
 
+#: TurtleArt/tabasics.py:1060
 msgid "move all blocks to trash"
 msgstr ""
 
+#: TurtleArt/tacollaboration.py:152 TurtleArt/tawindow.py:2156
+#: TurtleArtActivity.py:775
 msgid "Share selected blocks"
 msgstr ""
 
+#: TurtleArt/taconstants.py:209 TurtleArt/taconstants.py:231
+#: TurtleArt/taconstants.py:252 TurtleArt/taconstants.py:294
+#: TurtleArt/taconstants.py:336 TurtleArt/taconstants.py:378
+#, fuzzy
 msgid "Title"
 msgstr "제목"
 
+#: TurtleArt/talogo.py:374 TurtleArtActivity.py:755
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1437
+#, fuzzy
 msgid "Stop turtle"
 msgstr "터틀 멈추기"
 
+#: TurtleArt/talogo.py:384 TurtleArtActivity.py:383 TurtleArtActivity.py:756
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1428
+#, fuzzy
 msgid "Show blocks"
 msgstr "블록 보기"
 
+#: TurtleArt/talogo.py:388 TurtleArtActivity.py:387 TurtleArtActivity.py:1041
+#, fuzzy
 msgid "Hide blocks"
 msgstr "블록 숨기기"
 
+#: TurtleArt/talogo.py:512
 msgid "did not output to"
 msgstr ""
 
+#: TurtleArt/talogo.py:572
 msgid "I don't know how to"
 msgstr ""
 
+#: TurtleArt/talogo.py:630
 msgid "doesn't like"
 msgstr ""
 
+#: TurtleArt/talogo.py:631
 msgid "as input"
 msgstr ""
 
+#: TurtleArt/tapalette.py:97
 msgid "displays next palette"
 msgstr ""
 
+#: TurtleArt/tapalette.py:98
 msgid "changes the orientation of the palette of blocks"
 msgstr ""
 
+#: TurtleArt/tautils.py:300
 msgid "Load..."
 msgstr ""
 
+#: TurtleArt/tautils.py:310
 msgid "Save..."
 msgstr ""
 
+#: TurtleArt/tautils.py:593
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:712
 msgid "click to open"
 msgstr ""
 
+#: TurtleArt/tawindow.py:1102 TurtleArt/tawindow.py:1103
 msgid "orientation"
 msgstr ""
 
+#: TurtleArt/tawindow.py:1117 TurtleArt/tawindow.py:1742
+#, fuzzy
 msgid "next"
 msgstr "텍스트"
 
+#: TurtleArt/tawindow.py:1156 TurtleArt/tawindow.py:1763
 msgid "shift"
 msgstr ""
 
+#: TurtleArt/tawindow.py:1414
 msgid ""
 "Please hit the Stop Button before making changes to your Turtle Blocks "
 "program"
 msgstr ""
 
+#: TurtleArt/tawindow.py:1467
 msgid "Select blocks to share"
 msgstr ""
 
+#: TurtleArt/tawindow.py:1630 TurtleArtActivity.py:656
+#: TurtleArtActivity.py:805 turtleblocks.py:412
 msgid "Save stack"
 msgstr ""
 
+#: TurtleArt/tawindow.py:1631 TurtleArt/tawindow.py:1645
 msgid "Really overwrite stack?"
 msgstr ""
 
+#: TurtleArt/tawindow.py:1634 TurtleArt/tawindow.py:1673
+#: gnome_plugins/uploader_plugin.py:144
 msgid "Cancel"
 msgstr ""
 
+#: TurtleArt/tawindow.py:1638 TurtleArt/tawindow.py:1648
 msgid "Overwrite stack"
 msgstr ""
 
+#: TurtleArt/tawindow.py:1669 TurtleArt/tawindow.py:1677
+#: TurtleArt/tawindow.py:1686 TurtleArtActivity.py:658 turtleblocks.py:414
 msgid "Delete stack"
 msgstr ""
 
+#: TurtleArt/tawindow.py:1670 TurtleArt/tawindow.py:1683
 msgid "Really delete stack?"
 msgstr ""
 
+#: TurtleArt/tawindow.py:4362
 msgid "image"
 msgstr ""
 
+#: TurtleArtActivity.py:200 TurtleArtActivity.py:781 TurtleArtActivity.py:964
+#: TurtleArtActivity.py:1000 turtleblocks.py:386
+#, fuzzy
 msgid "Save as Logo"
 msgstr "Logo로 저장"
 
+#: TurtleArtActivity.py:257 TurtleArtActivity.py:780 TurtleArtActivity.py:961
+#: TurtleArtActivity.py:997 turtleblocks.py:384
 msgid "Save as image"
 msgstr ""
 
+#: TurtleArtActivity.py:265
 msgid "snapshot"
 msgstr ""
 
+#: TurtleArtActivity.py:273 TurtleArtActivity.py:715 TurtleArtActivity.py:757
+#: TurtleArtActivity.py:970 TurtleArtActivity.py:1003
 msgid "Save snapshot"
 msgstr ""
 
+#: TurtleArtActivity.py:318 TurtleArtActivity.py:681 TurtleArtActivity.py:832
 msgid "Turn off hover help"
 msgstr ""
 
+#: TurtleArtActivity.py:326 turtleblocks.py:405
 msgid "Turn on hover help"
 msgstr ""
 
+#: TurtleArtActivity.py:335 turtleblocks.py:419
+#, fuzzy
 msgid "Show palette"
 msgstr "팔레트 보기"
 
+#: TurtleArtActivity.py:341 TurtleArtActivity.py:1029 turtleblocks.py:421
+#, fuzzy
 msgid "Hide palette"
 msgstr "팔레트 숨기기"
 
+#: TurtleArtActivity.py:509
 msgid "Rescale coordinates down"
 msgstr ""
 
+#: TurtleArtActivity.py:513 TurtleArtActivity.py:672 TurtleArtActivity.py:828
 msgid "Rescale coordinates up"
 msgstr ""
 
+#: TurtleArtActivity.py:603 TurtleArtActivity.py:639 TurtleArtActivity.py:749
+#: TurtleArtActivity.py:802 turtleblocks.py:416
 msgid "Edit"
 msgstr ""
 
+#: TurtleArtActivity.py:608 TurtleArtActivity.py:637 TurtleArtActivity.py:750
+#: TurtleArtActivity.py:820 turtleblocks.py:407
 msgid "View"
 msgstr ""
 
+#: TurtleArtActivity.py:635 TurtleArtActivity.py:751
 msgid "Project"
 msgstr "작품"
 
+#: TurtleArtActivity.py:641 TurtleArtActivity.py:748 TurtleArtActivity.py:777
+#: TurtleArtActivity.py:779 TurtleArtActivity.py:956
 msgid "Save/Load"
 msgstr ""
 
+#: TurtleArtActivity.py:649 TurtleArtActivity.py:803 turtleblocks.py:410
 msgid "Copy"
 msgstr ""
 
+#: TurtleArtActivity.py:651 TurtleArtActivity.py:804 turtleblocks.py:411
 msgid "Paste"
 msgstr ""
 
+#: TurtleArtActivity.py:653
 msgid "Restore blocks from trash"
 msgstr ""
 
+#: TurtleArtActivity.py:661 TurtleArtActivity.py:821
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:791
+#, fuzzy
 msgid "Fullscreen"
 msgstr "전체 화면"
 
+#: TurtleArtActivity.py:664 TurtleArtActivity.py:822 turtleblocks.py:392
 msgid "Cartesian coordinates"
 msgstr ""
 
+#: TurtleArtActivity.py:666 TurtleArtActivity.py:824 turtleblocks.py:394
 msgid "Polar coordinates"
 msgstr ""
 
+#: TurtleArtActivity.py:669 TurtleArtActivity.py:826
 msgid "Metric coordinates"
 msgstr ""
 
+#: TurtleArtActivity.py:675 TurtleArtActivity.py:830 turtleblocks.py:398
+#, fuzzy
 msgid "Grow blocks"
 msgstr "블록 보기"
 
+#: TurtleArtActivity.py:678 TurtleArtActivity.py:831 turtleblocks.py:400
 msgid "Shrink blocks"
 msgstr ""
 
+#: TurtleArtActivity.py:702 TurtleArtActivity.py:719 TurtleArtActivity.py:758
+#: TurtleArtActivity.py:974
 msgid "Load example"
 msgstr ""
 
+#: TurtleArtActivity.py:752 TurtleArtActivity.py:1035 turtleblocks.py:428
+#, fuzzy
 msgid "Clean"
 msgstr "지우기"
 
+#: TurtleArtActivity.py:753 TurtleArtActivity.py:1037 turtleblocks.py:429
 msgid "Run"
 msgstr ""
 
+#: TurtleArtActivity.py:754 TurtleArtActivity.py:1039 turtleblocks.py:430
+#, fuzzy
 msgid "Step"
 msgstr "단계 실행"
 
+#: TurtleArtActivity.py:759 turtleblocks.py:437 util/helpbutton.py:44
 msgid "Help"
 msgstr ""
 
+#: TurtleArtActivity.py:760 turtleblocks.py:432
+#, fuzzy
 msgid "Stop"
 msgstr "단계 실행"
 
+#: TurtleArtActivity.py:782 TurtleArtActivity.py:983 TurtleArtActivity.py:1005
+#: turtleblocks.py:381
 msgid "Load project"
 msgstr ""
 
+#: TurtleArtActivity.py:785 TurtleArtActivity.py:988 TurtleArtActivity.py:1010
 msgid "Load plugin"
 msgstr ""
 
+#: TurtleArtActivity.py:786 TurtleArtActivity.py:991 TurtleArtActivity.py:1013
 msgid "Load Python block"
 msgstr ""
 
+#: TurtleArtActivity.py:933
 msgid "Palettes"
 msgstr ""
 
+#: TurtleArtActivity.py:951
 msgid "Sharing blocks disabled"
 msgstr ""
 
+#: TurtleArtActivity.py:980 turtleblocks.py:380
 msgid "Open"
 msgstr ""
 
+#: TurtleArtActivity.py:1030
 msgid "<Ctrl>p"
 msgstr ""
 
+#: TurtleArtActivity.py:1035
 msgid "<Ctrl>e"
 msgstr ""
 
+#: TurtleArtActivity.py:1037
 msgid "<Ctrl>r"
 msgstr ""
 
+#: TurtleArtActivity.py:1039
 msgid "<Ctrl>w"
 msgstr ""
 
+#: TurtleArtActivity.py:1042
 msgid "<Ctrl>s"
 msgstr ""
 
+#: TurtleArtActivity.py:1203 TurtleArtActivity.py:1208
+#: TurtleArtActivity.py:1288
 msgid "Plugin could not be installed."
 msgstr ""
 
+#: TurtleArtActivity.py:1284
 msgid "Please restart Turtle Art in order to use the plugin."
 msgstr ""
 
+#: TurtleArtActivity.py:1302
+#, python-format
 msgid "Plugin %s already installed."
 msgstr ""
 
+#: TurtleArtActivity.py:1303
+#, python-format
 msgid "Do you want to reinstall %s?"
 msgstr ""
 
+#: gnome_plugins/collaboration_plugin.py:64
 msgid "My Turtle Art session"
 msgstr ""
 
+#: gnome_plugins/collaboration_plugin.py:111
 msgid "Enable collaboration"
 msgstr ""
 
+#: gnome_plugins/collaboration_plugin.py:116
 msgid "Activities"
 msgstr ""
 
+#: gnome_plugins/collaboration_plugin.py:121
 msgid "Buddies"
 msgstr ""
 
+#: gnome_plugins/collaboration_plugin.py:124
 msgid "Share"
 msgstr ""
 
+#: gnome_plugins/collaboration_plugin.py:125
 msgid "Configuration"
 msgstr ""
 
+#: gnome_plugins/collaboration_plugin.py:128
 msgid "Neighborhood"
 msgstr ""
 
+#: gnome_plugins/collaboration_plugin.py:289
 msgid "Nickname"
 msgstr ""
 
+#: gnome_plugins/collaboration_plugin.py:291
 msgid "Account ID"
 msgstr ""
 
+#: gnome_plugins/collaboration_plugin.py:293
 msgid "Server"
 msgstr ""
 
+#: gnome_plugins/collaboration_plugin.py:295
 msgid "Port"
 msgstr ""
 
+#: gnome_plugins/collaboration_plugin.py:297
 msgid "Password"
 msgstr ""
 
+#: gnome_plugins/collaboration_plugin.py:299
 msgid "Register"
 msgstr ""
 
+#: gnome_plugins/collaboration_plugin.py:301
+#, fuzzy
 msgid "Colors"
 msgstr "색"
 
+#: gnome_plugins/fb_plugin.py:82 gnome_plugins/fb_plugin.py:83
+#: gnome_plugins/fb_plugin.py:92 gnome_plugins/uploader_plugin.py:63
+#: gnome_plugins/uploader_plugin.py:64 gnome_plugins/uploader_plugin.py:73
 msgid "Upload"
 msgstr ""
 
+#: gnome_plugins/fb_plugin.py:87
 msgid "Facebook wall post"
 msgstr ""
 
+#: gnome_plugins/uploader_plugin.py:68
 msgid "Upload to Web"
 msgstr ""
 
+#: gnome_plugins/uploader_plugin.py:90
 msgid ""
 "You must have an account at http://turtleartsite.sugarlabs.org to upload "
 "your project."
 msgstr ""
 
+#: gnome_plugins/uploader_plugin.py:99
 msgid "Username:"
 msgstr ""
 
+#: gnome_plugins/uploader_plugin.py:109
 msgid "Password:"
 msgstr ""
 
+#: gnome_plugins/uploader_plugin.py:120
+#, fuzzy
 msgid "Title:"
 msgstr "제목"
 
+#: gnome_plugins/uploader_plugin.py:130
 msgid "Description:"
 msgstr ""
 
+#: gnome_plugins/uploader_plugin.py:140
 msgid "Submit to Web"
 msgstr ""
 
+#: gnome_plugins/uploader_plugin.py:166
 msgid "Login failed"
 msgstr ""
 
+#: gnome_plugins/uploader_plugin.py:203
 msgid "Failed to upload!"
 msgstr ""
 
+#: plugins/accelerometer/accelerometer.py:49
+#: plugins/audio_sensors/audio_sensors.py:75
+#: plugins/camera_sensor/camera_sensor.py:63
+#: plugins/light_sensor/light_sensor.py:49 plugins/rfid/rfid.py:86
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:309
 msgid "Palette of sensor blocks"
 msgstr ""
 
+#: plugins/accelerometer/accelerometer.py:56
+#: plugins/accelerometer/accelerometer.py:63
 msgid "acceleration"
 msgstr ""
 
+#: plugins/accelerometer/accelerometer.py:58
+#: plugins/accelerometer/accelerometer.py:65
 msgid "push acceleration in x, y, z to heap"
 msgstr ""
 
+#: plugins/audio_sensors/audio_sensors.py:84
+#: plugins/audio_sensors/audio_sensors.py:99
 msgid "raw microphone input signal"
 msgstr ""
 
+#: plugins/audio_sensors/audio_sensors.py:90
+#: plugins/audio_sensors/audio_sensors.py:105
 msgid "loudness"
 msgstr ""
 
+#: plugins/audio_sensors/audio_sensors.py:91
+#: plugins/audio_sensors/audio_sensors.py:106
 msgid "microphone input volume"
 msgstr ""
 
+#: plugins/audio_sensors/audio_sensors.py:119
+#: plugins/audio_sensors/audio_sensors.py:127
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:296
 msgid "pitch"
 msgstr "피치"
 
+#: plugins/audio_sensors/audio_sensors.py:120
+#: plugins/audio_sensors/audio_sensors.py:128
 msgid "microphone input pitch"
 msgstr ""
 
+#: plugins/audio_sensors/audio_sensors.py:152
+#: plugins/audio_sensors/audio_sensors.py:166
+#: plugins/audio_sensors/audio_sensors.py:180
+#: plugins/audio_sensors/audio_sensors.py:194
 msgid "microphone input resistance"
 msgstr ""
 
+#: plugins/audio_sensors/audio_sensors.py:158
+#: plugins/audio_sensors/audio_sensors.py:172
+#: plugins/audio_sensors/audio_sensors.py:186
+#: plugins/audio_sensors/audio_sensors.py:200
 msgid "microphone input voltage"
 msgstr ""
 
+#: plugins/camera_sensor/camera_sensor.py:67
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:125
 msgid "Palette of media objects"
 msgstr ""
 
+#: plugins/camera_sensor/camera_sensor.py:82
+#: plugins/camera_sensor/camera_sensor.py:130
 msgid "light level detected by camera"
 msgstr ""
 
+#: plugins/camera_sensor/camera_sensor.py:95
+#: plugins/camera_sensor/camera_sensor.py:143
 msgid "Average RGB color from camera is pushed to the stack"
 msgstr ""
 
+#: plugins/camera_sensor/camera_sensor.py:106
+#: plugins/camera_sensor/camera_sensor.py:113
+#: plugins/camera_sensor/camera_sensor.py:121
+#: plugins/camera_sensor/camera_sensor.py:155
+#: plugins/camera_sensor/camera_sensor.py:163
 msgid "camera output"
 msgstr ""
 
+#: plugins/light_sensor/light_sensor.py:58
+#: plugins/light_sensor/light_sensor.py:65
 msgid "light level detected by light sensor"
 msgstr ""
 
+#: plugins/rfid/rfid.py:92 plugins/rfid/rfid.py:100
 msgid "RFID"
 msgstr ""
 
+#: plugins/rfid/rfid.py:93 plugins/rfid/rfid.py:101
 msgid "read value from RFID device"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:96
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:99
 msgid "while"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:100
 msgid "do-while-True operator that uses boolean operators from Numbers palette"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:106
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:109
 msgid "until"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:110
 msgid "do-until-True operator that uses boolean operators from Numbers palette"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:117
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:714
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:888
+#, fuzzy
 msgid "top"
 msgstr "단계 실행"
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:119
 msgid "top of a collapsible stack"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:132
 msgid "journal"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:133
 msgid "Sugar Journal media object"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:143
 msgid "audio"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:145
 msgid "Sugar Journal audio object"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:155
 msgid "video"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:157
 msgid "Sugar Journal video object"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:167
 msgid "description"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:169
 msgid "Sugar Journal description field"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:186
 msgid "show"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:190
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:204
 msgid "draws text or show media from the Journal"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:200
 msgid "show aligned"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:213
+#, fuzzy
 msgid "set scale"
 msgstr "명암 지정"
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:217
 msgid "sets the scale of media"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:225
 msgid "save picture"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:227
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:238
 msgid "picture name"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:228
 msgid "saves a picture to the Sugar Journal"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:236
 msgid "save SVG"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:239
 msgid "saves turtle graphics as an SVG file in the Sugar Journal"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:246
 msgid "scale"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:250
 msgid "holds current scale value"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:255
 msgid "media wait"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:257
 msgid "wait for current video or audio to complete"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:263
 msgid "media stop"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:265
 msgid "stop video or audio"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:270
 msgid "media pause"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:272
 msgid "pause video or audio"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:277
 msgid "media resume"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:279
 msgid "resume playing video or audio"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:285
 msgid "speak"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:287
 msgid "hello"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:288
 msgid "speaks text"
 msgstr ""
 
+#. TRANS: pitch, duration, amplitude
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:296
 msgid "sinewave"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:297
 msgid "amplitude"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:297
 msgid "duration"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:300
 msgid "plays a sinewave at frequency, amplitude, and duration (in seconds)"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:316
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:327
 msgid "button down"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:319
 msgid "returns 1 if mouse button is pressed"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:330
 msgid "returns True if mouse button is pressed"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:338
 msgid "mouse x"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:341
 msgid "returns mouse x coordinate"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:348
 msgid "mouse y"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:351
 msgid "returns mouse y coordinate"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:359
 msgid "query keyboard"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:361
 msgid "query for keyboard input (results stored in keyboard block)"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:368
+#, fuzzy
 msgid "keyboard"
 msgstr "키보드"
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:372
 msgid "holds results of query-keyboard block as ASCII"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:404
 msgid "read pixel"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:407
 msgid "RGB color under the turtle is pushed to the stack"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:415
 msgid "turtle sees"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:417
 msgid "returns the color that the turtle \"sees\""
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:428
 msgid "elapsed time (in seconds) since program started"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:436
 msgid "Palette of extra options"
 msgstr ""
 
+#. TRANS: push adds a new item to the program stack
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:443
 msgid "push"
 msgstr "넣기"
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:446
 msgid "pushes value onto FILO (first-in last-out heap)"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:456
 msgid "show heap"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:459
 msgid "shows values in FILO (first-in last-out heap)"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:469
 msgid "empty heap"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:472
 msgid "emptys FILO (first-in-last-out heap)"
 msgstr ""
 
+#. TRANS: pop removes a new item from the program stack
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:483
 msgid "pop"
 msgstr "빼기"
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:487
 msgid "pops value off FILO (first-in last-out heap)"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:498
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:508
 msgid "empty heap?"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:501
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:511
 msgid "returns True if heap is empty"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:519
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:521
 msgid "comment"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:523
 msgid "places a comment in your code"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:530
 msgid "print"
 msgstr "인쇄"
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:534
 msgid "prints value in status block at bottom of the screen"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:545
 msgid "Python chr operator"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:554
 msgid "Python int operator"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:561
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:575
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:589
 msgid "Python"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:565
 msgid ""
 "a programmable block: used to add advanced single-variable math equations, e."
 "g., sin(x)"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:579
 msgid ""
 "a programmable block: used to add advanced multi-variable math equations, e."
 "g., sqrt(x*x+y*y)"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:593
 msgid ""
 "a programmable block: used to add advanced multi-variable math equations, e."
 "g., sin(x+y+z)"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:605
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:622
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:638
 msgid "Python block"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:607
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:624
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:641
 msgid "runs code found in the tamyblock.py module found in the Journal"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:654
 msgid "Cartesian"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:656
 msgid "displays Cartesian coordinates"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:662
 msgid "polar"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:664
 msgid "displays polar coordinates"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:670
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:758
+#, fuzzy
 msgid "turtle"
 msgstr "터틀"
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:674
 msgid "chooses which turtle to command"
 msgstr ""
 
+#. TRANS: pop removes a new item from the program stack
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:683
 msgid "active turtle"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:686
 msgid "the name of the active turtle"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:696
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:706
 msgid "turtle shell"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:698
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:707
 msgid "put a custom 'shell' on the turtle"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:715
 msgid "top of a collapsed stack"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:720
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:731
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:743
 msgid "load"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:723
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:735
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:747
+#, fuzzy
 msgid "loads a block"
 msgstr "내 블록 불러오기"
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:746
+#, fuzzy
 msgid "setxy"
 msgstr "xy 지정하기"
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:756
 msgid "palette"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:759
 msgid "selects a palette"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:767
 msgid "Palette of presentation templates"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:774
 msgid "hide blocks"
 msgstr "블록 숨기기"
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:776
 msgid "declutters canvas by hiding blocks"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:783
+#, fuzzy
 msgid "show blocks"
 msgstr "블록 보기"
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:785
 msgid "restores hidden blocks"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:793
 msgid "hides the Sugar toolbars"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:802
 msgid "list"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:806
 msgid "presentation bulleted list"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:814
 msgid "presentation template: list of bullets"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:821
 msgid "presentation template: select Journal object (no description)"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:828
 msgid "presentation template: select Journal object (with description)"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:835
 msgid "presentation template: select four Journal objects"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:842
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:849
 msgid "presentation template: select two Journal objects"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:859
 msgid "xcor of left of screen"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:864
 msgid "bottom"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:867
 msgid "ycor of bottom of screen"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:875
 msgid "the canvas width"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:883
 msgid "xcor of right of screen"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:891
 msgid "ycor of top of screen"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:899
 msgid "the canvas height"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:906
 msgid "title x"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:915
 msgid "title y"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:924
 msgid "left x"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:933
 msgid "top y"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:942
 msgid "right x"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:951
 msgid "bottom y"
 msgstr ""
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:968
 msgid "Palette of user-defined operators"
 msgstr ""
 
+#: pysamples/brain.py:43
 msgid "Please install the Speak Activity and try again."
 msgstr ""
 
+#: pysamples/brain.py:52
 msgid "Spanish"
 msgstr ""
 
+#: pysamples/brain.py:56 pysamples/brain.py:69 pysamples/brain.py:71
+#: pysamples/brain.py:77
 msgid "English"
 msgstr ""
 
+#: pysamples/brain.py:88
 msgid "Sorry, I can't understand what you are asking about."
 msgstr ""
 
+#: pysamples/brain.py:97
 msgid ""
 "Sorry, there is no free memory to load my brain. Close other activities and "
 "try once more."
 msgstr ""
 
+#: pysamples/forward_push.py:48
 msgid "push destination rgb value to heap"
 msgstr ""
 
+#: pysamples/grecord.py:216
+#, fuzzy
 msgid "stop"
 msgstr "단계 실행"
 
+#: pysamples/grecord.py:218
 msgid "play"
 msgstr ""
 
+#: pysamples/grecord.py:220
 msgid "save"
 msgstr ""
 
+#: pysamples/journal-stats.py:80
 msgid "other"
 msgstr ""
 
+#: pysamples/uturn.py:35
 msgid "uturn"
 msgstr ""
 
+#: pysamples/uturn.py:37
 msgid "turns the turtle 180 degrees"
 msgstr ""
 
+#: turtleblocks.py:91
 msgid "usage is"
 msgstr ""
 
+#: turtleblocks.py:260
 msgid "No option action:"
 msgstr ""
 
+#: turtleblocks.py:275
 msgid "File not found"
 msgstr ""
 
+#: turtleblocks.py:299
+#, python-format
 msgid "Configuration directory not writable: %s"
 msgstr ""
 
+#: turtleblocks.py:375
 msgid "New"
 msgstr ""
 
+#: turtleblocks.py:376
 msgid "Show sample projects"
 msgstr ""
 
+#: turtleblocks.py:378
 msgid "Hide sample projects"
 msgstr ""
 
+#: turtleblocks.py:382
 msgid "Save"
 msgstr ""
 
+#: turtleblocks.py:383
+#, fuzzy
 msgid "Save as"
 msgstr "다른 이름으로 저장"
 
+#: turtleblocks.py:388
 msgid "Quit"
 msgstr ""
 
+#: turtleblocks.py:389
 msgid "File"
 msgstr ""
 
+#: turtleblocks.py:396
 msgid "Rescale coordinates"
 msgstr ""
 
+#: turtleblocks.py:402
 msgid "Reset block size"
 msgstr ""
 
+#: turtleblocks.py:423
 msgid "Show/hide blocks"
 msgstr ""
 
+#: turtleblocks.py:425
 msgid "Tools"
 msgstr ""
 
+#: turtleblocks.py:431
 msgid "Debug"
 msgstr ""
 
+#: turtleblocks.py:433
 msgid "Turtle"
 msgstr "터틀"
 
+#: turtleblocks.py:436
 msgid "About..."
 msgstr ""
 
+#: turtleblocks.py:475
 msgid "You have unsaved work. Would you like to save before quitting?"
 msgstr ""
 
+#: turtleblocks.py:477
 msgid "Save project?"
 msgstr ""
 
-msgid "set text color"
-msgstr "텍스트 색 지정"
+#~ msgid "name"
+#~ msgstr "이름"
 
-msgid "set text size"
-msgstr "펜 크기 지정"
+#~ msgid "set text color"
+#~ msgstr "텍스트 색 지정"
 
-msgid "Save as HTML"
-msgstr "HTML으로 저장"
+#, fuzzy
+#~ msgid "set text size"
+#~ msgstr "펜 크기 지정"
 
-msgid "full screen"
-msgstr "전체 화면"
+#, fuzzy
+#~ msgid "Save as HTML"
+#~ msgstr "HTML으로 저장"
 
-msgid "stack"
-msgstr "스택"
+#, fuzzy
+#~ msgid "full screen"
+#~ msgstr "전체 화면"
 
-msgid "numbers"
-msgstr "숫자"
+#~ msgid "stack"
+#~ msgstr "스택"
 
-msgid "blocks"
-msgstr "블록"
+#, fuzzy
+#~ msgid "numbers"
+#~ msgstr "숫자"
 
-msgid "flow"
-msgstr "흐름"
+#, fuzzy
+#~ msgid "blocks"
+#~ msgstr "블록"
 
-msgid "Load my block"
-msgstr "내 블록 불러오기"
+#, fuzzy
+#~ msgid "flow"
+#~ msgstr "흐름"
 
-msgid "volume"
-msgstr "소리 크기"
+#, fuzzy
+#~ msgid "Load my block"
+#~ msgstr "내 블록 불러오기"
 
-msgid "stack 2"
-msgstr "스택 2"
+#~ msgid "volume"
+#~ msgstr "소리 크기"
 
-msgid "stack 1"
-msgstr "스택 1"
+#~ msgid "stack 2"
+#~ msgstr "스택 2"
 
-msgid "Keyboard"
-msgstr "키보드"
+#~ msgid "stack 1"
+#~ msgstr "스택 1"
 
-msgid "My Blocks"
-msgstr "내 블록"
+#~ msgid "Keyboard"
+#~ msgstr "키보드"
 
-msgid "Numbers"
-msgstr "숫자"
+#~ msgid "My Blocks"
+#~ msgstr "내 블록"
 
-msgid "Templates"
-msgstr "템플릿"
+#~ msgid "Numbers"
+#~ msgstr "숫자"
 
-msgid "read key"
-msgstr "키 읽기"
+#~ msgid "Templates"
+#~ msgstr "템플릿"
 
-msgid "text color"
-msgstr "색 지정"
+#~ msgid "read key"
+#~ msgstr "키 읽기"
 
-msgid "Pen"
-msgstr "펜"
+#, fuzzy
+#~ msgid "text color"
+#~ msgstr "색 지정"
 
-msgid "hide palette"
-msgstr "팔레트 숨기기"
+#~ msgid "Pen"
+#~ msgstr "펜"
 
-msgid "run"
-msgstr "실행"
+#~ msgid "hide palette"
+#~ msgstr "팔레트 숨기기"
 
-msgid "stop stack"
-msgstr "스택 멈추기"
+#~ msgid "run"
+#~ msgstr "실행"
 
-msgid "hres"
-msgstr "hres"
+#~ msgid "stop stack"
+#~ msgstr "스택 멈추기"
 
-msgid "vres"
-msgstr "vres"
+#~ msgid "hres"
+#~ msgstr "hres"
+
+#~ msgid "vres"
+#~ msgstr "vres"

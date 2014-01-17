@@ -183,7 +183,7 @@ class Block:
         trash -- block in the trash """
 
     def __init__(self, block_list, sprite_list, name, x, y, type='block',
-                 values=[], scale=BLOCK_SCALE[0],
+                 values=None, scale=BLOCK_SCALE[0],
                  colors=['#A0A0A0', '#808080']):
 
         self.block_list = block_list
@@ -256,8 +256,9 @@ class Block:
             self.font_size[i] *= self.scale * \
                 self.block_list.font_scale_factor
 
-        for v in (values):
-            self.values.append(v)
+        if values is not None:
+            for v in (values):
+                self.values.append(v)
 
         # If there is already a block with the same name, reuse it
         copy_block = None
@@ -370,11 +371,11 @@ class Block:
             return
         dx = (self.spr.label_width() - self.spr.label_safe_width()) / \
             self.scale
-        if self.dx + dx >= self.block_list.max_width and \
-           self.name == 'string':
+        if self.dx + dx >= self.block_list.max_width and self.name == 'string':
             self.dx = self.block_list.max_width
             self.refresh()
-            self._set_labels(0, self.spr.labels[0])
+            for i, label in enumerate(self.spr.labels):
+                self._set_labels(i, label)
         elif dx != 0:
             self.dx += dx
             if self.dx < 0:
@@ -639,7 +640,7 @@ class Block:
         else:
             n = 0
             if self.name in block_names:
-                n = len(block_names[self.name])
+                n = len(self.spr.labels)
             elif self.name not in BLOCKS_WITH_SKIN:
                 debug_output('WARNING: unknown block name %s' % (self.name))
         for i in range(n):

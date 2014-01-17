@@ -841,6 +841,18 @@ _('gets a text string or an image from a URL'))
                           special_name=_('top'),
                           help_string=_('top of a collapsed stack'))
 
+        palette.add_block('loadpalette',
+                          style='basic-style-1arg',
+                          string_or_number=True,
+                          label=_('select palette'),
+                          prim_name='loadpalette',
+                          default=_('turtle'),
+                          help_string=_('selects a palette'))
+        self.tw.lc.def_prim('loadpalette', 1,
+                            Primitive(self.tw.prim_load_palette,
+                                      export_me=False,
+                                      arg_descs=[ArgSlot(TYPE_STRING)]))
+
         palette.add_block('loadblock',
                           style='basic-style-var-arg',
                           label=_('load'),
@@ -880,18 +892,6 @@ _('gets a text string or an image from a URL'))
                                       arg_descs=[ArgSlot(TYPE_STRING),
                                                  ArgSlot(TYPE_OBJECT),
                                                  ArgSlot(TYPE_OBJECT)]))
-
-        palette.add_block('loadpalette',
-                          style='basic-style-1arg',
-                          string_or_number=True,
-                          label=_('select palette'),
-                          prim_name='loadpalette',
-                          default=_('turtle'),
-                          help_string=_('selects a palette'))
-        self.tw.lc.def_prim('loadpalette', 1,
-                            Primitive(self.tw.prim_load_palette,
-                                      export_me=False,
-                                      arg_descs=[ArgSlot(TYPE_STRING)]))
 
     def _portfolio_palette(self):
 

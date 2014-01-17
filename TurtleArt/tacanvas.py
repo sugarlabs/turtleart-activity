@@ -121,23 +121,31 @@ class TurtleGraphics:
 
     def setup_svg_surface(self):
         ''' Set up a surface for saving to SVG '''
-        if self.turtle_window.running_sugar:
-            svg_surface = cairo.SVGSurface(
-                os.path.join(get_path(self.turtle_window.activity, 'instance'),
-                             'output.svg'), self.width, self.height)
-        else:
-            svg_surface = cairo.SVGSurface(
-                TMP_SVG_PATH, self.width, self.height)
+        svg_surface = cairo.SVGSurface(self.get_svg_path(),
+                                       self.width, self.height)
+        self.svg_surface = svg_surface
         self.cr_svg = cairo.Context(svg_surface)
         self.cr_svg.set_line_cap(1)  # Set the line cap to be round
 
+    def get_svg_path(self):
+        '''We use a separate file for the svg used for generating Sugar icons
+        '''
+        if self.turtle_window.running_sugar:
+            return os.path.join(get_path(self.turtle_window.activity,
+                                         'instance'), 'output.svg')
+        else:
+            return TMP_SVG_PATH
+
     def fill_polygon(self, poly_points):
+
         ''' Draw the polygon... '''
         def _fill_polygon(cr, poly_points):
             cr.new_path()
             for i, p in enumerate(poly_points):
                 if p[0] == 'move':
-                    cr.move_to(p[1], p[2])
+                    if i == len(poly_points) - 1 or \
+                       poly_points[i + 1][0] not in ['rarc', 'larc']:
+                        cr.move_to(p[1], p[2])
                 elif p[0] == 'rarc':
                     cr.arc(p[1], p[2], p[3], p[4], p[5])
                 elif p[0] == 'larc':
@@ -152,7 +160,7 @@ class TurtleGraphics:
         if self.cr_svg is not None:
             _fill_polygon(self.cr_svg, poly_points)
 
-    def clearscreen(self, share=True):
+    def clearscreen(self):
         '''Clear the canvas and reset most graphics attributes to defaults.'''
 
         def _clearscreen(cr):
@@ -304,11 +312,15 @@ class TurtleGraphics:
     def draw_text(self, label, x, y, size, width, heading, scale):
         ''' Draw text '''
 
-        def _draw_text(cr, label, x, y, size, width, scale, heading, rgb):
+        def _draw_text(cr, label, x, y, size, width, scale, heading, rgb,
+                       wrap=False):
             import textwrap
+
             final_scale = int(size * scale) * pango.SCALE
             label = str(label)
-            label = '\n'.join(textwrap.wrap(label, int(width / scale)))
+            if wrap:
+                label = '\n'.join(textwrap.wrap(label, int(width / scale)))
+
             cc = pangocairo.CairoContext(cr)
             pl = cc.create_layout()
             fd = pango.FontDescription('Sans')
@@ -335,7 +347,7 @@ class TurtleGraphics:
         self.inval()
         if self.cr_svg is not None:  # and self.pendown:
             _draw_text(self.cr_svg, label, x, y, size, width, scale, heading,
-                       self._fgrgb)
+                       self._fgrgb, wrap=True)
 
     def set_source_rgb(self):
         r = self._fgrgb[0] / 255.
@@ -416,6 +428,8 @@ class TurtleGraphics:
     def svg_close(self):
         ''' Close current SVG graphic '''
         self.cr_svg.show_page()
+        self.svg_surface.flush()
+        self.svg_surface.finish()
 
     def svg_reset(self):
         ''' Reset svg flags '''

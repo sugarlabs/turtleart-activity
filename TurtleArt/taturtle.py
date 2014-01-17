@@ -615,12 +615,10 @@ class Turtle:
                                                     self._heading)
 
             if self._pen_fill:
-                if self._poly_points == []:
-                    self._poly_points.append(('move', npos[0], npos[1]))
-                    self._poly_points.append(('rarc', npos[0], npos[1], r,
-                                              (self._heading - 180) * DEGTOR,
-                                              (self._heading - 180 + a)
-                                              * DEGTOR))
+                self._poly_points.append(('move', npos[0], npos[1]))
+                self._poly_points.append(('rarc', npos[0], npos[1], r,
+                                          (self._heading - 180) * DEGTOR,
+                                          (self._heading - 180 + a) * DEGTOR))
 
         self.right(a, False)
         return [cx - r * cos(self._heading * DEGTOR),
@@ -641,11 +639,10 @@ class Turtle:
                                                     self._heading)
 
             if self._pen_fill:
-                if self._poly_points == []:
-                    self._poly_points.append(('move', npos[0], npos[1]))
-                    self._poly_points.append(('larc', npos[0], npos[1], r,
-                                              (self._heading) * DEGTOR,
-                                              (self._heading - a) * DEGTOR))
+                self._poly_points.append(('move', npos[0], npos[1]))
+                self._poly_points.append(('larc', npos[0], npos[1], r,
+                                          (self._heading) * DEGTOR,
+                                          (self._heading - a) * DEGTOR))
 
         self.right(-a, False)
         return [cx + r * cos(self._heading * DEGTOR),
