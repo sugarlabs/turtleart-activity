@@ -158,7 +158,7 @@ class TurtleGraphics:
         if self.cr_svg is not None:
             _fill_polygon(self.cr_svg, poly_points)
 
-    def clearscreen(self, share=True):
+    def clearscreen(self):
         '''Clear the canvas and reset most graphics attributes to defaults.'''
 
         def _clearscreen(cr):
