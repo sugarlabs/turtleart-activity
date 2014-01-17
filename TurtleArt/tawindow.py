@@ -291,7 +291,7 @@ class TurtleArtWindow():
             self.turtles.get_turtle(self.turtles.get_default_turtle_name()))
         self.turtles.get_active_turtle().show()
 
-        self.canvas.clearscreen(False)
+        self.canvas.clearscreen()
 
         self._configure_cb(None)
 
@@ -1309,6 +1309,8 @@ class TurtleArtWindow():
                 self._proto_skin(name[7:], n, -1)
             elif name in PYTHON_SKIN:
                 self._proto_skin('pythonsmall', n, -1)
+            if len(self.palettes[n][-1].spr.labels) > 0:
+                self.palettes[n][-1].refresh()
         return
 
     def _hide_toolbar_palette(self):
@@ -2440,6 +2442,7 @@ before making changes to your program'))
         self.block_operation = 'new'
         if len(newblk.spr.labels) > 0 and newblk.spr.labels[0] is not None \
                 and newblk.name not in ['', 'number', 'string']:
+            newblk.refresh()
             if len(self.used_block_list) > 0:
                 self.used_block_list.append(', ')
             if newblk.name in special_names:
