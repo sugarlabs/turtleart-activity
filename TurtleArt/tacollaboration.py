@@ -401,7 +401,7 @@ class Collaboration():
             [nick, poly_points] = data_from_string(payload)
             shared_poly_points = []
             for i in range(len(poly_points)):
-                x, y = self._turtles.screen_to_turtle_coordinates(
+                x, y = self._tw.turtles.screen_to_turtle_coordinates(
                          (poly_points[i][1], poly_points[i][2]))
                 if poly_points[i][0] in ['move', 'line']:
                     shared_poly_points.append((poly_points[i][0], x, y))
