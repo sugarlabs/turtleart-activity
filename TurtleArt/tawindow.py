@@ -370,25 +370,30 @@ class TurtleArtWindow():
         else:
             return None
 
-    def _get_plugins_from_plugins_dir(self, path):
+    def _get_plugins_from_plugins_dir(self, paths):
         ''' Look for plugin files in plugin dir. '''
         plugin_files = []
-        if path is not None:
+        for path in paths:
             candidates = os.listdir(path)
             candidates.sort()
             for dirname in candidates:
                 pname = os.path.join(path, dirname, dirname + '.py')
                 if os.path.exists(pname):
-                    plugin_files.append(dirname)
+                    plugin_files.append({'dirname': dirname, 'path': path})
         return plugin_files
 
     def _init_plugins(self):
         ''' Try importing plugin files from the plugin dir. '''
-        plist = self._get_plugins_from_plugins_dir(self._get_plugin_home())
-        for plugin_dir in plist:
-            self.init_plugin(plugin_dir)
+        homepath = os.path.join(os.path.expanduser('~'), 'Activities',
+                                os.path.basename(self.path), _PLUGIN_SUBPATH)
+        paths = [self._get_plugin_home()]
+        if paths[0] != homepath:
+            paths.append(homepath)
+        plist = self._get_plugins_from_plugins_dir(paths)
+        for plugin in plist:
+            self.init_plugin(plugin['dirname'], plugin['path'])
 
-    def init_plugin(self, plugin_dir):
+    def init_plugin(self, plugin_dir, plugin_path):
         ''' Initialize plugin in plugin_dir '''
         plugin_class = plugin_dir.capitalize()
         f = 'def f(self): from plugins.%s.%s import %s; return %s(self)' \
@@ -401,8 +406,7 @@ class TurtleArtWindow():
             debug_output('Successfully importing %s' % (plugin_class),
                          self.running_sugar)
             # Add the icon dir to the icon_theme search path
-            self._add_plugin_icon_dir(os.path.join(self._get_plugin_home(),
-                                                   plugin_dir))
+            self._add_plugin_icon_dir(os.path.join(plugin_path, plugin_dir))
             # Add the plugin to the list of global objects
             global_objects[plugin_class] = self.turtleart_plugins[-1]
         except Exception as e:
