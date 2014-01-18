@@ -387,7 +387,7 @@ class TurtleArtWindow():
         homepath = os.path.join(os.path.expanduser('~'), 'Activities',
                                 os.path.basename(self.path), _PLUGIN_SUBPATH)
         paths = [self._get_plugin_home()]
-        if paths[0] != homepath:
+        if paths[0] != homepath and os.path.exists(homepath):
             paths.append(homepath)
         plist = self._get_plugins_from_plugins_dir(paths)
         for plugin in plist:
