@@ -554,6 +554,7 @@ class LogoCode:
             while (_millisecond() - starttime) < 120:
                 try:
                     if self.step is None:
+                        self.tw.running_blocks = False
                         return False
                     if self.tw.running_turtleart:
                         try:
@@ -588,12 +589,14 @@ class LogoCode:
                         except BaseException as error:
                             if isinstance(error, (StopIteration,
                                                   logoerror)):
+                                self.tw.running_blocks = False
                                 raise error
                             else:
                                 traceback.print_exc()
                                 self.tw.showlabel(
                                     'status', '%s: %s' %
                                     (type(error).__name__, str(error)))
+                                self.tw.running_blocks = False
                                 return False
                 except StopIteration:
                     if self.tw.running_turtleart:
@@ -613,10 +616,10 @@ class LogoCode:
                 self.tw.display_coordinates()
                 self.tw.showlabel('syntaxerror', str(e))
                 self.tw.turtles.show_all()
-                self.tw.running_blocks = False
             else:
                 traceback.print_exc()
                 self.tw.showlabel('status', 'logoerror: ' + str(e))
+            self.tw.running_blocks = False
             return False
         return True
 

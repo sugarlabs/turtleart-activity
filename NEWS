@@ -1,3 +1,8 @@
+197
+
+BUG FIX:
+* Fix problem with dragging canvas while programming is running
+
 196
 
 ENHANCEMENTS:
@@ -19,10 +24,8 @@ BUG FIXES:
 
 ENHANCEMENTS:
 * New translations
-* Add pen to Physics palette
-* Add sample projects that use Physics palette
 
-BUG FIX:
+BUG FIXES:
 * Added missing parens for some binary operations in Python export
 * Fixed positioning of help messages (#4679)
 
