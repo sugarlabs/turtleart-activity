@@ -143,7 +143,7 @@ class TurtleArtWindow():
                 # Make sure macros_path is somewhere writable
                 self.macros_path = os.path.join(
                     os.path.expanduser('~'), 'Activities',
-                    os.path.basename(self.path), _MACROS_SUBPATH)
+                    os.path.basename(path), _MACROS_SUBPATH)
             self._setup_events()
         else:
             self.interactive_mode = False
