@@ -359,6 +359,7 @@ class TurtleArtWindow():
         font_map_default.set_resolution(dpi)
 
     def _tablet_mode(self):
+        ''' DEPRECATED '''
         return False  # Sugar will autoscroll the window for me
 
     def _get_plugin_home(self):
@@ -3278,7 +3279,7 @@ before making changes to your program'))
         else:
             while self.lc.doevalstep():
                 pass
-        self.running_blocks = False
+        # self.running_blocks = False  # Should be handled in talogo.py
 
     def _snap_to_dock(self):
         ''' Snap a block (selected_block) to the dock of another block
