@@ -28,7 +28,7 @@ import cairo
 from random import uniform
 from math import sin, cos, pi, sqrt
 from taconstants import (TURTLE_LAYER, DEFAULT_TURTLE_COLORS, DEFAULT_TURTLE,
-                         Color)
+                         CONSTANTS, Color, ColorObj)
 from tasprite_factory import SVG, svg_str_to_pixbuf
 from tacanvas import wrap100, COLOR_TABLE
 from sprites import Sprite
@@ -368,9 +368,12 @@ class Turtle:
 
     def set_color(self, color=None, share=True):
         ''' Set the pen color for this turtle. '''
+        if isinstance(color, ColorObj):
+            # See comment in tatype.py TYPE_BOX -> TYPE_COLOR
+            color = color.color
         if color is None:
             color = self._pen_color
-        # Special case for color blocks
+        # Special case for color blocks from CONSTANTS
         elif isinstance(color, Color):
             self.set_shade(color.shade, share)
             self.set_gray(color.gray, share)

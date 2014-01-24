@@ -23,7 +23,7 @@
 import ast
 
 from tablock import Media
-from taconstants import (Color, CONSTANTS)
+from taconstants import (Color, ColorObj, CONSTANTS)
 
 
 class Type(object):
@@ -189,6 +189,7 @@ TYPE_CONVERTERS = {
     # converting A -> C must yield the same result as converting A -> B -> C.
     # TYPE_OBJECT is the supertype of everything.
     TYPE_BOX: {
+        TYPE_COLOR: ColorObj,  # FIXME: should be Color.name
         TYPE_FLOAT: float,
         TYPE_INT: int,
         TYPE_NUMBER: float,

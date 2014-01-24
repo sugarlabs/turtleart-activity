@@ -41,7 +41,7 @@ except ImportError:
 import traceback
 
 from tablock import (Block, Media, media_blocks_dictionary)
-from taconstants import (TAB_LAYER, DEFAULT_SCALE, ICON_SIZE)
+from taconstants import (TAB_LAYER, DEFAULT_SCALE, ICON_SIZE, Color)
 from tajail import (myfunc, myfunc_import)
 from tapalette import (block_names, value_blocks)
 from tatype import (TATypeError, TYPES_NUMERIC)

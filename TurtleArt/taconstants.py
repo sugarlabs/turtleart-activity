@@ -151,6 +151,26 @@ REVERSE_KEY_DICT = {
         }
 
 
+class ColorObj(object):
+    def __init__(self, color):
+        self.color = color
+
+    def __int__(self):
+        if self.color.color is None:
+            return int(self.color.shade)
+        else:
+            return int(self.color.color)
+
+    def __float__(self):
+        return float(int(self))
+
+    def __str__(self):
+        return str(self.color.name)
+
+    def __repr__(self):
+        return str(self.color.name)
+
+
 class Color(object):
     """ A color used in block programs (e.g., as pen color). """
 
@@ -175,6 +195,9 @@ class Color(object):
 
     def get_number_string(self):
         return str(int(self))
+
+    def get_number_name(self):
+        return str(self.name)
 
     def __str__(self):
         return str(self.name)
