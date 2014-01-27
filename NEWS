@@ -1,12 +1,13 @@
 198
 
-BUG FIX:
-* Fix bug with color constants when used with push/pop and boxes
+BUG FIXES:
+* Fixed bug with color constants when used with push/pop and boxes
+* Fixed bug with hover help in GNOME (Alan Aguiar)
 
 197
 
 BUG FIX:
-* Fix problem with dragging canvas while programming is running
+* Fixed problem with dragging canvas while programming is running
 
 196
 
