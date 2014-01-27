@@ -243,8 +243,7 @@ return %s(self)" % (p, P, P)
 
         if hasattr(self, 'client'):
             if self.client.get_int(self._HOVER_HELP) == 1:
-                self.hover.set_active(False)
-                self._do_hover_help_off_cb(None)
+                self._do_hover_help_off_cb()
             if not self.client.get_int(self._COORDINATE_SCALE) in [0, 1]:
                 self.tw.coord_scale = 1
             else:
@@ -748,22 +747,18 @@ Would you like to save before quitting?'))
         ''' Toggle hover help on/off '''
         self.tw.no_help = not self.tw.no_help
         if self.tw.no_help:
-            self._do_hover_help_off_cb(None)
+            self._do_hover_help_off_cb()
         else:
-            self._do_hover_help_on_cb(None)
+            self._do_hover_help_on_cb()
 
-    def _do_hover_help_on_cb(self, button):
+    def _do_hover_help_on_cb(self):
         ''' Turn hover help on '''
-        self.tw.no_help = False
         self.hover.set_active(True)
         if hasattr(self, 'client'):
             self.client.set_int(self._HOVER_HELP, 0)
 
-    def _do_hover_help_off_cb(self, button):
+    def _do_hover_help_off_cb(self):
         ''' Turn hover help off '''
-        if self.tw.no_help:  # Debounce
-            return
-        self.tw.no_help = True
         self.tw.last_label = None
         if self.tw.status_spr is not None:
             self.tw.status_spr.hide()
