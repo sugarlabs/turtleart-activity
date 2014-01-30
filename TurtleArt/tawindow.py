@@ -1300,6 +1300,7 @@ class TurtleArtWindow():
                     if hasattr(self.palettes[n][-1].spr, 'set_layer'):
                         self.palettes[n][-1].spr.set_layer(PROTO_LAYER)
                         self.palettes[n][-1].unhighlight()
+                        self.palettes[n][-1].resize()
                     else:
                         debug_output('WARNING: block sprite is None' %
                                      (self.palettes[n][-1].name),
