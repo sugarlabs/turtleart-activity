@@ -1504,6 +1504,7 @@ def generator(datapath):
     svg_str = svg.clamp()
     f.write(svg_str)
     close_file(f)
+    '''
 
     svg = SVG()
     f = open_file(datapath, "clampn.svg")
@@ -1517,6 +1518,7 @@ def generator(datapath):
     f.write(svg_str)
     close_file(f)
 
+    '''
     svg = SVG()
     f = open_file(datapath, "clampe.svg")
     svg.set_scale(2)

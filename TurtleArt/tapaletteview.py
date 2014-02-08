@@ -43,11 +43,11 @@ class PaletteView():
         '''
         self.blocks = []
         self.backgrounds = [None, None]
+        self.visible = False
+        self.populated = False
 
         self._turtle_window = turtle_window
         self._palette_index = n
-        self._visible = False
-        self._populated = False
 
         if not n < len(palette_names):
             # Shouldn't happen, but hey...
@@ -63,7 +63,7 @@ class PaletteView():
             self._create_proto_blocks()
 
             save_selected = self._turtle_window.selected_palette
-            self.layout_palette(regenerate=regenerate,
+            self.layout(regenerate=regenerate,
                                 show=(show or
                                       save_selected == self._palette_index))
 
@@ -82,6 +82,8 @@ class PaletteView():
 
         self.display_palette_shift_buttons()
 
+        self.visible = True
+
     def hide(self):
         ''' Hide the palette. '''
         for background in self.backgrounds:
@@ -97,6 +99,8 @@ class PaletteView():
             for blk in self._turtle_window.trash_stack:
                 for gblk in find_group(blk):
                     gblk.spr.hide()
+
+        self.visible = False
 
     def move(self, x, y):
         ''' Move the palette. '''
@@ -197,9 +201,11 @@ class PaletteView():
                 elif len(self.blocks[-1].spr.labels) > 0:
                     self.blocks[-1].refresh()
 
+        self.populated = True
+
     def _proto_skin(self, name, spr):
         ''' Utility for creating proto block skins '''
-        x, y = self._turtle_window._calc_image_offset(name, spr)
+        x, y = self._turtle_window.calc_image_offset(name, spr)
         spr.set_image(self._turtle_window.media_shapes[name], _SKIN_IMAGE,
                       x, y)
 
@@ -215,7 +221,7 @@ class PaletteView():
         return 'trash' in palette_names and \
             self._palette_index == palette_names.index('trash')
 
-    def layout_palette(self, regenerate=False, show=True):
+    def layout(self, regenerate=False, show=True):
         ''' Layout prototypes in a palette. '''
 
         offset = self._turtle_window.toolbar_offset

@@ -293,7 +293,7 @@ class TurtleArtWindow():
 
         self._configure_cb(None)
 
-        self._icon_paths = [os.path.join(self.path, 'icons')]
+        self.icon_paths = [os.path.join(self.path, 'icons')]
 
         self.lc = LogoCode(self)
 
@@ -417,7 +417,7 @@ class TurtleArtWindow():
         icon_path = os.path.join(dirname, 'icons')
         if os.path.exists(icon_path):
             icon_theme.append_search_path(icon_path)
-            self._icon_paths.append(icon_path)
+            self.icon_paths.append(icon_path)
 
     def _get_plugin_instance(self, plugin_name):
         ''' Returns the plugin 'plugin_name' instance '''
@@ -772,7 +772,7 @@ class TurtleArtWindow():
         ''' Change icon for user-defined blocks after loading Python code. '''
         if blk is not None:
             if blk.name in PYTHON_SKIN:
-                x, y = self._calc_image_offset('pythonon', blk.spr)
+                x, y = self.calc_image_offset('pythonon', blk.spr)
                 blk.set_image(self.media_shapes['pythonon'], x, y)
                 self._resize_skin(blk)
 
@@ -3348,7 +3348,7 @@ before making changes to your program'))
             else:
                 blk.name = 'description'
         if pixbuf is not None:
-            x, y = self._calc_image_offset('', blk.spr)
+            x, y = self.calc_image_offset('', blk.spr)
             blk.set_image(pixbuf, x, y)
             self._resize_skin(blk)
 
@@ -3981,7 +3981,7 @@ before making changes to your program'))
                         w, h, = calc_image_size(blk.spr)
                         pixbuf = get_pixbuf_from_journal(dsobject, w, h)
                         if pixbuf is not None:
-                            x, y = self._calc_image_offset('', blk.spr)
+                            x, y = self.calc_image_offset('', blk.spr)
                             blk.set_image(pixbuf, x, y)
                         else:
                             self._block_skin('journalon', blk)
@@ -3991,7 +3991,7 @@ before making changes to your program'))
                         w, h, = calc_image_size(blk.spr)
                         pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(
                             blk.values[0], w, h)
-                        x, y = self._calc_image_offset('', blk.spr)
+                        x, y = self.calc_image_offset('', blk.spr)
                         blk.set_image(pixbuf, x, y)
                     except:
                         debug_output('Could not open dsobject (%s)' %
@@ -4003,7 +4003,7 @@ before making changes to your program'))
                         w, h, = calc_image_size(blk.spr)
                         pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(
                             blk.values[0], w, h)
-                        x, y = self._calc_image_offset('', blk.spr)
+                        x, y = self.calc_image_offset('', blk.spr)
                         blk.set_image(pixbuf, x, y)
                     except:
                         self._block_skin('journaloff', blk)
@@ -4577,7 +4577,7 @@ before making changes to your program'))
 
     # Utilities related to putting a image 'skin' on a block
 
-    def _calc_image_offset(self, name, spr, iw=0, ih=0):
+    def calc_image_offset(self, name, spr, iw=0, ih=0):
         ''' Calculate the postion for placing an image onto a sprite. '''
         _l, _t = spr.label_left_top()
         if name == '':

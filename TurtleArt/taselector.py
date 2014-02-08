@@ -59,7 +59,7 @@ class Selector():
             self._name = palette_names[n]
 
         icon_pathname = None
-        for path in self._turtle_window._icon_paths:
+        for path in self._turtle_window.icon_paths:
             if os.path.exists(os.path.join(path, '%soff.svg' % (self._name))):
                 icon_pathname = os.path.join(path, '%soff.svg' % (self._name))
                 break
@@ -68,12 +68,12 @@ class Selector():
             off_shape = svg_str_to_pixbuf(svg_from_file(icon_pathname))
         else:
             off_shape = svg_str_to_pixbuf(svg_from_file(os.path.join(
-                self._turtle_window._icon_paths[0], 'extrasoff.svg')))
+                self._turtle_window.icon_paths[0], 'extrasoff.svg')))
             error_output('Unable to open %soff.svg' % (self._name),
                          self._turtle_window.running_sugar)
 
         icon_pathname = None
-        for path in self._turtle_window._icon_paths:
+        for path in self._turtle_window.icon_paths:
             if os.path.exists(os.path.join(path, '%son.svg' % (self._name))):
                 icon_pathname = os.path.join(path, '%son.svg' % (self._name))
                 break
@@ -82,7 +82,7 @@ class Selector():
             on_shape = svg_str_to_pixbuf(svg_from_file(icon_pathname))
         else:
             on_shape = svg_str_to_pixbuf(svg_from_file(os.path.join(
-                self._turtle_window._icon_paths[0], 'extrason.svg')))
+                self._turtle_window.icon_paths[0], 'extrason.svg')))
             error_output('Unable to open %son.svg' % (self._name),
                          self._turtle_window.running_sugar)
 

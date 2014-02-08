@@ -2,6 +2,7 @@
 
 BUG FIX:
 * Eliminate extra space around protoblock labels
+* Code cleanup: separate classes for Selectors and PaletteViews
 
 198
 
