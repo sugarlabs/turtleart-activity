@@ -803,6 +803,26 @@ def find_blk_below(blk, namelist):
     return None
 
 
+def get_stack_width_and_height(blk):
+    ''' What are the width and height of a stack? '''
+    minx = 10000
+    miny = 10000
+    maxx = -10000
+    maxy = -10000
+    for gblk in find_group(blk):
+        (x, y) = gblk.spr.get_xy()
+        w, h = gblk.spr.get_dimensions()
+        if x < minx:
+            minx = x
+        if y < miny:
+            miny = y
+        if x + w > maxx:
+            maxx = x + w
+        if y + h > maxy:
+            maxy = y + h
+    return(maxx - minx, maxy - miny)
+
+
 def get_stack_name(blk):
     ''' Return the name of the action stack that the given block belongs to.
     If the top block of this stack is not a stack-defining block, return

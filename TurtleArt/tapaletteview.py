@@ -23,7 +23,7 @@ _SKIN_IMAGE = 1
 _MARGIN = 5
 _BUTTON_SIZE = 32
 
-from tautils import find_group, debug_output
+from tautils import find_group, debug_output, get_stack_width_and_height
 from tablock import Block
 from tapalette import (palette_names, palette_blocks, hidden_proto_blocks,
                        block_styles)
@@ -32,26 +32,6 @@ from taconstants import (PALETTE_SCALE, ICON_SIZE, PYTHON_SKIN, XO1,
                          CATEGORY_LAYER, TOP_LAYER, PROTO_LAYER)
 from tasprite_factory import SVG, svg_str_to_pixbuf
 from sprites import Sprite
-
-
-def _width_and_height(blk):
-    ''' What are the width and height of a stack? '''
-    minx = 10000
-    miny = 10000
-    maxx = -10000
-    maxy = -10000
-    for gblk in find_group(blk):
-        (x, y) = gblk.spr.get_xy()
-        w, h = gblk.spr.get_dimensions()
-        if x < minx:
-            minx = x
-        if y < miny:
-            miny = y
-        if x + w > maxx:
-            maxx = x + w
-        if y + h > maxy:
-            maxy = y + h
-    return(maxx - minx, maxy - miny)
 
 
 class PaletteView():
@@ -337,7 +317,7 @@ class PaletteView():
             if not blk.get_visibility():
                 continue
 
-            w, h = _width_and_height(blk)
+            w, h = get_stack_width_and_height(blk)
             if y + h > PALETTE_HEIGHT + offset:
                 x += int(max_w + 3)
                 y = offset + 3
@@ -366,7 +346,7 @@ class PaletteView():
             if not blk.get_visibility():
                 continue
 
-            w, h = _width_and_height(blk)
+            w, h = get_stack_width_and_height(blk)
             if x + w > PALETTE_WIDTH:
                 # Recenter row.
                 dx = int((PALETTE_WIDTH - row_w) / 2)
