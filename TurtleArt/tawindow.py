@@ -80,9 +80,10 @@ from tautils import (magnitude, get_load_name, get_save_name, data_from_file,
                      error_output, find_hat, find_bot_block,
                      restore_clamp, collapse_clamp, data_from_string,
                      increment_name, get_screen_dpi)
-from tasprite_factory import (SVG, svg_str_to_pixbuf, svg_from_file)
+from tasprite_factory import (svg_str_to_pixbuf, svg_from_file)
 from tapalette import block_primitives
 from tapaletteview import PaletteView
+from taselector import (Selector, create_toolbar_background)
 from sprites import (Sprites, Sprite)
 
 if _GST_AVAILABLE:
@@ -250,8 +251,6 @@ class TurtleArtWindow():
         self.previous_palette = None
         self.selectors = []
         self.selected_selector = None
-        self.previous_selector = None
-        self.selector_shapes = []
         self._highlighted_blk = None
         self.selected_blk = None
         self.selected_spr = None
@@ -970,6 +969,9 @@ class TurtleArtWindow():
                 int(blocks[0].font_size[0] * pango.SCALE * self.entry_scale))
             self._text_entry.modify_font(font_desc)
 
+    def _has_selectors(self):
+        return not (self.running_sugar and self.activity.has_toolbarbox)
+
     def show_toolbar_palette(self, n, init_only=False, regenerate=False,
                              show=True):
         ''' Show the toolbar palettes, creating them on init_only '''
@@ -984,8 +986,7 @@ class TurtleArtWindow():
         if self.palette_views == []:
             self._create_the_empty_palettes()
 
-        # At initialization of the program, we don't actually populate
-        # the palettes.
+        # At initialization of the program, we don't populate the palettes.
         if init_only:
             return
 
@@ -999,14 +1000,12 @@ class TurtleArtWindow():
         self.selected_palette = n
         self.previous_palette = self.selected_palette
 
-        # Make sure all of the selectors are visible. (We don't need to do
-        # this for 0.86+ toolbars since the selectors are toolbar buttons.)
-        if show and \
-           (not self.running_sugar or not self.activity.has_toolbarbox):
-            self.selected_selector = self.selectors[n]
-            self.selectors[n].set_shape(self.selector_shapes[n][1])
+        # Make sure all of the selectors are visible.
+        if show and self._has_selectors():
+            self.selected_selector = n
+            self.selectors[n].set_shape(1)
             for i in range(len(palette_blocks)):
-                self.selectors[i].set_layer(TAB_LAYER)
+                self.selectors[i].set_layer()
 
             # Show the palette with the current orientation.
             if self.palette_views[n].backgrounds[self.orientation] is not None:
@@ -1024,8 +1023,7 @@ class TurtleArtWindow():
 
     def regenerate_palette(self, n):
         ''' Regenerate palette (used by some plugins) '''
-        if (not self.running_sugar or not self.activity.has_toolbarbox) and \
-           self.selectors == []:
+        if self._has_selectors() and self.selectors == []:
             return
         if self.palette_views == []:
             return
@@ -1035,8 +1033,8 @@ class TurtleArtWindow():
         self.selected_palette = n
         self.previous_palette = self.selected_palette
 
-        self.palette_views[n].layout_palette(regenerate=True,
-                                             show=(save_selected == n))
+        self.palette_views[n].layout(regenerate=True,
+                                     show=(save_selected == n))
 
         if not save_selected == n:
             self._hide_previous_palette(palette=n)
@@ -1046,54 +1044,13 @@ class TurtleArtWindow():
     def _create_the_selectors(self):
         ''' Create the palette selector buttons: only when running
         old-style Sugar toolbars or from GNOME '''
-        svg = SVG()
-        if self.running_sugar:
-            x, y = 50, 0  # positioned at the left, top
-        else:
-            x, y = 0, 0
-        for i, name in enumerate(palette_names):
-            for path in self._icon_paths:
-                if os.path.exists(os.path.join(path, '%soff.svg' % (name))):
-                    icon_pathname = os.path.join(path, '%soff.svg' % (name))
-                    break
-            if icon_pathname is not None:
-                off_shape = svg_str_to_pixbuf(svg_from_file(icon_pathname))
-            else:
-                off_shape = svg_str_to_pixbuf(
-                    svg_from_file(
-                        os.path.join(
-                            self._icon_paths[0], 'extrasoff.svg')))
-                error_output('Unable to open %soff.svg' % (name),
-                             self.running_sugar)
-            for path in self._icon_paths:
-                if os.path.exists(os.path.join(path, '%son.svg' % (name))):
-                    icon_pathname = os.path.join(path, '%son.svg' % (name))
-                    break
-            if icon_pathname is not None:
-                on_shape = svg_str_to_pixbuf(svg_from_file(icon_pathname))
-            else:
-                on_shape = svg_str_to_pixbuf(
-                    svg_from_file(
-                        os.path.join(
-                            self._icon_paths[0], 'extrason.svg')))
-                error_output('Unable to open %son.svg' % (name),
-                             self.running_sugar)
-
-            self.selector_shapes.append([off_shape, on_shape])
-            self.selectors.append(Sprite(self.sprite_list, x, y, off_shape))
-            self.selectors[i].type = 'selector'
-            self.selectors[i].name = name
-            self.selectors[i].set_layer(TAB_LAYER)
-            w = self.selectors[i].get_dimensions()[0]
-            x += int(w)  # running from left to right
+        for i in range(len(palette_names)):
+            self.selectors.append(Selector(self, i))
 
         # Create the toolbar background for the selectors
         self.toolbar_offset = ICON_SIZE
-        self.toolbar_spr = Sprite(self.sprite_list, 0, 0,
-                                  svg_str_to_pixbuf(svg.toolbar(2 * self.width,
-                                                                ICON_SIZE)))
-        self.toolbar_spr.type = 'toolbar'
-        self.toolbar_spr.set_layer(CATEGORY_LAYER)
+        self.toolbar_spr = create_toolbar_background(self.sprite_list,
+                                                     self.width)
 
     def _create_the_empty_palettes(self):
         ''' Create the empty palettes to be populated by prototype blocks. '''
@@ -1194,9 +1151,8 @@ class TurtleArtWindow():
         # Hide previously selected palette
         if palette is not None:
             self.palette_views[palette].hide()
-            if not self.running_sugar or not self.activity.has_toolbarbox:
-                self.selectors[palette].set_shape(
-                    self.selector_shapes[palette][0])
+            if self._has_selectors():
+                self.selectors[palette].set_shape(0)
             elif palette is not None and palette != self.selected_palette \
                     and not self.activity.has_toolbarbox:
                 self.activity.palette_buttons[palette].set_icon(
@@ -1600,7 +1556,7 @@ before making changes to your program'))
                         i = 0
                     if not self.running_sugar or \
                        not self.activity.has_toolbarbox:
-                        self._select_category(self.selectors[i])
+                        self._select_category(self.selectors[i].spr)
                     else:
                         if self.selected_palette is not None and \
                                 not self.activity.has_toolbarbox:
@@ -1631,7 +1587,7 @@ before making changes to your program'))
         spr = self.palette_views[self.selected_palette].backgrounds[o]
         if spr is not None:
             spr.hide()
-        self.palette_views[self.selected_palette].layout_palette()
+        self.palette_views[self.selected_palette].layout()
         self.show_palette(self.selected_palette)
 
     def _update_action_names(self, name):
@@ -1774,16 +1730,15 @@ before making changes to your program'))
 
     def _select_category(self, spr):
         ''' Select a category from the toolbar '''
-        i = self.selectors.index(spr)
-        spr.set_shape(self.selector_shapes[i][1])
-        if self.selected_selector is not None:
-            j = self.selectors.index(self.selected_selector)
-            if i == j:
-                return
-            self.selected_selector.set_shape(self.selector_shapes[j][0])
-        self.previous_selector = self.selected_selector
-        self.selected_selector = spr
-        self.show_palette(i)
+        for i, selector in enumerate(self.selectors):
+            if selector.spr == spr:
+                break
+        self.selectors[i].set_shape(1)
+
+        if i != self.selected_selector:
+            self.selectors[self.selected_selector].set_shape(0)
+            self.selected_selector = i
+            self.show_palette(i)
 
     def _select_toolbar_button(self, spr):
         ''' Select a toolbar button (Used when not running Sugar). '''
