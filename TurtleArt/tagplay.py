@@ -22,8 +22,6 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
 # USA
 
-
-import logging
 import os
 
 import pygtk
@@ -35,6 +33,8 @@ gobject.threads_init()
 import gst
 import gst.interfaces
 import gtk
+
+from tautils import error_output, debug_output
 
 
 def play_audio_from_file(lc, file_path):
@@ -102,7 +102,7 @@ class Gplay():
     UPDATE_INTERVAL = 500
 
     def __init__(self, lc, x, y, w, h):
-
+        self.running_sugar = lc.tw.running_sugar
         self.player = None
         self.uri = None
         self.playlist = []
@@ -118,7 +118,7 @@ class Gplay():
         self.bin.add(self.videowidget)
         self.bin.set_type_hint(gtk.gdk.WINDOW_TYPE_HINT_NORMAL)
         self.bin.set_decorated(False)
-        if lc.tw.running_sugar:
+        if self.running_sugar:
             self.bin.set_transient_for(lc.tw.activity)
 
         self.bin.move(x, y)
@@ -128,14 +128,15 @@ class Gplay():
         self._want_document = True
 
     def _player_eos_cb(self, widget):
-        logging.debug('end of stream')
+        debug_output('end of stream', self.running_sugar)
         # Make sure player is stopped after EOS
         self.player.stop()
 
     def _player_error_cb(self, widget, message, detail):
         self.player.stop()
         self.player.set_uri(None)
-        logging.debug('Error: %s - %s' % (message, detail))
+        error_output('Error: %s - %s' % (message, detail),
+                     self.running_sugar)
 
     def _player_stream_info_cb(self, widget, stream_info):
         if not len(stream_info) or self.got_stream_info:
@@ -157,22 +158,23 @@ class Gplay():
             return False
         self.playlist.append('file://' + os.path.abspath(file_path))
         if not self.player:
-            # lazy init the player so that videowidget is realized
-            # and has a valid widget allocation
-            self.player = GstPlayer(self.videowidget)
+            # Lazy init the player so that videowidget is realized
+            # and has a valid widget allocation.
+            self.player = GstPlayer(self.videowidget, self.running_sugar)
             self.player.connect('eos', self._player_eos_cb)
             self.player.connect('error', self._player_error_cb)
             self.player.connect('stream-info', self._player_stream_info_cb)
 
         try:
             if not self.currentplaying:
-                logging.info('Playing: %s' % (self.playlist[0]))
+                debug_output('Playing: %s' % (self.playlist[0]),
+                             self.running_sugar)
                 self.player.set_uri(self.playlist[0])
                 self.currentplaying = 0
                 self.play_toggled()
-                self.show_all()
-        except:
-            logging.error('Error playing %s' % (self.playlist[0]))
+        except Exception, e:
+            error_output('Error playing %s: %s' % (self.playlist[0], e),
+                         self.running_sugar)
         return False
 
     def play_toggled(self):
@@ -191,9 +193,10 @@ class GstPlayer(gobject.GObject):
         'eos': (gobject.SIGNAL_RUN_FIRST, None, []),
         'stream-info': (gobject.SIGNAL_RUN_FIRST, None, [object])}
 
-    def __init__(self, videowidget):
+    def __init__(self, videowidget, running_sugar):
         gobject.GObject.__init__(self)
 
+        self.running_sugar = running_sugar
         self.playing = False
         self.error = False
 
@@ -224,7 +227,8 @@ class GstPlayer(gobject.GObject):
         t = message.type
         if t == gst.MESSAGE_ERROR:
             err, debug = message.parse_error()
-            logging.debug('Error: %s - %s' % (err, debug))
+            error_output('Error: %s - %s' % (err, debug),
+                         self.running_sugar)
             self.error = True
             self.emit('eos')
             self.playing = False
@@ -234,11 +238,10 @@ class GstPlayer(gobject.GObject):
             self.playing = False
         elif t == gst.MESSAGE_STATE_CHANGED:
             old, new, pen = message.parse_state_changed()
-            if old == gst.STATE_READY and new == gst.STATE_PAUSED:
+            if old == gst.STATE_READY and new == gst.STATE_PAUSED and \
+               hasattr(self.player.props, 'stream_info_value_array'):
                 self.emit('stream-info',
                           self.player.props.stream_info_value_array)
-        # else:
-        #     logging.debug(message.type)
 
     def _init_video_sink(self):
         self.bin = gst.Bin()
@@ -275,19 +278,18 @@ class GstPlayer(gobject.GObject):
     def pause(self):
         self.player.set_state(gst.STATE_PAUSED)
         self.playing = False
-        logging.debug('pausing player')
+        # debug_output('pausing player', self.running_sugar)
 
     def play(self):
         self.player.set_state(gst.STATE_PLAYING)
         self.playing = True
         self.error = False
-        logging.debug('playing player')
+        # debug_output('playing player', self.running_sugar)
 
     def stop(self):
         self.player.set_state(gst.STATE_NULL)
         self.playing = False
-        logging.debug('stopped player')
-        # return False
+        # debug_output('stopped player', self.running_sugar)
 
     def get_state(self, timeout=1):
         return self.player.get_state(timeout=timeout)

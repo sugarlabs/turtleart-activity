@@ -33,6 +33,7 @@ import pickle
 import subprocess
 import os
 import string
+import mimetypes
 from gettext import gettext as _
 
 try:
@@ -483,24 +484,34 @@ def base64_to_image(data, path_name):
 
 def movie_media_type(name):
     ''' Is it movie media? '''
-    return name.lower().endswith(('.ogv', '.vob', '.mp4', '.wmv', '.mov',
-                                  '.mpeg', '.ogg', '.webm'))
+    guess = mimetypes.guess_type(name)
+    if guess[0] is None:
+        return False
+    return guess[0][0:5] == 'video'
 
 
 def audio_media_type(name):
     ''' Is it audio media? '''
-    return name.lower().endswith(('.oga', '.m4a'))
+    guess = mimetypes.guess_type(name)
+    if guess[0] is None:
+        return False
+    return guess[0][0:5] == 'audio'
 
 
 def image_media_type(name):
     ''' Is it image media? '''
-    return name.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.tiff',
-                                  '.tif', '.svg'))
+    guess = mimetypes.guess_type(name)
+    if guess[0] is None:
+        return False
+    return guess[0][0:5] == 'image'
 
 
 def text_media_type(name):
     ''' Is it text media? '''
-    return name.lower().endswith(('.txt', '.py', '.lg', '.rtf'))
+    guess = mimetypes.guess_type(name)
+    if guess[0] is None:
+        return False
+    return guess[0][0:4] == 'text'
 
 
 def round_int(num):
@@ -801,6 +812,26 @@ def find_blk_below(blk, namelist):
         if gblk.name in namelist:
             return gblk
     return None
+
+
+def get_stack_width_and_height(blk):
+    ''' What are the width and height of a stack? '''
+    minx = 10000
+    miny = 10000
+    maxx = -10000
+    maxy = -10000
+    for gblk in find_group(blk):
+        (x, y) = gblk.spr.get_xy()
+        w, h = gblk.spr.get_dimensions()
+        if x < minx:
+            minx = x
+        if y < miny:
+            miny = y
+        if x + w > maxx:
+            maxx = x + w
+        if y + h > maxy:
+            maxy = y + h
+    return(maxx - minx, maxy - miny)
 
 
 def get_stack_name(blk):

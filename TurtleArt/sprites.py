@@ -167,8 +167,8 @@ class Sprite:
         self.rect = gtk.gdk.Rectangle(int(x), int(y), 0, 0)
         self._scale = [12]
         self._rescale = [True]
-        self._horiz_align = ["center"]
-        self._vert_align = ["middle"]
+        self._horiz_align = ['center']
+        self._vert_align = ['middle']
         self._x_pos = [None]
         self._y_pos = [None]
         self._fd = None
@@ -269,7 +269,7 @@ class Sprite:
         self._extend_labels_array(i)
         if isinstance(new_label, (str, unicode)):
             # pango doesn't like nulls
-            self.labels[i] = new_label.replace("\0", " ")
+            self.labels[i] = new_label.replace('\0', ' ')
         else:
             self.labels[i] = str(new_label)
         self.inval()
@@ -285,7 +285,7 @@ class Sprite:
         if self._color is None:
             self._color = (0., 0., 0.)
         while len(self.labels) < i + 1:
-            self.labels.append(" ")
+            self.labels.append(' ')
             self._scale.append(self._scale[0])
             self._rescale.append(self._rescale[0])
             self._horiz_align.append(self._horiz_align[0])
@@ -312,8 +312,8 @@ class Sprite:
                        int('0x' + rgb[5:7], 16) / 256.)
         return
 
-    def set_label_attributes(self, scale, rescale=True, horiz_align="center",
-                             vert_align="middle", x_pos=None, y_pos=None, i=0):
+    def set_label_attributes(self, scale, rescale=True, horiz_align='center',
+                             vert_align='middle', x_pos=None, y_pos=None, i=0):
         ''' Set the various label attributes '''
         self._extend_labels_array(i)
         self._scale[i] = scale
@@ -407,7 +407,7 @@ class Sprite:
                     w = pl.get_size()[0] / pango.SCALE
             if self._x_pos[i] is not None:
                 x = int(self.rect.x + self._x_pos[i])
-            elif self._horiz_align[i] == "center":
+            elif self._horiz_align[i] == 'center':
                 x = int(self.rect.x + self._margins[0] + (my_width - w) / 2)
             elif self._horiz_align[i] == 'left':
                 x = int(self.rect.x + self._margins[0])
@@ -416,9 +416,9 @@ class Sprite:
             h = pl.get_size()[1] / pango.SCALE
             if self._y_pos[i] is not None:
                 y = int(self.rect.y + self._y_pos[i])
-            elif self._vert_align[i] == "middle":
+            elif self._vert_align[i] == 'middle':
                 y = int(self.rect.y + self._margins[1] + (my_height - h) / 2)
-            elif self._vert_align[i] == "top":
+            elif self._vert_align[i] == 'top':
                 y = int(self.rect.y + self._margins[1])
             else:  # bottom
                 y = int(self.rect.y + self.rect.height - h - self._margins[3])

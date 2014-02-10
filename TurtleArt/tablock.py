@@ -43,19 +43,21 @@ class Media(object):
 
     ALL_TYPES = ('media', 'audio', 'video', 'descr', 'camera', 'camera1')
 
-    def __init__(self, type_, value=None):
+    def __init__(self, media_type, value=None):
         """
-        type_ --- a string that indicates the kind of media:
+        media_type --- a string that indicates the kind of media:
             media --- image
             audio --- audio file
             video --- video
             descr --- Journal description
             camera, camera1 --- camera snapshot
         value --- a file path or a reference to a Sugar datastore object """
-        if type_ not in Media.ALL_TYPES:
+        if media_type == 'image':
+            media_type = 'media'
+        if media_type not in Media.ALL_TYPES:
             raise ValueError("Media.type must be one of " +
                              repr(Media.ALL_TYPES))
-        self.type = type_
+        self.type = media_type
         self.value = value
 
     def __str__(self):

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #Copyright (c) 2007, Playful Invention Company
-#Copyright (c) 2008-13, Walter Bender
+#Copyright (c) 2008-14, Walter Bender
 #Copyright (c) 2009-11 Raúl Gutiérrez Segalés
 #Copyright (c) 2011 Collabora Ltd. <http://www.collabora.co.uk/>
 
@@ -52,20 +52,19 @@ from taconstants import (HORIZONTAL_PALETTE, VERTICAL_PALETTE, BLOCK_SCALE,
                          MEDIA_SHAPES, STATUS_SHAPES, OVERLAY_SHAPES,
                          TOOLBAR_SHAPES, TAB_LAYER, RETURN, OVERLAY_LAYER,
                          CATEGORY_LAYER, BLOCKS_WITH_SKIN, ICON_SIZE,
-                         PALETTE_SCALE, PALETTE_WIDTH, SKIN_PATHS, MACROS,
+                         PALETTE_WIDTH, SKIN_PATHS, MACROS, Color, KEY_DICT,
                          TOP_LAYER, BLOCK_LAYER, OLD_NAMES, DEFAULT_TURTLE,
                          TURTLE_LAYER, EXPANDABLE, NO_IMPORT, TEMPLATES,
                          PYTHON_SKIN, PALETTE_HEIGHT, STATUS_LAYER, OLD_DOCK,
                          EXPANDABLE_ARGS, XO1, XO15, XO175, XO30, XO4, TITLEXY,
                          CONTENT_ARGS, CONSTANTS, EXPAND_SKIN, PROTO_LAYER,
-                         EXPANDABLE_FLOW, SUFFIX, TMP_SVG_PATH, TMP_ODP_PATH,
-                         Color, KEY_DICT)
+                         EXPANDABLE_FLOW, SUFFIX, TMP_SVG_PATH, TMP_ODP_PATH)
 from tapalette import (palette_names, palette_blocks, expandable_blocks,
                        block_names, content_blocks, default_values,
                        special_names, block_styles, help_strings,
-                       hidden_proto_blocks, string_or_number_args,
-                       make_palette, palette_name_to_index,
-                       palette_init_on_start, palette_i18n_names)
+                       string_or_number_args, make_palette,
+                       palette_name_to_index, palette_init_on_start,
+                       palette_i18n_names)
 from talogo import (LogoCode, logoerror)
 from tacanvas import TurtleGraphics
 from tablock import (Blocks, Block, Media, media_blocks_dictionary)
@@ -81,8 +80,10 @@ from tautils import (magnitude, get_load_name, get_save_name, data_from_file,
                      error_output, find_hat, find_bot_block,
                      restore_clamp, collapse_clamp, data_from_string,
                      increment_name, get_screen_dpi)
-from tasprite_factory import (SVG, svg_str_to_pixbuf, svg_from_file)
+from tasprite_factory import (svg_str_to_pixbuf, svg_from_file)
 from tapalette import block_primitives
+from tapaletteview import PaletteView
+from taselector import (Selector, create_toolbar_background)
 from sprites import (Sprites, Sprite)
 
 if _GST_AVAILABLE:
@@ -143,7 +144,7 @@ class TurtleArtWindow():
                 # Make sure macros_path is somewhere writable
                 self.macros_path = os.path.join(
                     os.path.expanduser('~'), 'Activities',
-                    'TurtleArt.activity', _MACROS_SUBPATH)
+                    os.path.basename(path), _MACROS_SUBPATH)
             self._setup_events()
         else:
             self.interactive_mode = False
@@ -243,16 +244,13 @@ class TurtleArtWindow():
         self.status_spr = None
         self.status_shapes = {}
         self.toolbar_spr = None
-        self.palette_sprs = []
-        self.palettes = []
         self.palette_button = []
+        self.palette_views = []
         self.trash_stack = []
         self.selected_palette = None
         self.previous_palette = None
         self.selectors = []
         self.selected_selector = None
-        self.previous_selector = None
-        self.selector_shapes = []
         self._highlighted_blk = None
         self.selected_blk = None
         self.selected_spr = None
@@ -295,7 +293,7 @@ class TurtleArtWindow():
 
         self._configure_cb(None)
 
-        self._icon_paths = [os.path.join(self.path, 'icons')]
+        self.icon_paths = [os.path.join(self.path, 'icons')]
 
         self.lc = LogoCode(self)
 
@@ -370,25 +368,30 @@ class TurtleArtWindow():
         else:
             return None
 
-    def _get_plugins_from_plugins_dir(self, path):
+    def _get_plugins_from_plugins_dir(self, paths):
         ''' Look for plugin files in plugin dir. '''
         plugin_files = []
-        if path is not None:
+        for path in paths:
             candidates = os.listdir(path)
             candidates.sort()
             for dirname in candidates:
                 pname = os.path.join(path, dirname, dirname + '.py')
                 if os.path.exists(pname):
-                    plugin_files.append(dirname)
+                    plugin_files.append({'dirname': dirname, 'path': path})
         return plugin_files
 
     def _init_plugins(self):
         ''' Try importing plugin files from the plugin dir. '''
-        plist = self._get_plugins_from_plugins_dir(self._get_plugin_home())
-        for plugin_dir in plist:
-            self.init_plugin(plugin_dir)
+        homepath = os.path.join(os.path.expanduser('~'), 'Activities',
+                                os.path.basename(self.path), _PLUGIN_SUBPATH)
+        paths = [self._get_plugin_home()]
+        if paths[0] != homepath and os.path.exists(homepath):
+            paths.append(homepath)
+        plist = self._get_plugins_from_plugins_dir(paths)
+        for plugin in plist:
+            self.init_plugin(plugin['dirname'], plugin['path'])
 
-    def init_plugin(self, plugin_dir):
+    def init_plugin(self, plugin_dir, plugin_path):
         ''' Initialize plugin in plugin_dir '''
         plugin_class = plugin_dir.capitalize()
         f = 'def f(self): from plugins.%s.%s import %s; return %s(self)' \
@@ -401,8 +404,7 @@ class TurtleArtWindow():
             debug_output('Successfully importing %s' % (plugin_class),
                          self.running_sugar)
             # Add the icon dir to the icon_theme search path
-            self._add_plugin_icon_dir(os.path.join(self._get_plugin_home(),
-                                                   plugin_dir))
+            self._add_plugin_icon_dir(os.path.join(plugin_path, plugin_dir))
             # Add the plugin to the list of global objects
             global_objects[plugin_class] = self.turtleart_plugins[-1]
         except Exception as e:
@@ -415,7 +417,7 @@ class TurtleArtWindow():
         icon_path = os.path.join(dirname, 'icons')
         if os.path.exists(icon_path):
             icon_theme.append_search_path(icon_path)
-            self._icon_paths.append(icon_path)
+            self.icon_paths.append(icon_path)
 
     def _get_plugin_instance(self, plugin_name):
         ''' Returns the plugin 'plugin_name' instance '''
@@ -770,7 +772,7 @@ class TurtleArtWindow():
         ''' Change icon for user-defined blocks after loading Python code. '''
         if blk is not None:
             if blk.name in PYTHON_SKIN:
-                x, y = self._calc_image_offset('pythonon', blk.spr)
+                x, y = self.calc_image_offset('pythonon', blk.spr)
                 blk.set_image(self.media_shapes['pythonon'], x, y)
                 self._resize_skin(blk)
 
@@ -903,7 +905,7 @@ class TurtleArtWindow():
         self.show_toolbar_palette(n)
         self.palette_button[self.orientation].set_layer(TAB_LAYER)
         self.palette_button[2].set_layer(TAB_LAYER)
-        self._display_palette_shift_button(n)
+        self.palette_views[n].display_palette_shift_buttons()
         if not self.running_sugar or not self.activity.has_toolbarbox:
             self.toolbar_spr.set_layer(CATEGORY_LAYER)
         self.palette = True
@@ -920,25 +922,11 @@ class TurtleArtWindow():
 
     def move_palettes(self, x, y):
         ''' Move the palettes. '''
-        for p in self.palettes:
-            for blk in p:
-                blk.spr.move((x + blk.spr.save_xy[0], y + blk.spr.save_xy[1]))
-        for spr in self.palette_button:
-            spr.move((x + spr.save_xy[0], y + spr.save_xy[1]))
-        for p in self.palette_sprs:
-            if p[0] is not None:
-                p[0].move((x + p[0].save_xy[0], y + p[0].save_xy[1]))
-            if p[1] is not None:
-                p[1].move((x + p[1].save_xy[0], y + p[1].save_xy[1]))
+        for palette in self.palette_views:
+            palette.move(x, y)
 
         self.status_spr.move((x + self.status_spr.save_xy[0],
                               y + self.status_spr.save_xy[1]))
-
-        # To do: set save_xy for blocks in Trash
-        for blk in self.trash_stack:
-            for gblk in find_group(blk):
-                gblk.spr.move((x + gblk.spr.save_xy[0],
-                               y + gblk.spr.save_xy[1]))
 
     def hideblocks(self):
         ''' Callback from 'hide blocks' block '''
@@ -981,33 +969,8 @@ class TurtleArtWindow():
                 int(blocks[0].font_size[0] * pango.SCALE * self.entry_scale))
             self._text_entry.modify_font(font_desc)
 
-    def _shift_toolbar_palette(self, n):
-        ''' Shift blocks on specified palette '''
-        x, y = self.palette_sprs[n][self.orientation].get_xy()
-        w, h = self.palette_sprs[n][self.orientation].get_dimensions()
-        bx, by = self.palettes[n][0].spr.get_xy()
-        if self.orientation == 0:
-            if bx != _BUTTON_SIZE:
-                dx = w - self.width
-            else:
-                dx = self.width - w
-            dy = 0
-        else:
-            dx = 0
-            if by != self.toolbar_offset + _BUTTON_SIZE + _MARGIN:
-                dy = h - self.height + ICON_SIZE
-            else:
-                dy = self.height - h - ICON_SIZE
-        for blk in self.palettes[n]:
-            if blk.get_visibility():
-                blk.spr.move_relative((dx, dy))
-        self.palette_button[self.orientation].set_layer(TOP_LAYER)
-        if dx < 0 or dy < 0:
-            self.palette_button[self.orientation + 5].set_layer(TOP_LAYER)
-            self.palette_button[self.orientation + 3].hide()
-        else:
-            self.palette_button[self.orientation + 5].hide()
-            self.palette_button[self.orientation + 3].set_layer(TOP_LAYER)
+    def _has_selectors(self):
+        return not (self.running_sugar and self.activity.has_toolbarbox)
 
     def show_toolbar_palette(self, n, init_only=False, regenerate=False,
                              show=True):
@@ -1020,11 +983,10 @@ class TurtleArtWindow():
             self._create_the_selectors()
 
         # Create the empty palettes that we'll then populate with prototypes.
-        if self.palette_sprs == []:
+        if self.palette_views == []:
             self._create_the_empty_palettes()
 
-        # At initialization of the program, we don't actually populate
-        # the palettes.
+        # At initialization of the program, we don't populate the palettes.
         if init_only:
             return
 
@@ -1038,44 +1000,20 @@ class TurtleArtWindow():
         self.selected_palette = n
         self.previous_palette = self.selected_palette
 
-        # Make sure all of the selectors are visible. (We don't need to do
-        # this for 0.86+ toolbars since the selectors are toolbar buttons.)
-        if show and \
-           (not self.running_sugar or not self.activity.has_toolbarbox):
-            self.selected_selector = self.selectors[n]
-            self.selectors[n].set_shape(self.selector_shapes[n][1])
+        # Make sure all of the selectors are visible.
+        if show and self._has_selectors():
+            self.selected_selector = n
+            self.selectors[n].set_shape(1)
             for i in range(len(palette_blocks)):
-                self.selectors[i].set_layer(TAB_LAYER)
+                self.selectors[i].set_layer()
 
             # Show the palette with the current orientation.
-            if self.palette_sprs[n][self.orientation] is not None:
-                self.palette_sprs[n][self.orientation].set_layer(
+            if self.palette_views[n].backgrounds[self.orientation] is not None:
+                self.palette_views[n].backgrounds[self.orientation].set_layer(
                     CATEGORY_LAYER)
-                self._display_palette_shift_button(n)
+                self.palette_views[n].display_palette_shift_buttons()
 
-        # Create 'proto' blocks for each palette entry
-        self._create_proto_blocks(n)
-
-        if show or save_selected == n:
-            self._layout_palette(n, regenerate=regenerate)
-        else:
-            self._layout_palette(n, regenerate=regenerate, show=False)
-        for blk in self.palettes[n]:
-            if blk.get_visibility():
-                if hasattr(blk.spr, 'set_layer'):
-                    blk.spr.set_layer(PROTO_LAYER)
-                else:
-                    debug_output('WARNING: block sprite is None' % (blk.name),
-                                 self.running_sugar)
-            else:
-                blk.spr.hide()
-        if 'trash' in palette_names and \
-           n == palette_names.index('trash'):
-            for blk in self.trash_stack:
-                # Deprecated
-                for gblk in find_group(blk):
-                    if gblk.status != 'collapsed':
-                        gblk.spr.set_layer(TAB_LAYER)
+        self.palette_views[n].create(regenerate=regenerate, show=show)
 
         if not show:
             if not save_selected == n:
@@ -1085,10 +1023,9 @@ class TurtleArtWindow():
 
     def regenerate_palette(self, n):
         ''' Regenerate palette (used by some plugins) '''
-        if (not self.running_sugar or not self.activity.has_toolbarbox) and \
-           self.selectors == []:
+        if self._has_selectors() and self.selectors == []:
             return
-        if self.palette_sprs == []:
+        if self.palette_views == []:
             return
 
         save_selected = self.selected_palette
@@ -1096,98 +1033,29 @@ class TurtleArtWindow():
         self.selected_palette = n
         self.previous_palette = self.selected_palette
 
-        if save_selected == n:
-            self._layout_palette(n, regenerate=True)
-        else:
-            self._layout_palette(n, regenerate=True, show=False)
-
-        for blk in self.palettes[n]:
-            if blk.get_visibility():
-                if hasattr(blk.spr, 'set_layer'):
-                    blk.spr.set_layer(PROTO_LAYER)
-                else:
-                    debug_output('WARNING: block sprite is None' % (blk.name),
-                                 self.running_sugar)
-            else:
-                blk.spr.hide()
+        self.palette_views[n].layout(regenerate=True,
+                                     show=(save_selected == n))
 
         if not save_selected == n:
             self._hide_previous_palette(palette=n)
         self.selected_palette = save_selected
         self.previous_palette = save_previous
 
-    def _display_palette_shift_button(self, n):
-        ''' Palettes too wide (or tall) for the screen get a shift button '''
-        for i in range(4):
-            self.palette_button[i + 3].hide()
-        if self.palette_sprs[n][self.orientation].type == \
-                'category-shift-horizontal':
-            self.palette_button[3].set_layer(CATEGORY_LAYER)
-        elif self.palette_sprs[n][self.orientation].type == \
-                'category-shift-vertical':
-            self.palette_button[4].set_layer(CATEGORY_LAYER)
-
     def _create_the_selectors(self):
         ''' Create the palette selector buttons: only when running
         old-style Sugar toolbars or from GNOME '''
-        svg = SVG()
-        if self.running_sugar:
-            x, y = 50, 0  # positioned at the left, top
-        else:
-            x, y = 0, 0
-        for i, name in enumerate(palette_names):
-            for path in self._icon_paths:
-                if os.path.exists(os.path.join(path, '%soff.svg' % (name))):
-                    icon_pathname = os.path.join(path, '%soff.svg' % (name))
-                    break
-            if icon_pathname is not None:
-                off_shape = svg_str_to_pixbuf(svg_from_file(icon_pathname))
-            else:
-                off_shape = svg_str_to_pixbuf(
-                    svg_from_file(
-                        os.path.join(
-                            self._icon_paths[0], 'extrasoff.svg')))
-                error_output('Unable to open %soff.svg' % (name),
-                             self.running_sugar)
-            for path in self._icon_paths:
-                if os.path.exists(os.path.join(path, '%son.svg' % (name))):
-                    icon_pathname = os.path.join(path, '%son.svg' % (name))
-                    break
-            if icon_pathname is not None:
-                on_shape = svg_str_to_pixbuf(svg_from_file(icon_pathname))
-            else:
-                on_shape = svg_str_to_pixbuf(
-                    svg_from_file(
-                        os.path.join(
-                            self._icon_paths[0], 'extrason.svg')))
-                error_output('Unable to open %son.svg' % (name),
-                             self.running_sugar)
-
-            self.selector_shapes.append([off_shape, on_shape])
-            self.selectors.append(Sprite(self.sprite_list, x, y, off_shape))
-            self.selectors[i].type = 'selector'
-            self.selectors[i].name = name
-            self.selectors[i].set_layer(TAB_LAYER)
-            w = self.selectors[i].get_dimensions()[0]
-            x += int(w)  # running from left to right
+        for i in range(len(palette_names)):
+            self.selectors.append(Selector(self, i))
 
         # Create the toolbar background for the selectors
         self.toolbar_offset = ICON_SIZE
-        self.toolbar_spr = Sprite(self.sprite_list, 0, 0,
-                                  svg_str_to_pixbuf(svg.toolbar(2 * self.width,
-                                                                ICON_SIZE)))
-        self.toolbar_spr.type = 'toolbar'
-        self.toolbar_spr.set_layer(CATEGORY_LAYER)
+        self.toolbar_spr = create_toolbar_background(self.sprite_list,
+                                                     self.width)
 
     def _create_the_empty_palettes(self):
         ''' Create the empty palettes to be populated by prototype blocks. '''
-        if len(self.palettes) == 0:
-            for i in range(len(palette_blocks)):
-                self.palettes.append([])
-
-        # Create empty palette backgrounds
-        for i in palette_names:
-            self.palette_sprs.append([None, None])
+        for i in range(len(palette_names)):
+            self.palette_views.append(PaletteView(self, i))
 
         # Create the palette orientation button
         self.palette_button.append(
@@ -1264,56 +1132,6 @@ class TurtleArtWindow():
             self.palette_button[3 + i].type = 'palette'
             self.palette_button[3 + i].hide()
 
-    def _create_proto_blocks(self, n):
-        ''' Create the protoblocks that will populate a palette. '''
-        # Reload the palette, but reuse the existing blocks
-        # If a block doesn't exist, add it
-
-        if not n < len(self.palettes):
-            debug_output(
-                '_create_proto_blocks: palette index %d is out of range' %
-                (n), self.running_sugar)
-            return
-
-        for blk in self.palettes[n]:
-            blk.spr.hide()
-        old_blocks = self.palettes[n][:]
-        self.palettes[n] = []
-        for name in palette_blocks[n]:
-            found_block = False
-            for oblk in old_blocks:
-                if oblk.name == name:
-                    self.palettes[n].append(oblk)
-                    found_block = True
-                    break
-            if not found_block:
-                self.palettes[n].append(
-                    Block(self.block_list, self.sprite_list, name, 0, 0,
-                          'proto', [], PALETTE_SCALE))
-                if name in hidden_proto_blocks:
-                    self.palettes[n][-1].set_visibility(False)
-                else:
-                    if hasattr(self.palettes[n][-1].spr, 'set_layer'):
-                        self.palettes[n][-1].spr.set_layer(PROTO_LAYER)
-                        self.palettes[n][-1].unhighlight()
-                    else:
-                        debug_output('WARNING: block sprite is None' %
-                                     (self.palettes[n][-1].name),
-                                     self.running_sugar)
-
-            # Some proto blocks get a skin.
-            if name in block_styles['box-style-media']:
-                self._proto_skin(name + 'small', n, -1)
-            elif name[:8] == 'template':  # Deprecated
-                self._proto_skin(name[8:], n, -1)
-            elif name[:7] == 'picture':  # Deprecated
-                self._proto_skin(name[7:], n, -1)
-            elif name in PYTHON_SKIN:
-                self._proto_skin('pythonsmall', n, -1)
-            if len(self.palettes[n][-1].spr.labels) > 0:
-                self.palettes[n][-1].refresh()
-        return
-
     def _hide_toolbar_palette(self):
         ''' Hide the toolbar palettes '''
         self._hide_previous_palette()
@@ -1332,171 +1150,13 @@ class TurtleArtWindow():
             palette = self.previous_palette
         # Hide previously selected palette
         if palette is not None:
-            if not palette < len(self.palettes):
-                debug_output(
-                    '_hide_previous_palette: index %d is out of range' %
-                    (palette), self.running_sugar)
-                return
-            for proto in self.palettes[palette]:
-                proto.spr.hide()
-            if self.palette_sprs[palette][self.orientation] is not None:
-                self.palette_sprs[palette][self.orientation].hide()
-            if not self.running_sugar or not self.activity.has_toolbarbox:
-                self.selectors[palette].set_shape(
-                    self.selector_shapes[palette][0])
+            self.palette_views[palette].hide()
+            if self._has_selectors():
+                self.selectors[palette].set_shape(0)
             elif palette is not None and palette != self.selected_palette \
                     and not self.activity.has_toolbarbox:
                 self.activity.palette_buttons[palette].set_icon(
                     palette_names[palette] + 'off')
-            if 'trash' in palette_names and \
-                    palette == palette_names.index('trash'):
-                for blk in self.trash_stack:
-                    for gblk in find_group(blk):
-                        gblk.spr.hide()
-
-    def _horizontal_layout(self, x, y, blocks):
-        ''' Position prototypes in a horizontal palette. '''
-        max_w = 0
-        for blk in blocks:
-            if not blk.get_visibility():
-                continue
-            w, h = self._width_and_height(blk)
-            if y + h > PALETTE_HEIGHT + self.toolbar_offset:
-                x += int(max_w + 3)
-                y = self.toolbar_offset + 3
-                max_w = 0
-            (bx, by) = blk.spr.get_xy()
-            dx = x - bx
-            dy = y - by
-            for g in find_group(blk):
-                g.spr.move_relative((int(dx), int(dy)))
-                g.spr.save_xy = g.spr.get_xy()
-                if self.running_sugar and not self.hw in [XO1]:
-                    g.spr.move_relative((self.activity.hadj_value,
-                                         self.activity.vadj_value))
-            y += int(h + 3)
-            if w > max_w:
-                max_w = w
-        return x, y, max_w
-
-    def _vertical_layout(self, x, y, blocks):
-        ''' Position prototypes in a vertical palette. '''
-        row = []
-        row_w = 0
-        max_h = 0
-        for blk in blocks:
-            if not blk.get_visibility():
-                continue
-            w, h = self._width_and_height(blk)
-            if x + w > PALETTE_WIDTH:
-                # Recenter row.
-                dx = int((PALETTE_WIDTH - row_w) / 2)
-                for r in row:
-                    for g in find_group(r):
-                        g.spr.move_relative((dx, 0))
-                        g.spr.save_xy = (g.spr.save_xy[0] + dx,
-                                         g.spr.save_xy[1])
-                row = []
-                row_w = 0
-                x = 4
-                y += int(max_h + 3)
-                max_h = 0
-            row.append(blk)
-            row_w += (4 + w)
-            (bx, by) = blk.spr.get_xy()
-            dx = int(x - bx)
-            dy = int(y - by)
-            for g in find_group(blk):
-                g.spr.move_relative((dx, dy))
-                g.spr.save_xy = g.spr.get_xy()
-                if self.running_sugar and not self.hw in [XO1]:
-                    g.spr.move_relative((self.activity.hadj_value,
-                                         self.activity.vadj_value))
-            x += int(w + 4)
-            if h > max_h:
-                max_h = h
-        # Recenter last row.
-        dx = int((PALETTE_WIDTH - row_w) / 2)
-        for r in row:
-            for g in find_group(r):
-                g.spr.move_relative((dx, 0))
-                g.spr.save_xy = (g.spr.save_xy[0] + dx, g.spr.save_xy[1])
-        return x, y, max_h
-
-    def _layout_palette(self, n, regenerate=False, show=True):
-        ''' Layout prototypes in a palette. '''
-        if n is not None:
-            if self.orientation == HORIZONTAL_PALETTE:
-                x, y = _BUTTON_SIZE, self.toolbar_offset + _MARGIN
-                x, y, max_w = self._horizontal_layout(x, y, self.palettes[n])
-                if 'trash' in palette_names and \
-                        n == palette_names.index('trash'):
-                    x, y, max_w = self._horizontal_layout(x + max_w, y,
-                                                          self.trash_stack)
-                w = x + max_w + _BUTTON_SIZE + _MARGIN
-                self._make_palette_spr(n, 0, self.toolbar_offset,
-                                       w, PALETTE_HEIGHT, regenerate)
-                if show:
-                    self.palette_button[2].move(
-                        (w - _BUTTON_SIZE, self.toolbar_offset))
-                    self.palette_button[4].move(
-                        (_BUTTON_SIZE, self.toolbar_offset))
-                    self.palette_button[6].move(
-                        (_BUTTON_SIZE, self.toolbar_offset))
-            else:
-                x, y = _MARGIN, self.toolbar_offset + _BUTTON_SIZE + _MARGIN
-                x, y, max_h = self._vertical_layout(x, y, self.palettes[n])
-                if 'trash' in palette_names and \
-                        n == palette_names.index('trash'):
-                    x, y, max_h = self._vertical_layout(x, y + max_h,
-                                                        self.trash_stack)
-                h = y + max_h + _BUTTON_SIZE + _MARGIN - self.toolbar_offset
-                self._make_palette_spr(n, 0, self.toolbar_offset,
-                                       PALETTE_WIDTH, h, regenerate)
-                if show:
-                    self.palette_button[2].move((PALETTE_WIDTH - _BUTTON_SIZE,
-                                                 self.toolbar_offset))
-                    self.palette_button[3].move(
-                        (0, self.toolbar_offset + _BUTTON_SIZE))
-                    self.palette_button[5].move(
-                        (0, self.toolbar_offset + _BUTTON_SIZE))
-            if show:
-                self.palette_button[2].save_xy = \
-                    self.palette_button[2].get_xy()
-                if self.running_sugar and not self.hw in [XO1]:
-                    self.palette_button[2].move_relative(
-                        (self.activity.hadj_value, self.activity.vadj_value))
-                self.palette_sprs[n][self.orientation].set_layer(
-                    CATEGORY_LAYER)
-                self._display_palette_shift_button(n)
-
-    def _make_palette_spr(self, n, x, y, w, h, regenerate=False):
-        ''' Make the background for the palette. '''
-        if regenerate and not self.palette_sprs[n][self.orientation] is None:
-            self.palette_sprs[n][self.orientation].hide()
-            self.palette_sprs[n][self.orientation] = None
-        if self.palette_sprs[n][self.orientation] is None:
-            svg = SVG()
-            self.palette_sprs[n][self.orientation] = \
-                Sprite(self.sprite_list, x, y, svg_str_to_pixbuf(
-                    svg.palette(w, h)))
-            self.palette_sprs[n][self.orientation].save_xy = (x, y)
-            if self.running_sugar and not self.hw in [XO1]:
-                self.palette_sprs[n][self.orientation].move_relative(
-                    (self.activity.hadj_value, self.activity.vadj_value))
-            if self.orientation == 0 and w > self.width:
-                self.palette_sprs[n][self.orientation].type = \
-                    'category-shift-horizontal'
-            elif self.orientation == 1 and h > self.height - ICON_SIZE:
-                self.palette_sprs[n][self.orientation].type = \
-                    'category-shift-vertical'
-            else:
-                self.palette_sprs[n][self.orientation].type = 'category'
-            if 'trash' in palette_names and \
-                    n == palette_names.index('trash'):
-                svg = SVG()
-                self.palette_sprs[n][self.orientation].set_shape(
-                    svg_str_to_pixbuf(svg.palette(w, h)))
 
     def _buttonpress_cb(self, win, event):
         ''' Button press '''
@@ -1543,8 +1203,9 @@ class TurtleArtWindow():
                     elif self.interactive_mode:
                         self.toolbar_shapes['stopiton'].set_layer(TAB_LAYER)
                     self.showlabel('status',
-                                   label=_('Please hit the Stop Button \
-before making changes to your program'))
+                                   label=_('Please hit the Stop Button '
+                                           'before making changes to your '
+                                           'program'))
                     self._autohide_shape = True
                     return True
 
@@ -1859,10 +1520,10 @@ before making changes to your program'))
                     return
                 i = palette_names.index('myblocks')
                 palette_blocks[i].remove(blk.name)
-                for pblk in self.palettes[i]:
+                for pblk in self.palette_views[i].blocks:
                     if pblk.name == blk.name:
                         pblk.spr.hide()
-                        self.palettes[i].remove(pblk)
+                        self.palette_views[i].blocks.remove(pblk)
                         break
                 self.show_toolbar_palette(i, regenerate=True)
 
@@ -1896,7 +1557,7 @@ before making changes to your program'))
                         i = 0
                     if not self.running_sugar or \
                        not self.activity.has_toolbarbox:
-                        self._select_category(self.selectors[i])
+                        self._select_category(self.selectors[i].spr)
                     else:
                         if self.selected_palette is not None and \
                                 not self.activity.has_toolbarbox:
@@ -1912,7 +1573,7 @@ before making changes to your program'))
                                 palette_names[i] + 'on')
                         self.show_palette(i)
                 elif spr.name == _('shift'):
-                    self._shift_toolbar_palette(self.selected_palette)
+                    self.palette_views[self.selected_palette].shift()
                 else:
                     self.set_orientation(1 - self.orientation)
             elif spr.type == 'toolbar':
@@ -1923,10 +1584,11 @@ before making changes to your program'))
         self.orientation = orientation
         self.palette_button[self.orientation].set_layer(TAB_LAYER)
         self.palette_button[1 - self.orientation].hide()
-        spr = self.palette_sprs[self.selected_palette][1 - self.orientation]
+        o = 1 - self.orientation
+        spr = self.palette_views[self.selected_palette].backgrounds[o]
         if spr is not None:
             spr.hide()
-        self._layout_palette(self.selected_palette)
+        self.palette_views[self.selected_palette].layout()
         self.show_palette(self.selected_palette)
 
     def _update_action_names(self, name):
@@ -2017,7 +1679,7 @@ before making changes to your program'))
             block_names[new] = name
 
         i = palette_name_to_index(palette)
-        for blk in self.palettes[i]:
+        for blk in self.palette_views[i].blocks:
             if blk.name == old:
                 blk.name = new
                 blk.spr.labels[label] = name
@@ -2069,16 +1731,15 @@ before making changes to your program'))
 
     def _select_category(self, spr):
         ''' Select a category from the toolbar '''
-        i = self.selectors.index(spr)
-        spr.set_shape(self.selector_shapes[i][1])
-        if self.selected_selector is not None:
-            j = self.selectors.index(self.selected_selector)
-            if i == j:
-                return
-            self.selected_selector.set_shape(self.selector_shapes[j][0])
-        self.previous_selector = self.selected_selector
-        self.selected_selector = spr
-        self.show_palette(i)
+        for i, selector in enumerate(self.selectors):
+            if selector.spr == spr:
+                break
+        self.selectors[i].set_shape(1)
+
+        if i != self.selected_selector:
+            self.selectors[self.selected_selector].set_shape(0)
+            self.selected_selector = i
+            self.show_palette(i)
 
     def _select_toolbar_button(self, spr):
         ''' Select a toolbar button (Used when not running Sugar). '''
@@ -2169,10 +1830,10 @@ before making changes to your program'))
         i = palette_name_to_index('blocks')
         if name in palette_blocks[i]:
             palette_blocks[i].remove(name)
-            for blk in self.palettes[i]:
+            for blk in self.palette_views[i].blocks:
                 if blk.name == name:
                     blk.spr.hide()
-                    self.palettes[i].remove(blk)
+                    self.palette_views[i].blocks.remove(blk)
             self.show_toolbar_palette(i, regenerate=True)
         if name in block_styles[style]:
             block_styles[style].remove(name)
@@ -2249,10 +1910,11 @@ before making changes to your program'))
 
     def _in_the_trash(self, x, y):
         ''' Is x, y over a palette? '''
-        if self.selected_palette is not None and \
-                self.palette_sprs[self.selected_palette][self.orientation]\
-                .hit((x, y)):
-            return True
+        n = self.selected_palette
+        if n is not None:
+            spr = self.palette_views[n].backgrounds[self.orientation]
+            if spr.hit((x, y)):
+                return True
         return False
 
     def _block_pressed(self, x, y, blk):
@@ -3687,7 +3349,7 @@ before making changes to your program'))
             else:
                 blk.name = 'description'
         if pixbuf is not None:
-            x, y = self._calc_image_offset('', blk.spr)
+            x, y = self.calc_image_offset('', blk.spr)
             blk.set_image(pixbuf, x, y)
             self._resize_skin(blk)
 
@@ -3725,7 +3387,7 @@ before making changes to your program'))
                 print 'selected palette is None'
                 return True
             else:
-                p = self.palettes[self.selected_palette]
+                p = self.palette_views[self.selected_palette].blocks
             i = 0
             if self._highlighted_blk is not None:
                 self._highlighted_blk.unhighlight()
@@ -4320,7 +3982,7 @@ before making changes to your program'))
                         w, h, = calc_image_size(blk.spr)
                         pixbuf = get_pixbuf_from_journal(dsobject, w, h)
                         if pixbuf is not None:
-                            x, y = self._calc_image_offset('', blk.spr)
+                            x, y = self.calc_image_offset('', blk.spr)
                             blk.set_image(pixbuf, x, y)
                         else:
                             self._block_skin('journalon', blk)
@@ -4330,7 +3992,7 @@ before making changes to your program'))
                         w, h, = calc_image_size(blk.spr)
                         pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(
                             blk.values[0], w, h)
-                        x, y = self._calc_image_offset('', blk.spr)
+                        x, y = self.calc_image_offset('', blk.spr)
                         blk.set_image(pixbuf, x, y)
                     except:
                         debug_output('Could not open dsobject (%s)' %
@@ -4342,7 +4004,7 @@ before making changes to your program'))
                         w, h, = calc_image_size(blk.spr)
                         pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(
                             blk.values[0], w, h)
-                        x, y = self._calc_image_offset('', blk.spr)
+                        x, y = self.calc_image_offset('', blk.spr)
                         blk.set_image(pixbuf, x, y)
                     except:
                         self._block_skin('journaloff', blk)
@@ -4720,7 +4382,7 @@ before making changes to your program'))
                 if '.odp' not in name:
                     name = name + '.odp'
             if name is not None:
-                res = subprocess.check_output(
+                subprocess.check_output(
                     ['cp', TMP_ODP_PATH, os.path.join(datapath, name)])
                 
 
@@ -4916,7 +4578,7 @@ before making changes to your program'))
 
     # Utilities related to putting a image 'skin' on a block
 
-    def _calc_image_offset(self, name, spr, iw=0, ih=0):
+    def calc_image_offset(self, name, spr, iw=0, ih=0):
         ''' Calculate the postion for placing an image onto a sprite. '''
         _l, _t = spr.label_left_top()
         if name == '':
@@ -4947,12 +4609,14 @@ before making changes to your program'))
 
     def _proto_skin(self, name, n, i):
         ''' Utility for calculating proto skin images '''
-        x, y = self._calc_image_offset(name, self.palettes[n][i].spr)
-        self.palettes[n][i].spr.set_image(self.media_shapes[name], 1, x, y)
+        x, y = self.calc_image_offset(name,
+                                       self.palette_views[n].blocks[i].spr)
+        self.palette_views[n].blocks[i].spr.set_image(
+            self.media_shapes[name], 1, x, y)
 
     def _block_skin(self, name, blk):
         ''' Some blocks get a skin '''
-        x, y = self._calc_image_offset(name, blk.spr)
+        x, y = self.calc_image_offset(name, blk.spr)
         blk.set_image(self.media_shapes[name], x, y)
         self._resize_skin(blk)
 
@@ -4960,19 +4624,19 @@ before making changes to your program'))
         ''' Resize the 'skin' when block scale changes. '''
         if blk.name in PYTHON_SKIN:
             w, h = self._calc_w_h('pythonoff', blk.spr)
-            x, y = self._calc_image_offset('pythonoff', blk.spr, w, h)
+            x, y = self.calc_image_offset('pythonoff', blk.spr, w, h)
         elif blk.name == 'journal':
             if len(blk.values) == 1 and blk.values[0] is not None:
                 w, h = self._calc_w_h('', blk.spr)
-                x, y = self._calc_image_offset('journaloff', blk.spr, w, h)
+                x, y = self.calc_image_offset('journaloff', blk.spr, w, h)
             else:
                 w, h = self._calc_w_h('journaloff', blk.spr)
-                x, y = self._calc_image_offset('journaloff', blk.spr, w, h)
+                x, y = self.calc_image_offset('journaloff', blk.spr, w, h)
         else:
             # w, h = self._calc_w_h('descriptionoff', blk.spr)
             w, h = self._calc_w_h('', blk.spr)
-            # x, y = self._calc_image_offset('descriptionoff', blk.spr, w, h)
-            x, y = self._calc_image_offset('', blk.spr, w, h)
+            # x, y = self.calc_image_offset('descriptionoff', blk.spr, w, h)
+            x, y = self.calc_image_offset('', blk.spr, w, h)
         blk.scale_image(x, y, w, h)
 
     def _find_proto_name(self, name, label, palette='blocks'):
@@ -4984,7 +4648,7 @@ before making changes to your program'))
         if isinstance(label, unicode):
             label = label.encode('utf-8')
         i = palette_name_to_index(palette)
-        for blk in self.palettes[i]:
+        for blk in self.palette_views[i].blocks:
             blk_label = blk.spr.labels[0]
             if isinstance(blk.name, unicode):
                 blk.name = blk.name.encode('utf-8')
