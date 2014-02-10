@@ -1,7 +1,25 @@
+199
+
+ENHANCEMENTS:
+* Use journal or file block for all media types
+* Play audio and video from the web
+
+BUG FIXES:
+* Eliminate extra space around protoblock labels
+* Code cleanup: separate classes for Selectors and PaletteViews
+* Use built-in Python mimetype processing
+* Cleaned up gplay code (uses debug_output)
+
+198
+
+BUG FIXES:
+* Fixed bug with color constants when used with push/pop and boxes
+* Fixed bug with hover help in GNOME (Alan Aguiar)
+
 197
 
 BUG FIX:
-* Fix problem with dragging canvas while programming is running
+* Fixed problem with dragging canvas while programming is running
 
 196
 
