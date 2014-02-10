@@ -1,12 +1,14 @@
 199
 
-ENHANCEMENT:
+ENHANCEMENTS:
 * Use journal or file block for all media types
+* Play audio and video from the web
 
 BUG FIXES:
 * Eliminate extra space around protoblock labels
 * Code cleanup: separate classes for Selectors and PaletteViews
 * Use built-in Python mimetype processing
+* Cleaned up gplay code (uses debug_output)
 
 198
 
