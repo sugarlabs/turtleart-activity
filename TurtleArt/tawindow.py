@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #Copyright (c) 2007, Playful Invention Company
-#Copyright (c) 2008-13, Walter Bender
+#Copyright (c) 2008-14, Walter Bender
 #Copyright (c) 2009-11 Raúl Gutiérrez Segalés
 #Copyright (c) 2011 Collabora Ltd. <http://www.collabora.co.uk/>
 
@@ -1203,8 +1203,9 @@ class TurtleArtWindow():
                     elif self.interactive_mode:
                         self.toolbar_shapes['stopiton'].set_layer(TAB_LAYER)
                     self.showlabel('status',
-                                   label=_('Please hit the Stop Button \
-before making changes to your program'))
+                                   label=_('Please hit the Stop Button '
+                                           'before making changes to your '
+                                           'program'))
                     self._autohide_shape = True
                     return True
 
@@ -4608,14 +4609,14 @@ before making changes to your program'))
 
     def _proto_skin(self, name, n, i):
         ''' Utility for calculating proto skin images '''
-        x, y = self._calc_image_offset(name,
+        x, y = self.calc_image_offset(name,
                                        self.palette_views[n].blocks[i].spr)
         self.palette_views[n].blocks[i].spr.set_image(
             self.media_shapes[name], 1, x, y)
 
     def _block_skin(self, name, blk):
         ''' Some blocks get a skin '''
-        x, y = self._calc_image_offset(name, blk.spr)
+        x, y = self.calc_image_offset(name, blk.spr)
         blk.set_image(self.media_shapes[name], x, y)
         self._resize_skin(blk)
 
@@ -4623,19 +4624,19 @@ before making changes to your program'))
         ''' Resize the 'skin' when block scale changes. '''
         if blk.name in PYTHON_SKIN:
             w, h = self._calc_w_h('pythonoff', blk.spr)
-            x, y = self._calc_image_offset('pythonoff', blk.spr, w, h)
+            x, y = self.calc_image_offset('pythonoff', blk.spr, w, h)
         elif blk.name == 'journal':
             if len(blk.values) == 1 and blk.values[0] is not None:
                 w, h = self._calc_w_h('', blk.spr)
-                x, y = self._calc_image_offset('journaloff', blk.spr, w, h)
+                x, y = self.calc_image_offset('journaloff', blk.spr, w, h)
             else:
                 w, h = self._calc_w_h('journaloff', blk.spr)
-                x, y = self._calc_image_offset('journaloff', blk.spr, w, h)
+                x, y = self.calc_image_offset('journaloff', blk.spr, w, h)
         else:
             # w, h = self._calc_w_h('descriptionoff', blk.spr)
             w, h = self._calc_w_h('', blk.spr)
-            # x, y = self._calc_image_offset('descriptionoff', blk.spr, w, h)
-            x, y = self._calc_image_offset('', blk.spr, w, h)
+            # x, y = self.calc_image_offset('descriptionoff', blk.spr, w, h)
+            x, y = self.calc_image_offset('', blk.spr, w, h)
         blk.scale_image(x, y, w, h)
 
     def _find_proto_name(self, name, label, palette='blocks'):
