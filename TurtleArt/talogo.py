@@ -1082,6 +1082,7 @@ class LogoCode:
         """ Get contents of URL as text or tempfile to image """
         if "://" not in url: # no protocol
             url = "http://" + url # assume HTTP
+
         try:
             req = urllib2.urlopen(url)
         except urllib2.HTTPError, e:
@@ -1098,14 +1099,15 @@ class LogoCode:
                              self.tw.running_sugar)
                 raise logoerror('#noconnection')
 
-        if req.info().getheader("Content-Type")[0:5] == "image":
-            # it can't be deleted immediately, or else we won't ever access it
+        mediatype = req.info().getheader('Content-Type')
+        if mediatype[0:5] in ['image', 'audio', 'video']:
             tmp = tempfile.NamedTemporaryFile(delete=False)
-            tmp.write(req.read()) # prepare for writing
-            tmp.flush() # actually write it
-            obj = Media('media', value=tmp.name)
+            tmp.write(req.read())
+            tmp.flush()
+            obj = Media(mediatype[0:5], value=tmp.name)
             return obj
         else:
+            debug_output('Returning req.read()', self.tw.running_sugar)
             return req.read()
 
     def showlist(self, objects):
@@ -1133,6 +1135,7 @@ class LogoCode:
                 mediatype = 'image'  # camera snapshot
             elif os_path_exists(obj.value):
                 self.filepath = obj.value
+                mediatype = obj.type
                 if self.filepath is not None:
                     if movie_media_type(self.filepath):
                         mediatype = 'video'
@@ -1140,7 +1143,7 @@ class LogoCode:
                         mediatype = 'audio'
                     elif image_media_type(self.filepath):
                         mediatype = 'image'
-                    else:
+                    elif text_media_type(self.filepath):
                         mediatype = 'text'
             elif self.tw.running_sugar:
                 from sugar.datastore import datastore
