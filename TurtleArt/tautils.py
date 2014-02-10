@@ -485,24 +485,32 @@ def base64_to_image(data, path_name):
 def movie_media_type(name):
     ''' Is it movie media? '''
     guess = mimetypes.guess_type(name)
+    if guess[0] is None:
+        return False
     return guess[0][0:5] == 'video'
 
 
 def audio_media_type(name):
     ''' Is it audio media? '''
     guess = mimetypes.guess_type(name)
+    if guess[0] is None:
+        return False
     return guess[0][0:5] == 'audio'
 
 
 def image_media_type(name):
     ''' Is it image media? '''
     guess = mimetypes.guess_type(name)
+    if guess[0] is None:
+        return False
     return guess[0][0:5] == 'image'
 
 
 def text_media_type(name):
     ''' Is it text media? '''
     guess = mimetypes.guess_type(name)
+    if guess[0] is None:
+        return False
     return guess[0][0:4] == 'text'
 
 
