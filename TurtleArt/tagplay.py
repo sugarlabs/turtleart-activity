@@ -158,8 +158,8 @@ class Gplay():
             return False
         self.playlist.append('file://' + os.path.abspath(file_path))
         if not self.player:
-            # lazy init the player so that videowidget is realized
-            # and has a valid widget allocation
+            # Lazy init the player so that videowidget is realized
+            # and has a valid widget allocation.
             self.player = GstPlayer(self.videowidget, self.running_sugar)
             self.player.connect('eos', self._player_eos_cb)
             self.player.connect('error', self._player_error_cb)
@@ -172,9 +172,8 @@ class Gplay():
                 self.player.set_uri(self.playlist[0])
                 self.currentplaying = 0
                 self.play_toggled()
-                self.show_all()
-        except:
-            error_output('Error playing %s' % (self.playlist[0]),
+        except Exception, e:
+            error_output('Error playing %s: %s' % (self.playlist[0], e),
                          self.running_sugar)
         return False
 
@@ -279,18 +278,18 @@ class GstPlayer(gobject.GObject):
     def pause(self):
         self.player.set_state(gst.STATE_PAUSED)
         self.playing = False
-        debug_output('pausing player', self.running_sugar)
+        # debug_output('pausing player', self.running_sugar)
 
     def play(self):
         self.player.set_state(gst.STATE_PLAYING)
         self.playing = True
         self.error = False
-        debug_output('playing player', self.running_sugar)
+        # debug_output('playing player', self.running_sugar)
 
     def stop(self):
         self.player.set_state(gst.STATE_NULL)
         self.playing = False
-        debug_output('stopped player', self.running_sugar)
+        # debug_output('stopped player', self.running_sugar)
 
     def get_state(self, timeout=1):
         return self.player.get_state(timeout=timeout)

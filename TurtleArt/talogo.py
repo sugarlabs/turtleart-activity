@@ -1107,7 +1107,6 @@ class LogoCode:
             obj = Media(mediatype[0:5], value=tmp.name)
             return obj
         else:
-            debug_output('Returning req.read()', self.tw.running_sugar)
             return req.read()
 
     def showlist(self, objects):
@@ -1136,7 +1135,8 @@ class LogoCode:
             elif os_path_exists(obj.value):
                 self.filepath = obj.value
                 mediatype = obj.type
-                if self.filepath is not None:
+                # If for some reason the obj.type is not set, try guessing.
+                if mediatype is None and self.filepath is not None:
                     if movie_media_type(self.filepath):
                         mediatype = 'video'
                     elif audio_media_type(self.filepath):
@@ -1180,6 +1180,10 @@ class LogoCode:
                              self.tw.running_sugar)
             elif obj.type == 'media' or mediatype == 'image':
                 self.insert_image(center=center)
+            elif mediatype == 'audio':
+                self.play_sound()
+            elif mediatype == 'video':
+                self.play_video()
             elif obj.type == 'descr' or mediatype == 'text':
                 mimetype = None
                 if self.dsobject is not None and \
@@ -1193,10 +1197,6 @@ class LogoCode:
                         'description']
 
                 self.insert_desc(mimetype, description)
-            elif obj.type == 'audio' or mediatype == 'audio':
-                self.play_sound()
-            elif obj.type == 'video' or mediatype == 'video':
-                self.play_video()
 
             if self.dsobject is not None:
                 self.dsobject.destroy()
