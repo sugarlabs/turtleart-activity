@@ -33,6 +33,7 @@ import pickle
 import subprocess
 import os
 import string
+import mimetypes
 from gettext import gettext as _
 
 try:
@@ -483,24 +484,26 @@ def base64_to_image(data, path_name):
 
 def movie_media_type(name):
     ''' Is it movie media? '''
-    return name.lower().endswith(('.ogv', '.vob', '.mp4', '.wmv', '.mov',
-                                  '.mpeg', '.ogg', '.webm'))
+    guess = mimetypes.guess_type(name)
+    return guess[0][0:5] == 'video'
 
 
 def audio_media_type(name):
     ''' Is it audio media? '''
-    return name.lower().endswith(('.oga', '.m4a'))
+    guess = mimetypes.guess_type(name)
+    return guess[0][0:5] == 'audio'
 
 
 def image_media_type(name):
     ''' Is it image media? '''
-    return name.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.tiff',
-                                  '.tif', '.svg'))
+    guess = mimetypes.guess_type(name)
+    return guess[0][0:5] == 'image'
 
 
 def text_media_type(name):
     ''' Is it text media? '''
-    return name.lower().endswith(('.txt', '.py', '.lg', '.rtf'))
+    guess = mimetypes.guess_type(name)
+    return guess[0][0:4] == 'text'
 
 
 def round_int(num):
