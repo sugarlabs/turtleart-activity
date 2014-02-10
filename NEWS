@@ -1,8 +1,12 @@
 199
 
-BUG FIX:
+ENHANCEMENT:
+* Use journal or file block for all media types
+
+BUG FIXES:
 * Eliminate extra space around protoblock labels
 * Code cleanup: separate classes for Selectors and PaletteViews
+* Use built-in Python mimetype processing
 
 198
 

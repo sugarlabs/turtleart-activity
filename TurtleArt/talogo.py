@@ -46,6 +46,7 @@ from tajail import (myfunc, myfunc_import)
 from tapalette import (block_names, value_blocks)
 from tatype import (TATypeError, TYPES_NUMERIC)
 from tautils import (get_pixbuf_from_journal, data_from_file, get_stack_name,
+                     movie_media_type, audio_media_type, image_media_type,
                      text_media_type, round_int, debug_output, find_group,
                      get_path, image_to_base64, data_to_string, data_to_file,
                      get_load_name, chooser_dialog)
@@ -1120,19 +1121,27 @@ class LogoCode:
 
     def show(self, obj, center=False):
         """ Show is the general-purpose media-rendering block. """
-        # media
+        mediatype = None
+
         if isinstance(obj, Media) and obj.value:
             self.filepath = None
             self.pixbuf = None  # Camera writes directly to pixbuf
             self.dsobject = None
 
-            # camera snapshot
             if obj.value.lower() in media_blocks_dictionary:
                 media_blocks_dictionary[obj.value.lower()]()
-            # file path
+                mediatype = 'image'  # camera snapshot
             elif os_path_exists(obj.value):
                 self.filepath = obj.value
-            # datastore object
+                if self.filepath is not None:
+                    if movie_media_type(self.filepath):
+                        mediatype = 'video'
+                    elif audio_media_type(self.filepath):
+                        mediatype = 'audio'
+                    elif image_media_type(self.filepath):
+                        mediatype = 'image'
+                    else:
+                        mediatype = 'text'
             elif self.tw.running_sugar:
                 from sugar.datastore import datastore
                 try:
@@ -1140,8 +1149,19 @@ class LogoCode:
                 except:
                     debug_output("Couldn't find dsobject %s" %
                                  (obj.value), self.tw.running_sugar)
+
                 if self.dsobject is not None:
                     self.filepath = self.dsobject.file_path
+                    if 'mime_type' in self.dsobject.metadata:
+                        mimetype = self.dsobject.metadata['mime_type']
+                        if mimetype[0:5] == 'video':
+                            mediatype = 'video'
+                        elif mimetype[0:5] == 'audio':
+                            mediatype = 'audio'
+                        elif mimetype[0:5] == 'image':
+                            mediatype = 'image'
+                        else:
+                            mediatype = 'text'
 
             if self.pixbuf is not None:
                 self.insert_image(center=center, pixbuf=True)
@@ -1152,36 +1172,40 @@ class LogoCode:
                         self.dsobject.metadata['title'])
                 else:
                     self.tw.showlabel('nojournal', obj.value)
+
                 debug_output("Couldn't open %s" % (obj.value),
                              self.tw.running_sugar)
-            elif obj.type == 'media':
+            elif obj.type == 'media' or mediatype == 'image':
                 self.insert_image(center=center)
-            elif obj.type == 'descr':
+            elif obj.type == 'descr' or mediatype == 'text':
                 mimetype = None
                 if self.dsobject is not None and \
                    'mime_type' in self.dsobject.metadata:
                     mimetype = self.dsobject.metadata['mime_type']
+
                 description = None
                 if self.dsobject is not None and \
                    'description' in self.dsobject.metadata:
                     description = self.dsobject.metadata[
                         'description']
+
                 self.insert_desc(mimetype, description)
-            elif obj.type == 'audio':
+            elif obj.type == 'audio' or mediatype == 'audio':
                 self.play_sound()
-            elif obj.type == 'video':
+            elif obj.type == 'video' or mediatype == 'video':
                 self.play_video()
 
             if self.dsobject is not None:
                 self.dsobject.destroy()
 
-        # text or number
-        elif isinstance(obj, (basestring, float, int)):
+        elif isinstance(obj, (basestring, float, int)):  # text or number
             if isinstance(obj, (float, int)):
                 obj = round_int(obj)
+
             x, y = self.x2tx(), self.y2ty()
             if center:
                 y -= self.tw.canvas.textsize
+
             self.tw.turtles.get_active_turtle().draw_text(
                 obj, x, y,
                 int(self.tw.canvas.textsize * self.scale / 100.),

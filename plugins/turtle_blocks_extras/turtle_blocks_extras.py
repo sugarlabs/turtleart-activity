@@ -147,6 +147,7 @@ boolean operators from Numbers palette'))
         MEDIA_SHAPES.append('journalon')
 
         palette.add_block('audio',
+                          hidden=True,
                           style='box-style-media',
                           label=' ',
                           special_name=_('audio'),
@@ -159,6 +160,7 @@ boolean operators from Numbers palette'))
         MEDIA_SHAPES.append('audioon')
 
         palette.add_block('video',
+                          hidden=True,
                           style='box-style-media',
                           label=' ',
                           special_name=_('video'),
@@ -171,6 +173,7 @@ boolean operators from Numbers palette'))
         MEDIA_SHAPES.append('videoon')
 
         palette.add_block('description',
+                          hidden=True,
                           style='box-style-media',
                           label=' ',
                           special_name=_('description'),
