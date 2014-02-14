@@ -372,7 +372,7 @@ class Block:
         if self.spr is None:
             return
         dx = (self.spr.label_width() - self.spr.label_safe_width()) / \
-            self.scale
+             self.scale
         if self.dx + dx >= self.block_list.max_width and self.name == 'string':
             self.dx = self.block_list.max_width
             self.refresh()
