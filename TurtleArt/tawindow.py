@@ -1238,8 +1238,11 @@ class TurtleArtWindow():
     def _unselect_all_blocks(self):
         # Unselect things that may have been selected earlier
         if self.selected_blk is not None:
-            label_with_no_returns = \
-                self.selected_blk.spr.labels[0].replace(RETURN, ' ')
+            if len(self.selected_blk.spr.labels) > 0:
+                label_with_no_returns = \
+                    self.selected_blk.spr.labels[0].replace(RETURN, ' ')
+            else:
+                label_with_no_returns = None
             if self._action_name(self.selected_blk, hat=True):
                 self.selected_blk.values[0] = label_with_no_returns
                 self.selected_blk.spr.labels[0] = label_with_no_returns
@@ -1254,6 +1257,7 @@ class TurtleArtWindow():
                     self._new_box_block(label_with_no_returns)
                 self._update_storein_names(label_with_no_returns)
                 self._update_box_names(label_with_no_returns)
+
             # Un-highlight any blocks in the stack
             grp = find_group(self.selected_blk)
             for blk in grp:
@@ -2010,8 +2014,11 @@ class TurtleArtWindow():
                 self._test_string()
         self._text_to_check = False
 
-        label_with_no_returns = \
-            self.selected_blk.spr.labels[0].replace(RETURN, ' ')
+        if len(self.selected_blk.spr.labels) > 0:
+            label_with_no_returns = \
+                self.selected_blk.spr.labels[0].replace(RETURN, ' ')
+        else:
+            label_with_no_returns = None
         if self._action_name(self.selected_blk, hat=True):
             self.selected_blk.spr.labels[0] = label_with_no_returns
             self.selected_blk.values[0] = label_with_no_returns
@@ -2026,6 +2033,7 @@ class TurtleArtWindow():
                 self._new_box_block(label_with_no_returns)
             self._update_storein_names(label_with_no_returns)
             self._update_box_names(label_with_no_returns)
+
         self.selected_blk.unhighlight()
         self.selected_blk = None
 
