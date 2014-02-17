@@ -147,6 +147,7 @@ class Turtles:
                 self._active_turtle.set_heading(0.0)
                 self._active_turtle.set_pen_state(False)
                 self._active_turtle.move_turtle((0.0, 0.0))
+                self._active_turtle.set_z(0.0)
                 self._active_turtle.set_pen_state(True)
                 self._active_turtle.set_fill(False)
                 self._active_turtle.hide()
@@ -166,6 +167,13 @@ class Turtles:
             raise logoerror("#syntaxerror")
         return self.dict[turtle_name].get_y()
 
+    def get_turtle_z(self, turtle_name):
+        if turtle_name not in self.dict:
+            debug_output('%s not found in turtle dictionary' % (turtle_name),
+                         self.turtle_window.running_sugar)
+            raise logoerror("#syntaxerror")
+        return self.dict[turtle_name].get_z()
+
     def get_turtle_heading(self, turtle_name):
         if turtle_name not in self.dict:
             debug_output('%s not found in turtle dictionary' % (turtle_name),
@@ -179,7 +187,8 @@ class Turtles:
             # if it is a new turtle, start it in the center of the screen
             self._active_turtle = self.get_turtle(turtle_name, True, colors)
             self._active_turtle.set_heading(0.0, False)
-            self._active_turtle.set_xy(0.0, 0.0, share=False, pendown=False)
+            self._active_turtle.set_xyz(0.0, 0.0, 0.0,
+                                        share=False, pendown=False)
             self._active_turtle.set_pen_state(True)
         elif colors is not None:
             self._active_turtle = self.get_turtle(turtle_name, False)
@@ -220,6 +229,7 @@ class Turtle:
         self._remote = False
         self._x = 0.0
         self._y = 0.0
+        self._z = 0.0
         self._heading = 0.0
         self._half_width = 0
         self._half_height = 0
@@ -554,11 +564,14 @@ class Turtle:
         scaled_distance = distance * self._turtles.turtle_window.coord_scale
 
         old = self.get_xy()
+        if self._z > 0.0:
+            old[0] = old[0] * ((self._z / 100.) + 1)
+            old[1] = old[1] * ((self._z / 100.) + 1)
+
         xcor = old[0] + scaled_distance * sin(self._heading * DEGTOR)
         ycor = old[1] + scaled_distance * cos(self._heading * DEGTOR)
 
-        self._draw_line(old, (xcor, ycor), True)
-        self.move_turtle((xcor, ycor))
+        self.set_xy(xcor, ycor, share)
 
         if self._turtles.turtle_window.sharing() and share:
             event = 'f|%s' % (data_to_string([self._turtles.turtle_window.nick,
@@ -569,6 +582,16 @@ class Turtle:
         distance = 0 - distance
         self.forward(distance, share)
 
+    def set_xyz(self, x, y, z, share=True, pendown=True):
+        self._z = z
+        self.set_xy(x, y, share, pendown)
+
+    def set_z(self, z, share=True, pendown=True):
+        xcor = self._x * ((self._z / 100.) + 1)
+        ycor = self._y * ((self._z / 100.) + 1)
+        self._z = z
+        self.set_xy(xcor, ycor, share, pendown)
+
     def set_xy(self, x, y, share=True, pendown=True, dragging=False):
         old = self.get_xy()
         if dragging:
@@ -577,6 +600,10 @@ class Turtle:
         else:
             xcor = x * self._turtles.turtle_window.coord_scale
             ycor = y * self._turtles.turtle_window.coord_scale
+
+        if not dragging and self._z > 0.0:
+            xcor /= ((self._z / 100.) + 1)
+            ycor /= ((self._z / 100.) + 1)
 
         self._draw_line(old, (xcor, ycor), pendown)
         self.move_turtle((xcor, ycor))
@@ -715,12 +742,18 @@ class Turtle:
 
     def get_xy(self):
         return [self._x, self._y]
+
+    def get_xyz(self):
+        return [self._x, self._y, self._z]
     
     def get_x(self):
         return self._x
     
     def get_y(self):
         return self._y
+
+    def get_z(self):
+        return self._z
 
     def get_heading(self):
         return self._heading
