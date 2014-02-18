@@ -141,8 +141,10 @@ class Turtles:
                 self._active_turtle.set_gray(100)
                 if self.turtle_window.coord_scale == 1:
                     self._active_turtle.set_pen_size(5)
+                    self._active_turtle.set_z_scale = 100.
                 else:
                     self._active_turtle.set_pen_size(1)
+                    self._active_turtle.set_z_scale = 20.
                 self._active_turtle.reset_shapes()
                 self._active_turtle.set_heading(0.0)
                 self._active_turtle.set_pen_state(False)
@@ -230,6 +232,7 @@ class Turtle:
         self._x = 0.0
         self._y = 0.0
         self._z = 0.0
+        self._z_scale = 100.
         self._heading = 0.0
         self._half_width = 0
         self._half_height = 0
@@ -354,6 +357,9 @@ class Turtle:
             self._shapes = generate_turtle_pixbufs(self.colors)
             self._custom_shapes = False
             self._calculate_sizes()
+
+    def set_z_scale(self, scale):
+        self._z_scale = scale
 
     def set_heading(self, heading, share=True):
         ''' Set the turtle heading (one shape per 360/SHAPES degrees) '''
@@ -565,8 +571,8 @@ class Turtle:
 
         old = self.get_xy()
         if self._z > 0.0:
-            old[0] = old[0] * ((self._z / 100.) + 1)
-            old[1] = old[1] * ((self._z / 100.) + 1)
+            old[0] = old[0] * ((self._z / self._z_scale) + 1)
+            old[1] = old[1] * ((self._z / self._z_scale) + 1)
 
         xcor = old[0] + scaled_distance * sin(self._heading * DEGTOR)
         ycor = old[1] + scaled_distance * cos(self._heading * DEGTOR)
@@ -587,8 +593,8 @@ class Turtle:
         self.set_xy(x, y, share, pendown)
 
     def set_z(self, z, share=True, pendown=True):
-        xcor = self._x * ((self._z / 100.) + 1)
-        ycor = self._y * ((self._z / 100.) + 1)
+        xcor = self._x * ((self._z / self._z_scale) + 1)
+        ycor = self._y * ((self._z / self._z_scale) + 1)
         self._z = z
         self.set_xy(xcor, ycor, share, pendown)
 
@@ -602,8 +608,8 @@ class Turtle:
             ycor = y * self._turtles.turtle_window.coord_scale
 
         if not dragging and self._z > 0.0:
-            xcor /= ((self._z / 100.) + 1)
-            ycor /= ((self._z / 100.) + 1)
+            xcor /= ((self._z / self._z_scale) + 1)
+            ycor /= ((self._z / self._z_scale) + 1)
 
         self._draw_line(old, (xcor, ycor), pendown)
         self.move_turtle((xcor, ycor))
@@ -637,6 +643,9 @@ class Turtle:
             r = -r
             a = -a
         pos = self.get_xy()
+        if self._z > 0.0:
+            pos[0] = pos[0] * ((self._z / self._z_scale) + 1)
+            pos[1] = pos[1] * ((self._z / self._z_scale) + 1)
         cx = pos[0] + r * cos(self._heading * DEGTOR)
         cy = pos[1] - r * sin(self._heading * DEGTOR)
         if self._pen_state:
@@ -661,6 +670,9 @@ class Turtle:
             r = -r
             a = -a
         pos = self.get_xy()
+        if self._z > 0.0:
+            pos[0] = pos[0] * ((self._z / self._z_scale) + 1)
+            pos[1] = pos[1] * ((self._z / self._z_scale) + 1)
         cx = pos[0] - r * cos(self._heading * DEGTOR)
         cy = pos[1] + r * sin(self._heading * DEGTOR)
         if self._pen_state:

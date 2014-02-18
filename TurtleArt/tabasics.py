@@ -276,21 +276,6 @@ towards the top of the screen.)'))
                       call_afterwards=lambda value: self.after_set(
                           'heading', value)))
 
-        palette.add_block('setxyz',
-                          style='basic-style-3arg',
-                          # TRANS: xyz are coordinates in a 3-dimensional space
-                          label=[_('set xyz') + '\n\n',
-                                 _('x'), _('y'), _('z')],
-                          prim_name='setxyz',
-                          default=[0, 0, 0],
-                          help_string=_('sets the xyz-coordinates of the \
-turtle'))
-        self.tw.lc.def_prim(
-            'setxyz', 3,
-            Primitive(Turtle.set_xyz,
-                      arg_descs=[ArgSlot(TYPE_NUMBER), ArgSlot(TYPE_NUMBER),
-                                 ArgSlot(TYPE_NUMBER)]))
-
         palette.add_block('xcor',
                           style='box-style',
                           label=_('xcor'),
@@ -318,20 +303,6 @@ the turtle (can be used in place of a number block)'),
             'ycor', 0,
             Primitive(Primitive.divide, return_type=TYPE_FLOAT,
                       arg_descs=[ConstantArg(Primitive(Turtle.get_y)),
-                                 ConstantArg(Primitive(
-                                     self.tw.get_coord_scale))]))
-
-        palette.add_block('zcor',
-                          style='box-style',
-                          label=_('zcor'),
-                          help_string=_('holds current z-coordinate value of \
-the turtle (can be used in place of a number block)'),
-                          value_block=True,
-                          prim_name='zcor')
-        self.tw.lc.def_prim(
-            'zcor', 0,
-            Primitive(Primitive.divide, return_type=TYPE_FLOAT,
-                      arg_descs=[ConstantArg(Primitive(Turtle.get_z)),
                                  ConstantArg(Primitive(
                                      self.tw.get_coord_scale))]))
 
