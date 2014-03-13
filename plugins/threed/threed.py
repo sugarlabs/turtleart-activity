@@ -71,6 +71,56 @@ class Threed(Plugin):
                                  ArgSlot(TYPE_NUMBER)],
                       call_afterwards=self.after_move))
 
+        palette.add_block('setp',
+                          style='basic-style-1arg',
+                          label=_('set pitch'),
+                          prim_name='setp',
+                          default=0,
+                          help_string=_('sets the pitch of the turtle (0 is \
+towards the center of the screen (the horizon).)'))
+        self.tw.lc.def_prim(
+            'setp', 1,
+            Primitive(Turtle.set_pitch,
+                      arg_descs=[ArgSlot(TYPE_NUMBER)],
+                      call_afterwards=lambda value: self.after_set(
+                          'pitch', value)))
+
+        palette.add_block('setw',
+                          style='basic-style-1arg',
+                          label=_('set yaw'),
+                          prim_name='setw',
+                          default=0,
+                          help_string=_('sets the yaw of the turtle (0 is \
+perpendicular to the plane of the screen.)'))
+        self.tw.lc.def_prim(
+            'setw', 1,
+            Primitive(Turtle.set_pitch,
+                      arg_descs=[ArgSlot(TYPE_NUMBER)],
+                      call_afterwards=lambda value: self.after_set(
+                          'yaw', value)))
+
+        palette.add_block('pitch_',
+                          style='box-style',
+                          label=_('pitch'),
+                          help_string=_('holds current pitch value of the \
+turtle (can be used in place of a number block)'),
+                          value_block=True,
+                          prim_name='pitch_')
+        self.tw.lc.def_prim('pitch', 0,
+                            Primitive(
+                                Turtle.get_pitch, return_type=TYPE_NUMBER))
+
+        palette.add_block('yaw',
+                          style='box-style',
+                          label=_('yaw'),
+                          help_string=_('holds current yaw value of the \
+turtle (can be used in place of a number block)'),
+                          value_block=True,
+                          prim_name='yaw')
+        self.tw.lc.def_prim('yaw', 0,
+                            Primitive(
+                                Turtle.get_yaw, return_type=TYPE_NUMBER))
+
     def after_move(self, *ignored_args, **ignored_kwargs):
         ''' Update labels after moving the turtle '''
         if self.tw.lc.update_values:
@@ -86,3 +136,9 @@ class Threed(Plugin):
                 'zcor',
                 self.tw.turtles.get_active_turtle().get_xyz()[2] /
                 self.tw.coord_scale)
+
+    def after_set(self, name, value=None):
+        ''' Update the associated value blocks '''
+        if value is not None:
+            if self.tw.lc.update_values:
+                self.tw.lc.update_label_value(name, value)

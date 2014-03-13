@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-#Copyright (c) 2010-13 Walter Bender
+#Copyright (c) 2010-14 Walter Bender
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
 #of this software and associated documentation files (the "Software"), to deal
@@ -26,7 +26,7 @@ import gobject
 import cairo
 
 from random import uniform
-from math import sin, cos, pi, sqrt
+from math import sin, cos, pi, sqrt, radians
 from taconstants import (TURTLE_LAYER, DEFAULT_TURTLE_COLORS, DEFAULT_TURTLE,
                          CONSTANTS, Color, ColorObj)
 from tasprite_factory import SVG, svg_str_to_pixbuf
@@ -147,6 +147,8 @@ class Turtles:
                     self._active_turtle.set_z_scale = 20.
                 self._active_turtle.reset_shapes()
                 self._active_turtle.set_heading(0.0)
+                self._active_turtle.set_pitch(0.0)
+                self._active_turtle.set_yaw(0.0)
                 self._active_turtle.set_pen_state(False)
                 self._active_turtle.move_turtle((0.0, 0.0))
                 self._active_turtle.set_z(0.0)
@@ -183,12 +185,34 @@ class Turtles:
             raise logoerror("#syntaxerror")
         return self.dict[turtle_name].get_heading()
 
+    def get_turtle_roll(self, turtle_name):
+        ''' Rotate about z axis '''
+        return self.get_turtle_heading(turtle_name)
+
+    def get_turtle_pitch(self, turtle_name):
+        ''' Rotate about x axis '''
+        if turtle_name not in self.dict:
+            debug_output('%s not found in turtle dictionary' % (turtle_name),
+                         self.turtle_window.running_sugar)
+            raise logoerror("#syntaxerror")
+        return self.dict[turtle_name].get_pitch()
+
+    def get_turtle_yaw(self, turtle_name):
+        ''' Rotate about y axis '''
+        if turtle_name not in self.dict:
+            debug_output('%s not found in turtle dictionary' % (turtle_name),
+                         self.turtle_window.running_sugar)
+            raise logoerror("#syntaxerror")
+        return self.dict[turtle_name].get_yaw()
+
     def set_turtle(self, turtle_name, colors=None):
         ''' Select the current turtle and associated pen status '''
         if turtle_name not in self.dict:
             # if it is a new turtle, start it in the center of the screen
             self._active_turtle = self.get_turtle(turtle_name, True, colors)
             self._active_turtle.set_heading(0.0, False)
+            self._active_turtle.set_pitch(0.0, False)
+            self._active_turtle.set_yaw(0.0, False)
             self._active_turtle.set_xyz(0.0, 0.0, 0.0,
                                         share=False, pendown=False)
             self._active_turtle.set_pen_state(True)
@@ -233,7 +257,9 @@ class Turtle:
         self._y = 0.0
         self._z = 0.0
         self._z_scale = 100.
-        self._heading = 0.0
+        self._heading = 0.0  # roll
+        self._pitch = 0.0
+        self._yaw = 0.0
         self._half_width = 0
         self._half_height = 0
         self._drag_radius = None
@@ -373,8 +399,31 @@ class Turtle:
                                               round_int(self._heading)]))
             self._turtles.turtle_window.send_event(event)
 
+    def set_pitch(self, pitch, share=True):
+        ''' Set the turtle pitch '''
+        self._pitch = pitch
+        self._pitch %= 360
+
+        # TODO: setup sharing
+        # if self._turtles.turtle_window.sharing() and share:
+            # event = 'r|%s' % (data_to_string(
+            #    [self._turtles.turtle_window.nick, round_int(self._pitch)]))
+            # self._turtles.turtle_window.send_event(event)
+
+    def set_yaw(self, yaw, share=True):
+        ''' Set the turtle yaw '''
+        self._yaw = yaw
+        self._yaw %= 360
+
+        # TODO: setup sharing
+        # if self._turtles.turtle_window.sharing() and share:
+            # event = 'r|%s' % (data_to_string(
+            #    [self._turtles.turtle_window.nick, round_int(self._yaw)]))
+            # self._turtles.turtle_window.send_event(event)
+
     def _update_sprite_heading(self):
         ''' Update the sprite to reflect the current heading '''
+        # TODO: add sprites for pitch and yaw
         i = (int(self._heading + 5) % 360) / (360 / SHAPES)
         if not self._hidden and self.spr is not None:
             try:
@@ -566,6 +615,39 @@ class Turtle:
                     self._poly_points.append(('move', pos1[0], pos1[1]))
                 self._poly_points.append(('line', pos2[0], pos2[1]))
 
+    def _apply_roll(self):
+        temp = []
+        theta = radians(self._heading)
+        temp.append(self._direction[0] * 1.0)
+        temp.append((self._direction[1] * cos(theta)) +
+                    (self._direction[2] * sin(theta)))
+        temp.append((self._direction[1] * -1.0 * sin(theta)) +
+                    (self._direction[2] * cos(theta)))
+        self._direction = temp
+        print 'after roll', self._direction
+ 
+    def _apply_pitch(self):
+        temp = []
+        theta = radians(self._pitch)
+        temp.append((self._direction[0] * cos(theta)) +
+                    (self._direction[2] * -1.0 * sin(theta)))
+        temp.append(self._direction[1] * 1.0)
+        temp.append((self._direction[0] * sin(theta)) +
+                    (self._direction[2] * cos(theta)))
+        self._direction = temp
+        print 'after pitch', self._direction
+ 
+    def _apply_yaw(self):
+        temp = []
+        theta = radians(self._yaw)
+        temp.append((self._direction[0] * cos(theta)) +
+                    (self._direction[1] * sin(theta)))
+        temp.append((self._direction[0] * -1.0 * sin(theta)) +
+                    (self._direction[1] * cos(theta)))
+        temp.append(self._direction[2] * 1.0)
+        self._direction = temp
+        print 'after yaw', self._direction
+
     def forward(self, distance, share=True):
         scaled_distance = distance * self._turtles.turtle_window.coord_scale
 
@@ -573,11 +655,23 @@ class Turtle:
         if self._z > 0.0:
             old[0] = old[0] * ((self._z / self._z_scale) + 1)
             old[1] = old[1] * ((self._z / self._z_scale) + 1)
+        old.append(self._z)
 
-        xcor = old[0] + scaled_distance * sin(self._heading * DEGTOR)
-        ycor = old[1] + scaled_distance * cos(self._heading * DEGTOR)
+        roll = self._heading * DEGTOR  # roll
+        if self._pitch != 0.0 or self._yaw != 0.0:
+            self._direction = [1.0, 0.0, 0.0]
+            self._apply_pitch()
+            self._apply_yaw()
+            self._apply_roll()
+            xcor = old[0] + scaled_distance * self._direction[0]
+            ycor = old[1] + scaled_distance * self._direction[1]
+            zcor = old[2] + scaled_distance * self._direction[2]
+        else:
+            xcor = old[0] + scaled_distance * sin(roll)
+            ycor = old[1] + scaled_distance * cos(roll)
+            zcor = old[2]
 
-        self.set_xy(xcor, ycor, share)
+        self.set_xyz(xcor, ycor, zcor, share)
 
         if self._turtles.turtle_window.sharing() and share:
             event = 'f|%s' % (data_to_string([self._turtles.turtle_window.nick,
@@ -769,6 +863,15 @@ class Turtle:
 
     def get_heading(self):
         return self._heading
+
+    def get_roll(self):
+        return self._heading
+
+    def get_pitch(self):
+        return self._pitch
+
+    def get_yaw(self):
+        return self._yaw
 
     def get_color(self):
         return self._pen_color

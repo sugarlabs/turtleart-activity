@@ -20,6 +20,26 @@
 #OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 #THE SOFTWARE.
 
+'''
+The basic idea is to generate SVG for the various blocks used in
+Turtle Art and a few other things, like the turtle itself. There is an
+SVG class and then lots of properties to manipulate.
+
+There are several different classes of shapes and a comment set of
+attributes thfor example, there are methods to generate corners, tabs
+and slots for vertical docking of blocks, "innies" and "outies" for
+horizontal docking of blocks, "clamps" for nesting blocks.
+
+Two additional complexities are expandable regions and dock positions:
+there are regions within some blocks that expand so that the block can
+grow in one dimension without distorting, so, for example, the clamp
+in a repeat block can grow (or shrink) to accommodate the nesting of a
+larger or smaller stack of blocks to repeat; dock positions are used
+to keep track of the absolute position of the tabs, slots, innies and
+outies so that the method that does the docking knows where to
+position blocks.
+'''
+
 import pygtk
 pygtk.require('2.0')
 import gtk
@@ -1494,6 +1514,7 @@ def generator(datapath):
     f.write(svg_str)
     close_file(f)
 
+    '''
     svg = SVG()
     f = open_file(datapath, "clamp.svg")
     svg.set_scale(2)
@@ -1504,8 +1525,8 @@ def generator(datapath):
     svg_str = svg.clamp()
     f.write(svg_str)
     close_file(f)
-    '''
 
+    '''
     svg = SVG()
     f = open_file(datapath, "clampn.svg")
     svg.set_scale(2)
@@ -1518,7 +1539,6 @@ def generator(datapath):
     f.write(svg_str)
     close_file(f)
 
-    '''
     svg = SVG()
     f = open_file(datapath, "clampe.svg")
     svg.set_scale(2)
@@ -1530,7 +1550,6 @@ def generator(datapath):
     svg_str = svg.clamp()
     f.write(svg_str)
     close_file(f)
-    '''
 
     svg = SVG()
     f = open_file(datapath, "clampb.svg")
@@ -1555,6 +1574,7 @@ def generator(datapath):
     svg_str = svg.clamp_until()
     f.write(svg_str)
     close_file(f)
+    '''
 
 
 def main():
