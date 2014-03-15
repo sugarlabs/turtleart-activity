@@ -185,7 +185,7 @@ class Block:
         trash -- block in the trash """
 
     def __init__(self, block_list, sprite_list, name, x, y, type='block',
-                 values=None, scale=BLOCK_SCALE[0],
+                 values=None, scale=BLOCK_SCALE[3],
                  colors=['#A0A0A0', '#808080']):
 
         self.block_list = block_list
@@ -372,7 +372,7 @@ class Block:
         if self.spr is None:
             return
         dx = (self.spr.label_width() - self.spr.label_safe_width()) / \
-             self.scale
+            self.scale
         if self.dx + dx >= self.block_list.max_width and self.name == 'string':
             self.dx = self.block_list.max_width
             self.refresh()
