@@ -2045,12 +2045,12 @@ class TurtleArtWindow():
             if defaults is None:
                 defaults = default_values[name]
             newblk = Block(self.block_list, self.sprite_list, name, x_pos,
-                           y_pos, 'block', defaults, BLOCK_SCALE[3])
+                           y_pos, 'block', defaults)
             if self.block_scale != BLOCK_SCALE[3]:
                 newblk.rescale(self.block_scale)
         else:
             newblk = Block(self.block_list, self.sprite_list, name, x_pos,
-                           y_pos, 'block', [], BLOCK_SCALE[3])
+                           y_pos, 'block', [])
             if self.block_scale != BLOCK_SCALE[3]:
                 newblk.rescale(self.block_scale)
 
@@ -2098,14 +2098,12 @@ class TurtleArtWindow():
                 if argname is not None:
                     if argname in content_blocks:
                         argblk = Block(self.block_list, self.sprite_list,
-                                       argname, 0, 0, 'block', [argvalue],
-                                       BLOCK_SCALE[3])
+                                       argname, 0, 0, 'block', [argvalue])
                         if self.block_scale != BLOCK_SCALE[3]:
                             argblk.rescale(self.block_scale)
                     else:
                         argblk = Block(self.block_list, self.sprite_list,
-                                       argname, 0, 0, 'block', [],
-                                       BLOCK_SCALE[3])
+                                       argname, 0, 0, 'block', [])
                         if self.block_scale != BLOCK_SCALE[3]:
                             argblk.rescale(self.block_scale)
                     argdock = argblk.docks[0]
@@ -2823,7 +2821,7 @@ class TurtleArtWindow():
                 argvalue = default_values[blk.name][
                     len(default_values[blk.name]) - 1]
                 argblk = Block(self.block_list, self.sprite_list, argname,
-                               0, 0, 'block', [argvalue], BLOCK_SCALE[3])
+                               0, 0, 'block', [argvalue])
                 if self.block_scale != BLOCK_SCALE[3]:
                     argblk.rescale(self.block_scale)
                 argdock = argblk.docks[0]
@@ -3928,8 +3926,7 @@ class TurtleArtWindow():
             btype = OLD_NAMES[btype]
 
         blk = Block(self.block_list, self.sprite_list, btype,
-                    b[2] + offset, b[3] + offset,
-                    'block', values, BLOCK_SCALE[3])
+                    b[2] + offset, b[3] + offset, 'block', values)
         if self.block_scale != BLOCK_SCALE[3]:
             blk.rescale(self.block_scale)
 
