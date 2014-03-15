@@ -28,7 +28,7 @@ import traceback
 
 from tablock import Media
 from tacanvas import TurtleGraphics
-from taconstants import (Color, CONSTANTS)
+from taconstants import (Color, CONSTANTS, ColorObj)
 from talogo import (LogoCode, logoerror, NegativeRootError)
 from taturtle import (Turtle, Turtles)
 from TurtleArt.tatype import (TYPE_CHAR, TYPE_INT, TYPE_FLOAT, TYPE_OBJECT,
@@ -761,17 +761,29 @@ class Primitive(object):
     @staticmethod
     def equals(arg1, arg2):
         """ Return arg1 == arg2 """
-        return arg1 == arg2
+        # See comment in tatype.py TYPE_BOX -> TYPE_COLOR
+        if isinstance(arg1, ColorObj) or isinstance(arg2, ColorObj):
+            return str(arg1) == str(arg2)
+        else:
+            return arg1 == arg2
 
     @staticmethod
     def less(arg1, arg2):
         """ Return arg1 < arg2 """
-        return arg1 < arg2
+        # See comment in tatype.py TYPE_BOX -> TYPE_COLOR
+        if isinstance(arg1, ColorObj) or isinstance(arg2, ColorObj):
+            return float(arg1) < float(arg2)
+        else:
+            return arg1 < arg2
 
     @staticmethod
     def greater(arg1, arg2):
         """ Return arg1 > arg2 """
-        return arg1 > arg2
+        # See comment in tatype.py TYPE_BOX -> TYPE_COLOR
+        if isinstance(arg1, ColorObj) or isinstance(arg2, ColorObj):
+            return float(arg1) > float(arg2)
+        else:
+            return arg1 > arg2
 
     @staticmethod
     def comment(text):

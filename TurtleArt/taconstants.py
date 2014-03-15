@@ -156,18 +156,28 @@ class ColorObj(object):
         self.color = color
 
     def __int__(self):
-        if self.color.color is None:
-            return int(self.color.shade)
+        if hasattr(self.color, 'color'):
+            if self.color.color is None:
+                return int(self.color.shade)
+            else:
+                return int(self.color.color)
         else:
-            return int(self.color.color)
+            return int(self.color)
 
     def __float__(self):
-        return float(int(self))
+        if hasattr(self.color, 'color'):
+            return float(int(self))
+        else:
+            return float(self.color)
 
     def __str__(self):
+        if isinstance(self.color, (float, int, bool)):
+            return str(self.color)
         return str(self.color.name)
 
     def __repr__(self):
+        if isinstance(self.color, (float, int, bool)):
+            return str(self.color)
         return str(self.color.name)
 
 
