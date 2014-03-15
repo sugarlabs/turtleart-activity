@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-05 00:30-0500\n"
-"PO-Revision-Date: 2013-12-16 19:19+0200\n"
+"POT-Creation-Date: 2014-01-07 00:30-0500\n"
+"PO-Revision-Date: 2014-03-10 15:47+0200\n"
 "Last-Translator: Aputsiaq Niels <aj@isit.gl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: da\n"
@@ -39,14 +39,14 @@ msgid "Palette of turtle commands"
 msgstr "Palette af kommandoer for skildpadde"
 
 #: TurtleArt/tabasics.py:156
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:775
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:784
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:780
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:849
 msgid "turtle"
 msgstr "skildpadde"
 
 #: TurtleArt/tabasics.py:160
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:734
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:747
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:860
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:873
 msgid "forward"
 msgstr "fremad"
 
@@ -70,8 +70,8 @@ msgstr "rens"
 msgid "clears the screen and reset the turtle"
 msgstr "rydder skærmen og nulstiller skildpadden"
 
-#: TurtleArt/tabasics.py:207 TurtleArt/taconstants.py:138
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:973
+#: TurtleArt/tabasics.py:207 TurtleArt/taconstants.py:139
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:991
 msgid "left"
 msgstr "venstre"
 
@@ -79,8 +79,8 @@ msgstr "venstre"
 msgid "turns turtle counterclockwise (angle in degrees)"
 msgstr "drejer skildpadde mod uret (vinkel i grader)"
 
-#: TurtleArt/tabasics.py:221 TurtleArt/taconstants.py:140
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1006
+#: TurtleArt/tabasics.py:221 TurtleArt/taconstants.py:141
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1024
 msgid "right"
 msgstr "højre"
 
@@ -130,7 +130,7 @@ msgstr "indstil retning"
 msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
 msgstr "sætter retningen for skildpadden (0 er mod toppen af skærmen.)"
 
-#: TurtleArt/tabasics.py:281 TurtleArt/tawindow.py:4452
+#: TurtleArt/tabasics.py:281 TurtleArt/tawindow.py:4511
 msgid "xcor"
 msgstr "x-kor"
 
@@ -142,7 +142,7 @@ msgstr ""
 "holder aktuel x-koordinat-værdi for skildpadden (kan anvendes i stedet for "
 "en talblok)"
 
-#: TurtleArt/tabasics.py:296 TurtleArt/tawindow.py:4453
+#: TurtleArt/tabasics.py:296 TurtleArt/tawindow.py:4512
 msgid "ycor"
 msgstr "y-kor"
 
@@ -154,7 +154,7 @@ msgstr ""
 "holder aktuel y-koordinat-værdi for skildpadde (kan anvendes i stedet for en "
 "talblok)"
 
-#: TurtleArt/tabasics.py:311 TurtleArt/tawindow.py:4453
+#: TurtleArt/tabasics.py:311 TurtleArt/tawindow.py:4512
 msgid "heading"
 msgstr "bevæger sig mod"
 
@@ -179,13 +179,13 @@ msgid "fill screen"
 msgstr "fyld skærm"
 
 #: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:369
-#: TurtleArt/tabasics.py:432 TurtleArt/tawindow.py:4483
+#: TurtleArt/tabasics.py:432 TurtleArt/tawindow.py:4542
 msgid "color"
 msgstr "farve"
 
 #: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:370
-#: TurtleArt/tabasics.py:444 TurtleArt/tawindow.py:4479
-#: TurtleArt/tawindow.py:4484
+#: TurtleArt/tabasics.py:444 TurtleArt/tawindow.py:4538
+#: TurtleArt/tawindow.py:4543
 msgid "shade"
 msgstr "skygge"
 
@@ -194,7 +194,7 @@ msgid "fills the background with (color, shade)"
 msgstr "udfylder baggrunden med (farve, skygge)"
 
 #: TurtleArt/tabasics.py:370 TurtleArt/tabasics.py:454
-#: TurtleArt/tawindow.py:4480 TurtleArt/tawindow.py:4485
+#: TurtleArt/tawindow.py:4539 TurtleArt/tawindow.py:4544
 msgid "gray"
 msgstr "grå"
 
@@ -597,9 +597,9 @@ msgstr "streng-værdi"
 
 #: TurtleArt/tabasics.py:1030 TurtleArt/tabasics.py:1033
 #: TurtleArt/tabasics.py:1046 TurtleArt/tabasics.py:1050
-#: TurtleArt/tawindow.py:1577 TurtleArt/tawindow.py:1676
-#: TurtleArt/tawindow.py:1689 TurtleArt/tawindow.py:2330
-#: TurtleArt/tawindow.py:4785
+#: TurtleArt/tawindow.py:1578 TurtleArt/tawindow.py:1688
+#: TurtleArt/tawindow.py:1701 TurtleArt/tawindow.py:2342
+#: TurtleArt/tawindow.py:4993
 msgid "action"
 msgstr "handling"
 
@@ -607,7 +607,7 @@ msgstr "handling"
 msgid "top of nameable action stack"
 msgstr "top af handlingsstak som kan navngives"
 
-#: TurtleArt/tabasics.py:1051 TurtleArt/tawindow.py:4798
+#: TurtleArt/tabasics.py:1051 TurtleArt/tawindow.py:5006
 msgid "invokes named action stack"
 msgstr "påberåber navngiven handlingsstak"
 
@@ -643,7 +643,7 @@ msgstr "boks 2"
 msgid "Variable 2 (numeric value)"
 msgstr "Variabel 2 (numerisk værdi)"
 
-#: TurtleArt/tabasics.py:1114 TurtleArt/tawindow.py:4847
+#: TurtleArt/tabasics.py:1114 TurtleArt/tawindow.py:5055
 msgid "store in"
 msgstr "gem i"
 
@@ -651,22 +651,22 @@ msgstr "gem i"
 msgid "box"
 msgstr "boks"
 
-#: TurtleArt/tabasics.py:1114 TurtleArt/tawindow.py:4847
+#: TurtleArt/tabasics.py:1114 TurtleArt/tawindow.py:5055
 msgid "value"
 msgstr "værdi"
 
 #: TurtleArt/tabasics.py:1118 TurtleArt/tabasics.py:1133
-#: TurtleArt/tawindow.py:1581 TurtleArt/tawindow.py:1715
-#: TurtleArt/tawindow.py:2334 TurtleArt/tawindow.py:4812
-#: TurtleArt/tawindow.py:4839
+#: TurtleArt/tawindow.py:1582 TurtleArt/tawindow.py:1727
+#: TurtleArt/tawindow.py:2346 TurtleArt/tawindow.py:5020
+#: TurtleArt/tawindow.py:5047
 msgid "my box"
 msgstr "min boks"
 
-#: TurtleArt/tabasics.py:1119 TurtleArt/tawindow.py:4852
+#: TurtleArt/tabasics.py:1119 TurtleArt/tawindow.py:5060
 msgid "stores numeric value in named variable"
 msgstr "lagrer numerisk værdi i en navngivet variabel"
 
-#: TurtleArt/tabasics.py:1136 TurtleArt/tawindow.py:4825
+#: TurtleArt/tabasics.py:1136 TurtleArt/tawindow.py:5033
 msgid "named variable (numeric value)"
 msgstr "navngiven variabel (numerisk værdi)"
 
@@ -695,11 +695,11 @@ msgid "invokes Action 2 stack"
 msgstr "kalder Handling 2 stak"
 
 #: TurtleArt/tabasics.py:1194 TurtleArt/tabasics.py:1195
-#: TurtleArt/tapalette.py:137 TurtleArt/tapalette.py:138
+#: TurtleArt/tapalette.py:138 TurtleArt/tapalette.py:139
 msgid "trash"
 msgstr "papirkurv"
 
-#: TurtleArt/tabasics.py:1199 TurtleArt/tawindow.py:2203
+#: TurtleArt/tabasics.py:1199 TurtleArt/tawindow.py:2215
 msgid "empty trash"
 msgstr "tøm papirkurv"
 
@@ -723,66 +723,66 @@ msgstr "ryd alt"
 msgid "move all blocks to trash"
 msgstr "flyt alle blokke til papirkurv"
 
-#: TurtleArt/tacollaboration.py:152 TurtleArt/tawindow.py:2308
-#: TurtleArtActivity.py:892
+#: TurtleArt/tacollaboration.py:152 TurtleArt/tawindow.py:2320
+#: TurtleArtActivity.py:920
 msgid "Share selected blocks"
 msgstr "Del valgte blokke"
 
-#: TurtleArt/taconstants.py:139
+#: TurtleArt/taconstants.py:140
 msgid "up"
 msgstr "op"
 
-#: TurtleArt/taconstants.py:141
+#: TurtleArt/taconstants.py:142
 msgid "down"
 msgstr "ned"
 
-#: TurtleArt/taconstants.py:142
+#: TurtleArt/taconstants.py:143
 msgid "backspace"
 msgstr "tilbagetasten"
 
-#: TurtleArt/taconstants.py:143
+#: TurtleArt/taconstants.py:144
 msgid "tab"
 msgstr "tabulator"
 
 #. TRANS: enter is the name of the enter (or return) key
-#: TurtleArt/taconstants.py:145
+#: TurtleArt/taconstants.py:146
 msgid "enter"
 msgstr "enter"
 
 #. TRANS: space is the name of the space key
-#: TurtleArt/taconstants.py:148
+#: TurtleArt/taconstants.py:149
 msgid "space"
 msgstr "mellemrumstast"
 
-#: TurtleArt/taconstants.py:149
+#: TurtleArt/taconstants.py:150
 msgid "delete"
 msgstr "delete"
 
-#: TurtleArt/taconstants.py:362 TurtleArt/taconstants.py:383
-#: TurtleArt/taconstants.py:403 TurtleArt/taconstants.py:444
-#: TurtleArt/taconstants.py:485 TurtleArt/taconstants.py:526
+#: TurtleArt/taconstants.py:363 TurtleArt/taconstants.py:384
+#: TurtleArt/taconstants.py:404 TurtleArt/taconstants.py:445
+#: TurtleArt/taconstants.py:486 TurtleArt/taconstants.py:527
 msgid "Title"
 msgstr "Titel"
 
-#: TurtleArt/taexportpython.py:194
+#: TurtleArt/taexportpython.py:198
 msgid "block is not exportable"
 msgstr "blokken kan ikke eksporteres"
 
-#: TurtleArt/taexportpython.py:213
+#: TurtleArt/taexportpython.py:217
 msgid "error while exporting block"
 msgstr "fejl under eksport af blok"
 
-#: TurtleArt/talogo.py:383 TurtleArt/tawindow.py:1538 TurtleArtActivity.py:873
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1302
+#: TurtleArt/talogo.py:383 TurtleArt/tawindow.py:1539 TurtleArtActivity.py:901
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1320
 msgid "Stop turtle"
 msgstr "Stop skildpadde"
 
-#: TurtleArt/talogo.py:393 TurtleArtActivity.py:489 TurtleArtActivity.py:874
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1293
+#: TurtleArt/talogo.py:393 TurtleArtActivity.py:517 TurtleArtActivity.py:902
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1311
 msgid "Show blocks"
 msgstr "Vis blokke"
 
-#: TurtleArt/talogo.py:397 TurtleArtActivity.py:493 TurtleArtActivity.py:1172
+#: TurtleArt/talogo.py:397 TurtleArtActivity.py:521 TurtleArtActivity.py:1247
 msgid "Hide blocks"
 msgstr "Skjul blokke"
 
@@ -790,11 +790,11 @@ msgstr "Skjul blokke"
 msgid "did not output to"
 msgstr "gav ikke uddata til"
 
-#: TurtleArt/talogo.py:577 TurtleArt/talogo.py:948
+#: TurtleArt/talogo.py:577 TurtleArt/talogo.py:960
 msgid "doesn't like"
 msgstr "kan ikke lide"
 
-#: TurtleArt/talogo.py:578 TurtleArt/talogo.py:949
+#: TurtleArt/talogo.py:578 TurtleArt/talogo.py:961
 msgid "as input"
 msgstr "som inddata"
 
@@ -802,11 +802,11 @@ msgstr "som inddata"
 msgid "I don't know how to"
 msgstr "Jeg ved ikke hvordan"
 
-#: TurtleArt/tapalette.py:97
+#: TurtleArt/tapalette.py:98
 msgid "displays next palette"
 msgstr "viser næste palette"
 
-#: TurtleArt/tapalette.py:98
+#: TurtleArt/tapalette.py:99
 msgid "changes the orientation of the palette of blocks"
 msgstr "ændrer retningen for paletten af blokke"
 
@@ -837,62 +837,66 @@ msgid "Save..."
 msgstr "Gem..."
 
 #: TurtleArt/tautils.py:591
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:860
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:839
 msgid "click to open"
 msgstr "klik for at åbne"
 
-#: TurtleArt/tawindow.py:1207 TurtleArt/tawindow.py:1208
+#: TurtleArt/tawindow.py:1208 TurtleArt/tawindow.py:1209
 msgid "orientation"
 msgstr "retning"
 
-#: TurtleArt/tawindow.py:1222 TurtleArt/tawindow.py:1872
+#: TurtleArt/tawindow.py:1223 TurtleArt/tawindow.py:1884
 msgid "next"
 msgstr "næste"
 
-#: TurtleArt/tawindow.py:1261 TurtleArt/tawindow.py:1893
+#: TurtleArt/tawindow.py:1262 TurtleArt/tawindow.py:1905
 msgid "shift"
 msgstr "skift"
 
-#: TurtleArt/tawindow.py:1542
+#: TurtleArt/tawindow.py:1543
 msgid "Please hit the Stop Button before making changes to your program"
 msgstr "Tryk venligst Stop-knappen før du laver ændringer i dit programmet"
 
-#: TurtleArt/tawindow.py:1595
+#: TurtleArt/tawindow.py:1596
 msgid "Select blocks to share"
 msgstr "Vælg blokke som skal deles"
 
-#: TurtleArt/tawindow.py:1760 TurtleArtActivity.py:774
-#: TurtleArtActivity.py:921 turtleblocks.py:462
+#: TurtleArt/tawindow.py:1772 TurtleArtActivity.py:802
+#: TurtleArtActivity.py:961 turtleblocks.py:473
 msgid "Save stack"
 msgstr "Gem stak"
 
-#: TurtleArt/tawindow.py:1761 TurtleArt/tawindow.py:1775
+#: TurtleArt/tawindow.py:1773 TurtleArt/tawindow.py:1787
 msgid "Really overwrite stack?"
 msgstr "Sikker på at du vil overskrive stak?"
 
-#: TurtleArt/tawindow.py:1764 TurtleArt/tawindow.py:1803
+#: TurtleArt/tawindow.py:1776 TurtleArt/tawindow.py:1815
 #: gnome_plugins/uploader_plugin.py:144
 msgid "Cancel"
 msgstr "Annullér"
 
-#: TurtleArt/tawindow.py:1768 TurtleArt/tawindow.py:1778
+#: TurtleArt/tawindow.py:1780 TurtleArt/tawindow.py:1790
 msgid "Overwrite stack"
 msgstr "Overskriv stak"
 
-#: TurtleArt/tawindow.py:1799 TurtleArt/tawindow.py:1807
-#: TurtleArt/tawindow.py:1816 TurtleArtActivity.py:776 turtleblocks.py:464
+#: TurtleArt/tawindow.py:1811 TurtleArt/tawindow.py:1819
+#: TurtleArt/tawindow.py:1828 TurtleArtActivity.py:804 turtleblocks.py:475
 msgid "Delete stack"
 msgstr "Slet stak"
 
-#: TurtleArt/tawindow.py:1800 TurtleArt/tawindow.py:1813
+#: TurtleArt/tawindow.py:1812 TurtleArt/tawindow.py:1825
 msgid "Really delete stack?"
 msgstr "Sikker på at du vil slette stak?"
 
-#: TurtleArt/tawindow.py:2204
+#: TurtleArt/tawindow.py:2216
 msgid "Do you really want to empty the trash?"
 msgstr "Sikker på at du vil tømme papirkurven?"
 
-#: TurtleArt/tawindow.py:4634
+#: TurtleArt/tawindow.py:4735 turtleblocks.py:439
+msgid "icon"
+msgstr "ikon"
+
+#: TurtleArt/tawindow.py:4842 turtleblocks.py:437
 msgid "image"
 msgstr "billede"
 
@@ -904,198 +908,206 @@ msgstr "Vent venligst"
 msgid "Starting connection..."
 msgstr "Etablerer forbindelse ..."
 
-#: TurtleArtActivity.py:367
+#: TurtleArtActivity.py:394
 msgid "snapshot"
 msgstr "øjebliksbillede"
 
-#: TurtleArtActivity.py:422 TurtleArtActivity.py:799 TurtleArtActivity.py:948
+#: TurtleArtActivity.py:450 TurtleArtActivity.py:827 TurtleArtActivity.py:988
 msgid "Turn off hover help"
 msgstr "Slå svæve-hjælp fra"
 
-#: TurtleArtActivity.py:431 turtleblocks.py:455
+#: TurtleArtActivity.py:459 turtleblocks.py:466
 msgid "Turn on hover help"
 msgstr "Slå svæve-hjælp til"
 
-#: TurtleArtActivity.py:441 turtleblocks.py:469
+#: TurtleArtActivity.py:469 turtleblocks.py:480
 msgid "Show palette"
 msgstr "Vis palette"
 
-#: TurtleArtActivity.py:447 TurtleArtActivity.py:1160 turtleblocks.py:471
+#: TurtleArtActivity.py:475 TurtleArtActivity.py:1235 turtleblocks.py:482
 msgid "Hide palette"
 msgstr "Skjul palette"
 
-#: TurtleArtActivity.py:615
+#: TurtleArtActivity.py:643
 msgid "Rescale coordinates down"
 msgstr "Gentag nedskalering af koordinater"
 
-#: TurtleArtActivity.py:624 TurtleArtActivity.py:790 TurtleArtActivity.py:944
+#: TurtleArtActivity.py:652 TurtleArtActivity.py:818 TurtleArtActivity.py:984
 msgid "Rescale coordinates up"
 msgstr "Gentag opskalering af koordinater"
 
-#: TurtleArtActivity.py:722 TurtleArtActivity.py:757 TurtleArtActivity.py:867
-#: TurtleArtActivity.py:918 turtleblocks.py:466
+#: TurtleArtActivity.py:750 TurtleArtActivity.py:785 TurtleArtActivity.py:895
+#: TurtleArtActivity.py:958 turtleblocks.py:477
 msgid "Edit"
 msgstr "Redigér"
 
-#: TurtleArtActivity.py:727 TurtleArtActivity.py:755 TurtleArtActivity.py:868
-#: TurtleArtActivity.py:936 turtleblocks.py:457
+#: TurtleArtActivity.py:755 TurtleArtActivity.py:783 TurtleArtActivity.py:896
+#: TurtleArtActivity.py:976 turtleblocks.py:468
 msgid "View"
 msgstr "Vis"
 
-#: TurtleArtActivity.py:753 TurtleArtActivity.py:869
+#: TurtleArtActivity.py:781 TurtleArtActivity.py:897
 msgid "Project"
 msgstr "Projekt"
 
-#: TurtleArtActivity.py:759 TurtleArtActivity.py:866 TurtleArtActivity.py:893
+#: TurtleArtActivity.py:787 TurtleArtActivity.py:894 TurtleArtActivity.py:921
 msgid "Save/Load"
 msgstr "Gem/Indlæs"
 
-#: TurtleArtActivity.py:767 TurtleArtActivity.py:919 turtleblocks.py:460
+#: TurtleArtActivity.py:795 TurtleArtActivity.py:959 turtleblocks.py:471
 msgid "Copy"
 msgstr "Kopiér"
 
-#: TurtleArtActivity.py:769 TurtleArtActivity.py:920 turtleblocks.py:461
+#: TurtleArtActivity.py:797 TurtleArtActivity.py:960 turtleblocks.py:472
 msgid "Paste"
 msgstr "Indsæt"
 
-#: TurtleArtActivity.py:771
+#: TurtleArtActivity.py:799
 msgid "Restore blocks from trash"
 msgstr "Genskab blokke fra papirkurv"
 
-#: TurtleArtActivity.py:779 TurtleArtActivity.py:937
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:907
+#: TurtleArtActivity.py:807 TurtleArtActivity.py:977
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:925
 msgid "Fullscreen"
 msgstr "Fuldskærm"
 
-#: TurtleArtActivity.py:782 TurtleArtActivity.py:938 turtleblocks.py:441
+#: TurtleArtActivity.py:810 TurtleArtActivity.py:978 turtleblocks.py:452
 msgid "Cartesian coordinates"
 msgstr "Cartesianske koordinater"
 
-#: TurtleArtActivity.py:784 TurtleArtActivity.py:940 turtleblocks.py:443
+#: TurtleArtActivity.py:812 TurtleArtActivity.py:980 turtleblocks.py:454
 msgid "Polar coordinates"
 msgstr "Polære koordinater"
 
-#: TurtleArtActivity.py:787 TurtleArtActivity.py:942
+#: TurtleArtActivity.py:815 TurtleArtActivity.py:982
 msgid "Metric coordinates"
 msgstr "Metriske koordinater"
 
-#: TurtleArtActivity.py:793 TurtleArtActivity.py:946 turtleblocks.py:448
+#: TurtleArtActivity.py:821 TurtleArtActivity.py:986 turtleblocks.py:459
 msgid "Grow blocks"
 msgstr "Øg blokke"
 
-#: TurtleArtActivity.py:796 TurtleArtActivity.py:947 turtleblocks.py:450
+#: TurtleArtActivity.py:824 TurtleArtActivity.py:987 turtleblocks.py:461
 msgid "Shrink blocks"
 msgstr "Mindsk blokke"
 
-#: TurtleArtActivity.py:824 TurtleArtActivity.py:837 TurtleArtActivity.py:875
-#: TurtleArtActivity.py:1102
+#: TurtleArtActivity.py:852 TurtleArtActivity.py:865 TurtleArtActivity.py:903
+#: TurtleArtActivity.py:1163
 msgid "Load example"
 msgstr "Indlæs eksempel"
 
-#: TurtleArtActivity.py:870 TurtleArtActivity.py:1166 turtleblocks.py:478
+#: TurtleArtActivity.py:898 TurtleArtActivity.py:1241 turtleblocks.py:489
 msgid "Clean"
 msgstr "Rens"
 
-#: TurtleArtActivity.py:871 TurtleArtActivity.py:1168 turtleblocks.py:479
+#: TurtleArtActivity.py:899 TurtleArtActivity.py:1243 turtleblocks.py:490
 msgid "Run"
 msgstr "Kør"
 
-#: TurtleArtActivity.py:872 TurtleArtActivity.py:1170 turtleblocks.py:480
+#: TurtleArtActivity.py:900 TurtleArtActivity.py:1245 turtleblocks.py:491
 msgid "Step"
 msgstr "Trin"
 
-#: TurtleArtActivity.py:876 turtleblocks.py:487 util/helpbutton.py:44
+#: TurtleArtActivity.py:904 turtleblocks.py:498 util/helpbutton.py:44
 msgid "Help"
 msgstr "Hjælp"
 
-#: TurtleArtActivity.py:877 turtleblocks.py:482
+#: TurtleArtActivity.py:905 turtleblocks.py:493
 msgid "Stop"
 msgstr "Stop"
 
-#: TurtleArtActivity.py:894 TurtleArtActivity.py:1077
-#: TurtleArtActivity.py:1125 turtleblocks.py:431
+#: TurtleArtActivity.py:922 TurtleArtActivity.py:1125
+#: TurtleArtActivity.py:1186
 msgid "Save as image"
 msgstr "Gem som billede"
 
-#: TurtleArtActivity.py:895 TurtleArtActivity.py:1080
-#: TurtleArtActivity.py:1128 turtleblocks.py:433
+#: TurtleArtActivity.py:925 TurtleArtActivity.py:1128
+#: TurtleArtActivity.py:1189
+msgid "Save as icon"
+msgstr "Gem som ikon"
+
+#. TRANS: ODP is Open Office presentation
+#: TurtleArtActivity.py:930 TurtleArtActivity.py:1132
+#: TurtleArtActivity.py:1193
+msgid "Save as ODP"
+msgstr "Gem som ODP"
+
+#: TurtleArtActivity.py:935 TurtleArtActivity.py:1141
+#: TurtleArtActivity.py:1202
 msgid "Save as Logo"
 msgstr "Gem som Logo"
 
-#: TurtleArtActivity.py:896 TurtleArtActivity.py:1083
-#: TurtleArtActivity.py:1131 turtleblocks.py:435
+#: TurtleArtActivity.py:936 TurtleArtActivity.py:1144
+#: TurtleArtActivity.py:1205
 msgid "Save as Python"
 msgstr "Gem som Python"
 
-#: TurtleArtActivity.py:897 TurtleArtActivity.py:1087
-#: TurtleArtActivity.py:1135
+#: TurtleArtActivity.py:937 TurtleArtActivity.py:1148
+#: TurtleArtActivity.py:1209
 msgid "Save snapshot"
 msgstr "Gem øjebliksbillede"
 
-#: TurtleArtActivity.py:898 TurtleArtActivity.py:1111
-msgid "Load project"
-msgstr "Indlæs projekt"
-
-#: TurtleArtActivity.py:901 TurtleArtActivity.py:1116
-#: TurtleArtActivity.py:1142 turtleblocks.py:427
-msgid "Load plugin"
-msgstr "Indlæs udvidelsesmodul"
-
-#: TurtleArtActivity.py:902 TurtleArtActivity.py:1119
-#: TurtleArtActivity.py:1145
-msgid "Load Python block"
-msgstr "Indlæs Python-blok"
-
-#: TurtleArtActivity.py:1049
-msgid "Palettes"
-msgstr "Paletter"
-
-#: TurtleArtActivity.py:1067
-msgid "Sharing blocks disabled"
-msgstr "Deling af blokke er slået fra"
-
-#: TurtleArtActivity.py:1072 turtleblocks.py:429
-msgid "Save"
-msgstr "Gem"
-
-#: TurtleArtActivity.py:1091
-msgid "Load"
-msgstr "Indlæs"
-
-#: TurtleArtActivity.py:1108 turtleblocks.py:425
-msgid "Open"
-msgstr "Åbn"
-
-#: TurtleArtActivity.py:1137 turtleblocks.py:426
+#: TurtleArtActivity.py:938 TurtleArtActivity.py:1172
+#: TurtleArtActivity.py:1211 turtleblocks.py:426
 msgid "Add project"
 msgstr "Tilføj projekt"
 
-#: TurtleArtActivity.py:1161
+#: TurtleArtActivity.py:941 TurtleArtActivity.py:1177
+#: TurtleArtActivity.py:1217 turtleblocks.py:427
+msgid "Load plugin"
+msgstr "Indlæs udvidelsesmodul"
+
+#: TurtleArtActivity.py:942 TurtleArtActivity.py:1180
+#: TurtleArtActivity.py:1220
+msgid "Load Python block"
+msgstr "Indlæs Python-blok"
+
+#: TurtleArtActivity.py:1097
+msgid "Palettes"
+msgstr "Paletter"
+
+#: TurtleArtActivity.py:1115
+msgid "Sharing blocks disabled"
+msgstr "Deling af blokke er slået fra"
+
+#: TurtleArtActivity.py:1120 turtleblocks.py:429
+msgid "Save"
+msgstr "Gem"
+
+#: TurtleArtActivity.py:1152
+msgid "Load"
+msgstr "Indlæs"
+
+#: TurtleArtActivity.py:1169 turtleblocks.py:425
+msgid "Open"
+msgstr "Åbn"
+
+#: TurtleArtActivity.py:1236
 msgid "<Ctrl>p"
 msgstr "<Ctrl>p"
 
-#: TurtleArtActivity.py:1166
+#: TurtleArtActivity.py:1241
 msgid "<Ctrl>e"
 msgstr "<Ctrl>e"
 
-#: TurtleArtActivity.py:1168
+#: TurtleArtActivity.py:1243
 msgid "<Ctrl>r"
 msgstr "<Ctrl>r"
 
-#: TurtleArtActivity.py:1170
+#: TurtleArtActivity.py:1245
 msgid "<Ctrl>w"
 msgstr "<Ctrl>w"
 
-#: TurtleArtActivity.py:1173
+#: TurtleArtActivity.py:1248
 msgid "<Ctrl>s"
 msgstr "<Ctrl>s"
 
-#: TurtleArtActivity.py:1352
+#: TurtleArtActivity.py:1427
 #, python-format
 msgid "Plugin %s already installed."
 msgstr "Udvidelsesmodulet %s er allerede installeret."
 
-#: TurtleArtActivity.py:1353 turtleblocks.py:547
+#: TurtleArtActivity.py:1428 turtleblocks.py:559
 #, python-format
 #, python-format,
 msgid "Do you want to reinstall %s?"
@@ -1199,11 +1211,11 @@ msgstr "Beskrivelse:"
 msgid "Submit to Web"
 msgstr "Indsend til nettet"
 
-#: gnome_plugins/uploader_plugin.py:166
+#: gnome_plugins/uploader_plugin.py:172
 msgid "Login failed"
 msgstr "Log ind mislykkedes"
 
-#: gnome_plugins/uploader_plugin.py:203
+#: gnome_plugins/uploader_plugin.py:209
 msgid "Failed to upload!"
 msgstr "Mislykkedes med at lægge op!"
 
@@ -1335,8 +1347,8 @@ msgstr ""
 "forsæt-indtil-Sand operator som anvender boolske operatorer fra Talpalette"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:121
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:862
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1017
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:841
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1035
 msgid "top"
 msgstr "top"
 
@@ -1607,12 +1619,12 @@ msgid "pops value off FILO (first-in last-out heap)"
 msgstr "fjerner en værdi fra FILO (først-in sidst-ud hób)"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:516
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:555
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:572
 msgid "empty heap?"
 msgstr "tom hób?"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:519
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:558
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:575
 msgid "returns True if heap is empty"
 msgstr "returnerer Sand hvis hób er tom"
 
@@ -1621,7 +1633,8 @@ msgid "save heap to file"
 msgstr "gem hób til fil"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:532
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:543
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:546
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:560
 msgid "filename"
 msgstr "filnavn"
 
@@ -1629,55 +1642,60 @@ msgstr "filnavn"
 msgid "saves FILO (first-in last-out heap) to a file"
 msgstr "gemmer FILO (first-in last-out, dvs. først ud, sidst ud-hób) til en fil"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:542
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:545
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:553
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:559
 msgid "load heap from file"
 msgstr "indlæs hób fra fil"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:545
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:548
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:554
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:562
 msgid "loads FILO (first-in last-out heap) from a file"
 msgstr ""
 "indlæser FILO (first-in last-out, dvs. først ud, sidst ud-hób) fra en fil"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:570
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:572
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:587
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:589
 msgid "comment"
 msgstr "kommentar"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:574
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:591
 msgid "places a comment in your code"
 msgstr "placerer en kommentar i din kode"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:581
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:598
 msgid "print"
 msgstr "udskriv"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:585
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:602
 msgid "prints value in status block at bottom of the screen"
 msgstr "udskriver værdi i statusblok i bunden af skærmen"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:596
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:613
 msgid "Python chr operator"
 msgstr "Python chr-operator"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:606
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:623
 msgid "Python int operator"
 msgstr "Python int-operator"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:616
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:633
 msgid "polar"
 msgstr "polær"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:618
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:635
 msgid "displays polar coordinates"
 msgstr "fremviser polære koordinater"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:624
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:639
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:655
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:641
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:656
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:672
+#: turtleblocks.py:446
 msgid "Python"
 msgstr "Python"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:628
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:645
 msgid ""
 "a programmable block: used to add advanced single-variable math equations, e."
 "g., sin(x)"
@@ -1685,7 +1703,7 @@ msgstr ""
 "en blok som kan programmeres: anvendes til at føje avancerede matematiske "
 "ligninger med en enkelt variabel, f.eks., sin(x)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:643
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:660
 msgid ""
 "a programmable block: used to add advanced multi-variable math equations, e."
 "g., sqrt(x*x+y*y)"
@@ -1693,7 +1711,7 @@ msgstr ""
 "en blok som kan programmeres: anvendes til at føje avancerede matematiske "
 "ligninger med flere variabler, f.eks., sqrt(x*x+y*y)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:659
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:676
 msgid ""
 "a programmable block: used to add advanced multi-variable math equations, e."
 "g., sin(x+y+z)"
@@ -1701,231 +1719,231 @@ msgstr ""
 "en blok som kan programmeres: anvendes til at føje avancerede matematiske "
 "ligninger med flere variabler, f.eks., sin(x+y+z)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:669
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:686
 msgid "Cartesian"
 msgstr "Kartesisk"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:671
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:688
 msgid "displays Cartesian coordinates"
 msgstr "fremviser kartesiske koordinator"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:680
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:697
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:714
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:731
 msgid "Python block"
 msgstr "Python-blok"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:682
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:699
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:717
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:716
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:734
 msgid "runs code found in the tamyblock.py module found in the Journal"
 msgstr "kører kode fundet i modulet tamyblock.py som findes i Journal"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:732
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:744
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:758
-msgid "load"
-msgstr "indlæs"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:735
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:748
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:762
-msgid "loads a block"
-msgstr "indlæser en blok"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:761
-msgid "setxy"
-msgstr "angiv xy"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:773
-msgid "select palette"
-msgstr "vælg palet"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:776
-msgid "selects a palette"
-msgstr "vælger en palet"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:788
-msgid "chooses which turtle to command"
-msgstr "vælger skildpadden som skal kommanderes"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:795
-msgid "turtle x"
-msgstr "skildpadde x"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:798
-msgid "Returns x coordinate of turtle"
-msgstr "Returnerer x-koordinatet for skildpadden"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:807
-msgid "turtle y"
-msgstr "skildpadde y"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:810
-msgid "Returns y coordinate of turtle"
-msgstr "Returnerer y-koordinatet for skildpadden"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:819
-msgid "active turtle"
-msgstr "aktiv skildpadde"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:822
-msgid "the name of the active turtle"
-msgstr "navnet på den aktive skildpadde"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:830
-msgid "turtle heading"
-msgstr "skildpaddens retning "
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:833
-msgid "Returns heading of turtle"
-msgstr "Returnerer skildpaddens retning"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:844
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:854
-msgid "turtle shell"
-msgstr "skildpaddeskjold"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:846
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:855
-msgid "put a custom 'shell' on the turtle"
-msgstr "putter et brugerdefineret 'skjold' på skildpadden"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:863
-msgid "top of a collapsed stack"
-msgstr "top af sammenfoldet stak"
-
 #. TRANS: URL is universal resource locator
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:868
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:750
 msgid "URL"
 msgstr "URL"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:873
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:755
 msgid "gets a text string or an image from a URL"
 msgstr "henter en tekststreng eller et billede fra en URL"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:882
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:765
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:775
+msgid "turtle shell"
+msgstr "skildpaddeskjold"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:767
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:776
+msgid "put a custom 'shell' on the turtle"
+msgstr "putter et brugerdefineret 'skjold' på skildpadden"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:784
+msgid "chooses which turtle to command"
+msgstr "vælger skildpadden som skal kommanderes"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:791
+msgid "turtle x"
+msgstr "skildpadde x"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:794
+msgid "Returns x coordinate of turtle"
+msgstr "Returnerer x-koordinatet for skildpadden"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:803
+msgid "turtle y"
+msgstr "skildpadde y"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:806
+msgid "Returns y coordinate of turtle"
+msgstr "Returnerer y-koordinatet for skildpadden"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:815
+msgid "active turtle"
+msgstr "aktiv skildpadde"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:818
+msgid "the name of the active turtle"
+msgstr "navnet på den aktive skildpadde"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:826
+msgid "turtle heading"
+msgstr "skildpaddens retning "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:829
+msgid "Returns heading of turtle"
+msgstr "Returnerer skildpaddens retning"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:842
+msgid "top of a collapsed stack"
+msgstr "top af sammenfoldet stak"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:847
+msgid "select palette"
+msgstr "vælg palet"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:850
+msgid "selects a palette"
+msgstr "vælger en palet"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:858
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:870
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:884
+msgid "load"
+msgstr "indlæs"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:861
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:874
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:888
+msgid "loads a block"
+msgstr "indlæser en blok"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:887
+msgid "setxy"
+msgstr "angiv xy"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:900
 msgid "Palette of presentation templates"
 msgstr "Palette af skabeloner for præsentation"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:885
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:903
 msgid "portfolio"
 msgstr "portfolio"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:889
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:907
 msgid "hide blocks"
 msgstr "skjul blokke"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:891
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:909
 msgid "declutters canvas by hiding blocks"
 msgstr "gør lærred overskueligt ved at skjule blokke"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:898
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:916
 msgid "show blocks"
 msgstr "vis blokke"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:900
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:918
 msgid "restores hidden blocks"
 msgstr "genskaber skjulte blokke"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:909
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:927
 msgid "hides the Sugar toolbars"
 msgstr "skjuler Sugar-værktøjsbjælkerne"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:919
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:937
 msgid "list"
 msgstr "liste"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:923
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:941
 msgid "presentation bulleted list"
 msgstr "punktopstilling i præsentation"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:931
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:949
 msgid "presentation template: list of bullets"
 msgstr "skabelon for præsentation: liste med former for punktopstilling"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:938
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:956
 msgid "presentation template: select Journal object (no description)"
 msgstr "skabelon for præsentation: vælg Journal-objekt (ingen beskrivelse)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:945
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:963
 msgid "presentation template: select Journal object (with description)"
 msgstr "skabelon for præsentation: vælg Journal-objekt (med beskrivelse)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:952
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:970
 msgid "presentation template: select four Journal objects"
 msgstr "skabelon for præsentation: vælg fire Journal-objekter"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:959
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:966
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:977
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:984
 msgid "presentation template: select two Journal objects"
 msgstr "skabelon for præsentation: vælg to Journal-objekter"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:976
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:994
 msgid "xcor of left of screen"
 msgstr "xkor for venstre del af skærmen"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:984
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1002
 msgid "bottom"
 msgstr "bund"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:987
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1005
 msgid "ycor of bottom of screen"
 msgstr "ykor for bunden af skærm"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:995
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1013
 msgid "width"
 msgstr "bredde"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:998
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1016
 msgid "the canvas width"
 msgstr "bredden på lærred"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1009
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1027
 msgid "xcor of right of screen"
 msgstr "x-kor for højreside af skærm"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1020
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1038
 msgid "ycor of top of screen"
 msgstr "ykor for toppen af skærm"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1028
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1046
 msgid "height"
 msgstr "højde"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1031
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1049
 msgid "the canvas height"
 msgstr "højde på lærred"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1041
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1059
 msgid "title x"
 msgstr "titel x"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1053
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1071
 msgid "title y"
 msgstr "titel y"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1065
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1083
 msgid "left x"
 msgstr "venstre x"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1077
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1095
 msgid "top y"
 msgstr "øverste y"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1089
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1107
 msgid "right x"
 msgstr "højre x"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1101
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1119
 msgid "bottom y"
 msgstr "nederste y"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1120
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1138
 msgid "Palette of user-defined operators"
 msgstr "Palet med brugerdefinerede operatorer"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1121
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1139
 msgid "my blocks"
 msgstr "mine blokke"
 
@@ -2019,59 +2037,75 @@ msgstr "Vis demoprojekter"
 msgid "Save as"
 msgstr "Gem som"
 
-#: turtleblocks.py:437
+#: turtleblocks.py:434
+msgid "Export as"
+msgstr "Eksportér som"
+
+#. TRANS: ODP is Open Office presentation
+#: turtleblocks.py:442
+msgid "ODP"
+msgstr "ODP"
+
+#: turtleblocks.py:444
+msgid "Logo"
+msgstr "Logo"
+
+#: turtleblocks.py:448
 msgid "Quit"
 msgstr "Afslut"
 
-#: turtleblocks.py:438
+#: turtleblocks.py:449
 msgid "File"
 msgstr "Fil"
 
-#: turtleblocks.py:446
+#: turtleblocks.py:457
 msgid "Rescale coordinates"
 msgstr "Genskalér koordinater"
 
-#: turtleblocks.py:452
+#: turtleblocks.py:463
 msgid "Reset block size"
 msgstr "Nulstil blokstørrelse"
 
-#: turtleblocks.py:473
+#: turtleblocks.py:484
 msgid "Show/hide blocks"
 msgstr "Vis/skjul blokke"
 
-#: turtleblocks.py:475
+#: turtleblocks.py:486
 msgid "Tools"
 msgstr "Værktøjer"
 
-#: turtleblocks.py:481
+#: turtleblocks.py:492
 msgid "Debug"
 msgstr "Fejlsøg"
 
-#: turtleblocks.py:483
+#: turtleblocks.py:494
 msgid "Turtle"
 msgstr "Skildpadde"
 
-#: turtleblocks.py:486
+#: turtleblocks.py:497
 msgid "About..."
 msgstr "Om ..."
 
-#: turtleblocks.py:532
+#: turtleblocks.py:544
 msgid "You have unsaved work. Would you like to save before quitting?"
 msgstr "Du har arbejde som ikke er gemt. Vil du gemme før du afslutter?"
 
-#: turtleblocks.py:536
+#: turtleblocks.py:548
 msgid "Save project?"
 msgstr "Gem projekt?"
 
-#: turtleblocks.py:546
+#: turtleblocks.py:558
 #, python-format
-#, python-format, 
+#, python-format,
 msgid "Plugin %s already installed"
 msgstr "Udvidelsesmodulet %s er allerede installeret"
 
-#: turtleblocks.py:666
+#: turtleblocks.py:687
 msgid "myproject"
 msgstr "mitprojekt"
+
+#~ msgid "Load project"
+#~ msgstr "Indlæs projekt"
 
 #~ msgid "Hide sample projects"
 #~ msgstr "Skjul demoprojekter"
