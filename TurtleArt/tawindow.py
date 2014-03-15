@@ -2045,10 +2045,14 @@ class TurtleArtWindow():
             if defaults is None:
                 defaults = default_values[name]
             newblk = Block(self.block_list, self.sprite_list, name, x_pos,
-                           y_pos, 'block', defaults, self.block_scale)
+                           y_pos, 'block', defaults, BLOCK_SCALE[3])
+            if self.block_scale != BLOCK_SCALE[3]:
+                newblk.rescale(self.block_scale)
         else:
             newblk = Block(self.block_list, self.sprite_list, name, x_pos,
-                           y_pos, 'block', [], self.block_scale)
+                           y_pos, 'block', [], BLOCK_SCALE[3])
+            if self.block_scale != BLOCK_SCALE[3]:
+                newblk.rescale(self.block_scale)
 
         # Add a 'skin' to some blocks
         if name in PYTHON_SKIN:
@@ -2095,11 +2099,15 @@ class TurtleArtWindow():
                     if argname in content_blocks:
                         argblk = Block(self.block_list, self.sprite_list,
                                        argname, 0, 0, 'block', [argvalue],
-                                       self.block_scale)
+                                       BLOCK_SCALE[3])
+                        if self.block_scale != BLOCK_SCALE[3]:
+                            argblk.rescale(self.block_scale)
                     else:
                         argblk = Block(self.block_list, self.sprite_list,
                                        argname, 0, 0, 'block', [],
-                                       self.block_scale)
+                                       BLOCK_SCALE[3])
+                        if self.block_scale != BLOCK_SCALE[3]:
+                            argblk.rescale(self.block_scale)
                     argdock = argblk.docks[0]
                     nx = sx + dock[2] - argdock[2]
                     ny = sy + dock[3] - argdock[3]
@@ -2815,7 +2823,9 @@ class TurtleArtWindow():
                 argvalue = default_values[blk.name][
                     len(default_values[blk.name]) - 1]
                 argblk = Block(self.block_list, self.sprite_list, argname,
-                               0, 0, 'block', [argvalue], self.block_scale)
+                               0, 0, 'block', [argvalue], BLOCK_SCALE[3])
+                if self.block_scale != BLOCK_SCALE[3]:
+                    argblk.rescale(self.block_scale)
                 argdock = argblk.docks[0]
                 (bx, by) = blk.spr.get_xy()
                 nx = bx + blk.docks[n - 1][2] - argdock[2]
@@ -3918,9 +3928,10 @@ class TurtleArtWindow():
             btype = OLD_NAMES[btype]
 
         blk = Block(self.block_list, self.sprite_list, btype,
-                    b[2] + offset,
-                    b[3] + offset,
-                    'block', values, self.block_scale)
+                    b[2] + offset, b[3] + offset,
+                    'block', values, BLOCK_SCALE[3])
+        if self.block_scale != BLOCK_SCALE[3]:
+            blk.rescale(self.block_scale)
 
         # If it was an unknown block type, we need to match the number
         # of dock items. TODO: Try to infer the dock type from connections
