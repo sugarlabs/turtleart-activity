@@ -1,3 +1,9 @@
+200
+
+BUG FIXES:
+* Fixed regression in python export due to typo
+* Fixed regression in boolean operators due to ColorObj class
+
 199
 
 ENHANCEMENTS:
