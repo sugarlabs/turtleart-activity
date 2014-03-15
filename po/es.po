@@ -9,8 +9,8 @@ msgstr ""
 "#-#-#-#-#  es.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-25 00:32-0500\n"
-"PO-Revision-Date: 2014-01-09 18:07+0200\n"
+"POT-Creation-Date: 2014-02-16 00:32-0500\n"
+"PO-Revision-Date: 2014-02-23 17:05+0200\n"
 "Last-Translator: AlanJAS <alanjas@hotmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -849,11 +849,38 @@ msgstr ""
 msgid "Palette of WeDo blocks"
 msgstr "Paleta de bloques WeDo"
 
+msgid "The parameter must be a integer, not "
+msgstr "El parámetro debe ser un entero, no "
+
+msgid "Motor speed must be an integer between -100 and 100"
+msgstr "La velocidad del motor debe ser un entero entre -100 y 100"
+
+msgid "WeDo found %s bricks"
+msgstr "WeDo encontró %s bricks"
+
+msgid "WeDo not found"
+msgstr "WeDo no encontrado"
+
+msgid "WeDo number %s was not found"
+msgstr "WeDo número %s no fue encontrado"
+
+msgid "wedo"
+msgstr "wedo"
+
+msgid "refresh WeDo"
+msgstr "refrescar WeDo"
+
+msgid "Search for a connected WeDo."
+msgstr "Busca por un WeDo conectado."
+
 msgid "WeDo"
 msgstr "WeDo"
 
 msgid "set current WeDo device"
 msgstr "setea el dispositivo WeDo actual"
+
+msgid "number of WeDos"
+msgstr "número de WeDos"
 
 msgid "number of WeDo devices"
 msgstr "número de dispositivos WeDo"
@@ -862,7 +889,7 @@ msgid "tilt"
 msgstr "inclinación"
 
 msgid ""
-"tilt sensor output: (-1 == no tilt, 0 == tilt forward, 3 == tilt back, 1 == "
+"tilt sensor output: (-1 == no tilt,0 == tilt forward, 3 == tilt back, 1 == "
 "tilt left, 2 == tilt right)"
 msgstr ""
 "salida del sensor de inclinación: (-1 == no está inclinado, 0 == inclinado "
@@ -875,49 +902,20 @@ msgstr "salida del sensor distancia"
 msgid "Motor A"
 msgstr "Motor A"
 
-msgid "returns the current value of Motor A"
-msgstr "devuelve el valor actual del Motor A"
+msgid "returns the current speed of Motor A"
+msgstr "devuelve la velocidad actual del Motor A"
 
 msgid "Motor B"
 msgstr "Motor B"
 
-msgid "returns the current value of Motor B"
-msgstr "devuelve el valor actual del Motor B"
+msgid "returns the current speed of Motor B"
+msgstr "devuelve la velocidad actual del Motor B"
 
-#, fuzzy
-msgid "set the value for Motor A"
-msgstr ""
-"#-#-#-#-#  es.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"establece el valor del Motor A\n"
-"#-#-#-#-#  es.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"setea el valor del Motor A"
+msgid "set the speed for Motor A"
+msgstr "establece la velocidad del Motor A"
 
-#, fuzzy
-msgid "set the value for Motor B"
-msgstr ""
-"#-#-#-#-#  es.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"establece el valor del Motor B\n"
-"#-#-#-#-#  es.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"setea el valor del Motor B"
-
-msgid "WeDo is unavailable"
-msgstr "WeDo no está disponible"
-
-#, fuzzy, python-format
-msgid "WeDo %d is unavailable; defaulting to 1"
-msgstr ""
-"#-#-#-#-#  es.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"El Wedo %d no está disponible; usando por defecto el 1\n"
-"#-#-#-#-#  es.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Wedo %d no está disponible; usando por defecto el 1"
-
-#, fuzzy, python-format
-msgid "%(device)s is unavailable on WeDo %(wedo_number)d"
-msgstr ""
-"#-#-#-#-#  es.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"El %(device)s no está disponible en el WeDo %(wedo_number)d\n"
-"#-#-#-#-#  es.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"%(device)s no está disponible en el WeDo %(wedo_number)d"
+msgid "set the speed for Motor B"
+msgstr "establece la velocidad del Motor B"
 
 msgid "Palette of LEGO NXT blocks of motors"
 msgstr "Paleta de bloques LEGO NXT de motores"
@@ -3575,6 +3573,35 @@ msgstr "miproyecto"
 #~ "Une dos objetos (el objeto creado mas reciententemente y el objeto en el "
 #~ "punto x, y)."
 
+#~ msgid ""
+#~ "tilt sensor output: (-1 == no tilt, 0 == tilt forward, 3 == tilt back, 1 "
+#~ "== tilt left, 2 == tilt right)"
+#~ msgstr ""
+#~ "salida del sensor de inclinación: (-1 == no está inclinado, 0 == "
+#~ "inclinado hacia adelante, 3 == inclinado hacia atrás, 1 == inclinado "
+#~ "hacia la izquierda, 2 == inclinado hacia la derecha)"
+
+#~ msgid "returns the current value of Motor A"
+#~ msgstr "devuelve el valor actual del Motor A"
+
+#~ msgid "returns the current value of Motor B"
+#~ msgstr "devuelve el valor actual del Motor B"
+
+#~ msgid "set the value for Motor A"
+#~ msgstr "setea el valor del Motor A"
+
+#~ msgid "set the value for Motor B"
+#~ msgstr "setea el valor del Motor B"
+
+#~ msgid "WeDo is unavailable"
+#~ msgstr "WeDo no está disponible"
+
+#~ msgid "WeDo %d is unavailable; defaulting to 1"
+#~ msgstr "Wedo %d no está disponible; usando por defecto el 1"
+
+#~ msgid "%(device)s is unavailable on WeDo %(wedo_number)d"
+#~ msgstr "%(device)s no está disponible en el WeDo %(wedo_number)d"
+
 #~ msgid "touch"
 #~ msgstr "botón"
 
@@ -3685,9 +3712,6 @@ msgstr "miproyecto"
 #~ msgstr ""
 #~ "Si es 0: el color promedio se apaga cuando se calibra; para otros valores "
 #~ "está encendido"
-
-#~ msgid "number of WeDos"
-#~ msgstr "número de WeDos"
 
 #~ msgid "NxT"
 #~ msgstr "NXT"
