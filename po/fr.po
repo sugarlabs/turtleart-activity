@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-01-07 00:30-0500\n"
-"PO-Revision-Date: 2014-01-10 00:14+0200\n"
+"PO-Revision-Date: 2014-03-16 10:12+0200\n"
 "Last-Translator: samy boutayeb <s.boutayeb@free.fr>\n"
 "Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
 "Language: fr\n"
@@ -298,7 +298,7 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:544
 msgid "Palette of pen colors"
-msgstr "Palette de couleur du stylo"
+msgstr "Palette de couleurs du stylet"
 
 #: TurtleArt/tabasics.py:545
 msgid "colors"
@@ -1801,7 +1801,7 @@ msgstr "activer la tortue"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:818
 msgid "the name of the active turtle"
-msgstr "nom de la tortue artive"
+msgstr "nom de la tortue active"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:826
 msgid "turtle heading"
