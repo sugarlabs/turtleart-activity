@@ -243,6 +243,7 @@ return %s(self)" % (p, P, P)
 
         if hasattr(self, 'client'):
             if self.client.get_int(self._HOVER_HELP) == 1:
+                self.tw.no_help = True
                 self._do_hover_help_off_cb()
             if not self.client.get_int(self._COORDINATE_SCALE) in [0, 1]:
                 self.tw.coord_scale = 1

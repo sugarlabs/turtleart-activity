@@ -2470,6 +2470,8 @@ class TurtleArtWindow():
 
     def _show_popup(self, x, y):
         ''' Let's help our users by displaying a little help. '''
+        if self.no_help:
+            return
         spr = self.sprite_list.find_sprite((x, y))
         blk = self.block_list.spr_to_block(spr)
         if spr and blk is not None:
@@ -2507,8 +2509,6 @@ class TurtleArtWindow():
 
     def _do_show_popup(self, block_name):
         ''' Fetch the help text and display it.  '''
-        if self.no_help:
-            return 0
         if block_name in special_names:
             special_block_name = special_names[block_name]
         elif block_name in block_names:
