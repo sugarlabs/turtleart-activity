@@ -235,30 +235,39 @@ class Audio_sensors(Plugin):
         ''' Start grabbing audio if there is an audio block in use '''
         if not self._status:
             return
+
         self._sound = [0, 0]
         self._volume = [0, 0]
         self._pitch = [0, 0]
         self._resistance = [0, 0]
         self._voltage = [0, 0]
+
         if self.audio_started:
             self.audiograb.stop_grabbing()
-        if len(self._parent.block_list.get_similar_blocks(
-                'block', ['volume', 'sound', 'pitch'])) > 0:
+
+        volume_blocks = len(self._parent.block_list.get_similar_blocks(
+                'block', ['volume', 'sound', 'pitch']))
+        resistance_blocks = len(self._parent.block_list.get_similar_blocks(
+                'block', ['resistance', 'resistance2']))
+        voltage_blocks = len(self._parent.block_list.get_similar_blocks(
+                'block', ['voltage', 'voltage2']))
+        # FIXME: assume Python code is using a volume block
+        if not self._parent.running_turtleart or volume_blocks > 0:
             mode, bias, gain, boost = self.PARAMETERS[SENSOR_AC_BIAS]
-        elif len(self._parent.block_list.get_similar_blocks(
-                'block', ['resistance', 'resistance2'])) > 0:
+        elif resistance_blocks > 0:
             mode, bias, gain, boost = self.PARAMETERS[SENSOR_DC_BIAS]
-        elif len(self._parent.block_list.get_similar_blocks(
-                'block', ['voltage', 'voltage2'])) > 0:
+        elif voltage_blocks > 0:
             mode, bias, gain, boost = self.PARAMETERS[SENSOR_DC_NO_BIAS]
         else:
             return  # No audio blocks in use.
+
         self.audiograb = AudioGrab(self.new_buffer, self,
                                    mode, bias, gain, boost)
         self._channels = self.audiograb.channels
         for i in range(self._channels):
             self.ringbuffer.append(RingBuffer1d(self.max_samples,
                                                 dtype='int16'))
+
         self.audiograb.start_grabbing()
         self.audio_started = True
 

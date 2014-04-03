@@ -188,8 +188,9 @@ is pushed to the stack'),
 
     def start(self):
         ''' Initialize the camera if there is an camera block in use '''
-        if len(self._parent.block_list.get_similar_blocks('block',
-            ['camera', 'camera1', 'read_camera', 'luminance'])) > 0:
+        camera_blocks = len(self._parent.block_list.get_similar_blocks(
+            'block', ['camera', 'camera1', 'read_camera', 'luminance']))
+        if not self._parent.running_turtleart or camera_blocks > 0:
             if self._status and len(self.cameras) == 0:
                 for device in self.devices:
                     self.cameras.append(Camera(device))
