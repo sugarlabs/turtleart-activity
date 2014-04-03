@@ -1,3 +1,9 @@
+201
+
+BUG FIXES:
+* Fixed problem with turning off hover help (Alan Aguiar)
+* Fixed problem with starting plugins from exported Python code
+
 200
 
 BUG FIXES:
