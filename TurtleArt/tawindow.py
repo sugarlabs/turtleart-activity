@@ -4310,13 +4310,13 @@ class TurtleArtWindow():
             self.status_spr.move((PALETTE_WIDTH, self.height - 400))
         else:
             # Adjust vertical position based on scrolled window adjustment
-            offset_from_bottom = 60
             if self.running_sugar:
+                offset_from_bottom = self.activity.label_offset
                 if self.activity.toolbox.get_property("visible"):
                     if self.activity.toolbars_expanded():
-                        offset_from_bottom += 110
+                        offset_from_bottom *= 3
                     else:
-                        offset_from_bottom += 60
+                        offset_from_bottom *= 2
                 self.status_spr.move(
                     (0,
                      self.height - offset_from_bottom +

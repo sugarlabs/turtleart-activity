@@ -111,6 +111,7 @@ class TurtleArtActivity(activity.Activity):
         self.has_toolbarbox = HAS_TOOLBARBOX
         _logger.debug('_setup_toolbar')
         self._setup_toolbar()
+        self.label_offset = style.GRID_CELL_SIZE
 
         _logger.debug('_setup_canvas')
         self._setup_canvas(self._setup_scrolled_window())
