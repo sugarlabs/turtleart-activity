@@ -1,5 +1,8 @@
 201
 
+ENHANCEMENT:
+* New sample program: plot global tempuratures
+
 BUG FIXES:
 * Fixed problem with turning off hover help (Alan Aguiar)
 * Fixed problem with starting plugins from exported Python code
