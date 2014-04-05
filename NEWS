@@ -3,6 +3,7 @@
 BUG FIXES:
 * Fixed problem with turning off hover help (Alan Aguiar)
 * Fixed problem with starting plugins from exported Python code
+* FIxed problem with label offset (SL #4754)
 
 200
 
