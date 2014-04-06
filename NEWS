@@ -1,7 +1,9 @@
 201
 
 ENHANCEMENT:
-* New sample program: plot global tempuratures
+* New sample program: plot global tempuratures (temperature data from
+  http://eesc.columbia.edu/courses/ees/climate/labs/globaltemp/data/
+  global_temp.xls)
 
 BUG FIXES:
 * Fixed problem with turning off hover help (Alan Aguiar)

@@ -395,7 +395,7 @@ return %s(self)" % (p, P, P)
         self.vbox.show()
 
         self.menu_bar = self._get_menu_bar()
-        self.vbox.pack_start(self.menu_bar, False, False, 2)
+        self.vbox.pack_start(self.menu_bar, False, False)
         self.menu_bar.show()
         self.menu_height = self.menu_bar.size_request()[1]
 

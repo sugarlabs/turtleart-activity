@@ -206,13 +206,7 @@ class Audio_sensors(Plugin):
                       kwarg_descs={'channel': ConstantArg(1)},
                       call_afterwards=self.after_voltage))
 
-        if self.hw in [XO175, XO30, XO4]:
-            self.PARAMETERS = {
-                SENSOR_AC_BIAS: (False, True, 80, True),
-                SENSOR_DC_NO_BIAS: (True, False, 80, False),
-                SENSOR_DC_BIAS: (True, True, 90, False)
-                }
-        elif self.hw == XO15:
+        if self.hw in [XO15, XO175, XO30, XO4]:
             self.PARAMETERS = {
                 SENSOR_AC_BIAS: (False, True, 80, True),
                 SENSOR_DC_NO_BIAS: (True, False, 80, False),

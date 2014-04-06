@@ -2694,7 +2694,7 @@ class TurtleArtWindow():
             self._text_entry.set_size_request(w, h)
             bx, by = blk.spr.get_xy()
             if not self.running_sugar:
-                by += self.activity.menu_height + 4  # FIXME: padding
+                by += self.activity.menu_height
             mx, my = blk.spr.label_left_top()
             self._text_entry.set_pixels_above_lines(my)
             bx -= int(self.activity.sw.get_hadjustment().get_value())
