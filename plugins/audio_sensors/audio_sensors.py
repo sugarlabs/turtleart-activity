@@ -282,17 +282,7 @@ class Audio_sensors(Plugin):
         if not self._status:
             return 0
 
-        if not self._sound_init:
-            mode, bias, gain, boost = self.PARAMETERS[SENSOR_AC_BIAS]
-            self.audiograb = AudioGrab(self.new_buffer, self,
-                                       mode, bias, gain, boost)
-            self._channels = self.audiograb.channels
-            for i in range(self._channels):
-                self.ringbuffer.append(RingBuffer1d(self.max_samples,
-                                                    dtype='int16'))
-                self.audiograb.start_grabbing()
-                self.audio_started = True
-                self._sound_init = True
+        self._init_sound()
 
         self._prim_sound(0)
         # Return average of both channels if sampling in stereo
@@ -301,6 +291,19 @@ class Audio_sensors(Plugin):
             return (self._sound[0] + self._sound[1]) / 2.0
         else:
             return self._sound[0]
+
+    def _init_sound(self):
+        if not self._sound_init:
+            mode, bias, gain, boost = self.PARAMETERS[SENSOR_AC_BIAS]
+            self.audiograb = AudioGrab(self.new_buffer, self,
+                                       mode, bias, gain, boost)
+            self._channels = self.audiograb.channels
+            for i in range(self._channels):
+                self.ringbuffer.append(RingBuffer1d(self.max_samples,
+                                                    dtype='int16'))
+            self.audiograb.start_grabbing()
+            self.audio_started = True
+            self._sound_init = True
 
     def _prim_sound(self, channel):
         ''' return raw mic in value '''
@@ -318,17 +321,7 @@ class Audio_sensors(Plugin):
         if not self._status:
             return 0
 
-        if not self._sound_init:
-            mode, bias, gain, boost = self.PARAMETERS[SENSOR_AC_BIAS]
-            self.audiograb = AudioGrab(self.new_buffer, self,
-                                       mode, bias, gain, boost)
-            self._channels = self.audiograb.channels
-            for i in range(self._channels):
-                self.ringbuffer.append(RingBuffer1d(self.max_samples,
-                                                    dtype='int16'))
-                self.audiograb.start_grabbing()
-                self.audio_started = True
-                self._sound_init = True
+        self._init_sound()
 
         self._prim_volume(0)
         # Return average of both channels if sampling in stereo
@@ -354,17 +347,7 @@ class Audio_sensors(Plugin):
         if not self._status:
             return 0
 
-        if not self._sound_init:
-            mode, bias, gain, boost = self.PARAMETERS[SENSOR_AC_BIAS]
-            self.audiograb = AudioGrab(self.new_buffer, self,
-                                       mode, bias, gain, boost)
-            self._channels = self.audiograb.channels
-            for i in range(self._channels):
-                self.ringbuffer.append(RingBuffer1d(self.max_samples,
-                                                    dtype='int16'))
-                self.audiograb.start_grabbing()
-                self.audio_started = True
-                self._sound_init = True
+        self._init_sound()
 
         self._prim_pitch(0)
         # Return average of both channels if sampling in stereo
@@ -407,9 +390,9 @@ class Audio_sensors(Plugin):
             for i in range(self._channels):
                 self.ringbuffer.append(RingBuffer1d(self.max_samples,
                                                     dtype='int16'))
-                self.audiograb.start_grabbing()
-                self.audio_started = True
-                self._resistance_init = True
+            self.audiograb.start_grabbing()
+            self.audio_started = True
+            self._resistance_init = True
 
         if self.hw in [XO1, XO4]:
             self._prim_resistance(0)
@@ -483,9 +466,9 @@ class Audio_sensors(Plugin):
             for i in range(self._channels):
                 self.ringbuffer.append(RingBuffer1d(self.max_samples,
                                                     dtype='int16'))
-                self.audiograb.start_grabbing()
-                self.audio_started = True
-                self._voltage_init = True
+            self.audiograb.start_grabbing()
+            self.audio_started = True
+            self._voltage_init = True
 
         if self.hw in [XO1, XO4]:
             self._prim_voltage(0)
