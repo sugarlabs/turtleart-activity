@@ -60,6 +60,9 @@ class Audio_sensors(Plugin):
         Plugin.__init__(self)
         self._parent = parent
         self.audio_started = False
+        self._sound_init = False
+        self._resistance_init = False
+        self._voltage_init = False
         self._status = True  # TODO: test for audio device
         # These flags are referenced by audiograb
         self.hw = self._parent.hw
@@ -230,6 +233,10 @@ class Audio_sensors(Plugin):
         if not self._status:
             return
 
+        self._sound_init = False
+        self._resistance_init = False
+        self._voltage_init = False
+
         self._sound = [0, 0]
         self._volume = [0, 0]
         self._pitch = [0, 0]
@@ -238,32 +245,6 @@ class Audio_sensors(Plugin):
 
         if self.audio_started:
             self.audiograb.stop_grabbing()
-
-        volume_blocks = len(self._parent.block_list.get_similar_blocks(
-                'block', ['volume', 'sound', 'pitch']))
-        resistance_blocks = len(self._parent.block_list.get_similar_blocks(
-                'block', ['resistance', 'resistance2']))
-        voltage_blocks = len(self._parent.block_list.get_similar_blocks(
-                'block', ['voltage', 'voltage2']))
-        # FIXME: assume Python code is using a volume block
-        if not self._parent.running_turtleart or volume_blocks > 0:
-            mode, bias, gain, boost = self.PARAMETERS[SENSOR_AC_BIAS]
-        elif resistance_blocks > 0:
-            mode, bias, gain, boost = self.PARAMETERS[SENSOR_DC_BIAS]
-        elif voltage_blocks > 0:
-            mode, bias, gain, boost = self.PARAMETERS[SENSOR_DC_NO_BIAS]
-        else:
-            return  # No audio blocks in use.
-
-        self.audiograb = AudioGrab(self.new_buffer, self,
-                                   mode, bias, gain, boost)
-        self._channels = self.audiograb.channels
-        for i in range(self._channels):
-            self.ringbuffer.append(RingBuffer1d(self.max_samples,
-                                                dtype='int16'))
-
-        self.audiograb.start_grabbing()
-        self.audio_started = True
 
     def new_buffer(self, buf, channel=0):
         ''' Append a new buffer to the ringbuffer '''
@@ -300,6 +281,19 @@ class Audio_sensors(Plugin):
     def prim_sound(self, channel=0):
         if not self._status:
             return 0
+
+        if not self._sound_init:
+            mode, bias, gain, boost = self.PARAMETERS[SENSOR_AC_BIAS]
+            self.audiograb = AudioGrab(self.new_buffer, self,
+                                       mode, bias, gain, boost)
+            self._channels = self.audiograb.channels
+            for i in range(self._channels):
+                self.ringbuffer.append(RingBuffer1d(self.max_samples,
+                                                    dtype='int16'))
+                self.audiograb.start_grabbing()
+                self.audio_started = True
+                self._sound_init = True
+
         self._prim_sound(0)
         # Return average of both channels if sampling in stereo
         if self._channels == 2:
@@ -323,6 +317,19 @@ class Audio_sensors(Plugin):
     def prim_volume(self, channel=0):
         if not self._status:
             return 0
+
+        if not self._sound_init:
+            mode, bias, gain, boost = self.PARAMETERS[SENSOR_AC_BIAS]
+            self.audiograb = AudioGrab(self.new_buffer, self,
+                                       mode, bias, gain, boost)
+            self._channels = self.audiograb.channels
+            for i in range(self._channels):
+                self.ringbuffer.append(RingBuffer1d(self.max_samples,
+                                                    dtype='int16'))
+                self.audiograb.start_grabbing()
+                self.audio_started = True
+                self._sound_init = True
+
         self._prim_volume(0)
         # Return average of both channels if sampling in stereo
         if self._channels == 2:
@@ -346,6 +353,19 @@ class Audio_sensors(Plugin):
     def prim_pitch(self, channel=0):
         if not self._status:
             return 0
+
+        if not self._sound_init:
+            mode, bias, gain, boost = self.PARAMETERS[SENSOR_AC_BIAS]
+            self.audiograb = AudioGrab(self.new_buffer, self,
+                                       mode, bias, gain, boost)
+            self._channels = self.audiograb.channels
+            for i in range(self._channels):
+                self.ringbuffer.append(RingBuffer1d(self.max_samples,
+                                                    dtype='int16'))
+                self.audiograb.start_grabbing()
+                self.audio_started = True
+                self._sound_init = True
+
         self._prim_pitch(0)
         # Return average of both channels if sampling in stereo
         if self._channels == 2:
@@ -378,6 +398,19 @@ class Audio_sensors(Plugin):
     def prim_resistance(self, channel=0):
         if not self.hw in [XO1, XO15, XO175, XO30, XO4] or not self._status:
             return 0
+
+        if not self._resistance_init:
+            mode, bias, gain, boost = self.PARAMETERS[SENSOR_DC_BIAS]
+            self.audiograb = AudioGrab(self.new_buffer, self,
+                                       mode, bias, gain, boost)
+            self._channels = self.audiograb.channels
+            for i in range(self._channels):
+                self.ringbuffer.append(RingBuffer1d(self.max_samples,
+                                                    dtype='int16'))
+                self.audiograb.start_grabbing()
+                self.audio_started = True
+                self._resistance_init = True
+
         if self.hw in [XO1, XO4]:
             self._prim_resistance(0)
             return self._resistance[0]
@@ -441,6 +474,19 @@ class Audio_sensors(Plugin):
     def prim_voltage(self, channel=0):
         if not self.hw in [XO1, XO15, XO175, XO30, XO4] or not self._status:
             return 0
+
+        if not self._voltage_init:
+            mode, bias, gain, boost = self.PARAMETERS[SENSOR_DC_NO_BIAS]
+            self.audiograb = AudioGrab(self.new_buffer, self,
+                                       mode, bias, gain, boost)
+            self._channels = self.audiograb.channels
+            for i in range(self._channels):
+                self.ringbuffer.append(RingBuffer1d(self.max_samples,
+                                                    dtype='int16'))
+                self.audiograb.start_grabbing()
+                self.audio_started = True
+                self._voltage_init = True
+
         if self.hw in [XO1, XO4]:
             self._prim_voltage(0)
             return self._voltage[0]
