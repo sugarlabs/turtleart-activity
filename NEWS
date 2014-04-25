@@ -1,3 +1,11 @@
+202
+
+ENHANCEMENT:
+* Make default fillscreen match default background color (light blue)
+
+BUG FIX:
+* Update remote turtle before drawing text
+
 201
 
 ENHANCEMENT:
