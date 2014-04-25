@@ -28,7 +28,8 @@ import cairo
 import pangocairo
 
 from tautils import get_path
-from taconstants import Color, TMP_SVG_PATH
+from taconstants import (Color, TMP_SVG_PATH, DEFAULT_PEN_COLOR,
+                         DEFAULT_BACKGROUND_COLOR)
 
 
 def wrap100(n):
@@ -105,8 +106,8 @@ class TurtleGraphics:
         self.width = width
         self.height = height
         self.textsize = 48
-        self._fgrgb = [255, 0, 0]
-        self._bgrgb = [255, 248, 222]
+        self._fgrgb = DEFAULT_PEN_COLOR
+        self._bgrgb = DEFAULT_BACKGROUND_COLOR
         self._shade = 0
         self._color = 0
         self._gray = 100
@@ -165,7 +166,7 @@ class TurtleGraphics:
 
         def _clearscreen(cr):
             cr.move_to(0, 0)
-            self._bgrgb = [255, 248, 222]
+            self._bgrgb = DEFAULT_BACKGROUND_COLOR
             cr.set_source_rgb(self._bgrgb[0] / 255.,
                               self._bgrgb[1] / 255.,
                               self._bgrgb[2] / 255.)
