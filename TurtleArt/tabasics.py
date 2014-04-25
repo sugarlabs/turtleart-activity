@@ -355,7 +355,7 @@ setxy :x :y\npendown\nend\n')
                           style='basic-style-2arg',
                           label=[_('fill screen'), _('color'), _('shade')],
                           prim_name='fillscreen',
-                          default=DEFAULT_BACKGROUND_COLOR_SHADE_GRAY[0:1],
+                          default=DEFAULT_BACKGROUND_COLOR_SHADE_GRAY[0:2],
                           logo_command='tasetbackground',
                           help_string=_('fills the background with (color, \
 shade)'))
