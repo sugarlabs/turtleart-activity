@@ -4375,7 +4375,7 @@ class TurtleArtWindow():
 
         if self.running_sugar:
             dsobject = datastore.create()
-            if len(name) == 0:
+            if name is None:
                 dsobject.metadata['title'] = '%s.odp' % \
                     (self.activity.metadata['title'])
             else:
