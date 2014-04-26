@@ -5,6 +5,7 @@ ENHANCEMENT:
 
 BUG FIX:
 * Update remote turtle before drawing text
+* Fixed regression in save to ODP code
 
 201
 
