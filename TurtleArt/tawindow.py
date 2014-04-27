@@ -58,7 +58,8 @@ from taconstants import (HORIZONTAL_PALETTE, VERTICAL_PALETTE, BLOCK_SCALE,
                          PYTHON_SKIN, PALETTE_HEIGHT, STATUS_LAYER, OLD_DOCK,
                          EXPANDABLE_ARGS, XO1, XO15, XO175, XO30, XO4, TITLEXY,
                          CONTENT_ARGS, CONSTANTS, EXPAND_SKIN, PROTO_LAYER,
-                         EXPANDABLE_FLOW, SUFFIX, TMP_SVG_PATH, TMP_ODP_PATH)
+                         EXPANDABLE_FLOW, SUFFIX, TMP_SVG_PATH, TMP_ODP_PATH,
+                         Vector)
 from tapalette import (palette_names, palette_blocks, expandable_blocks,
                        block_names, content_blocks, default_values,
                        special_names, block_styles, help_strings,
@@ -4237,6 +4238,9 @@ class TurtleArtWindow():
                                (_('color'), n.color,
                                 _('shade'), n.shade,
                                 _('gray'), n.gray))
+        # vector
+        elif isinstance(n, Vector):
+            self.showlabel('print', '%s' % n.get_vector_string())
         # media
         elif isinstance(n, Media):
             if (n.type == 'media' and

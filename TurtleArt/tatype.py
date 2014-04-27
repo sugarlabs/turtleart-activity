@@ -1,4 +1,5 @@
 #Copyright (c) 2013 Marion Zepf
+#Copyright (c) 2014 Walter Bender
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
 #of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +24,7 @@
 import ast
 
 from tablock import Media
-from taconstants import (Color, ColorObj, CONSTANTS)
+from taconstants import (Color, ColorObj, CONSTANTS, Vector)
 
 
 class Type(object):
@@ -49,7 +50,7 @@ class Type(object):
     __repr__ = __str__
 
 
-class TypeDisjunction(tuple,Type):
+class TypeDisjunction(tuple, Type):
     """ Disjunction of two or more Types (from the type hierarchy) """
 
     def __init__(self, iterable):
@@ -67,21 +68,22 @@ class TypeDisjunction(tuple,Type):
 
 # individual types
 TYPE_OBJECT = Type('TYPE_OBJECT', 0)
-TYPE_BOOL = Type('TYPE_BOOL', 5)
-TYPE_BOX = Type('TYPE_BOX', 8)  # special type for the unknown content of a box
 TYPE_CHAR = Type('TYPE_CHAR', 1)
 TYPE_COLOR = Type('TYPE_COLOR', 2)
 TYPE_FLOAT = Type('TYPE_FLOAT', 3)
 TYPE_INT = Type('TYPE_INT', 4)
-TYPE_MEDIA = Type('TYPE_MEDIA', 10)
-TYPE_NUMBER = Type('TYPE_NUMBER', 6)  # shortcut to avoid a TypeDisjunction
-    # between TYPE_FLOAT and TYPE_INT
+TYPE_BOOL = Type('TYPE_BOOL', 5)
+# shortcut to avoid a TypeDisjunction between TYPE_FLOAT and TYPE_INT
+TYPE_NUMBER = Type('TYPE_NUMBER', 6)
 TYPE_NUMERIC_STRING = Type('TYPE_NUMERIC_STRING', 7)
+TYPE_BOX = Type('TYPE_BOX', 8)  # special type for the unknown content of a box
 TYPE_STRING = Type('TYPE_STRING', 9)
+TYPE_MEDIA = Type('TYPE_MEDIA', 10)
+# An array of numbers used by the food plugin et al.
+TYPE_VECTOR = Type('TYPE_VECTOR', 11)
 
 # groups/ classes of types
 TYPES_NUMERIC = (TYPE_FLOAT, TYPE_INT, TYPE_NUMBER)
-
 
 BOX_AST = ast.Name(id='BOX', ctx=ast.Load)
 ACTION_AST = ast.Name(id='ACTION', ctx=ast.Load)
@@ -109,6 +111,8 @@ def get_type(x):
         return (TYPE_COLOR, False)
     elif isinstance(x, Media):
         return (TYPE_MEDIA, False)
+    elif isinstance(x, Vector):
+        return (TYPE_VECTOR, False)
     elif hasattr(x, "return_type"):
         return (x.return_type, False)
 
@@ -190,6 +194,7 @@ TYPE_CONVERTERS = {
     # TYPE_OBJECT is the supertype of everything.
     TYPE_BOX: {
         TYPE_COLOR: ColorObj,  # FIXME: should be Color.name
+        TYPE_VECTOR: Vector,
         TYPE_FLOAT: float,
         TYPE_INT: int,
         TYPE_NUMBER: float,
@@ -197,6 +202,8 @@ TYPE_CONVERTERS = {
     TYPE_CHAR: {
         TYPE_INT: ord,
         TYPE_STRING: identity},
+    TYPE_VECTOR: {
+        TYPE_STRING: Vector.get_vector_string},
     TYPE_COLOR: {
         TYPE_FLOAT: float,
         TYPE_INT: int,

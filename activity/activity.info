@@ -1,8 +1,8 @@
 [Activity]
-name = TurtleBlocks
+name = Turtle Nutrition
 activity_version = 202
 license = MIT
-bundle_id = org.laptop.TurtleArtActivity
+bundle_id = org.laptop.TurtleNutritionActivity
 exec = sugar-activity TurtleArtActivity.TurtleArtActivity
 icon = activity-turtleart
 show_launcher = yes

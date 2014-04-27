@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-#Copyright (c) 2010-12 Walter Bender
+#Copyright (c) 2010-14 Walter Bender
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
 #of this software and associated documentation files (the "Software"), to deal
@@ -267,6 +267,63 @@ class Color(object):
         hue is not set or its saturation is zero. """
         return self.color is None or not self.gray
 
+
+class Vector(object):
+    """ A vector object used in block programs (e.g., as food object). """
+
+    def __init__(self, name, vector):
+        """ name -- a string with the name of the vector, e.g., 'banana'
+        vector -- a list of values, e.g., [105, 1, 27, 3, 0] """
+        self.name = name
+        self.vector = vector
+
+    '''
+    def __int__(self):
+        return 0
+
+    def __float__(self):
+        return 0.0
+    '''
+
+    def __str__(self):
+        return self.get_vector_string()
+
+    def get_vector_string(self):
+        string = '%s [' % str(self.name)
+        for s in self.vector:
+            string += '%d' % s
+            if self.vector.index(s) < len(self.vector) - 1:
+                string += ', '
+        string += ']'
+        return string
+
+    def __eq__(self, other):
+        """ A Vector is equivalent to
+        * another Vector with the same vector values """
+        if isinstance(other, Vector):
+            return self.vector == other.vector
+        else:
+            return False
+
+    def __lt__(self, other):
+        """ A Vector is less than
+        * another Vector whose name appears earlier in the alphabet
+        * a number that is less than int(self)
+        * a string that appears before the underscore in the ASCII table """
+        if isinstance(other, Vector):
+            return str(self.vector) < str(other.vector)
+        else:
+            return False
+
+    def __gt__(self, other):
+        """ A Vector is greater than
+        * another Vector whose name appears later in the alphabet
+        * a number that is greater than int(self)
+        * a string that appears after the underscore in the ASCII table """
+        if isinstance(other, Vector):
+            return str(self.vector) > str(other.vector)
+        else:
+            return False
 
 
 CONSTANTS = {'leftpos': None, 'toppos': None, 'rightpos': None,
