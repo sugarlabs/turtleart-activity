@@ -2470,6 +2470,8 @@ class TurtleArtWindow():
 
     def _show_popup(self, x, y):
         ''' Let's help our users by displaying a little help. '''
+        if self.no_help:
+            return
         spr = self.sprite_list.find_sprite((x, y))
         blk = self.block_list.spr_to_block(spr)
         if spr and blk is not None:
@@ -2507,8 +2509,6 @@ class TurtleArtWindow():
 
     def _do_show_popup(self, block_name):
         ''' Fetch the help text and display it.  '''
-        if self.no_help:
-            return 0
         if block_name in special_names:
             special_block_name = special_names[block_name]
         elif block_name in block_names:
@@ -2694,7 +2694,7 @@ class TurtleArtWindow():
             self._text_entry.set_size_request(w, h)
             bx, by = blk.spr.get_xy()
             if not self.running_sugar:
-                by += self.activity.menu_height + 4  # FIXME: padding
+                by += self.activity.menu_height
             mx, my = blk.spr.label_left_top()
             self._text_entry.set_pixels_above_lines(my)
             bx -= int(self.activity.sw.get_hadjustment().get_value())
@@ -4310,13 +4310,13 @@ class TurtleArtWindow():
             self.status_spr.move((PALETTE_WIDTH, self.height - 400))
         else:
             # Adjust vertical position based on scrolled window adjustment
-            offset_from_bottom = 60
             if self.running_sugar:
+                offset_from_bottom = self.activity.label_offset
                 if self.activity.toolbox.get_property("visible"):
                     if self.activity.toolbars_expanded():
-                        offset_from_bottom += 110
+                        offset_from_bottom *= 3
                     else:
-                        offset_from_bottom += 60
+                        offset_from_bottom *= 2
                 self.status_spr.move(
                     (0,
                      self.height - offset_from_bottom +
@@ -4375,7 +4375,7 @@ class TurtleArtWindow():
 
         if self.running_sugar:
             dsobject = datastore.create()
-            if len(name) == 0:
+            if name is None:
                 dsobject.metadata['title'] = '%s.odp' % \
                     (self.activity.metadata['title'])
             else:

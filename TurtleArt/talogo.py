@@ -854,7 +854,10 @@ class LogoCode:
                     self.push_file_data_to_heap(dsobject)
             # Or is it a path?
             elif os.path.exists(obj):
-                    self.push_file_data_to_heap(None, path=obj)
+                self.push_file_data_to_heap(None, path=obj)
+            elif os.path.exists(os.path.join(
+                    self.tw.activity.get_bundle_path(), obj)):
+                self.push_file_data_to_heap(None, path=obj)
             else:
                 # Finally try choosing a datastore object
                 chooser_dialog(self.tw.parent, obj,

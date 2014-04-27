@@ -243,6 +243,8 @@ return %s(self)" % (p, P, P)
 
         if hasattr(self, 'client'):
             if self.client.get_int(self._HOVER_HELP) == 1:
+                self.tw.no_help = True
+                self.hover.set_active(False)
                 self._do_hover_help_off_cb()
             if not self.client.get_int(self._COORDINATE_SCALE) in [0, 1]:
                 self.tw.coord_scale = 1
@@ -393,7 +395,7 @@ return %s(self)" % (p, P, P)
         self.vbox.show()
 
         self.menu_bar = self._get_menu_bar()
-        self.vbox.pack_start(self.menu_bar, False, False, 2)
+        self.vbox.pack_start(self.menu_bar, False, False)
         self.menu_bar.show()
         self.menu_height = self.menu_bar.size_request()[1]
 
@@ -745,7 +747,7 @@ Would you like to save before quitting?'))
 
     def _do_toggle_hover_help_cb(self, button):
         ''' Toggle hover help on/off '''
-        self.tw.no_help = not self.tw.no_help
+        self.tw.no_help = not(button.get_active())
         if self.tw.no_help:
             self._do_hover_help_off_cb()
         else:
@@ -753,7 +755,6 @@ Would you like to save before quitting?'))
 
     def _do_hover_help_on_cb(self):
         ''' Turn hover help on '''
-        self.hover.set_active(True)
         if hasattr(self, 'client'):
             self.client.set_int(self._HOVER_HELP, 0)
 
@@ -762,7 +763,6 @@ Would you like to save before quitting?'))
         self.tw.last_label = None
         if self.tw.status_spr is not None:
             self.tw.status_spr.hide()
-        self.hover.set_active(False)
         if hasattr(self, 'client'):
             self.client.set_int(self._HOVER_HELP, 1)
 

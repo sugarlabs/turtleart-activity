@@ -102,7 +102,7 @@ from gettext import gettext as _
 
 from tapalette import (make_palette, define_logo_function)
 from talogo import primitive_dictionary
-from taconstants import (Color, CONSTANTS)
+from taconstants import (Color, CONSTANTS, DEFAULT_BACKGROUND_COLOR_SHADE_GRAY)
 from taprimitive import (ArgSlot, ConstantArg, or_, Primitive)
 from tatype import (TYPE_BOOL, TYPE_BOX, TYPE_CHAR, TYPE_COLOR, TYPE_FLOAT,
                     TYPE_INT, TYPE_NUMBER, TYPE_NUMERIC_STRING, TYPE_OBJECT,
@@ -355,7 +355,7 @@ setxy :x :y\npendown\nend\n')
                           style='basic-style-2arg',
                           label=[_('fill screen'), _('color'), _('shade')],
                           prim_name='fillscreen',
-                          default=[60, 80],
+                          default=DEFAULT_BACKGROUND_COLOR_SHADE_GRAY[0:2],
                           logo_command='tasetbackground',
                           help_string=_('fills the background with (color, \
 shade)'))
@@ -369,7 +369,7 @@ shade)'))
                           label=[_('fill screen') + '\n\n', _('color'),
                                  _('shade'), _('gray')],
                           prim_name='fillscreen2',
-                          default=[60, 80, 100],
+                          default=DEFAULT_BACKGROUND_COLOR_SHADE_GRAY,
                           logo_command='tasetbackground',
                           help_string=_('fills the background with (color, \
 shade)'))

@@ -358,6 +358,7 @@ class Collaboration():
         if len(payload) > 0:
             [nick, [label, x, y, size, w]] = data_from_string(payload)
             if nick != self._tw.nick:
+                self._tw.turtles.set_turtle(nick)
                 self._tw.turtles.get_active_turtle().draw_text(
                     label, x, y, size, w, False)
 
