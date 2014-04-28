@@ -32,7 +32,7 @@ from TurtleArt.taconstants import (MEDIA_SHAPES, NO_IMPORT, SKIN_PATHS,
                                    EXPAND_SKIN, BLOCKS_WITH_SKIN, CONSTANTS,
                                    Vector)
 from TurtleArt.taprimitive import (ArgSlot, ConstantArg, Primitive)
-from TurtleArt.tatype import TYPE_NUMBER, TYPE_VECTOR
+from TurtleArt.tatype import TYPE_NUMBER, TYPE_VECTOR, TYPE_STRING
 
 CALORIES = 0
 PROTEIN = 1
@@ -154,6 +154,16 @@ class Food(Plugin):
                       kwarg_descs={'nutriant': FAT},
                       return_type=TYPE_NUMBER))
 
+        palette.add_block('get_name',
+                          style='number-style-1arg',
+                          label=_('get name'),
+                          prim_name='get_name',
+                          help_string=_('get name of food'))
+        self.tw.lc.def_prim('get_name', 1,
+            Primitive(self._prim_name,
+                      arg_descs=[ArgSlot(TYPE_VECTOR)],
+                      return_type=TYPE_STRING))
+
         palette.add_block('eat',
                           style='basic-style-1arg',
                           label=_('eat'),
@@ -272,6 +282,12 @@ class Food(Plugin):
     def _prim_nutriant(self, x, nutriant=0):
         if type(x) == Vector:
             return x.vector[nutriant]
+        else:
+            raise logoerror("#syntaxerror")
+
+    def _prim_name(self, x):
+        if type(x) == Vector:
+            return x.name
         else:
             raise logoerror("#syntaxerror")
 
