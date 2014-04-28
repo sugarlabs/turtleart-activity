@@ -2135,6 +2135,58 @@ msgstr "El plugin %s ya está instalado."
 msgid "myproject"
 msgstr "miproyecto"
 
+#: food.py
+msgid "get fat"
+msgstr "Obtiene las grasas"
+
+#: food.py
+msgid "get calories"
+msgstr "Obtiene las calorías"
+
+#: food.py
+msgid "get carbohydrates"
+msgstr "Obtiene los carbohidratos"
+
+#: food.py
+msgid "get protein"
+msgstr "Obtiene proteínas"
+
+#: food.py
+msgid "get fiber"
+msgstr "Obtiene la fibra"
+
+#: food.py
+msgid "get name"
+msgstr "Obtiene el nombre"
+
+#: food.py
+msgid "fat"
+msgstr "grasas"
+
+#: food.py
+msgid "calories"
+msgstr "calorías"
+
+#: food.py
+msgid "carbohydrates"
+msgstr "carbohidratos"
+
+#: food.py
+msgid "protein"
+msgstr "proteínas"
+
+#: food.py
+msgid "fiber"
+msgstr "fibra"
+
+#: food.py
+msgid "eat"
+msgstr "comer"
+
+#: food.py
+msgid "digest"
+msgstr "digerir"
+
 #~ msgid "Load project"
 #~ msgstr "Cargar proyecto"
 
