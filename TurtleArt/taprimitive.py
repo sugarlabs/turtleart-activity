@@ -1171,7 +1171,6 @@ def value_to_ast(value, *args_for_prim, **kwargs_for_prim):
     elif isinstance(value, Vector):
         # call to the Vector constructor with this object's values,
         # e.g., Vector('banana', [105, 1, 27, 3, 0])
-        print 'Vector', value.name, value.vector
         return get_call_ast('Vector', [value.name, value.vector],
                             return_type=TYPE_VECTOR)
     # media

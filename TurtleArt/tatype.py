@@ -202,8 +202,6 @@ TYPE_CONVERTERS = {
     TYPE_CHAR: {
         TYPE_INT: ord,
         TYPE_STRING: identity},
-    TYPE_VECTOR: {
-        TYPE_STRING: Vector.get_vector_string},
     TYPE_COLOR: {
         TYPE_FLOAT: float,
         TYPE_INT: int,
