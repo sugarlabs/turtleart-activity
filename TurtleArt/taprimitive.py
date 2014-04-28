@@ -701,6 +701,11 @@ class Primitive(object):
             (arg1, arg2) = arg1
         if arg2 is None:
             return + arg1
+        elif isinstance(arg1, Vector) and isinstance(arg2, Vector):
+            vector = []
+            for i in range(len(arg1.vector)):
+                vector.append(arg1.vector[i] + arg2.vector[i])
+            return Vector(arg1.name, vector)
         else:
             return arg1 + arg2
 
@@ -710,18 +715,48 @@ class Primitive(object):
         arguments are given, subtract the second from the first. """
         if arg2 is None:
             return - arg1
+        elif isinstance(arg1, Vector) and isinstance(arg2, Vector):
+            vector = []
+            for i in range(len(arg1.vector)):
+                vector.append(arg1.vector[i] - arg2.vector[i])
+            return Vector(arg1.name, vector)
         else:
             return arg1 - arg2
 
     @staticmethod
     def multiply(arg1, arg2):
         """ Multiply the two arguments """
-        return arg1 * arg2
+        if isinstance(arg1, Vector) and isinstance(arg2, (int, float)):
+            vector = []
+            for i in range(len(arg1.vector)):
+                vector.append(arg1.vector[i] * arg2)
+            return Vector(arg1.name, vector)
+        elif isinstance(arg2, Vector) and isinstance(arg1, (int, float)):
+            vector = []
+            for i in range(len(arg2.vector)):
+                vector.append(arg2.vector[i] * arg1)
+            return Vector(arg2.name, vector)
+        else:
+            return arg1 * arg2
 
     @staticmethod
     def divide(arg1, arg2):
         """ Divide the first argument by the second """
-        return float(arg1) / arg2
+        if arg2 == 0:
+            raise logoerror("#zerodivide")
+
+        if isinstance(arg1, Vector) and isinstance(arg2, (int, float)):
+            vector = []
+            for i in range(len(arg1.vector)):
+                vector.append(arg1.vector[i] / arg2)
+            return Vector(arg1.name, vector)
+        elif isinstance(arg2, Vector) and isinstance(arg1, (int, float)):
+            vector = []
+            for i in range(len(arg2.vector)):
+                vector.append(arg2.vector[i] / arg1)
+            return Vector(arg2.name, vector)
+        else:
+            return float(arg1) / arg2
 
     @staticmethod
     def modulo(arg1, arg2):

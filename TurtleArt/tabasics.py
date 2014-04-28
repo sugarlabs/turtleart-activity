@@ -106,7 +106,7 @@ from taconstants import (Color, CONSTANTS, DEFAULT_BACKGROUND_COLOR_SHADE_GRAY)
 from taprimitive import (ArgSlot, ConstantArg, or_, Primitive)
 from tatype import (TYPE_BOOL, TYPE_BOX, TYPE_CHAR, TYPE_COLOR, TYPE_FLOAT,
                     TYPE_INT, TYPE_NUMBER, TYPE_NUMERIC_STRING, TYPE_OBJECT,
-                    TYPE_STRING)
+                    TYPE_STRING, TYPE_VECTOR)
 from taturtle import Turtle
 
 
@@ -651,7 +651,11 @@ tasetshade :shade \n')
                 # ... or concatenate two strings
                 Primitive(Primitive.plus, return_type=TYPE_STRING,
                           arg_descs=[ArgSlot(TYPE_STRING),
-                                     ArgSlot(TYPE_STRING)])))
+                                     ArgSlot(TYPE_STRING)]),
+                # ... or add two vectors
+                Primitive(Primitive.plus, return_type=TYPE_VECTOR,
+                          arg_descs=[ArgSlot(TYPE_VECTOR),
+                                     ArgSlot(TYPE_VECTOR)])))
 
         palette.add_block('minus2',
                           style='number-style-porch',
@@ -663,8 +667,14 @@ tasetshade :shade \n')
 top numeric input'))
         self.tw.lc.def_prim(
             'minus', 2,
-            Primitive(Primitive.minus, return_type=TYPE_NUMBER,
-                      arg_descs=[ArgSlot(TYPE_NUMBER), ArgSlot(TYPE_NUMBER)]))
+            or_(Primitive(Primitive.minus, return_type=TYPE_NUMBER,
+                          arg_descs=[ArgSlot(TYPE_NUMBER),
+                                     ArgSlot(TYPE_NUMBER)]),
+                # ... or add two vectors
+                Primitive(Primitive.minus, return_type=TYPE_VECTOR,
+                          arg_descs=[ArgSlot(TYPE_VECTOR),
+                                     ArgSlot(TYPE_VECTOR)])))
+
         define_logo_function('taminus', 'to taminus :y :x\noutput sum :x \
 minus :y\nend\n')
 
@@ -677,8 +687,15 @@ minus :y\nend\n')
                           help_string=_('multiplies two numeric inputs'))
         self.tw.lc.def_prim(
             'product', 2,
-            Primitive(Primitive.multiply, return_type=TYPE_NUMBER,
-                      arg_descs=[ArgSlot(TYPE_NUMBER), ArgSlot(TYPE_NUMBER)]))
+            or_(Primitive(Primitive.multiply, return_type=TYPE_NUMBER,
+                          arg_descs=[ArgSlot(TYPE_NUMBER),
+                                     ArgSlot(TYPE_NUMBER)]),
+                Primitive(Primitive.multiply, return_type=TYPE_VECTOR,
+                          arg_descs=[ArgSlot(TYPE_VECTOR),
+                                     ArgSlot(TYPE_NUMBER)]),
+                Primitive(Primitive.multiply, return_type=TYPE_VECTOR,
+                          arg_descs=[ArgSlot(TYPE_NUMBER),
+                                     ArgSlot(TYPE_VECTOR)])))
 
         palette.add_block('division2',
                           style='number-style-porch',
@@ -690,8 +707,15 @@ minus :y\nend\n')
 (numerator) by bottom numeric input (denominator)'))
         self.tw.lc.def_prim(
             'division', 2,
-            Primitive(Primitive.divide, return_type=TYPE_NUMBER,
-                      arg_descs=[ArgSlot(TYPE_NUMBER), ArgSlot(TYPE_NUMBER)]))
+            or_(Primitive(Primitive.divide, return_type=TYPE_NUMBER,
+                          arg_descs=[ArgSlot(TYPE_NUMBER),
+                                     ArgSlot(TYPE_NUMBER)]),
+                Primitive(Primitive.divide, return_type=TYPE_VECTOR,
+                          arg_descs=[ArgSlot(TYPE_VECTOR),
+                                     ArgSlot(TYPE_NUMBER)]),
+                Primitive(Primitive.divide, return_type=TYPE_VECTOR,
+                          arg_descs=[ArgSlot(TYPE_NUMBER),
+                                     ArgSlot(TYPE_VECTOR)])))
 
         palette.add_block('identity2',
                           style='number-style-1arg',
@@ -717,6 +741,8 @@ blocks'))
                           arg_descs=[ArgSlot(TYPE_NUMBER)]),
                 Primitive(Primitive.identity, return_type=TYPE_STRING,
                           arg_descs=[ArgSlot(TYPE_STRING)]),
+                Primitive(Primitive.identity, return_type=TYPE_VECTOR,
+                          arg_descs=[ArgSlot(TYPE_VECTOR)]),
                 Primitive(Primitive.identity, return_type=TYPE_OBJECT,
                           arg_descs=[ArgSlot(TYPE_OBJECT)])))
 
