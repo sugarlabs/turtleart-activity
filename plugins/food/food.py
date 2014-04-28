@@ -32,7 +32,7 @@ from TurtleArt.taconstants import (MEDIA_SHAPES, NO_IMPORT, SKIN_PATHS,
                                    EXPAND_SKIN, BLOCKS_WITH_SKIN, CONSTANTS,
                                    Vector)
 from TurtleArt.taprimitive import (ArgSlot, ConstantArg, Primitive)
-from TurtleArt.tatype import TYPE_NUMBER, TYPE_VECTOR, TYPE_STRING
+from TurtleArt.tatype import TYPE_NUMBER, TYPE_VECTOR, TYPE_STRING, TYPE_OBJECT
 
 CALORIES = 0
 PROTEIN = 1
@@ -74,7 +74,7 @@ class Food(Plugin):
         self.tw.lc.def_prim(
             'get_calories', 1,
             Primitive(self._prim_nutriant,
-                      arg_descs=[ArgSlot(TYPE_VECTOR)],
+                      arg_descs=[ArgSlot(TYPE_OBJECT)],
                       kwarg_descs={'nutriant': CALORIES},
                       return_type=TYPE_NUMBER))
 
@@ -85,7 +85,7 @@ class Food(Plugin):
                           help_string=_('extract protein content of food'))
         self.tw.lc.def_prim('get_protein', 1,
             Primitive(self._prim_nutriant,
-                      arg_descs=[ArgSlot(TYPE_VECTOR)],
+                      arg_descs=[ArgSlot(TYPE_OBJECT)],
                       kwarg_descs={'nutriant': PROTEIN},
                       return_type=TYPE_NUMBER))
 
@@ -96,7 +96,7 @@ class Food(Plugin):
                           help_string=_('extract carbohydrate content of food'))
         self.tw.lc.def_prim('get_carbohydrate', 1,
             Primitive(self._prim_nutriant,
-                      arg_descs=[ArgSlot(TYPE_VECTOR)],
+                      arg_descs=[ArgSlot(TYPE_OBJECT)],
                       kwarg_descs={'nutriant': CARBOHYDRATE},
                       return_type=TYPE_NUMBER))
 
@@ -139,7 +139,7 @@ class Food(Plugin):
                           help_string=_('extract fiber content of food'))
         self.tw.lc.def_prim('get_fiber', 1,
             Primitive(self._prim_nutriant,
-                      arg_descs=[ArgSlot(TYPE_VECTOR)],
+                      arg_descs=[ArgSlot(TYPE_OBJECT)],
                       kwarg_descs={'nutriant': FIBER},
                       return_type=TYPE_NUMBER))
 
@@ -150,19 +150,9 @@ class Food(Plugin):
                           help_string=_('extract fat content of food'))
         self.tw.lc.def_prim('get_fat', 1,
             Primitive(self._prim_nutriant,
-                      arg_descs=[ArgSlot(TYPE_VECTOR)],
+                      arg_descs=[ArgSlot(TYPE_OBJECT)],
                       kwarg_descs={'nutriant': FAT},
                       return_type=TYPE_NUMBER))
-
-        palette.add_block('get_name',
-                          style='number-style-1arg',
-                          label=_('get name'),
-                          prim_name='get_name',
-                          help_string=_('get name of food'))
-        self.tw.lc.def_prim('get_name', 1,
-            Primitive(self._prim_name,
-                      arg_descs=[ArgSlot(TYPE_VECTOR)],
-                      return_type=TYPE_STRING))
 
         palette.add_block('eat',
                           style='basic-style-1arg',
@@ -202,6 +192,16 @@ class Food(Plugin):
                           help_string=_('digest food eaten and zero out stored nutritional values'))
         self.tw.lc.def_prim('digest', 0,
                             Primitive(self._prim_digest))
+
+        palette.add_block('get_name',
+                          style='number-style-1arg',
+                          label=_('get name'),
+                          prim_name='get_name',
+                          help_string=_('get name of food'))
+        self.tw.lc.def_prim('get_name', 1,
+            Primitive(self._prim_name,
+                      arg_descs=[ArgSlot(TYPE_OBJECT)],
+                      return_type=TYPE_STRING))
 
     def _food_palette(self):
         palette = make_palette('food',
@@ -280,6 +280,8 @@ class Food(Plugin):
             raise logoerror("#syntaxerror")
 
     def _prim_nutriant(self, x, nutriant=0):
+        print x
+        print type(x)
         if type(x) == Vector:
             return x.vector[nutriant]
         else:
