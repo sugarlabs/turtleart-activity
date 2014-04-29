@@ -2136,6 +2136,42 @@ msgid "myproject"
 msgstr "miproyecto"
 
 #: food.py
+msgid "corn"
+msgstr "maíz"
+
+#: food.py
+msgid "chocolate chip cookie"
+msgstr "galleta"
+
+#: food.py
+msgid "chocolate cake"
+msgstr "pastel"
+
+#: food.py
+msgid "apple"
+msgstr "manzana"
+
+#: food.py
+msgid "wheat bread"
+msgstr "pan"
+
+#: food.py
+msgid "banana"
+msgstr "plátano"
+
+#: food.py
+msgid "potato"
+msgstr "patata"
+
+#: food.py
+msgid "sweet potato"
+msgstr "batata"
+
+#: food.py
+msgid "tomato"
+msgstr "tomate"
+
+#: food.py
 msgid "get fat"
 msgstr "Obtiene las grasas"
 
