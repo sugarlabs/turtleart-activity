@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-26 00:31-0400\n"
-"PO-Revision-Date: 2013-08-02 09:01+0200\n"
-"Last-Translator: Chris <cjl@laptop.org>\n"
+"POT-Creation-Date: 2014-01-07 00:30-0500\n"
+"PO-Revision-Date: 2014-03-13 15:47+0200\n"
+"Last-Translator: anushnur <anush.mkrtchyan@ca1492.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hy\n"
 "MIME-Version: 1.0\n"
@@ -30,103 +30,109 @@ msgstr ""
 "Լոգո-ոգեշնչված կրիա, որը նկարում է գունազարդ նկարներ \"snap-together\" "
 "տեսողական ծրագրային բլոկերով"
 
-#: TurtleArt/tabasics.py:124
+#: TurtleArt/tabasics.py:155
 msgid "Palette of turtle commands"
 msgstr "Կրիայի հրահանգների պահոց"
 
-#: TurtleArt/tabasics.py:129
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:722
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:734
+#: TurtleArt/tabasics.py:156
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:780
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:849
+msgid "turtle"
+msgstr "Կրիա"
+
+#: TurtleArt/tabasics.py:160
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:860
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:873
 msgid "forward"
 msgstr "Առաջ"
 
-#: TurtleArt/tabasics.py:133
+#: TurtleArt/tabasics.py:164
 msgid "moves turtle forward"
 msgstr "Շարժում է﻿ կրիան առաջ"
 
-#: TurtleArt/tabasics.py:142
+#: TurtleArt/tabasics.py:173
 msgid "back"
 msgstr "Հետ"
 
-#: TurtleArt/tabasics.py:146
+#: TurtleArt/tabasics.py:177
 msgid "moves turtle backward"
 msgstr "Շարժում է կրիային հետ"
 
-#: TurtleArt/tabasics.py:156
+#: TurtleArt/tabasics.py:186
 msgid "clean"
 msgstr "Մաքրել"
 
-#: TurtleArt/tabasics.py:159
+#: TurtleArt/tabasics.py:189
 msgid "clears the screen and reset the turtle"
 msgstr "Մաքրում է էկրանը և ելման դիրքի բերում կրիային"
 
-#: TurtleArt/tabasics.py:169
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:856
+#: TurtleArt/tabasics.py:207 TurtleArt/taconstants.py:139
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:991
 msgid "left"
 msgstr "Ձախ"
 
-#: TurtleArt/tabasics.py:173
+#: TurtleArt/tabasics.py:211
 msgid "turns turtle counterclockwise (angle in degrees)"
 msgstr "Կրիային շրջում է ժամացույցի սլաքին հակառակ (անկյունն` աստիճանով)"
 
-#: TurtleArt/tabasics.py:181
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:880
+#: TurtleArt/tabasics.py:221 TurtleArt/taconstants.py:141
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1024
 msgid "right"
 msgstr "Աջ"
 
-#: TurtleArt/tabasics.py:185
+#: TurtleArt/tabasics.py:225
 msgid "turns turtle clockwise (angle in degrees)"
 msgstr "Կրիային շրջում է ժամացույցի սլաքի ուղղությամբ (անկյունն`աստիճաններով)"
 
-#: TurtleArt/tabasics.py:195
+#: TurtleArt/tabasics.py:235
 msgid "arc"
 msgstr "Աղեղ"
 
-#: TurtleArt/tabasics.py:195
+#: TurtleArt/tabasics.py:235
 msgid "angle"
 msgstr "Անկյուն"
 
-#: TurtleArt/tabasics.py:195
+#: TurtleArt/tabasics.py:235
 msgid "radius"
 msgstr "Շարավիղ"
 
-#: TurtleArt/tabasics.py:199
+#: TurtleArt/tabasics.py:239
 msgid "moves turtle along an arc"
 msgstr "Շարժում է կրիային աղեղի երկայնությամբ:"
 
-#: TurtleArt/tabasics.py:210 TurtleArt/tabasics.py:288
+#: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
 msgid "set xy"
 msgstr "Սահմանել xy"
 
-#: TurtleArt/tabasics.py:210 TurtleArt/tabasics.py:288
+#: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
 msgid "x"
 msgstr "x"
 
-#: TurtleArt/tabasics.py:210 TurtleArt/tabasics.py:288
+#: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
 msgid "y"
 msgstr "y"
 
-#: TurtleArt/tabasics.py:214 TurtleArt/tabasics.py:292
+#: TurtleArt/tabasics.py:255 TurtleArt/tabasics.py:334
 msgid ""
 "moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
 msgstr "Տեղափոխում է կրիային xcor, ycor դիրք; (0, 0)-ն էկրանի կենտրոնն է:"
 
-#: TurtleArt/tabasics.py:226
+#: TurtleArt/tabasics.py:266
 msgid "set heading"
 msgstr "Սահմանել ուղղությունը"
 
-#: TurtleArt/tabasics.py:230
+#: TurtleArt/tabasics.py:270
 msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
 msgstr ""
 "Սահմանում է կրիայի գլխի ուղղությունը (ելման կետում`0 դիրքում,նայում է դեպի "
 "էկրանի վերին մասը):"
 
 # xcor - x -ի դիրքացույցը
-#: TurtleArt/tabasics.py:240 TurtleArt/tawindow.py:4247
+#: TurtleArt/tabasics.py:281 TurtleArt/tawindow.py:4511
 msgid "xcor"
 msgstr "xcor"
 
-#: TurtleArt/tabasics.py:241
+#: TurtleArt/tabasics.py:282
 msgid ""
 "holds current x-coordinate value of the turtle (can be used in place of a "
 "number block)"
@@ -135,11 +141,11 @@ msgstr ""
 "պարունակող մասնիկի փոխարեն):"
 
 # ycor- y-ի դիրքացույցը
-#: TurtleArt/tabasics.py:254 TurtleArt/tawindow.py:4248
+#: TurtleArt/tabasics.py:296 TurtleArt/tawindow.py:4512
 msgid "ycor"
 msgstr "ycor"
 
-#: TurtleArt/tabasics.py:255
+#: TurtleArt/tabasics.py:297
 msgid ""
 "holds current y-coordinate value of the turtle (can be used in place of a "
 "number block)"
@@ -147,11 +153,11 @@ msgstr ""
 "Պահում է կրիայի ընթացիկ y դիրքացույցի արժեքը (կարող է գործածվել թվային արժեք "
 "պարունակող մասնիկի փոխարեն):"
 
-#: TurtleArt/tabasics.py:268 TurtleArt/tawindow.py:4248
+#: TurtleArt/tabasics.py:311 TurtleArt/tawindow.py:4512
 msgid "heading"
 msgstr "ուղղություն"
 
-#: TurtleArt/tabasics.py:269
+#: TurtleArt/tabasics.py:312
 msgid ""
 "holds current heading value of the turtle (can be used in place of a number "
 "block)"
@@ -159,864 +165,967 @@ msgstr ""
 "Պահում է կրիայի գլխի ուղղության առկա արժեքը (կարող է օգտագործվել թվային "
 "արժեք պարունակող մասնիկի փոխարեն):"
 
-#: TurtleArt/tabasics.py:308
+#: TurtleArt/tabasics.py:350
 msgid "Palette of pen commands"
 msgstr "Գրչի հրահանգների պահոց"
 
-#: TurtleArt/tabasics.py:313 TurtleArt/tabasics.py:326
+#: TurtleArt/tabasics.py:351
+msgid "pen"
+msgstr "գրիչ"
+
+#: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:369
 msgid "fill screen"
 msgstr "լցնել էկրանը"
 
-#: TurtleArt/tabasics.py:313 TurtleArt/tabasics.py:326
-#: TurtleArt/tabasics.py:384
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1093
+#: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:369
+#: TurtleArt/tabasics.py:432 TurtleArt/tawindow.py:4542
 msgid "color"
 msgstr "գույն"
 
-#: TurtleArt/tabasics.py:313 TurtleArt/tabasics.py:327
-#: TurtleArt/tabasics.py:397
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1089
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1094
+#: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:370
+#: TurtleArt/tabasics.py:444 TurtleArt/tawindow.py:4538
+#: TurtleArt/tawindow.py:4543
 msgid "shade"
 msgstr "Երանգ"
 
-#: TurtleArt/tabasics.py:317 TurtleArt/tabasics.py:331
+#: TurtleArt/tabasics.py:360 TurtleArt/tabasics.py:374
 msgid "fills the background with (color, shade)"
 msgstr "Լցնում է հետին պլանը (գույն, երանգ)"
 
-#: TurtleArt/tabasics.py:327 TurtleArt/tabasics.py:409
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1090
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1095
+#: TurtleArt/tabasics.py:370 TurtleArt/tabasics.py:454
+#: TurtleArt/tawindow.py:4539 TurtleArt/tawindow.py:4544
 msgid "gray"
 msgstr "մոխրագույն"
 
-#: TurtleArt/tabasics.py:343
+#: TurtleArt/tabasics.py:387
 msgid "set color"
 msgstr "Սահմանել գույնը"
 
-#: TurtleArt/tabasics.py:347
+#: TurtleArt/tabasics.py:391
 msgid "sets color of the line drawn by the turtle"
 msgstr "Սահմանում է կրիայի գծած գծի գույնը"
 
-#: TurtleArt/tabasics.py:357
+#: TurtleArt/tabasics.py:403
 msgid "set shade"
 msgstr "Սահմանել երանգը"
 
-#: TurtleArt/tabasics.py:361
+#: TurtleArt/tabasics.py:407
 msgid "sets shade of the line drawn by the turtle"
 msgstr "Սահմանում է կրիայի գծած գծի գուներանգը"
 
-#: TurtleArt/tabasics.py:371
+#: TurtleArt/tabasics.py:418
 msgid "set gray"
 msgstr "Սահմանել գորշ"
 
-#: TurtleArt/tabasics.py:374
+#: TurtleArt/tabasics.py:421
 msgid "sets gray level of the line drawn by the turtle"
 msgstr "Սահմանում է կրիայի գծած գծի գորշի (մոխրագույնի)մակարդակը:"
 
-#: TurtleArt/tabasics.py:385
+#: TurtleArt/tabasics.py:433
 msgid "holds current pen color (can be used in place of a number block)"
 msgstr ""
 "Պահում է գրչի ընթացիկ գույնը (կարող է օգտագործվել թվային արժեք պարունակող "
 "մասնիկների փոխարեն):"
 
-#: TurtleArt/tabasics.py:398
+#: TurtleArt/tabasics.py:445
 msgid "holds current pen shade"
 msgstr "Պահում է գրչի ներկայիս գուներանգը:"
 
-#: TurtleArt/tabasics.py:410
+#: TurtleArt/tabasics.py:455
 msgid "holds current gray level (can be used in place of a number block)"
 msgstr ""
 "Պահում է ընթացիկ մոխրագույնի մակարդակը ﻿ (կարող է օգտագործվել թվային արժեք "
 "պարունակող մասնիկների փոխարեն):"
 
-#: TurtleArt/tabasics.py:419
+#: TurtleArt/tabasics.py:465
 msgid "pen up"
 msgstr "գրիչը վեր"
 
-#: TurtleArt/tabasics.py:422
+#: TurtleArt/tabasics.py:468
 msgid "Turtle will not draw when moved."
 msgstr "Շարժելիս Կրիան չի նկարի:"
 
-#: TurtleArt/tabasics.py:431
+#: TurtleArt/tabasics.py:475
 msgid "pen down"
 msgstr "գրիչը վար"
 
-#: TurtleArt/tabasics.py:434
+#: TurtleArt/tabasics.py:478
 msgid "Turtle will draw when moved."
 msgstr "Շարժելիս` Կրիան կնկարի:"
 
-#: TurtleArt/tabasics.py:443
+#: TurtleArt/tabasics.py:485
 msgid "pen down?"
 msgstr "գրիչը վար"
 
-#: TurtleArt/tabasics.py:445
+#: TurtleArt/tabasics.py:487
 msgid "returns True if pen is down"
 msgstr "դառնում է Ճիշտ, եթե գրիչը վար է"
 
-#: TurtleArt/tabasics.py:453
+#: TurtleArt/tabasics.py:494
 msgid "set pen size"
 msgstr "Սահմանել գրչի չափսը"
 
-#: TurtleArt/tabasics.py:457
+#: TurtleArt/tabasics.py:498
 msgid "sets size of the line drawn by the turtle"
 msgstr "Սահմանում է կրիայի գծած գծի չափսը"
 
-#: TurtleArt/tabasics.py:468
+#: TurtleArt/tabasics.py:511
 msgid "start fill"
 msgstr "Սկսել լցումը"
 
-#: TurtleArt/tabasics.py:470
+#: TurtleArt/tabasics.py:513
 msgid "starts filled polygon (used with end fill block)"
 msgstr ""
 "Սկսում է գծագրել գունավոր մակերեսով բազմանկյուն(օգտագործվում է \"ավարտել "
 "լցումը\" մասնիկով):"
 
-#: TurtleArt/tabasics.py:479
+#: TurtleArt/tabasics.py:519
 msgid "end fill"
 msgstr "ավարտել լցումը"
 
-#: TurtleArt/tabasics.py:481
+#: TurtleArt/tabasics.py:521
 msgid "completes filled polygon (used with start fill block)"
 msgstr ""
 "Ավարտում է գունավոր մակերեսով բազմանկյան գծագրումը (օգտագործվում է \"Սկսել "
 "գունալցումը\" մասնիկների հետ):"
 
-#: TurtleArt/tabasics.py:490
+#: TurtleArt/tabasics.py:527
 msgid "pen size"
 msgstr "Գրչի չափս"
 
-#: TurtleArt/tabasics.py:491
+#: TurtleArt/tabasics.py:528
 msgid "holds current pen size (can be used in place of a number block)"
 msgstr ""
 "Պահում է գրչի ներկայիս չափսը (կարող է օգտագործվել թվային արժեք պարունակող "
 "մասնիկի փոխարեն):"
 
-#: TurtleArt/tabasics.py:508
+#: TurtleArt/tabasics.py:544
 msgid "Palette of pen colors"
 msgstr "Գրչածայրի գույների ներկապնակը"
 
-#: TurtleArt/tabasics.py:510
+#: TurtleArt/tabasics.py:545
+msgid "colors"
+msgstr "գույներ"
+
+#: TurtleArt/tabasics.py:550
 msgid "red"
 msgstr "կարմիր"
 
-#: TurtleArt/tabasics.py:511
+#: TurtleArt/tabasics.py:550
 msgid "orange"
 msgstr "նարնջագույն"
 
-#: TurtleArt/tabasics.py:513
+#: TurtleArt/tabasics.py:550
 msgid "yellow"
 msgstr "դեղին"
 
-#: TurtleArt/tabasics.py:515
+#: TurtleArt/tabasics.py:550
 msgid "green"
 msgstr "կանաչ"
 
-#: TurtleArt/tabasics.py:516
+#: TurtleArt/tabasics.py:551
 msgid "cyan"
 msgstr "երկնագույն"
 
-#: TurtleArt/tabasics.py:517
+#: TurtleArt/tabasics.py:551
 msgid "blue"
 msgstr "կապույտ"
 
-#: TurtleArt/tabasics.py:518
+#: TurtleArt/tabasics.py:551
 msgid "purple"
 msgstr "բոսոր"
 
-#: TurtleArt/tabasics.py:520
+#: TurtleArt/tabasics.py:551
 msgid "white"
 msgstr "սպիտակ"
 
-#: TurtleArt/tabasics.py:521
+#: TurtleArt/tabasics.py:552
 msgid "black"
 msgstr "սև"
 
-#: TurtleArt/tabasics.py:601
+#: TurtleArt/tabasics.py:634
 msgid "Palette of numeric operators"
 msgstr "Թվային օպերատորների պահոց"
 
-#: TurtleArt/tabasics.py:607
+#: TurtleArt/tabasics.py:635
+msgid "numbers"
+msgstr "թվեր"
+
+#: TurtleArt/tabasics.py:640
 msgid "plus"
 msgstr "գումարել"
 
-#: TurtleArt/tabasics.py:611
+#: TurtleArt/tabasics.py:644
 msgid "adds two alphanumeric inputs"
 msgstr "Ավելացնում է երկու տառաթվային ներմուծում"
 
-#: TurtleArt/tabasics.py:619
+#: TurtleArt/tabasics.py:659
 msgid "minus"
 msgstr "հանել"
 
-#: TurtleArt/tabasics.py:622
+#: TurtleArt/tabasics.py:662
 msgid "subtracts bottom numeric input from top numeric input"
 msgstr "Վերին թվային ներմուծումից հանում է ստորին թվային ներմուծումը"
 
-#: TurtleArt/tabasics.py:633
+#: TurtleArt/tabasics.py:674
 msgid "multiply"
 msgstr "բազմապատկել"
 
-#: TurtleArt/tabasics.py:636
+#: TurtleArt/tabasics.py:677
 msgid "multiplies two numeric inputs"
 msgstr "բազմապատկում է երկու թվային ներմուծումները"
 
-#: TurtleArt/tabasics.py:645
+#: TurtleArt/tabasics.py:686
 msgid "divide"
 msgstr "բաժանել"
 
-#: TurtleArt/tabasics.py:648
+#: TurtleArt/tabasics.py:689
 msgid ""
 "divides top numeric input (numerator) by bottom numeric input (denominator)"
 msgstr ""
 "բաժանում է վերին թվային արժեքը(համարիչը ) ստորին թվային արժեքի (հայտարարը "
 ")վրա :"
 
-#: TurtleArt/tabasics.py:658
+#: TurtleArt/tabasics.py:699
 msgid "identity"
 msgstr "ինքնություն"
 
-#: TurtleArt/tabasics.py:660
+#: TurtleArt/tabasics.py:701
 msgid "identity operator used for extending blocks"
 msgstr "Մասնիկներն ընդլայնելու համար կիրառվող ինքնության օպերատորը:"
 
 # Մոդուլ
-#: TurtleArt/tabasics.py:668 TurtleArt/tabasics.py:669
+#: TurtleArt/tabasics.py:725 TurtleArt/tabasics.py:726
 msgid "mod"
 msgstr "mod"
 
-#: TurtleArt/tabasics.py:672
+#: TurtleArt/tabasics.py:729
 msgid "modular (remainder) operator"
 msgstr "Մոդուլային օպերատոր(մնացորդային)"
 
-#: TurtleArt/tabasics.py:680
+#: TurtleArt/tabasics.py:737
 msgid "√"
 msgstr "√"
 
-#: TurtleArt/tabasics.py:681
+#: TurtleArt/tabasics.py:738
 msgid "square root"
 msgstr "քառակուսի արմատ"
 
-#: TurtleArt/tabasics.py:684
+#: TurtleArt/tabasics.py:741
 msgid "calculates square root"
 msgstr "հաշվում է քառակուսի արմատը"
 
-#: TurtleArt/tabasics.py:691
+#: TurtleArt/tabasics.py:749
 msgid "random"
 msgstr "պատահական"
 
-#: TurtleArt/tabasics.py:691
+#: TurtleArt/tabasics.py:749
 msgid "min"
 msgstr "նվազագույն"
 
-#: TurtleArt/tabasics.py:691
+#: TurtleArt/tabasics.py:749
 msgid "max"
 msgstr "առավելագույն"
 
-#: TurtleArt/tabasics.py:695
+#: TurtleArt/tabasics.py:753
 msgid "returns random number between minimum (top) and maximum (bottom) values"
 msgstr ""
 "Վերադարձնում է նվազագույն (վերին) եւ առավելագույն(ստորին)արժեքների միջեւ "
 "պատահական որևէ թիվ"
 
-#: TurtleArt/tabasics.py:707
+#: TurtleArt/tabasics.py:775
 msgid "number"
 msgstr "թիվ"
 
-#: TurtleArt/tabasics.py:708
+#: TurtleArt/tabasics.py:776
 msgid "used as numeric input in mathematic operators"
 msgstr "Մաթեմատիկական օպերատորներում օգտագործվում է որպես թվային ներմուծում"
 
-#: TurtleArt/tabasics.py:716
+#: TurtleArt/tabasics.py:783
 msgid "greater than"
 msgstr "մեծ է քան"
 
-#: TurtleArt/tabasics.py:719
+#: TurtleArt/tabasics.py:786
 msgid "logical greater-than operator"
 msgstr "տրամաբանական greater-than/մեծ է քան /օպերատոր"
 
-#: TurtleArt/tabasics.py:728
+#: TurtleArt/tabasics.py:802
 msgid "less than"
 msgstr "փոքր է քան"
 
-#: TurtleArt/tabasics.py:732
+#: TurtleArt/tabasics.py:806
 msgid "logical less-than operator"
 msgstr "տրամաբանական less-than /փոքր է քան/ օպերատոր"
 
-#: TurtleArt/tabasics.py:740
+#: TurtleArt/tabasics.py:822
 msgid "equal"
 msgstr "հավասար"
 
-#: TurtleArt/tabasics.py:744
+#: TurtleArt/tabasics.py:826
 msgid "logical equal-to operator"
 msgstr "﻿ տրամաբանական equal-to/հավասար է/օպերատոր"
 
-#: TurtleArt/tabasics.py:751
+#: TurtleArt/tabasics.py:841
 msgid "not"
 msgstr "ոչ"
 
-#: TurtleArt/tabasics.py:754
+#: TurtleArt/tabasics.py:844
 msgid "logical NOT operator"
 msgstr "տրամաբանական ՈՉ օպերատոր"
 
-#: TurtleArt/tabasics.py:760 TurtleArt/tabasics.py:763
+#: TurtleArt/tabasics.py:852 TurtleArt/tabasics.py:855
 msgid "and"
 msgstr "և"
 
-#: TurtleArt/tabasics.py:764
+#: TurtleArt/tabasics.py:856
 msgid "logical AND operator"
 msgstr "տրամաբանական AND /և/օպերատոր"
 
-#: TurtleArt/tabasics.py:771 TurtleArt/tabasics.py:774
+#: TurtleArt/tabasics.py:864 TurtleArt/tabasics.py:867
 msgid "or"
 msgstr "կամ"
 
-#: TurtleArt/tabasics.py:775
+#: TurtleArt/tabasics.py:868
 msgid "logical OR operator"
 msgstr "տրամաբանական OR /կամ/ օպերատոր"
 
-#: TurtleArt/tabasics.py:784
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:91
+#: TurtleArt/tabasics.py:879
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:72
 msgid "Palette of flow operators"
 msgstr "Հոսքի օպերատորների պահոցը"
 
-#: TurtleArt/tabasics.py:789
+#: TurtleArt/tabasics.py:880
+msgid "flow"
+msgstr "հոսք"
+
+#: TurtleArt/tabasics.py:884
 msgid "wait"
 msgstr "սպասել"
 
-#: TurtleArt/tabasics.py:793
+#: TurtleArt/tabasics.py:888
 msgid "pauses program execution a specified number of seconds"
 msgstr "Ծրագրի գործարկման ընթացքը կասեցնում է սահմանված որոշակի վայրկյաններով:"
 
-#: TurtleArt/tabasics.py:800
+#: TurtleArt/tabasics.py:897
 msgid "forever"
 msgstr "Անդադար"
 
-#: TurtleArt/tabasics.py:804
+#: TurtleArt/tabasics.py:901
 msgid "loops forever"
 msgstr "կրկնել անընդմեջ"
 
-#: TurtleArt/tabasics.py:811 TurtleArt/tabasics.py:815
+#: TurtleArt/tabasics.py:911 TurtleArt/tabasics.py:915
 msgid "repeat"
 msgstr "կրկնել"
 
-#: TurtleArt/tabasics.py:816
+#: TurtleArt/tabasics.py:916
 msgid "loops specified number of times"
 msgstr "Կրկնել սահմանված անգամներ"
 
-#: TurtleArt/tabasics.py:822 TurtleArt/tabasics.py:835
+#: TurtleArt/tabasics.py:929 TurtleArt/tabasics.py:945
 msgid "if"
 msgstr "եթե"
 
-#: TurtleArt/tabasics.py:822 TurtleArt/tabasics.py:835
+#: TurtleArt/tabasics.py:929 TurtleArt/tabasics.py:945
 msgid "then"
 msgstr "ապա"
 
-#: TurtleArt/tabasics.py:825
+#: TurtleArt/tabasics.py:932
 msgid "if then"
 msgstr "եթե ..."
 
-#: TurtleArt/tabasics.py:827
+#: TurtleArt/tabasics.py:934
 msgid "if-then operator that uses boolean operators from Numbers palette"
 msgstr "Եթե-ապա օպերատորը, որը բուլյան օպերատորներ է օգտագործում Թվապնակից"
 
-#: TurtleArt/tabasics.py:835
+#: TurtleArt/tabasics.py:945
 msgid "else"
 msgstr "այլապես"
 
-#: TurtleArt/tabasics.py:839 TurtleArt/tabasics.py:847
+#: TurtleArt/tabasics.py:949 TurtleArt/tabasics.py:962
 msgid "if then else"
 msgstr "եթե ուրեմն մեկ այլ"
 
-#: TurtleArt/tabasics.py:840 TurtleArt/tabasics.py:848
+#: TurtleArt/tabasics.py:950 TurtleArt/tabasics.py:963
 msgid "if-then-else operator that uses boolean operators from Numbers palette"
 msgstr "եթե-ապա-կամ օպերատորը, որը բուլյան օպերատորներ է օգտագործում Թվապնակից"
 
-#: TurtleArt/tabasics.py:857
+#: TurtleArt/tabasics.py:972
 msgid "horizontal space"
 msgstr "Հորիզոնական տարածություն"
 
-#: TurtleArt/tabasics.py:858
+#: TurtleArt/tabasics.py:973
 msgid "jogs stack right"
 msgstr "Ագուցված մասնիկների շարանը հրվում է դեպի աջ"
 
-#: TurtleArt/tabasics.py:865
+#: TurtleArt/tabasics.py:982
 msgid "vertical space"
 msgstr "Ուղղահայաց տարածություն"
 
-#: TurtleArt/tabasics.py:866
+#: TurtleArt/tabasics.py:983
 msgid "jogs stack down"
 msgstr "Ագուցված մասնիկների շարանը քաշում է դեպի վար:"
 
-#: TurtleArt/tabasics.py:872
+#: TurtleArt/tabasics.py:990
 msgid "stop action"
 msgstr "Կանգնեցնել գործողությունը"
 
-#: TurtleArt/tabasics.py:875
+#: TurtleArt/tabasics.py:993
 msgid "stops current action"
 msgstr "Կանգնեցնում է ընթացիկ գործողությունը"
 
-#: TurtleArt/tabasics.py:884
+#: TurtleArt/tabasics.py:1003
 msgid "Palette of variable blocks"
 msgstr "Փոփոխականներով մասնիկների պահոց"
 
-#: TurtleArt/tabasics.py:889 pysamples/grecord.py:214
+#: TurtleArt/tabasics.py:1004
+msgid "blocks"
+msgstr "բլոկներ"
+
+#: TurtleArt/tabasics.py:1008 pysamples/grecord.py:211
 msgid "start"
 msgstr "Մեկնարկ"
 
-#: TurtleArt/tabasics.py:892
+#: TurtleArt/tabasics.py:1011
 msgid "connects action to toolbar run buttons"
 msgstr "Գործողությունը կապում է գործիքաշարի գործարկման կոճակներին"
 
-#: TurtleArt/tabasics.py:899 TurtleArt/tabasics.py:900
-#: TurtleArt/tabasics.py:901
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:178
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:179
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:180
+#: TurtleArt/tabasics.py:1023 TurtleArt/tabasics.py:1024
+#: TurtleArt/tabasics.py:1025
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:187
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:201
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:188
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:189
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:195
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:210
 msgid "text"
 msgstr "Տեքստ"
 
-#: TurtleArt/tabasics.py:902
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:181
+#: TurtleArt/tabasics.py:1026
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:190
 msgid "string value"
 msgstr "Տողի արժեքը"
 
-#: TurtleArt/tabasics.py:906 TurtleArt/tabasics.py:909
-#: TurtleArt/tabasics.py:917 TurtleArt/tabasics.py:921
-#: TurtleArt/tawindow.py:1449 TurtleArt/tawindow.py:1546
-#: TurtleArt/tawindow.py:1559 TurtleArt/tawindow.py:2178
-#: TurtleArt/tawindow.py:4513
+#: TurtleArt/tabasics.py:1030 TurtleArt/tabasics.py:1033
+#: TurtleArt/tabasics.py:1046 TurtleArt/tabasics.py:1050
+#: TurtleArt/tawindow.py:1578 TurtleArt/tawindow.py:1688
+#: TurtleArt/tawindow.py:1701 TurtleArt/tawindow.py:2342
+#: TurtleArt/tawindow.py:4993
 msgid "action"
 msgstr "Գործողություն"
 
 # կույտի-ագուցված մասնիկների շարան
-#: TurtleArt/tabasics.py:911
+#: TurtleArt/tabasics.py:1035
 msgid "top of nameable action stack"
 msgstr "Անվանակոչվող գործողությունների կույտի ամենվերին մասը"
 
-#: TurtleArt/tabasics.py:922 TurtleArt/tawindow.py:4527
+#: TurtleArt/tabasics.py:1051 TurtleArt/tawindow.py:5006
 msgid "invokes named action stack"
 msgstr "Կանչում է անվանակոչված գործողությունների ագուցված մասնիկների շարանը:"
 
-#: TurtleArt/tabasics.py:929
+#: TurtleArt/tabasics.py:1058
 msgid "store in box 1"
 msgstr "Պահեստավորել տուփ 1-ի մեջ"
 
-#: TurtleArt/tabasics.py:934
+#: TurtleArt/tabasics.py:1063
 msgid "stores numeric value in Variable 1"
 msgstr "Թվային արժեքը պահում է Փոփոխական 1-ում"
 
-#: TurtleArt/tabasics.py:943
+#: TurtleArt/tabasics.py:1072
 msgid "store in box 2"
 msgstr "Պահել տուփ 2-ի մեջ"
 
-#: TurtleArt/tabasics.py:948
+#: TurtleArt/tabasics.py:1077
 msgid "stores numeric value in Variable 2"
 msgstr "Թվային արժեքը պահում է Փոփոխական 2-ում"
 
-#: TurtleArt/tabasics.py:957
+#: TurtleArt/tabasics.py:1086
 msgid "box 1"
 msgstr "տուփ 1"
 
-#: TurtleArt/tabasics.py:960
+#: TurtleArt/tabasics.py:1089
 msgid "Variable 1 (numeric value)"
 msgstr "Փոփոխական 1 ﻿ ( թվային արժեքը )"
 
-#: TurtleArt/tabasics.py:967
+#: TurtleArt/tabasics.py:1099
 msgid "box 2"
 msgstr "տուփ 2"
 
-#: TurtleArt/tabasics.py:970
+#: TurtleArt/tabasics.py:1102
 msgid "Variable 2 (numeric value)"
 msgstr "Փոփոխական 2 ﻿ ( թվային արժեքը )"
 
-#: TurtleArt/tabasics.py:976 TurtleArt/tawindow.py:4581
+#: TurtleArt/tabasics.py:1114 TurtleArt/tawindow.py:5055
 msgid "store in"
 msgstr "պահել ... մեջ"
 
-#: TurtleArt/tabasics.py:976 TurtleArt/tabasics.py:992
+#: TurtleArt/tabasics.py:1114 TurtleArt/tabasics.py:1130
 msgid "box"
 msgstr "Տուփ"
 
-#: TurtleArt/tabasics.py:976 TurtleArt/tawindow.py:4581
+#: TurtleArt/tabasics.py:1114 TurtleArt/tawindow.py:5055
 msgid "value"
 msgstr "Արժեք"
 
-#: TurtleArt/tabasics.py:980 TurtleArt/tabasics.py:995
-#: TurtleArt/tawindow.py:1453 TurtleArt/tawindow.py:1585
-#: TurtleArt/tawindow.py:2182 TurtleArt/tawindow.py:4542
-#: TurtleArt/tawindow.py:4572
+#: TurtleArt/tabasics.py:1118 TurtleArt/tabasics.py:1133
+#: TurtleArt/tawindow.py:1582 TurtleArt/tawindow.py:1727
+#: TurtleArt/tawindow.py:2346 TurtleArt/tawindow.py:5020
+#: TurtleArt/tawindow.py:5047
 msgid "my box"
 msgstr "Իմ տուփը"
 
-#: TurtleArt/tabasics.py:981 TurtleArt/tawindow.py:4586
+#: TurtleArt/tabasics.py:1119 TurtleArt/tawindow.py:5060
 msgid "stores numeric value in named variable"
 msgstr "Թվային արժեքը պահում է անվանակոչված փոփոխականում"
 
-#: TurtleArt/tabasics.py:998 TurtleArt/tawindow.py:4556
+#: TurtleArt/tabasics.py:1136 TurtleArt/tawindow.py:5033
 msgid "named variable (numeric value)"
 msgstr "Անվանված փոփոխական (թվային արժեքը)"
 
-#: TurtleArt/tabasics.py:1005 TurtleArt/tabasics.py:1024
+#: TurtleArt/tabasics.py:1142 TurtleArt/tabasics.py:1166
 msgid "action 1"
 msgstr "Գործողություն 1"
 
-#: TurtleArt/tabasics.py:1008
+#: TurtleArt/tabasics.py:1145
 msgid "top of Action 1 stack"
 msgstr "1 գործողության շարանի վերին մասը"
 
-#: TurtleArt/tabasics.py:1014 TurtleArt/tabasics.py:1034
+#: TurtleArt/tabasics.py:1154 TurtleArt/tabasics.py:1179
 msgid "action 2"
 msgstr "Գործողություն 2"
 
-#: TurtleArt/tabasics.py:1017
+#: TurtleArt/tabasics.py:1157
 msgid "top of Action 2 stack"
 msgstr "2 գործողության մասնիկաշարանի վերին մասը"
 
-#: TurtleArt/tabasics.py:1027
+#: TurtleArt/tabasics.py:1169
 msgid "invokes Action 1 stack"
 msgstr "Կանչում է Գործողություն 1 մասնիկների շարանը"
 
-#: TurtleArt/tabasics.py:1037
+#: TurtleArt/tabasics.py:1182
 msgid "invokes Action 2 stack"
 msgstr "Կանչում է Գործողություն 2 շարանը"
 
-#: TurtleArt/tabasics.py:1045
+#: TurtleArt/tabasics.py:1194 TurtleArt/tabasics.py:1195
+#: TurtleArt/tapalette.py:138 TurtleArt/tapalette.py:139
 msgid "trash"
 msgstr "Խոտան"
 
-#: TurtleArt/tabasics.py:1049
+#: TurtleArt/tabasics.py:1199 TurtleArt/tawindow.py:2215
 msgid "empty trash"
 msgstr "Դատարկել աղբամանը"
 
-#: TurtleArt/tabasics.py:1050
+#: TurtleArt/tabasics.py:1200
 msgid "permanently deletes items in trash"
 msgstr "Անվերադարձ ջնջում է աղբամանի պարունակությունը"
 
-#: TurtleArt/tabasics.py:1054
+#: TurtleArt/tabasics.py:1204
 msgid "restore all"
 msgstr "Վերականգնել բոլորը"
 
-#: TurtleArt/tabasics.py:1055
+#: TurtleArt/tabasics.py:1205
 msgid "restore all blocks from trash"
 msgstr "Վերականգնել աղբարկղից բոլոր մասնիկները"
 
-#: TurtleArt/tabasics.py:1059
+#: TurtleArt/tabasics.py:1209
 msgid "clear all"
 msgstr "Ջնջել բոլորը"
 
-#: TurtleArt/tabasics.py:1060
+#: TurtleArt/tabasics.py:1210
 msgid "move all blocks to trash"
 msgstr "Բոլոր մասնիկները տեղափոխել աղբարկղ"
 
-#: TurtleArt/tacollaboration.py:152 TurtleArt/tawindow.py:2156
-#: TurtleArtActivity.py:775
+#: TurtleArt/tacollaboration.py:152 TurtleArt/tawindow.py:2320
+#: TurtleArtActivity.py:920
 msgid "Share selected blocks"
 msgstr "Կիսել ընտրված մասնիկներն ընկերոջ հետ:"
 
-#: TurtleArt/taconstants.py:209 TurtleArt/taconstants.py:231
-#: TurtleArt/taconstants.py:252 TurtleArt/taconstants.py:294
-#: TurtleArt/taconstants.py:336 TurtleArt/taconstants.py:378
+#: TurtleArt/taconstants.py:140
+msgid "up"
+msgstr "վեր"
+
+#: TurtleArt/taconstants.py:142
+msgid "down"
+msgstr "վար"
+
+#: TurtleArt/taconstants.py:143
+msgid "backspace"
+msgstr "հետ"
+
+#: TurtleArt/taconstants.py:144
+msgid "tab"
+msgstr "տաբուլացիա"
+
+#. TRANS: enter is the name of the enter (or return) key
+#: TurtleArt/taconstants.py:146
+msgid "enter"
+msgstr "մուտք"
+
+#. TRANS: space is the name of the space key
+#: TurtleArt/taconstants.py:149
+msgid "space"
+msgstr "բացատ"
+
+#: TurtleArt/taconstants.py:150
+msgid "delete"
+msgstr "ջնջել"
+
+#: TurtleArt/taconstants.py:363 TurtleArt/taconstants.py:384
+#: TurtleArt/taconstants.py:404 TurtleArt/taconstants.py:445
+#: TurtleArt/taconstants.py:486 TurtleArt/taconstants.py:527
 msgid "Title"
 msgstr "Վերնագիր"
 
-#: TurtleArt/talogo.py:374 TurtleArtActivity.py:755
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1437
+#: TurtleArt/taexportpython.py:198
+msgid "block is not exportable"
+msgstr "հատվածը արտահանման ենթակա չէ"
+
+#: TurtleArt/taexportpython.py:217
+msgid "error while exporting block"
+msgstr "վրիպում` հատվածը արտահանելիս"
+
+#: TurtleArt/talogo.py:383 TurtleArt/tawindow.py:1539 TurtleArtActivity.py:901
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1320
 msgid "Stop turtle"
 msgstr "Կանգնեցնել Կրիային"
 
-#: TurtleArt/talogo.py:384 TurtleArtActivity.py:383 TurtleArtActivity.py:756
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1428
+#: TurtleArt/talogo.py:393 TurtleArtActivity.py:517 TurtleArtActivity.py:902
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1311
 msgid "Show blocks"
 msgstr "Ցուցադրել մասնիկները"
 
-#: TurtleArt/talogo.py:388 TurtleArtActivity.py:387 TurtleArtActivity.py:1041
+#: TurtleArt/talogo.py:397 TurtleArtActivity.py:521 TurtleArtActivity.py:1247
 msgid "Hide blocks"
 msgstr "Թաքցնել մասնիկները"
 
-#: TurtleArt/talogo.py:512
+#: TurtleArt/talogo.py:537
 msgid "did not output to"
 msgstr "չի արտածում ... վրա"
 
-#: TurtleArt/talogo.py:572
-msgid "I don't know how to"
-msgstr "Ես չգիտեմ, թե ինչպես"
-
-#: TurtleArt/talogo.py:630
+#: TurtleArt/talogo.py:577 TurtleArt/talogo.py:960
 msgid "doesn't like"
 msgstr "Չի հավանում"
 
 # Որպես մուտք
-#: TurtleArt/talogo.py:631
+#: TurtleArt/talogo.py:578 TurtleArt/talogo.py:961
 msgid "as input"
 msgstr "﻿Որպես ներածում"
 
-#: TurtleArt/tapalette.py:97
+#: TurtleArt/talogo.py:639
+msgid "I don't know how to"
+msgstr "Ես չգիտեմ, թե ինչպես"
+
+#: TurtleArt/tapalette.py:98
 msgid "displays next palette"
 msgstr "Ցույց է տալիս մյուս պահոցը"
 
-#: TurtleArt/tapalette.py:98
+#: TurtleArt/tapalette.py:99
 msgid "changes the orientation of the palette of blocks"
 msgstr "Փոխում է մասնիկների պահոցի դիրքը"
 
-#: TurtleArt/tautils.py:300
-msgid "Load..."
-msgstr "Բեռնում..."
-
-#: TurtleArt/tautils.py:310
-msgid "Save..."
-msgstr "Պահպանել..."
-
-#: TurtleArt/tautils.py:593
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:712
-msgid "click to open"
-msgstr "Քլիք` բացելու համար"
-
-# Ուղղվածություն
-#: TurtleArt/tawindow.py:1102 TurtleArt/tawindow.py:1103
-msgid "orientation"
-msgstr "Դիրք"
-
-#: TurtleArt/tawindow.py:1117 TurtleArt/tawindow.py:1742
-msgid "next"
-msgstr "Հաջորդ"
-
-#: TurtleArt/tawindow.py:1156 TurtleArt/tawindow.py:1763
-msgid "shift"
-msgstr "Տեղափոխել"
-
-#: TurtleArt/tawindow.py:1414
-msgid ""
-"Please hit the Stop Button before making changes to your Turtle Blocks "
-"program"
-msgstr ""
-"Խնդրվում է սեղմել \"Կանգ\" կոճակը նախքան Կրիայի ծրագրի մասնիկների խմբում որևէ "
-"փոփոխություն կատարելը:"
-
-#: TurtleArt/tawindow.py:1467
-msgid "Select blocks to share"
-msgstr "Ընտրել համատեղ օգտագործվելիք մասնիկները:"
-
-#: TurtleArt/tawindow.py:1630 TurtleArtActivity.py:656
-#: TurtleArtActivity.py:805 turtleblocks.py:412
-msgid "Save stack"
-msgstr "Պահպանել գրապահոցը"
-
-#: TurtleArt/tawindow.py:1631 TurtleArt/tawindow.py:1645
-msgid "Really overwrite stack?"
-msgstr "Իսկապես վերագրանցե՞լ գրապահոցը"
-
-#: TurtleArt/tawindow.py:1634 TurtleArt/tawindow.py:1673
-#: gnome_plugins/uploader_plugin.py:144
-msgid "Cancel"
-msgstr "Չեղարկել"
-
-#: TurtleArt/tawindow.py:1638 TurtleArt/tawindow.py:1648
-msgid "Overwrite stack"
-msgstr "Վերագրանցել գրապահոցը"
-
-#: TurtleArt/tawindow.py:1669 TurtleArt/tawindow.py:1677
-#: TurtleArt/tawindow.py:1686 TurtleArtActivity.py:658 turtleblocks.py:414
-msgid "Delete stack"
-msgstr "Ջնջել գրապահոցը"
-
-#: TurtleArt/tawindow.py:1670 TurtleArt/tawindow.py:1683
-msgid "Really delete stack?"
-msgstr "Իսկապես նջնե՞լ գրապահոցը"
-
-#: TurtleArt/tawindow.py:4362
-msgid "image"
-msgstr "Պատկեր"
-
-#: TurtleArtActivity.py:200 TurtleArtActivity.py:781 TurtleArtActivity.py:964
-#: TurtleArtActivity.py:1000 turtleblocks.py:386
-msgid "Save as Logo"
-msgstr "Պահել որպես Տարբերանշան"
-
-#: TurtleArtActivity.py:257 TurtleArtActivity.py:780 TurtleArtActivity.py:961
-#: TurtleArtActivity.py:997 turtleblocks.py:384
-msgid "Save as image"
-msgstr "Պահել որպես պատկեր"
-
-#: TurtleArtActivity.py:265
-msgid "snapshot"
-msgstr "ճեպապատկեր"
-
-#: TurtleArtActivity.py:273 TurtleArtActivity.py:715 TurtleArtActivity.py:757
-#: TurtleArtActivity.py:970 TurtleArtActivity.py:1003
-msgid "Save snapshot"
-msgstr "Պահպանել ճեպապատկերը"
-
-#: TurtleArtActivity.py:318 TurtleArtActivity.py:681 TurtleArtActivity.py:832
-msgid "Turn off hover help"
-msgstr "Կասեցնել տատանվող օգնությունը"
-
-#: TurtleArtActivity.py:326 turtleblocks.py:405
-msgid "Turn on hover help"
-msgstr "Միացնել տատանվող օգնությունը"
-
-#: TurtleArtActivity.py:335 turtleblocks.py:419
-msgid "Show palette"
-msgstr "Ցուցադրել պահոցը"
-
-#: TurtleArtActivity.py:341 TurtleArtActivity.py:1029 turtleblocks.py:421
-msgid "Hide palette"
-msgstr "Թաքցնել պահոցը"
-
-#: TurtleArtActivity.py:509
-msgid "Rescale coordinates down"
-msgstr "Փոխել դիրքացույցները դեպի նվազեցում"
-
-#: TurtleArtActivity.py:513 TurtleArtActivity.py:672 TurtleArtActivity.py:828
-msgid "Rescale coordinates up"
-msgstr "Փոխել դիրքացույցները դեպի մեծացում"
-
-#: TurtleArtActivity.py:603 TurtleArtActivity.py:639 TurtleArtActivity.py:749
-#: TurtleArtActivity.py:802 turtleblocks.py:416
-msgid "Edit"
-msgstr "Խմբագրել"
-
-#: TurtleArtActivity.py:608 TurtleArtActivity.py:637 TurtleArtActivity.py:750
-#: TurtleArtActivity.py:820 turtleblocks.py:407
-msgid "View"
-msgstr "Տեսքը"
-
-#: TurtleArtActivity.py:635 TurtleArtActivity.py:751
-msgid "Project"
-msgstr "Նախագիծ"
-
-#: TurtleArtActivity.py:641 TurtleArtActivity.py:748 TurtleArtActivity.py:777
-#: TurtleArtActivity.py:779 TurtleArtActivity.py:956
-msgid "Save/Load"
-msgstr "Պահել / Բեռնել"
-
-#: TurtleArtActivity.py:649 TurtleArtActivity.py:803 turtleblocks.py:410
-msgid "Copy"
-msgstr "Պատճենել"
-
-#: TurtleArtActivity.py:651 TurtleArtActivity.py:804 turtleblocks.py:411
-msgid "Paste"
-msgstr "Փակցնել"
-
-#: TurtleArtActivity.py:653
-msgid "Restore blocks from trash"
-msgstr "Վերականգնել աղբարկղից բոլոր մասնիկները"
-
-#: TurtleArtActivity.py:661 TurtleArtActivity.py:821
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:791
-msgid "Fullscreen"
-msgstr "Էկրանի չափով"
-
-#: TurtleArtActivity.py:664 TurtleArtActivity.py:822 turtleblocks.py:392
-msgid "Cartesian coordinates"
-msgstr "Դեկարտյան դիրքացուցներ"
-
-#: TurtleArtActivity.py:666 TurtleArtActivity.py:824 turtleblocks.py:394
-msgid "Polar coordinates"
-msgstr "Բևեռային դիրքացույցներ"
-
-#: TurtleArtActivity.py:669 TurtleArtActivity.py:826
-msgid "Metric coordinates"
-msgstr "Մետրային դիրքացույցներ"
-
-#: TurtleArtActivity.py:675 TurtleArtActivity.py:830 turtleblocks.py:398
-msgid "Grow blocks"
-msgstr "Մեծացնել մասնիկները"
-
-#: TurtleArtActivity.py:678 TurtleArtActivity.py:831 turtleblocks.py:400
-msgid "Shrink blocks"
-msgstr "Փոքրացնել մասնիկները"
-
-#: TurtleArtActivity.py:702 TurtleArtActivity.py:719 TurtleArtActivity.py:758
-#: TurtleArtActivity.py:974
-msgid "Load example"
-msgstr "Բեռնման օրինակ"
-
-#: TurtleArtActivity.py:752 TurtleArtActivity.py:1035 turtleblocks.py:428
-msgid "Clean"
-msgstr "Մաքրել"
-
-#: TurtleArtActivity.py:753 TurtleArtActivity.py:1037 turtleblocks.py:429
-msgid "Run"
-msgstr "Գործարկել"
-
-#: TurtleArtActivity.py:754 TurtleArtActivity.py:1039 turtleblocks.py:430
-msgid "Step"
-msgstr "Քայլ"
-
-#: TurtleArtActivity.py:759 turtleblocks.py:437 util/helpbutton.py:44
-msgid "Help"
-msgstr "Օգնություն"
-
-#: TurtleArtActivity.py:760 turtleblocks.py:432
-msgid "Stop"
-msgstr "Կանգ"
-
-#: TurtleArtActivity.py:782 TurtleArtActivity.py:983 TurtleArtActivity.py:1005
-#: turtleblocks.py:381
-msgid "Load project"
-msgstr "Բեռնել նախագիծը"
-
-# Load plugin
-#: TurtleArtActivity.py:785 TurtleArtActivity.py:988 TurtleArtActivity.py:1010
-msgid "Load plugin"
-msgstr "Բեռնել օժանդակ հավելումը"
-
-#: TurtleArtActivity.py:786 TurtleArtActivity.py:991 TurtleArtActivity.py:1013
-msgid "Load Python block"
-msgstr "Ներբեռնել «Python» ծրագրի մասնիկները"
-
-#: TurtleArtActivity.py:933
-msgid "Palettes"
-msgstr "Պահոց"
-
-#: TurtleArtActivity.py:951
-msgid "Sharing blocks disabled"
-msgstr "Ընդհանուր օգտագործման մասնիկները կասեցված են:"
-
-#: TurtleArtActivity.py:980 turtleblocks.py:380
-msgid "Open"
-msgstr "Բացել"
-
-#: TurtleArtActivity.py:1030
-msgid "<Ctrl>p"
-msgstr "<Ctrl>p"
-
-#: TurtleArtActivity.py:1035
-msgid "<Ctrl>e"
-msgstr "<Ctrl>e"
-
-#: TurtleArtActivity.py:1037
-msgid "<Ctrl>r"
-msgstr "<Ctrl>r"
-
-#: TurtleArtActivity.py:1039
-msgid "<Ctrl>w"
-msgstr "<Ctrl>w"
-
-#: TurtleArtActivity.py:1042
-msgid "<Ctrl>s"
-msgstr "<Ctrl>s"
-
-#: TurtleArtActivity.py:1203 TurtleArtActivity.py:1208
-#: TurtleArtActivity.py:1288
-msgid "Plugin could not be installed."
-msgstr "Հավելման բեռնումը չկայացավ"
-
 # Հավելում - plugin
-#: TurtleArtActivity.py:1284
+#: TurtleArt/taplugin.py:90
 msgid "Please restart Turtle Art in order to use the plugin."
 msgstr ""
 "Խնդրվումէ վերամեկնարկել Turtle Art /Կրիայի/ ծրագիրը` հավելումն օգտագործելու "
 "համար:"
 
-#: TurtleArtActivity.py:1302
+#: TurtleArt/taplugin.py:93 TurtleArt/taplugin.py:104
+#: TurtleArt/taplugin.py:107
+msgid "Plugin could not be installed."
+msgstr "Հավելման բեռնումը չկայացավ"
+
+#: TurtleArt/taprimitive.py:57
+msgid "error in highlighted block"
+msgstr "սխալ` ընդգծված հատվածում"
+
+#: TurtleArt/taprimitive.py:59
+msgid "error"
+msgstr "սխալ"
+
+#: TurtleArt/tautils.py:298
+msgid "Load..."
+msgstr "Բեռնում..."
+
+#: TurtleArt/tautils.py:308
+msgid "Save..."
+msgstr "Պահպանել..."
+
+#: TurtleArt/tautils.py:591
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:839
+msgid "click to open"
+msgstr "Քլիք` բացելու համար"
+
+# Ուղղվածություն
+#: TurtleArt/tawindow.py:1208 TurtleArt/tawindow.py:1209
+msgid "orientation"
+msgstr "Դիրք"
+
+#: TurtleArt/tawindow.py:1223 TurtleArt/tawindow.py:1884
+msgid "next"
+msgstr "Հաջորդ"
+
+#: TurtleArt/tawindow.py:1262 TurtleArt/tawindow.py:1905
+msgid "shift"
+msgstr "Տեղափոխել"
+
+#: TurtleArt/tawindow.py:1543
+msgid "Please hit the Stop Button before making changes to your program"
+msgstr ""
+"Խնդրվում է սեղմել \"Կանգ\" կոճակը նախքան քո ծրագրում փոփոխություն կատարելը:"
+
+#: TurtleArt/tawindow.py:1596
+msgid "Select blocks to share"
+msgstr "Ընտրել համատեղ օգտագործվելիք մասնիկները:"
+
+#: TurtleArt/tawindow.py:1772 TurtleArtActivity.py:802
+#: TurtleArtActivity.py:961 turtleblocks.py:473
+msgid "Save stack"
+msgstr "Պահպանել գրապահոցը"
+
+#: TurtleArt/tawindow.py:1773 TurtleArt/tawindow.py:1787
+msgid "Really overwrite stack?"
+msgstr "Իսկապես վերագրանցե՞լ գրապահոցը"
+
+#: TurtleArt/tawindow.py:1776 TurtleArt/tawindow.py:1815
+#: gnome_plugins/uploader_plugin.py:144
+msgid "Cancel"
+msgstr "Չեղարկել"
+
+#: TurtleArt/tawindow.py:1780 TurtleArt/tawindow.py:1790
+msgid "Overwrite stack"
+msgstr "Վերագրանցել գրապահոցը"
+
+#: TurtleArt/tawindow.py:1811 TurtleArt/tawindow.py:1819
+#: TurtleArt/tawindow.py:1828 TurtleArtActivity.py:804 turtleblocks.py:475
+msgid "Delete stack"
+msgstr "Ջնջել գրապահոցը"
+
+#: TurtleArt/tawindow.py:1812 TurtleArt/tawindow.py:1825
+msgid "Really delete stack?"
+msgstr "Իսկապես նջնե՞լ գրապահոցը"
+
+#: TurtleArt/tawindow.py:2216
+msgid "Do you really want to empty the trash?"
+msgstr "Իսկապես ցանկանու՞մ ես դատարկել աղբամանը:"
+
+#: TurtleArt/tawindow.py:4735 turtleblocks.py:439
+msgid "icon"
+msgstr "պատկերակ"
+
+#: TurtleArt/tawindow.py:4842 turtleblocks.py:437
+msgid "image"
+msgstr "Պատկեր"
+
+#: TurtleArtActivity.py:131
+msgid "Please wait"
+msgstr "Խնդրում եմ, սպասել"
+
+#: TurtleArtActivity.py:132
+msgid "Starting connection..."
+msgstr "Մեկնարկում է միացման գործընթացը..."
+
+#: TurtleArtActivity.py:394
+msgid "snapshot"
+msgstr "ճեպապատկեր"
+
+#: TurtleArtActivity.py:450 TurtleArtActivity.py:827 TurtleArtActivity.py:988
+msgid "Turn off hover help"
+msgstr "Կասեցնել տատանվող օգնությունը"
+
+#: TurtleArtActivity.py:459 turtleblocks.py:466
+msgid "Turn on hover help"
+msgstr "Միացնել տատանվող օգնությունը"
+
+#: TurtleArtActivity.py:469 turtleblocks.py:480
+msgid "Show palette"
+msgstr "Ցուցադրել պահոցը"
+
+#: TurtleArtActivity.py:475 TurtleArtActivity.py:1235 turtleblocks.py:482
+msgid "Hide palette"
+msgstr "Թաքցնել պահոցը"
+
+#: TurtleArtActivity.py:643
+msgid "Rescale coordinates down"
+msgstr "Փոխել դիրքացույցները դեպի նվազեցում"
+
+#: TurtleArtActivity.py:652 TurtleArtActivity.py:818 TurtleArtActivity.py:984
+msgid "Rescale coordinates up"
+msgstr "Փոխել դիրքացույցները դեպի մեծացում"
+
+#: TurtleArtActivity.py:750 TurtleArtActivity.py:785 TurtleArtActivity.py:895
+#: TurtleArtActivity.py:958 turtleblocks.py:477
+msgid "Edit"
+msgstr "Խմբագրել"
+
+#: TurtleArtActivity.py:755 TurtleArtActivity.py:783 TurtleArtActivity.py:896
+#: TurtleArtActivity.py:976 turtleblocks.py:468
+msgid "View"
+msgstr "Տեսքը"
+
+#: TurtleArtActivity.py:781 TurtleArtActivity.py:897
+msgid "Project"
+msgstr "Նախագիծ"
+
+#: TurtleArtActivity.py:787 TurtleArtActivity.py:894 TurtleArtActivity.py:921
+msgid "Save/Load"
+msgstr "Պահել / Բեռնել"
+
+#: TurtleArtActivity.py:795 TurtleArtActivity.py:959 turtleblocks.py:471
+msgid "Copy"
+msgstr "Պատճենել"
+
+#: TurtleArtActivity.py:797 TurtleArtActivity.py:960 turtleblocks.py:472
+msgid "Paste"
+msgstr "Փակցնել"
+
+#: TurtleArtActivity.py:799
+msgid "Restore blocks from trash"
+msgstr "Վերականգնել աղբարկղից բոլոր մասնիկները"
+
+#: TurtleArtActivity.py:807 TurtleArtActivity.py:977
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:925
+msgid "Fullscreen"
+msgstr "Էկրանի չափով"
+
+#: TurtleArtActivity.py:810 TurtleArtActivity.py:978 turtleblocks.py:452
+msgid "Cartesian coordinates"
+msgstr "Դեկարտյան դիրքացուցներ"
+
+#: TurtleArtActivity.py:812 TurtleArtActivity.py:980 turtleblocks.py:454
+msgid "Polar coordinates"
+msgstr "Բևեռային դիրքացույցներ"
+
+#: TurtleArtActivity.py:815 TurtleArtActivity.py:982
+msgid "Metric coordinates"
+msgstr "Մետրային դիրքացույցներ"
+
+#: TurtleArtActivity.py:821 TurtleArtActivity.py:986 turtleblocks.py:459
+msgid "Grow blocks"
+msgstr "Մեծացնել մասնիկները"
+
+#: TurtleArtActivity.py:824 TurtleArtActivity.py:987 turtleblocks.py:461
+msgid "Shrink blocks"
+msgstr "Փոքրացնել մասնիկները"
+
+#: TurtleArtActivity.py:852 TurtleArtActivity.py:865 TurtleArtActivity.py:903
+#: TurtleArtActivity.py:1163
+msgid "Load example"
+msgstr "Բեռնման օրինակ"
+
+#: TurtleArtActivity.py:898 TurtleArtActivity.py:1241 turtleblocks.py:489
+msgid "Clean"
+msgstr "Մաքրել"
+
+#: TurtleArtActivity.py:899 TurtleArtActivity.py:1243 turtleblocks.py:490
+msgid "Run"
+msgstr "Գործարկել"
+
+#: TurtleArtActivity.py:900 TurtleArtActivity.py:1245 turtleblocks.py:491
+msgid "Step"
+msgstr "Քայլ"
+
+#: TurtleArtActivity.py:904 turtleblocks.py:498 util/helpbutton.py:44
+msgid "Help"
+msgstr "Օգնություն"
+
+#: TurtleArtActivity.py:905 turtleblocks.py:493
+msgid "Stop"
+msgstr "Կանգ"
+
+#: TurtleArtActivity.py:922 TurtleArtActivity.py:1125
+#: TurtleArtActivity.py:1186
+msgid "Save as image"
+msgstr "Պահել որպես պատկեր"
+
+#: TurtleArtActivity.py:925 TurtleArtActivity.py:1128
+#: TurtleArtActivity.py:1189
+msgid "Save as icon"
+msgstr "Պահպանել որպես պատկերակ"
+
+# ODP is Open Office presentation - Բաց Օֆիս ներկայացում
+#. TRANS: ODP is Open Office presentation
+#: TurtleArtActivity.py:930 TurtleArtActivity.py:1132
+#: TurtleArtActivity.py:1193
+msgid "Save as ODP"
+msgstr "Պահպանել որպես ODP"
+
+#: TurtleArtActivity.py:935 TurtleArtActivity.py:1141
+#: TurtleArtActivity.py:1202
+msgid "Save as Logo"
+msgstr "Պահել որպես Տարբերանշան"
+
+#: TurtleArtActivity.py:936 TurtleArtActivity.py:1144
+#: TurtleArtActivity.py:1205
+msgid "Save as Python"
+msgstr "Պահանել որպես Պիտոն"
+
+#: TurtleArtActivity.py:937 TurtleArtActivity.py:1148
+#: TurtleArtActivity.py:1209
+msgid "Save snapshot"
+msgstr "Պահպանել ճեպապատկերը"
+
+#: TurtleArtActivity.py:938 TurtleArtActivity.py:1172
+#: TurtleArtActivity.py:1211 turtleblocks.py:426
+msgid "Add project"
+msgstr "Ավելացնել նախագիծը"
+
+# Load plugin
+#: TurtleArtActivity.py:941 TurtleArtActivity.py:1177
+#: TurtleArtActivity.py:1217 turtleblocks.py:427
+msgid "Load plugin"
+msgstr "Բեռնել օժանդակ հավելումը"
+
+#: TurtleArtActivity.py:942 TurtleArtActivity.py:1180
+#: TurtleArtActivity.py:1220
+msgid "Load Python block"
+msgstr "Ներբեռնել «Python» ծրագրի մասնիկները"
+
+#: TurtleArtActivity.py:1097
+msgid "Palettes"
+msgstr "Պահոց"
+
+#: TurtleArtActivity.py:1115
+msgid "Sharing blocks disabled"
+msgstr "Ընդհանուր օգտագործման մասնիկները կասեցված են:"
+
+#: TurtleArtActivity.py:1120 turtleblocks.py:429
+msgid "Save"
+msgstr "Պահել"
+
+#: TurtleArtActivity.py:1152
+msgid "Load"
+msgstr "բեռնե"
+
+#: TurtleArtActivity.py:1169 turtleblocks.py:425
+msgid "Open"
+msgstr "Բացել"
+
+#: TurtleArtActivity.py:1236
+msgid "<Ctrl>p"
+msgstr "<Ctrl>p"
+
+#: TurtleArtActivity.py:1241
+msgid "<Ctrl>e"
+msgstr "<Ctrl>e"
+
+#: TurtleArtActivity.py:1243
+msgid "<Ctrl>r"
+msgstr "<Ctrl>r"
+
+#: TurtleArtActivity.py:1245
+msgid "<Ctrl>w"
+msgstr "<Ctrl>w"
+
+#: TurtleArtActivity.py:1248
+msgid "<Ctrl>s"
+msgstr "<Ctrl>s"
+
+#: TurtleArtActivity.py:1427
 #, python-format
 msgid "Plugin %s already installed."
 msgstr "%s հավելումն արդեն ներդրված է:"
 
-#: TurtleArtActivity.py:1303
+#: TurtleArtActivity.py:1428 turtleblocks.py:559
 #, python-format
 msgid "Do you want to reinstall %s?"
 msgstr "Ցանկանո՞ւմ եք վերբեռնել %s:"
@@ -1119,19 +1228,19 @@ msgstr "Նկարագրություն."
 msgid "Submit to Web"
 msgstr "Ուղարկել Համացանցին"
 
-#: gnome_plugins/uploader_plugin.py:166
+#: gnome_plugins/uploader_plugin.py:172
 msgid "Login failed"
 msgstr "Մուտքը չհաջողվեց"
 
-#: gnome_plugins/uploader_plugin.py:203
+#: gnome_plugins/uploader_plugin.py:209
 msgid "Failed to upload!"
 msgstr "Վերբեռնումը ձախողվեց"
 
-#: plugins/accelerometer/accelerometer.py:49
-#: plugins/audio_sensors/audio_sensors.py:75
-#: plugins/camera_sensor/camera_sensor.py:63
-#: plugins/light_sensor/light_sensor.py:49 plugins/rfid/rfid.py:86
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:309
+#: plugins/accelerometer/accelerometer.py:50
+#: plugins/audio_sensors/audio_sensors.py:81
+#: plugins/camera_sensor/camera_sensor.py:67
+#: plugins/light_sensor/light_sensor.py:52 plugins/rfid/rfid.py:87
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:326
 msgid "Palette of sensor blocks"
 msgstr "Սենսորային մասնիկների պահոց"
 
@@ -1146,449 +1255,482 @@ msgstr "Արագացում"
 msgid "push acceleration in x, y, z to heap"
 msgstr "Արագությունը x, y, z առանցքների վրա`դնել շարանի մեջ"
 
-#: plugins/audio_sensors/audio_sensors.py:83
-#: plugins/audio_sensors/audio_sensors.py:98 pysamples/grecord.py:206
+#: plugins/audio_sensors/audio_sensors.py:90 pysamples/grecord.py:206
 msgid "sound"
 msgstr "Հնչյուն"
 
-#: plugins/audio_sensors/audio_sensors.py:84
-#: plugins/audio_sensors/audio_sensors.py:99
+#: plugins/audio_sensors/audio_sensors.py:91
 msgid "raw microphone input signal"
 msgstr "Միկրոֆոնի մուտքային ազդանշան"
 
-#: plugins/audio_sensors/audio_sensors.py:90
-#: plugins/audio_sensors/audio_sensors.py:105
+#: plugins/audio_sensors/audio_sensors.py:97
 msgid "loudness"
 msgstr "Ձայնի ուժգնություն"
 
-#: plugins/audio_sensors/audio_sensors.py:91
-#: plugins/audio_sensors/audio_sensors.py:106
+#: plugins/audio_sensors/audio_sensors.py:98
 msgid "microphone input volume"
 msgstr "Միկրոֆոն ներմուծման ուժգնություն"
 
-#: plugins/audio_sensors/audio_sensors.py:119
-#: plugins/audio_sensors/audio_sensors.py:127
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:296
+#: plugins/audio_sensors/audio_sensors.py:123
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:310
 msgid "pitch"
 msgstr "Հաճախականություն"
 
-#: plugins/audio_sensors/audio_sensors.py:120
-#: plugins/audio_sensors/audio_sensors.py:128
+#: plugins/audio_sensors/audio_sensors.py:124
 msgid "microphone input pitch"
 msgstr "Միկրոֆոնի ներմուծման տոնը"
 
-#: plugins/audio_sensors/audio_sensors.py:151
-#: plugins/audio_sensors/audio_sensors.py:165
-#: plugins/audio_sensors/audio_sensors.py:179
-#: plugins/audio_sensors/audio_sensors.py:193
+#: plugins/audio_sensors/audio_sensors.py:157
+#: plugins/audio_sensors/audio_sensors.py:175
 msgid "resistance"
 msgstr "Դիմադրություն"
 
-#: plugins/audio_sensors/audio_sensors.py:152
-#: plugins/audio_sensors/audio_sensors.py:166
-#: plugins/audio_sensors/audio_sensors.py:180
-#: plugins/audio_sensors/audio_sensors.py:194
+#: plugins/audio_sensors/audio_sensors.py:158
+#: plugins/audio_sensors/audio_sensors.py:176
 msgid "microphone input resistance"
 msgstr "Միկրոֆոնի մուտքային դիմադրողականություն"
 
-#: plugins/audio_sensors/audio_sensors.py:157
-#: plugins/audio_sensors/audio_sensors.py:171
-#: plugins/audio_sensors/audio_sensors.py:185
-#: plugins/audio_sensors/audio_sensors.py:199
+#: plugins/audio_sensors/audio_sensors.py:163
+#: plugins/audio_sensors/audio_sensors.py:181
 msgid "voltage"
 msgstr "Լարում"
 
-#: plugins/audio_sensors/audio_sensors.py:158
-#: plugins/audio_sensors/audio_sensors.py:172
-#: plugins/audio_sensors/audio_sensors.py:186
-#: plugins/audio_sensors/audio_sensors.py:200
+#: plugins/audio_sensors/audio_sensors.py:164
+#: plugins/audio_sensors/audio_sensors.py:182
 msgid "microphone input voltage"
 msgstr "Միկրոֆոնի մուտքի լարումը"
 
-#: plugins/camera_sensor/camera_sensor.py:67
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:125
+#: plugins/camera_sensor/camera_sensor.py:71
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:133
 msgid "Palette of media objects"
 msgstr "Լրատվամիջոցի առարկաների պահոց"
 
-#: plugins/camera_sensor/camera_sensor.py:80
-#: plugins/camera_sensor/camera_sensor.py:93
-#: plugins/camera_sensor/camera_sensor.py:128
-#: plugins/camera_sensor/camera_sensor.py:141
-#: plugins/light_sensor/light_sensor.py:56
-#: plugins/light_sensor/light_sensor.py:63
+#: plugins/camera_sensor/camera_sensor.py:83
+#: plugins/camera_sensor/camera_sensor.py:99
+#: plugins/camera_sensor/camera_sensor.py:136
+#: plugins/camera_sensor/camera_sensor.py:152
+#: plugins/light_sensor/light_sensor.py:58
+#: plugins/light_sensor/light_sensor.py:66
 msgid "brightness"
 msgstr "Պայծառություն"
 
-#: plugins/camera_sensor/camera_sensor.py:82
-#: plugins/camera_sensor/camera_sensor.py:130
+#: plugins/camera_sensor/camera_sensor.py:85
+#: plugins/camera_sensor/camera_sensor.py:138
 msgid "light level detected by camera"
 msgstr "Տեսախցիկի միջոցով հայտնաբերված լույսի մակարդակը"
 
 # RGB-ԿԿԿ. Կարմիր,Կանաչ,Կապույտ
-#: plugins/camera_sensor/camera_sensor.py:95
-#: plugins/camera_sensor/camera_sensor.py:143
+#: plugins/camera_sensor/camera_sensor.py:101
+#: plugins/camera_sensor/camera_sensor.py:154
 msgid "Average RGB color from camera is pushed to the stack"
 msgstr "RGB-ի միջին գույնը ուղարկվում է դեպի կույտ"
 
-#: plugins/camera_sensor/camera_sensor.py:106
-#: plugins/camera_sensor/camera_sensor.py:113
+#: plugins/camera_sensor/camera_sensor.py:114
 #: plugins/camera_sensor/camera_sensor.py:121
-#: plugins/camera_sensor/camera_sensor.py:155
-#: plugins/camera_sensor/camera_sensor.py:163
+#: plugins/camera_sensor/camera_sensor.py:129
+#: plugins/camera_sensor/camera_sensor.py:169
+#: plugins/camera_sensor/camera_sensor.py:177
 msgid "camera output"
 msgstr "Տեսախցիկի տված պատկեր"
 
-#: plugins/light_sensor/light_sensor.py:58
-#: plugins/light_sensor/light_sensor.py:65
+#: plugins/light_sensor/light_sensor.py:61
+#: plugins/light_sensor/light_sensor.py:69
 msgid "light level detected by light sensor"
 msgstr "Լույսի սենսորով հայտնաբերված լույսի մակարդակը"
 
-#: plugins/rfid/rfid.py:92 plugins/rfid/rfid.py:100
+#: plugins/rfid/rfid.py:93 plugins/rfid/rfid.py:101
 msgid "RFID"
 msgstr "RFID (ռադիո հաճախականությունների ճանաչում)"
 
-#: plugins/rfid/rfid.py:93 plugins/rfid/rfid.py:101
+#: plugins/rfid/rfid.py:94 plugins/rfid/rfid.py:102
 msgid "read value from RFID device"
 msgstr "Ընթերցել արժեքը RFID(ռադիո հաճախականությունների ճանաչման)սարքից"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:96
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:99
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:76
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:79
 msgid "while"
 msgstr "մինչ"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:100
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:80
 msgid "do-while-True operator that uses boolean operators from Numbers palette"
 msgstr ""
 "կատարիր-քանի դեռ-Ճիշտ օպերատորը, որն օգտագործում է Թվապնակի բուլյան "
 "օպերատորներ"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:106
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:109
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:97
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:100
 msgid "until"
 msgstr "մինչ"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:110
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:101
 msgid "do-until-True operator that uses boolean operators from Numbers palette"
 msgstr ""
 "Կատարիր-մինչեւ-Ճիշտ օպերատորը, որն օգտագործում է Թվապնակի բուլյան "
 "օպերատորներ"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:117
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:714
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:888
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:121
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:841
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1035
 msgid "top"
 msgstr "գագաթ"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:119
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:123
 msgid "top of a collapsible stack"
 msgstr "Փլուզվող շարանի վերին մասը"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:132
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:135
+msgid "media"
+msgstr "մեդիա"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:141
 msgid "journal"
 msgstr "Մատյան"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:133
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:142
 msgid "Sugar Journal media object"
 msgstr "Sugar Մատյանի լրատվամիջոցի առարկան"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:143
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:152
 msgid "audio"
 msgstr "աուդիո"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:145
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:154
 msgid "Sugar Journal audio object"
 msgstr "Sugar Մատյանի Աուդիո օբյեկտ"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:155
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:164
 msgid "video"
 msgstr "վիդեո"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:157
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:166
 msgid "Sugar Journal video object"
 msgstr "Sugar-ի Մատյանի տեսգրության առարկան"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:167
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:176
 msgid "description"
 msgstr "Նկարագրություն"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:169
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:178
 msgid "Sugar Journal description field"
 msgstr "Sugar Մատյանի նկարագրության դաշտը"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:186
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:194
 msgid "show"
 msgstr "Ցուցադրել"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:190
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:204
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:198
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:213
 msgid "draws text or show media from the Journal"
 msgstr "Մատյանից բերում է տեքստ կամ` ցուցադրության միջոց"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:200
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:209
 msgid "show aligned"
 msgstr "Ցուցադրել հավասարեցված"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:213
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:222
 msgid "set scale"
 msgstr "Սահմանել սանդղակը"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:217
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:226
 msgid "sets the scale of media"
 msgstr "Սահմանում է ԶԼՄ միջոցների սանդղակը"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:225
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:236
 msgid "save picture"
 msgstr "պահպանել պատկերը"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:227
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:238
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:249
 msgid "picture name"
 msgstr "պատկերի անվանումը"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:228
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:239
 msgid "saves a picture to the Sugar Journal"
 msgstr "Նկարը պահում է Sugar-ի Մատյանում"
 
 # SVG-Scalable Vector Graphics
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:236
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:247
 msgid "save SVG"
 msgstr "պահպանել SVG"
 
 # SVG -Scalable Vector Graphics
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:239
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:250
 msgid "saves turtle graphics as an SVG file in the Sugar Journal"
 msgstr "Կրիայի գծագիրը Sugar-ի Մատյանում պահում է որպես SVG ֆայլ:"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:246
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:259
 msgid "scale"
 msgstr "սանդղակ"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:250
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:263
 msgid "holds current scale value"
 msgstr "պահում է ներկայիս սանդղակի արժեքը"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:255
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:270
 msgid "media wait"
 msgstr "սպասել"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:257
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:272
 msgid "wait for current video or audio to complete"
 msgstr "Սպասեք մինչև ընթացիկ տեսա կամ ձայնագրությունն ավարտվի:"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:263
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:278
 msgid "media stop"
 msgstr "Տեսա/ձայնագրամիջոցը կանգնեցնել:"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:265
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:280
 msgid "stop video or audio"
 msgstr "կանգնեցնել տեսագրությունը կամ ձայնագրությունը:"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:270
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:285
 msgid "media pause"
 msgstr "Դադար տալ"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:272
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:287
 msgid "pause video or audio"
 msgstr "Դադար տալ տեսա կամ ձայնա - գրությանը"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:277
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:292
 msgid "media resume"
 msgstr "Շարունակել վերարտադրումը"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:279
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:294
 msgid "resume playing video or audio"
 msgstr "Շարունակել տեսա կամ ձյնագրության վերարտադրումը"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:285
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:299
 msgid "speak"
 msgstr "Խոսել"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:287
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:301
 msgid "hello"
 msgstr "Ողջույն"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:288
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:302
 msgid "speaks text"
 msgstr "Արտաբերել տեքստ"
 
 #. TRANS: pitch, duration, amplitude
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:296
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:310
 msgid "sinewave"
 msgstr "Սինուսոիդ"
 
 # Ամպլիտուդ
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:297
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:311
 msgid "amplitude"
 msgstr "Տատանման մեծություն"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:297
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:311
 msgid "duration"
 msgstr "Տևողություն"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:300
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:314
 msgid "plays a sinewave at frequency, amplitude, and duration (in seconds)"
 msgstr ""
 "Վերարտադրում է Սինուսոիդն ըստ հաճախականության, տատանումների մեծության ու "
 "տևողության /վրկ/:"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:316
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:327
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:328
+msgid "sensor"
+msgstr "Սենսոր"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:333
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:344
 msgid "button down"
 msgstr "Կոճակը սեղմել"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:319
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:336
 msgid "returns 1 if mouse button is pressed"
 msgstr "Վերադարձնում է 1, եթե կոճակը սեղմված է:"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:330
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:347
 msgid "returns True if mouse button is pressed"
 msgstr "Վերադարձնում է 1, եթե կոճակը սեղմված է:"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:338
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:355
 msgid "mouse x"
 msgstr "Մկնիկի սլաքի X-ը:"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:341
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:358
 msgid "returns mouse x coordinate"
 msgstr "Վերականգնում է մկնիկի սլաքի x դիրքացույցը:"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:348
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:366
 msgid "mouse y"
 msgstr "Մկնիկի սլաքի y դիրքացույցը:"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:351
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:369
 msgid "returns mouse y coordinate"
 msgstr "վերրականգնում է մկնիկի սլաքի y դիրքացույցը:"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:359
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:377
 msgid "query keyboard"
 msgstr "հարցում ստեղնաշարի վերաբերյալ"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:361
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:379
 msgid "query for keyboard input (results stored in keyboard block)"
 msgstr ""
 "Հարցում՝ ստեղնաշարով ներմուծման համար (արդյունքները պահվում են ստեղնաշարի "
 "բլոկում)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:368
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:387
 msgid "keyboard"
 msgstr "ստեղնաշար"
 
 # ASCII - American Standard Code for Information Interchange /Տեղեկության Փոխանակման Ամերիկյան Ստանդարտ Կոդ
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:372
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:391
 msgid "holds results of query-keyboard block as ASCII"
 msgstr "Պահում է ստեղնաշարի բլոկի հարցման արդյունքները որպես ASCII."
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:404
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:399
 msgid "read pixel"
 msgstr "կարդալ փիքսելը"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:407
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:402
 msgid "RGB color under the turtle is pushed to the stack"
 msgstr ""
 "RGB (կարմիր, կանաչ,կապույտ)գույնը կրիայի տակ տեղափոխված է դեպի մասնիկների "
 "կույտը"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:415
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:409
 msgid "turtle sees"
 msgstr "կրիան տեսնում է"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:417
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:412
 msgid "returns the color that the turtle \"sees\""
 msgstr "վերադարձնում է այն գույնը, որ կրիան ներկայիս \"տեսնում է\""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:425
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:421
 msgid "time"
 msgstr "ժամանակ"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:428
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:424
 msgid "elapsed time (in seconds) since program started"
 msgstr "ծրագրի սկզբից մինչև հիմա անցած ժամանակ (վայկյաններով)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:436
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:449
 msgid "Palette of extra options"
 msgstr "Լրացուցիչ ընտրությունների պահոցը"
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:451
+msgid "extras"
+msgstr "հավելյալ"
+
 #. TRANS: push adds a new item to the program stack
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:443
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:456
 msgid "push"
 msgstr "հրում"
 
 # FILO:First-in; Last-out
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:446
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:459
 msgid "pushes value onto FILO (first-in last-out heap)"
 msgstr ""
 "Ավելացնում է արժեքը FILO կույտին (առաջինը` ներս, վերջինը` դուրս սկզբունքով)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:456
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:471
 msgid "show heap"
 msgstr "ցուցադրել կույտը"
 
 # FILO:First-in, Last-out
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:459
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:474
 msgid "shows values in FILO (first-in last-out heap)"
 msgstr "Ցույց է տալիս արժեքները FILO-ում (առաջինը ներս, վերջինը դուրս կույտ)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:469
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:486
 msgid "empty heap"
 msgstr "Դատարկել կույտը"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:472
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:489
 msgid "emptys FILO (first-in-last-out heap)"
 msgstr "Դատարկում է FILO(առաջինը ներս-վերջինը դուրս կույտը)"
 
 #. TRANS: pop removes a new item from the program stack
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:483
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:500
 msgid "pop"
 msgstr "Հանել"
 
 # FILO: first-in;last-out
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:487
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:504
 msgid "pops value off FILO (first-in last-out heap)"
 msgstr "Ցրում է FILO-ի (առաջինը ներս,վերջինը դուրս կույտ) արժեքը:"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:498
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:508
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:516
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:572
 msgid "empty heap?"
 msgstr "Դատարկե՞լ մասնիկների շարանը:"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:501
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:511
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:519
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:575
 msgid "returns True if heap is empty"
 msgstr "Վերականգնում է իրականը, եթե մասնիկների շարանը /կույտը/ դատարկ է:"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:519
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:521
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:531
+msgid "save heap to file"
+msgstr "պահպանել կույտը ֆայլում"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:532
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:546
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:560
+msgid "filename"
+msgstr "Ֆայլի անվանումը"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:534
+msgid "saves FILO (first-in last-out heap) to a file"
+msgstr "պահպանել FILO (առաջին վերջին կույտը) ֆայլում"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:545
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:553
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:559
+msgid "load heap from file"
+msgstr "բեռնել կույտը ֆայլից"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:548
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:554
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:562
+msgid "loads FILO (first-in last-out heap) from a file"
+msgstr "բեռնում է FILO (առաջին վերջին կույտը) ֆայլից"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:587
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:589
 msgid "comment"
 msgstr "Մեկնաբանություն"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:523
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:591
 msgid "places a comment in your code"
 msgstr "﻿Մեկնաբանություն է տեղադրում է Ձեր կոդում:"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:530
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:598
 msgid "print"
 msgstr "տպել"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:534
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:602
 msgid "prints value in status block at bottom of the screen"
 msgstr "Արժեքը տպում է էկրանի ստորին մասում գտնվող կարգավիճակի բլոկում:"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:545
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:613
 msgid "Python chr operator"
 msgstr "«Պիթոնի» chr օպերատոր"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:554
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:623
 msgid "Python int operator"
 msgstr "«Պիթոնի» int օպերատոր"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:561
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:575
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:589
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:633
+msgid "polar"
+msgstr "բևեռային"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:635
+msgid "displays polar coordinates"
+msgstr "Ցուցադրում է բևեռային դիրքացույցները"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:641
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:656
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:672
+#: turtleblocks.py:446
 msgid "Python"
 msgstr "\"Պիթոն\""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:565
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:645
 msgid ""
 "a programmable block: used to add advanced single-variable math equations, e."
 "g., sin(x)"
@@ -1596,7 +1738,7 @@ msgstr ""
 "Ծրագրավորվող բլոկ. օգտագործվում է բարդ մեկ փոփոխականով մաթեմատիկական "
 "հավասարումներ, օրինակ՝ sin(x),ավելացնելու համար:"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:579
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:660
 msgid ""
 "a programmable block: used to add advanced multi-variable math equations, e."
 "g., sqrt(x*x+y*y)"
@@ -1604,7 +1746,7 @@ msgstr ""
 "Ծրագրավորվող բլոկ. օգտագործվում է բարդ բազմակի փոփոխականներով մաթեմատիկական "
 "հավասարումներ, օրինակ՝ sqrt(x*x+y*y),ավելացնելու համար"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:593
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:676
 msgid ""
 "a programmable block: used to add advanced multi-variable math equations, e."
 "g., sin(x+y+z)"
@@ -1612,209 +1754,245 @@ msgstr ""
 "Ծրագրավորվող բլոկ. օգտագործվում է բարդ բազմակի փոփոխականներով մաթեմատիկական "
 "հավասարումներ, օրինակ՝ sin(x+y+z),ավելացնելու համար"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:605
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:622
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:638
-msgid "Python block"
-msgstr "Python -ի ծրագրավորման մասնիկ"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:607
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:624
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:641
-msgid "runs code found in the tamyblock.py module found in the Journal"
-msgstr "Գործարկում է Մատյանի tamyblock.py մոդուլում առկա կոդը:"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:654
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:686
 msgid "Cartesian"
 msgstr "Դեկարտյան"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:656
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:688
 msgid "displays Cartesian coordinates"
 msgstr "Ցուցադրում է դեկարտյան դիրքացույցները"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:662
-msgid "polar"
-msgstr "բևեռային"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:697
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:714
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:731
+msgid "Python block"
+msgstr "Python -ի ծրագրավորման մասնիկ"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:664
-msgid "displays polar coordinates"
-msgstr "Ցուցադրում է բևեռային դիրքացույցները"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:699
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:716
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:734
+msgid "runs code found in the tamyblock.py module found in the Journal"
+msgstr "Գործարկում է Մատյանի tamyblock.py մոդուլում առկա կոդը:"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:670
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:758
-msgid "turtle"
-msgstr "Կրիա"
+# TRANS: URL is universal resource locator - աշխատամիջոցների համընդհանուր տեղամիջոց
+#. TRANS: URL is universal resource locator
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:750
+msgid "URL"
+msgstr "URL"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:674
-msgid "chooses which turtle to command"
-msgstr "Ընտրել, թե որ կրիային է տրվում հրահանգը"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:755
+msgid "gets a text string or an image from a URL"
+msgstr "ստանում է տեքստի տողը կամ պատկերը URL - ից"
 
-#. TRANS: pop removes a new item from the program stack
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:683
-msgid "active turtle"
-msgstr "ակտիվ կրիա"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:686
-msgid "the name of the active turtle"
-msgstr "ակտիվ կրիայի անվանումը"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:696
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:706
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:765
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:775
 msgid "turtle shell"
 msgstr "կրիայի զրահը"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:698
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:707
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:767
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:776
 msgid "put a custom 'shell' on the turtle"
 msgstr "կրիային հատուկ 'զրահ' հագցնել"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:715
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:784
+msgid "chooses which turtle to command"
+msgstr "Ընտրել, թե որ կրիային է տրվում հրահանգը"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:791
+msgid "turtle x"
+msgstr "Կրիա x"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:794
+msgid "Returns x coordinate of turtle"
+msgstr "Դարձնում է կրիայի x կոորդինատը"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:803
+msgid "turtle y"
+msgstr "Կրիա y"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:806
+msgid "Returns y coordinate of turtle"
+msgstr "Դարձնում է կրիայի y կոորդինատը"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:815
+msgid "active turtle"
+msgstr "ակտիվ կրիա"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:818
+msgid "the name of the active turtle"
+msgstr "ակտիվ կրիայի անվանումը"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:826
+msgid "turtle heading"
+msgstr "կրիայի ուղղությունը"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:829
+msgid "Returns heading of turtle"
+msgstr "Վերադարձնում է կրիայի ուղղությունը"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:842
 msgid "top of a collapsed stack"
 msgstr "Փլուզված շարանի վերին մասը"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:720
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:731
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:743
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:847
+msgid "select palette"
+msgstr "ընտրել պահոցը"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:850
+msgid "selects a palette"
+msgstr "ընտրել որևէ պահոց"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:858
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:870
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:884
 msgid "load"
 msgstr "բեռնել"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:723
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:735
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:747
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:861
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:874
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:888
 msgid "loads a block"
 msgstr "բեռնում է մասնիկը"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:746
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:887
 msgid "setxy"
 msgstr "Սահմանել xy"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:756
-msgid "palette"
-msgstr "պահոց"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:759
-msgid "selects a palette"
-msgstr "ընտրում է պահոցը"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:767
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:900
 msgid "Palette of presentation templates"
 msgstr "Ներկայացման նմուշների պահոց"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:774
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:903
+msgid "portfolio"
+msgstr "հավաքածու"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:907
 msgid "hide blocks"
-msgstr "Թաքցնել մասնիկները"
+msgstr "Թաքցնել հատվածները"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:776
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:909
 msgid "declutters canvas by hiding blocks"
-msgstr "Մաքրում է կտավը՝ թաքցնելով մասնիկները"
+msgstr "Մաքրում է կտավը՝ թաքցնելով հատվածները"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:783
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:916
 msgid "show blocks"
-msgstr "Ցուցադրել մասնիկները"
+msgstr "Ցուցադրել հատվածներ"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:785
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:918
 msgid "restores hidden blocks"
-msgstr "Վերականգնում է թաքնված մասնիկները"
+msgstr "Վերականգնում է թաքնված հատվածները"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:793
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:927
 msgid "hides the Sugar toolbars"
 msgstr "Թաքցնում է Sugar գործիքաշարերը"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:802
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:937
 msgid "list"
 msgstr "Ցուցակ"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:806
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:941
 msgid "presentation bulleted list"
 msgstr "Ներկայացում պարբերանշված ցուցակով"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:814
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:949
 msgid "presentation template: list of bullets"
 msgstr "Ներկայացման նմուշ.Կետերի ցանկ"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:821
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:956
 msgid "presentation template: select Journal object (no description)"
 msgstr "Ներկայացման նմուշ. ընտրել Մատյանի օբյեկտ (առանց նկարագրության)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:828
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:963
 msgid "presentation template: select Journal object (with description)"
 msgstr "Ներկայացման նմուշ. ընտրել Մատյանի օբյեկտ (նկարագրությամբ)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:835
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:970
 msgid "presentation template: select four Journal objects"
 msgstr "Ներկայացման նմուշ. ընտրել Մատյանի չորս օբյեկտ"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:842
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:849
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:977
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:984
 msgid "presentation template: select two Journal objects"
 msgstr "ներկայացման նմուշ. ընտրել Մատյանի երկու օբյեկտ"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:859
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:994
 msgid "xcor of left of screen"
 msgstr "էկրանի ձախ մասի x դիրքացույցը"
 
 # ստորին մասը
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:864
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1002
 msgid "bottom"
 msgstr "Ստորին մաս"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:867
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1005
 msgid "ycor of bottom of screen"
 msgstr "էկրանի ստորին մասի y դիրքացույցը"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:872
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1013
 msgid "width"
 msgstr "լայնք"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:875
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1016
 msgid "the canvas width"
 msgstr "կտավի լայնությունը"
 
 # xcor -x դիրքացույցը
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:883
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1027
 msgid "xcor of right of screen"
 msgstr "էկրանի աջ մասի xcor-ը"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:891
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1038
 msgid "ycor of top of screen"
 msgstr "էկրանի վերին մասի ycor-ը"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:896
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1046
 msgid "height"
 msgstr "բարձրություն"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:899
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1049
 msgid "the canvas height"
 msgstr "կտավի բարձրությունը"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:906
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1059
 msgid "title x"
 msgstr "Վերնագրի x դիրքացույցը"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:915
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1071
 msgid "title y"
 msgstr "Վերնագրի y դիրքացույցը"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:924
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1083
 msgid "left x"
 msgstr "Ձախակողմյան x"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:933
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1095
 msgid "top y"
 msgstr "Վերին y"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:942
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1107
 msgid "right x"
 msgstr "Աջակողմյան x"
 
 # ստորին մասը
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:951
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1119
 msgid "bottom y"
 msgstr "Ստորին y"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:968
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1138
 msgid "Palette of user-defined operators"
 msgstr "օգտագործողի կողմից ընտրված շահագորժողի գունապնակներ"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1139
+msgid "my blocks"
+msgstr "իմ հատվածները"
+
+#: pyexported/window_setup.py:39
+msgid ""
+"The path to the TurtleArt installation must be listed in the environment "
+"variable PYTHONPATH."
+msgstr ""
+"Կրիայի Արվեստ գործունեության տեղադրման ուղին պետք է ցուցակագրվի PYTHONPATH "
+"միջավայրի փոփոխականում:"
 
 #: pysamples/brain.py:43
 msgid "Please install the Speak Activity and try again."
@@ -1846,15 +2024,15 @@ msgstr ""
 msgid "push destination rgb value to heap"
 msgstr "Տար նպատակակետի ԿԿԿ արժեքը դեպի մասնիկների խումբը:"
 
-#: pysamples/grecord.py:216
+#: pysamples/grecord.py:213
 msgid "stop"
 msgstr "Կանգնեցնել"
 
-#: pysamples/grecord.py:218
+#: pysamples/grecord.py:215
 msgid "play"
 msgstr "վերարտադրել"
 
-#: pysamples/grecord.py:220
+#: pysamples/grecord.py:217
 msgid "save"
 msgstr "պահել"
 
@@ -1871,87 +2049,112 @@ msgstr "Շրջադարձ U տառի ձևով"
 msgid "turns the turtle 180 degrees"
 msgstr "շրջում է կրիային 180 աստիճանով"
 
-#: turtleblocks.py:91
+#: turtleblocks.py:104
 msgid "usage is"
 msgstr "Կիրառումը"
 
-#: turtleblocks.py:260
+#: turtleblocks.py:295
 msgid "No option action:"
 msgstr "Առանց գործողության այլընտրանքի"
 
 # Ֆայլը չի գտնվել
-#: turtleblocks.py:275
+#: turtleblocks.py:310
 msgid "File not found"
 msgstr "Ֆայլը չի գտնվել"
 
-#: turtleblocks.py:299
+#: turtleblocks.py:334
 #, python-format
 msgid "Configuration directory not writable: %s"
 msgstr "Կազմաձևի գրացուցակը գրելի չէ. %s"
 
-#: turtleblocks.py:375
+#: turtleblocks.py:422
 msgid "New"
 msgstr "Նոր"
 
-#: turtleblocks.py:376
+#: turtleblocks.py:423
 msgid "Show sample projects"
 msgstr "Ցուցադրել օրինակ -նախագծերը"
 
-#: turtleblocks.py:378
-msgid "Hide sample projects"
-msgstr "Թաքցնել օրինակ-նախագծերը"
-
-#: turtleblocks.py:382
-msgid "Save"
-msgstr "Պահել"
-
-#: turtleblocks.py:383
+#: turtleblocks.py:430
 msgid "Save as"
 msgstr "Պահել որպես"
 
-#: turtleblocks.py:388
+#: turtleblocks.py:434
+msgid "Export as"
+msgstr "Արտահանել որպես"
+
+# ODP is Open Office presentation - Բաց Օֆիս ներկայացում
+#. TRANS: ODP is Open Office presentation
+#: turtleblocks.py:442
+msgid "ODP"
+msgstr "ODP"
+
+#: turtleblocks.py:444
+msgid "Logo"
+msgstr "Պատկերատիպ"
+
+#: turtleblocks.py:448
 msgid "Quit"
 msgstr "Դուրս գալ"
 
-#: turtleblocks.py:389
+#: turtleblocks.py:449
 msgid "File"
 msgstr "Ֆայլ"
 
-#: turtleblocks.py:396
+#: turtleblocks.py:457
 msgid "Rescale coordinates"
 msgstr "Փոխել դիրքացույցների սանդղակը"
 
-#: turtleblocks.py:402
+#: turtleblocks.py:463
 msgid "Reset block size"
 msgstr "Վերականգնել մասնիկների չափսը"
 
-#: turtleblocks.py:423
+#: turtleblocks.py:484
 msgid "Show/hide blocks"
 msgstr "Ցուցադրել/թաքցնել մասնիկները"
 
-#: turtleblocks.py:425
+#: turtleblocks.py:486
 msgid "Tools"
 msgstr "Գործիքներ"
 
-#: turtleblocks.py:431
+#: turtleblocks.py:492
 msgid "Debug"
 msgstr "Զտել"
 
-#: turtleblocks.py:433
+#: turtleblocks.py:494
 msgid "Turtle"
 msgstr "Կրիա"
 
-#: turtleblocks.py:436
+#: turtleblocks.py:497
 msgid "About..."
 msgstr "... մասին"
 
-#: turtleblocks.py:475
+#: turtleblocks.py:544
 msgid "You have unsaved work. Would you like to save before quitting?"
 msgstr "﻿Դուք չպահպանված աշխատանք ունեք: Ցանկանու՞մ եք պահպանել այն:"
 
-#: turtleblocks.py:477
+#: turtleblocks.py:548
 msgid "Save project?"
 msgstr "Պահպանե՞լ նախագիծը"
+
+#: turtleblocks.py:558
+#, python-format
+#, python-format,
+msgid "Plugin %s already installed"
+msgstr "%s հավելումն արդեն ներդրված է:"
+
+#: turtleblocks.py:687
+msgid "myproject"
+msgstr "իմ նախագիծը"
+
+#~ msgid "Load project"
+#~ msgstr "Բեռնել նախագիծը"
+
+#~ msgid "Hide sample projects"
+#~ msgstr "Թաքցնել օրինակ-նախագծերը"
+
+#~ msgid "palette"
+#~ msgstr "պահոց"
 
 #~ msgid "make a uturn"
 #~ msgstr "Կատարել լրիվ շրջադարձ U տառի ձևով"
@@ -2640,9 +2843,6 @@ msgstr "Պահպանե՞լ նախագիծը"
 
 #~ msgid "read"
 #~ msgstr "Կարդալ"
-
-#~ msgid "sensor"
-#~ msgstr "Սենսոր"
 
 #~ msgid "Read sensor output."
 #~ msgstr "Կարդալ սենսորի ելքի տվյալները"
