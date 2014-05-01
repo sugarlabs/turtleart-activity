@@ -3923,11 +3923,34 @@ msgid "fiber"
 msgstr "fibra"
 
 #: food.py
+msgid "fat eaten"
+msgstr "grasas"
+
+#: food.py
+msgid "calories eaten"
+msgstr "calorías"
+
+#: food.py
+msgid "carbohydrates eaten"
+msgstr "carbohidratos"
+
+#: food.py
+msgid "protein eaten"
+msgstr "proteínas"
+
+#: food.py
+msgid "fiber eaten"
+msgstr "fibra"
+
+#: food.py
 msgid "eat"
 msgstr "comer"
 
 #: food.py
 msgid "digest"
+msgstr "digerir"
+
+msgid "digest meal"
 msgstr "digerir"
 
 #. TRANS: "name" option from activity.info file
