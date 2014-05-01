@@ -91,7 +91,7 @@ class Food(Plugin):
 
         palette.add_block('get_carbohydrate',
                           style='number-style-1arg',
-                          label=_('get carbohydrate'),
+                          label=_('get carbohydrates'),
                           prim_name='get_carbohydrate',
                           help_string=_('extract carbohydrate content of food'))
         self.tw.lc.def_prim('get_carbohydrate', 1,
@@ -248,7 +248,7 @@ class Food(Plugin):
                 'blockname': i18n_name, 'no_cal': polynominal[0],
                 'cal': _('calories'), 'no_prot': polynominal[1],
                 'prot': _('protein'), 'no_carb': polynominal[2],
-                'carb': _('carbohydrate'), 'no_fib': polynominal[3],
+                'carb': _('carbohydrates'), 'no_fib': polynominal[3],
                 'fib': _('fiber'), 'no_fat': polynominal[4],'fat': _('fat')})
         BLOCKS_WITH_SKIN.append(block_name)
         NO_IMPORT.append(block_name)
