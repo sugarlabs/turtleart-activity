@@ -3792,10 +3792,6 @@ msgstr ""
 msgid "extract carbohydrate content of food"
 msgstr "extraer el contenido de carbohidratos de los alimentos"
 
-#: plugins/food/food.py:107
-msgid "stored caloric content of food eaten"
-msgstr "el contenido de calorías de los alimentos"
-
 #: plugins/food/food.py:85
 msgid "extract protein content of food"
 msgstr "extraer el contenido de proteínas de los alimentos"
@@ -3811,6 +3807,26 @@ msgstr "extraer el contenido de fibra de los alimentos"
 #: plugins/food/food.py:139
 msgid "extract fat content of food"
 msgstr "extraer el contenido de grasas de los alimentos"
+
+#: plugins/food/food.py:107
+msgid "stored caloric content of food eaten"
+msgstr "el contenido de calorías de los alimentos"
+
+#: plugins/food/food.py:117
+msgid "stored protein content of food eaten"
+msgstr "el contenido de proteínas de los alimentos"
+
+#: plugins/food/food.py:128
+msgid "stored carbohydrate content of food eaten"
+msgstr "el contenido de carbohidratos de los alimentos"
+
+#: plugins/food/food.py:181
+msgid "stored fat content of food eaten"
+msgstr "el contenido de grasas de los alimentos"
+
+#: plugins/food/food.py:181
+msgid "stored fiber content of food eaten"
+msgstr "el contenido de fibra de los alimentos"
 
 #: plugins/food/food.py:161
 msgid "eat food and store its nutritional value"
@@ -3881,6 +3897,10 @@ msgstr "obtiene la fibra"
 #: food.py
 msgid "get name"
 msgstr "obtiene el nombre"
+
+#: plugins/food/food.py:200
+msgid "get name of food"
+msgstr "obtiene el nombre de alimento"
 
 #: food.py
 msgid "fat"
