@@ -1,9 +1,25 @@
+# #-#-#-#-#  pbs.po (PACKAGE VERSION)  #-#-#-#-#
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#, fuzzy
 msgid ""
 msgstr ""
+"#-#-#-#-#  pbs.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-06-19 00:33-0400\n"
+"PO-Revision-Date: 2013-07-06 20:48+0200\n"
+"Last-Translator: AlanJAS <alanjas@hotmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: pbs\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.0.5\n"
+"#-#-#-#-#  pbs.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-05-17 00:31-0400\n"
@@ -16,6 +32,1185 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pootle 2.0.5\n"
+
+msgid "turtleart-extras (master)"
+msgstr ""
+
+msgid "Turtle Blocks"
+msgstr ""
+
+msgid "Turtle Art"
+msgstr "Kumú' majau matsjau"
+
+msgid "Turtle Art Mini"
+msgstr "Tortugarte Chich´i´"
+
+msgid "Turtle Confusion"
+msgstr "Tortugarte mep muonu´u"
+
+msgid "Select a challenge"
+msgstr "vixa´aun t´i´ieje´ manatsjau"
+
+msgid "Amazonas Tortuga"
+msgstr ""
+
+msgid "Palette of Mexican pesos"
+msgstr "Nijañg lumeitameiñ vu´us skiñing"
+
+msgid "Palette of Colombian pesos"
+msgstr "Nijang lumei  tameiñ colombianos"
+
+msgid "Palette of Rwandan francs"
+msgstr "Nijang ne Francos de Ruanda"
+
+msgid "Palette of US dollars"
+msgstr "Ninjang lumei tameiñ Kulujem"
+
+msgid "Palette of Australian dollars"
+msgstr "Nijanglumei tameiñ Australianos"
+
+msgid "Palette of Paraguayan Guaranies"
+msgstr "Nijang reGuaraníes Paraguayos"
+
+msgid "Palette of Peruvian Nuevo Soles"
+msgstr "Nijang vinkjiu kunju´Peruanos"
+
+msgid "Palette of Uruguayan Pesos"
+msgstr "Nijang tameiñ Uruguayos"
+
+msgid "TurtleBots"
+msgstr "Turtkle Bots"
+
+msgid "TurtleBlocks with Butia, Lego NxT, WeDo, Arduino, FollowMe plugins"
+msgstr ""
+
+msgid "ERROR: The speed must be a value between 0 and 1023"
+msgstr ""
+
+msgid "ERROR: The pin must be between 1 and 8"
+msgstr ""
+
+msgid "ERROR: The value must be 0 or 1, LOW or HIGH"
+msgstr ""
+
+msgid "ERROR: The mode must be INPUT or OUTPUT."
+msgstr ""
+
+msgid "turns LED on and off: 1 means on, 0 means off"
+msgstr ""
+
+msgid "returns the gray level as a value between 0 and 65535"
+msgstr ""
+
+msgid "returns 1 when the button is pressed and 0 otherwise"
+msgstr "vikiet xi´iap ne ndakeiñ mates malñ 0 kale vakja"
+
+msgid "returns the light level as a value between 0 and 65535"
+msgstr ""
+
+msgid "returns the distance as a value between 0 and 65535"
+msgstr ""
+
+msgid "returns the resistance value (ohms)"
+msgstr ""
+
+msgid "returns the voltage value (volts)"
+msgstr ""
+
+msgid "returns the temperature"
+msgstr "vikiep´ mapaa"
+
+msgid "returns 1 when the sensors detects a magnetic field, 0 otherwise"
+msgstr "vikiep´1 xi´iap ne sonsor vakeje nda"
+
+msgid "LED"
+msgstr "LED"
+
+msgid "button"
+msgstr "ndaleiñ"
+
+#: TurtleArt/tabasics.py:295 TurtleArt/tabasics.py:363
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1194
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1199
+#, fuzzy
+msgid "gray"
+msgstr ""
+"#-#-#-#-#  pbs.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"tajaich ne sundue\n"
+"#-#-#-#-#  pbs.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"tsundué"
+
+msgid "light"
+msgstr "majaap"
+
+msgid "temperature"
+msgstr "mapaa"
+
+msgid "distance"
+msgstr "kuba´ap"
+
+#: plugins/audio_sensors/audio_sensors.py:151
+#: plugins/audio_sensors/audio_sensors.py:165
+#: plugins/audio_sensors/audio_sensors.py:179
+#: plugins/audio_sensors/audio_sensors.py:193
+msgid "resistance"
+msgstr "ne se lu'ujuñ manajap xikich'"
+
+#: plugins/audio_sensors/audio_sensors.py:157
+#: plugins/audio_sensors/audio_sensors.py:171
+#: plugins/audio_sensors/audio_sensors.py:185
+#: plugins/audio_sensors/audio_sensors.py:199
+msgid "voltage"
+msgstr "xikich' manajap"
+
+msgid "Butia Robot"
+msgstr "leechipiá Butia"
+
+msgid "refresh Butia"
+msgstr "manamva´an Butiá"
+
+msgid "refresh the state of the Butia palette and blocks"
+msgstr "Vimiejep viñkjiu ne nínjang re blok Butiá"
+
+msgid "battery charge Butia"
+msgstr "manamejep´nguniang nagun´iag Butia"
+
+msgid ""
+"returns the battery charge in volts. If no motors present, it returns 255"
+msgstr "vikiep´ne manajap ngun´iag Butia ne leechipiá ne nave´en 0 maoin 255"
+
+msgid "speed Butia"
+msgstr "matau Butiá"
+
+msgid "set the speed of the Butia motors"
+msgstr ""
+
+msgid "move Butia"
+msgstr ""
+
+#: TurtleArt/tabasics.py:158
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:871
+msgid "left"
+msgstr "meje'ep"
+
+#: TurtleArt/tabasics.py:170
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:895
+msgid "right"
+msgstr "majaap"
+
+msgid "moves the Butia motors at the specified speed"
+msgstr ""
+
+msgid "stop Butia"
+msgstr "ndama' ai Butia"
+
+msgid "stop the Butia robot"
+msgstr "vimia´aik ne leechipia Butiá"
+
+msgid "forward Butia"
+msgstr "matau Butiá"
+
+msgid "move the Butia robot forward"
+msgstr "vikia´aut ne lecheepiá Butia ma katau"
+
+msgid "left Butia"
+msgstr "ma maje´ep Batiá"
+
+msgid "turn the Butia robot at left"
+msgstr "vikia´t ne lee chipiá Butia ma maje´ep"
+
+msgid "right Butia"
+msgstr "kuas Butiá"
+
+msgid "turn the Butia robot at right"
+msgstr "vikia´t ne lee chipia Butia ma majap"
+
+msgid "backward Butia"
+msgstr "ma  ngupex Butia"
+
+msgid "move the Butia robot backward"
+msgstr "vikia´ autma majap ne leechiapia Butia ma ngupex"
+
+msgid "Butia Robot extra blocks"
+msgstr ""
+
+msgid "hack pin mode"
+msgstr ""
+
+msgid "pin"
+msgstr ""
+
+msgid "mode"
+msgstr "mod "
+
+msgid "Select the pin function (INPUT, OUTPUT)."
+msgstr "vimia´ik se ndaei ne pin ndajei, ndalejeiñ PWM, SERVO"
+
+msgid "write hack pin Butia"
+msgstr ""
+
+#: TurtleArt/tabasics.py:924 TurtleArt/tawindow.py:4427
+msgid "value"
+msgstr "liñjú"
+
+msgid "set a hack pin to 0 or 1"
+msgstr ""
+
+msgid "read hack pin Butia"
+msgstr ""
+
+msgid "read the value of a hack pin"
+msgstr ""
+
+msgid "HIGH"
+msgstr ""
+
+msgid "Set HIGH value for digital port."
+msgstr ""
+
+msgid "INPUT"
+msgstr ""
+
+msgid "Configure hack port for digital input."
+msgstr "vichjaut ne kiñcheje´ne Arduino njkár ndejeí matét"
+
+msgid "LOW"
+msgstr ""
+
+msgid "Set LOW value for digital port."
+msgstr ""
+
+msgid "OUTPUT"
+msgstr ""
+
+msgid "Configure hack port for digital output."
+msgstr "vichjaut ne kiñcheje´Arduino nkajai ndalejeiñ matét"
+
+#, fuzzy
+msgid "Butia"
+msgstr ""
+"#-#-#-#-#  pbs.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pbs.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Butia"
+
+msgid "ERROR: The pin %s must be in OUTPUT mode."
+msgstr ""
+
+msgid "ERROR: The pin %s must be in INPUT mode."
+msgstr ""
+
+msgid "Error importing Pygame. This plugin require Pygame 1.9"
+msgstr ""
+
+msgid "Error on initialization of the camera"
+msgstr ""
+
+msgid "No camera was found"
+msgstr ""
+
+msgid "Error stopping camera"
+msgstr ""
+
+msgid "Error starting camera"
+msgstr ""
+
+msgid "Error in get mask"
+msgstr ""
+
+msgid "FollowMe"
+msgstr ""
+
+msgid "refresh FollowMe"
+msgstr ""
+
+msgid "Search for a connected camera."
+msgstr "mata´u pornnda brik NTX mamañg"
+
+msgid "calibration"
+msgstr "ndakjaik"
+
+msgid "store a personalized calibration"
+msgstr ""
+
+msgid "return a personalized calibration"
+msgstr ""
+
+msgid "follow"
+msgstr ""
+
+msgid "follow a color or calibration"
+msgstr ""
+
+#: plugins/camera_sensor/camera_sensor.py:80
+#: plugins/camera_sensor/camera_sensor.py:93
+#: plugins/camera_sensor/camera_sensor.py:128
+#: plugins/camera_sensor/camera_sensor.py:141
+#: plugins/light_sensor/light_sensor.py:56
+#: plugins/light_sensor/light_sensor.py:63
+msgid "brightness"
+msgstr "vanjial'"
+
+msgid "set the camera brightness as a value between 0 to 255."
+msgstr ""
+
+msgid "minimum pixels"
+msgstr ""
+
+msgid "set the minimal number of pixels to follow"
+msgstr ""
+
+msgid "threshold"
+msgstr ""
+
+msgid "set a threshold for a RGB color"
+msgstr ""
+
+msgid "camera mode"
+msgstr ""
+
+msgid "set the color mode of the camera: RGB; YUV or HSV"
+msgstr "establece el modo de xikjia´de ne ndakeiñ leet HSV"
+
+msgid "get brightness"
+msgstr ""
+
+msgid "get the brightness of the ambient light"
+msgstr ""
+
+msgid "average color"
+msgstr ""
+
+msgid ""
+"if set to 0 then color averaging is off during calibration; for other values "
+"it is on"
+msgstr ""
+
+msgid "x position"
+msgstr "vimia´ai x"
+
+msgid "return x position"
+msgstr "vikiet´i kimia´ai x"
+
+msgid "y position"
+msgstr "vimia´ai y"
+
+msgid "return y position"
+msgstr "vikiet peuk se kimiag nama´ai"
+
+msgid "pixels"
+msgstr "pixeles"
+
+msgid "return the number of pixels of the biggest blob"
+msgstr "vikiet ne nave´ne pixeles"
+
+msgid "set the color mode of the camera to RGB"
+msgstr "establece modo de color de nadake´eñ leet RGB"
+
+msgid "set the color mode of the camera to YUV"
+msgstr "establece el modo de color ne ndake´eñ leet YUV"
+
+msgid "set the color mode of the camera to HSV"
+msgstr "establece el modo de xikjia´de ne ndakeiñ leet HSV"
+
+msgid "empty calibration"
+msgstr "kalibracion mu´uu"
+
+msgid "error in string conversion"
+msgstr "karep´kujuiy de liñ´ajaui ne cadena de rin´ja"
+
+msgid "Pattern detection"
+msgstr ""
+
+msgid "Seeing signal"
+msgstr ""
+
+msgid "Returns True if the signal is in front of the camera"
+msgstr ""
+
+msgid "Distance to signal"
+msgstr "kuba´ap señal"
+
+msgid "Returns the distance of the signal to the camera in millimeters"
+msgstr ""
+
+msgid "SumBot"
+msgstr "SumBot"
+
+msgid "speed SumBot"
+msgstr "matau SumBot"
+
+msgid "submit the speed to the SumBot"
+msgstr "satea ne matau SumBot"
+
+msgid "set the default speed for the movement commands"
+msgstr "satea  matau defecto par re comandos de likiu´k"
+
+msgid "forward SumBot"
+msgstr "makutau SumBot"
+
+msgid "move SumBot forward"
+msgstr "vikia´aut ne SumBot ma kutau"
+
+msgid "backward SumBot"
+msgstr "ma ngupesh Sumbot"
+
+msgid "move SumBot backward"
+msgstr "vi´kia´aut ne SumBot ma ngpesh"
+
+msgid "stop SumBot"
+msgstr "ma lama´aiy SumBot"
+
+msgid "stop the SumBot"
+msgstr "malama ´aiy SumBot"
+
+msgid "left SumBot"
+msgstr "ma majeep SumBot"
+
+msgid "turn left the SumBot"
+msgstr "viljiañk SumBot ma maje´ep´"
+
+msgid "right SumBot"
+msgstr "kuas SumBot"
+
+msgid "turn right the SumBot"
+msgstr "viljiañk´ne SumBot ma majap"
+
+msgid "angle to center"
+msgstr "angulo ne kingipe´"
+
+msgid "get the angle to the center of the dohyo"
+msgstr "kijit ne angulo kingiep´ne dohyo"
+
+msgid "angle to Enemy"
+msgstr "angulo ne mi´iip´"
+
+msgid "get the angle to the Enemy"
+msgstr "kijit n ne angulo ne mi´iip´"
+
+msgid "x coor. SumBot"
+msgstr "coor. x SumBot"
+
+msgid "get the x coordinate of the SumBot"
+msgstr "kijit ne coordenada x de SumBot"
+
+msgid "y coor. SumBot"
+msgstr "coor. y SumBot"
+
+msgid "get the y coordinate of the SumBot"
+msgstr "kijit ne coordenada i de SumBot"
+
+msgid "x coor. Enemy"
+msgstr "coor. x mi´iip´"
+
+msgid "get the x coordinate of the Enemy"
+msgstr "kijit ne coordenada x ne mi´iip´"
+
+msgid "y coor. Enemy"
+msgstr "coor. y mi´iip´"
+
+msgid "get the y coordinate of the Enemy"
+msgstr "kijit ne coordenada i ne mi´iip´"
+
+msgid "rotation SumBot"
+msgstr "liñ´jañ´SumBot"
+
+msgid "get the rotation of the Sumbot"
+msgstr "kijit liñjañ he SumBot"
+
+msgid "rotation Enemy"
+msgstr "liñ´jañ´mi´iip´"
+
+msgid "get the rotation of the Enemy"
+msgstr "kijit ne liñ´jañ´ ne mi´iip´"
+
+msgid "distance to center"
+msgstr "kupaá au re kingiep´"
+
+msgid "get the distance to the center of the dohyo"
+msgstr "kijit re kupa´au ne kingiep´de dohyo"
+
+msgid "distance to Enemy"
+msgstr "kupa´au ne mi´iip´"
+
+msgid "get the distance to the Enemy"
+msgstr "kijit re kupa´au ne mi´iip´"
+
+msgid "update information"
+msgstr "actualizar riñ´ja"
+
+msgid "update information from the server"
+msgstr "actualizar re riñ´ja desde el servidor"
+
+msgid "Palette of physics blocks"
+msgstr "Nijang se lumei re me'ets kily'e lu'uei vani'at matsjau "
+
+msgid "start polygon"
+msgstr "manapup´nda poligono"
+
+msgid "Begin defining a new polygon based on the current Turtle xy position."
+msgstr ""
+"vipiup´main nda vingijiu poligono ki´iust peuk se ma´ai chuk manei xy ne "
+"kumuk´"
+
+msgid "add point"
+msgstr "lamjep´nda punto"
+
+msgid ""
+"Add a new point to the current polygon based on the current Turtle xy "
+"position."
+msgstr ""
+"lamjep nda vingijiu ounto al poligono ki´iust peuk se ma´ai chuk manei xy ne "
+"kumuk´"
+
+msgid "end polygon"
+msgstr "lamañk´poligono"
+
+msgid "Define a new polygon."
+msgstr "main nda vingi´jiu poligono"
+
+msgid "end filled polygon"
+msgstr "vama´iñ"
+
+msgid "Not a simple polygon"
+msgstr "nip napú nda viñjiu poligono"
+
+msgid "Define a new filled polygon."
+msgstr "vumang nda viñjiu  poligono"
+
+msgid "triangle"
+msgstr "ranju´umú "
+
+msgid "base"
+msgstr "mimviup"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:911
+#, fuzzy
+msgid "height"
+msgstr ""
+"#-#-#-#-#  pbs.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pbs.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"majax"
+
+msgid "Add a triangle object to the project."
+msgstr "mamejep nda sania´ranju´u mu ne ngul´ajau ndimjiuly´"
+
+msgid "circle"
+msgstr "ndimjuily´"
+
+msgid "Add a circle object to the project."
+msgstr "mamejep nda sania ndimjiuly ne ngul´ajau"
+
+msgid "rectangle"
+msgstr "kiñui muu"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:887
+#, fuzzy
+msgid "width"
+msgstr ""
+"#-#-#-#-#  pbs.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pbs.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"nixi'i"
+
+msgid "Add a rectangle object to the project."
+msgstr "mamejep nda sania kiñui muu nui man au nui mamaja´a"
+
+msgid "reset"
+msgstr "maets peuk ndaei ndatsjau"
+
+msgid "Reset the project; clear the object list."
+msgstr ""
+"maets peuk maei matsjau ne ngul´ajau. nichi iñ´ne se ke´echlik´jiun re "
+"sad_ia manajap"
+
+msgid "motor"
+msgstr "manajap"
+
+msgid "torque"
+msgstr "Torque"
+
+msgid "speed"
+msgstr "ndakju´u"
+
+msgid ""
+"Motor torque and speed range from 0 (off) to positive numbers; motor is "
+"placed on the most recent object created."
+msgstr ""
+"El torque maiñ ndakju´u ne manajap nimviu ke nama 0. (mapung) rab-e´n majap "
+"ne na´va lumei ne sania´a matsjau em viñjiu"
+
+msgid "Pin an object down so that it cannot fall."
+msgstr "liña´ja nda sania par ke nip matsuj´u"
+
+msgid "joint"
+msgstr "liviun´"
+
+#: TurtleArt/tabasics.py:195 TurtleArt/tabasics.py:261
+msgid "x"
+msgstr "x"
+
+#: TurtleArt/tabasics.py:195 TurtleArt/tabasics.py:261
+msgid "y"
+msgstr "y"
+
+msgid ""
+"Join two objects together (the most recent object created and the object at "
+"point x, y)."
+msgstr ""
+"liviuch´nui sania´a ( ne sania´a matsjau mas vinjiu maiñ ne sania´a  ndanú "
+"x, y)"
+
+msgid "save as Physics activity"
+msgstr "makjat nkjai ndatsjau nadakjat"
+
+msgid "Save the project to the Journal as a Physics activity."
+msgstr "lukjuat ne nqui´aajau xiñi´u ngjaik nda ndatsjau ndakja´t"
+
+msgid "gear"
+msgstr "Ndimjiuly"
+
+msgid "Add a gear object to the project."
+msgstr "lamejep nda sania´a ne ngul´ajau"
+
+msgid "density"
+msgstr "vapu"
+
+msgid ""
+"Set the density property for objects (density can be any positive number)."
+msgstr ""
+"Skad-a vakjaa ne vapu ne sania´a vapu mananiát latsjau neukse nab-én majau"
+
+msgid "friction"
+msgstr "vupai"
+
+msgid ""
+"Set the friction property for objects (value from 0 to 1, where 0 turns "
+"friction off and 1 is strong friction)."
+msgstr ""
+"skad- a ma´in ne vapui mana´jap re sad-ía (nda ndiñjiup kiñgyiep 0 y 1 peuk "
+"0 ni kanen manajap y ne nda manajat)"
+
+msgid "bounciness"
+msgstr "makeen"
+
+msgid ""
+"Set the bounciness property for objects (a value from 0 to 1, where 0 means "
+"no bounce and 1 is very bouncy)."
+msgstr ""
+"skad- a ma´in ne vapai par sad-ia (nda ndiñjiup kiñyiep 0 y 1 peuk 0 va´ejei"
+"´nin lumei y nda nalei)"
+
+msgid "dynamic"
+msgstr "majaut"
+
+msgid ""
+"If dynamic = 1, the object can move; if dynamic = 0, it is fixed in position."
+msgstr ""
+"majaut =1, nda sania mananiat laka´ut; si majau ngjaik 0 lijiañ skad-a. ma´i"
+
+msgid "Palette of WeDo blocks"
+msgstr "Nijang se lumei re me'ets kily'e lu'uei vani'at matsjau "
+
+msgid "WeDo"
+msgstr "WeDo"
+
+msgid "set current WeDo device"
+msgstr ""
+
+msgid "number of WeDo devices"
+msgstr ""
+
+msgid "tilt"
+msgstr ""
+
+msgid ""
+"tilt sensor output: (-1 == no tilt, 0 == tilt forward, 3 == tilt back, 1 == "
+"tilt left, 2 == tilt right)"
+msgstr ""
+"nadalejeñ ne nda´ujuñiñkie libits (-1==nip ndib-its, 0==lib-its ma kutau "
+"3==lib-its ma ngupe ex, 1==lib-its ma maje´p2== lub-its ma majap)"
+
+msgid "distance sensor output"
+msgstr "ndale´je iñ ne nda´ujuñ ni kubaap"
+
+msgid "Motor A"
+msgstr "manájap A"
+
+msgid "returns the current value of Motor A"
+msgstr "viñjiu ne manajap A"
+
+msgid "Motor B"
+msgstr "manája B"
+
+msgid "returns the current value of Motor B"
+msgstr "makep ne liñju viñiu ne manajap B"
+
+msgid "set the value for Motor A"
+msgstr "setea  ne liñju viñjiu ne manajap A"
+
+msgid "set the value for Motor B"
+msgstr "setea ne liñju viñjiu ne manajap B"
+
+msgid "WeDo is unavailable"
+msgstr ""
+
+msgid "WeDo %d is unavailable; defaulting to 1"
+msgstr ""
+
+msgid "%(device)s is unavailable on WeDo %(wedo_number)d"
+msgstr ""
+
+msgid "Palette of LEGO NXT blocks of motors"
+msgstr "nijian se lumei re me´ets kily´e lu´uei vani´at matsjau manájap"
+
+msgid "Palette of LEGO NXT blocks of sensors"
+msgstr "nijian se lumei re me´ets kily´e lu´uei vani´at matsjau ninkie"
+
+msgid "touch"
+msgstr "va-d-usp"
+
+msgid "ultrasonic"
+msgstr "kub-áp"
+
+#: TurtleArt/tabasics.py:283 TurtleArt/tabasics.py:294
+#: TurtleArt/tabasics.py:344
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1197
+msgid "color"
+msgstr "xikjia'"
+
+#: plugins/audio_sensors/audio_sensors.py:83
+#: plugins/audio_sensors/audio_sensors.py:98 pysamples/grecord.py:205
+msgid "sound"
+msgstr "lijiu"
+
+msgid "Please check the connection with the brick"
+msgstr "kichjia´ut majau ñut ne nda usx lon ne bkick"
+
+msgid "Invalid port '%s'. Port must be: PORT A, B or C"
+msgstr ""
+
+msgid "Invalid port '%s'. Port must be: PORT 1, 2, 3 or 4"
+msgstr ""
+
+msgid "The value of power must be between -127 to 127"
+msgstr ""
+
+msgid "The parameter must be a integer, not '%s'"
+msgstr ""
+
+msgid "An error has occurred: check all connections and try to reconnect"
+msgstr "nda ndich´iu nichjiau ñut mi´ia re nda´uik y ch´ut vumiand"
+
+msgid "NXT found %s bricks"
+msgstr "NTX maka´je %s bricks"
+
+msgid "NXT not found"
+msgstr "NTX nip make´je"
+
+msgid "Brick number %s was not found"
+msgstr ""
+
+msgid "refresh NXT"
+msgstr "mambañ NTX"
+
+msgid "Search for a connected NXT brick."
+msgstr "mata´u pornnda brik NTX mamañg"
+
+msgid "NXT"
+msgstr "NTX"
+
+msgid "set current NXT device"
+msgstr ""
+
+msgid "number of NXT devices"
+msgstr ""
+
+msgid "brick name"
+msgstr ""
+
+msgid "Get the name of a brick."
+msgstr ""
+
+msgid "play tone"
+msgstr "manaei skad-a lijiu"
+
+msgid "frequency"
+msgstr "lunu´t"
+
+msgid "time"
+msgstr "kunju´u"
+
+msgid "Play a tone at frequency for time."
+msgstr "manaei skad-a vatei lunút lu´ui kunju´u"
+
+msgid ""
+"turn motor\n"
+"\n"
+msgstr ""
+"ndatat na´ua\n"
+"\n"
+
+msgid "port"
+msgstr "Ndejei' "
+
+msgid "power"
+msgstr "manajap"
+
+msgid "rotations"
+msgstr "likia´t"
+
+msgid "turn a motor"
+msgstr "lipjia nda mana´jap"
+
+msgid ""
+"synchronize\n"
+"\n"
+"motors"
+msgstr ""
+"manamejeo ra´uat\n"
+"\n"
+"peuk se utueje"
+
+msgid "steering"
+msgstr ""
+
+msgid "synchronize two motors connected in PORT B and PORT C"
+msgstr "manamejep nui na´uap re kiñxieje B y kiñxieje C"
+
+msgid "PORT A"
+msgstr "kiñchieje´A"
+
+msgid "PORT A of the brick"
+msgstr "kiñchieje´A del brick"
+
+msgid "PORT B"
+msgstr "kiñchieje´ B"
+
+msgid "PORT B of the brick"
+msgstr "kiñchieje´ B del brick"
+
+msgid "PORT C"
+msgstr "kiñchieje´ C"
+
+msgid "PORT C of the brick"
+msgstr "kiñchieje´ C del brick"
+
+msgid ""
+"synchronize\n"
+"motors"
+msgstr ""
+"manamejeo ra´uat\n"
+"peuk se utueje"
+
+msgid "start motor"
+msgstr "manapup manajap"
+
+msgid "Run a motor forever."
+msgstr "malatat nda na´ua leem"
+
+msgid "brake motor"
+msgstr "manama´i manajap"
+
+msgid "Stop a specified motor."
+msgstr "lumai nda na´ua leem najui"
+
+msgid "reset motor"
+msgstr "manapup manajap"
+
+msgid "Reset the motor counter."
+msgstr "lupup ne ndape én ne na´va"
+
+msgid "motor position"
+msgstr "peuk lu´uinjiu´u ne na´ua"
+
+msgid "Get the motor position."
+msgstr "lumei peuk lu´ui njiu ne na´ua"
+
+msgid "PORT 1"
+msgstr "kiñchieje´ 1"
+
+msgid "PORT 1 of the brick"
+msgstr "kiñchieje´ 1 del brick"
+
+msgid "read"
+msgstr "nu'ua "
+
+msgid "sensor"
+msgstr "nda´uñ"
+
+msgid "Read sensor output."
+msgstr "ba´jau ne ndalejeiñ ne"
+
+msgid "PORT 2"
+msgstr "kiñchieje´ 2"
+
+msgid "PORT 2 of the brick"
+msgstr "kiñchieje´ 2 nda brick"
+
+msgid "light sensor"
+msgstr "nda´ujuñ niñgyie kutsja´u"
+
+msgid "gray sensor"
+msgstr "nada´ujuñ nda grises"
+
+msgid "PORT 3"
+msgstr "kiñchieje´ 3"
+
+msgid "PORT 3 of the brick"
+msgstr "kiñchieje´ 3 nda brick"
+
+msgid "touch sensor"
+msgstr "nda´ujuñ matajau"
+
+msgid "distance sensor"
+msgstr "nda´ujuñ mab- a´p"
+
+msgid "PORT 4"
+msgstr "kiñchieje´ 4"
+
+msgid "PORT 4 of the brick"
+msgstr "kiñchieje´ 4 nda brick"
+
+msgid "sound sensor"
+msgstr "ndaujuñ se lijiu"
+
+msgid "color sensor"
+msgstr "nda´ujuñ lumei xikjia´a"
+
+msgid "set light"
+msgstr "lunia kutsja´u"
+
+msgid "Set color sensor light."
+msgstr "lunia nekutsja´u nada´ujuñ lumei xik´jia´a"
+
+msgid "battery level"
+msgstr "peuk kausp ne ngun´iang"
+
+msgid "Get the battery level of the brick in millivolts"
+msgstr "lujejeiñ péuk kausp ne nagun´iang brick"
+
+msgid "Palette of Arduino blocks"
+msgstr "Nijang se lumei re me'ets kily'e lu'uei vani'at matsjau "
+
+msgid "PWM"
+msgstr "PWM"
+
+msgid "SERVO"
+msgstr "SERVO"
+
+msgid "ERROR: Check the Arduino and the number of port."
+msgstr "ERROR: ndich´iu nut ne Ardiano yne nab- en ne kiñxieje´e"
+
+msgid "ERROR: Value must be a number from 0 to 255."
+msgstr "ERROR: ne ndiñjiup lumeim malaei nda nab-en´enre 0 y 255"
+
+msgid "ERROR: Value must be either HIGH or LOW, 0 or 1"
+msgstr "ERROR: ne ndiñjiup lumem malaei maja´ch´, majaich"
+
+msgid "ERROR: The mode must be either INPUT, OUTPUT, PWM or SERVO."
+msgstr "ERROR: peuk stiñjia lumem mala ei ndajei, ndalejeiñ PWMo SERVO"
+
+msgid "ERROR: The value must be an integer."
+msgstr ""
+
+msgid "ERROR: The pin must be an integer."
+msgstr ""
+
+msgid "refresh Arduino"
+msgstr "mambañ Arduino"
+
+msgid "Search for connected Arduinos."
+msgstr ""
+
+msgid "Arduino"
+msgstr ""
+
+msgid "set current Arduino board"
+msgstr ""
+
+msgid "number of Arduinos"
+msgstr ""
+
+msgid "number of Arduino boards"
+msgstr ""
+
+msgid "Arduino name"
+msgstr ""
+
+msgid "Get the name of an Arduino."
+msgstr ""
+
+msgid "pin mode"
+msgstr "modo del pin"
+
+msgid "Select the pin function (INPUT, OUTPUT, PWM, SERVO)."
+msgstr "vimia´ik se ndaei ne pin ndajei, ndalejeiñ PWM, SERVO"
+
+msgid "analog write"
+msgstr "MAETS´"
+
+msgid "Write analog value in specified port."
+msgstr "gyist nda liñjiúy pu kiñchieje´luctuejé"
+
+msgid "analog read"
+msgstr "ma´ajau analógico"
+
+msgid ""
+"Read value from analog port. Value may be between 0 and 1023. Use Vref to "
+"determine voltage. For USB, volt=((read)*5)/1024) approximately."
+msgstr ""
+"gyiajaut nda liñju ne kiñche je, ne liñjú  k´ua lakejé kiñkié 0 y ref MA "
+"NAVAIÑ´NE MANAJAN DE usb VOLT=(( leer)*5/1024 vakja lum´ejep)"
+
+msgid "digital write"
+msgstr "ma´ets matét"
+
+msgid "Write digital value to specified port."
+msgstr "gyist nda liñjú matét be kiñ cheje´vakja mamejep"
+
+msgid "digital read"
+msgstr "ma´ajaú matét"
+
+msgid "Read value from digital port."
+msgstr "gyist nda liñju ne nda kiñche je´matét "
+
+msgid "Configure Arduino port for digital input."
+msgstr "vichjaut ne kiñcheje´ne Arduino njkár ndejeí matét"
+
+msgid "Configure Arduino port to drive a servo."
+msgstr "vichjaut ne kiñcheje´ne Arduino ma nakju´ne servo"
+
+msgid "Configure Arduino port for digital output."
+msgstr "vichjaut ne kiñcheje´Arduino nkajai ndalejeiñ matét"
+
+msgid "Configure Arduino port for PWM (pulse-width modulation)."
+msgstr "vichjaut ne kiñcheje´Arduino ma PWM, modulacion se vates"
+
+msgid "Not found Arduino %s"
+msgstr ""
+
+msgid "The pin must be an integer"
+msgstr ""
+
+msgid "The device must be an integer"
+msgstr ""
+
+msgid "Palette of Expeyes blocks"
+msgstr "Nijang se lumei re me'ets kily'e lu'uei vani'at matsjau "
+
+msgid "set PVS"
+msgstr "establecer PVS"
+
+msgid "set programmable voltage output"
+msgstr ""
+
+msgid "set SQR1 voltage"
+msgstr ""
+
+msgid "set square wave 1 voltage output"
+msgstr ""
+
+msgid "set SQR2 voltage"
+msgstr ""
+
+msgid "set square wave 2 voltage output"
+msgstr ""
+
+msgid "set OD1"
+msgstr ""
+
+msgid "set digital output level (OD1) low (0) or high (1)"
+msgstr ""
+
+msgid "IN1 level"
+msgstr "peuk kaus in1"
+
+msgid ""
+"returns 1 if IN1 voltage level >2.5 volts, 0 if IN1 voltage level <= 2.5 "
+"volts"
+msgstr ""
+
+msgid "IN2 level"
+msgstr "peuk kaus IN2"
+
+msgid ""
+"returns 1 if IN2 voltage level >2.5 volts, 0 if IN2 voltage level <= 2.5 "
+"volts"
+msgstr ""
+
+msgid "SEN level"
+msgstr "peuk kaus SEN"
+
+msgid ""
+"returns 1 if resistive sensor (SEN) voltage level > 2.5 volts, 0 if SEN "
+"voltage level <= 2.5 volts"
+msgstr ""
+
+msgid "capture"
+msgstr ""
+
+msgid "input"
+msgstr ""
+
+msgid "samples"
+msgstr ""
+
+msgid "interval"
+msgstr ""
+
+msgid ""
+"capture multiple samples from input at interval (MS); results pushed to FIFO"
+msgstr ""
+
+msgid "A1"
+msgstr "A1"
+
+msgid "read analog input 1 voltage"
+msgstr ""
+
+msgid "A2"
+msgstr "A2"
+
+msgid "read analog input 2 voltage"
+msgstr ""
+
+msgid "IN1"
+msgstr "IN1"
+
+msgid "read input 1 voltage"
+msgstr ""
+
+msgid "IN2"
+msgstr "IN2"
+
+msgid "read input 2 voltage"
+msgstr ""
+
+msgid "SEN"
+msgstr "SEN"
+
+msgid "read analog sensor input voltage"
+msgstr ""
+
+msgid "SQR1"
+msgstr "SQR1"
+
+msgid "read square wave 1 voltage"
+msgstr ""
+
+msgid "SQR2"
+msgstr "AQR2"
+
+msgid "read square wave 2 voltage"
+msgstr ""
+
+msgid "PVS"
+msgstr "PVS"
+
+msgid "read programmable voltage"
+msgstr ""
+
+msgid "Expeyes device not found"
+msgstr ""
 
 #. TRANS: "name" option from activity.info file
 msgid "TurtleBlocks"
@@ -58,19 +1253,9 @@ msgstr "matseiñ'"
 msgid "clears the screen and reset the turtle"
 msgstr "vichiñ' ne kutau nak'ujuly' tsukuet vimiaik majau ne kumú'"
 
-#: TurtleArt/tabasics.py:158
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:871
-msgid "left"
-msgstr "meje'ep"
-
 #: TurtleArt/tabasics.py:162
 msgid "turns turtle counterclockwise (angle in degrees)"
 msgstr "vikia't pu kumú' nimia ngupeix (angelo en grados)"
-
-#: TurtleArt/tabasics.py:170
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:895
-msgid "right"
-msgstr "majaap"
 
 #: TurtleArt/tabasics.py:174
 msgid "turns turtle clockwise (angle in degrees)"
@@ -95,14 +1280,6 @@ msgstr "vikia'aut pu kumú' lagu'ust' pu ngulja'"
 #: TurtleArt/tabasics.py:195 TurtleArt/tabasics.py:261
 msgid "set xy"
 msgstr "makeje' xy"
-
-#: TurtleArt/tabasics.py:195 TurtleArt/tabasics.py:261
-msgid "x"
-msgstr "x"
-
-#: TurtleArt/tabasics.py:195 TurtleArt/tabasics.py:261
-msgid "y"
-msgstr "y"
 
 #: TurtleArt/tabasics.py:199 TurtleArt/tabasics.py:265
 msgid ""
@@ -161,12 +1338,6 @@ msgstr "Nijang se vupai re nde'ets kily'e"
 msgid "fill screen"
 msgstr "mane'ep ne kutau nak'ujuly'"
 
-#: TurtleArt/tabasics.py:283 TurtleArt/tabasics.py:294
-#: TurtleArt/tabasics.py:344
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1197
-msgid "color"
-msgstr "xikjia'"
-
 #: TurtleArt/tabasics.py:283 TurtleArt/tabasics.py:295
 #: TurtleArt/tabasics.py:354
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1193
@@ -177,12 +1348,6 @@ msgstr "lijiú"
 #: TurtleArt/tabasics.py:287 TurtleArt/tabasics.py:299
 msgid "fills the background with (color, shade)"
 msgstr "viñee't pu kimviu'p lamejep (xikjia't, nixaú)"
-
-#: TurtleArt/tabasics.py:295 TurtleArt/tabasics.py:363
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1194
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1199
-msgid "gray"
-msgstr "tsundué"
 
 #: TurtleArt/tabasics.py:309
 msgid "set color"
@@ -254,8 +1419,8 @@ msgstr "mapúp mánee"
 #: TurtleArt/tabasics.py:406
 msgid "starts filled polygon (used with end fill block)"
 msgstr ""
-"Mapup mane´p pu ranju'muu se me'ei mata'aun( make' se me'ei mane'ei ravú "
-"kad-a)"
+"Mapup mane´p pu ranju'muu se me'ei mata'aun( make' se me'ei mane'ei ravú kad-"
+"a)"
 
 #: TurtleArt/tabasics.py:413
 msgid "end fill"
@@ -641,10 +1806,6 @@ msgstr "makjaat kiñkiep'"
 #: TurtleArt/tabasics.py:924 TurtleArt/tabasics.py:939
 msgid "box"
 msgstr "ndakjaat"
-
-#: TurtleArt/tabasics.py:924 TurtleArt/tawindow.py:4427
-msgid "value"
-msgstr "liñjú"
 
 #: TurtleArt/tabasics.py:928 TurtleArt/tabasics.py:942
 #: TurtleArt/tawindow.py:1355 TurtleArt/tawindow.py:1486
@@ -1141,11 +2302,6 @@ msgstr "navu se lu'uei lutsjau manei"
 msgid "push acceleration in x, y, z to heap"
 msgstr "lamejep pu se lu'uei lutsjau likiu' manei ravu x, y z ne manajap"
 
-#: plugins/audio_sensors/audio_sensors.py:83
-#: plugins/audio_sensors/audio_sensors.py:98 pysamples/grecord.py:205
-msgid "sound"
-msgstr "lijiu"
-
 #: plugins/audio_sensors/audio_sensors.py:84
 #: plugins/audio_sensors/audio_sensors.py:99
 msgid "raw microphone input signal"
@@ -1172,13 +2328,6 @@ msgstr "lunep lijiu"
 msgid "microphone input pitch"
 msgstr "manaja se vat'ei vum'ejep ndape'et leet"
 
-#: plugins/audio_sensors/audio_sensors.py:151
-#: plugins/audio_sensors/audio_sensors.py:165
-#: plugins/audio_sensors/audio_sensors.py:179
-#: plugins/audio_sensors/audio_sensors.py:193
-msgid "resistance"
-msgstr "ne se lu'ujuñ manajap xikich'"
-
 #: plugins/audio_sensors/audio_sensors.py:152
 #: plugins/audio_sensors/audio_sensors.py:166
 #: plugins/audio_sensors/audio_sensors.py:180
@@ -1187,13 +2336,6 @@ msgid "microphone input resistance"
 msgstr ""
 "li'iajam ne se lu'uei lu'ujuñ xikich' se njei' pu ndejei ne ndape'et leet "
 "(navu se vat'ei tsjau':700 a 14000 ohms)"
-
-#: plugins/audio_sensors/audio_sensors.py:157
-#: plugins/audio_sensors/audio_sensors.py:171
-#: plugins/audio_sensors/audio_sensors.py:185
-#: plugins/audio_sensors/audio_sensors.py:199
-msgid "voltage"
-msgstr "xikich' manajap"
 
 #: plugins/audio_sensors/audio_sensors.py:158
 #: plugins/audio_sensors/audio_sensors.py:172
@@ -1206,15 +2348,6 @@ msgstr "manajap se llu'ujuñ re xikich' se vat'ei vum'ejep ndape'et leet"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:139
 msgid "Palette of media objects"
 msgstr "Nijang se lumei kily'e nop lik'iajam ndu'et"
-
-#: plugins/camera_sensor/camera_sensor.py:80
-#: plugins/camera_sensor/camera_sensor.py:93
-#: plugins/camera_sensor/camera_sensor.py:128
-#: plugins/camera_sensor/camera_sensor.py:141
-#: plugins/light_sensor/light_sensor.py:56
-#: plugins/light_sensor/light_sensor.py:63
-msgid "brightness"
-msgstr "vanjial'"
 
 #: plugins/camera_sensor/camera_sensor.py:82
 #: plugins/camera_sensor/camera_sensor.py:130
@@ -1488,10 +2621,6 @@ msgstr ""
 msgid "returns the color that the turtle \"sees\""
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:451
-msgid "time"
-msgstr ""
-
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:454
 msgid "elapsed time (in seconds) since program started"
 msgstr ""
@@ -1753,11 +2882,6 @@ msgstr ""
 msgid "ycor of bottom of screen"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:887
-#, fuzzy
-msgid "width"
-msgstr "nixi'i"
-
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:890
 msgid "the canvas width"
 msgstr ""
@@ -1769,11 +2893,6 @@ msgstr ""
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:906
 msgid "ycor of top of screen"
 msgstr ""
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:911
-#, fuzzy
-msgid "height"
-msgstr "majax"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:914
 msgid "the canvas height"
@@ -1957,72 +3076,9 @@ msgstr ""
 msgid "Save project?"
 msgstr ""
 
-#~ msgid "Turtle Art"
-#~ msgstr "Kumú' majau matsjau"
-
-#, fuzzy
-#~ msgid "distance"
-#~ msgstr "kuba'ap"
-
-#, fuzzy
-#~ msgid "right Butia"
-#~ msgstr "kuas Butia"
-
-#, fuzzy
-#~ msgid "stop Butia"
-#~ msgstr "ndama'ai Butia"
-
-#, fuzzy
-#~ msgid "Butia"
-#~ msgstr "Butia"
-
-#, fuzzy
-#~ msgid "right SumBot"
-#~ msgstr "kuas SumBot"
-
-#, fuzzy
-#~ msgid "Palette of physics blocks"
-#~ msgstr "Nijang se lumei re me'ets kily'e lu'uei vani'at matsjau"
-
-#, fuzzy
-#~ msgid "triangle"
-#~ msgstr "ranju'umù"
-
-#, fuzzy
-#~ msgid "density"
-#~ msgstr "vapu"
-
-#, fuzzy
-#~ msgid "Palette of WeDo blocks"
-#~ msgstr "Nijang se lumei re me'ets kily'e lu'uei vani'at matsjau"
-
-#, fuzzy
-#~ msgid "light"
-#~ msgstr "kuas"
-
 #, fuzzy
 #~ msgid "grey"
 #~ msgstr "tsundué"
-
-#, fuzzy
-#~ msgid "port"
-#~ msgstr "Ndejei'"
-
-#, fuzzy
-#~ msgid "read"
-#~ msgstr "nu'ua"
-
-#, fuzzy
-#~ msgid "mode"
-#~ msgstr "mod"
-
-#, fuzzy
-#~ msgid "Palette of Expeyes blocks"
-#~ msgstr "Nijang se lumei re me'ets kily'e lu'uei vani'at matsjau"
-
-#, fuzzy
-#~ msgid "Palette of Arduino blocks"
-#~ msgstr "Nijang se lumei re me'ets kily'e lu'uei vani'at matsjau"
 
 #~ msgid "then else"
 #~ msgstr "kujui nipeuk"

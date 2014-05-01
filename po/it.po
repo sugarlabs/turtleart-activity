@@ -1,3 +1,4 @@
+# #-#-#-#-#  it.po (PACKAGE VERSION)  #-#-#-#-#
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
@@ -6,8 +7,21 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#, fuzzy
 msgid ""
 msgstr ""
+"#-#-#-#-#  it.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-12-14 00:32-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 1.7.0\n"
+"#-#-#-#-#  it.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-12-05 00:30-0500\n"
@@ -20,6 +34,1229 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pootle 2.0.5\n"
+
+msgid "turtleart-extras (master)"
+msgstr ""
+
+msgid "Turtle Blocks"
+msgstr ""
+
+msgid "Turtle Art"
+msgstr "Turtle Art"
+
+msgid "Turtle Art Mini"
+msgstr ""
+
+msgid "Turtle Confusion"
+msgstr ""
+
+msgid "Select a challenge"
+msgstr ""
+
+msgid "Amazonas Tortuga"
+msgstr ""
+
+msgid "Turtle Flags"
+msgstr ""
+
+msgid "Use the turtle to draw country flags"
+msgstr ""
+
+msgid "Palette of Mexican pesos"
+msgstr ""
+
+msgid "Palette of Colombian pesos"
+msgstr ""
+
+msgid "Palette of Rwandan francs"
+msgstr ""
+
+msgid "Palette of US dollars"
+msgstr ""
+
+msgid "Palette of Australian dollars"
+msgstr ""
+
+msgid "Palette of Paraguayan Guaranies"
+msgstr ""
+
+msgid "Palette of Peruvian Nuevo Soles"
+msgstr ""
+
+msgid "Palette of Uruguayan Pesos"
+msgstr ""
+
+msgid "TurtleBots"
+msgstr ""
+
+msgid "TurtleBlocks with Butia, Lego NxT, WeDo, Arduino, FollowMe plugins"
+msgstr ""
+
+msgid "ERROR: The speed must be a value between 0 and 1023"
+msgstr ""
+
+msgid "ERROR: The speed must be a value between -1023 and 1023"
+msgstr ""
+
+msgid "ERROR: The pin must be between 1 and 8"
+msgstr ""
+
+msgid "ERROR: The value must be 0 or 1, LOW or HIGH"
+msgstr ""
+
+msgid "ERROR: The mode must be INPUT or OUTPUT."
+msgstr ""
+
+msgid "turns LED on and off: 1 means on, 0 means off"
+msgstr ""
+
+msgid "returns the gray level as a value between 0 and 65535"
+msgstr ""
+
+msgid "returns 1 when the button is pressed and 0 otherwise"
+msgstr ""
+
+msgid "returns the light level as a value between 0 and 65535"
+msgstr ""
+
+msgid "returns the distance as a value between 0 and 65535"
+msgstr ""
+
+msgid "returns the resistance value (ohms)"
+msgstr ""
+
+msgid "returns the voltage value (volts)"
+msgstr ""
+
+msgid "returns the temperature value (celsius degree)"
+msgstr ""
+
+msgid "custom module %s"
+msgstr ""
+
+msgid "sensor a"
+msgstr ""
+
+msgid "sensor b"
+msgstr ""
+
+msgid "sensor c"
+msgstr ""
+
+msgid "actuator a"
+msgstr ""
+
+msgid "actuator b"
+msgstr ""
+
+msgid "actuator c"
+msgstr ""
+
+msgid "LED"
+msgstr ""
+
+msgid "button"
+msgstr ""
+
+#: TurtleArt/tabasics.py:370 TurtleArt/tabasics.py:454
+#: TurtleArt/tawindow.py:4480 TurtleArt/tawindow.py:4485
+msgid "gray"
+msgstr "grigio"
+
+msgid "light"
+msgstr "destra"
+
+msgid "distance"
+msgstr ""
+
+#: plugins/audio_sensors/audio_sensors.py:157
+#: plugins/audio_sensors/audio_sensors.py:175
+msgid "resistance"
+msgstr "resistenza"
+
+#: plugins/audio_sensors/audio_sensors.py:163
+#: plugins/audio_sensors/audio_sensors.py:181
+msgid "voltage"
+msgstr "voltaggio"
+
+msgid "temperature"
+msgstr ""
+
+msgid "butia"
+msgstr ""
+
+msgid "Butia Robot"
+msgstr ""
+
+msgid "refresh Butia"
+msgstr ""
+
+msgid "refresh the state of the Butia palette and blocks"
+msgstr ""
+
+msgid "battery charge Butia"
+msgstr ""
+
+msgid ""
+"returns the battery charge in volts. If no motors present, it returns 255"
+msgstr ""
+
+msgid "speed Butia"
+msgstr ""
+
+msgid "set the speed of the Butia motors"
+msgstr ""
+
+msgid "move Butia"
+msgstr ""
+
+#: TurtleArt/tabasics.py:207 TurtleArt/taconstants.py:138
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:973
+msgid "left"
+msgstr "sinistra"
+
+#: TurtleArt/tabasics.py:221 TurtleArt/taconstants.py:140
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1006
+msgid "right"
+msgstr "destra"
+
+msgid "moves the Butia motors at the specified speed"
+msgstr ""
+
+msgid "stop Butia"
+msgstr ""
+
+msgid "stop the Butia robot"
+msgstr ""
+
+msgid "forward Butia"
+msgstr ""
+
+msgid "move the Butia robot forward"
+msgstr ""
+
+msgid "left Butia"
+msgstr ""
+
+msgid "turn the Butia robot at left"
+msgstr ""
+
+msgid "right Butia"
+msgstr ""
+
+msgid "turn the Butia robot at right"
+msgstr ""
+
+msgid "backward Butia"
+msgstr ""
+
+msgid "move the Butia robot backward"
+msgstr ""
+
+msgid "butia-extra"
+msgstr ""
+
+msgid "Butia Robot extra blocks"
+msgstr ""
+
+msgid "pin mode Butia"
+msgstr ""
+
+msgid "pin"
+msgstr ""
+
+msgid "mode"
+msgstr "mod"
+
+msgid "Select the pin function (INPUT, OUTPUT)."
+msgstr ""
+
+msgid "read pin Butia"
+msgstr ""
+
+msgid "read the value of a pin"
+msgstr ""
+
+msgid "write pin Butia"
+msgstr ""
+
+#: TurtleArt/tabasics.py:1114 TurtleArt/tawindow.py:4847
+msgid "value"
+msgstr "valore"
+
+msgid "set a hack pin to 0 or 1"
+msgstr ""
+
+msgid "INPUT"
+msgstr ""
+
+msgid "Configure hack pin for digital input."
+msgstr ""
+
+msgid "HIGH"
+msgstr ""
+
+msgid "Set HIGH value for digital pin."
+msgstr ""
+
+msgid "LOW"
+msgstr ""
+
+msgid "Set LOW value for digital port."
+msgstr ""
+
+msgid "OUTPUT"
+msgstr ""
+
+msgid "Configure hack port for digital output."
+msgstr ""
+
+msgid "butia-cast"
+msgstr ""
+
+msgid "Butia Robot cast blocks"
+msgstr ""
+
+msgid "Butia"
+msgstr ""
+
+msgid "CAST\n"
+msgstr ""
+
+msgid "new name"
+msgstr ""
+
+msgid "original"
+msgstr ""
+
+msgid "f(x)="
+msgstr ""
+
+msgid "Cast a new block"
+msgstr ""
+
+msgid "generic module %s"
+msgstr ""
+
+msgid "Butia IP"
+msgstr ""
+
+msgid "change the IP of butia robot"
+msgstr ""
+
+msgid "ERROR: The pin %s must be in OUTPUT mode."
+msgstr ""
+
+msgid "ERROR: The pin %s must be in INPUT mode."
+msgstr ""
+
+msgid "ERROR: Something wrong with function '%s'"
+msgstr ""
+
+msgid "ERROR: cannot init GCONF client: %s"
+msgstr ""
+
+msgid "ERROR: You must cast Sensor or Actuator: A, B or C"
+msgstr ""
+
+msgid "ERROR: Invalid IP '%s'"
+msgstr ""
+
+msgid "Creating PyBot server"
+msgstr ""
+
+msgid "ERROR creating PyBot server"
+msgstr ""
+
+msgid "PyBot is alive!"
+msgstr ""
+
+msgid "Ending butia polling"
+msgstr ""
+
+msgid "Error importing Pygame. This plugin require Pygame 1.9"
+msgstr ""
+
+msgid "Error on initialization of the camera"
+msgstr ""
+
+msgid "No camera was found"
+msgstr ""
+
+msgid "Error stopping camera"
+msgstr ""
+
+msgid "Error starting camera"
+msgstr ""
+
+msgid "Error in get mask"
+msgstr ""
+
+msgid "followme"
+msgstr ""
+
+msgid "FollowMe"
+msgstr ""
+
+msgid "refresh FollowMe"
+msgstr ""
+
+msgid "Search for a connected camera."
+msgstr ""
+
+msgid "calibration"
+msgstr ""
+
+msgid "store a personalized calibration"
+msgstr ""
+
+msgid "return a personalized calibration"
+msgstr ""
+
+msgid "follow"
+msgstr ""
+
+msgid "follow a color or calibration"
+msgstr ""
+
+#: plugins/camera_sensor/camera_sensor.py:83
+#: plugins/camera_sensor/camera_sensor.py:99
+#: plugins/camera_sensor/camera_sensor.py:136
+#: plugins/camera_sensor/camera_sensor.py:152
+#: plugins/light_sensor/light_sensor.py:58
+#: plugins/light_sensor/light_sensor.py:66
+msgid "brightness"
+msgstr "luminosità"
+
+msgid "set the camera brightness as a value between 0 to 255."
+msgstr ""
+
+msgid "minimum pixels"
+msgstr ""
+
+msgid "set the minimal number of pixels to follow"
+msgstr ""
+
+msgid "threshold"
+msgstr ""
+
+msgid "set a threshold for a RGB color"
+msgstr ""
+
+msgid "camera mode"
+msgstr ""
+
+msgid "set the color mode of the camera: RGB; YUV or HSV"
+msgstr ""
+
+msgid "get brightness"
+msgstr ""
+
+msgid "get the brightness of the ambient light"
+msgstr ""
+
+msgid "average color"
+msgstr ""
+
+msgid ""
+"if set to 0 then color averaging is off during calibration;for other values, "
+"it is on"
+msgstr ""
+
+msgid "x position"
+msgstr ""
+
+msgid "return x position"
+msgstr ""
+
+msgid "y position"
+msgstr ""
+
+msgid "return y position"
+msgstr ""
+
+msgid "pixels"
+msgstr ""
+
+msgid "return the number of pixels of the biggest blob"
+msgstr ""
+
+msgid "RGB"
+msgstr ""
+
+msgid "set the color mode of the camera to RGB"
+msgstr ""
+
+msgid "YUV"
+msgstr ""
+
+msgid "set the color mode of the camera to YUV"
+msgstr ""
+
+msgid "HSV"
+msgstr ""
+
+msgid "set the color mode of the camera to HSV"
+msgstr ""
+
+msgid "get color"
+msgstr "seleziona colore"
+
+msgid "get the color of an object"
+msgstr ""
+
+msgid "color distance"
+msgstr ""
+
+msgid "set the distance to identify a color"
+msgstr ""
+
+msgid "empty calibration"
+msgstr ""
+
+msgid "error in string conversion"
+msgstr ""
+
+msgid "Pattern detection"
+msgstr ""
+
+msgid "pattern_detection"
+msgstr ""
+
+msgid "Seeing signal"
+msgstr ""
+
+msgid "Returns True if the signal is in front of the camera"
+msgstr ""
+
+msgid "Distance to signal"
+msgstr ""
+
+msgid "Returns the distance of the signal to the camera in millimeters"
+msgstr ""
+
+msgid "SumBot"
+msgstr ""
+
+msgid "sumtia"
+msgstr ""
+
+msgid "speed SumBot"
+msgstr ""
+
+msgid "submit the speed to the SumBot"
+msgstr ""
+
+msgid "set the default speed for the movement commands"
+msgstr ""
+
+msgid "forward SumBot"
+msgstr ""
+
+msgid "move SumBot forward"
+msgstr ""
+
+msgid "backward SumBot"
+msgstr ""
+
+msgid "move SumBot backward"
+msgstr ""
+
+msgid "stop SumBot"
+msgstr ""
+
+msgid "stop the SumBot"
+msgstr ""
+
+msgid "left SumBot"
+msgstr ""
+
+msgid "turn left the SumBot"
+msgstr ""
+
+msgid "right SumBot"
+msgstr ""
+
+msgid "turn right the SumBot"
+msgstr ""
+
+msgid "angle to center"
+msgstr ""
+
+msgid "get the angle to the center of the dohyo"
+msgstr ""
+
+msgid "angle to Enemy"
+msgstr ""
+
+msgid "get the angle to the Enemy"
+msgstr ""
+
+msgid "x coor. SumBot"
+msgstr ""
+
+msgid "get the x coordinate of the SumBot"
+msgstr ""
+
+msgid "y coor. SumBot"
+msgstr ""
+
+msgid "get the y coordinate of the SumBot"
+msgstr ""
+
+msgid "x coor. Enemy"
+msgstr ""
+
+msgid "get the x coordinate of the Enemy"
+msgstr ""
+
+msgid "y coor. Enemy"
+msgstr ""
+
+msgid "get the y coordinate of the Enemy"
+msgstr ""
+
+msgid "rotation SumBot"
+msgstr ""
+
+msgid "get the rotation of the Sumbot"
+msgstr ""
+
+msgid "rotation Enemy"
+msgstr ""
+
+msgid "get the rotation of the Enemy"
+msgstr ""
+
+msgid "distance to center"
+msgstr ""
+
+msgid "get the distance to the center of the dohyo"
+msgstr ""
+
+msgid "distance to Enemy"
+msgstr ""
+
+msgid "get the distance to the Enemy"
+msgstr ""
+
+msgid "update information"
+msgstr ""
+
+msgid "update information from the server"
+msgstr ""
+
+msgid "Palette of physics blocks"
+msgstr "Paletta dei blocchi sensori"
+
+msgid "start polygon"
+msgstr ""
+
+msgid "Begin defining a new polygon based on the current Turtle xy position."
+msgstr ""
+
+msgid "add point"
+msgstr ""
+
+msgid ""
+"Add a new point to the current polygon based on the current Turtle xy "
+"position."
+msgstr ""
+
+msgid "end polygon"
+msgstr ""
+
+msgid "Define a new polygon."
+msgstr ""
+
+msgid "end filled polygon"
+msgstr ""
+
+msgid "Not a simple polygon"
+msgstr ""
+
+msgid "Define a new filled polygon."
+msgstr ""
+
+msgid "triangle"
+msgstr ""
+
+msgid "base"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1028
+#, fuzzy
+msgid "height"
+msgstr ""
+"#-#-#-#-#  it.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"altezza\n"
+"#-#-#-#-#  it.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"height"
+
+msgid "Add a triangle object to the project."
+msgstr ""
+
+msgid "circle"
+msgstr ""
+
+msgid "Add a circle object to the project."
+msgstr ""
+
+msgid "rectangle"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:995
+msgid "width"
+msgstr "larghezza"
+
+msgid "Add a rectangle object to the project."
+msgstr ""
+
+msgid "reset"
+msgstr ""
+
+msgid "Reset the project; clear the object list."
+msgstr ""
+
+msgid "motor"
+msgstr ""
+
+msgid "torque"
+msgstr ""
+
+msgid "speed"
+msgstr ""
+
+msgid ""
+"Motor torque and speed range from 0 (off) to positive numbers; motor is "
+"placed on the most recent object created."
+msgstr ""
+
+msgid "Pin an object down so that it cannot fall."
+msgstr ""
+
+msgid "joint"
+msgstr ""
+
+#: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
+msgid "x"
+msgstr "x"
+
+#: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
+msgid "y"
+msgstr "y"
+
+msgid ""
+"Join two objects together (the object at the current location and the object "
+"at point x, y)."
+msgstr ""
+
+msgid "save as Physics activity"
+msgstr ""
+
+msgid "Save the project to the Journal as a Physics activity."
+msgstr ""
+
+msgid "gear"
+msgstr ""
+
+msgid "Add a gear object to the project."
+msgstr ""
+
+msgid "density"
+msgstr "identità"
+
+msgid ""
+"Set the density property for objects (density can be any positive number)."
+msgstr ""
+
+msgid "friction"
+msgstr ""
+
+msgid ""
+"Set the friction property for objects (value from 0 to 1, where 0 turns "
+"friction off and 1 is strong friction)."
+msgstr ""
+
+msgid "bounciness"
+msgstr ""
+
+msgid ""
+"Set the bounciness property for objects (a value from 0 to 1, where 0 means "
+"no bounce and 1 is very bouncy)."
+msgstr ""
+
+msgid "dynamic"
+msgstr ""
+
+msgid ""
+"If dynamic = 1, the object can move; if dynamic = 0, it is fixed in position."
+msgstr ""
+
+msgid "Palette of WeDo blocks"
+msgstr "Paletta dei blocchi sensori"
+
+msgid "WeDo"
+msgstr ""
+
+msgid "set current WeDo device"
+msgstr ""
+
+msgid "number of WeDo devices"
+msgstr ""
+
+msgid "tilt"
+msgstr ""
+
+msgid ""
+"tilt sensor output: (-1 == no tilt, 0 == tilt forward, 3 == tilt back, 1 == "
+"tilt left, 2 == tilt right)"
+msgstr ""
+
+msgid "distance sensor output"
+msgstr ""
+
+msgid "Motor A"
+msgstr ""
+
+msgid "returns the current value of Motor A"
+msgstr ""
+
+msgid "Motor B"
+msgstr ""
+
+msgid "returns the current value of Motor B"
+msgstr ""
+
+msgid "set the value for Motor A"
+msgstr ""
+
+msgid "set the value for Motor B"
+msgstr ""
+
+msgid "WeDo is unavailable"
+msgstr ""
+
+msgid "WeDo %d is unavailable; defaulting to 1"
+msgstr ""
+
+msgid "%(device)s is unavailable on WeDo %(wedo_number)d"
+msgstr ""
+
+msgid "Palette of LEGO NXT blocks of motors"
+msgstr ""
+
+msgid "Palette of LEGO NXT blocks of sensors"
+msgstr ""
+
+#: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:369
+#: TurtleArt/tabasics.py:432 TurtleArt/tawindow.py:4483
+msgid "color"
+msgstr "colore"
+
+#: plugins/audio_sensors/audio_sensors.py:90 pysamples/grecord.py:206
+msgid "sound"
+msgstr "suono"
+
+msgid "Please check the connection with the brick"
+msgstr ""
+
+msgid "Invalid port '%s'. Port must be: PORT A, B or C"
+msgstr ""
+
+msgid "Invalid port '%s'. Port must be: PORT 1, 2, 3 or 4"
+msgstr ""
+
+msgid "The value of power must be between -127 to 127"
+msgstr ""
+
+msgid "The parameter must be a integer, not '%s'"
+msgstr ""
+
+msgid "An error has occurred: check all connections and try to reconnect"
+msgstr ""
+
+msgid "NXT found %s bricks"
+msgstr ""
+
+msgid "NXT not found"
+msgstr ""
+
+msgid "Brick number %s was not found"
+msgstr ""
+
+msgid "nxt-motors"
+msgstr ""
+
+msgid "refresh NXT"
+msgstr ""
+
+msgid "Search for a connected NXT brick."
+msgstr ""
+
+msgid "NXT"
+msgstr ""
+
+msgid "set current NXT device"
+msgstr ""
+
+msgid "number of NXTs"
+msgstr ""
+
+msgid "number of NXT devices"
+msgstr ""
+
+msgid "brick name"
+msgstr ""
+
+msgid "Get the name of a brick."
+msgstr ""
+
+msgid "play tone"
+msgstr ""
+
+msgid "frequency"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:421
+msgid "time"
+msgstr "tempo"
+
+msgid "Play a tone at frequency for time."
+msgstr ""
+
+msgid "turn motor %s"
+msgstr ""
+
+msgid "port"
+msgstr ""
+
+msgid "rotations"
+msgstr ""
+
+msgid "power"
+msgstr ""
+
+msgid "turn a motor"
+msgstr ""
+
+msgid "synchronize %s motors"
+msgstr ""
+
+msgid "synchronize two motors connected in PORT B and PORT C"
+msgstr ""
+
+msgid "PORT %s"
+msgstr ""
+
+msgid "PORT %s of the brick"
+msgstr ""
+
+msgid "start motor"
+msgstr ""
+
+msgid "Run a motor forever."
+msgstr ""
+
+msgid "brake motor"
+msgstr ""
+
+msgid "Stop a specified motor."
+msgstr ""
+
+msgid "reset motor"
+msgstr ""
+
+msgid "Reset the motor counter."
+msgstr ""
+
+msgid "motor position"
+msgstr ""
+
+msgid "Get the motor position."
+msgstr ""
+
+msgid "nxt-sensors"
+msgstr ""
+
+msgid "read"
+msgstr "rosso"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:328
+msgid "sensor"
+msgstr "sensore"
+
+msgid "Read sensor output."
+msgstr ""
+
+msgid "light sensor"
+msgstr ""
+
+msgid "gray sensor"
+msgstr ""
+
+msgid "button sensor"
+msgstr ""
+
+msgid "distance sensor"
+msgstr ""
+
+msgid "sound sensor"
+msgstr ""
+
+msgid "color sensor"
+msgstr ""
+
+msgid "set light"
+msgstr ""
+
+msgid "Set color sensor light."
+msgstr ""
+
+msgid "battery level"
+msgstr ""
+
+msgid "Get the battery level of the brick in millivolts"
+msgstr ""
+
+msgid "Palette of Arduino blocks"
+msgstr "Paletta dei blocchi sensori"
+
+msgid "PWM"
+msgstr ""
+
+msgid "SERVO"
+msgstr ""
+
+msgid "ERROR: Check the Arduino and the number of port."
+msgstr ""
+
+msgid "ERROR: Value must be a number from 0 to 1."
+msgstr ""
+
+msgid "ERROR: Value must be a number from 0 to 180."
+msgstr ""
+
+msgid "ERROR: Value must be either HIGH or LOW, 0 or 1"
+msgstr ""
+
+msgid "ERROR: The mode must be either INPUT, OUTPUT, PWM or SERVO."
+msgstr ""
+
+msgid "ERROR: The value must be an integer."
+msgstr ""
+
+msgid "ERROR: The pin must be an integer."
+msgstr ""
+
+msgid "ERROR: You must configure the mode for the pin."
+msgstr ""
+
+msgid "arduino"
+msgstr ""
+
+msgid "refresh Arduino"
+msgstr ""
+
+msgid "Search for connected Arduinos."
+msgstr ""
+
+msgid "Arduino"
+msgstr ""
+
+msgid "set current Arduino board"
+msgstr ""
+
+msgid "number of Arduinos"
+msgstr ""
+
+msgid "number of Arduino boards"
+msgstr ""
+
+msgid "Arduino name"
+msgstr ""
+
+msgid "Get the name of an Arduino."
+msgstr ""
+
+msgid "pin mode"
+msgstr ""
+
+msgid "Select the pin function (INPUT, OUTPUT, PWM, SERVO)."
+msgstr ""
+
+msgid "analog write"
+msgstr ""
+
+msgid "Write analog value in specified port."
+msgstr ""
+
+msgid "analog read"
+msgstr ""
+
+msgid "Read value from analog port. Value may be between 0 and 1."
+msgstr ""
+
+msgid "digital write"
+msgstr ""
+
+msgid "Write digital value to specified port."
+msgstr ""
+
+msgid "digital read"
+msgstr ""
+
+msgid "Read value from digital port."
+msgstr ""
+
+msgid "Set HIGH value for digital port."
+msgstr ""
+
+msgid "Configure Arduino port for digital input."
+msgstr ""
+
+msgid "Configure Arduino port to drive a servo."
+msgstr ""
+
+msgid "Configure Arduino port for digital output."
+msgstr ""
+
+msgid "Configure Arduino port for PWM (pulse-width modulation)."
+msgstr ""
+
+msgid "Not found Arduino %s"
+msgstr ""
+
+msgid "The pin must be an integer"
+msgstr ""
+
+msgid "The device must be an integer"
+msgstr ""
+
+msgid "Error loading %s board"
+msgstr ""
+
+msgid "Palette of Expeyes blocks"
+msgstr "Paletta dei blocchi sensori"
+
+msgid "set PVS"
+msgstr ""
+
+msgid "set programmable voltage output"
+msgstr ""
+
+msgid "set SQR1 voltage"
+msgstr ""
+
+msgid "set square wave 1 voltage output"
+msgstr ""
+
+msgid "set SQR2 voltage"
+msgstr ""
+
+msgid "set square wave 2 voltage output"
+msgstr ""
+
+msgid "set OD1"
+msgstr ""
+
+msgid "set digital output level (OD1) low (0) or high (1)"
+msgstr ""
+
+msgid "IN1 level"
+msgstr ""
+
+msgid ""
+"returns 1 if IN1 voltage level >2.5 volts, 0 if IN1 voltage level <= 2.5 "
+"volts"
+msgstr ""
+
+msgid "IN2 level"
+msgstr ""
+
+msgid ""
+"returns 1 if IN2 voltage level >2.5 volts, 0 if IN2 voltage level <= 2.5 "
+"volts"
+msgstr ""
+
+msgid "SEN level"
+msgstr ""
+
+msgid ""
+"returns 1 if resistive sensor (SEN) voltage level > 2.5 volts, 0 if SEN "
+"voltage level <= 2.5 volts"
+msgstr ""
+
+msgid "capture"
+msgstr ""
+
+msgid "input"
+msgstr ""
+
+#, fuzzy
+msgid "samples"
+msgstr ""
+"#-#-#-#-#  it.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  it.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Esempi"
+
+msgid "interval"
+msgstr ""
+
+msgid ""
+"capture multiple samples from input at interval (MS); results pushed to FIFO"
+msgstr ""
+
+msgid "A1"
+msgstr ""
+
+msgid "read analog input 1 voltage"
+msgstr ""
+
+msgid "A2"
+msgstr ""
+
+msgid "read analog input 2 voltage"
+msgstr ""
+
+msgid "IN1"
+msgstr ""
+
+msgid "read input 1 voltage"
+msgstr ""
+
+msgid "IN2"
+msgstr ""
+
+msgid "read input 2 voltage"
+msgstr ""
+
+msgid "SEN"
+msgstr ""
+
+msgid "read analog sensor input voltage"
+msgstr ""
+
+msgid "SQR1"
+msgstr ""
+
+msgid "read square wave 1 voltage"
+msgstr ""
+
+msgid "SQR2"
+msgstr ""
+
+msgid "read square wave 2 voltage"
+msgstr ""
+
+msgid "PVS"
+msgstr ""
+
+msgid "read programmable voltage"
+msgstr ""
+
+msgid "Expeyes device not found"
+msgstr ""
 
 #. TRANS: "name" option from activity.info file
 msgid "TurtleBlocks"
@@ -71,19 +1308,9 @@ msgstr "pulisci"
 msgid "clears the screen and reset the turtle"
 msgstr "Pulisci lo schermo e riposiziona la tartaruga"
 
-#: TurtleArt/tabasics.py:207 TurtleArt/taconstants.py:138
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:973
-msgid "left"
-msgstr "sinistra"
-
 #: TurtleArt/tabasics.py:211
 msgid "turns turtle counterclockwise (angle in degrees)"
 msgstr "ruota tartaruga in senso antiorario (in gradi)"
-
-#: TurtleArt/tabasics.py:221 TurtleArt/taconstants.py:140
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1006
-msgid "right"
-msgstr "destra"
 
 #: TurtleArt/tabasics.py:225
 msgid "turns turtle clockwise (angle in degrees)"
@@ -108,14 +1335,6 @@ msgstr "muove la tartaruga lungo un arco"
 #: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
 msgid "set xy"
 msgstr "seleziona xy"
-
-#: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
-msgid "x"
-msgstr "x"
-
-#: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
-msgid "y"
-msgstr "y"
 
 #: TurtleArt/tabasics.py:255 TurtleArt/tabasics.py:334
 msgid ""
@@ -181,11 +1400,6 @@ msgstr "penna"
 msgid "fill screen"
 msgstr "riempi schermo"
 
-#: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:369
-#: TurtleArt/tabasics.py:432 TurtleArt/tawindow.py:4483
-msgid "color"
-msgstr "colore"
-
 #: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:370
 #: TurtleArt/tabasics.py:444 TurtleArt/tawindow.py:4479
 #: TurtleArt/tawindow.py:4484
@@ -195,11 +1409,6 @@ msgstr "ombreggiatura"
 #: TurtleArt/tabasics.py:360 TurtleArt/tabasics.py:374
 msgid "fills the background with (color, shade)"
 msgstr "riempi lo sfondo con (colore, ombreggiatura)"
-
-#: TurtleArt/tabasics.py:370 TurtleArt/tabasics.py:454
-#: TurtleArt/tawindow.py:4480 TurtleArt/tawindow.py:4485
-msgid "gray"
-msgstr "grigio"
 
 #: TurtleArt/tabasics.py:387
 msgid "set color"
@@ -431,8 +1640,7 @@ msgstr "max"
 #: TurtleArt/tabasics.py:753
 msgid "returns random number between minimum (top) and maximum (bottom) values"
 msgstr ""
-"ritorna un valore casuale compreso fra valori minimo (alto) e massimo "
-"(basso)"
+"ritorna un valore casuale compreso fra valori minimo (alto) e massimo (basso)"
 
 #: TurtleArt/tabasics.py:775
 msgid "number"
@@ -666,10 +1874,6 @@ msgstr "memorizza in"
 msgid "box"
 msgstr "scatola"
 
-#: TurtleArt/tabasics.py:1114 TurtleArt/tawindow.py:4847
-msgid "value"
-msgstr "valore"
-
 #: TurtleArt/tabasics.py:1118 TurtleArt/tabasics.py:1133
 #: TurtleArt/tawindow.py:1581 TurtleArt/tawindow.py:1715
 #: TurtleArt/tawindow.py:2334 TurtleArt/tawindow.py:4812
@@ -827,7 +2031,8 @@ msgstr "Cambia l'orientamento del pannello dei blocchi"
 
 #: TurtleArt/taplugin.py:90
 msgid "Please restart Turtle Art in order to use the plugin."
-msgstr "Per favore, diavvia Turle Art per utilizzare il componente addizionale."
+msgstr ""
+"Per favore, diavvia Turle Art per utilizzare il componente addizionale."
 
 #: TurtleArt/taplugin.py:93 TurtleArt/taplugin.py:104
 #: TurtleArt/taplugin.py:107
@@ -1241,10 +2446,6 @@ msgstr "accelerazione"
 msgid "push acceleration in x, y, z to heap"
 msgstr "mette l'accelerazione x,y,z nella pila"
 
-#: plugins/audio_sensors/audio_sensors.py:90 pysamples/grecord.py:206
-msgid "sound"
-msgstr "suono"
-
 #: plugins/audio_sensors/audio_sensors.py:91
 msgid "raw microphone input signal"
 msgstr "segnale primitivo di ingresso del microfono"
@@ -1266,20 +2467,10 @@ msgstr "intonazione"
 msgid "microphone input pitch"
 msgstr "intonazione ingresso microfono"
 
-#: plugins/audio_sensors/audio_sensors.py:157
-#: plugins/audio_sensors/audio_sensors.py:175
-msgid "resistance"
-msgstr "resistenza"
-
 #: plugins/audio_sensors/audio_sensors.py:158
 #: plugins/audio_sensors/audio_sensors.py:176
 msgid "microphone input resistance"
 msgstr "resistenza ingresso microfono"
-
-#: plugins/audio_sensors/audio_sensors.py:163
-#: plugins/audio_sensors/audio_sensors.py:181
-msgid "voltage"
-msgstr "voltaggio"
 
 #: plugins/audio_sensors/audio_sensors.py:164
 #: plugins/audio_sensors/audio_sensors.py:182
@@ -1291,15 +2482,6 @@ msgstr "voltaggio ingresso microfono"
 msgid "Palette of media objects"
 msgstr "Tavolozza dei supporti"
 
-#: plugins/camera_sensor/camera_sensor.py:83
-#: plugins/camera_sensor/camera_sensor.py:99
-#: plugins/camera_sensor/camera_sensor.py:136
-#: plugins/camera_sensor/camera_sensor.py:152
-#: plugins/light_sensor/light_sensor.py:58
-#: plugins/light_sensor/light_sensor.py:66
-msgid "brightness"
-msgstr "luminosità"
-
 #: plugins/camera_sensor/camera_sensor.py:85
 #: plugins/camera_sensor/camera_sensor.py:138
 msgid "light level detected by camera"
@@ -1309,8 +2491,7 @@ msgstr "livello luminoso rilevato dalla telecamera"
 #: plugins/camera_sensor/camera_sensor.py:154
 msgid "Average RGB color from camera is pushed to the stack"
 msgstr ""
-"Il livello medio di colore RGB rilevato dalla telecamera è inviato sulla "
-"pila"
+"Il livello medio di colore RGB rilevato dalla telecamera è inviato sulla pila"
 
 #: plugins/camera_sensor/camera_sensor.py:114
 #: plugins/camera_sensor/camera_sensor.py:121
@@ -1513,10 +2694,6 @@ msgid "plays a sinewave at frequency, amplitude, and duration (in seconds)"
 msgstr ""
 "esegue una sinusoide alla frequenza, ampiezza e durata (in secondi) scelta"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:328
-msgid "sensor"
-msgstr "sensore"
-
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:333
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:344
 msgid "button down"
@@ -1578,10 +2755,6 @@ msgstr "tartaruga vede"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:412
 msgid "returns the color that the turtle \"sees\""
 msgstr "ritorna il colore che la tartaruga \"vede\""
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:421
-msgid "time"
-msgstr "tempo"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:424
 msgid "elapsed time (in seconds) since program started"
@@ -1897,10 +3070,6 @@ msgstr "fondo"
 msgid "ycor of bottom of screen"
 msgstr "ordinata (ycor) del bordo inferiore dello schermo"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:995
-msgid "width"
-msgstr "larghezza"
-
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:998
 msgid "the canvas width"
 msgstr "larghezza canvas (sfondo)"
@@ -1912,10 +3081,6 @@ msgstr "ascissa (xcor) del bordo destro dello schermo"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1020
 msgid "ycor of top of screen"
 msgstr "ordinata (ycor) del bordo superiore dello schermo"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1028
-msgid "height"
-msgstr "height"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1031
 msgid "the canvas height"
@@ -2088,14 +3253,16 @@ msgid "Save project?"
 msgstr "Vuoi salvare il progetto?"
 
 #: turtleblocks.py:546
-#, python-format
-#, python-format, fuzzy
+#, fuzzy, python-format
 msgid "Plugin %s already installed"
 msgstr "Componente addizionale %s già installato."
 
 #: turtleblocks.py:666
 msgid "myproject"
 msgstr "mioprogetto"
+
+#~ msgid "name"
+#~ msgstr "nome"
 
 #~ msgid "set text color"
 #~ msgstr "imposta colore del testo"
@@ -2122,48 +3289,9 @@ msgstr "mioprogetto"
 #~ msgid "presentation 2x2"
 #~ msgstr "presentazione 2x2"
 
-#~ msgid "Turtle Art"
-#~ msgstr "Turtle Art"
-
-#, fuzzy
-#~ msgid "Palette of physics blocks"
-#~ msgstr "Paletta dei blocchi sensori"
-
-#, fuzzy
-#~ msgid "density"
-#~ msgstr "identità"
-
-#, fuzzy
-#~ msgid "Palette of WeDo blocks"
-#~ msgstr "Paletta dei blocchi sensori"
-
-#, fuzzy
-#~ msgid "light"
-#~ msgstr "destra"
-
 #, fuzzy
 #~ msgid "grey"
 #~ msgstr "grigio"
-
-#, fuzzy
-#~ msgid "read"
-#~ msgstr "rosso"
-
-#, fuzzy
-#~ msgid "mode"
-#~ msgstr "mod"
-
-#, fuzzy
-#~ msgid "Palette of Expeyes blocks"
-#~ msgstr "Paletta dei blocchi sensori"
-
-#, fuzzy
-#~ msgid "samples"
-#~ msgstr "Esempi"
-
-#, fuzzy
-#~ msgid "Palette of Arduino blocks"
-#~ msgstr "Paletta dei blocchi sensori"
 
 #~ msgid "then else"
 #~ msgstr "allora altrimenti"
@@ -2220,7 +3348,8 @@ msgstr "mioprogetto"
 #~ msgid "restore last"
 #~ msgstr "ripristina ultimo"
 
-#~ msgid "a programmable block: used to add advanced math equations, e.g., sin(x)"
+#~ msgid ""
+#~ "a programmable block: used to add advanced math equations, e.g., sin(x)"
 #~ msgstr ""
 #~ "blocco programmabile: utilizzato per aggiungere funzioni matematiche "
 #~ "avanzate, es., sin(x)"
@@ -2271,8 +3400,8 @@ msgstr "mioprogetto"
 
 #~ msgid "holds current text size (can be used in place of a number block)"
 #~ msgstr ""
-#~ "ricorda la dimensione del testo (può essere utilizzato in alternativa ad un "
-#~ "blocco variabile numerico)"
+#~ "ricorda la dimensione del testo (può essere utilizzato in alternativa ad "
+#~ "un blocco variabile numerico)"
 
 #~ msgid "<Alt>d"
 #~ msgstr "<Alt>d"
@@ -2301,19 +3430,17 @@ msgstr "mioprogetto"
 #~ msgid "1×1 picture"
 #~ msgstr "immagini 1x1"
 
-#~ msgid "name"
-#~ msgstr "nome"
-
 #~ msgid "holds current pen shade (can be used in place of a number block)"
 #~ msgstr ""
-#~ "ricorda l'ombreggiatura della penna (può essere utilizzato in alternativa ad "
-#~ "un blocco variabile numerico)"
+#~ "ricorda l'ombreggiatura della penna (può essere utilizzato in alternativa "
+#~ "ad un blocco variabile numerico)"
 
 #~ msgid ""
-#~ "a programmable block: add your own math equation in the block, e.g., sin(x)"
-#~ msgstr ""
-#~ "blocco programmabile: inserisci la tua equazione matematica nel blocco, es. "
+#~ "a programmable block: add your own math equation in the block, e.g., "
 #~ "sin(x)"
+#~ msgstr ""
+#~ "blocco programmabile: inserisci la tua equazione matematica nel blocco, "
+#~ "es. sin(x)"
 
 #~ msgid "pop value off FILO"
 #~ msgstr "estrai un valore dalla heap FILO (first-in last-out)"
