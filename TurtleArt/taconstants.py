@@ -637,6 +637,15 @@ MACROS = {
     'reskin':
     [[0, 'skin', 0, 0, [None, 1, None]],
      [1, 'journal', 0, 0, [0, None]]],
+    'newfood':
+    [[0, 'add_food', 0, 0, [None, 1, 2, 3, 4, 5, 6, 7, None]],
+     [1, ['string', _('banana')], 0, 0, [0, None]],
+     [2, 'journal', 0, 0, [0, None]],
+     [3, ['number', '105'], 0, 0, [0, None]],
+     [4, ['number', '1'], 0, 0, [0, None]],
+     [5, ['number', '27'], 0, 0, [0, None]],
+     [6, ['number', '3'], 0, 0, [0, None]],
+     [7, ['number', '0'], 0, 0, [0, None]]],
     'loadheapfromjournal':
     [[0, 'loadheap', 0, 0, [None, 1, None]],
      [1, 'journal', 0, 0, [0, None]]]}

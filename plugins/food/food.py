@@ -26,7 +26,8 @@ except ImportError:
     pass
 
 from plugins.plugin import Plugin
-from TurtleArt.tapalette import make_palette, define_logo_function
+from TurtleArt.tapalette import (make_palette, define_logo_function,
+                                 palette_name_to_index)
 from TurtleArt.talogo import logoerror
 from TurtleArt.taconstants import (MEDIA_SHAPES, NO_IMPORT, SKIN_PATHS,
                                    EXPAND_SKIN, BLOCKS_WITH_SKIN, CONSTANTS,
@@ -203,6 +204,29 @@ class Food(Plugin):
                       arg_descs=[ArgSlot(TYPE_OBJECT)],
                       return_type=TYPE_STRING))
 
+        palette.add_block('add_food',
+                          hidden=True,
+                          style='basic-style-7arg',
+                          label=[_('add food') + '\n\n', _('name'), _('image'),
+                                 _('calories'), _('protein'),
+                                 _('carbohydrates'), _('fiber'), _('fat')],
+                          prim_name='add_food',
+                          default=['banana', None, 105, 1, 27, 3, 0],
+                          help_string=_('add a new food block'))
+        self.tw.lc.def_prim(
+            'add_food', 7,
+            Primitive(self._prim_add_food, return_type=TYPE_NUMBER,
+                      arg_descs=[ArgSlot(TYPE_STRING), ArgSlot(TYPE_OBJECT),
+                                 ArgSlot(TYPE_NUMBER), ArgSlot(TYPE_NUMBER),
+                                 ArgSlot(TYPE_NUMBER), ArgSlot(TYPE_NUMBER),
+                                 ArgSlot(TYPE_NUMBER)]))
+
+        # macro
+        palette.add_block('newfood',
+                          style='basic-style-1arg',
+                          label=_('add food'),
+                          help_string=_('add a new food block'))
+
     def _food_palette(self):
         palette = make_palette('food',
                                colors=["#FFFFFF", "#A0A0A0"],
@@ -260,6 +284,22 @@ class Food(Plugin):
                             Primitive(CONSTANTS.get,
                                       return_type=TYPE_VECTOR,
                                       arg_descs=[ConstantArg(block_name)]))
+
+    def _prim_add_food(self, name, media, calories, protein, carbohydrates,
+                       fiber, fat):
+        # Add a new food item to the palette
+        palette = make_palette('food',
+                               colors=["#FFFFFF", "#A0A0A0"],
+                               help_string=_('Palette of foods'))
+        # FIXME: move media to images dir
+        self._make_polynominal(palette, name, name,
+                               [calories, protein, carbohydrates,
+                                fiber, fat], expand=(15, 15))
+
+        self.tw.show_toolbar_palette(palette_name_to_index('food'),
+                                     regenerate=True)
+
+        return
 
     def _prim_digest(self):
         ''' Digest nutrients (i.e., clear) '''
