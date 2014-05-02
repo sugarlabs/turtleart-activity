@@ -3778,14 +3778,20 @@ msgstr "hola"
 msgid "Palette of nutrition"
 msgstr "Paleta de nutrición"
 
+msgid "Palette of foods"
+msgstr "Paleta de alimentos"
+
+msgid "add food"
+msgstr "añadir alimentos"
+
 #. TRANS: g is grams, e.g., 3g of fat
 #: plugins/food/food.py:245
 #, python-format
 msgid ""
-"%(blockname)s: %(no_cal)d %(cal)s (%(no_prot)dg of %(prot)s, %(no_carb)dg of "
+"%(blockname)s: (%(no_cal)d %(cal)s %(no_prot)dg of %(prot)s, %(no_carb)dg of "
 "%(carb)s, %(no_fib)dg of %(fib)s, %(no_fat)dg of %(fat)s)"
 msgstr ""
-"%(blockname)s: %(no_cal)d %(cal)s (%(no_prot)dg de %(prot)s, %(no_carb)dg de "
+"%(blockname)s: (%(no_cal)d %(cal)s %(no_prot)dg de %(prot)s, %(no_carb)dg de "
 "%(carb)s, %(no_fib)dg de %(fib)s, %(no_fat)dg de %(fat)s)"
 
 #: plugins/food/food.py:96

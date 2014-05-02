@@ -667,10 +667,9 @@ class Block:
                 self.spr.set_label_attributes(size, True, 'right', 'bottom',
                                               i=i)
             elif i > 0 and n > 4:
-                dy =  float((self.docks[1][3] + self.docks[n][3])) / n
-                y = int((self.docks[1][3] + ((i - 2) * dy)) * self.scale)
-                self.spr.set_label_attributes(size, True, 'right', y_pos=y,
-                                              i=i)
+                self.spr.set_label_attributes(
+                    size, True, 'right',
+                    y_pos=self.docks[i][3] - self.font_size[1], i=i)
             elif i > 0:
                 self.spr.set_label_attributes(size, True, 'right', 'middle',
                                               i=i)
@@ -852,8 +851,8 @@ class Block:
                                         self.svg.docks[6][1]],
                       ['number', False, self.svg.docks[7][0],
                                         self.svg.docks[7][1]],
-                      ['flow', False, self.svg.docks[4][0],
-                                      self.svg.docks[4][1]]]
+                      ['flow', False, self.svg.docks[8][0],
+                                      self.svg.docks[8][1]]]
 
     def _make_basic_style_var_arg(self, svg):
         self.svg.expand(10 + self.dx + self.ex, self.ey)
