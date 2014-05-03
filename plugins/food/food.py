@@ -35,7 +35,7 @@ from TurtleArt.taconstants import (MEDIA_SHAPES, NO_IMPORT, SKIN_PATHS,
 from TurtleArt.taprimitive import (ArgSlot, ConstantArg, Primitive)
 from TurtleArt.tatype import TYPE_NUMBER, TYPE_VECTOR, TYPE_STRING, TYPE_OBJECT
 from TurtleArt.tautils import (debug_output, check_output, data_from_file,
-                               data_to_file)
+                               data_to_file, get_path)
 
 CALORIES = 0
 PROTEIN = 1
