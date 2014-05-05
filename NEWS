@@ -1,7 +1,10 @@
-202.1
+203
 
 ENHANCEMENT:
-* Add food block
+* Added an "add food" block
+
+BUG FIX:
+* Fixed problem with restore from trash duplications (w/Ignacio Rodriguez)
 
 202
 
