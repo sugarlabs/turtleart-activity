@@ -1,4 +1,5 @@
 #Copyright (c) 2013 Marion Zepf
+#Copyright (c) 2014 Walter Bender
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
 #of this software and associated documentation files (the "Software"), to deal
@@ -28,7 +29,7 @@ import traceback
 
 from tablock import Media
 from tacanvas import TurtleGraphics
-from taconstants import (Color, CONSTANTS, ColorObj)
+from taconstants import (Color, CONSTANTS, ColorObj, Vector)
 from talogo import (LogoCode, logoerror, NegativeRootError)
 from taturtle import (Turtle, Turtles)
 from TurtleArt.tatype import (TYPE_CHAR, TYPE_INT, TYPE_FLOAT, TYPE_OBJECT,
@@ -700,6 +701,11 @@ class Primitive(object):
             (arg1, arg2) = arg1
         if arg2 is None:
             return + arg1
+        elif isinstance(arg1, Vector) and isinstance(arg2, Vector):
+            vector = []
+            for i in range(len(arg1.vector)):
+                vector.append(arg1.vector[i] + arg2.vector[i])
+            return Vector(arg1.name, vector)
         else:
             return arg1 + arg2
 
@@ -709,18 +715,48 @@ class Primitive(object):
         arguments are given, subtract the second from the first. """
         if arg2 is None:
             return - arg1
+        elif isinstance(arg1, Vector) and isinstance(arg2, Vector):
+            vector = []
+            for i in range(len(arg1.vector)):
+                vector.append(arg1.vector[i] - arg2.vector[i])
+            return Vector(arg1.name, vector)
         else:
             return arg1 - arg2
 
     @staticmethod
     def multiply(arg1, arg2):
         """ Multiply the two arguments """
-        return arg1 * arg2
+        if isinstance(arg1, Vector) and isinstance(arg2, (int, float)):
+            vector = []
+            for i in range(len(arg1.vector)):
+                vector.append(arg1.vector[i] * arg2)
+            return Vector(arg1.name, vector)
+        elif isinstance(arg2, Vector) and isinstance(arg1, (int, float)):
+            vector = []
+            for i in range(len(arg2.vector)):
+                vector.append(arg2.vector[i] * arg1)
+            return Vector(arg2.name, vector)
+        else:
+            return arg1 * arg2
 
     @staticmethod
     def divide(arg1, arg2):
         """ Divide the first argument by the second """
-        return float(arg1) / arg2
+        if arg2 == 0:
+            raise logoerror("#zerodivide")
+
+        if isinstance(arg1, Vector) and isinstance(arg2, (int, float)):
+            vector = []
+            for i in range(len(arg1.vector)):
+                vector.append(arg1.vector[i] / arg2)
+            return Vector(arg1.name, vector)
+        elif isinstance(arg2, Vector) and isinstance(arg1, (int, float)):
+            vector = []
+            for i in range(len(arg2.vector)):
+                vector.append(arg2.vector[i] / arg1)
+            return Vector(arg2.name, vector)
+        else:
+            return float(arg1) / arg2
 
     @staticmethod
     def modulo(arg1, arg2):
@@ -1166,6 +1202,12 @@ def value_to_ast(value, *args_for_prim, **kwargs_for_prim):
         return get_call_ast('Color', [value.name, value.color,
                                       value.shade, value.gray],
                             return_type=TYPE_COLOR)
+    # vector
+    elif isinstance(value, Vector):
+        # call to the Vector constructor with this object's values,
+        # e.g., Vector('banana', [105, 1, 27, 3, 0])
+        return get_call_ast('Vector', [value.name, value.vector],
+                            return_type=TYPE_VECTOR)
     # media
     elif isinstance(value, Media):
         args = [value_to_ast(value.type), value_to_ast(value.value)]
