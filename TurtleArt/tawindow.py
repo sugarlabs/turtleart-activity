@@ -1860,30 +1860,23 @@ class TurtleArtWindow():
     def _restore_from_trash(self, blk):
         group = find_group(blk)
 
-        for gblk in group:
-            if gblk.name == 'sandwichclampcollapsed':
-                restore_clamp(gblk)
-                self._resize_parent_clamps(gblk)
+        # We serialize the data and use the "paste" mechanism to
+        # restore blocks. This lets us take advantage of the duplicate
+        # block checking mechanism.
+        selected_blk = self.selected_blk
+        self.selected_blk = blk
+        data = self.assemble_data_to_save(False, False)
+        self.process_data(data)
+        text = data_to_string(data)
 
+        remove_list = []
         for gblk in group:
-            gblk.rescale(self.block_scale)
-            gblk.spr.set_layer(BLOCK_LAYER)
-            x, y = gblk.spr.get_xy()
-            if self.orientation == 0:
-                gblk.spr.move((x, y + PALETTE_HEIGHT + self.toolbar_offset))
-            else:
-                gblk.spr.move((x + PALETTE_WIDTH, y))
-            gblk.type = 'block'
+            gblk.spr.hide()
+            remove_list.append(gblk)
+        for gblk in remove_list:
+            self.block_list.list.remove(gblk)
 
-        for gblk in group:
-            self._adjust_dock_positions(gblk)
-
-        # And resize any skins.
-        for gblk in group:
-            if gblk.name in BLOCKS_WITH_SKIN:
-                self._resize_skin(gblk)
-
-        self.trash_stack.remove(blk)
+        self.selected_blk = selected_blk
 
     def empty_trash(self):
         ''' Permanently remove all blocks presently in the trash can. '''
@@ -4661,6 +4654,8 @@ class TurtleArtWindow():
 
     def _find_proto_name(self, name, label, palette='blocks'):
         ''' Look for a protoblock with this name '''
+        if name == 'stack_%s' % _('action'):
+            name = 'stack'  # special case for first action prototype
         if not self.interactive_mode:
             return False
         if isinstance(name, unicode):
