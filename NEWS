@@ -1,3 +1,12 @@
+203
+
+ENHANCEMENT:
+* Add support for a "vector" datatype (used by the "food" plugin)
+
+BUG FIX:
+* Fix problem with duplicate blocks (e.g., start) when restoring from
+  the Trash Palette (w/Ignacio Rodriguez)
+
 202
 
 ENHANCEMENT:
