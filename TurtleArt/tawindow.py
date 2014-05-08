@@ -4639,13 +4639,6 @@ class TurtleArtWindow():
             new_w = target_w * scale_factor
         return int(new_w), int(new_h)
 
-    def _proto_skin(self, name, n, i):
-        ''' Utility for calculating proto skin images '''
-        x, y = self.calc_image_offset(name,
-                                       self.palette_views[n].blocks[i].spr)
-        self.palette_views[n].blocks[i].spr.set_image(
-            self.media_shapes[name], 1, x, y)
-
     def _block_skin(self, name, blk):
         ''' Some blocks get a skin '''
         x, y = self.calc_image_offset(name, blk.spr)
