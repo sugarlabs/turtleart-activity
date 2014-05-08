@@ -1859,6 +1859,7 @@ class TurtleArtWindow():
 
     def _restore_from_trash(self, blk):
         group = find_group(blk)
+        debug_output(group, True)
 
         # We serialize the data and use the "paste" mechanism to
         # restore blocks. This lets us take advantage of the duplicate
@@ -1866,15 +1867,22 @@ class TurtleArtWindow():
         selected_blk = self.selected_blk
         self.selected_blk = blk
         data = self.assemble_data_to_save(False, False)
+        debug_output(data)
         self.process_data(data)
-        text = data_to_string(data)
 
         remove_list = []
         for gblk in group:
             gblk.spr.hide()
             remove_list.append(gblk)
+            debug_output('removing %s' % gblk.name, True)
+        '''
         for gblk in remove_list:
-            self.block_list.list.remove(gblk)
+            if gblk in self.block_list.list:
+                self.block_list.list.remove(gblk)
+        '''
+        if 'trash' in palette_names:
+            self.show_toolbar_palette(palette_names.index('trash'),
+                                      regenerate=True)
 
         self.selected_blk = selected_blk
 
@@ -3341,23 +3349,32 @@ class TurtleArtWindow():
     def _load_image_thumb(self, picture, blk):
         ''' Replace icon with a preview image. '''
         pixbuf = None
-        self._block_skin('descriptionon', blk)
 
         if self.running_sugar:
-            w, h = calc_image_size(blk.spr)
-            pixbuf = get_pixbuf_from_journal(picture, w, h)
-        else:
-            if movie_media_type(picture):
-                self._block_skin('videoon', blk)
-                blk.name = 'video'
-            elif audio_media_type(picture):
-                self._block_skin('audioon', blk)
-                blk.name = 'audio'
-            elif image_media_type(picture):
+            debug_output(type(picture), True)
+            from sugar.datastore import datastore
+            if isinstance(picture, datastore.RawObject):
+                picture = picture.object_id
+                debug_output(picture, True)
+            elif isinstance(picture, datastore.DSObject):
+                picture = picture.get_file_path()
+                debug_output(picture, True)
+        if movie_media_type(picture):
+            self._block_skin('videoon', blk)
+            blk.name = 'video'
+        elif audio_media_type(picture):
+            self._block_skin('audioon', blk)
+            blk.name = 'audio'
+        elif image_media_type(picture):
+            if self.running_sugar:
+                w, h = calc_image_size(blk.spr)
+                pixbuf = get_pixbuf_from_journal(picture, w, h)
+            else:
                 w, h = calc_image_size(blk.spr)
                 pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(picture, w, h)
-            else:
-                blk.name = 'description'
+        else:
+            blk.name = 'description'
+            self._block_skin('descriptionon', blk)
         if pixbuf is not None:
             x, y = self.calc_image_offset('', blk.spr)
             blk.set_image(pixbuf, x, y)
@@ -4654,8 +4671,6 @@ class TurtleArtWindow():
 
     def _find_proto_name(self, name, label, palette='blocks'):
         ''' Look for a protoblock with this name '''
-        if name == 'stack_%s' % _('action'):
-            name = 'stack'  # special case for first action prototype
         if not self.interactive_mode:
             return False
         if isinstance(name, unicode):
