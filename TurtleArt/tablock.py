@@ -222,6 +222,7 @@ class Block:
             'basic-style-1arg': self._make_basic_style_1arg,
             'basic-style-2arg': self._make_basic_style_2arg,
             'basic-style-3arg': self._make_basic_style_3arg,
+            'basic-style-7arg': self._make_basic_style_7arg,
             'basic-style-var-arg': self._make_basic_style_var_arg,
             'bullet-style': self._make_bullet_style,
             'box-style': self._make_box_style,
@@ -665,6 +666,10 @@ class Block:
             elif i > 0 and i == n - 1:  # bottom
                 self.spr.set_label_attributes(size, True, 'right', 'bottom',
                                               i=i)
+            elif i > 0 and n > 4:
+                self.spr.set_label_attributes(
+                    size, True, 'right',
+                    y_pos=self.docks[i][3] - self.font_size[1], i=i)
             elif i > 0:
                 self.spr.set_label_attributes(size, True, 'right', 'middle',
                                               i=i)
@@ -825,6 +830,29 @@ class Block:
                                         self.svg.docks[3][1]],
                       ['flow', False, self.svg.docks[4][0],
                                       self.svg.docks[4][1]]]
+
+    def _make_basic_style_7arg(self, svg):
+        self.svg.expand(10 + self.dx + self.ex, self.ey)
+        self.svg.set_innie([True, True, True, True, True, True, True])
+        self._make_block_graphics(svg, self.svg.basic_block)
+        self.docks = [['flow', True, self.svg.docks[0][0],
+                                     self.svg.docks[0][1]],
+                      ['string', False, self.svg.docks[1][0],
+                                        self.svg.docks[1][1]],
+                      ['media', False, self.svg.docks[2][0],
+                                        self.svg.docks[2][1]],
+                      ['number', False, self.svg.docks[3][0],
+                                        self.svg.docks[3][1]],
+                      ['number', False, self.svg.docks[4][0],
+                                        self.svg.docks[4][1]],
+                      ['number', False, self.svg.docks[5][0],
+                                        self.svg.docks[5][1]],
+                      ['number', False, self.svg.docks[6][0],
+                                        self.svg.docks[6][1]],
+                      ['number', False, self.svg.docks[7][0],
+                                        self.svg.docks[7][1]],
+                      ['flow', False, self.svg.docks[8][0],
+                                      self.svg.docks[8][1]]]
 
     def _make_basic_style_var_arg(self, svg):
         self.svg.expand(10 + self.dx + self.ex, self.ey)
