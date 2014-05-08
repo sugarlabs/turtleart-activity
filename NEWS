@@ -1,11 +1,12 @@
 204
 
 ENHANCEMENT:
-* Add new Python block example: text_line.py
+* Added new Python block example: text_line.py
+* Added new "simple" Sierpinski triangle example
 
 BUG FIX:
-* Fix regression in trash due to v203
-* Fix regression in loading of media blocks
+* Fixed regression in trash due to v203
+* Fixed regression in loading of media blocks
 
 203
 
