@@ -1,6 +1,6 @@
 [Activity]
 name = Turtle Nutrition
-activity_version = 203
+activity_version = 204
 license = MIT
 bundle_id = org.laptop.TurtleNutritionActivity
 exec = sugar-activity TurtleArtActivity.TurtleArtActivity

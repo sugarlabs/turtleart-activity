@@ -1,3 +1,9 @@
+204
+
+BUG FIXES:
+* Fixed regression in trash due to v203
+* Fixed regression in loading of media blocks
+
 203
 
 ENHANCEMENT:
