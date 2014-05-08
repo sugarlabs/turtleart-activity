@@ -1,3 +1,22 @@
+204
+
+ENHANCEMENT:
+* Added new Python block example: text_line.py
+* Added new "simple" Sierpinski triangle example
+
+BUG FIX:
+* Fixed regression in trash due to v203
+* Fixed regression in loading of media blocks
+
+203
+
+ENHANCEMENT:
+* Add support for a "vector" datatype (used by the "food" plugin)
+
+BUG FIX:
+* Fix problem with duplicate blocks (e.g., start) when restoring from
+  the Trash Palette (w/Ignacio Rodriguez)
+
 202
 
 ENHANCEMENT:
