@@ -7,6 +7,7 @@ ENHANCEMENT:
 BUG FIX:
 * Fixed regression in trash due to v203
 * Fixed regression in loading of media blocks
+* Fixed regression in picture block prototypes
 
 203
 

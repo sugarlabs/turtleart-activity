@@ -196,6 +196,10 @@ class PaletteView():
                 # Some proto blocks get a skin.
                 if name in block_styles['box-style-media']:
                     self._proto_skin(name + 'small', self.blocks[-1].spr)
+                elif name in block_styles['basic-style-extended']:
+                    # FIXME: Special case for picture protoblocks
+                    if name[7:] in self._turtle_window.media_shapes:
+                        self._proto_skin(name[7:], self.blocks[-1].spr)
                 elif name in PYTHON_SKIN:
                     self._proto_skin('pythonsmall', self.blocks[-1].spr)
                 elif len(self.blocks[-1].spr.labels) > 0:
