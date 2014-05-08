@@ -1849,7 +1849,9 @@ class TurtleArtWindow():
         ''' Restore all the blocks in the trash can. '''
         for blk in self.block_list.list:
             if blk.type == 'trash':
-                self._restore_from_trash(blk)
+                top = find_top_block(blk)
+                if top.type == 'trash':
+                    self._restore_from_trash(blk)
 
     def restore_latest_from_trash(self):
         ''' Restore most recent blocks from the trash can. '''
@@ -1858,6 +1860,7 @@ class TurtleArtWindow():
         self._restore_from_trash(self.trash_stack[len(self.trash_stack) - 1])
 
     def _restore_from_trash(self, blk):
+        blk.type = None
         group = find_group(blk)
         debug_output(group, True)
 
@@ -1867,19 +1870,18 @@ class TurtleArtWindow():
         selected_blk = self.selected_blk
         self.selected_blk = blk
         data = self.assemble_data_to_save(False, False)
-        debug_output(data)
         self.process_data(data)
 
         remove_list = []
         for gblk in group:
             gblk.spr.hide()
             remove_list.append(gblk)
-            debug_output('removing %s' % gblk.name, True)
-        '''
+
         for gblk in remove_list:
-            if gblk in self.block_list.list:
-                self.block_list.list.remove(gblk)
-        '''
+            self.block_list.list.remove(gblk)
+            if gblk in self.trash_stack:
+                self.trash_stack.remove(gblk)
+
         if 'trash' in palette_names:
             self.show_toolbar_palette(palette_names.index('trash'),
                                       regenerate=True)
