@@ -58,7 +58,8 @@ from taconstants import (HORIZONTAL_PALETTE, VERTICAL_PALETTE, BLOCK_SCALE,
                          PYTHON_SKIN, PALETTE_HEIGHT, STATUS_LAYER, OLD_DOCK,
                          EXPANDABLE_ARGS, XO1, XO15, XO175, XO30, XO4, TITLEXY,
                          CONTENT_ARGS, CONSTANTS, EXPAND_SKIN, PROTO_LAYER,
-                         EXPANDABLE_FLOW, SUFFIX, TMP_SVG_PATH, TMP_ODP_PATH)
+                         EXPANDABLE_FLOW, SUFFIX, TMP_SVG_PATH, TMP_ODP_PATH,
+                         Vector)
 from tapalette import (palette_names, palette_blocks, expandable_blocks,
                        block_names, content_blocks, default_values,
                        special_names, block_styles, help_strings,
@@ -1848,7 +1849,9 @@ class TurtleArtWindow():
         ''' Restore all the blocks in the trash can. '''
         for blk in self.block_list.list:
             if blk.type == 'trash':
-                self._restore_from_trash(blk)
+                top = find_top_block(blk)
+                if top.type == 'trash':
+                    self._restore_from_trash(blk)
 
     def restore_latest_from_trash(self):
         ''' Restore most recent blocks from the trash can. '''
@@ -1857,32 +1860,33 @@ class TurtleArtWindow():
         self._restore_from_trash(self.trash_stack[len(self.trash_stack) - 1])
 
     def _restore_from_trash(self, blk):
+        blk.type = None
         group = find_group(blk)
+        debug_output(group, True)
 
+        # We serialize the data and use the "paste" mechanism to
+        # restore blocks. This lets us take advantage of the duplicate
+        # block checking mechanism.
+        selected_blk = self.selected_blk
+        self.selected_blk = blk
+        data = self.assemble_data_to_save(False, False)
+        self.process_data(data)
+
+        remove_list = []
         for gblk in group:
-            if gblk.name == 'sandwichclampcollapsed':
-                restore_clamp(gblk)
-                self._resize_parent_clamps(gblk)
+            gblk.spr.hide()
+            remove_list.append(gblk)
 
-        for gblk in group:
-            gblk.rescale(self.block_scale)
-            gblk.spr.set_layer(BLOCK_LAYER)
-            x, y = gblk.spr.get_xy()
-            if self.orientation == 0:
-                gblk.spr.move((x, y + PALETTE_HEIGHT + self.toolbar_offset))
-            else:
-                gblk.spr.move((x + PALETTE_WIDTH, y))
-            gblk.type = 'block'
+        for gblk in remove_list:
+            self.block_list.list.remove(gblk)
+            if gblk in self.trash_stack:
+                self.trash_stack.remove(gblk)
 
-        for gblk in group:
-            self._adjust_dock_positions(gblk)
+        if 'trash' in palette_names:
+            self.show_toolbar_palette(palette_names.index('trash'),
+                                      regenerate=True)
 
-        # And resize any skins.
-        for gblk in group:
-            if gblk.name in BLOCKS_WITH_SKIN:
-                self._resize_skin(gblk)
-
-        self.trash_stack.remove(blk)
+        self.selected_blk = selected_blk
 
     def empty_trash(self):
         ''' Permanently remove all blocks presently in the trash can. '''
@@ -3347,23 +3351,32 @@ class TurtleArtWindow():
     def _load_image_thumb(self, picture, blk):
         ''' Replace icon with a preview image. '''
         pixbuf = None
-        self._block_skin('descriptionon', blk)
 
         if self.running_sugar:
-            w, h = calc_image_size(blk.spr)
-            pixbuf = get_pixbuf_from_journal(picture, w, h)
-        else:
-            if movie_media_type(picture):
-                self._block_skin('videoon', blk)
-                blk.name = 'video'
-            elif audio_media_type(picture):
-                self._block_skin('audioon', blk)
-                blk.name = 'audio'
-            elif image_media_type(picture):
+            debug_output(type(picture), True)
+            from sugar.datastore import datastore
+            if isinstance(picture, datastore.RawObject):
+                picture = picture.object_id
+                debug_output(picture, True)
+            elif isinstance(picture, datastore.DSObject):
+                picture = picture.get_file_path()
+                debug_output(picture, True)
+        if movie_media_type(picture):
+            self._block_skin('videoon', blk)
+            blk.name = 'video'
+        elif audio_media_type(picture):
+            self._block_skin('audioon', blk)
+            blk.name = 'audio'
+        elif image_media_type(picture):
+            if self.running_sugar:
+                w, h = calc_image_size(blk.spr)
+                pixbuf = get_pixbuf_from_journal(picture, w, h)
+            else:
                 w, h = calc_image_size(blk.spr)
                 pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(picture, w, h)
-            else:
-                blk.name = 'description'
+        else:
+            blk.name = 'description'
+            self._block_skin('descriptionon', blk)
         if pixbuf is not None:
             x, y = self.calc_image_offset('', blk.spr)
             blk.set_image(pixbuf, x, y)
@@ -4237,6 +4250,9 @@ class TurtleArtWindow():
                                (_('color'), n.color,
                                 _('shade'), n.shade,
                                 _('gray'), n.gray))
+        # vector
+        elif isinstance(n, Vector):
+            self.showlabel('print', '%s' % n.get_vector_string())
         # media
         elif isinstance(n, Media):
             if (n.type == 'media' and
