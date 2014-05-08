@@ -13,8 +13,8 @@ msgstr ""
 "#-#-#-#-#  en_US.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-25 00:32-0500\n"
-"PO-Revision-Date: 2014-01-08 03:51+0200\n"
+"POT-Creation-Date: 2014-02-16 00:32-0500\n"
+"PO-Revision-Date: 2014-03-24 19:40+0200\n"
 "Last-Translator: Chris <cjl@laptop.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: en_US\n"
@@ -818,11 +818,38 @@ msgstr ""
 msgid "Palette of WeDo blocks"
 msgstr "Palette of WeDo blocks"
 
+msgid "The parameter must be a integer, not "
+msgstr "The parameter must be a integer, not "
+
+msgid "Motor speed must be an integer between -100 and 100"
+msgstr "Motor speed must be an integer between -100 and 100"
+
+msgid "WeDo found %s bricks"
+msgstr "WeDo found %s bricks"
+
+msgid "WeDo not found"
+msgstr "WeDo not found"
+
+msgid "WeDo number %s was not found"
+msgstr "WeDo number %s was not found"
+
+msgid "wedo"
+msgstr "wedo"
+
+msgid "refresh WeDo"
+msgstr "refresh WeDo"
+
+msgid "Search for a connected WeDo."
+msgstr "Search for a connected WeDo."
+
 msgid "WeDo"
 msgstr "WeDo"
 
 msgid "set current WeDo device"
 msgstr "set current WeDo device"
+
+msgid "number of WeDos"
+msgstr "number of WeDos"
 
 msgid "number of WeDo devices"
 msgstr "number of WeDo devices"
@@ -831,10 +858,10 @@ msgid "tilt"
 msgstr "tilt"
 
 msgid ""
-"tilt sensor output: (-1 == no tilt, 0 == tilt forward, 3 == tilt back, 1 == "
+"tilt sensor output: (-1 == no tilt,0 == tilt forward, 3 == tilt back, 1 == "
 "tilt left, 2 == tilt right)"
 msgstr ""
-"tilt sensor output: (-1 == no tilt, 0 == tilt forward, 3 == tilt back, 1 == "
+"tilt sensor output: (-1 == no tilt,0 == tilt forward, 3 == tilt back, 1 == "
 "tilt left, 2 == tilt right)"
 
 msgid "distance sensor output"
@@ -843,29 +870,20 @@ msgstr "distance sensor output"
 msgid "Motor A"
 msgstr "Motor A"
 
-msgid "returns the current value of Motor A"
-msgstr "returns the current value of Motor A"
+msgid "returns the current speed of Motor A"
+msgstr "returns the current speed of Motor A"
 
 msgid "Motor B"
 msgstr "Motor B"
 
-msgid "returns the current value of Motor B"
-msgstr "returns the current value of Motor B"
+msgid "returns the current speed of Motor B"
+msgstr "returns the current speed of Motor B"
 
-msgid "set the value for Motor A"
-msgstr "set the value for Motor A"
+msgid "set the speed for Motor A"
+msgstr "set the speed for Motor A"
 
-msgid "set the value for Motor B"
-msgstr "set the value for Motor B"
-
-msgid "WeDo is unavailable"
-msgstr "WeDo is unavailable"
-
-msgid "WeDo %d is unavailable; defaulting to 1"
-msgstr "WeDo %d is unavailable; defaulting to 1"
-
-msgid "%(device)s is unavailable on WeDo %(wedo_number)d"
-msgstr "%(device)s is unavailable on WeDo %(wedo_number)d"
+msgid "set the speed for Motor B"
+msgstr "set the speed for Motor B"
 
 msgid "Palette of LEGO NXT blocks of motors"
 msgstr "Palette of LEGO NXT blocks of motors"
@@ -3454,6 +3472,25 @@ msgstr "myproject"
 #~ msgstr ""
 #~ "Join two objects together (the most recent object created and the object "
 #~ "at point x, y)."
+
+#~ msgid ""
+#~ "tilt sensor output: (-1 == no tilt, 0 == tilt forward, 3 == tilt back, 1 "
+#~ "== tilt left, 2 == tilt right)"
+#~ msgstr ""
+#~ "tilt sensor output: (-1 == no tilt, 0 == tilt forward, 3 == tilt back, 1 "
+#~ "== tilt left, 2 == tilt right)"
+
+#~ msgid "returns the current value of Motor A"
+#~ msgstr "returns the current value of Motor A"
+
+#~ msgid "returns the current value of Motor B"
+#~ msgstr "returns the current value of Motor B"
+
+#~ msgid "set the value for Motor A"
+#~ msgstr "set the value for Motor A"
+
+#~ msgid "set the value for Motor B"
+#~ msgstr "set the value for Motor B"
 
 #~ msgid "touch"
 #~ msgstr "touch"

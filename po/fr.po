@@ -9,8 +9,8 @@ msgstr ""
 "#-#-#-#-#  fr.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-25 00:32-0500\n"
-"PO-Revision-Date: 2014-01-10 21:24+0200\n"
+"POT-Creation-Date: 2014-02-16 00:32-0500\n"
+"PO-Revision-Date: 2014-03-24 19:08+0200\n"
 "Last-Translator: samy boutayeb <s.boutayeb@free.fr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -870,11 +870,38 @@ msgstr ""
 msgid "Palette of WeDo blocks"
 msgstr "Palette de blocs WeDo"
 
+msgid "The parameter must be a integer, not "
+msgstr "Le paramètre doit être un entier, pas"
+
+msgid "Motor speed must be an integer between -100 and 100"
+msgstr "La vitesse du moteur doit être un entier compris entre -100 et 100"
+
+msgid "WeDo found %s bricks"
+msgstr "WeDo a trouvé %s briques"
+
+msgid "WeDo not found"
+msgstr "WeDo non trouvé"
+
+msgid "WeDo number %s was not found"
+msgstr "WeDo numéro %s n'a pas pu être trouvé"
+
+msgid "wedo"
+msgstr "wedo"
+
+msgid "refresh WeDo"
+msgstr "rafraîchir WeDo"
+
+msgid "Search for a connected WeDo."
+msgstr "Recherche d'un WeDo connecté."
+
 msgid "WeDo"
 msgstr "WeDo"
 
 msgid "set current WeDo device"
 msgstr "définit l'instrument WeDo actuel"
+
+msgid "number of WeDos"
+msgstr "nombre de WeDos"
 
 msgid "number of WeDo devices"
 msgstr "nombre d'instruments WeDo"
@@ -882,18 +909,13 @@ msgstr "nombre d'instruments WeDo"
 msgid "tilt"
 msgstr "inclinaison"
 
-#, fuzzy
 msgid ""
-"tilt sensor output: (-1 == no tilt, 0 == tilt forward, 3 == tilt back, 1 == "
+"tilt sensor output: (-1 == no tilt,0 == tilt forward, 3 == tilt back, 1 == "
 "tilt left, 2 == tilt right)"
 msgstr ""
-"#-#-#-#-#  fr.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"tilt sensor output: (-1 == no tilt, 0 == tilt forward, 3 == tilt back, 1 == "
-"tilt left, 2 == tilt right)\n"
-"#-#-#-#-#  fr.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"tilt sensor output: (-1 == no tilt, 0 == tilt forward, 3 == tilt back, 1 "
-"== \n"
-"tilt left, 2 == tilt right)"
+"sortie du capteur d'inclinaison : (-1 == aucune inclinaison,0 == inclinaison "
+"avance, 3 == inclinaison arrière, 1 == inclinaison gauche, 2 == inclinaison "
+"droite)"
 
 msgid "distance sensor output"
 msgstr "sortie du capteur de distance"
@@ -901,29 +923,20 @@ msgstr "sortie du capteur de distance"
 msgid "Motor A"
 msgstr "Moteur A"
 
-msgid "returns the current value of Motor A"
-msgstr "retourner la valeur actuelle du moteur A"
+msgid "returns the current speed of Motor A"
+msgstr "retourne la vitesse actuelle du moteur A"
 
 msgid "Motor B"
 msgstr "Moteur B"
 
-msgid "returns the current value of Motor B"
-msgstr "retourner la valeur actuelle du moteur B"
+msgid "returns the current speed of Motor B"
+msgstr "retourne la vitesse actuelle du moteur B"
 
-msgid "set the value for Motor A"
-msgstr "définir la valeur du moteur A"
+msgid "set the speed for Motor A"
+msgstr "définit la valeur du moteur A"
 
-msgid "set the value for Motor B"
-msgstr "définir la valeur du moteur B"
-
-msgid "WeDo is unavailable"
-msgstr "WeDo n'est pas disponible"
-
-msgid "WeDo %d is unavailable; defaulting to 1"
-msgstr "WeDo %d n'est pas disponible; choix du 1 par défaut"
-
-msgid "%(device)s is unavailable on WeDo %(wedo_number)d"
-msgstr "%(device)s n'est pas disponible sur WeDo %(wedo_number)d\""
+msgid "set the speed for Motor B"
+msgstr "définit la valeur du moteur B"
 
 msgid "Palette of LEGO NXT blocks of motors"
 msgstr "Palette de blocs LEGO NXT pour les moteurs"
@@ -3586,6 +3599,26 @@ msgstr "monprojet"
 #~ msgstr ""
 #~ "Relie deux objets ensemble (l'objet créé en dernier et l'objet au point "
 #~ "x, y)."
+
+#~ msgid ""
+#~ "tilt sensor output: (-1 == no tilt, 0 == tilt forward, 3 == tilt back, 1 "
+#~ "== tilt left, 2 == tilt right)"
+#~ msgstr ""
+#~ "tilt sensor output: (-1 == no tilt, 0 == tilt forward, 3 == tilt back, 1 "
+#~ "== \n"
+#~ "tilt left, 2 == tilt right)"
+
+#~ msgid "returns the current value of Motor A"
+#~ msgstr "retourner la valeur actuelle du moteur A"
+
+#~ msgid "returns the current value of Motor B"
+#~ msgstr "retourner la valeur actuelle du moteur B"
+
+#~ msgid "set the value for Motor A"
+#~ msgstr "définir la valeur du moteur A"
+
+#~ msgid "set the value for Motor B"
+#~ msgstr "définir la valeur du moteur B"
 
 #~ msgid "touch"
 #~ msgstr "toucher"
