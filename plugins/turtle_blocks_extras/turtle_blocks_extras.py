@@ -946,42 +946,42 @@ templates'),
                             primitive_dictionary['bulletlist'], True)
 
         # macros
-        palette.add_block('picturelist',
+        palette.add_block('list',
                           style='basic-style-extended',
                           label=' ',
                           help_string=_('presentation template: list of \
 bullets'))
         MEDIA_SHAPES.append('list')
 
-        palette.add_block('picture1x1a',
+        palette.add_block('1x1a',
                           style='basic-style-extended',
                           label=' ',
                           help_string=_('presentation template: select \
 Journal object (no description)'))
         MEDIA_SHAPES.append('1x1a')
 
-        palette.add_block('picture1x1',
+        palette.add_block('1x1',
                           style='basic-style-extended',
                           label=' ',
                           help_string=_('presentation template: select \
 Journal object (with description)'))
         MEDIA_SHAPES.append('1x1')
 
-        palette.add_block('picture2x2',
+        palette.add_block('2x2',
                           style='basic-style-extended',
                           label=' ',
                           help_string=_('presentation template: select four \
 Journal objects'))
         MEDIA_SHAPES.append('2x2')
 
-        palette.add_block('picture2x1',
+        palette.add_block('2x1',
                           style='basic-style-extended',
                           label=' ',
                           help_string=_('presentation template: select two \
 Journal objects'))
         MEDIA_SHAPES.append('2x1')
 
-        palette.add_block('picture1x2',
+        palette.add_block('1x2',
                           style='basic-style-extended',
                           label=' ',
                           help_string=_('presentation template: select two \

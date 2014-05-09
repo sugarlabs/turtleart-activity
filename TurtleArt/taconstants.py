@@ -443,7 +443,7 @@ MACROS = {
      [4, 'wait', 0, 0, [0, 5, 6]],
      [5, ['number', '0.1'], 0, 0, [4, None]],
      [6, 'kbinput', 0, 0, [4, None]]],
-    'picturelist':
+    'list':
     [[0, ['sandwichclamp', 252], 0, 0, [None, 1, None]],
      [1, 'penup', 0, 0, [0, 2]],
      [2, 'setxy2', 0, 0, [1, 3, 4, 5]],
@@ -464,7 +464,7 @@ MACROS = {
      [17, 'list', 0, 0, [15, 18, 19, None]],
      [18, ['string', '∙ '], 0, 0, [17, None]],
      [19, ['string', '∙ '], 0, 0, [17, None]]],
-    'picture1x1a':
+    '1x1a':
     [[0, ['sandwichclamp', 231], 0, 0, [None, 1, None]],
      [1, 'penup', 0, 0, [0, 2]],
      [2, 'setxy2', 0, 0, [1, 3, 4, 5]],
@@ -484,7 +484,7 @@ MACROS = {
      [16, ['number', '90'], 0, 0, [15, None]],
      [17, 'showaligned', 0, 0, [15, 18, None]],
      [18, 'journal', 0, 0, [17, None]]],
-    'picture2x2':
+    '2x2':
     [[0, ['sandwichclamp', 546], 0, 0, [None, 1, None]],
      [1, 'penup', 0, 0, [0, 2]],
      [2, 'setxy2', 0, 0, [1, 3, 4, 5]],
@@ -525,7 +525,7 @@ MACROS = {
      [37, 'pendown', 0, 0, [34, 38]],
      [38, 'showaligned', 0, 0, [37, 39, None]],
      [39, 'journal', 0, 0, [38, None]]],
-    'picture1x2':
+    '1x2':
     [[0, ['sandwichclamp', 546], 0, 0, [None, 1, None]],
      [1, 'penup', 0, 0, [0, 2]],
      [2, 'setxy2', 0, 0, [1, 3, 4, 5]],
@@ -566,7 +566,7 @@ MACROS = {
      [37, 'pendown', 0, 0, [34, 38]],
      [38, 'showaligned', 0, 0, [37, 39, None]],
      [39, 'description', 0, 0, [38, None]]],
-    'picture2x1':
+    '2x1':
     [[0, ['sandwichclamp', 546], 0, 0, [None, 1, None]],
      [1, 'penup', 0, 0, [0, 2]],
      [2, 'setxy2', 0, 0, [1, 3, 4, 5]],
@@ -607,7 +607,7 @@ MACROS = {
      [37, 'pendown', 0, 0, [34, 38]],
      [38, 'showaligned', 0, 0, [37, 39, None]],
      [39, 'description', 0, 0, [38, None]]],
-    'picture1x1':
+    '1x1':
     [[0, ['sandwichclamp', 336], 0, 0, [None, 1, None]],
      [1, 'penup', 0, 0, [0, 2]],
      [2, 'setxy2', 0, 0, [1, 3, 4, 5]],
