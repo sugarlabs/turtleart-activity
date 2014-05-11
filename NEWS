@@ -1,16 +1,28 @@
 204
 
-BUG FIXES:
+ENHANCEMENT:
+* Added new Python block example: text_line.py
+* Added new "simple" Sierpinski triangle example (w/Bernie Innocenti)
+
+BUG FIX:
 * Fixed regression in trash due to v203
 * Fixed regression in loading of media blocks
+* Fixed regression in picture block prototypes
+* Fixed regression in journal blocks
+* Fixed regression in bulletlist blocks
+* Fixed problems with Media About Me example program
+* Fixed problem with Sensor Follow Me example program
+* Fixed problem with Media Journal Stats example program
+* Moved data file to samples/data
 
 203
 
 ENHANCEMENT:
-* Added an "add food" block
+* Add support for a "vector" datatype (used by the "food" plugin)
 
 BUG FIX:
-* Fixed problem with restore from trash duplications (w/Ignacio Rodriguez)
+* Fix problem with duplicate blocks (e.g., start) when restoring from
+  the Trash Palette (w/Ignacio Rodriguez)
 
 202
 
