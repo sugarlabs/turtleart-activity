@@ -933,7 +933,7 @@ templates'),
             Primitive(self.tw.set_fullscreen, export_me=False))
 
         primitive_dictionary['bulletlist'] = self._prim_list
-        palette.add_block('list',
+        palette.add_block('bulletlist',
                           hidden=True,
                           colors=["#0606FF", "#0606A0"],
                           style='bullet-style',

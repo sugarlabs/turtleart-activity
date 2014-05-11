@@ -350,7 +350,7 @@ EXPANDABLE_FLOW = []
 
 EXPANDABLE = ['vspace', 'hspace', 'identity2']
 
-EXPANDABLE_ARGS = ['list', 'myfunc1arg', 'myfunc2arg', 'myfunc3arg',
+EXPANDABLE_ARGS = ['bulletlist', 'myfunc1arg', 'myfunc2arg', 'myfunc3arg',
                    'userdefined', 'userdefined2args', 'userdefined3args',
                    'loadblock', 'loadblock2arg', 'loadblock3arg']
 
@@ -461,7 +461,7 @@ MACROS = {
      [14, 'pendown', 0, 0, [11, 15]],
      [15, 'setscale', 0, 0, [14, 16, 17]],
      [16, ['number', '67'], 0, 0, [15, None]],
-     [17, 'list', 0, 0, [15, 18, 19, None]],
+     [17, 'bulletlist', 0, 0, [15, 18, 19, None]],
      [18, ['string', '∙ '], 0, 0, [17, None]],
      [19, ['string', '∙ '], 0, 0, [17, None]]],
     '1x1a':

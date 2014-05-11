@@ -69,7 +69,7 @@
 [68, "sandwichclampcollapsed", 1078, 216, [88, 78, null]],
 [69, "sandwichclampcollapsed", 760, 174, [58, 26, null]],
 [70, "skin", 20, 268, [60, 71, 9]],
-[71, ["journal", "/home/walter/Activities/TurtleBlocks.activity/samples/images/butia.svg"], 109, 268, [70, null]],
+[71, ["journal", "./samples/images/butia.svg"], 109, 268, [70, null]],
 [72, "stack", 1096, 292, [78, 73, 74]],
 [73, ["string", "left"], 1155, 292, [72, null]],
 [74, "stack", 1096, 334, [72, 75, 86]],
@@ -89,5 +89,4 @@
 [88, ["repeat", 0], 1060, 174, [3, 89, 68, null]],
 [89, ["number", 4], 1120, 174, [88, null]],
 [90, "wait", 38, 386, [7, 91, 10]],
-[91, ["number", 0.1], 107, 386, [90, null]],
-[-1, ["turtle", "Yertle"], -66.3397459621555, -178.30127018922207, 240.0, 70, 50, 50.0]]
+[91, ["number", 0.1], 107, 386, [90, null]]]
