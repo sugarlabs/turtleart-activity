@@ -3348,31 +3348,35 @@ class TurtleArtWindow():
             blk.values.append(value)
         blk.spr.set_label(' ')
 
-    def _load_image_thumb(self, picture, blk):
+    def _load_image_thumb(self, media, blk):
         ''' Replace icon with a preview image. '''
         pixbuf = None
+        media_path = media
 
         if self.running_sugar:
-            debug_output(type(picture), True)
             from sugar.datastore import datastore
-            if isinstance(picture, datastore.RawObject):
-                picture = picture.object_id
-        if movie_media_type(picture):
+            if isinstance(media, datastore.RawObject):
+                media_path = media.object_id
+            elif isinstance(media, datastore.DSObject):
+                media_path = media.file_path
+
+        if movie_media_type(media_path):
             self._block_skin('videoon', blk)
             blk.name = 'video'
-        elif audio_media_type(picture):
+        elif audio_media_type(media_path):
             self._block_skin('audioon', blk)
             blk.name = 'audio'
-        elif image_media_type(picture):
+        elif image_media_type(media_path):
             if self.running_sugar:
                 w, h = calc_image_size(blk.spr)
-                pixbuf = get_pixbuf_from_journal(picture, w, h)
+                pixbuf = get_pixbuf_from_journal(media, w, h)
             else:
                 w, h = calc_image_size(blk.spr)
-                pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(picture, w, h)
+                pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(media_path, w, h)
         else:
             blk.name = 'description'
             self._block_skin('descriptionon', blk)
+
         if pixbuf is not None:
             x, y = self.calc_image_offset('', blk.spr)
             blk.set_image(pixbuf, x, y)
