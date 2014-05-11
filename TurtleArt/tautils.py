@@ -432,19 +432,20 @@ def get_canvas_data(canvas):
 
 def get_pixbuf_from_journal(dsobject, w, h):
     ''' Load a pixbuf from a Journal object. '''
-    try:
+    if hasattr(dsobject, 'file_path'):
         pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(dsobject.file_path,
                                                       int(w), int(h))
-    except:
+    else:
+        pixbufloader = gtk.gdk.pixbuf_loader_new_with_mime_type('image/png')
+        pixbufloader.set_size(min(300, int(w)), min(225, int(h)))
         try:
-            pixbufloader = \
-                gtk.gdk.pixbuf_loader_new_with_mime_type('image/png')
-            pixbufloader.set_size(min(300, int(w)), min(225, int(h)))
             pixbufloader.write(dsobject.metadata['preview'])
-            pixbufloader.close()
-            pixbuf = pixbufloader.get_pixbuf()
-        except:
-            pixbuf = None
+        except Exception as e:
+            error_output('could not read preview: %s' % e, True)
+            return None
+        pixbufloader.close()
+        pixbuf = pixbufloader.get_pixbuf()
+
     return pixbuf
 
 
