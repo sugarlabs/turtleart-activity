@@ -3357,10 +3357,6 @@ class TurtleArtWindow():
             from sugar.datastore import datastore
             if isinstance(picture, datastore.RawObject):
                 picture = picture.object_id
-                debug_output(picture, True)
-            elif isinstance(picture, datastore.DSObject):
-                picture = picture.get_file_path()
-                debug_output(picture, True)
         if movie_media_type(picture):
             self._block_skin('videoon', blk)
             blk.name = 'video'
@@ -4059,7 +4055,7 @@ class TurtleArtWindow():
                     else:  # thenelse blocks
                         blk.expand_in_y(value[0])
                         blk.expand_in_y2(value[1])
-            elif btype == 'templatelist' or btype == 'list':
+            elif btype == 'templatelist' or btype == 'bulletlist':
                 for i in range(len(b[4]) - 4):
                     blk.add_arg()
             elif btype == 'myfunc2arg' or \
