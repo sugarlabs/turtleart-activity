@@ -1878,7 +1878,6 @@ class TurtleArtWindow():
             remove_list.append(gblk)
 
         for gblk in remove_list:
-            self.block_list.list.remove(gblk)
             if gblk in self.trash_stack:
                 self.trash_stack.remove(gblk)
 
@@ -1910,7 +1909,8 @@ class TurtleArtWindow():
                 blk.spr.hide()
                 remove_list.append(blk)
         for blk in remove_list:
-            self.block_list.list.remove(blk)
+            if blk in self.block_list.list:
+                self.block_list.list.remove(blk)
         self.trash_stack = []
         if 'trash' in palette_names:
             self.show_toolbar_palette(palette_names.index('trash'),
