@@ -1,14 +1,16 @@
+#!/usr/bin/env xdg-open
 [Desktop Entry]
+Version=204
+Terminal=false
+Type=Application
 Name=TurtleBlocks
 Name[nb]=Skilpaddekunst
 Name[es]=TortugArte
 GenericName=Sugar TurtleBlocks activity
 GenericName[nb]=Sugar Skilpaddekunst-aktivitet
 GenericName[es]=Actividad Sugar TortugArte
-TryExec=/usr/share/sugar/activities/TurtleArt.activity/turtleblocks.py
-Exec=/usr/share/sugar/activities/TurtleArt.activity/turtleblocks.py
-Icon=turtleart
-Type=Application
+Exec=/usr/share/sugar/activities/TurtleBlocks.activity/turtleblocks.py
+Icon=/usr/share/sugar/activities/TurtleBlocks.activity/activity/activity-turtleart.svg
 Comment=A Logo programming environment
 Comment[nb]=Et miljø for Logo-programmering
 Comment[es]=Un entorno de programación Logo
