@@ -753,6 +753,7 @@ class TurtleArtWindow():
                 # Warn user if running an empty start stack
                 grp = find_group(blk)
                 if len(grp) == 1:
+                    # FIX ME: use graphic
                     self.showlabel('print', 'empty start stack')
                 else:
                     self._run_stack(blk)
@@ -4809,6 +4810,9 @@ variable'))
         # Each dock point as an associated relative x, y position on its block
         d1type, d1dir, d1x, d1y = dock1[0:4]
         d2type, d2dir, d2x, d2y = dock2[0:4]
+        # Cannot dock to 'unavailable'
+        if 'unavailable' in [d1type, d2type]:
+            return _NO_DOCK
         # Cannot connect an innie to an innie or an outie to an outie
         if d1dir == d2dir:
             return _NO_DOCK
