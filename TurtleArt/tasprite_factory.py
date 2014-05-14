@@ -1419,7 +1419,7 @@ def generator(datapath):
     svg_str = svg.basic_block()
     f.write(svg_str)
     close_file(f)
-    '''
+
     svg = SVG()
     f = open_file(datapath, "box.svg")
     svg.set_scale(2)
@@ -1427,7 +1427,7 @@ def generator(datapath):
     svg_str = svg.basic_box()
     f.write(svg_str)
     close_file(f)
-    '''
+
     svg = SVG()
     f = open_file(datapath, "media.svg")
     svg.set_scale(2)
@@ -1544,7 +1544,21 @@ def generator(datapath):
     svg_str = svg.clamp()
     f.write(svg_str)
     close_file(f)
-
+    '''
+    svg = SVG()
+    f = open_file(datapath, "start.svg")
+    svg.set_scale(2)
+    svg.expand(30, 0, 0, 0)
+    svg.set_slot(False)
+    svg.set_cap(True)
+    svg.set_tail(True)
+    svg.set_tab(True)
+    svg.set_boolean(False)
+    svg.second_clamp(False)
+    svg_str = svg.clamp()
+    f.write(svg_str)
+    close_file(f)
+    '''
     svg = SVG()
     f = open_file(datapath, "clampb.svg")
     svg.set_scale(2)
