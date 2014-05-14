@@ -754,7 +754,7 @@ class TurtleArtWindow():
                 grp = find_group(blk)
                 if len(grp) == 1:
                     # FIX ME: use graphic
-                    self.showlabel('print', 'empty start stack')
+                    self.showlabel('emptystart')
                 else:
                     self._run_stack(blk)
                 return
