@@ -355,7 +355,8 @@ EXPANDABLE_ARGS = ['bulletlist', 'myfunc1arg', 'myfunc2arg', 'myfunc3arg',
                    'loadblock', 'loadblock2arg', 'loadblock3arg']
 
 # Deprecated block styles that need dock adjustments
-OLD_DOCK = ['and', 'or', 'plus', 'minus', 'division', 'product', 'remainder']
+OLD_DOCK = ['and', 'or', 'plus', 'minus', 'division', 'product', 'remainder',
+            'start']
 
 CONTENT_ARGS = ['show', 'showaligned', 'push', 'storein', 'storeinbox1',
                 'storeinbox2']
@@ -391,7 +392,7 @@ TOOLBAR_SHAPES = ['hideshowoff', 'eraseron', 'run-fastoff',
 OLD_NAMES = {'product': 'product2', 'storeinbox': 'storein', 'minus': 'minus2',
              'division': 'division2', 'plus': 'plus2', 'and': 'and2',
              'or': 'or2', 'less': 'less2', 'greater': 'greater2',
-             'equal': 'equal2', 'remainder': 'remainder2',
+             'equal': 'equal2', 'remainder': 'remainder2', 'start': 'start2',
              'identity': 'identity2', 'division': 'division2',
              'audiooff': 'audio', 'endfill': 'stopfill',
              'descriptionoff': 'description', 'template3': 'templatelist',
