@@ -3313,6 +3313,9 @@ class TurtleArtWindow():
                         return blk.connections[0], 2
                     elif blk.connections[0].connections[3] == blk:
                         return blk.connections[0], 3
+                elif blk.connections[0].name == 'hat':
+                    if blk.connections[0].connections[2] == blk:
+                        return blk.connections[0], 2
                 else:
                     if blk.connections[0].connections[-2] == blk:
                         return blk.connections[0], -2
