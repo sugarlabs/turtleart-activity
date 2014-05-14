@@ -1,6 +1,13 @@
+205
+
+ENHANCEMENTS:
+* Use clamp style for start and action stacks
+* Warn user when running empty start stack
+* More "turtle cards"
+
 204
 
-ENHANCEMENT:
+ENHANCEMENTS:
 * Added new Python block example: text_line.py
 * Added new "simple" Sierpinski triangle example (w/Bernie Innocenti)
 
