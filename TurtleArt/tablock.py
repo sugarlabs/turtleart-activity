@@ -1116,7 +1116,9 @@ class Block:
         self._make_block_graphics(svg, self.svg.clamp)
         self.docks = [['unavailable', False, 0, 0],
                       ['flow', False, self.svg.docks[0][0],
-                                      self.svg.docks[0][1]]]
+                                      self.svg.docks[0][1]],
+                      # Skip bottom of clamp
+                      ['unavailable', False, 0, 0]]
 
     def _make_clamp_style_hat_1arg(self, svg, extend_x=0, extend_y=4):
         self.svg.expand(self.dx + self.ex + extend_x, self.ey + extend_y)

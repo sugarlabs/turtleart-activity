@@ -2261,7 +2261,9 @@ class TurtleArtWindow():
                         self._resize_clamp(blk, blk.connections[2])
                     if blk.connections[1] is not None:
                         self._resize_clamp(blk, blk.connections[1], dockn=1)
-                elif blk.name in block_styles['clamp-style']:
+                elif blk.name in block_styles['clamp-style'] or \
+                     blk.anem in block_styles['clamp-style-collapsible'] or \
+                     blk.name in block_styles['clamp-style-hat']:
                     if blk.connections[1] is not None:
                         self._resize_clamp(blk, blk.connections[1])
                 elif blk.name in block_styles['clamp-style-else']:
@@ -3113,6 +3115,8 @@ class TurtleArtWindow():
                                            self.drag_group[0], dockn=1)
                 elif best_destination.name in block_styles['clamp-style'] or \
                         best_destination.name in \
+                        block_styles['clamp-style-hat'] or \
+                        best_destination.name in \
                         block_styles['clamp-style-collapsible']:
                     if best_destination_dockn == 1:
                         self._resize_clamp(best_destination,
@@ -3217,6 +3221,7 @@ class TurtleArtWindow():
                 if c in [1, 2]:
                     self._resize_clamp(blk2, None, dockn=c)
             elif blk2.name in block_styles['clamp-style'] or \
+                    blk2.name in block_styles['clamp-style-hat'] or \
                     blk2.name in block_styles['clamp-style-collapsible']:
                 if c == 1:
                     self._resize_clamp(blk2, None)

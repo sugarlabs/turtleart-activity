@@ -1029,22 +1029,22 @@ boolean operators from Numbers palette'))
                                help_string=_('Palette of variable blocks'),
                                translation=_('blocks'))
 
-        palette.add_block('start',
+        palette.add_block('start2',
                           style='clamp-style-hat',
                           label='\n' + _('start'),
                           prim_name='start',
                           logo_command='to start\n',
                           help_string=_('connects action to toolbar run \
 buttons'))
-        '''
+
         palette.add_block('start',
                           style='basic-style-head',
+                          hidden=True,
                           label=_('start'),
                           prim_name='start',
                           logo_command='to start\n',
                           help_string=_('connects action to toolbar run \
 buttons'))
-        '''
 
         self.tw.lc.def_prim(
             'start', 0,
