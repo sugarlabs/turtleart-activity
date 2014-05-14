@@ -744,11 +744,18 @@ class TurtleArtWindow():
                 if self.running_sugar:
                     debug_output('running stack starting from %s' % (blk.name),
                                  self.running_sugar)
+
                 if running_from_button_push:
                     self.selected_blk = None
                 else:
                     self.selected_blk = blk
-                self._run_stack(blk)
+
+                # Warn user if running an empty start stack
+                grp = find_group(blk)
+                if len(grp) == 1:
+                    self.showlabel('print', 'empty start stack')
+                else:
+                    self._run_stack(blk)
                 return
 
         # If there is no 'start2' block, run stacks that aren't 'def action'
@@ -2144,14 +2151,14 @@ class TurtleArtWindow():
         ''' Process block_data (from a macro, a file, or the clipboard). '''
         self._process_block_data = []
         for blk in block_data:
-            if not self._found_a_turtle(blk):
+            if not (self._found_a_turtle(blk) or self._found_font_scale(blk)):
                 self._process_block_data.append(
                     [blk[0], blk[1], blk[2], blk[3], blk[4]])
         self._extra_block_data = []
         # Create the blocks (or turtle).
         blocks = []
         for i, blk in enumerate(self._process_block_data):
-            if not self._found_a_turtle(blk):
+            if not (self._found_a_turtle(blk) or self._found_font_scale(blk)):
                 newblk = self.load_block(blk, offset)
                 if newblk is not None:
                     blocks.append(newblk)
@@ -3816,6 +3823,15 @@ class TurtleArtWindow():
         if self.running_sugar:
             self.activity.metadata['title'] = os.path.split(file_name)[1]
 
+    def _found_font_scale(self, blk):
+        ''' '_saved_font_scale is a reserved name '''
+        # [-1, '_saved_font_scale', 2.0]
+        if blk[1] == '_saved_font_scale':
+            if len(blk) > 4 and isinstance(blk[4], float):
+                self.block_scale = blk[4]
+            return True
+        return False
+
     def _found_a_turtle(self, blk):
         ''' Either [-1, 'turtle', ...] or [-1, ['turtle', key], ...] '''
         if blk[1] == 'turtle':
@@ -4002,9 +4018,6 @@ class TurtleArtWindow():
             if isinstance(value, unicode):
                 value = value.encode('utf-8')
             blk.spr.set_label(value.replace('\n', RETURN))
-        elif btype == 'start':  # block size is saved in start block
-            if value is not None:
-                self.block_scale = value
         elif btype in block_styles['box-style-media'] and blk.spr is not None:
             if btype in EXPAND_SKIN:
                 if blk.ex == 0:
@@ -4119,7 +4132,7 @@ class TurtleArtWindow():
             self.process_data(
                 [[0, 'start2', PALETTE_WIDTH + 20,
                   self.toolbar_offset + PALETTE_HEIGHT + 20 + ICON_SIZE,
-                  [None, None]]])
+                  [None, None, None]]])
         else:
             self.process_data(data_from_file(ta_file))
             self._loaded_project = ta_file
@@ -4174,8 +4187,6 @@ class TurtleArtWindow():
                     name = (blk.name, ey)
                 else:
                     name = (blk.name, 0)
-            elif blk.name == 'start':  # save block_size in start block
-                name = (blk.name, self.block_scale)
             else:
                 name = (blk.name)
             if hasattr(blk, 'connections') and blk.connections is not None:
@@ -4204,6 +4215,9 @@ class TurtleArtWindow():
                          self.turtles.get_active_turtle().get_color(),
                          self.turtles.get_active_turtle().get_shade(),
                          self.turtles.get_active_turtle().get_pen_size()))
+            # Also save font scale
+            data.append((-1, '_saved_font_scale', 0, 0, self.block_scale))
+
         return data
 
     def display_coordinates(self, clear=False):
