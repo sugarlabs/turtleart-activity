@@ -2252,7 +2252,8 @@ class TurtleArtWindow():
                 continue
             if blk.name in EXPANDABLE_FLOW:
                 if blk.name in block_styles['clamp-style-1arg'] or \
-                   blk.name in block_styles['clamp-style-boolean']:
+                   blk.name in block_styles['clamp-style-boolean'] or \
+                   blk.name in block_styles['clamp-style-hat-1arg']:
                     if blk.connections[2] is not None:
                         self._resize_clamp(blk, blk.connections[2])
                 elif blk.name in block_styles['clamp-style-until']:
@@ -3096,7 +3097,9 @@ class TurtleArtWindow():
                 if best_destination.name in \
                         block_styles['clamp-style-1arg'] or \
                         best_destination.name in \
-                        block_styles['clamp-style-boolean']:
+                        block_styles['clamp-style-boolean'] or \
+                        best_destination.name in \
+                        block_styles['clamp-style-hat-1arg']:
                     if best_destination_dockn == 2:
                         self._resize_clamp(best_destination,
                                            self.drag_group[0])
@@ -3206,7 +3209,8 @@ class TurtleArtWindow():
                 self._cascade_expandable(blk2)
         elif c is not None and blk2.name in EXPANDABLE_FLOW:
             if blk2.name in block_styles['clamp-style-1arg'] or \
-                    blk2.name in block_styles['clamp-style-boolean']:
+                    blk2.name in block_styles['clamp-style-boolean'] or \
+                    blk2.name in block_styles['clamp-style-hat-1arg']:
                 if c == 2:
                     self._resize_clamp(blk2, None, dockn=c)
             elif blk2.name in block_styles['clamp-style-until']:

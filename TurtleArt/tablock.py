@@ -243,6 +243,8 @@ class Block:
             'clamp-style-collapsible': self._make_clamp_style_collapsible,
             'clamp-style-collapsed': self._make_clamp_style_collapsed,
             'clamp-style-1arg': self._make_clamp_style_1arg,
+            'clamp-style-hat-1arg': self._make_clamp_style_hat_1arg,
+            'clamp-style-hat': self._make_clamp_style_hat,
             'clamp-style-boolean': self._make_clamp_style_boolean,
             'clamp-style-until': self._make_clamp_style_until,
             'clamp-style-else': self._make_clamp_style_else,
@@ -653,6 +655,9 @@ class Block:
                 size = int(self.font_size[0] + 0.5)
             if self.name in block_styles['compare-porch-style']:
                 self.spr.set_label_attributes(size, True, 'center', 'bottom',
+                                              i=i)
+            elif self.name in block_styles['clamp-style-hat']:
+                self.spr.set_label_attributes(size, True, 'center', 'top',
                                               i=i)
             elif self.name in block_styles['number-style-porch']:
                 self.spr.set_label_attributes(size, True, 'right', 'bottom',
@@ -1100,6 +1105,35 @@ class Block:
                       # Skip bottom of clamp
                       ['flow', False, self.svg.docks[4][0],
                                       self.svg.docks[4][1], ']']]
+
+    def _make_clamp_style_hat(self, svg, extend_x=0, extend_y=4):
+        self.svg.expand(self.dx + self.ex + extend_x, self.ey + extend_y)
+        self.svg.set_slot(False)
+        self.svg.set_cap(True)
+        self.svg.set_tab(True)
+        self.svg.set_tail(True)
+        self.svg.second_clamp(False)
+        self._make_block_graphics(svg, self.svg.clamp)
+        self.docks = [['unavailable', False, 0, 0],
+                      ['flow', False, self.svg.docks[0][0],
+                                      self.svg.docks[0][1]]]
+
+    def _make_clamp_style_hat_1arg(self, svg, extend_x=0, extend_y=4):
+        self.svg.expand(self.dx + self.ex + extend_x, self.ey + extend_y)
+        self.svg.set_slot(False)
+        self.svg.set_cap(True)
+        self.svg.set_tab(True)
+        self.svg.set_tail(True)
+        self.svg.set_innie([True])
+        self.svg.second_clamp(False)
+        self._make_block_graphics(svg, self.svg.clamp)
+        self.docks = [['unavailable', False, 0, 0],
+                      ['number', False, self.svg.docks[0][0],
+                                        self.svg.docks[0][1]],
+                      ['flow', False, self.svg.docks[1][0],
+                                      self.svg.docks[1][1]],
+                      # Skip bottom of clamp
+                      ['unavailable', False, 0, 0]]
 
     def _make_clamp_style_boolean(self, svg, extend_x=0, extend_y=4):
         self.svg.expand(self.dx + self.ex + extend_x, self.ey + extend_y)

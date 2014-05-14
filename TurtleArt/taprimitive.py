@@ -27,7 +27,9 @@ import traceback
 
 #from ast_pprint import * # only used for debugging, safe to comment out
 
+
 from tablock import Media
+
 from tacanvas import TurtleGraphics
 from taconstants import (Color, CONSTANTS, ColorObj, Vector)
 from talogo import (LogoCode, logoerror, NegativeRootError)

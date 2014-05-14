@@ -1030,12 +1030,22 @@ boolean operators from Numbers palette'))
                                translation=_('blocks'))
 
         palette.add_block('start',
+                          style='clamp-style-hat',
+                          label='\n' + _('start'),
+                          prim_name='start',
+                          logo_command='to start\n',
+                          help_string=_('connects action to toolbar run \
+buttons'))
+        '''
+        palette.add_block('start',
                           style='basic-style-head',
                           label=_('start'),
                           prim_name='start',
                           logo_command='to start\n',
                           help_string=_('connects action to toolbar run \
 buttons'))
+        '''
+
         self.tw.lc.def_prim(
             'start', 0,
             Primitive(Primitive.group, arg_descs=[ConstantArg([
@@ -1044,13 +1054,25 @@ buttons'))
                 Primitive(self.tw.lc.prim_define_stack,
                           arg_descs=[ConstantArg('start')])])]))
 
+        '''
         palette.add_block('string',
                           style='box-style',
                           label=_('text'),
                           default=_('text'),
                           special_name=_('text'),
                           help_string=_('string value'))
+        '''
 
+        palette.add_block('hat',
+                          style='clamp-style-hat-1arg',
+                          label=_('action'),
+                          prim_name='nop3',
+                          string_or_number=True,
+                          default=_('action'),
+                          logo_command='to action',
+                          help_string=_('top of nameable action stack'))
+
+        '''
         palette.add_block('hat',
                           style='basic-style-head-1arg',
                           label=_('action'),
@@ -1059,6 +1081,7 @@ buttons'))
                           default=_('action'),
                           logo_command='to action',
                           help_string=_('top of nameable action stack'))
+        '''
         self.tw.lc.def_prim(
             'nop3', 1,
             Primitive(self.tw.lc.prim_define_stack,
