@@ -677,7 +677,7 @@ class LogoCode:
         self.tw.clear_plugins()
         self.stop_playing_media()
         self.reset_scale()
-        self.reset_timer()
+        # self.reset_timer()  # Only reset timer on 'run'
         self.clear_value_blocks()
         self.tw.canvas.clearscreen()
         self.tw.turtles.reset_turtles()
