@@ -194,7 +194,7 @@ turtle'))
                                     Primitive(self.tw.clear_plugins),
                                     Primitive(self.tw.lc.stop_playing_media),
                                     Primitive(self.tw.lc.reset_scale),
-                                    Primitive(self.tw.lc.reset_timer),
+                                    # Primitive(self.tw.lc.reset_timer),
                                     Primitive(self.tw.lc.clear_value_blocks),
                                     Primitive(self.tw.canvas.clearscreen),
                                     Primitive(self.tw.lc.reset_internals),
