@@ -3316,6 +3316,9 @@ class TurtleArtWindow():
                 elif blk.connections[0].name == 'hat':
                     if blk.connections[0].connections[2] == blk:
                         return blk.connections[0], 2
+                elif blk.connections[0].name == 'start2':
+                    if blk.connections[0].connections[1] == blk:
+                        return blk.connections[0], 1
                 else:
                     if blk.connections[0].connections[-2] == blk:
                         return blk.connections[0], -2
@@ -4085,7 +4088,7 @@ class TurtleArtWindow():
                 if value is not None:
                     if isinstance(value, int):
                         blk.expand_in_y(value)
-                    elif btype != 'start2':  # thenelse blocks
+                    elif btype == 'ifelse':
                         blk.expand_in_y(value[0])
                         blk.expand_in_y2(value[1])
             elif btype == 'templatelist' or btype == 'bulletlist':
@@ -4415,7 +4418,6 @@ class TurtleArtWindow():
         pres = TurtleODP()
         pres.create_presentation(TMP_ODP_PATH, 1024, 768)
         for file_path in path_list:
-            #print file_path
             pres.add_image(file_path)
         pres.save_presentation()
 
@@ -4916,14 +4918,11 @@ variable'))
         for name in block_names:
             # Translate label name into block/prim name.
             if blkname in block_names[name]:  # block label is an array
-                # print 'found a match', blkname, name, block_names[name]
                 if name in content_blocks or \
                         (name in block_primitives and
                          block_primitives[name] == name):
-                    # print '_make_block', blkname, name
                     return self._make_block(name, x, y, defaults)
             elif blkname in block_names:
-                # print '_make_block', blkname
                 return self._make_block(blkname, x, y, defaults)
         for name in special_names:
             # Translate label name into block/prim name.
