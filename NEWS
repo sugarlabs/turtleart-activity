@@ -5,13 +5,16 @@ ENHANCEMENTS:
 * Warn user when running empty start stack
 * More "turtle cards"
 
+BUG FIX:
+* Don't reset timer on clear (w/Alan Aguiar)
+
 204
 
 ENHANCEMENTS:
 * Added new Python block example: text_line.py
 * Added new "simple" Sierpinski triangle example (w/Bernie Innocenti)
 
-BUG FIX:
+BUG FIXES:
 * Fixed regression in trash due to v203
 * Fixed regression in loading of media blocks
 * Fixed regression in picture block prototypes
