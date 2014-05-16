@@ -109,7 +109,10 @@ class Fb_plugin(Plugin):
             self._grab_fb_app_token()
             return
 
-        self._post_to_fb()
+        try:
+            self._post_to_fb()
+        except Exception as e:
+            print 'error while posting to Facebook:', e
 
     def _grab_fb_app_token(self):
         url = self._get_auth_url()
