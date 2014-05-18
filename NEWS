@@ -5,8 +5,9 @@ ENHANCEMENTS:
 * Warn user when running empty start stack
 * More "turtle cards"
 
-BUG FIX:
+BUG FIXES:
 * Don't reset timer on clear (w/Alan Aguiar)
+* Catch exceptions in Facebook upload (#SL )
 
 204
 
