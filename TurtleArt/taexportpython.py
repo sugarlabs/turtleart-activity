@@ -81,7 +81,7 @@ _SETUP_CODE_END = """\
 
 if __name__ == '__main__':
     tw.lc.start_time = time()
-    tw.lc.icall(start)
+    tw.lc.icall(start2)
     gobject.idle_add(tw.lc.doevalstep)
     gtk.main()
 """
@@ -129,9 +129,9 @@ def save_python(tw):
     return "".join(snippets)
 
 
-def _action_stack_to_python(block, tw, name="start"):
+def _action_stack_to_python(block, tw, name='start2'):
     """ Turn a stack of blocks into Python code
-    name -- the name of the action stack (defaults to "start") """
+    name -- the name of the action stack (defaults to "start2") """
 
     if isinstance(name, int):
         name = float(name)
@@ -146,10 +146,11 @@ def _action_stack_to_python(block, tw, name="start"):
 
     # serialize the ASTs into python code
     generated_code = codegen.to_source(action_stack_ast)
+    print generated_code
 
     # wrap the action stack setup code around everything
     name_id = _make_identifier(name)
-    if name == 'start':
+    if name == 'start2':
         pre_preamble = _START_STACK_START_ADD
         for k in plugins_in_use:
             pre_preamble += "    %s = global_objects['%s']\n" % (k.lower(), k)
@@ -233,6 +234,7 @@ def _walk_action_stack(top_block, lc, convert_me=True):
     while dock_queue and conn_queue:
         dock = dock_queue.pop(0)
         conn = conn_queue.pop(0)
+        print conn, dock[0]
         if conn is None or dock[0] == 'unavailable':
             continue
         elif not dock_queue and dock[0] == 'flow':
