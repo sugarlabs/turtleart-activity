@@ -781,10 +781,10 @@ def find_bot_block(blk):
 
 
 def find_start_stack(blk):
-    ''' Find a stack with a 'start2' block on top. '''
+    ''' Find a stack with a 'start' block on top. '''
     if blk is None:
         return False
-    if find_top_block(blk).name == 'start2':
+    if find_top_block(blk).name == 'start':
         return True
     else:
         return False
@@ -840,8 +840,8 @@ def get_stack_name(blk):
     If the top block of this stack is not a stack-defining block, return
     None. '''
     top_block = find_top_block(blk)
-    if top_block.name == 'start2':
-        return 'start2'
+    if top_block.name == 'start':
+        return 'start'
     elif top_block.name == 'hat1':
         return 'stack1'
     elif top_block.name == 'hat2':

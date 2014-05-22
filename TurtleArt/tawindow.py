@@ -737,7 +737,7 @@ class TurtleArtWindow():
         if self.running_sugar:
             self.activity.recenter()
 
-        # Look for a 'start2' block
+        # Look for a 'start' block
         for blk in self.just_blocks():
             if find_start_stack(blk):
                 self.step_time = time
@@ -759,7 +759,7 @@ class TurtleArtWindow():
                     self._run_stack(blk)
                 return
 
-        # If there is no 'start2' block, run stacks that aren't 'def action'
+        # If there is no 'start' block, run stacks that aren't 'def action'
         for blk in self.just_blocks():
             if find_block_to_run(blk):
                 self.step_time = time
@@ -1328,7 +1328,7 @@ class TurtleArtWindow():
                 elif blk.name == 'trashall':
                     for b in self.just_blocks():
                         if b.type != 'trash':
-                            if b.name == 'start2':  # Don't trash start block
+                            if b.name == 'start':  # Don't trash start block
                                 b1 = b.connections[-1]
                                 if b1 is not None:
                                     b.connections[-1] = None
@@ -1345,12 +1345,12 @@ class TurtleArtWindow():
                     defaults = None
                     name = blk.name
                     # You can only have one instance of some blocks
-                    if blk.name in ['start2', 'hat1', 'hat2']:
+                    if blk.name in ['start', 'hat1', 'hat2']:
                         blk_list = self.block_list.get_similar_blocks(
                             'block', blk.name)
                         if len(blk_list) > 0:
                             self.showlabel('dupstack')
-                            if blk.name == 'start2':
+                            if blk.name == 'start':
                                 # Recenter the screen and move the start
                                 # stack to the center of the screen
                                 if self.running_sugar:
@@ -2219,9 +2219,6 @@ class TurtleArtWindow():
                             # Connection was to a block we haven't seen yet.
                             debug_output('Warning: dock to the future',
                                          self.running_sugar)
-                elif blk.name == 'start2':
-                    cons[1] = cons[2]
-                    cons[2] = None
                 else:
                     if self._process_block_data[i][4][0] is not None:
                         c = self._process_block_data[i][4][0]
@@ -3316,7 +3313,7 @@ class TurtleArtWindow():
                 elif blk.connections[0].name == 'hat':
                     if blk.connections[0].connections[2] == blk:
                         return blk.connections[0], 2
-                elif blk.connections[0].name == 'start2':
+                elif blk.connections[0].name == 'start':
                     if blk.connections[0].connections[1] == blk:
                         return blk.connections[0], 1
                 else:
@@ -3904,7 +3901,7 @@ class TurtleArtWindow():
             btype = 'comment'
 
         # Some blocks can only appear once...
-        if btype in ['start2', 'hat1', 'hat2']:
+        if btype in ['start', 'hat1', 'hat2']:
             if self._check_for_duplicate(btype):
                 name = block_names[btype][0]
                 while self._find_proto_name('stack_%s' % (name), name):
@@ -4134,12 +4131,12 @@ class TurtleArtWindow():
         return False
 
     def load_start(self, ta_file=None):
-        ''' Start a new project with a 'start2' brick '''
+        ''' Start a new project with a 'start' brick '''
         if ta_file is None:
             self.process_data(
-                [[0, 'start2', PALETTE_WIDTH + 20,
+                [[0, 'start', PALETTE_WIDTH + 20,
                   self.toolbar_offset + PALETTE_HEIGHT + 20 + ICON_SIZE,
-                  [None, None, None]]])
+                  [None, None]]])
         else:
             self.process_data(data_from_file(ta_file))
             self._loaded_project = ta_file

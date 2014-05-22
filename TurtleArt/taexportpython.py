@@ -81,7 +81,7 @@ _SETUP_CODE_END = """\
 
 if __name__ == '__main__':
     tw.lc.start_time = time()
-    tw.lc.icall(start2)
+    tw.lc.icall(start)
     gobject.idle_add(tw.lc.doevalstep)
     gtk.main()
 """
@@ -129,9 +129,9 @@ def save_python(tw):
     return "".join(snippets)
 
 
-def _action_stack_to_python(block, tw, name='start2'):
+def _action_stack_to_python(block, tw, name='start'):
     """ Turn a stack of blocks into Python code
-    name -- the name of the action stack (defaults to "start2") """
+    name -- the name of the action stack (defaults to "start") """
 
     if isinstance(name, int):
         name = float(name)
@@ -150,7 +150,7 @@ def _action_stack_to_python(block, tw, name='start2'):
 
     # wrap the action stack setup code around everything
     name_id = _make_identifier(name)
-    if name == 'start2':
+    if name == 'start':
         pre_preamble = _START_STACK_START_ADD
         for k in plugins_in_use:
             pre_preamble += "    %s = global_objects['%s']\n" % (k.lower(), k)
