@@ -71,6 +71,8 @@ block_styles = {'basic-style': [],
                 'clamp-style-collapsible': [],
                 'clamp-style-collapsed': [],
                 'clamp-style-1arg': [],
+                'clamp-style-hat-1arg': [],
+                'clamp-style-hat': [],
                 'clamp-style-boolean': [],
                 'clamp-style-until': [],
                 'clamp-style-else': [],
@@ -288,6 +290,8 @@ class _ProtoBlock():
         else:
             block_styles[self._style].append(self._name)
         if self._style in ['clamp-style',
+                           'clamp-style-hat-1arg',
+                           'clamp-style-hat',
                            'clamp-style-collapsible',
                            'clamp-style-1arg',
                            'clamp-style-boolean',

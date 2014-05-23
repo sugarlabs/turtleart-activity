@@ -744,11 +744,19 @@ class TurtleArtWindow():
                 if self.running_sugar:
                     debug_output('running stack starting from %s' % (blk.name),
                                  self.running_sugar)
+
                 if running_from_button_push:
                     self.selected_blk = None
                 else:
                     self.selected_blk = blk
-                self._run_stack(blk)
+
+                # Warn user if running an empty start stack
+                grp = find_group(blk)
+                if len(grp) == 1:
+                    # FIX ME: use graphic
+                    self.showlabel('emptystart')
+                else:
+                    self._run_stack(blk)
                 return
 
         # If there is no 'start' block, run stacks that aren't 'def action'
@@ -2144,14 +2152,14 @@ class TurtleArtWindow():
         ''' Process block_data (from a macro, a file, or the clipboard). '''
         self._process_block_data = []
         for blk in block_data:
-            if not self._found_a_turtle(blk):
+            if not (self._found_a_turtle(blk) or self._found_font_scale(blk)):
                 self._process_block_data.append(
                     [blk[0], blk[1], blk[2], blk[3], blk[4]])
         self._extra_block_data = []
         # Create the blocks (or turtle).
         blocks = []
         for i, blk in enumerate(self._process_block_data):
-            if not self._found_a_turtle(blk):
+            if not (self._found_a_turtle(blk) or self._found_font_scale(blk)):
                 newblk = self.load_block(blk, offset)
                 if newblk is not None:
                     blocks.append(newblk)
@@ -2252,7 +2260,8 @@ class TurtleArtWindow():
                 continue
             if blk.name in EXPANDABLE_FLOW:
                 if blk.name in block_styles['clamp-style-1arg'] or \
-                   blk.name in block_styles['clamp-style-boolean']:
+                   blk.name in block_styles['clamp-style-boolean'] or \
+                   blk.name in block_styles['clamp-style-hat-1arg']:
                     if blk.connections[2] is not None:
                         self._resize_clamp(blk, blk.connections[2])
                 elif blk.name in block_styles['clamp-style-until']:
@@ -2260,7 +2269,9 @@ class TurtleArtWindow():
                         self._resize_clamp(blk, blk.connections[2])
                     if blk.connections[1] is not None:
                         self._resize_clamp(blk, blk.connections[1], dockn=1)
-                elif blk.name in block_styles['clamp-style']:
+                elif blk.name in block_styles['clamp-style'] or \
+                     blk.name in block_styles['clamp-style-collapsible'] or \
+                     blk.name in block_styles['clamp-style-hat']:
                     if blk.connections[1] is not None:
                         self._resize_clamp(blk, blk.connections[1])
                 elif blk.name in block_styles['clamp-style-else']:
@@ -3096,7 +3107,9 @@ class TurtleArtWindow():
                 if best_destination.name in \
                         block_styles['clamp-style-1arg'] or \
                         best_destination.name in \
-                        block_styles['clamp-style-boolean']:
+                        block_styles['clamp-style-boolean'] or \
+                        best_destination.name in \
+                        block_styles['clamp-style-hat-1arg']:
                     if best_destination_dockn == 2:
                         self._resize_clamp(best_destination,
                                            self.drag_group[0])
@@ -3109,6 +3122,8 @@ class TurtleArtWindow():
                         self._resize_clamp(best_destination,
                                            self.drag_group[0], dockn=1)
                 elif best_destination.name in block_styles['clamp-style'] or \
+                        best_destination.name in \
+                        block_styles['clamp-style-hat'] or \
                         best_destination.name in \
                         block_styles['clamp-style-collapsible']:
                     if best_destination_dockn == 1:
@@ -3206,13 +3221,15 @@ class TurtleArtWindow():
                 self._cascade_expandable(blk2)
         elif c is not None and blk2.name in EXPANDABLE_FLOW:
             if blk2.name in block_styles['clamp-style-1arg'] or \
-                    blk2.name in block_styles['clamp-style-boolean']:
+                    blk2.name in block_styles['clamp-style-boolean'] or \
+                    blk2.name in block_styles['clamp-style-hat-1arg']:
                 if c == 2:
                     self._resize_clamp(blk2, None, dockn=c)
             elif blk2.name in block_styles['clamp-style-until']:
                 if c in [1, 2]:
                     self._resize_clamp(blk2, None, dockn=c)
             elif blk2.name in block_styles['clamp-style'] or \
+                    blk2.name in block_styles['clamp-style-hat'] or \
                     blk2.name in block_styles['clamp-style-collapsible']:
                 if c == 1:
                     self._resize_clamp(blk2, None)
@@ -3293,6 +3310,12 @@ class TurtleArtWindow():
                         return blk.connections[0], 2
                     elif blk.connections[0].connections[3] == blk:
                         return blk.connections[0], 3
+                elif blk.connections[0].name == 'hat':
+                    if blk.connections[0].connections[2] == blk:
+                        return blk.connections[0], 2
+                elif blk.connections[0].name == 'start':
+                    if blk.connections[0].connections[1] == blk:
+                        return blk.connections[0], 1
                 else:
                     if blk.connections[0].connections[-2] == blk:
                         return blk.connections[0], -2
@@ -3804,6 +3827,15 @@ class TurtleArtWindow():
         if self.running_sugar:
             self.activity.metadata['title'] = os.path.split(file_name)[1]
 
+    def _found_font_scale(self, blk):
+        ''' '_saved_font_scale is a reserved name '''
+        # [-1, '_saved_font_scale', 2.0]
+        if blk[1] == '_saved_font_scale':
+            if len(blk) > 4 and isinstance(blk[4], float):
+                self.block_scale = blk[4]
+            return True
+        return False
+
     def _found_a_turtle(self, blk):
         ''' Either [-1, 'turtle', ...] or [-1, ['turtle', key], ...] '''
         if blk[1] == 'turtle':
@@ -3990,9 +4022,6 @@ class TurtleArtWindow():
             if isinstance(value, unicode):
                 value = value.encode('utf-8')
             blk.spr.set_label(value.replace('\n', RETURN))
-        elif btype == 'start':  # block size is saved in start block
-            if value is not None:
-                self.block_scale = value
         elif btype in block_styles['box-style-media'] and blk.spr is not None:
             if btype in EXPAND_SKIN:
                 if blk.ex == 0:
@@ -4056,7 +4085,7 @@ class TurtleArtWindow():
                 if value is not None:
                     if isinstance(value, int):
                         blk.expand_in_y(value)
-                    else:  # thenelse blocks
+                    elif btype == 'ifelse':
                         blk.expand_in_y(value[0])
                         blk.expand_in_y2(value[1])
             elif btype == 'templatelist' or btype == 'bulletlist':
@@ -4162,8 +4191,6 @@ class TurtleArtWindow():
                     name = (blk.name, ey)
                 else:
                     name = (blk.name, 0)
-            elif blk.name == 'start':  # save block_size in start block
-                name = (blk.name, self.block_scale)
             else:
                 name = (blk.name)
             if hasattr(blk, 'connections') and blk.connections is not None:
@@ -4192,6 +4219,9 @@ class TurtleArtWindow():
                          self.turtles.get_active_turtle().get_color(),
                          self.turtles.get_active_turtle().get_shade(),
                          self.turtles.get_active_turtle().get_pen_size()))
+            # Also save font scale
+            data.append((-1, '_saved_font_scale', 0, 0, self.block_scale))
+
         return data
 
     def display_coordinates(self, clear=False):
@@ -4385,7 +4415,6 @@ class TurtleArtWindow():
         pres = TurtleODP()
         pres.create_presentation(TMP_ODP_PATH, 1024, 768)
         for file_path in path_list:
-            #print file_path
             pres.add_image(file_path)
         pres.save_presentation()
 
@@ -4783,6 +4812,9 @@ variable'))
         # Each dock point as an associated relative x, y position on its block
         d1type, d1dir, d1x, d1y = dock1[0:4]
         d2type, d2dir, d2x, d2y = dock2[0:4]
+        # Cannot dock to 'unavailable'
+        if 'unavailable' in [d1type, d2type]:
+            return _NO_DOCK
         # Cannot connect an innie to an innie or an outie to an outie
         if d1dir == d2dir:
             return _NO_DOCK
@@ -4883,14 +4915,11 @@ variable'))
         for name in block_names:
             # Translate label name into block/prim name.
             if blkname in block_names[name]:  # block label is an array
-                # print 'found a match', blkname, name, block_names[name]
                 if name in content_blocks or \
                         (name in block_primitives and
                          block_primitives[name] == name):
-                    # print '_make_block', blkname, name
                     return self._make_block(name, x, y, defaults)
             elif blkname in block_names:
-                # print '_make_block', blkname
                 return self._make_block(blkname, x, y, defaults)
         for name in special_names:
             # Translate label name into block/prim name.

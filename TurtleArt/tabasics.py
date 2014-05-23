@@ -194,7 +194,7 @@ turtle'))
                                     Primitive(self.tw.clear_plugins),
                                     Primitive(self.tw.lc.stop_playing_media),
                                     Primitive(self.tw.lc.reset_scale),
-                                    Primitive(self.tw.lc.reset_timer),
+                                    # Primitive(self.tw.lc.reset_timer),
                                     Primitive(self.tw.lc.clear_value_blocks),
                                     Primitive(self.tw.canvas.clearscreen),
                                     Primitive(self.tw.lc.reset_internals),
@@ -1030,8 +1030,8 @@ boolean operators from Numbers palette'))
                                translation=_('blocks'))
 
         palette.add_block('start',
-                          style='basic-style-head',
-                          label=_('start'),
+                          style='clamp-style-hat',
+                          label='\n' + _('start'),
                           prim_name='start',
                           logo_command='to start\n',
                           help_string=_('connects action to toolbar run \
@@ -1044,15 +1044,8 @@ buttons'))
                 Primitive(self.tw.lc.prim_define_stack,
                           arg_descs=[ConstantArg('start')])])]))
 
-        palette.add_block('string',
-                          style='box-style',
-                          label=_('text'),
-                          default=_('text'),
-                          special_name=_('text'),
-                          help_string=_('string value'))
-
         palette.add_block('hat',
-                          style='basic-style-head-1arg',
+                          style='clamp-style-hat-1arg',
                           label=_('action'),
                           prim_name='nop3',
                           string_or_number=True,

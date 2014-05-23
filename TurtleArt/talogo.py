@@ -38,6 +38,8 @@ try:
 except ImportError:
     GRID_CELL_SIZE = 55
 
+USER_HOME = os.path.expanduser('~')
+
 import traceback
 
 from tablock import (Block, Media, media_blocks_dictionary)
@@ -120,6 +122,25 @@ class HiddenBlock(Block):
 
 
 # Utility functions
+
+
+def _change_user_path(path):
+    ''' If the pathname saved in a project was from a different user, try
+    changing it.'''
+    # FIXME: Use regex
+    if path is None:
+        return None
+    if len(path) < 7:
+        return None
+    if not '/' in path[6:]:
+        return None
+    if path[0:5] == '/home' and '/':
+        i = path[6:].index('/')
+        new_path = USER_HOME + path[6 + i:]
+        if new_path == path:
+            return None
+        else:
+            return new_path
 
 
 def _just_stop():
@@ -677,7 +698,7 @@ class LogoCode:
         self.tw.clear_plugins()
         self.stop_playing_media()
         self.reset_scale()
-        self.reset_timer()
+        # self.reset_timer()  # Only reset timer on 'run'
         self.clear_value_blocks()
         self.tw.canvas.clearscreen()
         self.tw.turtles.reset_turtles()
@@ -841,6 +862,8 @@ class LogoCode:
 
     def load_heap(self, obj):
         """ Load FILO from file """
+        user_path = _change_user_path(obj)
+
         if self.tw.running_sugar:
             # Is the object a dsobject?
             if isinstance(obj, Media) and obj.value:
@@ -855,6 +878,8 @@ class LogoCode:
             # Or is it a path?
             elif os.path.exists(obj):
                 self.push_file_data_to_heap(None, path=obj)
+            elif user_path is not None and os.path.exists(user_path):
+                self.push_file_data_to_heap(None, path=user_path)
             elif os.path.exists(os.path.join(
                     self.tw.activity.get_bundle_path(), obj)):
                 self.push_file_data_to_heap(None, path=obj)
@@ -864,11 +889,15 @@ class LogoCode:
                                self.push_file_data_to_heap)
         else:
             # If you cannot find the file, open a chooser.
-            if not os.path.exists(obj):
+            if os.path.exists(obj):
+                self.push_file_data_to_heap(None, path=obj)
+            elif user_path is not None and os.path.exists(user_path):
+                self.push_file_data_to_heap(None, path=user_path)
+            else:
                 obj, self.tw.load_save_folder = get_load_name(
                     '.*', self.tw.load_save_folder)
-            if obj is not None:
-                self.push_file_data_to_heap(None, path=obj)
+                if obj is not None:
+                    self.push_file_data_to_heap(None, path=obj)
 
     def save_heap(self, obj):
         """ save FILO to file """
@@ -1030,8 +1059,11 @@ class LogoCode:
         self.filepath = None
         self.dsobject = None
 
+        user_path = _change_user_path(obj.value)
         if obj.value is not None and os.path.exists(obj.value):
             self.filepath = obj.value
+        elif user_path is not None and os.path.exists(user_path):
+            self.filepath = user_path
         elif self.tw.running_sugar:  # datastore object
             from sugar.datastore import datastore
             try:
@@ -1132,11 +1164,25 @@ class LogoCode:
             self.pixbuf = None  # Camera writes directly to pixbuf
             self.dsobject = None
 
+            user_path = _change_user_path(obj.value)
             if obj.value.lower() in media_blocks_dictionary:
                 media_blocks_dictionary[obj.value.lower()]()
                 mediatype = 'image'  # camera snapshot
             elif os_path_exists(obj.value):
                 self.filepath = obj.value
+                mediatype = obj.type
+                # If for some reason the obj.type is not set, try guessing.
+                if mediatype is None and self.filepath is not None:
+                    if movie_media_type(self.filepath):
+                        mediatype = 'video'
+                    elif audio_media_type(self.filepath):
+                        mediatype = 'audio'
+                    elif image_media_type(self.filepath):
+                        mediatype = 'image'
+                    elif text_media_type(self.filepath):
+                        mediatype = 'text'
+            elif user_path is not None and os_path_exists(user_path):
+                self.filepath = user_path
                 mediatype = obj.type
                 # If for some reason the obj.type is not set, try guessing.
                 if mediatype is None and self.filepath is not None:

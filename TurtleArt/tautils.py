@@ -177,7 +177,7 @@ def json_load(text):
 def find_hat(data):
     ''' Find a hat in a stack '''
     for i, blk in enumerate(data):
-        if _to_str(blk[1]) == 'hat':
+        if isinstance(blk[1], (tuple, list)) and _to_str(blk[1][0]) == 'hat':
             return i
     return None
 

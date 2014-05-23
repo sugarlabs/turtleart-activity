@@ -13,8 +13,8 @@ msgstr ""
 "#-#-#-#-#  da.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-14 00:32-0500\n"
-"PO-Revision-Date: 2013-12-16 19:19+0200\n"
+"POT-Creation-Date: 2014-02-16 00:32-0500\n"
+"PO-Revision-Date: 2014-05-22 23:22+0200\n"
 "Last-Translator: Aputsiaq Niels <aj@isit.gl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: da\n"
@@ -752,6 +752,13 @@ msgstr ""
 msgid "Pin an object down so that it cannot fall."
 msgstr "Fastgør et objekt nede, så det ikke kan falde."
 
+#: TurtleArt/tabasics.py:351
+msgid "pen"
+msgstr "pen"
+
+msgid "Add a pen to an object so that its movements are traced."
+msgstr "Tilføj en pen til et objekt, så dets bevægelser bliver optegnet."
+
 msgid "joint"
 msgstr "sammensæt"
 
@@ -822,11 +829,38 @@ msgstr ""
 msgid "Palette of WeDo blocks"
 msgstr "Palette af WeDo-blokke"
 
+msgid "The parameter must be a integer, not "
+msgstr "Parameteret skal være et heltal, ikke "
+
+msgid "Motor speed must be an integer between -100 and 100"
+msgstr "Motorhastigheden skal være et heltal mellem -100 og 100"
+
+msgid "WeDo found %s bricks"
+msgstr "WeDo fandt %s brikker"
+
+msgid "WeDo not found"
+msgstr "WeDo blev ikke fundet"
+
+msgid "WeDo number %s was not found"
+msgstr "WeDo-nummeret %s blev ikke fundet"
+
+msgid "wedo"
+msgstr "wedo"
+
+msgid "refresh WeDo"
+msgstr "genopfrisk WeDo"
+
+msgid "Search for a connected WeDo."
+msgstr "Søg efter en tilsluttet WeDo."
+
 msgid "WeDo"
 msgstr "WeDo"
 
 msgid "set current WeDo device"
 msgstr "angiv nuværende WeDo-enhed"
+
+msgid "number of WeDos"
+msgstr "antallet af WeDo'er"
 
 msgid "number of WeDo devices"
 msgstr "antallet af WeDo-enheder"
@@ -835,10 +869,10 @@ msgid "tilt"
 msgstr "vip"
 
 msgid ""
-"tilt sensor output: (-1 == no tilt, 0 == tilt forward, 3 == tilt back, 1 == "
+"tilt sensor output: (-1 == no tilt,0 == tilt forward, 3 == tilt back, 1 == "
 "tilt left, 2 == tilt right)"
 msgstr ""
-"hældningssensor output (-1 == ingen hældning, 0 == hæld fremad, 3 == hæld "
+"hældningssensor output: (-1 == ingen hældning, 0 == hæld fremad, 3 == hæld "
 "tilbage, 1 == hæld til venstre, 2 == hæld til højre)"
 
 msgid "distance sensor output"
@@ -847,29 +881,20 @@ msgstr "afstandssensor output"
 msgid "Motor A"
 msgstr "Motor A"
 
-msgid "returns the current value of Motor A"
-msgstr "returnerer nuværende værdi fra Motor A"
+msgid "returns the current speed of Motor A"
+msgstr "returnerer nuværende hastighed fra Motor A"
 
 msgid "Motor B"
 msgstr "Motor B"
 
-msgid "returns the current value of Motor B"
-msgstr "returnerer nuværende værdi fra Motor B"
+msgid "returns the current speed of Motor B"
+msgstr "returnerer nuværende hastighed fra Motor B"
 
-msgid "set the value for Motor A"
-msgstr "angiv værdien for Motor A"
+msgid "set the speed for Motor A"
+msgstr "angiv hastigheden for Motor A"
 
-msgid "set the value for Motor B"
-msgstr "angiv værdien for Motor B"
-
-msgid "WeDo is unavailable"
-msgstr "WeDo er ikke tilgængelig"
-
-msgid "WeDo %d is unavailable; defaulting to 1"
-msgstr "WeDo %d er ikke tilgængelig; anvender standarden 1"
-
-msgid "%(device)s is unavailable on WeDo %(wedo_number)d"
-msgstr "%(device)s er ikke tilgængelig på WeDo %(wedo_number)d"
+msgid "set the speed for Motor B"
+msgstr "angiv hastigheden for Motor B"
 
 msgid "Palette of LEGO NXT blocks of motors"
 msgstr "Palet med motorer bestående af LEGO NXT-blokke"
@@ -1170,6 +1195,69 @@ msgstr "Enheden skal være et heltal"
 msgid "Error loading %s board"
 msgstr "Fejl under indlæsning af %s-bræt"
 
+msgid "Palette for Rodi bots using Arduino"
+msgstr "Palet for Rodi-robotter, der bruger Arduino"
+
+msgid "ERROR: Check the connection to the robot."
+msgstr "FEJL: Tjek forbindelsen til robotten."
+
+msgid "ERROR: The speed must be a value between 0 and %d"
+msgstr "FEJL: Hastigheden skal være en værdi mellem 0 og %d"
+
+msgid "ERROR: The speed must be a value between %(min)d and %(max)d"
+msgstr "FEJL: Hastigheden skal være en værdi mellem %(min)d og %(max)d"
+
+msgid "refresh Rodi"
+msgstr "genopfrisk Rodi"
+
+msgid "refresh the state of the Rodi palette and blocks"
+msgstr "opfrisk tilstanden for Rodi-paletten og blokkene"
+
+msgid "move Rodi"
+msgstr "flyt Rodi"
+
+msgid "moves the Rodi motors at the specified speed"
+msgstr "flytter Rodi-motorerne med den angivne hastighed"
+
+msgid "stop Rodi"
+msgstr "stop Rodi"
+
+msgid "stops the Rodi robot"
+msgstr "stopper Rodi-robotten"
+
+msgid "forward Rodi"
+msgstr "fremad Rodi"
+
+msgid "moves the Rodi robot forward"
+msgstr "bevæger Rodi-robotten fremad"
+
+msgid "left Rodi"
+msgstr "venstre Rodi"
+
+msgid "turns the Rodi robot at left"
+msgstr "drejer Rodi-robotten til venstre"
+
+msgid "right Rodi"
+msgstr "højre Rodi"
+
+msgid "turns the Rodi robot at right"
+msgstr "drejer Rodi-robotten til højre"
+
+msgid "backward Rodi"
+msgstr "tilbage Rodi"
+
+msgid "moves the Rodi robot backward"
+msgstr "bevæger Rodi-robotten baglæns"
+
+msgid "distance Rodi"
+msgstr "distance til Rodi"
+
+msgid "returns the distance as a value between 0 and 1"
+msgstr "returnerer afstanden som en værdi mellem 0 og 1"
+
+msgid "Rodi %s not found"
+msgstr "Rodi %s blev ikke fundet"
+
 msgid "Palette of Expeyes blocks"
 msgstr "Palette af Expeyes-blokke"
 
@@ -1425,10 +1513,6 @@ msgstr ""
 #: TurtleArt/tabasics.py:350
 msgid "Palette of pen commands"
 msgstr "Palette af kommandoer for pen"
-
-#: TurtleArt/tabasics.py:351
-msgid "pen"
-msgstr "pen"
 
 #: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:369
 msgid "fill screen"
@@ -3409,6 +3493,25 @@ msgstr "mitprojekt"
 #~ msgstr ""
 #~ "Sammensæt to objekter (de allersenest oprettede objekt og objektet ved "
 #~ "punktet x, y)."
+
+#~ msgid ""
+#~ "tilt sensor output: (-1 == no tilt, 0 == tilt forward, 3 == tilt back, 1 "
+#~ "== tilt left, 2 == tilt right)"
+#~ msgstr ""
+#~ "hældningssensor output (-1 == ingen hældning, 0 == hæld fremad, 3 == hæld "
+#~ "tilbage, 1 == hæld til venstre, 2 == hæld til højre)"
+
+#~ msgid "returns the current value of Motor A"
+#~ msgstr "returnerer nuværende værdi fra Motor A"
+
+#~ msgid "returns the current value of Motor B"
+#~ msgstr "returnerer nuværende værdi fra Motor B"
+
+#~ msgid "set the value for Motor A"
+#~ msgstr "angiv værdien for Motor A"
+
+#~ msgid "set the value for Motor B"
+#~ msgstr "angiv værdien for Motor B"
 
 #~ msgid "touch"
 #~ msgstr "berør"

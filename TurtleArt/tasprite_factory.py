@@ -557,9 +557,14 @@ stroke-width="3.5" fill="%s" stroke="none" />\n' % (self._stroke)
         ''' Special block for collapsible stacks; includes an 'arm"
         that extends down the left side of a stack and a bottom jaw to
         clamp the blocks. '''
+        save_cap = self._cap
+        save_slot = self._slot
         self.reset_min_max()
         x = self._stroke_width / 2.0
-        y = self._stroke_width / 2.0 + self._radius
+        if self._cap:
+            y = self._stroke_width / 2.0 + self._radius + self._slot_y * 3.0
+        else:
+            y = self._stroke_width / 2.0 + self._radius
         self.margins[0] = int((x + self._stroke_width + 0.5) * self._scale)
         self.margins[1] = int((self._stroke_width + 0.5) * self._scale)
         self.margins[2] = 0
@@ -567,6 +572,10 @@ stroke-width="3.5" fill="%s" stroke="none" />\n' % (self._stroke)
         svg = self.new_path(x, y)
         svg += self._corner(1, -1)
         svg += self._do_slot()
+        if self._cap:
+            # Only one cap
+            self._slot = True
+            self._cap = False
         svg += self._rline_to(self._radius + self._stroke_width, 0)
         svg += self._rline_to(self._expand_x, 0)
         xx = self._x
@@ -599,7 +608,14 @@ stroke-width="3.5" fill="%s" stroke="none" />\n' % (self._stroke)
             svg += self._rline_to(self._radius, 0)
         svg += self._corner(-1, 1)
         svg += self._rline_to(-self._radius - self._stroke_width, 0)
-        svg += self._do_tab()
+        if self._tail:
+            svg += self._do_tail()
+        else:
+            svg += self._do_tab()
+
+        self._cap = save_cap
+        self._slot = save_slot
+
         svg += self._corner(-1, -1)
         svg += self._close_path()
         self.calc_w_h()
@@ -1403,7 +1419,7 @@ def generator(datapath):
     svg_str = svg.basic_block()
     f.write(svg_str)
     close_file(f)
-    '''
+
     svg = SVG()
     f = open_file(datapath, "box.svg")
     svg.set_scale(2)
@@ -1411,7 +1427,7 @@ def generator(datapath):
     svg_str = svg.basic_box()
     f.write(svg_str)
     close_file(f)
-    '''
+
     svg = SVG()
     f = open_file(datapath, "media.svg")
     svg.set_scale(2)
@@ -1528,7 +1544,21 @@ def generator(datapath):
     svg_str = svg.clamp()
     f.write(svg_str)
     close_file(f)
-
+    '''
+    svg = SVG()
+    f = open_file(datapath, "start.svg")
+    svg.set_scale(2)
+    svg.expand(30, 0, 0, 0)
+    svg.set_slot(False)
+    svg.set_cap(True)
+    svg.set_tail(True)
+    svg.set_tab(True)
+    svg.set_boolean(False)
+    svg.second_clamp(False)
+    svg_str = svg.clamp()
+    f.write(svg_str)
+    close_file(f)
+    '''
     svg = SVG()
     f = open_file(datapath, "clampb.svg")
     svg.set_scale(2)
