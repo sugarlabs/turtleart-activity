@@ -234,6 +234,16 @@ Journal'))
                       call_afterwards=lambda value: self.after_set(
                           'scale', value)))
 
+        palette.add_block('setfont',
+                          style='basic-style-1arg',
+                          label=_('set font'),
+                          prim_name='setfont',
+                          default='Sans',
+                          help_string=_('sets the font used by the show block'))
+        self.tw.lc.def_prim('setfont', 1,
+                            Primitive(self.tw.canvas.set_font,
+                                      arg_descs=[ArgSlot(TYPE_STRING)]))
+
         palette.add_block('savepix',
                           style='basic-style-1arg',
                           label=_('save picture'),
