@@ -2150,6 +2150,8 @@ class TurtleArtWindow():
 
     def process_data(self, block_data, offset=0):
         ''' Process block_data (from a macro, a file, or the clipboard). '''
+        if self.interactive_mode:
+            self.sprite_list.set_defer_draw(True)
         self._process_block_data = []
         for blk in block_data:
             if not (self._found_a_turtle(blk) or self._found_font_scale(blk)):
@@ -2287,9 +2289,12 @@ class TurtleArtWindow():
                 blocks_copy.append(blk)
         blocks = blocks_copy[:]
 
-        # Resize blocks to current scale
+        # Resize blocks to current scale and draw
         if self.interactive_mode:
             self.resize_blocks(blocks)
+
+        if self.interactive_mode:
+            self.sprite_list.set_defer_draw(False)
 
         if len(blocks) > 0:
             return blocks[0]
