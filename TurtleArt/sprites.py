@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 #Copyright (c) 2007-8, Playful Invention Company.
-#Copyright (c) 2008-11 Walter Bender
+#Copyright (c) 2008-14 Walter Bender
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
 #of this software and associated documentation files (the "Software"), to deal
@@ -92,6 +92,10 @@ class Sprites:
         self.widget = widget
         self.list = []
         self.cr = None
+        self.defer_draw = False
+
+    def set_defer_draw(self, state):
+        self.defer_draw = state
 
     def set_cairo_context(self, cr):
         ''' Cairo context may be set or reset after __init__ '''
@@ -141,6 +145,7 @@ class Sprites:
     def redraw_sprites(self, area=None, cr=None):
         ''' Redraw the sprites that intersect area. '''
         # I think I need to do this to save Cairo some work
+        self.defer_draw = False
         if cr is None:
             cr = self.cr
         else:
@@ -341,6 +346,8 @@ class Sprite:
 
     def draw(self, cr=None):
         ''' Draw the sprite (and label) '''
+        if self._sprites.defer_draw:
+            return
         if cr is None:
             print 'sprite.draw: no Cairo context.'
             return
