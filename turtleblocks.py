@@ -544,6 +544,7 @@ return %s(self)" % (p, P, P)
                                 buttons=gtk.BUTTONS_YES_NO,
                                 message_format=_('You have unsaved work. \
 Would you like to save before quitting?'))
+        dlg.set_default_response(gtk.RESPONSE_YES)
         if add_cancel:
             dlg.add_button(gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL)
         dlg.set_title(_('Save project?'))
