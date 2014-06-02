@@ -631,6 +631,10 @@ Would you like to save before quitting?'))
         ''' Callback for save-as project. '''
         self._save_as()
 
+    def autosave(self):
+        ''' Autosave is called each type the run button is pressed '''
+        self.tw.save_file(file_name='autosave.tb')
+
     def _save_as(self):
         ''' Save as is called from callback and quit '''
         self.tw.save_file_name = self._ta_file

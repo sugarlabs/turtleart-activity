@@ -736,6 +736,8 @@ class TurtleArtWindow():
         ''' Run turtle! '''
         if self.running_sugar:
             self.activity.recenter()
+        elif self.interactive_mode:  # autosave in GNOME
+            self.activity.autosave()
 
         # Look for a 'start' block
         for blk in self.just_blocks():
