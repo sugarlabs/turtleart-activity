@@ -1,3 +1,14 @@
+206
+
+ENHANCEMENTS:
+* Slight speed up when loading large projects
+* Added set_font block
+* Added ASCII Art example
+* Autosave in GNOME (Sugar version already autosaves)
+
+BUG FIX:
+* Set default action (YES) for save in GNOME (Andres Aguirre)
+
 205
 
 ENHANCEMENTS:
