@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #Copyright (c) 2007-8, Playful Invention Company
-#Copyright (c) 2008-13, Walter Bender
+#Copyright (c) 2008-14, Walter Bender
 #Copyright (c) 2011 Collabora Ltd. <http://www.collabora.co.uk/>
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,11 +26,11 @@ pygtk.require('2.0')
 import gtk
 import gobject
 import cairo
-
 import getopt
 import sys
 import os
 import os.path
+import stat
 import glob
 import cStringIO
 import errno
@@ -67,6 +67,18 @@ from TurtleArt.taplugin import (load_a_plugin, cancel_plugin_install,
                                 complete_plugin_install)
 
 from util.menubuilder import MenuBuilder
+
+
+def _is_writeable(path):
+    ''' Make sure we can write to the directory or file '''
+    if not os.path.exists(path):
+        return False
+    stats = os.stat(path)
+    if (stats.st_uid == os.geteuid() and stats.st_mode & stat.S_IWUSR) or \
+       (stats.st_gid == os.getegid() and stats.st_mode & stat.S_IWGRP) or \
+       (stats.st_mode & stat.S_IWOTH):
+        return True
+    return False
 
 
 class TurtleMain():
@@ -236,6 +248,13 @@ return %s(self)" % (p, P, P)
             # max(768, gtk.gdk.screen_height() * 2))
             gtk.gdk.screen_width() * 2,
             gtk.gdk.screen_height() * 2)
+
+        # Make sure the autosave directory is writeable
+        if _is_writeable(self._execdirname):
+            self._autosavedirname = self._execdirname
+        else:
+            self._autosavedirname = os.path.expanduser('~')
+
         self.tw = TurtleArtWindow(self.canvas, self._execdirname,
                                   turtle_canvas=self.turtle_canvas,
                                   activity=self, running_sugar=False)
@@ -633,7 +652,10 @@ Would you like to save before quitting?'))
 
     def autosave(self):
         ''' Autosave is called each type the run button is pressed '''
+        temp_save_folder = self.tw.load_save_folder
+        self.tw.load_save_folder = self._autosavedirname
         self.tw.save_file(file_name='autosave.tb')
+        self.tw.load_save_folder = temp_save_folder
 
     def _save_as(self):
         ''' Save as is called from callback and quit '''
@@ -938,7 +960,7 @@ Would you like to save before quitting?'))
             self._sample_box = gtk.EventBox()
             self._sample_window = gtk.ScrolledWindow()
             self._sample_window.set_policy(gtk.POLICY_NEVER,
-                                              gtk.POLICY_AUTOMATIC)
+                                           gtk.POLICY_AUTOMATIC)
             width = gtk.gdk.screen_width() / 2
             height = gtk.gdk.screen_height() / 2
             self._sample_window.set_size_request(width, height)
