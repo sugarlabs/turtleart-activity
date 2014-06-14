@@ -4157,11 +4157,11 @@ class TurtleArtWindow():
                 '.t[a-b]', self.load_save_folder, self.save_file_name)
         if not is_writeable(self.load_save_folder):
             if self.running_sugar:  # Shouldn't occur in Sugar
-                debug_output('Cannot write data to %s' % self.load_save_folder,
-                             self.running_sugar)
+                debug_output('Cannot write data to %s.' %
+                             self.load_save_folder, self.running_sugar)
             else:
-                title = _('Cannot write data to %s') % self.load_save_folder
-                msg = _('Please choose a different save directory')
+                title = _('Cannot write data to %s.') % self.load_save_folder
+                msg = _('Please choose a different save directory.')
                 dlg = gtk.MessageDialog(parent=None, type=gtk.MESSAGE_INFO,
                                         buttons=gtk.BUTTONS_CANCEL,
                                         message_format=title)
@@ -4176,6 +4176,23 @@ class TurtleArtWindow():
             return
         if not file_name.endswith(SUFFIX):
             file_name = file_name + SUFFIX[1]
+        if os.path.exists(file_name) and not is_writeable(file_name):
+            if self.running_sugar:  # Shouldn't occur in Sugar
+                debug_output('Cannot write data to %s.' % file_name,
+                             self.running_sugar)
+            else:
+                title = _('Cannot write data to %s.') % file_name
+                msg = _('Please choose a different file name.')
+                dlg = gtk.MessageDialog(parent=None, type=gtk.MESSAGE_INFO,
+                                        buttons=gtk.BUTTONS_CANCEL,
+                                        message_format=title)
+                dlg.format_secondary_text(msg)
+                dlg.set_title(title)
+                dlg.set_property('skip-taskbar-hint', False)
+
+                resp = dlg.run()
+                dlg.destroy()
+            return
         data_to_file(self.assemble_data_to_save(), file_name)
         self.save_file_name = os.path.basename(file_name)
         if not self.running_sugar:
