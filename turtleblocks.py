@@ -30,7 +30,6 @@ import getopt
 import sys
 import os
 import os.path
-import stat
 import glob
 import cStringIO
 import errno
@@ -57,7 +56,7 @@ from gettext import gettext as _
 from TurtleArt.taconstants import (OVERLAY_LAYER, DEFAULT_TURTLE_COLORS,
                                    TAB_LAYER, SUFFIX)
 from TurtleArt.tautils import (data_from_string, get_load_name,
-                               get_path, get_save_name)
+                               get_path, get_save_name, is_writeable)
 from TurtleArt.tapalette import default_values
 from TurtleArt.tawindow import TurtleArtWindow
 from TurtleArt.taexportlogo import save_logo
@@ -67,18 +66,6 @@ from TurtleArt.taplugin import (load_a_plugin, cancel_plugin_install,
                                 complete_plugin_install)
 
 from util.menubuilder import MenuBuilder
-
-
-def _is_writeable(path):
-    ''' Make sure we can write to the directory or file '''
-    if not os.path.exists(path):
-        return False
-    stats = os.stat(path)
-    if (stats.st_uid == os.geteuid() and stats.st_mode & stat.S_IWUSR) or \
-       (stats.st_gid == os.getegid() and stats.st_mode & stat.S_IWGRP) or \
-       (stats.st_mode & stat.S_IWOTH):
-        return True
-    return False
 
 
 class TurtleMain():
@@ -250,7 +237,7 @@ return %s(self)" % (p, P, P)
             gtk.gdk.screen_height() * 2)
 
         # Make sure the autosave directory is writeable
-        if _is_writeable(self._execdirname):
+        if is_writeable(self._execdirname):
             self._autosavedirname = self._execdirname
         else:
             self._autosavedirname = os.path.expanduser('~')

@@ -32,6 +32,7 @@ import cairo
 import pickle
 import subprocess
 import os
+import stat
 import string
 import mimetypes
 from gettext import gettext as _
@@ -977,3 +978,15 @@ def power_manager_off(status):
                 os.remove(PATH)
             except OSError:
                 pass
+
+
+def is_writeable(path):
+    ''' Make sure we can write to the directory or file '''
+    if not os.path.exists(path):
+        return False
+    stats = os.stat(path)
+    if (stats.st_uid == os.geteuid() and stats.st_mode & stat.S_IWUSR) or \
+       (stats.st_gid == os.getegid() and stats.st_mode & stat.S_IWGRP) or \
+       (stats.st_mode & stat.S_IWOTH):
+        return True
+    return False

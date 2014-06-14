@@ -80,7 +80,7 @@ from tautils import (magnitude, get_load_name, get_save_name, data_from_file,
                      find_start_stack, get_hardware, debug_output,
                      error_output, find_hat, find_bot_block,
                      restore_clamp, collapse_clamp, data_from_string,
-                     increment_name, get_screen_dpi)
+                     increment_name, get_screen_dpi, is_writeable)
 from tasprite_factory import (svg_str_to_pixbuf, svg_from_file)
 from tapalette import block_primitives
 from tapaletteview import PaletteView
@@ -4155,6 +4155,23 @@ class TurtleArtWindow():
         if file_name is None:
             file_name, self.load_save_folder = get_save_name(
                 '.t[a-b]', self.load_save_folder, self.save_file_name)
+        if not is_writeable(self.load_save_folder):
+            if self.running_sugar:  # Shouldn't occur in Sugar
+                debug_output('Cannot write data to %s' % self.load_save_folder,
+                             self.running_sugar)
+            else:
+                title = _('Cannot write data to %s') % self.load_save_folder
+                msg = _('Please choose a different save directory')
+                dlg = gtk.MessageDialog(parent=None, type=gtk.MESSAGE_INFO,
+                                        buttons=gtk.BUTTONS_CANCEL,
+                                        message_format=title)
+                dlg.format_secondary_text(msg)
+                dlg.set_title(title)
+                dlg.set_property('skip-taskbar-hint', False)
+
+                resp = dlg.run()
+                dlg.destroy()
+            return
         if file_name is None:
             return
         if not file_name.endswith(SUFFIX):
