@@ -3439,6 +3439,8 @@ class TurtleArtWindow():
                 exit()
             elif keyname == 'g':
                 self._align_to_grid()
+            elif keyname == 's':
+                self.stop_button()
 
         elif keyname == 'Tab':
             # For the first pass, just tab through palettes
@@ -4387,7 +4389,8 @@ class TurtleArtWindow():
         self.status_spr.set_shape(self.status_shapes[shp])
         self.status_spr.set_label_attributes(12.0, rescale=False)
         if shp == 'status':
-            if label in ['True', 'False']:
+            # Make sure True and False get added to the POT file
+            if label in ['True', 'False', _('True'), _('False')]:
                 label = _(label)
             self.status_spr.set_label('"%s"' % (str(label)))
         else:
