@@ -3441,6 +3441,7 @@ class TurtleArtWindow():
                 self._align_to_grid()
             elif keyname == 's':
                 self.stop_button()
+                self.toolbar_shapes['stopiton'].hide()
 
         elif keyname == 'Tab':
             # For the first pass, just tab through palettes
