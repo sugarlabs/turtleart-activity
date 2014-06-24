@@ -1,13 +1,18 @@
 206
 
 ENHANCEMENTS:
+* New translations
 * Slight speed up when loading large projects
 * Added set_font block
 * Added ASCII Art example
 * Autosave in GNOME (Sugar version already autosaves)
+* Add Alt-s keyboard shortcut to stop turtle (w/Andres Aguirre)
 
-BUG FIX:
-* Set default action (YES) for save in GNOME (Andres Aguirre)
+BUG FIXES:
+* Set default action (Yes) for save in GNOME (Andres Aguirre)
+* Don't try writing to READ_ONLY directories
+* Don't try writing to READ_ONLY files
+* Fix problems with PO files
 
 205
 
