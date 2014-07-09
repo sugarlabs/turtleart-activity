@@ -1,7 +1,8 @@
 207
 
-BUG FIX:
+BUG FIXES:
 * Rescale constants when rescaling coordinates
+* Rescale mouse coordinates to match current scale
 
 206
 

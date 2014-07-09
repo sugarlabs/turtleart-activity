@@ -1190,10 +1190,10 @@ class TurtleArtWindow():
         return self.mouse_flag == 1
 
     def get_mouse_x(self):
-        return int(self.mouse_x - (self.canvas.width / 2))
+        return int((self.mouse_x - (self.canvas.width / 2)) / self.coord_scale)
 
     def get_mouse_y(self):
-        return int((self.canvas.height / 2) - self.mouse_y)
+        return int(((self.canvas.height / 2) - self.mouse_y) / self.coord_scale)
 
     def button_press(self, mask, x, y):
         if self.running_turtleart:
