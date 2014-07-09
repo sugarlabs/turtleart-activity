@@ -759,6 +759,8 @@ Would you like to save before quitting?'))
             self.client.set_int(self._COORDINATE_SCALE,
                                 int(self.tw.coord_scale))
 
+        self.tw.recalculate_constants()
+
     def _do_toggle_hover_help_cb(self, button):
         ''' Toggle hover help on/off '''
         self.tw.no_help = not(button.get_active())

@@ -656,10 +656,7 @@ class TurtleArtWindow():
         ''' Check to see if project has any blocks in use '''
         return len(self.just_blocks()) == 1
 
-    def _configure_cb(self, event):
-        ''' Screen size has changed '''
-        self.width = gtk.gdk.screen_width()
-        self.height = gtk.gdk.screen_height()
+    def recalculate_constants(self):
         CONSTANTS['titlex'] = int(-(self.width * TITLEXY[0]) /
                                    (self.coord_scale * 2))
         CONSTANTS['leftx'] = int(-(self.width * TITLEXY[0]) /
@@ -677,12 +674,6 @@ class TurtleArtWindow():
         CONSTANTS['width'] = int(self.width / self.coord_scale)
         CONSTANTS['height'] = int(self.height / self.coord_scale)
 
-        if event is None:
-            return
-
-        if self.running_sugar:
-            self.activity.check_buttons_for_fit()
-
         # If there are any constant blocks on the canvas, relabel them
         for blk in self.just_blocks():
             if blk.name in ['leftpos', 'toppos', 'rightpos', 'bottompos',
@@ -690,6 +681,19 @@ class TurtleArtWindow():
                 blk.spr.set_label('%s = %d' % (block_names[blk.name][0],
                                                CONSTANTS[blk.name]))
                 blk.resize()
+
+
+    def _configure_cb(self, event):
+        ''' Screen size has changed '''
+        self.width = gtk.gdk.screen_width()
+        self.height = gtk.gdk.screen_height()
+        self.recalculate_constants()
+
+        if event is None:
+            return
+
+        if self.running_sugar:
+            self.activity.check_buttons_for_fit()
 
     def _expose_cb(self, win=None, event=None):
         ''' Repaint '''
