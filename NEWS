@@ -1,3 +1,8 @@
+207
+
+BUG FIX:
+* Rescale constants when rescaling coordinates
+
 206
 
 ENHANCEMENTS:
