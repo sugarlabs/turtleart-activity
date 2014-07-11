@@ -451,7 +451,7 @@ class LogoCode:
                 # Anything we need to do specific for this block
                 # before it is run?
                 if current_block.before is not None:
-                    current_block.before(current_block)
+                    current_block.before(self.tw, current_block)
 
             if not self.tw.hide and self.bindex is not None:
                 current_block = self.tw.block_list.list[self.bindex]
@@ -486,7 +486,7 @@ class LogoCode:
                 # Anything we need to do specific for this block
                 # after it is run?
                 if current_block.after is not None:
-                    current_block.after(current_block)
+                    current_block.after(self.tw, current_block)
 
             if self.procstop:
                 break
