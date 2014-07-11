@@ -210,6 +210,7 @@ class Block:
         self._image = None
         self._visible = True
         self.unknown = False  # Block is of unknown style
+        self.private = None  # Private data for block primitive
 
         self._block_methods = {
             'basic-style': self._make_basic_style,
