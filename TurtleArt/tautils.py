@@ -380,7 +380,24 @@ def data_from_string(text):
 
 def data_to_file(data, ta_file):
     ''' Write data to a file. '''
-    file_handle = file(ta_file, 'w')
+    try:
+        file_handle = file(ta_file, 'w')
+    except IOError, e:
+        error_output('Could not write to %s: %s.' % (ta_file, e))
+        tmp_file = os.path.join(os.path.expanduser('~'),
+                                os.path.basename(ta_file))
+        try:
+            debug_outpur('Trying to write to %s' % (tmp_file))
+            file_handle = file(tmp_file, 'w')
+        except IOError, e:
+            error_output('Could not write to %s: %s.' % (tmp_file, e))
+            tmp_file = os.path.join('/tmp', os.path.basename(ta_file))
+            try:
+                debug_outpur('Trying to write to %s' % (tmp_file))
+                file_handle = file(tmp_file, 'w')
+            except IOError, e:
+                error_output('Could not write to %s: %s.' % (tmp_file, e))
+                return
     file_handle.write(data_to_string(data))
     file_handle.close()
 
