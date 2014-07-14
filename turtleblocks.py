@@ -642,6 +642,7 @@ Would you like to save before quitting?'))
         temp_load_save_folder = self.tw.load_save_folder
         temp_save_folder = self.tw.save_folder
         self.tw.load_save_folder = self._autosavedirname
+        self.tw.save_folder = self._autosavedirname
         self.tw.save_file(file_name=os.path.join(
             self._autosavedirname, 'autosave.tb'))
         self.tw.save_folder = temp_save_folder
