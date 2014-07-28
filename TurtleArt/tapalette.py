@@ -178,7 +178,8 @@ class Palette():
                   special_name=None, default=None, prim_name=None,
                   help_string=None, value_block=False, content_block=False,
                   logo_command=None, hidden=False, colors=None,
-                  string_or_number=False):
+                  string_or_number=False, before=None, after=None,
+                  private=None):
         """ Add a new block to the palette """
         block = _ProtoBlock(block_name)
         block.set_style(style)
@@ -218,6 +219,12 @@ class Palette():
             block.set_colors(colors)
         if string_or_number:
             block.set_string_or_number()
+        if before is not None:
+            block.before = before
+        if after is not None:
+            block.after = after
+        if private is not None:
+            block.private = private
         block.set_value_block(value_block)
         block.set_content_block(content_block)
         block.set_palette(self._name)

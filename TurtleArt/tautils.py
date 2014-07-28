@@ -32,6 +32,7 @@ import cairo
 import pickle
 import subprocess
 import os
+import stat
 import string
 import mimetypes
 from gettext import gettext as _
@@ -379,7 +380,24 @@ def data_from_string(text):
 
 def data_to_file(data, ta_file):
     ''' Write data to a file. '''
-    file_handle = file(ta_file, 'w')
+    try:
+        file_handle = file(ta_file, 'w')
+    except IOError, e:
+        error_output('Could not write to %s: %s.' % (ta_file, e))
+        tmp_file = os.path.join(os.path.expanduser('~'),
+                                os.path.basename(ta_file))
+        try:
+            debug_outpur('Trying to write to %s' % (tmp_file))
+            file_handle = file(tmp_file, 'w')
+        except IOError, e:
+            error_output('Could not write to %s: %s.' % (tmp_file, e))
+            tmp_file = os.path.join('/tmp', os.path.basename(ta_file))
+            try:
+                debug_outpur('Trying to write to %s' % (tmp_file))
+                file_handle = file(tmp_file, 'w')
+            except IOError, e:
+                error_output('Could not write to %s: %s.' % (tmp_file, e))
+                return
     file_handle.write(data_to_string(data))
     file_handle.close()
 
@@ -977,3 +995,15 @@ def power_manager_off(status):
                 os.remove(PATH)
             except OSError:
                 pass
+
+
+def is_writeable(path):
+    ''' Make sure we can write to the directory or file '''
+    if not os.path.exists(path):
+        return False
+    stats = os.stat(path)
+    if (stats.st_uid == os.geteuid() and stats.st_mode & stat.S_IWUSR) or \
+       (stats.st_gid == os.getegid() and stats.st_mode & stat.S_IWGRP) or \
+       (stats.st_mode & stat.S_IWOTH):
+        return True
+    return False

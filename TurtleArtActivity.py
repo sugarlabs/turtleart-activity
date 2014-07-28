@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #Copyright (c) 2007, Playful Invention Company
-#Copyright (c) 2008-13, Walter Bender
+#Copyright (c) 2008-14, Walter Bender
 #Copyright (c) 2009-13 Raul Gutierrez Segales
 #Copyright (c) 2012 Alan Aguiar
 
@@ -658,6 +658,9 @@ class TurtleArtActivity(activity.Activity):
             self.tw.turtles.get_active_turtle().set_pen_size(5)
         if HAS_GCONF:
             self.client.set_int(self._COORDINATE_SCALE, self.tw.coord_scale)
+
+        self.tw.recalculate_constants()
+
         # Given the change in how overlays are handled (v123), there is no way
         # to erase and then redraw the overlays.
 

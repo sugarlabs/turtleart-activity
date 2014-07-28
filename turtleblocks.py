@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #Copyright (c) 2007-8, Playful Invention Company
-#Copyright (c) 2008-13, Walter Bender
+#Copyright (c) 2008-14, Walter Bender
 #Copyright (c) 2011 Collabora Ltd. <http://www.collabora.co.uk/>
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,7 +26,6 @@ pygtk.require('2.0')
 import gtk
 import gobject
 import cairo
-
 import getopt
 import sys
 import os
@@ -57,7 +56,7 @@ from gettext import gettext as _
 from TurtleArt.taconstants import (OVERLAY_LAYER, DEFAULT_TURTLE_COLORS,
                                    TAB_LAYER, SUFFIX)
 from TurtleArt.tautils import (data_from_string, get_load_name,
-                               get_path, get_save_name)
+                               get_path, get_save_name, is_writeable)
 from TurtleArt.tapalette import default_values
 from TurtleArt.tawindow import TurtleArtWindow
 from TurtleArt.taexportlogo import save_logo
@@ -236,6 +235,13 @@ return %s(self)" % (p, P, P)
             # max(768, gtk.gdk.screen_height() * 2))
             gtk.gdk.screen_width() * 2,
             gtk.gdk.screen_height() * 2)
+
+        # Make sure the autosave directory is writeable
+        if is_writeable(self._execdirname):
+            self._autosavedirname = self._execdirname
+        else:
+            self._autosavedirname = os.path.expanduser('~')
+
         self.tw = TurtleArtWindow(self.canvas, self._execdirname,
                                   turtle_canvas=self.turtle_canvas,
                                   activity=self, running_sugar=False)
@@ -544,6 +550,7 @@ return %s(self)" % (p, P, P)
                                 buttons=gtk.BUTTONS_YES_NO,
                                 message_format=_('You have unsaved work. \
 Would you like to save before quitting?'))
+        dlg.set_default_response(gtk.RESPONSE_YES)
         if add_cancel:
             dlg.add_button(gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL)
         dlg.set_title(_('Save project?'))
@@ -629,6 +636,17 @@ Would you like to save before quitting?'))
     def _do_save_as_cb(self, widget):
         ''' Callback for save-as project. '''
         self._save_as()
+
+    def autosave(self):
+        ''' Autosave is called each type the run button is pressed '''
+        temp_load_save_folder = self.tw.load_save_folder
+        temp_save_folder = self.tw.save_folder
+        self.tw.load_save_folder = self._autosavedirname
+        self.tw.save_folder = self._autosavedirname
+        self.tw.save_file(file_name=os.path.join(
+            self._autosavedirname, 'autosave.tb'))
+        self.tw.save_folder = temp_save_folder
+        self.tw.load_save_folder = temp_load_save_folder
 
     def _save_as(self):
         ''' Save as is called from callback and quit '''
@@ -744,6 +762,8 @@ Would you like to save before quitting?'))
         if hasattr(self, 'client'):
             self.client.set_int(self._COORDINATE_SCALE,
                                 int(self.tw.coord_scale))
+
+        self.tw.recalculate_constants()
 
     def _do_toggle_hover_help_cb(self, button):
         ''' Toggle hover help on/off '''
@@ -933,7 +953,7 @@ Would you like to save before quitting?'))
             self._sample_box = gtk.EventBox()
             self._sample_window = gtk.ScrolledWindow()
             self._sample_window.set_policy(gtk.POLICY_NEVER,
-                                              gtk.POLICY_AUTOMATIC)
+                                           gtk.POLICY_AUTOMATIC)
             width = gtk.gdk.screen_width() / 2
             height = gtk.gdk.screen_height() / 2
             self._sample_window.set_size_request(width, height)

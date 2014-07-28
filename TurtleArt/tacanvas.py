@@ -29,7 +29,7 @@ import pangocairo
 
 from tautils import get_path
 from taconstants import (Color, TMP_SVG_PATH, DEFAULT_PEN_COLOR,
-                         DEFAULT_BACKGROUND_COLOR)
+                         DEFAULT_BACKGROUND_COLOR, DEFAULT_FONT)
 
 
 def wrap100(n):
@@ -108,6 +108,7 @@ class TurtleGraphics:
         self.textsize = 48
         self._fgrgb = DEFAULT_PEN_COLOR
         self._bgrgb = DEFAULT_BACKGROUND_COLOR
+        self._font = DEFAULT_FONT
         self._shade = 0
         self._color = 0
         self._gray = 100
@@ -310,6 +311,10 @@ class TurtleGraphics:
         if self.cr_svg is not None:
             _draw_pixbuf(self.cr_svg, pixbuf, a, b, x, y, w, h, heading)
 
+    def set_font(self, font_name):
+        ''' Set font used by draw_text '''
+        self._font = str(font_name)
+
     def draw_text(self, label, x, y, size, width, heading, scale):
         ''' Draw text '''
 
@@ -324,7 +329,7 @@ class TurtleGraphics:
 
             cc = pangocairo.CairoContext(cr)
             pl = cc.create_layout()
-            fd = pango.FontDescription('Sans')
+            fd = pango.FontDescription(self._font)
             fd.set_size(final_scale)
             pl.set_font_description(fd)
             if isinstance(label, (str, unicode)):

@@ -443,9 +443,21 @@ class LogoCode:
             if isinstance(token, tuple):
                 (token, self.bindex) = self.iline[0]
 
-            # If the blocks are visible, highlight the current block.
+            if self.bindex is not None:
+                current_block = self.tw.block_list.list[self.bindex]
+                # If the blocks are visible, highlight the current block.
+                if not self.tw.hide:
+                    current_block.highlight()
+                # Anything we need to do specific for this block
+                # before it is run?
+                if current_block.before is not None:
+                    current_block.before(self.tw, current_block)
+
             if not self.tw.hide and self.bindex is not None:
-                self.tw.block_list.list[self.bindex].highlight()
+                current_block = self.tw.block_list.list[self.bindex]
+                current_block.highlight()
+                if current_block.before is not None:
+                    current_block.before(current_block)
 
             # In debugging modes, we pause between steps and show the turtle.
             if self.tw.step_time > 0:
@@ -466,9 +478,15 @@ class LogoCode:
             self.icall(self._eval, call_me)
             yield True
 
-            # Time to unhighlight the current block.
-            if not self.tw.hide and self.bindex is not None:
-                self.tw.block_list.list[self.bindex].unhighlight()
+            if self.bindex is not None:
+                current_block = self.tw.block_list.list[self.bindex]
+                # Time to unhighlight the current block.
+                if not self.tw.hide:
+                    current_block.unhighlight()
+                # Anything we need to do specific for this block
+                # after it is run?
+                if current_block.after is not None:
+                    current_block.after(self.tw, current_block)
 
             if self.procstop:
                 break

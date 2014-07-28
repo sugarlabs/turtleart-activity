@@ -210,6 +210,11 @@ class Block:
         self._image = None
         self._visible = True
         self.unknown = False  # Block is of unknown style
+        # Private method called before a block instance is run
+        self.before = None
+        # Private method called after a block instance is run
+        self.after = None
+        self.private = None  # Private data for block primitive
 
         self._block_methods = {
             'basic-style': self._make_basic_style,

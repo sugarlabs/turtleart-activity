@@ -146,7 +146,6 @@ def _action_stack_to_python(block, tw, name='start'):
 
     # serialize the ASTs into python code
     generated_code = codegen.to_source(action_stack_ast)
-    print generated_code
 
     # wrap the action stack setup code around everything
     name_id = _make_identifier(name)
@@ -234,7 +233,6 @@ def _walk_action_stack(top_block, lc, convert_me=True):
     while dock_queue and conn_queue:
         dock = dock_queue.pop(0)
         conn = conn_queue.pop(0)
-        print conn, dock[0]
         if conn is None or dock[0] == 'unavailable':
             continue
         elif not dock_queue and dock[0] == 'flow':

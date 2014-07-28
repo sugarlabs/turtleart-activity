@@ -1,3 +1,28 @@
+207
+
+ENHANCEMENT:
+* Added 'private' attribute to block class for plugins
+
+BUG FIXES:
+* Rescale constants when rescaling coordinates
+* Rescale mouse coordinates to match current scale
+
+206
+
+ENHANCEMENTS:
+* New translations
+* Slight speed up when loading large projects
+* Added set_font block
+* Added ASCII Art example
+* Autosave in GNOME (Sugar version already autosaves)
+* Add Alt-s keyboard shortcut to stop turtle (w/Andres Aguirre)
+
+BUG FIXES:
+* Set default action (Yes) for save in GNOME (Andres Aguirre)
+* Don't try writing to READ_ONLY directories
+* Don't try writing to READ_ONLY files
+* Fix problems with PO files
+
 205
 
 ENHANCEMENTS:
@@ -11,11 +36,11 @@ BUG FIXES:
 
 204
 
-ENHANCEMENT:
+ENHANCEMENTS:
 * Added new Python block example: text_line.py
 * Added new "simple" Sierpinski triangle example (w/Bernie Innocenti)
 
-BUG FIX:
+BUG FIXES:
 * Fixed regression in trash due to v203
 * Fixed regression in loading of media blocks
 * Fixed regression in picture block prototypes
