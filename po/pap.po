@@ -9,6 +9,7 @@ msgstr ""
 "#-#-#-#-#  pap.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
+<<<<<<< HEAD
 "POT-Creation-Date: 2014-02-16 00:32-0500\n"
 "PO-Revision-Date: 2014-04-29 01:42+0200\n"
 "Last-Translator: Chris <cjl@laptop.org>\n"
@@ -22,6 +23,8 @@ msgstr ""
 "#-#-#-#-#  pap.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
+=======
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 "POT-Creation-Date: 2014-01-07 00:30-0500\n"
 "PO-Revision-Date: 2014-04-02 14:03+0200\n"
 "Last-Translator: June <juneleonora@yahoo.com>\n"
@@ -1427,9 +1430,25 @@ msgstr "limpia"
 msgid "clears the screen and reset the turtle"
 msgstr "ta limpia e pantaya i start e turtuga di nobo"
 
+<<<<<<< HEAD
 #: TurtleArt/tabasics.py:211
 msgid "turns turtle counterclockwise (angle in degrees)"
 msgstr "ta bira turtuga kontra di oloshi (ángulo den grado)"
+=======
+#: TurtleArt/tabasics.py:207 TurtleArt/taconstants.py:139
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:991
+msgid "left"
+msgstr "na man robes"
+
+#: TurtleArt/tabasics.py:211
+msgid "turns turtle counterclockwise (angle in degrees)"
+msgstr "ta bira turtuga kontra di oloshi (ángulo den grado)"
+
+#: TurtleArt/tabasics.py:221 TurtleArt/taconstants.py:141
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1024
+msgid "right"
+msgstr "man drechi"
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 
 #: TurtleArt/tabasics.py:225
 msgid "turns turtle clockwise (angle in degrees)"
@@ -1454,7 +1473,19 @@ msgstr "move turtuga kantu di un arko"
 #: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
 msgid "set xy"
 msgstr "fiha xy"
+<<<<<<< HEAD
 
+=======
+
+#: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
+msgid "x"
+msgstr "x"
+
+#: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
+msgid "y"
+msgstr "y"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:255 TurtleArt/tabasics.py:334
 msgid ""
 "moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
@@ -1508,10 +1539,25 @@ msgstr ""
 #: TurtleArt/tabasics.py:350
 msgid "Palette of pen commands"
 msgstr "palèt di komando pa pèn"
+<<<<<<< HEAD
+=======
+
+#: TurtleArt/tabasics.py:351
+msgid "pen"
+msgstr "pèn"
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 
 #: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:369
 msgid "fill screen"
 msgstr "yena pantaya"
+<<<<<<< HEAD
+=======
+
+#: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:369
+#: TurtleArt/tabasics.py:432 TurtleArt/tawindow.py:4542
+msgid "color"
+msgstr "koló"
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 
 #: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:370
 #: TurtleArt/tabasics.py:444 TurtleArt/tawindow.py:4538
@@ -1522,6 +1568,14 @@ msgstr "tono"
 #: TurtleArt/tabasics.py:360 TurtleArt/tabasics.py:374
 msgid "fills the background with (color, shade)"
 msgstr "ta yena e fondo ku (koló, tono)"
+<<<<<<< HEAD
+=======
+
+#: TurtleArt/tabasics.py:370 TurtleArt/tabasics.py:454
+#: TurtleArt/tawindow.py:4539 TurtleArt/tawindow.py:4544
+msgid "gray"
+msgstr "shinishi"
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 
 #: TurtleArt/tabasics.py:387
 msgid "set color"
@@ -1576,6 +1630,7 @@ msgstr "pen abou"
 #: TurtleArt/tabasics.py:478
 msgid "Turtle will draw when moved."
 msgstr "Turtuga ta pinta ora mov´é."
+<<<<<<< HEAD
 
 #: TurtleArt/tabasics.py:485
 msgid "pen down?"
@@ -1585,6 +1640,17 @@ msgstr "pèn abou?"
 msgid "returns True if pen is down"
 msgstr "ta debolbé Korekto si pèn ta abou"
 
+=======
+
+#: TurtleArt/tabasics.py:485
+msgid "pen down?"
+msgstr "pèn abou?"
+
+#: TurtleArt/tabasics.py:487
+msgid "returns True if pen is down"
+msgstr "ta debolbé Korekto si pèn ta abou"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:494
 msgid "set pen size"
 msgstr "instala tamánjo di pen"
@@ -1747,7 +1813,12 @@ msgstr "max"
 #: TurtleArt/tabasics.py:753
 msgid "returns random number between minimum (top) and maximum (bottom) values"
 msgstr ""
+<<<<<<< HEAD
 "ta debolbé kualke number entre balornan mínimo (te ariba) i máksimo (te abou)"
+=======
+"ta debolbé kualke number entre balornan mínimo (te ariba) i máksimo (te "
+"abou)"
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 
 #: TurtleArt/tabasics.py:775
 msgid "number"
@@ -1896,11 +1967,19 @@ msgstr "stòp e akshon/proseso aktual"
 #: TurtleArt/tabasics.py:1003
 msgid "Palette of variable blocks"
 msgstr "Palèt di blòki variabel"
+<<<<<<< HEAD
 
 #: TurtleArt/tabasics.py:1004
 msgid "blocks"
 msgstr "blòki"
 
+=======
+
+#: TurtleArt/tabasics.py:1004
+msgid "blocks"
+msgstr "blòki"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:1008 pysamples/grecord.py:211
 msgid "start"
 msgstr "start"
@@ -1980,6 +2059,13 @@ msgstr "waarda den"
 msgid "box"
 msgstr "kaha"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:1114 TurtleArt/tawindow.py:5055
+msgid "value"
+msgstr "balor"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:1118 TurtleArt/tabasics.py:1133
 #: TurtleArt/tawindow.py:1582 TurtleArt/tawindow.py:1727
 #: TurtleArt/tawindow.py:2346 TurtleArt/tawindow.py:5020
@@ -2184,6 +2270,7 @@ msgstr "por fabor primi boton di stòp promé ku bo hasi kambio na e programa"
 #: TurtleArt/tawindow.py:1596
 msgid "Select blocks to share"
 msgstr "Selektá blòki pa kompartí"
+<<<<<<< HEAD
 
 #: TurtleArt/tawindow.py:1772 TurtleArtActivity.py:802
 #: TurtleArtActivity.py:961 turtleblocks.py:473
@@ -2203,6 +2290,27 @@ msgstr "Kanselá"
 msgid "Overwrite stack"
 msgstr "Pasa riba stack"
 
+=======
+
+#: TurtleArt/tawindow.py:1772 TurtleArtActivity.py:802
+#: TurtleArtActivity.py:961 turtleblocks.py:473
+msgid "Save stack"
+msgstr "Warda stack"
+
+#: TurtleArt/tawindow.py:1773 TurtleArt/tawindow.py:1787
+msgid "Really overwrite stack?"
+msgstr "Pasa riba e stack?"
+
+#: TurtleArt/tawindow.py:1776 TurtleArt/tawindow.py:1815
+#: gnome_plugins/uploader_plugin.py:144
+msgid "Cancel"
+msgstr "Kanselá"
+
+#: TurtleArt/tawindow.py:1780 TurtleArt/tawindow.py:1790
+msgid "Overwrite stack"
+msgstr "Pasa riba stack"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tawindow.py:1811 TurtleArt/tawindow.py:1819
 #: TurtleArt/tawindow.py:1828 TurtleArtActivity.py:804 turtleblocks.py:475
 msgid "Delete stack"
@@ -2397,6 +2505,7 @@ msgstr "Kompartí blòki desaktivá"
 #: TurtleArtActivity.py:1120 turtleblocks.py:429
 msgid "Save"
 msgstr "Warda"
+<<<<<<< HEAD
 
 #: TurtleArtActivity.py:1152
 msgid "Load"
@@ -2406,6 +2515,17 @@ msgstr "Karga"
 msgid "Open"
 msgstr "Habri"
 
+=======
+
+#: TurtleArtActivity.py:1152
+msgid "Load"
+msgstr "Karga"
+
+#: TurtleArtActivity.py:1169 turtleblocks.py:425
+msgid "Open"
+msgstr "Habri"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArtActivity.py:1236
 msgid "<Ctrl>p"
 msgstr "<Ctrl>p"
@@ -2559,6 +2679,13 @@ msgstr "aselerashon"
 #: plugins/accelerometer/accelerometer.py:65
 msgid "push acceleration in x, y, z to heap"
 msgstr "pusha aselerashon den x, y, z riba stapel"
+<<<<<<< HEAD
+=======
+
+#: plugins/audio_sensors/audio_sensors.py:90 pysamples/grecord.py:206
+msgid "sound"
+msgstr "zonido"
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 
 #: plugins/audio_sensors/audio_sensors.py:91
 msgid "raw microphone input signal"
@@ -2580,11 +2707,27 @@ msgstr "altura di tono"
 #: plugins/audio_sensors/audio_sensors.py:124
 msgid "microphone input pitch"
 msgstr "entrada di altura di tono di mikrofón"
+<<<<<<< HEAD
+=======
+
+#: plugins/audio_sensors/audio_sensors.py:157
+#: plugins/audio_sensors/audio_sensors.py:175
+msgid "resistance"
+msgstr "resistensia"
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 
 #: plugins/audio_sensors/audio_sensors.py:158
 #: plugins/audio_sensors/audio_sensors.py:176
 msgid "microphone input resistance"
 msgstr "resistensia di entrada di mikrófono"
+<<<<<<< HEAD
+=======
+
+#: plugins/audio_sensors/audio_sensors.py:163
+#: plugins/audio_sensors/audio_sensors.py:181
+msgid "voltage"
+msgstr "vòltahe"
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 
 #: plugins/audio_sensors/audio_sensors.py:164
 #: plugins/audio_sensors/audio_sensors.py:182
@@ -2595,6 +2738,18 @@ msgstr "vòltahe di entrada di volúmen"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:133
 msgid "Palette of media objects"
 msgstr "Palèt di opheto di media"
+<<<<<<< HEAD
+=======
+
+#: plugins/camera_sensor/camera_sensor.py:83
+#: plugins/camera_sensor/camera_sensor.py:99
+#: plugins/camera_sensor/camera_sensor.py:136
+#: plugins/camera_sensor/camera_sensor.py:152
+#: plugins/light_sensor/light_sensor.py:58
+#: plugins/light_sensor/light_sensor.py:66
+msgid "brightness"
+msgstr "Brio"
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 
 #: plugins/camera_sensor/camera_sensor.py:85
 #: plugins/camera_sensor/camera_sensor.py:138
@@ -2658,11 +2813,19 @@ msgstr "tòp"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:123
 msgid "top of a collapsible stack"
 msgstr "tòp di e stapel kupor kai aden"
+<<<<<<< HEAD
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:135
 msgid "media"
 msgstr "medionan"
 
+=======
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:135
+msgid "media"
+msgstr "medionan"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:141
 msgid "journal"
 msgstr "diaro"
@@ -2806,6 +2969,13 @@ msgstr "durashon"
 msgid "plays a sinewave at frequency, amplitude, and duration (in seconds)"
 msgstr "ta toka un ola sinus na frekuensia, amplidtudo i durashon (sekònde)"
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:328
+msgid "sensor"
+msgstr "sensor"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:333
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:344
 msgid "button down"
@@ -2866,6 +3036,13 @@ msgstr "turtuga ta mira"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:412
 msgid "returns the color that the turtle \"sees\""
 msgstr "ta duna koló ku turtuga ta \"mira\""
+<<<<<<< HEAD
+=======
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:421
+msgid "time"
+msgstr "tempu"
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:424
 msgid "elapsed time (in seconds) since program started"
@@ -2933,6 +3110,7 @@ msgstr "ta duna Bèrdat si monton ta bashí"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:531
 msgid "save heap to file"
 msgstr "warda monton den fail"
+<<<<<<< HEAD
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:532
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:546
@@ -2944,6 +3122,19 @@ msgstr "nòmber di fail"
 msgid "saves FILO (first-in last-out heap) to a file"
 msgstr "ta warda FILO (monton promé aden-delaster afó) den fail"
 
+=======
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:532
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:546
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:560
+msgid "filename"
+msgstr "nòmber di fail"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:534
+msgid "saves FILO (first-in last-out heap) to a file"
+msgstr "ta warda FILO (monton promé aden-delaster afó) den fail"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:545
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:553
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:559
@@ -2980,11 +3171,19 @@ msgstr "Operadó chr di Python"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:623
 msgid "Python int operator"
 msgstr "Operadó int di Python"
+<<<<<<< HEAD
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:633
 msgid "polar"
 msgstr "polar"
 
+=======
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:633
+msgid "polar"
+msgstr "polar"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:635
 msgid "displays polar coordinates"
 msgstr "mustra kordinantenan polar"
@@ -3009,8 +3208,13 @@ msgid ""
 "a programmable block: used to add advanced multi-variable math equations, e."
 "g., sqrt(x*x+y*y)"
 msgstr ""
+<<<<<<< HEAD
 "un blòki programabel: usá pa agregá ekuashon matemátiko multi-variable, p."
 "e., sin(x)sqrt(x*x+y*y)"
+=======
+"un blòki programabel: usá pa agregá ekuashon matemátiko multi-variable, "
+"p.e., sin(x)sqrt(x*x+y*y)"
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:676
 msgid ""
@@ -3192,6 +3396,13 @@ msgstr "bòm"
 msgid "ycor of bottom of screen"
 msgstr "ycor di fondo di pantaya"
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1013
+msgid "width"
+msgstr "hanchura"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1016
 msgid "the canvas width"
 msgstr "hanchura di kèimas"
@@ -3204,6 +3415,13 @@ msgstr "xcor di banda drechi di pantaya"
 msgid "ycor of top of screen"
 msgstr "ycor di e tòp di pantaya"
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1046
+msgid "height"
+msgstr "haltura"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1049
 msgid "the canvas height"
 msgstr "haltura di kanvas"
@@ -3231,11 +3449,19 @@ msgstr "man drechi x"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1119
 msgid "bottom y"
 msgstr "parti abou y"
+<<<<<<< HEAD
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1138
 msgid "Palette of user-defined operators"
 msgstr "Palèt di operadó definí pa usuario"
 
+=======
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1138
+msgid "Palette of user-defined operators"
+msgstr "Palèt di operadó definí pa usuario"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1139
 msgid "my blocks"
 msgstr "mi blòkinan"
@@ -3321,11 +3547,19 @@ msgstr "No por skibi den direktorio di konfigurashon: %s"
 #: turtleblocks.py:422
 msgid "New"
 msgstr "Nobo"
+<<<<<<< HEAD
 
 #: turtleblocks.py:423
 msgid "Show sample projects"
 msgstr "Mustra ehèmpelnan di proyekto"
 
+=======
+
+#: turtleblocks.py:423
+msgid "Show sample projects"
+msgstr "Mustra ehèmpelnan di proyekto"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: turtleblocks.py:430
 msgid "Save as"
 msgstr "Warda komo"
@@ -3333,6 +3567,7 @@ msgstr "Warda komo"
 #: turtleblocks.py:434
 msgid "Export as"
 msgstr "Eksportá komo"
+<<<<<<< HEAD
 
 #. TRANS: ODP is Open Office presentation
 #: turtleblocks.py:442
@@ -3343,6 +3578,18 @@ msgstr "ODP"
 msgid "Logo"
 msgstr "Logo"
 
+=======
+
+#. TRANS: ODP is Open Office presentation
+#: turtleblocks.py:442
+msgid "ODP"
+msgstr "ODP"
+
+#: turtleblocks.py:444
+msgid "Logo"
+msgstr "Logo"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: turtleblocks.py:448
 msgid "Quit"
 msgstr "Sera"
@@ -3386,6 +3633,51 @@ msgstr "Bo tin trabou ku no ta wardá. Bo ke ward'é promé bo sali?"
 #: turtleblocks.py:548
 msgid "Save project?"
 msgstr "Warda proyekto?"
+<<<<<<< HEAD
+=======
+
+#: turtleblocks.py:558
+#, python-format
+#, python-format, 
+msgid "Plugin %s already installed"
+msgstr "Plugin %s ta instalá kaba."
+
+#: turtleblocks.py:687
+msgid "myproject"
+msgstr "miproyekto"
+
+#~ msgid "Load project"
+#~ msgstr "Karga proyekto"
+
+#~ msgid "set text color"
+#~ msgstr "instala color di teksto"
+
+#, fuzzy
+#~ msgid "sets color of text drawn by the turtle"
+#~ msgstr "instala kóló di e linia dibuga ku e turtuga"
+
+#~ msgid "set text size"
+#~ msgstr "instala tamánjo di teksto"
+
+#, fuzzy
+#~ msgid "sets size of text drawn by the turtle"
+#~ msgstr "instala midí di e linia dibuga ku e turtuga"
+
+#~ msgid "presentation 1x1"
+#~ msgstr "presentashon 1x1"
+
+#~ msgid "presentation 2x1"
+#~ msgstr "presentashon 2x1"
+
+#~ msgid "presentation 1x2"
+#~ msgstr "presentashon 1x2"
+
+#~ msgid "presentation 2x2"
+#~ msgstr "presentashon 2x2"
+
+#~ msgid "Turtle Art"
+#~ msgstr "Arte di turtuga"
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 
 #: turtleblocks.py:558
 #, python-format

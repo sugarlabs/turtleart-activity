@@ -1503,10 +1503,26 @@ msgstr "efface"
 msgid "clears the screen and reset the turtle"
 msgstr "effacer l'écran et réinitialiser la tortue"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:207 TurtleArt/taconstants.py:139
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:991
+msgid "left"
+msgstr "gauche"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:211
 msgid "turns turtle counterclockwise (angle in degrees)"
 msgstr "pivoter la tortue dans le sens anti-horaire (angle en degrés)"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:221 TurtleArt/taconstants.py:141
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1024
+msgid "right"
+msgstr "droite"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:225
 msgid "turns turtle clockwise (angle in degrees)"
 msgstr "pivoter la tortue dans le sens horaire (angle en degrés)"
@@ -1531,6 +1547,17 @@ msgstr "déplacer la tortue le long d'un arc"
 msgid "set xy"
 msgstr "fixe xy"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
+msgid "x"
+msgstr "x"
+
+#: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
+msgid "y"
+msgstr "y"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:255 TurtleArt/tabasics.py:334
 msgid ""
 "moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
@@ -1587,10 +1614,25 @@ msgstr ""
 msgid "Palette of pen commands"
 msgstr "Palette de commandes stylet"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:351
+msgid "pen"
+msgstr "crayon"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:369
 msgid "fill screen"
 msgstr "peint le fond"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:369
+#: TurtleArt/tabasics.py:432 TurtleArt/tawindow.py:4542
+msgid "color"
+msgstr "couleur"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:370
 #: TurtleArt/tabasics.py:444 TurtleArt/tawindow.py:4538
 #: TurtleArt/tawindow.py:4543
@@ -1601,6 +1643,14 @@ msgstr "teinte"
 msgid "fills the background with (color, shade)"
 msgstr "remplit l'arrière plan (couleur, teinte)"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:370 TurtleArt/tabasics.py:454
+#: TurtleArt/tawindow.py:4539 TurtleArt/tawindow.py:4544
+msgid "gray"
+msgstr "gris"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:387
 msgid "set color"
 msgstr "fixe la couleur"
@@ -1704,11 +1754,19 @@ msgstr ""
 #: TurtleArt/tabasics.py:544
 msgid "Palette of pen colors"
 msgstr "Palette de couleurs du stylet"
+<<<<<<< HEAD
 
 #: TurtleArt/tabasics.py:545
 msgid "colors"
 msgstr "couleurs"
 
+=======
+
+#: TurtleArt/tabasics.py:545
+msgid "colors"
+msgstr "couleurs"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:550
 msgid "red"
 msgstr "rouge"
@@ -2068,6 +2126,13 @@ msgstr "enregistre"
 msgid "box"
 msgstr "boîte"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:1114 TurtleArt/tawindow.py:5055
+msgid "value"
+msgstr "valeur"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:1118 TurtleArt/tabasics.py:1133
 #: TurtleArt/tawindow.py:1582 TurtleArt/tawindow.py:1727
 #: TurtleArt/tawindow.py:2346 TurtleArt/tawindow.py:5020
@@ -2448,6 +2513,7 @@ msgstr "Enregistrer au format ODP"
 #: TurtleArtActivity.py:1202
 msgid "Save as Logo"
 msgstr "Enregistrer en Logo"
+<<<<<<< HEAD
 
 #: TurtleArtActivity.py:936 TurtleArtActivity.py:1144
 #: TurtleArtActivity.py:1205
@@ -2464,6 +2530,24 @@ msgstr "Enregistrer l'instantané"
 msgid "Add project"
 msgstr "Ajouter un projet"
 
+=======
+
+#: TurtleArtActivity.py:936 TurtleArtActivity.py:1144
+#: TurtleArtActivity.py:1205
+msgid "Save as Python"
+msgstr "Enregistrer en Python"
+
+#: TurtleArtActivity.py:937 TurtleArtActivity.py:1148
+#: TurtleArtActivity.py:1209
+msgid "Save snapshot"
+msgstr "Enregistrer l'instantané"
+
+#: TurtleArtActivity.py:938 TurtleArtActivity.py:1172
+#: TurtleArtActivity.py:1211 turtleblocks.py:426
+msgid "Add project"
+msgstr "Ajouter un projet"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArtActivity.py:941 TurtleArtActivity.py:1177
 #: TurtleArtActivity.py:1217 turtleblocks.py:427
 msgid "Load plugin"
@@ -2648,6 +2732,13 @@ msgstr "accélération"
 msgid "push acceleration in x, y, z to heap"
 msgstr "pousse l'accélération sur x, y, z sur le tas"
 
+<<<<<<< HEAD
+=======
+#: plugins/audio_sensors/audio_sensors.py:90 pysamples/grecord.py:206
+msgid "sound"
+msgstr "son"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/audio_sensors/audio_sensors.py:91
 msgid "raw microphone input signal"
 msgstr "signal d'entrée micro brut"
@@ -2669,11 +2760,27 @@ msgstr "hauteur"
 msgid "microphone input pitch"
 msgstr "pitch d'entrée du micro"
 
+<<<<<<< HEAD
+=======
+#: plugins/audio_sensors/audio_sensors.py:157
+#: plugins/audio_sensors/audio_sensors.py:175
+msgid "resistance"
+msgstr "résistance"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/audio_sensors/audio_sensors.py:158
 #: plugins/audio_sensors/audio_sensors.py:176
 msgid "microphone input resistance"
 msgstr "résistance d'entrée du micro"
 
+<<<<<<< HEAD
+=======
+#: plugins/audio_sensors/audio_sensors.py:163
+#: plugins/audio_sensors/audio_sensors.py:181
+msgid "voltage"
+msgstr "tension"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/audio_sensors/audio_sensors.py:164
 #: plugins/audio_sensors/audio_sensors.py:182
 msgid "microphone input voltage"
@@ -2684,6 +2791,18 @@ msgstr "tension d'entrée du micro"
 msgid "Palette of media objects"
 msgstr "Palette d'objets multimédia"
 
+<<<<<<< HEAD
+=======
+#: plugins/camera_sensor/camera_sensor.py:83
+#: plugins/camera_sensor/camera_sensor.py:99
+#: plugins/camera_sensor/camera_sensor.py:136
+#: plugins/camera_sensor/camera_sensor.py:152
+#: plugins/light_sensor/light_sensor.py:58
+#: plugins/light_sensor/light_sensor.py:66
+msgid "brightness"
+msgstr "luminosité"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/camera_sensor/camera_sensor.py:85
 #: plugins/camera_sensor/camera_sensor.py:138
 msgid "light level detected by camera"
@@ -2898,6 +3017,13 @@ msgstr ""
 "joue une onde sinusoïdale à une fréquence, une amplitude et une durée (en "
 "secondes)"
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:328
+msgid "sensor"
+msgstr "capteur"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:333
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:344
 msgid "button down"
@@ -2960,6 +3086,13 @@ msgstr "tortue voit"
 msgid "returns the color that the turtle \"sees\""
 msgstr "retourne la couleur \"vue\" par la tortue"
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:421
+msgid "time"
+msgstr "temps"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:424
 msgid "elapsed time (in seconds) since program started"
 msgstr "temps écoulé (en secondes) depuis le démarrage du programme"
@@ -3281,6 +3414,13 @@ msgstr "bas"
 msgid "ycor of bottom of screen"
 msgstr "coord. y du bas de l'écran"
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1013
+msgid "width"
+msgstr "largeur"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1016
 msgid "the canvas width"
 msgstr "largeur du canevas"
@@ -3293,6 +3433,13 @@ msgstr "coord. x de la droite de l'écran"
 msgid "ycor of top of screen"
 msgstr "coord. y du haut de l'écran"
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1046
+msgid "height"
+msgstr "hauteur"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1049
 msgid "the canvas height"
 msgstr "hauteur du canevas"
@@ -3480,12 +3627,61 @@ msgstr "Sauvegarder le projet ?"
 
 #: turtleblocks.py:558
 #, python-format
+<<<<<<< HEAD
+=======
+#, python-format,
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 msgid "Plugin %s already installed"
 msgstr "Le module %s est déjà installé"
 
 #: turtleblocks.py:687
 msgid "myproject"
 msgstr "monprojet"
+<<<<<<< HEAD
+=======
+
+#~ msgid "Load project"
+#~ msgstr "Charger un projet"
+
+#~ msgid "Hide sample projects"
+#~ msgstr "Masquer les projets exemple"
+
+#~ msgid "palette"
+#~ msgstr "palette"
+
+#~ msgid "make a uturn"
+#~ msgstr "Faire demi-tour"
+
+#~ msgid "u turn"
+#~ msgstr "Demi-tour"
+
+#~ msgid "set text color"
+#~ msgstr "définir la couleur du texte"
+
+#~ msgid "sets color of text drawn by the turtle"
+#~ msgstr "définit la couleur du texte dessiné par la tortue"
+
+#~ msgid "set text size"
+#~ msgstr "fixe la taille du texte"
+
+#~ msgid "sets size of text drawn by the turtle"
+#~ msgstr "définit la taille du texte dessiné par la tortue"
+
+#~ msgid "presentation 1x1"
+#~ msgstr "présentation 1x1"
+
+#~ msgid "presentation 2x1"
+#~ msgstr "présentation 2x1"
+
+#~ msgid "presentation 1x2"
+#~ msgstr "présentation 1x2"
+
+#~ msgid "presentation 2x2"
+#~ msgstr "présentation 2x2"
+
+#~ msgid "Turtle Art"
+#~ msgstr "ArtTortue"
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 
 #~ msgid "Load project"
 #~ msgstr "Charger un projet"
@@ -3654,6 +3850,15 @@ msgstr "monprojet"
 #~ msgid "PORT 1 of the brick"
 #~ msgstr "PORT 1 de la brique"
 
+<<<<<<< HEAD
+=======
+#~ msgid "read"
+#~ msgstr "lire"
+
+#~ msgid "Read sensor output."
+#~ msgstr "Lire la sortie du capteur"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #~ msgid "PORT 2"
 #~ msgstr "PORT 2"
 

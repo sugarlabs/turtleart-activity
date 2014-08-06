@@ -1415,10 +1415,26 @@ msgstr "clean"
 msgid "clears the screen and reset the turtle"
 msgstr "clears the screen and reset the turtle"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:207 TurtleArt/taconstants.py:139
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:991
+msgid "left"
+msgstr "left"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:211
 msgid "turns turtle counterclockwise (angle in degrees)"
 msgstr "turns turtle counterclockwise (angle in degrees)"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:221 TurtleArt/taconstants.py:141
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1024
+msgid "right"
+msgstr "right"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:225
 msgid "turns turtle clockwise (angle in degrees)"
 msgstr "turns turtle clockwise (angle in degrees)"
@@ -1443,6 +1459,17 @@ msgstr "moves turtle along an arc"
 msgid "set xy"
 msgstr "set xy"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
+msgid "x"
+msgstr "x"
+
+#: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
+msgid "y"
+msgstr "y"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:255 TurtleArt/tabasics.py:334
 msgid ""
 "moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
@@ -1497,10 +1524,25 @@ msgstr ""
 msgid "Palette of pen commands"
 msgstr "Palette of pen commands"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:351
+msgid "pen"
+msgstr "pen"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:369
 msgid "fill screen"
 msgstr "fill screen"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:369
+#: TurtleArt/tabasics.py:432 TurtleArt/tawindow.py:4542
+msgid "color"
+msgstr "color"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:370
 #: TurtleArt/tabasics.py:444 TurtleArt/tawindow.py:4538
 #: TurtleArt/tawindow.py:4543
@@ -1511,6 +1553,14 @@ msgstr "shade"
 msgid "fills the background with (color, shade)"
 msgstr "fills the background with (color, shade)"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:370 TurtleArt/tabasics.py:454
+#: TurtleArt/tawindow.py:4539 TurtleArt/tawindow.py:4544
+msgid "gray"
+msgstr "gray"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:387
 msgid "set color"
 msgstr "set color"
@@ -1962,6 +2012,13 @@ msgstr "store in"
 msgid "box"
 msgstr "box"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:1114 TurtleArt/tawindow.py:5055
+msgid "value"
+msgstr "value"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:1118 TurtleArt/tabasics.py:1133
 #: TurtleArt/tawindow.py:1582 TurtleArt/tawindow.py:1727
 #: TurtleArt/tawindow.py:2346 TurtleArt/tawindow.py:5020
@@ -2347,6 +2404,7 @@ msgstr "Save as Logo"
 #: TurtleArtActivity.py:1205
 msgid "Save as Python"
 msgstr "Save as Python"
+<<<<<<< HEAD
 
 #: TurtleArtActivity.py:937 TurtleArtActivity.py:1148
 #: TurtleArtActivity.py:1209
@@ -2358,6 +2416,19 @@ msgstr "Save snapshot"
 msgid "Add project"
 msgstr "Add project"
 
+=======
+
+#: TurtleArtActivity.py:937 TurtleArtActivity.py:1148
+#: TurtleArtActivity.py:1209
+msgid "Save snapshot"
+msgstr "Save snapshot"
+
+#: TurtleArtActivity.py:938 TurtleArtActivity.py:1172
+#: TurtleArtActivity.py:1211 turtleblocks.py:426
+msgid "Add project"
+msgstr "Add project"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArtActivity.py:941 TurtleArtActivity.py:1177
 #: TurtleArtActivity.py:1217 turtleblocks.py:427
 msgid "Load plugin"
@@ -2542,6 +2613,13 @@ msgstr "acceleration"
 msgid "push acceleration in x, y, z to heap"
 msgstr "push acceleration in x, y, z to heap"
 
+<<<<<<< HEAD
+=======
+#: plugins/audio_sensors/audio_sensors.py:90 pysamples/grecord.py:206
+msgid "sound"
+msgstr "sound"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/audio_sensors/audio_sensors.py:91
 msgid "raw microphone input signal"
 msgstr "raw microphone input signal"
@@ -2563,11 +2641,27 @@ msgstr "pitch"
 msgid "microphone input pitch"
 msgstr "microphone input pitch"
 
+<<<<<<< HEAD
+=======
+#: plugins/audio_sensors/audio_sensors.py:157
+#: plugins/audio_sensors/audio_sensors.py:175
+msgid "resistance"
+msgstr "resistance"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/audio_sensors/audio_sensors.py:158
 #: plugins/audio_sensors/audio_sensors.py:176
 msgid "microphone input resistance"
 msgstr "microphone input resistance"
 
+<<<<<<< HEAD
+=======
+#: plugins/audio_sensors/audio_sensors.py:163
+#: plugins/audio_sensors/audio_sensors.py:181
+msgid "voltage"
+msgstr "voltage"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/audio_sensors/audio_sensors.py:164
 #: plugins/audio_sensors/audio_sensors.py:182
 msgid "microphone input voltage"
@@ -2578,6 +2672,18 @@ msgstr "microphone input voltage"
 msgid "Palette of media objects"
 msgstr "Palette of media objects"
 
+<<<<<<< HEAD
+=======
+#: plugins/camera_sensor/camera_sensor.py:83
+#: plugins/camera_sensor/camera_sensor.py:99
+#: plugins/camera_sensor/camera_sensor.py:136
+#: plugins/camera_sensor/camera_sensor.py:152
+#: plugins/light_sensor/light_sensor.py:58
+#: plugins/light_sensor/light_sensor.py:66
+msgid "brightness"
+msgstr "brightness"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/camera_sensor/camera_sensor.py:85
 #: plugins/camera_sensor/camera_sensor.py:138
 msgid "light level detected by camera"
@@ -2786,6 +2892,13 @@ msgstr "duration"
 msgid "plays a sinewave at frequency, amplitude, and duration (in seconds)"
 msgstr "plays a sinewave at frequency, amplitude, and duration (in seconds)"
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:328
+msgid "sensor"
+msgstr "sensor"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:333
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:344
 msgid "button down"
@@ -2847,6 +2960,13 @@ msgstr "turtle sees"
 msgid "returns the color that the turtle \"sees\""
 msgstr "returns the color that the turtle \"sees\""
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:421
+msgid "time"
+msgstr "time"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:424
 msgid "elapsed time (in seconds) since program started"
 msgstr "elapsed time (in seconds) since program started"
@@ -2997,6 +3117,13 @@ msgstr ""
 msgid "Cartesian"
 msgstr "Cartesian"
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:686
+msgid "Cartesian"
+msgstr "Cartesian"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:688
 msgid "displays Cartesian coordinates"
 msgstr "displays Cartesian coordinates"
@@ -3165,6 +3292,13 @@ msgstr "bottom"
 msgid "ycor of bottom of screen"
 msgstr "ycor of bottom of screen"
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1013
+msgid "width"
+msgstr "width"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1016
 msgid "the canvas width"
 msgstr "the canvas width"
@@ -3177,6 +3311,13 @@ msgstr "xcor of right of screen"
 msgid "ycor of top of screen"
 msgstr "ycor of top of screen"
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1046
+msgid "height"
+msgstr "height"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1049
 msgid "the canvas height"
 msgstr "the canvas height"
@@ -3362,6 +3503,10 @@ msgstr "Save project?"
 
 #: turtleblocks.py:558
 #, python-format
+<<<<<<< HEAD
+=======
+#, python-format,
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 msgid "Plugin %s already installed"
 msgstr "Plugin %s already installed"
 
@@ -3371,6 +3516,48 @@ msgstr "myproject"
 
 #~ msgid "Load project"
 #~ msgstr "Load project"
+<<<<<<< HEAD
+=======
+
+#~ msgid "Hide sample projects"
+#~ msgstr "Hide sample projects"
+
+#~ msgid "palette"
+#~ msgstr "palette"
+
+#~ msgid "make a uturn"
+#~ msgstr "make a U-turn"
+
+#~ msgid "u turn"
+#~ msgstr "U-turn"
+
+#~ msgid "set text color"
+#~ msgstr "set text color"
+
+#~ msgid "sets color of text drawn by the turtle"
+#~ msgstr "sets color of text drawn by the turtle"
+
+#~ msgid "set text size"
+#~ msgstr "set text size"
+
+#~ msgid "sets size of text drawn by the turtle"
+#~ msgstr "sets size of text drawn by the turtle"
+
+#~ msgid "presentation 1x1"
+#~ msgstr "presentation 1x1"
+
+#~ msgid "presentation 2x1"
+#~ msgstr "presentation 2x1"
+
+#~ msgid "presentation 1x2"
+#~ msgstr "presentation 1x2"
+
+#~ msgid "presentation 2x2"
+#~ msgstr "presentation 2x2"
+
+#~ msgid "Turtle Art"
+#~ msgstr "Turtle Art"
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 
 #~ msgid "Hide sample projects"
 #~ msgstr "Hide sample projects"
@@ -3533,6 +3720,15 @@ msgstr "myproject"
 #~ msgid "PORT 1 of the brick"
 #~ msgstr "PORT 1 of the brick"
 
+<<<<<<< HEAD
+=======
+#~ msgid "read"
+#~ msgstr "read"
+
+#~ msgid "Read sensor output."
+#~ msgstr "Read sensor output."
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #~ msgid "PORT 2"
 #~ msgstr "PORT 2"
 
@@ -3863,10 +4059,15 @@ msgstr "myproject"
 #~ msgid "restore last"
 #~ msgstr "restore last"
 
+<<<<<<< HEAD
 #~ msgid ""
 #~ "a programmable block: used to add advanced math equations, e.g., sin(x)"
 #~ msgstr ""
 #~ "a programmable block: used to add advanced math equations, e.g., sin(x)"
+=======
+#~ msgid "a programmable block: used to add advanced math equations, e.g., sin(x)"
+#~ msgstr "a programmable block: used to add advanced math equations, e.g., sin(x)"
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 
 #~ msgid "text size"
 #~ msgstr "text size"
@@ -3913,6 +4114,12 @@ msgstr "myproject"
 #~ msgid "holds current text size (can be used in place of a number block)"
 #~ msgstr "holds current text size (can be used in place of a number block)"
 
+<<<<<<< HEAD
+=======
+#~ msgid "name"
+#~ msgstr "name"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #~ msgid "stack 2"
 #~ msgstr "stack 2"
 

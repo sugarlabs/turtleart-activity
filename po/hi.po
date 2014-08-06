@@ -1263,6 +1263,21 @@ msgstr ""
 
 msgid "Expeyes device not found"
 msgstr ""
+<<<<<<< HEAD
+=======
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-12-05 00:30-0500\n"
+"PO-Revision-Date: 2011-12-04 06:20+0200\n"
+"Last-Translator: satyaakam goswami <satyaakam@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: hi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.0.5\n"
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 
 #. TRANS: "name" option from activity.info file
 #, fuzzy
@@ -1312,10 +1327,26 @@ msgstr "साफ"
 msgid "clears the screen and reset the turtle"
 msgstr "स्क्रीन को साफ करता है व टर्टल को रीसेट करता है"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:207 TurtleArt/taconstants.py:138
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:973
+msgid "left"
+msgstr "बायाँ"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:211
 msgid "turns turtle counterclockwise (angle in degrees)"
 msgstr "टर्टल घड़ी के विपरीत दिशा में घुमाता है (कोण डिग्री में)"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:221 TurtleArt/taconstants.py:140
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1006
+msgid "right"
+msgstr "दायाँ"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:225
 msgid "turns turtle clockwise (angle in degrees)"
 msgstr "टर्टल को घड़ी की दिशा में घुमाता है (कोण डिग्री में)"
@@ -1340,6 +1371,17 @@ msgstr "चाप के साथ-साथ टर्टल को खिसक
 msgid "set xy"
 msgstr "xy सेट करें"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
+msgid "x"
+msgstr "एक्स"
+
+#: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
+msgid "y"
+msgstr "वाई"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:255 TurtleArt/tabasics.py:334
 msgid ""
 "moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
@@ -1398,6 +1440,14 @@ msgstr "खोलें"
 msgid "fill screen"
 msgstr "स्क्रीन भरें"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:369
+#: TurtleArt/tabasics.py:432 TurtleArt/tawindow.py:4483
+msgid "color"
+msgstr "रंग"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:370
 #: TurtleArt/tabasics.py:444 TurtleArt/tawindow.py:4479
 #: TurtleArt/tawindow.py:4484
@@ -1408,6 +1458,14 @@ msgstr "छाया"
 msgid "fills the background with (color, shade)"
 msgstr "पृष्ठभूमि को (रंग, छाया) से भरता है"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:370 TurtleArt/tabasics.py:454
+#: TurtleArt/tawindow.py:4480 TurtleArt/tawindow.py:4485
+msgid "gray"
+msgstr "भूरा"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:387
 msgid "set color"
 msgstr "रंग सेट करें"
@@ -1860,6 +1918,13 @@ msgstr "में भंडारित करें"
 msgid "box"
 msgstr "बक्सा"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:1114 TurtleArt/tawindow.py:4847
+msgid "value"
+msgstr "मान"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:1118 TurtleArt/tabasics.py:1133
 #: TurtleArt/tawindow.py:1581 TurtleArt/tawindow.py:1715
 #: TurtleArt/tawindow.py:2334 TurtleArt/tawindow.py:4812
@@ -2253,6 +2318,7 @@ msgstr "लोड Python ब्लॉक"
 
 #: TurtleArtActivity.py:1049
 msgid "Palettes"
+<<<<<<< HEAD
 msgstr ""
 
 #: TurtleArtActivity.py:1067
@@ -2275,6 +2341,30 @@ msgstr "खोलें"
 msgid "Add project"
 msgstr ""
 
+=======
+msgstr ""
+
+#: TurtleArtActivity.py:1067
+msgid "Sharing blocks disabled"
+msgstr ""
+
+#: TurtleArtActivity.py:1072 turtleblocks.py:429
+msgid "Save"
+msgstr "सहेजें"
+
+#: TurtleArtActivity.py:1091
+msgid "Load"
+msgstr ""
+
+#: TurtleArtActivity.py:1108 turtleblocks.py:425
+msgid "Open"
+msgstr "खोलें"
+
+#: TurtleArtActivity.py:1137 turtleblocks.py:426
+msgid "Add project"
+msgstr ""
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArtActivity.py:1161
 msgid "<Ctrl>p"
 msgstr "<Ctrl>p"
@@ -2429,6 +2519,13 @@ msgstr "त्वरण"
 msgid "push acceleration in x, y, z to heap"
 msgstr "x, y, Z में त्वरण ढेर करने के लिए धक्का"
 
+<<<<<<< HEAD
+=======
+#: plugins/audio_sensors/audio_sensors.py:90 pysamples/grecord.py:206
+msgid "sound"
+msgstr "ध्वनि"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/audio_sensors/audio_sensors.py:91
 msgid "raw microphone input signal"
 msgstr "कच्चे माइक्रोफोन इनपुट संकेत"
@@ -2450,11 +2547,27 @@ msgstr "पिच"
 msgid "microphone input pitch"
 msgstr "माइक्रोफ़ोन इनपुट पिच"
 
+<<<<<<< HEAD
+=======
+#: plugins/audio_sensors/audio_sensors.py:157
+#: plugins/audio_sensors/audio_sensors.py:175
+msgid "resistance"
+msgstr "प्रतिरोधक"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/audio_sensors/audio_sensors.py:158
 #: plugins/audio_sensors/audio_sensors.py:176
 msgid "microphone input resistance"
 msgstr "माइक्रोफोन इनपुट प्रतिरोध"
 
+<<<<<<< HEAD
+=======
+#: plugins/audio_sensors/audio_sensors.py:163
+#: plugins/audio_sensors/audio_sensors.py:181
+msgid "voltage"
+msgstr "वोल्टेज"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/audio_sensors/audio_sensors.py:164
 #: plugins/audio_sensors/audio_sensors.py:182
 msgid "microphone input voltage"
@@ -2465,6 +2578,18 @@ msgstr "माइक्रोफ़ोन इनपुट आवाज़ नि
 msgid "Palette of media objects"
 msgstr "मीडिया वस्तुओं की पैलेट"
 
+<<<<<<< HEAD
+=======
+#: plugins/camera_sensor/camera_sensor.py:83
+#: plugins/camera_sensor/camera_sensor.py:99
+#: plugins/camera_sensor/camera_sensor.py:136
+#: plugins/camera_sensor/camera_sensor.py:152
+#: plugins/light_sensor/light_sensor.py:58
+#: plugins/light_sensor/light_sensor.py:66
+msgid "brightness"
+msgstr "चमक"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/camera_sensor/camera_sensor.py:85
 #: plugins/camera_sensor/camera_sensor.py:138
 msgid "light level detected by camera"
@@ -2671,6 +2796,13 @@ msgstr "अवधि"
 msgid "plays a sinewave at frequency, amplitude, and duration (in seconds)"
 msgstr "plays a sinewave at frequency, amplitude, and duration (in seconds)"
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:328
+msgid "sensor"
+msgstr ""
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:333
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:344
 msgid "button down"
@@ -2734,6 +2866,13 @@ msgstr "कछुआ देखता है"
 msgid "returns the color that the turtle \"sees\""
 msgstr "रिटर्न रंग कि कछुआ \"देखता\""
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:421
+msgid "time"
+msgstr "समय"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:424
 msgid "elapsed time (in seconds) since program started"
 msgstr "बीता समय (सेकंड में) के बाद कार्यक्रम शुरू"
@@ -2872,8 +3011,13 @@ msgid ""
 "a programmable block: used to add advanced multi-variable math equations, e."
 "g., sin(x+y+z)"
 msgstr ""
+<<<<<<< HEAD
 "एक प्रोग्राम किया जा सकने वाला पिण्ड: उन्नत बहु-चर गणित समीकरण जोड़ने में प्रयोग में लिया "
 "जाता है, उदा. sin(x+y+z)"
+=======
+"एक प्रोग्राम किया जा सकने वाला पिण्ड: उन्नत बहु-चर गणित समीकरण जोड़ने में "
+"प्रयोग में लिया जाता है, उदा. sin(x+y+z)"
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:669
 msgid "Cartesian"
@@ -3050,6 +3194,13 @@ msgstr "तल"
 msgid "ycor of bottom of screen"
 msgstr "स्क्रीन के तल का वाय निर्देशांक"
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:995
+msgid "width"
+msgstr "चौड़ाई"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:998
 msgid "the canvas width"
 msgstr "केनवस की चौड़ाई"
@@ -3062,6 +3213,13 @@ msgstr "स्क्रीन के दाएँ का एक्स निर�
 msgid "ycor of top of screen"
 msgstr "स्क्रीन के शीर्ष का वाय निर्देशांक"
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1028
+msgid "height"
+msgstr "ऊँचाई"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1031
 msgid "the canvas height"
 msgstr "केनवस की ऊँचाई"
@@ -3246,6 +3404,36 @@ msgstr ""
 
 #~ msgid "set text color"
 #~ msgstr "पाठ रंग सेट करें"
+<<<<<<< HEAD
+=======
+
+#~ msgid "sets color of text drawn by the turtle"
+#~ msgstr "टर्टल द्वारा लिखे जाने वाले पाठ का रंग सेट करता है"
+
+#~ msgid "set text size"
+#~ msgstr "पाठ आकार सेट करें"
+
+#~ msgid "sets size of text drawn by the turtle"
+#~ msgstr "टर्टल द्वारा लिखे जाने वाले पाठ का आकार सेट करता है"
+
+#~ msgid "presentation 1x1"
+#~ msgstr "प्रस्तुतिकरण 1x1"
+
+#~ msgid "presentation 2x1"
+#~ msgstr "प्रस्तुतिकरण 2x1"
+
+#~ msgid "presentation 1x2"
+#~ msgstr "प्रस्तुतिकरण 1x2"
+
+#~ msgid "presentation 2x2"
+#~ msgstr "प्रस्तुतिकरण 2x2"
+
+#~ msgid "Turtle Art"
+#~ msgstr "टर्टल आर्ट"
+
+#~ msgid "Turtle Art Mini"
+#~ msgstr "कछुए कला मिनी"
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 
 #~ msgid "sets color of text drawn by the turtle"
 #~ msgstr "टर्टल द्वारा लिखे जाने वाले पाठ का रंग सेट करता है"

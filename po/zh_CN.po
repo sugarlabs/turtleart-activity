@@ -13,8 +13,13 @@ msgstr ""
 "#-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
+<<<<<<< HEAD
 "POT-Creation-Date: 2013-12-10 00:32-0500\n"
 "PO-Revision-Date: 2013-12-11 18:39+0200\n"
+=======
+"POT-Creation-Date: 2013-12-05 00:30-0500\n"
+"PO-Revision-Date: 2013-12-10 17:42+0200\n"
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 "Last-Translator: lite <litekok@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: zh_CN\n"
@@ -1313,10 +1318,26 @@ msgstr "清屏"
 msgid "clears the screen and reset the turtle"
 msgstr "清空屏幕并重置海龟"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:207 TurtleArt/taconstants.py:138
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:973
+msgid "left"
+msgstr "左边"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:211
 msgid "turns turtle counterclockwise (angle in degrees)"
 msgstr "逆时针转动海龟（角度）"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:221 TurtleArt/taconstants.py:140
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1006
+msgid "right"
+msgstr "右边"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:225
 msgid "turns turtle clockwise (angle in degrees)"
 msgstr "顺时针转动海龟（角度）"
@@ -1341,6 +1362,17 @@ msgstr "延弧形移动海龟"
 msgid "set xy"
 msgstr "设置 坐标"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
+msgid "x"
+msgstr "横"
+
+#: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
+msgid "y"
+msgstr "纵"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:255 TurtleArt/tabasics.py:334
 msgid ""
 "moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
@@ -1396,6 +1428,14 @@ msgstr "钢笔"
 msgid "fill screen"
 msgstr "涂满全屏"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:369
+#: TurtleArt/tabasics.py:432 TurtleArt/tawindow.py:4483
+msgid "color"
+msgstr "颜色"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:370
 #: TurtleArt/tabasics.py:444 TurtleArt/tawindow.py:4479
 #: TurtleArt/tawindow.py:4484
@@ -1406,6 +1446,14 @@ msgstr "深度"
 msgid "fills the background with (color, shade)"
 msgstr "以（颜色，阴影）填充背景"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:370 TurtleArt/tabasics.py:454
+#: TurtleArt/tawindow.py:4480 TurtleArt/tawindow.py:4485
+msgid "gray"
+msgstr "灰度"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:387
 msgid "set color"
 msgstr "设置颜色"
@@ -1856,6 +1904,13 @@ msgstr "放入"
 msgid "box"
 msgstr "盒子"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:1114 TurtleArt/tawindow.py:4847
+msgid "value"
+msgstr "值"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:1118 TurtleArt/tabasics.py:1133
 #: TurtleArt/tawindow.py:1581 TurtleArt/tawindow.py:1715
 #: TurtleArt/tawindow.py:2334 TurtleArt/tawindow.py:4812
@@ -2423,6 +2478,13 @@ msgstr "加速度"
 msgid "push acceleration in x, y, z to heap"
 msgstr "把沿x，y，z方向加速度放入堆中"
 
+<<<<<<< HEAD
+=======
+#: plugins/audio_sensors/audio_sensors.py:90 pysamples/grecord.py:206
+msgid "sound"
+msgstr "声音"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/audio_sensors/audio_sensors.py:91
 msgid "raw microphone input signal"
 msgstr "麦克风原始输入信号"
@@ -2444,11 +2506,27 @@ msgstr "强度"
 msgid "microphone input pitch"
 msgstr "麦克风输入音高"
 
+<<<<<<< HEAD
+=======
+#: plugins/audio_sensors/audio_sensors.py:157
+#: plugins/audio_sensors/audio_sensors.py:175
+msgid "resistance"
+msgstr "电阻"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/audio_sensors/audio_sensors.py:158
 #: plugins/audio_sensors/audio_sensors.py:176
 msgid "microphone input resistance"
 msgstr "麦克风输入电阻"
 
+<<<<<<< HEAD
+=======
+#: plugins/audio_sensors/audio_sensors.py:163
+#: plugins/audio_sensors/audio_sensors.py:181
+msgid "voltage"
+msgstr "电压"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/audio_sensors/audio_sensors.py:164
 #: plugins/audio_sensors/audio_sensors.py:182
 msgid "microphone input voltage"
@@ -2459,6 +2537,18 @@ msgstr "麦克风输入电压"
 msgid "Palette of media objects"
 msgstr "多媒体模板"
 
+<<<<<<< HEAD
+=======
+#: plugins/camera_sensor/camera_sensor.py:83
+#: plugins/camera_sensor/camera_sensor.py:99
+#: plugins/camera_sensor/camera_sensor.py:136
+#: plugins/camera_sensor/camera_sensor.py:152
+#: plugins/light_sensor/light_sensor.py:58
+#: plugins/light_sensor/light_sensor.py:66
+msgid "brightness"
+msgstr "亮度"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/camera_sensor/camera_sensor.py:85
 #: plugins/camera_sensor/camera_sensor.py:138
 msgid "light level detected by camera"
@@ -2665,6 +2755,13 @@ msgstr "持续时间"
 msgid "plays a sinewave at frequency, amplitude, and duration (in seconds)"
 msgstr "播放一个指定频率、波幅和持续时间（秒）的正弦波"
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:328
+msgid "sensor"
+msgstr "传感器"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:333
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:344
 msgid "button down"
@@ -2726,6 +2823,13 @@ msgstr "海龟看到"
 msgid "returns the color that the turtle \"sees\""
 msgstr "返回海龟“看到”的颜色"
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:421
+msgid "time"
+msgstr "时间"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:424
 msgid "elapsed time (in seconds) since program started"
 msgstr "程序启动后已经过的时间（秒）"
@@ -3032,6 +3136,13 @@ msgstr "底部"
 msgid "ycor of bottom of screen"
 msgstr "屏幕下方的Y座标"
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:995
+msgid "width"
+msgstr "宽度"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:998
 msgid "the canvas width"
 msgstr "画布宽度"
@@ -3044,6 +3155,13 @@ msgstr "屏幕右方的X座标"
 msgid "ycor of top of screen"
 msgstr "屏幕上方的Y座标"
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1028
+msgid "height"
+msgstr "高度"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1031
 msgid "the canvas height"
 msgstr "画布高度"
@@ -3212,6 +3330,10 @@ msgstr "保存项目？"
 
 #: turtleblocks.py:546
 #, python-format
+<<<<<<< HEAD
+=======
+#, python-format,
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 msgid "Plugin %s already installed"
 msgstr "已安装插件 %s 。"
 
@@ -3221,6 +3343,45 @@ msgstr "我的项目"
 
 #~ msgid "Hide sample projects"
 #~ msgstr "隐藏示例项目"
+<<<<<<< HEAD
+=======
+
+#~ msgid "palette"
+#~ msgstr "模块"
+
+#~ msgid "make a uturn"
+#~ msgstr "做一个翻转"
+
+#~ msgid "u turn"
+#~ msgstr "翻转"
+
+#~ msgid "set text color"
+#~ msgstr "设置文字颜色"
+
+#~ msgid "sets color of text drawn by the turtle"
+#~ msgstr "设置海龟绘制文字的颜色"
+
+#~ msgid "set text size"
+#~ msgstr "设置文字大小"
+
+#~ msgid "sets size of text drawn by the turtle"
+#~ msgstr "设置海龟绘制的文字的大小"
+
+#~ msgid "presentation 1x1"
+#~ msgstr "以 1x1 方式演示"
+
+#~ msgid "presentation 2x1"
+#~ msgstr "以 2x1 方式演示"
+
+#~ msgid "presentation 1x2"
+#~ msgstr "以 1x2 方式演示"
+
+#~ msgid "presentation 2x2"
+#~ msgstr "以 2x2 方式演示"
+
+#~ msgid "Turtle Art"
+#~ msgstr "海龟绘画"
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 
 #~ msgid "palette"
 #~ msgstr "模块"
@@ -3357,6 +3518,15 @@ msgstr "我的项目"
 #~ msgid "PORT 1 of the brick"
 #~ msgstr "积木的端口 1"
 
+<<<<<<< HEAD
+=======
+#~ msgid "read"
+#~ msgstr "读取"
+
+#~ msgid "Read sensor output."
+#~ msgstr "读取传感器输出。"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #~ msgid "PORT 2"
 #~ msgstr "端口 2"
 

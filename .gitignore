@@ -2,5 +2,10 @@
 *~
 locale
 dist
+<<<<<<< HEAD
 po.merged
 po.original
+=======
+po.original
+po.merged
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc

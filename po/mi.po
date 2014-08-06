@@ -1211,6 +1211,21 @@ msgstr ""
 
 msgid "Expeyes device not found"
 msgstr ""
+<<<<<<< HEAD
+=======
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-05-17 00:31-0400\n"
+"PO-Revision-Date: 2012-09-25 11:21+0200\n"
+"Last-Translator: Chris <cjl@laptop.org>\n"
+"Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
+"Language: mi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.0.5\n"
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 
 #. TRANS: "name" option from activity.info file
 #, fuzzy
@@ -1254,10 +1269,26 @@ msgstr "horoia"
 msgid "clears the screen and reset the turtle"
 msgstr "ka ūkui i te mata me te tautuhi i te honu"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:158
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:871
+msgid "left"
+msgstr "mauī"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:162
 msgid "turns turtle counterclockwise (angle in degrees)"
 msgstr "ka huri i te honu whakatemauī (koki tākiri)"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:170
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:895
+msgid "right"
+msgstr "matau"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:174
 msgid "turns turtle clockwise (angle in degrees)"
 msgstr "ka huri i te honu whakatematau (koki tākiri)"
@@ -1282,6 +1313,17 @@ msgstr "ka neke i te honu ki te pewa"
 msgid "set xy"
 msgstr "tautuhi xy"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:195 TurtleArt/tabasics.py:261
+msgid "x"
+msgstr "x"
+
+#: TurtleArt/tabasics.py:195 TurtleArt/tabasics.py:261
+msgid "y"
+msgstr "y"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:199 TurtleArt/tabasics.py:265
 msgid ""
 "moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
@@ -1339,6 +1381,15 @@ msgstr "Papatā o ngā tono pene"
 msgid "fill screen"
 msgstr "mata whakakī"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:283 TurtleArt/tabasics.py:294
+#: TurtleArt/tabasics.py:344
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1197
+msgid "color"
+msgstr "tae"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:283 TurtleArt/tabasics.py:295
 #: TurtleArt/tabasics.py:354
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1193
@@ -1350,6 +1401,15 @@ msgstr "uriuri"
 msgid "fills the background with (color, shade)"
 msgstr "ka whakakī i te papamuri me te (tae, uriuri)"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:295 TurtleArt/tabasics.py:363
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1194
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1199
+msgid "gray"
+msgstr "hina"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:309
 msgid "set color"
 msgstr "tautuhi tae"
@@ -1806,6 +1866,13 @@ msgstr "penapena ki"
 msgid "box"
 msgstr "pouaka"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:924 TurtleArt/tawindow.py:4427
+msgid "value"
+msgstr "uara"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:928 TurtleArt/tabasics.py:942
 #: TurtleArt/tawindow.py:1355 TurtleArt/tawindow.py:1486
 #: TurtleArt/tawindow.py:2081 TurtleArt/tawindow.py:4390
@@ -1971,6 +2038,7 @@ msgstr ""
 #: TurtleArt/tawindow.py:1531 TurtleArt/tawindow.py:1546
 msgid "Really overwrite stack?"
 msgstr ""
+<<<<<<< HEAD
 
 #: TurtleArt/tawindow.py:1534 TurtleArt/tawindow.py:1574
 #: gnome_plugins/uploader_plugin.py:144
@@ -1990,6 +2058,27 @@ msgstr ""
 msgid "Really delete stack?"
 msgstr ""
 
+=======
+
+#: TurtleArt/tawindow.py:1534 TurtleArt/tawindow.py:1574
+#: gnome_plugins/uploader_plugin.py:144
+msgid "Cancel"
+msgstr "Whakakore"
+
+#: TurtleArt/tawindow.py:1538 TurtleArt/tawindow.py:1549
+msgid "Overwrite stack"
+msgstr ""
+
+#: TurtleArt/tawindow.py:1570 TurtleArt/tawindow.py:1578
+#: TurtleArt/tawindow.py:1588 TurtleArtActivity.py:634 turtleblocks.py:399
+msgid "Delete stack"
+msgstr ""
+
+#: TurtleArt/tawindow.py:1571 TurtleArt/tawindow.py:1585
+msgid "Really delete stack?"
+msgstr ""
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tawindow.py:4215
 msgid "image"
 msgstr "atahanga"
@@ -2618,6 +2707,13 @@ msgstr "ka kite te honu i"
 msgid "returns the color that the turtle \"sees\""
 msgstr "ka whakahoki i te tae e \"kite\" nei te honu"
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:451
+msgid "time"
+msgstr "wā"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:454
 msgid "elapsed time (in seconds) since program started"
 msgstr "wā hipa (ki ngā hēkona) mai i te wā i tīmata te papatono"
@@ -2883,6 +2979,13 @@ msgstr "raro"
 msgid "ycor of bottom of screen"
 msgstr "ycor whakateraro o te mata"
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:887
+msgid "width"
+msgstr "whānui"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:890
 msgid "the canvas width"
 msgstr "te whānuitanga kānawehi"
@@ -2895,6 +2998,13 @@ msgstr "xcor whakatematau o te mata"
 msgid "ycor of top of screen"
 msgstr "ycor whakaterunga o te mata"
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:911
+msgid "height"
+msgstr "teitei"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:914
 msgid "the canvas height"
 msgstr "te teiteitanga kānawehi"
@@ -3072,6 +3182,45 @@ msgstr "Kei a koe he mahi kāore anō kia tiaki. Me tiaki i mua i te waihotanga?
 msgid "Save project?"
 msgstr "Tiaki tūmahi?"
 
+<<<<<<< HEAD
+=======
+#~ msgid "Turtle Art"
+#~ msgstr "Toi Honu"
+
+#~ msgid "Turtle Art Mini"
+#~ msgstr "Toi Honu Ririki"
+
+#~ msgid "Turtle Confusion"
+#~ msgstr "Rangirua Honu"
+
+#~ msgid "Select a challenge"
+#~ msgstr "Tīpako wero"
+
+#~ msgid "Palette of Mexican pesos"
+#~ msgstr "Papatā o te pesos Mehikana"
+
+#~ msgid "Palette of Colombian pesos"
+#~ msgstr "Papatā o te pesos Kurumupia"
+
+#~ msgid "Palette of Rwandan francs"
+#~ msgstr "Papatā o te francs Rewanata"
+
+#~ msgid "Palette of US dollars"
+#~ msgstr "Papatā o te tāra Amerikana"
+
+#~ msgid "Palette of Australian dollars"
+#~ msgstr "Papatā o te tāra Ahitereiria"
+
+#~ msgid "Palette of Paraguayan Guaranies"
+#~ msgstr "Papatā o te guaranies Parakuaiana"
+
+#~ msgid "Palette of Peruvian Nuevo Soles"
+#~ msgstr "Papatā o te soles Peruwhiana Nueto"
+
+#~ msgid "Palette of Uruguayan Pesos"
+#~ msgstr "Papatā o te pesos Urukuaiana"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #~ msgid "adjust LED intensity between 0 and 255"
 #~ msgstr "whakarite te kaha o te LED mai i te 0 ki te 255"
 

@@ -1432,10 +1432,26 @@ msgstr "rens"
 msgid "clears the screen and reset the turtle"
 msgstr "rydder skærmen og nulstiller skildpadden"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:207 TurtleArt/taconstants.py:139
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:991
+msgid "left"
+msgstr "venstre"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:211
 msgid "turns turtle counterclockwise (angle in degrees)"
 msgstr "drejer skildpadde mod uret (vinkel i grader)"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:221 TurtleArt/taconstants.py:141
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1024
+msgid "right"
+msgstr "højre"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:225
 msgid "turns turtle clockwise (angle in degrees)"
 msgstr "drejer skildpadde med uret (vinkel i grader)"
@@ -1460,6 +1476,17 @@ msgstr "flytter skildpadden langs en arc"
 msgid "set xy"
 msgstr "indstil xy"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
+msgid "x"
+msgstr "x"
+
+#: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
+msgid "y"
+msgstr "y"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:255 TurtleArt/tabasics.py:334
 msgid ""
 "moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
@@ -1514,10 +1541,25 @@ msgstr ""
 msgid "Palette of pen commands"
 msgstr "Palette af kommandoer for pen"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:351
+msgid "pen"
+msgstr "pen"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:369
 msgid "fill screen"
 msgstr "fyld skærm"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:369
+#: TurtleArt/tabasics.py:432 TurtleArt/tawindow.py:4542
+msgid "color"
+msgstr "farve"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:370
 #: TurtleArt/tabasics.py:444 TurtleArt/tawindow.py:4538
 #: TurtleArt/tawindow.py:4543
@@ -1528,6 +1570,14 @@ msgstr "skygge"
 msgid "fills the background with (color, shade)"
 msgstr "udfylder baggrunden med (farve, skygge)"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:370 TurtleArt/tabasics.py:454
+#: TurtleArt/tawindow.py:4539 TurtleArt/tawindow.py:4544
+msgid "gray"
+msgstr "grå"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:387
 msgid "set color"
 msgstr "indstil farve"
@@ -1981,6 +2031,13 @@ msgstr "gem i"
 msgid "box"
 msgstr "boks"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:1114 TurtleArt/tawindow.py:5055
+msgid "value"
+msgstr "værdi"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:1118 TurtleArt/tabasics.py:1133
 #: TurtleArt/tawindow.py:1582 TurtleArt/tawindow.py:1727
 #: TurtleArt/tawindow.py:2346 TurtleArt/tawindow.py:5020
@@ -2362,6 +2419,7 @@ msgstr "Gem som ODP"
 #: TurtleArtActivity.py:1202
 msgid "Save as Logo"
 msgstr "Gem som Logo"
+<<<<<<< HEAD
 
 #: TurtleArtActivity.py:936 TurtleArtActivity.py:1144
 #: TurtleArtActivity.py:1205
@@ -2373,6 +2431,19 @@ msgstr "Gem som Python"
 msgid "Save snapshot"
 msgstr "Gem øjebliksbillede"
 
+=======
+
+#: TurtleArtActivity.py:936 TurtleArtActivity.py:1144
+#: TurtleArtActivity.py:1205
+msgid "Save as Python"
+msgstr "Gem som Python"
+
+#: TurtleArtActivity.py:937 TurtleArtActivity.py:1148
+#: TurtleArtActivity.py:1209
+msgid "Save snapshot"
+msgstr "Gem øjebliksbillede"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArtActivity.py:938 TurtleArtActivity.py:1172
 #: TurtleArtActivity.py:1211 turtleblocks.py:426
 msgid "Add project"
@@ -2562,6 +2633,13 @@ msgstr "acceleration"
 msgid "push acceleration in x, y, z to heap"
 msgstr "skub acceleration i x, y, z til hób/heap"
 
+<<<<<<< HEAD
+=======
+#: plugins/audio_sensors/audio_sensors.py:90 pysamples/grecord.py:206
+msgid "sound"
+msgstr "lyd"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/audio_sensors/audio_sensors.py:91
 msgid "raw microphone input signal"
 msgstr "råt signal fra mikrofon-input"
@@ -2583,11 +2661,27 @@ msgstr "tone"
 msgid "microphone input pitch"
 msgstr "tonehøjde for mikrofonindgang"
 
+<<<<<<< HEAD
+=======
+#: plugins/audio_sensors/audio_sensors.py:157
+#: plugins/audio_sensors/audio_sensors.py:175
+msgid "resistance"
+msgstr "modstand"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/audio_sensors/audio_sensors.py:158
 #: plugins/audio_sensors/audio_sensors.py:176
 msgid "microphone input resistance"
 msgstr "modstand på mikrofon-input"
 
+<<<<<<< HEAD
+=======
+#: plugins/audio_sensors/audio_sensors.py:163
+#: plugins/audio_sensors/audio_sensors.py:181
+msgid "voltage"
+msgstr "elektrisk spænding"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/audio_sensors/audio_sensors.py:164
 #: plugins/audio_sensors/audio_sensors.py:182
 msgid "microphone input voltage"
@@ -2598,6 +2692,18 @@ msgstr "spænding på mikrofon-indgang"
 msgid "Palette of media objects"
 msgstr "Palette af medieobjekter"
 
+<<<<<<< HEAD
+=======
+#: plugins/camera_sensor/camera_sensor.py:83
+#: plugins/camera_sensor/camera_sensor.py:99
+#: plugins/camera_sensor/camera_sensor.py:136
+#: plugins/camera_sensor/camera_sensor.py:152
+#: plugins/light_sensor/light_sensor.py:58
+#: plugins/light_sensor/light_sensor.py:66
+msgid "brightness"
+msgstr "lysstyrke"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/camera_sensor/camera_sensor.py:85
 #: plugins/camera_sensor/camera_sensor.py:138
 msgid "light level detected by camera"
@@ -2805,6 +2911,13 @@ msgstr "varighed"
 msgid "plays a sinewave at frequency, amplitude, and duration (in seconds)"
 msgstr "afspiller en sinusbølge ved frekvens, dybde og varighed (i sekunder)"
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:328
+msgid "sensor"
+msgstr "sensor"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:333
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:344
 msgid "button down"
@@ -2866,6 +2979,13 @@ msgstr "skildpadden ser"
 msgid "returns the color that the turtle \"sees\""
 msgstr "returnerer farven som skildpadden \"ser\""
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:421
+msgid "time"
+msgstr "tid"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:424
 msgid "elapsed time (in seconds) since program started"
 msgstr "forløben tid (i sekunder) siden program startede"
@@ -2934,8 +3054,12 @@ msgstr "filnavn"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:534
 msgid "saves FILO (first-in last-out heap) to a file"
+<<<<<<< HEAD
 msgstr ""
 "gemmer FILO (first-in last-out, dvs. først ud, sidst ud-hób) til en fil"
+=======
+msgstr "gemmer FILO (first-in last-out, dvs. først ud, sidst ud-hób) til en fil"
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:545
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:553
@@ -3186,6 +3310,13 @@ msgstr "bund"
 msgid "ycor of bottom of screen"
 msgstr "ykor for bunden af skærm"
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1013
+msgid "width"
+msgstr "bredde"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1016
 msgid "the canvas width"
 msgstr "bredden på lærred"
@@ -3198,6 +3329,13 @@ msgstr "x-kor for højreside af skærm"
 msgid "ycor of top of screen"
 msgstr "ykor for toppen af skærm"
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1046
+msgid "height"
+msgstr "højde"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1049
 msgid "the canvas height"
 msgstr "højde på lærred"
@@ -3383,12 +3521,61 @@ msgstr "Gem projekt?"
 
 #: turtleblocks.py:558
 #, python-format
+<<<<<<< HEAD
+=======
+#, python-format,
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 msgid "Plugin %s already installed"
 msgstr "Udvidelsesmodulet %s er allerede installeret"
 
 #: turtleblocks.py:687
 msgid "myproject"
 msgstr "mitprojekt"
+<<<<<<< HEAD
+=======
+
+#~ msgid "Load project"
+#~ msgstr "Indlæs projekt"
+
+#~ msgid "Hide sample projects"
+#~ msgstr "Skjul demoprojekter"
+
+#~ msgid "palette"
+#~ msgstr "palet"
+
+#~ msgid "make a uturn"
+#~ msgstr "lav en u-vending"
+
+#~ msgid "u turn"
+#~ msgstr "u-vending"
+
+#~ msgid "set text color"
+#~ msgstr "indstil tekstfarve"
+
+#~ msgid "sets color of text drawn by the turtle"
+#~ msgstr "sætter farve for tekst som tegnes af skildpadden"
+
+#~ msgid "set text size"
+#~ msgstr "indstil tekststørrelse"
+
+#~ msgid "sets size of text drawn by the turtle"
+#~ msgstr "sætter størrelse for tekst tegnet af skildpadden"
+
+#~ msgid "presentation 1x1"
+#~ msgstr "præsentation 1x1"
+
+#~ msgid "presentation 2x1"
+#~ msgstr "præsentation 2x1"
+
+#~ msgid "presentation 1x2"
+#~ msgstr "præsentation 1x2"
+
+#~ msgid "presentation 2x2"
+#~ msgstr "præsentation 2x2"
+
+#~ msgid "Turtle Art"
+#~ msgstr "Skildpadde-kunst"
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 
 #~ msgid "Load project"
 #~ msgstr "Indlæs projekt"
@@ -3554,6 +3741,15 @@ msgstr "mitprojekt"
 #~ msgid "PORT 1 of the brick"
 #~ msgstr "PORT 1 på klodsen"
 
+<<<<<<< HEAD
+=======
+#~ msgid "read"
+#~ msgstr "læs"
+
+#~ msgid "Read sensor output."
+#~ msgstr "Læs uddata fra sensor."
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #~ msgid "PORT 2"
 #~ msgstr "PORT 2"
 
@@ -3873,8 +4069,13 @@ msgstr "mitprojekt"
 #~ msgid ""
 #~ "a programmable block: used to add advanced math equations, e.g., sin(x)"
 #~ msgstr ""
+<<<<<<< HEAD
 #~ "en blok som kan programmeres: anvendes til at tilføje avanceret "
 #~ "matematiske ligninger, f.eks., sin(x)"
+=======
+#~ "en blok som kan programmeres: anvendes til at tilføje avanceret matematiske "
+#~ "ligninger, f.eks., sin(x)"
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 
 #~ msgid "text size"
 #~ msgstr "tekststørrelse"

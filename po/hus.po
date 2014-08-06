@@ -1229,6 +1229,21 @@ msgstr ""
 
 msgid "Expeyes device not found"
 msgstr ""
+<<<<<<< HEAD
+=======
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-05-17 00:31-0400\n"
+"PO-Revision-Date: 2012-10-10 10:02+0200\n"
+"Last-Translator: Chris <cjl@laptop.org>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: hus\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.0.5\n"
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 
 #. TRANS: "name" option from activity.info file
 #, fuzzy
@@ -1276,12 +1291,28 @@ msgstr "t'oka'"
 msgid "clears the screen and reset the turtle"
 msgstr "in t'okál an walek ani in wichk'owal an pet"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:158
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:871
+msgid "left"
+msgstr "k'watab'"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:162
 msgid "turns turtle counterclockwise (angle in degrees)"
 msgstr ""
 "in tsawindhál an pet ti in k'et'ach jant'ojdha' ti belal an lejbaxk'ij "
 "(t'ipchidh in kexem)"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:170
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:895
+msgid "right"
+msgstr "winab"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:174
 msgid "turns turtle clockwise (angle in degrees)"
 msgstr "in tsawindhál an pet jant'ojdha' an lejbaxk'ij (t'ipchidh in kexem)"
@@ -1307,6 +1338,17 @@ msgstr "ka yatsiy an pet ti in nakél an pulich"
 msgid "set xy"
 msgstr "ka ts'at'ba' xy"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:195 TurtleArt/tabasics.py:261
+msgid "x"
+msgstr "x"
+
+#: TurtleArt/tabasics.py:195 TurtleArt/tabasics.py:261
+msgid "y"
+msgstr "y"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:199 TurtleArt/tabasics.py:265
 msgid ""
 "moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
@@ -1372,6 +1414,15 @@ msgstr "I kwene' abatnaxtaláb k'al an kits'oxtaláb"
 msgid "fill screen"
 msgstr "ka t'uchiy an walek"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:283 TurtleArt/tabasics.py:294
+#: TurtleArt/tabasics.py:344
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1197
+msgid "color"
+msgstr "mukuxtaláb"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 # in alwá' an mukuxtaláb
 #: TurtleArt/tabasics.py:283 TurtleArt/tabasics.py:295
 #: TurtleArt/tabasics.py:354
@@ -1384,6 +1435,15 @@ msgstr "in tsapik in majub"
 msgid "fills the background with (color, shade)"
 msgstr "ka t'uchinchij in wal k'an (mukuxtaláb)"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:295 TurtleArt/tabasics.py:363
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1194
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1199
+msgid "gray"
+msgstr "aku'"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:309
 msgid "set color"
 msgstr "ka ts'at'ba' an mukuxtaláb"
@@ -1855,6 +1915,13 @@ msgstr "ki dhaya' ti"
 msgid "box"
 msgstr "baltse'"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:924 TurtleArt/tawindow.py:4427
+msgid "value"
+msgstr "jalbíl"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:928 TurtleArt/tabasics.py:942
 #: TurtleArt/tawindow.py:1355 TurtleArt/tawindow.py:1486
 #: TurtleArt/tawindow.py:2081 TurtleArt/tawindow.py:4390
@@ -2023,6 +2090,7 @@ msgstr ""
 #: TurtleArt/tawindow.py:1531 TurtleArt/tawindow.py:1546
 msgid "Really overwrite stack?"
 msgstr ""
+<<<<<<< HEAD
 
 #: TurtleArt/tawindow.py:1534 TurtleArt/tawindow.py:1574
 #: gnome_plugins/uploader_plugin.py:144
@@ -2042,6 +2110,27 @@ msgstr ""
 msgid "Really delete stack?"
 msgstr ""
 
+=======
+
+#: TurtleArt/tawindow.py:1534 TurtleArt/tawindow.py:1574
+#: gnome_plugins/uploader_plugin.py:144
+msgid "Cancel"
+msgstr "T'apiy"
+
+#: TurtleArt/tawindow.py:1538 TurtleArt/tawindow.py:1549
+msgid "Overwrite stack"
+msgstr ""
+
+#: TurtleArt/tawindow.py:1570 TurtleArt/tawindow.py:1578
+#: TurtleArt/tawindow.py:1588 TurtleArtActivity.py:634 turtleblocks.py:399
+msgid "Delete stack"
+msgstr ""
+
+#: TurtleArt/tawindow.py:1571 TurtleArt/tawindow.py:1585
+msgid "Really delete stack?"
+msgstr ""
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tawindow.py:4215
 msgid "image"
 msgstr "t'iplab"
@@ -2710,6 +2799,13 @@ msgstr "an pet tsu'ux"
 msgid "returns the color that the turtle \"sees\""
 msgstr "ka ólna' an mukuxtaláb a xi in \"tsu'tal\" an pet"
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:451
+msgid "time"
+msgstr "k'ij"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 # segundo = adhik k'ij
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:454
 msgid "elapsed time (in seconds) since program started"
@@ -3001,6 +3097,13 @@ msgstr "alam"
 msgid "ycor of bottom of screen"
 msgstr "ycor tin walte'il alal an waldhuchumtalab"
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:887
+msgid "width"
+msgstr "ts'ikwél"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:890
 msgid "the canvas width"
 msgstr "tin ts'ikwém an telmaxtaláb"
@@ -3013,6 +3116,13 @@ msgstr "xcor tin walte' winbéj ti waldhuchumtaláb"
 msgid "ycor of top of screen"
 msgstr "ycor tin walte' ti eblim an waldhuchumtaláb"
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:911
+msgid "height"
+msgstr "t'ek'em"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:914
 msgid "the canvas height"
 msgstr "t'ek'em an telmaxtaláb"
@@ -3194,6 +3304,48 @@ msgstr "Yab a dhaya' an t'ojláb. ¿A kulbétnal ka dhaya' ok'xidh ki it kalej?"
 msgid "Save project?"
 msgstr "¿Ki dhaya' an tsalapnadh t'ojláb?"
 
+<<<<<<< HEAD
+=======
+# TortugArte = WitsixPet
+#~ msgid "Turtle Art"
+#~ msgstr "Witsix Pet"
+
+#~ msgid "Turtle Art Mini"
+#~ msgstr "Tortug tsipkats tsalpadh t'ajnel"
+
+#~ msgid "Turtle Confusion"
+#~ msgstr "Tortug k'iptsodh tsalpadh t'ajnel"
+
+#~ msgid "Select a challenge"
+#~ msgstr "Takuy jun i ata'intalab"
+
+# Kwene' i Lábtómíb pexujchik
+#~ msgid "Palette of Mexican pesos"
+#~ msgstr "Tsiik nujneltalab k'al an tum'n in k'al an labtomibchik"
+
+# Kwene' i Colombiajíb pexujchik
+#~ msgid "Palette of Colombian pesos"
+#~ msgstr "paleta de pesos colombianos"
+
+#~ msgid "Palette of Rwandan francs"
+#~ msgstr "Kwene' i Rwandajib francos (tumín)"
+
+#~ msgid "Palette of US dollars"
+#~ msgstr "Kwene' i EE. UU dólares (tumín)"
+
+#~ msgid "Palette of Australian dollars"
+#~ msgstr "Kwene' i Australiajib dólares (tumín)"
+
+#~ msgid "Palette of Paraguayan Guaranies"
+#~ msgstr "Kwene' i Paraguayjib Guaraníes"
+
+#~ msgid "Palette of Peruvian Nuevo Soles"
+#~ msgstr "Kwene' i  Perujib  Nuevo Soles (ít tumínchik)"
+
+#~ msgid "Palette of Uruguayan Pesos"
+#~ msgstr "Kwene' i Uruguayjíb Pexuj"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 # In junkunchal in tsapík xi ti LED ti al an 0 ani 255
 #~ msgid "adjust LED intensity between 0 and 255"
 #~ msgstr "in lejbayal in tsapík xi LED k'al 0 ani 255"

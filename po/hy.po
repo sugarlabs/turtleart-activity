@@ -981,6 +981,7 @@ msgid ""
 "tilt sensor output: (-1 == no tilt,0 == tilt forward, 3 == tilt back, 1 == "
 "tilt left, 2 == tilt right)"
 msgstr ""
+<<<<<<< HEAD
 "Թեքման սենսորի արդյունքը. (-1 == թեքում չկա, 0 == թեքում դեպի առաջ, 3 == "
 "թեքում դեպի ետ, 1 == թեքում դեպի ձախ, 2 == թեքում դեպի աջ)"
 
@@ -1518,6 +1519,20 @@ msgstr "կարդալ ծրագրային վոլտը"
 
 msgid "Expeyes device not found"
 msgstr "Expeyes սարքը հայտնաբերված չէ"
+=======
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-01-07 00:30-0500\n"
+"PO-Revision-Date: 2014-03-13 15:47+0200\n"
+"Last-Translator: anushnur <anush.mkrtchyan@ca1492.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: hy\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Pootle 2.0.5\n"
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 
 #. TRANS: "name" option from activity.info file
 msgid "TurtleBlocks"
@@ -1568,10 +1583,26 @@ msgstr "Մաքրել"
 msgid "clears the screen and reset the turtle"
 msgstr "Մաքրում է էկրանը և ելման դիրքի բերում կրիային"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:207 TurtleArt/taconstants.py:139
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:991
+msgid "left"
+msgstr "Ձախ"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:211
 msgid "turns turtle counterclockwise (angle in degrees)"
 msgstr "Կրիային շրջում է ժամացույցի սլաքին հակառակ (անկյունն` աստիճանով)"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:221 TurtleArt/taconstants.py:141
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1024
+msgid "right"
+msgstr "Աջ"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:225
 msgid "turns turtle clockwise (angle in degrees)"
 msgstr "Կրիային շրջում է ժամացույցի սլաքի ուղղությամբ (անկյունն`աստիճաններով)"
@@ -1596,6 +1627,17 @@ msgstr "Շարժում է կրիային աղեղի երկայնությամբ:"
 msgid "set xy"
 msgstr "Սահմանել xy"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
+msgid "x"
+msgstr "x"
+
+#: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
+msgid "y"
+msgstr "y"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:255 TurtleArt/tabasics.py:334
 msgid ""
 "moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
@@ -1653,10 +1695,25 @@ msgstr ""
 msgid "Palette of pen commands"
 msgstr "Գրչի հրահանգների պահոց"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:351
+msgid "pen"
+msgstr "գրիչ"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:369
 msgid "fill screen"
 msgstr "լցնել էկրանը"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:369
+#: TurtleArt/tabasics.py:432 TurtleArt/tawindow.py:4542
+msgid "color"
+msgstr "գույն"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:370
 #: TurtleArt/tabasics.py:444 TurtleArt/tawindow.py:4538
 #: TurtleArt/tawindow.py:4543
@@ -1667,6 +1724,14 @@ msgstr "Երանգ"
 msgid "fills the background with (color, shade)"
 msgstr "Լցնում է հետին պլանը (գույն, երանգ)"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:370 TurtleArt/tabasics.py:454
+#: TurtleArt/tawindow.py:4539 TurtleArt/tawindow.py:4544
+msgid "gray"
+msgstr "մոխրագույն"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:387
 msgid "set color"
 msgstr "Սահմանել գույնը"
@@ -2132,6 +2197,13 @@ msgstr "պահել ... մեջ"
 msgid "box"
 msgstr "Տուփ"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:1114 TurtleArt/tawindow.py:5055
+msgid "value"
+msgstr "Արժեք"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:1118 TurtleArt/tabasics.py:1133
 #: TurtleArt/tawindow.py:1582 TurtleArt/tawindow.py:1727
 #: TurtleArt/tawindow.py:2346 TurtleArt/tawindow.py:5020
@@ -2721,6 +2793,13 @@ msgstr "Արագացում"
 msgid "push acceleration in x, y, z to heap"
 msgstr "Արագությունը x, y, z առանցքների վրա`դնել շարանի մեջ"
 
+<<<<<<< HEAD
+=======
+#: plugins/audio_sensors/audio_sensors.py:90 pysamples/grecord.py:206
+msgid "sound"
+msgstr "Հնչյուն"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/audio_sensors/audio_sensors.py:91
 msgid "raw microphone input signal"
 msgstr "Միկրոֆոնի մուտքային ազդանշան"
@@ -2742,11 +2821,27 @@ msgstr "Հաճախականություն"
 msgid "microphone input pitch"
 msgstr "Միկրոֆոնի ներմուծման տոնը"
 
+<<<<<<< HEAD
+=======
+#: plugins/audio_sensors/audio_sensors.py:157
+#: plugins/audio_sensors/audio_sensors.py:175
+msgid "resistance"
+msgstr "Դիմադրություն"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/audio_sensors/audio_sensors.py:158
 #: plugins/audio_sensors/audio_sensors.py:176
 msgid "microphone input resistance"
 msgstr "Միկրոֆոնի մուտքային դիմադրողականություն"
 
+<<<<<<< HEAD
+=======
+#: plugins/audio_sensors/audio_sensors.py:163
+#: plugins/audio_sensors/audio_sensors.py:181
+msgid "voltage"
+msgstr "Լարում"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/audio_sensors/audio_sensors.py:164
 #: plugins/audio_sensors/audio_sensors.py:182
 msgid "microphone input voltage"
@@ -2757,6 +2852,18 @@ msgstr "Միկրոֆոնի մուտքի լարումը"
 msgid "Palette of media objects"
 msgstr "Լրատվամիջոցի առարկաների պահոց"
 
+<<<<<<< HEAD
+=======
+#: plugins/camera_sensor/camera_sensor.py:83
+#: plugins/camera_sensor/camera_sensor.py:99
+#: plugins/camera_sensor/camera_sensor.py:136
+#: plugins/camera_sensor/camera_sensor.py:152
+#: plugins/light_sensor/light_sensor.py:58
+#: plugins/light_sensor/light_sensor.py:66
+msgid "brightness"
+msgstr "Պայծառություն"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/camera_sensor/camera_sensor.py:85
 #: plugins/camera_sensor/camera_sensor.py:138
 msgid "light level detected by camera"
@@ -2972,6 +3079,13 @@ msgstr ""
 "Վերարտադրում է Սինուսոիդն ըստ հաճախականության, տատանումների մեծության ու "
 "տևողության /վրկ/:"
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:328
+msgid "sensor"
+msgstr "Սենսոր"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:333
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:344
 msgid "button down"
@@ -3038,6 +3152,13 @@ msgstr "կրիան տեսնում է"
 msgid "returns the color that the turtle \"sees\""
 msgstr "վերադարձնում է այն գույնը, որ կրիան ներկայիս \"տեսնում է\""
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:421
+msgid "time"
+msgstr "ժամանակ"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:424
 msgid "elapsed time (in seconds) since program started"
 msgstr "ծրագրի սկզբից մինչև հիմա անցած ժամանակ (վայկյաններով)"
@@ -3362,6 +3483,13 @@ msgstr "Ստորին մաս"
 msgid "ycor of bottom of screen"
 msgstr "էկրանի ստորին մասի y դիրքացույցը"
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1013
+msgid "width"
+msgstr "լայնք"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1016
 msgid "the canvas width"
 msgstr "կտավի լայնությունը"
@@ -3375,6 +3503,13 @@ msgstr "էկրանի աջ մասի xcor-ը"
 msgid "ycor of top of screen"
 msgstr "էկրանի վերին մասի ycor-ը"
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1046
+msgid "height"
+msgstr "բարձրություն"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1049
 msgid "the canvas height"
 msgstr "կտավի բարձրությունը"
@@ -3565,6 +3700,10 @@ msgstr "Պահպանե՞լ նախագիծը"
 
 #: turtleblocks.py:558
 #, python-format
+<<<<<<< HEAD
+=======
+#, python-format,
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 msgid "Plugin %s already installed"
 msgstr "%s հավելումն արդեն ներդրված է:"
 
@@ -3577,6 +3716,50 @@ msgstr "իմ նախագիծը"
 
 #~ msgid "Hide sample projects"
 #~ msgstr "Թաքցնել օրինակ-նախագծերը"
+<<<<<<< HEAD
+=======
+
+#~ msgid "palette"
+#~ msgstr "պահոց"
+
+#~ msgid "make a uturn"
+#~ msgstr "Կատարել լրիվ շրջադարձ U տառի ձևով"
+
+# լրիվ շրջադարձ
+#~ msgid "u turn"
+#~ msgstr "Շրջադարձ U տառի ձևով"
+
+#~ msgid "set text color"
+#~ msgstr "Սահմանել տեքստի գույնը"
+
+#~ msgid "sets color of text drawn by the turtle"
+#~ msgstr "Սահմանում է կրիայի մուտքագրած տեքստի գույնը"
+
+#~ msgid "set text size"
+#~ msgstr "Սահմանել տեքստի չափը"
+
+#~ msgid "sets size of text drawn by the turtle"
+#~ msgstr "Սահմանում է կրիայի մուտքագրած տեքստի չափսը"
+
+#~ msgid "presentation 1x1"
+#~ msgstr "Ներկայացում 1x1"
+
+#~ msgid "presentation 2x1"
+#~ msgstr "Ներկայացում 2x1"
+
+#~ msgid "presentation 1x2"
+#~ msgstr "Ներկայացում 1x2"
+
+#~ msgid "presentation 2x2"
+#~ msgstr "Ներկայացում 2x2"
+
+# Turtle Art` Կրիայի Արվեստը -դանդաղ,համբերությամբ սովորելու համար
+#~ msgid "Turtle Art"
+#~ msgstr "Turtle Art"
+
+#~ msgid "Turtle Art Mini"
+#~ msgstr "Կրիայի Արվեստ /TortugArte/ Մինի"
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 
 #~ msgid "palette"
 #~ msgstr "պահոց"
@@ -3736,6 +3919,15 @@ msgstr "իմ նախագիծը"
 #~ msgid "PORT 1 of the brick"
 #~ msgstr "Մասնիկի Մուտք 1 -ը:"
 
+<<<<<<< HEAD
+=======
+#~ msgid "read"
+#~ msgstr "Կարդալ"
+
+#~ msgid "Read sensor output."
+#~ msgstr "Կարդալ սենսորի ելքի տվյալները"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #~ msgid "PORT 2"
 #~ msgstr "Մուտք 2"
 

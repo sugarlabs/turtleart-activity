@@ -1339,6 +1339,21 @@ msgstr ""
 
 msgid "Expeyes device not found"
 msgstr ""
+<<<<<<< HEAD
+=======
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-01-07 00:30-0500\n"
+"PO-Revision-Date: 2012-02-03 22:50+0200\n"
+"Last-Translator: Chris <cjl@laptop.org>\n"
+"Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
+"Language: si\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.0.5\n"
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 
 #. TRANS: "name" option from activity.info file
 msgid "TurtleBlocks"
@@ -1388,10 +1403,26 @@ msgstr "මකන්න"
 msgid "clears the screen and reset the turtle"
 msgstr ""
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:207 TurtleArt/taconstants.py:139
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:991
+msgid "left"
+msgstr "වම"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:211
 msgid "turns turtle counterclockwise (angle in degrees)"
 msgstr ""
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:221 TurtleArt/taconstants.py:141
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1024
+msgid "right"
+msgstr "දකුණ"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:225
 msgid "turns turtle clockwise (angle in degrees)"
 msgstr ""
@@ -1416,6 +1447,17 @@ msgstr ""
 msgid "set xy"
 msgstr "xy සකසන්න"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
+msgid "x"
+msgstr "x"
+
+#: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
+msgid "y"
+msgstr "y"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:255 TurtleArt/tabasics.py:334
 msgid ""
 "moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
@@ -1464,10 +1506,26 @@ msgstr ""
 msgid "Palette of pen commands"
 msgstr "පෑන් විධාන ඵලකය"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:351
+#, fuzzy
+msgid "pen"
+msgstr "විවෘත කරන්න"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:369
 msgid "fill screen"
 msgstr "පුර්ණතිරය"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:369
+#: TurtleArt/tabasics.py:432 TurtleArt/tawindow.py:4542
+msgid "color"
+msgstr "වර්ණ"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:370
 #: TurtleArt/tabasics.py:444 TurtleArt/tawindow.py:4538
 #: TurtleArt/tawindow.py:4543
@@ -1478,6 +1536,14 @@ msgstr "අඳුරු කරන්න"
 msgid "fills the background with (color, shade)"
 msgstr ""
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:370 TurtleArt/tabasics.py:454
+#: TurtleArt/tawindow.py:4539 TurtleArt/tawindow.py:4544
+msgid "gray"
+msgstr ""
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:387
 msgid "set color"
 msgstr "වර්ණය සකසන්න"
@@ -1938,6 +2004,13 @@ msgstr "මෙහි ගබඩා කරන්න"
 msgid "box"
 msgstr "පෙට්ටිය"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:1114 TurtleArt/tawindow.py:5055
+msgid "value"
+msgstr "අග"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:1118 TurtleArt/tabasics.py:1133
 #: TurtleArt/tawindow.py:1582 TurtleArt/tawindow.py:1727
 #: TurtleArt/tawindow.py:2346 TurtleArt/tawindow.py:5020
@@ -2156,6 +2229,7 @@ msgstr ""
 #: gnome_plugins/uploader_plugin.py:144
 msgid "Cancel"
 msgstr "අවලංගු කරන්න"
+<<<<<<< HEAD
 
 #: TurtleArt/tawindow.py:1780 TurtleArt/tawindow.py:1790
 msgid "Overwrite stack"
@@ -2170,6 +2244,22 @@ msgstr ""
 msgid "Really delete stack?"
 msgstr ""
 
+=======
+
+#: TurtleArt/tawindow.py:1780 TurtleArt/tawindow.py:1790
+msgid "Overwrite stack"
+msgstr ""
+
+#: TurtleArt/tawindow.py:1811 TurtleArt/tawindow.py:1819
+#: TurtleArt/tawindow.py:1828 TurtleArtActivity.py:804 turtleblocks.py:475
+msgid "Delete stack"
+msgstr ""
+
+#: TurtleArt/tawindow.py:1812 TurtleArt/tawindow.py:1825
+msgid "Really delete stack?"
+msgstr ""
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tawindow.py:2216
 msgid "Do you really want to empty the trash?"
 msgstr ""
@@ -2185,11 +2275,19 @@ msgstr "පින්තූරය"
 #: TurtleArtActivity.py:131
 msgid "Please wait"
 msgstr ""
+<<<<<<< HEAD
 
 #: TurtleArtActivity.py:132
 msgid "Starting connection..."
 msgstr ""
 
+=======
+
+#: TurtleArtActivity.py:132
+msgid "Starting connection..."
+msgstr ""
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArtActivity.py:394
 msgid "snapshot"
 msgstr "ක්ෂණික ඡායාරූපය"
@@ -2307,6 +2405,7 @@ msgstr "පින්තූරයක් ලෙස සුරකින්න"
 #: TurtleArtActivity.py:925 TurtleArtActivity.py:1128
 #: TurtleArtActivity.py:1189
 msgid "Save as icon"
+<<<<<<< HEAD
 msgstr ""
 
 #. TRANS: ODP is Open Office presentation
@@ -2335,6 +2434,36 @@ msgstr "ක්ෂණික ඡායාරූපය සුරකින්න"
 msgid "Add project"
 msgstr ""
 
+=======
+msgstr ""
+
+#. TRANS: ODP is Open Office presentation
+#: TurtleArtActivity.py:930 TurtleArtActivity.py:1132
+#: TurtleArtActivity.py:1193
+msgid "Save as ODP"
+msgstr ""
+
+#: TurtleArtActivity.py:935 TurtleArtActivity.py:1141
+#: TurtleArtActivity.py:1202
+msgid "Save as Logo"
+msgstr "Logo ලෙස සුරකින්න"
+
+#: TurtleArtActivity.py:936 TurtleArtActivity.py:1144
+#: TurtleArtActivity.py:1205
+msgid "Save as Python"
+msgstr ""
+
+#: TurtleArtActivity.py:937 TurtleArtActivity.py:1148
+#: TurtleArtActivity.py:1209
+msgid "Save snapshot"
+msgstr "ක්ෂණික ඡායාරූපය සුරකින්න"
+
+#: TurtleArtActivity.py:938 TurtleArtActivity.py:1172
+#: TurtleArtActivity.py:1211 turtleblocks.py:426
+msgid "Add project"
+msgstr ""
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArtActivity.py:941 TurtleArtActivity.py:1177
 #: TurtleArtActivity.py:1217 turtleblocks.py:427
 msgid "Load plugin"
@@ -2517,6 +2646,13 @@ msgstr "ත්වරණය"
 msgid "push acceleration in x, y, z to heap"
 msgstr ""
 
+<<<<<<< HEAD
+=======
+#: plugins/audio_sensors/audio_sensors.py:90 pysamples/grecord.py:206
+msgid "sound"
+msgstr "හඬ"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/audio_sensors/audio_sensors.py:91
 msgid "raw microphone input signal"
 msgstr ""
@@ -2538,11 +2674,27 @@ msgstr "තාරතාව"
 msgid "microphone input pitch"
 msgstr ""
 
+<<<<<<< HEAD
+=======
+#: plugins/audio_sensors/audio_sensors.py:157
+#: plugins/audio_sensors/audio_sensors.py:175
+msgid "resistance"
+msgstr "ප්‍රතිරෝධය"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/audio_sensors/audio_sensors.py:158
 #: plugins/audio_sensors/audio_sensors.py:176
 msgid "microphone input resistance"
 msgstr ""
 
+<<<<<<< HEAD
+=======
+#: plugins/audio_sensors/audio_sensors.py:163
+#: plugins/audio_sensors/audio_sensors.py:181
+msgid "voltage"
+msgstr "වෝල්ටීයතාව"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/audio_sensors/audio_sensors.py:164
 #: plugins/audio_sensors/audio_sensors.py:182
 msgid "microphone input voltage"
@@ -2553,6 +2705,18 @@ msgstr ""
 msgid "Palette of media objects"
 msgstr ""
 
+<<<<<<< HEAD
+=======
+#: plugins/camera_sensor/camera_sensor.py:83
+#: plugins/camera_sensor/camera_sensor.py:99
+#: plugins/camera_sensor/camera_sensor.py:136
+#: plugins/camera_sensor/camera_sensor.py:152
+#: plugins/light_sensor/light_sensor.py:58
+#: plugins/light_sensor/light_sensor.py:66
+msgid "brightness"
+msgstr "දීප්තිය"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/camera_sensor/camera_sensor.py:85
 #: plugins/camera_sensor/camera_sensor.py:138
 msgid "light level detected by camera"
@@ -2761,6 +2925,13 @@ msgstr ""
 msgid "plays a sinewave at frequency, amplitude, and duration (in seconds)"
 msgstr ""
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:328
+msgid "sensor"
+msgstr ""
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:333
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:344
 msgid "button down"
@@ -2822,6 +2993,13 @@ msgstr ""
 msgid "returns the color that the turtle \"sees\""
 msgstr ""
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:421
+msgid "time"
+msgstr "කාලය"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:424
 msgid "elapsed time (in seconds) since program started"
 msgstr ""
@@ -3140,6 +3318,13 @@ msgstr "y පහළ"
 msgid "ycor of bottom of screen"
 msgstr ""
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1013
+msgid "width"
+msgstr "පළල"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1016
 msgid "the canvas width"
 msgstr ""
@@ -3152,6 +3337,13 @@ msgstr ""
 msgid "ycor of top of screen"
 msgstr ""
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1046
+msgid "height"
+msgstr "උස"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1049
 msgid "the canvas height"
 msgstr ""
@@ -3341,11 +3533,43 @@ msgstr ""
 msgid "myproject"
 msgstr ""
 
+<<<<<<< HEAD
 #~ msgid "name"
 #~ msgstr "නම"
 
 #~ msgid "set text color"
 #~ msgstr "පෙළ වර්ණය සකසන්න"
+=======
+#~ msgid "set text color"
+#~ msgstr "පෙළ වර්ණය සකසන්න"
+
+#~ msgid "sets color of text drawn by the turtle"
+#~ msgstr "කැස්බෑවා විසින් අදින පෙළෙහි වර්ණය පිහිටුවයි"
+
+#~ msgid "set text size"
+#~ msgstr "පෙළ විශාලත්වය සකසන්න"
+
+#~ msgid "sets size of text drawn by the turtle"
+#~ msgstr "කැස්බෑවා විසින් අදින පෙළෙහි ප්‍රමාණය පිහිටුවයි"
+
+#~ msgid "presentation 1x1"
+#~ msgstr "ඉදිරිපත් කිරීම 1x1"
+
+#~ msgid "presentation 2x1"
+#~ msgstr "ඉදිරිපත් කිරීම 2x1"
+
+#~ msgid "presentation 1x2"
+#~ msgstr "ඉදිරිපත් කිරීම 1x2"
+
+#~ msgid "presentation 2x2"
+#~ msgstr "ඉදිරිපත් කිරීම 2x2"
+
+#~ msgid "Turtle Art"
+#~ msgstr "ටර්ටල් ආර්ට්"
+
+#~ msgid "Select a challenge"
+#~ msgstr "අභියෝගයක් තෝරන්න"
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 
 #~ msgid "sets color of text drawn by the turtle"
 #~ msgstr "කැස්බෑවා විසින් අදින පෙළෙහි වර්ණය පිහිටුවයි"

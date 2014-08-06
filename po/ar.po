@@ -1340,6 +1340,22 @@ msgstr ""
 
 msgid "Expeyes device not found"
 msgstr ""
+<<<<<<< HEAD
+=======
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-01-07 00:30-0500\n"
+"PO-Revision-Date: 2011-01-24 00:35+0200\n"
+"Last-Translator: Khaled Hosny <khaledhosny@eglug.org>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"X-Generator: Pootle 2.0.3\n"
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 
 #. TRANS: "name" option from activity.info file
 msgid "TurtleBlocks"
@@ -1390,10 +1406,26 @@ msgstr "نظف"
 msgid "clears the screen and reset the turtle"
 msgstr ""
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:207 TurtleArt/taconstants.py:139
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:991
+msgid "left"
+msgstr "يسار"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:211
 msgid "turns turtle counterclockwise (angle in degrees)"
 msgstr ""
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:221 TurtleArt/taconstants.py:141
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1024
+msgid "right"
+msgstr "يمين"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:225
 msgid "turns turtle clockwise (angle in degrees)"
 msgstr ""
@@ -1418,6 +1450,17 @@ msgstr ""
 msgid "set xy"
 msgstr "حدد س ص"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
+msgid "x"
+msgstr "س"
+
+#: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
+msgid "y"
+msgstr "ص"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:255 TurtleArt/tabasics.py:334
 msgid ""
 "moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
@@ -1465,10 +1508,25 @@ msgstr ""
 msgid "Palette of pen commands"
 msgstr ""
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:351
+msgid "pen"
+msgstr ""
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:369
 msgid "fill screen"
 msgstr "ملء الشاشه"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:369
+#: TurtleArt/tabasics.py:432 TurtleArt/tawindow.py:4542
+msgid "color"
+msgstr "لون"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:370
 #: TurtleArt/tabasics.py:444 TurtleArt/tawindow.py:4538
 #: TurtleArt/tawindow.py:4543
@@ -1479,6 +1537,14 @@ msgstr "ظل"
 msgid "fills the background with (color, shade)"
 msgstr ""
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:370 TurtleArt/tabasics.py:454
+#: TurtleArt/tawindow.py:4539 TurtleArt/tawindow.py:4544
+msgid "gray"
+msgstr ""
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:387
 msgid "set color"
 msgstr "حدد اللون"
@@ -1934,6 +2000,13 @@ msgstr ""
 msgid "box"
 msgstr ""
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:1114 TurtleArt/tawindow.py:5055
+msgid "value"
+msgstr ""
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:1118 TurtleArt/tabasics.py:1133
 #: TurtleArt/tawindow.py:1582 TurtleArt/tawindow.py:1727
 #: TurtleArt/tawindow.py:2346 TurtleArt/tawindow.py:5020
@@ -2054,6 +2127,7 @@ msgstr ""
 #: TurtleArt/talogo.py:383 TurtleArt/tawindow.py:1539 TurtleArtActivity.py:901
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1320
 msgid "Stop turtle"
+<<<<<<< HEAD
 msgstr ""
 
 #: TurtleArt/talogo.py:393 TurtleArtActivity.py:517 TurtleArtActivity.py:902
@@ -2190,6 +2264,144 @@ msgstr ""
 msgid "snapshot"
 msgstr ""
 
+=======
+msgstr ""
+
+#: TurtleArt/talogo.py:393 TurtleArtActivity.py:517 TurtleArtActivity.py:902
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1311
+msgid "Show blocks"
+msgstr ""
+
+#: TurtleArt/talogo.py:397 TurtleArtActivity.py:521 TurtleArtActivity.py:1247
+msgid "Hide blocks"
+msgstr ""
+
+#: TurtleArt/talogo.py:537
+msgid "did not output to"
+msgstr ""
+
+#: TurtleArt/talogo.py:577 TurtleArt/talogo.py:960
+msgid "doesn't like"
+msgstr ""
+
+#: TurtleArt/talogo.py:578 TurtleArt/talogo.py:961
+msgid "as input"
+msgstr ""
+
+#: TurtleArt/talogo.py:639
+msgid "I don't know how to"
+msgstr ""
+
+#: TurtleArt/tapalette.py:98
+msgid "displays next palette"
+msgstr ""
+
+#: TurtleArt/tapalette.py:99
+msgid "changes the orientation of the palette of blocks"
+msgstr ""
+
+#: TurtleArt/taplugin.py:90
+msgid "Please restart Turtle Art in order to use the plugin."
+msgstr ""
+
+#: TurtleArt/taplugin.py:93 TurtleArt/taplugin.py:104
+#: TurtleArt/taplugin.py:107
+msgid "Plugin could not be installed."
+msgstr ""
+
+#: TurtleArt/taprimitive.py:57
+msgid "error in highlighted block"
+msgstr ""
+
+#: TurtleArt/taprimitive.py:59
+msgid "error"
+msgstr ""
+
+#: TurtleArt/tautils.py:298
+msgid "Load..."
+msgstr ""
+
+#: TurtleArt/tautils.py:308
+msgid "Save..."
+msgstr ""
+
+#: TurtleArt/tautils.py:591
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:839
+msgid "click to open"
+msgstr ""
+
+#: TurtleArt/tawindow.py:1208 TurtleArt/tawindow.py:1209
+msgid "orientation"
+msgstr ""
+
+#: TurtleArt/tawindow.py:1223 TurtleArt/tawindow.py:1884
+msgid "next"
+msgstr ""
+
+#: TurtleArt/tawindow.py:1262 TurtleArt/tawindow.py:1905
+msgid "shift"
+msgstr ""
+
+#: TurtleArt/tawindow.py:1543
+msgid "Please hit the Stop Button before making changes to your program"
+msgstr ""
+
+#: TurtleArt/tawindow.py:1596
+msgid "Select blocks to share"
+msgstr ""
+
+#: TurtleArt/tawindow.py:1772 TurtleArtActivity.py:802
+#: TurtleArtActivity.py:961 turtleblocks.py:473
+msgid "Save stack"
+msgstr ""
+
+#: TurtleArt/tawindow.py:1773 TurtleArt/tawindow.py:1787
+msgid "Really overwrite stack?"
+msgstr ""
+
+#: TurtleArt/tawindow.py:1776 TurtleArt/tawindow.py:1815
+#: gnome_plugins/uploader_plugin.py:144
+msgid "Cancel"
+msgstr ""
+
+#: TurtleArt/tawindow.py:1780 TurtleArt/tawindow.py:1790
+msgid "Overwrite stack"
+msgstr ""
+
+#: TurtleArt/tawindow.py:1811 TurtleArt/tawindow.py:1819
+#: TurtleArt/tawindow.py:1828 TurtleArtActivity.py:804 turtleblocks.py:475
+msgid "Delete stack"
+msgstr ""
+
+#: TurtleArt/tawindow.py:1812 TurtleArt/tawindow.py:1825
+msgid "Really delete stack?"
+msgstr ""
+
+#: TurtleArt/tawindow.py:2216
+msgid "Do you really want to empty the trash?"
+msgstr ""
+
+#: TurtleArt/tawindow.py:4735 turtleblocks.py:439
+msgid "icon"
+msgstr ""
+
+#: TurtleArt/tawindow.py:4842 turtleblocks.py:437
+msgid "image"
+msgstr ""
+
+#: TurtleArtActivity.py:131
+msgid "Please wait"
+msgstr ""
+
+#: TurtleArtActivity.py:132
+msgid "Starting connection..."
+msgstr ""
+
+#: TurtleArtActivity.py:394
+msgid "snapshot"
+msgstr ""
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArtActivity.py:450 TurtleArtActivity.py:827 TurtleArtActivity.py:988
 msgid "Turn off hover help"
 msgstr ""
@@ -2325,6 +2537,7 @@ msgstr ""
 #: TurtleArtActivity.py:937 TurtleArtActivity.py:1148
 #: TurtleArtActivity.py:1209
 msgid "Save snapshot"
+<<<<<<< HEAD
 msgstr ""
 
 #: TurtleArtActivity.py:938 TurtleArtActivity.py:1172
@@ -2332,6 +2545,15 @@ msgstr ""
 msgid "Add project"
 msgstr ""
 
+=======
+msgstr ""
+
+#: TurtleArtActivity.py:938 TurtleArtActivity.py:1172
+#: TurtleArtActivity.py:1211 turtleblocks.py:426
+msgid "Add project"
+msgstr ""
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArtActivity.py:941 TurtleArtActivity.py:1177
 #: TurtleArtActivity.py:1217 turtleblocks.py:427
 msgid "Load plugin"
@@ -2515,6 +2737,13 @@ msgstr ""
 msgid "push acceleration in x, y, z to heap"
 msgstr ""
 
+<<<<<<< HEAD
+=======
+#: plugins/audio_sensors/audio_sensors.py:90 pysamples/grecord.py:206
+msgid "sound"
+msgstr ""
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/audio_sensors/audio_sensors.py:91
 msgid "raw microphone input signal"
 msgstr ""
@@ -2536,11 +2765,27 @@ msgstr ""
 msgid "microphone input pitch"
 msgstr ""
 
+<<<<<<< HEAD
+=======
+#: plugins/audio_sensors/audio_sensors.py:157
+#: plugins/audio_sensors/audio_sensors.py:175
+msgid "resistance"
+msgstr ""
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/audio_sensors/audio_sensors.py:158
 #: plugins/audio_sensors/audio_sensors.py:176
 msgid "microphone input resistance"
 msgstr ""
 
+<<<<<<< HEAD
+=======
+#: plugins/audio_sensors/audio_sensors.py:163
+#: plugins/audio_sensors/audio_sensors.py:181
+msgid "voltage"
+msgstr ""
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/audio_sensors/audio_sensors.py:164
 #: plugins/audio_sensors/audio_sensors.py:182
 msgid "microphone input voltage"
@@ -2551,6 +2796,18 @@ msgstr ""
 msgid "Palette of media objects"
 msgstr ""
 
+<<<<<<< HEAD
+=======
+#: plugins/camera_sensor/camera_sensor.py:83
+#: plugins/camera_sensor/camera_sensor.py:99
+#: plugins/camera_sensor/camera_sensor.py:136
+#: plugins/camera_sensor/camera_sensor.py:152
+#: plugins/light_sensor/light_sensor.py:58
+#: plugins/light_sensor/light_sensor.py:66
+msgid "brightness"
+msgstr ""
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/camera_sensor/camera_sensor.py:85
 #: plugins/camera_sensor/camera_sensor.py:138
 msgid "light level detected by camera"
@@ -2758,6 +3015,13 @@ msgstr ""
 msgid "plays a sinewave at frequency, amplitude, and duration (in seconds)"
 msgstr ""
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:328
+msgid "sensor"
+msgstr ""
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:333
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:344
 msgid "button down"
@@ -2819,6 +3083,13 @@ msgstr ""
 msgid "returns the color that the turtle \"sees\""
 msgstr ""
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:421
+msgid "time"
+msgstr ""
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:424
 msgid "elapsed time (in seconds) since program started"
 msgstr ""
@@ -2996,12 +3267,21 @@ msgstr ""
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:767
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:776
 msgid "put a custom 'shell' on the turtle"
+<<<<<<< HEAD
 msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:784
 msgid "chooses which turtle to command"
 msgstr ""
 
+=======
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:784
+msgid "chooses which turtle to command"
+msgstr ""
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:791
 #, fuzzy
 msgid "turtle x"
@@ -3134,6 +3414,13 @@ msgstr ""
 msgid "ycor of bottom of screen"
 msgstr ""
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1013
+msgid "width"
+msgstr ""
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1016
 msgid "the canvas width"
 msgstr ""
@@ -3146,6 +3433,13 @@ msgstr ""
 msgid "ycor of top of screen"
 msgstr ""
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1046
+msgid "height"
+msgstr ""
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1049
 msgid "the canvas height"
 msgstr ""
@@ -3272,6 +3566,7 @@ msgstr ""
 
 #: turtleblocks.py:434
 msgid "Export as"
+<<<<<<< HEAD
 msgstr ""
 
 #. TRANS: ODP is Open Office presentation
@@ -3283,6 +3578,19 @@ msgstr ""
 msgid "Logo"
 msgstr ""
 
+=======
+msgstr ""
+
+#. TRANS: ODP is Open Office presentation
+#: turtleblocks.py:442
+msgid "ODP"
+msgstr ""
+
+#: turtleblocks.py:444
+msgid "Logo"
+msgstr ""
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: turtleblocks.py:448
 msgid "Quit"
 msgstr ""
@@ -3331,6 +3639,24 @@ msgstr ""
 #, python-format
 msgid "Plugin %s already installed"
 msgstr ""
+<<<<<<< HEAD
+=======
+
+#: turtleblocks.py:687
+msgid "myproject"
+msgstr ""
+
+#, fuzzy
+#~ msgid "set text size"
+#~ msgstr "حدد حجم القلم"
+
+#~ msgid "Turtle Art"
+#~ msgstr "السلحفاة"
+
+#, fuzzy
+#~ msgid "light"
+#~ msgstr "يمين"
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 
 #: turtleblocks.py:687
 msgid "myproject"

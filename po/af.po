@@ -1336,6 +1336,21 @@ msgstr ""
 
 msgid "Expeyes device not found"
 msgstr ""
+<<<<<<< HEAD
+=======
+"Project-Id-Version: TURTLEART\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-01-07 00:30-0500\n"
+"PO-Revision-Date: 2012-08-22 18:07+0200\n"
+"Last-Translator: Chris <cjl@laptop.org>\n"
+"Language-Team: AF <walter@sugarlabs.org>\n"
+"Language: af\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.0.5\n"
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 
 #. TRANS: "name" option from activity.info file
 msgid "TurtleBlocks"
@@ -1389,11 +1404,27 @@ msgstr "maak skoon"
 msgid "clears the screen and reset the turtle"
 msgstr "maak die skerm skoon en herstel die skilpad"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:207 TurtleArt/taconstants.py:139
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:991
+msgid "left"
+msgstr "links"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:211
 #, fuzzy
 msgid "turns turtle counterclockwise (angle in degrees)"
 msgstr "draai die skilpad anti-kloksgewys (gee die hoek in grade)"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:221 TurtleArt/taconstants.py:141
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1024
+msgid "right"
+msgstr "regs"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:225
 #, fuzzy
 msgid "turns turtle clockwise (angle in degrees)"
@@ -1420,6 +1451,17 @@ msgstr "skuif die skilpad in 'n boog"
 msgid "set xy"
 msgstr "stel xy"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
+msgid "x"
+msgstr "x"
+
+#: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
+msgid "y"
+msgstr "y"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:255 TurtleArt/tabasics.py:334
 #, fuzzy
 msgid ""
@@ -1478,10 +1520,25 @@ msgstr ""
 msgid "Palette of pen commands"
 msgstr "palet van penbevele"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:351
+msgid "pen"
+msgstr ""
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:369
 msgid "fill screen"
 msgstr "vul skerm"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:369
+#: TurtleArt/tabasics.py:432 TurtleArt/tawindow.py:4542
+msgid "color"
+msgstr "kleur"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:370
 #: TurtleArt/tabasics.py:444 TurtleArt/tawindow.py:4538
 #: TurtleArt/tawindow.py:4543
@@ -1492,6 +1549,14 @@ msgstr "skadu"
 msgid "fills the background with (color, shade)"
 msgstr "vul die agtergrond met (kleur, skadu)"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:370 TurtleArt/tabasics.py:454
+#: TurtleArt/tawindow.py:4539 TurtleArt/tawindow.py:4544
+msgid "gray"
+msgstr ""
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:387
 msgid "set color"
 msgstr "stel kleur"
@@ -1977,6 +2042,13 @@ msgstr "stoor in"
 msgid "box"
 msgstr "hokkie"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:1114 TurtleArt/tawindow.py:5055
+msgid "value"
+msgstr ""
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:1118 TurtleArt/tabasics.py:1133
 #: TurtleArt/tawindow.py:1582 TurtleArt/tawindow.py:1727
 #: TurtleArt/tawindow.py:2346 TurtleArt/tawindow.py:5020
@@ -2373,6 +2445,7 @@ msgstr "Stoor as Logo"
 #: TurtleArtActivity.py:936 TurtleArtActivity.py:1144
 #: TurtleArtActivity.py:1205
 msgid "Save as Python"
+<<<<<<< HEAD
 msgstr ""
 
 #: TurtleArtActivity.py:937 TurtleArtActivity.py:1148
@@ -2385,6 +2458,20 @@ msgstr "Stoor flitsbeeld"
 msgid "Add project"
 msgstr ""
 
+=======
+msgstr ""
+
+#: TurtleArtActivity.py:937 TurtleArtActivity.py:1148
+#: TurtleArtActivity.py:1209
+msgid "Save snapshot"
+msgstr "Stoor flitsbeeld"
+
+#: TurtleArtActivity.py:938 TurtleArtActivity.py:1172
+#: TurtleArtActivity.py:1211 turtleblocks.py:426
+msgid "Add project"
+msgstr ""
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArtActivity.py:941 TurtleArtActivity.py:1177
 #: TurtleArtActivity.py:1217 turtleblocks.py:427
 msgid "Load plugin"
@@ -2569,6 +2656,13 @@ msgstr ""
 msgid "push acceleration in x, y, z to heap"
 msgstr ""
 
+<<<<<<< HEAD
+=======
+#: plugins/audio_sensors/audio_sensors.py:90 pysamples/grecord.py:206
+msgid "sound"
+msgstr "klank"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/audio_sensors/audio_sensors.py:91
 msgid "raw microphone input signal"
 msgstr ""
@@ -2590,11 +2684,27 @@ msgstr ""
 msgid "microphone input pitch"
 msgstr ""
 
+<<<<<<< HEAD
+=======
+#: plugins/audio_sensors/audio_sensors.py:157
+#: plugins/audio_sensors/audio_sensors.py:175
+msgid "resistance"
+msgstr ""
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/audio_sensors/audio_sensors.py:158
 #: plugins/audio_sensors/audio_sensors.py:176
 msgid "microphone input resistance"
 msgstr ""
 
+<<<<<<< HEAD
+=======
+#: plugins/audio_sensors/audio_sensors.py:163
+#: plugins/audio_sensors/audio_sensors.py:181
+msgid "voltage"
+msgstr ""
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/audio_sensors/audio_sensors.py:164
 #: plugins/audio_sensors/audio_sensors.py:182
 msgid "microphone input voltage"
@@ -2605,6 +2715,18 @@ msgstr ""
 msgid "Palette of media objects"
 msgstr ""
 
+<<<<<<< HEAD
+=======
+#: plugins/camera_sensor/camera_sensor.py:83
+#: plugins/camera_sensor/camera_sensor.py:99
+#: plugins/camera_sensor/camera_sensor.py:136
+#: plugins/camera_sensor/camera_sensor.py:152
+#: plugins/light_sensor/light_sensor.py:58
+#: plugins/light_sensor/light_sensor.py:66
+msgid "brightness"
+msgstr ""
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/camera_sensor/camera_sensor.py:85
 #: plugins/camera_sensor/camera_sensor.py:138
 msgid "light level detected by camera"
@@ -2815,6 +2937,13 @@ msgstr ""
 msgid "plays a sinewave at frequency, amplitude, and duration (in seconds)"
 msgstr ""
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:328
+msgid "sensor"
+msgstr ""
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:333
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:344
 msgid "button down"
@@ -2877,6 +3006,13 @@ msgstr ""
 msgid "returns the color that the turtle \"sees\""
 msgstr ""
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:421
+msgid "time"
+msgstr ""
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:424
 msgid "elapsed time (in seconds) since program started"
 msgstr ""
@@ -3063,12 +3199,21 @@ msgstr ""
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:767
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:776
 msgid "put a custom 'shell' on the turtle"
+<<<<<<< HEAD
 msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:784
 msgid "chooses which turtle to command"
 msgstr ""
 
+=======
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:784
+msgid "chooses which turtle to command"
+msgstr ""
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:791
 #, fuzzy
 msgid "turtle x"
@@ -3206,6 +3351,13 @@ msgstr "onderkant"
 msgid "ycor of bottom of screen"
 msgstr "y-koordinaat van die onderkant van die skerm"
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1013
+msgid "width"
+msgstr "wydte"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1016
 msgid "the canvas width"
 msgstr "wydte van die werksoppervlak"
@@ -3218,6 +3370,13 @@ msgstr "x-koordinaat van die regterkant van die skerm"
 msgid "ycor of top of screen"
 msgstr "y-koordinaat van die bokant van die skerm"
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1046
+msgid "height"
+msgstr "hoogte"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1049
 msgid "the canvas height"
 msgstr "hoogte van die werksoppervlak"
@@ -3352,12 +3511,21 @@ msgstr ""
 #. TRANS: ODP is Open Office presentation
 #: turtleblocks.py:442
 msgid "ODP"
+<<<<<<< HEAD
 msgstr ""
 
 #: turtleblocks.py:444
 msgid "Logo"
 msgstr ""
 
+=======
+msgstr ""
+
+#: turtleblocks.py:444
+msgid "Logo"
+msgstr ""
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: turtleblocks.py:448
 msgid "Quit"
 msgstr ""
@@ -3411,9 +3579,12 @@ msgstr ""
 msgid "myproject"
 msgstr ""
 
+<<<<<<< HEAD
 #~ msgid "name"
 #~ msgstr "naam"
 
+=======
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #~ msgid "set text color"
 #~ msgstr "stel tekskleur"
 
@@ -3424,6 +3595,32 @@ msgstr ""
 #~ msgid "set text size"
 #~ msgstr "stel teksgrootte"
 
+<<<<<<< HEAD
+=======
+#, fuzzy
+#~ msgid "sets size of text drawn by the turtle"
+#~ msgstr "stel die grootte van die teks wat die skilpad teken"
+
+#, fuzzy
+#~ msgid "presentation 1x1"
+#~ msgstr "voorlegging"
+
+#, fuzzy
+#~ msgid "presentation 2x1"
+#~ msgstr "voorlegging"
+
+#, fuzzy
+#~ msgid "presentation 1x2"
+#~ msgstr "voorlegging"
+
+#, fuzzy
+#~ msgid "presentation 2x2"
+#~ msgstr "voorlegging"
+
+#~ msgid "Turtle Art"
+#~ msgstr "Turtle Art"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #, fuzzy
 #~ msgid "sets size of text drawn by the turtle"
 #~ msgstr "stel die grootte van die teks wat die skilpad teken"

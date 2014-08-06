@@ -1172,6 +1172,21 @@ msgstr ""
 
 msgid "Expeyes device not found"
 msgstr ""
+<<<<<<< HEAD
+=======
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-05-17 00:31-0400\n"
+"PO-Revision-Date: 2012-11-25 06:59+0200\n"
+"Last-Translator: Chris <cjl@laptop.org>\n"
+"Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
+"Language: te\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.0.5\n"
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 
 #. TRANS: "name" option from activity.info file
 msgid "TurtleBlocks"
@@ -1215,10 +1230,26 @@ msgstr "శుభ్రపరుచు"
 msgid "clears the screen and reset the turtle"
 msgstr "తెరను శుభ్ర పరచి టర్టిల్‌ను పున:స్థాపిస్తుంది"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:158
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:871
+msgid "left"
+msgstr "ఎడమ"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:162
 msgid "turns turtle counterclockwise (angle in degrees)"
 msgstr ""
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:170
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:895
+msgid "right"
+msgstr "కుడి"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:174
 msgid "turns turtle clockwise (angle in degrees)"
 msgstr ""
@@ -1243,6 +1274,17 @@ msgstr "జ్యా వెంబడి టర్టిల్‌ని కదు
 msgid "set xy"
 msgstr "xy లను అమర్చు"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:195 TurtleArt/tabasics.py:261
+msgid "x"
+msgstr "x"
+
+#: TurtleArt/tabasics.py:195 TurtleArt/tabasics.py:261
+msgid "y"
+msgstr "y"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:199 TurtleArt/tabasics.py:265
 msgid ""
 "moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
@@ -1296,6 +1338,15 @@ msgstr "కలం వర్ణాలతో కూడిన పలకం"
 msgid "fill screen"
 msgstr "తెరను నింపుము"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:283 TurtleArt/tabasics.py:294
+#: TurtleArt/tabasics.py:344
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1197
+msgid "color"
+msgstr "వర్ణము"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:283 TurtleArt/tabasics.py:295
 #: TurtleArt/tabasics.py:354
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1193
@@ -1307,6 +1358,15 @@ msgstr "ఛాయ"
 msgid "fills the background with (color, shade)"
 msgstr "పూర్వరంగాన్ని (వర్ణము, చాయతో ) నింపుతుంది"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:295 TurtleArt/tabasics.py:363
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1194
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1199
+msgid "gray"
+msgstr ""
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:309
 msgid "set color"
 msgstr "వర్ణాన్ని  అమర్చు"
@@ -1756,6 +1816,13 @@ msgstr "దీనిలో దాచు"
 msgid "box"
 msgstr "పేటిక"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:924 TurtleArt/tawindow.py:4427
+msgid "value"
+msgstr "విలువ"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:928 TurtleArt/tabasics.py:942
 #: TurtleArt/tawindow.py:1355 TurtleArt/tawindow.py:1486
 #: TurtleArt/tawindow.py:2081 TurtleArt/tawindow.py:4390
@@ -1922,12 +1989,21 @@ msgstr ""
 #: TurtleArt/tawindow.py:1531 TurtleArt/tawindow.py:1546
 msgid "Really overwrite stack?"
 msgstr ""
+<<<<<<< HEAD
 
 #: TurtleArt/tawindow.py:1534 TurtleArt/tawindow.py:1574
 #: gnome_plugins/uploader_plugin.py:144
 msgid "Cancel"
 msgstr ""
 
+=======
+
+#: TurtleArt/tawindow.py:1534 TurtleArt/tawindow.py:1574
+#: gnome_plugins/uploader_plugin.py:144
+msgid "Cancel"
+msgstr ""
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tawindow.py:1538 TurtleArt/tawindow.py:1549
 msgid "Overwrite stack"
 msgstr ""
@@ -2567,6 +2643,13 @@ msgstr ""
 msgid "returns the color that the turtle \"sees\""
 msgstr ""
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:451
+msgid "time"
+msgstr ""
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:454
 msgid "elapsed time (in seconds) since program started"
 msgstr ""
@@ -2827,6 +2910,13 @@ msgstr "దిగువ"
 msgid "ycor of bottom of screen"
 msgstr "తెర దిగువున y అక్షము"
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:887
+msgid "width"
+msgstr "వెడల్పు"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:890
 msgid "the canvas width"
 msgstr "యవనిక వెడల్పు"
@@ -2841,6 +2931,13 @@ msgstr "తెర దిగువున y అక్షము "
 msgid "ycor of top of screen"
 msgstr "తెర దిగువున y అక్షము "
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:911
+msgid "height"
+msgstr "ఎత్తు"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:914
 msgid "the canvas height"
 msgstr "యవనిక ఎత్తు"
@@ -3021,6 +3118,28 @@ msgstr ""
 msgid "Save project?"
 msgstr ""
 
+<<<<<<< HEAD
+=======
+#~ msgid "Turtle Art"
+#~ msgstr "టర్టిల్ కళ"
+
+#, fuzzy
+#~ msgid "density"
+#~ msgstr "అస్థిత్వం "
+
+#, fuzzy
+#~ msgid "light"
+#~ msgstr "కుడి"
+
+#, fuzzy
+#~ msgid "read"
+#~ msgstr "ఎరుపు"
+
+#, fuzzy
+#~ msgid "samples"
+#~ msgstr "నమూనాలు "
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #~ msgid "then else"
 #~ msgstr "కాకపోతే"
 

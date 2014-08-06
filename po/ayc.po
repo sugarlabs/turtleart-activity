@@ -961,6 +961,7 @@ msgid ""
 "tilt sensor output: (-1 == no tilt,0 == tilt forward, 3 == tilt back, 1 == "
 "tilt left, 2 == tilt right)"
 msgstr ""
+<<<<<<< HEAD
 "kicht'ayaña katjiri mistuñapa: (-1 == janiwa kicht'atati, 0 == nayräxaru "
 "kicht'atawa, 3 == qhipäxaru kicht'atawa, 1 == ch'iqäxaru kicht'atawa, 2 == "
 "kupïxaru kicht'atawa)"
@@ -1489,6 +1490,21 @@ msgstr "ch'amapa wakichäwi ullaña"
 msgid "Expeyes device not found"
 msgstr "Expeyes wakichataxa janiwa jakiyasiti"
 
+=======
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-01-07 00:30-0500\n"
+"PO-Revision-Date: 2014-02-21 19:52+0200\n"
+"Last-Translator: EdgarQuispeChambi <quispedgar@yahoo.es>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: ayc\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.0.5\n"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #. TRANS: "name" option from activity.info file
 msgid "TurtleBlocks"
 msgstr "TortuBlocks wakichata"
@@ -1542,11 +1558,29 @@ msgstr "mayampi qalltañataki wakichaña"
 msgid "clears the screen and reset the turtle"
 msgstr "mayampi qallatañataki wakichma ukata tortuga wakichata mayampi qalltma"
 
+<<<<<<< HEAD
+=======
+#  "izquierda"
+#: TurtleArt/tabasics.py:207 TurtleArt/taconstants.py:139
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:991
+msgid "left"
+msgstr "ch'iqa"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:211
 msgid "turns turtle counterclockwise (angle in degrees)"
 msgstr ""
 "tortuga wakichata ch'iqa tuqiru jithiyma (ángulo de grados) wakichatarjama"
 
+<<<<<<< HEAD
+=======
+#  "derecha"
+#: TurtleArt/tabasics.py:221 TurtleArt/taconstants.py:141
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1024
+msgid "right"
+msgstr "kupi"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:225
 msgid "turns turtle clockwise (angle in degrees)"
 msgstr ""
@@ -1572,6 +1606,19 @@ msgstr "tortuga wakichata maya sawana saraparu sarayma"
 msgid "set xy"
 msgstr "xy wakichata chimpuña"
 
+<<<<<<< HEAD
+=======
+#  "x"
+#: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
+msgid "x"
+msgstr "x wakichata"
+
+#  "y"
+#: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
+msgid "y"
+msgstr "y wakichata"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:255 TurtleArt/tabasics.py:334
 msgid ""
 "moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
@@ -1632,11 +1679,25 @@ msgstr ""
 msgid "Palette of pen commands"
 msgstr "Samichaña phuyu apnaqaña limt'aña"
 
+# "Abrir"
+#: TurtleArt/tabasics.py:351
+msgid "pen"
+msgstr "phuyu"
+
 # "pantalla completa"
 #: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:369
 msgid "fill screen"
 msgstr "maypacha uñtaña phuqachma"
 
+<<<<<<< HEAD
+=======
+#  "color"
+#: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:369
+#: TurtleArt/tabasics.py:432 TurtleArt/tawindow.py:4542
+msgid "color"
+msgstr "sami"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:370
 #: TurtleArt/tabasics.py:444 TurtleArt/tawindow.py:4538
 #: TurtleArt/tawindow.py:4543
@@ -1647,6 +1708,14 @@ msgstr "ist'añataki wakichata"
 msgid "fills the background with (color, shade)"
 msgstr "manqhäxa wakichatanakampi phuqachma (samimpi, ch'iwumpi)"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:370 TurtleArt/tabasics.py:454
+#: TurtleArt/tawindow.py:4539 TurtleArt/tawindow.py:4544
+msgid "gray"
+msgstr "uqiru samiri"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:387
 msgid "set color"
 msgstr "sami wakichaña"
@@ -2123,6 +2192,13 @@ msgstr "wakichataru imaña"
 msgid "box"
 msgstr "kajuna wakichata"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:1114 TurtleArt/tawindow.py:5055
+msgid "value"
+msgstr "chani"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:1118 TurtleArt/tabasics.py:1133
 #: TurtleArt/tawindow.py:1582 TurtleArt/tawindow.py:1727
 #: TurtleArt/tawindow.py:2346 TurtleArt/tawindow.py:5020
@@ -2759,6 +2835,14 @@ msgstr "acelerómetro k'ata sarayiri wakichata"
 msgid "push acceleration in x, y, z to heap"
 msgstr "siqiru wakisiri x, y z sarayirinakaru k'ata sarayirinaka uchi"
 
+<<<<<<< HEAD
+=======
+#  "sonido"
+#: plugins/audio_sensors/audio_sensors.py:90 pysamples/grecord.py:206
+msgid "sound"
+msgstr "sijiqi"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/audio_sensors/audio_sensors.py:91
 msgid "raw microphone input signal"
 msgstr "micrófono arsusiña uchantaña qhana chimpu"
@@ -2781,6 +2865,14 @@ msgstr "wakichatanaka thaqaña"
 msgid "microphone input pitch"
 msgstr "micrófono uchañana wakichatanaka thaqaña wali suma ist'asiri wakichata"
 
+<<<<<<< HEAD
+=======
+#: plugins/audio_sensors/audio_sensors.py:157
+#: plugins/audio_sensors/audio_sensors.py:175
+msgid "resistance"
+msgstr "ch'amanchiritaki wakichata"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/audio_sensors/audio_sensors.py:158
 #: plugins/audio_sensors/audio_sensors.py:176
 msgid "microphone input resistance"
@@ -2788,6 +2880,14 @@ msgstr ""
 "micrófono uchañaru ch'amanchiri wakichatana uchata chanipa (tupañataki "
 "wakichata: 700 a 14000 ohms)"
 
+<<<<<<< HEAD
+=======
+#: plugins/audio_sensors/audio_sensors.py:163
+#: plugins/audio_sensors/audio_sensors.py:181
+msgid "voltage"
+msgstr "ch'amani qhantayiri"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/audio_sensors/audio_sensors.py:164
 #: plugins/audio_sensors/audio_sensors.py:182
 msgid "microphone input voltage"
@@ -2800,6 +2900,18 @@ msgstr ""
 msgid "Palette of media objects"
 msgstr "Taypinkiri siqitanaka limt'aña"
 
+<<<<<<< HEAD
+=======
+#: plugins/camera_sensor/camera_sensor.py:83
+#: plugins/camera_sensor/camera_sensor.py:99
+#: plugins/camera_sensor/camera_sensor.py:136
+#: plugins/camera_sensor/camera_sensor.py:152
+#: plugins/light_sensor/light_sensor.py:58
+#: plugins/light_sensor/light_sensor.py:66
+msgid "brightness"
+msgstr "lliphi"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/camera_sensor/camera_sensor.py:85
 #: plugins/camera_sensor/camera_sensor.py:138
 msgid "light level detected by camera"
@@ -3021,6 +3133,13 @@ msgstr ""
 "sinusoide wakichata wakichäwi taypita qhantayma, saräwi ukata qhanäwi (pacha "
 "t'aqa t'ijtäwitjama)"
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:328
+msgid "sensor"
+msgstr "katjiri"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:333
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:344
 msgid "button down"
@@ -3085,6 +3204,14 @@ msgstr "tortuga wakichataxa uñjiwa"
 msgid "returns the color that the turtle \"sees\""
 msgstr "tortuga wakichatana \"uñjatapa\" sami uñachayma"
 
+<<<<<<< HEAD
+=======
+#  "tiempo"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:421
+msgid "time"
+msgstr "pacha"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:424
 msgid "elapsed time (in seconds) since program started"
 msgstr "pacha saräwi (pacha t'aqa t'ijtäwinaka) wakichata qalltatpacha"
@@ -3425,6 +3552,14 @@ msgstr "manqha"
 msgid "ycor of bottom of screen"
 msgstr "coory wakichata uñjaña aynacha lakäxankiri"
 
+<<<<<<< HEAD
+=======
+#  "anchura"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1013
+msgid "width"
+msgstr "lankhu"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1016
 msgid "the canvas width"
 msgstr "rixi wakichaña pañu lankhu"
@@ -3437,6 +3572,14 @@ msgstr "coorx wakichata uñjaña kupïxankiri"
 msgid "ycor of top of screen"
 msgstr "coory wakichata uñjaña alaya paräxankiri"
 
+<<<<<<< HEAD
+=======
+#  "altura"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1046
+msgid "height"
+msgstr "sayt'a"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1049
 msgid "the canvas height"
 msgstr "rixi wakichaña pañu sayt'upa"
@@ -3643,8 +3786,66 @@ msgstr "¿Wakichäwinaka imaña?"
 
 #: turtleblocks.py:558
 #, python-format
+<<<<<<< HEAD
 msgid "Plugin %s already installed"
 msgstr "Plugin %s wakichata qhantayañataki wakichatäxiwa."
+=======
+#, python-format,
+msgid "Plugin %s already installed"
+msgstr "Plugin %s wakichata qhantayañataki wakichatäxiwa."
+
+#: turtleblocks.py:687
+msgid "myproject"
+msgstr "jisk'a amtäwi wakichata"
+
+#~ msgid "Load project"
+#~ msgstr "Luräwi wakichata sartayaña"
+
+#~ msgid "Hide sample projects"
+#~ msgstr "Wakichäwinaka uñachayäwi imantaña"
+
+#~ msgid "palette"
+#~ msgstr "limiña"
+
+#~ msgid "make a uturn"
+#~ msgstr "U uñanaqaru muytaña"
+
+#, fuzzy
+#~ msgid "u turn"
+#~ msgstr "U uñanaqaru muyta"
+
+#~ msgid "set text color"
+#~ msgstr "qillqata samipa wakichaña"
+
+#~ msgid "sets color of text drawn by the turtle"
+#~ msgstr "tortuga wakichatana rixitapana qillqata samipa wakichma"
+
+#~ msgid "set text size"
+#~ msgstr "qillqata tañapa wakichma"
+
+#~ msgid "sets size of text drawn by the turtle"
+#~ msgstr "tortuga wakichatana rixitapana qillqata tañapa wakichma"
+
+# "presentación"
+#~ msgid "presentation 1x1"
+#~ msgstr "1x1 uñachayäwi"
+
+# "presentación"
+#~ msgid "presentation 2x1"
+#~ msgstr "2x1 uñachayäwi"
+
+# "presentación"
+#~ msgid "presentation 1x2"
+#~ msgstr "1x2 uñachayäwi"
+
+# "presentación"
+#~ msgid "presentation 2x2"
+#~ msgstr "2x2 uñachayäwi"
+
+#  "TortugArte"
+#~ msgid "Turtle Art"
+#~ msgstr "TortugArte wakichata"
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 
 #: turtleblocks.py:687
 msgid "myproject"
@@ -3838,6 +4039,15 @@ msgstr "jisk'a amtäwi wakichata"
 #~ msgid "PORT 1 of the brick"
 #~ msgstr "brick wakichatana PUERTO 1 wakichatapa"
 
+<<<<<<< HEAD
+=======
+#~ msgid "read"
+#~ msgstr "ullaña"
+
+#~ msgid "Read sensor output."
+#~ msgstr "Katjirina mistuñapa wakichata ullma."
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #~ msgid "PORT 2"
 #~ msgstr "PUERTO 2 wakichata"
 

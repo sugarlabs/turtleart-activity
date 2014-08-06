@@ -77,7 +77,10 @@ class Camera_sensor(Plugin):
 
         SKIN_PATHS.append('plugins/camera_sensor/images')
 
+        hidden = True
+        second_cam = False
         if self._status:
+<<<<<<< HEAD
             sensors_palette.add_block('luminance',
                                       style='box-style',
                                       label=_('brightness'),
@@ -176,6 +179,57 @@ is pushed to the stack'),
                                     default='CAMERA',
                                     help_string=_('camera output'),
                                     content_block=True)
+=======
+            hidden = False
+            if len(self.devices) > 1:
+                second_cam = True
+
+        sensors_palette.add_block('luminance',
+                                  hidden=hidden,
+                                  style='box-style',
+                                  label=_('brightness'),
+                                  help_string=
+                                      _('light level detected by camera'),
+                                  value_block=True,
+                                  prim_name='luminance')
+        self._parent.lc.def_prim(
+            'luminance', 0,
+            Primitive(self.prim_read_camera,
+                      return_type=TYPE_NUMBER,
+                      kwarg_descs={'luminance_only': ConstantArg(True)},
+                      call_afterwards=self.after_luminance))
+
+        media_palette.add_block('camera',
+                                hidden=hidden,
+                                style='box-style-media',
+                                label=' ',
+                                default='CAMERA',
+                                help_string=_('camera output'),
+                                content_block=True)
+
+        media_palette.add_block('camera1',
+                                hidden=not(second_cam),
+                                style='box-style-media',
+                                label=' ',
+                                default='CAMERA',
+                                help_string=_('camera output'),
+                                content_block=True)
+
+        # Depreciated block
+        sensors_palette.add_block('read_camera',
+                                  hidden=True,
+                                  style='box-style',
+                                  label=_('brightness'),
+                                  help_string=_(
+                        'Average RGB color from camera is pushed to the stack'),
+                                  value_block=True,
+                                  prim_name='read_camera')
+        self._parent.lc.def_prim(
+            'read_camera', 0,
+            Primitive(self.prim_read_camera,
+                      return_type=TYPE_NUMBER,
+                      kwarg_descs={'luminance_only': ConstantArg(False)}))
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 
         NO_IMPORT.append('camera')
         BLOCKS_WITH_SKIN.append('camera')
@@ -188,8 +242,9 @@ is pushed to the stack'),
 
     def start(self):
         ''' Initialize the camera if there is an camera block in use '''
-        if len(self._parent.block_list.get_similar_blocks('block',
-            ['camera', 'camera1', 'read_camera', 'luminance'])) > 0:
+        camera_blocks = len(self._parent.block_list.get_similar_blocks(
+            'block', ['camera', 'camera1', 'read_camera', 'luminance']))
+        if not self._parent.running_turtleart or camera_blocks > 0:
             if self._status and len(self.cameras) == 0:
                 for device in self.devices:
                     self.cameras.append(Camera(device))
@@ -242,7 +297,10 @@ is pushed to the stack'),
                 self._parent.lc.heap.append(-1)
                 self._parent.lc.heap.append(-1)
                 return
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
         array = None
         self._set_autogain(0, camera=camera)  # disable AUTOGAIN
         self._get_pixbuf_from_camera(camera=camera)

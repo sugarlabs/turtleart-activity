@@ -1407,11 +1407,29 @@ msgstr "pichay"
 msgid "clears the screen and reset the turtle"
 msgstr "pichay pantallata charapatataq musuqmanta kamachiy"
 
+<<<<<<< HEAD
+=======
+#  "izquierda"
+#: TurtleArt/tabasics.py:169
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:856
+msgid "left"
+msgstr "lluqi"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #  "gira la tortuga en sentido anti-horario (ángulo en grados)"
 #: TurtleArt/tabasics.py:173
 msgid "turns turtle counterclockwise (angle in degrees)"
 msgstr "charapataqa lluqimanhina muyurichiy ([ángulo en grados nisqapi)"
 
+<<<<<<< HEAD
+=======
+#  "derecha"
+#: TurtleArt/tabasics.py:181
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:880
+msgid "right"
+msgstr "paña"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #   "gira la tortuga en sentido horario (ángulo en grados)"
 #  [es] "gira la tortuga en sentido horario (ángulo en grados)"
 #: TurtleArt/tabasics.py:185
@@ -1444,6 +1462,19 @@ msgstr "suni arco nisqantintam charapataqa purichiy"
 msgid "set xy"
 msgstr "xy nisqata churay"
 
+<<<<<<< HEAD
+=======
+#  "x"
+#: TurtleArt/tabasics.py:210 TurtleArt/tabasics.py:288
+msgid "x"
+msgstr "x"
+
+#  "y"
+#: TurtleArt/tabasics.py:210 TurtleArt/tabasics.py:288
+msgid "y"
+msgstr "y"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #  "mover la tortuga a la posición xcor, ycor; (0, 0) está en el centro de la "
 #  "pantalla."
 #: TurtleArt/tabasics.py:214 TurtleArt/tabasics.py:292
@@ -1529,6 +1560,16 @@ msgstr "Qillqanawan llamk'anapaq"
 msgid "fill screen"
 msgstr "pantallata hunt'achiy"
 
+<<<<<<< HEAD
+=======
+#  "color"
+#: TurtleArt/tabasics.py:313 TurtleArt/tabasics.py:326
+#: TurtleArt/tabasics.py:384
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1093
+msgid "color"
+msgstr "llimp'i"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #  "tono"
 #: TurtleArt/tabasics.py:313 TurtleArt/tabasics.py:327
 #: TurtleArt/tabasics.py:397
@@ -1543,6 +1584,16 @@ msgstr "llimp'iynin"
 msgid "fills the background with (color, shade)"
 msgstr "ukhuntaqa hunt'achiy (llimp'iwan, llantuwan ima)"
 
+<<<<<<< HEAD
+=======
+#  "gris"
+#: TurtleArt/tabasics.py:327 TurtleArt/tabasics.py:409
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1090
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1095
+msgid "gray"
+msgstr "chiqchi"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #  "fijar color"
 #: TurtleArt/tabasics.py:343
 msgid "set color"
@@ -2139,6 +2190,14 @@ msgstr "imapi waqaychanki"
 msgid "box"
 msgstr "tawak'uchu"
 
+<<<<<<< HEAD
+=======
+#  "valor"
+#: TurtleArt/tabasics.py:976 TurtleArt/tawindow.py:4581
+msgid "value"
+msgstr "chani"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #  "mi caja"
 #: TurtleArt/tabasics.py:980 TurtleArt/tabasics.py:995
 #: TurtleArt/tawindow.py:1453 TurtleArt/tawindow.py:1585
@@ -2741,6 +2800,15 @@ msgstr "utqhay purichinapaq"
 msgid "push acceleration in x, y, z to heap"
 msgstr "utqhay puriytaqa tawqap x, y, z tinkuchaypi churay"
 
+<<<<<<< HEAD
+=======
+#  "sonido"
+#: plugins/audio_sensors/audio_sensors.py:83
+#: plugins/audio_sensors/audio_sensors.py:98 pysamples/grecord.py:206
+msgid "sound"
+msgstr "uyarina"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #  "señal de entrada de micrófono"
 #: plugins/audio_sensors/audio_sensors.py:84
 #: plugins/audio_sensors/audio_sensors.py:99
@@ -3130,6 +3198,14 @@ msgstr "charapaqa qhawan"
 msgid "returns the color that the turtle \"sees\""
 msgstr "charapa llimp'i \"qhawasqantam\" rikuchin"
 
+<<<<<<< HEAD
+=======
+#  "tiempo"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:425
+msgid "time"
+msgstr "pacha"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #  "el tiempo transcurrido (en segundos) desde el inicio del programa"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:428
 msgid "elapsed time (in seconds) since program started"
@@ -3451,6 +3527,14 @@ msgstr "uraynin"
 msgid "ycor of bottom of screen"
 msgstr "pantallap uray XCOR nisqan"
 
+<<<<<<< HEAD
+=======
+#  "anchura"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:872
+msgid "width"
+msgstr "kinraynin"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #  "el ancho del lienzo"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:875
 msgid "the canvas width"
@@ -3466,6 +3550,14 @@ msgstr "pantallap paña XCOR nisqan"
 msgid "ycor of top of screen"
 msgstr "pantallap wichay XCOR nisqan"
 
+<<<<<<< HEAD
+=======
+#  "altura"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:896
+msgid "height"
+msgstr "sayaynin"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #  "la altura del lienzo"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:899
 msgid "the canvas height"
@@ -3702,3 +3794,10 @@ msgstr "Waqaychakunqachu?"
 # "presentación"
 #~ msgid "presentation 2x2"
 #~ msgstr "2x2 qhawachiy"
+<<<<<<< HEAD
+=======
+
+#  "TortugArte"
+#~ msgid "Turtle Art"
+#~ msgstr "CharapArte"
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc

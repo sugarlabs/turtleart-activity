@@ -798,6 +798,7 @@ msgid ""
 "Set the friction property for objects (value from 0 to 1, where 0 turns "
 "friction off and 1 is strong friction)."
 msgstr ""
+<<<<<<< HEAD
 "वस्तुहरुको लागि घर्षण गुण सेट गर( ० देखि १ सम्घम मान, जहाँ ० ले घर्षणलाई बन्द गर्छ र १ "
 "मज़बूत घर्षण हो)।"
 
@@ -1310,6 +1311,21 @@ msgstr "read programmable voltage"
 msgid "Expeyes device not found"
 msgstr "Expeyes उपकरण फेला परेन"
 
+=======
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-12-05 00:30-0500\n"
+"PO-Revision-Date: 2013-11-20 10:46+0200\n"
+"Last-Translator: Avasz <avashmulmi@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: ne\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.0.5\n"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #. TRANS: "name" option from activity.info file
 msgid "TurtleBlocks"
 msgstr "टर्टल ब्लक"
@@ -1320,8 +1336,13 @@ msgid ""
 "A Logo-inspired turtle that draws colorful pictures with snap-together "
 "visual programming blocks"
 msgstr ""
+<<<<<<< HEAD
 "एउटा चिन्ह-प्रभावित कछुवा जसले सँगै-जोडिने दृश्य प्रोग्रामिङ्ग खण्डहरुका साथमा रङ्गीचङ्गी "
 "चित्रहरु बनाउँदछ।"
+=======
+"एउटा चिन्ह-प्रभावित कछुवा जसले सँगै-जोडिने दृश्य प्रोग्रामिङ्ग खण्डहरुका "
+"साथमा रङ्गीचङ्गी चित्रहरु बनाउँदछ।"
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 
 #: TurtleArt/tabasics.py:155
 msgid "Palette of turtle commands"
@@ -1359,10 +1380,26 @@ msgstr "सफा"
 msgid "clears the screen and reset the turtle"
 msgstr "स्क्रिन खाली गर्छ र टर्टललाई रिसेट गर्छ"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:207 TurtleArt/taconstants.py:138
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:973
+msgid "left"
+msgstr "बायाँ"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:211
 msgid "turns turtle counterclockwise (angle in degrees)"
 msgstr "कछुवालाई घडिको उल्टो दिशामा घुमाउँछ (कोण ढिग्रीमा)"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:221 TurtleArt/taconstants.py:140
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1006
+msgid "right"
+msgstr "दायाँ"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:225
 msgid "turns turtle clockwise (angle in degrees)"
 msgstr "कछुवालाई घडिको दिशामा घुमाउँछ(कोण ढिग्रीमा)"
@@ -1387,6 +1424,17 @@ msgstr "टर्टल चाप को वरिपरी सार्छ"
 msgid "set xy"
 msgstr "xy राख"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
+msgid "x"
+msgstr "x"
+
+#: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
+msgid "y"
+msgstr "y"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:255 TurtleArt/tabasics.py:334
 msgid ""
 "moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
@@ -1445,6 +1493,14 @@ msgstr "कलम"
 msgid "fill screen"
 msgstr "स्क्रिन भर"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:369
+#: TurtleArt/tabasics.py:432 TurtleArt/tawindow.py:4483
+msgid "color"
+msgstr "रंग"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:370
 #: TurtleArt/tabasics.py:444 TurtleArt/tawindow.py:4479
 #: TurtleArt/tawindow.py:4484
@@ -1455,6 +1511,14 @@ msgstr "छाया"
 msgid "fills the background with (color, shade)"
 msgstr "पृष्ठभुमि (रंग, सेड) ले भरिन्छ"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:370 TurtleArt/tabasics.py:454
+#: TurtleArt/tawindow.py:4480 TurtleArt/tawindow.py:4485
+msgid "gray"
+msgstr "खरानी रङ"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:387
 msgid "set color"
 msgstr "रंङ राख"
@@ -1904,6 +1968,13 @@ msgstr "स्टोर गर्नुहोस्"
 msgid "box"
 msgstr "बाकस"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:1114 TurtleArt/tawindow.py:4847
+msgid "value"
+msgstr "मान"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:1118 TurtleArt/tabasics.py:1133
 #: TurtleArt/tawindow.py:1581 TurtleArt/tawindow.py:1715
 #: TurtleArt/tawindow.py:2334 TurtleArt/tawindow.py:4812
@@ -2103,7 +2174,12 @@ msgstr "सिफ्ट"
 
 #: TurtleArt/tawindow.py:1542
 msgid "Please hit the Stop Button before making changes to your program"
+<<<<<<< HEAD
 msgstr "तपाईँको प्रोग्राममा केहि परिवर्तन हुनु अगावै कृपया रोक्ने बटनमा थिच्नुहोस्।"
+=======
+msgstr ""
+"तपाईँको प्रोग्राममा केहि परिवर्तन हुनु अगावै कृपया रोक्ने बटनमा थिच्नुहोस्।"
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 
 #: TurtleArt/tawindow.py:1595
 msgid "Select blocks to share"
@@ -2113,6 +2189,7 @@ msgstr "खण्डहरु अंश छान"
 #: TurtleArtActivity.py:921 turtleblocks.py:462
 msgid "Save stack"
 msgstr "स्टक सेभ गर"
+<<<<<<< HEAD
 
 #: TurtleArt/tawindow.py:1761 TurtleArt/tawindow.py:1775
 msgid "Really overwrite stack?"
@@ -2136,6 +2213,31 @@ msgstr "स्टक मेट"
 msgid "Really delete stack?"
 msgstr "साँच्चै स्टक मेट्ने?"
 
+=======
+
+#: TurtleArt/tawindow.py:1761 TurtleArt/tawindow.py:1775
+msgid "Really overwrite stack?"
+msgstr "साँच्चै स्टक ओभरराइट गर्ने?"
+
+#: TurtleArt/tawindow.py:1764 TurtleArt/tawindow.py:1803
+#: gnome_plugins/uploader_plugin.py:144
+msgid "Cancel"
+msgstr "रद्द गर"
+
+#: TurtleArt/tawindow.py:1768 TurtleArt/tawindow.py:1778
+msgid "Overwrite stack"
+msgstr "स्टक ओभरराइट गर"
+
+#: TurtleArt/tawindow.py:1799 TurtleArt/tawindow.py:1807
+#: TurtleArt/tawindow.py:1816 TurtleArtActivity.py:776 turtleblocks.py:464
+msgid "Delete stack"
+msgstr "स्टक मेट"
+
+#: TurtleArt/tawindow.py:1800 TurtleArt/tawindow.py:1813
+msgid "Really delete stack?"
+msgstr "साँच्चै स्टक मेट्ने?"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tawindow.py:2204
 msgid "Do you really want to empty the trash?"
 msgstr "के तपाईँ निश्चय नै रद्दि टोकरी खालि गर्न चाहनु हुन्छ?"
@@ -2305,6 +2407,7 @@ msgstr "ब्लकहरूको साझेदारी निस्कृ�
 #: TurtleArtActivity.py:1072 turtleblocks.py:429
 msgid "Save"
 msgstr "सेभ गर"
+<<<<<<< HEAD
 
 #: TurtleArtActivity.py:1091
 #, fuzzy
@@ -2320,6 +2423,23 @@ msgstr "खोल"
 msgid "Add project"
 msgstr "परियोजना सुरु गर"
 
+=======
+
+#: TurtleArtActivity.py:1091
+#, fuzzy
+msgid "Load"
+msgstr "लोड गर"
+
+#: TurtleArtActivity.py:1108 turtleblocks.py:425
+msgid "Open"
+msgstr "खोल"
+
+#: TurtleArtActivity.py:1137 turtleblocks.py:426
+#, fuzzy
+msgid "Add project"
+msgstr "परियोजना सुरु गर"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArtActivity.py:1161
 msgid "<Ctrl>p"
 msgstr "<Ctrl>p"
@@ -2472,6 +2592,13 @@ msgstr "गतिवृद्धि"
 msgid "push acceleration in x, y, z to heap"
 msgstr "थुप्रो हुने गरी x, y, z मा गतिवृद्धि थिच"
 
+<<<<<<< HEAD
+=======
+#: plugins/audio_sensors/audio_sensors.py:90 pysamples/grecord.py:206
+msgid "sound"
+msgstr "ध्बनि"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/audio_sensors/audio_sensors.py:91
 msgid "raw microphone input signal"
 msgstr "कच्चा माइक्रोफोनको आगत संकेत"
@@ -2493,11 +2620,27 @@ msgstr "पिच"
 msgid "microphone input pitch"
 msgstr "माइक्रोफोन आगत पिच"
 
+<<<<<<< HEAD
+=======
+#: plugins/audio_sensors/audio_sensors.py:157
+#: plugins/audio_sensors/audio_sensors.py:175
+msgid "resistance"
+msgstr "प्रतिबन्ध"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/audio_sensors/audio_sensors.py:158
 #: plugins/audio_sensors/audio_sensors.py:176
 msgid "microphone input resistance"
 msgstr "माइक्रोफोनको आगत प्रतिरोध"
 
+<<<<<<< HEAD
+=======
+#: plugins/audio_sensors/audio_sensors.py:163
+#: plugins/audio_sensors/audio_sensors.py:181
+msgid "voltage"
+msgstr "भोल्टेज"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/audio_sensors/audio_sensors.py:164
 #: plugins/audio_sensors/audio_sensors.py:182
 msgid "microphone input voltage"
@@ -2508,6 +2651,18 @@ msgstr "माइक्रोफोनको आयात भोल्युम"
 msgid "Palette of media objects"
 msgstr "मिडिया वस्तुहरुको प्यालेट"
 
+<<<<<<< HEAD
+=======
+#: plugins/camera_sensor/camera_sensor.py:83
+#: plugins/camera_sensor/camera_sensor.py:99
+#: plugins/camera_sensor/camera_sensor.py:136
+#: plugins/camera_sensor/camera_sensor.py:152
+#: plugins/light_sensor/light_sensor.py:58
+#: plugins/light_sensor/light_sensor.py:66
+msgid "brightness"
+msgstr "चम्किलोपन"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/camera_sensor/camera_sensor.py:85
 #: plugins/camera_sensor/camera_sensor.py:138
 msgid "light level detected by camera"
@@ -2714,6 +2869,13 @@ msgstr "अन्तराल"
 msgid "plays a sinewave at frequency, amplitude, and duration (in seconds)"
 msgstr "साइनतरङ्गलाई आवृत्ति, कोणाङ्क र अन्तरालमा ( सेकेन्डमा) देखाउँछ"
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:328
+msgid "sensor"
+msgstr "संवेदक"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:333
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:344
 msgid "button down"
@@ -2775,6 +2937,13 @@ msgstr "टर्टलले देख्छ"
 msgid "returns the color that the turtle \"sees\""
 msgstr "टर्टलले \"देखेको\" रंग फिर्ता गर्छ"
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:421
+msgid "time"
+msgstr "समय"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:424
 msgid "elapsed time (in seconds) since program started"
 msgstr "कार्यक्रम सुरु भएदेखिको बितेको समय(सेकेन्ड मा)"
@@ -2909,7 +3078,13 @@ msgstr ""
 msgid ""
 "a programmable block: used to add advanced multi-variable math equations, e."
 "g., sin(x+y+z)"
+<<<<<<< HEAD
 msgstr "प्रोगरामेबल खण्ड: उन्नत बहु-चल गणीत समीकरण थप्न प्रयोग गरिने, e.g., sin(x+y+z)"
+=======
+msgstr ""
+"प्रोगरामेबल खण्ड: उन्नत बहु-चल गणीत समीकरण थप्न प्रयोग गरिने, e.g., "
+"sin(x+y+z)"
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:669
 msgid "Cartesian"
@@ -2942,6 +3117,7 @@ msgstr "लोड गर"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:762
 msgid "loads a block"
 msgstr "ब्लाक लोड गर्छ"
+<<<<<<< HEAD
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:761
 msgid "setxy"
@@ -2955,6 +3131,21 @@ msgstr "प्यालेट चयन गर"
 msgid "selects a palette"
 msgstr "selects a palette"
 
+=======
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:761
+msgid "setxy"
+msgstr "setxy"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:773
+msgid "select palette"
+msgstr "प्यालेट चयन गर"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:776
+msgid "selects a palette"
+msgstr "selects a palette"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:788
 msgid "chooses which turtle to command"
 msgstr "आदेश गर्ने कछुवा छान्छ"
@@ -3083,6 +3274,13 @@ msgstr "तलतिर"
 msgid "ycor of bottom of screen"
 msgstr "स्क्रिनको तलपट्टिको ycor"
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:995
+msgid "width"
+msgstr "चौडाइ"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:998
 msgid "the canvas width"
 msgstr "क्यानभासको चौडाइ"
@@ -3095,6 +3293,13 @@ msgstr "स्क्रिनको दायाँपट्टिको xcor"
 msgid "ycor of top of screen"
 msgstr "स्क्रिनको माथिपट्टिको ycor"
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1028
+msgid "height"
+msgstr "उचाइ"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1031
 msgid "the canvas height"
 msgstr "क्यानभास हाइट"
@@ -3161,8 +3366,13 @@ msgid ""
 "Sorry, there is no free memory to load my brain. Close other activities and "
 "try once more."
 msgstr ""
+<<<<<<< HEAD
 "माफ गर्नुहोला, यहाँ खालि मेमोरी छैन्। अन्य क्रियाकलापहरू बन्द गरेर एकपटक फेरी प्रयास "
 "गर्नुहोस्।"
+=======
+"माफ गर्नुहोला, यहाँ खालि मेमोरी छैन्। अन्य क्रियाकलापहरू बन्द गरेर एकपटक "
+"फेरी प्रयास गर्नुहोस्।"
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 
 #: pysamples/forward_push.py:48
 msgid "push destination rgb value to heap"
@@ -3266,13 +3476,58 @@ msgid "Save project?"
 msgstr "परियोजना सेभ गर?"
 
 #: turtleblocks.py:546
+<<<<<<< HEAD
 #, fuzzy, python-format
+=======
+#, python-format
+#, python-format, fuzzy
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 msgid "Plugin %s already installed"
 msgstr "पल्गइन %s पहिल्यै इन्टल भइसक्यो।"
 
 #: turtleblocks.py:666
 msgid "myproject"
 msgstr "myproject"
+<<<<<<< HEAD
+=======
+
+#~ msgid "make a uturn"
+#~ msgstr "यूमोड लिऊ"
+
+#, fuzzy
+#~ msgid "u turn"
+#~ msgstr "यूमोड"
+
+#~ msgid "set text color"
+#~ msgstr "अक्षरको रंग राख"
+
+#~ msgid "sets color of text drawn by the turtle"
+#~ msgstr "कछुवाले लेख्ने अक्षरको रङ निर्धारण गर्छ"
+
+#~ msgid "set text size"
+#~ msgstr "कलमको साइज मिलाउ"
+
+#~ msgid "sets size of text drawn by the turtle"
+#~ msgstr "कछुवाले कोरेको अक्षरको आकार निश्चित गर्छ"
+
+#~ msgid "presentation 1x1"
+#~ msgstr "प्रस्तुति १x१"
+
+#~ msgid "presentation 2x1"
+#~ msgstr "प्रस्तुति 2x1"
+
+#~ msgid "presentation 1x2"
+#~ msgstr "प्रस्तुति १x२"
+
+#~ msgid "presentation 2x2"
+#~ msgstr "प्रस्तुति 2x2"
+
+#~ msgid "Turtle Art"
+#~ msgstr "टर्टल आर्ट"
+
+#~ msgid "Turtle Art Mini"
+#~ msgstr "टर्टल आर्ट मिनि"
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 
 #~ msgid "make a uturn"
 #~ msgstr "यूमोड लिऊ"
@@ -3407,6 +3662,15 @@ msgstr "myproject"
 #~ msgid "PORT 1 of the brick"
 #~ msgstr "ब्रिकको PORT १"
 
+<<<<<<< HEAD
+=======
+#~ msgid "read"
+#~ msgstr "पढ"
+
+#~ msgid "Read sensor output."
+#~ msgstr "संवेदकको उपज पढ।"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #~ msgid "PORT 2"
 #~ msgstr "PORT 2"
 
@@ -3704,9 +3968,15 @@ msgstr "myproject"
 #~ msgid "restore last"
 #~ msgstr "पूर्वावस्थामा ल्याउ"
 
+<<<<<<< HEAD
 #~ msgid ""
 #~ "a programmable block: used to add advanced math equations, e.g., sin(x)"
 #~ msgstr "प्रोगरामेबल ढिक्का: उन्नत गणित सामीकरण थप्न प्रयोग गरिने, जस्तै., sin(x)"
+=======
+#~ msgid "a programmable block: used to add advanced math equations, e.g., sin(x)"
+#~ msgstr ""
+#~ "प्रोगरामेबल ढिक्का: उन्नत गणित सामीकरण थप्न प्रयोग गरिने, जस्तै., sin(x)"
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 
 #~ msgid "text size"
 #~ msgstr "अक्षरको साइज"
@@ -3753,6 +4023,12 @@ msgstr "myproject"
 #~ msgid "holds current text size (can be used in place of a number block)"
 #~ msgstr "  तत्कालिन आकार बचत गर्छ  (सङ्ख्या ब्लकको सट्टा प्रयोग गर्न सकिन्छ)"
 
+<<<<<<< HEAD
+=======
+#~ msgid "name"
+#~ msgstr "नाम"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #~ msgid "stack 2"
 #~ msgstr "चाङ्ग २"
 

@@ -1252,6 +1252,21 @@ msgstr ""
 
 msgid "Expeyes device not found"
 msgstr ""
+<<<<<<< HEAD
+=======
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-07-26 00:31-0400\n"
+"PO-Revision-Date: 2009-05-10 23:43-0400\n"
+"Last-Translator: Donghee Park <i4u_4ever@yahoo.com>\n"
+"Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Pootle 1.2.1\n"
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 
 #. TRANS: "name" option from activity.info file
 msgid "TurtleBlocks"
@@ -1294,10 +1309,26 @@ msgstr "지우기"
 msgid "clears the screen and reset the turtle"
 msgstr ""
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:169
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:856
+msgid "left"
+msgstr "왼쪽"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:173
 msgid "turns turtle counterclockwise (angle in degrees)"
 msgstr ""
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:181
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:880
+msgid "right"
+msgstr "오른쪽"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:185
 msgid "turns turtle clockwise (angle in degrees)"
 msgstr ""
@@ -1322,6 +1353,17 @@ msgstr ""
 msgid "set xy"
 msgstr "xy 지정하기"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:210 TurtleArt/tabasics.py:288
+msgid "x"
+msgstr "x"
+
+#: TurtleArt/tabasics.py:210 TurtleArt/tabasics.py:288
+msgid "y"
+msgstr "y"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:214 TurtleArt/tabasics.py:292
 msgid ""
 "moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
@@ -1374,6 +1416,15 @@ msgstr ""
 msgid "fill screen"
 msgstr "전체 화면"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:313 TurtleArt/tabasics.py:326
+#: TurtleArt/tabasics.py:384
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1093
+msgid "color"
+msgstr "색"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:313 TurtleArt/tabasics.py:327
 #: TurtleArt/tabasics.py:397
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1089
@@ -1385,6 +1436,15 @@ msgstr "명암"
 msgid "fills the background with (color, shade)"
 msgstr ""
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:327 TurtleArt/tabasics.py:409
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1090
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1095
+msgid "gray"
+msgstr ""
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:343
 msgid "set color"
 msgstr "색 지정"
@@ -1820,6 +1880,13 @@ msgstr ""
 msgid "box"
 msgstr "상자"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:976 TurtleArt/tawindow.py:4581
+msgid "value"
+msgstr ""
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:980 TurtleArt/tabasics.py:995
 #: TurtleArt/tawindow.py:1453 TurtleArt/tawindow.py:1585
 #: TurtleArt/tawindow.py:2182 TurtleArt/tawindow.py:4542
@@ -1984,6 +2051,7 @@ msgstr ""
 #: TurtleArt/tawindow.py:1631 TurtleArt/tawindow.py:1645
 msgid "Really overwrite stack?"
 msgstr ""
+<<<<<<< HEAD
 
 #: TurtleArt/tawindow.py:1634 TurtleArt/tawindow.py:1673
 #: gnome_plugins/uploader_plugin.py:144
@@ -2003,6 +2071,27 @@ msgstr ""
 msgid "Really delete stack?"
 msgstr ""
 
+=======
+
+#: TurtleArt/tawindow.py:1634 TurtleArt/tawindow.py:1673
+#: gnome_plugins/uploader_plugin.py:144
+msgid "Cancel"
+msgstr ""
+
+#: TurtleArt/tawindow.py:1638 TurtleArt/tawindow.py:1648
+msgid "Overwrite stack"
+msgstr ""
+
+#: TurtleArt/tawindow.py:1669 TurtleArt/tawindow.py:1677
+#: TurtleArt/tawindow.py:1686 TurtleArtActivity.py:658 turtleblocks.py:414
+msgid "Delete stack"
+msgstr ""
+
+#: TurtleArt/tawindow.py:1670 TurtleArt/tawindow.py:1683
+msgid "Really delete stack?"
+msgstr ""
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tawindow.py:4362
 msgid "image"
 msgstr ""
@@ -2327,6 +2416,14 @@ msgstr ""
 msgid "push acceleration in x, y, z to heap"
 msgstr ""
 
+<<<<<<< HEAD
+=======
+#: plugins/audio_sensors/audio_sensors.py:83
+#: plugins/audio_sensors/audio_sensors.py:98 pysamples/grecord.py:206
+msgid "sound"
+msgstr "소리"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/audio_sensors/audio_sensors.py:84
 #: plugins/audio_sensors/audio_sensors.py:99
 msgid "raw microphone input signal"
@@ -2638,6 +2735,13 @@ msgstr ""
 msgid "returns the color that the turtle \"sees\""
 msgstr ""
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:425
+msgid "time"
+msgstr ""
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:428
 msgid "elapsed time (in seconds) since program started"
 msgstr ""
@@ -2892,6 +2996,13 @@ msgstr ""
 msgid "ycor of bottom of screen"
 msgstr ""
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:872
+msgid "width"
+msgstr ""
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:875
 msgid "the canvas width"
 msgstr ""
@@ -2904,6 +3015,13 @@ msgstr ""
 msgid "ycor of top of screen"
 msgstr ""
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:896
+msgid "height"
+msgstr ""
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:899
 msgid "the canvas height"
 msgstr ""
@@ -3070,8 +3188,28 @@ msgstr ""
 msgid "Save project?"
 msgstr ""
 
+<<<<<<< HEAD
 #~ msgid "name"
 #~ msgstr "이름"
+=======
+#~ msgid "set text color"
+#~ msgstr "텍스트 색 지정"
+
+#, fuzzy
+#~ msgid "set text size"
+#~ msgstr "펜 크기 지정"
+
+#~ msgid "Turtle Art"
+#~ msgstr "터틀 아트"
+
+#, fuzzy
+#~ msgid "light"
+#~ msgstr "오른쪽"
+
+#, fuzzy
+#~ msgid "sensor"
+#~ msgstr "센서"
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 
 #~ msgid "set text color"
 #~ msgstr "텍스트 색 지정"

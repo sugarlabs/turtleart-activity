@@ -1212,6 +1212,7 @@ msgstr ""
 
 msgid "input"
 msgstr ""
+<<<<<<< HEAD
 
 #, fuzzy
 msgid "samples"
@@ -1278,6 +1279,21 @@ msgstr ""
 msgid "Expeyes device not found"
 msgstr ""
 
+=======
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-12-05 00:30-0500\n"
+"PO-Revision-Date: 2013-12-10 19:34+0200\n"
+"Last-Translator: Eduardo H. <hoboprimate@gmail.com>\n"
+"Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
+"Language: pt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.0.5\n"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #. TRANS: "name" option from activity.info file
 msgid "TurtleBlocks"
 msgstr "BlocosTartaruga"
@@ -1327,12 +1343,28 @@ msgstr "limpar"
 msgid "clears the screen and reset the turtle"
 msgstr "limpa o ecrã e coloca a tartaruga na posição inicial"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:207 TurtleArt/taconstants.py:138
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:973
+msgid "left"
+msgstr "esquerda"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:211
 msgid "turns turtle counterclockwise (angle in degrees)"
 msgstr ""
 "roda a tartaruga na direção contrária dos ponteiros do relógio (ângulo em "
 "graus)"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:221 TurtleArt/taconstants.py:140
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1006
+msgid "right"
+msgstr "direita"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:225
 msgid "turns turtle clockwise (angle in degrees)"
 msgstr "roda a tartaruga na direção dos ponteiros do relógio (ângulo em graus)"
@@ -1357,6 +1389,17 @@ msgstr "move a tartaruga ao longo de um arco"
 msgid "set xy"
 msgstr "definir xy"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
+msgid "x"
+msgstr "x"
+
+#: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
+msgid "y"
+msgstr "y"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:255 TurtleArt/tabasics.py:334
 msgid ""
 "moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
@@ -1420,6 +1463,14 @@ msgstr "caneta"
 msgid "fill screen"
 msgstr "preencher ecrã"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:369
+#: TurtleArt/tabasics.py:432 TurtleArt/tawindow.py:4483
+msgid "color"
+msgstr "cor"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:370
 #: TurtleArt/tabasics.py:444 TurtleArt/tawindow.py:4479
 #: TurtleArt/tawindow.py:4484
@@ -1430,6 +1481,14 @@ msgstr "tom"
 msgid "fills the background with (color, shade)"
 msgstr "preenche o fundo com (cor, tom)"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:370 TurtleArt/tabasics.py:454
+#: TurtleArt/tawindow.py:4480 TurtleArt/tawindow.py:4485
+msgid "gray"
+msgstr "cinza"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:387
 msgid "set color"
 msgstr "definir cor"
@@ -1889,6 +1948,13 @@ msgstr "guardar em"
 msgid "box"
 msgstr "caixa"
 
+<<<<<<< HEAD
+=======
+#: TurtleArt/tabasics.py:1114 TurtleArt/tawindow.py:4847
+msgid "value"
+msgstr "valor"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:1118 TurtleArt/tabasics.py:1133
 #: TurtleArt/tawindow.py:1581 TurtleArt/tawindow.py:1715
 #: TurtleArt/tawindow.py:2334 TurtleArt/tawindow.py:4812
@@ -2458,6 +2524,13 @@ msgstr "aceleração"
 msgid "push acceleration in x, y, z to heap"
 msgstr "inserir a aceleração em X, Y, Z para pilha"
 
+<<<<<<< HEAD
+=======
+#: plugins/audio_sensors/audio_sensors.py:90 pysamples/grecord.py:206
+msgid "sound"
+msgstr "som"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/audio_sensors/audio_sensors.py:91
 msgid "raw microphone input signal"
 msgstr "sinal bruto da entrada do microfone"
@@ -2479,11 +2552,27 @@ msgstr "altura do som"
 msgid "microphone input pitch"
 msgstr "altura do som da entrada do microfone"
 
+<<<<<<< HEAD
+=======
+#: plugins/audio_sensors/audio_sensors.py:157
+#: plugins/audio_sensors/audio_sensors.py:175
+msgid "resistance"
+msgstr "resistência"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/audio_sensors/audio_sensors.py:158
 #: plugins/audio_sensors/audio_sensors.py:176
 msgid "microphone input resistance"
 msgstr "resistência da entrada do microfone"
 
+<<<<<<< HEAD
+=======
+#: plugins/audio_sensors/audio_sensors.py:163
+#: plugins/audio_sensors/audio_sensors.py:181
+msgid "voltage"
+msgstr "voltagem"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/audio_sensors/audio_sensors.py:164
 #: plugins/audio_sensors/audio_sensors.py:182
 msgid "microphone input voltage"
@@ -2494,6 +2583,18 @@ msgstr "voltagem da entrada do microfone"
 msgid "Palette of media objects"
 msgstr "Palete de objetos de média"
 
+<<<<<<< HEAD
+=======
+#: plugins/camera_sensor/camera_sensor.py:83
+#: plugins/camera_sensor/camera_sensor.py:99
+#: plugins/camera_sensor/camera_sensor.py:136
+#: plugins/camera_sensor/camera_sensor.py:152
+#: plugins/light_sensor/light_sensor.py:58
+#: plugins/light_sensor/light_sensor.py:66
+msgid "brightness"
+msgstr "luminosidade"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/camera_sensor/camera_sensor.py:85
 #: plugins/camera_sensor/camera_sensor.py:138
 msgid "light level detected by camera"
@@ -2705,6 +2806,13 @@ msgstr "duração"
 msgid "plays a sinewave at frequency, amplitude, and duration (in seconds)"
 msgstr "toca uma sinusoide na frequência, amplitude, e duração (em segundos)"
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:328
+msgid "sensor"
+msgstr "sensor"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:333
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:344
 msgid "button down"
@@ -2767,6 +2875,13 @@ msgstr "tartaruga vê"
 msgid "returns the color that the turtle \"sees\""
 msgstr "devolve a cor que a tartaruga \"vê\""
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:421
+msgid "time"
+msgstr "tempo"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:424
 msgid "elapsed time (in seconds) since program started"
 msgstr "tempo decorrido (em segundos) desde que o programa começou"
@@ -2946,11 +3061,19 @@ msgstr "definir xy"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:773
 msgid "select palette"
 msgstr "selecionar palete"
+<<<<<<< HEAD
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:776
 msgid "selects a palette"
 msgstr "seleciona uma palete"
 
+=======
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:776
+msgid "selects a palette"
+msgstr "seleciona uma palete"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:788
 msgid "chooses which turtle to command"
 msgstr "escolhe que tartaruga comandar"
@@ -3078,6 +3201,13 @@ msgstr "base"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:987
 msgid "ycor of bottom of screen"
 msgstr "coor.y da base do ecrã"
+<<<<<<< HEAD
+=======
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:995
+msgid "width"
+msgstr "largura"
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:998
 msgid "the canvas width"
@@ -3091,6 +3221,13 @@ msgstr "coor.x da direita do ecrã"
 msgid "ycor of top of screen"
 msgstr "coor.y do topo do ecrã"
 
+<<<<<<< HEAD
+=======
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1028
+msgid "height"
+msgstr "altura"
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1031
 msgid "the canvas height"
 msgstr "a altura da tela"
@@ -3262,13 +3399,63 @@ msgid "Save project?"
 msgstr "Guardar projeto?"
 
 #: turtleblocks.py:546
+<<<<<<< HEAD
 #, python-format
+=======
+#, python-format, 
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 msgid "Plugin %s already installed"
 msgstr "O plugin %s já está instalado"
 
 #: turtleblocks.py:666
 msgid "myproject"
 msgstr "meuprojeto"
+<<<<<<< HEAD
+=======
+
+#~ msgid "Hide sample projects"
+#~ msgstr "Esconder projetos de exemplo"
+
+#~ msgid "palette"
+#~ msgstr "palete"
+
+#~ msgid "make a uturn"
+#~ msgstr "roda 180 graus"
+
+#, fuzzy
+#~ msgid "u turn"
+#~ msgstr "rodar 180°"
+
+#~ msgid "set text color"
+#~ msgstr "definir cor do texto"
+
+#~ msgid "sets color of text drawn by the turtle"
+#~ msgstr "define a cor do texto desenhado pela tartaruga"
+
+#~ msgid "set text size"
+#~ msgstr "definir tamanho do texto"
+
+#~ msgid "sets size of text drawn by the turtle"
+#~ msgstr "define o tamanho do texto desenhado pela tartaruga"
+
+#~ msgid "presentation 1x1"
+#~ msgstr "apresentação 1x1"
+
+#~ msgid "presentation 2x1"
+#~ msgstr "apresentação 2x1"
+
+#~ msgid "presentation 1x2"
+#~ msgstr "apresentação 1x2"
+
+#~ msgid "presentation 2x2"
+#~ msgstr "apresentação 2x2"
+
+#~ msgid "Turtle Art"
+#~ msgstr "TartarugArte"
+
+#~ msgid "Turtle Art Mini"
+#~ msgstr "TartarugArte Mini"
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 
 #~ msgid "Hide sample projects"
 #~ msgstr "Esconder projetos de exemplo"
@@ -3414,6 +3601,15 @@ msgstr "meuprojeto"
 #~ msgid "PORT 1 of the brick"
 #~ msgstr "PORTA 1 do bloco"
 
+<<<<<<< HEAD
+=======
+#~ msgid "read"
+#~ msgstr "ler"
+
+#~ msgid "Read sensor output."
+#~ msgstr "Ler saída do sensor."
+
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #~ msgid "PORT 2"
 #~ msgstr "PORTA 2"
 
@@ -3710,8 +3906,13 @@ msgstr "meuprojeto"
 
 #~ msgid "holds current text color (can be used in place of a number block)"
 #~ msgstr ""
+<<<<<<< HEAD
 #~ "guarda o tamanho actual da cor do texto (pode ser usado em lugar de um "
 #~ "bloco de número)"
+=======
+#~ "guarda o tamanho actual da cor do texto (pode ser usado em lugar de um bloco "
+#~ "de número)"
+>>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 
 #, fuzzy
 #~ msgid "Load my block"
