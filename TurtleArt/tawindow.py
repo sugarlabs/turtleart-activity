@@ -2287,6 +2287,21 @@ class TurtleArtWindow():
                         self._resize_clamp(blk, blk.connections[2], dockn=2)
                     if blk.connections[3] is not None:
                         self._resize_clamp(blk, blk.connections[3], dockn=3)
+            elif blk.name in block_styles['basic-style-3arg']:
+                if blk.connections[2] is not None:
+                    dy = 0
+                    drag_group = find_group(blk.connections[2])
+                    gblk = drag_group[0]
+                    d = int((gblk.docks[-1][3] - gblk.docks[0][3])
+                            / gblk.scale)
+                    if d == 0:
+                        dy += 21  # Fixme: don't hardcode size of slot
+                    else:
+                        dy += d
+                    blk.expand_in_y2(dy)
+                    if dy > 0:
+                        for gblk in drag_group:
+                            gblk.spr.move_relative((0, -dy * gblk.scale))
 
         # Eliminate None blocks from the block list
         blocks_copy = []
