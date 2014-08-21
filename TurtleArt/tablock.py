@@ -509,6 +509,24 @@ class Block:
             self.svg.set_show(False)
         self.refresh()
 
+    def contract_in_y2(self, dy):
+        """ We may want to shrink a block veritcally. """
+        if self.spr is None:
+            return
+        self.ey2 -= dy
+        if self.ey2 < 0:
+            self.ey2 = 0
+        if self.type == 'block':
+            if self.ey2 > 0:
+                self.svg.set_hide(True)
+            else:
+                self.svg.set_hide(False)
+            self.svg.set_show(True)
+        else:
+            self.svg.set_hide(False)
+            self.svg.set_show(False)
+        self.refresh()
+
     def contract_in_x(self, dx):
         """ We may want to shrink a block horizontally. """
         if self.spr is None:
@@ -828,7 +846,7 @@ class Block:
                                       self.svg.docks[3][1]]]
 
     def _make_basic_style_3arg(self, svg):
-        self.svg.expand(10 + self.dx + self.ex, self.ey)
+        self.svg.expand(10 + self.dx + self.ex, self.ey, 0, self.ey2)
         self.svg.set_innie([True, True, True])
         self._make_block_graphics(svg, self.svg.basic_block)
         self.docks = [['flow', True, self.svg.docks[0][0],

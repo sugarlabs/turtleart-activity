@@ -2904,7 +2904,7 @@ class TurtleArtWindow():
             if gblk not in group:
                 gblk.spr.move_relative((0, dy * blk.scale))
         if blk.name in block_styles['compare-style'] or \
-                blk.name in block_styles['compare-porch-style']:
+           blk.name in block_styles['compare-porch-style']:
             for gblk in find_group(blk):
                 gblk.spr.move_relative((0, -dy * blk.scale))
 
@@ -3167,6 +3167,32 @@ class TurtleArtWindow():
                     self._expand_expandable(
                         best_destination, selected_block, dy)
                 self._cascade_expandable(best_destination)
+            elif best_destination.name in block_styles['basic-style-3arg'] and \
+                    best_destination_dockn == 2:
+                dy = 0
+                if (selected_block.name in expandable_blocks or
+                    selected_block.name in block_styles[
+                        'number-style-var-arg']):
+                    if selected_block.name == 'myfunc2arg':
+                        dy = 40 + selected_block.ey - best_destination.ey2
+                    elif selected_block.name == 'myfunc3arg':
+                        dy = 60 + selected_block.ey - best_destination.ey2
+                    else:
+                        dy = 20 + selected_block.ey - best_destination.ey2
+                    best_destination.expand_in_y2(dy)
+                else:
+                    if best_destination.ey2 > 0:
+                        dy = best_destination.reset_y2()
+                if dy != 0:
+                    # Move the dock1 contents up
+                    if best_destination.connections[1] is not None:
+                        drag_group = find_group(best_destination.connections[1])
+                        for gblk in drag_group:
+                            gblk.spr.move_relative((0, -dy * gblk.scale))
+                    self._expand_expandable(
+                        best_destination, selected_block, dy)
+                self._cascade_expandable(best_destination)
+
         # If we are in an expandable flow, expand it...
         if best_destination is not None:
             self._resize_parent_clamps(best_destination)
@@ -3228,6 +3254,17 @@ class TurtleArtWindow():
             if blk2.ey > 0:
                 dy = blk2.reset_y()
                 if dy != 0:
+                    self._expand_expandable(blk2, blk, dy)
+                self._cascade_expandable(blk2)
+        elif blk2.name in expandable_blocks and c == 2:
+            if blk2.ey2 > 0:
+                dy = blk2.reset_y2()
+                if dy != 0:
+                    # Move the dock1 contents up
+                    if blk2.connections[1] is not None:
+                        drag_group = find_group(blk2.connections[1])
+                        for gblk in drag_group:
+                            gblk.spr.move_relative((0, -dy * gblk.scale))
                     self._expand_expandable(blk2, blk, dy)
                 self._cascade_expandable(blk2)
         elif c is not None and blk2.name in EXPANDABLE_FLOW:

@@ -344,7 +344,8 @@ CONSTANTS = {'leftpos': None, 'toppos': None, 'rightpos': None,
 # Blocks that are expandable
 EXPANDABLE_STYLE = ['boolean-style', 'compare-porch-style', 'compare-style',
                     'number-style-porch', 'number-style', 'basic-style-2arg',
-                    'number-style-block', 'box-style-media']
+                    'basic-style-3arg', 'number-style-block',
+                    'box-style-media']
 
 # These are defined in add_block based on block style
 EXPANDABLE_FLOW = []
