@@ -1,23 +1,9 @@
-# #-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#, fuzzy
 msgid ""
 msgstr ""
-"#-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-19 00:33-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.7.0\n"
-"#-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-05-17 00:31-0400\n"
@@ -30,1202 +16,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pootle 2.0.5\n"
-
-msgid "turtleart-extras (master)"
-msgstr ""
-
-msgid "Turtle Blocks"
-msgstr ""
-
-msgid "Turtle Art"
-msgstr "Toi Honu"
-
-msgid "Turtle Art Mini"
-msgstr "Toi Honu Ririki"
-
-msgid "Turtle Confusion"
-msgstr "Rangirua Honu"
-
-msgid "Select a challenge"
-msgstr "Tīpako wero"
-
-msgid "Amazonas Tortuga"
-msgstr ""
-
-msgid "Palette of Mexican pesos"
-msgstr "Papatā o te pesos Mehikana"
-
-msgid "Palette of Colombian pesos"
-msgstr "Papatā o te pesos Kurumupia"
-
-msgid "Palette of Rwandan francs"
-msgstr "Papatā o te francs Rewanata"
-
-msgid "Palette of US dollars"
-msgstr "Papatā o te tāra Amerikana"
-
-msgid "Palette of Australian dollars"
-msgstr "Papatā o te tāra Ahitereiria"
-
-msgid "Palette of Paraguayan Guaranies"
-msgstr "Papatā o te guaranies Parakuaiana"
-
-msgid "Palette of Peruvian Nuevo Soles"
-msgstr "Papatā o te soles Peruwhiana Nueto"
-
-msgid "Palette of Uruguayan Pesos"
-msgstr "Papatā o te pesos Urukuaiana"
-
-msgid "TurtleBots"
-msgstr "HonuKaretao"
-
-msgid "TurtleBlocks with Butia, Lego NxT, WeDo, Arduino, FollowMe plugins"
-msgstr ""
-
-msgid "ERROR: The speed must be a value between 0 and 1023"
-msgstr ""
-
-msgid "ERROR: The pin must be between 1 and 8"
-msgstr ""
-
-msgid "ERROR: The value must be 0 or 1, LOW or HIGH"
-msgstr ""
-
-msgid "ERROR: The mode must be INPUT or OUTPUT."
-msgstr ""
-
-msgid "turns LED on and off: 1 means on, 0 means off"
-msgstr ""
-
-msgid "returns the gray level as a value between 0 and 65535"
-msgstr ""
-
-msgid "returns 1 when the button is pressed and 0 otherwise"
-msgstr "ka whakahoki i te 1 i te wā e pēhi ana i te pātene, ka 0 atu i tērā"
-
-msgid "returns the light level as a value between 0 and 65535"
-msgstr ""
-
-msgid "returns the distance as a value between 0 and 65535"
-msgstr ""
-
-msgid "returns the resistance value (ohms)"
-msgstr ""
-
-msgid "returns the voltage value (volts)"
-msgstr ""
-
-msgid "returns the temperature"
-msgstr ""
-
-msgid "returns 1 when the sensors detects a magnetic field, 0 otherwise"
-msgstr ""
-"ka whakahoki i te 1 i te wā ka kite ngā pūoko i tētahi papa autō, ka 0 atu i "
-"tēnā"
-
-msgid "LED"
-msgstr "LED"
-
-msgid "button"
-msgstr "pātene"
-
-#: TurtleArt/tabasics.py:295 TurtleArt/tabasics.py:363
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1194
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1199
-msgid "gray"
-msgstr "hina"
-
-msgid "light"
-msgstr "rama"
-
-msgid "temperature"
-msgstr "paemahana"
-
-msgid "distance"
-msgstr "tawhiti"
-
-#: plugins/audio_sensors/audio_sensors.py:151
-#: plugins/audio_sensors/audio_sensors.py:165
-#: plugins/audio_sensors/audio_sensors.py:179
-#: plugins/audio_sensors/audio_sensors.py:193
-msgid "resistance"
-msgstr "parenga"
-
-#: plugins/audio_sensors/audio_sensors.py:157
-#: plugins/audio_sensors/audio_sensors.py:171
-#: plugins/audio_sensors/audio_sensors.py:185
-#: plugins/audio_sensors/audio_sensors.py:199
-msgid "voltage"
-msgstr "ngaohiko"
-
-msgid "Butia Robot"
-msgstr "Karetao Putia"
-
-msgid "refresh Butia"
-msgstr "tāmata Putia"
-
-msgid "refresh the state of the Butia palette and blocks"
-msgstr "tāmata te tūnga o ngā paraka me te papatā Putia"
-
-msgid "battery charge Butia"
-msgstr "whakakaha pūkaha Putia"
-
-msgid ""
-"returns the battery charge in volts. If no motors present, it returns 255"
-msgstr ""
-
-msgid "speed Butia"
-msgstr "terenga Putia"
-
-msgid "set the speed of the Butia motors"
-msgstr ""
-
-msgid "move Butia"
-msgstr ""
-
-#: TurtleArt/tabasics.py:158
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:871
-msgid "left"
-msgstr "mauī"
-
-#: TurtleArt/tabasics.py:170
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:895
-msgid "right"
-msgstr "matau"
-
-msgid "moves the Butia motors at the specified speed"
-msgstr ""
-
-msgid "stop Butia"
-msgstr "whakatū Putia"
-
-msgid "stop the Butia robot"
-msgstr "whakatūria te karetao Putia"
-
-msgid "forward Butia"
-msgstr "whakamua Putia"
-
-msgid "move the Butia robot forward"
-msgstr "neke whakamua te karetao Putia"
-
-msgid "left Butia"
-msgstr "mauī Putia"
-
-msgid "turn the Butia robot at left"
-msgstr "huri whakatematau te karetao Putia"
-
-msgid "right Butia"
-msgstr "matau Putia"
-
-msgid "turn the Butia robot at right"
-msgstr "huri whakatematau te karetao Putia"
-
-msgid "backward Butia"
-msgstr "whakamuri Putia"
-
-msgid "move the Butia robot backward"
-msgstr "neke whakamuri te karetao Putia"
-
-msgid "Butia Robot extra blocks"
-msgstr ""
-
-msgid "hack pin mode"
-msgstr ""
-
-msgid "pin"
-msgstr "pine"
-
-msgid "mode"
-msgstr "aratau"
-
-msgid "Select the pin function (INPUT, OUTPUT)."
-msgstr "Tīpakohia te taumahi pine (TĀURU, HUAPUTA, PWM, TŪMAU)."
-
-msgid "write hack pin Butia"
-msgstr ""
-
-#: TurtleArt/tabasics.py:924 TurtleArt/tawindow.py:4427
-msgid "value"
-msgstr "uara"
-
-msgid "set a hack pin to 0 or 1"
-msgstr ""
-
-msgid "read hack pin Butia"
-msgstr ""
-
-msgid "read the value of a hack pin"
-msgstr ""
-
-msgid "HIGH"
-msgstr "TIKETIKE"
-
-msgid "Set HIGH value for digital port."
-msgstr "Tautuhi uara TIKETIKE hei tauranga mamati."
-
-msgid "INPUT"
-msgstr "TĀURU"
-
-msgid "Configure hack port for digital input."
-msgstr "Whirihora tauranga Atuino mō te tāurunga mamati."
-
-msgid "LOW"
-msgstr "PĀPAKU"
-
-msgid "Set LOW value for digital port."
-msgstr "Tautuhi uara PĀPAKU hei tauranga mamati."
-
-msgid "OUTPUT"
-msgstr "HUAPUTA"
-
-msgid "Configure hack port for digital output."
-msgstr "Whirihora tauranga Atuino hei huaputa mamati."
-
-msgid "Butia"
-msgstr "Putia"
-
-msgid "ERROR: The pin %s must be in OUTPUT mode."
-msgstr ""
-
-msgid "ERROR: The pin %s must be in INPUT mode."
-msgstr ""
-
-msgid "Error importing Pygame. This plugin require Pygame 1.9"
-msgstr ""
-
-msgid "Error on initialization of the camera"
-msgstr "He hapa i te arawhititanga o te kāmera"
-
-#, fuzzy
-msgid "No camera was found"
-msgstr ""
-"#-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Kāore i kitea he kāmera"
-
-msgid "Error stopping camera"
-msgstr "I hapa te whakatū kāmera"
-
-msgid "Error starting camera"
-msgstr "I hapa te tīmata kāmera"
-
-msgid "Error in get mask"
-msgstr ""
-
-msgid "FollowMe"
-msgstr "TauaruMai"
-
-msgid "refresh FollowMe"
-msgstr ""
-
-msgid "Search for a connected camera."
-msgstr "Rapu i tētahi pereki NXT kua hono."
-
-msgid "calibration"
-msgstr "whakatauritetika"
-
-msgid "store a personalized calibration"
-msgstr "ka whakahoki i tētahi whakatauritetika whaiaronga"
-
-msgid "return a personalized calibration"
-msgstr "ka whakahoki i tētahi whakatauritetika whaiaronga"
-
-msgid "follow"
-msgstr "tauaru"
-
-msgid "follow a color or calibration"
-msgstr "tauaru i tētahi tae, whakatauritetika rānei"
-
-#: plugins/camera_sensor/camera_sensor.py:80
-#: plugins/camera_sensor/camera_sensor.py:93
-#: plugins/camera_sensor/camera_sensor.py:128
-#: plugins/camera_sensor/camera_sensor.py:141
-#: plugins/light_sensor/light_sensor.py:56
-#: plugins/light_sensor/light_sensor.py:63
-msgid "brightness"
-msgstr "tīahotanga"
-
-msgid "set the camera brightness as a value between 0 to 255."
-msgstr ""
-
-msgid "minimum pixels"
-msgstr "ngā pika mōkito"
-
-msgid "set the minimal number of pixels to follow"
-msgstr "tautuhia te mōkito tau pika hei tauaru"
-
-msgid "threshold"
-msgstr "paepae"
-
-msgid "set a threshold for a RGB color"
-msgstr "tautuhia he paepae mō tētahi tae RGB"
-
-msgid "camera mode"
-msgstr "aratau kāmera"
-
-msgid "set the color mode of the camera: RGB; YUV or HSV"
-msgstr "tautuhia te aratau tae o te kāmera ki te HSV"
-
-msgid "get brightness"
-msgstr ""
-
-msgid "get the brightness of the ambient light"
-msgstr ""
-
-msgid "average color"
-msgstr ""
-
-msgid ""
-"if set to 0 then color averaging is off during calibration; for other values "
-"it is on"
-msgstr ""
-
-msgid "x position"
-msgstr "tūnga x"
-
-msgid "return x position"
-msgstr "whakahoki tūnga x"
-
-msgid "y position"
-msgstr "tūnga y"
-
-msgid "return y position"
-msgstr "whakahoki tūnga y"
-
-msgid "pixels"
-msgstr "ngā pika"
-
-msgid "return the number of pixels of the biggest blob"
-msgstr "whakahoki te tau o ngā pika o te pukupuku nui"
-
-msgid "set the color mode of the camera to RGB"
-msgstr "tautuhia te aratae tau o te kāmera ki te RGB"
-
-msgid "set the color mode of the camera to YUV"
-msgstr "tautuhia te aratau tae o te kāmera ki te YUV"
-
-msgid "set the color mode of the camera to HSV"
-msgstr "tautuhia te aratau tae o te kāmera ki te HSV"
-
-msgid "empty calibration"
-msgstr "whakaputu whakatauritetika"
-
-msgid "error in string conversion"
-msgstr "he hapa ki te tahuringa aho"
-
-msgid "Pattern detection"
-msgstr ""
-
-msgid "Seeing signal"
-msgstr ""
-
-msgid "Returns True if the signal is in front of the camera"
-msgstr ""
-
-msgid "Distance to signal"
-msgstr ""
-
-msgid "Returns the distance of the signal to the camera in millimeters"
-msgstr ""
-
-msgid "SumBot"
-msgstr "KaretaoTāpiri"
-
-msgid "speed SumBot"
-msgstr "terenga KaretaoTāpiri"
-
-msgid "submit the speed to the SumBot"
-msgstr "tukuna te terenga ki te KaretaoTāpiri"
-
-msgid "set the default speed for the movement commands"
-msgstr "tautuhia te terenga taunoa mō ngā tohutohu nekehanga"
-
-msgid "forward SumBot"
-msgstr "whakamua KaretaoTāpiri"
-
-msgid "move SumBot forward"
-msgstr "neke whakamua KaretaoTāpiri"
-
-msgid "backward SumBot"
-msgstr "whakamuri KaretaoTāpiri"
-
-msgid "move SumBot backward"
-msgstr "neke whakamuri KaretaoTāpiri"
-
-msgid "stop SumBot"
-msgstr "whakatū KaretaoTāpiri"
-
-msgid "stop the SumBot"
-msgstr "whakatū i te KaretaoTāpiri"
-
-msgid "left SumBot"
-msgstr "whakatemauī KaretaoTāpiri"
-
-msgid "turn left the SumBot"
-msgstr "whakaneke mauī i te KaretaoTāpiri"
-
-msgid "right SumBot"
-msgstr "whakatematau KaretaoTāpiri"
-
-msgid "turn right the SumBot"
-msgstr "whakaneke matau i te KaretaoTāpiri"
-
-msgid "angle to center"
-msgstr "anga whakatewaenga"
-
-msgid "get the angle to the center of the dohyo"
-msgstr "tīkina te koki ki waenga o te dohyo"
-
-msgid "angle to Enemy"
-msgstr "anga ki Hoariri"
-
-msgid "get the angle to the Enemy"
-msgstr "tīkina te koki ki te Hoariri"
-
-msgid "x coor. SumBot"
-msgstr "ruruku x. KaretaoTāpiri"
-
-msgid "get the x coordinate of the SumBot"
-msgstr "tīkina te ruruku x o te KaretaoTāpiri"
-
-msgid "y coor. SumBot"
-msgstr "ruruku y. KaretaoTāpiri"
-
-msgid "get the y coordinate of the SumBot"
-msgstr "tīkina te ruruku y o te KaretaoTāpiri"
-
-msgid "x coor. Enemy"
-msgstr "ruruku x. Hoariri"
-
-msgid "get the x coordinate of the Enemy"
-msgstr "tīkina te ruruku x o te Hoariri"
-
-msgid "y coor. Enemy"
-msgstr "ruruku y. Hoariri"
-
-msgid "get the y coordinate of the Enemy"
-msgstr "tīkina te ruruku y o te Hoariri"
-
-msgid "rotation SumBot"
-msgstr "tītaka KaretaoTāpiri"
-
-msgid "get the rotation of the Sumbot"
-msgstr "tīkina te tītaka o te KaretaoTāpiri"
-
-msgid "rotation Enemy"
-msgstr "tītaka Hoariri"
-
-msgid "get the rotation of the Enemy"
-msgstr "tīkina te tītaka o te Hoariri"
-
-msgid "distance to center"
-msgstr "tawhiti ki te tauwaenga"
-
-msgid "get the distance to the center of the dohyo"
-msgstr "tīkina te tawhititanga ki waenga o te dohyo"
-
-msgid "distance to Enemy"
-msgstr "tawhititanga ki te Hoariri"
-
-msgid "get the distance to the Enemy"
-msgstr "tikina te tawhititanga ki te Hoariri"
-
-msgid "update information"
-msgstr "whakahōu mōhiohio"
-
-msgid "update information from the server"
-msgstr "whakahōu mōhiohio mai i te tūmau"
-
-msgid "Palette of physics blocks"
-msgstr "Papatā o ngā paraka ahupūngao"
-
-msgid "start polygon"
-msgstr "tīmata tapamaha"
-
-msgid "Begin defining a new polygon based on the current Turtle xy position."
-msgstr ""
-"Tīmata te tautuhi i tētahi tapamaha hōu e ai ki te tūnga xy o te Honu o "
-"nāianei."
-
-msgid "add point"
-msgstr "tāpiri ira"
-
-msgid ""
-"Add a new point to the current polygon based on the current Turtle xy "
-"position."
-msgstr ""
-"Tāpiri i tētahi ira hōu ki te tapamaha o nāianei e ai ki te tūnga xy Honu o "
-"nāianei."
-
-msgid "end polygon"
-msgstr "whakamutu tapamaha"
-
-msgid "Define a new polygon."
-msgstr "Tautuhia he tapamaha hōu."
-
-msgid "end filled polygon"
-msgstr "whakakī mutu tapamaha"
-
-msgid "Not a simple polygon"
-msgstr "Ehara i te tapamaha mataiti"
-
-msgid "Define a new filled polygon."
-msgstr "Tautuhia he tapamaha whakakī hōu."
-
-msgid "triangle"
-msgstr "tapatoru"
-
-msgid "base"
-msgstr "taketake"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:911
-msgid "height"
-msgstr "teitei"
-
-msgid "Add a triangle object to the project."
-msgstr "Tāpiri he ahanoa tapatoru ki te tūmahi."
-
-msgid "circle"
-msgstr "porohita"
-
-msgid "Add a circle object to the project."
-msgstr "Tāpiri i tētahi ahanoa porohita ki te tūmahi."
-
-msgid "rectangle"
-msgstr "tapawhā"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:887
-msgid "width"
-msgstr "whānui"
-
-msgid "Add a rectangle object to the project."
-msgstr "Tāpiri i tētahi ahanoa tapawhā ki te tūmahi."
-
-msgid "reset"
-msgstr "tautuhi anō"
-
-msgid "Reset the project; clear the object list."
-msgstr "Tautuhi anō i te tūmahi; ūkuia te rārangi ahanoa."
-
-msgid "motor"
-msgstr "pūkaha"
-
-msgid "torque"
-msgstr "autōhuri"
-
-msgid "speed"
-msgstr "tere"
-
-msgid ""
-"Motor torque and speed range from 0 (off) to positive numbers; motor is "
-"placed on the most recent object created."
-msgstr ""
-"Te awhe pūkaha autōhuri me te tere mai i 0 (weto) ki te tau tōrunga; ka "
-"tukuna te pūkaha ki runga i te ahanoa i waihanga muri tata nei."
-
-msgid "Pin an object down so that it cannot fall."
-msgstr "Pinea te ahanoa kia kore e taka."
-
-msgid "joint"
-msgstr "hononga"
-
-#: TurtleArt/tabasics.py:195 TurtleArt/tabasics.py:261
-msgid "x"
-msgstr "x"
-
-#: TurtleArt/tabasics.py:195 TurtleArt/tabasics.py:261
-msgid "y"
-msgstr "y"
-
-msgid ""
-"Join two objects together (the most recent object created and the object at "
-"point x, y)."
-msgstr ""
-"Honoa ngā ahanoa e rua (te mea i waihanga muri tana nei, me te ahanoa kei te "
-"tūnga x, y)."
-
-msgid "save as Physics activity"
-msgstr "tiaki hei hohe Ahupūngao"
-
-msgid "Save the project to the Journal as a Physics activity."
-msgstr "Tiakina te tūmahi ki te Tuhitaka hei hohe Ahupūngao."
-
-msgid "gear"
-msgstr "utauta"
-
-msgid "Add a gear object to the project."
-msgstr "Tāpiri he ahanoa utauta ki te tūmahi."
-
-msgid "density"
-msgstr "rōrahi"
-
-msgid ""
-"Set the density property for objects (density can be any positive number)."
-msgstr ""
-"Tautuhia te āhuatanga mātōtoru mō ngā ahanoa (e āhei ana ngā tau tōrunga "
-"katoa)."
-
-msgid "friction"
-msgstr "waku"
-
-msgid ""
-"Set the friction property for objects (value from 0 to 1, where 0 turns "
-"friction off and 1 is strong friction)."
-msgstr ""
-"Tautuhia te āhuatanga waku mō ngā ahanoa (uara mai i te 0 ki te 1, ko te 0 "
-"ka whakaweto i te waku ko te 1 he waku kaha)."
-
-msgid "bounciness"
-msgstr "hūpeketanga"
-
-msgid ""
-"Set the bounciness property for objects (a value from 0 to 1, where 0 means "
-"no bounce and 1 is very bouncy)."
-msgstr ""
-"Tautuhia te āhuatanga hūpeketanga mō ngā ahanoa (uara mai i te 0 ki te 1, ko "
-"te 0 kāore he hūpeketanga ko te 1 he hūpeketanga kaha)."
-
-msgid "dynamic"
-msgstr "hihiri"
-
-msgid ""
-"If dynamic = 1, the object can move; if dynamic = 0, it is fixed in position."
-msgstr ""
-"Mēnā ko te hihiri = 1, ka taea e te ahanoa te neke; Mēnā ko te hihiri = 0, "
-"kua mau ki te tūnga."
-
-msgid "Palette of WeDo blocks"
-msgstr "Papatā o ngā paraka MahiMātou"
-
-msgid "WeDo"
-msgstr ""
-
-msgid "set current WeDo device"
-msgstr ""
-
-msgid "number of WeDo devices"
-msgstr ""
-
-msgid "tilt"
-msgstr "tītaha"
-
-msgid ""
-"tilt sensor output: (-1 == no tilt, 0 == tilt forward, 3 == tilt back, 1 == "
-"tilt left, 2 == tilt right)"
-msgstr ""
-"huaputa pūoko tītaka: (-1 == kore tītaka, 0 == tītaka whakamua, 3 == tītaka "
-"whakamuri, 1 == tītaka mauī, 2 == tītaka matau)"
-
-msgid "distance sensor output"
-msgstr "huaputa pūoko tawhititanga"
-
-msgid "Motor A"
-msgstr "Pūkaha A"
-
-msgid "returns the current value of Motor A"
-msgstr "ka whakahoki i te uara o nāianei mō Pūkaha A"
-
-msgid "Motor B"
-msgstr "Pūkaha B"
-
-msgid "returns the current value of Motor B"
-msgstr "ka whakahoki i te uara o nāianei mō Pūkaha B"
-
-msgid "set the value for Motor A"
-msgstr "tautuhia te uara mō Pūkaha A"
-
-msgid "set the value for Motor B"
-msgstr "tautuhia te uara mō Pūkaha B"
-
-msgid "WeDo is unavailable"
-msgstr ""
-
-msgid "WeDo %d is unavailable; defaulting to 1"
-msgstr ""
-
-msgid "%(device)s is unavailable on WeDo %(wedo_number)d"
-msgstr ""
-
-msgid "Palette of LEGO NXT blocks of motors"
-msgstr "Papaptā o ngā paraka LEGO NXT o ngā pūkaha"
-
-msgid "Palette of LEGO NXT blocks of sensors"
-msgstr "Papaptā o ngā paraka LEGO NXT o ngā pūoko"
-
-msgid "touch"
-msgstr "pā"
-
-msgid "ultrasonic"
-msgstr "pāorooro"
-
-#: TurtleArt/tabasics.py:283 TurtleArt/tabasics.py:294
-#: TurtleArt/tabasics.py:344
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1197
-msgid "color"
-msgstr "tae"
-
-#: plugins/audio_sensors/audio_sensors.py:83
-#: plugins/audio_sensors/audio_sensors.py:98 pysamples/grecord.py:205
-msgid "sound"
-msgstr "oro"
-
-#, fuzzy
-msgid "Please check the connection with the brick"
-msgstr ""
-"#-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Taki koa i te hononga me te pereki."
-
-msgid "Invalid port '%s'. Port must be: PORT A, B or C"
-msgstr ""
-
-msgid "Invalid port '%s'. Port must be: PORT 1, 2, 3 or 4"
-msgstr ""
-
-#, fuzzy
-msgid "The value of power must be between -127 to 127"
-msgstr ""
-"#-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Ko te uara hiko me noho i waenga i te -127 to 127."
-
-msgid "The parameter must be a integer, not '%s'"
-msgstr ""
-
-#, fuzzy
-msgid "An error has occurred: check all connections and try to reconnect"
-msgstr ""
-"#-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Kua puta tētahi hapa: taki i ngā hononga katoa ka ngana ki te hono anō."
-
-msgid "NXT found %s bricks"
-msgstr ""
-
-msgid "NXT not found"
-msgstr "NXT kāore i kitea"
-
-msgid "Brick number %s was not found"
-msgstr ""
-
-msgid "refresh NXT"
-msgstr "tāmata NXT"
-
-msgid "Search for a connected NXT brick."
-msgstr "Rapu i tētahi pereki NXT kua hono."
-
-msgid "NXT"
-msgstr ""
-
-msgid "set current NXT device"
-msgstr ""
-
-msgid "number of NXT devices"
-msgstr ""
-
-msgid "brick name"
-msgstr ""
-
-msgid "Get the name of a brick."
-msgstr ""
-
-msgid "play tone"
-msgstr "whakatangi rangi"
-
-msgid "frequency"
-msgstr "auautanga"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:451
-msgid "time"
-msgstr "wā"
-
-msgid "Play a tone at frequency for time."
-msgstr "Whakatangi i tētahi rangi ki tētahi auautanga mō te wā kua whakaritea."
-
-msgid ""
-"turn motor\n"
-"\n"
-msgstr ""
-
-msgid "port"
-msgstr "tauranga"
-
-msgid "power"
-msgstr "hiko"
-
-msgid "rotations"
-msgstr "ngā takahuringa"
-
-msgid "turn a motor"
-msgstr "takahuri i tētahi pūkaha"
-
-msgid ""
-"synchronize\n"
-"\n"
-"motors"
-msgstr ""
-
-msgid "steering"
-msgstr ""
-
-msgid "synchronize two motors connected in PORT B and PORT C"
-msgstr ""
-"Tukutahitia ngā pūkaha e rua kua hono ki te TAURANGA B me te TAURANGA C"
-
-msgid "PORT A"
-msgstr "TAURANGA A"
-
-msgid "PORT A of the brick"
-msgstr "TAURANGA A o te pereki"
-
-msgid "PORT B"
-msgstr "TAURANGA B"
-
-msgid "PORT B of the brick"
-msgstr "TAURANGA B o te pereki"
-
-msgid "PORT C"
-msgstr "TAURANGA C"
-
-msgid "PORT C of the brick"
-msgstr "TAURANGA C o te pereki"
-
-msgid ""
-"synchronize\n"
-"motors"
-msgstr ""
-
-msgid "start motor"
-msgstr "tīmata pūkaha"
-
-msgid "Run a motor forever."
-msgstr "Whakahaere i tētahi pūkaha mō ake tonu atu."
-
-msgid "brake motor"
-msgstr "whakatū pūkaha"
-
-msgid "Stop a specified motor."
-msgstr "Whakatū i tētahi pūkaha kua whakatauria."
-
-msgid "reset motor"
-msgstr "tautuhi anō i te pūkaha"
-
-msgid "Reset the motor counter."
-msgstr "Tautuhi anō i te kaitatau pūkaha."
-
-msgid "motor position"
-msgstr "tūnga pūkaha"
-
-msgid "Get the motor position."
-msgstr "Tiki i te tūnga pūkaha."
-
-msgid "PORT 1"
-msgstr "TAURANGA 1"
-
-msgid "PORT 1 of the brick"
-msgstr "TAURANGA 1 o te pereki"
-
-msgid "read"
-msgstr "pānui"
-
-msgid "sensor"
-msgstr "pūoko"
-
-msgid "Read sensor output."
-msgstr "Pānui huaputa pūoko."
-
-msgid "PORT 2"
-msgstr "TAURANGA 2"
-
-msgid "PORT 2 of the brick"
-msgstr "TAURANGA 2 o te pereki"
-
-msgid "light sensor"
-msgstr "pūoko rama"
-
-msgid "gray sensor"
-msgstr ""
-
-msgid "PORT 3"
-msgstr "TAURANGA 3"
-
-msgid "PORT 3 of the brick"
-msgstr "TAURANGA 3 o te pereki"
-
-msgid "touch sensor"
-msgstr "pūoko pā"
-
-msgid "distance sensor"
-msgstr "pūoko tawhiti"
-
-msgid "PORT 4"
-msgstr "TAURANGA 4"
-
-msgid "PORT 4 of the brick"
-msgstr "TAURANGA 4 o te pereki"
-
-msgid "sound sensor"
-msgstr "pūoko oro"
-
-msgid "color sensor"
-msgstr "pūoko tae"
-
-msgid "set light"
-msgstr "tautuhi rama"
-
-msgid "Set color sensor light."
-msgstr "Tautuhi rama pūoko tae."
-
-msgid "battery level"
-msgstr "taumata pūkaha"
-
-msgid "Get the battery level of the brick in millivolts"
-msgstr ""
-
-#, fuzzy
-msgid "Palette of Arduino blocks"
-msgstr ""
-"#-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Papatā o ngā paraka MahiMātou\n"
-"#-#-#-#-#  mi.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Papatā o ngā paraka Aratuino"
-
-msgid "PWM"
-msgstr "PWM"
-
-msgid "SERVO"
-msgstr "TŪMAU"
-
-msgid "ERROR: Check the Arduino and the number of port."
-msgstr "HAPA: Taki i te tau me te Aratuino o te tauranga."
-
-msgid "ERROR: Value must be a number from 0 to 255."
-msgstr "HAPA: Me whai tau i waenga i te 0 ki te 255 e te uara."
-
-msgid "ERROR: Value must be either HIGH or LOW, 0 or 1"
-msgstr "HAPA: Me TEITEI, PĀPAKU rānei te uara."
-
-msgid "ERROR: The mode must be either INPUT, OUTPUT, PWM or SERVO."
-msgstr "HAPA: Me TĀURU, HUAPUTA, PWM, TŪMARU rānei te aratau."
-
-msgid "ERROR: The value must be an integer."
-msgstr ""
-
-msgid "ERROR: The pin must be an integer."
-msgstr ""
-
-msgid "refresh Arduino"
-msgstr ""
-
-msgid "Search for connected Arduinos."
-msgstr ""
-
-msgid "Arduino"
-msgstr ""
-
-msgid "set current Arduino board"
-msgstr ""
-
-msgid "number of Arduinos"
-msgstr ""
-
-msgid "number of Arduino boards"
-msgstr ""
-
-msgid "Arduino name"
-msgstr ""
-
-msgid "Get the name of an Arduino."
-msgstr ""
-
-msgid "pin mode"
-msgstr "aratau pine"
-
-msgid "Select the pin function (INPUT, OUTPUT, PWM, SERVO)."
-msgstr "Tīpakohia te taumahi pine (TĀURU, HUAPUTA, PWM, TŪMAU)."
-
-msgid "analog write"
-msgstr "tuhi tairitenga"
-
-msgid "Write analog value in specified port."
-msgstr "Tuhi uara tairitenga ki te tauranga kua whakatauria."
-
-msgid "analog read"
-msgstr "pānui tairitenga"
-
-msgid ""
-"Read value from analog port. Value may be between 0 and 1023. Use Vref to "
-"determine voltage. For USB, volt=((read)*5)/1024) approximately."
-msgstr ""
-"Pānui uara mai i te tauranga tairitenga. E taea ana tētahi uara mai i te 0 "
-"ki te 1023. Whakamahia te Vref hei whakatau ngaohiko. Mō USB, "
-"ngaohiko=((read)*5)/1024) pātata."
-
-msgid "digital write"
-msgstr "tuhi mamati"
-
-msgid "Write digital value to specified port."
-msgstr "Tuhi uara mamati ki te tauranga kua whakatauria."
-
-msgid "digital read"
-msgstr "pānui mamati"
-
-msgid "Read value from digital port."
-msgstr "Pānui uara mai i te tauranga mamati."
-
-msgid "Configure Arduino port for digital input."
-msgstr "Whirihora tauranga Atuino mō te tāurunga mamati."
-
-msgid "Configure Arduino port to drive a servo."
-msgstr "Whirihora tauranga Atuino hei hautū tūmau."
-
-msgid "Configure Arduino port for digital output."
-msgstr "Whirihora tauranga Atuino hei huaputa mamati."
-
-msgid "Configure Arduino port for PWM (pulse-width modulation)."
-msgstr "Whirihora tauranga Atuino hei PWM (pulse-width modulation)."
-
-msgid "Not found Arduino %s"
-msgstr ""
-
-msgid "The pin must be an integer"
-msgstr ""
-
-msgid "The device must be an integer"
-msgstr ""
-
-msgid "Palette of Expeyes blocks"
-msgstr "Papatā o ngā paraka MahiMātou"
-
-msgid "set PVS"
-msgstr ""
-
-msgid "set programmable voltage output"
-msgstr ""
-
-msgid "set SQR1 voltage"
-msgstr ""
-
-msgid "set square wave 1 voltage output"
-msgstr ""
-
-msgid "set SQR2 voltage"
-msgstr ""
-
-msgid "set square wave 2 voltage output"
-msgstr ""
-
-msgid "set OD1"
-msgstr ""
-
-msgid "set digital output level (OD1) low (0) or high (1)"
-msgstr ""
-
-msgid "IN1 level"
-msgstr ""
-
-msgid ""
-"returns 1 if IN1 voltage level >2.5 volts, 0 if IN1 voltage level <= 2.5 "
-"volts"
-msgstr ""
-
-msgid "IN2 level"
-msgstr ""
-
-msgid ""
-"returns 1 if IN2 voltage level >2.5 volts, 0 if IN2 voltage level <= 2.5 "
-"volts"
-msgstr ""
-
-msgid "SEN level"
-msgstr ""
-
-msgid ""
-"returns 1 if resistive sensor (SEN) voltage level > 2.5 volts, 0 if SEN "
-"voltage level <= 2.5 volts"
-msgstr ""
-
-msgid "capture"
-msgstr ""
-
-msgid "input"
-msgstr ""
-
-msgid "samples"
-msgstr ""
-
-msgid "interval"
-msgstr ""
-
-msgid ""
-"capture multiple samples from input at interval (MS); results pushed to FIFO"
-msgstr ""
-
-msgid "A1"
-msgstr ""
-
-msgid "read analog input 1 voltage"
-msgstr ""
-
-msgid "A2"
-msgstr ""
-
-msgid "read analog input 2 voltage"
-msgstr ""
-
-msgid "IN1"
-msgstr ""
-
-msgid "read input 1 voltage"
-msgstr ""
-
-msgid "IN2"
-msgstr ""
-
-msgid "read input 2 voltage"
-msgstr ""
-
-msgid "SEN"
-msgstr ""
-
-msgid "read analog sensor input voltage"
-msgstr ""
-
-msgid "SQR1"
-msgstr ""
-
-msgid "read square wave 1 voltage"
-msgstr ""
-
-msgid "SQR2"
-msgstr ""
-
-msgid "read square wave 2 voltage"
-msgstr ""
-
-msgid "PVS"
-msgstr ""
-
-msgid "read programmable voltage"
-msgstr ""
-
-msgid "Expeyes device not found"
-msgstr ""
-<<<<<<< HEAD
-=======
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-17 00:31-0400\n"
-"PO-Revision-Date: 2012-09-25 11:21+0200\n"
-"Last-Translator: Chris <cjl@laptop.org>\n"
-"Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
-"Language: mi\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.0.5\n"
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 
 #. TRANS: "name" option from activity.info file
 #, fuzzy
@@ -1269,26 +59,20 @@ msgstr "horoia"
 msgid "clears the screen and reset the turtle"
 msgstr "ka ūkui i te mata me te tautuhi i te honu"
 
-<<<<<<< HEAD
-=======
 #: TurtleArt/tabasics.py:158
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:871
 msgid "left"
 msgstr "mauī"
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:162
 msgid "turns turtle counterclockwise (angle in degrees)"
 msgstr "ka huri i te honu whakatemauī (koki tākiri)"
 
-<<<<<<< HEAD
-=======
 #: TurtleArt/tabasics.py:170
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:895
 msgid "right"
 msgstr "matau"
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:174
 msgid "turns turtle clockwise (angle in degrees)"
 msgstr "ka huri i te honu whakatematau (koki tākiri)"
@@ -1313,8 +97,6 @@ msgstr "ka neke i te honu ki te pewa"
 msgid "set xy"
 msgstr "tautuhi xy"
 
-<<<<<<< HEAD
-=======
 #: TurtleArt/tabasics.py:195 TurtleArt/tabasics.py:261
 msgid "x"
 msgstr "x"
@@ -1323,7 +105,6 @@ msgstr "x"
 msgid "y"
 msgstr "y"
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:199 TurtleArt/tabasics.py:265
 msgid ""
 "moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
@@ -1381,15 +162,12 @@ msgstr "Papatā o ngā tono pene"
 msgid "fill screen"
 msgstr "mata whakakī"
 
-<<<<<<< HEAD
-=======
 #: TurtleArt/tabasics.py:283 TurtleArt/tabasics.py:294
 #: TurtleArt/tabasics.py:344
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1197
 msgid "color"
 msgstr "tae"
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:283 TurtleArt/tabasics.py:295
 #: TurtleArt/tabasics.py:354
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1193
@@ -1401,15 +179,12 @@ msgstr "uriuri"
 msgid "fills the background with (color, shade)"
 msgstr "ka whakakī i te papamuri me te (tae, uriuri)"
 
-<<<<<<< HEAD
-=======
 #: TurtleArt/tabasics.py:295 TurtleArt/tabasics.py:363
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1194
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1199
 msgid "gray"
 msgstr "hina"
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:309
 msgid "set color"
 msgstr "tautuhi tae"
@@ -1866,13 +641,10 @@ msgstr "penapena ki"
 msgid "box"
 msgstr "pouaka"
 
-<<<<<<< HEAD
-=======
 #: TurtleArt/tabasics.py:924 TurtleArt/tawindow.py:4427
 msgid "value"
 msgstr "uara"
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:928 TurtleArt/tabasics.py:942
 #: TurtleArt/tawindow.py:1355 TurtleArt/tawindow.py:1486
 #: TurtleArt/tawindow.py:2081 TurtleArt/tawindow.py:4390
@@ -2038,7 +810,6 @@ msgstr ""
 #: TurtleArt/tawindow.py:1531 TurtleArt/tawindow.py:1546
 msgid "Really overwrite stack?"
 msgstr ""
-<<<<<<< HEAD
 
 #: TurtleArt/tawindow.py:1534 TurtleArt/tawindow.py:1574
 #: gnome_plugins/uploader_plugin.py:144
@@ -2058,27 +829,6 @@ msgstr ""
 msgid "Really delete stack?"
 msgstr ""
 
-=======
-
-#: TurtleArt/tawindow.py:1534 TurtleArt/tawindow.py:1574
-#: gnome_plugins/uploader_plugin.py:144
-msgid "Cancel"
-msgstr "Whakakore"
-
-#: TurtleArt/tawindow.py:1538 TurtleArt/tawindow.py:1549
-msgid "Overwrite stack"
-msgstr ""
-
-#: TurtleArt/tawindow.py:1570 TurtleArt/tawindow.py:1578
-#: TurtleArt/tawindow.py:1588 TurtleArtActivity.py:634 turtleblocks.py:399
-msgid "Delete stack"
-msgstr ""
-
-#: TurtleArt/tawindow.py:1571 TurtleArt/tawindow.py:1585
-msgid "Really delete stack?"
-msgstr ""
-
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tawindow.py:4215
 msgid "image"
 msgstr "atahanga"
@@ -2391,6 +1141,11 @@ msgstr "whakaterenga"
 msgid "push acceleration in x, y, z to heap"
 msgstr "pēhi whakaterenga kei x, y, z ki te pūkai"
 
+#: plugins/audio_sensors/audio_sensors.py:83
+#: plugins/audio_sensors/audio_sensors.py:98 pysamples/grecord.py:205
+msgid "sound"
+msgstr "oro"
+
 #: plugins/audio_sensors/audio_sensors.py:84
 #: plugins/audio_sensors/audio_sensors.py:99
 msgid "raw microphone input signal"
@@ -2417,12 +1172,26 @@ msgstr "rangi"
 msgid "microphone input pitch"
 msgstr "rangi tāuru hopureo"
 
+#: plugins/audio_sensors/audio_sensors.py:151
+#: plugins/audio_sensors/audio_sensors.py:165
+#: plugins/audio_sensors/audio_sensors.py:179
+#: plugins/audio_sensors/audio_sensors.py:193
+msgid "resistance"
+msgstr "parenga"
+
 #: plugins/audio_sensors/audio_sensors.py:152
 #: plugins/audio_sensors/audio_sensors.py:166
 #: plugins/audio_sensors/audio_sensors.py:180
 #: plugins/audio_sensors/audio_sensors.py:194
 msgid "microphone input resistance"
 msgstr "parenga tāuru hopureo"
+
+#: plugins/audio_sensors/audio_sensors.py:157
+#: plugins/audio_sensors/audio_sensors.py:171
+#: plugins/audio_sensors/audio_sensors.py:185
+#: plugins/audio_sensors/audio_sensors.py:199
+msgid "voltage"
+msgstr "ngaohiko"
 
 #: plugins/audio_sensors/audio_sensors.py:158
 #: plugins/audio_sensors/audio_sensors.py:172
@@ -2435,6 +1204,15 @@ msgstr "ngaohiko tāuru hopureo"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:139
 msgid "Palette of media objects"
 msgstr "Papatā o ngā ahanoa pāpāho"
+
+#: plugins/camera_sensor/camera_sensor.py:80
+#: plugins/camera_sensor/camera_sensor.py:93
+#: plugins/camera_sensor/camera_sensor.py:128
+#: plugins/camera_sensor/camera_sensor.py:141
+#: plugins/light_sensor/light_sensor.py:56
+#: plugins/light_sensor/light_sensor.py:63
+msgid "brightness"
+msgstr "tīahotanga"
 
 #: plugins/camera_sensor/camera_sensor.py:82
 #: plugins/camera_sensor/camera_sensor.py:130
@@ -2707,13 +1485,10 @@ msgstr "ka kite te honu i"
 msgid "returns the color that the turtle \"sees\""
 msgstr "ka whakahoki i te tae e \"kite\" nei te honu"
 
-<<<<<<< HEAD
-=======
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:451
 msgid "time"
 msgstr "wā"
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:454
 msgid "elapsed time (in seconds) since program started"
 msgstr "wā hipa (ki ngā hēkona) mai i te wā i tīmata te papatono"
@@ -2979,13 +1754,10 @@ msgstr "raro"
 msgid "ycor of bottom of screen"
 msgstr "ycor whakateraro o te mata"
 
-<<<<<<< HEAD
-=======
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:887
 msgid "width"
 msgstr "whānui"
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:890
 msgid "the canvas width"
 msgstr "te whānuitanga kānawehi"
@@ -2998,13 +1770,10 @@ msgstr "xcor whakatematau o te mata"
 msgid "ycor of top of screen"
 msgstr "ycor whakaterunga o te mata"
 
-<<<<<<< HEAD
-=======
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:911
 msgid "height"
 msgstr "teitei"
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:914
 msgid "the canvas height"
 msgstr "te teiteitanga kānawehi"
@@ -3182,8 +1951,6 @@ msgstr "Kei a koe he mahi kāore anō kia tiaki. Me tiaki i mua i te waihotanga?
 msgid "Save project?"
 msgstr "Tiaki tūmahi?"
 
-<<<<<<< HEAD
-=======
 #~ msgid "Turtle Art"
 #~ msgstr "Toi Honu"
 
@@ -3220,7 +1987,6 @@ msgstr "Tiaki tūmahi?"
 #~ msgid "Palette of Uruguayan Pesos"
 #~ msgstr "Papatā o te pesos Urukuaiana"
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #~ msgid "adjust LED intensity between 0 and 255"
 #~ msgstr "whakarite te kaha o te LED mai i te 0 ki te 255"
 
@@ -3231,8 +1997,7 @@ msgstr "Tiaki tūmahi?"
 #~ msgstr "ka whakahoki i te 1 i te wā e pēhi ana i te pātene, ka 0 atu i tērā"
 
 #~ msgid "returns the ambient light level as a number between 0 and 1023"
-#~ msgstr ""
-#~ "ka whakahoki i te taumata rama ngāwari hei tau mai i te 0 ki te 1023"
+#~ msgstr "ka whakahoki i te taumata rama ngāwari hei tau mai i te 0 ki te 1023"
 
 #~ msgid "returns the ambient temperature as a number between 0 and 255"
 #~ msgstr "ka whakahoki i te paemahana ngāwari hei tau mai i te 0 ki te 255"
@@ -3241,14 +2006,25 @@ msgstr "Tiaki tūmahi?"
 #~ "returns the distance from the object in front of the sensor as a number "
 #~ "between 0 and 255"
 #~ msgstr ""
-#~ "ka whakahoki i te tawhititanga mai i te ahanoa i mua i te pūoko hei tau "
-#~ "mai i te 0 ki te 255"
+#~ "ka whakahoki i te tawhititanga mai i te ahanoa i mua i te pūoko hei tau mai "
+#~ "i te 0 ki te 255"
 
 #~ msgid "returns 0 or 1 depending on the sensor inclination"
 #~ msgstr "ka whakahoki i te 0, i te 1 rānei e ai ki te hiahiatanga pūoko"
 
+#~ msgid "returns 1 when the sensors detects a magnetic field, 0 otherwise"
+#~ msgstr ""
+#~ "ka whakahoki i te 1 i te wā ka kite ngā pūoko i tētahi papa autō, ka 0 atu i "
+#~ "tēnā"
+
 #~ msgid "switches from 0 to 1, the frequency depends on the vibration"
 #~ msgstr "ka huri mai i te 0 ki te 1, ko te auautanga e ai ki te tōiri"
+
+#~ msgid "LED"
+#~ msgstr "LED"
+
+#~ msgid "button"
+#~ msgstr "pātene"
 
 #~ msgid "grayscale"
 #~ msgstr "tauine hina"
@@ -3256,21 +2032,69 @@ msgstr "Tiaki tūmahi?"
 #~ msgid "ambient light"
 #~ msgstr "rama ngāwari"
 
+#~ msgid "temperature"
+#~ msgstr "paemahana"
+
+#~ msgid "distance"
+#~ msgstr "tawhiti"
+
+#~ msgid "tilt"
+#~ msgstr "tītaha"
+
 #~ msgid "magnetic induction"
 #~ msgstr "whakauta autō"
 
 #~ msgid "vibration"
 #~ msgstr "tōiri"
 
+#~ msgid "Butia Robot"
+#~ msgstr "Karetao Putia"
+
+#~ msgid "refresh Butia"
+#~ msgstr "tāmata Putia"
+
+#~ msgid "refresh the state of the Butia palette and blocks"
+#~ msgstr "tāmata te tūnga o ngā paraka me te papatā Putia"
+
+#~ msgid "battery charge Butia"
+#~ msgstr "whakakaha pūkaha Putia"
+
 #~ msgid "returns the battery charge as a number between 0 and 255"
 #~ msgstr "ka whakahoki i te whakakaha pūkaha hei tau mai i te 0 ki te 255"
+
+#~ msgid "speed Butia"
+#~ msgstr "terenga Putia"
+
+#~ msgid "forward Butia"
+#~ msgstr "whakamua Putia"
+
+#~ msgid "move the Butia robot forward"
+#~ msgstr "neke whakamua te karetao Putia"
 
 #~ msgid "move the Butia robot forward a predefined distance"
 #~ msgstr "neke whakamua te karetao Putia mā te tawhititanga kua whakaritea kē"
 
+#~ msgid "left Butia"
+#~ msgstr "mauī Putia"
+
+#, fuzzy
+#~ msgid "turn the Butia robot at left"
+#~ msgstr "huri whakatematau te karetao Putia"
+
+#~ msgid "backward Butia"
+#~ msgstr "whakamuri Putia"
+
+#~ msgid "move the Butia robot backward"
+#~ msgstr "neke whakamuri te karetao Putia"
+
 #~ msgid "move the Butia robot backward a predefined distance"
-#~ msgstr ""
-#~ "neke whakamuri te karetao Putia mā te tawhititanga kua whakaritea kē"
+#~ msgstr "neke whakamuri te karetao Putia mā te tawhititanga kua whakaritea kē"
+
+#~ msgid "right Butia"
+#~ msgstr "matau Putia"
+
+#~ msgid "turn the Butia robot at right"
+#~ msgstr "huri whakatematau te karetao Putia"
 
 #~ msgid "turn Butia"
 #~ msgstr "huri Putia"
@@ -3278,24 +2102,651 @@ msgstr "Tiaki tūmahi?"
 #~ msgid "turn the Butia robot x degrees"
 #~ msgstr "hurihia te karetao Putia x tīkiri"
 
+#~ msgid "stop Butia"
+#~ msgstr "whakatū Putia"
+
+#~ msgid "stop the Butia robot"
+#~ msgstr "whakatūria te karetao Putia"
+
+#~ msgid "Butia"
+#~ msgstr "Putia"
+
+#~ msgid "Error on initialization of the camera"
+#~ msgstr "He hapa i te arawhititanga o te kāmera"
+
+#, fuzzy
+#~ msgid "No camera was found"
+#~ msgstr "Kāore i kitea he kāmera"
+
+#~ msgid "Error stopping camera"
+#~ msgstr "I hapa te whakatū kāmera"
+
+#~ msgid "Error starting camera"
+#~ msgstr "I hapa te tīmata kāmera"
+
+#~ msgid "FollowMe"
+#~ msgstr "TauaruMai"
+
+#, fuzzy
+#~ msgid "Search for a connected camera."
+#~ msgstr "Rapu i tētahi pereki NXT kua hono."
+
+#~ msgid "calibration"
+#~ msgstr "whakatauritetika"
+
+#, fuzzy
+#~ msgid "store a personalized calibration"
+#~ msgstr "ka penapena i tētahi whakatauritetika whaiaronga"
+
+#~ msgid "return a personalized calibration"
+#~ msgstr "ka whakahoki i tētahi whakatauritetika whaiaronga"
+
+#~ msgid "follow"
+#~ msgstr "tauaru"
+
+#~ msgid "follow a color or calibration"
+#~ msgstr "tauaru i tētahi tae, whakatauritetika rānei"
+
+#~ msgid "minimum pixels"
+#~ msgstr "ngā pika mōkito"
+
+#~ msgid "set the minimal number of pixels to follow"
+#~ msgstr "tautuhia te mōkito tau pika hei tauaru"
+
+#~ msgid "threshold"
+#~ msgstr "paepae"
+
+#~ msgid "set a threshold for a RGB color"
+#~ msgstr "tautuhia he paepae mō tētahi tae RGB"
+
+#~ msgid "camera mode"
+#~ msgstr "aratau kāmera"
+
+#, fuzzy
+#~ msgid "set the color mode of the camera: RGB; YUV or HSV"
+#~ msgstr "tautuhia te aratau tae o te kāmera, RGB, YUV, HSV rānei"
+
+#~ msgid "x position"
+#~ msgstr "tūnga x"
+
+#~ msgid "return x position"
+#~ msgstr "whakahoki tūnga x"
+
+#~ msgid "y position"
+#~ msgstr "tūnga y"
+
+#~ msgid "return y position"
+#~ msgstr "whakahoki tūnga y"
+
+#~ msgid "pixels"
+#~ msgstr "ngā pika"
+
+#~ msgid "return the number of pixels of the biggest blob"
+#~ msgstr "whakahoki te tau o ngā pika o te pukupuku nui"
+
+#~ msgid "set the color mode of the camera to RGB"
+#~ msgstr "tautuhia te aratae tau o te kāmera ki te RGB"
+
+#~ msgid "set the color mode of the camera to YUV"
+#~ msgstr "tautuhia te aratau tae o te kāmera ki te YUV"
+
+#~ msgid "set the color mode of the camera to HSV"
+#~ msgstr "tautuhia te aratau tae o te kāmera ki te HSV"
+
+#~ msgid "empty calibration"
+#~ msgstr "whakaputu whakatauritetika"
+
+#~ msgid "error in string conversion"
+#~ msgstr "he hapa ki te tahuringa aho"
+
+#~ msgid "SumBot"
+#~ msgstr "KaretaoTāpiri"
+
+#~ msgid "speed SumBot"
+#~ msgstr "terenga KaretaoTāpiri"
+
+#~ msgid "submit the speed to the SumBot"
+#~ msgstr "tukuna te terenga ki te KaretaoTāpiri"
+
+#~ msgid "set the default speed for the movement commands"
+#~ msgstr "tautuhia te terenga taunoa mō ngā tohutohu nekehanga"
+
+#~ msgid "forward SumBot"
+#~ msgstr "whakamua KaretaoTāpiri"
+
+#~ msgid "move SumBot forward"
+#~ msgstr "neke whakamua KaretaoTāpiri"
+
+#~ msgid "backward SumBot"
+#~ msgstr "whakamuri KaretaoTāpiri"
+
+#~ msgid "move SumBot backward"
+#~ msgstr "neke whakamuri KaretaoTāpiri"
+
+#~ msgid "stop SumBot"
+#~ msgstr "whakatū KaretaoTāpiri"
+
+#~ msgid "stop the SumBot"
+#~ msgstr "whakatū i te KaretaoTāpiri"
+
+#~ msgid "left SumBot"
+#~ msgstr "whakatemauī KaretaoTāpiri"
+
+#~ msgid "turn left the SumBot"
+#~ msgstr "whakaneke mauī i te KaretaoTāpiri"
+
+#~ msgid "right SumBot"
+#~ msgstr "whakatematau KaretaoTāpiri"
+
+#~ msgid "turn right the SumBot"
+#~ msgstr "whakaneke matau i te KaretaoTāpiri"
+
+#~ msgid "angle to center"
+#~ msgstr "anga whakatewaenga"
+
+#~ msgid "get the angle to the center of the dohyo"
+#~ msgstr "tīkina te koki ki waenga o te dohyo"
+
+#~ msgid "angle to Enemy"
+#~ msgstr "anga ki Hoariri"
+
+#~ msgid "get the angle to the Enemy"
+#~ msgstr "tīkina te koki ki te Hoariri"
+
+#~ msgid "x coor. SumBot"
+#~ msgstr "ruruku x. KaretaoTāpiri"
+
+#~ msgid "get the x coordinate of the SumBot"
+#~ msgstr "tīkina te ruruku x o te KaretaoTāpiri"
+
+#~ msgid "y coor. SumBot"
+#~ msgstr "ruruku y. KaretaoTāpiri"
+
+#~ msgid "get the y coordinate of the SumBot"
+#~ msgstr "tīkina te ruruku y o te KaretaoTāpiri"
+
+#~ msgid "x coor. Enemy"
+#~ msgstr "ruruku x. Hoariri"
+
+#~ msgid "get the x coordinate of the Enemy"
+#~ msgstr "tīkina te ruruku x o te Hoariri"
+
+#~ msgid "y coor. Enemy"
+#~ msgstr "ruruku y. Hoariri"
+
+#~ msgid "get the y coordinate of the Enemy"
+#~ msgstr "tīkina te ruruku y o te Hoariri"
+
+#~ msgid "rotation SumBot"
+#~ msgstr "tītaka KaretaoTāpiri"
+
+#~ msgid "get the rotation of the Sumbot"
+#~ msgstr "tīkina te tītaka o te KaretaoTāpiri"
+
+#~ msgid "rotation Enemy"
+#~ msgstr "tītaka Hoariri"
+
+#~ msgid "get the rotation of the Enemy"
+#~ msgstr "tīkina te tītaka o te Hoariri"
+
+#~ msgid "distance to center"
+#~ msgstr "tawhiti ki te tauwaenga"
+
+#~ msgid "get the distance to the center of the dohyo"
+#~ msgstr "tīkina te tawhititanga ki waenga o te dohyo"
+
+#~ msgid "distance to Enemy"
+#~ msgstr "tawhititanga ki te Hoariri"
+
+#~ msgid "get the distance to the Enemy"
+#~ msgstr "tikina te tawhititanga ki te Hoariri"
+
+#~ msgid "update information"
+#~ msgstr "whakahōu mōhiohio"
+
+#~ msgid "update information from the server"
+#~ msgstr "whakahōu mōhiohio mai i te tūmau"
+
+#~ msgid "Palette of physics blocks"
+#~ msgstr "Papatā o ngā paraka ahupūngao"
+
+#~ msgid "start polygon"
+#~ msgstr "tīmata tapamaha"
+
+#~ msgid "Begin defining a new polygon based on the current Turtle xy position."
+#~ msgstr ""
+#~ "Tīmata te tautuhi i tētahi tapamaha hōu e ai ki te tūnga xy o te Honu o "
+#~ "nāianei."
+
+#~ msgid "add point"
+#~ msgstr "tāpiri ira"
+
+#~ msgid ""
+#~ "Add a new point to the current polygon based on the current Turtle xy "
+#~ "position."
+#~ msgstr ""
+#~ "Tāpiri i tētahi ira hōu ki te tapamaha o nāianei e ai ki te tūnga xy Honu o "
+#~ "nāianei."
+
+#~ msgid "end polygon"
+#~ msgstr "whakamutu tapamaha"
+
+#~ msgid "Define a new polygon."
+#~ msgstr "Tautuhia he tapamaha hōu."
+
+#~ msgid "end filled polygon"
+#~ msgstr "whakakī mutu tapamaha"
+
+#~ msgid "Not a simple polygon"
+#~ msgstr "Ehara i te tapamaha mataiti"
+
+#~ msgid "Define a new filled polygon."
+#~ msgstr "Tautuhia he tapamaha whakakī hōu."
+
+#~ msgid "triangle"
+#~ msgstr "tapatoru"
+
+#~ msgid "base"
+#~ msgstr "taketake"
+
+#~ msgid "Add a triangle object to the project."
+#~ msgstr "Tāpiri he ahanoa tapatoru ki te tūmahi."
+
+#~ msgid "circle"
+#~ msgstr "porohita"
+
+#~ msgid "Add a circle object to the project."
+#~ msgstr "Tāpiri i tētahi ahanoa porohita ki te tūmahi."
+
+#~ msgid "rectangle"
+#~ msgstr "tapawhā"
+
+#~ msgid "Add a rectangle object to the project."
+#~ msgstr "Tāpiri i tētahi ahanoa tapawhā ki te tūmahi."
+
+#~ msgid "reset"
+#~ msgstr "tautuhi anō"
+
+#~ msgid "Reset the project; clear the object list."
+#~ msgstr "Tautuhi anō i te tūmahi; ūkuia te rārangi ahanoa."
+
+#~ msgid "motor"
+#~ msgstr "pūkaha"
+
+#~ msgid "torque"
+#~ msgstr "autōhuri"
+
+#~ msgid "speed"
+#~ msgstr "tere"
+
+#~ msgid ""
+#~ "Motor torque and speed range from 0 (off) to positive numbers; motor is "
+#~ "placed on the most recent object created."
+#~ msgstr ""
+#~ "Te awhe pūkaha autōhuri me te tere mai i 0 (weto) ki te tau tōrunga; ka "
+#~ "tukuna te pūkaha ki runga i te ahanoa i waihanga muri tata nei."
+
+#~ msgid "pin"
+#~ msgstr "pine"
+
+#~ msgid "Pin an object down so that it cannot fall."
+#~ msgstr "Pinea te ahanoa kia kore e taka."
+
+#~ msgid "joint"
+#~ msgstr "hononga"
+
+#~ msgid ""
+#~ "Join two objects together (the most recent object created and the object at "
+#~ "point x, y)."
+#~ msgstr ""
+#~ "Honoa ngā ahanoa e rua (te mea i waihanga muri tana nei, me te ahanoa kei te "
+#~ "tūnga x, y)."
+
+#~ msgid "save as Physics activity"
+#~ msgstr "tiaki hei hohe Ahupūngao"
+
+#~ msgid "Save the project to the Journal as a Physics activity."
+#~ msgstr "Tiakina te tūmahi ki te Tuhitaka hei hohe Ahupūngao."
+
+#~ msgid "gear"
+#~ msgstr "utauta"
+
+#~ msgid "Add a gear object to the project."
+#~ msgstr "Tāpiri he ahanoa utauta ki te tūmahi."
+
+#~ msgid "density"
+#~ msgstr "rōrahi"
+
+#~ msgid ""
+#~ "Set the density property for objects (density can be any positive number)."
+#~ msgstr ""
+#~ "Tautuhia te āhuatanga mātōtoru mō ngā ahanoa (e āhei ana ngā tau tōrunga "
+#~ "katoa)."
+
+#~ msgid "friction"
+#~ msgstr "waku"
+
+#~ msgid ""
+#~ "Set the friction property for objects (value from 0 to 1, where 0 turns "
+#~ "friction off and 1 is strong friction)."
+#~ msgstr ""
+#~ "Tautuhia te āhuatanga waku mō ngā ahanoa (uara mai i te 0 ki te 1, ko te 0 "
+#~ "ka whakaweto i te waku ko te 1 he waku kaha)."
+
+#~ msgid "bounciness"
+#~ msgstr "hūpeketanga"
+
+#~ msgid ""
+#~ "Set the bounciness property for objects (a value from 0 to 1, where 0 means "
+#~ "no bounce and 1 is very bouncy)."
+#~ msgstr ""
+#~ "Tautuhia te āhuatanga hūpeketanga mō ngā ahanoa (uara mai i te 0 ki te 1, ko "
+#~ "te 0 kāore he hūpeketanga ko te 1 he hūpeketanga kaha)."
+
+#~ msgid "dynamic"
+#~ msgstr "hihiri"
+
+#~ msgid ""
+#~ "If dynamic = 1, the object can move; if dynamic = 0, it is fixed in position."
+#~ msgstr ""
+#~ "Mēnā ko te hihiri = 1, ka taea e te ahanoa te neke; Mēnā ko te hihiri = 0, "
+#~ "kua mau ki te tūnga."
+
+#~ msgid "Palette of WeDo blocks"
+#~ msgstr "Papatā o ngā paraka MahiMātou"
+
+#~ msgid ""
+#~ "tilt sensor output: (-1 == no tilt, 0 == tilt forward, 3 == tilt back, 1 == "
+#~ "tilt left, 2 == tilt right)"
+#~ msgstr ""
+#~ "huaputa pūoko tītaka: (-1 == kore tītaka, 0 == tītaka whakamua, 3 == tītaka "
+#~ "whakamuri, 1 == tītaka mauī, 2 == tītaka matau)"
+
+#~ msgid "distance sensor output"
+#~ msgstr "huaputa pūoko tawhititanga"
+
+#~ msgid "Motor A"
+#~ msgstr "Pūkaha A"
+
+#~ msgid "returns the current value of Motor A"
+#~ msgstr "ka whakahoki i te uara o nāianei mō Pūkaha A"
+
+#~ msgid "Motor B"
+#~ msgstr "Pūkaha B"
+
+#~ msgid "returns the current value of Motor B"
+#~ msgstr "ka whakahoki i te uara o nāianei mō Pūkaha B"
+
+#~ msgid "set the value for Motor A"
+#~ msgstr "tautuhia te uara mō Pūkaha A"
+
+#~ msgid "set the value for Motor B"
+#~ msgstr "tautuhia te uara mō Pūkaha B"
+
+#~ msgid "Palette of LEGO NXT blocks of motors"
+#~ msgstr "Papaptā o ngā paraka LEGO NXT o ngā pūkaha"
+
+#~ msgid "Palette of LEGO NXT blocks of sensors"
+#~ msgstr "Papaptā o ngā paraka LEGO NXT o ngā pūoko"
+
+#~ msgid "touch"
+#~ msgstr "pā"
+
+#~ msgid "ultrasonic"
+#~ msgstr "pāorooro"
+
+#~ msgid "light"
+#~ msgstr "rama"
+
 #, fuzzy
 #~ msgid "grey"
 #~ msgstr "hina"
 
 #, fuzzy
+#~ msgid "Please check the connection with the brick"
+#~ msgstr "Taki koa i te hononga me te pereki."
+
+#, fuzzy
+#~ msgid "The value of power must be between -127 to 127"
+#~ msgstr "Ko te uara hiko me noho i waenga i te -127 to 127."
+
+#, fuzzy
+#~ msgid "An error has occurred: check all connections and try to reconnect"
+#~ msgstr "Kua puta tētahi hapa: taki i ngā hononga katoa ka ngana ki te hono anō."
+
+#~ msgid "NXT not found"
+#~ msgstr "NXT kāore i kitea"
+
+#~ msgid "refresh NXT"
+#~ msgstr "tāmata NXT"
+
+#~ msgid "Search for a connected NXT brick."
+#~ msgstr "Rapu i tētahi pereki NXT kua hono."
+
+#~ msgid "play tone"
+#~ msgstr "whakatangi rangi"
+
+#~ msgid "frequency"
+#~ msgstr "auautanga"
+
+#~ msgid "Play a tone at frequency for time."
+#~ msgstr "Whakatangi i tētahi rangi ki tētahi auautanga mō te wā kua whakaritea."
+
+#~ msgid "port"
+#~ msgstr "tauranga"
+
+#~ msgid "power"
+#~ msgstr "hiko"
+
+#~ msgid "rotations"
+#~ msgstr "ngā takahuringa"
+
+#~ msgid "turn a motor"
+#~ msgstr "takahuri i tētahi pūkaha"
+
+#~ msgid "synchronize two motors connected in PORT B and PORT C"
+#~ msgstr "Tukutahitia ngā pūkaha e rua kua hono ki te TAURANGA B me te TAURANGA C"
+
+#~ msgid "PORT A"
+#~ msgstr "TAURANGA A"
+
+#~ msgid "PORT A of the brick"
+#~ msgstr "TAURANGA A o te pereki"
+
+#~ msgid "PORT B"
+#~ msgstr "TAURANGA B"
+
+#~ msgid "PORT B of the brick"
+#~ msgstr "TAURANGA B o te pereki"
+
+#~ msgid "PORT C"
+#~ msgstr "TAURANGA C"
+
+#~ msgid "PORT C of the brick"
+#~ msgstr "TAURANGA C o te pereki"
+
+#~ msgid "start motor"
+#~ msgstr "tīmata pūkaha"
+
+#~ msgid "Run a motor forever."
+#~ msgstr "Whakahaere i tētahi pūkaha mō ake tonu atu."
+
+#~ msgid "brake motor"
+#~ msgstr "whakatū pūkaha"
+
+#~ msgid "Stop a specified motor."
+#~ msgstr "Whakatū i tētahi pūkaha kua whakatauria."
+
+#~ msgid "reset motor"
+#~ msgstr "tautuhi anō i te pūkaha"
+
+#~ msgid "Reset the motor counter."
+#~ msgstr "Tautuhi anō i te kaitatau pūkaha."
+
+#~ msgid "motor position"
+#~ msgstr "tūnga pūkaha"
+
+#~ msgid "Get the motor position."
+#~ msgstr "Tiki i te tūnga pūkaha."
+
+#~ msgid "PORT 1"
+#~ msgstr "TAURANGA 1"
+
+#~ msgid "PORT 1 of the brick"
+#~ msgstr "TAURANGA 1 o te pereki"
+
+#~ msgid "read"
+#~ msgstr "pānui"
+
+#~ msgid "sensor"
+#~ msgstr "pūoko"
+
+#~ msgid "Read sensor output."
+#~ msgstr "Pānui huaputa pūoko."
+
+#~ msgid "PORT 2"
+#~ msgstr "TAURANGA 2"
+
+#~ msgid "PORT 2 of the brick"
+#~ msgstr "TAURANGA 2 o te pereki"
+
+#~ msgid "light sensor"
+#~ msgstr "pūoko rama"
+
+#~ msgid "PORT 3"
+#~ msgstr "TAURANGA 3"
+
+#~ msgid "PORT 3 of the brick"
+#~ msgstr "TAURANGA 3 o te pereki"
+
+#~ msgid "touch sensor"
+#~ msgstr "pūoko pā"
+
+#~ msgid "distance sensor"
+#~ msgstr "pūoko tawhiti"
+
+#~ msgid "PORT 4"
+#~ msgstr "TAURANGA 4"
+
+#~ msgid "PORT 4 of the brick"
+#~ msgstr "TAURANGA 4 o te pereki"
+
+#~ msgid "sound sensor"
+#~ msgstr "pūoko oro"
+
+#~ msgid "color sensor"
+#~ msgstr "pūoko tae"
+
+#~ msgid "set light"
+#~ msgstr "tautuhi rama"
+
+#~ msgid "Set color sensor light."
+#~ msgstr "Tautuhi rama pūoko tae."
+
+#~ msgid "battery level"
+#~ msgstr "taumata pūkaha"
+
+#, fuzzy
 #~ msgid "Get battery level of the brick"
 #~ msgstr "Tikina te taumata pūkaha o te paraka."
+
+#~ msgid "HIGH"
+#~ msgstr "TIKETIKE"
+
+#~ msgid "LOW"
+#~ msgstr "PĀPAKU"
+
+#~ msgid "INPUT"
+#~ msgstr "TĀURU"
+
+#~ msgid "OUTPUT"
+#~ msgstr "HUAPUTA"
+
+#~ msgid "PWM"
+#~ msgstr "PWM"
+
+#~ msgid "SERVO"
+#~ msgstr "TŪMAU"
+
+#~ msgid "ERROR: Check the Arduino and the number of port."
+#~ msgstr "HAPA: Taki i te tau me te Aratuino o te tauranga."
+
+#~ msgid "ERROR: Value must be a number from 0 to 255."
+#~ msgstr "HAPA: Me whai tau i waenga i te 0 ki te 255 e te uara."
 
 #~ msgid "ERROR: Value must be either HIGH or LOW."
 #~ msgstr "HAPA: Me TEITEI, PĀPAKU rānei te uara."
 
+#~ msgid "ERROR: The mode must be either INPUT, OUTPUT, PWM or SERVO."
+#~ msgstr "HAPA: Me TĀURU, HUAPUTA, PWM, TŪMARU rānei te aratau."
+
+#~ msgid "pin mode"
+#~ msgstr "aratau pine"
+
+#~ msgid "mode"
+#~ msgstr "aratau"
+
+#~ msgid "Select the pin function (INPUT, OUTPUT, PWM, SERVO)."
+#~ msgstr "Tīpakohia te taumahi pine (TĀURU, HUAPUTA, PWM, TŪMAU)."
+
+#~ msgid "analog write"
+#~ msgstr "tuhi tairitenga"
+
+#~ msgid "Write analog value in specified port."
+#~ msgstr "Tuhi uara tairitenga ki te tauranga kua whakatauria."
+
+#~ msgid "analog read"
+#~ msgstr "pānui tairitenga"
+
+#~ msgid ""
+#~ "Read value from analog port. Value may be between 0 and 1023. Use Vref to "
+#~ "determine voltage. For USB, volt=((read)*5)/1024) approximately."
+#~ msgstr ""
+#~ "Pānui uara mai i te tauranga tairitenga. E taea ana tētahi uara mai i te 0 "
+#~ "ki te 1023. Whakamahia te Vref hei whakatau ngaohiko. Mō USB, "
+#~ "ngaohiko=((read)*5)/1024) pātata."
+
+#~ msgid "digital write"
+#~ msgstr "tuhi mamati"
+
+#~ msgid "Write digital value to specified port."
+#~ msgstr "Tuhi uara mamati ki te tauranga kua whakatauria."
+
+#~ msgid "digital read"
+#~ msgstr "pānui mamati"
+
+#~ msgid "Read value from digital port."
+#~ msgstr "Pānui uara mai i te tauranga mamati."
+
+#~ msgid "Set HIGH value for digital port."
+#~ msgstr "Tautuhi uara TIKETIKE hei tauranga mamati."
+
+#~ msgid "Configure Arduino port for digital input."
+#~ msgstr "Whirihora tauranga Atuino mō te tāurunga mamati."
+
+#~ msgid "Configure Arduino port to drive a servo."
+#~ msgstr "Whirihora tauranga Atuino hei hautū tūmau."
+
+#~ msgid "Set LOW value for digital port."
+#~ msgstr "Tautuhi uara PĀPAKU hei tauranga mamati."
+
+#~ msgid "Configure Arduino port for digital output."
+#~ msgstr "Whirihora tauranga Atuino hei huaputa mamati."
+
+#~ msgid "Configure Arduino port for PWM (pulse-width modulation)."
+#~ msgstr "Whirihora tauranga Atuino hei PWM (pulse-width modulation)."
+
+#, fuzzy
+#~ msgid "Palette of Expeyes blocks"
+#~ msgstr "Papatā o ngā paraka MahiMātou"
+
 #, fuzzy
 #~ msgid ""
-#~ "set the speed of the Butia motors as a value between 0 and 1023, passed "
-#~ "by an argument"
+#~ "set the speed of the Butia motors as a value between 0 and 1023, passed by "
+#~ "an argument"
 #~ msgstr ""
-#~ "tautuhia te terenga o ngā pūkaha Putia hei uara mai i te 0 ki te 1023, "
-#~ "kua whakaaetia e tētahi tohe"
+#~ "tautuhia te terenga o ngā pūkaha Putia hei uara mai i te 0 ki te 1023, kua "
+#~ "whakaaetia e tētahi tohe"
 
 #~ msgid "turn the Butia robot to the left"
 #~ msgstr "huri whakatemauī te karetao Putia"
@@ -3376,3 +2827,6 @@ msgstr "Tiaki tūmahi?"
 #~ msgstr ""
 #~ "tukutahi pūkaha\n"
 #~ "hautū"
+
+#~ msgid "Palette of Arduino blocks"
+#~ msgstr "Papatā o ngā paraka Aratuino"

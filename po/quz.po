@@ -1,22 +1,6 @@
-# #-#-#-#-#  quz.po (PACKAGE VERSION)  #-#-#-#-#
 # Irma <sankaypillo@gmail.com>, 2011, 2012.
-#, fuzzy
 msgid ""
 msgstr ""
-"#-#-#-#-#  quz.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-08 00:34-0400\n"
-"PO-Revision-Date: 2013-08-07 03:03+0200\n"
-"Last-Translator: Irma  <sankaypillo@gmail.com>\n"
-"Language-Team: Voluntarios Quechua Sugar\n"
-"Language: quz\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n % 10 == 1 && n % 100 != 11) ? 0 : 1;\n"
-"X-Generator: Pootle 2.0.5\n"
-"#-#-#-#-#  quz.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-26 00:31-0400\n"
@@ -29,1331 +13,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n % 10 == 1 && n % 100 != 11) ? 0 : 1;\n"
 "X-Generator: Pootle 2.0.5\n"
-
-msgid "turtleart-extras (master)"
-msgstr "turtleart-extras (master)"
-
-msgid "Turtle Blocks"
-msgstr "CharapaBlocks"
-
-# #-#-#-#-#  quz.po (PACKAGE VERSION)  #-#-#-#-#
-#  "TortugArte"
-#, fuzzy
-msgid "Turtle Art"
-msgstr ""
-"#-#-#-#-#  quz.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"CharapaArte\n"
-"#-#-#-#-#  quz.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"CharapArte"
-
-msgid "Turtle Art Mini"
-msgstr "Huch'uy CharapArte"
-
-msgid "Turtle Confusion"
-msgstr "Muspaq CharapArte"
-
-msgid "Select a challenge"
-msgstr "Huk llallipayta akllay"
-
-msgid "Amazonas Tortuga"
-msgstr "Yunkamanta charapacha"
-
-msgid "Turtle Flags"
-msgstr "Unanchakunayuq Charapa"
-
-msgid "Use the turtle to draw country flags"
-msgstr "Kay charapachaqa suyukunap unanchantam ruwarin"
-
-msgid "Palette of Mexican pesos"
-msgstr "Pesos Mexicanos qullqimanta"
-
-msgid "Palette of Colombian pesos"
-msgstr "Pesos Colombianos qullqimanta"
-
-msgid "Palette of Rwandan francs"
-msgstr "Francos de Ruanda qullqimanta"
-
-msgid "Palette of US dollars"
-msgstr "Dolar qullqimanta"
-
-msgid "Palette of Australian dollars"
-msgstr "Austrialiamanta dolar qullqimanta"
-
-msgid "Palette of Paraguayan Guaranies"
-msgstr "Paraguaymanta Guaranies qullqimanta"
-
-msgid "Palette of Peruvian Nuevo Soles"
-msgstr "Perumanta Nuevos Soles qullqimanta"
-
-msgid "Palette of Uruguayan Pesos"
-msgstr "Uyuguaymanta Pesos qullqimanta"
-
-msgid "TurtleBots"
-msgstr "CharapaBots"
-
-msgid "TurtleBlocks with Butia, Lego NxT, WeDo, Arduino, FollowMe plugins"
-msgstr ""
-"CharapaBlock puririn kay yanapaqkunawan: Butiá, Lego NxT, WeDo, Arduino, "
-"FollowMe"
-
-msgid "ERROR: The speed must be a value between 0 and 1023"
-msgstr "PANTAY: utqhay puriyqa 0 yupaymanta 1023 yupaykama kanman"
-
-msgid "ERROR: The speed must be a value between -1023 and 1023"
-msgstr "PANTAY: utqhay puriyqa 0 yupaymanta 1023 yupaykama kanman"
-
-msgid "ERROR: The pin must be between 1 and 8"
-msgstr "PANTAY: pin nisqaqa kaymanmi 1 yupaymanta 8 yupaykama"
-
-msgid "ERROR: The value must be 0 or 1, LOW or HIGH"
-msgstr "PANTAY: Yupayqa kanman 0 nisqamanta 1 nisqakama, ACHKHA utaq PISI"
-
-msgid "ERROR: The mode must be INPUT or OUTPUT."
-msgstr "PANTAY: kanman HAYKUNA utaq LLUQSINA"
-
-msgid "turns LED on and off: 1 means on, 0 means off"
-msgstr "LED nistaqa hap'ichiy utaq wañuchiy: hap'ichiyqa 1 wañuchiytaq 0"
-
-msgid "returns the gray level as a value between 0 and 65535"
-msgstr "Chiqchi kayninta kutichin, yupaynintaq 0 nisqamanta 65535 nisqakama"
-
-msgid "returns 1 when the button is pressed and 0 otherwise"
-msgstr ""
-"rumpu q'apisqa kaptinqa 1 kutichimun, mana chayna kaptinqa 0 yupaymi kanqa"
-
-msgid "returns the light level as a value between 0 and 65535"
-msgstr "K'anchayninta kutichin, yupaynintaq 0 nisqamanta 65535 nisqakama"
-
-msgid "returns the distance as a value between 0 and 65535"
-msgstr "Karu kayninta kutichin, yupaynintaq 0 nisqamanta 65535 nisqakama"
-
-msgid "returns the resistance value (ohms)"
-msgstr "Sinchi kayninta kutichin (ohms)"
-
-msgid "returns the voltage value (volts)"
-msgstr "Voltaje nisqayninta kutichin (volts)"
-
-msgid "returns the temperature value (celsius degree)"
-msgstr ""
-
-msgid "custom module sensor A"
-msgstr ""
-
-msgid "custom module sensor B"
-msgstr ""
-
-msgid "custom module sensor C"
-msgstr ""
-
-msgid "LED"
-msgstr "LED"
-
-msgid "button"
-msgstr "rump'u"
-
-# #-#-#-#-#  quz.po (PACKAGE VERSION)  #-#-#-#-#
-#  "gris"
-#: TurtleArt/tabasics.py:327 TurtleArt/tabasics.py:409
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1090
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1095
-msgid "gray"
-msgstr "chiqchi"
-
-msgid "light"
-msgstr "k'anchana"
-
-msgid "distance"
-msgstr "karukaynin"
-
-# #-#-#-#-#  quz.po (PACKAGE VERSION)  #-#-#-#-#
-#  "resistencia"
-#: plugins/audio_sensors/audio_sensors.py:151
-#: plugins/audio_sensors/audio_sensors.py:165
-#: plugins/audio_sensors/audio_sensors.py:179
-#: plugins/audio_sensors/audio_sensors.py:193
-msgid "resistance"
-msgstr "sinchikay"
-
-# #-#-#-#-#  quz.po (PACKAGE VERSION)  #-#-#-#-#
-#  "voltaje"
-#: plugins/audio_sensors/audio_sensors.py:157
-#: plugins/audio_sensors/audio_sensors.py:171
-#: plugins/audio_sensors/audio_sensors.py:185
-#: plugins/audio_sensors/audio_sensors.py:199
-#, fuzzy
-msgid "voltage"
-msgstr ""
-"#-#-#-#-#  quz.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"voltage nisqa\n"
-"#-#-#-#-#  quz.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"voltaje nisqa"
-
-msgid "temperature"
-msgstr "q'uñiynin"
-
-msgid "module a"
-msgstr ""
-
-msgid "module b"
-msgstr ""
-
-msgid "module c"
-msgstr ""
-
-msgid "Butia Robot"
-msgstr "Robot Butiá nisqa"
-
-msgid "refresh Butia"
-msgstr "Butiáta kunanyachiy"
-
-msgid "refresh the state of the Butia palette and blocks"
-msgstr "Butiámanta bloquekunatawan ima paletakunatawanpas kunanyachiy"
-
-msgid "battery charge Butia"
-msgstr "Butiap bateriyanmanta"
-
-msgid ""
-"returns the battery charge in volts. If no motors present, it returns 255"
-msgstr ""
-"Bateriap cargaynitaqa voltios nisqapi kutichin. Mana motor kaptinqa 255 "
-"nisqatam kutichin"
-
-msgid "speed Butia"
-msgstr "Butiap utqhayninmanta"
-
-msgid "set the speed of the Butia motors"
-msgstr "Butiá utqhay purintanta mat'iy"
-
-msgid "move Butia"
-msgstr "Butiáta kuyuchiy"
-
-# #-#-#-#-#  quz.po (PACKAGE VERSION)  #-#-#-#-#
-#  "izquierda"
-#: TurtleArt/tabasics.py:169
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:856
-#, fuzzy
-msgid "left"
-msgstr ""
-"#-#-#-#-#  quz.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"lluq'i\n"
-"#-#-#-#-#  quz.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"lluqi"
-
-# #-#-#-#-#  quz.po (PACKAGE VERSION)  #-#-#-#-#
-#  "derecha"
-#: TurtleArt/tabasics.py:181
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:880
-msgid "right"
-msgstr "paña"
-
-msgid "moves the Butia motors at the specified speed"
-msgstr "Butiá utqhayta purinanpaq mat'iy"
-
-msgid "stop Butia"
-msgstr "Butiataqa sayachiy"
-
-msgid "stop the Butia robot"
-msgstr "robot Butiatam sayachin"
-
-msgid "forward Butia"
-msgstr "ñawpaqman Butia"
-
-msgid "move the Butia robot forward"
-msgstr "Butiataqa ñawpaqmanmi purichiy"
-
-msgid "left Butia"
-msgstr "lluq'i Butia"
-
-msgid "turn the Butia robot at left"
-msgstr "pañamanhina Butiataqa muyuchiy"
-
-msgid "right Butia"
-msgstr "paña Butia"
-
-msgid "turn the Butia robot at right"
-msgstr "pañamanhina Butiataqa muyuchiy"
-
-msgid "backward Butia"
-msgstr "qhipaman Butia"
-
-msgid "move the Butia robot backward"
-msgstr "Butiataqa qhipamanmi purichiy"
-
-msgid "Butia Robot extra blocks"
-msgstr "Butia robotpaq aswan bloquekuna"
-
-msgid "hack pin mode"
-msgstr "pin nisqa imayna kaynin"
-
-msgid "pin"
-msgstr "ratachiq"
-
-msgid "mode"
-msgstr "imayna kaynin"
-
-msgid "Select the pin function (INPUT, OUTPUT)."
-msgstr "Pin nisqapa purinanta akllay (HAYKUNA, LLUQSINA)."
-
-msgid "read hack pin Butia"
-msgstr "hack pin nisqapi ñawichay"
-
-msgid "read the value of a hack pin"
-msgstr "hack pin nisqap chaninta ñawichan"
-
-msgid "write hack pin Butia"
-msgstr "hack pin nisqapi qillqay"
-
-# #-#-#-#-#  quz.po (PACKAGE VERSION)  #-#-#-#-#
-#  "valor"
-#: TurtleArt/tabasics.py:976 TurtleArt/tawindow.py:4581
-msgid "value"
-msgstr "chani"
-
-msgid "set a hack pin to 0 or 1"
-msgstr "hack pin nisqataqa churachin 0 utaq 1 yupaypi"
-
-msgid "INPUT"
-msgstr "HAYKUNA"
-
-msgid "Configure hack port for digital input."
-msgstr "Digital haykunahina kananpaqmi hack puertotaqa kamachiy."
-
-msgid "HIGH"
-msgstr "ACHKHA"
-
-msgid "Set HIGH value for digital port."
-msgstr "Puerto digitalpiqa ACHKHA sutichakuq chanita akllapay."
-
-msgid "LOW"
-msgstr "PISI"
-
-msgid "Set LOW value for digital port."
-msgstr "Puerto digitalpiqa PISI sutichakuq chanita akllapay."
-
-msgid "OUTPUT"
-msgstr "LLUQSINA"
-
-msgid "Configure hack port for digital output."
-msgstr "Digital lluqsinahina kananpaqmi hack puertotaqa kamachiy."
-
-msgid "Butia"
-msgstr "Butia"
-
-msgid "CAST\n"
-msgstr ""
-
-msgid "new name"
-msgstr ""
-
-msgid "original"
-msgstr ""
-
-msgid "f(x)="
-msgstr ""
-
-msgid "name"
-msgstr ""
-
-msgid "Cast a new block"
-msgstr ""
-
-msgid "Module A"
-msgstr ""
-
-msgid "generic Module A"
-msgstr ""
-
-msgid "Module B"
-msgstr ""
-
-msgid "generic Module B"
-msgstr ""
-
-msgid "Module C"
-msgstr ""
-
-msgid "generic Module C"
-msgstr ""
-
-msgid "ERROR: The pin %s must be in OUTPUT mode."
-msgstr "PANTAY: pin %s nisqaqa LLUQSINA hinam kanman."
-
-msgid "ERROR: The pin %s must be in INPUT mode."
-msgstr "PANTAY: pin %s nisqaqa HAYKUNA hinam kanman."
-
-msgid "ERROR: Something wrong with function '%s'"
-msgstr ""
-
-msgid "ERROR: cannot init GCONF client: %s"
-msgstr ""
-
-msgid "ERROR: You must cast Module A, B or C"
-msgstr ""
-
-msgid "Creating PyBot server"
-msgstr ""
-
-msgid "ERROR creating PyBot server"
-msgstr ""
-
-msgid "PyBot is alive!"
-msgstr ""
-
-msgid "Ending butia polling"
-msgstr ""
-
-msgid "Error importing Pygame. This plugin require Pygame 1.9"
-msgstr "Pygame apachimuyqa pantarun. Kay pluginqa Pygame 1.9 nisqatam munan"
-
-msgid "Error on initialization of the camera"
-msgstr "camara qallarichiypiqa pantarunmi."
-
-msgid "No camera was found"
-msgstr "Manam Kamaraqa tarichikunchu"
-
-msgid "Error stopping camera"
-msgstr "Cámara utichiyqa pantarunmi"
-
-msgid "Error starting camera"
-msgstr "Cámara hap'ichiyqa pantarunmi"
-
-msgid "Error in get mask"
-msgstr "Mascara nisqa hap'iyqa pantarunmi"
-
-msgid "FollowMe"
-msgstr "FollowMe"
-
-msgid "refresh FollowMe"
-msgstr "FollowMe nisqata kunanyachiy"
-
-msgid "Search for a connected camera."
-msgstr "Huk brick NXT nisqata machkhay."
-
-msgid "calibration"
-msgstr "mat'ichina"
-
-msgid "store a personalized calibration"
-msgstr "munasqa mat'ichisqata rikuchin"
-
-msgid "return a personalized calibration"
-msgstr "munasqa mat'ichisqata rikuchin"
-
-msgid "follow"
-msgstr "qhatiy"
-
-msgid "follow a color or calibration"
-msgstr "llimp'i kaqta churay"
-
-# #-#-#-#-#  quz.po (PACKAGE VERSION)  #-#-#-#-#
-#  "brillo"
-#: plugins/camera_sensor/camera_sensor.py:80
-#: plugins/camera_sensor/camera_sensor.py:93
-#: plugins/camera_sensor/camera_sensor.py:128
-#: plugins/camera_sensor/camera_sensor.py:141
-#: plugins/light_sensor/light_sensor.py:56
-#: plugins/light_sensor/light_sensor.py:63
-msgid "brightness"
-msgstr "llipipiynin"
-
-msgid "set the camera brightness as a value between 0 to 255."
-msgstr "Cámaraq llipipiyninta 0 nisqamnta 255 nisqakama churay."
-
-msgid "minimum pixels"
-msgstr "pixelkunamanta pisi kaynin"
-
-msgid "set the minimal number of pixels to follow"
-msgstr "hayk'a pixeles nisqakunawan llamk'anapaqmi rikuchin"
-
-msgid "threshold"
-msgstr "illariymanta"
-
-msgid "set a threshold for a RGB color"
-msgstr "imayna RGB kananpaq illariyninta churay"
-
-msgid "camera mode"
-msgstr "imayna Cámara kanqa"
-
-msgid "set the color mode of the camera: RGB; YUV or HSV"
-msgstr "camarapaq llimp'i kananta churay: RGB; YUV utaq HSV"
-
-msgid "get brightness"
-msgstr "illariyninta tariy"
-
-msgid "get the brightness of the ambient light"
-msgstr "k'itip illariyninta tariy"
-
-msgid "average color"
-msgstr "chawpi kaq llimp'i"
-
-msgid ""
-"if set to 0 then color averaging is off during calibration; for other values "
-"it is on"
-msgstr ""
-"Sichus 0 yupaypi kanqa chayqa chawpi llimp'iqa manam k'anchasqachu kachkan "
-"mat'inapaqqa"
-
-msgid "x position"
-msgstr "X kinkay"
-
-msgid "return x position"
-msgstr "X kinrayman kutiy"
-
-msgid "y position"
-msgstr "Y kinray"
-
-msgid "return y position"
-msgstr "Y kinrayman kutiy"
-
-msgid "pixels"
-msgstr "pixelkuna"
-
-msgid "return the number of pixels of the biggest blob"
-msgstr "hatun kaqpa hayk'a pixelniyuq kasqantam rikuchin"
-
-msgid "set the color mode of the camera to RGB"
-msgstr "camarap llimp'i RGB nisqaman churay"
-
-msgid "set the color mode of the camera to YUV"
-msgstr "camarap llimp'i YUV nisqaman churay"
-
-msgid "set the color mode of the camera to HSV"
-msgstr "camarap llimp'i HSV nisqaman churay"
-
-msgid "empty calibration"
-msgstr "ch'usaq mat'ichina"
-
-msgid "error in string conversion"
-msgstr "qillqasqa t'ikrakuchkaptinmi pantarun"
-
-msgid "Pattern detection"
-msgstr "Sananpaqkunata qhawachiq"
-
-msgid "Seeing signal"
-msgstr "Sananpata qhawaspa"
-
-msgid "Returns True if the signal is in front of the camera"
-msgstr "Sichus sananpa camarap uyanpi kanqa chayqa Chiqay nispam kutichin"
-
-msgid "Distance to signal"
-msgstr "Sananpaman karuyaynin"
-
-msgid "Returns the distance of the signal to the camera in millimeters"
-msgstr "Camaramanta sananpaqkama karukaynintam milimetros nisqapi kutichin"
-
-msgid "SumBot"
-msgstr "SumBot"
-
-msgid "speed SumBot"
-msgstr "SumBotpa utqhaynin"
-
-msgid "submit the speed to the SumBot"
-msgstr "SumBotpa utqhayninta kamachiy"
-
-msgid "set the default speed for the movement commands"
-msgstr "kikinmanta kuyurinanpaq kamachiyta churay"
-
-msgid "forward SumBot"
-msgstr "ñawpaqman SumBot"
-
-msgid "move SumBot forward"
-msgstr "ñawpaqman SumBot sutichakuqtaqa purichiy"
-
-msgid "backward SumBot"
-msgstr "qhipaman SumBot"
-
-msgid "move SumBot backward"
-msgstr "qhipaman SumBot sutichakuqtaqa purichiy"
-
-msgid "stop SumBot"
-msgstr "SumBot sutichakuqta utichiy"
-
-msgid "stop the SumBot"
-msgstr "SumBot sutichakuqta utichin"
-
-msgid "left SumBot"
-msgstr "lluqiman SumBot"
-
-msgid "turn left the SumBot"
-msgstr "lluqimanhina SumBot sutichakuqta muyuchiy"
-
-msgid "right SumBot"
-msgstr "paña SumBot"
-
-msgid "turn right the SumBot"
-msgstr "pañamanhina SumBot sutichakuqta muyuchiy|"
-
-msgid "angle to center"
-msgstr "chawpimanta k'uchuchiy"
-
-msgid "get the angle to the center of the dohyo"
-msgstr "dojop chawpinmanta k'uchutaqa hurquy"
-
-msgid "angle to Enemy"
-msgstr "Ayqap k'uchun"
-
-msgid "get the angle to the Enemy"
-msgstr "Awqaqpa k'uchunta tariy"
-
-msgid "x coor. SumBot"
-msgstr "SumBot sutichakuqpa x coor."
-
-msgid "get the x coordinate of the SumBot"
-msgstr "oponentep Y coordenandanta tarin"
-
-msgid "y coor. SumBot"
-msgstr "SumBot sutichakuqpa y coor."
-
-msgid "get the y coordinate of the SumBot"
-msgstr "oponentep Y coordenandanta tarin"
-
-msgid "x coor. Enemy"
-msgstr "Awqaqpa x coor."
-
-msgid "get the x coordinate of the Enemy"
-msgstr "oponentep Y coordenandanta tarin"
-
-msgid "y coor. Enemy"
-msgstr "Awqaqpa y coor."
-
-msgid "get the y coordinate of the Enemy"
-msgstr "oponentep Y coordenandanta tarin"
-
-msgid "rotation SumBot"
-msgstr "SumBot sutichakuqpa muyunan"
-
-msgid "get the rotation of the Sumbot"
-msgstr "SumBot muyunanta tariy"
-
-msgid "rotation Enemy"
-msgstr "Awqaqpa muyunan"
-
-msgid "get the rotation of the Enemy"
-msgstr "Awqa muyunanta tariy"
-
-msgid "distance to center"
-msgstr "chawpikama chayanapaq"
-
-msgid "get the distance to the center of the dohyo"
-msgstr "dojop chawpinmanta k'uchutaqa hurquy"
-
-msgid "distance to Enemy"
-msgstr "Awqakama chayanapaq"
-
-msgid "get the distance to the Enemy"
-msgstr "Awqakama chayanapaqmi tarin"
-
-msgid "update information"
-msgstr "willanata kunanyachiy"
-
-msgid "update information from the server"
-msgstr "servidormanta willanata kunanyachiy"
-
-msgid "Palette of physics blocks"
-msgstr "física nisqamanta bloquekuna"
-
-msgid "start polygon"
-msgstr "poligonota qallariy"
-
-msgid "Begin defining a new polygon based on the current Turtle xy position."
-msgstr ""
-"Kunan kaq xy nisqapi charapa tarikusqanmantam musuq poligonotaqa yurichiy."
-
-msgid "add point"
-msgstr "Puntuta yapay"
-
-msgid ""
-"Add a new point to the current polygon based on the current Turtle xy "
-"position."
-msgstr ""
-"Kunan kaq xy nisqapi charapa tarikusqanmantam musuq puntuta poligonoman "
-"churay."
-
-msgid "end polygon"
-msgstr "poligonota tukuy"
-
-msgid "Define a new polygon."
-msgstr "Musuq poligonota ruway."
-
-msgid "end filled polygon"
-msgstr "unt'achisqa poligonota tukuy"
-
-msgid "Not a simple polygon"
-msgstr "Manam yanqa poligono nisqachu"
-
-msgid "Define a new filled polygon."
-msgstr "Musuq hunt'achisqa poligonota ruway."
-
-msgid "triangle"
-msgstr "Kimsak'uchu"
-
-msgid "base"
-msgstr "t'iqsi"
-
-# #-#-#-#-#  quz.po (PACKAGE VERSION)  #-#-#-#-#
-#  "altura"
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:896
-msgid "height"
-msgstr "sayaynin"
-
-msgid "Add a triangle object to the project."
-msgstr "kimsak'uchuta churay."
-
-msgid "circle"
-msgstr "muyu"
-
-msgid "Add a circle object to the project."
-msgstr "muyuta churay."
-
-msgid "rectangle"
-msgstr "suyt'u"
-
-# #-#-#-#-#  quz.po (PACKAGE VERSION)  #-#-#-#-#
-#  "anchura"
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:872
-msgid "width"
-msgstr "kinraynin"
-
-msgid "Add a rectangle object to the project."
-msgstr "suyt'uta churay."
-
-msgid "reset"
-msgstr "pichay"
-
-msgid "Reset the project; clear the object list."
-msgstr "Wakichinata pichay; llapan sinrichasqakunata pichay."
-
-msgid "motor"
-msgstr "motor nisqa"
-
-msgid "torque"
-msgstr "q'iwinan"
-
-msgid "speed"
-msgstr "Utqhanan"
-
-msgid ""
-"Motor torque and speed range from 0 (off) to positive numbers; motor is "
-"placed on the most recent object created."
-msgstr ""
-"Motor purinanpaq q'iwichiq utqhayachiq imaqqa, 0 yupamanta (mañusqa kaspa) "
-"positivos yupanakunaman rin; motorqa chayraq ruwachasqapim churakun."
-
-msgid "Pin an object down so that it cannot fall."
-msgstr "imaynapas ama urmayananpaqmi ratachin."
-
-msgid "joint"
-msgstr "Huñukuy"
-
-# #-#-#-#-#  quz.po (PACKAGE VERSION)  #-#-#-#-#
-#  "x"
-#: TurtleArt/tabasics.py:210 TurtleArt/tabasics.py:288
-#, fuzzy
-msgid "x"
-msgstr ""
-"#-#-#-#-#  quz.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"X\n"
-"#-#-#-#-#  quz.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"x"
-
-# #-#-#-#-#  quz.po (PACKAGE VERSION)  #-#-#-#-#
-#  "y"
-#: TurtleArt/tabasics.py:210 TurtleArt/tabasics.py:288
-#, fuzzy
-msgid "y"
-msgstr ""
-"#-#-#-#-#  quz.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Y\n"
-"#-#-#-#-#  quz.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"y"
-
-msgid ""
-"Join two objects together (the most recent object created and the object at "
-"point x, y)."
-msgstr ""
-"Iskay imaymanakunatam tinkuchin ( chayraq imayman ruwasqatawan X, Y "
-"kasqakunawan ima)."
-
-msgid "save as Physics activity"
-msgstr "Física ruwanatahina waqaychay"
-
-msgid "Save the project to the Journal as a Physics activity."
-msgstr "Física ruwanatahina P'anqapi waqaychay."
-
-msgid "gear"
-msgstr "muyu"
-
-msgid "Add a gear object to the project."
-msgstr "Wakichinam t'akyakuq imaymanata churay."
-
-msgid "density"
-msgstr "densidad nisqa"
-
-msgid ""
-"Set the density property for objects (density can be any positive number)."
-msgstr ""
-"Imaymankunap densidad nisqantam churan (densidadqa yupana positivo nisqam "
-"kanman)."
-
-msgid "friction"
-msgstr "qhaquna"
-
-msgid ""
-"Set the friction property for objects (value from 0 to 1, where 0 turns "
-"friction off and 1 is strong friction)."
-msgstr ""
-"Imaymanakunap qhaqunakuntam churan (chaniqa 0 utaq 1 kanman, 0 yupayqa "
-"qhaqunatam rikuchin 1 yupaytaq kallpasapa kaqta)."
-
-msgid "bounciness"
-msgstr "kikin kaqllaman kutichiq"
-
-msgid ""
-"Set the bounciness property for objects (a value from 0 to 1, where 0 means "
-"no bounce and 1 is very bouncy)."
-msgstr ""
-"Imaymanakunata kikin kaqllamanmi kutichin (chaniqa 0 utaq 1 kanman, 0 "
-"yupayqa kikin kaqllaman kutichisqanta rikuchin 1 yupaytaq sinchi kaqta)."
-
-msgid "dynamic"
-msgstr "ch'iti"
-
-msgid ""
-"If dynamic = 1, the object can move; if dynamic = 0, it is fixed in position."
-msgstr ""
-"Sichus ch'iti= 1 yupayniyuq kanqa chayqa, imaymanaqa puriyqachanqam; sichus "
-"ch'iti = 0 yupayniyuq kanqa chayqa imaymana kaqqa kikin kasqallapim kanqa."
-
-msgid "Palette of WeDo blocks"
-msgstr "WeDo bloquekunamanta"
-
-msgid "WeDo"
-msgstr "WeDo"
-
-msgid "set current WeDo device"
-msgstr "WeDo kunan kaqtam kunanyachiy"
-
-msgid "number of WeDo devices"
-msgstr "WeDo nisqap hayk'a dispositivos nisqakuna kasqan"
-
-msgid "tilt"
-msgstr "k'iraynin"
-
-msgid ""
-"tilt sensor output: (-1 == no tilt, 0 == tilt forward, 3 == tilt back, 1 == "
-"tilt left, 2 == tilt right)"
-msgstr ""
-"kinrayasqamanta musyasqan: (-1 == manam kinrayasqachu kachkan, 0 == ñawpaqma "
-"kinrayasqa kachkan, 3 == qhipaman kinrayasqa kachkan, 1 == lluqiman "
-"kinrayasqa kachkan, 2 == pañaman kinrayasqa kachkan)"
-
-msgid "distance sensor output"
-msgstr "karu kaymanta musyasqan"
-
-msgid "Motor A"
-msgstr "Motor A nisqa"
-
-msgid "returns the current value of Motor A"
-msgstr "Motor A nisqapa kunan kaq chanintam kutichin"
-
-msgid "Motor B"
-msgstr "Motor B nisqa"
-
-msgid "returns the current value of Motor B"
-msgstr "Motor B nisqapa kunan kaq chanintam kutichin"
-
-msgid "set the value for Motor A"
-msgstr "Motor A nisqapa chaninta akllapan"
-
-msgid "set the value for Motor B"
-msgstr "Motor B nisqapa chaninta akllapan"
-
-msgid "WeDo is unavailable"
-msgstr "WeDo manam kachkanchu"
-
-msgid "WeDo %d is unavailable; defaulting to 1"
-msgstr "Wedo %d nisqaqa manam kachkanchu; 1 kikin kasqallantam hap'ikuchkan"
-
-msgid "%(device)s is unavailable on WeDo %(wedo_number)d"
-msgstr "%(device)s kayqa manam kay %(wedo_number)d WeDo nisqapiqa kachkanchu"
-
-msgid "Palette of LEGO NXT blocks of motors"
-msgstr "LEGO NXT bloques motores nisqakunamanta"
-
-msgid "Palette of LEGO NXT blocks of sensors"
-msgstr "LEGO NXT bloques llakllana nisqakunamanta"
-
-msgid "touch"
-msgstr "llamina"
-
-msgid "ultrasonic"
-msgstr "ultrasónico uyarina"
-
-# #-#-#-#-#  quz.po (PACKAGE VERSION)  #-#-#-#-#
-#  "color"
-#: TurtleArt/tabasics.py:313 TurtleArt/tabasics.py:326
-#: TurtleArt/tabasics.py:384
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1093
-msgid "color"
-msgstr "llimp'i"
-
-# #-#-#-#-#  quz.po (PACKAGE VERSION)  #-#-#-#-#
-#  "sonido"
-#: plugins/audio_sensors/audio_sensors.py:83
-#: plugins/audio_sensors/audio_sensors.py:98 pysamples/grecord.py:206
-msgid "sound"
-msgstr "uyarina"
-
-msgid "Please check the connection with the brick"
-msgstr "Amahina kaychu, tikaman t'inkichiyta qhawariy."
-
-msgid "Invalid port '%s'. Port must be: PORT A, B or C"
-msgstr ""
-"Kay '%s' puerto nisqata manam allinchu kachkan. Puertoqa kanmanpuni: PUERTO "
-"A, B utaq C"
-
-msgid "Invalid port '%s'. Port must be: PORT 1, 2, 3 or 4"
-msgstr ""
-"Kay '%s' puerto nisqata manam allinchu kachkan. Puertoqa kanmanpuni: PUERTO "
-"1, 2, 3 utaq 4"
-
-msgid "The value of power must be between -127 to 127"
-msgstr "Potencia nisqapa chaninqa 127 yupanmanta 127 yupaykama kanman."
-
-msgid "The parameter must be a integer, not '%s'"
-msgstr "Yupay kaqqa hunt'am kanman mana '%s' phatmasqachu"
-
-msgid "An error has occurred: check all connections and try to reconnect"
-msgstr ""
-"Pantaymi rikurin: llapan t'inkichiyta qhawariy chaymantataq wakmanta "
-"t'inkichiy."
-
-msgid "NXT found %s bricks"
-msgstr "NXT nisqaqa kayniraq %s tikakunatam tarirqun"
-
-msgid "NXT not found"
-msgstr "NXT mana tarisqa"
-
-msgid "Brick number %s was not found"
-msgstr "Kay yupayuq %s tikaqa manam tarichikunchu"
-
-msgid "refresh NXT"
-msgstr "NXT nisqata kunanyachiy"
-
-msgid "Search for a connected NXT brick."
-msgstr "Huk brick NXT nisqata machkhay."
-
-msgid "NXT"
-msgstr "NXT"
-
-msgid "set current NXT device"
-msgstr "kunan kaq NXT nisqata churay"
-
-msgid "number of NXT devices"
-msgstr "NXT nisqap hayk'a dispositivos nisqakuna kasqan"
-
-msgid "brick name"
-msgstr "Tikap sutin"
-
-msgid "Get the name of a brick."
-msgstr "Tikap sutinta tarin."
-
-msgid "play tone"
-msgstr "uyarinap kunkanta uyarichiy"
-
-msgid "frequency"
-msgstr "frecuencia nisqa"
-
-# #-#-#-#-#  quz.po (PACKAGE VERSION)  #-#-#-#-#
-#  "tiempo"
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:425
-msgid "time"
-msgstr "pacha"
-
-msgid "Play a tone at frequency for time."
-msgstr "Uyarinap kunkanta frecuenciatawan unayaynintawan churaspa uyarichiy."
-
-msgid ""
-"turn motor\n"
-"\n"
-msgstr ""
-"motorta muyuchiyturn motor\n"
-"\n"
-
-msgid "port"
-msgstr "puerto nisqa"
-
-msgid "power"
-msgstr "Potencia nisqa"
-
-msgid "rotations"
-msgstr "muyuna"
-
-msgid "turn a motor"
-msgstr "huk motorta muyuchiy"
-
-msgid ""
-"synchronize\n"
-"\n"
-"motors"
-msgstr ""
-"motorkunata\n"
-"\n"
-"mat'iy"
-
-msgid "steering"
-msgstr "mayma rina"
-
-msgid "synchronize two motors connected in PORT B and PORT C"
-msgstr ""
-"PUERTO B hinallataq PUERTO C nisqaman iskay motorkuna masichakuqta kuskanchay"
-
-msgid "PORT A"
-msgstr "PUERTO A nisqa"
-
-msgid "PORT A of the brick"
-msgstr "brick nisqapa PUERTO A nisqan"
-
-msgid "PORT B"
-msgstr "PUERTO B nisqa"
-
-msgid "PORT B of the brick"
-msgstr "brick nisqapa PUERTO B nisqan"
-
-msgid "PORT C"
-msgstr "PUERTO C nisqa"
-
-msgid "PORT C of the brick"
-msgstr "brick nisqapa PUERTO C nisqan"
-
-msgid ""
-"synchronize\n"
-"motors"
-msgstr ""
-"motorkunata\n"
-"mat'iy"
-
-msgid "start motor"
-msgstr "motorta qallarichiy"
-
-msgid "Run a motor forever."
-msgstr "Huk motorta wiñaypaq muyuchiy."
-
-msgid "brake motor"
-msgstr "motorta utichiy"
-
-msgid "Stop a specified motor."
-msgstr "akllasqa motorta utichiy."
-
-msgid "reset motor"
-msgstr "motorta hukmanta qallarichiy"
-
-msgid "Reset the motor counter."
-msgstr "Motorpa yupananta hukmanta qallarichiy."
-
-msgid "motor position"
-msgstr "motorpa maypi kasqaynin"
-
-msgid "Get the motor position."
-msgstr "Motorpa maypi kasqanta taripay."
-
-msgid "PORT 1"
-msgstr "PUERTO 1 nisqa"
-
-msgid "PORT 1 of the brick"
-msgstr "brick nisqapa PUERTO 1 nisqan"
-
-msgid "read"
-msgstr "Ñawichay"
-
-msgid "sensor"
-msgstr "musyana"
-
-msgid "Read sensor output."
-msgstr "Musyaymanta ñawirin."
-
-msgid "PORT 2"
-msgstr "PUERTO 2 nisqa"
-
-msgid "PORT 2 of the brick"
-msgstr "brick nisqapa PUERTO 2 nisqan"
-
-msgid "light sensor"
-msgstr "k'anchariypa musyaynin"
-
-msgid "gray sensor"
-msgstr "chiqchikunamnta musyana"
-
-msgid "PORT 3"
-msgstr "PUERTO 3 nisqa"
-
-msgid "PORT 3 of the brick"
-msgstr "brick nisqapa PUERTO 3 nisqan"
-
-msgid "touch sensor"
-msgstr "ruk'anapa musyaynin"
-
-msgid "distance sensor"
-msgstr "karu kaymanta musyaynin"
-
-msgid "PORT 4"
-msgstr "PUERTO 4 nisqa"
-
-msgid "PORT 4 of the brick"
-msgstr "brick nisqapa PUERTO 4 nisqan"
-
-msgid "sound sensor"
-msgstr "uyarinapa musyaynin"
-
-msgid "color sensor"
-msgstr "llimp'ip musyaynin"
-
-msgid "set light"
-msgstr "k'ancharichiy"
-
-msgid "Set color sensor light."
-msgstr "Llimp'ip musyayninpa k'anchariyninta hap'ichiy."
-
-msgid "battery level"
-msgstr "baterip imayna kasqan"
-
-msgid "Get the battery level of the brick in millivolts"
-msgstr "Brick nisqap imayna baterian kasqantam milivolts nisqapi kutichin."
-
-msgid "Palette of Arduino blocks"
-msgstr "Arduinos bloquekunamanta"
-
-msgid "PWM"
-msgstr "PWM"
-
-msgid "SERVO"
-msgstr "SERVO"
-
-msgid "ERROR: Check the Arduino and the number of port."
-msgstr "PANTAY: Arduino nisqatawan puerto yupanantawan qhawariy."
-
-msgid "ERROR: Value must be a number from 0 to 255."
-msgstr "PANTAY: chaniqa 0 yupaymanta 255 yupanakamanmi kanman."
-
-msgid "ERROR: Value must be either HIGH or LOW, 0 or 1"
-msgstr "PANTAY: chaniqa ACHKHA utaq PISI kanman."
-
-msgid "ERROR: The mode must be either INPUT, OUTPUT, PWM or SERVO."
-msgstr "PANTAY: imayna kayqa HAYKUNA, LLUQSINA, PWM utaq SERVO nispam kanman."
-
-msgid "ERROR: The value must be an integer."
-msgstr "PANTAY: chaniqa yupana entero nisqa kanman."
-
-msgid "ERROR: The pin must be an integer."
-msgstr "PANTAY: pin nisqaqa yupana entero nisqapim kanman."
-
-msgid "refresh Arduino"
-msgstr "Arduinota kunanyachiy"
-
-msgid "Search for connected Arduinos."
-msgstr "Sapanka Arduinokuna tinkuchisqa kasqapi machkhan."
-
-msgid "Arduino"
-msgstr "Arduino"
-
-msgid "set current Arduino board"
-msgstr "kunan kaq placa Aduinotam churan"
-
-msgid "number of Arduinos"
-msgstr "hayk'a Arduinokuna"
-
-msgid "number of Arduino boards"
-msgstr "hayk'a placa Arduinokuna"
-
-msgid "Arduino name"
-msgstr "Arduinop sutin"
-
-msgid "Get the name of an Arduino."
-msgstr "Arduinop sutinta tarin."
-
-msgid "pin mode"
-msgstr "pin nisqa imayna kaynin"
-
-msgid "Select the pin function (INPUT, OUTPUT, PWM, SERVO)."
-msgstr "Pin nisqapa purinanta akllay (HAYKUNA, LLUQSINA, PWM, SERVO)."
-
-msgid "analog write"
-msgstr "analogico nisqata qillqay"
-
-msgid "Write analog value in specified port."
-msgstr "alogico chanitam akllasqa puertopiqa qillqay."
-
-msgid "analog read"
-msgstr "analogico nisqata nawichay"
-
-msgid ""
-"Read value from analog port. Value may be between 0 and 1023. Use Vref to "
-"determine voltage. For USB, volt=((read)*5)/1024) approximately."
-msgstr ""
-"Huk puesto analogico nisqamanta huk chaniqa ñawichay. Chaniqa 0 yupanamanta "
-"1023 yupanakama kanman. Voltaje churanapaqtaq Vref nisqawan purichiwaq. USB "
-"nisqapaqtaq, volt=((ñawiriy)*5/1024) nisqahinata."
-
-msgid "digital write"
-msgstr "digitalta qillqay"
-
-msgid "Write digital value to specified port."
-msgstr "digital chanitam akllasqa puertopiqa qillqay."
-
-msgid "digital read"
-msgstr "digitalta ñawichay"
-
-msgid "Read value from digital port."
-msgstr "Purdo digitalmanta chanitaqa ñawichay."
-
-msgid "Configure Arduino port for digital input."
-msgstr "Digital haykunahina kananpaqmi Arduino puertotaqa kamachiy."
-
-msgid "Configure Arduino port to drive a servo."
-msgstr "Servo sutichakuqta puriyachinapaqmi Arduino puertonta kamachiy."
-
-msgid "Configure Arduino port for digital output."
-msgstr "Digital lluqsinahina kananpaqmi Arduino puertotaqa kamachiy."
-
-msgid "Configure Arduino port for PWM (pulse-width modulation)."
-msgstr ""
-"PWM sutichakuqwan kananpaqmi Arduino puertonta kamachiy (sakhayninwan "
-"churachinkunqa)."
-
-msgid "Not found Arduino %s"
-msgstr "Manam Arduino %s nisqaqa tarikunchu"
-
-msgid "The pin must be an integer"
-msgstr "Pin nisqaqa entero nisqapim kanman"
-
-msgid "The device must be an integer"
-msgstr "Dispositivo nisqaqa yupana entero nisqapim kanman"
-
-msgid "Palette of Expeyes blocks"
-msgstr "WeDo bloquekunamanta"
-
-msgid "set PVS"
-msgstr "PVS nisqata churay"
-
-msgid "set programmable voltage output"
-msgstr "ima voltaje nisqawan programasqaña lluqsinapaq churay"
-
-msgid "set SQR1 voltage"
-msgstr "SQR1 voltajeta churan"
-
-msgid "set square wave 1 voltage output"
-msgstr "lluqsip voltajemanqa onda cuadrada nisqata churan"
-
-msgid "set SQR2 voltage"
-msgstr "SQR2 voltajeta churay"
-
-msgid "set square wave 2 voltage output"
-msgstr "lluqsip voltajemanqa onda cuadrada nisqata churay"
-
-msgid "set OD1"
-msgstr "OD1 nisqata churay"
-
-msgid "set digital output level (OD1) low (0) or high (1)"
-msgstr ""
-"digital lluqsinanta (OD1) antunninpichu (0) utaq huch'uyninpichu (1) "
-"lluqsinqa chayta churay"
-
-msgid "IN1 level"
-msgstr "IN1 t'aqa"
-
-msgid ""
-"returns 1 if IN1 voltage level >2.5 volts, 0 if IN1 voltage level <= 2.5 "
-"volts"
-msgstr ""
-"sichus IN1 nisqap voltaje nisqan 2.5 volts kanqa chayqa 1 yupaytam "
-"kutichinqa, ichaqa 2.5 volts nisqa kaptinqa 0 yupaytam kutichinqa"
-
-msgid "IN2 level"
-msgstr "IN2 t'aqa"
-
-msgid ""
-"returns 1 if IN2 voltage level >2.5 volts, 0 if IN2 voltage level <= 2.5 "
-"volts"
-msgstr ""
-"sichus IN2 nisqap voltaje nisqan 2.5 volts kanqa chayqa 1 yupaytam "
-"kutichinqa, ichaqa 2.5 volts nisqa kaptinqa 0 yupaytam kutichinqa"
-
-msgid "SEN level"
-msgstr "SEN t'aqa"
-
-msgid ""
-"returns 1 if resistive sensor (SEN) voltage level > 2.5 volts, 0 if SEN "
-"voltage level <= 2.5 volts"
-msgstr ""
-"sichus musyanap (SEN) voltaje nisqan 2.5 volts kanqa chayqa 1 yupaytam "
-"kutichinqa, ichaqa 2.5 volts nisqa kaptinqa 0 yupaytam kutichinqa"
-
-msgid "capture"
-msgstr "hap'iy"
-
-msgid "input"
-msgstr "haykuna"
-
-msgid "samples"
-msgstr "qhawarichikuna"
-
-msgid "interval"
-msgstr "t'aqap pacha"
-
-msgid ""
-"capture multiple samples from input at interval (MS); results pushed to FIFO"
-msgstr ""
-"t'aqasqa pachakunan puriqta (MS) hap'iy; kaykunaqa FIFO nisqapim churakunqa"
-
-msgid "A1"
-msgstr "A1"
-
-msgid "read analog input 1 voltage"
-msgstr "1 analógico musyanaman voltaje haykusqanta ñawichay"
-
-msgid "A2"
-msgstr "A2"
-
-msgid "read analog input 2 voltage"
-msgstr "2 analógico musyanaman voltaje haykusqanta ñawichay"
-
-msgid "IN1"
-msgstr "IN1"
-
-msgid "read input 1 voltage"
-msgstr "1 haykunap voltaje nisqanta ñawichan"
-
-msgid "IN2"
-msgstr "IN2"
-
-msgid "read input 2 voltage"
-msgstr "2 haykunap voltaje nisqanta ñawichan"
-
-msgid "SEN"
-msgstr "SEN"
-
-msgid "read analog sensor input voltage"
-msgstr "analógico musyanaman voltaje haykusqanta ñawichay"
-
-msgid "SQR1"
-msgstr "SQR1"
-
-msgid "read square wave 1 voltage"
-msgstr "1 onda cuadrada nisqap voltajenta ñawichan"
-
-msgid "SQR2"
-msgstr "SQR2"
-
-msgid "read square wave 2 voltage"
-msgstr "2 onda cuadrada nisqap voltajenta ñawichan"
-
-msgid "PVS"
-msgstr "PVS"
-
-msgid "read programmable voltage"
-msgstr "programasqa voltajeta ñawichay"
-
-msgid "Expeyes device not found"
-msgstr "Expeyes dispositivo sutichakuqqa manam tarikunchu"
 
 #. TRANS: "name" option from activity.info file
 msgid "TurtleBlocks"
@@ -1407,29 +66,23 @@ msgstr "pichay"
 msgid "clears the screen and reset the turtle"
 msgstr "pichay pantallata charapatataq musuqmanta kamachiy"
 
-<<<<<<< HEAD
-=======
 #  "izquierda"
 #: TurtleArt/tabasics.py:169
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:856
 msgid "left"
 msgstr "lluqi"
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #  "gira la tortuga en sentido anti-horario (ángulo en grados)"
 #: TurtleArt/tabasics.py:173
 msgid "turns turtle counterclockwise (angle in degrees)"
 msgstr "charapataqa lluqimanhina muyurichiy ([ángulo en grados nisqapi)"
 
-<<<<<<< HEAD
-=======
 #  "derecha"
 #: TurtleArt/tabasics.py:181
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:880
 msgid "right"
 msgstr "paña"
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #   "gira la tortuga en sentido horario (ángulo en grados)"
 #  [es] "gira la tortuga en sentido horario (ángulo en grados)"
 #: TurtleArt/tabasics.py:185
@@ -1462,8 +115,6 @@ msgstr "suni arco nisqantintam charapataqa purichiy"
 msgid "set xy"
 msgstr "xy nisqata churay"
 
-<<<<<<< HEAD
-=======
 #  "x"
 #: TurtleArt/tabasics.py:210 TurtleArt/tabasics.py:288
 msgid "x"
@@ -1474,7 +125,6 @@ msgstr "x"
 msgid "y"
 msgstr "y"
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #  "mover la tortuga a la posición xcor, ycor; (0, 0) está en el centro de la "
 #  "pantalla."
 #: TurtleArt/tabasics.py:214 TurtleArt/tabasics.py:292
@@ -1494,7 +144,8 @@ msgstr "mayman rinantam churay"
 #: TurtleArt/tabasics.py:230
 msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
 msgstr ""
-"charapap mayman rinanta churay (0 yupanaqa pantallap wichayninmanmi purichin)"
+"charapap mayman rinanta churay (0 yupanaqa pantallap wichayninmanmi "
+"purichin)"
 
 #  "coorx"
 #: TurtleArt/tabasics.py:240 TurtleArt/tawindow.py:4247
@@ -1560,8 +211,6 @@ msgstr "Qillqanawan llamk'anapaq"
 msgid "fill screen"
 msgstr "pantallata hunt'achiy"
 
-<<<<<<< HEAD
-=======
 #  "color"
 #: TurtleArt/tabasics.py:313 TurtleArt/tabasics.py:326
 #: TurtleArt/tabasics.py:384
@@ -1569,7 +218,6 @@ msgstr "pantallata hunt'achiy"
 msgid "color"
 msgstr "llimp'i"
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #  "tono"
 #: TurtleArt/tabasics.py:313 TurtleArt/tabasics.py:327
 #: TurtleArt/tabasics.py:397
@@ -1584,8 +232,6 @@ msgstr "llimp'iynin"
 msgid "fills the background with (color, shade)"
 msgstr "ukhuntaqa hunt'achiy (llimp'iwan, llantuwan ima)"
 
-<<<<<<< HEAD
-=======
 #  "gris"
 #: TurtleArt/tabasics.py:327 TurtleArt/tabasics.py:409
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1090
@@ -1593,7 +239,6 @@ msgstr "ukhuntaqa hunt'achiy (llimp'iwan, llantuwan ima)"
 msgid "gray"
 msgstr "chiqchi"
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #  "fijar color"
 #: TurtleArt/tabasics.py:343
 msgid "set color"
@@ -2190,14 +835,11 @@ msgstr "imapi waqaychanki"
 msgid "box"
 msgstr "tawak'uchu"
 
-<<<<<<< HEAD
-=======
 #  "valor"
 #: TurtleArt/tabasics.py:976 TurtleArt/tawindow.py:4581
 msgid "value"
 msgstr "chani"
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #  "mi caja"
 #: TurtleArt/tabasics.py:980 TurtleArt/tabasics.py:995
 #: TurtleArt/tawindow.py:1453 TurtleArt/tawindow.py:1585
@@ -2800,15 +1442,12 @@ msgstr "utqhay purichinapaq"
 msgid "push acceleration in x, y, z to heap"
 msgstr "utqhay puriytaqa tawqap x, y, z tinkuchaypi churay"
 
-<<<<<<< HEAD
-=======
 #  "sonido"
 #: plugins/audio_sensors/audio_sensors.py:83
 #: plugins/audio_sensors/audio_sensors.py:98 pysamples/grecord.py:206
 msgid "sound"
 msgstr "uyarina"
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #  "señal de entrada de micrófono"
 #: plugins/audio_sensors/audio_sensors.py:84
 #: plugins/audio_sensors/audio_sensors.py:99
@@ -2841,6 +1480,14 @@ msgstr "hayk'a kuti"
 msgid "microphone input pitch"
 msgstr "microfonopi uyarikusqanmanta sinchi qhaparichiqta qhawachiq"
 
+#  "resistencia"
+#: plugins/audio_sensors/audio_sensors.py:151
+#: plugins/audio_sensors/audio_sensors.py:165
+#: plugins/audio_sensors/audio_sensors.py:179
+#: plugins/audio_sensors/audio_sensors.py:193
+msgid "resistance"
+msgstr "sinchikay"
+
 #  "valor de la resistencia conectada a la entrada de micrófono (rango de "
 #  "medición: 700 a 14000 ohms)"
 #: plugins/audio_sensors/audio_sensors.py:152
@@ -2849,6 +1496,14 @@ msgstr "microfonopi uyarikusqanmanta sinchi qhaparichiqta qhawachiq"
 #: plugins/audio_sensors/audio_sensors.py:194
 msgid "microphone input resistance"
 msgstr "microfonopi hayk'a uyarikusqanmanta (yupakuq: 700 - 14000 ohms)"
+
+#  "voltaje"
+#: plugins/audio_sensors/audio_sensors.py:157
+#: plugins/audio_sensors/audio_sensors.py:171
+#: plugins/audio_sensors/audio_sensors.py:185
+#: plugins/audio_sensors/audio_sensors.py:199
+msgid "voltage"
+msgstr "voltaje nisqa"
 
 #  "valor del voltaje DC conectado a la entrada de micrófono (rango: 0.40 a 1.90 "
 #  "V)"
@@ -2865,6 +1520,16 @@ msgstr ""
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:125
 msgid "Palette of media objects"
 msgstr "Media nisqakuna"
+
+#  "brillo"
+#: plugins/camera_sensor/camera_sensor.py:80
+#: plugins/camera_sensor/camera_sensor.py:93
+#: plugins/camera_sensor/camera_sensor.py:128
+#: plugins/camera_sensor/camera_sensor.py:141
+#: plugins/light_sensor/light_sensor.py:56
+#: plugins/light_sensor/light_sensor.py:63
+msgid "brightness"
+msgstr "llipipiynin"
 
 #  "nivel de luz detectado por la cámara"
 #: plugins/camera_sensor/camera_sensor.py:82
@@ -3198,14 +1863,11 @@ msgstr "charapaqa qhawan"
 msgid "returns the color that the turtle \"sees\""
 msgstr "charapa llimp'i \"qhawasqantam\" rikuchin"
 
-<<<<<<< HEAD
-=======
 #  "tiempo"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:425
 msgid "time"
 msgstr "pacha"
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #  "el tiempo transcurrido (en segundos) desde el inicio del programa"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:428
 msgid "elapsed time (in seconds) since program started"
@@ -3527,14 +2189,11 @@ msgstr "uraynin"
 msgid "ycor of bottom of screen"
 msgstr "pantallap uray XCOR nisqan"
 
-<<<<<<< HEAD
-=======
 #  "anchura"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:872
 msgid "width"
 msgstr "kinraynin"
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #  "el ancho del lienzo"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:875
 msgid "the canvas width"
@@ -3550,14 +2209,11 @@ msgstr "pantallap paña XCOR nisqan"
 msgid "ycor of top of screen"
 msgstr "pantallap wichay XCOR nisqan"
 
-<<<<<<< HEAD
-=======
 #  "altura"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:896
 msgid "height"
 msgstr "sayaynin"
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #  "la altura del lienzo"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:899
 msgid "the canvas height"
@@ -3794,10 +2450,7 @@ msgstr "Waqaychakunqachu?"
 # "presentación"
 #~ msgid "presentation 2x2"
 #~ msgstr "2x2 qhawachiy"
-<<<<<<< HEAD
-=======
 
 #  "TortugArte"
 #~ msgid "Turtle Art"
 #~ msgstr "CharapArte"
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc

@@ -1,4 +1,3 @@
-# #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
@@ -11,23 +10,8 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#, fuzzy
 msgid ""
 msgstr ""
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-16 00:32-0500\n"
-"PO-Revision-Date: 2014-03-30 17:27+0200\n"
-"Last-Translator: whe <heppew@yahoo.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: nl\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.0.5\n"
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-01-07 00:30-0500\n"
@@ -40,1591 +24,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pootle 2.0.5\n"
-
-msgid "turtleart-extras (master)"
-msgstr "schildpadkunst-extra's (hoofd)"
-
-msgid "Turtle Blocks"
-msgstr "Schildpad Blokken"
-
-msgid "Turtle Art"
-msgstr "Schildpad Kunst"
-
-msgid "Turtle Art Mini"
-msgstr "Schildpad Kunst Mini"
-
-msgid "Turtle Confusion"
-msgstr "Schildpad Verwarring"
-
-msgid "Select a challenge"
-msgstr "Kies een uitdaging"
-
-msgid "Amazonas Tortuga"
-msgstr "Amazoneschildpad"
-
-msgid "Turtle Flags"
-msgstr "Schildpad Vlaggen"
-
-msgid "Use the turtle to draw country flags"
-msgstr "Gebruik het schildpad om de landenvlaggen"
-
-msgid "Palette of Mexican pesos"
-msgstr "Palet van Mexicaanse pesos"
-
-msgid "Palette of Colombian pesos"
-msgstr "Palet van Colombiaanse pesos"
-
-msgid "Palette of Rwandan francs"
-msgstr "Palet van Rwandaanse franken"
-
-msgid "Palette of US dollars"
-msgstr "Palet van US dollars"
-
-msgid "Palette of Australian dollars"
-msgstr "Palet van Australische dollars"
-
-#, fuzzy
-msgid "Palette of Paraguayan Guaranies"
-msgstr ""
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Palet van Paraguayse Guaranies\n"
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Palett van Paraguayse Guaranies"
-
-msgid "Palette of Peruvian Nuevo Soles"
-msgstr "Palet van Peruviaanse Nuevo Soles"
-
-msgid "Palette of Uruguayan Pesos"
-msgstr "Paler van Uruguayse Pesos"
-
-msgid "TurtleBots"
-msgstr "TurtleBots"
-
-msgid "TurtleBlocks with Butia, Lego NxT, WeDo, Arduino, FollowMe plugins"
-msgstr "TurtleBlokken met Butia, Lego NxT, WeDo, Arduino, FollowMe plugins"
-
-msgid "ERROR: The speed must be a value between 0 and 1023"
-msgstr "FOUT: De snelheid moet een waarde zijn tussen 0 en 1023"
-
-msgid "ERROR: The speed must be a value between -1023 and 1023"
-msgstr "FOUT: De snelheid moet een waarde zijn tussen -1023 en 1023"
-
-msgid "ERROR: The pin must be between 1 and 8"
-msgstr "FOUT: De pin moet zijn tussen 1 en 8"
-
-msgid "ERROR: The value must be 0 or 1, LOW or HIGH"
-msgstr "FOUT: De waarde moet zijn 0 of 1, LAAG of HOOG"
-
-msgid "ERROR: The mode must be INPUT or OUTPUT."
-msgstr "FOUT: De modus moet zijn INPUT of OUTPUT."
-
-msgid "turns LED on and off: 1 means on, 0 means off"
-msgstr "zet LED aan en uit: 1 is aan, 0 is uit"
-
-msgid "returns the gray level as a value between 0 and 65535"
-msgstr "geeft grijsniveau terug als waarde tussen 0 en 65535"
-
-msgid "returns 1 when the button is pressed and 0 otherwise"
-msgstr "geeft 1 terug als knop is ingedrukt en anders 0"
-
-msgid "returns the light level as a value between 0 and 65535"
-msgstr "geeft lichtniveau terug als waarde tussen 0 en 65535"
-
-msgid "returns the distance as a value between 0 and 65535"
-msgstr "geeft afstand terug als waarde tussen 0 en 65535"
-
-msgid "returns the resistance value (ohms)"
-msgstr "geeft weerstandwaarde (ohm)"
-
-msgid "returns the voltage value (volts)"
-msgstr "geeft spanningswaarde (volt)"
-
-msgid "returns the temperature value (celsius degree)"
-msgstr "geeft de temperatuur waarde terug (celsius graden)"
-
-msgid "custom module %s"
-msgstr "aangepaste module %s"
-
-msgid "sensor a"
-msgstr "sensor a"
-
-msgid "sensor b"
-msgstr "sensor b"
-
-msgid "sensor c"
-msgstr "sensor c"
-
-msgid "actuator a"
-msgstr "actuator a"
-
-msgid "actuator b"
-msgstr "actuator b"
-
-msgid "actuator c"
-msgstr "actuator c"
-
-msgid "LED"
-msgstr "LED"
-
-msgid "button"
-msgstr "knop"
-
-#: TurtleArt/tabasics.py:370 TurtleArt/tabasics.py:454
-#: TurtleArt/tawindow.py:4539 TurtleArt/tawindow.py:4544
-msgid "gray"
-msgstr "grijs"
-
-msgid "light"
-msgstr "licht"
-
-msgid "distance"
-msgstr "afstand"
-
-#: plugins/audio_sensors/audio_sensors.py:157
-#: plugins/audio_sensors/audio_sensors.py:175
-msgid "resistance"
-msgstr "weerstand"
-
-#: plugins/audio_sensors/audio_sensors.py:163
-#: plugins/audio_sensors/audio_sensors.py:181
-msgid "voltage"
-msgstr "spanning"
-
-msgid "temperature"
-msgstr "temperatuur"
-
-msgid "butia"
-msgstr "butia"
-
-msgid "Butia Robot"
-msgstr "Butia Robot"
-
-msgid "refresh Butia"
-msgstr "ververs Butia"
-
-msgid "refresh the state of the Butia palette and blocks"
-msgstr "ververs de status vam de Butia palet en blokken"
-
-msgid "battery charge Butia"
-msgstr "accu lading Butia"
-
-msgid ""
-"returns the battery charge in volts. If no motors present, it returns 255"
-msgstr ""
-"geeft de batterijlading in volt. Als geen motor aanwezig, dan geeft het 255"
-
-msgid "speed Butia"
-msgstr "snelheid Butia"
-
-msgid "set the speed of the Butia motors"
-msgstr "stel de snelheid van de Butiamotoren in"
-
-msgid "move Butia"
-msgstr "beweeg Butia"
-
-#: TurtleArt/tabasics.py:207 TurtleArt/taconstants.py:139
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:991
-msgid "left"
-msgstr "links"
-
-#: TurtleArt/tabasics.py:221 TurtleArt/taconstants.py:141
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1024
-msgid "right"
-msgstr "rechts"
-
-msgid "moves the Butia motors at the specified speed"
-msgstr "beweegt de Butia motors met de gekozen snelheid"
-
-msgid "stop Butia"
-msgstr "stop Butia"
-
-msgid "stop the Butia robot"
-msgstr "stop de Butia robot"
-
-msgid "forward Butia"
-msgstr "vooruit Butia"
-
-msgid "move the Butia robot forward"
-msgstr "beweeg de Butia robot vooruit"
-
-msgid "left Butia"
-msgstr "links Butia"
-
-msgid "turn the Butia robot at left"
-msgstr "draai de Butia-robot naar links"
-
-msgid "right Butia"
-msgstr "rechts Butia"
-
-msgid "turn the Butia robot at right"
-msgstr "draai de Butia robot naar rechts"
-
-msgid "backward Butia"
-msgstr "achteruit Butia"
-
-msgid "move the Butia robot backward"
-msgstr "beweeg de Butia robot achteruit"
-
-msgid "butia-extra"
-msgstr "butia-extra"
-
-msgid "Butia Robot extra blocks"
-msgstr "Butia Robot extra blokken"
-
-msgid "pin mode Butia"
-msgstr "pin modus Butia"
-
-msgid "pin"
-msgstr "speld"
-
-msgid "mode"
-msgstr "modus"
-
-msgid "Select the pin function (INPUT, OUTPUT)."
-msgstr "Selecteer de pin functie (INVOER, UITVOER)."
-
-msgid "read pin Butia"
-msgstr "lees pin Butia"
-
-msgid "read the value of a pin"
-msgstr "lees de waarde van een pin"
-
-msgid "write pin Butia"
-msgstr "schrijf pin Butia"
-
-#: TurtleArt/tabasics.py:1114 TurtleArt/tawindow.py:5055
-msgid "value"
-msgstr "waarde"
-
-msgid "set a hack pin to 0 or 1"
-msgstr "stel een hack pin op 0 of 1"
-
-msgid "INPUT"
-msgstr "INVOER"
-
-msgid "Configure hack pin for digital input."
-msgstr "Configureer hack pin voor digitale invoer."
-
-msgid "HIGH"
-msgstr "HOOG"
-
-msgid "Set HIGH value for digital pin."
-msgstr "Zet HOOG waarde voor digitale pin."
-
-msgid "LOW"
-msgstr "LAAG"
-
-msgid "Set LOW value for digital port."
-msgstr "Zet LAAG waarde voor digitale poort."
-
-msgid "OUTPUT"
-msgstr "UITVOER"
-
-msgid "Configure hack port for digital output."
-msgstr "Configureer hack poort voor digitale uitvoer."
-
-msgid "butia-cast"
-msgstr "butia-cast"
-
-msgid "Butia Robot cast blocks"
-msgstr "Butia Robot extra blokken"
-
-msgid "Butia"
-msgstr "Butia"
-
-msgid "CAST\n"
-msgstr "CAST\n"
-
-msgid "new name"
-msgstr "nieuwe naam"
-
-msgid "original"
-msgstr "origineel"
-
-msgid "f(x)="
-msgstr "f(x)="
-
-msgid "name"
-msgstr "naam"
-
-msgid "Cast a new block"
-msgstr "Toekennen nieuw blok"
-
-msgid "generic module %s"
-msgstr "generieke module %s"
-
-msgid "Butia IP"
-msgstr "Butia IP"
-
-msgid "change the IP of butia robot"
-msgstr "wijzig de IP van de butia robot"
-
-msgid "ERROR: The pin %s must be in OUTPUT mode."
-msgstr "FOUT: De pin %s moet zijn in OUTPUT modus."
-
-msgid "ERROR: The pin %s must be in INPUT mode."
-msgstr "FOUT: De pin %s moet zijn in INPUT modus."
-
-msgid "ERROR: Something wrong with function '%s'"
-msgstr "FOUT: Iets fout met functie '%s'"
-
-msgid "ERROR: cannot init GCONF client: %s"
-msgstr "FOUT: kan niet init GCONF client: %s"
-
-msgid "ERROR: You must cast Sensor or Actuator: A, B or C"
-msgstr "FOUT: Je moet toekennen Sensor or Actuator: A, B or C"
-
-msgid "ERROR: Invalid IP '%s'"
-msgstr "FOUT: Ongeldig IP '%s'"
-
-msgid "Creating PyBot server"
-msgstr "Aanmaken PyBot server"
-
-msgid "ERROR creating PyBot server"
-msgstr "FOUT bij aanmaken PyBot server"
-
-msgid "PyBot is alive!"
-msgstr "PyBot leeft!"
-
-msgid "Ending butia polling"
-msgstr "Beëindigen butia polling"
-
-msgid "Error importing Pygame. This plugin require Pygame 1.9"
-msgstr "Fout bij het importeren van Pygame. Deze plugin vereist Pygame 1.9"
-
-msgid "Error on initialization of the camera"
-msgstr "Fout bij initialisatie van de camera"
-
-msgid "No camera was found"
-msgstr "Geen camera gevonden"
-
-msgid "Error stopping camera"
-msgstr "Fout bij stoppen camera"
-
-msgid "Error starting camera"
-msgstr "Fout bij starten camera"
-
-msgid "Error in get mask"
-msgstr "Fout in geef masker"
-
-msgid "followme"
-msgstr "volgme"
-
-msgid "FollowMe"
-msgstr "VolgMe"
-
-msgid "refresh FollowMe"
-msgstr "ververs VolgMij"
-
-msgid "Search for a connected camera."
-msgstr "Zoek naar een verbonden camera."
-
-msgid "calibration"
-msgstr "calibratie"
-
-msgid "store a personalized calibration"
-msgstr "bewaar een aangepaste calibratie"
-
-msgid "return a personalized calibration"
-msgstr "geeft terug een gepersonaliseerde calibratie"
-
-msgid "follow"
-msgstr "volg"
-
-#, fuzzy
-msgid "follow a color or calibration"
-msgstr ""
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"volg een kleur of calibratie\n"
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"volg een kluer of een calibratie"
-
-#: plugins/camera_sensor/camera_sensor.py:83
-#: plugins/camera_sensor/camera_sensor.py:99
-#: plugins/camera_sensor/camera_sensor.py:136
-#: plugins/camera_sensor/camera_sensor.py:152
-#: plugins/light_sensor/light_sensor.py:58
-#: plugins/light_sensor/light_sensor.py:66
-msgid "brightness"
-msgstr "helderheid"
-
-msgid "set the camera brightness as a value between 0 to 255."
-msgstr "stel de helderheid van de camera in als een waarde tussen 0 en 255."
-
-msgid "minimum pixels"
-msgstr "minimum pixels"
-
-msgid "set the minimal number of pixels to follow"
-msgstr "stel een minimum aantal pixels in om te volgen"
-
-msgid "threshold"
-msgstr "drempel"
-
-#, fuzzy
-msgid "set a threshold for a RGB color"
-msgstr ""
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"stel de drempel voor een RGB-kleur in\n"
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"zet de drempel voor een RGB kleur"
-
-#, fuzzy
-msgid "camera mode"
-msgstr ""
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"cameramodus\n"
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"camera modus"
-
-msgid "set the color mode of the camera: RGB; YUV or HSV"
-msgstr "stel de kleurmodus van de camera in: RGB, YUV of HSV"
-
-msgid "get brightness"
-msgstr "lees de helderheid"
-
-msgid "get the brightness of the ambient light"
-msgstr "lees de helderheid van het omgevingslicht"
-
-msgid "average color"
-msgstr "gemiddelde kleur"
-
-msgid ""
-"if set to 0 then color averaging is off during calibration;for other values, "
-"it is on"
-msgstr ""
-"indien ingesteld op 0 wordt de gemiddelde kleur niet berekend tijdens de "
-"kalibratie;bij andere waardes, wel"
-
-#, fuzzy
-msgid "x position"
-msgstr ""
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"x-positie\n"
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"x positie"
-
-#, fuzzy
-msgid "return x position"
-msgstr ""
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"geef x-positie\n"
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"geeft x positie"
-
-#, fuzzy
-msgid "y position"
-msgstr ""
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"y-positie\n"
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"y positie"
-
-#, fuzzy
-msgid "return y position"
-msgstr ""
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"geef y-positie\n"
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"geeft y positie"
-
-msgid "pixels"
-msgstr "pixels"
-
-#, fuzzy
-msgid "return the number of pixels of the biggest blob"
-msgstr ""
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"geef het aantal pixels van de grootste blob\n"
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"geef terug het aantal pixels van de grootste blob"
-
-msgid "RGB"
-msgstr "RGB"
-
-#, fuzzy
-msgid "set the color mode of the camera to RGB"
-msgstr ""
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"zet de kleurmodus van de camera op RGB\n"
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"zet kleurmodus van de camera op RGB"
-
-msgid "YUV"
-msgstr "YUV"
-
-#, fuzzy
-msgid "set the color mode of the camera to YUV"
-msgstr ""
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"zet de kleurmodus van de camera op YUV\n"
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"zet kleurmodus van de camera op YUV"
-
-msgid "HSV"
-msgstr "HSV"
-
-#, fuzzy
-msgid "set the color mode of the camera to HSV"
-msgstr ""
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"zet de kleurmodus van de camera op HSV\n"
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"zet kleurmodus van de camera op HSV"
-
-msgid "get color"
-msgstr "neem kleur"
-
-msgid "get the color of an object"
-msgstr "neem de kleur van een object"
-
-msgid "color distance"
-msgstr "kleur afstand"
-
-msgid "set the distance to identify a color"
-msgstr "zet de afstand on de kleur vast te stellen"
-
-#, fuzzy
-msgid "empty calibration"
-msgstr ""
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"lege kalibratie\n"
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"lege calibratie"
-
-#, fuzzy
-msgid "error in string conversion"
-msgstr ""
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"fout in tekenreeksconversie\n"
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"fout in rekst expressie"
-
-msgid "Pattern detection"
-msgstr "Patroonherkenning"
-
-msgid "pattern_detection"
-msgstr "patroon_herkenning"
-
-msgid "Seeing signal"
-msgstr "Signaal zien"
-
-msgid "Returns True if the signal is in front of the camera"
-msgstr "Geeft Waar als het signaal voor de camera is"
-
-msgid "Distance to signal"
-msgstr "Afstand tot signaal"
-
-msgid "Returns the distance of the signal to the camera in millimeters"
-msgstr "Geeft de afstand van het signaal tot de camera in millimeters"
-
-#, fuzzy
-msgid "SumBot"
-msgstr ""
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"SumBot\n"
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"SomBot"
-
-msgid "sumtia"
-msgstr "sumtia"
-
-#, fuzzy
-msgid "speed SumBot"
-msgstr ""
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"snelheid SumBot\n"
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"snelheid SomBot"
-
-#, fuzzy
-msgid "submit the speed to the SumBot"
-msgstr ""
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"stuur de snelheid naar de SumBot\n"
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"stel in de snelheid naar de SomBot"
-
-#, fuzzy
-msgid "set the default speed for the movement commands"
-msgstr ""
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"stel de standaardsnelheid voor de bewegingsopdrachten in\n"
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"stel de standaard snelheid voor de beweegcommando's"
-
-#, fuzzy
-msgid "forward SumBot"
-msgstr ""
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"voorwaarts SumBot\n"
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"stuur door de SomBot"
-
-#, fuzzy
-msgid "move SumBot forward"
-msgstr ""
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"verplaats de SumBot voorwaarts\n"
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"verplaats de SomBot voorwaarts"
-
-#, fuzzy
-msgid "backward SumBot"
-msgstr ""
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"achterwaarts SumBot\n"
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"terug SomBot"
-
-#, fuzzy
-msgid "move SumBot backward"
-msgstr ""
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"verplaats SumBot achterwaarts\n"
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"verplaats SomBot achterwaarts"
-
-#, fuzzy
-msgid "stop SumBot"
-msgstr ""
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"stop SumBot\n"
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"stop SomBot"
-
-#, fuzzy
-msgid "stop the SumBot"
-msgstr ""
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"stop de SumBot\n"
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"stop de SomBot"
-
-#, fuzzy
-msgid "left SumBot"
-msgstr ""
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"links SumBot\n"
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"links SomBot"
-
-#, fuzzy
-msgid "turn left the SumBot"
-msgstr ""
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"draai SumBot naar links\n"
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"draai SomBot naar links"
-
-#, fuzzy
-msgid "right SumBot"
-msgstr ""
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"rechts SumBot\n"
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"rechts SomBot"
-
-#, fuzzy
-msgid "turn right the SumBot"
-msgstr ""
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"draai SumBot naar rechts\n"
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"draai SomBot naar rechts"
-
-#, fuzzy
-msgid "angle to center"
-msgstr ""
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"hoek tot midden\n"
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"hoek van midden"
-
-#, fuzzy
-msgid "get the angle to the center of the dohyo"
-msgstr ""
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"geef de hoek naar het midden van het speelveld\n"
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"neem de hoek naar het midden van het speelveld"
-
-msgid "angle to Enemy"
-msgstr "hoek naar Vijand"
-
-#, fuzzy
-msgid "get the angle to the Enemy"
-msgstr ""
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"geef de afstand tot de Vijand\n"
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"neem de afstand tot de Vijand"
-
-#, fuzzy
-msgid "x coor. SumBot"
-msgstr ""
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"x-coör. SumBot\n"
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"x coör. SomBot"
-
-#, fuzzy
-msgid "get the x coordinate of the SumBot"
-msgstr ""
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"geef de x-coördinaat van de Sumbot\n"
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"neem de x coördinaat van de Sombot"
-
-#, fuzzy
-msgid "y coor. SumBot"
-msgstr ""
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"y-coör. SumBot\n"
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"y coör. SomBot"
-
-#, fuzzy
-msgid "get the y coordinate of the SumBot"
-msgstr ""
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"geef de y-coördinaat van de Sumbot\n"
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"neem de y coördinaat van de Sombot"
-
-#, fuzzy
-msgid "x coor. Enemy"
-msgstr ""
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"x-coör. Vijand\n"
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"x coör. Vijand"
-
-#, fuzzy
-msgid "get the x coordinate of the Enemy"
-msgstr ""
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"geef de x-coördinaat van de Vijand\n"
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"neem de x coördinaat van de Vijand"
-
-#, fuzzy
-msgid "y coor. Enemy"
-msgstr ""
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"y-coör. Vijand\n"
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"y coör. Vijand"
-
-#, fuzzy
-msgid "get the y coordinate of the Enemy"
-msgstr ""
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"geef de y-coördinaat van de Vijand\n"
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"neem de y coördinaat van de Vijand"
-
-#, fuzzy
-msgid "rotation SumBot"
-msgstr ""
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"draaiing SumBot\n"
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"draaiing SomBot"
-
-#, fuzzy
-msgid "get the rotation of the Sumbot"
-msgstr ""
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"geef de draaiing van de Sumbot\n"
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"neem de rotatie van de Sombot"
-
-msgid "rotation Enemy"
-msgstr "draaiing Vijand"
-
-#, fuzzy
-msgid "get the rotation of the Enemy"
-msgstr ""
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"geef de draaiing van de Vijand\n"
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"neem de rotatie van de Vijand"
-
-#, fuzzy
-msgid "distance to center"
-msgstr ""
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"afstand tot het midden\n"
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"afstand naar het midden"
-
-#, fuzzy
-msgid "get the distance to the center of the dohyo"
-msgstr ""
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"geef de afstand tot het midden van het speelveld\n"
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"neem de afstand tot het midden van het speelveld"
-
-msgid "distance to Enemy"
-msgstr "afstand tot Vijand"
-
-#, fuzzy
-msgid "get the distance to the Enemy"
-msgstr ""
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"geef de afstand tot de Vijand\n"
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"neem de afstand tot de Vijand"
-
-msgid "update information"
-msgstr "informatie bijwerken"
-
-#, fuzzy
-msgid "update information from the server"
-msgstr ""
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"informatie bijwerken vanaf de server\n"
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"informatie bijwerken van de server"
-
-#, fuzzy
-msgid "Palette of physics blocks"
-msgstr ""
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Palet van fysica-blokken\n"
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Palet van fysica blokken"
-
-msgid "start polygon"
-msgstr "start veelhoek"
-
-#, fuzzy
-msgid "Begin defining a new polygon based on the current Turtle xy position."
-msgstr ""
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Begin een nieuwe veelhoek gebaseerd op de huidige xy-positie van de "
-"Schildpad.\n"
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Begin definiëren van een nieuwe veelhoek gebaseerd op de huidige xy positie "
-"van het Schildpad."
-
-msgid "add point"
-msgstr "voeg punt toe"
-
-msgid ""
-"Add a new point to the current polygon based on the current Turtle xy "
-"position."
-msgstr ""
-"Voeg een nieuw punt toe aan de huidige veelhoek gebaseerd op deze xy positie "
-"van het Schildpad."
-
-msgid "end polygon"
-msgstr "eind veelhoek"
-
-msgid "Define a new polygon."
-msgstr "Definieer een nieuwe veelhoek."
-
-msgid "end filled polygon"
-msgstr "eind gevulde veelhoek"
-
-msgid "Not a simple polygon"
-msgstr "Geen eenvoudige veelhoek"
-
-msgid "Define a new filled polygon."
-msgstr "Definieer een nieuwe gevulde veelhoek."
-
-msgid "triangle"
-msgstr "driehoek"
-
-msgid "base"
-msgstr "basis"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1046
-msgid "height"
-msgstr "hoogte"
-
-msgid "Add a triangle object to the project."
-msgstr "Voeg een driehoek voorwerp toe aan het project."
-
-msgid "circle"
-msgstr "cirkel"
-
-msgid "Add a circle object to the project."
-msgstr "Voeg een cirkel voorwerp toe aan het project."
-
-msgid "rectangle"
-msgstr "rechthoek"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1013
-msgid "width"
-msgstr "breedte"
-
-msgid "Add a rectangle object to the project."
-msgstr "Voeg een rechthoek voorwerp toe aan het project."
-
-msgid "reset"
-msgstr "reset"
-
-msgid "Reset the project; clear the object list."
-msgstr "Reset het project, schoon de voorwerplijst."
-
-msgid "motor"
-msgstr "motor"
-
-msgid "torque"
-msgstr "koppel"
-
-msgid "speed"
-msgstr "snelheid"
-
-msgid ""
-"Motor torque and speed range from 0 (off) to positive numbers; motor is "
-"placed on the most recent object created."
-msgstr ""
-"Motor koppel en snelheid lopen van 0 (uit) naar positieve getallen; de motor "
-"wordt geplaatst op het meest recent gecreeerde voorwerp."
-
-msgid "Pin an object down so that it cannot fall."
-msgstr "Speld een voorwerp vast zodat het niet kan vallen."
-
-#: TurtleArt/tabasics.py:351
-msgid "pen"
-msgstr "pen"
-
-msgid "Add a pen to an object so that its movements are traced."
-msgstr "Voeg pen toe aan een voorwerp om de bewegingen te noteren."
-
-msgid "joint"
-msgstr "gewricht"
-
-#: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
-msgid "x"
-msgstr "x"
-
-#: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
-msgid "y"
-msgstr "y"
-
-msgid ""
-"Join two objects together (the object at the current location and the object "
-"at point x, y)."
-msgstr ""
-"Voeg twee voorwerpen samen (het meest recent aangemaakte en het voorwerp op "
-"punt x, y)."
-
-msgid "save as Physics activity"
-msgstr "bewaar als Natuurkunde activiteit"
-
-msgid "Save the project to the Journal as a Physics activity."
-msgstr "Bewaar het project bij het Dagboek als Natuurkunde activiteit."
-
-msgid "gear"
-msgstr "versnelling"
-
-msgid "Add a gear object to the project."
-msgstr "Voeg een versnelling voorwerp toe aan het project."
-
-msgid "density"
-msgstr "dichtheid"
-
-msgid ""
-"Set the density property for objects (density can be any positive number)."
-msgstr ""
-"Stel de dichtheid eigenschap in voor voorwerpen (dichtheid kan ieder "
-"positief getal zijn)."
-
-msgid "friction"
-msgstr "wrijving"
-
-msgid ""
-"Set the friction property for objects (value from 0 to 1, where 0 turns "
-"friction off and 1 is strong friction)."
-msgstr ""
-"Stel de wrijving eigenschap in voor voorwerpen (waarde 0 tot 1, waar 0 "
-"wrijvingsloos is en 1 sterke wrijving)."
-
-msgid "bounciness"
-msgstr "stuiterbaarheid"
-
-msgid ""
-"Set the bounciness property for objects (a value from 0 to 1, where 0 means "
-"no bounce and 1 is very bouncy)."
-msgstr ""
-"Stel de stuiterbaarheid eigenschap in voor voorwerpen (waarde 0 tot 1, waar "
-"0 stuiterloos is en 1 sterk stuiteren)."
-
-msgid "dynamic"
-msgstr "dynamiek"
-
-msgid ""
-"If dynamic = 1, the object can move; if dynamic = 0, it is fixed in position."
-msgstr ""
-"Als dynamiek = 1, kan het voorwerp bewegen; als dynamiek = 0 , is het op een "
-"vaste positie."
-
-msgid "Palette of WeDo blocks"
-msgstr "Palet van WeDo blokken"
-
-msgid "The parameter must be a integer, not "
-msgstr "De parameter moet een geheel getal zijn, niet "
-
-msgid "Motor speed must be an integer between -100 and 100"
-msgstr "Motor snelheid moet een geheel getal zijn tussen -100 en 100"
-
-msgid "WeDo found %s bricks"
-msgstr "WeDo vond %s stenen"
-
-msgid "WeDo not found"
-msgstr "WeDo niet gevonden"
-
-msgid "WeDo number %s was not found"
-msgstr "WeDo nummer %s is niet gevonden"
-
-msgid "wedo"
-msgstr "wedo"
-
-msgid "refresh WeDo"
-msgstr "ververs WeDo"
-
-msgid "Search for a connected WeDo."
-msgstr "Zoek naar een verbonden WeDo."
-
-msgid "WeDo"
-msgstr "WeDo"
-
-msgid "set current WeDo device"
-msgstr "stel het huidige WeDo-apparaat in"
-
-msgid "number of WeDos"
-msgstr "aantal WeDo's"
-
-msgid "number of WeDo devices"
-msgstr "aantal WeDo-apparaten"
-
-msgid "tilt"
-msgstr "hoogtehoek"
-
-msgid ""
-"tilt sensor output: (-1 == no tilt,0 == tilt forward, 3 == tilt back, 1 == "
-"tilt left, 2 == tilt right)"
-msgstr ""
-"tilt sensor uitvoer: (-1 == geen tilt,0 == tilt voorwaarts, 3 == tilt "
-"achterwaarts, 1 == tilt links, 2 == tilt rechts)"
-
-msgid "distance sensor output"
-msgstr "afstand sensor uitvoer"
-
-msgid "Motor A"
-msgstr "Motor A"
-
-msgid "returns the current speed of Motor A"
-msgstr "geeft de huidige snelheid van Motor A"
-
-msgid "Motor B"
-msgstr "Motor B"
-
-msgid "returns the current speed of Motor B"
-msgstr "geeft de huidige snelheid van Motor B"
-
-msgid "set the speed for Motor A"
-msgstr "zet de snelheid voor Motor A"
-
-msgid "set the speed for Motor B"
-msgstr "zet de snelheid voor Motor B"
-
-msgid "Palette of LEGO NXT blocks of motors"
-msgstr "Palet van LEGO NXT blokken van motoren"
-
-msgid "Palette of LEGO NXT blocks of sensors"
-msgstr "Palet van LEGO NXT blokken van sensors"
-
-#: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:369
-#: TurtleArt/tabasics.py:432 TurtleArt/tawindow.py:4542
-msgid "color"
-msgstr "kleur"
-
-#: plugins/audio_sensors/audio_sensors.py:90 pysamples/grecord.py:206
-msgid "sound"
-msgstr "geluid"
-
-msgid "Please check the connection with the brick"
-msgstr "Gelieve de verbinding met het blok na te kijken"
-
-msgid "Invalid port '%s'. Port must be: PORT A, B or C"
-msgstr "Ongeldige poort '%s'. Poort moet zijn: PORT A, B of C"
-
-msgid "Invalid port '%s'. Port must be: PORT 1, 2, 3 or 4"
-msgstr "Ongeldige poort '%s'. Poort moet zijn: PORT 1, 2, 3 of 4"
-
-msgid "The value of power must be between -127 to 127"
-msgstr "De waarde van de energie moet tussen -127 en 127 liggen"
-
-msgid "The parameter must be a integer, not '%s'"
-msgstr "De parameter moet een geheel nummer zijn, niet '%s'"
-
-msgid "An error has occurred: check all connections and try to reconnect"
-msgstr ""
-"Er deed zich een fout voor: kijk alle verbindingen na en probeer opnieuw"
-
-msgid "NXT found %s bricks"
-msgstr "NXT vond %s blokken"
-
-msgid "NXT not found"
-msgstr "NXT niet gevonden"
-
-msgid "Brick number %s was not found"
-msgstr "Blok nummer %s is niet gevonden"
-
-msgid "nxt-motors"
-msgstr "nxt-motoren"
-
-msgid "refresh NXT"
-msgstr "ververs NXT"
-
-msgid "Search for a connected NXT brick."
-msgstr "Zoek naar een verbonden NXT steen."
-
-msgid "NXT"
-msgstr "NXT"
-
-msgid "set current NXT device"
-msgstr "stel huidig NXT-apparaat in"
-
-msgid "number of NXTs"
-msgstr "aantal NXTs"
-
-msgid "number of NXT devices"
-msgstr "aantal NXT-apparaten"
-
-msgid "brick name"
-msgstr "bloknaam"
-
-msgid "Get the name of a brick."
-msgstr "Geef de naam van een blok."
-
-msgid "play tone"
-msgstr "speel toon"
-
-msgid "frequency"
-msgstr "frequentie"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:421
-msgid "time"
-msgstr "tijd"
-
-msgid "Play a tone at frequency for time."
-msgstr "Speel een toon op frequrntie gedurende tijd."
-
-msgid "turn motor %s"
-msgstr "draai motor %s"
-
-msgid "port"
-msgstr "poort"
-
-msgid "rotations"
-msgstr "omwentelingen"
-
-msgid "power"
-msgstr "macht"
-
-msgid "turn a motor"
-msgstr "draai een motor"
-
-msgid "synchronize %s motors"
-msgstr "synchroniseer %s motoren"
-
-#, fuzzy
-msgid "synchronize two motors connected in PORT B and PORT C"
-msgstr ""
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"synchroniseer twee motoren verbonden met PORT B en PORT C\n"
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"synchroniseer twee motoren verbonden met POORT B en POORT C"
-
-msgid "PORT %s"
-msgstr "POORT %s"
-
-msgid "PORT %s of the brick"
-msgstr "POORT %s van een steen"
-
-msgid "start motor"
-msgstr "start motor"
-
-msgid "Run a motor forever."
-msgstr "Draai motor voor altijd."
-
-msgid "brake motor"
-msgstr "rem motor"
-
-msgid "Stop a specified motor."
-msgstr "Stop een opgegeven motor."
-
-msgid "reset motor"
-msgstr "herstel motor"
-
-msgid "Reset the motor counter."
-msgstr "Herstel motor teller."
-
-msgid "motor position"
-msgstr "motor positie"
-
-msgid "Get the motor position."
-msgstr "Verkrijg de motor positie."
-
-msgid "nxt-sensors"
-msgstr "nxt-sensors"
-
-msgid "read"
-msgstr "lees"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:328
-msgid "sensor"
-msgstr "sensor"
-
-msgid "Read sensor output."
-msgstr "Lees sensor uitvier."
-
-msgid "light sensor"
-msgstr "lichtsensor"
-
-msgid "gray sensor"
-msgstr "grijssensor"
-
-msgid "button sensor"
-msgstr "knop sensor"
-
-msgid "distance sensor"
-msgstr "afstandsensor"
-
-msgid "sound sensor"
-msgstr "geluid sensor"
-
-msgid "color sensor"
-msgstr "kleur sensor"
-
-msgid "set light"
-msgstr "zet licht"
-
-msgid "Set color sensor light."
-msgstr "Zet kleur sensor light."
-
-msgid "battery level"
-msgstr "accu niveau"
-
-msgid "Get the battery level of the brick in millivolts"
-msgstr "Geef het batterijniveau van de steen in millivolt"
-
-msgid "Palette of Arduino blocks"
-msgstr "Palet van Arduino blokken"
-
-msgid "PWM"
-msgstr "PWM"
-
-msgid "SERVO"
-msgstr "SERVO"
-
-msgid "ERROR: Check the Arduino and the number of port."
-msgstr "FOUT: Controleer de Arduino en het nummer van de poort."
-
-msgid "ERROR: Value must be a number from 0 to 1."
-msgstr "FOUT: Waarde moet zijn een getal van 0 tot 1."
-
-msgid "ERROR: Value must be a number from 0 to 180."
-msgstr "FOUT: Waarde moet zijn een getal van 0 tot 180."
-
-msgid "ERROR: Value must be either HIGH or LOW, 0 or 1"
-msgstr "FOUT: Waarde moet zijn óf HOOG óf LAAG, 0 of 1"
-
-msgid "ERROR: The mode must be either INPUT, OUTPUT, PWM or SERVO."
-msgstr "FOUT: De nodus moet zijn INVOER, UITVOER, PWM of SERVO."
-
-msgid "ERROR: The value must be an integer."
-msgstr "FOUT: De waarde moet een geheel getal zijn."
-
-msgid "ERROR: The pin must be an integer."
-msgstr "FOUT: De pin moet een geheel getal zijn."
-
-msgid "ERROR: You must configure the mode for the pin."
-msgstr "FOUT: Je moet de modus voor de pin configureren."
-
-msgid "arduino"
-msgstr "arduino"
-
-msgid "refresh Arduino"
-msgstr "ververs Arduino"
-
-msgid "Search for connected Arduinos."
-msgstr "Zoek naar verbonden Arduino's."
-
-msgid "Arduino"
-msgstr "Arduino"
-
-msgid "set current Arduino board"
-msgstr "stel het huidig Arduino-bord in"
-
-msgid "number of Arduinos"
-msgstr "aantal Arduiono's"
-
-msgid "number of Arduino boards"
-msgstr "aantal Arduino-borden"
-
-msgid "Arduino name"
-msgstr "Arduino-naam"
-
-msgid "Get the name of an Arduino."
-msgstr "Geef de naam van een Arduino."
-
-#, fuzzy
-msgid "pin mode"
-msgstr ""
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"pinmodus\n"
-"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"pin modus"
-
-msgid "Select the pin function (INPUT, OUTPUT, PWM, SERVO)."
-msgstr "Selecteer de pin functie (INVOER, UITVOER, PWM, SERVO)."
-
-msgid "analog write"
-msgstr "analoog schrijven"
-
-msgid "Write analog value in specified port."
-msgstr "Schrijf analoge waarde in aangegeven poort."
-
-msgid "analog read"
-msgstr "analoog lezen"
-
-msgid "Read value from analog port. Value may be between 0 and 1."
-msgstr "Lees waarde van analoge poort. Waarden mag zijn tussen 0 en 1."
-
-msgid "digital write"
-msgstr "digitaal schrijven"
-
-msgid "Write digital value to specified port."
-msgstr "Schrijf digitale waarde naar aangegeven poort."
-
-msgid "digital read"
-msgstr "digitaal lezen"
-
-msgid "Read value from digital port."
-msgstr "Lees waarde van digitale poort."
-
-msgid "Set HIGH value for digital port."
-msgstr "Zet HOOG waarde voor digitale poort."
-
-msgid "Configure Arduino port for digital input."
-msgstr "Configureer Arduino poort voor digitale invoer."
-
-msgid "Configure Arduino port to drive a servo."
-msgstr "Configureer Arduino poort om servo te besturen."
-
-msgid "Configure Arduino port for digital output."
-msgstr "Configureer Arduino poort voor digitale uitvoer."
-
-msgid "Configure Arduino port for PWM (pulse-width modulation)."
-msgstr "Configureer Arduino poort voor PWM (pulsbreedte modulatie)."
-
-msgid "Not found Arduino %s"
-msgstr "Niet gevonden Arduino %s"
-
-msgid "The pin must be an integer"
-msgstr "De pen moet een geheel getal zijn"
-
-msgid "The device must be an integer"
-msgstr "Het apparaat moet een geheel getal zijn"
-
-msgid "Error loading %s board"
-msgstr "Fout bij laden %s bord"
-
-msgid "Palette for Rodi bots using Arduino"
-msgstr "Palet voor Rodi robots met Arduino"
-
-msgid "ERROR: Check the connection to the robot."
-msgstr "FOUT: Controleer de verbinding met de robot."
-
-msgid "ERROR: The speed must be a value between 0 and %d"
-msgstr "FOUT: De snelheid moet een waarde zijn tussen 0 en %d"
-
-msgid "ERROR: The speed must be a value between %(min)d and %(max)d"
-msgstr "FOUT: De snelheid moet een waarde zijn tussen %(min)d en %(max)d"
-
-msgid "refresh Rodi"
-msgstr "ververs Rodi"
-
-msgid "refresh the state of the Rodi palette and blocks"
-msgstr "ververs de status van de Rodi palet en blokken"
-
-msgid "move Rodi"
-msgstr "beweeg Rodi"
-
-msgid "moves the Rodi motors at the specified speed"
-msgstr "beweegt de Rodi motoren met de gekozen snelheid"
-
-msgid "stop Rodi"
-msgstr "stop Rodi"
-
-msgid "stops the Rodi robot"
-msgstr "stop de Rodi robot"
-
-msgid "forward Rodi"
-msgstr "vooruit Rodi"
-
-msgid "moves the Rodi robot forward"
-msgstr "beweegt de Rodi robot vooruit"
-
-msgid "left Rodi"
-msgstr "naar links Rodi"
-
-msgid "turns the Rodi robot at left"
-msgstr "draait de Rodi robot naar links"
-
-msgid "right Rodi"
-msgstr "naar rechts Rodi"
-
-msgid "turns the Rodi robot at right"
-msgstr "draait de Rodi robot naar rechts"
-
-msgid "backward Rodi"
-msgstr "achterwaarts Rodi"
-
-msgid "moves the Rodi robot backward"
-msgstr "beweegt de Rodi robot achteruit"
-
-msgid "distance Rodi"
-msgstr "afstand Rodi"
-
-msgid "returns the distance as a value between 0 and 1"
-msgstr "geeft afstand terug als waarde tussen 0 en 1"
-
-msgid "Rodi %s not found"
-msgstr "Rodi %s niet gevonden"
-
-msgid "Palette of Expeyes blocks"
-msgstr "Palet van Expeyes-blokken"
-
-msgid "set PVS"
-msgstr "stel PVS in"
-
-msgid "set programmable voltage output"
-msgstr "stel programmeerbare stroomuitvoer in"
-
-msgid "set SQR1 voltage"
-msgstr "stel SQR1-stroomsterkte in"
-
-msgid "set square wave 1 voltage output"
-msgstr "stel blokgolf 1 spanningsuitvoer in"
-
-msgid "set SQR2 voltage"
-msgstr "stel SQR2 spanning in"
-
-msgid "set square wave 2 voltage output"
-msgstr "stel blokgolf 2 spanningsuitvoer in"
-
-msgid "set OD1"
-msgstr "stel OD1 in"
-
-msgid "set digital output level (OD1) low (0) or high (1)"
-msgstr "stel digitaal uitvoerniveau (OD1) laag (0) of hoog (1)"
-
-msgid "IN1 level"
-msgstr "IN1 niveau"
-
-msgid ""
-"returns 1 if IN1 voltage level >2.5 volts, 0 if IN1 voltage level <= 2.5 "
-"volts"
-msgstr ""
-"geeft 1 als IN1 spanningsniveau >2.5 volts, 0 als IN1 spanningsniveau <= 2.5 "
-"volts"
-
-msgid "IN2 level"
-msgstr "IN2 niveau"
-
-msgid ""
-"returns 1 if IN2 voltage level >2.5 volts, 0 if IN2 voltage level <= 2.5 "
-"volts"
-msgstr ""
-"geeft 1 als IN2 spanningsniveau >2.5 volts, 0 als IN2 spanningsniveau <= 2.5 "
-"volts"
-
-msgid "SEN level"
-msgstr "SEN niveau"
-
-msgid ""
-"returns 1 if resistive sensor (SEN) voltage level > 2.5 volts, 0 if SEN "
-"voltage level <= 2.5 volts"
-msgstr ""
-"geeft 1 als weerstandssensor (SEN) spanningsniveau > 2.5 volts, 0 als SEN "
-"spanningsniveau <= 2.5 volts"
-
-msgid "capture"
-msgstr "opnemen"
-
-msgid "input"
-msgstr "invoer"
-
-msgid "samples"
-msgstr "voorbeelden"
-
-msgid "interval"
-msgstr "interval"
-
-msgid ""
-"capture multiple samples from input at interval (MS); results pushed to FIFO"
-msgstr ""
-"neem meerdere monsters op van invoer met interval (MS); resultaat gestuurd "
-"naar FIFO"
-
-msgid "A1"
-msgstr "A1"
-
-msgid "read analog input 1 voltage"
-msgstr "lees analoge invoer 1 voltage"
-
-msgid "A2"
-msgstr "A2"
-
-msgid "read analog input 2 voltage"
-msgstr "lees analoge invoer 2 voltage"
-
-msgid "IN1"
-msgstr "IN1"
-
-msgid "read input 1 voltage"
-msgstr "lees invoer 1 voltage"
-
-msgid "IN2"
-msgstr "IN2"
-
-msgid "read input 2 voltage"
-msgstr "lees invoer 2 voltage"
-
-msgid "SEN"
-msgstr "SEN"
-
-msgid "read analog sensor input voltage"
-msgstr "lees analoge sensor invoer voltage"
-
-msgid "SQR1"
-msgstr "SQR1"
-
-msgid "read square wave 1 voltage"
-msgstr "lees blokgolf 1 voltage"
-
-msgid "SQR2"
-msgstr "SQR2"
-
-msgid "read square wave 2 voltage"
-msgstr "lees blokgolf 2 voltage"
-
-msgid "PVS"
-msgstr "PVS"
-
-msgid "read programmable voltage"
-msgstr "lees programmeerbaar voltage"
-
-msgid "Expeyes device not found"
-msgstr "Expeyes apparaat niet gevonden"
 
 #. TRANS: "name" option from activity.info file
 msgid "TurtleBlocks"
@@ -1675,26 +74,20 @@ msgstr "wissen"
 msgid "clears the screen and reset the turtle"
 msgstr "schoont het scherm en herstelt het schildpad"
 
-<<<<<<< HEAD
-=======
 #: TurtleArt/tabasics.py:207 TurtleArt/taconstants.py:139
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:991
 msgid "left"
 msgstr "links"
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:211
 msgid "turns turtle counterclockwise (angle in degrees)"
 msgstr "draait schildpad tegen de klok in (hoek in graden)"
 
-<<<<<<< HEAD
-=======
 #: TurtleArt/tabasics.py:221 TurtleArt/taconstants.py:141
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1024
 msgid "right"
 msgstr "rechts"
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:225
 msgid "turns turtle clockwise (angle in degrees)"
 msgstr "draait schildpad met de klok mee (hoek in graden)"
@@ -1719,8 +112,6 @@ msgstr "beweegt schildpad langs een boog"
 msgid "set xy"
 msgstr "zet xy"
 
-<<<<<<< HEAD
-=======
 #: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
 msgid "x"
 msgstr "x"
@@ -1729,7 +120,6 @@ msgstr "x"
 msgid "y"
 msgstr "y"
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:255 TurtleArt/tabasics.py:334
 msgid ""
 "moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
@@ -1788,25 +178,19 @@ msgstr ""
 msgid "Palette of pen commands"
 msgstr "Palet van pencommando's"
 
-<<<<<<< HEAD
-=======
 #: TurtleArt/tabasics.py:351
 msgid "pen"
 msgstr "pen"
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:369
 msgid "fill screen"
 msgstr "vul scherm"
 
-<<<<<<< HEAD
-=======
 #: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:369
 #: TurtleArt/tabasics.py:432 TurtleArt/tawindow.py:4542
 msgid "color"
 msgstr "kleur"
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:370
 #: TurtleArt/tabasics.py:444 TurtleArt/tawindow.py:4538
 #: TurtleArt/tawindow.py:4543
@@ -1817,14 +201,11 @@ msgstr "schaduw"
 msgid "fills the background with (color, shade)"
 msgstr "vult de achtergrond met (kleur, schaduw)"
 
-<<<<<<< HEAD
-=======
 #: TurtleArt/tabasics.py:370 TurtleArt/tabasics.py:454
 #: TurtleArt/tawindow.py:4539 TurtleArt/tawindow.py:4544
 msgid "gray"
 msgstr "grijs"
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:387
 msgid "set color"
 msgstr "zet kleur"
@@ -2276,13 +657,10 @@ msgstr "sla op in"
 msgid "box"
 msgstr "doos"
 
-<<<<<<< HEAD
-=======
 #: TurtleArt/tabasics.py:1114 TurtleArt/tawindow.py:5055
 msgid "value"
 msgstr "waarde"
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:1118 TurtleArt/tabasics.py:1133
 #: TurtleArt/tawindow.py:1582 TurtleArt/tawindow.py:1727
 #: TurtleArt/tawindow.py:2346 TurtleArt/tawindow.py:5020
@@ -2668,21 +1046,12 @@ msgstr "Bewaar als Logo"
 #: TurtleArtActivity.py:1205
 msgid "Save as Python"
 msgstr "Bewaar als Python"
-<<<<<<< HEAD
 
 #: TurtleArtActivity.py:937 TurtleArtActivity.py:1148
 #: TurtleArtActivity.py:1209
 msgid "Save snapshot"
 msgstr "Bewaar foto"
 
-=======
-
-#: TurtleArtActivity.py:937 TurtleArtActivity.py:1148
-#: TurtleArtActivity.py:1209
-msgid "Save snapshot"
-msgstr "Bewaar foto"
-
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArtActivity.py:938 TurtleArtActivity.py:1172
 #: TurtleArtActivity.py:1211 turtleblocks.py:426
 msgid "Add project"
@@ -2872,13 +1241,10 @@ msgstr "versnelling"
 msgid "push acceleration in x, y, z to heap"
 msgstr "duw versnelling in x, y, z naar hoop"
 
-<<<<<<< HEAD
-=======
 #: plugins/audio_sensors/audio_sensors.py:90 pysamples/grecord.py:206
 msgid "sound"
 msgstr "geluid"
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/audio_sensors/audio_sensors.py:91
 msgid "raw microphone input signal"
 msgstr "ruw microfoon invoer signaal"
@@ -2900,27 +1266,21 @@ msgstr "toonhoogte"
 msgid "microphone input pitch"
 msgstr "microfoon invoer toonhoogte"
 
-<<<<<<< HEAD
-=======
 #: plugins/audio_sensors/audio_sensors.py:157
 #: plugins/audio_sensors/audio_sensors.py:175
 msgid "resistance"
 msgstr "weerstand"
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/audio_sensors/audio_sensors.py:158
 #: plugins/audio_sensors/audio_sensors.py:176
 msgid "microphone input resistance"
 msgstr "microfoon invoerweerstand"
 
-<<<<<<< HEAD
-=======
 #: plugins/audio_sensors/audio_sensors.py:163
 #: plugins/audio_sensors/audio_sensors.py:181
 msgid "voltage"
 msgstr "spanning"
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/audio_sensors/audio_sensors.py:164
 #: plugins/audio_sensors/audio_sensors.py:182
 msgid "microphone input voltage"
@@ -2931,8 +1291,6 @@ msgstr "microfoon invoer spanning"
 msgid "Palette of media objects"
 msgstr "Palet van media voorwerpen"
 
-<<<<<<< HEAD
-=======
 #: plugins/camera_sensor/camera_sensor.py:83
 #: plugins/camera_sensor/camera_sensor.py:99
 #: plugins/camera_sensor/camera_sensor.py:136
@@ -2942,7 +1300,6 @@ msgstr "Palet van media voorwerpen"
 msgid "brightness"
 msgstr "helderheid"
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/camera_sensor/camera_sensor.py:85
 #: plugins/camera_sensor/camera_sensor.py:138
 msgid "light level detected by camera"
@@ -3152,13 +1509,10 @@ msgstr "duur"
 msgid "plays a sinewave at frequency, amplitude, and duration (in seconds)"
 msgstr "speelt een sinusgolf met frequentie, amplitude en duur (in secomden)"
 
-<<<<<<< HEAD
-=======
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:328
 msgid "sensor"
 msgstr "sensor"
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:333
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:344
 msgid "button down"
@@ -3221,13 +1575,10 @@ msgstr "schildpad ziet"
 msgid "returns the color that the turtle \"sees\""
 msgstr "geeft de kleur dat de schildpad \"ziet\""
 
-<<<<<<< HEAD
-=======
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:421
 msgid "time"
 msgstr "tijd"
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:424
 msgid "elapsed time (in seconds) since program started"
 msgstr "verstreken tijd (in seconden) sinds programma startte"
@@ -3545,13 +1896,10 @@ msgstr "onderkant"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1005
 msgid "ycor of bottom of screen"
 msgstr "ycor voor onderkant van scherm"
-<<<<<<< HEAD
-=======
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1013
 msgid "width"
 msgstr "breedte"
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1016
 msgid "the canvas width"
@@ -3565,13 +1913,10 @@ msgstr "xcor van rechterkant van scherm"
 msgid "ycor of top of screen"
 msgstr "ycor van bovenkant van het scherm"
 
-<<<<<<< HEAD
-=======
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1046
 msgid "height"
 msgstr "hoogte"
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1049
 msgid "the canvas height"
 msgstr "de schlderijhoogte"
@@ -3759,10 +2104,7 @@ msgstr "Project opslaan?"
 
 #: turtleblocks.py:558
 #, python-format
-<<<<<<< HEAD
-=======
 #, python-format,
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 msgid "Plugin %s already installed"
 msgstr "Plugin %s is al geïnstalleerd"
 
@@ -3772,8 +2114,6 @@ msgstr "mijnproject"
 
 #~ msgid "Load project"
 #~ msgstr "Laad project"
-<<<<<<< HEAD
-=======
 
 #~ msgid "Hide sample projects"
 #~ msgstr "Verberg voorbeeld projecten"
@@ -3814,44 +2154,42 @@ msgstr "mijnproject"
 
 #~ msgid "Turtle Art"
 #~ msgstr "Schildpad Kunst"
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 
-#~ msgid "Hide sample projects"
-#~ msgstr "Verberg voorbeeld projecten"
+#~ msgid "Turtle Art Mini"
+#~ msgstr "Schildpad Kunst Mini"
 
-#~ msgid "palette"
-#~ msgstr "palet"
+#~ msgid "Turtle Confusion"
+#~ msgstr "Schildpad Verwarring"
 
-#~ msgid "make a uturn"
-#~ msgstr "maak een u-bocht"
+#~ msgid "Select a challenge"
+#~ msgstr "Kies een uitdaging"
 
-#, fuzzy
-#~ msgid "u turn"
-#~ msgstr "u-bocht"
+#~ msgid "Palette of Mexican pesos"
+#~ msgstr "Palet van Mexicaanse pesos"
 
-#~ msgid "set text color"
-#~ msgstr "zet tekstkleur"
+#~ msgid "Palette of Colombian pesos"
+#~ msgstr "Palet van Colombiaanse pesos"
 
-#~ msgid "sets color of text drawn by the turtle"
-#~ msgstr "stelt de kleur van tekst in getekend door het schildpad"
+#~ msgid "Palette of Rwandan francs"
+#~ msgstr "Palet van Rwandaanse franken"
 
-#~ msgid "set text size"
-#~ msgstr "stel tekstgrootte in"
+#~ msgid "Palette of US dollars"
+#~ msgstr "Palet van US dollars"
 
-#~ msgid "sets size of text drawn by the turtle"
-#~ msgstr "stelt grootte van tekst in getekend door schildpad"
+#~ msgid "Palette of Australian dollars"
+#~ msgstr "Palet van Australische dollars"
 
-#~ msgid "presentation 1x1"
-#~ msgstr "presentatie 1x1"
+#~ msgid "Palette of Paraguayan Guaranies"
+#~ msgstr "Palett van Paraguayse Guaranies"
 
-#~ msgid "presentation 2x1"
-#~ msgstr "presentatie 2x1"
+#~ msgid "Palette of Peruvian Nuevo Soles"
+#~ msgstr "Palet van Peruviaanse Nuevo Soles"
 
-#~ msgid "presentation 1x2"
-#~ msgstr "presentatie 1x2"
+#~ msgid "Palette of Uruguayan Pesos"
+#~ msgstr "Paler van Uruguayse Pesos"
 
-#~ msgid "presentation 2x2"
-#~ msgstr "presentatie 2x2"
+#~ msgid "TurtleBots"
+#~ msgstr "TurtleBots"
 
 #~ msgid "adjust LED intensity between 0 and 255"
 #~ msgstr "pas LED intensiteit aan tussen 0 en 255"
@@ -3872,8 +2210,8 @@ msgstr "mijnproject"
 #~ "returns the distance from the object in front of the sensor as a number "
 #~ "between 0 and 255"
 #~ msgstr ""
-#~ "geeft de afstand van het voorwerp voor de sensor als een getal tussen 0 "
-#~ "en 255"
+#~ "geeft de afstand van het voorwerp voor de sensor als een getal tussen 0 en "
+#~ "255"
 
 #~ msgid "returns 0 or 1 depending on the sensor inclination"
 #~ msgstr "geeft een 0 of 1 afhankelijk van de hoek van de sensor"
@@ -3884,11 +2222,26 @@ msgstr "mijnproject"
 #~ msgid "switches from 0 to 1, the frequency depends on the vibration"
 #~ msgstr "schakelt tussen 0 en 1, de frequentie hangt af van de trilling"
 
+#~ msgid "LED"
+#~ msgstr "LED"
+
+#~ msgid "button"
+#~ msgstr "knop"
+
 #~ msgid "grayscale"
 #~ msgstr "grijsschaal"
 
 #~ msgid "ambient light"
 #~ msgstr "omgevingslicht"
+
+#~ msgid "temperature"
+#~ msgstr "temperatuur"
+
+#~ msgid "distance"
+#~ msgstr "afstand"
+
+#~ msgid "tilt"
+#~ msgstr "hoogtehoek"
 
 #~ msgid "magnetic induction"
 #~ msgstr "magnetische inductie"
@@ -3896,14 +2249,54 @@ msgstr "mijnproject"
 #~ msgid "vibration"
 #~ msgstr "trilling"
 
+#~ msgid "Butia Robot"
+#~ msgstr "Butia Robot"
+
+#~ msgid "refresh Butia"
+#~ msgstr "ververs Butia"
+
+#~ msgid "refresh the state of the Butia palette and blocks"
+#~ msgstr "ververs de status vam de Butia palet en blokken"
+
+#~ msgid "battery charge Butia"
+#~ msgstr "accu lading Butia"
+
 #~ msgid "returns the battery charge as a number between 0 and 255"
 #~ msgstr "geeft de batterijlading als een getal tussen 0 en 255"
+
+#~ msgid "speed Butia"
+#~ msgstr "snelheid Butia"
+
+#~ msgid "forward Butia"
+#~ msgstr "vooruit Butia"
+
+#~ msgid "move the Butia robot forward"
+#~ msgstr "beweeg de Butia robot vooruit"
 
 #~ msgid "move the Butia robot forward a predefined distance"
 #~ msgstr "beweeg de Butia robot de voorgedefinieerde afstand vooruit"
 
+#~ msgid "left Butia"
+#~ msgstr "links Butia"
+
+#, fuzzy
+#~ msgid "turn the Butia robot at left"
+#~ msgstr "draai de Butia robot naar rechts"
+
+#~ msgid "backward Butia"
+#~ msgstr "achteruit Butia"
+
+#~ msgid "move the Butia robot backward"
+#~ msgstr "beweeg de Butia robot achteruit"
+
 #~ msgid "move the Butia robot backward a predefined distance"
 #~ msgstr "beweeg de Butia robot de voorgedefinieerde afstand achteruit"
+
+#~ msgid "right Butia"
+#~ msgstr "rechts Butia"
+
+#~ msgid "turn the Butia robot at right"
+#~ msgstr "draai de Butia robot naar rechts"
 
 #~ msgid "turn Butia"
 #~ msgstr "draai Butia"
@@ -3911,22 +2304,377 @@ msgstr "mijnproject"
 #~ msgid "turn the Butia robot x degrees"
 #~ msgstr "draai de Butia robot x graden"
 
-#~ msgid ""
-#~ "Join two objects together (the most recent object created and the object "
-#~ "at point x, y)."
+#~ msgid "stop Butia"
+#~ msgstr "stop Butia"
+
+#~ msgid "stop the Butia robot"
+#~ msgstr "stop de Butia robot"
+
+#~ msgid "Butia"
+#~ msgstr "Butia"
+
+#~ msgid "Error on initialization of the camera"
+#~ msgstr "Fout bij initialisatie van de camera"
+
+#, fuzzy
+#~ msgid "No camera was found"
+#~ msgstr "Geen camera gevonden"
+
+#~ msgid "Error stopping camera"
+#~ msgstr "Fout bij stoppen camera"
+
+#~ msgid "Error starting camera"
+#~ msgstr "Fout bij starten camera"
+
+#~ msgid "FollowMe"
+#~ msgstr "VolgMe"
+
+#, fuzzy
+#~ msgid "Search for a connected camera."
+#~ msgstr "Zoek naar een verbonden NXT steen."
+
+#~ msgid "calibration"
+#~ msgstr "calibratie"
+
+#, fuzzy
+#~ msgid "store a personalized calibration"
+#~ msgstr "bewaart een persoonlijke calibratie"
+
+#~ msgid "return a personalized calibration"
+#~ msgstr "geeft terug een gepersonaliseerde calibratie"
+
+#~ msgid "follow"
+#~ msgstr "volg"
+
+#~ msgid "follow a color or calibration"
+#~ msgstr "volg een kluer of een calibratie"
+
+#~ msgid "minimum pixels"
+#~ msgstr "minimum pixels"
+
+#~ msgid "set the minimal number of pixels to follow"
+#~ msgstr "stel een minimum aantal pixels in om te volgen"
+
+#~ msgid "threshold"
+#~ msgstr "drempel"
+
+#~ msgid "set a threshold for a RGB color"
+#~ msgstr "zet de drempel voor een RGB kleur"
+
+#~ msgid "camera mode"
+#~ msgstr "camera modus"
+
+#, fuzzy
+#~ msgid "set the color mode of the camera: RGB; YUV or HSV"
+#~ msgstr "zet kleurmodus van de camera op RGB, YUV of HSV"
+
+#~ msgid "x position"
+#~ msgstr "x positie"
+
+#~ msgid "return x position"
+#~ msgstr "geeft x positie"
+
+#~ msgid "y position"
+#~ msgstr "y positie"
+
+#~ msgid "return y position"
+#~ msgstr "geeft y positie"
+
+#~ msgid "pixels"
+#~ msgstr "pixels"
+
+#~ msgid "return the number of pixels of the biggest blob"
+#~ msgstr "geef terug het aantal pixels van de grootste blob"
+
+#~ msgid "set the color mode of the camera to RGB"
+#~ msgstr "zet kleurmodus van de camera op RGB"
+
+#~ msgid "set the color mode of the camera to YUV"
+#~ msgstr "zet kleurmodus van de camera op YUV"
+
+#~ msgid "set the color mode of the camera to HSV"
+#~ msgstr "zet kleurmodus van de camera op HSV"
+
+#~ msgid "empty calibration"
+#~ msgstr "lege calibratie"
+
+#~ msgid "error in string conversion"
+#~ msgstr "fout in rekst expressie"
+
+#~ msgid "SumBot"
+#~ msgstr "SomBot"
+
+#~ msgid "speed SumBot"
+#~ msgstr "snelheid SomBot"
+
+#~ msgid "submit the speed to the SumBot"
+#~ msgstr "stel in de snelheid naar de SomBot"
+
+#~ msgid "set the default speed for the movement commands"
+#~ msgstr "stel de standaard snelheid voor de beweegcommando's"
+
+#~ msgid "forward SumBot"
+#~ msgstr "stuur door de SomBot"
+
+#~ msgid "move SumBot forward"
+#~ msgstr "verplaats de SomBot voorwaarts"
+
+#~ msgid "backward SumBot"
+#~ msgstr "terug SomBot"
+
+#~ msgid "move SumBot backward"
+#~ msgstr "verplaats SomBot achterwaarts"
+
+#~ msgid "stop SumBot"
+#~ msgstr "stop SomBot"
+
+#~ msgid "stop the SumBot"
+#~ msgstr "stop de SomBot"
+
+#~ msgid "left SumBot"
+#~ msgstr "links SomBot"
+
+#~ msgid "turn left the SumBot"
+#~ msgstr "draai SomBot naar links"
+
+#~ msgid "right SumBot"
+#~ msgstr "rechts SomBot"
+
+#~ msgid "turn right the SumBot"
+#~ msgstr "draai SomBot naar rechts"
+
+#~ msgid "angle to center"
+#~ msgstr "hoek van midden"
+
+#~ msgid "get the angle to the center of the dohyo"
+#~ msgstr "neem de hoek naar het midden van het speelveld"
+
+#~ msgid "angle to Enemy"
+#~ msgstr "hoek naar Vijand"
+
+#~ msgid "get the angle to the Enemy"
+#~ msgstr "neem de afstand tot de Vijand"
+
+#~ msgid "x coor. SumBot"
+#~ msgstr "x coör. SomBot"
+
+#~ msgid "get the x coordinate of the SumBot"
+#~ msgstr "neem de x coördinaat van de Sombot"
+
+#~ msgid "y coor. SumBot"
+#~ msgstr "y coör. SomBot"
+
+#~ msgid "get the y coordinate of the SumBot"
+#~ msgstr "neem de y coördinaat van de Sombot"
+
+#~ msgid "x coor. Enemy"
+#~ msgstr "x coör. Vijand"
+
+#~ msgid "get the x coordinate of the Enemy"
+#~ msgstr "neem de x coördinaat van de Vijand"
+
+#~ msgid "y coor. Enemy"
+#~ msgstr "y coör. Vijand"
+
+#~ msgid "get the y coordinate of the Enemy"
+#~ msgstr "neem de y coördinaat van de Vijand"
+
+#~ msgid "rotation SumBot"
+#~ msgstr "draaiing SomBot"
+
+#~ msgid "get the rotation of the Sumbot"
+#~ msgstr "neem de rotatie van de Sombot"
+
+#~ msgid "rotation Enemy"
+#~ msgstr "draaiing Vijand"
+
+#~ msgid "get the rotation of the Enemy"
+#~ msgstr "neem de rotatie van de Vijand"
+
+#~ msgid "distance to center"
+#~ msgstr "afstand naar het midden"
+
+#~ msgid "get the distance to the center of the dohyo"
+#~ msgstr "neem de afstand tot het midden van het speelveld"
+
+#~ msgid "distance to Enemy"
+#~ msgstr "afstand tot Vijand"
+
+#~ msgid "get the distance to the Enemy"
+#~ msgstr "neem de afstand tot de Vijand"
+
+#~ msgid "update information"
+#~ msgstr "informatie bijwerken"
+
+#~ msgid "update information from the server"
+#~ msgstr "informatie bijwerken van de server"
+
+#~ msgid "Palette of physics blocks"
+#~ msgstr "Palet van fysica blokken"
+
+#~ msgid "start polygon"
+#~ msgstr "start veelhoek"
+
+#~ msgid "Begin defining a new polygon based on the current Turtle xy position."
 #~ msgstr ""
-#~ "Voeg twee voorwerpen samen (het meest recent aangemaakte en het voorwerp "
-#~ "op punt x, y)."
+#~ "Begin definiëren van een nieuwe veelhoek gebaseerd op de huidige xy positie "
+#~ "van het Schildpad."
+
+#~ msgid "add point"
+#~ msgstr "voeg punt toe"
 
 #~ msgid ""
-#~ "tilt sensor output: (-1 == no tilt, 0 == tilt forward, 3 == tilt back, 1 "
-#~ "== tilt left, 2 == tilt right)"
+#~ "Add a new point to the current polygon based on the current Turtle xy "
+#~ "position."
+#~ msgstr ""
+#~ "Voeg een nieuw punt toe aan de huidige veelhoek gebaseerd op deze xy positie "
+#~ "van het Schildpad."
+
+#~ msgid "end polygon"
+#~ msgstr "eind veelhoek"
+
+#~ msgid "Define a new polygon."
+#~ msgstr "Definieer een nieuwe veelhoek."
+
+#~ msgid "end filled polygon"
+#~ msgstr "eind gevulde veelhoek"
+
+#~ msgid "Not a simple polygon"
+#~ msgstr "Geen eenvoudige veelhoek"
+
+#~ msgid "Define a new filled polygon."
+#~ msgstr "Definieer een nieuwe gevulde veelhoek."
+
+#~ msgid "triangle"
+#~ msgstr "driehoek"
+
+#~ msgid "base"
+#~ msgstr "basis"
+
+#~ msgid "Add a triangle object to the project."
+#~ msgstr "Voeg een driehoek voorwerp toe aan het project."
+
+#~ msgid "circle"
+#~ msgstr "cirkel"
+
+#~ msgid "Add a circle object to the project."
+#~ msgstr "Voeg een cirkel voorwerp toe aan het project."
+
+#~ msgid "rectangle"
+#~ msgstr "rechthoek"
+
+#~ msgid "Add a rectangle object to the project."
+#~ msgstr "Voeg een rechthoek voorwerp toe aan het project."
+
+#~ msgid "reset"
+#~ msgstr "reset"
+
+#~ msgid "Reset the project; clear the object list."
+#~ msgstr "Reset het project, schoon de voorwerplijst."
+
+#~ msgid "motor"
+#~ msgstr "motor"
+
+#~ msgid "torque"
+#~ msgstr "koppel"
+
+#~ msgid "speed"
+#~ msgstr "snelheid"
+
+#~ msgid ""
+#~ "Motor torque and speed range from 0 (off) to positive numbers; motor is "
+#~ "placed on the most recent object created."
+#~ msgstr ""
+#~ "Motor koppel en snelheid lopen van 0 (uit) naar positieve getallen; de motor "
+#~ "wordt geplaatst op het meest recent gecreeerde voorwerp."
+
+#~ msgid "pin"
+#~ msgstr "speld"
+
+#~ msgid "Pin an object down so that it cannot fall."
+#~ msgstr "Speld een voorwerp vast zodat het niet kan vallen."
+
+#~ msgid "joint"
+#~ msgstr "gewricht"
+
+#~ msgid ""
+#~ "Join two objects together (the most recent object created and the object at "
+#~ "point x, y)."
+#~ msgstr ""
+#~ "Voeg twee voorwerpen samen (het meest recent aangemaakte en het voorwerp op "
+#~ "punt x, y)."
+
+#~ msgid "save as Physics activity"
+#~ msgstr "bewaar als Natuurkunde activiteit"
+
+#~ msgid "Save the project to the Journal as a Physics activity."
+#~ msgstr "Bewaar het project bij het Dagboek als Natuurkunde activiteit."
+
+#~ msgid "gear"
+#~ msgstr "versnelling"
+
+#~ msgid "Add a gear object to the project."
+#~ msgstr "Voeg een versnelling voorwerp toe aan het project."
+
+#~ msgid "density"
+#~ msgstr "dichtheid"
+
+#~ msgid ""
+#~ "Set the density property for objects (density can be any positive number)."
+#~ msgstr ""
+#~ "Stel de dichtheid eigenschap in voor voorwerpen (dichtheid kan ieder "
+#~ "positief getal zijn)."
+
+#~ msgid "friction"
+#~ msgstr "wrijving"
+
+#~ msgid ""
+#~ "Set the friction property for objects (value from 0 to 1, where 0 turns "
+#~ "friction off and 1 is strong friction)."
+#~ msgstr ""
+#~ "Stel de wrijving eigenschap in voor voorwerpen (waarde 0 tot 1, waar 0 "
+#~ "wrijvingsloos is en 1 sterke wrijving)."
+
+#~ msgid "bounciness"
+#~ msgstr "stuiterbaarheid"
+
+#~ msgid ""
+#~ "Set the bounciness property for objects (a value from 0 to 1, where 0 means "
+#~ "no bounce and 1 is very bouncy)."
+#~ msgstr ""
+#~ "Stel de stuiterbaarheid eigenschap in voor voorwerpen (waarde 0 tot 1, waar "
+#~ "0 stuiterloos is en 1 sterk stuiteren)."
+
+#~ msgid "dynamic"
+#~ msgstr "dynamiek"
+
+#~ msgid ""
+#~ "If dynamic = 1, the object can move; if dynamic = 0, it is fixed in position."
+#~ msgstr ""
+#~ "Als dynamiek = 1, kan het voorwerp bewegen; als dynamiek = 0 , is het op een "
+#~ "vaste positie."
+
+#~ msgid "Palette of WeDo blocks"
+#~ msgstr "Palet van WeDo blokken"
+
+#~ msgid ""
+#~ "tilt sensor output: (-1 == no tilt, 0 == tilt forward, 3 == tilt back, 1 == "
+#~ "tilt left, 2 == tilt right)"
 #~ msgstr ""
 #~ "tilt sensor uitvoer: (-1 == geen tilt, 0 == tilt voorwaarts, 3 == tilt "
 #~ "achterwaarts, 1 == tilt links, 2 == tilt rechts)"
 
+#~ msgid "distance sensor output"
+#~ msgstr "afstand sensor uitvoer"
+
+#~ msgid "Motor A"
+#~ msgstr "Motor A"
+
 #~ msgid "returns the current value of Motor A"
 #~ msgstr "geeft de huidige waarde van Motor A"
+
+#~ msgid "Motor B"
+#~ msgstr "Motor B"
 
 #~ msgid "returns the current value of Motor B"
 #~ msgstr "geeft de huidige waarde van Motor B"
@@ -3937,15 +2685,68 @@ msgstr "mijnproject"
 #~ msgid "set the value for Motor B"
 #~ msgstr "zet de waarde voor Motor B"
 
+#~ msgid "Palette of LEGO NXT blocks of motors"
+#~ msgstr "Palet van LEGO NXT blokken van motoren"
+
+#~ msgid "Palette of LEGO NXT blocks of sensors"
+#~ msgstr "Palet van LEGO NXT blokken van sensors"
+
 #~ msgid "touch"
 #~ msgstr "aanraken"
 
 #~ msgid "ultrasonic"
 #~ msgstr "ultrasoon"
 
+#~ msgid "light"
+#~ msgstr "licht"
+
 #, fuzzy
 #~ msgid "grey"
 #~ msgstr "grijs"
+
+#, fuzzy
+#~ msgid "Please check the connection with the brick"
+#~ msgstr "Controleer de verbinding met de baksteen."
+
+#, fuzzy
+#~ msgid "The value of power must be between -127 to 127"
+#~ msgstr "De waarde van macht moet zijn tussen -127 en 127."
+
+#, fuzzy
+#~ msgid "An error has occurred: check all connections and try to reconnect"
+#~ msgstr ""
+#~ "Fout opgetreden controleer alle verbindingen en probeer opnieuw verbinding "
+#~ "te maken."
+
+#~ msgid "NXT not found"
+#~ msgstr "NXT niet gevonden"
+
+#~ msgid "refresh NXT"
+#~ msgstr "ververs NXT"
+
+#~ msgid "Search for a connected NXT brick."
+#~ msgstr "Zoek naar een verbonden NXT steen."
+
+#~ msgid "play tone"
+#~ msgstr "speel toon"
+
+#~ msgid "frequency"
+#~ msgstr "frequentie"
+
+#~ msgid "Play a tone at frequency for time."
+#~ msgstr "Speel een toon op frequrntie gedurende tijd."
+
+#~ msgid "port"
+#~ msgstr "poort"
+
+#~ msgid "power"
+#~ msgstr "macht"
+
+#~ msgid "rotations"
+#~ msgstr "omwentelingen"
+
+#~ msgid "turn a motor"
+#~ msgstr "draai een motor"
 
 #, fuzzy
 #~ msgid ""
@@ -3953,6 +2754,9 @@ msgstr "mijnproject"
 #~ "\n"
 #~ "motors"
 #~ msgstr "synchroniseer twee motoren"
+
+#~ msgid "synchronize two motors connected in PORT B and PORT C"
+#~ msgstr "synchroniseer twee motoren verbonden met POORT B en POORT C"
 
 #~ msgid "PORT A"
 #~ msgstr "PORT A"
@@ -3972,26 +2776,50 @@ msgstr "mijnproject"
 #~ msgid "PORT C of the brick"
 #~ msgstr "PORT C van een steen"
 
+#~ msgid "start motor"
+#~ msgstr "start motor"
+
+#~ msgid "Run a motor forever."
+#~ msgstr "Draai motor voor altijd."
+
+#~ msgid "brake motor"
+#~ msgstr "rem motor"
+
+#~ msgid "Stop a specified motor."
+#~ msgstr "Stop een opgegeven motor."
+
+#~ msgid "reset motor"
+#~ msgstr "herstel motor"
+
+#~ msgid "Reset the motor counter."
+#~ msgstr "Herstel motor teller."
+
+#~ msgid "motor position"
+#~ msgstr "motor positie"
+
+#~ msgid "Get the motor position."
+#~ msgstr "Verkrijg de motor positie."
+
 #~ msgid "PORT 1"
 #~ msgstr "PORT 1"
 
 #~ msgid "PORT 1 of the brick"
 #~ msgstr "PORT 1 van de steen"
 
-<<<<<<< HEAD
-=======
 #~ msgid "read"
 #~ msgstr "lees"
 
 #~ msgid "Read sensor output."
 #~ msgstr "Lees sensor uitvier."
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #~ msgid "PORT 2"
 #~ msgstr "PORT 2"
 
 #~ msgid "PORT 2 of the brick"
 #~ msgstr "PORT 2 van de steen"
+
+#~ msgid "light sensor"
+#~ msgstr "lichtsensor"
 
 #~ msgid "PORT 3"
 #~ msgstr "PORT 3"
@@ -4002,21 +2830,81 @@ msgstr "mijnproject"
 #~ msgid "touch sensor"
 #~ msgstr "aanraak sensor"
 
+#~ msgid "distance sensor"
+#~ msgstr "afstandsensor"
+
 #~ msgid "PORT 4"
 #~ msgstr "PORT 4"
 
 #~ msgid "PORT 4 of the brick"
 #~ msgstr "PORT 4 van de steen"
 
+#~ msgid "sound sensor"
+#~ msgstr "geluid sensor"
+
+#~ msgid "color sensor"
+#~ msgstr "kleur sensor"
+
+#~ msgid "set light"
+#~ msgstr "zet licht"
+
+#~ msgid "Set color sensor light."
+#~ msgstr "Zet kleur sensor light."
+
+#~ msgid "battery level"
+#~ msgstr "accu niveau"
+
 #, fuzzy
 #~ msgid "Get battery level of the brick"
 #~ msgstr "Lees accuniveau van steen."
+
+#~ msgid "HIGH"
+#~ msgstr "HOOG"
+
+#~ msgid "LOW"
+#~ msgstr "LAAG"
+
+#~ msgid "INPUT"
+#~ msgstr "INVOER"
+
+#~ msgid "OUTPUT"
+#~ msgstr "UITVOER"
+
+#~ msgid "PWM"
+#~ msgstr "PWM"
+
+#~ msgid "SERVO"
+#~ msgstr "SERVO"
+
+#~ msgid "ERROR: Check the Arduino and the number of port."
+#~ msgstr "FOUT: Controleer de Arduino en het nummer van de poort."
 
 #~ msgid "ERROR: Value must be a number from 0 to 255."
 #~ msgstr "FOUT: Waarde moet zijn een getal van 0 tot 255."
 
 #~ msgid "ERROR: Value must be either HIGH or LOW."
 #~ msgstr "FOUT: Waarde moet zijn óf HOOG óf LAAG."
+
+#~ msgid "ERROR: The mode must be either INPUT, OUTPUT, PWM or SERVO."
+#~ msgstr "FOUT: De nodus moet zijn INVOER, UITVOER, PWM of SERVO."
+
+#~ msgid "pin mode"
+#~ msgstr "pin modus"
+
+#~ msgid "mode"
+#~ msgstr "modus"
+
+#~ msgid "Select the pin function (INPUT, OUTPUT, PWM, SERVO)."
+#~ msgstr "Selecteer de pin functie (INVOER, UITVOER, PWM, SERVO)."
+
+#~ msgid "analog write"
+#~ msgstr "analoog schrijven"
+
+#~ msgid "Write analog value in specified port."
+#~ msgstr "Schrijf analoge waarde in aangegeven poort."
+
+#~ msgid "analog read"
+#~ msgstr "analoog lezen"
 
 #~ msgid ""
 #~ "Read value from analog port. Value may be between 0 and 1023. Use Vref to "
@@ -4025,10 +2913,48 @@ msgstr "mijnproject"
 #~ "Lees waarde van analoge poort. Waarde mag zijn tussen 0 en 1023. Gebruik "
 #~ "Vref om spanning te bepalen. Voor USB, volt=((lees)*5)/1024) ongeveer."
 
+#~ msgid "digital write"
+#~ msgstr "digitaal schrijven"
+
+#~ msgid "Write digital value to specified port."
+#~ msgstr "Schrijf digitale waarde naar aangegeven poort."
+
+#~ msgid "digital read"
+#~ msgstr "digitaal lezen"
+
+#~ msgid "Read value from digital port."
+#~ msgstr "Lees waarde van digitale poort."
+
+#~ msgid "Set HIGH value for digital port."
+#~ msgstr "Zet HOOG waarde voor digitale poort."
+
+#~ msgid "Configure Arduino port for digital input."
+#~ msgstr "Configureer Arduino poort voor digitale invoer."
+
+#~ msgid "Configure Arduino port to drive a servo."
+#~ msgstr "Configureer Arduino poort om servo te besturen."
+
+#~ msgid "Set LOW value for digital port."
+#~ msgstr "Zet LAAG waarde voor digitale poort."
+
+#~ msgid "Configure Arduino port for digital output."
+#~ msgstr "Configureer Arduino poort voor digitale uitvoer."
+
+#~ msgid "Configure Arduino port for PWM (pulse-width modulation)."
+#~ msgstr "Configureer Arduino poort voor PWM (pulsbreedte modulatie)."
+
+#, fuzzy
+#~ msgid "Palette of Expeyes blocks"
+#~ msgstr "Palet van WeDo blokken"
+
+#, fuzzy
+#~ msgid "samples"
+#~ msgstr "Voorbeelden"
+
 #, fuzzy
 #~ msgid ""
-#~ "set the speed of the Butia motors as a value between 0 and 1023, passed "
-#~ "by an argument"
+#~ "set the speed of the Butia motors as a value between 0 and 1023, passed by "
+#~ "an argument"
 #~ msgstr ""
 #~ "zet de snelheid van de Butia motoren als een waarde tussen 0 en 1023, "
 #~ "doorgegeven als een argument"
@@ -4084,6 +3010,15 @@ msgstr "mijnproject"
 #~ msgid "return calibration 2"
 #~ msgstr "geeft terug calibratie 2"
 
+#~ msgid "RGB"
+#~ msgstr "RGB"
+
+#~ msgid "YUV"
+#~ msgstr "YUV"
+
+#~ msgid "HSV"
+#~ msgstr "HSV"
+
 #~ msgid "Please check the port."
 #~ msgstr "Controleer de poort."
 
@@ -4103,6 +3038,9 @@ msgstr "mijnproject"
 #~ msgstr ""
 #~ "synchroniseer motoren\n"
 #~ "besturing"
+
+#~ msgid "Palette of Arduino blocks"
+#~ msgstr "Palet van Arduino blokken"
 
 #~ msgid "delay Butia"
 #~ msgstr "vertraging Butia"
@@ -4188,11 +3126,10 @@ msgstr "mijnproject"
 
 #, fuzzy
 #~ msgid ""
-#~ "returns the object gray level encountered him as a number between 0 and "
-#~ "1023"
+#~ "returns the object gray level encountered him as a number between 0 and 1023"
 #~ msgstr ""
-#~ "geeft de waargenomen voorwerp grijswaarde terug als een nummer tussen 0 "
-#~ "en 1023"
+#~ "geeft de waargenomen voorwerp grijswaarde terug als een nummer tussen 0 en "
+#~ "1023"
 
 #~ msgid "activity count"
 #~ msgstr "aantal activiteiten"
@@ -4293,16 +3230,10 @@ msgstr "mijnproject"
 #~ msgid "restore last"
 #~ msgstr "herlaad laatste"
 
-#~ msgid ""
-#~ "a programmable block: used to add advanced math equations, e.g., sin(x)"
+#~ msgid "a programmable block: used to add advanced math equations, e.g., sin(x)"
 #~ msgstr ""
-<<<<<<< HEAD
-#~ "een programmeerbaar blok: gebruikt om geavanceerde wisk vergelijkingen "
-#~ "toe te voegen, zoals sin(x)"
-=======
 #~ "een programmeerbaar blok: gebruikt om geavanceerde wisk vergelijkingen toe "
 #~ "te voegen, zoals sin(x)"
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 
 #~ msgid "text size"
 #~ msgstr "tekstgrootte"
@@ -4312,8 +3243,7 @@ msgstr "mijnproject"
 
 #~ msgid "holds current text color (can be used in place of a number block)"
 #~ msgstr ""
-#~ "behoudt deze tekst kleur (kan worden gebruikt in plaats van een "
-#~ "nummerblok)"
+#~ "behoudt deze tekst kleur (kan worden gebruikt in plaats van een nummerblok)"
 
 #~ msgid "picture top"
 #~ msgstr "afbeelding bovenin"
@@ -4350,12 +3280,7 @@ msgstr "mijnproject"
 
 #~ msgid "holds current text size (can be used in place of a number block)"
 #~ msgstr ""
-<<<<<<< HEAD
-#~ "behoudt deze tekstgrootte (kan worden gebruikt in plaats van een "
-#~ "nummerblok)"
-=======
 #~ "behoudt deze tekstgrootte (kan worden gebruikt in plaats van een nummerblok)"
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 
 #~ msgid "<Alt>d"
 #~ msgstr "<Alt>d"
@@ -4383,6 +3308,9 @@ msgstr "mijnproject"
 
 #~ msgid "1×1 pictures"
 #~ msgstr "1x1 afbeeldingen"
+
+#~ msgid "name"
+#~ msgstr "naam"
 
 #~ msgid "stack 2"
 #~ msgstr "stapel 2"

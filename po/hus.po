@@ -1,23 +1,9 @@
-# #-#-#-#-#  hus.po (PACKAGE VERSION)  #-#-#-#-#
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#, fuzzy
 msgid ""
 msgstr ""
-"#-#-#-#-#  hus.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-19 00:33-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.7.0\n"
-"#-#-#-#-#  hus.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-05-17 00:31-0400\n"
@@ -30,1220 +16,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pootle 2.0.5\n"
-
-msgid "turtleart-extras (master)"
-msgstr ""
-
-msgid "Turtle Blocks"
-msgstr ""
-
-# #-#-#-#-#  hus.po (PACKAGE VERSION)  #-#-#-#-#
-# TortugArte = WitsixPet
-msgid "Turtle Art"
-msgstr "Witsix Pet"
-
-msgid "Turtle Art Mini"
-msgstr "Tortug tsipkats tsalpadh t'ajnel"
-
-msgid "Turtle Confusion"
-msgstr "Tortug k'iptsodh tsalpadh t'ajnel"
-
-msgid "Select a challenge"
-msgstr "Takuy jun i ata'intalab"
-
-msgid "Amazonas Tortuga"
-msgstr ""
-
-# #-#-#-#-#  hus.po (PACKAGE VERSION)  #-#-#-#-#
-# Kwene' i Lábtómíb pexujchik
-msgid "Palette of Mexican pesos"
-msgstr "Tsiik nujneltalab k'al an tum'n in k'al an labtomibchik"
-
-# #-#-#-#-#  hus.po (PACKAGE VERSION)  #-#-#-#-#
-# Kwene' i Colombiajíb pexujchik
-msgid "Palette of Colombian pesos"
-msgstr "paleta de pesos colombianos"
-
-msgid "Palette of Rwandan francs"
-msgstr "Kwene' i Rwandajib francos (tumín)"
-
-msgid "Palette of US dollars"
-msgstr "Kwene' i EE. UU dólares (tumín)"
-
-msgid "Palette of Australian dollars"
-msgstr "Kwene' i Australiajib dólares (tumín)"
-
-msgid "Palette of Paraguayan Guaranies"
-msgstr "Kwene' i Paraguayjib Guaraníes"
-
-msgid "Palette of Peruvian Nuevo Soles"
-msgstr "Kwene' i  Perujib  Nuevo Soles (ít tumínchik)"
-
-msgid "Palette of Uruguayan Pesos"
-msgstr "Kwene' i Uruguayjíb Pexuj"
-
-msgid "TurtleBots"
-msgstr "Ts'ejkadh pat'ál Pet"
-
-msgid "TurtleBlocks with Butia, Lego NxT, WeDo, Arduino, FollowMe plugins"
-msgstr ""
-
-msgid "ERROR: The speed must be a value between 0 and 1023"
-msgstr ""
-
-msgid "ERROR: The pin must be between 1 and 8"
-msgstr ""
-
-msgid "ERROR: The value must be 0 or 1, LOW or HIGH"
-msgstr ""
-
-msgid "ERROR: The mode must be INPUT or OUTPUT."
-msgstr ""
-
-msgid "turns LED on and off: 1 means on, 0 means off"
-msgstr ""
-
-msgid "returns the gray level as a value between 0 and 65535"
-msgstr ""
-
-msgid "returns 1 when the button is pressed and 0 otherwise"
-msgstr ""
-"in wichbal jun tam al dhuche' k´wajat ni'adh ti 0 ani k'al pil i ajumtalab"
-
-msgid "returns the light level as a value between 0 and 65535"
-msgstr ""
-
-msgid "returns the distance as a value between 0 and 65535"
-msgstr ""
-
-msgid "returns the resistance value (ohms)"
-msgstr ""
-
-msgid "returns the voltage value (volts)"
-msgstr ""
-
-msgid "returns the temperature"
-msgstr ""
-
-msgid "returns 1 when the sensors detects a magnetic field, 0 otherwise"
-msgstr ""
-"in wuichbal jun tam an ots'bixtalab in 'elal jun xi yab bijidh, ba' an 0 "
-"k'al pil i ajixtalab"
-
-msgid "LED"
-msgstr "LED"
-
-msgid "button"
-msgstr "ni'im"
-
-#: TurtleArt/tabasics.py:295 TurtleArt/tabasics.py:363
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1194
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1199
-msgid "gray"
-msgstr "aku'"
-
-msgid "light"
-msgstr "tajàx"
-
-msgid "temperature"
-msgstr "temperatura"
-
-msgid "distance"
-msgstr "in owát"
-
-#: plugins/audio_sensors/audio_sensors.py:151
-#: plugins/audio_sensors/audio_sensors.py:165
-#: plugins/audio_sensors/audio_sensors.py:179
-#: plugins/audio_sensors/audio_sensors.py:193
-msgid "resistance"
-msgstr "kuxúdh"
-
-#: plugins/audio_sensors/audio_sensors.py:157
-#: plugins/audio_sensors/audio_sensors.py:171
-#: plugins/audio_sensors/audio_sensors.py:185
-#: plugins/audio_sensors/audio_sensors.py:199
-msgid "voltage"
-msgstr "k'amáltsáj"
-
-msgid "Butia Robot"
-msgstr "Robot Butía"
-
-msgid "refresh Butia"
-msgstr "itméjdha' Butiá"
-
-msgid "refresh the state of the Butia palette and blocks"
-msgstr ""
-"ka itméjdhanchij in alwá' an kwene' mukuxtaláb Butiá ani a xi ti pejadh "
-"t'ojláb"
-
-msgid "battery charge Butia"
-msgstr "in dhayal an ti'el butiá"
-
-msgid ""
-"returns the battery charge in volts. If no motors present, it returns 255"
-msgstr ""
-
-msgid "speed Butia"
-msgstr "adhiktaláb butiá"
-
-msgid "set the speed of the Butia motors"
-msgstr ""
-
-msgid "move Butia"
-msgstr ""
-
-#: TurtleArt/tabasics.py:158
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:871
-msgid "left"
-msgstr "k'watab'"
-
-#: TurtleArt/tabasics.py:170
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:895
-msgid "right"
-msgstr "winab"
-
-msgid "moves the Butia motors at the specified speed"
-msgstr ""
-
-msgid "stop Butia"
-msgstr "kuba' Butiá"
-
-msgid "stop the Butia robot"
-msgstr "in k'ubal an pat'al atikláb Butiá"
-
-msgid "forward Butia"
-msgstr "ne'etsnanchij Butiá"
-
-msgid "move the Butia robot forward"
-msgstr "ka edha' an robot ani ka ne'etsnanchij"
-
-msgid "left Butia"
-msgstr "k'watab Butiá"
-
-msgid "turn the Butia robot at left"
-msgstr "in wilk'iyal an pat'al atikláb abal tin winab"
-
-msgid "right Butia"
-msgstr "wínab Butiá"
-
-msgid "turn the Butia robot at right"
-msgstr "in wilk'iyal an pat'al atikláb abal tin winab"
-
-msgid "backward Butia"
-msgstr "wichba' Butiá"
-
-msgid "move the Butia robot backward"
-msgstr "edha' an robot Butiá ani´ka wichba'"
-
-msgid "Butia Robot extra blocks"
-msgstr ""
-
-msgid "hack pin mode"
-msgstr ""
-
-msgid "pin"
-msgstr ""
-"eyindhanel xi ts'upidh anij pulik in ok' xi eynal abal ti ts'at'axtalàb"
-
-msgid "mode"
-msgstr "mod"
-
-msgid "Select the pin function (INPUT, OUTPUT)."
-msgstr ""
-
-msgid "write hack pin Butia"
-msgstr ""
-
-#: TurtleArt/tabasics.py:924 TurtleArt/tawindow.py:4427
-msgid "value"
-msgstr "jalbíl"
-
-msgid "set a hack pin to 0 or 1"
-msgstr ""
-
-msgid "read hack pin Butia"
-msgstr ""
-
-msgid "read the value of a hack pin"
-msgstr ""
-
-msgid "HIGH"
-msgstr "Yejnek"
-
-msgid "Set HIGH value for digital port."
-msgstr ""
-
-msgid "INPUT"
-msgstr "Otseltaláb"
-
-msgid "Configure hack port for digital input."
-msgstr ""
-
-msgid "LOW"
-msgstr "Tsa'at"
-
-msgid "Set LOW value for digital port."
-msgstr ""
-
-msgid "OUTPUT"
-msgstr ""
-
-msgid "Configure hack port for digital output."
-msgstr ""
-
-msgid "Butia"
-msgstr "Butiá"
-
-msgid "ERROR: The pin %s must be in OUTPUT mode."
-msgstr ""
-
-msgid "ERROR: The pin %s must be in INPUT mode."
-msgstr ""
-
-msgid "Error importing Pygame. This plugin require Pygame 1.9"
-msgstr ""
-
-#, fuzzy
-msgid "Error on initialization of the camera"
-msgstr ""
-"#-#-#-#-#  hus.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  hus.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"K'ibts'ontalab al in tujtal ba' an k'ot'bixtalab"
-
-msgid "No camera was found"
-msgstr ""
-
-msgid "Error stopping camera"
-msgstr ""
-
-msgid "Error starting camera"
-msgstr ""
-
-msgid "Error in get mask"
-msgstr ""
-
-msgid "FollowMe"
-msgstr "FollowMe"
-
-msgid "refresh FollowMe"
-msgstr ""
-
-msgid "Search for a connected camera."
-msgstr "In aliyal al jun i brinck NXT xi ts'ot'k'odh."
-
-msgid "calibration"
-msgstr "t'ójojodhtaláb"
-
-msgid "store a personalized calibration"
-msgstr "wichba' jún i t'ójojodhtaláb ta kwetém k'ál"
-
-msgid "return a personalized calibration"
-msgstr "wichba' jún i t'ójojodhtaláb ta kwetém k'ál"
-
-msgid "follow"
-msgstr "áynanchij"
-
-msgid "follow a color or calibration"
-msgstr "áyna' jún i mukuxtaláb o, i t'ójojodhtaláb"
-
-#: plugins/camera_sensor/camera_sensor.py:80
-#: plugins/camera_sensor/camera_sensor.py:93
-#: plugins/camera_sensor/camera_sensor.py:128
-#: plugins/camera_sensor/camera_sensor.py:141
-#: plugins/light_sensor/light_sensor.py:56
-#: plugins/light_sensor/light_sensor.py:63
-msgid "brightness"
-msgstr "mak'i'"
-
-msgid "set the camera brightness as a value between 0 to 255."
-msgstr ""
-
-msgid "minimum pixels"
-msgstr "we'kats in ák'"
-
-msgid "set the minimal number of pixels to follow"
-msgstr "uluw an we'kats ák 'ajixtaláb  a xi ne'ets ka áyna'"
-
-msgid "threshold"
-msgstr "ti wi'leb"
-
-msgid "set a threshold for a RGB color"
-msgstr "in tejwamedhal an umbral abal jun i mukuxtaláb RGB"
-
-msgid "camera mode"
-msgstr ""
-
-msgid "set the color mode of the camera: RGB; YUV or HSV"
-msgstr ""
-
-msgid "get brightness"
-msgstr ""
-
-msgid "get the brightness of the ambient light"
-msgstr ""
-
-msgid "average color"
-msgstr ""
-
-msgid ""
-"if set to 0 then color averaging is off during calibration; for other values "
-"it is on"
-msgstr ""
-
-msgid "x position"
-msgstr "jun ejet x"
-
-msgid "return x position"
-msgstr "ka wichba' jun ejet x"
-
-msgid "y position"
-msgstr "jun ejet y"
-
-msgid "return y position"
-msgstr "ka wichba' jun ejet y"
-
-msgid "pixels"
-msgstr "ajidh alwa'"
-
-msgid "return the number of pixels of the biggest blob"
-msgstr "ka wichba' in ák' ajixtal an mink'oxtaláb a xi wat'adh púlik"
-
-msgid "set the color mode of the camera to RGB"
-msgstr ""
-
-msgid "set the color mode of the camera to YUV"
-msgstr ""
-
-msgid "set the color mode of the camera to HSV"
-msgstr ""
-
-msgid "empty calibration"
-msgstr "jolát t'ójojodhtaláb"
-
-msgid "error in string conversion"
-msgstr "uk'pintaláb al an wilk'intaláb xi ti polts'óx dhuchlab"
-
-msgid "Pattern detection"
-msgstr ""
-
-msgid "Seeing signal"
-msgstr ""
-
-msgid "Returns True if the signal is in front of the camera"
-msgstr ""
-
-msgid "Distance to signal"
-msgstr ""
-
-msgid "Returns the distance of the signal to the camera in millimeters"
-msgstr ""
-
-msgid "SumBot"
-msgstr "SumBot"
-
-msgid "speed SumBot"
-msgstr "adhik SumBot"
-
-msgid "submit the speed to the SumBot"
-msgstr "tejwa'méjdhanchij in adhiktal an SumBot"
-
-msgid "set the default speed for the movement commands"
-msgstr "ka t'ipoy an adhiktalab abal an abatnom tam ka ejelats"
-
-msgid "forward SumBot"
-msgstr "ne'etsnanchij SumBot"
-
-msgid "move SumBot forward"
-msgstr "yatsiy an SumBot abal tin t'amal"
-
-msgid "backward SumBot"
-msgstr "tin kùx an SumBot"
-
-msgid "move SumBot backward"
-msgstr "ka yatsiy an tipoxtalàb abal tin kux"
-
-msgid "stop SumBot"
-msgstr "ka kuba' an tipoxtalàb"
-
-msgid "stop the SumBot"
-msgstr "in koydhal an tipoxtalàb"
-
-msgid "left SumBot"
-msgstr "k'wàtab an tipoxtalàb"
-
-msgid "turn left the SumBot"
-msgstr "ka wilk'iy an tipoxtalàb abal tin k'wàtab"
-
-msgid "right SumBot"
-msgstr "winab tipoxtalàb"
-
-msgid "turn right the SumBot"
-msgstr "wilk'iy an tipoxtalàb abal tin winab"
-
-msgid "angle to center"
-msgstr "kexem ba' in ts'ejeltal"
-
-msgid "get the angle to the center of the dohyo"
-msgstr "ka kanchij in keyem ba' in ts'ejeltal an dohyo"
-
-msgid "angle to Enemy"
-msgstr "kexem an k'eat tsalapil"
-
-msgid "get the angle to the Enemy"
-msgstr "ka kanchij in owát an k'eat Tsalapil"
-
-msgid "x coor. SumBot"
-msgstr "coor. x SumBot"
-
-msgid "get the x coordinate of the SumBot"
-msgstr "ka kanchij an elax kits'lab x an robot"
-
-msgid "y coor. SumBot"
-msgstr "coor. y SumBot"
-
-msgid "get the y coordinate of the SumBot"
-msgstr "in kanchij an elax kits'lab an robot"
-
-msgid "x coor. Enemy"
-msgstr "coor. x k'eat tsalapil"
-
-msgid "get the x coordinate of the Enemy"
-msgstr "ka kanchij an elax kits'lab x an robot"
-
-msgid "y coor. Enemy"
-msgstr "coor. y k'eat tsalapil"
-
-msgid "get the y coordinate of the Enemy"
-msgstr "in kanchij an elax kits'lab an robot"
-
-msgid "rotation SumBot"
-msgstr "wilil SumBot"
-
-msgid "get the rotation of the Sumbot"
-msgstr "ka kanchij an wililtalab jun puk'e'"
-
-msgid "rotation Enemy"
-msgstr "wilil k'eat tsalapil"
-
-msgid "get the rotation of the Enemy"
-msgstr "ka kanchij an wililtalab jun Puk'e'"
-
-msgid "distance to center"
-msgstr "in owát an ts'ejeltal"
-
-msgid "get the distance to the center of the dohyo"
-msgstr "ka kanchij in owát an ts'ejeltal xi dohyo"
-
-msgid "distance to Enemy"
-msgstr "in owàt xin k'eat tsalapil"
-
-msgid "get the distance to the Enemy"
-msgstr "ka kanchij in owát an k'eat Tsalapil"
-
-msgid "update information"
-msgstr "ka itmedha' an olchixtalab"
-
-msgid "update information from the server"
-msgstr "ka itmedha' an olchixtalab ba' an ábatnom"
-
-# #-#-#-#-#  hus.po (PACKAGE VERSION)  #-#-#-#-#
-# sensor = ats'ax
-msgid "Palette of physics blocks"
-msgstr "In kwene' mukuxtaláb ti ats'ax kwene' t'ojláb"
-
-msgid "start polygon"
-msgstr "tujchiy yan walt'etil"
-
-msgid "Begin defining a new polygon based on the current Turtle xy position."
-msgstr ""
-"Ka tujchij ka bijiy an it yan walt'elil jantodha ti kw'ajat xokij xy in k'al "
-"an pet."
-
-msgid "add point"
-msgstr "ka punk'uy an tuk"
-
-msgid ""
-"Add a new point to the current polygon based on the current Turtle xy "
-"position."
-msgstr ""
-"Ka punk'uy jun i it tuk al an yan walt'elil xi kwajat xokij xy al an pet."
-
-msgid "end polygon"
-msgstr "puntundha yan walt'elil"
-
-msgid "Define a new polygon."
-msgstr "Ka bijiy jun i it yan walt'elil."
-
-msgid "end filled polygon"
-msgstr "ka putundha an yan walt'elil xi t'uchidh"
-
-msgid "Not a simple polygon"
-msgstr "Yab i yan walt'elil alk'idh"
-
-msgid "Define a new filled polygon."
-msgstr "In bijiyal jun i it yan walt'elil xi t'uchidh."
-
-msgid "triangle"
-msgstr "òx ts'upi'"
-
-msgid "base"
-msgstr "in akan"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:911
-msgid "height"
-msgstr "t'ek'em"
-
-msgid "Add a triangle object to the project."
-msgstr "In punk'uyal jun i eyixtalàb al an òx ts'upi' al an tojlàb."
-
-msgid "circle"
-msgstr "kw'echo'"
-
-msgid "Add a circle object to the project."
-msgstr "An punk'uyal jun i eyixtalàb al an kw'echo' abal an tojlàb."
-
-msgid "rectangle"
-msgstr "pek'madh tse' walte'"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:887
-msgid "width"
-msgstr "ts'ikwél"
-
-msgid "Add a rectangle object to the project."
-msgstr "In punk'uyal jun i eyixtalàb pek'madh tse' walte' al an tojlàb."
-
-msgid "reset"
-msgstr "tsab tujchi'"
-
-msgid "Reset the project; clear the object list."
-msgstr ""
-"Ka tsàb tujchi' an tojlàb, in t'okedhal an eyixtalàb xi kwajat k'elbadh."
-
-msgid "motor"
-msgstr "ichich pat'al"
-
-msgid "torque"
-msgstr "jayetsek'ij"
-
-msgid "speed"
-msgstr "adhiktalàb"
-
-msgid ""
-"Motor torque and speed range from 0 (off) to positive numbers; motor is "
-"placed on the most recent object created."
-msgstr ""
-"Xi jayetsek'ij an adhiktalàb al an ichich pat'al xi kwajat al an rango 0 "
-"(tepts'idh) al an ajixtalàb positivos; an ichich pat'al kwajat punudh al an "
-"eyixtalàb xi inkidh itej."
-
-msgid "Pin an object down so that it cannot fall."
-msgstr "In teynal an eyixtalàb abal yab ka ijkan."
-
-msgid "joint"
-msgstr "junkudh"
-
-#: TurtleArt/tabasics.py:195 TurtleArt/tabasics.py:261
-msgid "x"
-msgstr "x"
-
-#: TurtleArt/tabasics.py:195 TurtleArt/tabasics.py:261
-msgid "y"
-msgstr "y"
-
-msgid ""
-"Join two objects together (the most recent object created and the object at "
-"point x, y)."
-msgstr ""
-"In tamkuyal tsab i eyixtalàb (an eyixtalàb xi inkidh anij an eyixtalàb xi "
-"kwajat al an tuk x,y)."
-
-# #-#-#-#-#  hus.po (PACKAGE VERSION)  #-#-#-#-#
-# actividad física=t'ojondha' i iniktal
-# dhaya' jant'ini' i t'ojláb abal ki t'ojondha' i iniktal
-msgid "save as Physics activity"
-msgstr "dhaya' jant'ini' i física t'ojláb"
-
-msgid "Save the project to the Journal as a Physics activity."
-msgstr "In dhayal an t'ojlàb al an chudhèl dhuchlab fisica."
-
-msgid "gear"
-msgstr "kwechoch"
-
-# #-#-#-#-#  hus.po (PACKAGE VERSION)  #-#-#-#-#
-# Punk'unchij jún i kwechoch eyixtaláb ti tsalapnadh t'ojláb
-msgid "Add a gear object to the project."
-msgstr "An punk'uyal jun i eyixtalàb al an kwechoch abal an tojlàb."
-
-msgid "density"
-msgstr "alemtalàb"
-
-msgid ""
-"Set the density property for objects (density can be any positive number)."
-msgstr ""
-"In bijiyal an àlemtalàb kal an eyixtalàb (an àlemtalàb neèts bijidh jawakits "
-"ajumtalàb xi chubax)."
-
-msgid "friction"
-msgstr "tam i tadhanal jit'a, o tam u yats'nal"
-
-msgid ""
-"Set the friction property for objects (value from 0 to 1, where 0 turns "
-"friction off and 1 is strong friction)."
-msgstr ""
-"In bijiyal in uchbil tam i tadhanal jant'o o jun i eyixtalàb (in alèm "
-"nijant'o anij jun, ju'ta' nijant'o jats' tam i tadhanal anij jun jats xi "
-"ts'apik)."
-
-msgid "bounciness"
-msgstr "in wichbàl jun i eyindhanel xin kwa'alak tin k'ubak owatits"
-
-msgid ""
-"Set the bounciness property for objects (a value from 0 to 1, where 0 means "
-"no bounce and 1 is very bouncy)."
-msgstr ""
-"In bijiyal in uchbil kal an eyixtalàb xin kwa'alak tin k'ubak (in alèm "
-"nijjanto' ani jun, ju'ta nijanto' in le' kin uluw in wichbal ani jun in le' "
-"kin uluw yan)."
-
-msgid "dynamic"
-msgstr "kulbel"
-
-msgid ""
-"If dynamic = 1, the object can move; if dynamic = 0, it is fixed in position."
-msgstr ""
-"Kulbel=jun, an eyixtalàb in ejtowal ka yats'in; kulbel=nijanto, jilkonal "
-"k'ubat yab yats'nal."
-
-# #-#-#-#-#  hus.po (PACKAGE VERSION)  #-#-#-#-#
-# sensor = ats'ax
-msgid "Palette of WeDo blocks"
-msgstr "I kwene' mukuxtaláb ti ats'ax kwene' t'ojláb"
-
-msgid "WeDo"
-msgstr ""
-
-msgid "set current WeDo device"
-msgstr ""
-
-msgid "number of WeDo devices"
-msgstr ""
-
-msgid "tilt"
-msgstr "pélat"
-
-msgid ""
-"tilt sensor output: (-1 == no tilt, 0 == tilt forward, 3 == tilt back, 1 == "
-"tilt left, 2 == tilt right)"
-msgstr ""
-"kalnib k'al an pelat ots'oxtaláb: (-1 == yab k´wajat pélat, 0 == pelat ti in "
-"áy, 3 == pelat ti in kúx, 1==pelat ti in k'watab, 2 ==pelat ti in winab))"
-
-msgid "distance sensor output"
-msgstr "bel xin elàl in owèm"
-
-msgid "Motor A"
-msgstr "Ichich pat'al A"
-
-msgid "returns the current value of Motor A"
-msgstr "in wichbal in alèm xin kwaàl an ichich pat'al A"
-
-msgid "Motor B"
-msgstr "Ichich pat'al B"
-
-msgid "returns the current value of Motor B"
-msgstr "in wichbal in alèm xin kwa'al al an ichich pat'al B"
-
-msgid "set the value for Motor A"
-msgstr "in elàl in alèm an ichich pat'al A"
-
-msgid "set the value for Motor B"
-msgstr "in elal in alèm an ichich pat'al B"
-
-msgid "WeDo is unavailable"
-msgstr ""
-
-msgid "WeDo %d is unavailable; defaulting to 1"
-msgstr ""
-
-msgid "%(device)s is unavailable on WeDo %(wedo_number)d"
-msgstr ""
-
-msgid "Palette of LEGO NXT blocks of motors"
-msgstr ""
-
-msgid "Palette of LEGO NXT blocks of sensors"
-msgstr ""
-
-msgid "touch"
-msgstr "dhuche'"
-
-msgid "ultrasonic"
-msgstr "owèm"
-
-#: TurtleArt/tabasics.py:283 TurtleArt/tabasics.py:294
-#: TurtleArt/tabasics.py:344
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1197
-msgid "color"
-msgstr "mukuxtaláb"
-
-#: plugins/audio_sensors/audio_sensors.py:83
-#: plugins/audio_sensors/audio_sensors.py:98 pysamples/grecord.py:205
-msgid "sound"
-msgstr "kawidhtaláb"
-
-#, fuzzy
-msgid "Please check the connection with the brick"
-msgstr ""
-"#-#-#-#-#  hus.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  hus.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"T'ajchij an alwa'talàb ka met'a ju'taj ti ts'atadh kal an brinck."
-
-msgid "Invalid port '%s'. Port must be: PORT A, B or C"
-msgstr ""
-
-msgid "Invalid port '%s'. Port must be: PORT 1, 2, 3 or 4"
-msgstr ""
-
-#, fuzzy
-msgid "The value of power must be between -127 to 127"
-msgstr ""
-"#-#-#-#-#  hus.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  hus.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"In alèm an tsapiktalàb ne'ets ti - 127 y 127."
-
-msgid "The parameter must be a integer, not '%s'"
-msgstr ""
-
-#, fuzzy
-msgid "An error has occurred: check all connections and try to reconnect"
-msgstr ""
-"#-#-#-#-#  hus.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  hus.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Jun i k'ibts'ontalàb watenek: ka met'a an ts'ot'koxtalàb anij ka tsab "
-"ts'ot'k'oy."
-
-msgid "NXT found %s bricks"
-msgstr ""
-
-msgid "NXT not found"
-msgstr "NXT yab eladh"
-
-msgid "Brick number %s was not found"
-msgstr ""
-
-msgid "refresh NXT"
-msgstr "itmèdha' NXT"
-
-msgid "Search for a connected NXT brick."
-msgstr "In aliyal al jun i brinck NXT xi ts'ot'k'odh."
-
-msgid "NXT"
-msgstr ""
-
-msgid "set current NXT device"
-msgstr ""
-
-msgid "number of NXT devices"
-msgstr ""
-
-msgid "brick name"
-msgstr ""
-
-msgid "Get the name of a brick."
-msgstr ""
-
-msgid "play tone"
-msgstr "tsab watba' in janidh"
-
-msgid "frequency"
-msgstr ""
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:451
-msgid "time"
-msgstr "k'ij"
-
-#, fuzzy
-msgid "Play a tone at frequency for time."
-msgstr ""
-"#-#-#-#-#  hus.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  hus.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"in tsab wat'bàl in janidh al an ik' 'frec' al jun i ajumtal an k'ij."
-
-msgid ""
-"turn motor\n"
-"\n"
-msgstr ""
-
-msgid "port"
-msgstr "wi'leb"
-
-msgid "power"
-msgstr "tsapìk"
-
-msgid "rotations"
-msgstr "wilil"
-
-msgid "turn a motor"
-msgstr "in wilk'iyal an ichich patàl"
-
-msgid ""
-"synchronize\n"
-"\n"
-"motors"
-msgstr ""
-
-msgid "steering"
-msgstr ""
-
-msgid "synchronize two motors connected in PORT B and PORT C"
-msgstr ""
-
-msgid "PORT A"
-msgstr "Wi'leb A"
-
-msgid "PORT A of the brick"
-msgstr "WI'LEB A del brick"
-
-msgid "PORT B"
-msgstr "Wi'leb B"
-
-msgid "PORT B of the brick"
-msgstr "WI'LEB B del brinck"
-
-msgid "PORT C"
-msgstr "Wi'leb C"
-
-msgid "PORT C of the brick"
-msgstr "WI'LEB C del brinck"
-
-msgid ""
-"synchronize\n"
-"motors"
-msgstr ""
-
-msgid "start motor"
-msgstr "tujchij ichich pat'al"
-
-msgid "Run a motor forever."
-msgstr "Ka wilk'iy an ichich pat'al abal ets'ey."
-
-msgid "brake motor"
-msgstr "ka k'uba' an ichich pat'al"
-
-msgid "Stop a specified motor."
-msgstr "In kubàl jun i ichich pat'al xi bijidhits."
-
-msgid "reset motor"
-msgstr ""
-
-msgid "Reset the motor counter."
-msgstr ""
-
-msgid "motor position"
-msgstr ""
-
-msgid "Get the motor position."
-msgstr ""
-
-msgid "PORT 1"
-msgstr "Wi'leb jun"
-
-msgid "PORT 1 of the brick"
-msgstr "WI'LEB jun kal an brinck"
-
-msgid "read"
-msgstr "tsakni'"
-
-msgid "sensor"
-msgstr ""
-
-msgid "Read sensor output."
-msgstr ""
-
-msgid "PORT 2"
-msgstr "Wi'leb tsab"
-
-msgid "PORT 2 of the brick"
-msgstr "WI'LEB tsab kal an brinck"
-
-msgid "light sensor"
-msgstr ""
-
-msgid "gray sensor"
-msgstr ""
-
-msgid "PORT 3"
-msgstr "Wi'leb òx"
-
-msgid "PORT 3 of the brick"
-msgstr "WI'LEB A del brick"
-
-msgid "touch sensor"
-msgstr ""
-
-msgid "distance sensor"
-msgstr ""
-
-msgid "PORT 4"
-msgstr "Wi'leb tsè"
-
-msgid "PORT 4 of the brick"
-msgstr "WI'LEB A del brick"
-
-msgid "sound sensor"
-msgstr ""
-
-msgid "color sensor"
-msgstr ""
-
-msgid "set light"
-msgstr ""
-
-msgid "Set color sensor light."
-msgstr ""
-
-msgid "battery level"
-msgstr ""
-
-msgid "Get the battery level of the brick in millivolts"
-msgstr ""
-
-msgid "Palette of Arduino blocks"
-msgstr "I kwene' mukuxtaláb ti ats'ax kwene' t'ojláb"
-
-msgid "PWM"
-msgstr ""
-
-msgid "SERVO"
-msgstr ""
-
-msgid "ERROR: Check the Arduino and the number of port."
-msgstr ""
-
-msgid "ERROR: Value must be a number from 0 to 255."
-msgstr ""
-
-msgid "ERROR: Value must be either HIGH or LOW, 0 or 1"
-msgstr ""
-
-msgid "ERROR: The mode must be either INPUT, OUTPUT, PWM or SERVO."
-msgstr ""
-
-msgid "ERROR: The value must be an integer."
-msgstr ""
-
-msgid "ERROR: The pin must be an integer."
-msgstr ""
-
-msgid "refresh Arduino"
-msgstr ""
-
-msgid "Search for connected Arduinos."
-msgstr ""
-
-msgid "Arduino"
-msgstr ""
-
-msgid "set current Arduino board"
-msgstr ""
-
-msgid "number of Arduinos"
-msgstr ""
-
-msgid "number of Arduino boards"
-msgstr ""
-
-msgid "Arduino name"
-msgstr ""
-
-msgid "Get the name of an Arduino."
-msgstr ""
-
-msgid "pin mode"
-msgstr ""
-
-msgid "Select the pin function (INPUT, OUTPUT, PWM, SERVO)."
-msgstr ""
-
-msgid "analog write"
-msgstr ""
-
-msgid "Write analog value in specified port."
-msgstr ""
-
-msgid "analog read"
-msgstr ""
-
-msgid ""
-"Read value from analog port. Value may be between 0 and 1023. Use Vref to "
-"determine voltage. For USB, volt=((read)*5)/1024) approximately."
-msgstr ""
-
-msgid "digital write"
-msgstr ""
-
-msgid "Write digital value to specified port."
-msgstr ""
-
-msgid "digital read"
-msgstr ""
-
-msgid "Read value from digital port."
-msgstr ""
-
-msgid "Configure Arduino port for digital input."
-msgstr ""
-
-msgid "Configure Arduino port to drive a servo."
-msgstr ""
-
-msgid "Configure Arduino port for digital output."
-msgstr ""
-
-msgid "Configure Arduino port for PWM (pulse-width modulation)."
-msgstr ""
-
-msgid "Not found Arduino %s"
-msgstr ""
-
-msgid "The pin must be an integer"
-msgstr ""
-
-msgid "The device must be an integer"
-msgstr ""
-
-msgid "Palette of Expeyes blocks"
-msgstr "I kwene' mukuxtaláb ti ats'ax kwene' t'ojláb"
-
-msgid "set PVS"
-msgstr ""
-
-msgid "set programmable voltage output"
-msgstr ""
-
-msgid "set SQR1 voltage"
-msgstr ""
-
-msgid "set square wave 1 voltage output"
-msgstr ""
-
-msgid "set SQR2 voltage"
-msgstr ""
-
-msgid "set square wave 2 voltage output"
-msgstr ""
-
-msgid "set OD1"
-msgstr ""
-
-msgid "set digital output level (OD1) low (0) or high (1)"
-msgstr ""
-
-msgid "IN1 level"
-msgstr ""
-
-msgid ""
-"returns 1 if IN1 voltage level >2.5 volts, 0 if IN1 voltage level <= 2.5 "
-"volts"
-msgstr ""
-
-msgid "IN2 level"
-msgstr ""
-
-msgid ""
-"returns 1 if IN2 voltage level >2.5 volts, 0 if IN2 voltage level <= 2.5 "
-"volts"
-msgstr ""
-
-msgid "SEN level"
-msgstr ""
-
-msgid ""
-"returns 1 if resistive sensor (SEN) voltage level > 2.5 volts, 0 if SEN "
-"voltage level <= 2.5 volts"
-msgstr ""
-
-msgid "capture"
-msgstr ""
-
-msgid "input"
-msgstr ""
-
-msgid "samples"
-msgstr ""
-
-msgid "interval"
-msgstr ""
-
-msgid ""
-"capture multiple samples from input at interval (MS); results pushed to FIFO"
-msgstr ""
-
-msgid "A1"
-msgstr ""
-
-msgid "read analog input 1 voltage"
-msgstr ""
-
-msgid "A2"
-msgstr ""
-
-msgid "read analog input 2 voltage"
-msgstr ""
-
-msgid "IN1"
-msgstr ""
-
-msgid "read input 1 voltage"
-msgstr ""
-
-msgid "IN2"
-msgstr ""
-
-msgid "read input 2 voltage"
-msgstr ""
-
-msgid "SEN"
-msgstr ""
-
-msgid "read analog sensor input voltage"
-msgstr ""
-
-msgid "SQR1"
-msgstr ""
-
-msgid "read square wave 1 voltage"
-msgstr ""
-
-msgid "SQR2"
-msgstr ""
-
-msgid "read square wave 2 voltage"
-msgstr ""
-
-msgid "PVS"
-msgstr ""
-
-msgid "read programmable voltage"
-msgstr ""
-
-msgid "Expeyes device not found"
-msgstr ""
-<<<<<<< HEAD
-=======
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-17 00:31-0400\n"
-"PO-Revision-Date: 2012-10-10 10:02+0200\n"
-"Last-Translator: Chris <cjl@laptop.org>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: hus\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.0.5\n"
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 
 #. TRANS: "name" option from activity.info file
 #, fuzzy
@@ -1291,28 +63,22 @@ msgstr "t'oka'"
 msgid "clears the screen and reset the turtle"
 msgstr "in t'okál an walek ani in wichk'owal an pet"
 
-<<<<<<< HEAD
-=======
 #: TurtleArt/tabasics.py:158
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:871
 msgid "left"
 msgstr "k'watab'"
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:162
 msgid "turns turtle counterclockwise (angle in degrees)"
 msgstr ""
 "in tsawindhál an pet ti in k'et'ach jant'ojdha' ti belal an lejbaxk'ij "
 "(t'ipchidh in kexem)"
 
-<<<<<<< HEAD
-=======
 #: TurtleArt/tabasics.py:170
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:895
 msgid "right"
 msgstr "winab"
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:174
 msgid "turns turtle clockwise (angle in degrees)"
 msgstr "in tsawindhál an pet jant'ojdha' an lejbaxk'ij (t'ipchidh in kexem)"
@@ -1338,8 +104,6 @@ msgstr "ka yatsiy an pet ti in nakél an pulich"
 msgid "set xy"
 msgstr "ka ts'at'ba' xy"
 
-<<<<<<< HEAD
-=======
 #: TurtleArt/tabasics.py:195 TurtleArt/tabasics.py:261
 msgid "x"
 msgstr "x"
@@ -1348,7 +112,6 @@ msgstr "x"
 msgid "y"
 msgstr "y"
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:199 TurtleArt/tabasics.py:265
 msgid ""
 "moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
@@ -1414,15 +177,12 @@ msgstr "I kwene' abatnaxtaláb k'al an kits'oxtaláb"
 msgid "fill screen"
 msgstr "ka t'uchiy an walek"
 
-<<<<<<< HEAD
-=======
 #: TurtleArt/tabasics.py:283 TurtleArt/tabasics.py:294
 #: TurtleArt/tabasics.py:344
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1197
 msgid "color"
 msgstr "mukuxtaláb"
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 # in alwá' an mukuxtaláb
 #: TurtleArt/tabasics.py:283 TurtleArt/tabasics.py:295
 #: TurtleArt/tabasics.py:354
@@ -1435,15 +195,12 @@ msgstr "in tsapik in majub"
 msgid "fills the background with (color, shade)"
 msgstr "ka t'uchinchij in wal k'an (mukuxtaláb)"
 
-<<<<<<< HEAD
-=======
 #: TurtleArt/tabasics.py:295 TurtleArt/tabasics.py:363
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1194
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1199
 msgid "gray"
 msgstr "aku'"
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:309
 msgid "set color"
 msgstr "ka ts'at'ba' an mukuxtaláb"
@@ -1754,8 +511,7 @@ msgstr "aychíj"
 
 #: TurtleArt/tabasics.py:743
 msgid "pauses program execution a specified number of seconds"
-msgstr ""
-"in kubál jun i wé an k'ij tam kw'ajat ti t'ojnal jun i tsalpadh t'ojláb"
+msgstr "in kubál jun i wé an k'ij tam kw'ajat ti t'ojnal jun i tsalpadh t'ojláb"
 
 #: TurtleArt/tabasics.py:750
 msgid "forever"
@@ -1915,13 +671,10 @@ msgstr "ki dhaya' ti"
 msgid "box"
 msgstr "baltse'"
 
-<<<<<<< HEAD
-=======
 #: TurtleArt/tabasics.py:924 TurtleArt/tawindow.py:4427
 msgid "value"
 msgstr "jalbíl"
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:928 TurtleArt/tabasics.py:942
 #: TurtleArt/tawindow.py:1355 TurtleArt/tawindow.py:1486
 #: TurtleArt/tawindow.py:2081 TurtleArt/tawindow.py:4390
@@ -2090,7 +843,6 @@ msgstr ""
 #: TurtleArt/tawindow.py:1531 TurtleArt/tawindow.py:1546
 msgid "Really overwrite stack?"
 msgstr ""
-<<<<<<< HEAD
 
 #: TurtleArt/tawindow.py:1534 TurtleArt/tawindow.py:1574
 #: gnome_plugins/uploader_plugin.py:144
@@ -2110,27 +862,6 @@ msgstr ""
 msgid "Really delete stack?"
 msgstr ""
 
-=======
-
-#: TurtleArt/tawindow.py:1534 TurtleArt/tawindow.py:1574
-#: gnome_plugins/uploader_plugin.py:144
-msgid "Cancel"
-msgstr "T'apiy"
-
-#: TurtleArt/tawindow.py:1538 TurtleArt/tawindow.py:1549
-msgid "Overwrite stack"
-msgstr ""
-
-#: TurtleArt/tawindow.py:1570 TurtleArt/tawindow.py:1578
-#: TurtleArt/tawindow.py:1588 TurtleArtActivity.py:634 turtleblocks.py:399
-msgid "Delete stack"
-msgstr ""
-
-#: TurtleArt/tawindow.py:1571 TurtleArt/tawindow.py:1585
-msgid "Really delete stack?"
-msgstr ""
-
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tawindow.py:4215
 msgid "image"
 msgstr "t'iplab"
@@ -2409,8 +1140,8 @@ msgid ""
 "You must have an account at http://turtleartsite.sugarlabs.org to upload "
 "your project."
 msgstr ""
-"In yejenchal ka ko'oy jun i kwet-ajixtaláb ti http://turtleartsite.sugarlabs."
-"org to upload your project."
+"In yejenchal ka ko'oy jun i kwet-ajixtaláb ti "
+"http://turtleartsite.sugarlabs.org to upload your project."
 
 #: gnome_plugins/uploader_plugin.py:99
 msgid "Username:"
@@ -2459,6 +1190,11 @@ msgstr "lejbaxadhiklab"
 msgid "push acceleration in x, y, z to heap"
 msgstr "ka punchik an adhiktalab al in tsejeltal x,y z al an dhaykom tsaplab"
 
+#: plugins/audio_sensors/audio_sensors.py:83
+#: plugins/audio_sensors/audio_sensors.py:98 pysamples/grecord.py:205
+msgid "sound"
+msgstr "kawidhtaláb"
+
 #: plugins/audio_sensors/audio_sensors.py:84
 #: plugins/audio_sensors/audio_sensors.py:99
 msgid "raw microphone input signal"
@@ -2485,6 +1221,13 @@ msgstr "janidhtaláb"
 msgid "microphone input pitch"
 msgstr "jolát an otseltaláb ti kawidhomtaláb"
 
+#: plugins/audio_sensors/audio_sensors.py:151
+#: plugins/audio_sensors/audio_sensors.py:165
+#: plugins/audio_sensors/audio_sensors.py:179
+#: plugins/audio_sensors/audio_sensors.py:193
+msgid "resistance"
+msgstr "kuxúdh"
+
 #: plugins/audio_sensors/audio_sensors.py:152
 #: plugins/audio_sensors/audio_sensors.py:166
 #: plugins/audio_sensors/audio_sensors.py:180
@@ -2493,6 +1236,13 @@ msgid "microphone input resistance"
 msgstr ""
 "in jalbidh in kuxúdh ts'ot'kodh ti otseltaláb k'al an kawidhomtaláb (ajidh "
 "ti 700 ma ti 14000 ohms)"
+
+#: plugins/audio_sensors/audio_sensors.py:157
+#: plugins/audio_sensors/audio_sensors.py:171
+#: plugins/audio_sensors/audio_sensors.py:185
+#: plugins/audio_sensors/audio_sensors.py:199
+msgid "voltage"
+msgstr "k'amáltsáj"
 
 #: plugins/audio_sensors/audio_sensors.py:158
 #: plugins/audio_sensors/audio_sensors.py:172
@@ -2508,6 +1258,15 @@ msgstr ""
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:139
 msgid "Palette of media objects"
 msgstr "Kwene' i eyextaláb multimedia"
+
+#: plugins/camera_sensor/camera_sensor.py:80
+#: plugins/camera_sensor/camera_sensor.py:93
+#: plugins/camera_sensor/camera_sensor.py:128
+#: plugins/camera_sensor/camera_sensor.py:141
+#: plugins/light_sensor/light_sensor.py:56
+#: plugins/light_sensor/light_sensor.py:63
+msgid "brightness"
+msgstr "mak'i'"
 
 #: plugins/camera_sensor/camera_sensor.py:82
 #: plugins/camera_sensor/camera_sensor.py:130
@@ -2799,13 +1558,10 @@ msgstr "an pet tsu'ux"
 msgid "returns the color that the turtle \"sees\""
 msgstr "ka ólna' an mukuxtaláb a xi in \"tsu'tal\" an pet"
 
-<<<<<<< HEAD
-=======
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:451
 msgid "time"
 msgstr "k'ij"
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 # segundo = adhik k'ij
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:454
 msgid "elapsed time (in seconds) since program started"
@@ -3097,13 +1853,10 @@ msgstr "alam"
 msgid "ycor of bottom of screen"
 msgstr "ycor tin walte'il alal an waldhuchumtalab"
 
-<<<<<<< HEAD
-=======
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:887
 msgid "width"
 msgstr "ts'ikwél"
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:890
 msgid "the canvas width"
 msgstr "tin ts'ikwém an telmaxtaláb"
@@ -3116,13 +1869,10 @@ msgstr "xcor tin walte' winbéj ti waldhuchumtaláb"
 msgid "ycor of top of screen"
 msgstr "ycor tin walte' ti eblim an waldhuchumtaláb"
 
-<<<<<<< HEAD
-=======
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:911
 msgid "height"
 msgstr "t'ek'em"
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:914
 msgid "the canvas height"
 msgstr "t'ek'em an telmaxtaláb"
@@ -3304,8 +2054,6 @@ msgstr "Yab a dhaya' an t'ojláb. ¿A kulbétnal ka dhaya' ok'xidh ki it kalej?"
 msgid "Save project?"
 msgstr "¿Ki dhaya' an tsalapnadh t'ojláb?"
 
-<<<<<<< HEAD
-=======
 # TortugArte = WitsixPet
 #~ msgid "Turtle Art"
 #~ msgstr "Witsix Pet"
@@ -3345,7 +2093,6 @@ msgstr "¿Ki dhaya' an tsalapnadh t'ojláb?"
 #~ msgid "Palette of Uruguayan Pesos"
 #~ msgstr "Kwene' i Uruguayjíb Pexuj"
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 # In junkunchal in tsapík xi ti LED ti al an 0 ani 255
 #~ msgid "adjust LED intensity between 0 and 255"
 #~ msgstr "in lejbayal in tsapík xi LED k'al 0 ani 255"
@@ -3361,13 +2108,12 @@ msgstr "¿Ki dhaya' an tsalapnadh t'ojláb?"
 
 #~ msgid "returns the ambient light level as a number between 0 and 1023"
 #~ msgstr ""
-#~ "in wichbal in wichat an tajaxtalab al an k'ailal ejtil jun i ajixtalab al "
-#~ "an 0 ani 1023"
+#~ "in wichbal in wichat an tajaxtalab al an k'ailal ejtil jun i ajixtalab al an "
+#~ "0 ani 1023"
 
 #~ msgid "returns the ambient temperature as a number between 0 and 255"
 #~ msgstr ""
-#~ "in wichbal an alwa'talab al an k'ailal ejtil jun i ajixtalab al an 0 ani "
-#~ "255"
+#~ "in wichbal an alwa'talab al an k'ailal ejtil jun i ajixtalab al an 0 ani 255"
 
 #~ msgid ""
 #~ "returns the distance from the object in front of the sensor as a number "
@@ -3379,8 +2125,19 @@ msgstr "¿Ki dhaya' an tsalapnadh t'ojláb?"
 #~ msgid "returns 0 or 1 depending on the sensor inclination"
 #~ msgstr "in wichbal an 0 o1 k'al in kwentalidh k'al an ots'bixtalab"
 
+#~ msgid "returns 1 when the sensors detects a magnetic field, 0 otherwise"
+#~ msgstr ""
+#~ "in wuichbal jun tam an ots'bixtalab in 'elal jun xi yab bijidh, ba' an 0 "
+#~ "k'al pil i ajixtalab"
+
 #~ msgid "switches from 0 to 1, the frequency depends on the vibration"
 #~ msgstr "ejel ba' an 0 ani al an 1 tam dhiyoyolats"
+
+#~ msgid "LED"
+#~ msgstr "LED"
+
+#~ msgid "button"
+#~ msgstr "ni'im"
 
 #~ msgid "grayscale"
 #~ msgstr "bajudh aku´"
@@ -3388,23 +2145,73 @@ msgstr "¿Ki dhaya' an tsalapnadh t'ojláb?"
 #~ msgid "ambient light"
 #~ msgstr "tajax k'ailal"
 
+#~ msgid "temperature"
+#~ msgstr "temperatura"
+
+#~ msgid "distance"
+#~ msgstr "in owát"
+
+#~ msgid "tilt"
+#~ msgstr "pélat"
+
 #~ msgid "magnetic induction"
 #~ msgstr "jolatalab abal jun i 'adhik t'ojlab"
 
 #~ msgid "vibration"
 #~ msgstr "dhiyoyol"
 
+#~ msgid "Butia Robot"
+#~ msgstr "Robot Butía"
+
+#~ msgid "refresh Butia"
+#~ msgstr "itméjdha' Butiá"
+
+#~ msgid "refresh the state of the Butia palette and blocks"
+#~ msgstr ""
+#~ "ka itméjdhanchij in alwá' an kwene' mukuxtaláb Butiá ani a xi ti pejadh "
+#~ "t'ojláb"
+
+#~ msgid "battery charge Butia"
+#~ msgstr "in dhayal an ti'el butiá"
+
 #~ msgid "returns the battery charge as a number between 0 and 255"
 #~ msgstr ""
-#~ "wichba' an dhaykom k'al an mulkux tsapláb an robot ejtil jun i ajixtalab "
-#~ "ba' an 0 ani an 255"
+#~ "wichba' an dhaykom k'al an mulkux tsapláb an robot ejtil jun i ajixtalab ba' "
+#~ "an 0 ani an 255"
+
+#~ msgid "speed Butia"
+#~ msgstr "adhiktaláb butiá"
+
+#~ msgid "forward Butia"
+#~ msgstr "ne'etsnanchij Butiá"
+
+#~ msgid "move the Butia robot forward"
+#~ msgstr "ka edha' an robot ani ka ne'etsnanchij"
 
 #~ msgid "move the Butia robot forward a predefined distance"
-#~ msgstr ""
-#~ "ka edha' an robot Butiá ani ka aynanchij in owát jant'ini ka kulbetna'"
+#~ msgstr "ka edha' an robot Butiá ani ka aynanchij in owát jant'ini ka kulbetna'"
+
+#~ msgid "left Butia"
+#~ msgstr "k'watab Butiá"
+
+#, fuzzy
+#~ msgid "turn the Butia robot at left"
+#~ msgstr "in wilk'iyal an pat'al atikláb abal tin winab"
+
+#~ msgid "backward Butia"
+#~ msgstr "wichba' Butiá"
+
+#~ msgid "move the Butia robot backward"
+#~ msgstr "edha' an robot Butiá ani´ka wichba'"
 
 #~ msgid "move the Butia robot backward a predefined distance"
 #~ msgstr "edha' an robot Butiá kuxlab ka alchij in ówat"
+
+#~ msgid "right Butia"
+#~ msgstr "wínab Butiá"
+
+#~ msgid "turn the Butia robot at right"
+#~ msgstr "in wilk'iyal an pat'al atikláb abal tin winab"
 
 #~ msgid "turn Butia"
 #~ msgstr "wilk'iy Butiá"
@@ -3412,17 +2219,510 @@ msgstr "¿Ki dhaya' an tsalapnadh t'ojláb?"
 #~ msgid "turn the Butia robot x degrees"
 #~ msgstr "ka tsawiy an robot Butiá ba' an ajumtal k'al in kextal"
 
+#~ msgid "stop Butia"
+#~ msgstr "kuba' Butiá"
+
+#~ msgid "stop the Butia robot"
+#~ msgstr "in k'ubal an pat'al atikláb Butiá"
+
+#~ msgid "Butia"
+#~ msgstr "Butiá"
+
+#, fuzzy
+#~ msgid "Error on initialization of the camera"
+#~ msgstr "K'ibts'ontalab al in tujtal ba' an k'ot'bixtalab"
+
+#~ msgid "FollowMe"
+#~ msgstr "FollowMe"
+
+#, fuzzy
+#~ msgid "Search for a connected camera."
+#~ msgstr "In aliyal al jun i brinck NXT xi ts'ot'k'odh."
+
+#~ msgid "calibration"
+#~ msgstr "t'ójojodhtaláb"
+
+#, fuzzy
+#~ msgid "store a personalized calibration"
+#~ msgstr "dhaya' an t'ójojodhtaláb ta kwete' k'ál"
+
+#~ msgid "return a personalized calibration"
+#~ msgstr "wichba' jún i t'ójojodhtaláb ta kwetém k'ál"
+
+#~ msgid "follow"
+#~ msgstr "áynanchij"
+
+#~ msgid "follow a color or calibration"
+#~ msgstr "áyna' jún i mukuxtaláb o, i t'ójojodhtaláb"
+
+#~ msgid "minimum pixels"
+#~ msgstr "we'kats in ák'"
+
+#~ msgid "set the minimal number of pixels to follow"
+#~ msgstr "uluw an we'kats ák 'ajixtaláb  a xi ne'ets ka áyna'"
+
+#~ msgid "threshold"
+#~ msgstr "ti wi'leb"
+
+#~ msgid "set a threshold for a RGB color"
+#~ msgstr "in tejwamedhal an umbral abal jun i mukuxtaláb RGB"
+
+#~ msgid "x position"
+#~ msgstr "jun ejet x"
+
+#~ msgid "return x position"
+#~ msgstr "ka wichba' jun ejet x"
+
+#~ msgid "y position"
+#~ msgstr "jun ejet y"
+
+#~ msgid "return y position"
+#~ msgstr "ka wichba' jun ejet y"
+
+#~ msgid "pixels"
+#~ msgstr "ajidh alwa'"
+
+#~ msgid "return the number of pixels of the biggest blob"
+#~ msgstr "ka wichba' in ák' ajixtal an mink'oxtaláb a xi wat'adh púlik"
+
+#~ msgid "empty calibration"
+#~ msgstr "jolát t'ójojodhtaláb"
+
+#~ msgid "error in string conversion"
+#~ msgstr "uk'pintaláb al an wilk'intaláb xi ti polts'óx dhuchlab"
+
+#~ msgid "SumBot"
+#~ msgstr "SumBot"
+
+#~ msgid "speed SumBot"
+#~ msgstr "adhik SumBot"
+
+#~ msgid "submit the speed to the SumBot"
+#~ msgstr "tejwa'méjdhanchij in adhiktal an SumBot"
+
+#~ msgid "set the default speed for the movement commands"
+#~ msgstr "ka t'ipoy an adhiktalab abal an abatnom tam ka ejelats"
+
+#~ msgid "forward SumBot"
+#~ msgstr "ne'etsnanchij SumBot"
+
+#~ msgid "move SumBot forward"
+#~ msgstr "yatsiy an SumBot abal tin t'amal"
+
+#~ msgid "backward SumBot"
+#~ msgstr "tin kùx an SumBot"
+
+#~ msgid "move SumBot backward"
+#~ msgstr "ka yatsiy an tipoxtalàb abal tin kux"
+
+#~ msgid "stop SumBot"
+#~ msgstr "ka kuba' an tipoxtalàb"
+
+#~ msgid "stop the SumBot"
+#~ msgstr "in koydhal an tipoxtalàb"
+
+#~ msgid "left SumBot"
+#~ msgstr "k'wàtab an tipoxtalàb"
+
+#~ msgid "turn left the SumBot"
+#~ msgstr "ka wilk'iy an tipoxtalàb abal tin k'wàtab"
+
+#~ msgid "right SumBot"
+#~ msgstr "winab tipoxtalàb"
+
+#~ msgid "turn right the SumBot"
+#~ msgstr "wilk'iy an tipoxtalàb abal tin winab"
+
+#~ msgid "angle to center"
+#~ msgstr "kexem ba' in ts'ejeltal"
+
+#~ msgid "get the angle to the center of the dohyo"
+#~ msgstr "ka kanchij in keyem ba' in ts'ejeltal an dohyo"
+
+#~ msgid "angle to Enemy"
+#~ msgstr "kexem an k'eat tsalapil"
+
+#~ msgid "get the angle to the Enemy"
+#~ msgstr "ka kanchij in owát an k'eat Tsalapil"
+
+#~ msgid "x coor. SumBot"
+#~ msgstr "coor. x SumBot"
+
+#~ msgid "get the x coordinate of the SumBot"
+#~ msgstr "ka kanchij an elax kits'lab x an robot"
+
+#~ msgid "y coor. SumBot"
+#~ msgstr "coor. y SumBot"
+
+#~ msgid "get the y coordinate of the SumBot"
+#~ msgstr "in kanchij an elax kits'lab an robot"
+
+#~ msgid "x coor. Enemy"
+#~ msgstr "coor. x k'eat tsalapil"
+
+#~ msgid "get the x coordinate of the Enemy"
+#~ msgstr "ka kanchij an elax kits'lab x an robot"
+
+#~ msgid "y coor. Enemy"
+#~ msgstr "coor. y k'eat tsalapil"
+
+#~ msgid "get the y coordinate of the Enemy"
+#~ msgstr "in kanchij an elax kits'lab an robot"
+
+#~ msgid "rotation SumBot"
+#~ msgstr "wilil SumBot"
+
+#~ msgid "get the rotation of the Sumbot"
+#~ msgstr "ka kanchij an wililtalab jun puk'e'"
+
+#~ msgid "rotation Enemy"
+#~ msgstr "wilil k'eat tsalapil"
+
+#~ msgid "get the rotation of the Enemy"
+#~ msgstr "ka kanchij an wililtalab jun Puk'e'"
+
+#~ msgid "distance to center"
+#~ msgstr "in owát an ts'ejeltal"
+
+#~ msgid "get the distance to the center of the dohyo"
+#~ msgstr "ka kanchij in owát an ts'ejeltal xi dohyo"
+
+#~ msgid "distance to Enemy"
+#~ msgstr "in owàt xin k'eat tsalapil"
+
+#~ msgid "get the distance to the Enemy"
+#~ msgstr "ka kanchij in owát an k'eat Tsalapil"
+
+#~ msgid "update information"
+#~ msgstr "ka itmedha' an olchixtalab"
+
+#~ msgid "update information from the server"
+#~ msgstr "ka itmedha' an olchixtalab ba' an ábatnom"
+
+# sensor = ats'ax
+#~ msgid "Palette of physics blocks"
+#~ msgstr "In kwene' mukuxtaláb ti ats'ax kwene' t'ojláb"
+
+#~ msgid "start polygon"
+#~ msgstr "tujchiy yan walt'etil"
+
+#~ msgid "Begin defining a new polygon based on the current Turtle xy position."
+#~ msgstr ""
+#~ "Ka tujchij ka bijiy an it yan walt'elil jantodha ti kw'ajat xokij xy in k'al "
+#~ "an pet."
+
+#~ msgid "add point"
+#~ msgstr "ka punk'uy an tuk"
+
+#~ msgid ""
+#~ "Add a new point to the current polygon based on the current Turtle xy "
+#~ "position."
+#~ msgstr ""
+#~ "Ka punk'uy jun i it tuk al an yan walt'elil xi kwajat xokij xy al an pet."
+
+#~ msgid "end polygon"
+#~ msgstr "puntundha yan walt'elil"
+
+#~ msgid "Define a new polygon."
+#~ msgstr "Ka bijiy jun i it yan walt'elil."
+
+#~ msgid "end filled polygon"
+#~ msgstr "ka putundha an yan walt'elil xi t'uchidh"
+
+#~ msgid "Not a simple polygon"
+#~ msgstr "Yab i yan walt'elil alk'idh"
+
+#~ msgid "Define a new filled polygon."
+#~ msgstr "In bijiyal jun i it yan walt'elil xi t'uchidh."
+
+#~ msgid "triangle"
+#~ msgstr "òx ts'upi'"
+
+#~ msgid "base"
+#~ msgstr "in akan"
+
+#~ msgid "Add a triangle object to the project."
+#~ msgstr "In punk'uyal jun i eyixtalàb al an òx ts'upi' al an tojlàb."
+
+#~ msgid "circle"
+#~ msgstr "kw'echo'"
+
+#~ msgid "Add a circle object to the project."
+#~ msgstr "An punk'uyal jun i eyixtalàb al an kw'echo' abal an tojlàb."
+
+#~ msgid "rectangle"
+#~ msgstr "pek'madh tse' walte'"
+
+#~ msgid "Add a rectangle object to the project."
+#~ msgstr "In punk'uyal jun i eyixtalàb pek'madh tse' walte' al an tojlàb."
+
+#~ msgid "reset"
+#~ msgstr "tsab tujchi'"
+
+#~ msgid "Reset the project; clear the object list."
+#~ msgstr ""
+#~ "Ka tsàb tujchi' an tojlàb, in t'okedhal an eyixtalàb xi kwajat k'elbadh."
+
+#~ msgid "motor"
+#~ msgstr "ichich pat'al"
+
+#~ msgid "torque"
+#~ msgstr "jayetsek'ij"
+
+#~ msgid "speed"
+#~ msgstr "adhiktalàb"
+
+#~ msgid ""
+#~ "Motor torque and speed range from 0 (off) to positive numbers; motor is "
+#~ "placed on the most recent object created."
+#~ msgstr ""
+#~ "Xi jayetsek'ij an adhiktalàb al an ichich pat'al xi kwajat al an rango 0 "
+#~ "(tepts'idh) al an ajixtalàb positivos; an ichich pat'al kwajat punudh al an "
+#~ "eyixtalàb xi inkidh itej."
+
+#~ msgid "pin"
+#~ msgstr "eyindhanel xi ts'upidh anij pulik in ok' xi eynal abal ti ts'at'axtalàb"
+
+#~ msgid "Pin an object down so that it cannot fall."
+#~ msgstr "In teynal an eyixtalàb abal yab ka ijkan."
+
+#~ msgid "joint"
+#~ msgstr "junkudh"
+
+#~ msgid ""
+#~ "Join two objects together (the most recent object created and the object at "
+#~ "point x, y)."
+#~ msgstr ""
+#~ "In tamkuyal tsab i eyixtalàb (an eyixtalàb xi inkidh anij an eyixtalàb xi "
+#~ "kwajat al an tuk x,y)."
+
+# actividad física=t'ojondha' i iniktal
+# dhaya' jant'ini' i t'ojláb abal ki t'ojondha' i iniktal
+#~ msgid "save as Physics activity"
+#~ msgstr "dhaya' jant'ini' i física t'ojláb"
+
+#~ msgid "Save the project to the Journal as a Physics activity."
+#~ msgstr "In dhayal an t'ojlàb al an chudhèl dhuchlab fisica."
+
+#~ msgid "gear"
+#~ msgstr "kwechoch"
+
+# Punk'unchij jún i kwechoch eyixtaláb ti tsalapnadh t'ojláb
+#~ msgid "Add a gear object to the project."
+#~ msgstr "An punk'uyal jun i eyixtalàb al an kwechoch abal an tojlàb."
+
+#~ msgid "density"
+#~ msgstr "alemtalàb"
+
+#~ msgid ""
+#~ "Set the density property for objects (density can be any positive number)."
+#~ msgstr ""
+#~ "In bijiyal an àlemtalàb kal an eyixtalàb (an àlemtalàb neèts bijidh jawakits "
+#~ "ajumtalàb xi chubax)."
+
+#~ msgid "friction"
+#~ msgstr "tam i tadhanal jit'a, o tam u yats'nal"
+
+#~ msgid ""
+#~ "Set the friction property for objects (value from 0 to 1, where 0 turns "
+#~ "friction off and 1 is strong friction)."
+#~ msgstr ""
+#~ "In bijiyal in uchbil tam i tadhanal jant'o o jun i eyixtalàb (in alèm "
+#~ "nijant'o anij jun, ju'ta' nijant'o jats' tam i tadhanal anij jun jats xi "
+#~ "ts'apik)."
+
+#~ msgid "bounciness"
+#~ msgstr "in wichbàl jun i eyindhanel xin kwa'alak tin k'ubak owatits"
+
+#~ msgid ""
+#~ "Set the bounciness property for objects (a value from 0 to 1, where 0 means "
+#~ "no bounce and 1 is very bouncy)."
+#~ msgstr ""
+#~ "In bijiyal in uchbil kal an eyixtalàb xin kwa'alak tin k'ubak (in alèm "
+#~ "nijjanto' ani jun, ju'ta nijanto' in le' kin uluw in wichbal ani jun in le' "
+#~ "kin uluw yan)."
+
+#~ msgid "dynamic"
+#~ msgstr "kulbel"
+
+#~ msgid ""
+#~ "If dynamic = 1, the object can move; if dynamic = 0, it is fixed in position."
+#~ msgstr ""
+#~ "Kulbel=jun, an eyixtalàb in ejtowal ka yats'in; kulbel=nijanto, jilkonal "
+#~ "k'ubat yab yats'nal."
+
+# sensor = ats'ax
+#~ msgid "Palette of WeDo blocks"
+#~ msgstr "I kwene' mukuxtaláb ti ats'ax kwene' t'ojláb"
+
+#~ msgid ""
+#~ "tilt sensor output: (-1 == no tilt, 0 == tilt forward, 3 == tilt back, 1 == "
+#~ "tilt left, 2 == tilt right)"
+#~ msgstr ""
+#~ "kalnib k'al an pelat ots'oxtaláb: (-1 == yab k´wajat pélat, 0 == pelat ti in "
+#~ "áy, 3 == pelat ti in kúx, 1==pelat ti in k'watab, 2 ==pelat ti in winab))"
+
+#~ msgid "distance sensor output"
+#~ msgstr "bel xin elàl in owèm"
+
+#~ msgid "Motor A"
+#~ msgstr "Ichich pat'al A"
+
+#~ msgid "returns the current value of Motor A"
+#~ msgstr "in wichbal in alèm xin kwaàl an ichich pat'al A"
+
+#~ msgid "Motor B"
+#~ msgstr "Ichich pat'al B"
+
+#~ msgid "returns the current value of Motor B"
+#~ msgstr "in wichbal in alèm xin kwa'al al an ichich pat'al B"
+
+#~ msgid "set the value for Motor A"
+#~ msgstr "in elàl in alèm an ichich pat'al A"
+
+#~ msgid "set the value for Motor B"
+#~ msgstr "in elal in alèm an ichich pat'al B"
+
+#~ msgid "touch"
+#~ msgstr "dhuche'"
+
+#~ msgid "ultrasonic"
+#~ msgstr "owèm"
+
+#~ msgid "light"
+#~ msgstr "tajàx"
+
 #, fuzzy
 #~ msgid "grey"
 #~ msgstr "aku'"
 
 #, fuzzy
-#~ msgid ""
-#~ "set the speed of the Butia motors as a value between 0 and 1023, passed "
-#~ "by an argument"
+#~ msgid "Please check the connection with the brick"
+#~ msgstr "T'ajchij an alwa'talàb ka met'a ju'taj ti ts'atadh kal an brinck."
+
+#, fuzzy
+#~ msgid "The value of power must be between -127 to 127"
+#~ msgstr "In alèm an tsapiktalàb ne'ets ti - 127 y 127."
+
+#, fuzzy
+#~ msgid "An error has occurred: check all connections and try to reconnect"
 #~ msgstr ""
-#~ "ka takuy in adhiktalab in ok'talal an Butiá kál jun i ajumtalab ba' an 0 "
-#~ "ani an 10233 wat'badh ba' juni ódhaxtalab"
+#~ "Jun i k'ibts'ontalàb watenek: ka met'a an ts'ot'koxtalàb anij ka tsab "
+#~ "ts'ot'k'oy."
+
+#~ msgid "NXT not found"
+#~ msgstr "NXT yab eladh"
+
+#~ msgid "refresh NXT"
+#~ msgstr "itmèdha' NXT"
+
+#~ msgid "Search for a connected NXT brick."
+#~ msgstr "In aliyal al jun i brinck NXT xi ts'ot'k'odh."
+
+#~ msgid "play tone"
+#~ msgstr "tsab watba' in janidh"
+
+#, fuzzy
+#~ msgid "Play a tone at frequency for time."
+#~ msgstr "in tsab wat'bàl in janidh al an ik' 'frec' al jun i ajumtal an k'ij."
+
+#~ msgid "port"
+#~ msgstr "wi'leb"
+
+#~ msgid "power"
+#~ msgstr "tsapìk"
+
+#~ msgid "rotations"
+#~ msgstr "wilil"
+
+#~ msgid "turn a motor"
+#~ msgstr "in wilk'iyal an ichich patàl"
+
+#~ msgid "PORT A"
+#~ msgstr "Wi'leb A"
+
+#~ msgid "PORT A of the brick"
+#~ msgstr "WI'LEB A del brick"
+
+#~ msgid "PORT B"
+#~ msgstr "Wi'leb B"
+
+#~ msgid "PORT B of the brick"
+#~ msgstr "WI'LEB B del brinck"
+
+#~ msgid "PORT C"
+#~ msgstr "Wi'leb C"
+
+#~ msgid "PORT C of the brick"
+#~ msgstr "WI'LEB C del brinck"
+
+#~ msgid "start motor"
+#~ msgstr "tujchij ichich pat'al"
+
+#~ msgid "Run a motor forever."
+#~ msgstr "Ka wilk'iy an ichich pat'al abal ets'ey."
+
+#~ msgid "brake motor"
+#~ msgstr "ka k'uba' an ichich pat'al"
+
+#~ msgid "Stop a specified motor."
+#~ msgstr "In kubàl jun i ichich pat'al xi bijidhits."
+
+#~ msgid "PORT 1"
+#~ msgstr "Wi'leb jun"
+
+#~ msgid "PORT 1 of the brick"
+#~ msgstr "WI'LEB jun kal an brinck"
+
+#, fuzzy
+#~ msgid "read"
+#~ msgstr "tsakni'"
+
+#~ msgid "PORT 2"
+#~ msgstr "Wi'leb tsab"
+
+#~ msgid "PORT 2 of the brick"
+#~ msgstr "WI'LEB tsab kal an brinck"
+
+#~ msgid "PORT 3"
+#~ msgstr "Wi'leb òx"
+
+#, fuzzy
+#~ msgid "PORT 3 of the brick"
+#~ msgstr "Wi'leb A del brick"
+
+#~ msgid "PORT 4"
+#~ msgstr "Wi'leb tsè"
+
+#, fuzzy
+#~ msgid "PORT 4 of the brick"
+#~ msgstr "Wi'leb A del brick"
+
+#~ msgid "HIGH"
+#~ msgstr "Yejnek"
+
+#~ msgid "LOW"
+#~ msgstr "Tsa'at"
+
+#~ msgid "INPUT"
+#~ msgstr "Otseltaláb"
+
+#, fuzzy
+#~ msgid "mode"
+#~ msgstr "mod"
+
+# sensor = ats'ax
+#, fuzzy
+#~ msgid "Palette of Expeyes blocks"
+#~ msgstr "I kwene' mukuxtaláb ti ats'ax kwene' t'ojláb"
+
+#, fuzzy
+#~ msgid ""
+#~ "set the speed of the Butia motors as a value between 0 and 1023, passed by "
+#~ "an argument"
+#~ msgstr ""
+#~ "ka takuy in adhiktalab in ok'talal an Butiá kál jun i ajumtalab ba' an 0 ani "
+#~ "an 10233 wat'badh ba' juni ódhaxtalab"
 
 #, fuzzy
 #~ msgid "turn the Butia robot to the left"
@@ -3485,3 +2785,8 @@ msgstr "¿Ki dhaya' an tsalapnadh t'ojláb?"
 #~ msgstr ""
 #~ "wilk'iyal an ichich pat'al\n"
 #~ " wilililchik"
+
+# sensor = ats'ax
+#, fuzzy
+#~ msgid "Palette of Arduino blocks"
+#~ msgstr "I kwene' mukuxtaláb ti ats'ax kwene' t'ojláb"

@@ -1,23 +1,9 @@
-# #-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#, fuzzy
 msgid ""
 msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-19 00:33-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.7.0\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-05-17 00:31-0400\n"
@@ -30,1307 +16,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1) ;\n"
 "X-Generator: Pootle 2.0.5\n"
-
-msgid "turtleart-extras (master)"
-msgstr ""
-
-msgid "Turtle Blocks"
-msgstr ""
-
-msgid "Turtle Art"
-msgstr "Ubugeni bw'Akanyamashyo"
-
-msgid "Turtle Art Mini"
-msgstr ""
-
-msgid "Turtle Confusion"
-msgstr ""
-
-msgid "Select a challenge"
-msgstr ""
-
-msgid "Amazonas Tortuga"
-msgstr ""
-
-msgid "Palette of Mexican pesos"
-msgstr ""
-
-msgid "Palette of Colombian pesos"
-msgstr ""
-
-msgid "Palette of Rwandan francs"
-msgstr ""
-
-msgid "Palette of US dollars"
-msgstr ""
-
-msgid "Palette of Australian dollars"
-msgstr ""
-
-msgid "Palette of Paraguayan Guaranies"
-msgstr ""
-
-msgid "Palette of Peruvian Nuevo Soles"
-msgstr ""
-
-msgid "Palette of Uruguayan Pesos"
-msgstr ""
-
-msgid "TurtleBots"
-msgstr ""
-
-msgid "TurtleBlocks with Butia, Lego NxT, WeDo, Arduino, FollowMe plugins"
-msgstr ""
-
-msgid "ERROR: The speed must be a value between 0 and 1023"
-msgstr ""
-
-msgid "ERROR: The pin must be between 1 and 8"
-msgstr ""
-
-msgid "ERROR: The value must be 0 or 1, LOW or HIGH"
-msgstr ""
-
-msgid "ERROR: The mode must be INPUT or OUTPUT."
-msgstr ""
-
-msgid "turns LED on and off: 1 means on, 0 means off"
-msgstr ""
-
-msgid "returns the gray level as a value between 0 and 65535"
-msgstr ""
-
-msgid "returns 1 when the button is pressed and 0 otherwise"
-msgstr ""
-
-msgid "returns the light level as a value between 0 and 65535"
-msgstr ""
-
-msgid "returns the distance as a value between 0 and 65535"
-msgstr ""
-
-msgid "returns the resistance value (ohms)"
-msgstr ""
-
-msgid "returns the voltage value (volts)"
-msgstr ""
-
-msgid "returns the temperature"
-msgstr ""
-
-msgid "returns 1 when the sensors detects a magnetic field, 0 otherwise"
-msgstr ""
-
-msgid "LED"
-msgstr "LED"
-
-msgid "button"
-msgstr ""
-
-msgid "gray"
-msgstr "ikigina"
-
-msgid "light"
-msgstr "iburyo"
-
-#, fuzzy
-msgid "temperature"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"igipimo cyubushyuhe"
-
-#, fuzzy
-msgid "distance"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"intera"
-
-#: plugins/audio_sensors/audio_sensors.py:151
-#: plugins/audio_sensors/audio_sensors.py:165
-#: plugins/audio_sensors/audio_sensors.py:179
-#: plugins/audio_sensors/audio_sensors.py:193
-msgid "resistance"
-msgstr ""
-
-#: plugins/audio_sensors/audio_sensors.py:157
-#: plugins/audio_sensors/audio_sensors.py:171
-#: plugins/audio_sensors/audio_sensors.py:185
-#: plugins/audio_sensors/audio_sensors.py:199
-msgid "voltage"
-msgstr ""
-
-msgid "Butia Robot"
-msgstr ""
-
-msgid "refresh Butia"
-msgstr ""
-
-msgid "refresh the state of the Butia palette and blocks"
-msgstr ""
-
-msgid "battery charge Butia"
-msgstr ""
-
-msgid ""
-"returns the battery charge in volts. If no motors present, it returns 255"
-msgstr ""
-
-msgid "speed Butia"
-msgstr ""
-
-msgid "set the speed of the Butia motors"
-msgstr ""
-
-msgid "move Butia"
-msgstr ""
-
-#: TurtleArt/tabasics.py:158
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:871
-msgid "left"
-msgstr "ibumoso"
-
-#: TurtleArt/tabasics.py:170
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:895
-msgid "right"
-msgstr "iburyo"
-
-msgid "moves the Butia motors at the specified speed"
-msgstr ""
-
-msgid "stop Butia"
-msgstr ""
-
-msgid "stop the Butia robot"
-msgstr ""
-
-msgid "forward Butia"
-msgstr ""
-
-msgid "move the Butia robot forward"
-msgstr ""
-
-msgid "left Butia"
-msgstr ""
-
-msgid "turn the Butia robot at left"
-msgstr ""
-
-msgid "right Butia"
-msgstr ""
-
-msgid "turn the Butia robot at right"
-msgstr ""
-
-msgid "backward Butia"
-msgstr ""
-
-msgid "move the Butia robot backward"
-msgstr ""
-
-msgid "Butia Robot extra blocks"
-msgstr ""
-
-msgid "hack pin mode"
-msgstr ""
-
-msgid "pin"
-msgstr ""
-
-msgid "mode"
-msgstr ""
-
-msgid "Select the pin function (INPUT, OUTPUT)."
-msgstr ""
-
-msgid "write hack pin Butia"
-msgstr ""
-
-#: TurtleArt/tabasics.py:924 TurtleArt/tawindow.py:4427
-#, fuzzy
-msgid "value"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"agaciro"
-
-msgid "set a hack pin to 0 or 1"
-msgstr ""
-
-msgid "read hack pin Butia"
-msgstr ""
-
-msgid "read the value of a hack pin"
-msgstr ""
-
-msgid "HIGH"
-msgstr ""
-
-msgid "Set HIGH value for digital port."
-msgstr ""
-
-msgid "INPUT"
-msgstr ""
-
-msgid "Configure hack port for digital input."
-msgstr ""
-
-msgid "LOW"
-msgstr ""
-
-msgid "Set LOW value for digital port."
-msgstr ""
-
-msgid "OUTPUT"
-msgstr ""
-
-msgid "Configure hack port for digital output."
-msgstr ""
-
-msgid "Butia"
-msgstr ""
-
-msgid "ERROR: The pin %s must be in OUTPUT mode."
-msgstr ""
-
-msgid "ERROR: The pin %s must be in INPUT mode."
-msgstr ""
-
-msgid "Error importing Pygame. This plugin require Pygame 1.9"
-msgstr ""
-
-msgid "Error on initialization of the camera"
-msgstr ""
-
-msgid "No camera was found"
-msgstr ""
-
-msgid "Error stopping camera"
-msgstr ""
-
-msgid "Error starting camera"
-msgstr ""
-
-msgid "Error in get mask"
-msgstr ""
-
-#, fuzzy
-msgid "FollowMe"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Nkurikira"
-
-msgid "refresh FollowMe"
-msgstr ""
-
-msgid "Search for a connected camera."
-msgstr ""
-
-msgid "calibration"
-msgstr ""
-
-msgid "store a personalized calibration"
-msgstr ""
-
-msgid "return a personalized calibration"
-msgstr ""
-
-msgid "follow"
-msgstr ""
-
-msgid "follow a color or calibration"
-msgstr ""
-
-#: plugins/camera_sensor/camera_sensor.py:80
-#: plugins/camera_sensor/camera_sensor.py:93
-#: plugins/camera_sensor/camera_sensor.py:128
-#: plugins/camera_sensor/camera_sensor.py:141
-#: plugins/light_sensor/light_sensor.py:56
-#: plugins/light_sensor/light_sensor.py:63
-#, fuzzy
-msgid "brightness"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"umucyo"
-
-msgid "set the camera brightness as a value between 0 to 255."
-msgstr ""
-
-msgid "minimum pixels"
-msgstr ""
-
-msgid "set the minimal number of pixels to follow"
-msgstr ""
-
-msgid "threshold"
-msgstr ""
-
-msgid "set a threshold for a RGB color"
-msgstr ""
-
-msgid "camera mode"
-msgstr ""
-
-msgid "set the color mode of the camera: RGB; YUV or HSV"
-msgstr ""
-
-msgid "get brightness"
-msgstr ""
-
-msgid "get the brightness of the ambient light"
-msgstr ""
-
-msgid "average color"
-msgstr ""
-
-msgid ""
-"if set to 0 then color averaging is off during calibration; for other values "
-"it is on"
-msgstr ""
-
-#, fuzzy
-msgid "x position"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"x umwanya"
-
-#, fuzzy
-msgid "return x position"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"garuka mumwanya wa x"
-
-#, fuzzy
-msgid "y position"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"umwanya wa y"
-
-#, fuzzy
-msgid "return y position"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"garuka mumwanya wa y"
-
-msgid "pixels"
-msgstr ""
-
-msgid "return the number of pixels of the biggest blob"
-msgstr ""
-
-msgid "set the color mode of the camera to RGB"
-msgstr ""
-
-msgid "set the color mode of the camera to YUV"
-msgstr ""
-
-msgid "set the color mode of the camera to HSV"
-msgstr ""
-
-msgid "empty calibration"
-msgstr ""
-
-msgid "error in string conversion"
-msgstr ""
-
-msgid "Pattern detection"
-msgstr ""
-
-msgid "Seeing signal"
-msgstr ""
-
-msgid "Returns True if the signal is in front of the camera"
-msgstr ""
-
-msgid "Distance to signal"
-msgstr ""
-
-msgid "Returns the distance of the signal to the camera in millimeters"
-msgstr ""
-
-msgid "SumBot"
-msgstr ""
-
-msgid "speed SumBot"
-msgstr ""
-
-msgid "submit the speed to the SumBot"
-msgstr ""
-
-msgid "set the default speed for the movement commands"
-msgstr ""
-
-msgid "forward SumBot"
-msgstr ""
-
-msgid "move SumBot forward"
-msgstr ""
-
-msgid "backward SumBot"
-msgstr ""
-
-msgid "move SumBot backward"
-msgstr ""
-
-msgid "stop SumBot"
-msgstr ""
-
-msgid "stop the SumBot"
-msgstr ""
-
-msgid "left SumBot"
-msgstr ""
-
-msgid "turn left the SumBot"
-msgstr ""
-
-msgid "right SumBot"
-msgstr ""
-
-msgid "turn right the SumBot"
-msgstr ""
-
-msgid "angle to center"
-msgstr ""
-
-msgid "get the angle to the center of the dohyo"
-msgstr ""
-
-msgid "angle to Enemy"
-msgstr ""
-
-msgid "get the angle to the Enemy"
-msgstr ""
-
-msgid "x coor. SumBot"
-msgstr ""
-
-msgid "get the x coordinate of the SumBot"
-msgstr ""
-
-msgid "y coor. SumBot"
-msgstr ""
-
-msgid "get the y coordinate of the SumBot"
-msgstr ""
-
-msgid "x coor. Enemy"
-msgstr ""
-
-msgid "get the x coordinate of the Enemy"
-msgstr ""
-
-msgid "y coor. Enemy"
-msgstr ""
-
-msgid "get the y coordinate of the Enemy"
-msgstr ""
-
-msgid "rotation SumBot"
-msgstr ""
-
-msgid "get the rotation of the Sumbot"
-msgstr ""
-
-#, fuzzy
-msgid "rotation Enemy"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"guhindukira kumwanzi"
-
-msgid "get the rotation of the Enemy"
-msgstr ""
-
-#, fuzzy
-msgid "distance to center"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"intera ujya hagati"
-
-msgid "get the distance to the center of the dohyo"
-msgstr ""
-
-#, fuzzy
-msgid "distance to Enemy"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"intera kumwanzi"
-
-msgid "get the distance to the Enemy"
-msgstr ""
-
-#, fuzzy
-msgid "update information"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"inkuru igezweho"
-
-msgid "update information from the server"
-msgstr ""
-
-msgid "Palette of physics blocks"
-msgstr ""
-
-#, fuzzy
-msgid "start polygon"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"tangira ikinyampande"
-
-msgid "Begin defining a new polygon based on the current Turtle xy position."
-msgstr ""
-
-#, fuzzy
-msgid "add point"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"ongeraho akadomo"
-
-msgid ""
-"Add a new point to the current polygon based on the current Turtle xy "
-"position."
-msgstr ""
-
-#, fuzzy
-msgid "end polygon"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"soza ikinyampande"
-
-#, fuzzy
-msgid "Define a new polygon."
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Sobanura ikinyampande gishyashya."
-
-msgid "end filled polygon"
-msgstr ""
-
-msgid "Not a simple polygon"
-msgstr ""
-
-#, fuzzy
-msgid "Define a new filled polygon."
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Sobanura ikinyampande gishyashya."
-
-#, fuzzy
-msgid "triangle"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"mpandeshatu"
-
-#, fuzzy
-msgid "base"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"ishingiro"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:911
-#, fuzzy
-msgid "height"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"ubuhagarike"
-
-#, fuzzy
-msgid "Add a triangle object to the project."
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Ongeraho ikintu cyampande eshatu kuruyu mushinga."
-
-#, fuzzy
-msgid "circle"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"uruziga"
-
-#, fuzzy
-msgid "Add a circle object to the project."
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Ongeraho ikintu cyuruziga kuruyu mushinga."
-
-#, fuzzy
-msgid "rectangle"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"urukiramende"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:887
-#, fuzzy
-msgid "width"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"ubugari"
-
-#, fuzzy
-msgid "Add a rectangle object to the project."
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Ongeraho ikintu cyurukiramende kuruyu mushinga."
-
-msgid "reset"
-msgstr ""
-
-msgid "Reset the project; clear the object list."
-msgstr ""
-
-msgid "motor"
-msgstr ""
-
-msgid "torque"
-msgstr ""
-
-#, fuzzy
-msgid "speed"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"umuvuduko"
-
-msgid ""
-"Motor torque and speed range from 0 (off) to positive numbers; motor is "
-"placed on the most recent object created."
-msgstr ""
-
-msgid "Pin an object down so that it cannot fall."
-msgstr ""
-
-#, fuzzy
-msgid "joint"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"huza"
-
-#: TurtleArt/tabasics.py:195 TurtleArt/tabasics.py:261
-msgid "x"
-msgstr "x"
-
-#: TurtleArt/tabasics.py:195 TurtleArt/tabasics.py:261
-msgid "y"
-msgstr "y"
-
-msgid ""
-"Join two objects together (the most recent object created and the object at "
-"point x, y)."
-msgstr ""
-
-msgid "save as Physics activity"
-msgstr ""
-
-msgid "Save the project to the Journal as a Physics activity."
-msgstr ""
-
-msgid "gear"
-msgstr ""
-
-#, fuzzy
-msgid "Add a gear object to the project."
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Ongeraho ikintu cyuruziga kuruyu mushinga."
-
-msgid "density"
-msgstr "umwirondoro"
-
-msgid ""
-"Set the density property for objects (density can be any positive number)."
-msgstr ""
-
-msgid "friction"
-msgstr ""
-
-msgid ""
-"Set the friction property for objects (value from 0 to 1, where 0 turns "
-"friction off and 1 is strong friction)."
-msgstr ""
-
-msgid "bounciness"
-msgstr ""
-
-msgid ""
-"Set the bounciness property for objects (a value from 0 to 1, where 0 means "
-"no bounce and 1 is very bouncy)."
-msgstr ""
-
-msgid "dynamic"
-msgstr ""
-
-msgid ""
-"If dynamic = 1, the object can move; if dynamic = 0, it is fixed in position."
-msgstr ""
-
-msgid "Palette of WeDo blocks"
-msgstr ""
-
-msgid "WeDo"
-msgstr ""
-
-msgid "set current WeDo device"
-msgstr ""
-
-msgid "number of WeDo devices"
-msgstr ""
-
-msgid "tilt"
-msgstr ""
-
-msgid ""
-"tilt sensor output: (-1 == no tilt, 0 == tilt forward, 3 == tilt back, 1 == "
-"tilt left, 2 == tilt right)"
-msgstr ""
-
-msgid "distance sensor output"
-msgstr ""
-
-msgid "Motor A"
-msgstr ""
-
-msgid "returns the current value of Motor A"
-msgstr ""
-
-msgid "Motor B"
-msgstr ""
-
-msgid "returns the current value of Motor B"
-msgstr ""
-
-msgid "set the value for Motor A"
-msgstr ""
-
-msgid "set the value for Motor B"
-msgstr ""
-
-msgid "WeDo is unavailable"
-msgstr ""
-
-msgid "WeDo %d is unavailable; defaulting to 1"
-msgstr ""
-
-msgid "%(device)s is unavailable on WeDo %(wedo_number)d"
-msgstr ""
-
-msgid "Palette of LEGO NXT blocks of motors"
-msgstr ""
-
-msgid "Palette of LEGO NXT blocks of sensors"
-msgstr ""
-
-msgid "touch"
-msgstr ""
-
-msgid "ultrasonic"
-msgstr ""
-
-#: TurtleArt/tabasics.py:283 TurtleArt/tabasics.py:294
-#: TurtleArt/tabasics.py:344
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1197
-msgid "color"
-msgstr "ibara"
-
-#: plugins/audio_sensors/audio_sensors.py:83
-#: plugins/audio_sensors/audio_sensors.py:98 pysamples/grecord.py:205
-#, fuzzy
-msgid "sound"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"ijwi"
-
-msgid "Please check the connection with the brick"
-msgstr ""
-
-msgid "Invalid port '%s'. Port must be: PORT A, B or C"
-msgstr ""
-
-msgid "Invalid port '%s'. Port must be: PORT 1, 2, 3 or 4"
-msgstr ""
-
-msgid "The value of power must be between -127 to 127"
-msgstr ""
-
-msgid "The parameter must be a integer, not '%s'"
-msgstr ""
-
-msgid "An error has occurred: check all connections and try to reconnect"
-msgstr ""
-
-msgid "NXT found %s bricks"
-msgstr ""
-
-#, fuzzy
-msgid "NXT not found"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"NXT ntiya bonwe"
-
-msgid "Brick number %s was not found"
-msgstr ""
-
-msgid "refresh NXT"
-msgstr ""
-
-msgid "Search for a connected NXT brick."
-msgstr ""
-
-msgid "NXT"
-msgstr ""
-
-msgid "set current NXT device"
-msgstr ""
-
-msgid "number of NXT devices"
-msgstr ""
-
-msgid "brick name"
-msgstr ""
-
-msgid "Get the name of a brick."
-msgstr ""
-
-msgid "play tone"
-msgstr ""
-
-msgid "frequency"
-msgstr ""
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:451
-#, fuzzy
-msgid "time"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"igihe"
-
-msgid "Play a tone at frequency for time."
-msgstr ""
-
-msgid ""
-"turn motor\n"
-"\n"
-msgstr ""
-
-msgid "port"
-msgstr "Umuhuza"
-
-#, fuzzy
-msgid "power"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"ingufu"
-
-msgid "rotations"
-msgstr ""
-
-msgid "turn a motor"
-msgstr ""
-
-msgid ""
-"synchronize\n"
-"\n"
-"motors"
-msgstr ""
-
-msgid "steering"
-msgstr ""
-
-msgid "synchronize two motors connected in PORT B and PORT C"
-msgstr ""
-
-#, fuzzy
-msgid "PORT A"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"UMUHUZA A"
-
-msgid "PORT A of the brick"
-msgstr ""
-
-#, fuzzy
-msgid "PORT B"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"UMUHUZA B"
-
-msgid "PORT B of the brick"
-msgstr ""
-
-#, fuzzy
-msgid "PORT C"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"UMUHUZA C"
-
-msgid "PORT C of the brick"
-msgstr ""
-
-msgid ""
-"synchronize\n"
-"motors"
-msgstr ""
-
-msgid "start motor"
-msgstr ""
-
-msgid "Run a motor forever."
-msgstr ""
-
-msgid "brake motor"
-msgstr ""
-
-msgid "Stop a specified motor."
-msgstr ""
-
-msgid "reset motor"
-msgstr ""
-
-msgid "Reset the motor counter."
-msgstr ""
-
-msgid "motor position"
-msgstr ""
-
-msgid "Get the motor position."
-msgstr ""
-
-#, fuzzy
-msgid "PORT 1"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"UMUHUZA 1"
-
-msgid "PORT 1 of the brick"
-msgstr ""
-
-msgid "read"
-msgstr "umutuku"
-
-msgid "sensor"
-msgstr ""
-
-msgid "Read sensor output."
-msgstr ""
-
-#, fuzzy
-msgid "PORT 2"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"UMUHUZA 2"
-
-msgid "PORT 2 of the brick"
-msgstr ""
-
-msgid "light sensor"
-msgstr ""
-
-msgid "gray sensor"
-msgstr ""
-
-#, fuzzy
-msgid "PORT 3"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"UMUHUZA 3"
-
-msgid "PORT 3 of the brick"
-msgstr ""
-
-msgid "touch sensor"
-msgstr ""
-
-msgid "distance sensor"
-msgstr ""
-
-#, fuzzy
-msgid "PORT 4"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"UMUHUZA 4"
-
-msgid "PORT 4 of the brick"
-msgstr ""
-
-msgid "sound sensor"
-msgstr ""
-
-msgid "color sensor"
-msgstr ""
-
-#, fuzzy
-msgid "set light"
-msgstr ""
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  rw.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"shyiramo urumuri"
-
-msgid "Set color sensor light."
-msgstr ""
-
-msgid "battery level"
-msgstr ""
-
-msgid "Get the battery level of the brick in millivolts"
-msgstr ""
-
-msgid "Palette of Arduino blocks"
-msgstr ""
-
-msgid "PWM"
-msgstr ""
-
-msgid "SERVO"
-msgstr ""
-
-msgid "ERROR: Check the Arduino and the number of port."
-msgstr ""
-
-msgid "ERROR: Value must be a number from 0 to 255."
-msgstr ""
-
-msgid "ERROR: Value must be either HIGH or LOW, 0 or 1"
-msgstr ""
-
-msgid "ERROR: The mode must be either INPUT, OUTPUT, PWM or SERVO."
-msgstr ""
-
-msgid "ERROR: The value must be an integer."
-msgstr ""
-
-msgid "ERROR: The pin must be an integer."
-msgstr ""
-
-msgid "refresh Arduino"
-msgstr ""
-
-msgid "Search for connected Arduinos."
-msgstr ""
-
-msgid "Arduino"
-msgstr ""
-
-msgid "set current Arduino board"
-msgstr ""
-
-msgid "number of Arduinos"
-msgstr ""
-
-msgid "number of Arduino boards"
-msgstr ""
-
-msgid "Arduino name"
-msgstr ""
-
-msgid "Get the name of an Arduino."
-msgstr ""
-
-msgid "pin mode"
-msgstr ""
-
-msgid "Select the pin function (INPUT, OUTPUT, PWM, SERVO)."
-msgstr ""
-
-msgid "analog write"
-msgstr ""
-
-msgid "Write analog value in specified port."
-msgstr ""
-
-msgid "analog read"
-msgstr ""
-
-msgid ""
-"Read value from analog port. Value may be between 0 and 1023. Use Vref to "
-"determine voltage. For USB, volt=((read)*5)/1024) approximately."
-msgstr ""
-
-msgid "digital write"
-msgstr ""
-
-msgid "Write digital value to specified port."
-msgstr ""
-
-msgid "digital read"
-msgstr ""
-
-msgid "Read value from digital port."
-msgstr ""
-
-msgid "Configure Arduino port for digital input."
-msgstr ""
-
-msgid "Configure Arduino port to drive a servo."
-msgstr ""
-
-msgid "Configure Arduino port for digital output."
-msgstr ""
-
-msgid "Configure Arduino port for PWM (pulse-width modulation)."
-msgstr ""
-
-msgid "Not found Arduino %s"
-msgstr ""
-
-msgid "The pin must be an integer"
-msgstr ""
-
-msgid "The device must be an integer"
-msgstr ""
-
-msgid "Palette of Expeyes blocks"
-msgstr ""
-
-msgid "set PVS"
-msgstr ""
-
-msgid "set programmable voltage output"
-msgstr ""
-
-msgid "set SQR1 voltage"
-msgstr ""
-
-msgid "set square wave 1 voltage output"
-msgstr ""
-
-msgid "set SQR2 voltage"
-msgstr ""
-
-msgid "set square wave 2 voltage output"
-msgstr ""
-
-msgid "set OD1"
-msgstr ""
-
-msgid "set digital output level (OD1) low (0) or high (1)"
-msgstr ""
-
-msgid "IN1 level"
-msgstr ""
-
-msgid ""
-"returns 1 if IN1 voltage level >2.5 volts, 0 if IN1 voltage level <= 2.5 "
-"volts"
-msgstr ""
-
-msgid "IN2 level"
-msgstr ""
-
-msgid ""
-"returns 1 if IN2 voltage level >2.5 volts, 0 if IN2 voltage level <= 2.5 "
-"volts"
-msgstr ""
-
-msgid "SEN level"
-msgstr ""
-
-msgid ""
-"returns 1 if resistive sensor (SEN) voltage level > 2.5 volts, 0 if SEN "
-"voltage level <= 2.5 volts"
-msgstr ""
-
-msgid "capture"
-msgstr ""
-
-msgid "input"
-msgstr ""
-
-msgid "samples"
-msgstr ""
-
-msgid "interval"
-msgstr ""
-
-msgid ""
-"capture multiple samples from input at interval (MS); results pushed to FIFO"
-msgstr ""
-
-msgid "A1"
-msgstr ""
-
-msgid "read analog input 1 voltage"
-msgstr ""
-
-msgid "A2"
-msgstr ""
-
-msgid "read analog input 2 voltage"
-msgstr ""
-
-msgid "IN1"
-msgstr ""
-
-msgid "read input 1 voltage"
-msgstr ""
-
-msgid "IN2"
-msgstr ""
-
-msgid "read input 2 voltage"
-msgstr ""
-
-msgid "SEN"
-msgstr ""
-
-msgid "read analog sensor input voltage"
-msgstr ""
-
-msgid "SQR1"
-msgstr ""
-
-msgid "read square wave 1 voltage"
-msgstr ""
-
-msgid "SQR2"
-msgstr ""
-
-msgid "read square wave 2 voltage"
-msgstr ""
-
-msgid "PVS"
-msgstr ""
-
-msgid "read programmable voltage"
-msgstr ""
-
-msgid "Expeyes device not found"
-msgstr ""
 
 #. TRANS: "name" option from activity.info file
 msgid "TurtleBlocks"
@@ -1374,26 +59,20 @@ msgstr "gusukura"
 msgid "clears the screen and reset the turtle"
 msgstr ""
 
-<<<<<<< HEAD
-=======
 #: TurtleArt/tabasics.py:158
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:871
 msgid "left"
 msgstr "ibumoso"
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:162
 msgid "turns turtle counterclockwise (angle in degrees)"
 msgstr ""
 
-<<<<<<< HEAD
-=======
 #: TurtleArt/tabasics.py:170
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:895
 msgid "right"
 msgstr "iburyo"
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:174
 msgid "turns turtle clockwise (angle in degrees)"
 msgstr ""
@@ -1421,8 +100,6 @@ msgstr ""
 msgid "set xy"
 msgstr ""
 
-<<<<<<< HEAD
-=======
 #: TurtleArt/tabasics.py:195 TurtleArt/tabasics.py:261
 msgid "x"
 msgstr "x"
@@ -1431,7 +108,6 @@ msgstr "x"
 msgid "y"
 msgstr "y"
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:199 TurtleArt/tabasics.py:265
 msgid ""
 "moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
@@ -1488,15 +164,12 @@ msgstr ""
 msgid "fill screen"
 msgstr "ekara nini"
 
-<<<<<<< HEAD
-=======
 #: TurtleArt/tabasics.py:283 TurtleArt/tabasics.py:294
 #: TurtleArt/tabasics.py:344
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1197
 msgid "color"
 msgstr "ibara"
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:283 TurtleArt/tabasics.py:295
 #: TurtleArt/tabasics.py:354
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1193
@@ -1509,8 +182,6 @@ msgstr "ubwijime"
 msgid "fills the background with (color, shade)"
 msgstr ""
 
-<<<<<<< HEAD
-=======
 #: TurtleArt/tabasics.py:295 TurtleArt/tabasics.py:363
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1194
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1199
@@ -1518,7 +189,6 @@ msgstr ""
 msgid "gray"
 msgstr "ikigina"
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:309
 msgid "set color"
 msgstr "tunganya ibara"
@@ -1982,14 +652,11 @@ msgstr "bika mu"
 msgid "box"
 msgstr "ikarito"
 
-<<<<<<< HEAD
-=======
 #: TurtleArt/tabasics.py:924 TurtleArt/tawindow.py:4427
 #, fuzzy
 msgid "value"
 msgstr "agaciro"
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tabasics.py:928 TurtleArt/tabasics.py:942
 #: TurtleArt/tawindow.py:1355 TurtleArt/tawindow.py:1486
 #: TurtleArt/tawindow.py:2081 TurtleArt/tawindow.py:4390
@@ -2166,21 +833,12 @@ msgstr ""
 #: TurtleArt/tawindow.py:1531 TurtleArt/tawindow.py:1546
 msgid "Really overwrite stack?"
 msgstr ""
-<<<<<<< HEAD
 
 #: TurtleArt/tawindow.py:1534 TurtleArt/tawindow.py:1574
 #: gnome_plugins/uploader_plugin.py:144
 msgid "Cancel"
 msgstr "Reka"
 
-=======
-
-#: TurtleArt/tawindow.py:1534 TurtleArt/tawindow.py:1574
-#: gnome_plugins/uploader_plugin.py:144
-msgid "Cancel"
-msgstr "Reka"
-
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: TurtleArt/tawindow.py:1538 TurtleArt/tawindow.py:1549
 msgid "Overwrite stack"
 msgstr ""
@@ -2526,6 +1184,12 @@ msgstr "ukwiyongera"
 msgid "push acceleration in x, y, z to heap"
 msgstr ""
 
+#: plugins/audio_sensors/audio_sensors.py:83
+#: plugins/audio_sensors/audio_sensors.py:98 pysamples/grecord.py:205
+#, fuzzy
+msgid "sound"
+msgstr "ijwi"
+
 #: plugins/audio_sensors/audio_sensors.py:84
 #: plugins/audio_sensors/audio_sensors.py:99
 msgid "raw microphone input signal"
@@ -2553,11 +1217,25 @@ msgstr ""
 msgid "microphone input pitch"
 msgstr ""
 
+#: plugins/audio_sensors/audio_sensors.py:151
+#: plugins/audio_sensors/audio_sensors.py:165
+#: plugins/audio_sensors/audio_sensors.py:179
+#: plugins/audio_sensors/audio_sensors.py:193
+msgid "resistance"
+msgstr ""
+
 #: plugins/audio_sensors/audio_sensors.py:152
 #: plugins/audio_sensors/audio_sensors.py:166
 #: plugins/audio_sensors/audio_sensors.py:180
 #: plugins/audio_sensors/audio_sensors.py:194
 msgid "microphone input resistance"
+msgstr ""
+
+#: plugins/audio_sensors/audio_sensors.py:157
+#: plugins/audio_sensors/audio_sensors.py:171
+#: plugins/audio_sensors/audio_sensors.py:185
+#: plugins/audio_sensors/audio_sensors.py:199
+msgid "voltage"
 msgstr ""
 
 #: plugins/audio_sensors/audio_sensors.py:158
@@ -2571,6 +1249,16 @@ msgstr ""
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:139
 msgid "Palette of media objects"
 msgstr ""
+
+#: plugins/camera_sensor/camera_sensor.py:80
+#: plugins/camera_sensor/camera_sensor.py:93
+#: plugins/camera_sensor/camera_sensor.py:128
+#: plugins/camera_sensor/camera_sensor.py:141
+#: plugins/light_sensor/light_sensor.py:56
+#: plugins/light_sensor/light_sensor.py:63
+#, fuzzy
+msgid "brightness"
+msgstr "umucyo"
 
 #: plugins/camera_sensor/camera_sensor.py:82
 #: plugins/camera_sensor/camera_sensor.py:130
@@ -2856,14 +1544,11 @@ msgstr ""
 msgid "returns the color that the turtle \"sees\""
 msgstr ""
 
-<<<<<<< HEAD
-=======
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:451
 #, fuzzy
 msgid "time"
 msgstr "igihe"
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:454
 msgid "elapsed time (in seconds) since program started"
 msgstr ""
@@ -3127,14 +1812,11 @@ msgstr "buto"
 msgid "ycor of bottom of screen"
 msgstr ""
 
-<<<<<<< HEAD
-=======
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:887
 #, fuzzy
 msgid "width"
 msgstr "ubugari"
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:890
 msgid "the canvas width"
 msgstr ""
@@ -3147,14 +1829,11 @@ msgstr ""
 msgid "ycor of top of screen"
 msgstr ""
 
-<<<<<<< HEAD
-=======
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:911
 #, fuzzy
 msgid "height"
 msgstr "ubuhagarike"
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:914
 msgid "the canvas height"
 msgstr ""
@@ -3352,8 +2031,6 @@ msgstr ""
 msgid "Save project?"
 msgstr "Bika umushinga?"
 
-<<<<<<< HEAD
-=======
 #~ msgid "Turtle Art"
 #~ msgstr "Ubugeni bw'Akanyamashyo"
 
@@ -3368,14 +2045,165 @@ msgstr "Bika umushinga?"
 #~ msgid "distance"
 #~ msgstr "intera"
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
 #, fuzzy
 #~ msgid "vibration"
 #~ msgstr "viburasiyo"
 
 #, fuzzy
+#~ msgid "FollowMe"
+#~ msgstr "Nkurikira"
+
+#, fuzzy
+#~ msgid "x position"
+#~ msgstr "x umwanya"
+
+#, fuzzy
+#~ msgid "return x position"
+#~ msgstr "garuka mumwanya wa x"
+
+#, fuzzy
+#~ msgid "y position"
+#~ msgstr "umwanya wa y"
+
+#, fuzzy
+#~ msgid "return y position"
+#~ msgstr "garuka mumwanya wa y"
+
+#, fuzzy
+#~ msgid "rotation Enemy"
+#~ msgstr "guhindukira kumwanzi"
+
+#, fuzzy
+#~ msgid "distance to center"
+#~ msgstr "intera ujya hagati"
+
+#, fuzzy
+#~ msgid "distance to Enemy"
+#~ msgstr "intera kumwanzi"
+
+#, fuzzy
+#~ msgid "update information"
+#~ msgstr "inkuru igezweho"
+
+#, fuzzy
+#~ msgid "start polygon"
+#~ msgstr "tangira ikinyampande"
+
+#, fuzzy
+#~ msgid "add point"
+#~ msgstr "ongeraho akadomo"
+
+#, fuzzy
+#~ msgid "end polygon"
+#~ msgstr "soza ikinyampande"
+
+#, fuzzy
+#~ msgid "Define a new polygon."
+#~ msgstr "Sobanura ikinyampande gishyashya."
+
+#, fuzzy
+#~ msgid "Define a new filled polygon."
+#~ msgstr "Sobanura ikinyampande gishyashya."
+
+#, fuzzy
+#~ msgid "triangle"
+#~ msgstr "mpandeshatu"
+
+#, fuzzy
+#~ msgid "base"
+#~ msgstr "ishingiro"
+
+#, fuzzy
+#~ msgid "Add a triangle object to the project."
+#~ msgstr "Ongeraho ikintu cyampande eshatu kuruyu mushinga."
+
+#, fuzzy
+#~ msgid "circle"
+#~ msgstr "uruziga"
+
+#, fuzzy
+#~ msgid "Add a circle object to the project."
+#~ msgstr "Ongeraho ikintu cyuruziga kuruyu mushinga."
+
+#, fuzzy
+#~ msgid "rectangle"
+#~ msgstr "urukiramende"
+
+#, fuzzy
+#~ msgid "Add a rectangle object to the project."
+#~ msgstr "Ongeraho ikintu cyurukiramende kuruyu mushinga."
+
+#, fuzzy
+#~ msgid "speed"
+#~ msgstr "umuvuduko"
+
+#, fuzzy
+#~ msgid "joint"
+#~ msgstr "huza"
+
+#, fuzzy
+#~ msgid "Add a gear object to the project."
+#~ msgstr "Ongeraho ikintu cyuruziga kuruyu mushinga."
+
+#, fuzzy
+#~ msgid "density"
+#~ msgstr "umwirondoro"
+
+#, fuzzy
+#~ msgid "light"
+#~ msgstr "iburyo"
+
+#, fuzzy
 #~ msgid "grey"
 #~ msgstr "ikigina"
+
+#, fuzzy
+#~ msgid "NXT not found"
+#~ msgstr "NXT ntiya bonwe"
+
+#, fuzzy
+#~ msgid "port"
+#~ msgstr "umuhuza"
+
+#, fuzzy
+#~ msgid "power"
+#~ msgstr "ingufu"
+
+#, fuzzy
+#~ msgid "PORT A"
+#~ msgstr "UMUHUZA A"
+
+#, fuzzy
+#~ msgid "PORT B"
+#~ msgstr "UMUHUZA B"
+
+#, fuzzy
+#~ msgid "PORT C"
+#~ msgstr "UMUHUZA C"
+
+#, fuzzy
+#~ msgid "PORT 1"
+#~ msgstr "UMUHUZA 1"
+
+#, fuzzy
+#~ msgid "read"
+#~ msgstr "umutuku"
+
+#, fuzzy
+#~ msgid "PORT 2"
+#~ msgstr "UMUHUZA 2"
+
+#, fuzzy
+#~ msgid "PORT 3"
+#~ msgstr "UMUHUZA 3"
+
+#, fuzzy
+#~ msgid "PORT 4"
+#~ msgstr "UMUHUZA 4"
+
+#, fuzzy
+#~ msgid "set light"
+#~ msgstr "shyiramo urumuri"
 
 #, fuzzy
 #~ msgid "NXT found"
