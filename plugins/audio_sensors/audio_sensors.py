@@ -60,12 +60,9 @@ class Audio_sensors(Plugin):
         Plugin.__init__(self)
         self._parent = parent
         self.audio_started = False
-<<<<<<< HEAD
-=======
         self._sound_init = False
         self._resistance_init = False
         self._voltage_init = False
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
         self._status = True  # TODO: test for audio device
         # These flags are referenced by audiograb
         self.hw = self._parent.hw
@@ -212,17 +209,7 @@ class Audio_sensors(Plugin):
                       kwarg_descs={'channel': ConstantArg(1)},
                       call_afterwards=self.after_voltage))
 
-<<<<<<< HEAD
-        if self.hw in [XO175, XO30, XO4]:
-            self.PARAMETERS = {
-                SENSOR_AC_BIAS: (False, True, 80, True),
-                SENSOR_DC_NO_BIAS: (True, False, 80, False),
-                SENSOR_DC_BIAS: (True, True, 90, False)
-                }
-        elif self.hw == XO15:
-=======
         if self.hw in [XO15, XO175, XO30, XO4]:
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
             self.PARAMETERS = {
                 SENSOR_AC_BIAS: (False, True, 80, True),
                 SENSOR_DC_NO_BIAS: (True, False, 80, False),
@@ -245,23 +232,17 @@ class Audio_sensors(Plugin):
         ''' Start grabbing audio if there is an audio block in use '''
         if not self._status:
             return
-<<<<<<< HEAD
-=======
 
         self._sound_init = False
         self._resistance_init = False
         self._voltage_init = False
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
         self._sound = [0, 0]
         self._volume = [0, 0]
         self._pitch = [0, 0]
         self._resistance = [0, 0]
         self._voltage = [0, 0]
-<<<<<<< HEAD
-=======
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
         if self.audio_started:
             self.audiograb.stop_grabbing()
 
@@ -300,12 +281,9 @@ class Audio_sensors(Plugin):
     def prim_sound(self, channel=0):
         if not self._status:
             return 0
-<<<<<<< HEAD
-=======
 
         self._init_sound()
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
         self._prim_sound(0)
         # Return average of both channels if sampling in stereo
         if self._channels == 2:
@@ -314,8 +292,6 @@ class Audio_sensors(Plugin):
         else:
             return self._sound[0]
 
-<<<<<<< HEAD
-=======
     def _init_sound(self):
         if not self._sound_init:
             mode, bias, gain, boost = self.PARAMETERS[SENSOR_AC_BIAS]
@@ -329,7 +305,6 @@ class Audio_sensors(Plugin):
             self.audio_started = True
             self._sound_init = True
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
     def _prim_sound(self, channel):
         ''' return raw mic in value '''
         buf = self.ringbuffer[channel].read(None, self.input_step)
@@ -337,16 +312,6 @@ class Audio_sensors(Plugin):
             self._sound[channel] = float(buf[0])
         else:
             self._sound[channel] = 0
-<<<<<<< HEAD
-
-    def after_sound(self, channel=0):
-        if self._parent.lc.update_values:
-            self._parent.lc.update_label_value('sound', self._sound[channel])
-
-    def prim_volume(self, channel=0):
-        if not self._status:
-            return 0
-=======
 
     def after_sound(self, channel=0):
         if self._parent.lc.update_values:
@@ -358,7 +323,6 @@ class Audio_sensors(Plugin):
 
         self._init_sound()
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
         self._prim_volume(0)
         # Return average of both channels if sampling in stereo
         if self._channels == 2:
@@ -374,16 +338,6 @@ class Audio_sensors(Plugin):
             self._volume[channel] = float(_avg(buf, abs_value=True))
         else:
             self._volume[channel] = 0
-<<<<<<< HEAD
-
-    def after_volume(self, channel=0):
-        if self._parent.lc.update_values:
-            self._parent.lc.update_label_value('volume', self._volume[channel])
-
-    def prim_pitch(self, channel=0):
-        if not self._status:
-            return 0
-=======
 
     def after_volume(self, channel=0):
         if self._parent.lc.update_values:
@@ -395,7 +349,6 @@ class Audio_sensors(Plugin):
 
         self._init_sound()
 
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
         self._prim_pitch(0)
         # Return average of both channels if sampling in stereo
         if self._channels == 2:
@@ -470,7 +423,6 @@ class Audio_sensors(Plugin):
             elif self.hw == XO15:
                 if avg_buf > 0:
                     self._resistance[channel] = (420000000 / avg_buf) - 13500
-<<<<<<< HEAD
                 else:
                     self._resistance[channel] = 420000000
             elif self.hw == XO175:  # Range 0 to inf ohms
@@ -485,22 +437,6 @@ class Audio_sensors(Plugin):
                         (50000000. / (6629 - avg_buf)) - 3175
                 else:
                     self._resistance[channel] = 999999999
-=======
-                else:
-                    self._resistance[channel] = 420000000
-            elif self.hw == XO175:  # Range 0 to inf ohms
-                if avg_buf < 30519:
-                    self._resistance[channel] = \
-                        (92000000. / (30519 - avg_buf)) - 1620
-                else:
-                    self._resistance[channel] = 999999999
-            elif self.hw == XO4:  # Range 0 to inf ohms
-                if avg_buf < 6629:
-                    self._resistance[channel] = \
-                        (50000000. / (6629 - avg_buf)) - 3175
-                else:
-                    self._resistance[channel] = 999999999
->>>>>>> 4e282e42dc6269e3b85cdbde081c554aee653acc
             else:  # XO 3.0
                 if avg_buf < 30514:
                     self._resistance[channel] = \

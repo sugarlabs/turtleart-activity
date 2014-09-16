@@ -126,6 +126,8 @@ class SVG:
                 svg += self._do_innie()
             if i == 0:
                 svg += self._rline_to(0, self._expand_y)
+            elif i == 1 and self._expand_y2 > 0:
+                svg += self._rline_to(0, self._expand_y2)
             if i == 0 and self._porch is True:
                 svg += self._do_porch(False)
             elif len(self._innie) - 1 > i:
