@@ -1,9 +1,25 @@
+# #-#-#-#-#  ayc.po (PACKAGE VERSION)  #-#-#-#-#
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#, fuzzy
 msgid ""
 msgstr ""
+"#-#-#-#-#  ayc.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-02-16 00:32-0500\n"
+"PO-Revision-Date: 2014-04-29 02:47+0200\n"
+"Last-Translator: Chris <cjl@laptop.org>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: ayc\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.0.5\n"
+"#-#-#-#-#  ayc.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-01-07 00:30-0500\n"
@@ -16,6 +32,1462 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pootle 2.0.5\n"
+
+msgid "turtleart-extras (master)"
+msgstr "turtleart-extras (master) Jilïri wakichata"
+
+msgid "Turtle Blocks"
+msgstr "TortuBlocks wakichata"
+
+# #-#-#-#-#  ayc.po (PACKAGE VERSION)  #-#-#-#-#
+#  "TortugArte"
+msgid "Turtle Art"
+msgstr "TortugArte wakichata"
+
+# #-#-#-#-#  ayc.po (PACKAGE VERSION)  #-#-#-#-#
+#  "TortugArte Mini"
+msgid "Turtle Art Mini"
+msgstr "Jisk'a TortugArte wakichata"
+
+# #-#-#-#-#  ayc.po (PACKAGE VERSION)  #-#-#-#-#
+#  "TortugArte Confusión"
+msgid "Turtle Confusion"
+msgstr "Jani qhana TortugArte wakichata"
+
+# #-#-#-#-#  ayc.po (PACKAGE VERSION)  #-#-#-#-#
+#  "Selecciona un desafío"
+msgid "Select a challenge"
+msgstr "Ch'ama wakichäwi thaqaña"
+
+msgid "Amazonas Tortuga"
+msgstr "Tortuga Amazonas wakichata"
+
+msgid "Turtle Flags"
+msgstr "Tortuga Banderas wakichata"
+
+msgid "Use the turtle to draw country flags"
+msgstr "Tortuga wakichatampi jach'a markanaka wiphalanaka rixsma"
+
+# #-#-#-#-#  ayc.po (PACKAGE VERSION)  #-#-#-#-#
+#  "Paleta de Pesos Mexicanos"
+msgid "Palette of Mexican pesos"
+msgstr "México qullqimpi luraña limt'aña"
+
+# #-#-#-#-#  ayc.po (PACKAGE VERSION)  #-#-#-#-#
+#  "Paleta de Pesos Colombianos"
+msgid "Palette of Colombian pesos"
+msgstr "Colombia qullqimpi luraña limt'aña"
+
+# #-#-#-#-#  ayc.po (PACKAGE VERSION)  #-#-#-#-#
+#  "Paleta de Francos de Ruanda"
+msgid "Palette of Rwandan francs"
+msgstr "Francos de Ruanda qullqimpi luraña limt'aña"
+
+msgid "Palette of US dollars"
+msgstr "Dólares Americanos qullqimpi luraña limt'aña"
+
+msgid "Palette of Australian dollars"
+msgstr "Dólares Australianos qullqimpi luraña limt'aña"
+
+msgid "Palette of Paraguayan Guaranies"
+msgstr "Guaraníes Paraguayos qullqimpi luraña limt'aña"
+
+msgid "Palette of Peruvian Nuevo Soles"
+msgstr "Nuevos Soles Peruanos qullqimpi luraña limt'aña"
+
+msgid "Palette of Uruguayan Pesos"
+msgstr "Pesos Uruguayos qullqimpi luraña limt'aña"
+
+msgid "TurtleBots"
+msgstr "TurtleBots wakichata"
+
+msgid "TurtleBlocks with Butia, Lego NxT, WeDo, Arduino, FollowMe plugins"
+msgstr ""
+"TortuBlocks con plugins: Butiá, Lego NxT, WeDo, Arduino, FollowMe wakichata"
+
+msgid "ERROR: The speed must be a value between 0 and 1023"
+msgstr ""
+"PANTJATA: K'ata saräwixa akïri chimpunaka taypinkañapawa 0 ukata 1023 jakhu"
+
+msgid "ERROR: The speed must be a value between -1023 and 1023"
+msgstr ""
+"PANTJATA: K'ata saräwixa akïri chimpunaka taypinkañapawa -1023 ukata 1023 "
+"jakhunakanaka"
+
+msgid "ERROR: The pin must be between 1 and 8"
+msgstr "PANTJATA: Ukaru mantañaxa akïri chimpunaka taypinkañapawa 1 y 8 jakhu"
+
+msgid "ERROR: The value must be 0 or 1, LOW or HIGH"
+msgstr "PANTJATA: Uka chanixa 0 o 1, JILA jani ukaxa JISK'A chimpuñapawa"
+
+msgid "ERROR: The mode must be INPUT or OUTPUT."
+msgstr "PANTJATA: Ukasti akhamañapawa MANTAÑA jani ukaxa MISTUÑA."
+
+msgid "turns LED on and off: 1 means on, 0 means off"
+msgstr "LED qhantayasa jiwarakma: 1 chimpunxa qhantatawa, 0 chimpunraki jiwata"
+
+msgid "returns the gray level as a value between 0 and 65535"
+msgstr "uqi chimpuna chanipa kuttayi akïri jakhunaka taypita 0 ukata 65535"
+
+msgid "returns 1 when the button is pressed and 0 otherwise"
+msgstr "1 jakhu kutsuyi limt'aña limxatatipana ukata 0 kutsuyi jani ukhamipana"
+
+msgid "returns the light level as a value between 0 and 65535"
+msgstr "Qhana chani kutsuyi akïri chaninaka taypita 0 y 65535"
+
+msgid "returns the distance as a value between 0 and 65535"
+msgstr "jaya saräwi chani kutsuyi akïri jakhunaka taypita 0 ukata 65535"
+
+msgid "returns the resistance value (ohms)"
+msgstr "ch'amanchirina chanipa kutsuyi akhama chimpumpi ohms"
+
+msgid "returns the voltage value (volts)"
+msgstr "ch'amanchaña chanipa kutsuyi akhama chimpumpi volts"
+
+msgid "returns the temperature value (celsius degree)"
+msgstr "Junt'u pacha chani kutsuyi (grados Celsius) chimpumpi"
+
+msgid "custom module %s"
+msgstr "jaqichjata wakichata %s"
+
+msgid "sensor a"
+msgstr "katjiri a"
+
+msgid "sensor b"
+msgstr "katjiri b"
+
+msgid "sensor c"
+msgstr "katjiri c"
+
+msgid "actuator a"
+msgstr "luriri a"
+
+msgid "actuator b"
+msgstr "luriri b"
+
+msgid "actuator c"
+msgstr "luriri c"
+
+# #-#-#-#-#  ayc.po (PACKAGE VERSION)  #-#-#-#-#
+#  "LED"
+msgid "LED"
+msgstr "LED wakichata"
+
+msgid "button"
+msgstr "limt'aña"
+
+#: TurtleArt/tabasics.py:370 TurtleArt/tabasics.py:454
+#: TurtleArt/tawindow.py:4539 TurtleArt/tawindow.py:4544
+msgid "gray"
+msgstr "uqiru samiri"
+
+# #-#-#-#-#  ayc.po (PACKAGE VERSION)  #-#-#-#-#
+# "luz"
+msgid "light"
+msgstr "lliphi"
+
+# #-#-#-#-#  ayc.po (PACKAGE VERSION)  #-#-#-#-#
+#  "distancia"
+msgid "distance"
+msgstr "jaya"
+
+#: plugins/audio_sensors/audio_sensors.py:157
+#: plugins/audio_sensors/audio_sensors.py:175
+msgid "resistance"
+msgstr "ch'amanchiritaki wakichata"
+
+#: plugins/audio_sensors/audio_sensors.py:163
+#: plugins/audio_sensors/audio_sensors.py:181
+msgid "voltage"
+msgstr "ch'amani qhantayiri"
+
+# #-#-#-#-#  ayc.po (PACKAGE VERSION)  #-#-#-#-#
+#  "temperatura"
+msgid "temperature"
+msgstr "junt'utatata"
+
+msgid "butia"
+msgstr "Butiá wakichata"
+
+# #-#-#-#-#  ayc.po (PACKAGE VERSION)  #-#-#-#-#
+#  "Robot Butiá"
+msgid "Butia Robot"
+msgstr "Robot Butiá wakichata jaqi"
+
+#, fuzzy
+msgid "refresh Butia"
+msgstr ""
+"#-#-#-#-#  ayc.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Butiá wakichataru thayarayaña\n"
+"#-#-#-#-#  ayc.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Butiá wakichataru samarayaña"
+
+msgid "refresh the state of the Butia palette and blocks"
+msgstr "Butiá wakichata tamanakana limt'añapa machaqachma"
+
+msgid "battery charge Butia"
+msgstr "Butiá wakichatana batería wakisiripa ch'amanchma"
+
+msgid ""
+"returns the battery charge in volts. If no motors present, it returns 255"
+msgstr ""
+"batería ch'amanchatapa chani kutsuyi akhama chimpumpi volts. Motor "
+"wakichatanaka jani utjipana, kutsuyarakiwa 255"
+
+msgid "speed Butia"
+msgstr "Butiá wakichatana k'ata sarañapa"
+
+msgid "set the speed of the Butia motors"
+msgstr "Butiá motor wakichatanakana k'ata saräwipa qhananchi"
+
+msgid "move Butia"
+msgstr "Butiá jithiyaña"
+
+# #-#-#-#-#  ayc.po (PACKAGE VERSION)  #-#-#-#-#
+#  "izquierda"
+#: TurtleArt/tabasics.py:207 TurtleArt/taconstants.py:139
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:991
+msgid "left"
+msgstr "ch'iqa"
+
+# #-#-#-#-#  ayc.po (PACKAGE VERSION)  #-#-#-#-#
+#  "derecha"
+#: TurtleArt/tabasics.py:221 TurtleArt/taconstants.py:141
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1024
+msgid "right"
+msgstr "kupi"
+
+msgid "moves the Butia motors at the specified speed"
+msgstr "Butiá motor wakichatanakapa jithiyi k'ata saräwipirjama"
+
+# #-#-#-#-#  ayc.po (PACKAGE VERSION)  #-#-#-#-#
+#  "detener Butiá"
+msgid "stop Butia"
+msgstr "Butiá wakichata sayt'ayaña"
+
+msgid "stop the Butia robot"
+msgstr "Butiá wakichata sayt'ayma"
+
+msgid "forward Butia"
+msgstr "Butiá wakichatampi qalltma"
+
+msgid "move the Butia robot forward"
+msgstr "robot Butiá wakichata jaqiru nayräxaru sartayma"
+
+# #-#-#-#-#  ayc.po (PACKAGE VERSION)  #-#-#-#-#
+#  "izquierda Butiá"
+msgid "left Butia"
+msgstr "Butiá wakichata ch'iqäxankiri"
+
+msgid "turn the Butia robot at left"
+msgstr "robot Butiá wakichata ch'iqäxaru muytayma"
+
+# #-#-#-#-#  ayc.po (PACKAGE VERSION)  #-#-#-#-#
+#  "derecha Butiá"
+msgid "right Butia"
+msgstr "Butiá wakichata kupïxa"
+
+msgid "turn the Butia robot at right"
+msgstr "robot Butiá wakichata jaqi kupïxaru muytayma"
+
+msgid "backward Butia"
+msgstr "Butiá qhipäxa"
+
+msgid "move the Butia robot backward"
+msgstr "robot Butiá wakichata jaqi qhipäxaru jithiyma"
+
+msgid "butia-extra"
+msgstr "yaqha Butiá wakichata"
+
+msgid "Butia Robot extra blocks"
+msgstr "Robot Butiá wakichataru wakisiri yaqha wakichatanaka"
+
+msgid "pin mode Butia"
+msgstr "Butiá wakichata pin uñanaqapa"
+
+msgid "pin"
+msgstr "tachuela wakichata"
+
+msgid "mode"
+msgstr "uñanaqapa"
+
+msgid "Select the pin function (INPUT, OUTPUT)."
+msgstr "pin wakichatana lurañapa chhijllma (MANTAÑA, MISTUÑA)."
+
+msgid "read pin Butia"
+msgstr "pin Butiá wakichata ullaña"
+
+msgid "read the value of a pin"
+msgstr "pin wakichatana chanipa ullma"
+
+msgid "write pin Butia"
+msgstr "pin wakichatana qillqaña"
+
+#: TurtleArt/tabasics.py:1114 TurtleArt/tawindow.py:5055
+msgid "value"
+msgstr "chani"
+
+msgid "set a hack pin to 0 or 1"
+msgstr "hack pin wakichma uka 0 jani ukaxa 1 chanimpi"
+
+msgid "INPUT"
+msgstr "KATUQIRI"
+
+msgid "Configure hack pin for digital input."
+msgstr "pin wakichataru limt'asa mantaña wakichma."
+
+msgid "HIGH"
+msgstr "JILA"
+
+msgid "Set HIGH value for digital pin."
+msgstr "pin limt'asa wakichatana JILA chanipa wakichma."
+
+msgid "LOW"
+msgstr "PISI"
+
+msgid "Set LOW value for digital port."
+msgstr "Puerto limt'asa wakichata PISI chanipa machaqachma."
+
+msgid "OUTPUT"
+msgstr "MISTUYIRI"
+
+msgid "Configure hack port for digital output."
+msgstr "hack puerto wakichataru limt'asa mistuña wakichma."
+
+msgid "butia-cast"
+msgstr "butiá-casteo wakichata"
+
+msgid "Butia Robot cast blocks"
+msgstr "Robot Butiá wakichatana t'aqanakapa"
+
+# #-#-#-#-#  ayc.po (PACKAGE VERSION)  #-#-#-#-#
+#  "Butiá"
+msgid "Butia"
+msgstr "Butiá wakichata"
+
+msgid "CAST\n"
+msgstr "CASTEO wakichata\n"
+
+msgid "new name"
+msgstr "machaqa suti"
+
+msgid "original"
+msgstr "tunu"
+
+msgid "f(x)="
+msgstr "f(x)= wakichata"
+
+msgid "name"
+msgstr "suti"
+
+msgid "Cast a new block"
+msgstr "machaqa siqi wakichjma"
+
+msgid "generic module %s"
+msgstr "taqinitaki Wakichata %s"
+
+msgid "Butia IP"
+msgstr "Butiá IP wakichata"
+
+msgid "change the IP of butia robot"
+msgstr "robot Butiá IP wakichatapa machaqachma"
+
+msgid "ERROR: The pin %s must be in OUTPUT mode."
+msgstr "PANTJATA: pin wakichataxa %s uka MISTUÑA uñanaqaniñapawa."
+
+msgid "ERROR: The pin %s must be in INPUT mode."
+msgstr "PANTJATA: pin wakichataxa %s uka MANTAÑA uñanaqaniñapawa."
+
+msgid "ERROR: Something wrong with function '%s'"
+msgstr "PANTJATA: aka wakichatampi kunasa kamachi '%s'"
+
+msgid "ERROR: cannot init GCONF client: %s"
+msgstr "PANTJATA: uka wakichata alapa janiwa qalltayasiti GCONF: %s"
+
+msgid "ERROR: You must cast Sensor or Actuator: A, B or C"
+msgstr ""
+"PANTJATA: tupt'añamawa Katjiri jani ukaxa Luriri wakichata: A, B o C "
+"chimpunakani"
+
+msgid "ERROR: Invalid IP '%s'"
+msgstr "PANTJATA: IP wakichata jani wakisiriwa '%s'"
+
+msgid "Creating PyBot server"
+msgstr "PyBot server wakichasa"
+
+msgid "ERROR creating PyBot server"
+msgstr "PANTJATA PyBot server wakichañana"
+
+msgid "PyBot is alive!"
+msgstr "¡PyBot wakichata jakaskiwa!"
+
+msgid "Ending butia polling"
+msgstr "Butiá polling wakichata tukuyaña"
+
+msgid "Error importing Pygame. This plugin require Pygame 1.9"
+msgstr ""
+"Pantjatawa Pygame wakichata apaniñana. Uka plugin wakichataxa Pygame 1.9 "
+"wakichata suyaraki"
+
+# #-#-#-#-#  ayc.po (PACKAGE VERSION)  #-#-#-#-#
+# "Error en la inicialización de la cámara."
+msgid "Error on initialization of the camera"
+msgstr "Cámara wakichataru qhantayaskasina pantjata"
+
+msgid "No camera was found"
+msgstr "Cámara wakichataxa janiwa uñasiti"
+
+msgid "Error stopping camera"
+msgstr "Cámara wakichata sayt'aykasina pantjata"
+
+msgid "Error starting camera"
+msgstr "Cámara wakichata qhantaykasina pantjata"
+
+msgid "Error in get mask"
+msgstr "Pantjatawa uka máscara wakichata thaqañana"
+
+msgid "followme"
+msgstr "followme wakichata"
+
+# #-#-#-#-#  ayc.po (PACKAGE VERSION)  #-#-#-#-#
+#  "FollowMe"
+msgid "FollowMe"
+msgstr "FollowMe wakichata"
+
+msgid "refresh FollowMe"
+msgstr "FollowMe wakichata ch'amanchaña"
+
+msgid "Search for a connected camera."
+msgstr "Maya cámara wakichata thaqtma."
+
+msgid "calibration"
+msgstr "calibración wakichata"
+
+msgid "store a personalized calibration"
+msgstr "wakisiriparjama askichäwi wakichata imma"
+
+msgid "return a personalized calibration"
+msgstr "wakisiriparjama calibración wakichata kutsuyi"
+
+msgid "follow"
+msgstr "arkaña"
+
+msgid "follow a color or calibration"
+msgstr "samimpi jani ukaxa calibración wakisiñampi arkaña"
+
+#: plugins/camera_sensor/camera_sensor.py:83
+#: plugins/camera_sensor/camera_sensor.py:99
+#: plugins/camera_sensor/camera_sensor.py:136
+#: plugins/camera_sensor/camera_sensor.py:152
+#: plugins/light_sensor/light_sensor.py:58
+#: plugins/light_sensor/light_sensor.py:66
+msgid "brightness"
+msgstr "lliphi"
+
+msgid "set the camera brightness as a value between 0 to 255."
+msgstr ""
+"cámara wakichatana qhanañapa akïri jakhunaka taypita 0 y 255 maya chanimpi "
+"wakichma."
+
+msgid "minimum pixels"
+msgstr "juk'ata sipana píxeles wakichata"
+
+msgid "set the minimal number of pixels to follow"
+msgstr "juk'ata sipana píxeles jakhu chimpupa arkaña amtma"
+
+msgid "threshold"
+msgstr "warachi wakichata"
+
+msgid "set a threshold for a RGB color"
+msgstr "RGB samitaki warachi wakichma"
+
+msgid "camera mode"
+msgstr "cámara wakichata uñanaqa"
+
+msgid "set the color mode of the camera: RGB; YUV or HSV"
+msgstr "cámara wakichata samipa uka RGB, YUV o HSV chimpumpi wakichma"
+
+msgid "get brightness"
+msgstr "qhanäwi thaqaña"
+
+msgid "get the brightness of the ambient light"
+msgstr "pacha qhana lliphipa thaqma"
+
+msgid "average color"
+msgstr "tantiyu sami"
+
+msgid ""
+"if set to 0 then color averaging is off during calibration;for other values, "
+"it is on"
+msgstr ""
+"Wakichata 0 chaninkchixa tantiyu samixa janiwa wakisiti askichäwi "
+"phuqañkama; yaqha chaninakataki qhantatawa"
+
+# #-#-#-#-#  ayc.po (PACKAGE VERSION)  #-#-#-#-#
+#  "posición x"
+msgid "x position"
+msgstr "x sayäwi"
+
+# #-#-#-#-#  ayc.po (PACKAGE VERSION)  #-#-#-#-#
+#  "retorna la posición x"
+msgid "return x position"
+msgstr "x sayäwi kutiyaña"
+
+# #-#-#-#-#  ayc.po (PACKAGE VERSION)  #-#-#-#-#
+#  "posición y"
+msgid "y position"
+msgstr "y sayäwi"
+
+# #-#-#-#-#  ayc.po (PACKAGE VERSION)  #-#-#-#-#
+#  "retorna la posición y"
+msgid "return y position"
+msgstr "y sayäwi kutiyaña"
+
+msgid "pixels"
+msgstr "píxeles wakichata"
+
+msgid "return the number of pixels of the biggest blob"
+msgstr "jach'a allqantata píxeles wakichata jakhu chimpupa kutiyma"
+
+#, fuzzy
+msgid "RGB"
+msgstr ""
+"#-#-#-#-#  ayc.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"RGB wakichata\n"
+"#-#-#-#-#  ayc.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"RGB chimpuni wakichata"
+
+msgid "set the color mode of the camera to RGB"
+msgstr "cámara wakichata samini uñnaqapa RGB chimpuniru wakichma"
+
+#, fuzzy
+msgid "YUV"
+msgstr ""
+"#-#-#-#-#  ayc.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"YUV wakichata\n"
+"#-#-#-#-#  ayc.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"YUV chimpuni wakichata"
+
+msgid "set the color mode of the camera to YUV"
+msgstr "cámara wakichata samini uñanaqapa YUV chimpuniru wakichma"
+
+#, fuzzy
+msgid "HSV"
+msgstr ""
+"#-#-#-#-#  ayc.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"HSV wakichata\n"
+"#-#-#-#-#  ayc.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"HSV chimpuni wakichata"
+
+msgid "set the color mode of the camera to HSV"
+msgstr "cámara wakichata samini uñanaqapa HSV chimpuniru wakichma"
+
+msgid "get color"
+msgstr "sami wakichaña"
+
+msgid "get the color of an object"
+msgstr "maya apanaqañana samipa wakichaña"
+
+msgid "color distance"
+msgstr "sami katuya"
+
+msgid "set the distance to identify a color"
+msgstr "sami katuya taña wakichma"
+
+msgid "empty calibration"
+msgstr "calibración wakichata ch'usa"
+
+msgid "error in string conversion"
+msgstr "qillqata wakichata wiskhallana mayjt'ayäwina pantjata"
+
+msgid "Pattern detection"
+msgstr "Chimpunaka thaqäwi"
+
+msgid "pattern_detection"
+msgstr "Chimpunaka_thaqäwi"
+
+msgid "Seeing signal"
+msgstr "Qhaniri uñjasa"
+
+msgid "Returns True if the signal is in front of the camera"
+msgstr "Chiqapa kutsuyi qhaniri cámara wakichata nayrankipana"
+
+msgid "Distance to signal"
+msgstr "Qhanäwi jayankiri taña"
+
+msgid "Returns the distance of the signal to the camera in millimeters"
+msgstr ""
+"cámara wakichata ukata qhanäwi jayakiri tañapa kutsuyi uka milímetros "
+"chimpumpi"
+
+msgid "SumBot"
+msgstr "SumBot wakichata"
+
+msgid "sumtia"
+msgstr "sumtia wakichata"
+
+msgid "speed SumBot"
+msgstr "SumBot wakichata k'ata saräwipa"
+
+msgid "submit the speed to the SumBot"
+msgstr "SumBot wakichata k'ata saräwipa machaqachma"
+
+msgid "set the default speed for the movement commands"
+msgstr "sarayaña limt'añanaka pantjasina k'ata sarayäwi machaqachma"
+
+msgid "forward SumBot"
+msgstr "SumBot wakichatampi qalltma"
+
+msgid "move SumBot forward"
+msgstr "SumBot wakichata nayräxaru sartayma"
+
+msgid "backward SumBot"
+msgstr "SumBot wakichata qhipäxa"
+
+msgid "move SumBot backward"
+msgstr "SumBot wakichata qhipäxaru jithiyma"
+
+msgid "stop SumBot"
+msgstr "SumBot wakichata sayt'ayaña"
+
+msgid "stop the SumBot"
+msgstr "SumBot wakichata sayt'ayma"
+
+msgid "left SumBot"
+msgstr "SumBot wakichata ch'iqäxa"
+
+msgid "turn left the SumBot"
+msgstr "SumBot wakichata ch'iqäxaru muytayma"
+
+msgid "right SumBot"
+msgstr "SumBot wakichata kupïxa"
+
+msgid "turn right the SumBot"
+msgstr "SumBot wakichata kupïxaru muytayma"
+
+msgid "angle to center"
+msgstr "taypiru k'uchuni wakichata"
+
+msgid "get the angle to the center of the dohyo"
+msgstr "dohyo taypiru k'uchuni wakichata apsma"
+
+msgid "angle to Enemy"
+msgstr "k'uchuni wakichata uñisiri"
+
+msgid "get the angle to the Enemy"
+msgstr "k'uchuni wakichata uñisiri apsma"
+
+msgid "x coor. SumBot"
+msgstr "coor. x SumBot wakichata"
+
+msgid "get the x coordinate of the SumBot"
+msgstr "SumBot wakichatana coordenada x chanipa apsma"
+
+msgid "y coor. SumBot"
+msgstr "coor. y SumBot wakichata"
+
+msgid "get the y coordinate of the SumBot"
+msgstr "SumBot wakichatana coordenada y chanipa apsma"
+
+msgid "x coor. Enemy"
+msgstr "coor. x wakichata uñisiri"
+
+msgid "get the x coordinate of the Enemy"
+msgstr "uñisiri wakichatana coordenada x chanipa apsma"
+
+msgid "y coor. Enemy"
+msgstr "coor. y wakichata uñisiri"
+
+msgid "get the y coordinate of the Enemy"
+msgstr "uñisiri wakichatana coordenada y chanipa apsma"
+
+msgid "rotation SumBot"
+msgstr "SumBot wakichata muyüwipa"
+
+msgid "get the rotation of the Sumbot"
+msgstr "SumBot wakichata muyüwipa apsma"
+
+msgid "rotation Enemy"
+msgstr "uñisiri wakichatana muyüwipa"
+
+msgid "get the rotation of the Enemy"
+msgstr "uñisiri wakichatana muyüwipa apsma"
+
+msgid "distance to center"
+msgstr "taypiru sara"
+
+msgid "get the distance to the center of the dohyo"
+msgstr "dohyo wakichata taypiru sarapa apsma"
+
+msgid "distance to Enemy"
+msgstr "uñisiri wakichata jayankatapa"
+
+msgid "get the distance to the Enemy"
+msgstr "uñisiri wakichata jayankatapa apsma"
+
+msgid "update information"
+msgstr "yatiyañataki machaqachaña"
+
+msgid "update information from the server"
+msgstr "wakichatanaka apnaqañatpacha yatiyañanaka machaqachma"
+
+msgid "Palette of physics blocks"
+msgstr "Física wakichata tamanaka limt'aña"
+
+msgid "start polygon"
+msgstr "polígono wakichata qalltaña"
+
+msgid "Begin defining a new polygon based on the current Turtle xy position."
+msgstr ""
+"Machaqa polígono wakichata wakichaña qalltma uka tortuga wakichata xy jichha "
+"sayäwiparjama."
+
+msgid "add point"
+msgstr "chimpu yapxataña"
+
+msgid ""
+"Add a new point to the current polygon based on the current Turtle xy "
+"position."
+msgstr "Jichha polígono wakichataru machaqa chimpu yapxatma."
+
+msgid "end polygon"
+msgstr "polígono wakichata tukuyaña"
+
+msgid "Define a new polygon."
+msgstr "Machaqa polígono wakichata wakichma."
+
+msgid "end filled polygon"
+msgstr "polígono wakichata phuqachaña tukuyma"
+
+msgid "Not a simple polygon"
+msgstr "Janiwa aliqa polígono wakichatakïkiti"
+
+msgid "Define a new filled polygon."
+msgstr "Machaqa polígono wakichata phuqachaña amtma."
+
+msgid "triangle"
+msgstr "kimsa k'uchu"
+
+msgid "base"
+msgstr "kayu"
+
+# #-#-#-#-#  ayc.po (PACKAGE VERSION)  #-#-#-#-#
+#  "altura"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1046
+msgid "height"
+msgstr "sayt'a"
+
+msgid "Add a triangle object to the project."
+msgstr "Amtäwiru kimsa k'uchuni wakichatampi yapxatma."
+
+msgid "circle"
+msgstr "muyu"
+
+msgid "Add a circle object to the project."
+msgstr "Amtäwiru maya muyu wakichatampi yapxatma."
+
+msgid "rectangle"
+msgstr "wiskhalla"
+
+# #-#-#-#-#  ayc.po (PACKAGE VERSION)  #-#-#-#-#
+#  "anchura"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1013
+msgid "width"
+msgstr "lankhu"
+
+msgid "Add a rectangle object to the project."
+msgstr "Amtäwiru maya wiskhalla wakichatampi yapxatma."
+
+msgid "reset"
+msgstr "machaqachaña"
+
+msgid "Reset the project; clear the object list."
+msgstr "Amtäwi machaqachma: wakichata sutinaka siqi pichsma."
+
+msgid "motor"
+msgstr "motor wakichata"
+
+msgid "torque"
+msgstr "torque wakichata"
+
+msgid "speed"
+msgstr "k'ata sarayäwi"
+
+msgid ""
+"Motor torque and speed range from 0 (off) to positive numbers; motor is "
+"placed on the most recent object created."
+msgstr ""
+"Torque wakichata ukata motor wakichata k'ata saräwimpixa 0 chimputa (jiwata) "
+"chiqapa chimpunakkamawa sari; motor wakichataxa jichha wakichata taypiruwa "
+"uchasi."
+
+msgid "Pin an object down so that it cannot fall."
+msgstr "Wakichata jani jalaqañapataki achxaruyma."
+
+# #-#-#-#-#  ayc.po (PACKAGE VERSION)  #-#-#-#-#
+# "Abrir"
+#: TurtleArt/tabasics.py:351
+#, fuzzy
+msgid "pen"
+msgstr ""
+"#-#-#-#-#  ayc.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"qillqaña phuyu\n"
+"#-#-#-#-#  ayc.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"phuyu"
+
+msgid "Add a pen to an object so that its movements are traced."
+msgstr "maya phuyu apxatma ukhamata thakipa jaytañapataki."
+
+msgid "joint"
+msgstr "lip'ita"
+
+# #-#-#-#-#  ayc.po (PACKAGE VERSION)  #-#-#-#-#
+#  "x"
+#: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
+msgid "x"
+msgstr "x wakichata"
+
+# #-#-#-#-#  ayc.po (PACKAGE VERSION)  #-#-#-#-#
+#  "y"
+#: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
+msgid "y"
+msgstr "y wakichata"
+
+msgid ""
+"Join two objects together (the object at the current location and the object "
+"at point x, y)."
+msgstr ""
+"Paya wakichata lip'iyma (jichha wakichatampi uka x, y chimpuni wakichatampi."
+
+msgid "save as Physics activity"
+msgstr "física luräwjama imaña"
+
+msgid "Save the project to the Journal as a Physics activity."
+msgstr "Amtäwi sapüru luräwiru imma kamisa Física luräwjama."
+
+msgid "gear"
+msgstr "muyu"
+
+msgid "Add a gear object to the project."
+msgstr "Amtäwiru maya muyuri wakichatampi yapxatma."
+
+# #-#-#-#-#  ayc.po (PACKAGE VERSION)  #-#-#-#-#
+# "identidad"
+msgid "density"
+msgstr "waljani"
+
+msgid ""
+"Set the density property for objects (density can be any positive number)."
+msgstr ""
+"Wakichatanaka waljanitapa apsma (waljanitapa maski kawkipiri chiqapa "
+"jakhuspawa)."
+
+msgid "friction"
+msgstr "purapayasïwi"
+
+msgid ""
+"Set the friction property for objects (value from 0 to 1, where 0 turns "
+"friction off and 1 is strong friction)."
+msgstr ""
+"Wakichatanaka purapayasïwipana yatiyäwinakapa wakichma (maya chanixa 0 "
+"chimpuni ukata 1 chimpuni, ukana 0 jani purapayasini ukata 1 chimpuraki wali "
+"purapayasini)."
+
+msgid "bounciness"
+msgstr "kutintayäwi"
+
+msgid ""
+"Set the bounciness property for objects (a value from 0 to 1, where 0 means "
+"no bounce and 1 is very bouncy)."
+msgstr ""
+"Wakichatanaka kutintayäwipa tuqita yatiyäwinaka wakichma (maya chanixa 0 "
+"chimpuni ukata 1 chimpuni, ukana 0 jani kutintayäwini ukata 1 chimpuraki "
+"wali kutintayäwini)."
+
+msgid "dynamic"
+msgstr "q'apa"
+
+msgid ""
+"If dynamic = 1, the object can move; if dynamic = 0, it is fixed in position."
+msgstr ""
+"Wali q'apa = 1, wakichataxa unxtaspawa; wali q'apa = 0 wakichataxa janiwa "
+"unxtaspati."
+
+msgid "Palette of WeDo blocks"
+msgstr "WeDo wakichata tamanaka limt'aña"
+
+msgid "The parameter must be a integer, not "
+msgstr "Chanixa parisa jakhuñapawa, jani '%s'"
+
+msgid "Motor speed must be an integer between -100 and 100"
+msgstr ""
+
+msgid "WeDo found %s bricks"
+msgstr "NXT wakichataxa %s bricks wakichata uñstayi"
+
+msgid "WeDo not found"
+msgstr ""
+
+msgid "WeDo number %s was not found"
+msgstr "brick wakichatana jakhu chimpupaxa %s janiwa uñasiti"
+
+msgid "wedo"
+msgstr ""
+
+msgid "refresh WeDo"
+msgstr ""
+
+msgid "Search for a connected WeDo."
+msgstr "Maya cámara wakichata thaqtma."
+
+msgid "WeDo"
+msgstr "WeDo wakichata"
+
+msgid "set current WeDo device"
+msgstr "Jichha WeDo wakichata mayampi qhantayma"
+
+msgid "number of WeDos"
+msgstr ""
+
+msgid "number of WeDo devices"
+msgstr "WeDo wakichatanaka jakhu"
+
+# #-#-#-#-#  ayc.po (PACKAGE VERSION)  #-#-#-#-#
+#  "inclinación"
+msgid "tilt"
+msgstr "kicht'ata"
+
+msgid ""
+"tilt sensor output: (-1 == no tilt,0 == tilt forward, 3 == tilt back, 1 == "
+"tilt left, 2 == tilt right)"
+msgstr ""
+"kicht'ayaña katjiri mistuñapa: (-1 == janiwa kicht'atati, 0 == nayräxaru "
+"kicht'atawa, 3 == qhipäxaru kicht'atawa, 1 == ch'iqäxaru kicht'atawa, 2 == "
+"kupïxaru kicht'atawa)"
+
+msgid "distance sensor output"
+msgstr "katjiri mistuñana jak'ankatapa"
+
+msgid "Motor A"
+msgstr "Motor A wakichata"
+
+msgid "returns the current speed of Motor A"
+msgstr "Motor A wakichatana jichha chanipa kutsuyi"
+
+msgid "Motor B"
+msgstr "Motor B wakichata"
+
+msgid "returns the current speed of Motor B"
+msgstr "Motor B wakichatana jichha chanipa kutsuyi"
+
+msgid "set the speed for Motor A"
+msgstr "Motor A wakichatana chanipa machaqachma"
+
+msgid "set the speed for Motor B"
+msgstr "Motor B wakichatana chanipa machaqachma"
+
+msgid "Palette of LEGO NXT blocks of motors"
+msgstr "Motor wakichatanakana LEGO NXT tamanaka limt'aña"
+
+msgid "Palette of LEGO NXT blocks of sensors"
+msgstr "Katjirinaka wakichata LEGO NXT tamanaka limt'aña"
+
+# #-#-#-#-#  ayc.po (PACKAGE VERSION)  #-#-#-#-#
+#  "color"
+#: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:369
+#: TurtleArt/tabasics.py:432 TurtleArt/tawindow.py:4542
+msgid "color"
+msgstr "sami"
+
+# #-#-#-#-#  ayc.po (PACKAGE VERSION)  #-#-#-#-#
+#  "sonido"
+#: plugins/audio_sensors/audio_sensors.py:90 pysamples/grecord.py:206
+msgid "sound"
+msgstr "sijiqi"
+
+msgid "Please check the connection with the brick"
+msgstr "Mira suma brick wakichataru mayachäwi uñakipma"
+
+msgid "Invalid port '%s'. Port must be: PORT A, B or C"
+msgstr "Mayachäwi '%s' pantjatawa. Mayachäwi akhamañapawa: MAYACHÄWI A, B o C"
+
+msgid "Invalid port '%s'. Port must be: PORT 1, 2, 3 or 4"
+msgstr ""
+"Mayachäwi '%s' pantjatawa. Mayachäwi akhamañapawa: MAYACHÄWI 1, 2, 3 o 4"
+
+msgid "The value of power must be between -127 to 127"
+msgstr "Payanchäwi chanixa aka jakhunaka taypinkañapawa -127 y 127"
+
+msgid "The parameter must be a integer, not '%s'"
+msgstr "Chanixa parisa jakhuñapawa, jani '%s'"
+
+msgid "An error has occurred: check all connections and try to reconnect"
+msgstr ""
+"Maya pantjatawa uñasi: mayachäwinaka qawayata uñakipasa mayampi mayachaña "
+"yant'apxma"
+
+msgid "NXT found %s bricks"
+msgstr "NXT wakichataxa %s bricks wakichata uñstayi"
+
+msgid "NXT not found"
+msgstr "NXT wakichata chhaqata"
+
+msgid "Brick number %s was not found"
+msgstr "brick wakichatana jakhu chimpupaxa %s janiwa uñasiti"
+
+msgid "nxt-motors"
+msgstr "motores-nxt wakichatanaka"
+
+msgid "refresh NXT"
+msgstr "NXT wakichata samarayaña"
+
+msgid "Search for a connected NXT brick."
+msgstr "Brick NXT wakichata mayachatnama thaqtma."
+
+msgid "NXT"
+msgstr "NXT chimpu"
+
+msgid "set current NXT device"
+msgstr "NXT jichha chimpuni wakichata wakichma"
+
+msgid "number of NXTs"
+msgstr "NXTs wakichatana jakhupa"
+
+msgid "number of NXT devices"
+msgstr "NXT chimpuni wakichatanaka jakhu"
+
+msgid "brick name"
+msgstr "brick wakichatana sutipa"
+
+msgid "Get the name of a brick."
+msgstr "brick wakichatana sutipa katjma."
+
+msgid "play tone"
+msgstr "ist'aña wakichata qhantayaña"
+
+msgid "frequency"
+msgstr "wakichatanaka thaqaña"
+
+# #-#-#-#-#  ayc.po (PACKAGE VERSION)  #-#-#-#-#
+#  "tiempo"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:421
+msgid "time"
+msgstr "pacha"
+
+msgid "Play a tone at frequency for time."
+msgstr "Maya k'ata wakichäwinaka taypinkiri maya ist'aña qhantayma."
+
+msgid "turn motor %s"
+msgstr "motor wakichata muytayaña %s"
+
+msgid "port"
+msgstr "puerto wakichata"
+
+msgid "rotations"
+msgstr "muyüwinaka"
+
+msgid "power"
+msgstr "ch'ama"
+
+msgid "turn a motor"
+msgstr "motor wakichata muytayma"
+
+msgid "synchronize %s motors"
+msgstr "motor wakichatanaka %s thaqthapiña"
+
+msgid "synchronize two motors connected in PORT B and PORT C"
+msgstr "PUERTO B y PUERTO C motor wakichatanaka mayachäwinaka katjaña"
+
+msgid "PORT %s"
+msgstr "MAYACHÄWI %s"
+
+msgid "PORT %s of the brick"
+msgstr "brick wakichatana MAYACHÄWI %s wakichatapa"
+
+msgid "start motor"
+msgstr "motor wakichata qhantayaña"
+
+msgid "Run a motor forever."
+msgstr "Wiñayataki wakichata motor muyuyaña."
+
+msgid "brake motor"
+msgstr "motor wakichata wayt'aña"
+
+msgid "Stop a specified motor."
+msgstr "Maya uñaqata motor wakichata wayt'aña."
+
+msgid "reset motor"
+msgstr "motor wakichata mayampi qhantayaña"
+
+msgid "Reset the motor counter."
+msgstr "Motor wakichata jakhuripa mayampi qhantayma."
+
+msgid "motor position"
+msgstr "motor wakichatana sayäwipa"
+
+msgid "Get the motor position."
+msgstr "Motor wakichatana sayäwipa apsma."
+
+msgid "nxt-sensors"
+msgstr "nxt wakichata katjiri"
+
+msgid "read"
+msgstr "ullaña"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:328
+msgid "sensor"
+msgstr "katjiri"
+
+msgid "Read sensor output."
+msgstr "Katjirina mistuñapa wakichata ullma."
+
+msgid "light sensor"
+msgstr "lliphirini katjiri"
+
+msgid "gray sensor"
+msgstr "uqi saminaka katjiri"
+
+msgid "button sensor"
+msgstr "katjiri limt'aña"
+
+msgid "distance sensor"
+msgstr "jayataki katjiri"
+
+msgid "sound sensor"
+msgstr "ist'añani katjiri"
+
+msgid "color sensor"
+msgstr "samini katjiri"
+
+msgid "set light"
+msgstr "lliphiri qhantayaña"
+
+msgid "Set color sensor light."
+msgstr "Samini katjiri lliphiripa qhantayma."
+
+msgid "battery level"
+msgstr "batería ch'amanchiripa"
+
+msgid "Get the battery level of the brick in millivolts"
+msgstr "brick wakichatana batería ch'amapa tupt'ma milivolts chanimpi."
+
+#, fuzzy
+msgid "Palette of Arduino blocks"
+msgstr ""
+"#-#-#-#-#  ayc.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Arduino wakichata siqi limt'aña\n"
+"#-#-#-#-#  ayc.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Arduino wakichata tamanaka limt'aña"
+
+msgid "PWM"
+msgstr "PWM wakichata"
+
+msgid "SERVO"
+msgstr "SERVO wakichata"
+
+msgid "ERROR: Check the Arduino and the number of port."
+msgstr "PANTJATA: Arduino uñxatma ukata puerto wakichata jakhupa."
+
+msgid "ERROR: Value must be a number from 0 to 1."
+msgstr "PANTJATA: chanixa 0 ukata 1 jakhu taypinkañapawa."
+
+msgid "ERROR: Value must be a number from 0 to 180."
+msgstr "PANTJATA: chanixa 0 ukata 180 jakhu taypinkañapawa."
+
+msgid "ERROR: Value must be either HIGH or LOW, 0 or 1"
+msgstr ""
+"PANTJATA: chanixa JILA jani ukaxa AYNACHA chaniñapawa, 0 jani ukaxa 1 chani"
+
+msgid "ERROR: The mode must be either INPUT, OUTPUT, PWM or SERVO."
+msgstr ""
+"PANTJATA: uñanaqapaxa KATUQIRI, MISTUYIRI, PWM jani ukaxa SERVO ukhamañapawa."
+
+msgid "ERROR: The value must be an integer."
+msgstr "PANTJATA: chanixa parisa jakhuñapawa."
+
+msgid "ERROR: The pin must be an integer."
+msgstr "PANTJATA: pin wakichata parisa jakhuñapawa."
+
+msgid "ERROR: You must configure the mode for the pin."
+msgstr "PANTJATA: pin wakichata uñanaqa wakichata wakichatamawa."
+
+msgid "arduino"
+msgstr "Arduino wakichata"
+
+msgid "refresh Arduino"
+msgstr "Arduino ch'amanchaña"
+
+msgid "Search for connected Arduinos."
+msgstr "Arduinos wakichatanaka mayachata thaqma."
+
+msgid "Arduino"
+msgstr "Arduino wakichata"
+
+msgid "set current Arduino board"
+msgstr "Arduino jichha wakichatana chimpupa wakichma"
+
+msgid "number of Arduinos"
+msgstr "Arduinos wakichatanaka jakhu"
+
+msgid "number of Arduino boards"
+msgstr "chimpunaka jakhu"
+
+msgid "Arduino name"
+msgstr "Arduino wakichatana sutipa"
+
+msgid "Get the name of an Arduino."
+msgstr "Arduino wakichatana sutipa katjma"
+
+msgid "pin mode"
+msgstr "pin wakichata uñanaqapa"
+
+msgid "Select the pin function (INPUT, OUTPUT, PWM, SERVO)."
+msgstr "pin wakichatana lurañapa chhijllma (KATUQIRI, MISTUYIRI, PWM, SERVO)."
+
+msgid "analog write"
+msgstr "amparampi qillqaña"
+
+msgid "Write analog value in specified port."
+msgstr "Maya puerto wakichataru amparampi luraña qillqma."
+
+msgid "analog read"
+msgstr "amparampi lurata ullaña"
+
+msgid "Read value from analog port. Value may be between 0 and 1."
+msgstr ""
+"limtañanakani mayachäwi maya chani ullma. Uka chanixa 0 jani ukaxa 1 jakhu "
+"taypinkaspawa."
+
+msgid "digital write"
+msgstr "limt'asa qillqaña"
+
+msgid "Write digital value to specified port."
+msgstr "Maya puerto wakichataru limt'asa qillqata chanipa qillqma."
+
+msgid "digital read"
+msgstr "limt'asa qillqata ullaña"
+
+msgid "Read value from digital port."
+msgstr "Maya puerto limt'asa wakichatata chanipa ullma."
+
+msgid "Set HIGH value for digital port."
+msgstr "Puerto limt'asa wakichata JILA chanipa machaqachma."
+
+msgid "Configure Arduino port for digital input."
+msgstr "limt'asa mantañjama Arduino puerto wakichatapa wakichma."
+
+msgid "Configure Arduino port to drive a servo."
+msgstr "Maya SERVO apnaqañataki Arduino puerto wakichata wakichma."
+
+msgid "Configure Arduino port for digital output."
+msgstr "limt'asa mistuñjama Arduino puerto wakichatapa wakichma."
+
+msgid "Configure Arduino port for PWM (pulse-width modulation)."
+msgstr ""
+"PWM wakichatataki Arduino puerto wakichma (putuqiri lankhutjama askichma)."
+
+msgid "Not found Arduino %s"
+msgstr "Arduino %s wakichata janiwa uñasiti"
+
+msgid "The pin must be an integer"
+msgstr "pin wakichata parisa jakhuñapawa"
+
+msgid "The device must be an integer"
+msgstr "wakichatana jakhupa parisa jakhuñapawa"
+
+msgid "Error loading %s board"
+msgstr "wakichata qhantaykasa pantjata %s"
+
+msgid "Palette for Rodi bots using Arduino"
+msgstr "robots Rodi wakichata apanaqaña Arduino apnaqaski"
+
+msgid "ERROR: Check the connection to the robot."
+msgstr "PANJATA: robot wakichata mayachäwi uñakipma."
+
+msgid "ERROR: The speed must be a value between 0 and %d"
+msgstr ""
+"PANTJATA: K'ata saräwixa akïri chimpunaka taypinkañapawa 0 ukata %s jakhu"
+
+msgid "ERROR: The speed must be a value between %(min)d and %(max)d"
+msgstr ""
+"PANTJATA: K'ata saräwixa akïri chimpunaka taypinkañapawa %(min)d y %(max)d"
+
+msgid "refresh Rodi"
+msgstr "Rodi wakichata ch'amanchaña"
+
+msgid "refresh the state of the Rodi palette and blocks"
+msgstr "Rodi wakichata tamanakana limt'añapa machaqachma"
+
+msgid "move Rodi"
+msgstr "Rodi wakichata aptaña"
+
+msgid "moves the Rodi motors at the specified speed"
+msgstr "Rodi motor wakichatanakapa jithiyi k'ata saräwipirjama"
+
+msgid "stop Rodi"
+msgstr "Rodi wakichata sayt'ayaña"
+
+msgid "stops the Rodi robot"
+msgstr "Rodi robot wakichata sayt'ayma"
+
+msgid "forward Rodi"
+msgstr "Rodi wakichata sartma"
+
+msgid "moves the Rodi robot forward"
+msgstr "Rodi robot wakichata nayräxaru sartayma"
+
+msgid "left Rodi"
+msgstr "Rodi wakichata ch'iqäxa"
+
+msgid "turns the Rodi robot at left"
+msgstr "Rodi robot wakichata ch'iqäxaru muytayma"
+
+msgid "right Rodi"
+msgstr "Rodi wakichata kupïxa"
+
+msgid "turns the Rodi robot at right"
+msgstr "Rodi robot wakichata jaqi kupïxaru muytayma"
+
+msgid "backward Rodi"
+msgstr "Rodi wakichata qhipäxa"
+
+msgid "moves the Rodi robot backward"
+msgstr "Rodi robot wakichata jaqi qhipäxaru jithiyma"
+
+msgid "distance Rodi"
+msgstr "Rodi wakichata jaya"
+
+msgid "returns the distance as a value between 0 and 1"
+msgstr "jaya saräwi chani kutsuyi akïri jakhunaka taypita 0 ukata 1 jakhuru"
+
+msgid "Rodi %s not found"
+msgstr "Rodi wakichata %s janiwa utjiti"
+
+msgid "Palette of Expeyes blocks"
+msgstr "Expeyes wakichata tamanaka limt'aña"
+
+msgid "set PVS"
+msgstr "PVS wakichaña"
+
+msgid "set programmable voltage output"
+msgstr "ch'amampi mistuña wakichäwi wakichma"
+
+msgid "set SQR1 voltage"
+msgstr "SQR1 ch'amapa chani wakichaña"
+
+msgid "set square wave 1 voltage output"
+msgstr "ch'amampi mistuña wakichäwina onda cuadrada chani wakichma"
+
+msgid "set SQR2 voltage"
+msgstr "SQR2 ch'amapa wakichaña"
+
+msgid "set square wave 2 voltage output"
+msgstr "ch'amampi mistuña wakichäwina 2 onda cuadrada chani wakichma"
+
+msgid "set OD1"
+msgstr "OD1 chani wakichaña"
+
+msgid "set digital output level (OD1) low (0) or high (1)"
+msgstr "ch'amampi mistuña wakichma (OD1) jisk'a (0) jach'a (1)"
+
+msgid "IN1 level"
+msgstr "IN1 chani"
+
+msgid ""
+"returns 1 if IN1 voltage level >2.5 volts, 0 if IN1 voltage level <= 2.5 "
+"volts"
+msgstr ""
+"kutsuyiwa 1 ch'amakiti IN1 jilächi 2,5 volts, 0 ch'amakiti <= 2,5 volts "
+"jukha chaninïchi"
+
+msgid "IN2 level"
+msgstr "IN2 chani"
+
+msgid ""
+"returns 1 if IN2 voltage level >2.5 volts, 0 if IN2 voltage level <= 2.5 "
+"volts"
+msgstr ""
+"kutsuyiwa 1 ch'amakiti IN2 jilächi 2,5 volts, 0 ch'amakiti <= 2,5 volts "
+"jukha chaninïchi"
+
+msgid "SEN level"
+msgstr "SEN chani"
+
+msgid ""
+"returns 1 if resistive sensor (SEN) voltage level > 2.5 volts, 0 if SEN "
+"voltage level <= 2.5 volts"
+msgstr ""
+"kutsuyiwa 1 ch'amakiti ch'amani katjirina (SEN) jilächi 2,5 volts, 0 "
+"ch'amakiti <= 2,5 volts jukha chaninïchi"
+
+msgid "capture"
+msgstr "katjaña"
+
+msgid "input"
+msgstr "mantaña"
+
+msgid "samples"
+msgstr "uñachayañanaka"
+
+msgid "interval"
+msgstr "taypicha"
+
+msgid ""
+"capture multiple samples from input at interval (MS); results pushed to FIFO"
+msgstr ""
+"walja uñachayañanaka taypichanakana katjma (MS); kuts<úwinakaxa FIFO "
+"wakichataru uchasi"
+
+msgid "A1"
+msgstr "A1 chani"
+
+msgid "read analog input 1 voltage"
+msgstr "aliqa mantañana ch'amapa chani ullma 1"
+
+msgid "A2"
+msgstr "A2 chani"
+
+msgid "read analog input 2 voltage"
+msgstr "aliqa mantañana ch'amapa chani ullma 2"
+
+msgid "IN1"
+msgstr "IN1 chani"
+
+msgid "read input 1 voltage"
+msgstr "mantaña ch'amapa chani ullma 1"
+
+msgid "IN2"
+msgstr "IN2 chani"
+
+msgid "read input 2 voltage"
+msgstr "mantaña ch'amapa chani ullma 2"
+
+msgid "SEN"
+msgstr "SEN chani"
+
+msgid "read analog sensor input voltage"
+msgstr "aliqa katjiri mantaña ch'amapa chani ullma"
+
+msgid "SQR1"
+msgstr "SQR1 chani"
+
+msgid "read square wave 1 voltage"
+msgstr "onda cuadrada 1 chani ch'amapa ullma"
+
+msgid "SQR2"
+msgstr "SQR2 chani"
+
+msgid "read square wave 2 voltage"
+msgstr "onda cuadrada 2 chani ch'amapa ullma"
+
+msgid "PVS"
+msgstr "PVS chani"
+
+msgid "read programmable voltage"
+msgstr "ch'amapa wakichäwi ullaña"
+
+msgid "Expeyes device not found"
+msgstr "Expeyes wakichataxa janiwa jakiyasiti"
 
 #. TRANS: "name" option from activity.info file
 msgid "TurtleBlocks"
@@ -70,26 +1542,15 @@ msgstr "mayampi qalltañataki wakichaña"
 msgid "clears the screen and reset the turtle"
 msgstr "mayampi qallatañataki wakichma ukata tortuga wakichata mayampi qalltma"
 
-#  "izquierda"
-#: TurtleArt/tabasics.py:207 TurtleArt/taconstants.py:139
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:991
-msgid "left"
-msgstr "ch'iqa"
-
 #: TurtleArt/tabasics.py:211
 msgid "turns turtle counterclockwise (angle in degrees)"
 msgstr ""
 "tortuga wakichata ch'iqa tuqiru jithiyma (ángulo de grados) wakichatarjama"
 
-#  "derecha"
-#: TurtleArt/tabasics.py:221 TurtleArt/taconstants.py:141
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1024
-msgid "right"
-msgstr "kupi"
-
 #: TurtleArt/tabasics.py:225
 msgid "turns turtle clockwise (angle in degrees)"
-msgstr "tortuga wakichata kupi tuqiru sarayma (ángulo de grados) wakichatarjama"
+msgstr ""
+"tortuga wakichata kupi tuqiru sarayma (ángulo de grados) wakichatarjama"
 
 #: TurtleArt/tabasics.py:235
 msgid "arc"
@@ -110,16 +1571,6 @@ msgstr "tortuga wakichata maya sawana saraparu sarayma"
 #: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
 msgid "set xy"
 msgstr "xy wakichata chimpuña"
-
-#  "x"
-#: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
-msgid "x"
-msgstr "x wakichata"
-
-#  "y"
-#: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
-msgid "y"
-msgstr "y wakichata"
 
 #: TurtleArt/tabasics.py:255 TurtleArt/tabasics.py:334
 msgid ""
@@ -181,21 +1632,10 @@ msgstr ""
 msgid "Palette of pen commands"
 msgstr "Samichaña phuyu apnaqaña limt'aña"
 
-# "Abrir"
-#: TurtleArt/tabasics.py:351
-msgid "pen"
-msgstr "phuyu"
-
 # "pantalla completa"
 #: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:369
 msgid "fill screen"
 msgstr "maypacha uñtaña phuqachma"
-
-#  "color"
-#: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:369
-#: TurtleArt/tabasics.py:432 TurtleArt/tawindow.py:4542
-msgid "color"
-msgstr "sami"
 
 #: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:370
 #: TurtleArt/tabasics.py:444 TurtleArt/tawindow.py:4538
@@ -206,11 +1646,6 @@ msgstr "ist'añataki wakichata"
 #: TurtleArt/tabasics.py:360 TurtleArt/tabasics.py:374
 msgid "fills the background with (color, shade)"
 msgstr "manqhäxa wakichatanakampi phuqachma (samimpi, ch'iwumpi)"
-
-#: TurtleArt/tabasics.py:370 TurtleArt/tabasics.py:454
-#: TurtleArt/tawindow.py:4539 TurtleArt/tawindow.py:4544
-msgid "gray"
-msgstr "uqiru samiri"
 
 #: TurtleArt/tabasics.py:387
 msgid "set color"
@@ -448,8 +1883,7 @@ msgstr "jilata sipana"
 #: TurtleArt/tabasics.py:753
 msgid "returns random number between minimum (top) and maximum (bottom) values"
 msgstr ""
-"maski kawkïri maya jakhu juk'ata sipansa (alaya) ukata jilata sipansa "
-"kutiyma"
+"maski kawkïri maya jakhu juk'ata sipansa (alaya) ukata jilata sipansa kutiyma"
 
 #  "número"
 #: TurtleArt/tabasics.py:775
@@ -688,10 +2122,6 @@ msgstr "wakichataru imaña"
 #: TurtleArt/tabasics.py:1114 TurtleArt/tabasics.py:1130
 msgid "box"
 msgstr "kajuna wakichata"
-
-#: TurtleArt/tabasics.py:1114 TurtleArt/tawindow.py:5055
-msgid "value"
-msgstr "chani"
 
 #: TurtleArt/tabasics.py:1118 TurtleArt/tabasics.py:1133
 #: TurtleArt/tawindow.py:1582 TurtleArt/tawindow.py:1727
@@ -1329,11 +2759,6 @@ msgstr "acelerómetro k'ata sarayiri wakichata"
 msgid "push acceleration in x, y, z to heap"
 msgstr "siqiru wakisiri x, y z sarayirinakaru k'ata sarayirinaka uchi"
 
-#  "sonido"
-#: plugins/audio_sensors/audio_sensors.py:90 pysamples/grecord.py:206
-msgid "sound"
-msgstr "sijiqi"
-
 #: plugins/audio_sensors/audio_sensors.py:91
 msgid "raw microphone input signal"
 msgstr "micrófono arsusiña uchantaña qhana chimpu"
@@ -1356,22 +2781,12 @@ msgstr "wakichatanaka thaqaña"
 msgid "microphone input pitch"
 msgstr "micrófono uchañana wakichatanaka thaqaña wali suma ist'asiri wakichata"
 
-#: plugins/audio_sensors/audio_sensors.py:157
-#: plugins/audio_sensors/audio_sensors.py:175
-msgid "resistance"
-msgstr "ch'amanchiritaki wakichata"
-
 #: plugins/audio_sensors/audio_sensors.py:158
 #: plugins/audio_sensors/audio_sensors.py:176
 msgid "microphone input resistance"
 msgstr ""
 "micrófono uchañaru ch'amanchiri wakichatana uchata chanipa (tupañataki "
 "wakichata: 700 a 14000 ohms)"
-
-#: plugins/audio_sensors/audio_sensors.py:163
-#: plugins/audio_sensors/audio_sensors.py:181
-msgid "voltage"
-msgstr "ch'amani qhantayiri"
 
 #: plugins/audio_sensors/audio_sensors.py:164
 #: plugins/audio_sensors/audio_sensors.py:182
@@ -1384,15 +2799,6 @@ msgstr ""
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:133
 msgid "Palette of media objects"
 msgstr "Taypinkiri siqitanaka limt'aña"
-
-#: plugins/camera_sensor/camera_sensor.py:83
-#: plugins/camera_sensor/camera_sensor.py:99
-#: plugins/camera_sensor/camera_sensor.py:136
-#: plugins/camera_sensor/camera_sensor.py:152
-#: plugins/light_sensor/light_sensor.py:58
-#: plugins/light_sensor/light_sensor.py:66
-msgid "brightness"
-msgstr "lliphi"
 
 #: plugins/camera_sensor/camera_sensor.py:85
 #: plugins/camera_sensor/camera_sensor.py:138
@@ -1615,10 +3021,6 @@ msgstr ""
 "sinusoide wakichata wakichäwi taypita qhantayma, saräwi ukata qhanäwi (pacha "
 "t'aqa t'ijtäwitjama)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:328
-msgid "sensor"
-msgstr "katjiri"
-
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:333
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:344
 msgid "button down"
@@ -1683,11 +3085,6 @@ msgstr "tortuga wakichataxa uñjiwa"
 msgid "returns the color that the turtle \"sees\""
 msgstr "tortuga wakichatana \"uñjatapa\" sami uñachayma"
 
-#  "tiempo"
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:421
-msgid "time"
-msgstr "pacha"
-
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:424
 msgid "elapsed time (in seconds) since program started"
 msgstr "pacha saräwi (pacha t'aqa t'ijtäwinaka) wakichata qalltatpacha"
@@ -1737,8 +3134,7 @@ msgstr "apsuña"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:504
 msgid "pops value off FILO (first-in last-out heap)"
 msgstr ""
-"FILO siqi wakichatana chanipa apsma (nayraqata mantañana, qhipraki "
-"mistuñana)"
+"FILO siqi wakichatana chanipa apsma (nayraqata mantañana, qhipraki mistuñana)"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:516
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:572
@@ -2029,11 +3425,6 @@ msgstr "manqha"
 msgid "ycor of bottom of screen"
 msgstr "coory wakichata uñjaña aynacha lakäxankiri"
 
-#  "anchura"
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1013
-msgid "width"
-msgstr "lankhu"
-
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1016
 msgid "the canvas width"
 msgstr "rixi wakichaña pañu lankhu"
@@ -2045,11 +3436,6 @@ msgstr "coorx wakichata uñjaña kupïxankiri"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1038
 msgid "ycor of top of screen"
 msgstr "coory wakichata uñjaña alaya paräxankiri"
-
-#  "altura"
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1046
-msgid "height"
-msgstr "sayt'a"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1049
 msgid "the canvas height"
@@ -2257,7 +3643,6 @@ msgstr "¿Wakichäwinaka imaña?"
 
 #: turtleblocks.py:558
 #, python-format
-#, python-format,
 msgid "Plugin %s already installed"
 msgstr "Plugin %s wakichata qhantayañataki wakichatäxiwa."
 
@@ -2265,1080 +3650,413 @@ msgstr "Plugin %s wakichata qhantayañataki wakichatäxiwa."
 msgid "myproject"
 msgstr "jisk'a amtäwi wakichata"
 
-#~ msgid "Load project"
-#~ msgstr "Luräwi wakichata sartayaña"
+msgid "Load project"
+msgstr "Luräwi wakichata sartayaña"
 
-#~ msgid "Hide sample projects"
-#~ msgstr "Wakichäwinaka uñachayäwi imantaña"
+msgid "Hide sample projects"
+msgstr "Wakichäwinaka uñachayäwi imantaña"
 
-#~ msgid "palette"
-#~ msgstr "limiña"
+msgid "palette"
+msgstr "limiña"
 
-#~ msgid "make a uturn"
-#~ msgstr "U uñanaqaru muytaña"
+msgid "make a uturn"
+msgstr "U uñanaqaru muytaña"
 
 #, fuzzy
-#~ msgid "u turn"
-#~ msgstr "U uñanaqaru muyta"
+msgid "u turn"
+msgstr "U uñanaqaru muyta"
 
-#~ msgid "set text color"
-#~ msgstr "qillqata samipa wakichaña"
+msgid "set text color"
+msgstr "qillqata samipa wakichaña"
 
-#~ msgid "sets color of text drawn by the turtle"
-#~ msgstr "tortuga wakichatana rixitapana qillqata samipa wakichma"
+msgid "sets color of text drawn by the turtle"
+msgstr "tortuga wakichatana rixitapana qillqata samipa wakichma"
 
-#~ msgid "set text size"
-#~ msgstr "qillqata tañapa wakichma"
+msgid "set text size"
+msgstr "qillqata tañapa wakichma"
 
-#~ msgid "sets size of text drawn by the turtle"
-#~ msgstr "tortuga wakichatana rixitapana qillqata tañapa wakichma"
-
-# "presentación"
-#~ msgid "presentation 1x1"
-#~ msgstr "1x1 uñachayäwi"
+msgid "sets size of text drawn by the turtle"
+msgstr "tortuga wakichatana rixitapana qillqata tañapa wakichma"
 
 # "presentación"
-#~ msgid "presentation 2x1"
-#~ msgstr "2x1 uñachayäwi"
+msgid "presentation 1x1"
+msgstr "1x1 uñachayäwi"
 
 # "presentación"
-#~ msgid "presentation 1x2"
-#~ msgstr "1x2 uñachayäwi"
+msgid "presentation 2x1"
+msgstr "2x1 uñachayäwi"
 
 # "presentación"
-#~ msgid "presentation 2x2"
-#~ msgstr "2x2 uñachayäwi"
+msgid "presentation 1x2"
+msgstr "1x2 uñachayäwi"
 
-#  "TortugArte"
-#~ msgid "Turtle Art"
-#~ msgstr "TortugArte wakichata"
-
-#  "TortugArte Mini"
-#~ msgid "Turtle Art Mini"
-#~ msgstr "Jisk'a TortugArte wakichata"
-
-#  "TortugArte Confusión"
-#~ msgid "Turtle Confusion"
-#~ msgstr "Jani qhana TortugArte wakichata"
-
-#  "Selecciona un desafío"
-#~ msgid "Select a challenge"
-#~ msgstr "Ch'ama wakichäwi thaqaña"
-
-#  "Paleta de Pesos Mexicanos"
-#~ msgid "Palette of Mexican pesos"
-#~ msgstr "México qullqimpi luraña limt'aña"
-
-#  "Paleta de Pesos Colombianos"
-#~ msgid "Palette of Colombian pesos"
-#~ msgstr "Colombia qullqimpi luraña limt'aña"
-
-#  "Paleta de Francos de Ruanda"
-#~ msgid "Palette of Rwandan francs"
-#~ msgstr "Francos de Ruanda qullqimpi luraña limt'aña"
-
-#~ msgid "Palette of US dollars"
-#~ msgstr "Dólares Americanos qullqimpi luraña limt'aña"
-
-#~ msgid "Palette of Australian dollars"
-#~ msgstr "Dólares Australianos qullqimpi luraña limt'aña"
-
-#~ msgid "Palette of Paraguayan Guaranies"
-#~ msgstr "Guaraníes Paraguayos qullqimpi luraña limt'aña"
-
-#~ msgid "Palette of Peruvian Nuevo Soles"
-#~ msgstr "Nuevos Soles Peruanos qullqimpi luraña limt'aña"
-
-#~ msgid "Palette of Uruguayan Pesos"
-#~ msgstr "Pesos Uruguayos qullqimpi luraña limt'aña"
+# "presentación"
+msgid "presentation 2x2"
+msgstr "2x2 uñachayäwi"
 
 # "Ajusta la intensidad del LED entre 0 y 255."
-#~ msgid "adjust LED intensity between 0 and 255"
-#~ msgstr "LED qhana askichaña 0 chimputa 255 chimpukama"
+msgid "adjust LED intensity between 0 and 255"
+msgstr "LED qhana askichaña 0 chimputa 255 chimpukama"
 
 # "Devuelve el nivel de luz en el ambiente como un número entre 0 y 1023."
-#~ msgid "returns the object gray level as a number between 0 and 1023"
-#~ msgstr ""
-#~ "wakichaña pachana suma qhanawa qhantayasi kamisa 0 ukata 1023 jakhunaka "
-#~ "chimpjama"
+msgid "returns the object gray level as a number between 0 and 1023"
+msgstr ""
+"wakichaña pachana suma qhanawa qhantayasi kamisa 0 ukata 1023 jakhunaka "
+"chimpjama"
 
 # "Devuelve 1 cuando el botón está presionado y 0 en otro caso."
-#~ msgid "returns 1 when the button is press and 0 otherwise"
-#~ msgstr "1 jakhu kutsuyi limt'aña limxatatipana ukata 0 kutsuyi jani ukhamipana"
+msgid "returns 1 when the button is press and 0 otherwise"
+msgstr ""
+"1 jakhu kutsuyi limt'aña limxatatipana ukata 0 kutsuyi jani ukhamipana"
 
 # "Devuelve el nivel de luz en el ambiente como un número entre 0 y 1023."
-#~ msgid "returns the ambient light level as a number between 0 and 1023"
-#~ msgstr ""
-#~ "wakichaña pachana suma qhanawa qhantayasi kamisa 0 ukata 1023 jakhunaka "
-#~ "chimpjama"
+msgid "returns the ambient light level as a number between 0 and 1023"
+msgstr ""
+"wakichaña pachana suma qhanawa qhantayasi kamisa 0 ukata 1023 jakhunaka "
+"chimpjama"
 
 # "Devuelve la temperatura en el ambiente como un número entre 0 y 255."
-#~ msgid "returns the ambient temperature as a number between 0 and 255"
-#~ msgstr ""
-#~ "wakichaña pachana suma junt'u junt'utatayasi kamisa 0 ukata 255 jakhunaka "
-#~ "chimpjama"
+msgid "returns the ambient temperature as a number between 0 and 255"
+msgstr ""
+"wakichaña pachana suma junt'u junt'utatayasi kamisa 0 ukata 255 jakhunaka "
+"chimpjama"
 
 # "Devuelve la distancia del objeto en frente al sensor como un número entre 0 "
 #  "y 255."
-#~ msgid ""
-#~ "returns the distance from the object in front of the sensor as a number "
-#~ "between 0 and 255"
-#~ msgstr ""
-#~ "uñkatasina thaqata wakichata jak'ankatapa yatiyi kamisa 0 ukata 255 "
-#~ "jakhunaka chimpjama"
+msgid ""
+"returns the distance from the object in front of the sensor as a number "
+"between 0 and 255"
+msgstr ""
+"uñkatasina thaqata wakichata jak'ankatapa yatiyi kamisa 0 ukata 255 "
+"jakhunaka chimpjama"
 
 # "Devuelve 0 o 1 dependiendo the la inclinación del sensor."
-#~ msgid "returns 0 or 1 depending on the sensor inclination"
-#~ msgstr "0 ukata 1 jakhu chimpu kutsuyi uñtaña katjiri kicht'ayatatjama"
+msgid "returns 0 or 1 depending on the sensor inclination"
+msgstr "0 ukata 1 jakhu chimpu kutsuyi uñtaña katjiri kicht'ayatatjama"
 
 # "Devuelve 1 cuando el sensor detecta un campo magnético, 0 en otro caso."
-#~ msgid "returns 1 when the sensors detects a magnetic field, 0 otherwise"
-#~ msgstr ""
-#~ "1 jakhu chimpu kutsuyi niyatixa uñtaña katjiri uka campo magnético "
-#~ "katjatapatjama, 0 chimpu jani ukhamipana"
+msgid "returns 1 when the sensors detects a magnetic field, 0 otherwise"
+msgstr ""
+"1 jakhu chimpu kutsuyi niyatixa uñtaña katjiri uka campo magnético "
+"katjatapatjama, 0 chimpu jani ukhamipana"
 
 # "Oscila entre 0 y 1 dependiendo de la vibración."
-#~ msgid "switches from 0 to 1, the frequency depends on the vibration"
-#~ msgstr "0 ukata 1 jakhu taypinkiwa khatatipanjama"
-
-#  "LED"
-#~ msgid "LED"
-#~ msgstr "LED wakichata"
-
-#~ msgid "button"
-#~ msgstr "limt'aña"
+msgid "switches from 0 to 1, the frequency depends on the vibration"
+msgstr "0 ukata 1 jakhu taypinkiwa khatatipanjama"
 
 #  "escala de gris"
-#~ msgid "grayscale"
-#~ msgstr "uqi uñamt'irinakapa"
+msgid "grayscale"
+msgstr "uqi uñamt'irinakapa"
 
 #  "luz ambiente"
-#~ msgid "ambient light"
-#~ msgstr "qhana pacha"
+msgid "ambient light"
+msgstr "qhana pacha"
 
-#  "temperatura"
-#~ msgid "temperature"
-#~ msgstr "junt'utatata"
-
-#  "distancia"
-#~ msgid "distance"
-#~ msgstr "jaya"
-
-#  "inclinación"
-#~ msgid "tilt"
-#~ msgstr "kicht'ata"
-
-#~ msgid "magnetic induction"
-#~ msgstr "campo magnético wakichata"
+msgid "magnetic induction"
+msgstr "campo magnético wakichata"
 
 #  "vibración"
-#~ msgid "vibration"
-#~ msgstr "khatati"
-
-#  "Robot Butiá"
-#~ msgid "Butia Robot"
-#~ msgstr "Robot Butiá wakichata jaqi"
-
-#~ msgid "refresh Butia"
-#~ msgstr "Butiá wakichataru samarayaña"
-
-#~ msgid "refresh the state of the Butia palette and blocks"
-#~ msgstr "Butiá wakichata tamanakana limt'añapa machaqachma"
-
-#~ msgid "battery charge Butia"
-#~ msgstr "Butiá wakichatana batería wakisiripa ch'amanchma"
+msgid "vibration"
+msgstr "khatati"
 
 # "Devuelve la temperatura en el ambiente como un número entre 0 y 255."
-#~ msgid "returns the battery charge as a number between 0 and 255"
-#~ msgstr ""
-#~ "robot wakichata jaqina batería wakisiripa ch'amancharapi kamisa 0 jakhu "
-#~ "chimputa 255 chimpukama"
+msgid "returns the battery charge as a number between 0 and 255"
+msgstr ""
+"robot wakichata jaqina batería wakisiripa ch'amancharapi kamisa 0 jakhu "
+"chimputa 255 chimpukama"
 
-#~ msgid "speed Butia"
-#~ msgstr "Butiá wakichatana k'ata sarañapa"
+msgid "move the Butia robot forward a predefined distance"
+msgstr "robot Butiá wakichata jaqiru nayräxaru sartayma amtata sarakama"
 
-#~ msgid "forward Butia"
-#~ msgstr "Butiá wakichatampi qalltma"
+msgid "move the Butia robot backward a predefined distance"
+msgstr "robot Butiá wakichata jaqiru qhipäxaru jithiyma amtata sarakama"
 
-#~ msgid "move the Butia robot forward"
-#~ msgstr "robot Butiá wakichata jaqiru nayräxaru sartayma"
+msgid "turn Butia"
+msgstr "Butiá wakichata muytayaña"
 
-#~ msgid "move the Butia robot forward a predefined distance"
-#~ msgstr "robot Butiá wakichata jaqiru nayräxaru sartayma amtata sarakama"
+msgid "turn the Butia robot x degrees"
+msgstr "robot Butiá wakichata x grados pachparu muytayma"
 
-#  "izquierda Butiá"
-#~ msgid "left Butia"
-#~ msgstr "Butiá wakichata ch'iqäxankiri"
+msgid ""
+"Join two objects together (the most recent object created and the object "
+"at point x, y)."
+msgstr ""
+"Paya wakichata lip'iyma (jichha wakichatampi uka w, y chimpuni "
+"wakichatampi."
 
-#, fuzzy
-#~ msgid "turn the Butia robot at left"
-#~ msgstr "robot Butiá wakichata jaqi kupïxaru muytayma"
+msgid ""
+"tilt sensor output: (-1 == no tilt, 0 == tilt forward, 3 == tilt back, 1 "
+"== tilt left, 2 == tilt right)"
+msgstr ""
+"kicht'ayaña katjiri mistuñapa: (-1 == janiwa kicht'atati, 0 == nayräxaru "
+"kicht'atawa, 3 == qhipäxaru kicht'atawa, 1 == ch'iqäxaru kicht'atawa, 2 "
+"== kupïxaru kicht'atawa)"
 
-#~ msgid "backward Butia"
-#~ msgstr "Butiá qhipäxa"
+msgid "returns the current value of Motor A"
+msgstr "Motor A wakichatana jichha chanipa kutsuyi"
 
-#~ msgid "move the Butia robot backward"
-#~ msgstr "robot Butiá wakichata jaqi qhipäxaru jithiyma"
+msgid "returns the current value of Motor B"
+msgstr "Motor B wakichatana jichha chanipa kutsuyi"
 
-#~ msgid "move the Butia robot backward a predefined distance"
-#~ msgstr "robot Butiá wakichata jaqiru qhipäxaru jithiyma amtata sarakama"
+msgid "set the value for Motor A"
+msgstr "Motor A wakichatana chanipa machaqachma"
 
-#  "derecha Butiá"
-#~ msgid "right Butia"
-#~ msgstr "Butiá wakichata kupïxa"
+msgid "set the value for Motor B"
+msgstr "Motor B wakichatana chanipa machaqachma"
 
-#~ msgid "turn the Butia robot at right"
-#~ msgstr "robot Butiá wakichata jaqi kupïxaru muytayma"
+msgid "touch"
+msgstr "limt'aña"
 
-#~ msgid "turn Butia"
-#~ msgstr "Butiá wakichata muytayaña"
-
-#~ msgid "turn the Butia robot x degrees"
-#~ msgstr "robot Butiá wakichata x grados pachparu muytayma"
-
-#  "detener Butiá"
-#~ msgid "stop Butia"
-#~ msgstr "Butiá wakichata sayt'ayaña"
-
-#~ msgid "stop the Butia robot"
-#~ msgstr "Butiá wakichata sayt'ayma"
-
-#  "Butiá"
-#~ msgid "Butia"
-#~ msgstr "Butiá wakichata"
-
-# "Error en la inicialización de la cámara."
-#~ msgid "Error on initialization of the camera"
-#~ msgstr "Cámara wakichataru qhantayaskasina pantjata"
+msgid "ultrasonic"
+msgstr "jaya"
 
 #, fuzzy
-#~ msgid "No camera was found"
-#~ msgstr "Janiwa cámara wakichatanakaxa jakisiti"
+msgid "grey"
+msgstr "uqiru samiri"
 
-#~ msgid "Error stopping camera"
-#~ msgstr "Cámara wakichata sayt'aykasina pantjata"
+msgid "PORT A"
+msgstr "PUERTO A wakichata"
 
-#~ msgid "Error starting camera"
-#~ msgstr "Cámara wakichata qhantaykasina pantjata"
+msgid "PORT A of the brick"
+msgstr "brick wakichatana PUERTO A wakichatapa"
 
-#  "FollowMe"
-#~ msgid "FollowMe"
-#~ msgstr "FollowMe wakichata"
+msgid "PORT B"
+msgstr "PUERTO B wakichata"
+
+msgid "PORT B of the brick"
+msgstr "brick wakichatana PUERTO B wakichatapa"
+
+msgid "PORT C"
+msgstr "PUERTO C wakichata"
+
+msgid "PORT C of the brick"
+msgstr "brick wakichatana PUERTO C wakichatapa"
+
+msgid "PORT 1"
+msgstr "PUERTO 1 wakichata"
+
+msgid "PORT 1 of the brick"
+msgstr "brick wakichatana PUERTO 1 wakichatapa"
+
+msgid "PORT 2"
+msgstr "PUERTO 2 wakichata"
+
+msgid "PORT 2 of the brick"
+msgstr "brick wakichatana PUERTO 2 wakichatapa"
+
+msgid "PORT 3"
+msgstr "PUERTO 3 wakichata"
+
+msgid "PORT 3 of the brick"
+msgstr "brick wakichatana PUERTO 3 wakichatapa"
+
+msgid "touch sensor"
+msgstr "limt'añataki katjiri"
+
+msgid "PORT 4"
+msgstr "PUERTO 4 wakichata"
+
+msgid "PORT 4 of the brick"
+msgstr "brick wakichatana PUERTO 4 wakichatapa"
 
 #, fuzzy
-#~ msgid "Search for a connected camera."
-#~ msgstr "Brick NXT wakichata mayachatnama thaqtma."
+msgid "Get battery level of the brick"
+msgstr "Brick wakichatana batería ch'amanchiripa apsma."
 
-#~ msgid "calibration"
-#~ msgstr "calibración wakichata"
+msgid "ERROR: Value must be a number from 0 to 255."
+msgstr "PANTJATA: chanixa 0 ukata 255 jakhu taypinkañapawa."
 
-#, fuzzy
-#~ msgid "store a personalized calibration"
-#~ msgstr "wakisiripanjama calibración wakichata imma"
+msgid "ERROR: Value must be either HIGH or LOW."
+msgstr "PANTJATA: JILA jani ukaxa PISI chaniñapawa."
 
-#~ msgid "return a personalized calibration"
-#~ msgstr "wakisiriparjama calibración wakichata kutsuyi"
-
-#~ msgid "follow"
-#~ msgstr "arkaña"
-
-#~ msgid "follow a color or calibration"
-#~ msgstr "samimpi jani ukaxa calibración wakisiñampi arkaña"
-
-#~ msgid "minimum pixels"
-#~ msgstr "juk'ata sipana píxeles wakichata"
-
-#~ msgid "set the minimal number of pixels to follow"
-#~ msgstr "juk'ata sipana píxeles jakhu chimpupa arkaña amtma"
-
-#~ msgid "threshold"
-#~ msgstr "warachi wakichata"
-
-#~ msgid "set a threshold for a RGB color"
-#~ msgstr "RGB samitaki warachi wakichma"
-
-#~ msgid "camera mode"
-#~ msgstr "cámara wakichata uñanaqa"
+msgid ""
+"Read value from analog port. Value may be between 0 and 1023. Use Vref to "
+"determine voltage. For USB, volt=((read)*5)/1024) approximately."
+msgstr ""
+"Maya puerto amparampi lurata wakichata chanipata ullma. Chanipaxa uka 0 "
+"ukata 1023 jakhu taypinkaspawa. Ch'amapa yatiñatakixa Vref wakichata "
+"katma."
 
 #, fuzzy
-#~ msgid "set the color mode of the camera: RGB; YUV or HSV"
-#~ msgstr ""
-#~ "cámara wakichata samipa uñanaqapa wakichma: RGB, YUV jani ukaxa HSV chimpuni"
-
-#  "posición x"
-#~ msgid "x position"
-#~ msgstr "x sayäwi"
-
-#  "retorna la posición x"
-#~ msgid "return x position"
-#~ msgstr "x sayäwi kutiyaña"
-
-#  "posición y"
-#~ msgid "y position"
-#~ msgstr "y sayäwi"
-
-#  "retorna la posición y"
-#~ msgid "return y position"
-#~ msgstr "y sayäwi kutiyaña"
-
-#~ msgid "pixels"
-#~ msgstr "píxeles wakichata"
-
-#~ msgid "return the number of pixels of the biggest blob"
-#~ msgstr "jach'a allqantata píxeles wakichata jakhu chimpupa kutiyma"
-
-#~ msgid "set the color mode of the camera to RGB"
-#~ msgstr "cámara wakichata samini uñnaqapa RGB chimpuniru wakichma"
-
-#~ msgid "set the color mode of the camera to YUV"
-#~ msgstr "cámara wakichata samini uñanaqapa YUV chimpuniru wakichma"
-
-#~ msgid "set the color mode of the camera to HSV"
-#~ msgstr "cámara wakichata samini uñanaqapa HSV chimpuniru wakichma"
-
-#~ msgid "empty calibration"
-#~ msgstr "calibración wakichata ch'usa"
-
-#~ msgid "error in string conversion"
-#~ msgstr "qillqata wakichata wiskhallana mayjt'ayäwina pantjata"
-
-#~ msgid "SumBot"
-#~ msgstr "SumBot wakichata"
-
-#~ msgid "speed SumBot"
-#~ msgstr "SumBot wakichata k'ata saräwipa"
-
-#~ msgid "submit the speed to the SumBot"
-#~ msgstr "SumBot wakichata k'ata saräwipa machaqachma"
-
-#~ msgid "set the default speed for the movement commands"
-#~ msgstr "sarayaña limt'añanaka pantjasina k'ata sarayäwi machaqachma"
-
-#~ msgid "forward SumBot"
-#~ msgstr "SumBot wakichatampi qalltma"
-
-#~ msgid "move SumBot forward"
-#~ msgstr "SumBot wakichata nayräxaru sartayma"
-
-#~ msgid "backward SumBot"
-#~ msgstr "SumBot wakichata qhipäxa"
-
-#~ msgid "move SumBot backward"
-#~ msgstr "SumBot wakichata qhipäxaru jithiyma"
-
-#~ msgid "stop SumBot"
-#~ msgstr "SumBot wakichata sayt'ayaña"
-
-#~ msgid "stop the SumBot"
-#~ msgstr "SumBot wakichata sayt'ayma"
-
-#~ msgid "left SumBot"
-#~ msgstr "SumBot wakichata ch'iqäxa"
-
-#~ msgid "turn left the SumBot"
-#~ msgstr "SumBot wakichata ch'iqäxaru muytayma"
-
-#~ msgid "right SumBot"
-#~ msgstr "SumBot wakichata kupïxa"
-
-#~ msgid "turn right the SumBot"
-#~ msgstr "SumBot wakichata kupïxaru muytayma"
-
-#~ msgid "angle to center"
-#~ msgstr "taypiru k'uchuni wakichata"
-
-#~ msgid "get the angle to the center of the dohyo"
-#~ msgstr "dohyo taypiru k'uchuni wakichata apsma"
-
-#~ msgid "angle to Enemy"
-#~ msgstr "k'uchuni wakichata uñisiri"
-
-#~ msgid "get the angle to the Enemy"
-#~ msgstr "k'uchuni wakichata uñisiri apsma"
-
-#~ msgid "x coor. SumBot"
-#~ msgstr "coor. x SumBot wakichata"
-
-#~ msgid "get the x coordinate of the SumBot"
-#~ msgstr "SumBot wakichatana coordenada x chanipa apsma"
-
-#~ msgid "y coor. SumBot"
-#~ msgstr "coor. y SumBot wakichata"
-
-#~ msgid "get the y coordinate of the SumBot"
-#~ msgstr "SumBot wakichatana coordenada y chanipa apsma"
-
-#~ msgid "x coor. Enemy"
-#~ msgstr "coor. x wakichata uñisiri"
-
-#~ msgid "get the x coordinate of the Enemy"
-#~ msgstr "uñisiri wakichatana coordenada x chanipa apsma"
-
-#~ msgid "y coor. Enemy"
-#~ msgstr "coor. y wakichata uñisiri"
-
-#~ msgid "get the y coordinate of the Enemy"
-#~ msgstr "uñisiri wakichatana coordenada y chanipa apsma"
-
-#~ msgid "rotation SumBot"
-#~ msgstr "SumBot wakichata muyüwipa"
-
-#~ msgid "get the rotation of the Sumbot"
-#~ msgstr "SumBot wakichata muyüwipa apsma"
-
-#~ msgid "rotation Enemy"
-#~ msgstr "uñisiri wakichatana muyüwipa"
-
-#~ msgid "get the rotation of the Enemy"
-#~ msgstr "uñisiri wakichatana muyüwipa apsma"
-
-#~ msgid "distance to center"
-#~ msgstr "taypiru sara"
-
-#~ msgid "get the distance to the center of the dohyo"
-#~ msgstr "dohyo wakichata taypiru sarapa apsma"
-
-#~ msgid "distance to Enemy"
-#~ msgstr "uñisiri wakichata jayankatapa"
-
-#~ msgid "get the distance to the Enemy"
-#~ msgstr "uñisiri wakichata jayankatapa apsma"
-
-#~ msgid "update information"
-#~ msgstr "yatiyañataki machaqachaña"
-
-#~ msgid "update information from the server"
-#~ msgstr "wakichatanaka apnaqañatpacha yatiyañanaka machaqachma"
-
-#~ msgid "Palette of physics blocks"
-#~ msgstr "Física wakichata tamanaka limt'aña"
-
-#~ msgid "start polygon"
-#~ msgstr "polígono wakichata qalltaña"
-
-#~ msgid "Begin defining a new polygon based on the current Turtle xy position."
-#~ msgstr ""
-#~ "Machaqa polígono wakichata wakichaña qalltma uka tortuga wakichata xy jichha "
-#~ "sayäwiparjama."
-
-#~ msgid "add point"
-#~ msgstr "chimpu yapxataña"
-
-#~ msgid ""
-#~ "Add a new point to the current polygon based on the current Turtle xy "
-#~ "position."
-#~ msgstr "Jichha polígono wakichataru machaqa chimpu yapxatma."
-
-#~ msgid "end polygon"
-#~ msgstr "polígono wakichata tukuyaña"
-
-#~ msgid "Define a new polygon."
-#~ msgstr "Machaqa polígono wakichata wakichma."
-
-#~ msgid "end filled polygon"
-#~ msgstr "polígono wakichata phuqachaña tukuyma"
-
-#~ msgid "Not a simple polygon"
-#~ msgstr "Janiwa aliqa polígono wakichatakïkiti"
-
-#~ msgid "Define a new filled polygon."
-#~ msgstr "Machaqa polígono wakichata phuqachaña amtma."
-
-#~ msgid "triangle"
-#~ msgstr "kimsa k'uchu"
-
-#~ msgid "base"
-#~ msgstr "kayu"
-
-#~ msgid "Add a triangle object to the project."
-#~ msgstr "Amtäwiru kimsa k'uchuni wakichatampi yapxatma."
-
-#~ msgid "circle"
-#~ msgstr "muyu"
-
-#~ msgid "Add a circle object to the project."
-#~ msgstr "Amtäwiru maya muyu wakichatampi yapxatma."
-
-#~ msgid "rectangle"
-#~ msgstr "wiskhalla"
-
-#~ msgid "Add a rectangle object to the project."
-#~ msgstr "Amtäwiru maya wiskhalla wakichatampi yapxatma."
-
-#~ msgid "reset"
-#~ msgstr "machaqachaña"
-
-#~ msgid "Reset the project; clear the object list."
-#~ msgstr "Amtäwi machaqachma: wakichata sutinaka siqi pichsma."
-
-#~ msgid "motor"
-#~ msgstr "motor wakichata"
-
-#~ msgid "torque"
-#~ msgstr "torque wakichata"
-
-#~ msgid "speed"
-#~ msgstr "k'ata sarayäwi"
-
-#~ msgid ""
-#~ "Motor torque and speed range from 0 (off) to positive numbers; motor is "
-#~ "placed on the most recent object created."
-#~ msgstr ""
-#~ "Torque wakichata ukata motor wakichata k'ata saräwimpixa 0 chimputa (jiwata) "
-#~ "chiqapa chimpunakkamawa sari; motor wakichataxa jichha wakichata taypiruwa "
-#~ "uchasi."
-
-#~ msgid "pin"
-#~ msgstr "tachuela wakichata"
-
-#~ msgid "Pin an object down so that it cannot fall."
-#~ msgstr "Wakichata jani jalaqañapataki achxaruyma."
-
-#~ msgid "joint"
-#~ msgstr "lip'ita"
-
-#~ msgid ""
-#~ "Join two objects together (the most recent object created and the object at "
-#~ "point x, y)."
-#~ msgstr ""
-#~ "Paya wakichata lip'iyma (jichha wakichatampi uka w, y chimpuni wakichatampi."
-
-#~ msgid "save as Physics activity"
-#~ msgstr "física luräwjama imaña"
-
-#~ msgid "Save the project to the Journal as a Physics activity."
-#~ msgstr "Amtäwi sapüru luräwiru imma kamisa Física luräwjama."
-
-#~ msgid "gear"
-#~ msgstr "muyu"
-
-#~ msgid "Add a gear object to the project."
-#~ msgstr "Amtäwiru maya muyuri wakichatampi yapxatma."
-
-# "identidad"
-#~ msgid "density"
-#~ msgstr "waljani"
-
-#~ msgid ""
-#~ "Set the density property for objects (density can be any positive number)."
-#~ msgstr ""
-#~ "Wakichatanaka waljanitapa apsma (waljanitapa maski kawkipiri chiqapa "
-#~ "jakhuspawa)."
-
-#~ msgid "friction"
-#~ msgstr "purapayasïwi"
-
-#~ msgid ""
-#~ "Set the friction property for objects (value from 0 to 1, where 0 turns "
-#~ "friction off and 1 is strong friction)."
-#~ msgstr ""
-#~ "Wakichatanaka purapayasïwipana yatiyäwinakapa wakichma (maya chanixa 0 "
-#~ "chimpuni ukata 1 chimpuni, ukana 0 jani purapayasini ukata 1 chimpuraki wali "
-#~ "purapayasini)."
-
-#~ msgid "bounciness"
-#~ msgstr "kutintayäwi"
-
-#~ msgid ""
-#~ "Set the bounciness property for objects (a value from 0 to 1, where 0 means "
-#~ "no bounce and 1 is very bouncy)."
-#~ msgstr ""
-#~ "Wakichatanaka kutintayäwipa tuqita yatiyäwinaka wakichma (maya chanixa 0 "
-#~ "chimpuni ukata 1 chimpuni, ukana 0 jani kutintayäwini ukata 1 chimpuraki "
-#~ "wali kutintayäwini)."
-
-#~ msgid "dynamic"
-#~ msgstr "q'apa"
-
-#~ msgid ""
-#~ "If dynamic = 1, the object can move; if dynamic = 0, it is fixed in position."
-#~ msgstr ""
-#~ "Wali q'apa = 1, wakichataxa unxtaspawa; wali q'apa = 0 wakichataxa janiwa "
-#~ "unxtaspati."
-
-#~ msgid "Palette of WeDo blocks"
-#~ msgstr "WeDo wakichata tamanaka limt'aña"
-
-#~ msgid ""
-#~ "tilt sensor output: (-1 == no tilt, 0 == tilt forward, 3 == tilt back, 1 == "
-#~ "tilt left, 2 == tilt right)"
-#~ msgstr ""
-#~ "kicht'ayaña katjiri mistuñapa: (-1 == janiwa kicht'atati, 0 == nayräxaru "
-#~ "kicht'atawa, 3 == qhipäxaru kicht'atawa, 1 == ch'iqäxaru kicht'atawa, 2 == "
-#~ "kupïxaru kicht'atawa)"
-
-#~ msgid "distance sensor output"
-#~ msgstr "katjiri mistuñana jak'ankatapa"
-
-#~ msgid "Motor A"
-#~ msgstr "Motor A wakichata"
-
-#~ msgid "returns the current value of Motor A"
-#~ msgstr "Motor A wakichatana jichha chanipa kutsuyi"
-
-#~ msgid "Motor B"
-#~ msgstr "Motor B wakichata"
-
-#~ msgid "returns the current value of Motor B"
-#~ msgstr "Motor B wakichatana jichha chanipa kutsuyi"
-
-#~ msgid "set the value for Motor A"
-#~ msgstr "Motor A wakichatana chanipa machaqachma"
-
-#~ msgid "set the value for Motor B"
-#~ msgstr "Motor B wakichatana chanipa machaqachma"
-
-#~ msgid "Palette of LEGO NXT blocks of motors"
-#~ msgstr "Motor wakichatanakana LEGO NXT tamanaka limt'aña"
-
-#~ msgid "Palette of LEGO NXT blocks of sensors"
-#~ msgstr "Katjirinaka wakichata LEGO NXT tamanaka limt'aña"
-
-#~ msgid "touch"
-#~ msgstr "limt'aña"
-
-#~ msgid "ultrasonic"
-#~ msgstr "jaya"
-
-# "luz"
-#~ msgid "light"
-#~ msgstr "lliphi"
-
-#, fuzzy
-#~ msgid "grey"
-#~ msgstr "uqiru samiri"
-
-#, fuzzy
-#~ msgid "Please check the connection with the brick"
-#~ msgstr "Mira suma brick wakichatampi mayachäwi uñanuqma."
-
-#, fuzzy
-#~ msgid "The value of power must be between -127 to 127"
-#~ msgstr ""
-#~ "Jakhunaka jaqtäwina chanipaxa niya -127 ukata 127 jakhunaka taypinkañapawa."
-
-#, fuzzy
-#~ msgid "An error has occurred: check all connections and try to reconnect"
-#~ msgstr ""
-#~ "Maya pantjasitawa utji: taqi mayachatanaka uñakipma ukata mayampi mayachaña "
-#~ "yant'ma."
-
-#~ msgid "NXT not found"
-#~ msgstr "NXT wakichata chhaqata"
-
-#~ msgid "refresh NXT"
-#~ msgstr "NXT wakichata samarayaña"
-
-#~ msgid "Search for a connected NXT brick."
-#~ msgstr "Brick NXT wakichata mayachatnama thaqtma."
-
-#~ msgid "play tone"
-#~ msgstr "ist'aña wakichata qhantayaña"
-
-#~ msgid "frequency"
-#~ msgstr "wakichatanaka thaqaña"
-
-#~ msgid "Play a tone at frequency for time."
-#~ msgstr "Maya k'ata wakichäwinaka taypinkiri maya ist'aña qhantayma."
-
-#~ msgid "port"
-#~ msgstr "puerto wakichata"
-
-#~ msgid "power"
-#~ msgstr "ch'ama"
-
-#~ msgid "rotations"
-#~ msgstr "muyüwinaka"
-
-#~ msgid "turn a motor"
-#~ msgstr "motor wakichata muytayma"
-
-#~ msgid "synchronize two motors connected in PORT B and PORT C"
-#~ msgstr "PUERTO B y PUERTO C motor wakichatanaka mayachäwinaka katjaña"
-
-#~ msgid "PORT A"
-#~ msgstr "PUERTO A wakichata"
-
-#~ msgid "PORT A of the brick"
-#~ msgstr "brick wakichatana PUERTO A wakichatapa"
-
-#~ msgid "PORT B"
-#~ msgstr "PUERTO B wakichata"
-
-#~ msgid "PORT B of the brick"
-#~ msgstr "brick wakichatana PUERTO B wakichatapa"
-
-#~ msgid "PORT C"
-#~ msgstr "PUERTO C wakichata"
-
-#~ msgid "PORT C of the brick"
-#~ msgstr "brick wakichatana PUERTO C wakichatapa"
-
-#~ msgid "start motor"
-#~ msgstr "motor wakichata qhantayaña"
-
-#~ msgid "Run a motor forever."
-#~ msgstr "Wiñayataki wakichata motor muyuyaña."
-
-#~ msgid "brake motor"
-#~ msgstr "motor wakichata wayt'aña"
-
-#~ msgid "Stop a specified motor."
-#~ msgstr "Maya uñaqata motor wakichata wayt'aña."
-
-#~ msgid "reset motor"
-#~ msgstr "motor wakichata mayampi qhantayaña"
-
-#~ msgid "Reset the motor counter."
-#~ msgstr "Motor wakichata jakhuripa mayampi qhantayma."
-
-#~ msgid "motor position"
-#~ msgstr "motor wakichatana sayäwipa"
-
-#~ msgid "Get the motor position."
-#~ msgstr "Motor wakichatana sayäwipa apsma."
-
-#~ msgid "PORT 1"
-#~ msgstr "PUERTO 1 wakichata"
-
-#~ msgid "PORT 1 of the brick"
-#~ msgstr "brick wakichatana PUERTO 1 wakichatapa"
-
-#~ msgid "read"
-#~ msgstr "ullaña"
-
-#~ msgid "Read sensor output."
-#~ msgstr "Katjirina mistuñapa wakichata ullma."
-
-#~ msgid "PORT 2"
-#~ msgstr "PUERTO 2 wakichata"
-
-#~ msgid "PORT 2 of the brick"
-#~ msgstr "brick wakichatana PUERTO 2 wakichatapa"
-
-#~ msgid "light sensor"
-#~ msgstr "lliphirini katjiri"
-
-#~ msgid "PORT 3"
-#~ msgstr "PUERTO 3 wakichata"
-
-#~ msgid "PORT 3 of the brick"
-#~ msgstr "brick wakichatana PUERTO 3 wakichatapa"
-
-#~ msgid "touch sensor"
-#~ msgstr "limt'añataki katjiri"
-
-#~ msgid "distance sensor"
-#~ msgstr "jayataki katjiri"
-
-#~ msgid "PORT 4"
-#~ msgstr "PUERTO 4 wakichata"
-
-#~ msgid "PORT 4 of the brick"
-#~ msgstr "brick wakichatana PUERTO 4 wakichatapa"
-
-#~ msgid "sound sensor"
-#~ msgstr "ist'añani katjiri"
-
-#~ msgid "color sensor"
-#~ msgstr "samini katjiri"
-
-#~ msgid "set light"
-#~ msgstr "lliphiri qhantayaña"
-
-#~ msgid "Set color sensor light."
-#~ msgstr "Samini katjiri lliphiripa qhantayma."
-
-#~ msgid "battery level"
-#~ msgstr "batería ch'amanchiripa"
-
-#, fuzzy
-#~ msgid "Get battery level of the brick"
-#~ msgstr "Brick wakichatana batería ch'amanchiripa apsma."
-
-#~ msgid "HIGH"
-#~ msgstr "JILA"
-
-#~ msgid "LOW"
-#~ msgstr "PISI"
-
-#~ msgid "INPUT"
-#~ msgstr "KATUQIRI"
-
-#~ msgid "OUTPUT"
-#~ msgstr "MISTUYIRI"
-
-#~ msgid "PWM"
-#~ msgstr "PWM wakichata"
-
-#~ msgid "SERVO"
-#~ msgstr "SERVO wakichata"
-
-#~ msgid "ERROR: Check the Arduino and the number of port."
-#~ msgstr "PANTJATA: Arduino uñxatma ukata puerto wakichata jakhupa."
-
-#~ msgid "ERROR: Value must be a number from 0 to 255."
-#~ msgstr "PANTJATA: chanixa 0 ukata 255 jakhu taypinkañapawa."
-
-#~ msgid "ERROR: Value must be either HIGH or LOW."
-#~ msgstr "PANTJATA: JILA jani ukaxa PISI chaniñapawa."
-
-#~ msgid "ERROR: The mode must be either INPUT, OUTPUT, PWM or SERVO."
-#~ msgstr ""
-#~ "PANTJATA: uñanaqapaxa KATUQIRI, MISTUYIRI, PWM jani ukaxa SERVO "
-#~ "ukhamañapawa."
-
-#~ msgid "pin mode"
-#~ msgstr "pin wakichata uñanaqapa"
-
-#~ msgid "mode"
-#~ msgstr "uñanaqapa"
-
-#~ msgid "Select the pin function (INPUT, OUTPUT, PWM, SERVO)."
-#~ msgstr "pin wakichatana lurañapa chhijllma (KATUQIRI, MISTUYIRI, PWM, SERVO)."
-
-#~ msgid "analog write"
-#~ msgstr "amparampi qillqaña"
-
-#~ msgid "Write analog value in specified port."
-#~ msgstr "Maya puerto wakichataru amparampi luraña qillqma."
-
-#~ msgid "analog read"
-#~ msgstr "amparampi lurata ullaña"
-
-#~ msgid ""
-#~ "Read value from analog port. Value may be between 0 and 1023. Use Vref to "
-#~ "determine voltage. For USB, volt=((read)*5)/1024) approximately."
-#~ msgstr ""
-#~ "Maya puerto amparampi lurata wakichata chanipata ullma. Chanipaxa uka 0 "
-#~ "ukata 1023 jakhu taypinkaspawa. Ch'amapa yatiñatakixa Vref wakichata katma."
-
-#~ msgid "digital write"
-#~ msgstr "limt'asa qillqaña"
-
-#~ msgid "Write digital value to specified port."
-#~ msgstr "Maya puerto wakichataru limt'asa qillqata chanipa qillqma."
-
-#~ msgid "digital read"
-#~ msgstr "limt'asa qillqata ullaña"
-
-#~ msgid "Read value from digital port."
-#~ msgstr "Maya puerto limt'asa wakichatata chanipa ullma."
-
-#~ msgid "Set HIGH value for digital port."
-#~ msgstr "Puerto limt'asa wakichata JILA chanipa machaqachma."
-
-#~ msgid "Configure Arduino port for digital input."
-#~ msgstr "limt'asa mantañjama Arduino puerto wakichatapa wakichma."
-
-#~ msgid "Configure Arduino port to drive a servo."
-#~ msgstr "Maya SERVO apnaqañataki Arduino puerto wakichata wakichma."
-
-#~ msgid "Set LOW value for digital port."
-#~ msgstr "Puerto limt'asa wakichata PISI chanipa machaqachma."
-
-#~ msgid "Configure Arduino port for digital output."
-#~ msgstr "limt'asa mistuñjama Arduino puerto wakichatapa wakichma."
-
-#~ msgid "Configure Arduino port for PWM (pulse-width modulation)."
-#~ msgstr ""
-#~ "PWM wakichatataki Arduino puerto wakichma (putuqiri lankhutjama askichma)."
-
-#, fuzzy
-#~ msgid "Palette of Expeyes blocks"
-#~ msgstr "WeDo wakichata tamanaka limt'aña"
-
-#, fuzzy
-#~ msgid ""
-#~ "set the speed of the Butia motors as a value between 0 and 1023, passed by "
-#~ "an argument"
-#~ msgstr ""
-#~ "Butiá máquina wakichatanakana k'ata saräwipa sayt'ayma kamisa 0 jakhu chimpu "
-#~ "ukata 1023 jakhu chimpu pasatapa qhananchatatjama"
-
-#~ msgid "turn the Butia robot to the left"
-#~ msgstr "robot Butiá wakichata jaqi ch'iqäxaru muytayma"
+msgid ""
+"set the speed of the Butia motors as a value between 0 and 1023, passed "
+"by an argument"
+msgstr ""
+"Butiá máquina wakichatanakana k'ata saräwipa sayt'ayma kamisa 0 jakhu "
+"chimpu ukata 1023 jakhu chimpu pasatapa qhananchatatjama"
+
+msgid "turn the Butia robot to the left"
+msgstr "robot Butiá wakichata jaqi ch'iqäxaru muytayma"
 
 # "espera Butiá"
-#~ msgid "display Butia"
-#~ msgstr "Butiá wakichata uñjaña"
+msgid "display Butia"
+msgstr "Butiá wakichata uñjaña"
 
-#~ msgid "Hello World    Butia            "
-#~ msgstr "Kamisaraki Pacha      Butiá wakichata    "
+msgid "Hello World    Butia            "
+msgstr "Kamisaraki Pacha      Butiá wakichata    "
 
-#~ msgid "print text in Butia robot 32-character ASCII display"
-#~ msgstr ""
-#~ "Butiá wakichatana 32 caracteres chaniru wakichatarjama uñjaña qillqata "
-#~ "laphiru apsma"
+msgid "print text in Butia robot 32-character ASCII display"
+msgstr ""
+"Butiá wakichatana 32 caracteres chaniru wakichatarjama uñjaña qillqata "
+"laphiru apsma"
 
-#~ msgid "Error making mask"
-#~ msgstr "Ajanuru k'achachasiña lurkasina pantjata"
+msgid "Error making mask"
+msgstr "Ajanuru k'achachasiña lurkasina pantjata"
 
-#~ msgid "G"
-#~ msgstr "G chimpu"
+msgid "G"
+msgstr "G chimpu"
 
-#~ msgid "R"
-#~ msgstr "R chimpu"
+msgid "R"
+msgstr "R chimpu"
 
-#~ msgid "B"
-#~ msgstr "B chimpu"
+msgid "B"
+msgstr "B chimpu"
 
 #  "seguir color RGB"
-#~ msgid "follow a RGB color"
-#~ msgstr "RGB sami arkaña"
+msgid "follow a RGB color"
+msgstr "RGB sami arkaña"
 
-#~ msgid "save calibration 1"
-#~ msgstr "calibración 1 wakichata imaña"
+msgid "save calibration 1"
+msgstr "calibración 1 wakichata imaña"
 
-#~ msgid "stores a calibration in calibration 1"
-#~ msgstr "calibración 1 maya wakichata imma"
+msgid "stores a calibration in calibration 1"
+msgstr "calibración 1 maya wakichata imma"
 
-#~ msgid "save calibration 2"
-#~ msgstr "calibración 2 wakichata imaña"
+msgid "save calibration 2"
+msgstr "calibración 2 wakichata imaña"
 
-#~ msgid "stores a calibration in calibration 2"
-#~ msgstr "calibración 2 wakichataru maya wakichata imma"
+msgid "stores a calibration in calibration 2"
+msgstr "calibración 2 wakichataru maya wakichata imma"
 
-#~ msgid "calibration 1"
-#~ msgstr "calibración 1 wakichata"
+msgid "calibration 1"
+msgstr "calibración 1 wakichata"
 
-#~ msgid "return calibration 1"
-#~ msgstr "calibración 1 wakichata kutsuyi"
+msgid "return calibration 1"
+msgstr "calibración 1 wakichata kutsuyi"
 
-#~ msgid "calibration 2"
-#~ msgstr "calibración 2 wakichata"
+msgid "calibration 2"
+msgstr "calibración 2 wakichata"
 
-#~ msgid "return calibration 2"
-#~ msgstr "calibración 2 wakichata kutsuyi"
+msgid "return calibration 2"
+msgstr "calibración 2 wakichata kutsuyi"
 
-#~ msgid "RGB"
-#~ msgstr "RGB chimpuni wakichata"
+msgid "Please check the port."
+msgstr "Mira suma puerto wakichata uñanuqma."
 
-#~ msgid "YUV"
-#~ msgstr "YUV chimpuni wakichata"
+msgid "NXT found"
+msgstr "NXT wakichata katjata"
 
-#~ msgid "HSV"
-#~ msgstr "HSV chimpuni wakichata"
+msgid ""
+"turn motor\n"
+"rotations"
+msgstr ""
+"motor\n"
+" muyüwinaka muyuyaña"
 
-#~ msgid "Please check the port."
-#~ msgstr "Mira suma puerto wakichata uñanuqma."
-
-#~ msgid "NXT found"
-#~ msgstr "NXT wakichata katjata"
-
-#~ msgid ""
-#~ "turn motor\n"
-#~ "rotations"
-#~ msgstr ""
-#~ "motor\n"
-#~ " muyüwinaka muyuyaña"
-
-#~ msgid ""
-#~ "synchronize motors\n"
-#~ "steering"
-#~ msgstr ""
-#~ "motor\n"
-#~ " wakichata saräwipa katjaña"
-
-#~ msgid "Palette of Arduino blocks"
-#~ msgstr "Arduino wakichata tamanaka limt'aña"
+msgid ""
+"synchronize motors\n"
+"steering"
+msgstr ""
+"motor\n"
+" wakichata saräwipa katjaña"
 
 #  "espera Butiá"
-#~ msgid "delay Butia"
-#~ msgstr "Butia suytaña"
+msgid "delay Butia"
+msgstr "Butia suytaña"
 
 #  "La cámara no fue encontrada."
-#~ msgid "The camera was not found."
-#~ msgstr "Janiwa camera jaqiskiti."
+msgid "The camera was not found."
+msgstr "Janiwa camera jaqiskiti."
 
 #  "Guardar como HTML"
-#~ msgid "Save as HTML"
-#~ msgstr "HTML imaña"
+msgid "Save as HTML"
+msgstr "HTML imaña"
 
 #  "<Ctrl>d"
-#~ msgid "<Ctrl>d"
-#~ msgstr "<Ctrl>d"
+msgid "<Ctrl>d"
+msgstr "<Ctrl>d"
 
 #  "Paleta de monedas de los Estados Unidos"
-#~ msgid "Palette of US currencies"
-#~ msgstr "Estados Unidos qullqimpi lurañanaka"
+msgid "Palette of US currencies"
+msgstr "Estados Unidos qullqimpi lurañanaka"
 
 #  "Paleta de monedas de Australia"
-#~ msgid "Palette of Australian currencies"
-#~ msgstr "Australia qullqimpi lurañanaka"
+msgid "Palette of Australian currencies"
+msgstr "Australia qullqimpi lurañanaka"
 
 #  "Paleta de Guaraníes"
-#~ msgid "Palette of Guaranies"
-#~ msgstr "Guaraníes qullqimpi lurañanaka"
+msgid "Palette of Guaranies"
+msgstr "Guaraníes qullqimpi lurañanaka"
 
 #  "presentación"
-#~ msgid "presentation"
-#~ msgstr "uñt'ayawi"
+msgid "presentation"
+msgstr "uñt'ayawi"
 
 #  "seguir un color de tortuga"
-#~ msgid "follow a turtle color"
-#~ msgstr "charapa color tumpasiña"
+msgid "follow a turtle color"
+msgstr "charapa color tumpasiña"
 
 #  "calibrar un color a seguir"
-#~ msgid "calibrate a color to follow"
-#~ msgstr "samiru tumpasiri qaltasi"
+msgid "calibrate a color to follow"
+msgstr "samiru tumpasiri qaltasi"
 
 #  "<Ctrl>b"
-#~ msgid "<Ctrl>b"
-#~ msgstr "<Ctrl>b"
+msgid "<Ctrl>b"
+msgstr "<Ctrl>b"
 
 #  "Mover el cursor sobre la paleta naranja para ayuda."
-#~ msgid "Move the cursor over the orange palette for help."
-#~ msgstr "Achakuru killu-wilaru uchaña yanapt'a katusa cuptaña."
+msgid "Move the cursor over the orange palette for help."
+msgstr "Achakuru killu-wilaru uchaña yanapt'a katusa cuptaña."
 
 #  "TortugArte Butiá"
-#~ msgid "Turtle Art Butia"
-#~ msgstr "CharapArte Butia"
+msgid "Turtle Art Butia"
+msgstr "CharapArte Butia"
 
 #  "Botón"
-#~ msgid "pushbutton"
-#~ msgstr "limjaña"
+msgid "pushbutton"
+msgstr "limjaña"
 
 # "Devuelve el nivel de gris del objeto en frente al sensor como un número "
 #  "entre 0 y 1023."
 #, fuzzy
-#~ msgid ""
-#~ "returns the object gray level encountered him as a number between 0 and 1023"
-#~ msgstr "Uqi qutayaña kunaki sensor nayrapanki 0 ukjata 1023 uqakama."
+msgid ""
+"returns the object gray level encountered him as a number between 0 and "
+"1023"
+msgstr "Uqi qutayaña kunaki sensor nayrapanki 0 ukjata 1023 uqakama."
 
 #  "Importar / Exportar"
-#~ msgid "Import/Export"
-#~ msgstr "Puriñana/Apayaña"
+msgid "Import/Export"
+msgstr "Puriñana/Apayaña"
 
 #  "Importar proyecto desde el Diario"
-#~ msgid "Import project from the Journal"
-#~ msgstr "Wakichawinaka puriniña sapüru luräwiru"
+msgid "Import project from the Journal"
+msgstr "Wakichawinaka puriniña sapüru luräwiru"
 
 #  "carga de batería Butiá"
-#~ msgid "Butia battery charge"
-#~ msgstr "carga de batería Butiá"
+msgid "Butia battery charge"
+msgstr "carga de batería Butiá"
 
 #  "velocidad Butiá"
-#~ msgid "Butia speed"
-#~ msgstr "velocidad Butiá"
+msgid "Butia speed"
+msgstr "velocidad Butiá"
 
 #  "adelante distancia"
-#~ msgid "forward distance"
-#~ msgstr "adelante distancia"
+msgid "forward distance"
+msgstr "adelante distancia"
 
 #  "atrás distancia"
-#~ msgid "backward distance"
-#~ msgstr "atrás distancia"
+msgid "backward distance"
+msgstr "atrás distancia"
 
 #  "Butiá Sumo"
-#~ msgid "Sumo Butia"
-#~ msgstr "Butiá Sumo"
+msgid "Sumo Butia"
+msgstr "Butiá Sumo"
 
 #  "enviar velocidades"
-#~ msgid "submit speed​​"
-#~ msgstr "qatak'i apayaña"
+msgid "submit speed​​"
+msgstr "qatak'i apayaña"
 
 # "Envía la velocidad al robot."
 #, fuzzy
-#~ msgid "Send speed to the robot."
-#~ msgstr "Envía la velocidad al robot."
+msgid "Send speed to the robot."
+msgstr "Envía la velocidad al robot."

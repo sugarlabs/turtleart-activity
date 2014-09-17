@@ -1,9 +1,25 @@
+# #-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#, fuzzy
 msgid ""
 msgstr ""
+"#-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-02-16 00:32-0500\n"
+"PO-Revision-Date: 2014-04-29 02:19+0200\n"
+"Last-Translator: Chris <cjl@laptop.org>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: hy\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Pootle 2.0.5\n"
+"#-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-01-07 00:30-0500\n"
@@ -16,6 +32,1492 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Pootle 2.0.5\n"
+
+msgid "turtleart-extras (master)"
+msgstr "turtleart-ավելադիրներ (վարպետ)"
+
+msgid "Turtle Blocks"
+msgstr "Turtle Blocks"
+
+# #-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#
+# Turtle Art` Կրիայի Արվեստը -դանդաղ,համբերությամբ սովորելու համար
+msgid "Turtle Art"
+msgstr "Turtle Art"
+
+msgid "Turtle Art Mini"
+msgstr "Կրիայի Արվեստ /TortugArte/ Մինի"
+
+msgid "Turtle Confusion"
+msgstr "Կրիայի շփոթմունք"
+
+msgid "Select a challenge"
+msgstr "Ընտրել մի առաջադրանք - մարտահրավեր"
+
+msgid "Amazonas Tortuga"
+msgstr "Amazonas Tortuga"
+
+msgid "Turtle Flags"
+msgstr "Կրիայի Դրոշները"
+
+msgid "Use the turtle to draw country flags"
+msgstr "Օգտագործիր կրիային երկրի դրոշները նկարելու համար"
+
+msgid "Palette of Mexican pesos"
+msgstr "Մեքսիկական պեսոյի պահոց"
+
+msgid "Palette of Colombian pesos"
+msgstr "Կոլումբիական պեսոյի պահոց"
+
+msgid "Palette of Rwandan francs"
+msgstr "Ռուանդական ֆրանկի պահոց"
+
+msgid "Palette of US dollars"
+msgstr "ԱՄՆ դոլարի պահոց"
+
+msgid "Palette of Australian dollars"
+msgstr "Ավստրալիական դոլարի պահոց"
+
+msgid "Palette of Paraguayan Guaranies"
+msgstr "Պարագվայական գուարանիի պահոց"
+
+msgid "Palette of Peruvian Nuevo Soles"
+msgstr "Պերուական Նուեվո Սոլերի պահոց"
+
+msgid "Palette of Uruguayan Pesos"
+msgstr "Ուրուգվայական պեսոի պահոց"
+
+msgid "TurtleBots"
+msgstr "Կրիայի Բոտերը"
+
+msgid "TurtleBlocks with Butia, Lego NxT, WeDo, Arduino, FollowMe plugins"
+msgstr ""
+"Կրիայի մասնիկները կապել Butia, Lego NxT, WeDo, Arduino, FollowMe "
+"միացումներին:"
+
+msgid "ERROR: The speed must be a value between 0 and 1023"
+msgstr "ՍԽԱԼ է. արագության արժեքը պետք է լինի 0 -ի և 1023 սահմաններում:"
+
+msgid "ERROR: The speed must be a value between -1023 and 1023"
+msgstr "ՍԽԱԼ է. արագության արժեքը պետք է լինի  -1023 -ի և 1023 սահմաններում:"
+
+msgid "ERROR: The pin must be between 1 and 8"
+msgstr "ՍԽԱԼ է. ծածկագիրը պետք է լինի -ից 8-ի սահմաններում:"
+
+msgid "ERROR: The value must be 0 or 1, LOW or HIGH"
+msgstr "ՍԽԱԼ է. արժեքը պետք է լինի 0 կամ 1, ՑԱԾՐ կամ ԲԱՐՁՐ:"
+
+msgid "ERROR: The mode must be INPUT or OUTPUT."
+msgstr "ՍԽԱԼ է. ռեժիմը պետք է լինի ՄՈՒՏՔԱՅԻՆ կամ ԵԼՔԱՅԻՆ:"
+
+msgid "turns LED on and off: 1 means on, 0 means off"
+msgstr ""
+"Միացնում և անջատում է LED -ը՝ 1 նշանակում է միացված, 0 նշանակում է անջատված"
+
+msgid "returns the gray level as a value between 0 and 65535"
+msgstr ""
+"Վերականգնում է մոխրագույնի մակարդակը որպես 0-ի և 65535-ի սահմաններում ընկած "
+"արժեք"
+
+msgid "returns 1 when the button is pressed and 0 otherwise"
+msgstr "Վերականգնում է 1-ը, երբ կոճակը սեղմված է և 0` եթե սեղմված չէ:"
+
+msgid "returns the light level as a value between 0 and 65535"
+msgstr ""
+"Վերականգնում է լույսի մակարդակը` որպես 0-ի և 65535-ի սահմաններում ընկած արժեք"
+
+msgid "returns the distance as a value between 0 and 65535"
+msgstr ""
+"Վերականգնում է հեռավորությունը որպես 0-ի և 65535-ի սահմաններում ընկած արժեք"
+
+msgid "returns the resistance value (ohms)"
+msgstr "Վերականգնում է դիմադրության արժեքը (օհմ)"
+
+msgid "returns the voltage value (volts)"
+msgstr "Վերականգնում է հոսանքի լարման արժեքը (վոլտ)"
+
+msgid "returns the temperature value (celsius degree)"
+msgstr "Վերադարձնում է ջերմաստիճանի արժեքը (ըստ Ցելսուս)"
+
+msgid "custom module %s"
+msgstr "Անհատական համակարգ"
+
+msgid "sensor a"
+msgstr "Սենսոր a"
+
+msgid "sensor b"
+msgstr "Սենսոր b"
+
+msgid "sensor c"
+msgstr "Սենսոր c"
+
+msgid "actuator a"
+msgstr "ակտուատոր a"
+
+msgid "actuator b"
+msgstr "ակտուատոր b"
+
+msgid "actuator c"
+msgstr "ակտուատոր c"
+
+# #-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#
+# Լուսարձակման Դիոդ
+msgid "LED"
+msgstr "ԼԱԴ"
+
+msgid "button"
+msgstr "Կոճակ"
+
+#: TurtleArt/tabasics.py:370 TurtleArt/tabasics.py:454
+#: TurtleArt/tawindow.py:4539 TurtleArt/tawindow.py:4544
+#, fuzzy
+msgid "gray"
+msgstr ""
+"#-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Մոխրագույն\n"
+"#-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"մոխրագույն"
+
+msgid "light"
+msgstr "Լույս"
+
+#, fuzzy
+msgid "distance"
+msgstr ""
+"#-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Հեռավորություն\n"
+"#-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"հեռավորություն"
+
+#: plugins/audio_sensors/audio_sensors.py:157
+#: plugins/audio_sensors/audio_sensors.py:175
+msgid "resistance"
+msgstr "Դիմադրություն"
+
+#: plugins/audio_sensors/audio_sensors.py:163
+#: plugins/audio_sensors/audio_sensors.py:181
+msgid "voltage"
+msgstr "Լարում"
+
+#, fuzzy
+msgid "temperature"
+msgstr ""
+"#-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Ջերմաստիճան\n"
+"#-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Ջերմաստիճանը"
+
+msgid "butia"
+msgstr "Բութիա"
+
+msgid "Butia Robot"
+msgstr "Բութիա Ռոբոտ"
+
+msgid "refresh Butia"
+msgstr "Թարմացնել Բութիան"
+
+msgid "refresh the state of the Butia palette and blocks"
+msgstr "Թարմացնել Բութիայի պահոցի վիճակն ու մասնիկները:"
+
+msgid "battery charge Butia"
+msgstr "Բութիա մարտկոցի լիցքավորում"
+
+msgid ""
+"returns the battery charge in volts. If no motors present, it returns 255"
+msgstr ""
+"Վերականգնում է մարտկոցի լիցքավորումը վոլտով: Եթե շարժիչ չկա, վերականգնում է "
+"255"
+
+msgid "speed Butia"
+msgstr "Բութիա արագություն"
+
+msgid "set the speed of the Butia motors"
+msgstr "Սահմանել Բութիա շարժիչի արագությունը"
+
+msgid "move Butia"
+msgstr "Շարժել Բութիան"
+
+#: TurtleArt/tabasics.py:207 TurtleArt/taconstants.py:139
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:991
+msgid "left"
+msgstr "Ձախ"
+
+#: TurtleArt/tabasics.py:221 TurtleArt/taconstants.py:141
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1024
+msgid "right"
+msgstr "Աջ"
+
+msgid "moves the Butia motors at the specified speed"
+msgstr "Շարժում է Բութիայի շարժիչը որոշված արագությամբ"
+
+#, fuzzy
+msgid "stop Butia"
+msgstr ""
+"#-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Կանգնեցնել Բութիան\n"
+"#-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"կանգնեցնել Բութիան"
+
+msgid "stop the Butia robot"
+msgstr "Կանգնեցնել Բութիա ռոբոտը:"
+
+msgid "forward Butia"
+msgstr "Առաջ տանել Բութիան"
+
+msgid "move the Butia robot forward"
+msgstr "Բութիա ռոբոտը շարժել դեպի առաջ"
+
+msgid "left Butia"
+msgstr "Ձախ Բութիա"
+
+msgid "turn the Butia robot at left"
+msgstr "Բութիա ռոբոտը շրջել դեպի աջ:"
+
+#, fuzzy
+msgid "right Butia"
+msgstr ""
+"#-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Աջ Բութիա\n"
+"#-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"աջ Բութիա"
+
+msgid "turn the Butia robot at right"
+msgstr "Բութիա ռոբոտը շրջել դեպի աջ:"
+
+msgid "backward Butia"
+msgstr "Բութիան` հետ"
+
+msgid "move the Butia robot backward"
+msgstr "Շարժել Բութիա ռոբոտը դեպի ետ"
+
+msgid "butia-extra"
+msgstr "բութիա-հավելյալ"
+
+msgid "Butia Robot extra blocks"
+msgstr "Բութիա Ռոբոտի լրացուցիչ մասնիկները"
+
+msgid "pin mode Butia"
+msgstr "Բութիայի անհատական նույնացման թվի ռեժիմ"
+
+msgid "pin"
+msgstr "Կոճգամ"
+
+# #-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#
+# Մոդուլ
+msgid "mode"
+msgstr "Կերպ"
+
+msgid "Select the pin function (INPUT, OUTPUT)."
+msgstr "Ընտրել pin գործառույթը (ՆԵՐԱԾՄԱՆ, ԱՐՏԱԾՄԱՆ)"
+
+msgid "read pin Butia"
+msgstr "ընթերցել Բութիայի  անհատական նույնացման թիվը"
+
+msgid "read the value of a pin"
+msgstr "Ընթերցել pin-ի արժեքը"
+
+msgid "write pin Butia"
+msgstr "Գրել Բութիայի pin-ը"
+
+#: TurtleArt/tabasics.py:1114 TurtleArt/tawindow.py:5055
+msgid "value"
+msgstr "Արժեք"
+
+msgid "set a hack pin to 0 or 1"
+msgstr "Սահմանել ներխուժման փինը 0 կամ 1"
+
+msgid "INPUT"
+msgstr "ՄՈւՏՔ"
+
+msgid "Configure hack pin for digital input."
+msgstr "Կարգավորել մուտքի pin-ը թվային եղանակով ներածման համար:"
+
+msgid "HIGH"
+msgstr "ԲԱՐՁՐ"
+
+msgid "Set HIGH value for digital pin."
+msgstr "Թվայնացված Մուտքի pin-ի համար սահմանել ԲԱՐՁՐ արժեքը:"
+
+msgid "LOW"
+msgstr "ՑԱԾՐ"
+
+#, fuzzy
+msgid "Set LOW value for digital port."
+msgstr ""
+"#-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Թվային Մուտքի համար սահմանել ՑԱԾՐ արժեքը:\n"
+"#-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"ԹվայինՄուտքի համար սահմանել ՑԱԾՐ արժեքը:"
+
+#, fuzzy
+msgid "OUTPUT"
+msgstr ""
+"#-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"ԱՐՏԱԾՈՒՄ\n"
+"#-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"ԵԼՔ"
+
+msgid "Configure hack port for digital output."
+msgstr "Կարգավորել ներխուժման մուտքը թվային արդյունքի համար:"
+
+msgid "butia-cast"
+msgstr "բութիա-փոխարկում"
+
+msgid "Butia Robot cast blocks"
+msgstr "Բութիա Ռոբոտի փոխարկման մասնիկները"
+
+msgid "Butia"
+msgstr "Բութիա"
+
+msgid "CAST\n"
+msgstr "ՓՈԽԱՐԿՈՒՄ\n"
+
+msgid "new name"
+msgstr "Նոր անուն"
+
+msgid "original"
+msgstr "Բնօրինակ"
+
+msgid "f(x)="
+msgstr "f(x)="
+
+msgid "name"
+msgstr "Անուն"
+
+msgid "Cast a new block"
+msgstr "Փոխարկել նոր մասնիկ"
+
+msgid "generic module %s"
+msgstr "Ընդհանուր Մոդուլ %s"
+
+msgid "Butia IP"
+msgstr "Բութիայի Ինտերնետային IP արձանագրությունը"
+
+msgid "change the IP of butia robot"
+msgstr "Փոխել բութիայ ռոբոտի Ինտերնետային IP արձանագրությունը"
+
+msgid "ERROR: The pin %s must be in OUTPUT mode."
+msgstr "ՍԽԱԼ. %s pin-ը պետք է լինի ԱՐՏԱԾՄԱՆ ռեժիմում"
+
+msgid "ERROR: The pin %s must be in INPUT mode."
+msgstr "ՍԽԱԼ. %s  pin-ը պետք է լինի ՆԵՐԱԾՄԱՆ ռեժիմում"
+
+msgid "ERROR: Something wrong with function '%s'"
+msgstr "Սխալ. Ինչ որ բան սխալ է '%s' գործառույթի հետ"
+
+msgid "ERROR: cannot init GCONF client: %s"
+msgstr "Սխալ. հնարավոր չէ մեկնարկել հաճախորդ GCONF-ը. %s"
+
+msgid "ERROR: You must cast Sensor or Actuator: A, B or C"
+msgstr "ՍԽԱԼ. Պետք է փոխարկես Սենսերը կամ Ակտուատորը` A, B կամ C"
+
+msgid "ERROR: Invalid IP '%s'"
+msgstr "ՍԽԱԼ. Անվավեր ինտերնետային IP արձանագրություն '%s'"
+
+msgid "Creating PyBot server"
+msgstr "Ստեղծում է PyBot սերվեր"
+
+msgid "ERROR creating PyBot server"
+msgstr "Սխալ տեղի ունեցավ PyBot սերվերի ստեղծման մեջ"
+
+msgid "PyBot is alive!"
+msgstr "PyBot - ը կենդանի է"
+
+msgid "Ending butia polling"
+msgstr "Ավարտում է բութիա հարցախույզը"
+
+msgid "Error importing Pygame. This plugin require Pygame 1.9"
+msgstr ""
+"Վրիպում՝ Pygame-ը ներբեռնելիս: Այս ավելացվող հանգույցը պահանջում է Pygame "
+"1.9 տարբերակը"
+
+msgid "Error on initialization of the camera"
+msgstr "Տեսախցիկի վերամեկնարկման գործողությունը ձախողվեց"
+
+msgid "No camera was found"
+msgstr "Տեսախցիկը հայտնաբերված չէ"
+
+#, fuzzy
+msgid "Error stopping camera"
+msgstr ""
+"#-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Տեսախցիկի կասեցումը ձախողվեց\n"
+"#-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Տեսախցիկի ընդհատման գործողությունը ձախողվեց"
+
+#, fuzzy
+msgid "Error starting camera"
+msgstr ""
+"#-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Տեսախցիկի մեկնարկումը ձախողվեց\n"
+"#-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Տեսախցիկի վերամեկնարկման գործողությունը ձախողվեց"
+
+msgid "Error in get mask"
+msgstr "ՎՐԻՊՈՒՄ դիմակը ձեռք բերելիս"
+
+msgid "followme"
+msgstr "Հետևիր ինձ"
+
+msgid "FollowMe"
+msgstr "Հետևիր ինձ"
+
+msgid "refresh FollowMe"
+msgstr "Թարմացնել ՛՛Հետևիր ինձ՛՛"
+
+msgid "Search for a connected camera."
+msgstr "Փնտրել միացված տեսախցիկ:"
+
+# #-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#
+# Calibration - Ելքային արժեքի հարմմարեցումը ելքի էտալոնային արժեքին:
+msgid "calibration"
+msgstr "Կալիբրացիա"
+
+msgid "store a personalized calibration"
+msgstr "Պահել անհատականացված կալիբրացիան:"
+
+msgid "return a personalized calibration"
+msgstr "Վերադարձնել անհատականացված կալիբրացիան:"
+
+msgid "follow"
+msgstr "Հետևել"
+
+#, fuzzy
+msgid "follow a color or calibration"
+msgstr ""
+"#-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Հետևել գույնին կամ կալիբրացիային:\n"
+"#-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Հետևել գույնին կամ կալիբրացայիային:"
+
+#: plugins/camera_sensor/camera_sensor.py:83
+#: plugins/camera_sensor/camera_sensor.py:99
+#: plugins/camera_sensor/camera_sensor.py:136
+#: plugins/camera_sensor/camera_sensor.py:152
+#: plugins/light_sensor/light_sensor.py:58
+#: plugins/light_sensor/light_sensor.py:66
+msgid "brightness"
+msgstr "Պայծառություն"
+
+msgid "set the camera brightness as a value between 0 to 255."
+msgstr ""
+"Տեսախցիկի պայծառությունը սահմանել որպես արժեք` 0-ի և 255-ի սահմաններում"
+
+msgid "minimum pixels"
+msgstr "Պիքսելների նվազագույնը"
+
+msgid "set the minimal number of pixels to follow"
+msgstr "Սահմանել հաջորդող պիքսելների նվազագույն քանակը:"
+
+msgid "threshold"
+msgstr "Նախաշեմ"
+
+#, fuzzy
+msgid "set a threshold for a RGB color"
+msgstr ""
+"#-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Սահմանել ԿԿԿ գույնի նախաշեմը\n"
+"#-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Սահմանել ԿԿԿ գույնի շեմը"
+
+#, fuzzy
+msgid "camera mode"
+msgstr ""
+"#-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Տեսախցիկի ռեժիմ\n"
+"#-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"տեսախցիկի ռեժիմ"
+
+msgid "set the color mode of the camera: RGB; YUV or HSV"
+msgstr "տեղադրել տեսախցիկի RGB; YUV կամ HSV գունային ռեժիմը"
+
+msgid "get brightness"
+msgstr "Ձեռք բերել պայծառություն"
+
+msgid "get the brightness of the ambient light"
+msgstr "Ձեռք բերել միջավայրի լույսի պայծառությունը"
+
+msgid "average color"
+msgstr "Միջին գույնը"
+
+msgid ""
+"if set to 0 then color averaging is off during calibration;for other values, "
+"it is on"
+msgstr ""
+"Եթե սահմանված է 0, ապա գունային միջին մեծությունը անջատված է տրամաչափման` "
+"կալիբրացիայի ընթացքում, մյուս արժեքների դեպքում՝ միացված"
+
+#, fuzzy
+msgid "x position"
+msgstr ""
+"#-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Դիրքն x -ի առանցքի վրա\n"
+"#-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Դիրքն x -ի վրա"
+
+msgid "return x position"
+msgstr "Վերադառնալ x դիրքին"
+
+#, fuzzy
+msgid "y position"
+msgstr ""
+"#-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Դիրքն y - ի առանցքի վրա\n"
+"#-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Դիրքն y - ի վրա"
+
+msgid "return y position"
+msgstr "Վերադառնալ y դիրքին"
+
+msgid "pixels"
+msgstr "Պիքսել"
+
+msgid "return the number of pixels of the biggest blob"
+msgstr "Վերականգնել ամենամեծ բծի պիքսելների քանակը:"
+
+# #-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#
+# ԿԿԿ - Կարմիր Կանաչ, Կապույտ
+msgid "RGB"
+msgstr "RGB"
+
+#, fuzzy
+msgid "set the color mode of the camera to RGB"
+msgstr ""
+"#-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Տեղադրել տեսախցիկի RGB գունային ռեժիմը\n"
+"#-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"տեղադրել տեսախցիկի RGB գունային ռեժիմը"
+
+msgid "YUV"
+msgstr "YUV"
+
+#, fuzzy
+msgid "set the color mode of the camera to YUV"
+msgstr ""
+"#-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Տեղադրել տեսախցիկի YUV գունային ռեժիմը\n"
+"#-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"տեղադրել տեսախցիկի YUV գունային ռեժիմը"
+
+msgid "HSV"
+msgstr "HSV"
+
+#, fuzzy
+msgid "set the color mode of the camera to HSV"
+msgstr ""
+"#-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Տեղադրել տեսախցիկի HSV գունային ռեժիմը\n"
+"#-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"տեղադրել տեսախցիկի HSV գունային ռեժիմը"
+
+msgid "get color"
+msgstr "Ստանալ գույնը"
+
+msgid "get the color of an object"
+msgstr "Ստանալ առարկայի գույնը"
+
+msgid "color distance"
+msgstr "գույնի հեռավորությունը"
+
+msgid "set the distance to identify a color"
+msgstr "սահմանել հեռավորությունը, գույնը տարբերակելու համար"
+
+msgid "empty calibration"
+msgstr "Կալիբրացիան. դատարկ"
+
+msgid "error in string conversion"
+msgstr "Տեքստային շղթայի փոխակերպման սխալ:"
+
+msgid "Pattern detection"
+msgstr "Օրինակի հայտնաբերում"
+
+msgid "pattern_detection"
+msgstr "Օրինակի հայտնաբերում"
+
+msgid "Seeing signal"
+msgstr "Ազդանշանի նշմարումը"
+
+msgid "Returns True if the signal is in front of the camera"
+msgstr "Դարձնում է Ճիշտ, եթե ազդանշանը տեսախցիկի առջև է"
+
+msgid "Distance to signal"
+msgstr "Ազդանշանի հեռավորությունը"
+
+msgid "Returns the distance of the signal to the camera in millimeters"
+msgstr "Վերադարձնում է ազդանշանի հեռավորությունը տեսախցիկին`միլիմետրերով"
+
+msgid "SumBot"
+msgstr "SumBot"
+
+msgid "sumtia"
+msgstr "sumtia"
+
+#, fuzzy
+msgid "speed SumBot"
+msgstr ""
+"#-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"SumBot -ի արագություն\n"
+"#-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"SumBot -ի արագացում"
+
+msgid "submit the speed to the SumBot"
+msgstr "Ներմուծել SumBot -ի արագությունը:"
+
+msgid "set the default speed for the movement commands"
+msgstr "Սահմանել նախնական արագությունը`տեղաշարժման հրահանգների համար"
+
+msgid "forward SumBot"
+msgstr "SumBot առաջ"
+
+msgid "move SumBot forward"
+msgstr "SumBot-ը շարժել դեպի առաջ"
+
+msgid "backward SumBot"
+msgstr "SumBot` ետ"
+
+msgid "move SumBot backward"
+msgstr "SumBot շարժել դեպի ետ"
+
+msgid "stop SumBot"
+msgstr "SumBot կանգ"
+
+msgid "stop the SumBot"
+msgstr "Կանգնեցնել SumBot-ը"
+
+msgid "left SumBot"
+msgstr "SumBot Ձախ"
+
+msgid "turn left the SumBot"
+msgstr "SumBot-ը շրջել դեպի ձախ:"
+
+msgid "right SumBot"
+msgstr "SumBot` աջ"
+
+msgid "turn right the SumBot"
+msgstr "SumBot -ը շրջել դեպի աջ:"
+
+msgid "angle to center"
+msgstr "Շրջել դեպի կենտրոն անկյան տակ"
+
+# #-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#
+# Dohyo կան dojo - Սումո ըմբշամարտի բեմն է
+msgid "get the angle to the center of the dohyo"
+msgstr "Անկյունը հասցնում է dohyo- ի կենտրոնին"
+
+msgid "angle to Enemy"
+msgstr "Շրջել դեպի հակառակորդն ուղղող անկյան տակ:"
+
+msgid "get the angle to the Enemy"
+msgstr "Պարզել անկյան չափը մինչև հակառակորդը"
+
+msgid "x coor. SumBot"
+msgstr "SumBot -ի X դիրքացույցը"
+
+msgid "get the x coordinate of the SumBot"
+msgstr "Պարզել SumBot ռոբոտի x դիրքացույցը"
+
+msgid "y coor. SumBot"
+msgstr "y coor. SumBot"
+
+msgid "get the y coordinate of the SumBot"
+msgstr "Պարզել SumBot ռոբոտի y դիրքացույցը"
+
+msgid "x coor. Enemy"
+msgstr "x coor. Հակառակորդի"
+
+msgid "get the x coordinate of the Enemy"
+msgstr "Պարզել հակառակորդի ռոբոտի x դիրքացույցը"
+
+msgid "y coor. Enemy"
+msgstr "y coor. Հակառակորդի"
+
+msgid "get the y coordinate of the Enemy"
+msgstr "Պարզել հակառակորդի ռոբոտի y դիրքացույցը"
+
+msgid "rotation SumBot"
+msgstr "SumBot պտույտ"
+
+msgid "get the rotation of the Sumbot"
+msgstr "Հասնում է Sumbot -ի պտույտին"
+
+# #-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#
+# rotation պտույտ կամ շրջադարձ
+msgid "rotation Enemy"
+msgstr "Հակառակորդի պտույտ"
+
+#, fuzzy
+msgid "get the rotation of the Enemy"
+msgstr ""
+"#-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Հասնում է Հակառակորդի պտույտին\n"
+"#-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Հասնում է Հակառակորդի  պտույտին"
+
+msgid "distance to center"
+msgstr "հեռավորություն կենտրոնից"
+
+msgid "get the distance to the center of the dohyo"
+msgstr "Պարզել հեռավորությունը «dojo»-ի կենտրոնից"
+
+msgid "distance to Enemy"
+msgstr "Հեռավորությունը մինչև Հակառակորդը"
+
+msgid "get the distance to the Enemy"
+msgstr "Պարզել հեռավորությունը մինչև հակառակորդը"
+
+msgid "update information"
+msgstr "արդիականացնել տեղեկությունը"
+
+msgid "update information from the server"
+msgstr "Արդիականացնել տեղեկությունը` սերվերից"
+
+msgid "Palette of physics blocks"
+msgstr "Ֆիզիկայի մասնիկների պահոց"
+
+msgid "start polygon"
+msgstr "Սկսել բազմանկյունը"
+
+msgid "Begin defining a new polygon based on the current Turtle xy position."
+msgstr "Սկսել նոր բազմանկյան սահմանումը` ելնելով Կրիայի առկա XY դիրքից"
+
+msgid "add point"
+msgstr "Կետ ավելացնել"
+
+msgid ""
+"Add a new point to the current polygon based on the current Turtle xy "
+"position."
+msgstr "Նոր կետ ավելացնել առկա բազմանկյանը` ելնելով Կրիայի ներկա XY դիրքից:"
+
+msgid "end polygon"
+msgstr "Ավարտել բազմանկյունը:"
+
+msgid "Define a new polygon."
+msgstr "Սահմանել նոր բազմանկյուն"
+
+msgid "end filled polygon"
+msgstr "Ավարտել լցված բազմանկյունը:"
+
+msgid "Not a simple polygon"
+msgstr "Պարզ բազմանկյուն չէ"
+
+msgid "Define a new filled polygon."
+msgstr "Սահմանել նոր, լցոնված բազմանկյուն:"
+
+msgid "triangle"
+msgstr "Եռանկյուն"
+
+msgid "base"
+msgstr "Հիմք"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1046
+msgid "height"
+msgstr "բարձրություն"
+
+msgid "Add a triangle object to the project."
+msgstr "Եռանկյունաձև օբյեկտ ավելացնել նախագծին:"
+
+msgid "circle"
+msgstr "Շրջանագիծ"
+
+msgid "Add a circle object to the project."
+msgstr "Շրջանաձև օբյեկտ ավելացնել նախագծին:"
+
+msgid "rectangle"
+msgstr "Ուղղանկյուն"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1013
+msgid "width"
+msgstr "լայնք"
+
+msgid "Add a rectangle object to the project."
+msgstr "Ուղղանկյունաձև օբյեկտ ավելացնել նախագծին"
+
+msgid "reset"
+msgstr "Վերակարգավորել"
+
+msgid "Reset the project; clear the object list."
+msgstr "Վերակարգավորել Նախագիծը, վերացնել օբյեկտների ցանկը:"
+
+msgid "motor"
+msgstr "Շարժիչ"
+
+msgid "torque"
+msgstr "Շարժիչի պտտվող մասը"
+
+msgid "speed"
+msgstr "Արագություն"
+
+msgid ""
+"Motor torque and speed range from 0 (off) to positive numbers; motor is "
+"placed on the most recent object created."
+msgstr ""
+"Շարժիչի պտույտները և արագության աստիճանները 0-ից /անջատված/ մինչև դրական "
+"թվեր; շարժիչը տեղավորվում է ամենավերջում ստեղծված օբյեկտի մոտ:"
+
+msgid "Pin an object down so that it cannot fall."
+msgstr "Կոճգամով ամրացրու օբյեկտը, որպեսզի չընկնի:"
+
+#: TurtleArt/tabasics.py:351
+msgid "pen"
+msgstr "գրիչ"
+
+msgid "Add a pen to an object so that its movements are traced."
+msgstr "Ավելացնել գրիչ առարկային, որպեսզի վերջինիս շարժումները հետապնդվեն:"
+
+msgid "joint"
+msgstr "Միացյալ"
+
+#: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
+msgid "x"
+msgstr "x"
+
+#: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
+msgid "y"
+msgstr "y"
+
+msgid ""
+"Join two objects together (the object at the current location and the object "
+"at point x, y)."
+msgstr ""
+"Միացնել 2 օբյեկտները (ամենավերջում ստեղծված օբյեկտն ու x, y կետի վրա գտնվող "
+"օբյեկտը):"
+
+msgid "save as Physics activity"
+msgstr "Պահել ֆիզիկա գործունեությունը"
+
+msgid "Save the project to the Journal as a Physics activity."
+msgstr "Պահել Նախագիծը Մատյանում որպես Ֆիզիկայի գործունեություն:"
+
+msgid "gear"
+msgstr "Ատամնանիվ"
+
+msgid "Add a gear object to the project."
+msgstr "Նախագծին ատամնանիվ ավելացնել"
+
+msgid "density"
+msgstr "Խտություն"
+
+msgid ""
+"Set the density property for objects (density can be any positive number)."
+msgstr "Սահմանել օբյեկտների խտությունը (կարող է լինել միայն դրական թիվ):"
+
+msgid "friction"
+msgstr "Շփում"
+
+msgid ""
+"Set the friction property for objects (value from 0 to 1, where 0 turns "
+"friction off and 1 is strong friction)."
+msgstr ""
+"Սահմանել օբյեկտների շփման մակարդակը (արժեքը` 0-ից մինչև 1, որտեղ 0 բացառում "
+"է շփումը, իսկ 1-ն` ուժեղ շփում է):"
+
+# #-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#
+# Առաձգական մակերեսի շնորհիվ
+msgid "bounciness"
+msgstr "Ետցատկ"
+
+msgid ""
+"Set the bounciness property for objects (a value from 0 to 1, where 0 means "
+"no bounce and 1 is very bouncy)."
+msgstr ""
+"Սահմանել օբյեկտի ետցանկի ուժգնությունը (արժեքը` 0-ից մինչև 1, որտեղ 0 "
+"բացառում է ետցատկը, իսկ 1-ը` շատ արագ ետցատկ է):"
+
+# #-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#
+# Դինամիկ
+msgid "dynamic"
+msgstr "Շարժուն"
+
+msgid ""
+"If dynamic = 1, the object can move; if dynamic = 0, it is fixed in position."
+msgstr ""
+"Եթե շարժունակությունը = 1, օբյեկտը կարող է շարժվել, եթե այն = 0` ապա անշարժ "
+"մնում է իր դիրքում:"
+
+# #-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#
+# WeDo - LEGO ընկերության ռոբոտային արտադրանք է:
+msgid "Palette of WeDo blocks"
+msgstr "WeDo մասնիկների պահոց"
+
+msgid "The parameter must be a integer, not "
+msgstr "Պարամետրը պետք է լինի ամբողջ թիվ, ոչ "
+
+msgid "Motor speed must be an integer between -100 and 100"
+msgstr "Շարժիչի արգությունը պետք է լինի -100-ից 100-ի միջև ընկած ամբողջ թիվ"
+
+msgid "WeDo found %s bricks"
+msgstr "NXT գտավ %s կառավարման սարքը"
+
+msgid "WeDo not found"
+msgstr "WeDo-ն չգտնվեց"
+
+msgid "WeDo number %s was not found"
+msgstr "NXT կառավարման թիվը %s չհայտնաբերվեց"
+
+msgid "wedo"
+msgstr ""
+
+msgid "refresh WeDo"
+msgstr ""
+
+msgid "Search for a connected WeDo."
+msgstr "Փնտրել միացված տեսախցիկ:"
+
+msgid "WeDo"
+msgstr "WeDo"
+
+msgid "set current WeDo device"
+msgstr "սահմանել ներկայիս WeDo սարքը"
+
+msgid "number of WeDos"
+msgstr "WeDo-ների քանակը"
+
+msgid "number of WeDo devices"
+msgstr "WeDo սարքերի թիվը"
+
+msgid "tilt"
+msgstr "թեքություն"
+
+msgid ""
+"tilt sensor output: (-1 == no tilt,0 == tilt forward, 3 == tilt back, 1 == "
+"tilt left, 2 == tilt right)"
+msgstr ""
+"Թեքման սենսորի արդյունքը. (-1 == թեքում չկա, 0 == թեքում դեպի առաջ, 3 == "
+"թեքում դեպի ետ, 1 == թեքում դեպի ձախ, 2 == թեքում դեպի աջ)"
+
+msgid "distance sensor output"
+msgstr "Հեռավորության սենսորի արդյունքը:"
+
+msgid "Motor A"
+msgstr "Շարժիչ A"
+
+msgid "returns the current speed of Motor A"
+msgstr "Վերադարձնում է A շարժիչի ընթացիկ արագությունը:"
+
+msgid "Motor B"
+msgstr "Շարժիչ B"
+
+msgid "returns the current speed of Motor B"
+msgstr "Վերադարձնում է B շարժիչի ընթացիկ արագությունը:"
+
+msgid "set the speed for Motor A"
+msgstr "Սահմանել A շարժիչի արագությունը:"
+
+msgid "set the speed for Motor B"
+msgstr "Սահմանել B շարժիչի արագությունը:"
+
+# #-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#
+# LEGO NXT - LEGO ընկերության ռոբոտային արտադրանք է:
+msgid "Palette of LEGO NXT blocks of motors"
+msgstr "Շարժիչի LEGO NXT մասնիկների պահոց:"
+
+msgid "Palette of LEGO NXT blocks of sensors"
+msgstr "LEGO NXT -ի սենսորների մասնիկների պահոց:"
+
+#: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:369
+#: TurtleArt/tabasics.py:432 TurtleArt/tawindow.py:4542
+msgid "color"
+msgstr "գույն"
+
+#: plugins/audio_sensors/audio_sensors.py:90 pysamples/grecord.py:206
+msgid "sound"
+msgstr "Հնչյուն"
+
+msgid "Please check the connection with the brick"
+msgstr "Խնդրեմ ստուգել կապը NXT կարգավորիչի հետ"
+
+msgid "Invalid port '%s'. Port must be: PORT A, B or C"
+msgstr "Անվավեր մուտք '%s': Մուտքը պետք է լինի՝ ՄՈՒՏՔ Ա, Բ կամ Գ"
+
+msgid "Invalid port '%s'. Port must be: PORT 1, 2, 3 or 4"
+msgstr "Անվավեր մուտք '%s': Մուտքը պետք է լինի՝ ՄՈՒՏՔ 1, 2, 3, կամ 4"
+
+msgid "The value of power must be between -127 to 127"
+msgstr "Հզորության արժեքը պետք է լինի - 127 -ի և 127 սահմաններում"
+
+msgid "The parameter must be a integer, not '%s'"
+msgstr "Պարամետրը պետք է լինի ամբողջ թիվ, ոչ '%s'"
+
+msgid "An error has occurred: check all connections and try to reconnect"
+msgstr "Վրիպում. ստուգել բոլոր միացումները և կրկին փորձել միանալ"
+
+msgid "NXT found %s bricks"
+msgstr "NXT գտավ %s կառավարման սարքը"
+
+msgid "NXT not found"
+msgstr "NXT չի գտնվել"
+
+msgid "Brick number %s was not found"
+msgstr "NXT կառավարման թիվը %s չհայտնաբերվեց"
+
+msgid "nxt-motors"
+msgstr "nxt-շարժիչներ"
+
+msgid "refresh NXT"
+msgstr "Թարմացնել NXT-ը"
+
+msgid "Search for a connected NXT brick."
+msgstr "Փնտրել NXT կառավարման միացված մասնիկը:"
+
+msgid "NXT"
+msgstr "NXT"
+
+msgid "set current NXT device"
+msgstr "տեղադրել ներկայիս NXT սարքը"
+
+msgid "number of NXTs"
+msgstr "NXT-ների թիվը"
+
+msgid "number of NXT devices"
+msgstr "NXT սարքերի թիվը"
+
+msgid "brick name"
+msgstr "կառավարման սարքի անվանումը"
+
+msgid "Get the name of a brick."
+msgstr "Ստացիր կառավարման սարքի անվանումը"
+
+msgid "play tone"
+msgstr "Վերարտադրել հնչյունը"
+
+msgid "frequency"
+msgstr "Հաճախականություն"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:421
+msgid "time"
+msgstr "ժամանակ"
+
+msgid "Play a tone at frequency for time."
+msgstr "Նվագարկել հաճախականությամբ հնչյունը որոշակի ժամանակի ընթացքում:"
+
+msgid "turn motor %s"
+msgstr "Շրջել շարժիչը %s"
+
+msgid "port"
+msgstr "Մուտք"
+
+msgid "rotations"
+msgstr "Պտույտներ"
+
+msgid "power"
+msgstr "Հզորություն"
+
+msgid "turn a motor"
+msgstr "Պտտել շարժիչը"
+
+msgid "synchronize %s motors"
+msgstr "համաժամանակեցնել %s շարժիչները"
+
+msgid "synchronize two motors connected in PORT B and PORT C"
+msgstr "Համաժամանակեցնել Մուտք B-ին և Մուտք C -ին միացված շարժիչները:"
+
+msgid "PORT %s"
+msgstr "ՄՈՒՏՔ %s"
+
+msgid "PORT %s of the brick"
+msgstr "Մուտք %s Հատված"
+
+msgid "start motor"
+msgstr "Միացնե՛լ շարժիչը"
+
+msgid "Run a motor forever."
+msgstr "Աշխատեցնե՛լ շարժիչը մշտապես:"
+
+msgid "brake motor"
+msgstr "Արգելակել շարժիչը"
+
+msgid "Stop a specified motor."
+msgstr "Արգելակել որոշված շարժիչը"
+
+msgid "reset motor"
+msgstr "Վերակարգավորել շարժիչը:"
+
+msgid "Reset the motor counter."
+msgstr "Վերակարգավորել շարժիչի հաշվիչը:"
+
+msgid "motor position"
+msgstr "Շարժիչի դիրքը"
+
+msgid "Get the motor position."
+msgstr "Պարզել շարժիչի դիրքը"
+
+msgid "nxt-sensors"
+msgstr "nxt-սենսորներ"
+
+msgid "read"
+msgstr "Կարդալ"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:328
+msgid "sensor"
+msgstr "Սենսոր"
+
+msgid "Read sensor output."
+msgstr "Կարդալ սենսորի ելքի տվյալները"
+
+msgid "light sensor"
+msgstr "Լույսի սենսոր"
+
+msgid "gray sensor"
+msgstr "մոխրագույն սենսոր"
+
+msgid "button sensor"
+msgstr "կոճակի սենսորը"
+
+msgid "distance sensor"
+msgstr "Հեռավորության սենսոր"
+
+msgid "sound sensor"
+msgstr "Ձայնային սենսոր"
+
+msgid "color sensor"
+msgstr "Գույնի սենսոր"
+
+msgid "set light"
+msgstr "Կարգավորել լույսը"
+
+msgid "Set color sensor light."
+msgstr "Միացնել գունային սենսորի լույսը:"
+
+msgid "battery level"
+msgstr "մարտկոցի մակարդակը"
+
+msgid "Get the battery level of the brick in millivolts"
+msgstr "Ձեռք բերել կառավարման սարքի մարտկոցի մակարդակը միլիվոլտով"
+
+# #-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#
+# Arduino - բաց, ազատ սարքաշարի հարթակ, հավելյալ մուտք Arduino վահանակի վերահսկման համար:
+msgid "Palette of Arduino blocks"
+msgstr "Arduino մասնիկների պահոց"
+
+# #-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#
+# PWM - pulse width modulation, ԲԼՄ -բաբախյունի լայնքի մոդուլացիա
+msgid "PWM"
+msgstr "PWM"
+
+# #-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#
+#
+# #-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#
+# SERVO - փոքր չափի ռոբոտների հեռակա ռադիոկառավարման սարք:
+#
+msgid "SERVO"
+msgstr "SERVO"
+
+msgid "ERROR: Check the Arduino and the number of port."
+msgstr "ՍԽԱԼ. Ստուգել Arduino -ն և մուտքի համարը:"
+
+msgid "ERROR: Value must be a number from 0 to 1."
+msgstr "ՍԽԱԼ. Արժեքը պետք է լինի 0-ից մինչև 1:"
+
+msgid "ERROR: Value must be a number from 0 to 180."
+msgstr "ՍԽԱԼ. Արժեքը պետք է լինի 0-ից մինչև 180:"
+
+msgid "ERROR: Value must be either HIGH or LOW, 0 or 1"
+msgstr "ՍԽԱԼ. Արժեքը պետք է լինի կամ ԲԱՐՁՐ, կամ` ՑԱԾՐ, 0 կամ 1"
+
+#, fuzzy
+msgid "ERROR: The mode must be either INPUT, OUTPUT, PWM or SERVO."
+msgstr ""
+"#-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"ՍԽԱԼ. պետք է լինի, ՆԵՐԱԾՈՒՄ, ԱՐՏԱԾՈՒՄ, PWM կամ SERVO կերպով:\n"
+"#-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"ՍԽԱԼ. պետք է լինի, ՄՈւՏՔ, ԵԼՔ, PWM կամ SERVO կերպով:"
+
+msgid "ERROR: The value must be an integer."
+msgstr "ՍԽԱԼ. արժեքը պետք է լինի ամբողջ թիվ:"
+
+msgid "ERROR: The pin must be an integer."
+msgstr "ՍԽԱԼ. Փինը պետք է լինի ամբողջ թիվ:"
+
+msgid "ERROR: You must configure the mode for the pin."
+msgstr "ՍԽԱԼ. Պետք է կոնֆիգուրացնես անձնական նույնացման թվի ռեժիմը"
+
+msgid "arduino"
+msgstr "Arduino"
+
+msgid "refresh Arduino"
+msgstr "թարմացնել Arduino-ն"
+
+msgid "Search for connected Arduinos."
+msgstr "Փնտրել միացված Arduino-ներ"
+
+msgid "Arduino"
+msgstr "Arduino"
+
+msgid "set current Arduino board"
+msgstr "տեղադրել ներկայիս Arduino պլատան"
+
+msgid "number of Arduinos"
+msgstr "Arduinos քանակը"
+
+msgid "number of Arduino boards"
+msgstr "Arduino պլատաների թիվը"
+
+msgid "Arduino name"
+msgstr "Arduino անվանումը"
+
+msgid "Get the name of an Arduino."
+msgstr "Ձեոք բեր Arduino անվանումը"
+
+msgid "pin mode"
+msgstr "pin ռեժիմ"
+
+msgid "Select the pin function (INPUT, OUTPUT, PWM, SERVO)."
+msgstr "Ընտրել pin գործառույթը (INPUT, OUTPUT, PWM, SERVO)"
+
+msgid "analog write"
+msgstr "Գրել անալոգային տեսքով"
+
+msgid "Write analog value in specified port."
+msgstr "Գրել անալոգային արժեքը որոշակի Մուտքի վրա:"
+
+msgid "analog read"
+msgstr "Կարդալ անալոգային արդյունքը"
+
+msgid "Read value from analog port. Value may be between 0 and 1."
+msgstr ""
+"Ընթերցել արժեքը համօրինակային մուտքից: Արժեքը կարող է լինել 0-ից մինչև է:"
+
+msgid "digital write"
+msgstr "Թվայնացված գրություն"
+
+msgid "Write digital value to specified port."
+msgstr "Գրել թվայնացված արժեքը որոշակի Մուտքի համար:"
+
+msgid "digital read"
+msgstr "Թվայնացված ընթերցում"
+
+msgid "Read value from digital port."
+msgstr "Կարդալ արժեքը թվայնացված մուտքից"
+
+msgid "Set HIGH value for digital port."
+msgstr "Թվայնացված Մուտքի համար սահմանել ԲԱՐՁՐ արժեքը:"
+
+msgid "Configure Arduino port for digital input."
+msgstr "Կարգավորել Arduino մուտքը թվային եղանակով ներմուծման համար:"
+
+#, fuzzy
+msgid "Configure Arduino port to drive a servo."
+msgstr ""
+"#-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Կարգավորել Arduino մուտքը servo -ի համար:\n"
+"#-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Կարգավորել Arduino մուտքը  servo -ի համար:"
+
+msgid "Configure Arduino port for digital output."
+msgstr "Կարգավորել Arduino մուտքը թվային արդյունքի համար:"
+
+#, fuzzy
+msgid "Configure Arduino port for PWM (pulse-width modulation)."
+msgstr ""
+"#-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Կարգավորել Arduino մուտքը համար PWM համար (բաբախյուն- լայնության "
+"մոդուլյացիան)\n"
+"#-#-#-#-#  hy.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Կարգավորել Arduino մուտքը  համար PWM համար (բաբախյուն-  լայնության "
+"մոդուլյացիան)"
+
+msgid "Not found Arduino %s"
+msgstr "Arduino %s հայտնաբերված չէ"
+
+msgid "The pin must be an integer"
+msgstr "Փինը պետք է լինի ամբողջական"
+
+msgid "The device must be an integer"
+msgstr "Սարքը պետք է լինի ամբողջ թիվ"
+
+msgid "Error loading %s board"
+msgstr "Սխալ  %s սարքը բեռնելու ընթացքում"
+
+msgid "Palette for Rodi bots using Arduino"
+msgstr "Ներկապնակ Rodi ռոբոտի համար` օգտագործելով Arduino"
+
+msgid "ERROR: Check the connection to the robot."
+msgstr "ՍԽԱԼ. Ստուգել կապը ռոբոտի հետ:"
+
+msgid "ERROR: The speed must be a value between 0 and %d"
+msgstr "ՍԽԱԼ է. արագության արժեքը պետք է լինի 0 -ի և %d սահմաններում:"
+
+msgid "ERROR: The speed must be a value between %(min)d and %(max)d"
+msgstr ""
+"ՍԽԱԼ է. արագության արժեքը պետք է լինի %(նվազագույնը)d և %(առավելագունը)d "
+"սահմաններում"
+
+msgid "refresh Rodi"
+msgstr "թարմացնել Rodi-ին"
+
+msgid "refresh the state of the Rodi palette and blocks"
+msgstr "Թարմացնել Բութիայի պահոցի վիճակն ու հատվածները:"
+
+msgid "move Rodi"
+msgstr "տեղաշարժել Rodi -ին"
+
+msgid "moves the Rodi motors at the specified speed"
+msgstr "Շարժում է Rodi -ի շարժիչը որոշված արագությամբ"
+
+msgid "stop Rodi"
+msgstr "կանգնեցնել Rodi-ին"
+
+msgid "stops the Rodi robot"
+msgstr "Կանգնեցնել Rodi ռոբոտը:"
+
+msgid "forward Rodi"
+msgstr "առաջ Rodi"
+
+msgid "moves the Rodi robot forward"
+msgstr "Բութիա ռոբոտը շարժել դեպի առաջ"
+
+msgid "left Rodi"
+msgstr "Rodi լքեց"
+
+msgid "turns the Rodi robot at left"
+msgstr "Բութիա ռոբոտը շրջել դեպի աջ:"
+
+msgid "right Rodi"
+msgstr "աջ Rodi"
+
+msgid "turns the Rodi robot at right"
+msgstr "Rodi ռոբոտը շրջել դեպի աջ:"
+
+msgid "backward Rodi"
+msgstr "հետ Rodi"
+
+msgid "moves the Rodi robot backward"
+msgstr "Շարժել Rodi ռոբոտը դեպի ետ"
+
+msgid "distance Rodi"
+msgstr "հեռավորություն Rodi"
+
+msgid "returns the distance as a value between 0 and 1"
+msgstr ""
+"Վերականգնում է հեռավորությունը որպես 0-ի և 65535-ի սահմաններում ընկած արժեք"
+
+msgid "Rodi %s not found"
+msgstr "Rodi %s չի գտնվում"
+
+msgid "Palette of Expeyes blocks"
+msgstr "Expeyes հատվածների պահոց"
+
+msgid "set PVS"
+msgstr "տեղադրել PVS"
+
+msgid "set programmable voltage output"
+msgstr "տեղադրել ծրագրային վոլտի արտածում"
+
+msgid "set SQR1 voltage"
+msgstr "տեղադրել SQR1 վոլտ"
+
+msgid "set square wave 1 voltage output"
+msgstr "տեղադրել քառակուսի ալիքի 1 վոլտ արտածում"
+
+msgid "set SQR2 voltage"
+msgstr "տեղադրել SQR2 վոլտ"
+
+msgid "set square wave 2 voltage output"
+msgstr "տեղադրել քառակուսի ալիքի 2 վոլտ արտածում"
+
+msgid "set OD1"
+msgstr "տեղադրել OD1"
+
+msgid "set digital output level (OD1) low (0) or high (1)"
+msgstr "տեղադրել թվային արտածման մակարդակը (OD1) ցածր (0) կամ բարձր (1)"
+
+msgid "IN1 level"
+msgstr "IN1 մակարդակ"
+
+msgid ""
+"returns 1 if IN1 voltage level >2.5 volts, 0 if IN1 voltage level <= 2.5 "
+"volts"
+msgstr ""
+"դառնում է 1, եթե IN1 վոլտային մակարդակը >2.5 վոլտ, 0՝ եթե IN1 վոլտային "
+"մակարդակը <= 2.5 վոլտ"
+
+msgid "IN2 level"
+msgstr "IN2 մակարդակ"
+
+msgid ""
+"returns 1 if IN2 voltage level >2.5 volts, 0 if IN2 voltage level <= 2.5 "
+"volts"
+msgstr ""
+"դառնում է 1, եթե IN2 վոլտային մակարդակը >2.5 վոլտ, 0՝ եթե IN2 վոլտային "
+"մակարդակը <= 2.5 վոլտ"
+
+msgid "SEN level"
+msgstr "SEN մակարդակ"
+
+msgid ""
+"returns 1 if resistive sensor (SEN) voltage level > 2.5 volts, 0 if SEN "
+"voltage level <= 2.5 volts"
+msgstr ""
+"դառնում է 1եթե դիամակայուն սենսորի (SEN) վոլտային մակարդակը > 2.5 վոլտ է, 0 "
+"եթե SEN վոլտային մակարդակը <= 2.5 վոլտ է"
+
+msgid "capture"
+msgstr "գերևարել"
+
+msgid "input"
+msgstr "ներածում"
+
+msgid "samples"
+msgstr "օրինակներ"
+
+msgid "interval"
+msgstr "ընդմիջում"
+
+msgid ""
+"capture multiple samples from input at interval (MS); results pushed to FIFO"
+msgstr ""
+"(ՄՎ) ընդմիջման ժամանակ գերևարել մազմաթիվ օրինակներ ներածումից, հետևանք է "
+"առաջանում հրել FIFO"
+
+msgid "A1"
+msgstr "A1"
+
+msgid "read analog input 1 voltage"
+msgstr "կարդալ անալոգի ներածման 1 վոլտը"
+
+msgid "A2"
+msgstr "A2"
+
+msgid "read analog input 2 voltage"
+msgstr "կարդալ անալոգի ներածման 2 վոլտը"
+
+msgid "IN1"
+msgstr "IN1"
+
+msgid "read input 1 voltage"
+msgstr "կարդալ ներածման 1 վոլտը"
+
+msgid "IN2"
+msgstr "IN2"
+
+msgid "read input 2 voltage"
+msgstr "կարդալ ներածման 2 վոլտը"
+
+msgid "SEN"
+msgstr "SEN"
+
+msgid "read analog sensor input voltage"
+msgstr "կարդալ անալոգի սենսորի ներածման վոլտը"
+
+msgid "SQR1"
+msgstr "SQR1"
+
+msgid "read square wave 1 voltage"
+msgstr "կարդալ քառակուսի ալիքի 1 վոլտը"
+
+msgid "SQR2"
+msgstr "SQR2"
+
+msgid "read square wave 2 voltage"
+msgstr "կարդալ քառակուսի ալիքի 2 վոլտը"
+
+msgid "PVS"
+msgstr "PVS"
+
+msgid "read programmable voltage"
+msgstr "կարդալ ծրագրային վոլտը"
+
+msgid "Expeyes device not found"
+msgstr "Expeyes սարքը հայտնաբերված չէ"
 
 #. TRANS: "name" option from activity.info file
 msgid "TurtleBlocks"
@@ -66,19 +1568,9 @@ msgstr "Մաքրել"
 msgid "clears the screen and reset the turtle"
 msgstr "Մաքրում է էկրանը և ելման դիրքի բերում կրիային"
 
-#: TurtleArt/tabasics.py:207 TurtleArt/taconstants.py:139
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:991
-msgid "left"
-msgstr "Ձախ"
-
 #: TurtleArt/tabasics.py:211
 msgid "turns turtle counterclockwise (angle in degrees)"
 msgstr "Կրիային շրջում է ժամացույցի սլաքին հակառակ (անկյունն` աստիճանով)"
-
-#: TurtleArt/tabasics.py:221 TurtleArt/taconstants.py:141
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1024
-msgid "right"
-msgstr "Աջ"
 
 #: TurtleArt/tabasics.py:225
 msgid "turns turtle clockwise (angle in degrees)"
@@ -103,14 +1595,6 @@ msgstr "Շարժում է կրիային աղեղի երկայնությամբ:"
 #: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
 msgid "set xy"
 msgstr "Սահմանել xy"
-
-#: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
-msgid "x"
-msgstr "x"
-
-#: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
-msgid "y"
-msgstr "y"
 
 #: TurtleArt/tabasics.py:255 TurtleArt/tabasics.py:334
 msgid ""
@@ -169,18 +1653,9 @@ msgstr ""
 msgid "Palette of pen commands"
 msgstr "Գրչի հրահանգների պահոց"
 
-#: TurtleArt/tabasics.py:351
-msgid "pen"
-msgstr "գրիչ"
-
 #: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:369
 msgid "fill screen"
 msgstr "լցնել էկրանը"
-
-#: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:369
-#: TurtleArt/tabasics.py:432 TurtleArt/tawindow.py:4542
-msgid "color"
-msgstr "գույն"
 
 #: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:370
 #: TurtleArt/tabasics.py:444 TurtleArt/tawindow.py:4538
@@ -191,11 +1666,6 @@ msgstr "Երանգ"
 #: TurtleArt/tabasics.py:360 TurtleArt/tabasics.py:374
 msgid "fills the background with (color, shade)"
 msgstr "Լցնում է հետին պլանը (գույն, երանգ)"
-
-#: TurtleArt/tabasics.py:370 TurtleArt/tabasics.py:454
-#: TurtleArt/tawindow.py:4539 TurtleArt/tawindow.py:4544
-msgid "gray"
-msgstr "մոխրագույն"
 
 #: TurtleArt/tabasics.py:387
 msgid "set color"
@@ -383,8 +1853,8 @@ msgstr "բաժանել"
 msgid ""
 "divides top numeric input (numerator) by bottom numeric input (denominator)"
 msgstr ""
-"բաժանում է վերին թվային արժեքը(համարիչը ) ստորին թվային արժեքի (հայտարարը "
-")վրա :"
+"բաժանում է վերին թվային արժեքը(համարիչը ) ստորին թվային արժեքի "
+"(հայտարարը )վրա :"
 
 #: TurtleArt/tabasics.py:699
 msgid "identity"
@@ -661,10 +2131,6 @@ msgstr "պահել ... մեջ"
 #: TurtleArt/tabasics.py:1114 TurtleArt/tabasics.py:1130
 msgid "box"
 msgstr "Տուփ"
-
-#: TurtleArt/tabasics.py:1114 TurtleArt/tawindow.py:5055
-msgid "value"
-msgstr "Արժեք"
 
 #: TurtleArt/tabasics.py:1118 TurtleArt/tabasics.py:1133
 #: TurtleArt/tawindow.py:1582 TurtleArt/tawindow.py:1727
@@ -1255,10 +2721,6 @@ msgstr "Արագացում"
 msgid "push acceleration in x, y, z to heap"
 msgstr "Արագությունը x, y, z առանցքների վրա`դնել շարանի մեջ"
 
-#: plugins/audio_sensors/audio_sensors.py:90 pysamples/grecord.py:206
-msgid "sound"
-msgstr "Հնչյուն"
-
 #: plugins/audio_sensors/audio_sensors.py:91
 msgid "raw microphone input signal"
 msgstr "Միկրոֆոնի մուտքային ազդանշան"
@@ -1280,20 +2742,10 @@ msgstr "Հաճախականություն"
 msgid "microphone input pitch"
 msgstr "Միկրոֆոնի ներմուծման տոնը"
 
-#: plugins/audio_sensors/audio_sensors.py:157
-#: plugins/audio_sensors/audio_sensors.py:175
-msgid "resistance"
-msgstr "Դիմադրություն"
-
 #: plugins/audio_sensors/audio_sensors.py:158
 #: plugins/audio_sensors/audio_sensors.py:176
 msgid "microphone input resistance"
 msgstr "Միկրոֆոնի մուտքային դիմադրողականություն"
-
-#: plugins/audio_sensors/audio_sensors.py:163
-#: plugins/audio_sensors/audio_sensors.py:181
-msgid "voltage"
-msgstr "Լարում"
 
 #: plugins/audio_sensors/audio_sensors.py:164
 #: plugins/audio_sensors/audio_sensors.py:182
@@ -1304,15 +2756,6 @@ msgstr "Միկրոֆոնի մուտքի լարումը"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:133
 msgid "Palette of media objects"
 msgstr "Լրատվամիջոցի առարկաների պահոց"
-
-#: plugins/camera_sensor/camera_sensor.py:83
-#: plugins/camera_sensor/camera_sensor.py:99
-#: plugins/camera_sensor/camera_sensor.py:136
-#: plugins/camera_sensor/camera_sensor.py:152
-#: plugins/light_sensor/light_sensor.py:58
-#: plugins/light_sensor/light_sensor.py:66
-msgid "brightness"
-msgstr "Պայծառություն"
 
 #: plugins/camera_sensor/camera_sensor.py:85
 #: plugins/camera_sensor/camera_sensor.py:138
@@ -1365,8 +2808,7 @@ msgstr "մինչ"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:101
 msgid "do-until-True operator that uses boolean operators from Numbers palette"
 msgstr ""
-"Կատարիր-մինչեւ-Ճիշտ օպերատորը, որն օգտագործում է Թվապնակի բուլյան "
-"օպերատորներ"
+"Կատարիր-մինչեւ-Ճիշտ օպերատորը, որն օգտագործում է Թվապնակի բուլյան օպերատորներ"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:121
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:841
@@ -1530,10 +2972,6 @@ msgstr ""
 "Վերարտադրում է Սինուսոիդն ըստ հաճախականության, տատանումների մեծության ու "
 "տևողության /վրկ/:"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:328
-msgid "sensor"
-msgstr "Սենսոր"
-
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:333
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:344
 msgid "button down"
@@ -1599,10 +3037,6 @@ msgstr "կրիան տեսնում է"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:412
 msgid "returns the color that the turtle \"sees\""
 msgstr "վերադարձնում է այն գույնը, որ կրիան ներկայիս \"տեսնում է\""
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:421
-msgid "time"
-msgstr "ժամանակ"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:424
 msgid "elapsed time (in seconds) since program started"
@@ -1928,10 +3362,6 @@ msgstr "Ստորին մաս"
 msgid "ycor of bottom of screen"
 msgstr "էկրանի ստորին մասի y դիրքացույցը"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1013
-msgid "width"
-msgstr "լայնք"
-
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1016
 msgid "the canvas width"
 msgstr "կտավի լայնությունը"
@@ -1944,10 +3374,6 @@ msgstr "էկրանի աջ մասի xcor-ը"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1038
 msgid "ycor of top of screen"
 msgstr "էկրանի վերին մասի ycor-ը"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1046
-msgid "height"
-msgstr "բարձրություն"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1049
 msgid "the canvas height"
@@ -2139,7 +3565,6 @@ msgstr "Պահպանե՞լ նախագիծը"
 
 #: turtleblocks.py:558
 #, python-format
-#, python-format,
 msgid "Plugin %s already installed"
 msgstr "%s հավելումն արդեն ներդրված է:"
 
@@ -2147,985 +3572,331 @@ msgstr "%s հավելումն արդեն ներդրված է:"
 msgid "myproject"
 msgstr "իմ նախագիծը"
 
-#~ msgid "Load project"
-#~ msgstr "Բեռնել նախագիծը"
+msgid "Load project"
+msgstr "Բեռնել նախագիծը"
 
-#~ msgid "Hide sample projects"
-#~ msgstr "Թաքցնել օրինակ-նախագծերը"
+msgid "Hide sample projects"
+msgstr "Թաքցնել օրինակ-նախագծերը"
 
-#~ msgid "palette"
-#~ msgstr "պահոց"
+msgid "palette"
+msgstr "պահոց"
 
-#~ msgid "make a uturn"
-#~ msgstr "Կատարել լրիվ շրջադարձ U տառի ձևով"
+msgid "make a uturn"
+msgstr "Կատարել լրիվ շրջադարձ U տառի ձևով"
 
 # լրիվ շրջադարձ
-#~ msgid "u turn"
-#~ msgstr "Շրջադարձ U տառի ձևով"
+msgid "u turn"
+msgstr "Շրջադարձ U տառի ձևով"
 
-#~ msgid "set text color"
-#~ msgstr "Սահմանել տեքստի գույնը"
+msgid "set text color"
+msgstr "Սահմանել տեքստի գույնը"
 
-#~ msgid "sets color of text drawn by the turtle"
-#~ msgstr "Սահմանում է կրիայի մուտքագրած տեքստի գույնը"
+msgid "sets color of text drawn by the turtle"
+msgstr "Սահմանում է կրիայի մուտքագրած տեքստի գույնը"
 
-#~ msgid "set text size"
-#~ msgstr "Սահմանել տեքստի չափը"
+msgid "set text size"
+msgstr "Սահմանել տեքստի չափը"
 
-#~ msgid "sets size of text drawn by the turtle"
-#~ msgstr "Սահմանում է կրիայի մուտքագրած տեքստի չափսը"
+msgid "sets size of text drawn by the turtle"
+msgstr "Սահմանում է կրիայի մուտքագրած տեքստի չափսը"
 
-#~ msgid "presentation 1x1"
-#~ msgstr "Ներկայացում 1x1"
+msgid "presentation 1x1"
+msgstr "Ներկայացում 1x1"
 
-#~ msgid "presentation 2x1"
-#~ msgstr "Ներկայացում 2x1"
+msgid "presentation 2x1"
+msgstr "Ներկայացում 2x1"
 
-#~ msgid "presentation 1x2"
-#~ msgstr "Ներկայացում 1x2"
+msgid "presentation 1x2"
+msgstr "Ներկայացում 1x2"
 
-#~ msgid "presentation 2x2"
-#~ msgstr "Ներկայացում 2x2"
-
-# Turtle Art` Կրիայի Արվեստը -դանդաղ,համբերությամբ սովորելու համար
-#~ msgid "Turtle Art"
-#~ msgstr "Turtle Art"
-
-#~ msgid "Turtle Art Mini"
-#~ msgstr "Կրիայի Արվեստ /TortugArte/ Մինի"
-
-#~ msgid "Turtle Confusion"
-#~ msgstr "Կրիայի շփոթմունք"
-
-#~ msgid "Select a challenge"
-#~ msgstr "Ընտրել մի առաջադրանք - մարտահրավեր"
-
-#~ msgid "Palette of Mexican pesos"
-#~ msgstr "Մեքսիկական պեսոյի պահոց"
-
-#~ msgid "Palette of Colombian pesos"
-#~ msgstr "Կոլումբիական պեսոյի պահոց"
-
-#~ msgid "Palette of Rwandan francs"
-#~ msgstr "Ռուանդական ֆրանկի պահոց"
-
-#~ msgid "Palette of US dollars"
-#~ msgstr "ԱՄՆ դոլարի պահոց"
-
-#~ msgid "Palette of Australian dollars"
-#~ msgstr "Ավստրալիական դոլարի պահոց"
-
-#~ msgid "Palette of Paraguayan Guaranies"
-#~ msgstr "Պարագվայական գուարանիի պահոց"
-
-#~ msgid "Palette of Peruvian Nuevo Soles"
-#~ msgstr "Պերուական Նուեվո Սոլերի պահոց"
-
-#~ msgid "Palette of Uruguayan Pesos"
-#~ msgstr "Ուրուգվայական պեսոի պահոց"
+msgid "presentation 2x2"
+msgstr "Ներկայացում 2x2"
 
 # ԼԱԴ - Լույս արձակող դիոդ
-#~ msgid "adjust LED intensity between 0 and 255"
-#~ msgstr "Կարգավորել ԼԱԴ ուժգնությունը 0 -ի և 255 - ի միջև:"
+msgid "adjust LED intensity between 0 and 255"
+msgstr "Կարգավորել ԼԱԴ ուժգնությունը 0 -ի և 255 - ի միջև:"
 
-#~ msgid "returns the object gray level as a number between 0 and 1023"
-#~ msgstr "Միջավայրի լույսի մակարդակը դարձնում է 0 -ի և 1023- ի միջև ընկած թիվ:"
+msgid "returns the object gray level as a number between 0 and 1023"
+msgstr ""
+"Միջավայրի լույսի մակարդակը դարձնում է 0 -ի և 1023- ի միջև ընկած թիվ:"
 
-#~ msgid "returns 1 when the button is press and 0 otherwise"
-#~ msgstr "Կոճակ"
+msgid "returns 1 when the button is press and 0 otherwise"
+msgstr "Կոճակ"
 
-#~ msgid "returns the ambient light level as a number between 0 and 1023"
-#~ msgstr "Միջավայրի լույսի մակարդակը դարձնում է  0 -ի և 1023- ի միջև ընկած թիվ:"
+msgid "returns the ambient light level as a number between 0 and 1023"
+msgstr ""
+"Միջավայրի լույսի մակարդակը դարձնում է  0 -ի և 1023- ի միջև ընկած թիվ:"
 
-#~ msgid "returns the ambient temperature as a number between 0 and 255"
-#~ msgstr "Միջավայրի ջերմությունը դարձնում է թիվ` 0 -ի և 255- ի միջև:"
+msgid "returns the ambient temperature as a number between 0 and 255"
+msgstr "Միջավայրի ջերմությունը դարձնում է թիվ` 0 -ի և 255- ի միջև:"
 
-#~ msgid ""
-#~ "returns the distance from the object in front of the sensor as a number "
-#~ "between 0 and 255"
-#~ msgstr ""
-#~ "Սենսորի առջև եղած առարկայի հեռավորությունը դարձնում է թիվ` 0 -ի և 255- ի "
-#~ "միջև"
+msgid ""
+"returns the distance from the object in front of the sensor as a number "
+"between 0 and 255"
+msgstr ""
+"Սենսորի առջև եղած առարկայի հեռավորությունը դարձնում է թիվ` 0 -ի և 255- ի "
+"միջև"
 
-#~ msgid "returns 0 or 1 depending on the sensor inclination"
-#~ msgstr "Կախված սենսորի թեքությունից` դարձնում է 0 կամ 1"
+msgid "returns 0 or 1 depending on the sensor inclination"
+msgstr "Կախված սենսորի թեքությունից` դարձնում է 0 կամ 1"
 
-#~ msgid "returns 1 when the sensors detects a magnetic field, 0 otherwise"
-#~ msgstr ""
-#~ "Դարձնում է 1, երբ սենսորը հայտնաբերում է մագնիսական դաշտ, իսկ հակառակ "
-#~ "դեպքում` 0"
+msgid "returns 1 when the sensors detects a magnetic field, 0 otherwise"
+msgstr ""
+"Դարձնում է 1, երբ սենսորը հայտնաբերում է մագնիսական դաշտ, իսկ հակառակ "
+"դեպքում` 0"
 
-#~ msgid "switches from 0 to 1, the frequency depends on the vibration"
-#~ msgstr "Տատանվում է 0 -ից 1, հաճախականությունը կախված է տատանումից"
+msgid "switches from 0 to 1, the frequency depends on the vibration"
+msgstr "Տատանվում է 0 -ից 1, հաճախականությունը կախված է տատանումից"
 
-# Լուսարձակման Դիոդ
-#~ msgid "LED"
-#~ msgstr "ԼԱԴ"
+msgid "grayscale"
+msgstr "Գորշ գույնի սանդղակ"
 
-#~ msgid "button"
-#~ msgstr "Կոճակ"
+msgid "ambient light"
+msgstr "Սենյակային լույս"
 
-#~ msgid "grayscale"
-#~ msgstr "Գորշ գույնի սանդղակ"
+msgid "magnetic induction"
+msgstr "մագնիսական ինդուկցիա"
 
-#~ msgid "ambient light"
-#~ msgstr "Սենյակային լույս"
+msgid "vibration"
+msgstr "տատանում"
 
-#~ msgid "temperature"
-#~ msgstr "Ջերմաստիճանը"
+msgid "returns the battery charge as a number between 0 and 255"
+msgstr "Մարտկոցի լիցքավորումը վերածում է 0-ից 255-ի միջև ընկած թվի"
 
-#~ msgid "distance"
-#~ msgstr "հեռավորություն"
+msgid "move the Butia robot forward a predefined distance"
+msgstr "Տեղափոխել Բութիա ռոբոտը առաջ` նախապես սահմանված հեռավորության վրա:"
 
-#~ msgid "tilt"
-#~ msgstr "թեքություն"
+msgid "move the Butia robot backward a predefined distance"
+msgstr "Տեղափոխել Բութիա ռոբոտը ետ` նախապես սահմանված հեռավորության վրա"
 
-#~ msgid "magnetic induction"
-#~ msgstr "մագնիսական ինդուկցիա"
+msgid "turn Butia"
+msgstr "Պտտել Բութիան"
 
-#~ msgid "vibration"
-#~ msgstr "տատանում"
+msgid "turn the Butia robot x degrees"
+msgstr "Շրջել Բութիա ռոբոտը x աստիճան"
 
-#~ msgid "Butia Robot"
-#~ msgstr "Բութիա Ռոբոտ"
+msgid ""
+"Join two objects together (the most recent object created and the object "
+"at point x, y)."
+msgstr ""
+"Միացնել 2 օբյեկտները (ամենավերջում ստեղծված օբյեկտն ու x, y կետի վրա "
+"գտնվող օբյեկտը):"
 
-#~ msgid "refresh Butia"
-#~ msgstr "Թարմացնել Բութիան"
+msgid ""
+"tilt sensor output: (-1 == no tilt, 0 == tilt forward, 3 == tilt back, 1 "
+"== tilt left, 2 == tilt right)"
+msgstr ""
+"Թեքման սենսորի արդյունքը. (-1 == թեքում չկա, 0 == թեքում դեպի առաջ, 3 == "
+"թեքում դեպի ետ, 1 == թեքում դեպի ձախ, 2 == թեքում դեպի աջ)"
 
-#~ msgid "refresh the state of the Butia palette and blocks"
-#~ msgstr "Թարմացնել Բութիայի պահոցի վիճակն ու մասնիկները:"
+msgid "returns the current value of Motor A"
+msgstr "Վերադարձնում է A շարժիչի ընթացիկ արժեքը:"
 
-#~ msgid "battery charge Butia"
-#~ msgstr "Բութիա մարտկոցի լիցքավորում"
+msgid "returns the current value of Motor B"
+msgstr "Վերադարձնում է B շարժիչի ընթացիկ արժեքը:"
 
-#~ msgid "returns the battery charge as a number between 0 and 255"
-#~ msgstr "Մարտկոցի լիցքավորումը վերածում է 0-ից 255-ի միջև ընկած թվի"
+msgid "set the value for Motor A"
+msgstr "Սահմանել A շարժիչի արժեքը:"
 
-#~ msgid "speed Butia"
-#~ msgstr "Բութիա արագություն"
+msgid "set the value for Motor B"
+msgstr "Սահմանել B շարժիչի արժեքը:"
 
-#~ msgid "forward Butia"
-#~ msgstr "Առաջ տանել Բութիան"
-
-#~ msgid "move the Butia robot forward"
-#~ msgstr "Բութիա ռոբոտը շարժել դեպի առաջ"
-
-#~ msgid "move the Butia robot forward a predefined distance"
-#~ msgstr "Տեղափոխել Բութիա ռոբոտը առաջ` նախապես սահմանված հեռավորության վրա:"
-
-#~ msgid "left Butia"
-#~ msgstr "Ձախ Բութիա"
-
-#, fuzzy
-#~ msgid "turn the Butia robot at left"
-#~ msgstr "Բութիա ռոբոտը շրջել դեպի աջ:"
-
-#~ msgid "backward Butia"
-#~ msgstr "Բութիան` հետ"
-
-#~ msgid "move the Butia robot backward"
-#~ msgstr "Շարժել Բութիա ռոբոտը դեպի ետ"
-
-#~ msgid "move the Butia robot backward a predefined distance"
-#~ msgstr "Տեղափոխել Բութիա ռոբոտը ետ` նախապես սահմանված հեռավորության վրա"
-
-#~ msgid "right Butia"
-#~ msgstr "աջ Բութիա"
-
-#~ msgid "turn the Butia robot at right"
-#~ msgstr "Բութիա ռոբոտը շրջել դեպի աջ:"
-
-#~ msgid "turn Butia"
-#~ msgstr "Պտտել Բութիան"
-
-#~ msgid "turn the Butia robot x degrees"
-#~ msgstr "Շրջել Բութիա ռոբոտը x աստիճան"
-
-#~ msgid "stop Butia"
-#~ msgstr "կանգնեցնել Բութիան"
-
-#~ msgid "stop the Butia robot"
-#~ msgstr "Կանգնեցնել Բութիա ռոբոտը:"
-
-#~ msgid "Butia"
-#~ msgstr "Բութիա"
-
-#~ msgid "Error on initialization of the camera"
-#~ msgstr "Տեսախցիկի վերամեկնարկման գործողությունը ձախողվեց"
-
-#, fuzzy
-#~ msgid "No camera was found"
-#~ msgstr "Ոչ մի տեսախցիկ չհայտնաբերվեց"
-
-#~ msgid "Error stopping camera"
-#~ msgstr "Տեսախցիկի ընդհատման գործողությունը ձախողվեց"
-
-#~ msgid "Error starting camera"
-#~ msgstr "Տեսախցիկի վերամեկնարկման գործողությունը ձախողվեց"
-
-#~ msgid "FollowMe"
-#~ msgstr "Հետևիր ինձ"
-
-#, fuzzy
-#~ msgid "Search for a connected camera."
-#~ msgstr "Փնտրել NXT կառավարման միացված մասնիկը:"
-
-# Calibration - Ելքային արժեքի հարմմարեցումը ելքի էտալոնային արժեքին:
-#~ msgid "calibration"
-#~ msgstr "Կալիբրացիա"
-
-#, fuzzy
-#~ msgid "store a personalized calibration"
-#~ msgstr "Պահեստավորում է անհատականացված կալիբրացիան:"
-
-#~ msgid "return a personalized calibration"
-#~ msgstr "Վերադարձնել անհատականացված կալիբրացիան:"
-
-#~ msgid "follow"
-#~ msgstr "Հետևել"
-
-#~ msgid "follow a color or calibration"
-#~ msgstr "Հետևել գույնին կամ կալիբրացայիային:"
-
-#~ msgid "minimum pixels"
-#~ msgstr "Պիքսելների նվազագույնը"
-
-#~ msgid "set the minimal number of pixels to follow"
-#~ msgstr "Սահմանել հաջորդող պիքսելների նվազագույն քանակը:"
-
-#~ msgid "threshold"
-#~ msgstr "Նախաշեմ"
-
-#~ msgid "set a threshold for a RGB color"
-#~ msgstr "Սահմանել ԿԿԿ գույնի շեմը"
-
-#~ msgid "camera mode"
-#~ msgstr "տեսախցիկի ռեժիմ"
-
-# RGB - Կարմիր, Կանաչ, Կապույտ ԿԿԿ
-# YUV - Գունային մոդել
-# HSV - Երանգ, Հագեցվածություն, Արժեք
-#, fuzzy
-#~ msgid "set the color mode of the camera: RGB; YUV or HSV"
-#~ msgstr "տեղադրել տեսախցիկի գունային ռեժիմը` RGB, YUV, և HSV"
-
-#~ msgid "x position"
-#~ msgstr "Դիրքն x -ի վրա"
-
-#~ msgid "return x position"
-#~ msgstr "Վերադառնալ x դիրքին"
-
-#~ msgid "y position"
-#~ msgstr "Դիրքն y - ի վրա"
-
-#~ msgid "return y position"
-#~ msgstr "Վերադառնալ y դիրքին"
-
-#~ msgid "pixels"
-#~ msgstr "Պիքսել"
-
-#~ msgid "return the number of pixels of the biggest blob"
-#~ msgstr "Վերականգնել ամենամեծ բծի պիքսելների քանակը:"
-
-#~ msgid "set the color mode of the camera to RGB"
-#~ msgstr "տեղադրել տեսախցիկի RGB գունային ռեժիմը"
-
-#~ msgid "set the color mode of the camera to YUV"
-#~ msgstr "տեղադրել տեսախցիկի YUV գունային ռեժիմը"
-
-#~ msgid "set the color mode of the camera to HSV"
-#~ msgstr "տեղադրել տեսախցիկի HSV գունային ռեժիմը"
-
-#~ msgid "empty calibration"
-#~ msgstr "Կալիբրացիան. դատարկ"
-
-#~ msgid "error in string conversion"
-#~ msgstr "Տեքստային շղթայի փոխակերպման սխալ:"
-
-#~ msgid "SumBot"
-#~ msgstr "SumBot"
-
-#~ msgid "speed SumBot"
-#~ msgstr "SumBot -ի արագացում"
-
-#~ msgid "submit the speed to the SumBot"
-#~ msgstr "Ներմուծել SumBot -ի արագությունը:"
-
-#~ msgid "set the default speed for the movement commands"
-#~ msgstr "Սահմանել նախնական արագությունը`տեղաշարժման հրահանգների համար"
-
-#~ msgid "forward SumBot"
-#~ msgstr "SumBot առաջ"
-
-#~ msgid "move SumBot forward"
-#~ msgstr "SumBot-ը շարժել դեպի առաջ"
-
-#~ msgid "backward SumBot"
-#~ msgstr "SumBot` ետ"
-
-#~ msgid "move SumBot backward"
-#~ msgstr "SumBot շարժել դեպի ետ"
-
-#~ msgid "stop SumBot"
-#~ msgstr "SumBot կանգ"
-
-#~ msgid "stop the SumBot"
-#~ msgstr "Կանգնեցնել SumBot-ը"
-
-#~ msgid "left SumBot"
-#~ msgstr "SumBot Ձախ"
-
-#~ msgid "turn left the SumBot"
-#~ msgstr "SumBot-ը շրջել դեպի ձախ:"
-
-#~ msgid "right SumBot"
-#~ msgstr "SumBot` աջ"
-
-#~ msgid "turn right the SumBot"
-#~ msgstr "SumBot -ը շրջել դեպի աջ:"
-
-#~ msgid "angle to center"
-#~ msgstr "Շրջել դեպի կենտրոն անկյան տակ"
-
-# Dohyo կան dojo - Սումո ըմբշամարտի բեմն է
-#~ msgid "get the angle to the center of the dohyo"
-#~ msgstr "Անկյունը հասցնում է dohyo- ի կենտրոնին"
-
-#~ msgid "angle to Enemy"
-#~ msgstr "Շրջել դեպի հակառակորդն ուղղող անկյան տակ:"
-
-#~ msgid "get the angle to the Enemy"
-#~ msgstr "Պարզել անկյան չափը մինչև հակառակորդը"
-
-#~ msgid "x coor. SumBot"
-#~ msgstr "SumBot -ի X դիրքացույցը"
-
-#~ msgid "get the x coordinate of the SumBot"
-#~ msgstr "Պարզել SumBot ռոբոտի x դիրքացույցը"
-
-#~ msgid "y coor. SumBot"
-#~ msgstr "y coor. SumBot"
-
-#~ msgid "get the y coordinate of the SumBot"
-#~ msgstr "Պարզել SumBot ռոբոտի y դիրքացույցը"
-
-#~ msgid "x coor. Enemy"
-#~ msgstr "x coor. Հակառակորդի"
-
-#~ msgid "get the x coordinate of the Enemy"
-#~ msgstr "Պարզել հակառակորդի ռոբոտի x դիրքացույցը"
-
-#~ msgid "y coor. Enemy"
-#~ msgstr "y coor. Հակառակորդի"
-
-#~ msgid "get the y coordinate of the Enemy"
-#~ msgstr "Պարզել հակառակորդի ռոբոտի y դիրքացույցը"
-
-#~ msgid "rotation SumBot"
-#~ msgstr "SumBot պտույտ"
-
-#~ msgid "get the rotation of the Sumbot"
-#~ msgstr "Հասնում է Sumbot -ի պտույտին"
-
-# rotation պտույտ կամ շրջադարձ
-#~ msgid "rotation Enemy"
-#~ msgstr "Հակառակորդի պտույտ"
-
-#~ msgid "get the rotation of the Enemy"
-#~ msgstr "Հասնում է Հակառակորդի  պտույտին"
-
-#~ msgid "distance to center"
-#~ msgstr "հեռավորություն կենտրոնից"
-
-#~ msgid "get the distance to the center of the dohyo"
-#~ msgstr "Պարզել հեռավորությունը «dojo»-ի կենտրոնից"
-
-#~ msgid "distance to Enemy"
-#~ msgstr "Հեռավորությունը մինչև Հակառակորդը"
-
-#~ msgid "get the distance to the Enemy"
-#~ msgstr "Պարզել հեռավորությունը մինչև հակառակորդը"
-
-#~ msgid "update information"
-#~ msgstr "արդիականացնել տեղեկությունը"
-
-#~ msgid "update information from the server"
-#~ msgstr "Արդիականացնել տեղեկությունը` սերվերից"
-
-#~ msgid "Palette of physics blocks"
-#~ msgstr "Ֆիզիկայի մասնիկների պահոց"
-
-#~ msgid "start polygon"
-#~ msgstr "Սկսել բազմանկյունը"
-
-#~ msgid "Begin defining a new polygon based on the current Turtle xy position."
-#~ msgstr "Սկսել նոր բազմանկյան սահմանումը` ելնելով Կրիայի առկա XY դիրքից"
-
-#~ msgid "add point"
-#~ msgstr "Կետ ավելացնել"
-
-#~ msgid ""
-#~ "Add a new point to the current polygon based on the current Turtle xy "
-#~ "position."
-#~ msgstr "Նոր կետ ավելացնել առկա բազմանկյանը` ելնելով Կրիայի ներկա XY դիրքից:"
-
-#~ msgid "end polygon"
-#~ msgstr "Ավարտել բազմանկյունը:"
-
-#~ msgid "Define a new polygon."
-#~ msgstr "Սահմանել նոր բազմանկյուն"
-
-#~ msgid "end filled polygon"
-#~ msgstr "Ավարտել լցված բազմանկյունը:"
-
-#~ msgid "Not a simple polygon"
-#~ msgstr "Պարզ բազմանկյուն չէ"
-
-#~ msgid "Define a new filled polygon."
-#~ msgstr "Սահմանել նոր, լցոնված բազմանկյուն:"
-
-#~ msgid "triangle"
-#~ msgstr "Եռանկյուն"
-
-#~ msgid "base"
-#~ msgstr "Հիմք"
-
-#~ msgid "Add a triangle object to the project."
-#~ msgstr "Եռանկյունաձև օբյեկտ ավելացնել նախագծին:"
-
-#~ msgid "circle"
-#~ msgstr "Շրջանագիծ"
-
-#~ msgid "Add a circle object to the project."
-#~ msgstr "Շրջանաձև օբյեկտ ավելացնել նախագծին:"
-
-#~ msgid "rectangle"
-#~ msgstr "Ուղղանկյուն"
-
-#~ msgid "Add a rectangle object to the project."
-#~ msgstr "Ուղղանկյունաձև օբյեկտ ավելացնել նախագծին"
-
-#~ msgid "reset"
-#~ msgstr "Վերակարգավորել"
-
-#~ msgid "Reset the project; clear the object list."
-#~ msgstr "Վերակարգավորել Նախագիծը, վերացնել օբյեկտների ցանկը:"
-
-#~ msgid "motor"
-#~ msgstr "Շարժիչ"
-
-#~ msgid "torque"
-#~ msgstr "Շարժիչի պտտվող մասը"
-
-#~ msgid "speed"
-#~ msgstr "Արագություն"
-
-#~ msgid ""
-#~ "Motor torque and speed range from 0 (off) to positive numbers; motor is "
-#~ "placed on the most recent object created."
-#~ msgstr ""
-#~ "Շարժիչի պտույտները և արագության աստիճանները 0-ից /անջատված/ մինչև դրական "
-#~ "թվեր; շարժիչը տեղավորվում է ամենավերջում ստեղծված օբյեկտի մոտ:"
-
-#~ msgid "pin"
-#~ msgstr "Կոճգամ"
-
-#~ msgid "Pin an object down so that it cannot fall."
-#~ msgstr "Կոճգամով ամրացրու օբյեկտը, որպեսզի չընկնի:"
-
-#~ msgid "joint"
-#~ msgstr "Միացյալ"
-
-#~ msgid ""
-#~ "Join two objects together (the most recent object created and the object at "
-#~ "point x, y)."
-#~ msgstr ""
-#~ "Միացնել 2 օբյեկտները (ամենավերջում ստեղծված օբյեկտն ու x, y կետի վրա գտնվող "
-#~ "օբյեկտը):"
-
-#~ msgid "save as Physics activity"
-#~ msgstr "Պահել ֆիզիկա գործունեությունը"
-
-#~ msgid "Save the project to the Journal as a Physics activity."
-#~ msgstr "Պահել Նախագիծը Մատյանում որպես Ֆիզիկայի գործունեություն:"
-
-#~ msgid "gear"
-#~ msgstr "Ատամնանիվ"
-
-#~ msgid "Add a gear object to the project."
-#~ msgstr "Նախագծին ատամնանիվ ավելացնել"
-
-#~ msgid "density"
-#~ msgstr "Խտություն"
-
-#~ msgid ""
-#~ "Set the density property for objects (density can be any positive number)."
-#~ msgstr "Սահմանել օբյեկտների խտությունը (կարող է լինել միայն դրական թիվ):"
-
-#~ msgid "friction"
-#~ msgstr "Շփում"
-
-#~ msgid ""
-#~ "Set the friction property for objects (value from 0 to 1, where 0 turns "
-#~ "friction off and 1 is strong friction)."
-#~ msgstr ""
-#~ "Սահմանել օբյեկտների շփման մակարդակը (արժեքը` 0-ից մինչև 1, որտեղ 0 բացառում "
-#~ "է շփումը, իսկ 1-ն` ուժեղ շփում է):"
-
-# Առաձգական մակերեսի շնորհիվ
-#~ msgid "bounciness"
-#~ msgstr "Ետցատկ"
-
-#~ msgid ""
-#~ "Set the bounciness property for objects (a value from 0 to 1, where 0 means "
-#~ "no bounce and 1 is very bouncy)."
-#~ msgstr ""
-#~ "Սահմանել օբյեկտի ետցանկի ուժգնությունը (արժեքը` 0-ից մինչև 1, որտեղ 0 "
-#~ "բացառում է ետցատկը, իսկ 1-ը` շատ արագ ետցատկ է):"
-
-# Դինամիկ
-#~ msgid "dynamic"
-#~ msgstr "Շարժուն"
-
-#~ msgid ""
-#~ "If dynamic = 1, the object can move; if dynamic = 0, it is fixed in position."
-#~ msgstr ""
-#~ "Եթե շարժունակությունը = 1, օբյեկտը կարող է շարժվել, եթե այն = 0` ապա անշարժ "
-#~ "մնում է իր դիրքում:"
-
-# WeDo - LEGO ընկերության ռոբոտային արտադրանք է:
-#~ msgid "Palette of WeDo blocks"
-#~ msgstr "WeDo մասնիկների պահոց"
-
-#~ msgid ""
-#~ "tilt sensor output: (-1 == no tilt, 0 == tilt forward, 3 == tilt back, 1 == "
-#~ "tilt left, 2 == tilt right)"
-#~ msgstr ""
-#~ "Թեքման սենսորի արդյունքը. (-1 == թեքում չկա, 0 == թեքում դեպի առաջ, 3 == "
-#~ "թեքում դեպի ետ, 1 == թեքում դեպի ձախ, 2 == թեքում դեպի աջ)"
-
-#~ msgid "distance sensor output"
-#~ msgstr "Հեռավորության սենսորի արդյունքը:"
-
-#~ msgid "Motor A"
-#~ msgstr "Շարժիչ A"
-
-#~ msgid "returns the current value of Motor A"
-#~ msgstr "Վերադարձնում է A շարժիչի ընթացիկ արժեքը:"
-
-#~ msgid "Motor B"
-#~ msgstr "Շարժիչ B"
-
-#~ msgid "returns the current value of Motor B"
-#~ msgstr "Վերադարձնում է B շարժիչի ընթացիկ արժեքը:"
-
-#~ msgid "set the value for Motor A"
-#~ msgstr "Սահմանել A շարժիչի արժեքը:"
-
-#~ msgid "set the value for Motor B"
-#~ msgstr "Սահմանել B շարժիչի արժեքը:"
-
-# LEGO NXT - LEGO ընկերության ռոբոտային արտադրանք է:
-#~ msgid "Palette of LEGO NXT blocks of motors"
-#~ msgstr "Շարժիչի LEGO NXT մասնիկների պահոց:"
-
-#~ msgid "Palette of LEGO NXT blocks of sensors"
-#~ msgstr "LEGO NXT -ի սենսորների մասնիկների պահոց:"
-
-#~ msgid "touch"
-#~ msgstr "Հպման սենսոր"
+msgid "touch"
+msgstr "Հպման սենսոր"
 
 # Հեռավորության չափումը գերձայնային ալիքներով
-#~ msgid "ultrasonic"
-#~ msgstr "Գերձայնային"
-
-#~ msgid "light"
-#~ msgstr "Լույս"
+msgid "ultrasonic"
+msgstr "Գերձայնային"
 
 #, fuzzy
-#~ msgid "grey"
-#~ msgstr "մոխրագույն"
+msgid "grey"
+msgstr "մոխրագույն"
+
+msgid "PORT A"
+msgstr "Մուտք A"
+
+msgid "PORT A of the brick"
+msgstr "Մուտք A-ի մասնիկը"
+
+msgid "PORT B"
+msgstr "Մուտք B"
+
+msgid "PORT B of the brick"
+msgstr "Մուտք B-ի մասնիկը"
+
+msgid "PORT C"
+msgstr "Մուտք C"
+
+msgid "PORT C of the brick"
+msgstr "Մուտք C-ի մասնիկը"
+
+msgid "PORT 1"
+msgstr "Մուտք 1"
+
+msgid "PORT 1 of the brick"
+msgstr "Մասնիկի Մուտք 1 -ը:"
+
+msgid "PORT 2"
+msgstr "Մուտք 2"
+
+msgid "PORT 2 of the brick"
+msgstr "Մասնիկի Մուտք 2 -ը:"
+
+msgid "PORT 3"
+msgstr "Մուտք 3"
+
+msgid "PORT 3 of the brick"
+msgstr "Մասնիկի Մուտք 3 -ը:"
+
+msgid "touch sensor"
+msgstr "Հպման սենսոր"
+
+msgid "PORT 4"
+msgstr "Մուտք 4"
+
+msgid "PORT 4 of the brick"
+msgstr "Մասնիկի Մուտք 4 -ը:"
 
 #, fuzzy
-#~ msgid "Please check the connection with the brick"
-#~ msgstr "Ստուգել կապը NXT հսկման մասնիկի հետ:"
+msgid "Get battery level of the brick"
+msgstr "Ձեռք բերել ուղղանկյան մարտկոցի մակարդակը:"
 
-#, fuzzy
-#~ msgid "The value of power must be between -127 to 127"
-#~ msgstr "Հզորության արժեքը պետք է լինի -127 և 127 -ի միջև:"
+msgid "ERROR: Value must be a number from 0 to 255."
+msgstr "ՍԽԱԼ. Արժեքը պետք է լինի 0-ից մինչև 255:"
 
-#, fuzzy
-#~ msgid "An error has occurred: check all connections and try to reconnect"
-#~ msgstr ""
-#~ "Վրիպում է տեղի ունեցել. խնդրեմ ստուգե՛ք բոլոր միացումներն ու փորձեք նորից "
-#~ "միացնել:"
-
-#~ msgid "NXT not found"
-#~ msgstr "NXT չի գտնվել"
-
-#~ msgid "refresh NXT"
-#~ msgstr "Թարմացնել NXT-ը"
-
-#~ msgid "Search for a connected NXT brick."
-#~ msgstr "Փնտրել NXT կառավարման միացված մասնիկը:"
-
-#~ msgid "play tone"
-#~ msgstr "Վերարտադրել հնչյունը"
-
-#~ msgid "frequency"
-#~ msgstr "Հաճախականություն"
-
-#~ msgid "Play a tone at frequency for time."
-#~ msgstr "Նվագարկել հաճախականությամբ հնչյունը որոշակի ժամանակի ընթացքում:"
-
-#~ msgid "port"
-#~ msgstr "Մուտք"
-
-#~ msgid "power"
-#~ msgstr "Հզորություն"
-
-#~ msgid "rotations"
-#~ msgstr "Պտույտներ"
-
-#~ msgid "turn a motor"
-#~ msgstr "Պտտել շարժիչը"
-
-#~ msgid "synchronize two motors connected in PORT B and PORT C"
-#~ msgstr "Համաժամանակեցնել Մուտք B-ին և Մուտք C -ին միացված շարժիչները:"
-
-#~ msgid "PORT A"
-#~ msgstr "Մուտք A"
-
-#~ msgid "PORT A of the brick"
-#~ msgstr "Մուտք A-ի մասնիկը"
-
-#~ msgid "PORT B"
-#~ msgstr "Մուտք B"
-
-#~ msgid "PORT B of the brick"
-#~ msgstr "Մուտք B-ի մասնիկը"
-
-#~ msgid "PORT C"
-#~ msgstr "Մուտք C"
-
-#~ msgid "PORT C of the brick"
-#~ msgstr "Մուտք C-ի մասնիկը"
-
-#~ msgid "start motor"
-#~ msgstr "Միացնե՛լ շարժիչը"
-
-#~ msgid "Run a motor forever."
-#~ msgstr "Աշխատեցնե՛լ շարժիչը մշտապես:"
-
-#~ msgid "brake motor"
-#~ msgstr "Արգելակել շարժիչը"
-
-#~ msgid "Stop a specified motor."
-#~ msgstr "Արգելակել որոշված շարժիչը"
-
-#~ msgid "reset motor"
-#~ msgstr "Վերակարգավորել շարժիչը:"
-
-#~ msgid "Reset the motor counter."
-#~ msgstr "Վերակարգավորել շարժիչի հաշվիչը:"
-
-#~ msgid "motor position"
-#~ msgstr "Շարժիչի դիրքը"
-
-#~ msgid "Get the motor position."
-#~ msgstr "Պարզել շարժիչի դիրքը"
-
-#~ msgid "PORT 1"
-#~ msgstr "Մուտք 1"
-
-#~ msgid "PORT 1 of the brick"
-#~ msgstr "Մասնիկի Մուտք 1 -ը:"
-
-#~ msgid "read"
-#~ msgstr "Կարդալ"
-
-#~ msgid "Read sensor output."
-#~ msgstr "Կարդալ սենսորի ելքի տվյալները"
-
-#~ msgid "PORT 2"
-#~ msgstr "Մուտք 2"
-
-#~ msgid "PORT 2 of the brick"
-#~ msgstr "Մասնիկի Մուտք 2 -ը:"
-
-#~ msgid "light sensor"
-#~ msgstr "Լույսի սենսոր"
-
-#~ msgid "PORT 3"
-#~ msgstr "Մուտք 3"
-
-#~ msgid "PORT 3 of the brick"
-#~ msgstr "Մասնիկի Մուտք 3 -ը:"
-
-#~ msgid "touch sensor"
-#~ msgstr "Հպման սենսոր"
-
-#~ msgid "distance sensor"
-#~ msgstr "Հեռավորության սենսոր"
-
-#~ msgid "PORT 4"
-#~ msgstr "Մուտք 4"
-
-#~ msgid "PORT 4 of the brick"
-#~ msgstr "Մասնիկի Մուտք 4 -ը:"
-
-#~ msgid "sound sensor"
-#~ msgstr "Ձայնային սենսոր"
-
-#~ msgid "color sensor"
-#~ msgstr "Գույնի սենսոր"
-
-#~ msgid "set light"
-#~ msgstr "Կարգավորել լույսը"
-
-#~ msgid "Set color sensor light."
-#~ msgstr "Միացնել գունային սենսորի լույսը:"
-
-#~ msgid "battery level"
-#~ msgstr "մարտկոցի մակարդակը"
-
-#, fuzzy
-#~ msgid "Get battery level of the brick"
-#~ msgstr "Ձեռք բերել ուղղանկյան մարտկոցի մակարդակը:"
-
-#~ msgid "HIGH"
-#~ msgstr "ԲԱՐՁՐ"
-
-#~ msgid "LOW"
-#~ msgstr "ՑԱԾՐ"
-
-#~ msgid "INPUT"
-#~ msgstr "ՄՈւՏՔ"
-
-#~ msgid "OUTPUT"
-#~ msgstr "ԵԼՔ"
-
-# PWM - pulse width modulation, ԲԼՄ -բաբախյունի լայնքի մոդուլացիա
-#~ msgid "PWM"
-#~ msgstr "PWM"
-
-# SERVO - փոքր չափի ռոբոտների հեռակա ռադիոկառավարման սարք:
-#
-#~ msgid "SERVO"
-#~ msgstr "SERVO"
-
-#~ msgid "ERROR: Check the Arduino and the number of port."
-#~ msgstr "ՍԽԱԼ. Ստուգել Arduino -ն և մուտքի համարը:"
-
-#~ msgid "ERROR: Value must be a number from 0 to 255."
-#~ msgstr "ՍԽԱԼ. Արժեքը պետք է լինի 0-ից մինչև 255:"
-
-#~ msgid "ERROR: Value must be either HIGH or LOW."
-#~ msgstr "ՍԽԱԼ. Արժեքը պետք է լինի կամ ԲԱՐՁՐ, կամ` ՑԱԾՐ:"
-
-#~ msgid "ERROR: The mode must be either INPUT, OUTPUT, PWM or SERVO."
-#~ msgstr "ՍԽԱԼ. պետք է լինի, ՄՈւՏՔ, ԵԼՔ, PWM կամ SERVO կերպով:"
-
-#~ msgid "pin mode"
-#~ msgstr "pin ռեժիմ"
-
-# Մոդուլ
-#~ msgid "mode"
-#~ msgstr "Կերպ"
-
-#~ msgid "Select the pin function (INPUT, OUTPUT, PWM, SERVO)."
-#~ msgstr "Ընտրել pin գործառույթը (INPUT, OUTPUT, PWM, SERVO)"
-
-#~ msgid "analog write"
-#~ msgstr "Գրել անալոգային տեսքով"
-
-#~ msgid "Write analog value in specified port."
-#~ msgstr "Գրել անալոգային արժեքը որոշակի Մուտքի վրա:"
-
-#~ msgid "analog read"
-#~ msgstr "Կարդալ անալոգային արդյունքը"
+msgid "ERROR: Value must be either HIGH or LOW."
+msgstr "ՍԽԱԼ. Արժեքը պետք է լինի կամ ԲԱՐՁՐ, կամ` ՑԱԾՐ:"
 
 # վոլտ=((կարդալ)*5)/1024)
-#~ msgid ""
-#~ "Read value from analog port. Value may be between 0 and 1023. Use Vref to "
-#~ "determine voltage. For USB, volt=((read)*5)/1024) approximately."
-#~ msgstr ""
-#~ "Կարդալ արժեքն անալոգային Մուտքից: Արժեքը կարող է լինել 0 -ի և 1023-ի միջև. "
-#~ "USB -ի համար` volt=((read)*5)/1024) մոտավորապես:"
-
-#~ msgid "digital write"
-#~ msgstr "Թվայնացված գրություն"
-
-#~ msgid "Write digital value to specified port."
-#~ msgstr "Գրել թվայնացված արժեքը որոշակի Մուտքի համար:"
-
-#~ msgid "digital read"
-#~ msgstr "Թվայնացված ընթերցում"
-
-#~ msgid "Read value from digital port."
-#~ msgstr "Կարդալ արժեքը թվայնացված մուտքից"
-
-#~ msgid "Set HIGH value for digital port."
-#~ msgstr "Թվայնացված Մուտքի համար սահմանել ԲԱՐՁՐ արժեքը:"
-
-#~ msgid "Configure Arduino port for digital input."
-#~ msgstr "Կարգավորել Arduino մուտքը թվային եղանակով ներմուծման համար:"
-
-#~ msgid "Configure Arduino port to drive a servo."
-#~ msgstr "Կարգավորել Arduino մուտքը  servo -ի համար:"
-
-#~ msgid "Set LOW value for digital port."
-#~ msgstr "ԹվայինՄուտքի համար սահմանել ՑԱԾՐ արժեքը:"
-
-#~ msgid "Configure Arduino port for digital output."
-#~ msgstr "Կարգավորել Arduino մուտքը թվային արդյունքի համար:"
-
-#~ msgid "Configure Arduino port for PWM (pulse-width modulation)."
-#~ msgstr ""
-#~ "Կարգավորել Arduino մուտքը  համար PWM համար (բաբախյուն-  լայնության "
-#~ "մոդուլյացիան)"
-
-# WeDo - LEGO ընկերության ռոբոտային արտադրանք է:
-#, fuzzy
-#~ msgid "Palette of Expeyes blocks"
-#~ msgstr "WeDo մասնիկների պահոց"
+msgid ""
+"Read value from analog port. Value may be between 0 and 1023. Use Vref to "
+"determine voltage. For USB, volt=((read)*5)/1024) approximately."
+msgstr ""
+"Կարդալ արժեքն անալոգային Մուտքից: Արժեքը կարող է լինել 0 -ի և 1023-ի "
+"միջև. USB -ի համար` volt=((read)*5)/1024) մոտավորապես:"
 
 #, fuzzy
-#~ msgid ""
-#~ "set the speed of the Butia motors as a value between 0 and 1023, passed by "
-#~ "an argument"
-#~ msgstr ""
-#~ "Բութիայի շարժիչի արագությունը ներկայացնել որպես 0-ից 1023-ի միջև ընկած "
-#~ "արժեք, որպես ֆունկցիայի արգումենտ:"
+msgid ""
+"set the speed of the Butia motors as a value between 0 and 1023, passed "
+"by an argument"
+msgstr ""
+"Բութիայի շարժիչի արագությունը ներկայացնել որպես 0-ից 1023-ի միջև ընկած "
+"արժեք, որպես ֆունկցիայի արգումենտ:"
 
-#~ msgid "turn the Butia robot to the left"
-#~ msgstr "Բութիա ռոբոտը շրջել դեպի ձախ:"
+msgid "turn the Butia robot to the left"
+msgstr "Բութիա ռոբոտը շրջել դեպի ձախ:"
 
-#~ msgid "display Butia"
-#~ msgstr "Բութիա էկրան"
+msgid "display Butia"
+msgstr "Բութիա էկրան"
 
-#~ msgid "Hello World    Butia            "
-#~ msgstr "Ողջույն, Աշխարհ                     Բութիա"
+msgid "Hello World    Butia            "
+msgstr "Ողջույն, Աշխարհ                     Բութիա"
 
 # ASCII - American Standard Code for Information Interchange - Ութ  բայթանոց տեքստի /լատինատառ/ համար մշակված կոդ:
-#~ msgid "print text in Butia robot 32-character ASCII display"
-#~ msgstr "Ցուցադրվում է 32- նշաններից բաղկացած տեքստ ASCII լուսապաստառի վրա:"
+msgid "print text in Butia robot 32-character ASCII display"
+msgstr "Ցուցադրվում է 32- նշաններից բաղկացած տեքստ ASCII լուսապաստառի վրա:"
 
-#~ msgid "Error making mask"
-#~ msgstr "Սխալ` դիմակավորելիս "
+msgid "Error making mask"
+msgstr "Սխալ` դիմակավորելիս "
 
 # Green - Կանաչ
-#~ msgid "G"
-#~ msgstr "G"
+msgid "G"
+msgstr "G"
 
 # Red - Կարմիր
-#~ msgid "R"
-#~ msgstr "R"
+msgid "R"
+msgstr "R"
 
 # Blue - Կապույտ
-#~ msgid "B"
-#~ msgstr "B"
+msgid "B"
+msgstr "B"
 
 # Կարմիր, Կանաչ, Կապույտ
-#~ msgid "follow a RGB color"
-#~ msgstr "Հետևել RGB /ԿԿԿ/ գույներին"
+msgid "follow a RGB color"
+msgstr "Հետևել RGB /ԿԿԿ/ գույներին"
 
 # Calibration - ելքային արժեքի հարմարեցումը ելքի էտալոնային արժեքին:
-#~ msgid "save calibration 1"
-#~ msgstr "Պահել 1 կալիբրացիան"
+msgid "save calibration 1"
+msgstr "Պահել 1 կալիբրացիան"
 
-#~ msgid "stores a calibration in calibration 1"
-#~ msgstr "Պահեստավորում է մի կալիբրացիա` կալիբրացիա 1 -ում:"
+msgid "stores a calibration in calibration 1"
+msgstr "Պահեստավորում է մի կալիբրացիա` կալիբրացիա 1 -ում:"
 
-#~ msgid "save calibration 2"
-#~ msgstr "Պահել կալիբրացիա 2-ը"
+msgid "save calibration 2"
+msgstr "Պահել կալիբրացիա 2-ը"
 
-#~ msgid "stores a calibration in calibration 2"
-#~ msgstr "Պահեստավորում է մի կալիբրացիան կալիբրացիա 2 -ում:"
+msgid "stores a calibration in calibration 2"
+msgstr "Պահեստավորում է մի կալիբրացիան կալիբրացիա 2 -ում:"
 
-#~ msgid "calibration 1"
-#~ msgstr "Կալիբրացիա 1"
+msgid "calibration 1"
+msgstr "Կալիբրացիա 1"
 
-#~ msgid "return calibration 1"
-#~ msgstr "Վերադարձնել կալիբրացիա 1-ը"
+msgid "return calibration 1"
+msgstr "Վերադարձնել կալիբրացիա 1-ը"
 
-#~ msgid "calibration 2"
-#~ msgstr "Կալիբրացիա 2"
+msgid "calibration 2"
+msgstr "Կալիբրացիա 2"
 
-#~ msgid "return calibration 2"
-#~ msgstr "Վերադարձնել կալիբրացիա 2-ը"
+msgid "return calibration 2"
+msgstr "Վերադարձնել կալիբրացիա 2-ը"
 
-# ԿԿԿ - Կարմիր Կանաչ, Կապույտ
-#~ msgid "RGB"
-#~ msgstr "RGB"
-
-#~ msgid "YUV"
-#~ msgstr "YUV"
-
-#~ msgid "HSV"
-#~ msgstr "HSV"
-
-#~ msgid "Please check the port."
-#~ msgstr "Խնդրեմ, ստուգե՛ք մուտքը"
+msgid "Please check the port."
+msgstr "Խնդրեմ, ստուգե՛ք մուտքը"
 
 # NXT - LEGO -ի գրաֆիկական լեզու
-#~ msgid "NXT found"
-#~ msgstr "NXT գտնվել է:"
+msgid "NXT found"
+msgstr "NXT գտնվել է:"
 
-#~ msgid ""
-#~ "turn motor\n"
-#~ "rotations"
-#~ msgstr ""
-#~ "Պտտել շարժիչը\n"
-#~ " պտույտով"
+msgid ""
+"turn motor\n"
+"rotations"
+msgstr ""
+"Պտտել շարժիչը\n"
+" պտույտով"
 
-#~ msgid ""
-#~ "synchronize motors\n"
-#~ "steering"
-#~ msgstr ""
-#~ "Համաժամանակեցնել շարժիչները\n"
-#~ " ղեկելով"
+msgid ""
+"synchronize motors\n"
+"steering"
+msgstr ""
+"Համաժամանակեցնել շարժիչները\n"
+" ղեկելով"
 
-# Arduino - բաց, ազատ սարքաշարի հարթակ, հավելյալ մուտք Arduino վահանակի վերահսկման համար:
-#~ msgid "Palette of Arduino blocks"
-#~ msgstr "Arduino մասնիկների պահոց"
+msgid "delay Butia"
+msgstr "Բութիա ուշացում"
 
-#~ msgid "delay Butia"
-#~ msgstr "Բութիա ուշացում"
+msgid "wait for argument seconds"
+msgstr "Սպասեք փաստարկի վայրկյաններին"
 
-#~ msgid "wait for argument seconds"
-#~ msgstr "Սպասեք փաստարկի վայրկյաններին"
+msgid "refresh Butia palette"
+msgstr "Թարմացնել Բութիայի պահոցը"
 
-#~ msgid "refresh Butia palette"
-#~ msgstr "Թարմացնել Բութիայի պահոցը"
+msgid "The camera was not found."
+msgstr "Տեսախցիկը չի հայտնաբերվել:"
 
-#~ msgid "The camera was not found."
-#~ msgstr "Տեսախցիկը չի հայտնաբերվել:"
+msgid "True"
+msgstr "Ճիշտ է"
 
-#~ msgid "True"
-#~ msgstr "Ճիշտ է"
+msgid "False"
+msgstr "Սխալ է"
 
-#~ msgid "False"
-#~ msgstr "Սխալ է"
+msgid "then else"
+msgstr "ապա այլ"
 
-#~ msgid "then else"
-#~ msgstr "ապա այլ"
+msgid "bottom of a collapsible stack"
+msgstr "Փլուզվող կույտի ստորին մասը"
 
-#~ msgid "bottom of a collapsible stack"
-#~ msgstr "Փլուզվող կույտի ստորին մասը"
+msgid "collapsed stack: click to open"
+msgstr "Փլուզված շարք. «քլիք»` բացելու համար"
 
-#~ msgid "collapsed stack: click to open"
-#~ msgstr "Փլուզված շարք. «քլիք»` բացելու համար"
-
-#~ msgid "bottom block in a collapsed stack: click to open"
-#~ msgstr "Ստորին բլոկը փլուզված կույտ է. սեղմել,որ բացվի"
+msgid "bottom block in a collapsed stack: click to open"
+msgstr "Ստորին բլոկը փլուզված կույտ է. սեղմել,որ բացվի"
 
 # Մասնիկների շարքի վերին մասը
-#~ msgid "top of stack"
-#~ msgstr "Շեղջի վերին մասը"
+msgid "top of stack"
+msgstr "Շեղջի վերին մասը"
 
-#~ msgid "label"
-#~ msgstr "պիտակ"
+msgid "label"
+msgstr "պիտակ"
 
-#~ msgid "Save as HTML"
-#~ msgstr "Պահել որպես HTML"
+msgid "Save as HTML"
+msgstr "Պահել որպես HTML"

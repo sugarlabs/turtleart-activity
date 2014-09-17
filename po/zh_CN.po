@@ -1,3 +1,4 @@
+# #-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
@@ -6,8 +7,23 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#, fuzzy
 msgid ""
 msgstr ""
+"#-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-02-16 00:32-0500\n"
+"PO-Revision-Date: 2014-03-26 16:49+0200\n"
+"Last-Translator: lite <litekok@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Pootle 2.0.5\n"
+"#-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-12-05 00:30-0500\n"
@@ -20,6 +36,1328 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Pootle 2.0.5\n"
+
+msgid "turtleart-extras (master)"
+msgstr "海龟绘图附加组件（主）"
+
+msgid "Turtle Blocks"
+msgstr "海龟方块"
+
+msgid "Turtle Art"
+msgstr "海龟绘画"
+
+msgid "Turtle Art Mini"
+msgstr "迷你海龟绘图"
+
+msgid "Turtle Confusion"
+msgstr "海龟谜题"
+
+msgid "Select a challenge"
+msgstr "选择一个挑战"
+
+msgid "Amazonas Tortuga"
+msgstr "亚马逊托尔图加"
+
+msgid "Turtle Flags"
+msgstr "海龟国旗"
+
+msgid "Use the turtle to draw country flags"
+msgstr "使用海龟来绘制国旗"
+
+msgid "Palette of Mexican pesos"
+msgstr "墨西哥比索模板"
+
+msgid "Palette of Colombian pesos"
+msgstr "哥伦比亚比索模板"
+
+msgid "Palette of Rwandan francs"
+msgstr "卢旺达法郎模板"
+
+msgid "Palette of US dollars"
+msgstr "美元模板"
+
+msgid "Palette of Australian dollars"
+msgstr "澳元模板"
+
+msgid "Palette of Paraguayan Guaranies"
+msgstr "巴拉圭瓜拉尼模板"
+
+msgid "Palette of Peruvian Nuevo Soles"
+msgstr "秘鲁新索尔的模板"
+
+msgid "Palette of Uruguayan Pesos"
+msgstr "乌拉圭比索模板"
+
+msgid "TurtleBots"
+msgstr "海龟机器人"
+
+msgid "TurtleBlocks with Butia, Lego NxT, WeDo, Arduino, FollowMe plugins"
+msgstr "海龟方块含有Butia, Lego NxT, WeDo, Arduino, FollowMe插件"
+
+msgid "ERROR: The speed must be a value between 0 and 1023"
+msgstr "错误：速度必须是0到1023之间的值"
+
+msgid "ERROR: The speed must be a value between -1023 and 1023"
+msgstr "错误：速度必须是-1023到1023之间的值"
+
+msgid "ERROR: The pin must be between 1 and 8"
+msgstr "错误：该引脚必须在1和8之间"
+
+msgid "ERROR: The value must be 0 or 1, LOW or HIGH"
+msgstr "错误：该值必须为0或1，“低”或“高"
+
+msgid "ERROR: The mode must be INPUT or OUTPUT."
+msgstr "错误：该模式必须是输入或输出。"
+
+msgid "turns LED on and off: 1 means on, 0 means off"
+msgstr "开关LED：1 是开, 0是关"
+
+msgid "returns the gray level as a value between 0 and 65535"
+msgstr "返回灰度等级，为0和65536之间的一个数值"
+
+msgid "returns 1 when the button is pressed and 0 otherwise"
+msgstr "当按钮按下返回1，否则为0"
+
+msgid "returns the light level as a value between 0 and 65535"
+msgstr "返回光照等级，为0和65536之间的一个数值"
+
+msgid "returns the distance as a value between 0 and 65535"
+msgstr "返回距离，为0和65536之间的一个数值"
+
+msgid "returns the resistance value (ohms)"
+msgstr "返回电阻值（欧姆）"
+
+msgid "returns the voltage value (volts)"
+msgstr "返回电压值（伏特）"
+
+msgid "returns the temperature value (celsius degree)"
+msgstr "返回温度值（摄氏度）"
+
+msgid "custom module %s"
+msgstr "自定义模块 %s"
+
+msgid "sensor a"
+msgstr "传感器 a"
+
+msgid "sensor b"
+msgstr "传感器 b"
+
+msgid "sensor c"
+msgstr "传感器 c"
+
+msgid "actuator a"
+msgstr "执行器 a"
+
+msgid "actuator b"
+msgstr "执行器 b"
+
+msgid "actuator c"
+msgstr "执行器 c"
+
+msgid "LED"
+msgstr "指示灯"
+
+msgid "button"
+msgstr "按钮"
+
+#: TurtleArt/tabasics.py:370 TurtleArt/tabasics.py:454
+#: TurtleArt/tawindow.py:4480 TurtleArt/tawindow.py:4485
+#, fuzzy
+msgid "gray"
+msgstr ""
+"#-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"灰色\n"
+"#-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"灰度"
+
+msgid "light"
+msgstr "灯光"
+
+msgid "distance"
+msgstr "距离"
+
+#: plugins/audio_sensors/audio_sensors.py:157
+#: plugins/audio_sensors/audio_sensors.py:175
+msgid "resistance"
+msgstr "电阻"
+
+#: plugins/audio_sensors/audio_sensors.py:163
+#: plugins/audio_sensors/audio_sensors.py:181
+msgid "voltage"
+msgstr "电压"
+
+msgid "temperature"
+msgstr "温度"
+
+msgid "butia"
+msgstr "布迪"
+
+msgid "Butia Robot"
+msgstr "布迪机器人"
+
+msgid "refresh Butia"
+msgstr "刷新布迪"
+
+msgid "refresh the state of the Butia palette and blocks"
+msgstr "刷新布迪模板和拼块的状态"
+
+msgid "battery charge Butia"
+msgstr "布迪充电"
+
+msgid ""
+"returns the battery charge in volts. If no motors present, it returns 255"
+msgstr "返回电池充电（单位为伏）。如果没有电机，返回255"
+
+msgid "speed Butia"
+msgstr "布迪加速"
+
+msgid "set the speed of the Butia motors"
+msgstr "设置布迪的马达速度"
+
+msgid "move Butia"
+msgstr "移动布迪"
+
+#: TurtleArt/tabasics.py:207 TurtleArt/taconstants.py:138
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:973
+msgid "left"
+msgstr "左边"
+
+#: TurtleArt/tabasics.py:221 TurtleArt/taconstants.py:140
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1006
+msgid "right"
+msgstr "右边"
+
+msgid "moves the Butia motors at the specified speed"
+msgstr "以指定速度移动布迪电机"
+
+msgid "stop Butia"
+msgstr "停止布迪"
+
+msgid "stop the Butia robot"
+msgstr "停止布迪机器人"
+
+msgid "forward Butia"
+msgstr "布迪前进"
+
+msgid "move the Butia robot forward"
+msgstr "向前移动布迪机器人"
+
+msgid "left Butia"
+msgstr "布迪左转"
+
+msgid "turn the Butia robot at left"
+msgstr "向左转动布迪机器人"
+
+msgid "right Butia"
+msgstr "布迪右转"
+
+msgid "turn the Butia robot at right"
+msgstr "向右转动布迪机器人"
+
+msgid "backward Butia"
+msgstr "布迪后退"
+
+msgid "move the Butia robot backward"
+msgstr "先后移动布迪机器人"
+
+msgid "butia-extra"
+msgstr "布迪扩展"
+
+msgid "Butia Robot extra blocks"
+msgstr "布迪机器人额外模块"
+
+msgid "pin mode Butia"
+msgstr "引脚模式布迪"
+
+#, fuzzy
+msgid "pin"
+msgstr ""
+"#-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"引脚\n"
+"#-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"图钉"
+
+msgid "mode"
+msgstr "模式"
+
+msgid "Select the pin function (INPUT, OUTPUT)."
+msgstr "选择引脚功能（输入，输出）。"
+
+msgid "read pin Butia"
+msgstr "读取引脚布迪"
+
+msgid "read the value of a pin"
+msgstr "读取一个引脚的值"
+
+msgid "write pin Butia"
+msgstr "写入引脚布迪"
+
+#: TurtleArt/tabasics.py:1114 TurtleArt/tawindow.py:4847
+msgid "value"
+msgstr "值"
+
+msgid "set a hack pin to 0 or 1"
+msgstr "设置破解引脚到0或1"
+
+msgid "INPUT"
+msgstr "输入"
+
+msgid "Configure hack pin for digital input."
+msgstr "为数字输入配置破解端口。"
+
+msgid "HIGH"
+msgstr "高"
+
+msgid "Set HIGH value for digital pin."
+msgstr "设置数字端口为高值。"
+
+msgid "LOW"
+msgstr "低"
+
+msgid "Set LOW value for digital port."
+msgstr "设置数字端口为低值。"
+
+msgid "OUTPUT"
+msgstr "输出"
+
+msgid "Configure hack port for digital output."
+msgstr "为数字输出配置破解端口。"
+
+msgid "butia-cast"
+msgstr "布迪投射"
+
+msgid "Butia Robot cast blocks"
+msgstr "布迪机器人投射块"
+
+msgid "Butia"
+msgstr "布迪"
+
+msgid "CAST\n"
+msgstr "投射\n"
+
+msgid "new name"
+msgstr "新的名称"
+
+msgid "original"
+msgstr "原来的"
+
+msgid "f(x)="
+msgstr "f(x)="
+
+msgid "name"
+msgstr "名称"
+
+msgid "Cast a new block"
+msgstr "转换一个新块"
+
+msgid "generic module %s"
+msgstr "通用模块 %s"
+
+msgid "Butia IP"
+msgstr "布迪的IP"
+
+msgid "change the IP of butia robot"
+msgstr "更改布迪机器人的IP"
+
+msgid "ERROR: The pin %s must be in OUTPUT mode."
+msgstr "错误：引脚 %s 必须在输出模式。"
+
+msgid "ERROR: The pin %s must be in INPUT mode."
+msgstr "错误：引脚 %s 必须在输入模式。"
+
+msgid "ERROR: Something wrong with function '%s'"
+msgstr "错误: 函数 '%s' 某处出错"
+
+msgid "ERROR: cannot init GCONF client: %s"
+msgstr "错误: 无法初始化 GCONF 客户端: %s"
+
+msgid "ERROR: You must cast Sensor or Actuator: A, B or C"
+msgstr "错误：你必须转换传感器或执行器：A, B 或 C"
+
+msgid "ERROR: Invalid IP '%s'"
+msgstr "错误：不合法的IP '%s'"
+
+msgid "Creating PyBot server"
+msgstr "正在创建 PyBot 服务器"
+
+msgid "ERROR creating PyBot server"
+msgstr "创建 PyBot 服务器出错"
+
+msgid "PyBot is alive!"
+msgstr "PyBot 正在工作!"
+
+msgid "Ending butia polling"
+msgstr "布迪正在结束轮询中"
+
+msgid "Error importing Pygame. This plugin require Pygame 1.9"
+msgstr "导入Pygame出错。该插件需要Pygame 1.9"
+
+msgid "Error on initialization of the camera"
+msgstr "摄像头初始化出错"
+
+msgid "No camera was found"
+msgstr "没有找到摄像头"
+
+msgid "Error stopping camera"
+msgstr "停止摄像头出错"
+
+msgid "Error starting camera"
+msgstr "启动摄像头出错"
+
+msgid "Error in get mask"
+msgstr "获取面罩出错"
+
+msgid "followme"
+msgstr "跟我来"
+
+msgid "FollowMe"
+msgstr "跟我来"
+
+msgid "refresh FollowMe"
+msgstr "刷新 FollowMe"
+
+msgid "Search for a connected camera."
+msgstr "搜寻一个已连接的相机。"
+
+msgid "calibration"
+msgstr "校准"
+
+msgid "store a personalized calibration"
+msgstr "存储个性化的校准"
+
+msgid "return a personalized calibration"
+msgstr "返回个性化校准"
+
+msgid "follow"
+msgstr "跟随"
+
+msgid "follow a color or calibration"
+msgstr "跟随颜色或校准"
+
+#: plugins/camera_sensor/camera_sensor.py:83
+#: plugins/camera_sensor/camera_sensor.py:99
+#: plugins/camera_sensor/camera_sensor.py:136
+#: plugins/camera_sensor/camera_sensor.py:152
+#: plugins/light_sensor/light_sensor.py:58
+#: plugins/light_sensor/light_sensor.py:66
+msgid "brightness"
+msgstr "亮度"
+
+msgid "set the camera brightness as a value between 0 to 255."
+msgstr "设置摄像头亮度为0到255之间的值。"
+
+msgid "minimum pixels"
+msgstr "最小值像素"
+
+msgid "set the minimal number of pixels to follow"
+msgstr "设置要跟随的最小像素数目"
+
+msgid "threshold"
+msgstr "阀门"
+
+msgid "set a threshold for a RGB color"
+msgstr "为RGB颜色设置一个阀门"
+
+msgid "camera mode"
+msgstr "摄像头模式"
+
+msgid "set the color mode of the camera: RGB; YUV or HSV"
+msgstr "设置摄像头的颜色模式：RGB，YUV或HSV"
+
+msgid "get brightness"
+msgstr "获得亮度"
+
+msgid "get the brightness of the ambient light"
+msgstr "获得环境光的亮度"
+
+msgid "average color"
+msgstr "平均颜色"
+
+msgid ""
+"if set to 0 then color averaging is off during calibration;for other values, "
+"it is on"
+msgstr "如果设置为0，在校准过程中颜色均值为关，其他值则为开"
+
+msgid "x position"
+msgstr "x 位置"
+
+msgid "return x position"
+msgstr "返回 x 位置"
+
+msgid "y position"
+msgstr "y 位置"
+
+msgid "return y position"
+msgstr "返回 y 位置"
+
+msgid "pixels"
+msgstr "像素"
+
+msgid "return the number of pixels of the biggest blob"
+msgstr "返回最大块的像素数目"
+
+msgid "RGB"
+msgstr "RGB"
+
+msgid "set the color mode of the camera to RGB"
+msgstr "设置摄像头的颜色模式为RGB"
+
+msgid "YUV"
+msgstr "YUV"
+
+msgid "set the color mode of the camera to YUV"
+msgstr "设置摄像头的颜色模式为YUV"
+
+msgid "HSV"
+msgstr "HSV"
+
+msgid "set the color mode of the camera to HSV"
+msgstr "设置摄像头的颜色模式为HSV"
+
+msgid "get color"
+msgstr "取颜色"
+
+msgid "get the color of an object"
+msgstr "取一个物体的颜色"
+
+msgid "color distance"
+msgstr "色差"
+
+msgid "set the distance to identify a color"
+msgstr "设定确定颜色的差值"
+
+msgid "empty calibration"
+msgstr "空校准"
+
+msgid "error in string conversion"
+msgstr "字符串转换错误"
+
+msgid "Pattern detection"
+msgstr "模式检测"
+
+msgid "pattern_detection"
+msgstr "pattern_detection"
+
+msgid "Seeing signal"
+msgstr "发现信号"
+
+msgid "Returns True if the signal is in front of the camera"
+msgstr "如果信号在摄像头前面返回True"
+
+msgid "Distance to signal"
+msgstr "信号的距离"
+
+msgid "Returns the distance of the signal to the camera in millimeters"
+msgstr "返回距摄像头的毫米单位的信号距离"
+
+msgid "SumBot"
+msgstr "桑博"
+
+msgid "sumtia"
+msgstr "sumtia"
+
+msgid "speed SumBot"
+msgstr "加速桑博"
+
+msgid "submit the speed to the SumBot"
+msgstr "提交桑博的速度"
+
+msgid "set the default speed for the movement commands"
+msgstr "设置移动命令的默认速度"
+
+msgid "forward SumBot"
+msgstr "向前桑博"
+
+msgid "move SumBot forward"
+msgstr "移动桑博向前"
+
+msgid "backward SumBot"
+msgstr "向后桑博"
+
+msgid "move SumBot backward"
+msgstr "移动桑博向后"
+
+msgid "stop SumBot"
+msgstr "停止桑博"
+
+msgid "stop the SumBot"
+msgstr "让桑博停下来"
+
+msgid "left SumBot"
+msgstr "左转桑博"
+
+msgid "turn left the SumBot"
+msgstr "让桑博向左转"
+
+msgid "right SumBot"
+msgstr "右转桑博"
+
+msgid "turn right the SumBot"
+msgstr "让桑博向右转"
+
+msgid "angle to center"
+msgstr "与中心的角度"
+
+msgid "get the angle to the center of the dohyo"
+msgstr "得到相对圆环中心的角度"
+
+msgid "angle to Enemy"
+msgstr "与敌人的角度"
+
+msgid "get the angle to the Enemy"
+msgstr "得到相对敌人的角度"
+
+msgid "x coor. SumBot"
+msgstr "桑博x坐标"
+
+msgid "get the x coordinate of the SumBot"
+msgstr "得到桑博的x坐标"
+
+msgid "y coor. SumBot"
+msgstr "桑博y坐标"
+
+msgid "get the y coordinate of the SumBot"
+msgstr "得到桑博的y坐标"
+
+msgid "x coor. Enemy"
+msgstr "敌人x坐标"
+
+msgid "get the x coordinate of the Enemy"
+msgstr "得到敌人的x坐标"
+
+msgid "y coor. Enemy"
+msgstr "敌人y坐标"
+
+msgid "get the y coordinate of the Enemy"
+msgstr "得到敌人的y坐标"
+
+msgid "rotation SumBot"
+msgstr "转动桑博"
+
+msgid "get the rotation of the Sumbot"
+msgstr "得到桑博的转动"
+
+msgid "rotation Enemy"
+msgstr "转动敌人"
+
+msgid "get the rotation of the Enemy"
+msgstr "得到敌人的转动"
+
+msgid "distance to center"
+msgstr "与中心的距离"
+
+msgid "get the distance to the center of the dohyo"
+msgstr "得到与圆环中心的距离"
+
+msgid "distance to Enemy"
+msgstr "与敌人的距离"
+
+msgid "get the distance to the Enemy"
+msgstr "得到与敌人的距离"
+
+msgid "update information"
+msgstr "更新信息"
+
+msgid "update information from the server"
+msgstr "从服务器更新信息"
+
+msgid "Palette of physics blocks"
+msgstr "物理块模板"
+
+msgid "start polygon"
+msgstr "定义多边形"
+
+msgid "Begin defining a new polygon based on the current Turtle xy position."
+msgstr "根据当前海龟xy方向的位置开始定义新的多边形。"
+
+msgid "add point"
+msgstr "添加点"
+
+msgid ""
+"Add a new point to the current polygon based on the current Turtle xy "
+"position."
+msgstr "根据当前海龟xy方向的位置添加新的点到当前的多边形。"
+
+msgid "end polygon"
+msgstr "完成多边形"
+
+msgid "Define a new polygon."
+msgstr "定义一个新的多边形。"
+
+msgid "end filled polygon"
+msgstr "结束填充多边形的绘制"
+
+msgid "Not a simple polygon"
+msgstr "不是一个简单多边形"
+
+msgid "Define a new filled polygon."
+msgstr "定义一个新的填充多边形。"
+
+msgid "triangle"
+msgstr "三角形"
+
+msgid "base"
+msgstr "基地"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1028
+msgid "height"
+msgstr "高度"
+
+msgid "Add a triangle object to the project."
+msgstr "添加一个三角形对象到项目。"
+
+msgid "circle"
+msgstr "圆形"
+
+msgid "Add a circle object to the project."
+msgstr "添加一个圆形对象到项目。"
+
+msgid "rectangle"
+msgstr "长方形"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:995
+msgid "width"
+msgstr "宽度"
+
+msgid "Add a rectangle object to the project."
+msgstr "添加一个长方形对象到项目。"
+
+msgid "reset"
+msgstr "重置"
+
+msgid "Reset the project; clear the object list."
+msgstr "重置项目;清除对象列表。"
+
+msgid "motor"
+msgstr "电机"
+
+msgid "torque"
+msgstr "转矩"
+
+msgid "speed"
+msgstr "速度"
+
+msgid ""
+"Motor torque and speed range from 0 (off) to positive numbers; motor is "
+"placed on the most recent object created."
+msgstr "电机转矩和速度范围是从0（关）到正数，电机放置在最近被创建的对象上。"
+
+msgid "Pin an object down so that it cannot fall."
+msgstr "用图钉固定一个对象，防止掉落。"
+
+#: TurtleArt/tabasics.py:351
+#, fuzzy
+msgid "pen"
+msgstr ""
+"#-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"画笔\n"
+"#-#-#-#-#  zh_CN.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"钢笔"
+
+msgid "Add a pen to an object so that its movements are traced."
+msgstr "为一个物体添加画笔，可以追踪物体的移动。"
+
+msgid "joint"
+msgstr "联合"
+
+#: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
+msgid "x"
+msgstr "横"
+
+#: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
+msgid "y"
+msgstr "纵"
+
+msgid ""
+"Join two objects together (the object at the current location and the object "
+"at point x, y)."
+msgstr "把两个对象连接到一起（当前位置的对象和点x，y处的对象）。"
+
+msgid "save as Physics activity"
+msgstr "保存为“物理”活动"
+
+msgid "Save the project to the Journal as a Physics activity."
+msgstr "当作一个物理活动保存该项目到日志。"
+
+msgid "gear"
+msgstr "齿轮"
+
+msgid "Add a gear object to the project."
+msgstr "添加一个齿轮对象到项目。"
+
+msgid "density"
+msgstr "密度"
+
+msgid ""
+"Set the density property for objects (density can be any positive number)."
+msgstr "设置对象的密度属性（密度可以是任何正数）。"
+
+msgid "friction"
+msgstr "摩擦"
+
+msgid ""
+"Set the friction property for objects (value from 0 to 1, where 0 turns "
+"friction off and 1 is strong friction)."
+msgstr "设置对象的摩擦系数（值从0到1，0无摩擦，1强摩擦）。"
+
+msgid "bounciness"
+msgstr "弹力"
+
+msgid ""
+"Set the bounciness property for objects (a value from 0 to 1, where 0 means "
+"no bounce and 1 is very bouncy)."
+msgstr "设置对象的弹性系数（值从0到1，0无弹性，1强弹性）。"
+
+msgid "dynamic"
+msgstr "动态"
+
+msgid ""
+"If dynamic = 1, the object can move; if dynamic = 0, it is fixed in position."
+msgstr "动态值为1时对象可以移动；为0时位置是固定的。"
+
+msgid "Palette of WeDo blocks"
+msgstr "乐高WeDo模板"
+
+msgid "The parameter must be a integer, not "
+msgstr "该参数必须是一个整数，而不是"
+
+msgid "Motor speed must be an integer between -100 and 100"
+msgstr "电机速度必须是一个-100到100的整数"
+
+msgid "WeDo found %s bricks"
+msgstr "WeDo 找到了 %s 块"
+
+msgid "WeDo not found"
+msgstr "WeDo没有找到"
+
+msgid "WeDo number %s was not found"
+msgstr "WeDo 数 %s 没有找到"
+
+msgid "wedo"
+msgstr "WeDo"
+
+msgid "refresh WeDo"
+msgstr "刷新WeDo"
+
+msgid "Search for a connected WeDo."
+msgstr "搜寻一个已连接的WeDo。"
+
+msgid "WeDo"
+msgstr "乐高WeDo"
+
+msgid "set current WeDo device"
+msgstr "设置当前的乐高WeDo设备"
+
+msgid "number of WeDos"
+msgstr "WeDos的数量"
+
+msgid "number of WeDo devices"
+msgstr "乐高WeDo设备的数量"
+
+msgid "tilt"
+msgstr "斜度"
+
+msgid ""
+"tilt sensor output: (-1 == no tilt,0 == tilt forward, 3 == tilt back, 1 == "
+"tilt left, 2 == tilt right)"
+msgstr ""
+"倾斜传感器输出：（-1 ==没有倾斜，0 ==向前倾斜，3 ==向后倾斜，1 ==向左倾斜，2 "
+"==向右倾斜）"
+
+msgid "distance sensor output"
+msgstr "距离传感器输出"
+
+msgid "Motor A"
+msgstr "电机 A"
+
+msgid "returns the current speed of Motor A"
+msgstr "返回电机A的当前速度"
+
+msgid "Motor B"
+msgstr "电机B"
+
+msgid "returns the current speed of Motor B"
+msgstr "返回电机B的当前速度"
+
+msgid "set the speed for Motor A"
+msgstr "设置电机A的速度"
+
+msgid "set the speed for Motor B"
+msgstr "设置电机B的速度"
+
+msgid "Palette of LEGO NXT blocks of motors"
+msgstr "乐高NXT马达部件模板"
+
+msgid "Palette of LEGO NXT blocks of sensors"
+msgstr "乐高NXT传感器部件模板"
+
+#: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:369
+#: TurtleArt/tabasics.py:432 TurtleArt/tawindow.py:4483
+msgid "color"
+msgstr "颜色"
+
+#: plugins/audio_sensors/audio_sensors.py:90 pysamples/grecord.py:206
+msgid "sound"
+msgstr "声音"
+
+msgid "Please check the connection with the brick"
+msgstr "请检查该块的连接"
+
+msgid "Invalid port '%s'. Port must be: PORT A, B or C"
+msgstr "无效的端口'%s'。端口必须是：A，B或C"
+
+msgid "Invalid port '%s'. Port must be: PORT 1, 2, 3 or 4"
+msgstr "无效的端口'%s'。端口必须是：1，2，3或4"
+
+msgid "The value of power must be between -127 to 127"
+msgstr "功率值必须位于-127到127之间"
+
+msgid "The parameter must be a integer, not '%s'"
+msgstr "该参数必须是一个整数，而不是 '%s'"
+
+msgid "An error has occurred: check all connections and try to reconnect"
+msgstr "发生了一个错误：检查所有连接​​，并尝试重新连接"
+
+msgid "NXT found %s bricks"
+msgstr "NXT找到  %s 块"
+
+msgid "NXT not found"
+msgstr "没找到 NXT"
+
+msgid "Brick number %s was not found"
+msgstr "没有找到块 %s"
+
+msgid "nxt-motors"
+msgstr "nxt-motors"
+
+msgid "refresh NXT"
+msgstr "刷新 NXT"
+
+msgid "Search for a connected NXT brick."
+msgstr "搜索已连接的NXT积木。"
+
+msgid "NXT"
+msgstr "NXT"
+
+msgid "set current NXT device"
+msgstr "设置当前的NXT设备"
+
+msgid "number of NXTs"
+msgstr "NXT的数量"
+
+msgid "number of NXT devices"
+msgstr "NXT设备的数量"
+
+msgid "brick name"
+msgstr "块名称"
+
+msgid "Get the name of a brick."
+msgstr "得到块的名称"
+
+msgid "play tone"
+msgstr "播放音调"
+
+msgid "frequency"
+msgstr "频率"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:421
+msgid "time"
+msgstr "时间"
+
+msgid "Play a tone at frequency for time."
+msgstr "以时间频率播放音调。"
+
+msgid "turn motor %s"
+msgstr "转动电机%s"
+
+msgid "port"
+msgstr "端口"
+
+msgid "rotations"
+msgstr "旋转"
+
+msgid "power"
+msgstr "电源"
+
+msgid "turn a motor"
+msgstr "转动电机"
+
+msgid "synchronize %s motors"
+msgstr "同步 %s 电机"
+
+msgid "synchronize two motors connected in PORT B and PORT C"
+msgstr "同步连接在端口B和端口C的两个电机"
+
+msgid "PORT %s"
+msgstr "端口 %s"
+
+msgid "PORT %s of the brick"
+msgstr "积木块的端口 %s"
+
+msgid "start motor"
+msgstr "启动电机"
+
+msgid "Run a motor forever."
+msgstr "持续运行电机。"
+
+msgid "brake motor"
+msgstr "制动电机"
+
+msgid "Stop a specified motor."
+msgstr "停止指定的电机。"
+
+msgid "reset motor"
+msgstr "复位电机"
+
+msgid "Reset the motor counter."
+msgstr "复位电机计数器。"
+
+msgid "motor position"
+msgstr "电机位置"
+
+msgid "Get the motor position."
+msgstr "得到电机位置。"
+
+msgid "nxt-sensors"
+msgstr "nxt-sensors"
+
+msgid "read"
+msgstr "读取"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:328
+msgid "sensor"
+msgstr "传感器"
+
+msgid "Read sensor output."
+msgstr "读取传感器输出。"
+
+msgid "light sensor"
+msgstr "灯光传感器"
+
+msgid "gray sensor"
+msgstr "灰色传感器"
+
+msgid "button sensor"
+msgstr "按钮传感器"
+
+msgid "distance sensor"
+msgstr "距离传感器"
+
+msgid "sound sensor"
+msgstr "声音传感器"
+
+msgid "color sensor"
+msgstr "颜色传感器"
+
+msgid "set light"
+msgstr "设置灯"
+
+msgid "Set color sensor light."
+msgstr "设置颜色感应灯。"
+
+msgid "battery level"
+msgstr "电池电量"
+
+msgid "Get the battery level of the brick in millivolts"
+msgstr "得到拼块的电池电量（单位为毫伏）"
+
+msgid "Palette of Arduino blocks"
+msgstr "Arduino模板"
+
+msgid "PWM"
+msgstr "调速"
+
+msgid "SERVO"
+msgstr "伺服"
+
+msgid "ERROR: Check the Arduino and the number of port."
+msgstr "错误：请检查的Arduino和端口号。"
+
+msgid "ERROR: Value must be a number from 0 to 1."
+msgstr "错误：数值必须从0到1。"
+
+msgid "ERROR: Value must be a number from 0 to 180."
+msgstr "错误：数值必须从0到180。"
+
+msgid "ERROR: Value must be either HIGH or LOW, 0 or 1"
+msgstr "错误：值必须是高或低，0或1"
+
+msgid "ERROR: The mode must be either INPUT, OUTPUT, PWM or SERVO."
+msgstr "错误：模式必须是输入，输出，调速或伺服。"
+
+msgid "ERROR: The value must be an integer."
+msgstr "错误：值必须是一个整数。"
+
+msgid "ERROR: The pin must be an integer."
+msgstr "错误：pin值必须是一个整数。"
+
+msgid "ERROR: You must configure the mode for the pin."
+msgstr "错误：你必须配置该针脚的模式。"
+
+msgid "arduino"
+msgstr "arduino"
+
+msgid "refresh Arduino"
+msgstr "刷新Arduino"
+
+msgid "Search for connected Arduinos."
+msgstr "搜索已连接的Arduino。"
+
+msgid "Arduino"
+msgstr "Arduino"
+
+msgid "set current Arduino board"
+msgstr "设置当前的Arduino板"
+
+msgid "number of Arduinos"
+msgstr "Arduino 的数量"
+
+msgid "number of Arduino boards"
+msgstr "Arduino 板的数量"
+
+msgid "Arduino name"
+msgstr "Arduino 名称"
+
+msgid "Get the name of an Arduino."
+msgstr "得到一个 Arduino 的名称。"
+
+msgid "pin mode"
+msgstr "引脚模式"
+
+msgid "Select the pin function (INPUT, OUTPUT, PWM, SERVO)."
+msgstr "选择引脚功能（输入，输出，调速，伺服）。"
+
+msgid "analog write"
+msgstr "模拟写"
+
+msgid "Write analog value in specified port."
+msgstr "写模拟值到指定的端口。"
+
+msgid "analog read"
+msgstr "模拟读"
+
+msgid "Read value from analog port. Value may be between 0 and 1."
+msgstr "从模拟端口读取数值。该值在0和1之间。"
+
+msgid "digital write"
+msgstr "数字写"
+
+msgid "Write digital value to specified port."
+msgstr "写数字值到指定的端口。"
+
+msgid "digital read"
+msgstr "数字读"
+
+msgid "Read value from digital port."
+msgstr "从数字端口读取值。"
+
+msgid "Set HIGH value for digital port."
+msgstr "设置数字端口为高值。"
+
+msgid "Configure Arduino port for digital input."
+msgstr "配置用于数字输入的Arduino端口。"
+
+msgid "Configure Arduino port to drive a servo."
+msgstr "配置用于驱动伺服电机的Arduino端口。"
+
+msgid "Configure Arduino port for digital output."
+msgstr "配置用于数字输出的Arduino端口。"
+
+msgid "Configure Arduino port for PWM (pulse-width modulation)."
+msgstr "配置用于调速（脉宽调制）的Arduino端口"
+
+msgid "Not found Arduino %s"
+msgstr "未找到Arduino %s"
+
+msgid "The pin must be an integer"
+msgstr "pin值必须为一个整数"
+
+msgid "The device must be an integer"
+msgstr "device值必须为一个整数"
+
+msgid "Error loading %s board"
+msgstr "加载 %s 板出错"
+
+msgid "Palette for Rodi bots using Arduino"
+msgstr "使用Arduino的罗迪机器人模块"
+
+msgid "ERROR: Check the connection to the robot."
+msgstr "错误：请检查与自动设备的连线。"
+
+msgid "ERROR: The speed must be a value between 0 and %d"
+msgstr "错误：速度必须是0到%d之间的值"
+
+msgid "ERROR: The speed must be a value between %(min)d and %(max)d"
+msgstr "错误：速度必须是 %(min)d 到 %(max)d 之间的值"
+
+msgid "refresh Rodi"
+msgstr "刷新罗迪"
+
+msgid "refresh the state of the Rodi palette and blocks"
+msgstr "刷新罗迪模块和部件的状态"
+
+msgid "move Rodi"
+msgstr "移动罗迪"
+
+msgid "moves the Rodi motors at the specified speed"
+msgstr "以指定速度移动罗迪电机"
+
+msgid "stop Rodi"
+msgstr "停止罗迪"
+
+msgid "stops the Rodi robot"
+msgstr "停止罗迪机器人"
+
+msgid "forward Rodi"
+msgstr "前进罗迪"
+
+msgid "moves the Rodi robot forward"
+msgstr "向前移动罗迪机器人"
+
+msgid "left Rodi"
+msgstr "左转罗迪"
+
+msgid "turns the Rodi robot at left"
+msgstr "向左转动罗迪机器人"
+
+msgid "right Rodi"
+msgstr "右转罗迪"
+
+msgid "turns the Rodi robot at right"
+msgstr "向右转动罗迪机器人"
+
+msgid "backward Rodi"
+msgstr "向后罗迪"
+
+msgid "moves the Rodi robot backward"
+msgstr "先后移动罗迪机器人"
+
+msgid "distance Rodi"
+msgstr "罗迪的距离"
+
+msgid "returns the distance as a value between 0 and 1"
+msgstr "返回距离，为0和1之间的一个数值"
+
+msgid "Rodi %s not found"
+msgstr "没有找到罗迪 %s"
+
+msgid "Palette of Expeyes blocks"
+msgstr "Expeyes 块模板"
+
+msgid "set PVS"
+msgstr "设置 PVS"
+
+msgid "set programmable voltage output"
+msgstr "设置可编程电压输出"
+
+msgid "set SQR1 voltage"
+msgstr "设置 SQR1 电压"
+
+msgid "set square wave 1 voltage output"
+msgstr "设置方波1电压输出"
+
+msgid "set SQR2 voltage"
+msgstr "设置 SQR2 电压"
+
+msgid "set square wave 2 voltage output"
+msgstr "设置方波2电压输出"
+
+msgid "set OD1"
+msgstr "设置 OD1"
+
+msgid "set digital output level (OD1) low (0) or high (1)"
+msgstr "设置数字输出电平 (OD1) 高 (0) 或低 (1)"
+
+msgid "IN1 level"
+msgstr "IN1 电平"
+
+msgid ""
+"returns 1 if IN1 voltage level >2.5 volts, 0 if IN1 voltage level <= 2.5 "
+"volts"
+msgstr "如果 IN1 电平>2.5伏返回1，如果<=2.5伏返回0"
+
+msgid "IN2 level"
+msgstr "IN2 电平"
+
+msgid ""
+"returns 1 if IN2 voltage level >2.5 volts, 0 if IN2 voltage level <= 2.5 "
+"volts"
+msgstr "如果 IN2 电平>2.5伏返回1，如果 <=2.5伏返回0"
+
+msgid "SEN level"
+msgstr "SEN 电平"
+
+msgid ""
+"returns 1 if resistive sensor (SEN) voltage level > 2.5 volts, 0 if SEN "
+"voltage level <= 2.5 volts"
+msgstr "如果电阻式传感器（SEN）电压电平>2.5伏返回1，如果<=2.5伏返回0"
+
+msgid "capture"
+msgstr "捕获"
+
+msgid "input"
+msgstr "输入"
+
+msgid "samples"
+msgstr "采样"
+
+msgid "interval"
+msgstr "间隔"
+
+msgid ""
+"capture multiple samples from input at interval (MS); results pushed to FIFO"
+msgstr "从输入捕获时间间隔（MS）的多个样本，结果放入 FIFO"
+
+msgid "A1"
+msgstr "A1"
+
+msgid "read analog input 1 voltage"
+msgstr "读取模拟输入1的电压"
+
+msgid "A2"
+msgstr "A2"
+
+msgid "read analog input 2 voltage"
+msgstr "读取模拟输入2的电压"
+
+msgid "IN1"
+msgstr "IN1"
+
+msgid "read input 1 voltage"
+msgstr "读取输入1的电压"
+
+msgid "IN2"
+msgstr "IN2"
+
+msgid "read input 2 voltage"
+msgstr "读取输入2的电压"
+
+msgid "SEN"
+msgstr "SEN"
+
+msgid "read analog sensor input voltage"
+msgstr "读取模拟传感器输入电压"
+
+msgid "SQR1"
+msgstr "SQR1"
+
+msgid "read square wave 1 voltage"
+msgstr "读取方波1电压"
+
+msgid "SQR2"
+msgstr "SQR2"
+
+msgid "read square wave 2 voltage"
+msgstr "读取方波2电压"
+
+msgid "PVS"
+msgstr "PVS"
+
+msgid "read programmable voltage"
+msgstr "读取可编程电压"
+
+msgid "Expeyes device not found"
+msgstr "未找到Expeyes设备"
 
 #. TRANS: "name" option from activity.info file
 msgid "TurtleBlocks"
@@ -68,19 +1406,9 @@ msgstr "清屏"
 msgid "clears the screen and reset the turtle"
 msgstr "清空屏幕并重置海龟"
 
-#: TurtleArt/tabasics.py:207 TurtleArt/taconstants.py:138
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:973
-msgid "left"
-msgstr "左边"
-
 #: TurtleArt/tabasics.py:211
 msgid "turns turtle counterclockwise (angle in degrees)"
 msgstr "逆时针转动海龟（角度）"
-
-#: TurtleArt/tabasics.py:221 TurtleArt/taconstants.py:140
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1006
-msgid "right"
-msgstr "右边"
 
 #: TurtleArt/tabasics.py:225
 msgid "turns turtle clockwise (angle in degrees)"
@@ -105,14 +1433,6 @@ msgstr "延弧形移动海龟"
 #: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
 msgid "set xy"
 msgstr "设置 坐标"
-
-#: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
-msgid "x"
-msgstr "横"
-
-#: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
-msgid "y"
-msgstr "纵"
 
 #: TurtleArt/tabasics.py:255 TurtleArt/tabasics.py:334
 msgid ""
@@ -161,18 +1481,9 @@ msgstr "包含海龟当前的朝向的角度值（可以用来替换数字块）
 msgid "Palette of pen commands"
 msgstr "画笔指令模板"
 
-#: TurtleArt/tabasics.py:351
-msgid "pen"
-msgstr "钢笔"
-
 #: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:369
 msgid "fill screen"
 msgstr "涂满全屏"
-
-#: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:369
-#: TurtleArt/tabasics.py:432 TurtleArt/tawindow.py:4483
-msgid "color"
-msgstr "颜色"
 
 #: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:370
 #: TurtleArt/tabasics.py:444 TurtleArt/tawindow.py:4479
@@ -183,11 +1494,6 @@ msgstr "深度"
 #: TurtleArt/tabasics.py:360 TurtleArt/tabasics.py:374
 msgid "fills the background with (color, shade)"
 msgstr "以（颜色，阴影）填充背景"
-
-#: TurtleArt/tabasics.py:370 TurtleArt/tabasics.py:454
-#: TurtleArt/tawindow.py:4480 TurtleArt/tawindow.py:4485
-msgid "gray"
-msgstr "灰度"
 
 #: TurtleArt/tabasics.py:387
 msgid "set color"
@@ -638,10 +1944,6 @@ msgstr "放入"
 #: TurtleArt/tabasics.py:1114 TurtleArt/tabasics.py:1130
 msgid "box"
 msgstr "盒子"
-
-#: TurtleArt/tabasics.py:1114 TurtleArt/tawindow.py:4847
-msgid "value"
-msgstr "值"
 
 #: TurtleArt/tabasics.py:1118 TurtleArt/tabasics.py:1133
 #: TurtleArt/tawindow.py:1581 TurtleArt/tawindow.py:1715
@@ -1161,7 +2463,8 @@ msgstr "上传到网站"
 msgid ""
 "You must have an account at http://turtleartsite.sugarlabs.org to upload "
 "your project."
-msgstr "你必须在 http://turtleartsite.sugarlabs.org 中注册一个帐号才能上传你的作品。"
+msgstr ""
+"你必须在 http://turtleartsite.sugarlabs.org 中注册一个帐号才能上传你的作品。"
 
 #: gnome_plugins/uploader_plugin.py:99
 msgid "Username:"
@@ -1209,10 +2512,6 @@ msgstr "加速度"
 msgid "push acceleration in x, y, z to heap"
 msgstr "把沿x，y，z方向加速度放入堆中"
 
-#: plugins/audio_sensors/audio_sensors.py:90 pysamples/grecord.py:206
-msgid "sound"
-msgstr "声音"
-
 #: plugins/audio_sensors/audio_sensors.py:91
 msgid "raw microphone input signal"
 msgstr "麦克风原始输入信号"
@@ -1234,20 +2533,10 @@ msgstr "强度"
 msgid "microphone input pitch"
 msgstr "麦克风输入音高"
 
-#: plugins/audio_sensors/audio_sensors.py:157
-#: plugins/audio_sensors/audio_sensors.py:175
-msgid "resistance"
-msgstr "电阻"
-
 #: plugins/audio_sensors/audio_sensors.py:158
 #: plugins/audio_sensors/audio_sensors.py:176
 msgid "microphone input resistance"
 msgstr "麦克风输入电阻"
-
-#: plugins/audio_sensors/audio_sensors.py:163
-#: plugins/audio_sensors/audio_sensors.py:181
-msgid "voltage"
-msgstr "电压"
 
 #: plugins/audio_sensors/audio_sensors.py:164
 #: plugins/audio_sensors/audio_sensors.py:182
@@ -1258,15 +2547,6 @@ msgstr "麦克风输入电压"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:133
 msgid "Palette of media objects"
 msgstr "多媒体模板"
-
-#: plugins/camera_sensor/camera_sensor.py:83
-#: plugins/camera_sensor/camera_sensor.py:99
-#: plugins/camera_sensor/camera_sensor.py:136
-#: plugins/camera_sensor/camera_sensor.py:152
-#: plugins/light_sensor/light_sensor.py:58
-#: plugins/light_sensor/light_sensor.py:66
-msgid "brightness"
-msgstr "亮度"
 
 #: plugins/camera_sensor/camera_sensor.py:85
 #: plugins/camera_sensor/camera_sensor.py:138
@@ -1474,10 +2754,6 @@ msgstr "持续时间"
 msgid "plays a sinewave at frequency, amplitude, and duration (in seconds)"
 msgstr "播放一个指定频率、波幅和持续时间（秒）的正弦波"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:328
-msgid "sensor"
-msgstr "传感器"
-
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:333
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:344
 msgid "button down"
@@ -1538,10 +2814,6 @@ msgstr "海龟看到"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:412
 msgid "returns the color that the turtle \"sees\""
 msgstr "返回海龟“看到”的颜色"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:421
-msgid "time"
-msgstr "时间"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:424
 msgid "elapsed time (in seconds) since program started"
@@ -1849,10 +3121,6 @@ msgstr "底部"
 msgid "ycor of bottom of screen"
 msgstr "屏幕下方的Y座标"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:995
-msgid "width"
-msgstr "宽度"
-
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:998
 msgid "the canvas width"
 msgstr "画布宽度"
@@ -1864,10 +3132,6 @@ msgstr "屏幕右方的X座标"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1020
 msgid "ycor of top of screen"
 msgstr "屏幕上方的Y座标"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1028
-msgid "height"
-msgstr "高度"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1031
 msgid "the canvas height"
@@ -2037,7 +3301,6 @@ msgstr "保存项目？"
 
 #: turtleblocks.py:546
 #, python-format
-#, python-format,
 msgid "Plugin %s already installed"
 msgstr "已安装插件 %s 。"
 
@@ -2045,1010 +3308,385 @@ msgstr "已安装插件 %s 。"
 msgid "myproject"
 msgstr "我的项目"
 
-#~ msgid "Hide sample projects"
-#~ msgstr "隐藏示例项目"
+msgid "Hide sample projects"
+msgstr "隐藏示例项目"
 
-#~ msgid "palette"
-#~ msgstr "模块"
+msgid "palette"
+msgstr "模块"
 
-#~ msgid "make a uturn"
-#~ msgstr "做一个翻转"
+msgid "make a uturn"
+msgstr "做一个翻转"
 
-#~ msgid "u turn"
-#~ msgstr "翻转"
+msgid "u turn"
+msgstr "翻转"
 
-#~ msgid "set text color"
-#~ msgstr "设置文字颜色"
+msgid "set text color"
+msgstr "设置文字颜色"
 
-#~ msgid "sets color of text drawn by the turtle"
-#~ msgstr "设置海龟绘制文字的颜色"
+msgid "sets color of text drawn by the turtle"
+msgstr "设置海龟绘制文字的颜色"
 
-#~ msgid "set text size"
-#~ msgstr "设置文字大小"
+msgid "set text size"
+msgstr "设置文字大小"
 
-#~ msgid "sets size of text drawn by the turtle"
-#~ msgstr "设置海龟绘制的文字的大小"
+msgid "sets size of text drawn by the turtle"
+msgstr "设置海龟绘制的文字的大小"
 
-#~ msgid "presentation 1x1"
-#~ msgstr "以 1x1 方式演示"
+msgid "presentation 1x1"
+msgstr "以 1x1 方式演示"
 
-#~ msgid "presentation 2x1"
-#~ msgstr "以 2x1 方式演示"
+msgid "presentation 2x1"
+msgstr "以 2x1 方式演示"
 
-#~ msgid "presentation 1x2"
-#~ msgstr "以 1x2 方式演示"
+msgid "presentation 1x2"
+msgstr "以 1x2 方式演示"
 
-#~ msgid "presentation 2x2"
-#~ msgstr "以 2x2 方式演示"
+msgid "presentation 2x2"
+msgstr "以 2x2 方式演示"
 
-#~ msgid "Turtle Art"
-#~ msgstr "海龟绘画"
+msgid "adjust LED intensity between 0 and 255"
+msgstr "调整指示灯的光强度（0到255之间）"
 
-#~ msgid "Turtle Art Mini"
-#~ msgstr "迷你海龟绘图"
+msgid "returns the object gray level as a number between 0 and 1023"
+msgstr "返回对象灰度（0到1023之间）"
 
-#~ msgid "Turtle Confusion"
-#~ msgstr "海龟谜题"
+msgid "returns 1 when the button is press and 0 otherwise"
+msgstr "当按钮按下返回1，否则为0"
 
-#~ msgid "Select a challenge"
-#~ msgstr "选择一个挑战"
+msgid "returns the ambient light level as a number between 0 and 1023"
+msgstr "返回环境光亮度（0到1023之间）"
 
-#~ msgid "Palette of Mexican pesos"
-#~ msgstr "墨西哥比索模板"
+msgid "returns the ambient temperature as a number between 0 and 255"
+msgstr "返回环境温度（0到255之间）"
 
-#~ msgid "Palette of Colombian pesos"
-#~ msgstr "哥伦比亚比索模板"
+msgid ""
+"returns the distance from the object in front of the sensor as a number "
+"between 0 and 255"
+msgstr "返回传感器前物体的距离（0到255之间）"
 
-#~ msgid "Palette of Rwandan francs"
-#~ msgstr "卢旺达法郎模板"
+msgid "returns 0 or 1 depending on the sensor inclination"
+msgstr "返回传感器方位角（0或者1）"
 
-#~ msgid "Palette of US dollars"
-#~ msgstr "美元模板"
+msgid "returns 1 when the sensors detects a magnetic field, 0 otherwise"
+msgstr "当传感器检测到磁场返回1，否则为0"
 
-#~ msgid "Palette of Australian dollars"
-#~ msgstr "澳元模板"
+msgid "switches from 0 to 1, the frequency depends on the vibration"
+msgstr "从0切换到1，频率取决于振动"
 
-#~ msgid "Palette of Paraguayan Guaranies"
-#~ msgstr "巴拉圭瓜拉尼模板"
+msgid "grayscale"
+msgstr "灰度"
 
-#~ msgid "Palette of Peruvian Nuevo Soles"
-#~ msgstr "秘鲁新索尔的模板"
+msgid "ambient light"
+msgstr "环境光"
 
-#~ msgid "Palette of Uruguayan Pesos"
-#~ msgstr "乌拉圭比索模板"
+msgid "magnetic induction"
+msgstr "磁场感应"
 
-#~ msgid "adjust LED intensity between 0 and 255"
-#~ msgstr "调整指示灯的光强度（0到255之间）"
+msgid "vibration"
+msgstr "振动"
 
-#~ msgid "returns the object gray level as a number between 0 and 1023"
-#~ msgstr "返回对象灰度（0到1023之间）"
+msgid "returns the battery charge as a number between 0 and 255"
+msgstr "返回电池充电度（0到255之间）"
 
-#~ msgid "returns 1 when the button is press and 0 otherwise"
-#~ msgstr "当按钮按下返回1，否则为0"
+msgid "move the Butia robot forward a predefined distance"
+msgstr "布迪机器人向前移动一个预先设定的距离"
 
-#~ msgid "returns the ambient light level as a number between 0 and 1023"
-#~ msgstr "返回环境光亮度（0到1023之间）"
+msgid "move the Butia robot backward a predefined distance"
+msgstr "布迪机器人向后移动一个预先设定的距离"
 
-#~ msgid "returns the ambient temperature as a number between 0 and 255"
-#~ msgstr "返回环境温度（0到255之间）"
+msgid "turn Butia"
+msgstr "转动布迪"
 
-#~ msgid ""
-#~ "returns the distance from the object in front of the sensor as a number "
-#~ "between 0 and 255"
-#~ msgstr "返回传感器前物体的距离（0到255之间）"
+msgid "turn the Butia robot x degrees"
+msgstr "将布迪机器人转动X角度"
 
-#~ msgid "returns 0 or 1 depending on the sensor inclination"
-#~ msgstr "返回传感器方位角（0或者1）"
+msgid ""
+"Join two objects together (the most recent object created and the object "
+"at point x, y)."
+msgstr "把两个对象连接到一起（在点x，y处最近创建的对象）。"
 
-#~ msgid "returns 1 when the sensors detects a magnetic field, 0 otherwise"
-#~ msgstr "当传感器检测到磁场返回1，否则为0"
+msgid ""
+"tilt sensor output: (-1 == no tilt, 0 == tilt forward, 3 == tilt back, 1 "
+"== tilt left, 2 == tilt right)"
+msgstr ""
+"倾斜传感器输出：（-1 ==没有倾斜，0 ==向前倾斜，3 ==向后倾斜，1 ==向左倾"
+"斜，2 ==向左倾斜）"
 
-#~ msgid "switches from 0 to 1, the frequency depends on the vibration"
-#~ msgstr "从0切换到1，频率取决于振动"
+msgid "returns the current value of Motor A"
+msgstr "返回电机A的当前值"
 
-#~ msgid "LED"
-#~ msgstr "指示灯"
+msgid "returns the current value of Motor B"
+msgstr "返回电机B的当前值"
 
-#~ msgid "button"
-#~ msgstr "按钮"
+msgid "set the value for Motor A"
+msgstr "设置电机A的值"
 
-#~ msgid "grayscale"
-#~ msgstr "灰度"
+msgid "set the value for Motor B"
+msgstr "设置电机B的值"
 
-#~ msgid "ambient light"
-#~ msgstr "环境光"
+msgid "touch"
+msgstr "触摸"
 
-#~ msgid "temperature"
-#~ msgstr "温度"
-
-#~ msgid "distance"
-#~ msgstr "距离"
-
-#~ msgid "tilt"
-#~ msgstr "斜度"
-
-#~ msgid "magnetic induction"
-#~ msgstr "磁场感应"
-
-#~ msgid "vibration"
-#~ msgstr "振动"
-
-#~ msgid "Butia Robot"
-#~ msgstr "布迪机器人"
-
-#~ msgid "refresh Butia"
-#~ msgstr "刷新布迪"
-
-#~ msgid "refresh the state of the Butia palette and blocks"
-#~ msgstr "刷新布迪模板和拼块的状态"
-
-#~ msgid "battery charge Butia"
-#~ msgstr "布迪充电"
-
-#~ msgid "returns the battery charge as a number between 0 and 255"
-#~ msgstr "返回电池充电度（0到255之间）"
-
-#~ msgid "speed Butia"
-#~ msgstr "布迪加速"
-
-#~ msgid "forward Butia"
-#~ msgstr "布迪前进"
-
-#~ msgid "move the Butia robot forward"
-#~ msgstr "向前移动布迪机器人"
-
-#~ msgid "move the Butia robot forward a predefined distance"
-#~ msgstr "布迪机器人向前移动一个预先设定的距离"
-
-#~ msgid "left Butia"
-#~ msgstr "布迪左转"
+msgid "ultrasonic"
+msgstr "超声波"
 
 #, fuzzy
-#~ msgid "turn the Butia robot at left"
-#~ msgstr "向右转动布迪机器人"
-
-#~ msgid "backward Butia"
-#~ msgstr "布迪后退"
-
-#~ msgid "move the Butia robot backward"
-#~ msgstr "先后移动布迪机器人"
-
-#~ msgid "move the Butia robot backward a predefined distance"
-#~ msgstr "布迪机器人向后移动一个预先设定的距离"
-
-#~ msgid "right Butia"
-#~ msgstr "布迪右转"
-
-#~ msgid "turn the Butia robot at right"
-#~ msgstr "向右转动布迪机器人"
-
-#~ msgid "turn Butia"
-#~ msgstr "转动布迪"
-
-#~ msgid "turn the Butia robot x degrees"
-#~ msgstr "将布迪机器人转动X角度"
-
-#~ msgid "stop Butia"
-#~ msgstr "停止布迪"
-
-#~ msgid "stop the Butia robot"
-#~ msgstr "停止布迪机器人"
-
-#~ msgid "Butia"
-#~ msgstr "布迪"
-
-#~ msgid "Error on initialization of the camera"
-#~ msgstr "摄像头初始化出错"
+msgid "grey"
+msgstr "灰度"
 
 #, fuzzy
-#~ msgid "No camera was found"
-#~ msgstr "没有找到摄像头"
+msgid ""
+"synchronize\n"
+"\n"
+"motors"
+msgstr "同步两个电机"
 
-#~ msgid "Error stopping camera"
-#~ msgstr "停止摄像头出错"
+msgid "PORT A"
+msgstr "端口 A"
 
-#~ msgid "Error starting camera"
-#~ msgstr "启动摄像头出错"
+msgid "PORT A of the brick"
+msgstr "积木的端口 A"
 
-#~ msgid "FollowMe"
-#~ msgstr "跟我来"
+msgid "PORT B"
+msgstr "端口 B"
+
+msgid "PORT B of the brick"
+msgstr "积木的端口 B"
+
+msgid "PORT C"
+msgstr "端口 C"
+
+msgid "PORT C of the brick"
+msgstr "积木的端口 C"
+
+msgid "PORT 1"
+msgstr "端口 1"
+
+msgid "PORT 1 of the brick"
+msgstr "积木的端口 1"
+
+msgid "PORT 2"
+msgstr "端口 2"
+
+msgid "PORT 2 of the brick"
+msgstr "积木的端口 2"
+
+msgid "PORT 3"
+msgstr "端口 3"
+
+msgid "PORT 3 of the brick"
+msgstr "积木的端口 3"
+
+msgid "touch sensor"
+msgstr "触控传感器"
+
+msgid "PORT 4"
+msgstr "端口 4"
+
+msgid "PORT 4 of the brick"
+msgstr "积木的端口 4"
 
 #, fuzzy
-#~ msgid "Search for a connected camera."
-#~ msgstr "搜索已连接的NXT积木。"
+msgid "Get battery level of the brick"
+msgstr "获取板子的电池电量。"
 
-#~ msgid "calibration"
-#~ msgstr "校准"
+msgid "ERROR: Value must be a number from 0 to 255."
+msgstr "错误：数值必须从0到255。"
 
-#, fuzzy
-#~ msgid "store a personalized calibration"
-#~ msgstr "存储个性化校准"
+msgid "ERROR: Value must be either HIGH or LOW."
+msgstr "错误：值必须是高或低。"
 
-#~ msgid "return a personalized calibration"
-#~ msgstr "返回个性化校准"
-
-#~ msgid "follow"
-#~ msgstr "跟随"
-
-#~ msgid "follow a color or calibration"
-#~ msgstr "跟随颜色或校准"
-
-#~ msgid "minimum pixels"
-#~ msgstr "最小值像素"
-
-#~ msgid "set the minimal number of pixels to follow"
-#~ msgstr "设置要跟随的最小像素数目"
-
-#~ msgid "threshold"
-#~ msgstr "阀门"
-
-#~ msgid "set a threshold for a RGB color"
-#~ msgstr "为RGB颜色设置一个阀门"
-
-#~ msgid "camera mode"
-#~ msgstr "摄像头模式"
+msgid ""
+"Read value from analog port. Value may be between 0 and 1023. Use Vref to "
+"determine voltage. For USB, volt=((read)*5)/1024) approximately."
+msgstr ""
+"从模拟端口读值。值可能是0到1023之间。使用Vref来确定电压。对于USB，电压大约"
+"等于 ((read)*5)/1024。"
 
 #, fuzzy
-#~ msgid "set the color mode of the camera: RGB; YUV or HSV"
-#~ msgstr "设置摄像头的颜色模式：RGB，YUV或HSV"
+msgid ""
+"set the speed of the Butia motors as a value between 0 and 1023, passed "
+"by an argument"
+msgstr "通过传递参数设置布迪的电机速度（0到1023之间）"
 
-#~ msgid "x position"
-#~ msgstr "x 位置"
+msgid "turn the Butia robot to the left"
+msgstr "向左转动布迪机器人"
 
-#~ msgid "return x position"
-#~ msgstr "返回 x 位置"
+msgid "display Butia"
+msgstr "显示布迪"
 
-#~ msgid "y position"
-#~ msgstr "y 位置"
+msgid "Hello World    Butia            "
+msgstr "Hello World    Butia            "
 
-#~ msgid "return y position"
-#~ msgstr "返回 y 位置"
+msgid "print text in Butia robot 32-character ASCII display"
+msgstr "在布迪机器人32字节ASCII显示屏中打印文本"
 
-#~ msgid "pixels"
-#~ msgstr "像素"
+msgid "Error making mask"
+msgstr "生成面罩出错"
 
-#~ msgid "return the number of pixels of the biggest blob"
-#~ msgstr "返回最大块的像素数目"
+msgid "G"
+msgstr "G"
 
-#~ msgid "set the color mode of the camera to RGB"
-#~ msgstr "设置摄像头的颜色模式为RGB"
+msgid "R"
+msgstr "R"
 
-#~ msgid "set the color mode of the camera to YUV"
-#~ msgstr "设置摄像头的颜色模式为YUV"
+msgid "B"
+msgstr "B"
 
-#~ msgid "set the color mode of the camera to HSV"
-#~ msgstr "设置摄像头的颜色模式为HSV"
+msgid "follow a RGB color"
+msgstr "接一个RGB颜色"
 
-#~ msgid "empty calibration"
-#~ msgstr "空校准"
+msgid "save calibration 1"
+msgstr "保存校准1"
 
-#~ msgid "error in string conversion"
-#~ msgstr "字符串转换错误"
+msgid "stores a calibration in calibration 1"
+msgstr "存储校准值到校准1"
 
-#~ msgid "SumBot"
-#~ msgstr "桑博"
+msgid "save calibration 2"
+msgstr "保存校准2"
 
-#~ msgid "speed SumBot"
-#~ msgstr "加速桑博"
+msgid "stores a calibration in calibration 2"
+msgstr "存储校准值到校准2"
 
-#~ msgid "submit the speed to the SumBot"
-#~ msgstr "提交桑博的速度"
+msgid "calibration 1"
+msgstr "校准1"
 
-#~ msgid "set the default speed for the movement commands"
-#~ msgstr "设置移动命令的默认速度"
+msgid "return calibration 1"
+msgstr "返回校准1"
 
-#~ msgid "forward SumBot"
-#~ msgstr "向前桑博"
+msgid "calibration 2"
+msgstr "校准2"
 
-#~ msgid "move SumBot forward"
-#~ msgstr "移动桑博向前"
+msgid "return calibration 2"
+msgstr "返回校准2"
 
-#~ msgid "backward SumBot"
-#~ msgstr "向后桑博"
+msgid "Please check the port."
+msgstr "请检查端口。"
 
-#~ msgid "move SumBot backward"
-#~ msgstr "移动桑博向后"
+msgid "NXT found"
+msgstr "找到 NXT"
 
-#~ msgid "stop SumBot"
-#~ msgstr "停止桑博"
+msgid ""
+"turn motor\n"
+"rotations"
+msgstr ""
+"转动电机\n"
+"旋转"
 
-#~ msgid "stop the SumBot"
-#~ msgstr "让桑博停下来"
+msgid ""
+"synchronize motors\n"
+"steering"
+msgstr ""
+"同步电机\n"
+"转向装置"
 
-#~ msgid "left SumBot"
-#~ msgstr "左转桑博"
+msgid "delay Butia"
+msgstr "布迪延迟"
 
-#~ msgid "turn left the SumBot"
-#~ msgstr "让桑博向左转"
+msgid "wait for argument seconds"
+msgstr "等待参数所示秒"
 
-#~ msgid "right SumBot"
-#~ msgstr "右转桑博"
+msgid "refresh Butia palette"
+msgstr "刷新布迪模板"
 
-#~ msgid "turn right the SumBot"
-#~ msgstr "让桑博向右转"
+msgid "The camera was not found."
+msgstr "没有找到相机。"
 
-#~ msgid "angle to center"
-#~ msgstr "与中心的角度"
+msgid "then else"
+msgstr "那么 或者"
 
-#~ msgid "get the angle to the center of the dohyo"
-#~ msgstr "得到相对圆环中心的角度"
+msgid "bottom of a collapsible stack"
+msgstr "折叠积木堆的底部"
 
-#~ msgid "angle to Enemy"
-#~ msgstr "与敌人的角度"
+msgid "collapsed stack: click to open"
+msgstr "折叠积木堆：点击打开"
 
-#~ msgid "get the angle to the Enemy"
-#~ msgstr "得到相对敌人的角度"
+msgid "bottom block in a collapsed stack: click to open"
+msgstr "折叠积木堆中底部的积木块：点击打开"
 
-#~ msgid "x coor. SumBot"
-#~ msgstr "桑博x坐标"
+msgid "top of stack"
+msgstr "积木堆顶部"
 
-#~ msgid "get the x coordinate of the SumBot"
-#~ msgstr "得到桑博的x坐标"
+msgid "label"
+msgstr "标签"
 
-#~ msgid "y coor. SumBot"
-#~ msgstr "桑博y坐标"
+msgid "True"
+msgstr "真"
 
-#~ msgid "get the y coordinate of the SumBot"
-#~ msgstr "得到桑博的y坐标"
+msgid "False"
+msgstr "假"
 
-#~ msgid "x coor. Enemy"
-#~ msgstr "敌人x坐标"
+msgid "Save as HTML"
+msgstr "另存为HTML"
 
-#~ msgid "get the x coordinate of the Enemy"
-#~ msgstr "得到敌人的x坐标"
+msgid "<Ctrl>d"
+msgstr "<Ctrl>d"
 
-#~ msgid "y coor. Enemy"
-#~ msgstr "敌人y坐标"
+msgid "Palette of US currencies"
+msgstr "美国货币模板"
 
-#~ msgid "get the y coordinate of the Enemy"
-#~ msgstr "得到敌人的y坐标"
+msgid "Palette of Australian currencies"
+msgstr "澳大利亚货币模板"
 
-#~ msgid "rotation SumBot"
-#~ msgstr "转动桑博"
+msgid "Palette of Guaranies"
+msgstr "瓜拉尼模板"
 
-#~ msgid "get the rotation of the Sumbot"
-#~ msgstr "得到桑博的转动"
+msgid "Palette of Soles"
+msgstr "新索尔模板"
 
-#~ msgid "rotation Enemy"
-#~ msgstr "转动敌人"
+msgid "presentation"
+msgstr "演示"
 
-#~ msgid "get the rotation of the Enemy"
-#~ msgstr "得到敌人的转动"
+msgid "follow a turtle color"
+msgstr "接一个海龟颜色"
 
-#~ msgid "distance to center"
-#~ msgstr "与中心的距离"
+msgid "calibrate"
+msgstr "校准"
 
-#~ msgid "get the distance to the center of the dohyo"
-#~ msgstr "得到与圆环中心的距离"
+msgid "calibrate a color to follow"
+msgstr "校准要连接的颜色"
 
-#~ msgid "distance to Enemy"
-#~ msgstr "与敌人的距离"
+msgid "freq"
+msgstr "频率"
 
-#~ msgid "get the distance to the Enemy"
-#~ msgstr "得到与敌人的距离"
+msgid ""
+"sync motors\n"
+"steering"
+msgstr ""
+"同步电机\n"
+"转向"
 
-#~ msgid "update information"
-#~ msgstr "更新信息"
+msgid "<Ctrl>b"
+msgstr "<Ctrl>b"
 
-#~ msgid "update information from the server"
-#~ msgstr "从服务器更新信息"
-
-#~ msgid "Palette of physics blocks"
-#~ msgstr "物理块模板"
-
-#~ msgid "start polygon"
-#~ msgstr "定义多边形"
-
-#~ msgid "Begin defining a new polygon based on the current Turtle xy position."
-#~ msgstr "根据当前海龟xy方向的位置开始定义新的多边形。"
-
-#~ msgid "add point"
-#~ msgstr "添加点"
-
-#~ msgid ""
-#~ "Add a new point to the current polygon based on the current Turtle xy "
-#~ "position."
-#~ msgstr "根据当前海龟xy方向的位置添加新的点到当前的多边形。"
-
-#~ msgid "end polygon"
-#~ msgstr "完成多边形"
-
-#~ msgid "Define a new polygon."
-#~ msgstr "定义一个新的多边形。"
-
-#~ msgid "end filled polygon"
-#~ msgstr "结束填充多边形的绘制"
-
-#~ msgid "Not a simple polygon"
-#~ msgstr "不是一个简单多边形"
-
-#~ msgid "Define a new filled polygon."
-#~ msgstr "定义一个新的填充多边形。"
-
-#~ msgid "triangle"
-#~ msgstr "三角形"
-
-#~ msgid "base"
-#~ msgstr "基地"
-
-#~ msgid "Add a triangle object to the project."
-#~ msgstr "添加一个三角形对象到项目。"
-
-#~ msgid "circle"
-#~ msgstr "圆形"
-
-#~ msgid "Add a circle object to the project."
-#~ msgstr "添加一个圆形对象到项目。"
-
-#~ msgid "rectangle"
-#~ msgstr "长方形"
-
-#~ msgid "Add a rectangle object to the project."
-#~ msgstr "添加一个长方形对象到项目。"
-
-#~ msgid "reset"
-#~ msgstr "重置"
-
-#~ msgid "Reset the project; clear the object list."
-#~ msgstr "重置项目;清除对象列表。"
-
-#~ msgid "motor"
-#~ msgstr "电机"
-
-#~ msgid "torque"
-#~ msgstr "转矩"
-
-#~ msgid "speed"
-#~ msgstr "速度"
-
-#~ msgid ""
-#~ "Motor torque and speed range from 0 (off) to positive numbers; motor is "
-#~ "placed on the most recent object created."
-#~ msgstr "电机转矩和速度范围是从0（关）到正数，电机放置在最近被创建的对象上。"
-
-#~ msgid "pin"
-#~ msgstr "图钉"
-
-#~ msgid "Pin an object down so that it cannot fall."
-#~ msgstr "用图钉固定一个对象，防止掉落。"
-
-#~ msgid "joint"
-#~ msgstr "联合"
-
-#~ msgid ""
-#~ "Join two objects together (the most recent object created and the object at "
-#~ "point x, y)."
-#~ msgstr "把两个对象连接到一起（在点x，y处最近创建的对象）。"
-
-#~ msgid "save as Physics activity"
-#~ msgstr "保存为“物理”活动"
-
-#~ msgid "Save the project to the Journal as a Physics activity."
-#~ msgstr "当作一个物理活动保存该项目到日志。"
-
-#~ msgid "gear"
-#~ msgstr "齿轮"
-
-#~ msgid "Add a gear object to the project."
-#~ msgstr "添加一个齿轮对象到项目。"
-
-#~ msgid "density"
-#~ msgstr "密度"
-
-#~ msgid ""
-#~ "Set the density property for objects (density can be any positive number)."
-#~ msgstr "设置对象的密度属性（密度可以是任何正数）。"
-
-#~ msgid "friction"
-#~ msgstr "摩擦"
-
-#~ msgid ""
-#~ "Set the friction property for objects (value from 0 to 1, where 0 turns "
-#~ "friction off and 1 is strong friction)."
-#~ msgstr "设置对象的摩擦系数（值从0到1，0无摩擦，1强摩擦）。"
-
-#~ msgid "bounciness"
-#~ msgstr "弹力"
-
-#~ msgid ""
-#~ "Set the bounciness property for objects (a value from 0 to 1, where 0 means "
-#~ "no bounce and 1 is very bouncy)."
-#~ msgstr "设置对象的弹性系数（值从0到1，0无弹性，1强弹性）。"
-
-#~ msgid "dynamic"
-#~ msgstr "动态"
-
-#~ msgid ""
-#~ "If dynamic = 1, the object can move; if dynamic = 0, it is fixed in position."
-#~ msgstr "动态值为1时对象可以移动；为0时位置是固定的。"
-
-#~ msgid "Palette of WeDo blocks"
-#~ msgstr "乐高WeDo模板"
-
-#~ msgid ""
-#~ "tilt sensor output: (-1 == no tilt, 0 == tilt forward, 3 == tilt back, 1 == "
-#~ "tilt left, 2 == tilt right)"
-#~ msgstr "倾斜传感器输出：（-1 ==没有倾斜，0 ==向前倾斜，3 ==向后倾斜，1 ==向左倾斜，2 ==向左倾斜）"
-
-#~ msgid "distance sensor output"
-#~ msgstr "距离传感器输出"
-
-#~ msgid "Motor A"
-#~ msgstr "电机 A"
-
-#~ msgid "returns the current value of Motor A"
-#~ msgstr "返回电机A的当前值"
-
-#~ msgid "Motor B"
-#~ msgstr "电机B"
-
-#~ msgid "returns the current value of Motor B"
-#~ msgstr "返回电机B的当前值"
-
-#~ msgid "set the value for Motor A"
-#~ msgstr "设置电机A的值"
-
-#~ msgid "set the value for Motor B"
-#~ msgstr "设置电机B的值"
-
-#~ msgid "Palette of LEGO NXT blocks of motors"
-#~ msgstr "乐高NXT马达部件模板"
-
-#~ msgid "Palette of LEGO NXT blocks of sensors"
-#~ msgstr "乐高NXT传感器部件模板"
-
-#~ msgid "touch"
-#~ msgstr "触摸"
-
-#~ msgid "ultrasonic"
-#~ msgstr "超声波"
-
-#~ msgid "light"
-#~ msgstr "灯光"
+msgid "Palette of LEGO NXT blocks"
+msgstr "乐高NXT模块"
 
 #, fuzzy
-#~ msgid "grey"
-#~ msgstr "灰度"
-
-#, fuzzy
-#~ msgid "Please check the connection with the brick"
-#~ msgstr "请检查与积木的连接。"
-
-#, fuzzy
-#~ msgid "The value of power must be between -127 to 127"
-#~ msgstr "功率值必须在-127到127之间。"
-
-#, fuzzy
-#~ msgid "An error has occurred: check all connections and try to reconnect"
-#~ msgstr "发生了一个错误：请检查所有连接并试图重新连接。"
-
-#~ msgid "NXT not found"
-#~ msgstr "没找到 NXT"
-
-#~ msgid "refresh NXT"
-#~ msgstr "刷新 NXT"
-
-#~ msgid "Search for a connected NXT brick."
-#~ msgstr "搜索已连接的NXT积木。"
-
-#~ msgid "play tone"
-#~ msgstr "播放音调"
-
-#~ msgid "frequency"
-#~ msgstr "频率"
-
-#~ msgid "Play a tone at frequency for time."
-#~ msgstr "以时间频率播放音调。"
-
-#~ msgid "port"
-#~ msgstr "端口"
-
-#~ msgid "power"
-#~ msgstr "电源"
-
-#~ msgid "rotations"
-#~ msgstr "旋转"
-
-#~ msgid "turn a motor"
-#~ msgstr "转动电机"
-
-#, fuzzy
-#~ msgid ""
-#~ "synchronize\n"
-#~ "\n"
-#~ "motors"
-#~ msgstr "同步两个电机"
-
-#~ msgid "synchronize two motors connected in PORT B and PORT C"
-#~ msgstr "同步连接在端口B和端口C的两个电机"
-
-#~ msgid "PORT A"
-#~ msgstr "端口 A"
-
-#~ msgid "PORT A of the brick"
-#~ msgstr "积木的端口 A"
-
-#~ msgid "PORT B"
-#~ msgstr "端口 B"
-
-#~ msgid "PORT B of the brick"
-#~ msgstr "积木的端口 B"
-
-#~ msgid "PORT C"
-#~ msgstr "端口 C"
-
-#~ msgid "PORT C of the brick"
-#~ msgstr "积木的端口 C"
-
-#~ msgid "start motor"
-#~ msgstr "启动电机"
-
-#~ msgid "Run a motor forever."
-#~ msgstr "持续运行电机。"
-
-#~ msgid "brake motor"
-#~ msgstr "制动电机"
-
-#~ msgid "Stop a specified motor."
-#~ msgstr "停止指定的电机。"
-
-#~ msgid "reset motor"
-#~ msgstr "复位电机"
-
-#~ msgid "Reset the motor counter."
-#~ msgstr "复位电机计数器。"
-
-#~ msgid "motor position"
-#~ msgstr "电机位置"
-
-#~ msgid "Get the motor position."
-#~ msgstr "得到电机位置。"
-
-#~ msgid "PORT 1"
-#~ msgstr "端口 1"
-
-#~ msgid "PORT 1 of the brick"
-#~ msgstr "积木的端口 1"
-
-#~ msgid "read"
-#~ msgstr "读取"
-
-#~ msgid "Read sensor output."
-#~ msgstr "读取传感器输出。"
-
-#~ msgid "PORT 2"
-#~ msgstr "端口 2"
-
-#~ msgid "PORT 2 of the brick"
-#~ msgstr "积木的端口 2"
-
-#~ msgid "light sensor"
-#~ msgstr "灯光传感器"
-
-#~ msgid "PORT 3"
-#~ msgstr "端口 3"
-
-#~ msgid "PORT 3 of the brick"
-#~ msgstr "积木的端口 3"
-
-#~ msgid "touch sensor"
-#~ msgstr "触控传感器"
-
-#~ msgid "distance sensor"
-#~ msgstr "距离传感器"
-
-#~ msgid "PORT 4"
-#~ msgstr "端口 4"
-
-#~ msgid "PORT 4 of the brick"
-#~ msgstr "积木的端口 4"
-
-#~ msgid "sound sensor"
-#~ msgstr "声音传感器"
-
-#~ msgid "color sensor"
-#~ msgstr "颜色传感器"
-
-#~ msgid "set light"
-#~ msgstr "设置灯"
-
-#~ msgid "Set color sensor light."
-#~ msgstr "设置颜色感应灯。"
-
-#~ msgid "battery level"
-#~ msgstr "电池电量"
-
-#, fuzzy
-#~ msgid "Get battery level of the brick"
-#~ msgstr "获取板子的电池电量。"
-
-#~ msgid "HIGH"
-#~ msgstr "高"
-
-#~ msgid "LOW"
-#~ msgstr "低"
-
-#~ msgid "INPUT"
-#~ msgstr "输入"
-
-#~ msgid "OUTPUT"
-#~ msgstr "输出"
-
-#~ msgid "PWM"
-#~ msgstr "调速"
-
-#~ msgid "SERVO"
-#~ msgstr "伺服"
-
-#~ msgid "ERROR: Check the Arduino and the number of port."
-#~ msgstr "错误：请检查的Arduino和端口号。"
-
-#~ msgid "ERROR: Value must be a number from 0 to 255."
-#~ msgstr "错误：数值必须从0到255。"
-
-#~ msgid "ERROR: Value must be either HIGH or LOW."
-#~ msgstr "错误：值必须是高或低。"
-
-#~ msgid "ERROR: The mode must be either INPUT, OUTPUT, PWM or SERVO."
-#~ msgstr "错误：模式必须是输入，输出，调速或伺服。"
-
-#~ msgid "pin mode"
-#~ msgstr "引脚模式"
-
-#~ msgid "mode"
-#~ msgstr "模式"
-
-#~ msgid "Select the pin function (INPUT, OUTPUT, PWM, SERVO)."
-#~ msgstr "选择引脚功能（输入，输出，调速，伺服）。"
-
-#~ msgid "analog write"
-#~ msgstr "模拟写"
-
-#~ msgid "Write analog value in specified port."
-#~ msgstr "写模拟值到指定的端口。"
-
-#~ msgid "analog read"
-#~ msgstr "模拟读"
-
-#~ msgid ""
-#~ "Read value from analog port. Value may be between 0 and 1023. Use Vref to "
-#~ "determine voltage. For USB, volt=((read)*5)/1024) approximately."
-#~ msgstr "从模拟端口读值。值可能是0到1023之间。使用Vref来确定电压。对于USB，电压大约等于 ((read)*5)/1024。"
-
-#~ msgid "digital write"
-#~ msgstr "数字写"
-
-#~ msgid "Write digital value to specified port."
-#~ msgstr "写数字值到指定的端口。"
-
-#~ msgid "digital read"
-#~ msgstr "数字读"
-
-#~ msgid "Read value from digital port."
-#~ msgstr "从数字端口读取值。"
-
-#~ msgid "Set HIGH value for digital port."
-#~ msgstr "设置数字端口为高值。"
-
-#~ msgid "Configure Arduino port for digital input."
-#~ msgstr "配置用于数字输入的Arduino端口。"
-
-#~ msgid "Configure Arduino port to drive a servo."
-#~ msgstr "配置用于驱动伺服电机的Arduino端口。"
-
-#~ msgid "Set LOW value for digital port."
-#~ msgstr "设置数字端口为低值。"
-
-#~ msgid "Configure Arduino port for digital output."
-#~ msgstr "配置用于数字输出的Arduino端口。"
-
-#~ msgid "Configure Arduino port for PWM (pulse-width modulation)."
-#~ msgstr "配置用于调速（脉宽调制）的Arduino端口"
-
-#, fuzzy
-#~ msgid "Palette of Expeyes blocks"
-#~ msgstr "乐高WeDo模板"
-
-#, fuzzy
-#~ msgid "samples"
-#~ msgstr "例子"
-
-#, fuzzy
-#~ msgid ""
-#~ "set the speed of the Butia motors as a value between 0 and 1023, passed by "
-#~ "an argument"
-#~ msgstr "通过传递参数设置布迪的电机速度（0到1023之间）"
-
-#~ msgid "turn the Butia robot to the left"
-#~ msgstr "向左转动布迪机器人"
-
-#~ msgid "display Butia"
-#~ msgstr "显示布迪"
-
-#~ msgid "Hello World    Butia            "
-#~ msgstr "Hello World    Butia            "
-
-#~ msgid "print text in Butia robot 32-character ASCII display"
-#~ msgstr "在布迪机器人32字节ASCII显示屏中打印文本"
-
-#~ msgid "Error making mask"
-#~ msgstr "生成面罩出错"
-
-#~ msgid "G"
-#~ msgstr "G"
-
-#~ msgid "R"
-#~ msgstr "R"
-
-#~ msgid "B"
-#~ msgstr "B"
-
-#~ msgid "follow a RGB color"
-#~ msgstr "接一个RGB颜色"
-
-#~ msgid "save calibration 1"
-#~ msgstr "保存校准1"
-
-#~ msgid "stores a calibration in calibration 1"
-#~ msgstr "存储校准值到校准1"
-
-#~ msgid "save calibration 2"
-#~ msgstr "保存校准2"
-
-#~ msgid "stores a calibration in calibration 2"
-#~ msgstr "存储校准值到校准2"
-
-#~ msgid "calibration 1"
-#~ msgstr "校准1"
-
-#~ msgid "return calibration 1"
-#~ msgstr "返回校准1"
-
-#~ msgid "calibration 2"
-#~ msgstr "校准2"
-
-#~ msgid "return calibration 2"
-#~ msgstr "返回校准2"
-
-#~ msgid "RGB"
-#~ msgstr "RGB"
-
-#~ msgid "YUV"
-#~ msgstr "YUV"
-
-#~ msgid "HSV"
-#~ msgstr "HSV"
-
-#~ msgid "Please check the port."
-#~ msgstr "请检查端口。"
-
-#~ msgid "NXT found"
-#~ msgstr "找到 NXT"
-
-#~ msgid ""
-#~ "turn motor\n"
-#~ "rotations"
-#~ msgstr ""
-#~ "转动电机\n"
-#~ "旋转"
-
-#~ msgid ""
-#~ "synchronize motors\n"
-#~ "steering"
-#~ msgstr ""
-#~ "同步电机\n"
-#~ "转向装置"
-
-#~ msgid "Palette of Arduino blocks"
-#~ msgstr "Arduino模板"
-
-#~ msgid "delay Butia"
-#~ msgstr "布迪延迟"
-
-#~ msgid "wait for argument seconds"
-#~ msgstr "等待参数所示秒"
-
-#~ msgid "refresh Butia palette"
-#~ msgstr "刷新布迪模板"
-
-#~ msgid "The camera was not found."
-#~ msgstr "没有找到相机。"
-
-#~ msgid "then else"
-#~ msgstr "那么 或者"
-
-#~ msgid "bottom of a collapsible stack"
-#~ msgstr "折叠积木堆的底部"
-
-#~ msgid "collapsed stack: click to open"
-#~ msgstr "折叠积木堆：点击打开"
-
-#~ msgid "bottom block in a collapsed stack: click to open"
-#~ msgstr "折叠积木堆中底部的积木块：点击打开"
-
-#~ msgid "top of stack"
-#~ msgstr "积木堆顶部"
-
-#~ msgid "label"
-#~ msgstr "标签"
-
-#~ msgid "True"
-#~ msgstr "真"
-
-#~ msgid "False"
-#~ msgstr "假"
-
-#~ msgid "Save as HTML"
-#~ msgstr "另存为HTML"
-
-#~ msgid "<Ctrl>d"
-#~ msgstr "<Ctrl>d"
-
-#~ msgid "Palette of US currencies"
-#~ msgstr "美国货币模板"
-
-#~ msgid "Palette of Australian currencies"
-#~ msgstr "澳大利亚货币模板"
-
-#~ msgid "Palette of Guaranies"
-#~ msgstr "瓜拉尼模板"
-
-#~ msgid "Palette of Soles"
-#~ msgstr "新索尔模板"
-
-#~ msgid "presentation"
-#~ msgstr "演示"
-
-#~ msgid "follow a turtle color"
-#~ msgstr "接一个海龟颜色"
-
-#~ msgid "calibrate"
-#~ msgstr "校准"
-
-#~ msgid "calibrate a color to follow"
-#~ msgstr "校准要连接的颜色"
-
-#~ msgid "freq"
-#~ msgstr "频率"
-
-#~ msgid ""
-#~ "sync motors\n"
-#~ "steering"
-#~ msgstr ""
-#~ "同步电机\n"
-#~ "转向"
-
-#~ msgid "<Ctrl>b"
-#~ msgstr "<Ctrl>b"
-
-#~ msgid "Palette of LEGO NXT blocks"
-#~ msgstr "乐高NXT模块"
-
-#, fuzzy
-#~ msgid "full screen"
-#~ msgstr "涂满全屏"
+msgid "full screen"
+msgstr "涂满全屏"
 
 # (see 'stop stack')
 #, fuzzy
-#~ msgid "stack 2"
-#~ msgstr "函数2"
+msgid "stack 2"
+msgstr "函数2"
 
 # (see 'stop stack')
 #, fuzzy
-#~ msgid "stack 1"
-#~ msgstr "函数1"
+msgid "stack 1"
+msgstr "函数1"
 
-#~ msgid "Numbers"
-#~ msgstr "数字"
+msgid "Numbers"
+msgstr "数字"
 
 #, fuzzy
-#~ msgid "text color"
-#~ msgstr "设置颜色"
+msgid "text color"
+msgstr "设置颜色"
 
-#~ msgid "Pen"
-#~ msgstr "画图"
+msgid "Pen"
+msgstr "画图"
 
 # I have played the Turtle. In this programming language, stacks are similar as functions. So, the stop stack is equal to 'return'. But I am not sure which word is more comfortable.
 #, fuzzy
-#~ msgid "stop stack"
-#~ msgstr "退出函数"
+msgid "stop stack"
+msgstr "退出函数"

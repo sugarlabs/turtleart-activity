@@ -1,9 +1,25 @@
+# #-#-#-#-#  es.po (PACKAGE VERSION)  #-#-#-#-#
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#, fuzzy
 msgid ""
 msgstr ""
+"#-#-#-#-#  es.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-02-16 00:32-0500\n"
+"PO-Revision-Date: 2014-02-23 17:05+0200\n"
+"Last-Translator: AlanJAS <alanjas@hotmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.0.5\n"
+"#-#-#-#-#  es.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-01-07 00:30-0500\n"
@@ -16,6 +32,1450 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pootle 2.0.5\n"
+
+msgid "turtleart-extras (master)"
+msgstr "turtleart-extras (master)"
+
+msgid "Turtle Blocks"
+msgstr "TortuBlocks"
+
+msgid "Turtle Art"
+msgstr "TortugArte"
+
+msgid "Turtle Art Mini"
+msgstr "TortugArte Mini"
+
+msgid "Turtle Confusion"
+msgstr "TortugArte Confusión"
+
+msgid "Select a challenge"
+msgstr "Selecciona un desafío"
+
+msgid "Amazonas Tortuga"
+msgstr "Tortuga Amazonas"
+
+msgid "Turtle Flags"
+msgstr "Tortuga Banderas"
+
+msgid "Use the turtle to draw country flags"
+msgstr "Usa la tortuga para dibujar las banderas de los países"
+
+msgid "Palette of Mexican pesos"
+msgstr "Paleta de Pesos Mexicanos"
+
+msgid "Palette of Colombian pesos"
+msgstr "Paleta de Pesos Colombianos"
+
+msgid "Palette of Rwandan francs"
+msgstr "Paleta de Francos de Ruanda"
+
+msgid "Palette of US dollars"
+msgstr "Paleta de Dólares Americanos"
+
+msgid "Palette of Australian dollars"
+msgstr "Paleta de Dólares Australianos"
+
+msgid "Palette of Paraguayan Guaranies"
+msgstr "Paleta de Guaraníes Paraguayos"
+
+msgid "Palette of Peruvian Nuevo Soles"
+msgstr "Paletea de Nuevos Soles Peruanos"
+
+msgid "Palette of Uruguayan Pesos"
+msgstr "Paleta de Pesos Uruguayos"
+
+#, fuzzy
+msgid "TurtleBots"
+msgstr ""
+"#-#-#-#-#  es.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"TortuBots\n"
+"#-#-#-#-#  es.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"TurtleBots"
+
+msgid "TurtleBlocks with Butia, Lego NxT, WeDo, Arduino, FollowMe plugins"
+msgstr "TortuBlocks con plugins: Butiá, Lego NxT, WeDo, Arduino, FollowMe"
+
+msgid "ERROR: The speed must be a value between 0 and 1023"
+msgstr "ERROR: La velocidad debe ser un valor entre 0 y 1023"
+
+msgid "ERROR: The speed must be a value between -1023 and 1023"
+msgstr "ERROR: La velocidad debe ser un valor entre -1023 y 1023"
+
+msgid "ERROR: The pin must be between 1 and 8"
+msgstr "ERROR: El pin debe estar entre 1 y 8"
+
+msgid "ERROR: The value must be 0 or 1, LOW or HIGH"
+msgstr "ERROR: El valor debe ser 0 o 1, ALTO o BAJO"
+
+msgid "ERROR: The mode must be INPUT or OUTPUT."
+msgstr "ERROR: El modo debe ser ENTRADA o SALIDA."
+
+msgid "turns LED on and off: 1 means on, 0 means off"
+msgstr "prende o apaga el LED: 1 significa prendido, 0 significa apagado"
+
+msgid "returns the gray level as a value between 0 and 65535"
+msgstr "devuelve el nivel de gris como un valor entre 0 y 65535"
+
+msgid "returns 1 when the button is pressed and 0 otherwise"
+msgstr "devuelve 1 cuando el botón está presionado y 0 en otro caso"
+
+msgid "returns the light level as a value between 0 and 65535"
+msgstr "devuelve el nivel de luz como un valor entre 0 y 65535"
+
+msgid "returns the distance as a value between 0 and 65535"
+msgstr "devuelve la distancia como un valor entre 0 y 65535"
+
+msgid "returns the resistance value (ohms)"
+msgstr "devuelve el valor de la resistencia (ohms)"
+
+msgid "returns the voltage value (volts)"
+msgstr "devuelve el valor del voltaje (volts)"
+
+msgid "returns the temperature value (celsius degree)"
+msgstr "devuelve el valor de la temperatura (grados Celsius)"
+
+msgid "custom module %s"
+msgstr "módulo personalizado %s"
+
+msgid "sensor a"
+msgstr "sensor a"
+
+msgid "sensor b"
+msgstr "sensor b"
+
+msgid "sensor c"
+msgstr "sensor c"
+
+msgid "actuator a"
+msgstr "actuador a"
+
+msgid "actuator b"
+msgstr "actuador b"
+
+msgid "actuator c"
+msgstr "actuador c"
+
+msgid "LED"
+msgstr "LED"
+
+msgid "button"
+msgstr "botón"
+
+#: TurtleArt/tabasics.py:370 TurtleArt/tabasics.py:454
+#: TurtleArt/tawindow.py:4539 TurtleArt/tawindow.py:4544
+msgid "gray"
+msgstr "gris"
+
+msgid "light"
+msgstr "luz"
+
+msgid "distance"
+msgstr "distancia"
+
+#: plugins/audio_sensors/audio_sensors.py:157
+#: plugins/audio_sensors/audio_sensors.py:175
+msgid "resistance"
+msgstr "resistencia"
+
+#: plugins/audio_sensors/audio_sensors.py:163
+#: plugins/audio_sensors/audio_sensors.py:181
+msgid "voltage"
+msgstr "voltaje"
+
+msgid "temperature"
+msgstr "temperatura"
+
+msgid "butia"
+msgstr "butiá"
+
+msgid "Butia Robot"
+msgstr "Robot Butiá"
+
+msgid "refresh Butia"
+msgstr "refrescar Butiá"
+
+msgid "refresh the state of the Butia palette and blocks"
+msgstr "actualiza el estado de la paleta y de los bloques Butiá"
+
+msgid "battery charge Butia"
+msgstr "carga de batería Butiá"
+
+msgid ""
+"returns the battery charge in volts. If no motors present, it returns 255"
+msgstr ""
+"devuelve la carga de la batería en volts. Si no hay motores, devuelve 255"
+
+msgid "speed Butia"
+msgstr "velocidad Butiá"
+
+msgid "set the speed of the Butia motors"
+msgstr "establece la velocidad de los motores del Butiá"
+
+msgid "move Butia"
+msgstr "mover Butiá"
+
+#: TurtleArt/tabasics.py:207 TurtleArt/taconstants.py:139
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:991
+msgid "left"
+msgstr "izquierda"
+
+#: TurtleArt/tabasics.py:221 TurtleArt/taconstants.py:141
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1024
+msgid "right"
+msgstr "derecha"
+
+msgid "moves the Butia motors at the specified speed"
+msgstr "mueve los motores del Butiá a la velocidad especificada"
+
+msgid "stop Butia"
+msgstr "detener Butiá"
+
+msgid "stop the Butia robot"
+msgstr "detiene al robot Butiá"
+
+msgid "forward Butia"
+msgstr "adelante Butiá"
+
+msgid "move the Butia robot forward"
+msgstr "mueve el robot Butiá hacia adelante"
+
+msgid "left Butia"
+msgstr "izquierda Butiá"
+
+msgid "turn the Butia robot at left"
+msgstr "gira el robot Butiá hacia la izquierda"
+
+msgid "right Butia"
+msgstr "derecha Butiá"
+
+msgid "turn the Butia robot at right"
+msgstr "gira el robot Butiá hacia la derecha"
+
+msgid "backward Butia"
+msgstr "atrás Butiá"
+
+msgid "move the Butia robot backward"
+msgstr "mueve el robot Butiá hacia atrás"
+
+msgid "butia-extra"
+msgstr "butiá-extra"
+
+msgid "Butia Robot extra blocks"
+msgstr "Bloques extra del Robot Butiá"
+
+msgid "pin mode Butia"
+msgstr "modo del pin Butiá"
+
+# #-#-#-#-#  es.po (PACKAGE VERSION)  #-#-#-#-#
+# puede ser: alfiler, perno, clavija, clavo - En Physics es: Tachuela (asi que por coherencia, usé Tachuela)
+#, fuzzy
+msgid "pin"
+msgstr ""
+"#-#-#-#-#  es.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"pin\n"
+"#-#-#-#-#  es.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"tachuela"
+
+msgid "mode"
+msgstr "modo"
+
+msgid "Select the pin function (INPUT, OUTPUT)."
+msgstr "Selecciona la función del pin (ENTRADA, SALIDA)."
+
+msgid "read pin Butia"
+msgstr "leer pin Butiá"
+
+msgid "read the value of a pin"
+msgstr "lee el valor de un pin"
+
+msgid "write pin Butia"
+msgstr "escribir en pin Butiá"
+
+#: TurtleArt/tabasics.py:1114 TurtleArt/tawindow.py:5055
+msgid "value"
+msgstr "valor"
+
+msgid "set a hack pin to 0 or 1"
+msgstr "establce el hack pin en 0 o 1"
+
+msgid "INPUT"
+msgstr "ENTRADA"
+
+msgid "Configure hack pin for digital input."
+msgstr "Configura un pin como entrada digital."
+
+msgid "HIGH"
+msgstr "ALTO"
+
+msgid "Set HIGH value for digital pin."
+msgstr "Establece el valor ALTO en un pin digital."
+
+msgid "LOW"
+msgstr "BAJO"
+
+#, fuzzy
+msgid "Set LOW value for digital port."
+msgstr ""
+"#-#-#-#-#  es.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Establece el valor BAJO en el puerto digital.\n"
+"#-#-#-#-#  es.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Setea el valor BAJO en el puerto digital."
+
+msgid "OUTPUT"
+msgstr "SALIDA"
+
+msgid "Configure hack port for digital output."
+msgstr "Configura el puerto hack como salida digital."
+
+msgid "butia-cast"
+msgstr "butiá-casteo"
+
+msgid "Butia Robot cast blocks"
+msgstr "Bloques de casteo del Robot Butiá"
+
+msgid "Butia"
+msgstr "Butiá"
+
+msgid "CAST\n"
+msgstr "CASTEO\n"
+
+msgid "new name"
+msgstr "nuevo nombre"
+
+msgid "original"
+msgstr "original"
+
+msgid "f(x)="
+msgstr "f(x)="
+
+msgid "name"
+msgstr "nombre"
+
+msgid "Cast a new block"
+msgstr "Castea un nuevo bloque"
+
+msgid "generic module %s"
+msgstr "módulo genérico %s"
+
+msgid "Butia IP"
+msgstr "Butiá IP"
+
+msgid "change the IP of butia robot"
+msgstr "cambia la IP del robot Butiá"
+
+msgid "ERROR: The pin %s must be in OUTPUT mode."
+msgstr "ERROR: El pin %s debe estar en modo SALIDA."
+
+msgid "ERROR: The pin %s must be in INPUT mode."
+msgstr "ERROR: El pin %s debe estar en modo ENTRADA."
+
+msgid "ERROR: Something wrong with function '%s'"
+msgstr "ERROR: Ocurre algo con la función '%s'"
+
+msgid "ERROR: cannot init GCONF client: %s"
+msgstr "ERROR: no se puede iniciar el cliente de GCONF: %s"
+
+msgid "ERROR: You must cast Sensor or Actuator: A, B or C"
+msgstr "ERROR: Debes castear un Sensor o Actuador: A, B o C"
+
+msgid "ERROR: Invalid IP '%s'"
+msgstr "ERROR: IP inválida '%s'"
+
+msgid "Creating PyBot server"
+msgstr "Creando PyBot server"
+
+msgid "ERROR creating PyBot server"
+msgstr "ERROR creando PyBot server"
+
+msgid "PyBot is alive!"
+msgstr "¡PyBot está vivo!"
+
+msgid "Ending butia polling"
+msgstr "Finalizando Butiá polling"
+
+msgid "Error importing Pygame. This plugin require Pygame 1.9"
+msgstr "Error importando Pygame. Este plugin requiere Pygame 1.9"
+
+msgid "Error on initialization of the camera"
+msgstr "Error en la inicialización de la cámara"
+
+msgid "No camera was found"
+msgstr "No se encontraró cámara"
+
+msgid "Error stopping camera"
+msgstr "Error deteniendo cámara"
+
+msgid "Error starting camera"
+msgstr "Error iniciando cámara"
+
+msgid "Error in get mask"
+msgstr "Error en obtener máscara"
+
+msgid "followme"
+msgstr "followme"
+
+msgid "FollowMe"
+msgstr "FollowMe"
+
+msgid "refresh FollowMe"
+msgstr "refrescar FollowMe"
+
+msgid "Search for a connected camera."
+msgstr "Busca una cámara conectada."
+
+msgid "calibration"
+msgstr "calibración"
+
+msgid "store a personalized calibration"
+msgstr "almacena una calibración personalizada"
+
+msgid "return a personalized calibration"
+msgstr "devuelve una calibración personalizada"
+
+msgid "follow"
+msgstr "seguir"
+
+msgid "follow a color or calibration"
+msgstr "seguir un color o calibración"
+
+#: plugins/camera_sensor/camera_sensor.py:83
+#: plugins/camera_sensor/camera_sensor.py:99
+#: plugins/camera_sensor/camera_sensor.py:136
+#: plugins/camera_sensor/camera_sensor.py:152
+#: plugins/light_sensor/light_sensor.py:58
+#: plugins/light_sensor/light_sensor.py:66
+msgid "brightness"
+msgstr "brillo"
+
+msgid "set the camera brightness as a value between 0 to 255."
+msgstr "establece el brillo de la cámara como un valor entre 0 y 255."
+
+msgid "minimum pixels"
+msgstr "mínimo de pixeles"
+
+msgid "set the minimal number of pixels to follow"
+msgstr "define el mínimo número de píxeles a seguir"
+
+msgid "threshold"
+msgstr "umbral"
+
+msgid "set a threshold for a RGB color"
+msgstr "define el umbral para un color RGB"
+
+msgid "camera mode"
+msgstr "modo de cámara"
+
+msgid "set the color mode of the camera: RGB; YUV or HSV"
+msgstr "establece el modo de color de la cámara: RGB, YUV o HSV"
+
+msgid "get brightness"
+msgstr "obtener brillo"
+
+msgid "get the brightness of the ambient light"
+msgstr "obtiene el brillo de la luz ambiente"
+
+msgid "average color"
+msgstr "color promedio"
+
+msgid ""
+"if set to 0 then color averaging is off during calibration;for other values, "
+"it is on"
+msgstr ""
+"Si está en 0 entonces no se usa el color promedio durante la calibración; "
+"para otros valores está encendido"
+
+msgid "x position"
+msgstr "posición x"
+
+msgid "return x position"
+msgstr "retorna la posición x"
+
+msgid "y position"
+msgstr "posición y"
+
+msgid "return y position"
+msgstr "retorna la posición y"
+
+msgid "pixels"
+msgstr "píxeles"
+
+msgid "return the number of pixels of the biggest blob"
+msgstr "devuelve el número de píxeles de la mancha mas grande"
+
+msgid "RGB"
+msgstr "RGB"
+
+msgid "set the color mode of the camera to RGB"
+msgstr "establece el modo de color de la cámara a RGB"
+
+msgid "YUV"
+msgstr "YUV"
+
+msgid "set the color mode of the camera to YUV"
+msgstr "establece el modo de color de la cámara a YUV"
+
+msgid "HSV"
+msgstr "HSV"
+
+msgid "set the color mode of the camera to HSV"
+msgstr "establece el modo de color de la cámara a HSV"
+
+msgid "get color"
+msgstr "obtener color"
+
+msgid "get the color of an object"
+msgstr "obtiene el color de un objeto"
+
+msgid "color distance"
+msgstr "distancia color"
+
+msgid "set the distance to identify a color"
+msgstr "establece la distancia para identificar un color"
+
+msgid "empty calibration"
+msgstr "calibración vacía"
+
+msgid "error in string conversion"
+msgstr "error en la conversión de la cadena de texto"
+
+msgid "Pattern detection"
+msgstr "Detección de marcas"
+
+msgid "pattern_detection"
+msgstr "detección_marcas"
+
+msgid "Seeing signal"
+msgstr "Viendo señal"
+
+msgid "Returns True if the signal is in front of the camera"
+msgstr "Devuelve Verdadero si la señal está en frente de la cámara"
+
+msgid "Distance to signal"
+msgstr "Distancia a la señal"
+
+msgid "Returns the distance of the signal to the camera in millimeters"
+msgstr "Devuelve la distancia entre la cámara y la señal en milímetros"
+
+msgid "SumBot"
+msgstr "SumBot"
+
+msgid "sumtia"
+msgstr "sumtia"
+
+msgid "speed SumBot"
+msgstr "velocidad SumBot"
+
+msgid "submit the speed to the SumBot"
+msgstr "setea la velocidad del SumBot"
+
+msgid "set the default speed for the movement commands"
+msgstr "setea la velocidad por defecto para los comandos de movimiento"
+
+msgid "forward SumBot"
+msgstr "adelante SumBot"
+
+msgid "move SumBot forward"
+msgstr "mueve el SumBot hacia adelante"
+
+msgid "backward SumBot"
+msgstr "atrás SumBot"
+
+msgid "move SumBot backward"
+msgstr "mueve el SumBot hacia atrás"
+
+msgid "stop SumBot"
+msgstr "detener SumBot"
+
+msgid "stop the SumBot"
+msgstr "detiene el SumBot"
+
+msgid "left SumBot"
+msgstr "izquierda SumBot"
+
+msgid "turn left the SumBot"
+msgstr "gira el SumBot hacia la izquierda"
+
+msgid "right SumBot"
+msgstr "derecha SumBot"
+
+msgid "turn right the SumBot"
+msgstr "gira el SumBot hacia la derecha"
+
+msgid "angle to center"
+msgstr "ángulo al centro"
+
+msgid "get the angle to the center of the dohyo"
+msgstr "obtiene el ángulo al centro del dohyo"
+
+msgid "angle to Enemy"
+msgstr "ángulo al Enemigo"
+
+msgid "get the angle to the Enemy"
+msgstr "obtiene el ángulo al Enemigo"
+
+msgid "x coor. SumBot"
+msgstr "coor. x SumBot"
+
+msgid "get the x coordinate of the SumBot"
+msgstr "obtiene la coordenada x del Sumbot"
+
+msgid "y coor. SumBot"
+msgstr "coor. y SumBot"
+
+msgid "get the y coordinate of the SumBot"
+msgstr "obtiene la coordenada y del Sumbot"
+
+msgid "x coor. Enemy"
+msgstr "coor. x Enemigo"
+
+msgid "get the x coordinate of the Enemy"
+msgstr "obtiene la coordenada x del Enemigo"
+
+msgid "y coor. Enemy"
+msgstr "coor. y Enemigo"
+
+msgid "get the y coordinate of the Enemy"
+msgstr "obtiene la coordenada y del Enemigo"
+
+msgid "rotation SumBot"
+msgstr "rotación SumBot"
+
+msgid "get the rotation of the Sumbot"
+msgstr "obtiene la rotación del SumBot"
+
+msgid "rotation Enemy"
+msgstr "rotación Enemigo"
+
+msgid "get the rotation of the Enemy"
+msgstr "obtiene la rotación del Enemigo"
+
+msgid "distance to center"
+msgstr "distancia al centro"
+
+msgid "get the distance to the center of the dohyo"
+msgstr "obtiene la distancia al centro del dohyo"
+
+msgid "distance to Enemy"
+msgstr "distancia al Enemigo"
+
+msgid "get the distance to the Enemy"
+msgstr "obtiene la distancia al Enemigo"
+
+msgid "update information"
+msgstr "actualizar información"
+
+msgid "update information from the server"
+msgstr "actualiza la información desde el servidor"
+
+msgid "Palette of physics blocks"
+msgstr "Paleta de bloques de física"
+
+msgid "start polygon"
+msgstr "comenzar polígono"
+
+msgid "Begin defining a new polygon based on the current Turtle xy position."
+msgstr ""
+"Comienza a definir un nuevo polígono basado en la posición actual xy de la "
+"Tortuga."
+
+msgid "add point"
+msgstr "agregar punto"
+
+msgid ""
+"Add a new point to the current polygon based on the current Turtle xy "
+"position."
+msgstr ""
+"Agrega un nuevo punto al polígono actual basado en la posición actual xy de "
+"la Tortuga."
+
+# #-#-#-#-#  es.po (PACKAGE VERSION)  #-#-#-#-#
+# finalizar polígono
+msgid "end polygon"
+msgstr "terminar polígono"
+
+msgid "Define a new polygon."
+msgstr "Define un nuevo polígono."
+
+msgid "end filled polygon"
+msgstr "termina polígono relleno"
+
+msgid "Not a simple polygon"
+msgstr "No es un polígono simple"
+
+msgid "Define a new filled polygon."
+msgstr "Define un nuevo polígono relleno."
+
+msgid "triangle"
+msgstr "triángulo"
+
+msgid "base"
+msgstr "base"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1046
+msgid "height"
+msgstr "altura"
+
+msgid "Add a triangle object to the project."
+msgstr "Agrega un objeto triángulo al proyecto."
+
+msgid "circle"
+msgstr "círculo"
+
+msgid "Add a circle object to the project."
+msgstr "Agrega un objeto círculo al proyecto."
+
+msgid "rectangle"
+msgstr "rectángulo"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1013
+msgid "width"
+msgstr "anchura"
+
+msgid "Add a rectangle object to the project."
+msgstr "Agrega un objeto rectángulo al proyecto."
+
+msgid "reset"
+msgstr "resetear"
+
+msgid "Reset the project; clear the object list."
+msgstr "Resetea el proyecto; limpia la lista de objetos."
+
+msgid "motor"
+msgstr "motor"
+
+msgid "torque"
+msgstr "torque"
+
+msgid "speed"
+msgstr "velocidad"
+
+msgid ""
+"Motor torque and speed range from 0 (off) to positive numbers; motor is "
+"placed on the most recent object created."
+msgstr ""
+"El torque y velocidad del motor están en el rango que va de 0 (apagado) a "
+"números positivos; el motor es colocado en el objeto creado mas "
+"recientemente."
+
+msgid "Pin an object down so that it cannot fall."
+msgstr "Sujeta un objeto para que no se caiga."
+
+#: TurtleArt/tabasics.py:351
+msgid "pen"
+msgstr "pluma"
+
+msgid "Add a pen to an object so that its movements are traced."
+msgstr "Agrega una pluma a un objeto para que sus movimientos dejen un trazo."
+
+# #-#-#-#-#  es.po (PACKAGE VERSION)  #-#-#-#-#
+# enPhysics es unión... podría ser articulación
+msgid "joint"
+msgstr "unión"
+
+#: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
+msgid "x"
+msgstr "x"
+
+#: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
+msgid "y"
+msgstr "y"
+
+msgid ""
+"Join two objects together (the object at the current location and the object "
+"at point x, y)."
+msgstr ""
+"Une dos objetos (el objeto en la posición actual y el objeto en el punto x, "
+"y)."
+
+msgid "save as Physics activity"
+msgstr "guardar como Actividad Física"
+
+msgid "Save the project to the Journal as a Physics activity."
+msgstr "Guarda el proyecto al Diario como una Actividad de Física."
+
+#, fuzzy
+msgid "gear"
+msgstr ""
+"#-#-#-#-#  es.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"engranaje\n"
+"#-#-#-#-#  es.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"círculo"
+
+msgid "Add a gear object to the project."
+msgstr "Agrega un objeto engranaje al proyecto."
+
+msgid "density"
+msgstr "densidad"
+
+msgid ""
+"Set the density property for objects (density can be any positive number)."
+msgstr ""
+"Establece la densidad de los objetos (la densidad puede ser cualquier número "
+"positivo)."
+
+msgid "friction"
+msgstr "fricción"
+
+msgid ""
+"Set the friction property for objects (value from 0 to 1, where 0 turns "
+"friction off and 1 is strong friction)."
+msgstr ""
+"Establece la propiedad de fricción de los objetos (un valor entre 0 y 1, "
+"donde 0 es sin fricción y el 1 es fuerte)."
+
+# #-#-#-#-#  es.po (PACKAGE VERSION)  #-#-#-#-#
+# podría ser elasticidad?
+msgid "bounciness"
+msgstr "restitución"
+
+# #-#-#-#-#  es.po (PACKAGE VERSION)  #-#-#-#-#
+# very bouncy = muy restituible?
+msgid ""
+"Set the bounciness property for objects (a value from 0 to 1, where 0 means "
+"no bounce and 1 is very bouncy)."
+msgstr ""
+"Establece la propiedad de restitución para los objetos (un valor entre 0 y "
+"1, donde 0 significa sin restitución y 1 mucha)."
+
+msgid "dynamic"
+msgstr "dinámico"
+
+msgid ""
+"If dynamic = 1, the object can move; if dynamic = 0, it is fixed in position."
+msgstr ""
+"Si dinámico = 1, el objeto puede moverse; si dinámico = 0, queda fijo en su "
+"posición."
+
+msgid "Palette of WeDo blocks"
+msgstr "Paleta de bloques WeDo"
+
+msgid "The parameter must be a integer, not "
+msgstr "El parámetro debe ser un entero, no "
+
+msgid "Motor speed must be an integer between -100 and 100"
+msgstr "La velocidad del motor debe ser un entero entre -100 y 100"
+
+msgid "WeDo found %s bricks"
+msgstr "WeDo encontró %s bricks"
+
+msgid "WeDo not found"
+msgstr "WeDo no encontrado"
+
+msgid "WeDo number %s was not found"
+msgstr "WeDo número %s no fue encontrado"
+
+msgid "wedo"
+msgstr "wedo"
+
+msgid "refresh WeDo"
+msgstr "refrescar WeDo"
+
+msgid "Search for a connected WeDo."
+msgstr "Busca por un WeDo conectado."
+
+msgid "WeDo"
+msgstr "WeDo"
+
+msgid "set current WeDo device"
+msgstr "setea el dispositivo WeDo actual"
+
+msgid "number of WeDos"
+msgstr "número de WeDos"
+
+msgid "number of WeDo devices"
+msgstr "número de dispositivos WeDo"
+
+msgid "tilt"
+msgstr "inclinación"
+
+msgid ""
+"tilt sensor output: (-1 == no tilt,0 == tilt forward, 3 == tilt back, 1 == "
+"tilt left, 2 == tilt right)"
+msgstr ""
+"salida del sensor de inclinación: (-1 == no está inclinado, 0 == inclinado "
+"hacia adelante, 3 == inclinado hacia atrás, 1 == inclinado hacia la "
+"izquierda, 2 == inclinado hacia la derecha)"
+
+msgid "distance sensor output"
+msgstr "salida del sensor distancia"
+
+msgid "Motor A"
+msgstr "Motor A"
+
+msgid "returns the current speed of Motor A"
+msgstr "devuelve la velocidad actual del Motor A"
+
+msgid "Motor B"
+msgstr "Motor B"
+
+msgid "returns the current speed of Motor B"
+msgstr "devuelve la velocidad actual del Motor B"
+
+msgid "set the speed for Motor A"
+msgstr "establece la velocidad del Motor A"
+
+msgid "set the speed for Motor B"
+msgstr "establece la velocidad del Motor B"
+
+msgid "Palette of LEGO NXT blocks of motors"
+msgstr "Paleta de bloques LEGO NXT de motores"
+
+msgid "Palette of LEGO NXT blocks of sensors"
+msgstr "Paleta de bloques LEGO NXT de sensores"
+
+#: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:369
+#: TurtleArt/tabasics.py:432 TurtleArt/tawindow.py:4542
+msgid "color"
+msgstr "color"
+
+#: plugins/audio_sensors/audio_sensors.py:90 pysamples/grecord.py:206
+msgid "sound"
+msgstr "sonido"
+
+msgid "Please check the connection with the brick"
+msgstr "Por favor chequee la conexión con el brick"
+
+#, python-format
+msgid "Invalid port '%s'. Port must be: PORT A, B or C"
+msgstr "Puerto '%s' inválido. El puerto debe ser: PUERTO A, B o C"
+
+#, python-format
+msgid "Invalid port '%s'. Port must be: PORT 1, 2, 3 or 4"
+msgstr "Puerto '%s' inválido. El puerto debe ser: PUERTO 1, 2, 3 o 4"
+
+msgid "The value of power must be between -127 to 127"
+msgstr "El valor de potencia debe estar entre -127 y 127"
+
+#, python-format
+msgid "The parameter must be a integer, not '%s'"
+msgstr "El parámetro debe ser un entero, no '%s'"
+
+msgid "An error has occurred: check all connections and try to reconnect"
+msgstr "Un error ha ocurrido: chequee todas las conexiones y pruebe reconectar"
+
+#, python-format
+msgid "NXT found %s bricks"
+msgstr "NXT encontró %s bricks"
+
+msgid "NXT not found"
+msgstr "NXT no encontrado"
+
+#, python-format
+msgid "Brick number %s was not found"
+msgstr "El brick número %s no fue encontrado"
+
+msgid "nxt-motors"
+msgstr "motores-nxt"
+
+msgid "refresh NXT"
+msgstr "refrescar NXT"
+
+msgid "Search for a connected NXT brick."
+msgstr "Busca por un brick NXT conectado."
+
+msgid "NXT"
+msgstr "NXT"
+
+msgid "set current NXT device"
+msgstr "establece el dispositivo NXT actual"
+
+msgid "number of NXTs"
+msgstr "número de NXTs"
+
+msgid "number of NXT devices"
+msgstr "número de dispositivos NXT"
+
+msgid "brick name"
+msgstr "nombre del brick"
+
+msgid "Get the name of a brick."
+msgstr "Obtiene el nombre del brick."
+
+msgid "play tone"
+msgstr "reproducir tono"
+
+msgid "frequency"
+msgstr "frecuencia"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:421
+msgid "time"
+msgstr "tiempo"
+
+msgid "Play a tone at frequency for time."
+msgstr "Reproduce un tono a cierta frecuencia por un determinado tiempo."
+
+msgid "turn motor %s"
+msgstr "girar motor %s"
+
+msgid "port"
+msgstr "puerto"
+
+msgid "rotations"
+msgstr "rotaciones"
+
+msgid "power"
+msgstr "potencia"
+
+msgid "turn a motor"
+msgstr "gira un motor"
+
+msgid "synchronize %s motors"
+msgstr "sincronizar %s motores"
+
+#, fuzzy
+msgid "synchronize two motors connected in PORT B and PORT C"
+msgstr ""
+"#-#-#-#-#  es.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"sincroniza los motores conectados en el PUERTO B y PUERTO C\n"
+"#-#-#-#-#  es.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"sincroniza dos motores conectados en el PUERTO B y PUERTO C"
+
+msgid "PORT %s"
+msgstr "PUERTO %s"
+
+msgid "PORT %s of the brick"
+msgstr "PUERTO %s del brick"
+
+msgid "start motor"
+msgstr "iniciar motor"
+
+msgid "Run a motor forever."
+msgstr "Girar un motor por siempre."
+
+msgid "brake motor"
+msgstr "frenar motor"
+
+msgid "Stop a specified motor."
+msgstr "Frena un motor específico."
+
+msgid "reset motor"
+msgstr "reiniciar motor"
+
+msgid "Reset the motor counter."
+msgstr "Reinicia el contador del motor."
+
+msgid "motor position"
+msgstr "posición del motor"
+
+msgid "Get the motor position."
+msgstr "Obtiene la posición del motor."
+
+msgid "nxt-sensors"
+msgstr "sensores-nxt"
+
+msgid "read"
+msgstr "leer"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:328
+msgid "sensor"
+msgstr "sensor"
+
+msgid "Read sensor output."
+msgstr "Lee la salida del sensor."
+
+msgid "light sensor"
+msgstr "sensor de luz"
+
+msgid "gray sensor"
+msgstr "sensor de grises"
+
+msgid "button sensor"
+msgstr "sensor botón"
+
+msgid "distance sensor"
+msgstr "sensor de distancia"
+
+msgid "sound sensor"
+msgstr "sensor de sonido"
+
+msgid "color sensor"
+msgstr "sensor de color"
+
+msgid "set light"
+msgstr "prender luz"
+
+msgid "Set color sensor light."
+msgstr "Prende la luz del sensor de color."
+
+msgid "battery level"
+msgstr "nivel de batería"
+
+msgid "Get the battery level of the brick in millivolts"
+msgstr "Obtiene el nivel de batería del brick en milivolts."
+
+msgid "Palette of Arduino blocks"
+msgstr "Paleta de bloques Arduino"
+
+msgid "PWM"
+msgstr "PWM"
+
+msgid "SERVO"
+msgstr "SERVO"
+
+msgid "ERROR: Check the Arduino and the number of port."
+msgstr "ERROR: Chequee la Arduino y el número de puerto."
+
+msgid "ERROR: Value must be a number from 0 to 1."
+msgstr "ERROR: El valor debe ser un número entre 0 y 1."
+
+msgid "ERROR: Value must be a number from 0 to 180."
+msgstr "ERROR: El valor debe ser un número entre 0 y 180."
+
+msgid "ERROR: Value must be either HIGH or LOW, 0 or 1"
+msgstr "ERROR: El valor debe ser ALTO o BAJO, 0 o 1"
+
+msgid "ERROR: The mode must be either INPUT, OUTPUT, PWM or SERVO."
+msgstr "ERROR: El modo debe ser ENTRADA, SALIDA, PWM o SERVO."
+
+msgid "ERROR: The value must be an integer."
+msgstr "ERROR: El valor debe ser un entero."
+
+msgid "ERROR: The pin must be an integer."
+msgstr "ERROR: El pin debe ser un entero."
+
+msgid "ERROR: You must configure the mode for the pin."
+msgstr "ERROR: Debes configurar el modo del pin."
+
+msgid "arduino"
+msgstr "arduino"
+
+msgid "refresh Arduino"
+msgstr "refrescar Arduino"
+
+msgid "Search for connected Arduinos."
+msgstr "Busca por Arduinos conectadas."
+
+msgid "Arduino"
+msgstr "Arduino"
+
+msgid "set current Arduino board"
+msgstr "establece la placa Arduino actual"
+
+msgid "number of Arduinos"
+msgstr "número de Arduinos"
+
+msgid "number of Arduino boards"
+msgstr "número de placas"
+
+msgid "Arduino name"
+msgstr "nombre de Arduino"
+
+msgid "Get the name of an Arduino."
+msgstr "Obtiene el nombre de la Arduino."
+
+msgid "pin mode"
+msgstr "modo del pin"
+
+msgid "Select the pin function (INPUT, OUTPUT, PWM, SERVO)."
+msgstr "Selecciona la función del pin (ENTRADA, SALIDA, PWM, SERVO)."
+
+msgid "analog write"
+msgstr "escribir analógico"
+
+msgid "Write analog value in specified port."
+msgstr "Escribe un valor analógico en el puerto especificado."
+
+msgid "analog read"
+msgstr "leer analógico"
+
+msgid "Read value from analog port. Value may be between 0 and 1."
+msgstr ""
+"Lee un valor desde el puerto analógico. El valor puede estar entre 0 y 1."
+
+msgid "digital write"
+msgstr "escribir digital"
+
+msgid "Write digital value to specified port."
+msgstr "Escribe un valor digital en un puerto específico."
+
+msgid "digital read"
+msgstr "leer digital"
+
+msgid "Read value from digital port."
+msgstr "Lee un valor desde un puerto digital."
+
+msgid "Set HIGH value for digital port."
+msgstr "Setea el valor ALTO en el puerto digital."
+
+msgid "Configure Arduino port for digital input."
+msgstr "Configura el puerto de la Arduino como entrada digital."
+
+msgid "Configure Arduino port to drive a servo."
+msgstr "Configura el puerto de la Arduino para manejar un servo."
+
+msgid "Configure Arduino port for digital output."
+msgstr "Configura el puerto de la Arduino como salida digital."
+
+msgid "Configure Arduino port for PWM (pulse-width modulation)."
+msgstr ""
+"Configura el puerto de la Arduino para PWM modulación por ancho de pulsos)."
+
+msgid "Not found Arduino %s"
+msgstr "No se encontró Arduino %s"
+
+msgid "The pin must be an integer"
+msgstr "El pin debe ser un entero"
+
+msgid "The device must be an integer"
+msgstr "El número de dispositivo debe ser un entero"
+
+msgid "Error loading %s board"
+msgstr "Error cargando la placa %s"
+
+msgid "Palette for Rodi bots using Arduino"
+msgstr "Paleta para robots Rodi usando Arduino"
+
+msgid "ERROR: Check the connection to the robot."
+msgstr "ERROR: Verifica la conexión con el robot."
+
+msgid "ERROR: The speed must be a value between 0 and %d"
+msgstr "ERROR: La velocidad debe ser un valor entre 0 y %d"
+
+msgid "ERROR: The speed must be a value between %(min)d and %(max)d"
+msgstr "ERROR: La velocidad debe ser un valor entre %(min)d y %(max)d"
+
+msgid "refresh Rodi"
+msgstr "refrescar Rodi"
+
+msgid "refresh the state of the Rodi palette and blocks"
+msgstr "actualiza el estado de la paleta y de los bloques Rodi"
+
+msgid "move Rodi"
+msgstr "mover Rodi"
+
+msgid "moves the Rodi motors at the specified speed"
+msgstr "mueve los motores del Rodi a la velocidad especificada"
+
+msgid "stop Rodi"
+msgstr "detener Rodi"
+
+msgid "stops the Rodi robot"
+msgstr "detiene al robot Rodi"
+
+msgid "forward Rodi"
+msgstr "adelante Rodi"
+
+msgid "moves the Rodi robot forward"
+msgstr "mueve el robot Rodi hacia adelante"
+
+msgid "left Rodi"
+msgstr "izquierda Rodi"
+
+msgid "turns the Rodi robot at left"
+msgstr "gira el robot Rodi hacia la izquierda"
+
+msgid "right Rodi"
+msgstr "derecha Rodi"
+
+msgid "turns the Rodi robot at right"
+msgstr "gira el robot Rodi hacia la derecha"
+
+msgid "backward Rodi"
+msgstr "atrás Rodi"
+
+msgid "moves the Rodi robot backward"
+msgstr "mueve el robot Rodi hacia atrás"
+
+msgid "distance Rodi"
+msgstr "distancia Rodi"
+
+msgid "returns the distance as a value between 0 and 1"
+msgstr "devuelve la distancia como un valor entre 0 y 1"
+
+msgid "Rodi %s not found"
+msgstr "No se encontró Rodi %s"
+
+msgid "Palette of Expeyes blocks"
+msgstr "Paleta de bloques de Expeyes"
+
+msgid "set PVS"
+msgstr "establecer PVS"
+
+msgid "set programmable voltage output"
+msgstr "establece el voltaje de salida programable"
+
+msgid "set SQR1 voltage"
+msgstr "establecer voltaje SQR1"
+
+msgid "set square wave 1 voltage output"
+msgstr "establece una onda cuadrada en el voltaje de salida"
+
+msgid "set SQR2 voltage"
+msgstr "establecer voltaje SQR2"
+
+msgid "set square wave 2 voltage output"
+msgstr "establece una onda cuadrada en el voltaje de salida"
+
+msgid "set OD1"
+msgstr "establecer OD1"
+
+msgid "set digital output level (OD1) low (0) or high (1)"
+msgstr "establece el nivel de la salida digital (OD1) bajo (0) o alto (1)"
+
+msgid "IN1 level"
+msgstr "nivel IN1"
+
+msgid ""
+"returns 1 if IN1 voltage level >2.5 volts, 0 if IN1 voltage level <= 2.5 "
+"volts"
+msgstr ""
+"devuelve 1 si el voltaje de IN1 es mayor a 2,5 volts, 0 si el voltaje es <= "
+"2,5 volts"
+
+msgid "IN2 level"
+msgstr "nivel IN2"
+
+msgid ""
+"returns 1 if IN2 voltage level >2.5 volts, 0 if IN2 voltage level <= 2.5 "
+"volts"
+msgstr ""
+"devuelve 1 si el voltaje de IN2 es mayor a 2,5 volts, 0 si el voltaje es <= "
+"2,5 volts"
+
+msgid "SEN level"
+msgstr "nivel SEN"
+
+msgid ""
+"returns 1 if resistive sensor (SEN) voltage level > 2.5 volts, 0 if SEN "
+"voltage level <= 2.5 volts"
+msgstr ""
+"devuelve 1 si el voltaje del sensor resistivo (SEN) es mayor a 2,5 volts, 0 "
+"si el voltaje es <= 2,5 volts"
+
+msgid "capture"
+msgstr "capturar"
+
+msgid "input"
+msgstr "entrada"
+
+msgid "samples"
+msgstr "muestras"
+
+msgid "interval"
+msgstr "intervalo"
+
+msgid ""
+"capture multiple samples from input at interval (MS); results pushed to FIFO"
+msgstr ""
+"captura múltiples muestras de la entrada en intervalos (MS); los resultados "
+"son puestos en FIFO"
+
+msgid "A1"
+msgstr "A1"
+
+msgid "read analog input 1 voltage"
+msgstr "lee el voltaje de la entrada analógica 1"
+
+msgid "A2"
+msgstr "A2"
+
+msgid "read analog input 2 voltage"
+msgstr "lee el voltaje de la entrada analógica 2"
+
+msgid "IN1"
+msgstr "IN1"
+
+msgid "read input 1 voltage"
+msgstr "lee el voltaje de la entrada 1"
+
+msgid "IN2"
+msgstr "IN2"
+
+msgid "read input 2 voltage"
+msgstr "lee el voltaje de la entrada 2"
+
+msgid "SEN"
+msgstr "SEN"
+
+msgid "read analog sensor input voltage"
+msgstr "lee el voltaje de entrada del sensor analógico"
+
+msgid "SQR1"
+msgstr "SQR1"
+
+msgid "read square wave 1 voltage"
+msgstr "lee el voltaje de la onda cuadrada 1"
+
+msgid "SQR2"
+msgstr "SQR2"
+
+msgid "read square wave 2 voltage"
+msgstr "lee el voltaje de la onda cuadrada 2"
+
+msgid "PVS"
+msgstr "PVS"
+
+msgid "read programmable voltage"
+msgstr "leer voltaje programable"
+
+msgid "Expeyes device not found"
+msgstr "El dispositivo Expeyes no fue encontrado"
+
+msgid "corn"
+msgstr "maíz"
+
+msgid "chocolate chip cookie"
+msgstr "galleta"
+
+msgid "chocolate cake"
+msgstr "pastel"
+
+msgid "apple"
+msgstr "manzana"
+
+msgid "wheat bread"
+msgstr "pan"
+
+msgid "banana"
+msgstr "plátano"
+
+msgid "potato"
+msgstr "patata"
+
+msgid "sweet potato"
+msgstr "batata"
+
+msgid "tomato"
+msgstr "tomate"
+
+msgid "get fat"
+msgstr "Obtiene las grasas"
+
+msgid "get calories"
+msgstr "Obtiene las calorías"
+
+msgid "get carbohydrates"
+msgstr "Obtiene los carbohidratos"
+
+msgid "get protein"
+msgstr "Obtiene proteínas"
+
+msgid "get fiber"
+msgstr "Obtiene la fibra"
+
+msgid "get name"
+msgstr "Obtiene el nombre"
+
+msgid "fat"
+msgstr "grasas"
+
+msgid "calories"
+msgstr "calorías"
+
+msgid "carbohydrates"
+msgstr "carbohidratos"
+
+msgid "protein"
+msgstr "proteínas"
+
+msgid "fiber"
+msgstr "fibra"
+
+msgid "eat"
+msgstr "comer"
+
+msgid "digest"
+msgstr "digerir"
 
 #. TRANS: "name" option from activity.info file
 msgid "TurtleBlocks"
@@ -66,19 +1526,9 @@ msgstr "limpiar"
 msgid "clears the screen and reset the turtle"
 msgstr "limpia la pantalla y restaura la tortuga"
 
-#: TurtleArt/tabasics.py:207 TurtleArt/taconstants.py:139
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:991
-msgid "left"
-msgstr "izquierda"
-
 #: TurtleArt/tabasics.py:211
 msgid "turns turtle counterclockwise (angle in degrees)"
 msgstr "gira la tortuga en sentido anti-horario (ángulo en grados)"
-
-#: TurtleArt/tabasics.py:221 TurtleArt/taconstants.py:141
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1024
-msgid "right"
-msgstr "derecha"
 
 #: TurtleArt/tabasics.py:225
 msgid "turns turtle clockwise (angle in degrees)"
@@ -103,14 +1553,6 @@ msgstr "mueve la tortuga a lo largo de un arco"
 #: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
 msgid "set xy"
 msgstr "fijar xy"
-
-#: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
-msgid "x"
-msgstr "x"
-
-#: TurtleArt/tabasics.py:251 TurtleArt/tabasics.py:330
-msgid "y"
-msgstr "y"
 
 #: TurtleArt/tabasics.py:255 TurtleArt/tabasics.py:334
 msgid ""
@@ -170,18 +1612,9 @@ msgstr ""
 msgid "Palette of pen commands"
 msgstr "Paleta de órdenes de la pluma"
 
-#: TurtleArt/tabasics.py:351
-msgid "pen"
-msgstr "pluma"
-
 #: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:369
 msgid "fill screen"
 msgstr "rellenar pantalla"
-
-#: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:369
-#: TurtleArt/tabasics.py:432 TurtleArt/tawindow.py:4542
-msgid "color"
-msgstr "color"
 
 #: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:370
 #: TurtleArt/tabasics.py:444 TurtleArt/tawindow.py:4538
@@ -192,11 +1625,6 @@ msgstr "tono"
 #: TurtleArt/tabasics.py:360 TurtleArt/tabasics.py:374
 msgid "fills the background with (color, shade)"
 msgstr "rellena el fondo con (color, sombra)"
-
-#: TurtleArt/tabasics.py:370 TurtleArt/tabasics.py:454
-#: TurtleArt/tawindow.py:4539 TurtleArt/tawindow.py:4544
-msgid "gray"
-msgstr "gris"
 
 #: TurtleArt/tabasics.py:387
 msgid "set color"
@@ -535,7 +1963,8 @@ msgstr "si entonces"
 
 #: TurtleArt/tabasics.py:934
 msgid "if-then operator that uses boolean operators from Numbers palette"
-msgstr "operador si-entonces que usa operadores lógicos de la paleta de Números"
+msgstr ""
+"operador si-entonces que usa operadores lógicos de la paleta de Números"
 
 #: TurtleArt/tabasics.py:945
 msgid "else"
@@ -661,10 +2090,6 @@ msgstr "guardar en"
 #: TurtleArt/tabasics.py:1114 TurtleArt/tabasics.py:1130
 msgid "box"
 msgstr "caja"
-
-#: TurtleArt/tabasics.py:1114 TurtleArt/tawindow.py:5055
-msgid "value"
-msgstr "valor"
 
 #: TurtleArt/tabasics.py:1118 TurtleArt/tabasics.py:1133
 #: TurtleArt/tawindow.py:1582 TurtleArt/tawindow.py:1727
@@ -1246,10 +2671,6 @@ msgstr "acelerómetro"
 msgid "push acceleration in x, y, z to heap"
 msgstr "pone la aceleración en los ejes x, y z en la pila"
 
-#: plugins/audio_sensors/audio_sensors.py:90 pysamples/grecord.py:206
-msgid "sound"
-msgstr "sonido"
-
 #: plugins/audio_sensors/audio_sensors.py:91
 msgid "raw microphone input signal"
 msgstr "señal de entrada de micrófono"
@@ -1273,22 +2694,12 @@ msgstr ""
 "frecuencia de la componente más intensa del sonido presente en la entrada de "
 "micrófono"
 
-#: plugins/audio_sensors/audio_sensors.py:157
-#: plugins/audio_sensors/audio_sensors.py:175
-msgid "resistance"
-msgstr "resistencia"
-
 #: plugins/audio_sensors/audio_sensors.py:158
 #: plugins/audio_sensors/audio_sensors.py:176
 msgid "microphone input resistance"
 msgstr ""
 "valor de la resistencia conectada a la entrada de micrófono (rango de "
 "medición: 700 a 14000 ohms)"
-
-#: plugins/audio_sensors/audio_sensors.py:163
-#: plugins/audio_sensors/audio_sensors.py:181
-msgid "voltage"
-msgstr "voltaje"
 
 #: plugins/audio_sensors/audio_sensors.py:164
 #: plugins/audio_sensors/audio_sensors.py:182
@@ -1301,15 +2712,6 @@ msgstr ""
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:133
 msgid "Palette of media objects"
 msgstr "Paleta de bloques medios"
-
-#: plugins/camera_sensor/camera_sensor.py:83
-#: plugins/camera_sensor/camera_sensor.py:99
-#: plugins/camera_sensor/camera_sensor.py:136
-#: plugins/camera_sensor/camera_sensor.py:152
-#: plugins/light_sensor/light_sensor.py:58
-#: plugins/light_sensor/light_sensor.py:66
-msgid "brightness"
-msgstr "brillo"
 
 #: plugins/camera_sensor/camera_sensor.py:85
 #: plugins/camera_sensor/camera_sensor.py:138
@@ -1524,10 +2926,6 @@ msgid "plays a sinewave at frequency, amplitude, and duration (in seconds)"
 msgstr ""
 "reproduce una sinusoide desde frecuencia, amplitud y duración (en segundos)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:328
-msgid "sensor"
-msgstr "sensor"
-
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:333
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:344
 msgid "button down"
@@ -1596,10 +2994,6 @@ msgstr "la tortuga ve"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:412
 msgid "returns the color that the turtle \"sees\""
 msgstr "muestra el color que \"ve\" la tortuga"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:421
-msgid "time"
-msgstr "tiempo"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:424
 msgid "elapsed time (in seconds) since program started"
@@ -1766,7 +3160,8 @@ msgstr "bloque Python"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:716
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:734
 msgid "runs code found in the tamyblock.py module found in the Journal"
-msgstr "ejecuta el código del módulo tamyblock.py que se encuentra en el Diario"
+msgstr ""
+"ejecuta el código del módulo tamyblock.py que se encuentra en el Diario"
 
 #. TRANS: URL is universal resource locator
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:750
@@ -1922,10 +3317,6 @@ msgstr "debajo"
 msgid "ycor of bottom of screen"
 msgstr "coory del limite inferior de la pantalla"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1013
-msgid "width"
-msgstr "anchura"
-
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1016
 msgid "the canvas width"
 msgstr "el ancho del lienzo"
@@ -1937,10 +3328,6 @@ msgstr "xcor del lado derecho de la pantalla"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1038
 msgid "ycor of top of screen"
 msgstr "ycor del limite superior de la pantalla"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1046
-msgid "height"
-msgstr "altura"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1049
 msgid "the canvas height"
@@ -2127,7 +3514,6 @@ msgstr "¿Guardar el proyecto?"
 
 #: turtleblocks.py:558
 #, python-format
-#, python-format,
 msgid "Plugin %s already installed"
 msgstr "El plugin %s ya está instalado."
 
@@ -2135,1483 +3521,636 @@ msgstr "El plugin %s ya está instalado."
 msgid "myproject"
 msgstr "miproyecto"
 
-#~ msgid "Load project"
-#~ msgstr "Cargar proyecto"
+msgid "Load project"
+msgstr "Cargar proyecto"
 
-#~ msgid "Hide sample projects"
-#~ msgstr "Ocultar proyectos de ejemplo"
+msgid "Hide sample projects"
+msgstr "Ocultar proyectos de ejemplo"
 
-#~ msgid "palette"
-#~ msgstr "paleta"
+msgid "palette"
+msgstr "paleta"
 
-#~ msgid "set text color"
-#~ msgstr "fijar el color del texto"
+msgid "set text color"
+msgstr "fijar el color del texto"
 
-#~ msgid "sets color of text drawn by the turtle"
-#~ msgstr "fija el color del texto dibujado por la tortuga"
+msgid "sets color of text drawn by the turtle"
+msgstr "fija el color del texto dibujado por la tortuga"
 
-#~ msgid "set text size"
-#~ msgstr "fijar tamaño del texto"
+msgid "set text size"
+msgstr "fijar tamaño del texto"
 
-#~ msgid "sets size of text drawn by the turtle"
-#~ msgstr "fija el tamaño del texto dibujado por la tortuga"
+msgid "sets size of text drawn by the turtle"
+msgstr "fija el tamaño del texto dibujado por la tortuga"
 
-#~ msgid "presentation 1x1"
-#~ msgstr "presentación 1x1"
+msgid "presentation 1x1"
+msgstr "presentación 1x1"
 
-#~ msgid "presentation 2x1"
-#~ msgstr "presentación 2x1"
+msgid "presentation 2x1"
+msgstr "presentación 2x1"
 
-#~ msgid "presentation 1x2"
-#~ msgstr "presentación 1x2"
+msgid "presentation 1x2"
+msgstr "presentación 1x2"
 
-#~ msgid "presentation 2x2"
-#~ msgstr "presentación 2x2"
+msgid "presentation 2x2"
+msgstr "presentación 2x2"
 
-#~ msgid "make a uturn"
-#~ msgstr "hacer una vuelta en U"
+msgid "make a uturn"
+msgstr "hacer una vuelta en U"
 
-#~ msgid "Turtle Art"
-#~ msgstr "TortugArte"
+msgid "adjust LED intensity between 0 and 255"
+msgstr "ajusta la intensidad del LED entre 0 y 255"
 
-#~ msgid "Turtle Art Mini"
-#~ msgstr "TortugArte Mini"
+msgid "returns the object gray level as a number between 0 and 1023"
+msgstr ""
+"devuelve el nivel de luz en el ambiente como un número entre 0 y 1023"
 
-#~ msgid "Turtle Confusion"
-#~ msgstr "TortugArte Confusión"
+msgid "returns 1 when the button is press and 0 otherwise"
+msgstr "devuelve 1 cuando el botón está presionado y 0 en otro caso"
 
-#~ msgid "Select a challenge"
-#~ msgstr "Selecciona un desafío"
+msgid "returns the ambient light level as a number between 0 and 1023"
+msgstr ""
+"devuelve el nivel de luz en el ambiente como un número entre 0 y 1023"
 
-#~ msgid "Amazonas Tortuga"
-#~ msgstr "Tortuga Amazonas"
+msgid "returns the ambient temperature as a number between 0 and 255"
+msgstr "devuelve la temperatura en el ambiente como un número entre 0 y 255"
 
-#~ msgid "Palette of Mexican pesos"
-#~ msgstr "Paleta de Pesos Mexicanos"
+msgid ""
+"returns the distance from the object in front of the sensor as a number "
+"between 0 and 255"
+msgstr ""
+"devuelve la distancia del objeto en frente al sensor como un número entre "
+"0 y 255"
 
-#~ msgid "Palette of Colombian pesos"
-#~ msgstr "Paleta de Pesos Colombianos"
+msgid "returns 0 or 1 depending on the sensor inclination"
+msgstr "devuelve 0 o 1 dependiendo de la inclinación del sensor"
 
-#~ msgid "Palette of Rwandan francs"
-#~ msgstr "Paleta de Francos de Ruanda"
+msgid "returns 1 when the sensors detects a magnetic field, 0 otherwise"
+msgstr ""
+"devuelve 1 cuando el sensor detecta un campo magnético, 0 en otro caso"
 
-#~ msgid "Palette of US dollars"
-#~ msgstr "Paleta de Dólares Americanos"
+msgid "switches from 0 to 1, the frequency depends on the vibration"
+msgstr "oscila entre 0 y 1 dependiendo de la vibración"
 
-#~ msgid "Palette of Australian dollars"
-#~ msgstr "Paleta de Dólares Australianos"
+msgid "returns the value of the resistance"
+msgstr "devuleve el valor de la resistencia"
 
-#~ msgid "Palette of Paraguayan Guaranies"
-#~ msgstr "Paleta de Guaraníes Paraguayos"
+msgid "grayscale"
+msgstr "escala de gris"
 
-#~ msgid "Palette of Peruvian Nuevo Soles"
-#~ msgstr "Paletea de Nuevos Soles Peruanos"
+msgid "ambient light"
+msgstr "luz ambiente"
 
-#~ msgid "Palette of Uruguayan Pesos"
-#~ msgstr "Paleta de Pesos Uruguayos"
+msgid "magnetic induction"
+msgstr "campo magnético"
 
-#~ msgid "TurtleBots"
-#~ msgstr "TurtleBots"
+msgid "vibration"
+msgstr "vibración"
 
-#~ msgid "adjust LED intensity between 0 and 255"
-#~ msgstr "ajusta la intensidad del LED entre 0 y 255"
+msgid "returns the battery charge as a number between 0 and 255"
+msgstr ""
+"devuelve la carga de la batería del robot como un número entre 0 y 255"
 
-#~ msgid "returns the object gray level as a number between 0 and 1023"
-#~ msgstr "devuelve el nivel de luz en el ambiente como un número entre 0 y 1023"
+msgid "the speed must be a value between 0 and 1023"
+msgstr "la velocidad debe ser un valor entre 0 y 1023"
 
-#~ msgid "returns 1 when the button is press and 0 otherwise"
-#~ msgstr "devuelve 1 cuando el botón está presionado y 0 en otro caso"
+msgid "move the Butia robot forward a predefined distance"
+msgstr "mueve el robot Butiá hacia adelante una distancia predefinida"
 
-#~ msgid "returns the ambient light level as a number between 0 and 1023"
-#~ msgstr "devuelve el nivel de luz en el ambiente como un número entre 0 y 1023"
+msgid "move the Butia robot backward a predefined distance"
+msgstr "mueve el robot Butiá hacia atrás una distancia predefinida"
 
-#~ msgid "returns the ambient temperature as a number between 0 and 255"
-#~ msgstr "devuelve la temperatura en el ambiente como un número entre 0 y 255"
+msgid "turn Butia"
+msgstr "girar Butiá"
 
-#~ msgid ""
-#~ "returns the distance from the object in front of the sensor as a number "
-#~ "between 0 and 255"
-#~ msgstr ""
-#~ "devuelve la distancia del objeto en frente al sensor como un número entre 0 "
-#~ "y 255"
+msgid "turn the Butia robot x degrees"
+msgstr "gira el robot Butiá x grados"
 
-#~ msgid "returns 0 or 1 depending on the sensor inclination"
-#~ msgstr "devuelve 0 o 1 dependiendo de la inclinación del sensor"
+msgid ""
+"if set to 0 then color averaging is off during calibration; for other "
+"values it is on"
+msgstr ""
+"Si está en 0 entonces el color promedio está apagado durante la "
+"calibración; para otros valores está encendido"
 
-#~ msgid "returns 1 when the sensors detects a magnetic field, 0 otherwise"
-#~ msgstr "devuelve 1 cuando el sensor detecta un campo magnético, 0 en otro caso"
+msgid ""
+"Join two objects together (the most recent object created and the object "
+"at point x, y)."
+msgstr ""
+"Une dos objetos (el objeto creado mas reciententemente y el objeto en el "
+"punto x, y)."
 
-#~ msgid "switches from 0 to 1, the frequency depends on the vibration"
-#~ msgstr "oscila entre 0 y 1 dependiendo de la vibración"
+msgid ""
+"tilt sensor output: (-1 == no tilt, 0 == tilt forward, 3 == tilt back, 1 "
+"== tilt left, 2 == tilt right)"
+msgstr ""
+"salida del sensor de inclinación: (-1 == no está inclinado, 0 == "
+"inclinado hacia adelante, 3 == inclinado hacia atrás, 1 == inclinado "
+"hacia la izquierda, 2 == inclinado hacia la derecha)"
 
-#~ msgid "returns the value of the resistance"
-#~ msgstr "devuleve el valor de la resistencia"
+msgid "returns the current value of Motor A"
+msgstr "devuelve el valor actual del Motor A"
 
-#~ msgid "LED"
-#~ msgstr "LED"
+msgid "returns the current value of Motor B"
+msgstr "devuelve el valor actual del Motor B"
 
-#~ msgid "button"
-#~ msgstr "botón"
+msgid "set the value for Motor A"
+msgstr "setea el valor del Motor A"
 
-#~ msgid "grayscale"
-#~ msgstr "escala de gris"
+msgid "set the value for Motor B"
+msgstr "setea el valor del Motor B"
 
-#~ msgid "ambient light"
-#~ msgstr "luz ambiente"
+msgid "WeDo is unavailable"
+msgstr "WeDo no está disponible"
 
-#~ msgid "temperature"
-#~ msgstr "temperatura"
+msgid "WeDo %d is unavailable; defaulting to 1"
+msgstr "Wedo %d no está disponible; usando por defecto el 1"
 
-#~ msgid "distance"
-#~ msgstr "distancia"
+msgid "%(device)s is unavailable on WeDo %(wedo_number)d"
+msgstr "%(device)s no está disponible en el WeDo %(wedo_number)d"
 
-#~ msgid "tilt"
-#~ msgstr "inclinación"
+msgid "touch"
+msgstr "botón"
 
-#~ msgid "magnetic induction"
-#~ msgstr "campo magnético"
+msgid "ultrasonic"
+msgstr "distancia"
 
-#~ msgid "vibration"
-#~ msgstr "vibración"
+msgid "grey"
+msgstr "gris"
 
-#~ msgid "Butia Robot"
-#~ msgstr "Robot Butiá"
+msgid ""
+"turn motor\n"
+"\n"
+msgstr ""
+"girar motor\n"
+"\n"
 
-#~ msgid "refresh Butia"
-#~ msgstr "refrescar Butiá"
+msgid ""
+"synchronize\n"
+"\n"
+"motors"
+msgstr ""
+"sincronizar\n"
+"\n"
+"motores"
 
-#~ msgid "refresh the state of the Butia palette and blocks"
-#~ msgstr "actualiza el estado de la paleta y de los bloques Butiá"
+msgid "steering"
+msgstr "dirección"
 
-#~ msgid "battery charge Butia"
-#~ msgstr "carga de batería Butiá"
+msgid "PORT A"
+msgstr "PUERTO A"
 
-#~ msgid "returns the battery charge as a number between 0 and 255"
-#~ msgstr "devuelve la carga de la batería del robot como un número entre 0 y 255"
+msgid "PORT A of the brick"
+msgstr "PUERTO A del brick"
 
-#~ msgid "speed Butia"
-#~ msgstr "velocidad Butiá"
+msgid "PORT B"
+msgstr "PUERTO B"
 
-#~ msgid "set the speed of the Butia motors"
-#~ msgstr "establece la velocidad de los motores del Butiá"
+msgid "PORT B of the brick"
+msgstr "PUERTO B del brick"
 
-#~ msgid "the speed must be a value between 0 and 1023"
-#~ msgstr "la velocidad debe ser un valor entre 0 y 1023"
+msgid "PORT C"
+msgstr "PUERTO C"
 
-#~ msgid "forward Butia"
-#~ msgstr "adelante Butiá"
+msgid "PORT C of the brick"
+msgstr "PUERTO C del brick"
 
-#~ msgid "move the Butia robot forward"
-#~ msgstr "mueve el robot Butiá hacia adelante"
+msgid "PORT 1"
+msgstr "PUERTO 1"
 
-#~ msgid "move the Butia robot forward a predefined distance"
-#~ msgstr "mueve el robot Butiá hacia adelante una distancia predefinida"
+msgid "PORT 1 of the brick"
+msgstr "PUERTO 1 del brick"
 
-#~ msgid "left Butia"
-#~ msgstr "izquierda Butiá"
+msgid "PORT 2"
+msgstr "PUERTO 2"
 
-#~ msgid "turn the Butia robot at left"
-#~ msgstr "gira el robot Butiá hacia la izquierda"
+msgid "PORT 2 of the brick"
+msgstr "PUERTO 2 del brick"
 
-#~ msgid "backward Butia"
-#~ msgstr "atrás Butiá"
+msgid "grey sensor"
+msgstr "sensor de grises"
 
-#~ msgid "move the Butia robot backward"
-#~ msgstr "mueve el robot Butiá hacia atrás"
+msgid "PORT 3"
+msgstr "PUERTO 3"
 
-#~ msgid "move the Butia robot backward a predefined distance"
-#~ msgstr "mueve el robot Butiá hacia atrás una distancia predefinida"
+msgid "PORT 3 of the brick"
+msgstr "PUERTO 3 del brick"
 
-#~ msgid "right Butia"
-#~ msgstr "derecha Butiá"
+msgid "touch sensor"
+msgstr "sensor táctil"
 
-#~ msgid "turn the Butia robot at right"
-#~ msgstr "gira el robot Butiá hacia la derecha"
+msgid "PORT 4"
+msgstr "PUERTO 4"
 
-#~ msgid "turn Butia"
-#~ msgstr "girar Butiá"
+msgid "PORT 4 of the brick"
+msgstr "PUERTO 4 del brick"
 
-#~ msgid "turn the Butia robot x degrees"
-#~ msgstr "gira el robot Butiá x grados"
+msgid "Get battery level of the brick"
+msgstr "Obtiene el nivel de batería del brick"
 
-#~ msgid "stop Butia"
-#~ msgstr "detener Butiá"
+msgid "ERROR: Value must be a number from 0 to 255."
+msgstr "ERROR: El valor debe ser un número entre 0 y 255."
 
-#~ msgid "stop the Butia robot"
-#~ msgstr "detiene al robot Butiá"
+msgid "ERROR: Value must be either HIGH or LOW."
+msgstr "ERROR: El valor debe ser ALTO o BAJO."
 
-#~ msgid "Butia"
-#~ msgstr "Butiá"
+msgid ""
+"Read value from analog port. Value may be between 0 and 1023. Use Vref to "
+"determine voltage. For USB, volt=((read)*5)/1024) approximately."
+msgstr ""
+"Lee un valor desde un puerto analógico. El valor puede ser entre 0 y "
+"1023. Use Vref para determinar el voltaje. Para USB, volt=((leer)*5/1024) "
+"aproximadamente."
 
-#~ msgid "Error importing Pygame. This plugin require Pygame 1.9"
-#~ msgstr "Error importando Pygame. Este plugin requiere Pygame 1.9"
+msgid ""
+"set the speed of the Butia motors as a value between 0 and 1023, passed "
+"by an argument"
+msgstr ""
+"setea la velocidad de los motores del Butiá como un valor entre 0 y 1023 "
+"pasado por argumento"
 
-#~ msgid "Error on initialization of the camera"
-#~ msgstr "Error en la inicialización de la cámara"
+msgid "Error in stop camera"
+msgstr "Error deteniendo la cámara"
 
-#~ msgid "No camera was found"
-#~ msgstr "No se encontraró cámara"
+msgid "Error in start camera"
+msgstr "Error en iniciar cámara"
 
-#~ msgid "Error stopping camera"
-#~ msgstr "Error deteniendo cámara"
+msgid "if 0: average color is off when calibrates; for other values is on"
+msgstr ""
+"Si es 0: el color promedio se apaga cuando se calibra; para otros valores "
+"está encendido"
 
-#~ msgid "Error starting camera"
-#~ msgstr "Error iniciando cámara"
+msgid "NxT"
+msgstr "NXT"
 
-#~ msgid "Error in get mask"
-#~ msgstr "Error en obtener máscara"
+msgid "number of NxTs"
+msgstr "número de NXTs"
 
-#~ msgid "FollowMe"
-#~ msgstr "FollowMe"
+msgid "turn the Butia robot to the left"
+msgstr "gira el robot Butiá hacia la izquierda"
 
-#~ msgid "refresh FollowMe"
-#~ msgstr "refrescar FollowMe"
+msgid "display Butia"
+msgstr "pantalla Butiá"
 
-#~ msgid "Search for a connected camera."
-#~ msgstr "Busca una cámara conectada."
+msgid "Hello World    Butia            "
+msgstr "Hola Mundo                 Butia"
 
-#~ msgid "calibration"
-#~ msgstr "calibración"
+msgid "print text in Butia robot 32-character ASCII display"
+msgstr "imprime texto en la pantalla de 32 caracteres ASCII del Butiá"
 
-#~ msgid "store a personalized calibration"
-#~ msgstr "almacena una calibración personalizada"
+msgid "Error making mask"
+msgstr "Error haciendo máscara"
 
-#~ msgid "return a personalized calibration"
-#~ msgstr "devuelve una calibración personalizada"
+msgid "G"
+msgstr "G"
 
-#~ msgid "follow"
-#~ msgstr "seguir"
+msgid "R"
+msgstr "R"
 
-#~ msgid "follow a color or calibration"
-#~ msgstr "seguir un color o calibración"
+msgid "B"
+msgstr "B"
 
-#~ msgid "set the camera brightness as a value between 0 to 255."
-#~ msgstr "establece el brillo de la cámara como un valor entre 0 y 255."
+msgid "follow a RGB color"
+msgstr "seguir color RGB"
 
-#~ msgid "minimum pixels"
-#~ msgstr "mínimo de pixeles"
+msgid "save calibration 1"
+msgstr "guardar calibración 1"
 
-#~ msgid "set the minimal number of pixels to follow"
-#~ msgstr "define el mínimo número de píxeles a seguir"
+msgid "stores a calibration in calibration 1"
+msgstr "almacena una calibración en calibración 1"
 
-#~ msgid "threshold"
-#~ msgstr "umbral"
+msgid "save calibration 2"
+msgstr "guardar calibración 2"
 
-#~ msgid "set a threshold for a RGB color"
-#~ msgstr "define el umbral para un color RGB"
+msgid "stores a calibration in calibration 2"
+msgstr "almacena una calibración en calibración 2"
 
-#~ msgid "camera mode"
-#~ msgstr "modo de cámara"
+msgid "calibration 1"
+msgstr "calibración 1"
 
-#~ msgid "set the color mode of the camera: RGB; YUV or HSV"
-#~ msgstr "establece el modo de color de la cámara: RGB, YUV o HSV"
+msgid "return calibration 1"
+msgstr "devuelve la calibración 1"
 
-#~ msgid "get brightness"
-#~ msgstr "obtener brillo"
+msgid "calibration 2"
+msgstr "calibración 2"
 
-#~ msgid "get the brightness of the ambient light"
-#~ msgstr "obtiene el brillo de la luz ambiente"
+msgid "return calibration 2"
+msgstr "devuelve la calibración 2"
 
-#~ msgid "average color"
-#~ msgstr "color promedio"
+msgid "Please check the port."
+msgstr "Por favor chequee el puerto."
 
-#~ msgid ""
-#~ "if set to 0 then color averaging is off during calibration; for other values "
-#~ "it is on"
-#~ msgstr ""
-#~ "Si está en 0 entonces el color promedio está apagado durante la calibración; "
-#~ "para otros valores está encendido"
+msgid "NXT found"
+msgstr "NXT encontrado"
 
-#~ msgid "x position"
-#~ msgstr "posición x"
+msgid ""
+"turn motor\n"
+"rotations"
+msgstr ""
+"girar motor\n"
+"rotaciones"
 
-#~ msgid "return x position"
-#~ msgstr "retorna la posición x"
+msgid ""
+"synchronize motors\n"
+"steering"
+msgstr ""
+"sincronizar motores\n"
+"dirección"
 
-#~ msgid "y position"
-#~ msgstr "posición y"
+msgid "delay Butia"
+msgstr "espera Butiá"
 
-#~ msgid "return y position"
-#~ msgstr "retorna la posición y"
+msgid "wait for argument seconds"
+msgstr "Espera los segundos pasados por argumento"
 
-#~ msgid "pixels"
-#~ msgstr "píxeles"
+msgid "refresh Butia palette"
+msgstr "refrescar paleta Butiá"
 
-#~ msgid "return the number of pixels of the biggest blob"
-#~ msgstr "devuelve el número de píxeles de la mancha mas grande"
+msgid "The camera was not found."
+msgstr "La cámara no fue encontrada."
 
-#~ msgid "set the color mode of the camera to RGB"
-#~ msgstr "establece el modo de color de la cámara a RGB"
+msgid "then else"
+msgstr "entonces sino"
 
-#~ msgid "set the color mode of the camera to YUV"
-#~ msgstr "establece el modo de color de la cámara a YUV"
+msgid "bottom of a collapsible stack"
+msgstr "parte inferior de una pila plegable"
 
-#~ msgid "set the color mode of the camera to HSV"
-#~ msgstr "establece el modo de color de la cámara a HSV"
+msgid "collapsed stack: click to open"
+msgstr "pila plegable: clic para abrir"
 
-#~ msgid "empty calibration"
-#~ msgstr "calibración vacía"
+msgid "bottom block in a collapsed stack: click to open"
+msgstr "bloque inferior de una pila plegable: clic para abrir"
 
-#~ msgid "error in string conversion"
-#~ msgstr "error en la conversión de la cadena de texto"
+msgid "top of stack"
+msgstr "cima de la pila"
 
-#~ msgid "SumBot"
-#~ msgstr "SumBot"
+msgid "label"
+msgstr "etiqueta"
 
-#~ msgid "speed SumBot"
-#~ msgstr "velocidad SumBot"
+msgid "True"
+msgstr "Verdadero"
 
-#~ msgid "submit the speed to the SumBot"
-#~ msgstr "setea la velocidad del SumBot"
+msgid "False"
+msgstr "Falso"
 
-#~ msgid "set the default speed for the movement commands"
-#~ msgstr "setea la velocidad por defecto para los comandos de movimiento"
+msgid "Save as HTML"
+msgstr "Guardar como HTML"
 
-#~ msgid "forward SumBot"
-#~ msgstr "adelante SumBot"
+msgid "<Ctrl>d"
+msgstr "<Ctrl>d"
 
-#~ msgid "move SumBot forward"
-#~ msgstr "mueve el SumBot hacia adelante"
+msgid "Palette of US currencies"
+msgstr "Paleta de monedas de los Estados Unidos"
 
-#~ msgid "backward SumBot"
-#~ msgstr "atrás SumBot"
+msgid "Palette of Australian currencies"
+msgstr "Paleta de monedas de Australia"
 
-#~ msgid "move SumBot backward"
-#~ msgstr "mueve el SumBot hacia atrás"
+msgid "Palette of Guaranies"
+msgstr "Paleta de Guaraníes"
 
-#~ msgid "stop SumBot"
-#~ msgstr "detener SumBot"
+msgid "Palette of Soles"
+msgstr "Paleta de Soles"
 
-#~ msgid "stop the SumBot"
-#~ msgstr "detiene el SumBot"
+msgid "presentation"
+msgstr "presentación"
 
-#~ msgid "left SumBot"
-#~ msgstr "izquierda SumBot"
+msgid "follow a turtle color"
+msgstr "seguir un color de tortuga"
 
-#~ msgid "turn left the SumBot"
-#~ msgstr "gira el SumBot hacia la izquierda"
+msgid "calibrate"
+msgstr "calibrar"
 
-#~ msgid "right SumBot"
-#~ msgstr "derecha SumBot"
-
-#~ msgid "turn right the SumBot"
-#~ msgstr "gira el SumBot hacia la derecha"
-
-#~ msgid "angle to center"
-#~ msgstr "ángulo al centro"
-
-#~ msgid "get the angle to the center of the dohyo"
-#~ msgstr "obtiene el ángulo al centro del dohyo"
-
-#~ msgid "angle to Enemy"
-#~ msgstr "ángulo al Enemigo"
-
-#~ msgid "get the angle to the Enemy"
-#~ msgstr "obtiene el ángulo al Enemigo"
-
-#~ msgid "x coor. SumBot"
-#~ msgstr "coor. x SumBot"
-
-#~ msgid "get the x coordinate of the SumBot"
-#~ msgstr "obtiene la coordenada x del Sumbot"
-
-#~ msgid "y coor. SumBot"
-#~ msgstr "coor. y SumBot"
-
-#~ msgid "get the y coordinate of the SumBot"
-#~ msgstr "obtiene la coordenada y del Sumbot"
-
-#~ msgid "x coor. Enemy"
-#~ msgstr "coor. x Enemigo"
-
-#~ msgid "get the x coordinate of the Enemy"
-#~ msgstr "obtiene la coordenada x del Enemigo"
-
-#~ msgid "y coor. Enemy"
-#~ msgstr "coor. y Enemigo"
-
-#~ msgid "get the y coordinate of the Enemy"
-#~ msgstr "obtiene la coordenada y del Enemigo"
-
-#~ msgid "rotation SumBot"
-#~ msgstr "rotación SumBot"
-
-#~ msgid "get the rotation of the Sumbot"
-#~ msgstr "obtiene la rotación del SumBot"
-
-#~ msgid "rotation Enemy"
-#~ msgstr "rotación Enemigo"
-
-#~ msgid "get the rotation of the Enemy"
-#~ msgstr "obtiene la rotación del Enemigo"
-
-#~ msgid "distance to center"
-#~ msgstr "distancia al centro"
-
-#~ msgid "get the distance to the center of the dohyo"
-#~ msgstr "obtiene la distancia al centro del dohyo"
-
-#~ msgid "distance to Enemy"
-#~ msgstr "distancia al Enemigo"
-
-#~ msgid "get the distance to the Enemy"
-#~ msgstr "obtiene la distancia al Enemigo"
-
-#~ msgid "update information"
-#~ msgstr "actualizar información"
-
-#~ msgid "update information from the server"
-#~ msgstr "actualiza la información desde el servidor"
-
-#~ msgid "Palette of physics blocks"
-#~ msgstr "Paleta de bloques de física"
-
-#~ msgid "start polygon"
-#~ msgstr "comenzar polígono"
-
-#~ msgid "Begin defining a new polygon based on the current Turtle xy position."
-#~ msgstr ""
-#~ "Comienza a definir un nuevo polígono basado en la posición actual xy de la "
-#~ "Tortuga."
-
-#~ msgid "add point"
-#~ msgstr "agregar punto"
-
-#~ msgid ""
-#~ "Add a new point to the current polygon based on the current Turtle xy "
-#~ "position."
-#~ msgstr ""
-#~ "Agrega un nuevo punto al polígono actual basado en la posición actual xy de "
-#~ "la Tortuga."
-
-# finalizar polígono
-#~ msgid "end polygon"
-#~ msgstr "terminar polígono"
-
-#~ msgid "Define a new polygon."
-#~ msgstr "Define un nuevo polígono."
-
-#~ msgid "end filled polygon"
-#~ msgstr "termina polígono relleno"
-
-#~ msgid "Not a simple polygon"
-#~ msgstr "No es un polígono simple"
-
-#~ msgid "Define a new filled polygon."
-#~ msgstr "Define un nuevo polígono relleno."
-
-#~ msgid "triangle"
-#~ msgstr "triángulo"
-
-#~ msgid "base"
-#~ msgstr "base"
-
-#~ msgid "Add a triangle object to the project."
-#~ msgstr "Agrega un objeto triángulo al proyecto."
-
-#~ msgid "circle"
-#~ msgstr "círculo"
-
-#~ msgid "Add a circle object to the project."
-#~ msgstr "Agrega un objeto círculo al proyecto."
-
-#~ msgid "rectangle"
-#~ msgstr "rectángulo"
-
-#~ msgid "Add a rectangle object to the project."
-#~ msgstr "Agrega un objeto rectángulo al proyecto."
-
-#~ msgid "reset"
-#~ msgstr "resetear"
-
-#~ msgid "Reset the project; clear the object list."
-#~ msgstr "Resetea el proyecto; limpia la lista de objetos."
-
-#~ msgid "motor"
-#~ msgstr "motor"
-
-#~ msgid "torque"
-#~ msgstr "torque"
-
-#~ msgid "speed"
-#~ msgstr "velocidad"
-
-#~ msgid ""
-#~ "Motor torque and speed range from 0 (off) to positive numbers; motor is "
-#~ "placed on the most recent object created."
-#~ msgstr ""
-#~ "El torque y velocidad del motor están en el rango que va de 0 (apagado) a "
-#~ "números positivos; el motor es colocado en el objeto creado mas "
-#~ "recientemente."
-
-# puede ser: alfiler, perno, clavija, clavo - En Physics es: Tachuela (asi que por coherencia, usé Tachuela)
-#~ msgid "pin"
-#~ msgstr "tachuela"
-
-#~ msgid "Pin an object down so that it cannot fall."
-#~ msgstr "Sujeta un objeto para que no se caiga."
-
-# enPhysics es unión... podría ser articulación
-#~ msgid "joint"
-#~ msgstr "unión"
-
-#~ msgid ""
-#~ "Join two objects together (the most recent object created and the object at "
-#~ "point x, y)."
-#~ msgstr ""
-#~ "Une dos objetos (el objeto creado mas reciententemente y el objeto en el "
-#~ "punto x, y)."
-
-#~ msgid "save as Physics activity"
-#~ msgstr "guardar como Actividad Física"
-
-#~ msgid "Save the project to the Journal as a Physics activity."
-#~ msgstr "Guarda el proyecto al Diario como una Actividad de Física."
-
-#~ msgid "gear"
-#~ msgstr "círculo"
-
-#~ msgid "Add a gear object to the project."
-#~ msgstr "Agrega un objeto engranaje al proyecto."
-
-#~ msgid "density"
-#~ msgstr "densidad"
-
-#~ msgid ""
-#~ "Set the density property for objects (density can be any positive number)."
-#~ msgstr ""
-#~ "Establece la densidad de los objetos (la densidad puede ser cualquier número "
-#~ "positivo)."
-
-#~ msgid "friction"
-#~ msgstr "fricción"
-
-#~ msgid ""
-#~ "Set the friction property for objects (value from 0 to 1, where 0 turns "
-#~ "friction off and 1 is strong friction)."
-#~ msgstr ""
-#~ "Establece la propiedad de fricción de los objetos (un valor entre 0 y 1, "
-#~ "donde 0 es sin fricción y el 1 es fuerte)."
-
-# podría ser elasticidad?
-#~ msgid "bounciness"
-#~ msgstr "restitución"
-
-# very bouncy = muy restituible?
-#~ msgid ""
-#~ "Set the bounciness property for objects (a value from 0 to 1, where 0 means "
-#~ "no bounce and 1 is very bouncy)."
-#~ msgstr ""
-#~ "Establece la propiedad de restitución para los objetos (un valor entre 0 y "
-#~ "1, donde 0 significa sin restitución y 1 mucha)."
-
-#~ msgid "dynamic"
-#~ msgstr "dinámico"
-
-#~ msgid ""
-#~ "If dynamic = 1, the object can move; if dynamic = 0, it is fixed in position."
-#~ msgstr ""
-#~ "Si dinámico = 1, el objeto puede moverse; si dinámico = 0, queda fijo en su "
-#~ "posición."
-
-#~ msgid "Palette of WeDo blocks"
-#~ msgstr "Paleta de bloques WeDo"
-
-#~ msgid "WeDo"
-#~ msgstr "WeDo"
-
-#~ msgid "set current WeDo device"
-#~ msgstr "setea el dispositivo WeDo actual"
-
-#~ msgid "number of WeDo devices"
-#~ msgstr "número de dispositivos WeDo"
-
-#~ msgid ""
-#~ "tilt sensor output: (-1 == no tilt, 0 == tilt forward, 3 == tilt back, 1 == "
-#~ "tilt left, 2 == tilt right)"
-#~ msgstr ""
-#~ "salida del sensor de inclinación: (-1 == no está inclinado, 0 == inclinado "
-#~ "hacia adelante, 3 == inclinado hacia atrás, 1 == inclinado hacia la "
-#~ "izquierda, 2 == inclinado hacia la derecha)"
-
-#~ msgid "distance sensor output"
-#~ msgstr "salida del sensor distancia"
-
-#~ msgid "Motor A"
-#~ msgstr "Motor A"
-
-#~ msgid "returns the current value of Motor A"
-#~ msgstr "devuelve el valor actual del Motor A"
-
-#~ msgid "Motor B"
-#~ msgstr "Motor B"
-
-#~ msgid "returns the current value of Motor B"
-#~ msgstr "devuelve el valor actual del Motor B"
-
-#~ msgid "set the value for Motor A"
-#~ msgstr "setea el valor del Motor A"
-
-#~ msgid "set the value for Motor B"
-#~ msgstr "setea el valor del Motor B"
-
-#~ msgid "WeDo is unavailable"
-#~ msgstr "WeDo no está disponible"
-
-#, python-format
-#~ msgid "WeDo %d is unavailable; defaulting to 1"
-#~ msgstr "Wedo %d no está disponible; usando por defecto el 1"
-
-#, python-format
-#~ msgid "%(device)s is unavailable on WeDo %(wedo_number)d"
-#~ msgstr "%(device)s no está disponible en el WeDo %(wedo_number)d"
-
-#~ msgid "Palette of LEGO NXT blocks of motors"
-#~ msgstr "Paleta de bloques LEGO NXT de motores"
-
-#~ msgid "Palette of LEGO NXT blocks of sensors"
-#~ msgstr "Paleta de bloques LEGO NXT de sensores"
-
-#~ msgid "touch"
-#~ msgstr "botón"
-
-#~ msgid "ultrasonic"
-#~ msgstr "distancia"
-
-#~ msgid "light"
-#~ msgstr "luz"
-
-#~ msgid "grey"
-#~ msgstr "gris"
-
-#~ msgid "Please check the connection with the brick"
-#~ msgstr "Por favor chequee la conexión con el brick"
-
-#, python-format
-#~ msgid "Invalid port '%s'. Port must be: PORT A, B or C"
-#~ msgstr "Puerto '%s' inválido. El puerto debe ser: PUERTO A, B o C"
-
-#, python-format
-#~ msgid "Invalid port '%s'. Port must be: PORT 1, 2, 3 or 4"
-#~ msgstr "Puerto '%s' inválido. El puerto debe ser: PUERTO 1, 2, 3 o 4"
-
-#~ msgid "The value of power must be between -127 to 127"
-#~ msgstr "El valor de potencia debe estar entre -127 y 127"
-
-#, python-format
-#, python-format,
-#~ msgid "The parameter must be a integer, not '%s'"
-#~ msgstr "El parámetro debe ser un entero, no '%s'"
-
-#~ msgid "An error has occurred: check all connections and try to reconnect"
-#~ msgstr "Un error ha ocurrido: chequee todas las conexiones y pruebe reconectar"
-
-#, python-format
-#~ msgid "NXT found %s bricks"
-#~ msgstr "NXT encontró %s bricks"
-
-#~ msgid "NXT not found"
-#~ msgstr "NXT no encontrado"
-
-#, python-format
-#, python-format,
-#~ msgid "Brick number %s was not found"
-#~ msgstr "El brick número %s no fue encontrado"
-
-#~ msgid "refresh NXT"
-#~ msgstr "refrescar NXT"
-
-#~ msgid "Search for a connected NXT brick."
-#~ msgstr "Busca por un brick NXT conectado."
-
-#~ msgid "NXT"
-#~ msgstr "NXT"
-
-#~ msgid "set current NXT device"
-#~ msgstr "establece el dispositivo NXT actual"
-
-#~ msgid "number of NXT devices"
-#~ msgstr "número de dispositivos NXT"
-
-#~ msgid "brick name"
-#~ msgstr "nombre del brick"
-
-#~ msgid "Get the name of a brick."
-#~ msgstr "Obtiene el nombre del brick."
-
-#~ msgid "play tone"
-#~ msgstr "reproducir tono"
-
-#~ msgid "frequency"
-#~ msgstr "frecuencia"
-
-#~ msgid "Play a tone at frequency for time."
-#~ msgstr "Reproduce un tono a cierta frecuencia por un determinado tiempo."
-
-#~ msgid ""
-#~ "turn motor\n"
-#~ "\n"
-#~ msgstr ""
-#~ "girar motor\n"
-#~ "\n"
-
-#~ msgid "port"
-#~ msgstr "puerto"
-
-#~ msgid "power"
-#~ msgstr "potencia"
-
-#~ msgid "rotations"
-#~ msgstr "rotaciones"
-
-#~ msgid "turn a motor"
-#~ msgstr "gira un motor"
-
-#~ msgid ""
-#~ "synchronize\n"
-#~ "\n"
-#~ "motors"
-#~ msgstr ""
-#~ "sincronizar\n"
-#~ "\n"
-#~ "motores"
-
-#~ msgid "steering"
-#~ msgstr "dirección"
-
-#~ msgid "synchronize two motors connected in PORT B and PORT C"
-#~ msgstr "sincroniza dos motores conectados en el PUERTO B y PUERTO C"
-
-#~ msgid "PORT A"
-#~ msgstr "PUERTO A"
-
-#~ msgid "PORT A of the brick"
-#~ msgstr "PUERTO A del brick"
-
-#~ msgid "PORT B"
-#~ msgstr "PUERTO B"
-
-#~ msgid "PORT B of the brick"
-#~ msgstr "PUERTO B del brick"
-
-#~ msgid "PORT C"
-#~ msgstr "PUERTO C"
-
-#~ msgid "PORT C of the brick"
-#~ msgstr "PUERTO C del brick"
-
-#~ msgid "start motor"
-#~ msgstr "iniciar motor"
-
-#~ msgid "Run a motor forever."
-#~ msgstr "Girar un motor por siempre."
-
-#~ msgid "brake motor"
-#~ msgstr "frenar motor"
-
-#~ msgid "Stop a specified motor."
-#~ msgstr "Frena un motor específico."
-
-#~ msgid "reset motor"
-#~ msgstr "reiniciar motor"
-
-#~ msgid "Reset the motor counter."
-#~ msgstr "Reinicia el contador del motor."
-
-#~ msgid "motor position"
-#~ msgstr "posición del motor"
-
-#~ msgid "Get the motor position."
-#~ msgstr "Obtiene la posición del motor."
-
-#~ msgid "PORT 1"
-#~ msgstr "PUERTO 1"
-
-#~ msgid "PORT 1 of the brick"
-#~ msgstr "PUERTO 1 del brick"
-
-#~ msgid "read"
-#~ msgstr "leer"
-
-#~ msgid "Read sensor output."
-#~ msgstr "Lee la salida del sensor."
-
-#~ msgid "PORT 2"
-#~ msgstr "PUERTO 2"
-
-#~ msgid "PORT 2 of the brick"
-#~ msgstr "PUERTO 2 del brick"
-
-#~ msgid "light sensor"
-#~ msgstr "sensor de luz"
-
-#~ msgid "grey sensor"
-#~ msgstr "sensor de grises"
-
-#~ msgid "PORT 3"
-#~ msgstr "PUERTO 3"
-
-#~ msgid "PORT 3 of the brick"
-#~ msgstr "PUERTO 3 del brick"
-
-#~ msgid "touch sensor"
-#~ msgstr "sensor táctil"
-
-#~ msgid "distance sensor"
-#~ msgstr "sensor de distancia"
-
-#~ msgid "PORT 4"
-#~ msgstr "PUERTO 4"
-
-#~ msgid "PORT 4 of the brick"
-#~ msgstr "PUERTO 4 del brick"
-
-#~ msgid "sound sensor"
-#~ msgstr "sensor de sonido"
-
-#~ msgid "color sensor"
-#~ msgstr "sensor de color"
-
-#~ msgid "set light"
-#~ msgstr "prender luz"
-
-#~ msgid "Set color sensor light."
-#~ msgstr "Prende la luz del sensor de color."
-
-#~ msgid "battery level"
-#~ msgstr "nivel de batería"
-
-#~ msgid "Get battery level of the brick"
-#~ msgstr "Obtiene el nivel de batería del brick"
-
-#~ msgid "HIGH"
-#~ msgstr "ALTO"
-
-#~ msgid "LOW"
-#~ msgstr "BAJO"
-
-#~ msgid "INPUT"
-#~ msgstr "ENTRADA"
-
-#~ msgid "OUTPUT"
-#~ msgstr "SALIDA"
-
-#~ msgid "PWM"
-#~ msgstr "PWM"
-
-#~ msgid "SERVO"
-#~ msgstr "SERVO"
-
-#~ msgid "ERROR: Check the Arduino and the number of port."
-#~ msgstr "ERROR: Chequee la Arduino y el número de puerto."
-
-#~ msgid "ERROR: Value must be a number from 0 to 255."
-#~ msgstr "ERROR: El valor debe ser un número entre 0 y 255."
-
-#~ msgid "ERROR: Value must be either HIGH or LOW."
-#~ msgstr "ERROR: El valor debe ser ALTO o BAJO."
-
-#~ msgid "ERROR: The mode must be either INPUT, OUTPUT, PWM or SERVO."
-#~ msgstr "ERROR: El modo debe ser ENTRADA, SALIDA, PWM o SERVO."
-
-#~ msgid "refresh Arduino"
-#~ msgstr "refrescar Arduino"
-
-#~ msgid "Search for connected Arduinos."
-#~ msgstr "Busca por Arduinos conectadas."
-
-#~ msgid "Arduino"
-#~ msgstr "Arduino"
-
-#~ msgid "set current Arduino board"
-#~ msgstr "establece la placa Arduino actual"
-
-#~ msgid "number of Arduinos"
-#~ msgstr "número de Arduinos"
-
-#~ msgid "number of Arduino boards"
-#~ msgstr "número de placas"
-
-#~ msgid "Arduino name"
-#~ msgstr "nombre de Arduino"
-
-#~ msgid "Get the name of an Arduino."
-#~ msgstr "Obtiene el nombre de la Arduino."
-
-#~ msgid "pin mode"
-#~ msgstr "modo del pin"
-
-#~ msgid "mode"
-#~ msgstr "modo"
-
-#~ msgid "Select the pin function (INPUT, OUTPUT, PWM, SERVO)."
-#~ msgstr "Selecciona la función del pin (ENTRADA, SALIDA, PWM, SERVO)."
-
-#~ msgid "analog write"
-#~ msgstr "escribir analógico"
-
-#~ msgid "Write analog value in specified port."
-#~ msgstr "Escribe un valor analógico en el puerto especificado."
-
-#~ msgid "analog read"
-#~ msgstr "leer analógico"
-
-#~ msgid ""
-#~ "Read value from analog port. Value may be between 0 and 1023. Use Vref to "
-#~ "determine voltage. For USB, volt=((read)*5)/1024) approximately."
-#~ msgstr ""
-#~ "Lee un valor desde un puerto analógico. El valor puede ser entre 0 y 1023. "
-#~ "Use Vref para determinar el voltaje. Para USB, volt=((leer)*5/1024) "
-#~ "aproximadamente."
-
-#~ msgid "digital write"
-#~ msgstr "escribir digital"
-
-#~ msgid "Write digital value to specified port."
-#~ msgstr "Escribe un valor digital en un puerto específico."
-
-#~ msgid "digital read"
-#~ msgstr "leer digital"
-
-#~ msgid "Read value from digital port."
-#~ msgstr "Lee un valor desde un puerto digital."
-
-#~ msgid "Set HIGH value for digital port."
-#~ msgstr "Setea el valor ALTO en el puerto digital."
-
-#~ msgid "Configure Arduino port for digital input."
-#~ msgstr "Configura el puerto de la Arduino como entrada digital."
-
-#~ msgid "Configure Arduino port to drive a servo."
-#~ msgstr "Configura el puerto de la Arduino para manejar un servo."
-
-#~ msgid "Set LOW value for digital port."
-#~ msgstr "Setea el valor BAJO en el puerto digital."
-
-#~ msgid "Configure Arduino port for digital output."
-#~ msgstr "Configura el puerto de la Arduino como salida digital."
-
-#~ msgid "Configure Arduino port for PWM (pulse-width modulation)."
-#~ msgstr ""
-#~ "Configura el puerto de la Arduino para PWM modulación por ancho de pulsos)."
-
-#~ msgid "Palette of Expeyes blocks"
-#~ msgstr "Paleta de bloques de Expeyes"
-
-#~ msgid "set PVS"
-#~ msgstr "establecer PVS"
-
-#~ msgid "set programmable voltage output"
-#~ msgstr "establece el voltaje de salida programable"
-
-#~ msgid "set SQR1 voltage"
-#~ msgstr "establecer voltaje SQR1"
-
-#~ msgid "set square wave 1 voltage output"
-#~ msgstr "establece una onda cuadrada en el voltaje de salida"
-
-#~ msgid "set SQR2 voltage"
-#~ msgstr "establecer voltaje SQR2"
-
-#~ msgid "set square wave 2 voltage output"
-#~ msgstr "establece una onda cuadrada en el voltaje de salida"
-
-#~ msgid "set OD1"
-#~ msgstr "establecer OD1"
-
-#~ msgid "set digital output level (OD1) low (0) or high (1)"
-#~ msgstr "establece el nivel de la salida digital (OD1) bajo (0) o alto (1)"
-
-#~ msgid "IN1 level"
-#~ msgstr "nivel IN1"
-
-#~ msgid ""
-#~ "returns 1 if IN1 voltage level >2.5 volts, 0 if IN1 voltage level <= 2.5 "
-#~ "volts"
-#~ msgstr ""
-#~ "devuelve 1 si el voltaje de IN1 es mayor a 2,5 volts, 0 si el voltaje es <= "
-#~ "2,5 volts"
-
-#~ msgid "IN2 level"
-#~ msgstr "nivel IN2"
-
-#~ msgid ""
-#~ "returns 1 if IN2 voltage level >2.5 volts, 0 if IN2 voltage level <= 2.5 "
-#~ "volts"
-#~ msgstr ""
-#~ "devuelve 1 si el voltaje de IN2 es mayor a 2,5 volts, 0 si el voltaje es <= "
-#~ "2,5 volts"
-
-#~ msgid "SEN level"
-#~ msgstr "nivel SEN"
-
-#~ msgid ""
-#~ "returns 1 if resistive sensor (SEN) voltage level > 2.5 volts, 0 if SEN "
-#~ "voltage level <= 2.5 volts"
-#~ msgstr ""
-#~ "devuelve 1 si el voltaje del sensor resistivo (SEN) es mayor a 2,5 volts, 0 "
-#~ "si el voltaje es <= 2,5 volts"
-
-#~ msgid "capture"
-#~ msgstr "capturar"
-
-#~ msgid "input"
-#~ msgstr "entrada"
-
-#~ msgid "samples"
-#~ msgstr "muestras"
-
-#~ msgid "interval"
-#~ msgstr "intervalo"
-
-#~ msgid ""
-#~ "capture multiple samples from input at interval (MS); results pushed to FIFO"
-#~ msgstr ""
-#~ "captura múltiples muestras de la entrada en intervalos (MS); los resultados "
-#~ "son puestos en FIFO"
-
-#~ msgid "A1"
-#~ msgstr "A1"
-
-#~ msgid "read analog input 1 voltage"
-#~ msgstr "lee el voltaje de la entrada analógica 1"
-
-#~ msgid "A2"
-#~ msgstr "A2"
-
-#~ msgid "read analog input 2 voltage"
-#~ msgstr "lee el voltaje de la entrada analógica 2"
-
-#~ msgid "IN1"
-#~ msgstr "IN1"
-
-#~ msgid "read input 1 voltage"
-#~ msgstr "lee el voltaje de la entrada 1"
-
-#~ msgid "IN2"
-#~ msgstr "IN2"
-
-#~ msgid "read input 2 voltage"
-#~ msgstr "lee el voltaje de la entrada 2"
-
-#~ msgid "SEN"
-#~ msgstr "SEN"
-
-#~ msgid "read analog sensor input voltage"
-#~ msgstr "lee el voltaje de entrada del sensor analógico"
-
-#~ msgid "SQR1"
-#~ msgstr "SQR1"
-
-#~ msgid "read square wave 1 voltage"
-#~ msgstr "lee el voltaje de la onda cuadrada 1"
-
-#~ msgid "SQR2"
-#~ msgstr "SQR2"
-
-#~ msgid ""
-#~ "set the speed of the Butia motors as a value between 0 and 1023, passed by "
-#~ "an argument"
-#~ msgstr ""
-#~ "setea la velocidad de los motores del Butiá como un valor entre 0 y 1023 "
-#~ "pasado por argumento"
-
-#~ msgid "Error in stop camera"
-#~ msgstr "Error deteniendo la cámara"
-
-#~ msgid "Error in start camera"
-#~ msgstr "Error en iniciar cámara"
-
-#~ msgid "if 0: average color is off when calibrates; for other values is on"
-#~ msgstr ""
-#~ "Si es 0: el color promedio se apaga cuando se calibra; para otros valores "
-#~ "está encendido"
-
-#~ msgid "number of WeDos"
-#~ msgstr "número de WeDos"
-
-#~ msgid "NxT"
-#~ msgstr "NXT"
-
-#~ msgid "number of NxTs"
-#~ msgstr "número de NXTs"
-
-#~ msgid "turn the Butia robot to the left"
-#~ msgstr "gira el robot Butiá hacia la izquierda"
-
-#~ msgid "display Butia"
-#~ msgstr "pantalla Butiá"
-
-#~ msgid "Hello World    Butia            "
-#~ msgstr "Hola Mundo                 Butia"
-
-#~ msgid "print text in Butia robot 32-character ASCII display"
-#~ msgstr "imprime texto en la pantalla de 32 caracteres ASCII del Butiá"
-
-#~ msgid "Error making mask"
-#~ msgstr "Error haciendo máscara"
-
-#~ msgid "G"
-#~ msgstr "G"
-
-#~ msgid "R"
-#~ msgstr "R"
-
-#~ msgid "B"
-#~ msgstr "B"
-
-#~ msgid "follow a RGB color"
-#~ msgstr "seguir color RGB"
-
-#~ msgid "save calibration 1"
-#~ msgstr "guardar calibración 1"
-
-#~ msgid "stores a calibration in calibration 1"
-#~ msgstr "almacena una calibración en calibración 1"
-
-#~ msgid "save calibration 2"
-#~ msgstr "guardar calibración 2"
-
-#~ msgid "stores a calibration in calibration 2"
-#~ msgstr "almacena una calibración en calibración 2"
-
-#~ msgid "calibration 1"
-#~ msgstr "calibración 1"
-
-#~ msgid "return calibration 1"
-#~ msgstr "devuelve la calibración 1"
-
-#~ msgid "calibration 2"
-#~ msgstr "calibración 2"
-
-#~ msgid "return calibration 2"
-#~ msgstr "devuelve la calibración 2"
-
-#~ msgid "RGB"
-#~ msgstr "RGB"
-
-#~ msgid "YUV"
-#~ msgstr "YUV"
-
-#~ msgid "HSV"
-#~ msgstr "HSV"
-
-#~ msgid "Please check the port."
-#~ msgstr "Por favor chequee el puerto."
-
-#~ msgid "NXT found"
-#~ msgstr "NXT encontrado"
-
-#~ msgid ""
-#~ "turn motor\n"
-#~ "rotations"
-#~ msgstr ""
-#~ "girar motor\n"
-#~ "rotaciones"
-
-#~ msgid ""
-#~ "synchronize motors\n"
-#~ "steering"
-#~ msgstr ""
-#~ "sincronizar motores\n"
-#~ "dirección"
-
-#~ msgid "Palette of Arduino blocks"
-#~ msgstr "Paleta de bloques Arduino"
-
-#~ msgid "delay Butia"
-#~ msgstr "espera Butiá"
-
-#~ msgid "wait for argument seconds"
-#~ msgstr "Espera los segundos pasados por argumento"
-
-#~ msgid "refresh Butia palette"
-#~ msgstr "refrescar paleta Butiá"
-
-#~ msgid "The camera was not found."
-#~ msgstr "La cámara no fue encontrada."
-
-#~ msgid "then else"
-#~ msgstr "entonces sino"
-
-#~ msgid "bottom of a collapsible stack"
-#~ msgstr "parte inferior de una pila plegable"
-
-#~ msgid "collapsed stack: click to open"
-#~ msgstr "pila plegable: clic para abrir"
-
-#~ msgid "bottom block in a collapsed stack: click to open"
-#~ msgstr "bloque inferior de una pila plegable: clic para abrir"
-
-#~ msgid "top of stack"
-#~ msgstr "cima de la pila"
-
-#~ msgid "label"
-#~ msgstr "etiqueta"
-
-#~ msgid "True"
-#~ msgstr "Verdadero"
-
-#~ msgid "False"
-#~ msgstr "Falso"
-
-#~ msgid "Save as HTML"
-#~ msgstr "Guardar como HTML"
-
-#~ msgid "<Ctrl>d"
-#~ msgstr "<Ctrl>d"
-
-#~ msgid "Palette of US currencies"
-#~ msgstr "Paleta de monedas de los Estados Unidos"
-
-#~ msgid "Palette of Australian currencies"
-#~ msgstr "Paleta de monedas de Australia"
-
-#~ msgid "Palette of Guaranies"
-#~ msgstr "Paleta de Guaraníes"
-
-#~ msgid "Palette of Soles"
-#~ msgstr "Paleta de Soles"
-
-#~ msgid "presentation"
-#~ msgstr "presentación"
-
-#~ msgid "follow a turtle color"
-#~ msgstr "seguir un color de tortuga"
-
-#~ msgid "calibrate"
-#~ msgstr "calibrar"
-
-#~ msgid "calibrate a color to follow"
-#~ msgstr "calibrar un color a seguir"
+msgid "calibrate a color to follow"
+msgstr "calibrar un color a seguir"
 
 # abreviacion de frecuencia, como en la versión en inglés
-#~ msgid "freq"
-#~ msgstr "frec"
+msgid "freq"
+msgstr "frec"
 
 # sinc: abreviación de sincronizar
-#~ msgid ""
-#~ "sync motors\n"
-#~ "steering"
-#~ msgstr ""
-#~ "sinc motores\n"
-#~ "dirección"
+msgid ""
+"sync motors\n"
+"steering"
+msgstr ""
+"sinc motores\n"
+"dirección"
 
-#~ msgid "<Ctrl>b"
-#~ msgstr "<Ctrl>b"
+msgid "<Ctrl>b"
+msgstr "<Ctrl>b"
 
-#~ msgid "Palette of LEGO NXT blocks"
-#~ msgstr "Paleta de bloques de LEGO NXT"
+msgid "Palette of LEGO NXT blocks"
+msgstr "Paleta de bloques de LEGO NXT"
 
-#~ msgid "Move the cursor over the orange palette for help."
-#~ msgstr "Mover el cursor sobre la paleta naranja para ayuda."
+msgid "Move the cursor over the orange palette for help."
+msgstr "Mover el cursor sobre la paleta naranja para ayuda."
 
 # Butiá es el proyecto de robótica basado en arduino de Uruguay
 # (http://www.fing.edu.uy/inco/proyectos/butia/)
-#~ msgid "Turtle Art Butia"
-#~ msgstr "TortugArte Butiá"
+msgid "Turtle Art Butia"
+msgstr "TortugArte Butiá"
 
-#~ msgid "pushbutton"
-#~ msgstr "Botón"
+msgid "pushbutton"
+msgstr "Botón"
 
-#~ msgid ""
-#~ "returns the object gray level encountered him as a number between 0 and 1023"
-#~ msgstr ""
-#~ "devuelve el nivel de gris del objeto en frente al sensor como un número "
-#~ "entre 0 y 1023"
+msgid ""
+"returns the object gray level encountered him as a number between 0 and "
+"1023"
+msgstr ""
+"devuelve el nivel de gris del objeto en frente al sensor como un número "
+"entre 0 y 1023"
 
-#~ msgid "activity count"
-#~ msgstr "contador de actividad"
+msgid "activity count"
+msgstr "contador de actividad"
 
-#~ msgid "Import/Export"
-#~ msgstr "Importar / Exportar"
+msgid "Import/Export"
+msgstr "Importar / Exportar"
 
-#~ msgid "Import project from the Journal"
-#~ msgstr "Importar proyecto desde el Diario"
+msgid "Import project from the Journal"
+msgstr "Importar proyecto desde el Diario"
 
-#~ msgid "Butia battery charge"
-#~ msgstr "carga de batería Butiá"
+msgid "Butia battery charge"
+msgstr "carga de batería Butiá"
 
-#~ msgid "Butia speed"
-#~ msgstr "velocidad Butiá"
+msgid "Butia speed"
+msgstr "velocidad Butiá"
 
-#~ msgid "forward distance"
-#~ msgstr "adelante distancia"
+msgid "forward distance"
+msgstr "adelante distancia"
 
-#~ msgid "backward distance"
-#~ msgstr "atrás distancia"
+msgid "backward distance"
+msgstr "atrás distancia"
 
-#~ msgid "Turn x degrees"
-#~ msgstr "girar x grados"
+msgid "Turn x degrees"
+msgstr "girar x grados"
 
-#~ msgid "print Butia"
-#~ msgstr "imprimir Butiá"
+msgid "print Butia"
+msgstr "imprimir Butiá"
 
-#~ msgid "Sumo Butia"
-#~ msgstr "Butiá Sumo"
-
-# is a block name, so it has to be in lowercase
-#~ msgid "submit speed​​"
-#~ msgstr "enviar velocidades"
-
-#~ msgid "Send speed to the robot."
-#~ msgstr "Envía la velocidad al robot."
+msgid "Sumo Butia"
+msgstr "Butiá Sumo"
 
 # is a block name, so it has to be in lowercase
-#~ msgid "set speed"
-#~ msgstr "establecer velocidad"
+msgid "submit speed​​"
+msgstr "enviar velocidades"
 
-#~ msgid "move"
-#~ msgstr "mover"
+msgid "Send speed to the robot."
+msgstr "Envía la velocidad al robot."
 
-#~ msgid "turn left"
-#~ msgstr "girar izquierda"
+# is a block name, so it has to be in lowercase
+msgid "set speed"
+msgstr "establecer velocidad"
 
-#~ msgid "turn right"
-#~ msgstr "girar derecha"
+msgid "move"
+msgstr "mover"
 
-#~ msgid "angle to the opponent"
-#~ msgstr "ángulo del oponente"
+msgid "turn left"
+msgstr "girar izquierda"
 
-#~ msgid "Get the angle to the center of the opponent."
-#~ msgstr "Devuelve el ángulo desde el centro del oponente."
+msgid "turn right"
+msgstr "girar derecha"
 
-#~ msgid "x coor."
-#~ msgstr "coordenada x"
+msgid "angle to the opponent"
+msgstr "ángulo del oponente"
 
-#~ msgid "y coor."
-#~ msgstr "coordenada y"
+msgid "Get the angle to the center of the opponent."
+msgstr "Devuelve el ángulo desde el centro del oponente."
 
-#~ msgid "opponent x coor."
-#~ msgstr "coordenada x oponente"
+msgid "x coor."
+msgstr "coordenada x"
 
-#~ msgid "Get the x coordinate of the opponent."
-#~ msgstr "Obtiene la coordenada x del oponente."
+msgid "y coor."
+msgstr "coordenada y"
 
-#~ msgid "opponent y coor."
-#~ msgstr "coordenada y oponente"
+msgid "opponent x coor."
+msgstr "coordenada x oponente"
 
-#~ msgid "Get the y coordinate of the opponent."
-#~ msgstr "Obtiene la coordenada y del oponente."
+msgid "Get the x coordinate of the opponent."
+msgstr "Obtiene la coordenada x del oponente."
 
-#~ msgid "Get SumBot rotation."
-#~ msgstr "Obtiene la rotación del SumBot."
+msgid "opponent y coor."
+msgstr "coordenada y oponente"
 
-#~ msgid "opponent rotation"
-#~ msgstr "rotación del oponente"
+msgid "Get the y coordinate of the opponent."
+msgstr "Obtiene la coordenada y del oponente."
 
-#~ msgid "distance to opponent"
-#~ msgstr "distancia al oponente"
+msgid "Get SumBot rotation."
+msgstr "Obtiene la rotación del SumBot."
 
-#~ msgid "full screen"
-#~ msgstr "pantalla completa"
+msgid "opponent rotation"
+msgstr "rotación del oponente"
 
-#~ msgid "stack"
-#~ msgstr "pila"
+msgid "distance to opponent"
+msgstr "distancia al oponente"
 
-#~ msgid " "
-#~ msgstr " "
+msgid "full screen"
+msgstr "pantalla completa"
 
-#~ msgid " clean "
-#~ msgstr " limpiar "
+msgid "stack"
+msgstr "pila"
 
-#~ msgid "write"
-#~ msgstr "escribir"
+msgid " "
+msgstr " "
 
-#~ msgid "restore last"
-#~ msgstr "restaurar último"
+msgid " clean "
+msgstr " limpiar "
 
-#~ msgid "a programmable block: used to add advanced math equations, e.g., sin(x)"
-#~ msgstr ""
-#~ "un bloque programable: utilizado para agregar ecuaciones matemáticas "
-#~ "avanzadas, i.e., sen(x)"
+msgid "write"
+msgstr "escribir"
 
-#~ msgid "text size"
-#~ msgstr "tamaño del texto"
+msgid "restore last"
+msgstr "restaurar último"
 
-#~ msgid "sensor input resistance"
-#~ msgstr "resistencia de entrada del sensor"
+msgid ""
+"a programmable block: used to add advanced math equations, e.g., sin(x)"
+msgstr ""
+"un bloque programable: utilizado para agregar ecuaciones matemáticas "
+"avanzadas, i.e., sen(x)"
 
-#~ msgid "holds current text color (can be used in place of a number block)"
-#~ msgstr ""
-#~ "contiene el color actual del texto (se puede usar en vez de un bloque de "
-#~ "número)"
+msgid "text size"
+msgstr "tamaño del texto"
 
-#~ msgid "picture top"
-#~ msgstr "imagen arriba"
+msgid "sensor input resistance"
+msgstr "resistencia de entrada del sensor"
 
-#~ msgid "restores most recent blocks from trash"
-#~ msgstr "restaura los bloques más recientes de la papelera"
+msgid "holds current text color (can be used in place of a number block)"
+msgstr ""
+"contiene el color actual del texto (se puede usar en vez de un bloque de "
+"número)"
 
-#~ msgid "Load my block"
-#~ msgstr "Cargar mi bloque"
+msgid "picture top"
+msgstr "imagen arriba"
 
-#~ msgid "picture left"
-#~ msgstr "imagen izquierda"
+msgid "restores most recent blocks from trash"
+msgstr "restaura los bloques más recientes de la papelera"
 
-#~ msgid "Python code"
-#~ msgstr "código Python"
+msgid "Load my block"
+msgstr "Cargar mi bloque"
 
-#~ msgid "bottom block in a collapsibe stack: click to collapse"
-#~ msgstr "bloque inferior de una pila plegable: haz click para plegar"
+msgid "picture left"
+msgstr "imagen izquierda"
 
-#~ msgid "Trashcan"
-#~ msgstr "bote de basura"
+msgid "Python code"
+msgstr "código Python"
 
-#~ msgid "picture right"
-#~ msgstr "imagen derecha"
+msgid "bottom block in a collapsibe stack: click to collapse"
+msgstr "bloque inferior de una pila plegable: haz click para plegar"
 
-#~ msgid "volume"
-#~ msgstr "volumen"
+msgid "Trashcan"
+msgstr "bote de basura"
 
-#~ msgid "picture bottom"
-#~ msgstr "imagen debajo"
+msgid "picture right"
+msgstr "imagen derecha"
 
-#~ msgid "sensor voltage"
-#~ msgstr "Sensor de voltaje"
+msgid "volume"
+msgstr "volumen"
 
-#~ msgid "holds current text size (can be used in place of a number block)"
-#~ msgstr ""
-#~ "contiene el tamaño actual del texto (se puede usar en vez de un bloque de "
-#~ "número)"
+msgid "picture bottom"
+msgstr "imagen debajo"
 
-#~ msgid "<Alt>d"
-#~ msgstr "<Alt>d"
+msgid "sensor voltage"
+msgstr "Sensor de voltaje"
 
-#~ msgid "Save Logo"
-#~ msgstr "Guardar Logo"
+msgid "holds current text size (can be used in place of a number block)"
+msgstr ""
+"contiene el tamaño actual del texto (se puede usar en vez de un bloque de "
+"número)"
 
-#~ msgid "<Ctrl>o"
-#~ msgstr "<Ctrl>o"
+msgid "<Alt>d"
+msgstr "<Alt>d"
 
-#~ msgid ""
-#~ "a programmable block: used to add advanced single-valriable math equations, "
-#~ "e.g., sin(x)"
-#~ msgstr ""
-#~ "un bloque programable: utilizado para agregar ecuaciones matemáticas "
-#~ "avanzadas de una variable, i.e., sen(x)"
+msgid "Save Logo"
+msgstr "Guardar Logo"
 
-#~ msgid ""
-#~ "a programmable block: used to add advanced multi-varialble math equations, e."
-#~ "g., sin(x+y+z)"
-#~ msgstr ""
-#~ "un bloque programable: utilizado para agregar ecuaciones matemáticas "
-#~ "avanzadas de múltiples variables, i.e., sen(x+y+z)"
+msgid "<Ctrl>o"
+msgstr "<Ctrl>o"
 
-#~ msgid "bulleted list"
-#~ msgstr "lista con viñetas"
+msgid ""
+"a programmable block: used to add advanced single-valriable math "
+"equations, e.g., sin(x)"
+msgstr ""
+"un bloque programable: utilizado para agregar ecuaciones matemáticas "
+"avanzadas de una variable, i.e., sen(x)"
 
-#~ msgid "picture"
-#~ msgstr "dibujo"
+msgid ""
+"a programmable block: used to add advanced multi-varialble math "
+"equations, e.g., sin(x+y+z)"
+msgstr ""
+"un bloque programable: utilizado para agregar ecuaciones matemáticas "
+"avanzadas de múltiples variables, i.e., sen(x+y+z)"
 
-#~ msgid "2×2 pictures"
-#~ msgstr "dibujos 2x2"
+msgid "bulleted list"
+msgstr "lista con viñetas"
 
-#~ msgid "2×1 pictures"
-#~ msgstr "dibujos 2x1"
+msgid "picture"
+msgstr "dibujo"
 
-#~ msgid "1×2 pictures"
-#~ msgstr "dibujos 1x2"
+msgid "2×2 pictures"
+msgstr "dibujos 2x2"
 
-#~ msgid "1×1 picture"
-#~ msgstr "dibujos 1x1"
+msgid "2×1 pictures"
+msgstr "dibujos 2x1"
+
+msgid "1×2 pictures"
+msgstr "dibujos 1x2"
+
+msgid "1×1 picture"
+msgstr "dibujos 1x1"

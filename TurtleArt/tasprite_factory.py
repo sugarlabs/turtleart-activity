@@ -100,12 +100,15 @@ class SVG:
         self.margins = [0, 0, 0, 0]
 
     """
-    The block construction methods typically start on the left side of
-    a block and proceed clockwise around the block, first constructing a
-    left-side connector ("outie"), a corner (1, -1), a slot or hat on along
-    the top, a corner (1, 1), right side connectors ("innie"), possibly a
-    "porch" to suggest an order of arguments, another corner (-1, 1),
-    a tab or tail, and the fourth corner (-1, -1).
+    The block construction methods typically start on the upper-left side
+    of a block and proceed clockwise around the block, first constructing
+    a corner (1, -1), a slot or hat on along the top, a corner (1, 1),
+    right side connectors ("innie"), possibly a "porch" to suggest an
+    order of arguments, another corner (-1, 1), a tab or tail, and the
+    fourth corner (-1, -1), and finally, a left-side connector ("outie").
+    In addition:
+     * Minimum and maximum values are calculated for the SVG bounding box;
+     * Docking coordinates are calculated for each innie, outie, tab, and slot.
     """
 
     def basic_block(self):
@@ -133,8 +136,6 @@ class SVG:
             elif len(self._innie) - 1 > i:
                 svg += self._rline_to(0, 2 * self._innie_y2 +
                                       self._innie_spacer)
-        # moved expand_y to just after first innie above
-        # svg += self._rline_to(0, self._expand_y)
         svg += self._corner(-1, 1)
         svg += self.line_to(xx, self._y)
         svg += self._rline_to(-self._expand_x, 0)
@@ -597,11 +598,11 @@ stroke-width="3.5" fill="%s" stroke="none" />\n' % (self._stroke)
         svg += self._rline_to(0, self._expand_y)
         svg += self._inverse_corner(1, 1, 90, 0, 0)
         svg += self._do_slot()
+        xx = self._x
         svg += self._rline_to(self._radius, 0)
         if self._second_clamp:
             svg += self._corner(-1, 1)
             svg += self.line_to(xx, self._y)
-            svg += self._rline_to(-self._expand_x, 0)
             svg += self._do_tab()
             svg += self._inverse_corner(-1, 1, 90, 0, 0)
             svg += self._rline_to(0, self._expand_y2)

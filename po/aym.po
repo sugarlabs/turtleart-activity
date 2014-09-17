@@ -1,3 +1,4 @@
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
@@ -17,12 +18,15 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pootle 2.0.5\n"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "TortugArte"
+#. #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #. TRANS: "name" option from activity.info file
 #: TurtleArt/tawindow.py:3817 pysamples/grecord.py:205 turtleblocks.py:295
 msgid "Turtle Art"
 msgstr "TortugArte wakichata"
 
+#. #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #. TRANS: "summary" option from activity.info file
 #. TRANS: "description" option from activity.info file
 msgid ""
@@ -34,6 +38,7 @@ msgstr ""
 msgid "Palette of turtle commands"
 msgstr "Tortuga wakichata sarayirinaka limt'aña"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "adelante"
 #: TurtleArt/tabasics.py:121
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:723
@@ -45,6 +50,7 @@ msgstr "qalltma"
 msgid "moves turtle forward"
 msgstr "tortuga wakichata nayräxaru sartayma"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "atrás"
 #: TurtleArt/tabasics.py:132
 msgid "back"
@@ -54,6 +60,7 @@ msgstr "qhipäxa"
 msgid "moves turtle backward"
 msgstr "tortuga wakichata qhipäxaru jitt'ayma"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "limpiar"
 #: TurtleArt/tabasics.py:144
 msgid "clean"
@@ -63,6 +70,7 @@ msgstr "mayampi qalltañataki wakichaña"
 msgid "clears the screen and reset the turtle"
 msgstr "mayampi qallatañataki wakichma ukata tortuga wakichata mayampi qalltma"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "izquierda"
 #: TurtleArt/tabasics.py:155
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:854
@@ -74,6 +82,7 @@ msgid "turns turtle counterclockwise (angle in degrees)"
 msgstr ""
 "tortuga wakichata ch'iqa tuqiru jithiyma (ángulo de grados) wakichatarjama"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "derecha"
 #: TurtleArt/tabasics.py:166
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:878
@@ -82,7 +91,8 @@ msgstr "kupi"
 
 #: TurtleArt/tabasics.py:170
 msgid "turns turtle clockwise (angle in degrees)"
-msgstr "tortuga wakichata kupi tuqiru sarayma (ángulo de grados) wakichatarjama"
+msgstr ""
+"tortuga wakichata kupi tuqiru sarayma (ángulo de grados) wakichatarjama"
 
 #: TurtleArt/tabasics.py:178
 msgid "arc"
@@ -104,11 +114,13 @@ msgstr "tortuga wakichata maya sawana saraparu sarayma"
 msgid "set xy"
 msgstr "xy wakichata chimpuña"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "x"
 #: TurtleArt/tabasics.py:191 TurtleArt/tabasics.py:257 taextras.py:261
 msgid "x"
 msgstr "x wakichata"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "y"
 #: TurtleArt/tabasics.py:191 TurtleArt/tabasics.py:257 taextras.py:262
 msgid "y"
@@ -131,6 +143,7 @@ msgstr ""
 "tortuga wakichata sarañapa chimpuña (0 wakichata chimpuxa wakichata "
 "patäxankiwa)"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "coorx"
 #: TurtleArt/tabasics.py:217 TurtleArt/tawindow.py:3811
 #: TurtleArt/tawindow.py:3817 TurtleArtActivity.py:538
@@ -145,6 +158,7 @@ msgstr ""
 "jichha tortuga x wakichata taypi saririniwa (ukasti maya tama jakhunaka "
 "lanti apnaqasirakispa)"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "coory"
 #: TurtleArt/tabasics.py:228 TurtleArt/tawindow.py:3811
 #: TurtleArt/tawindow.py:3817 TurtleArtActivity.py:539
@@ -159,6 +173,7 @@ msgstr ""
 "jichha tortuga y wakichata taypi saririniwa (ukasti maya tama jakhunaka "
 "lanti apnaqasirakispa)"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "rumbo"
 #: TurtleArt/tabasics.py:239 TurtleArt/tawindow.py:3812
 #: TurtleArt/tawindow.py:3818 TurtleArtActivity.py:539
@@ -177,11 +192,13 @@ msgstr ""
 msgid "Palette of pen commands"
 msgstr "Samichaña phuyu apnaqaña limt'aña"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 # "pantalla completa"
 #: TurtleArt/tabasics.py:279 TurtleArt/tabasics.py:290
 msgid "fill screen"
 msgstr "maypacha uñtaña phuqachma"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "color"
 #: TurtleArt/tabasics.py:279 TurtleArt/tabasics.py:290
 #: TurtleArt/tabasics.py:340 taextras.py:311
@@ -329,6 +346,7 @@ msgstr "khuchi wila sami"
 msgid "white"
 msgstr "janq'u"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 # "atrás"
 #: TurtleArt/tabasics.py:451
 msgid "black"
@@ -389,6 +407,7 @@ msgstr ""
 "alaya siqinkiri jakhunaka jakhjama (jakhjiri) aynacha siqinkiri jakhunakaru "
 "(jakhjata)"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "identidad"
 #: TurtleArt/tabasics.py:611
 msgid "identity"
@@ -406,6 +425,7 @@ msgstr "uñanaqa"
 msgid "modular (remainder) operator"
 msgstr "uñanaqa wakichata chaninchiri (jilt'a)"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "√"
 #: TurtleArt/tabasics.py:632
 msgid "√"
@@ -419,6 +439,7 @@ msgstr "raíz cuadrada wakichata"
 msgid "calculates square root"
 msgstr "raíz cuadrada wakichata chanichma"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "aleatorio"
 #: TurtleArt/tabasics.py:643
 msgid "random"
@@ -435,9 +456,9 @@ msgstr "jilata sipana"
 #: TurtleArt/tabasics.py:647
 msgid "returns random number between minimum (top) and maximum (bottom) values"
 msgstr ""
-"maski kawkïri maya jakhu juk'ata sipansa (alaya) ukata jilata sipansa "
-"kutiyma"
+"maski kawkïri maya jakhu juk'ata sipansa (alaya) ukata jilata sipansa kutiyma"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "número"
 #: TurtleArt/tabasics.py:659
 msgid "number"
@@ -463,6 +484,7 @@ msgstr "ukata sipana pisi"
 msgid "logical less-than operator"
 msgstr "ukata sipana pisi tantiyu chaninchiri"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "equivalente"
 #: TurtleArt/tabasics.py:692
 msgid "equal"
@@ -472,6 +494,7 @@ msgstr "jukhapura"
 msgid "logical equal-to operator"
 msgstr "jukhapura tantiyu chaninchiri"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "no"
 #: TurtleArt/tabasics.py:702
 msgid "not"
@@ -481,6 +504,7 @@ msgstr "janiwa"
 msgid "logical NOT operator"
 msgstr "janiwa tantiyiri chaninchiri"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "y"
 #: TurtleArt/tabasics.py:711 TurtleArt/tabasics.py:714
 msgid "and"
@@ -587,6 +611,7 @@ msgstr "jichha luräwi sayt'ayi"
 msgid "Palette of variable blocks"
 msgstr "Kunaymana mayjt'ayirinaka tama limt'aña"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "empezar"
 #: TurtleArt/tabasics.py:840 pysamples/grecord.py:213
 msgid "start"
@@ -596,6 +621,7 @@ msgstr "qalltaña"
 msgid "connects action to toolbar run buttons"
 msgstr "luräwi wakt'ayma kunaymana wakichäwinaka sarayirinaka limt'añanakaru"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "texto"
 #: TurtleArt/tabasics.py:850 TurtleArt/tabasics.py:851
 #: TurtleArt/tabasics.py:852
@@ -743,6 +769,7 @@ msgstr "jani wakisiri wakichata imañaru qawayata siqinakaru uchantma"
 msgid "Share selected blocks"
 msgstr "Chhijllata siqitanakampi khuyapayaña"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 # "Título:"
 #: TurtleArt/taconstants.py:241 TurtleArt/taconstants.py:263
 #: TurtleArt/taconstants.py:284 TurtleArt/taconstants.py:326
@@ -756,18 +783,21 @@ msgstr "Chhijllata siqitanakampi khuyapayaña"
 msgid "Title"
 msgstr "P'iqinchiri Suti"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Parar tortuga"
 #: TurtleArt/talogo.py:358 TurtleArtActivity.py:613
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1473
 msgid "Stop turtle"
 msgstr "Tortuga wakichata sayt'ayaña"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Mostrar bloques"
 #: TurtleArt/talogo.py:369 TurtleArtActivity.py:288 TurtleArtActivity.py:614
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1466
 msgid "Show blocks"
 msgstr "Siqichata wakichatana uñachayaña"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Ocultar bloques"
 #: TurtleArt/talogo.py:373 TurtleArtActivity.py:292 TurtleArtActivity.py:791
 msgid "Hide blocks"
@@ -797,11 +827,13 @@ msgstr "arkiri limt'aña uñachayma"
 msgid "changes the orientation of the palette of blocks"
 msgstr "siqichatanaka limt'aña uñanaqapa jaqukipma"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Cargar..."
 #: TurtleArt/tautils.py:191
 msgid "Load..."
 msgstr "Ch'amanchaña..."
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Guardar..."
 #: TurtleArt/tautils.py:201
 msgid "Save..."
@@ -812,11 +844,13 @@ msgstr "Imaña..."
 msgid "click to open"
 msgstr "wakichata jist'arañataki limt'aña"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 # "presentación"
 #: TurtleArt/tawindow.py:968 TurtleArt/tawindow.py:969
 msgid "orientation"
 msgstr "uñanaqa"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "siguiente"
 #: TurtleArt/tawindow.py:979 TurtleArt/tawindow.py:1413
 msgid "next"
@@ -831,28 +865,33 @@ msgstr "jaqsuña"
 msgid "Select blocks to share"
 msgstr "Siqichata wakichatanakampi khuyapayañataki chhijllma"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "imagen"
 #: TurtleArt/tawindow.py:3916
 msgid "image"
 msgstr "rixita"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Guardar como Logo"
 #: TurtleArtActivity.py:132 TurtleArtActivity.py:639 TurtleArtActivity.py:730
 #: TurtleArtActivity.py:750 turtleblocks.py:333
 msgid "Save as Logo"
 msgstr "Wakichata Chimpjama imaña"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Guardar como imagen"
 #: TurtleArtActivity.py:169 TurtleArtActivity.py:638 TurtleArtActivity.py:727
 #: TurtleArtActivity.py:747 turtleblocks.py:331
 msgid "Save as image"
 msgstr "Rixita wakichatjma imaña"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "instantánea"
 #: TurtleArtActivity.py:177
 msgid "snapshot"
 msgstr "jukhawraspacha"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Guardar instantánea"
 #: TurtleArtActivity.py:185 TurtleArtActivity.py:572 TurtleArtActivity.py:615
 #: TurtleArtActivity.py:753
@@ -868,38 +907,45 @@ msgstr "Khaya aka yanapt'a sayt'ayaña"
 msgid "Turn on hover help"
 msgstr "Khaya aka yanapt'a sartayaña"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Mostrar paleta"
 #: TurtleArtActivity.py:240 turtleblocks.py:363
 msgid "Show palette"
 msgstr "limt'aña uñachayaña"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Ocultar paleta"
 #: TurtleArtActivity.py:246 TurtleArtActivity.py:779 turtleblocks.py:365
 msgid "Hide palette"
 msgstr "limt'aña imt'aña"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Escalar coordenadas hacia abajo"
 #: TurtleArtActivity.py:400
 msgid "Rescale coordinates down"
 msgstr "Coordenadas wakichata aynacharu jithirayaña"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Escalar coordenadas hacia arriba"
 #: TurtleArtActivity.py:404 TurtleArtActivity.py:542 TurtleArtActivity.py:685
 msgid "Rescale coordinates up"
 msgstr "Coordenadas wakichata alayaru jithsuyaña"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Editar"
 #: TurtleArtActivity.py:476 TurtleArtActivity.py:512 TurtleArtActivity.py:607
 #: TurtleArtActivity.py:660 turtleblocks.py:360
 msgid "Edit"
 msgstr "Chiqachaña"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Ver"
 #: TurtleArtActivity.py:481 TurtleArtActivity.py:510 TurtleArtActivity.py:608
 #: TurtleArtActivity.py:677 turtleblocks.py:355
 msgid "View"
 msgstr "Unjaña"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Proyecto"
 #: TurtleArtActivity.py:508 TurtleArtActivity.py:609
 msgid "Project"
@@ -910,11 +956,13 @@ msgstr "Luräwinaka"
 msgid "Save/Load"
 msgstr "Imaña/Ch'amanchaña"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Copiar"
 #: TurtleArtActivity.py:522 TurtleArtActivity.py:661 turtleblocks.py:358
 msgid "Copy"
 msgstr "Apaqaña"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Pegar"
 #: TurtleArtActivity.py:524 TurtleArtActivity.py:662 turtleblocks.py:359
 msgid "Paste"
@@ -924,62 +972,74 @@ msgstr "Lip'katayaña"
 msgid "Restore blocks from trash"
 msgstr "Jani wakisiri imata siqinaka wasitata sartayma"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Pantalla completa"
 #: TurtleArtActivity.py:528 TurtleArtActivity.py:678
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:789
 msgid "Fullscreen"
 msgstr "Maypacha wakichata uñjaña"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Coordenadas cartesianas"
 #: TurtleArtActivity.py:530 TurtleArtActivity.py:679 turtleblocks.py:339
 msgid "Cartesian coordinates"
 msgstr "Coordenadas cartesianas wakichatanaka"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Coordenadas polares"
 #: TurtleArtActivity.py:532 TurtleArtActivity.py:681 turtleblocks.py:341
 msgid "Polar coordinates"
 msgstr "Coordenadas polares wakichatanaka"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Coordenadas centímetros"
 #: TurtleArtActivity.py:535 TurtleArtActivity.py:683
 msgid "Metric coordinates"
 msgstr "Coordenadas centímetros wakichatanaka"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Agrandar bloques"
 #: TurtleArtActivity.py:545 TurtleArtActivity.py:687 turtleblocks.py:345
 msgid "Grow blocks"
 msgstr "Siqichatanaka jach'aptayaña"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Empequeñecer bloques"
 #: TurtleArtActivity.py:547 TurtleArtActivity.py:688 turtleblocks.py:347
 msgid "Shrink blocks"
 msgstr "Siqichatanaka jisk'aptayaña"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Cargar ejemplos"
 #: TurtleArtActivity.py:576 TurtleArtActivity.py:616
 msgid "Load example"
 msgstr "Yant'añanaka wakichata uñachayaña"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Limpiar"
 #: TurtleArtActivity.py:610 TurtleArtActivity.py:785 turtleblocks.py:372
 msgid "Clean"
 msgstr "Pichsuña"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Ejecutar"
 #: TurtleArtActivity.py:611 TurtleArtActivity.py:787 turtleblocks.py:373
 msgid "Run"
 msgstr "Sarayaña"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Dar un paso"
 #: TurtleArtActivity.py:612 TurtleArtActivity.py:789 turtleblocks.py:374
 msgid "Step"
 msgstr "Maya chillqi sartaña"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Ayuda"
 #: TurtleArtActivity.py:617 util/helpbutton.py:45
 msgid "Help"
 msgstr "Yanapt'a"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Parar"
 #: TurtleArtActivity.py:618 turtleblocks.py:376
 msgid "Stop"
@@ -993,6 +1053,7 @@ msgstr "Luräwi wakichata sartayaña"
 msgid "Load plugin"
 msgstr "Plugin wakichata sartayaña"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Cargar bloque Python"
 #: TurtleArtActivity.py:644 TurtleArtActivity.py:741 TurtleArtActivity.py:763
 msgid "Load Python block"
@@ -1002,26 +1063,31 @@ msgstr "Python siqi wakichata sartayaña"
 msgid "Sharing blocks disabled"
 msgstr "Sayt'ayata siqinaka wakichatampi khuyapayaña"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "<Ctrl>p"
 #: TurtleArtActivity.py:780
 msgid "<Ctrl>p"
 msgstr "<Ctrl>p wakichata"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "<Ctrl>e"
 #: TurtleArtActivity.py:785
 msgid "<Ctrl>e"
 msgstr "<Ctrl>e wakichata"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "<Ctrl>r"
 #: TurtleArtActivity.py:787
 msgid "<Ctrl>r"
 msgstr "<Ctrl>r wakichata"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "<Ctrl>w"
 #: TurtleArtActivity.py:789
 msgid "<Ctrl>w"
 msgstr "<Ctrl>w wakichata"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "<Ctrl>s"
 #: TurtleArtActivity.py:792
 msgid "<Ctrl>s"
@@ -1045,26 +1111,31 @@ msgstr "Plugin %s wakichatxa qhantayañataki wakichatäxiwa."
 msgid "Do you want to reinstall %s?"
 msgstr "¿Mayampi qhantayañataki wakichaña muntati %s?"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Mi TortugArte sesión"
 #: gnome_plugins/collaboration_plugin.py:67
 msgid "My Turtle Art session"
 msgstr "TortugArte wakichata luräwinakaja"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Permitir la colaboración"
 #: gnome_plugins/collaboration_plugin.py:115
 msgid "Enable collaboration"
 msgstr "Yanapt'asiña wakiyaña"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Actividades"
 #: gnome_plugins/collaboration_plugin.py:120
 msgid "Activities"
 msgstr "Luräwinaka"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Amigos"
 #: gnome_plugins/collaboration_plugin.py:125
 msgid "Buddies"
 msgstr "Masinaka"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Compartir"
 #: gnome_plugins/collaboration_plugin.py:128
 msgid "Share"
@@ -1074,6 +1145,7 @@ msgstr "Khuyapayaña"
 msgid "Configuration"
 msgstr "Wakichaña"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Vecindario"
 #: gnome_plugins/collaboration_plugin.py:132
 msgid "Neighborhood"
@@ -1087,6 +1159,7 @@ msgstr "K'ari suti"
 msgid "Account ID"
 msgstr "Mantañataki wakichata"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Servidor"
 #: gnome_plugins/collaboration_plugin.py:296
 msgid "Server"
@@ -1096,6 +1169,7 @@ msgstr "Katuqiri"
 msgid "Port"
 msgstr "Tatuqañataki wakichata"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 # "Contraseña:"
 #: gnome_plugins/collaboration_plugin.py:300
 msgid "Password"
@@ -1105,6 +1179,7 @@ msgstr "Jist'araña"
 msgid "Register"
 msgstr "Qillqantata wakichata"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Colores"
 #: gnome_plugins/collaboration_plugin.py:304
 msgid "Colors"
@@ -1126,21 +1201,25 @@ msgstr ""
 "Mantañataki wakichatama utjañapawa uka http://turtleartsite.sugarlabs.org "
 "mantañataki ukhamata luräwi apaqañamataki."
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Usuario:"
 #: gnome_plugins/uploader_plugin.py:92
 msgid "Username:"
 msgstr "Apnaqirini sutipa:"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Contraseña:"
 #: gnome_plugins/uploader_plugin.py:102
 msgid "Password:"
 msgstr "Jist'araña:"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Título:"
 #: gnome_plugins/uploader_plugin.py:113
 msgid "Title:"
 msgstr "Suti:"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Descripción:"
 #: gnome_plugins/uploader_plugin.py:123
 msgid "Description:"
@@ -1150,6 +1229,7 @@ msgstr "Yatiyaña:"
 msgid "Submit to Web"
 msgstr "Web wakichataru apayaña"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Cancelar"
 #: gnome_plugins/uploader_plugin.py:137
 msgid "Cancel"
@@ -1181,6 +1261,7 @@ msgstr "acelerómetro k'ata sarayiri wakichata"
 msgid "push acceleration in x, y, z to heap"
 msgstr "siqiru wakisiri x, y z sarayirinakaru k'ata sarayirinaka uchi"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "sonido"
 #: plugins/audio_sensors/audio_sensors.py:83
 #: plugins/audio_sensors/audio_sensors.py:98 pysamples/grecord.py:205
@@ -1203,6 +1284,7 @@ msgstr "ist'asiñapa jithxatayaña"
 msgid "microphone input volume"
 msgstr "micrófono arsusiña mantañapa ist'aña millk'uña"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "tono"
 #: plugins/audio_sensors/audio_sensors.py:119
 #: plugins/audio_sensors/audio_sensors.py:127
@@ -1311,6 +1393,7 @@ msgstr ""
 "akïri siqinaka wakichatawa wakisirirjama sarayasiraki amtata wakichata "
 "phuaqasiñapkama"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "encima"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:124
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:715
@@ -1322,6 +1405,7 @@ msgstr "p'atja"
 msgid "top of a collapsible stack"
 msgstr "lip'isiri siqi wakichata patxa"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "diario"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:140
 msgid "journal"
@@ -1331,6 +1415,7 @@ msgstr "sapüru luräwi"
 msgid "Sugar Journal media object"
 msgstr "Sugar wakichata sapüru luräwipa wakisirinakapa apnaqaña"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "audio"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:151
 msgid "audio"
@@ -1340,6 +1425,7 @@ msgstr "ist'awi"
 msgid "Sugar Journal audio object"
 msgstr "Sugar wakichata sapüru luräwipa wakisirinakapa ist'aña apnaqaña"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "video"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:163
 msgid "video"
@@ -1349,6 +1435,7 @@ msgstr "uñtaña"
 msgid "Sugar Journal video object"
 msgstr "Sugar wakichata sapüru luräwipa wakisirinakapa uñjaña apnaqaña"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 # "Descripción:"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:175
 msgid "description"
@@ -1358,6 +1445,7 @@ msgstr "yatiyaña"
 msgid "Sugar Journal description field"
 msgstr "Sugar wakichata sapüru luräwipa yatiyaña wakichata"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "mostrar"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:194
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:222
@@ -1405,6 +1493,7 @@ msgstr ""
 "Azúcar wakichatana sapüru luräwiparu SVG wakichata imaña tortuga wakichatana "
 "rixita chimpunakapa imma"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "escala"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:266
 msgid "scale"
@@ -1458,6 +1547,7 @@ msgstr "kamisaraki"
 msgid "speaks text"
 msgstr "qillqataxa siwa"
 
+#. #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #. TRANS: pitch, duration, amplitude
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:316
 msgid "sinewave"
@@ -1516,6 +1606,7 @@ msgstr ""
 "qillqaña wakichata katuyañataki thaqäwi (ukasti qillqaña wakichata siqina "
 "imataskiwa)"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "teclado"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:388
 msgid "keyboard"
@@ -1541,6 +1632,7 @@ msgstr "tortuga wakichataxa uñjiwa"
 msgid "returns the color that the turtle \"sees\""
 msgstr "tortuga wakichatana \"uñjatapa\" sami uñachayma"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "tiempo"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:445 taextras.py:332
 msgid "time"
@@ -1554,6 +1646,7 @@ msgstr "pacha saräwi (pacha t'aqa t'ijtäwinaka) wakichata qalltatpacha"
 msgid "Palette of extra options"
 msgstr "Phuqachaña wakichatanaka limt'aña"
 
+#. #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #. TRANS: push adds a new item to the program stack
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:464
 msgid "push"
@@ -1583,6 +1676,7 @@ msgstr "siqi wakichata ch'ussuña"
 msgid "emptys FILO (first-in-last-out heap)"
 msgstr "FILO siqi wakichata ch'ussma (nayraqata mantañana, qhipraki mistuñana)"
 
+#. #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #. TRANS: pop removes a new item from the program stack
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:504
 msgid "pop"
@@ -1591,8 +1685,7 @@ msgstr "apsuña"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:508
 msgid "pops value off FILO (first-in last-out heap)"
 msgstr ""
-"FILO siqi wakichatana chanipa apsma (nayraqata mantañana, qhipraki "
-"mistuñana)"
+"FILO siqi wakichatana chanipa apsma (nayraqata mantañana, qhipraki mistuñana)"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:519
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:529
@@ -1689,6 +1782,7 @@ msgstr "polar wakichata"
 msgid "displays polar coordinates"
 msgstr "coordenadas polares wakichatanaka uñachayma"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "tortuga"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:685
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:756
@@ -1741,6 +1835,7 @@ msgstr "limiña chhijllaña"
 msgid "Palette of presentation templates"
 msgstr "Uñachayañanaka wakichatanaka limiña"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 # "Ocultar bloques"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:772
 msgid "hide blocks"
@@ -1750,6 +1845,7 @@ msgstr "wakichata tamanaka imantaña"
 msgid "declutters canvas by hiding blocks"
 msgstr "wakichata tamanaka imantasa rixiña pañu pichsma"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 # "Mostrar bloques"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:781
 msgid "show blocks"
@@ -1763,6 +1859,7 @@ msgstr "wakichata tamanaka imantata mayampi qhantayma"
 msgid "hides the Sugar toolbars"
 msgstr "Azúcar sutini wakichata apnaqañanaka imantma"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "lista"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:800
 msgid "list"
@@ -1818,6 +1915,7 @@ msgstr "manqha"
 msgid "ycor of bottom of screen"
 msgstr "coory wakichata uñjaña aynacha lakäxankiri"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "anchura"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:870 taextras.py:247
 msgid "width"
@@ -1835,6 +1933,7 @@ msgstr "coorx wakichata uñjaña kupïxankiri"
 msgid "ycor of top of screen"
 msgstr "coory wakichata uñjaña alaya paräxankiri"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "altura"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:894 taextras.py:242
 #: taextras.py:248
@@ -1853,16 +1952,19 @@ msgstr "x p'iqinchiri suti"
 msgid "title y"
 msgstr "y p'iqinchiri suti"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "izquierda x"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:922
 msgid "left x"
 msgstr "x ch'iqa"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "arriba y"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:931
 msgid "top y"
 msgstr "y alaya"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "derecha x"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:940
 msgid "right x"
@@ -1872,22 +1974,26 @@ msgstr "x kupi"
 msgid "bottom y"
 msgstr "y aynacha"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 # "presentación"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:964
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:979
 msgid "presentation 1x1"
 msgstr "1x1 uñachayäwi"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 # "presentación"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:994
 msgid "presentation 2x1"
 msgstr "2x1 uñachayäwi"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 # "presentación"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1009
 msgid "presentation 1x2"
 msgstr "1x2 uñachayäwi"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 # "presentación"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1024
 msgid "presentation 2x2"
@@ -1897,16 +2003,19 @@ msgstr "2x2 uñachayäwi"
 msgid "push destination rgb value to heap"
 msgstr "wakichata siqiru wakisiri rgb chanipa nukhuña"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "parar"
 #: pysamples/grecord.py:215
 msgid "stop"
 msgstr "sayt'ayaña"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "reproducir"
 #: pysamples/grecord.py:217
 msgid "play"
 msgstr "qhantayaña"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "guardar"
 #: pysamples/grecord.py:219
 msgid "save"
@@ -1924,31 +2033,37 @@ msgstr "U uñanaqaru muyta"
 msgid "make a uturn"
 msgstr "U uñanaqaru muytaña"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "TortugArte Mini"
 #: taextras.py:36
 msgid "Turtle Art Mini"
 msgstr "Jisk'a TortugArte wakichata"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "TortugArte Confusión"
 #: taextras.py:40
 msgid "Turtle Confusion"
 msgstr "Jani qhana TortugArte wakichata"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Selecciona un desafío"
 #: taextras.py:41
 msgid "Select a challenge"
 msgstr "Ch'ama wakichäwi thaqaña"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Paleta de Pesos Mexicanos"
 #: taextras.py:47
 msgid "Palette of Mexican pesos"
 msgstr "México qullqimpi luraña limt'aña"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Paleta de Pesos Colombianos"
 #: taextras.py:48
 msgid "Palette of Colombian pesos"
 msgstr "Colombia qullqimpi luraña limt'aña"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Paleta de Francos de Ruanda"
 #: taextras.py:49
 msgid "Palette of Rwandan francs"
@@ -1974,17 +2089,20 @@ msgstr "Nuevos Soles Peruanos qullqimpi luraña limt'aña"
 msgid "Palette of Uruguayan Pesos"
 msgstr "Pesos Uruguayos qullqimpi luraña limt'aña"
 
+#. #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #. TRANS: Butia is the Arduino Robot Project from Uruguay
 #. (http://www.fing.edu.uy/inco/proyectos/butia/)
 #: taextras.py:60
 msgid "TurtleBots"
 msgstr "TurtleBots wakichata"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 # "Ajusta la intensidad del LED entre 0 y 255."
 #: taextras.py:61
 msgid "adjust LED intensity between 0 and 255"
 msgstr "LED qhana askichaña 0 chimputa 255 chimpukama"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 # "Devuelve el nivel de luz en el ambiente como un número entre 0 y 1023."
 #: taextras.py:62
 msgid "returns the object gray level as a number between 0 and 1023"
@@ -1992,11 +2110,13 @@ msgstr ""
 "wakichaña pachana suma qhanawa qhantayasi kamisa 0 ukata 1023 jakhunaka "
 "chimpjama"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 # "Devuelve 1 cuando el botón está presionado y 0 en otro caso."
 #: taextras.py:63
 msgid "returns 1 when the button is press and 0 otherwise"
 msgstr "1 jakhu kutsuyi limt'aña limxatatipana ukata 0 kutsuyi jani ukhamipana"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 # "Devuelve el nivel de luz en el ambiente como un número entre 0 y 1023."
 #: taextras.py:64
 msgid "returns the ambient light level as a number between 0 and 1023"
@@ -2004,6 +2124,7 @@ msgstr ""
 "wakichaña pachana suma qhanawa qhantayasi kamisa 0 ukata 1023 jakhunaka "
 "chimpjama"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 # "Devuelve la temperatura en el ambiente como un número entre 0 y 255."
 #: taextras.py:65
 msgid "returns the ambient temperature as a number between 0 and 255"
@@ -2011,6 +2132,7 @@ msgstr ""
 "wakichaña pachana suma junt'u junt'utatayasi kamisa 0 ukata 255 jakhunaka "
 "chimpjama"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 # "Devuelve la distancia del objeto en frente al sensor como un número entre 0 "
 #  "y 255."
 #: taextras.py:66
@@ -2021,11 +2143,13 @@ msgstr ""
 "uñkatasina thaqata wakichata jak'ankatapa yatiyi kamisa 0 ukata 255 "
 "jakhunaka chimpjama"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 # "Devuelve 0 o 1 dependiendo the la inclinación del sensor."
 #: taextras.py:68
 msgid "returns 0 or 1 depending on the sensor inclination"
 msgstr "0 ukata 1 jakhu chimpu kutsuyi uñtaña katjiri kicht'ayatatjama"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 # "Devuelve 1 cuando el sensor detecta un campo magnético, 0 en otro caso."
 #: taextras.py:69
 msgid "returns 1 when the sensors detects a magnetic field, 0 otherwise"
@@ -2033,11 +2157,13 @@ msgstr ""
 "1 jakhu chimpu kutsuyi niyatixa uñtaña katjiri uka campo magnético "
 "katjatapatjama, 0 chimpu jani ukhamipana"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 # "Oscila entre 0 y 1 dependiendo de la vibración."
 #: taextras.py:70
 msgid "switches from 0 to 1, the frequency depends on the vibration"
 msgstr "0 ukata 1 jakhu taypinkiwa khatatipanjama"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "LED"
 #: taextras.py:71
 msgid "LED"
@@ -2047,26 +2173,31 @@ msgstr "LED wakichata"
 msgid "button"
 msgstr "limt'aña"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "escala de gris"
 #: taextras.py:73
 msgid "grayscale"
 msgstr "uqi uñamt'irinakapa"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "luz ambiente"
 #: taextras.py:74
 msgid "ambient light"
 msgstr "qhana pacha"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "temperatura"
 #: taextras.py:75
 msgid "temperature"
 msgstr "junt'utatata"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "distancia"
 #: taextras.py:76 taextras.py:292
 msgid "distance"
 msgstr "jaya"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "inclinación"
 #: taextras.py:77 taextras.py:289
 msgid "tilt"
@@ -2076,11 +2207,13 @@ msgstr "kicht'ata"
 msgid "magnetic induction"
 msgstr "campo magnético wakichata"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "vibración"
 #: taextras.py:79
 msgid "vibration"
 msgstr "khatati"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Robot Butiá"
 #: taextras.py:80
 msgid "Butia Robot"
@@ -2094,11 +2227,13 @@ msgstr "Butiá wakichataru samarayaña"
 msgid "refresh the state of the Butia palette and blocks"
 msgstr "Butiá wakichata tamanakana limt'añapa machaqachma"
 
+#. #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #. TRANS: This string is shorthand for "battery charge of Butia"
 #: taextras.py:84
 msgid "battery charge Butia"
 msgstr "Butiá wakichatana batería wakisiripa ch'amanchma"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 # "Devuelve la temperatura en el ambiente como un número entre 0 y 255."
 #: taextras.py:85
 msgid "returns the battery charge as a number between 0 and 255"
@@ -2106,6 +2241,7 @@ msgstr ""
 "robot wakichata jaqina batería wakisiripa ch'amancharapi kamisa 0 jakhu "
 "chimputa 255 chimpukama"
 
+#. #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #. TRANS: This string is shorthand for "speed of Butia"
 #: taextras.py:87
 msgid "speed Butia"
@@ -2119,6 +2255,7 @@ msgstr ""
 "Butiá máquina wakichatanakana k'ata saräwipa sayt'ayma kamisa 0 jakhu chimpu "
 "ukata 1023 jakhu chimpu pasatapa qhananchatatjama"
 
+#. #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #. TRANS: This string is shorthand for "move Butia forward"
 #: taextras.py:91
 msgid "forward Butia"
@@ -2132,7 +2269,9 @@ msgstr "robot Butiá wakichata jaqiru nayräxaru sartayma"
 msgid "move the Butia robot forward a predefined distance"
 msgstr "robot Butiá wakichata jaqiru nayräxaru sartayma amtata sarakama"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "izquierda Butiá"
+#. #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #. TRANS: This string is shorthand for "turn Butia left"
 #: taextras.py:95
 msgid "left Butia"
@@ -2142,6 +2281,7 @@ msgstr "Butiá wakichata ch'iqäxankiri"
 msgid "turn the Butia robot to the left"
 msgstr "robot Butiá wakichata jaqi ch'iqäxaru muytayma"
 
+#. #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #. TRANS: This string is shorthand for "move Butia backward"
 #: taextras.py:98
 msgid "backward Butia"
@@ -2155,7 +2295,9 @@ msgstr "robot Butiá wakichata jaqi qhipäxaru jithiyma"
 msgid "move the Butia robot backward a predefined distance"
 msgstr "robot Butiá wakichata jaqiru qhipäxaru jithiyma amtata sarakama"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "derecha Butiá"
+#. #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #. TRANS: This string is shorthand for "turn Butia right"
 #: taextras.py:102
 msgid "right Butia"
@@ -2173,6 +2315,7 @@ msgstr "Butiá wakichata muytayaña"
 msgid "turn the Butia robot x degrees"
 msgstr "robot Butiá wakichata x grados pachparu muytayma"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "detener Butiá"
 #: taextras.py:106
 msgid "stop Butia"
@@ -2182,6 +2325,7 @@ msgstr "Butiá wakichata sayt'ayaña"
 msgid "stop the Butia robot"
 msgstr "Butiá wakichata sayt'ayma"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 # "espera Butiá"
 #: taextras.py:108
 msgid "display Butia"
@@ -2191,6 +2335,7 @@ msgstr "Butiá wakichata uñjaña"
 msgid "Hello World    Butia            "
 msgstr "Kamisaraki Pacha      Butiá wakichata    "
 
+#. #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #. TRANS: this string must contain only ASCII characters.
 #. The len must be 32 characters/spaces.
 #: taextras.py:112
@@ -2199,11 +2344,13 @@ msgstr ""
 "Butiá wakichatana 32 caracteres chaniru wakichatarjama uñjaña qillqata "
 "laphiru apsma"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Butiá"
 #: taextras.py:113
 msgid "Butia"
 msgstr "Butiá wakichata"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 # "Error en la inicialización de la cámara."
 #: taextras.py:117
 msgid "Error on initialization of the camera"
@@ -2221,11 +2368,13 @@ msgstr "Cámara wakichata sayt'aykasina pantjata"
 msgid "Error starting camera"
 msgstr "Cámara wakichata qhantaykasina pantjata"
 
+#. #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #. TRANS: The "mask" is used to restrict processing to a region in the image
 #: taextras.py:122
 msgid "Error making mask"
 msgstr "Ajanuru k'achachasiña lurkasina pantjata"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "FollowMe"
 #: taextras.py:123
 msgid "FollowMe"
@@ -2235,21 +2384,25 @@ msgstr "FollowMe wakichata"
 msgid "follow"
 msgstr "arkaña"
 
+#. #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #. TRANS: Green component of a color
 #: taextras.py:126
 msgid "G"
 msgstr "G chimpu"
 
+#. #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #. TRANS: Red component of a color
 #: taextras.py:128
 msgid "R"
 msgstr "R chimpu"
 
+#. #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #. TRANS: Blue component of a color
 #: taextras.py:130
 msgid "B"
 msgstr "B chimpu"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "seguir color RGB"
 #: taextras.py:131
 msgid "follow a RGB color"
@@ -2263,6 +2416,7 @@ msgstr "warachi wakichata"
 msgid "set a threshold for a RGB color"
 msgstr "RGB samitaki warachi wakichma"
 
+#. #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #. TRANS: the calibration can be saved for later use
 #: taextras.py:135
 msgid "save calibration 1"
@@ -2272,6 +2426,7 @@ msgstr "calibración 1 wakichata imaña"
 msgid "stores a calibration in calibration 1"
 msgstr "calibración 1 maya wakichata imma"
 
+#. #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #. TRANS: the calibration can be saved for later use
 #: taextras.py:138
 msgid "save calibration 2"
@@ -2281,6 +2436,7 @@ msgstr "calibración 2 wakichata imaña"
 msgid "stores a calibration in calibration 2"
 msgstr "calibración 2 wakichataru maya wakichata imma"
 
+#. #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #. TRANS: the calibration is used to match an RGB color to a target
 #: taextras.py:141
 msgid "calibration"
@@ -2310,21 +2466,25 @@ msgstr "calibración 2 wakichata kutsuyi"
 msgid "return a personalized calibration"
 msgstr "wakisiriparjama calibración wakichata kutsuyi"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "posición x"
 #: taextras.py:148
 msgid "x position"
 msgstr "x sayäwi"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "retorna la posición x"
 #: taextras.py:149
 msgid "return x position"
 msgstr "x sayäwi kutiyaña"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "posición y"
 #: taextras.py:150
 msgid "y position"
 msgstr "y sayäwi"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "retorna la posición y"
 #: taextras.py:151
 msgid "return y position"
@@ -2391,6 +2551,7 @@ msgstr "calibración wakichata ch'usa"
 msgid "error in string conversion"
 msgstr "qillqata wakichata wiskhallana mayjt'ayäwina pantjata"
 
+#. #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #. TRANS: SumBot is a robot programmed for "Sumo wrestling"
 #: taextras.py:171
 msgid "SumBot"
@@ -2408,6 +2569,7 @@ msgstr "SumBot wakichata k'ata saräwipa machaqachma"
 msgid "set the default speed for the movement commands"
 msgstr "sarayaña limt'añanaka pantjasina k'ata sarayäwi machaqachma"
 
+#. #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #. TRANS: This string is shorthand for "move SumBot forward"
 #: taextras.py:176
 msgid "forward SumBot"
@@ -2417,6 +2579,7 @@ msgstr "SumBot wakichatampi qalltma"
 msgid "move SumBot forward"
 msgstr "SumBot wakichata nayräxaru sartayma"
 
+#. #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #. TRANS: This string is shorthand for "move SumBot backward"
 #: taextras.py:179
 msgid "backward SumBot"
@@ -2434,6 +2597,7 @@ msgstr "SumBot wakichata sayt'ayaña"
 msgid "stop the SumBot"
 msgstr "SumBot wakichata sayt'ayma"
 
+#. #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #. TRANS: This string is shorthand for "turn SumBot left"
 #: taextras.py:184
 msgid "left SumBot"
@@ -2443,6 +2607,7 @@ msgstr "SumBot wakichata ch'iqäxa"
 msgid "turn left the SumBot"
 msgstr "SumBot wakichata ch'iqäxaru muytayma"
 
+#. #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #. TRANS: This string is shorthand for "move SumBot right"
 #: taextras.py:187
 msgid "right SumBot"
@@ -2452,17 +2617,20 @@ msgstr "SumBot wakichata kupïxa"
 msgid "turn right the SumBot"
 msgstr "SumBot wakichata kupïxaru muytayma"
 
+#. #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #. TRANS: The angle to the center is the angle SumBot must turn to
 #. face the center of the playing field
 #: taextras.py:191
 msgid "angle to center"
 msgstr "taypiru k'uchuni wakichata"
 
+#. #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #. TRANS: dohyo is the playing field
 #: taextras.py:193
 msgid "get the angle to the center of the dohyo"
 msgstr "dohyo taypiru k'uchuni wakichata apsma"
 
+#. #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #. TRANS: The angle to the center is the angle SumBot must turn to
 #. face the Enemy (opponent)
 #: taextras.py:196
@@ -2473,6 +2641,7 @@ msgstr "k'uchuni wakichata uñisiri"
 msgid "get the angle to the Enemy"
 msgstr "k'uchuni wakichata uñisiri apsma"
 
+#. #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #. TRANS: This string is shorthand for "x coordinate of SumBot"
 #: taextras.py:199
 msgid "x coor. SumBot"
@@ -2482,6 +2651,7 @@ msgstr "coor. x SumBot wakichata"
 msgid "get the x coordinate of the SumBot"
 msgstr "SumBot wakichatana coordenada x chanipa apsma"
 
+#. #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #. TRANS: This string is shorthand for "y coordinate of SumBot"
 #: taextras.py:202
 msgid "y coor. SumBot"
@@ -2491,6 +2661,7 @@ msgstr "coor. y SumBot wakichata"
 msgid "get the y coordinate of the SumBot"
 msgstr "SumBot wakichatana coordenada y chanipa apsma"
 
+#. #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #. TRANS: This string is shorthand for "x coordinate of SumBot's enemy"
 #: taextras.py:205
 msgid "x coor. Enemy"
@@ -2500,6 +2671,7 @@ msgstr "coor. x wakichata uñisiri"
 msgid "get the x coordinate of the Enemy"
 msgstr "uñisiri wakichatana coordenada x chanipa apsma"
 
+#. #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #. TRANS: This string is shorthand for "y coordinate of SumBot's enemy"
 #: taextras.py:208
 msgid "y coor. Enemy"
@@ -2509,6 +2681,7 @@ msgstr "coor. y wakichata uñisiri"
 msgid "get the y coordinate of the Enemy"
 msgstr "uñisiri wakichatana coordenada y chanipa apsma"
 
+#. #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #. TRANS: This string is shorthand for "rotation of SumBot"
 #: taextras.py:211
 msgid "rotation SumBot"
@@ -2518,6 +2691,7 @@ msgstr "SumBot wakichata muyüwipa"
 msgid "get the rotation of the Sumbot"
 msgstr "SumBot wakichata muyüwipa apsma"
 
+#. #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #. TRANS: This string is shorthand for "rotation of SumBot's enemy"
 #: taextras.py:214
 msgid "rotation Enemy"
@@ -2531,6 +2705,7 @@ msgstr "uñisiri wakichatana muyüwipa apsma"
 msgid "distance to center"
 msgstr "taypiru sara"
 
+#. #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #. TRANS: dohyo is the playing field
 #: taextras.py:218
 msgid "get the distance to the center of the dohyo"
@@ -2552,6 +2727,7 @@ msgstr "yatiyañataki machaqachaña"
 msgid "update information from the server"
 msgstr "wakichatanaka apnaqañatpacha yatiyañanaka machaqachma"
 
+#. #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #. TRANS: Please use similar terms to those used in the Physics Activity
 #: taextras.py:227
 msgid "Palette of physics blocks"
@@ -2601,6 +2777,7 @@ msgstr "Machaqa polígono wakichata phuqachaña amtma."
 msgid "triangle"
 msgstr "kimsa k'uchu"
 
+#. #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #. TRANS: base of a triangle
 #: taextras.py:241
 msgid "base"
@@ -2638,6 +2815,7 @@ msgstr "Amtäwi machaqachma: wakichata sutinaka siqi pichsma."
 msgid "motor"
 msgstr "motor wakichata"
 
+#. #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #. TRANS: torque as in engine torque
 #: taextras.py:254
 msgid "torque"
@@ -2683,6 +2861,7 @@ msgstr "física luräwjama imaña"
 msgid "Save the project to the Journal as a Physics activity."
 msgstr "Amtäwi sapüru luräwiru imma kamisa Física luräwjama."
 
+#. #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #. TRANS: Here, gear means a toothed wheel, as in a clock-works
 #: taextras.py:268
 msgid "gear"
@@ -2692,6 +2871,7 @@ msgstr "muyu"
 msgid "Add a gear object to the project."
 msgstr "Amtäwiru maya muyuri wakichatampi yapxatma."
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 # "identidad"
 #: taextras.py:270
 msgid "density"
@@ -2717,6 +2897,7 @@ msgstr ""
 "chimpuni ukata 1 chimpuni, ukana 0 jani purapayasini ukata 1 chimpuraki wali "
 "purapayasini)."
 
+#. #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #. TRANS: bounciness is coefficient of restitution
 #: taextras.py:277
 msgid "bounciness"
@@ -2731,6 +2912,7 @@ msgstr ""
 "chimpuni ukata 1 chimpuni, ukana 0 jani kutintayäwini ukata 1 chimpuraki "
 "wali kutintayäwini)."
 
+#. #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #. TRANS: dynamic here means moving vs in a fixed position
 #: taextras.py:281
 msgid "dynamic"
@@ -2743,6 +2925,7 @@ msgstr ""
 "Wali q'apa = 1, wakichataxa unxtaspawa; wali q'apa = 0 wakichataxa janiwa "
 "unxtaspati."
 
+#. #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #. TRANS: WeDo is a robotics product of the LEGO company
 #: taextras.py:288
 msgid "Palette of WeDo blocks"
@@ -2757,6 +2940,7 @@ msgstr ""
 "kicht'atawa, 3 == qhipäxaru kicht'atawa, 1 == ch'iqäxaru kicht'atawa, 2 == "
 "kupïxaru kicht'atawa)"
 
+#. #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #. TRANS: This string is shorthand for "output of the distance sensor"
 #: taextras.py:294
 msgid "distance sensor output"
@@ -2786,6 +2970,7 @@ msgstr "Motor A wakichatana chanipa machaqachma"
 msgid "set the value for Motor B"
 msgstr "Motor B wakichatana chanipa machaqachma"
 
+#. #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #. TRANS: Lego NXT is a robotics product of the LEGO company
 #: taextras.py:305
 msgid "Palette of LEGO NXT blocks of motors"
@@ -2795,16 +2980,19 @@ msgstr "Motor wakichatanakana LEGO NXT tamanaka limt'aña"
 msgid "Palette of LEGO NXT blocks of sensors"
 msgstr "Katjirinaka wakichata LEGO NXT tamanaka limt'aña"
 
+#. #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #. TRANS: touch sensor (implemented as a button)
 #: taextras.py:308
 msgid "touch"
 msgstr "limt'aña"
 
+#. #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #. TRANS: distance sensor (implemented using ultrasonics)
 #: taextras.py:310
 msgid "ultrasonic"
 msgstr "jaya"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 # "luz"
 #: taextras.py:312
 msgid "light"
@@ -2838,6 +3026,7 @@ msgstr "PUERTO 3 wakichata"
 msgid "PORT 4"
 msgstr "PUERTO 4 wakichata"
 
+#. #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #. TRANS: The brick is the NXT controller
 #: taextras.py:322
 msgid "Please check the connection with the brick."
@@ -2886,6 +3075,7 @@ msgstr "wakichatanaka thaqaña"
 msgid "Play a tone at frequency for time."
 msgstr "Maya k'ata wakichäwinaka taypinkiri maya ist'aña qhantayma."
 
+#. #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #. TRANS: turn is the action and rotations is quantity of turns
 #: taextras.py:335
 msgid ""
@@ -2951,6 +3141,7 @@ msgstr "motor wakichata wayt'aña"
 msgid "Stop a specified motor."
 msgstr "Maya uñaqata motor wakichata wayt'aña."
 
+#. #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #. TRANS: reset is used to reset the counter associated with the motor
 #: taextras.py:350
 msgid "reset motor"
@@ -3016,6 +3207,7 @@ msgstr "jayataki katjiri"
 msgid "sound sensor"
 msgstr "ist'añani katjiri"
 
+#. #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #. TRANS: set light is used to set the light level associated with
 #. the color sensor (which can emit light as well as sense it)
 #: taextras.py:368
@@ -3026,6 +3218,7 @@ msgstr "lliphiri qhantayaña"
 msgid "Set color sensor light."
 msgstr "Samini katjiri lliphiripa qhantayma."
 
+#. #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #. TRANS: the battery level is the charge level of the brick
 #: taextras.py:371
 msgid "battery level"
@@ -3035,6 +3228,7 @@ msgstr "batería ch'amanchiripa"
 msgid "Get battery level of brick."
 msgstr "Brick wakichatana batería ch'amanchiripa apsma."
 
+#. #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #. TRANS: Arduino plugin to control an Arduino board
 #: taextras.py:377
 msgid "Palette of Arduino blocks"
@@ -3056,6 +3250,7 @@ msgstr "KATUQIRI"
 msgid "OUTPUT"
 msgstr "MISTUYIRI"
 
+#. #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #. TRANS: PWM is pulse-width modulation
 #: taextras.py:383
 msgid "PWM"
@@ -3080,9 +3275,9 @@ msgstr "PANTJATA: JILA jani ukaxa PISI chaniñapawa."
 #: taextras.py:388
 msgid "ERROR: The mode must be either INPUT, OUTPUT, PWM or SERVO."
 msgstr ""
-"PANTJATA: uñanaqapaxa KATUQIRI, MISTUYIRI, PWM jani ukaxa SERVO "
-"ukhamañapawa."
+"PANTJATA: uñanaqapaxa KATUQIRI, MISTUYIRI, PWM jani ukaxa SERVO ukhamañapawa."
 
+#. #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #. TRANS: pin mode is used to specify the mode (INPUT, OUTPUT, etc)
 #. in which an I/O pin is being used.
 #: taextras.py:391
@@ -3158,193 +3353,212 @@ msgid "Configure Arduino port for PWM (pulse-width modulation)."
 msgstr ""
 "PWM wakichatataki Arduino puerto wakichma (putuqiri lankhutjama askichma)."
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "el uso es"
 #: turtleblocks.py:80
 msgid "usage is"
 msgstr "luraña akhamawa"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Sin acción alternativa:"
 #: turtleblocks.py:232
 msgid "No option action:"
 msgstr "Mayjata lurañaxa janiwa utjiti:"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Fichero no encontrado"
 #: turtleblocks.py:247
 msgid "File not found"
 msgstr "Wakichatanaka imaña chhaqata"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Directorio de configuración no modificable: %s"
 #: turtleblocks.py:271
 #, python-format
 msgid "Configuration directory not writable: %s"
 msgstr "Jani unuqiyaña wakichäwi qillqata: %s"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Nuevo"
 #: turtleblocks.py:327
 msgid "New"
 msgstr "Machaqa"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Abrir"
 #: turtleblocks.py:328
 msgid "Open"
 msgstr "Uñantaña"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Guardar"
 #: turtleblocks.py:329
 msgid "Save"
 msgstr "Imaña"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Guardar como"
 #: turtleblocks.py:330
 msgid "Save as"
 msgstr "Sutini imaña"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Salir"
 #: turtleblocks.py:335
 msgid "Quit"
 msgstr "Mistuña"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Archivo"
 #: turtleblocks.py:336
 msgid "File"
 msgstr "Q'ipi"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Escalar coordenadas"
 #: turtleblocks.py:343
 msgid "Rescale coordinates"
 msgstr "Coordenadas wakichatanaka jithirayaña"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Restaurar el tamaño del bloque"
 #: turtleblocks.py:349
 msgid "Reset block size"
 msgstr "Wakichata tamanaka mayampi qhantayaña"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Mostar/ocultar bloques"
 #: turtleblocks.py:367
 msgid "Show/hide blocks"
 msgstr "Wakichata tamanaka uñachayaña/imantaña"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Herramientas"
 #: turtleblocks.py:369
 msgid "Tools"
 msgstr "Lurañataki"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Depurar"
 #: turtleblocks.py:375
 msgid "Debug"
 msgstr "Thaqsraña"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Tortuga"
 #: turtleblocks.py:377
 msgid "Turtle"
 msgstr "Tortuga wakichata"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "Hay trabajo sin guardar. ¿Le gustaría guardar antes de salir?"
 #: turtleblocks.py:411
 msgid "You have unsaved work. Would you like to save before quitting?"
 msgstr "Jani imata wakichatanakawa utji. ¿janirara mistkasina imaña muntacha?"
 
+# #-#-#-#-#  aym.po (PACKAGE VERSION)  #-#-#-#-#
 #  "¿Guardar el proyecto?"
 #: turtleblocks.py:412
 msgid "Save project?"
 msgstr "¿Wakichäwinaka imaña?"
 
 #  "espera Butiá"
-#~ msgid "delay Butia"
-#~ msgstr "Butia suytaña"
+msgid "delay Butia"
+msgstr "Butia suytaña"
 
 #  "La cámara no fue encontrada."
-#~ msgid "The camera was not found."
-#~ msgstr "Janiwa camera jaqiskiti."
+msgid "The camera was not found."
+msgstr "Janiwa camera jaqiskiti."
 
 #  "Guardar como HTML"
-#~ msgid "Save as HTML"
-#~ msgstr "HTML imaña"
+msgid "Save as HTML"
+msgstr "HTML imaña"
 
 #  "<Ctrl>d"
-#~ msgid "<Ctrl>d"
-#~ msgstr "<Ctrl>d"
+msgid "<Ctrl>d"
+msgstr "<Ctrl>d"
 
 #  "Paleta de monedas de los Estados Unidos"
-#~ msgid "Palette of US currencies"
-#~ msgstr "Estados Unidos qullqimpi lurañanaka"
+msgid "Palette of US currencies"
+msgstr "Estados Unidos qullqimpi lurañanaka"
 
 #  "Paleta de monedas de Australia"
-#~ msgid "Palette of Australian currencies"
-#~ msgstr "Australia qullqimpi lurañanaka"
+msgid "Palette of Australian currencies"
+msgstr "Australia qullqimpi lurañanaka"
 
 #  "Paleta de Guaraníes"
-#~ msgid "Palette of Guaranies"
-#~ msgstr "Guaraníes qullqimpi lurañanaka"
+msgid "Palette of Guaranies"
+msgstr "Guaraníes qullqimpi lurañanaka"
 
 #  "presentación"
-#~ msgid "presentation"
-#~ msgstr "uñt'ayawi"
+msgid "presentation"
+msgstr "uñt'ayawi"
 
 #  "seguir un color de tortuga"
-#~ msgid "follow a turtle color"
-#~ msgstr "charapa color tumpasiña"
+msgid "follow a turtle color"
+msgstr "charapa color tumpasiña"
 
 #  "calibrar un color a seguir"
-#~ msgid "calibrate a color to follow"
-#~ msgstr "samiru tumpasiri qaltasi"
+msgid "calibrate a color to follow"
+msgstr "samiru tumpasiri qaltasi"
 
 #  "<Ctrl>b"
-#~ msgid "<Ctrl>b"
-#~ msgstr "<Ctrl>b"
+msgid "<Ctrl>b"
+msgstr "<Ctrl>b"
 
 #  "Mover el cursor sobre la paleta naranja para ayuda."
-#~ msgid "Move the cursor over the orange palette for help."
-#~ msgstr "Achakuru killu-wilaru uchaña yanapt'a katusa cuptaña."
+msgid "Move the cursor over the orange palette for help."
+msgstr "Achakuru killu-wilaru uchaña yanapt'a katusa cuptaña."
 
 #  "TortugArte Butiá"
-#~ msgid "Turtle Art Butia"
-#~ msgstr "CharapArte Butia"
+msgid "Turtle Art Butia"
+msgstr "CharapArte Butia"
 
 #  "Botón"
-#~ msgid "pushbutton"
-#~ msgstr "limjaña"
+msgid "pushbutton"
+msgstr "limjaña"
 
 # "Devuelve el nivel de gris del objeto en frente al sensor como un número "
 #  "entre 0 y 1023."
 #, fuzzy
-#~ msgid ""
-#~ "returns the object gray level encountered him as a number between 0 and 1023"
-#~ msgstr "Uqi qutayaña kunaki sensor nayrapanki 0 ukjata 1023 uqakama."
+msgid ""
+"returns the object gray level encountered him as a number between 0 and "
+"1023"
+msgstr "Uqi qutayaña kunaki sensor nayrapanki 0 ukjata 1023 uqakama."
 
 #  "Importar / Exportar"
-#~ msgid "Import/Export"
-#~ msgstr "Puriñana/Apayaña"
+msgid "Import/Export"
+msgstr "Puriñana/Apayaña"
 
 #  "Importar proyecto desde el Diario"
-#~ msgid "Import project from the Journal"
-#~ msgstr "Wakichawinaka puriniña sapüru luräwiru"
+msgid "Import project from the Journal"
+msgstr "Wakichawinaka puriniña sapüru luräwiru"
 
 #  "carga de batería Butiá"
-#~ msgid "Butia battery charge"
-#~ msgstr "carga de batería Butiá"
+msgid "Butia battery charge"
+msgstr "carga de batería Butiá"
 
 #  "velocidad Butiá"
-#~ msgid "Butia speed"
-#~ msgstr "velocidad Butiá"
+msgid "Butia speed"
+msgstr "velocidad Butiá"
 
 #  "adelante distancia"
-#~ msgid "forward distance"
-#~ msgstr "adelante distancia"
+msgid "forward distance"
+msgstr "adelante distancia"
 
 #  "atrás distancia"
-#~ msgid "backward distance"
-#~ msgstr "atrás distancia"
+msgid "backward distance"
+msgstr "atrás distancia"
 
 #  "Butiá Sumo"
-#~ msgid "Sumo Butia"
-#~ msgstr "Butiá Sumo"
+msgid "Sumo Butia"
+msgstr "Butiá Sumo"
 
 #  "enviar velocidades"
-#~ msgid "submit speed​​"
-#~ msgstr "qatak'i apayaña"
+msgid "submit speed​​"
+msgstr "qatak'i apayaña"
 
 # "Envía la velocidad al robot."
 #, fuzzy
-#~ msgid "Send speed to the robot."
-#~ msgstr "Envía la velocidad al robot."
+msgid "Send speed to the robot."
+msgstr "Envía la velocidad al robot."
