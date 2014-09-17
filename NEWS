@@ -1,7 +1,12 @@
+209
+
+BUG FIXES:
+* Fine-tune some block label positioning
+
 208
 
 ENHANCEMENT:
-* expand dock for oversized arguments in fill_screen block (et al.)
+* Expand dock for oversized arguments in fill_screen block (et al.)
 
 207
 

@@ -679,8 +679,11 @@ class Block:
             if self.name in block_styles['compare-porch-style']:
                 self.spr.set_label_attributes(size, True, 'center', 'bottom',
                                               i=i)
-            elif self.name in block_styles['clamp-style-hat'] or\
-                self.name in block_styles['clamp-style-hat-1arg']:
+            elif self.name in block_styles['clamp-style-hat']:
+                self.spr.set_margins(t=10 * self.scale)
+                self.spr.set_label_attributes(size, True, 'center', 'top',
+                                              i=i)
+            elif self.name in block_styles['clamp-style-hat-1arg']:
                 self.spr.set_label_attributes(size, True, 'center', 'top',
                                               i=i)
             elif self.name in block_styles['number-style-porch']:
@@ -726,15 +729,16 @@ class Block:
             self.spr.set_label_attributes(int(self.font_size[1] + 0.5),
                                           True, 'right', y_pos=y, i=1)
         elif self.name in block_styles['clamp-style-else']:
+            self.spr.set_margins(l=10*self.scale, r=10*self.scale)
             y = self.docks[1][3] - int(int(self.font_size[0] * 1.3))
             self.spr.set_label_attributes(int(self.font_size[0] + 0.5),
                                           True, 'right', y_pos=y, i=0)
             y = self.docks[2][3] - int(int(self.font_size[0] * 1.9))
             self.spr.set_label_attributes(int(self.font_size[1] + 0.5),
-                                          True, 'right', y_pos=y, i=1)
+                                          True, 'left', y_pos=y, i=1)
             y = self.docks[3][3] - int(int(self.font_size[0] * 1.45))
             self.spr.set_label_attributes(int(self.font_size[1] + 0.5),
-                                          True, 'right', y_pos=y, i=2)
+                                          True, 'left', y_pos=y, i=2)
 
 
     def _set_labels(self, i, label):

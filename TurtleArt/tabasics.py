@@ -952,7 +952,7 @@ number of seconds'))
 
         palette.add_block('if',
                           style='clamp-style-boolean',
-                          label=[_('if'), _('then'), ''],
+                          label=[_('if'), _('then')],
                           prim_name='if',
                           default=[None, None],
                           special_name=_('if then'),
@@ -1031,7 +1031,7 @@ boolean operators from Numbers palette'))
 
         palette.add_block('start',
                           style='clamp-style-hat',
-                          label='\n' + _('start'),
+                          label=_('start'),
                           prim_name='start',
                           logo_command='to start\n',
                           help_string=_('connects action to toolbar run \
