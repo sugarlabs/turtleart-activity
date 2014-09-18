@@ -1397,6 +1397,11 @@ class TurtleArtActivity(activity.Activity):
     def can_close(self):
         ''' Override activity class can_close inorder to notify plugins '''
         self.tw.quit_plugins()
+        # Clean up temporary files
+        if os.path.exists(TMP_SVG_PATH):
+            os.remove(TMP_SVG_PATH)
+        if os.path.exists(TMP_ODP_PATH):
+            os.remove(TMP_ODP_PATH)
         return True
 
     def write_file(self, file_path):

@@ -19,6 +19,8 @@
 #OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 #THE SOFTWARE.
 
+import os
+from random import uniform
 from gettext import gettext as _
 
 # Packaging constants
@@ -81,8 +83,10 @@ XO175 = 'xo1.75'
 XO30 = 'xo3.0'
 XO4 = 'xo4'
 UNKNOWN = 'unknown'
-TMP_SVG_PATH = '/tmp/turtle_output.svg'
-TMP_ODP_PATH = '/tmp/turtle_presentation'
+TMP_SVG_PATH = os.path.join(
+    '/tmp', 'turtle-blocks-%d.svg' % int(uniform(0, 10000)))
+TMP_ODP_PATH = os.path.join(
+    '/tmp', 'turtle-blocks-%d.odp' % int(uniform(0, 10000)))
 
 ARG_MUST_BE_NUMBER = ['product2', 'minus2', 'random', 'remainder2', 'forward',
                       'back', 'left', 'right', 'arc', 'setxy2', 'setxy',

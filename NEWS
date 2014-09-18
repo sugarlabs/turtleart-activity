@@ -1,7 +1,11 @@
 209
 
+ENHANCEMENT:
+* Add export SVG and Icon to GNOME menu (Alan Aguiar)
+
 BUG FIXES:
 * Fine-tune some block label positioning
+* Use unique name (by user) for tmp files for multiuser systems (#4788)
 
 208
 

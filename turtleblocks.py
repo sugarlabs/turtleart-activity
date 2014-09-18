@@ -54,7 +54,8 @@ import gettext
 from gettext import gettext as _
 
 from TurtleArt.taconstants import (OVERLAY_LAYER, DEFAULT_TURTLE_COLORS,
-                                   TAB_LAYER, SUFFIX)
+                                   TAB_LAYER, SUFFIX, TMP_SVG_PATH,
+                                   TMP_ODP_PATH)
 from TurtleArt.tautils import (data_from_string, get_load_name,
                                get_path, get_save_name, is_writeable)
 from TurtleArt.tapalette import default_values
@@ -443,6 +444,8 @@ return %s(self)" % (p, P, P)
 
         MenuBuilder.make_menu_item(export_submenu, _('image'),
                                    self._do_save_picture_cb)
+        MenuBuilder.make_menu_item(export_submenu, _('SVG'),
+                                   self._do_save_svg_cb)
         MenuBuilder.make_menu_item(export_submenu, _('icon'),
                                    self._do_save_as_icon_cb)
         # TRANS: ODP is Open Office presentation
@@ -541,6 +544,13 @@ return %s(self)" % (p, P, P)
         for plugin in self.tw.turtleart_plugins:
             if hasattr(plugin, 'quit'):
                 plugin.quit()
+
+        # Clean up temporary files
+        if os.path.exists(TMP_SVG_PATH):
+            os.remove(TMP_SVG_PATH)
+        if os.path.exists(TMP_ODP_PATH):
+            os.remove(TMP_ODP_PATH)
+
         gtk.main_quit()
         exit()
 
@@ -661,6 +671,10 @@ Would you like to save before quitting?'))
     def _do_save_picture_cb(self, widget):
         ''' Callback for save canvas. '''
         self.tw.save_as_image()
+
+    def _do_save_svg_cb(self, widget):
+        ''' Callback for save canvas as SVG. '''
+        self.tw.save_as_image(svg=True)
 
     def _do_save_as_icon_cb(self, widget):
         ''' Callback for save canvas. '''
