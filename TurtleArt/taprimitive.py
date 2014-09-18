@@ -36,6 +36,7 @@ from talogo import (LogoCode, logoerror, NegativeRootError)
 from taturtle import (Turtle, Turtles)
 from TurtleArt.tatype import (TYPE_CHAR, TYPE_INT, TYPE_FLOAT, TYPE_OBJECT,
                               TYPE_MEDIA, TYPE_COLOR, BOX_AST, ACTION_AST,
+                              TYPE_VECTOR,
                               Type, TypeDisjunction, TATypeError, get_type,
                               TypedSubscript, TypedName, is_bound_method,
                               is_instancemethod, is_staticmethod,
