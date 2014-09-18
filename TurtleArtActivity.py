@@ -68,7 +68,8 @@ from TurtleArt.taplugin import (load_a_plugin, cancel_plugin_install,
 from TurtleArt.tapalette import (palette_names, help_strings, help_palettes,
                                  help_windows, default_values)
 from TurtleArt.taconstants import (BLOCK_SCALE, XO1, XO15, XO175, XO4,
-                                   MIMETYPE)
+                                   MIMETYPE, TMP_SVG_PATH,
+                                   TMP_ODP_PATH)
 from TurtleArt.taexportlogo import save_logo
 from TurtleArt.taexportpython import save_python
 from TurtleArt.tautils import (data_to_file, data_to_string, data_from_string,
