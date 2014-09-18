@@ -1349,8 +1349,9 @@ class LogoCode:
                 debug_output("Couldn't open filepath %s" % (self.filepath),
                              self.tw.running_sugar)
         if self.pixbuf is not None:
-            w *= self.tw.coord_scale
-            h *= self.tw.coord_scale
+            # w, h are relative to screen size, not coord_scale
+            # w *= self.tw.coord_scale
+            # h *= self.tw.coord_scale
             if center:
                 self.tw.turtles.get_active_turtle().draw_pixbuf(
                     self.pixbuf, 0, 0,
