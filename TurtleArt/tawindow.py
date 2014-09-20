@@ -59,7 +59,7 @@ from taconstants import (HORIZONTAL_PALETTE, VERTICAL_PALETTE, BLOCK_SCALE,
                          EXPANDABLE_ARGS, XO1, XO15, XO175, XO30, XO4, TITLEXY,
                          CONTENT_ARGS, CONSTANTS, EXPAND_SKIN, PROTO_LAYER,
                          EXPANDABLE_FLOW, SUFFIX, TMP_SVG_PATH, TMP_ODP_PATH,
-                         Vector)
+                         Vector, PASTE_OFFSET)
 from tapalette import (palette_names, palette_blocks, expandable_blocks,
                        block_names, content_blocks, default_values,
                        special_names, block_styles, help_strings,
@@ -261,7 +261,8 @@ class TurtleArtWindow():
         self.drag_pos = 0, 0
         self.dragging_canvas = [False, 0, 0]
         self.turtle_movement_to_share = None
-        self.paste_offset = 20  # Don't paste on top of where you copied.
+        # Don't paste on top of where you copied.
+        self.paste_offset = PASTE_OFFSET
 
         # common properties of all blocks (font size, decimal point, ...)
         self.block_list = Blocks(font_scale_factor=self.scale,
@@ -546,7 +547,7 @@ class TurtleArtWindow():
         if data and data.format == 8 and data.data[0:2] == '[[':
             self.process_data(data_from_string(data.data),
                               self.paste_offset)
-            self.paste_offset += 20
+            self.paste_offset += PASTE_OFFSET
             context.finish(True, False, time)
         elif data and data.format == 8 and \
                 self.selected_blk is not None and \
@@ -554,7 +555,7 @@ class TurtleArtWindow():
             bounds = self._text_buffer.get_bounds()
             self._text_buffer.set_text(
                 self._text_buffer.get_text(bounds[0], bounds[1]) + data.data)
-            self.text_entry.set_buffer(self._text_buffer)
+            self._text_entry.set_buffer(self._text_buffer)
             context.finish(True, False, time)
         else:
             context.finish(False, False, time)
@@ -1960,8 +1961,6 @@ class TurtleArtWindow():
 
                 if data is not []:
                     if self.saving_blocks:
-                        debug_output('Serialize blocks and save.',
-                                     self.running_sugar)
                         i = find_hat(data)
                         if i is not None:
                             name = ''
@@ -1991,13 +1990,9 @@ class TurtleArtWindow():
                             self.drag_group = None
                     elif self.copying_blocks:
                         clipboard = gtk.Clipboard()
-                        debug_output('Serialize blocks and copy to clipboard',
-                                     self.running_sugar)
                         text = data_to_string(data)
                         clipboard.set_text(text)
                     elif self.sharing():
-                        debug_output('Serialize blocks and send as event',
-                                     self.running_sugar)
                         text = data_to_string(data)
                         event = 'B|%s' % (data_to_string([self.nick, text]))
                         self.send_event(event)
@@ -2164,9 +2159,11 @@ class TurtleArtWindow():
                 if len(blk) > 5:
                     self._process_block_data.append(
                         [blk[0], blk[1], blk[2], blk[3], blk[4], blk[5]])
-                else:
+                elif len(blk) == 5:
                     self._process_block_data.append(
                         [blk[0], blk[1], blk[2], blk[3], blk[4]])
+                else:
+                    return None
         self._extra_block_data = []
         # Create the blocks (or turtle).
         blocks = []
@@ -3729,6 +3726,16 @@ class TurtleArtWindow():
         if '\n' in text:
             self._unselect_block()
 
+    def paste_text_in_block_label(self, text):
+        # If we paste plain text from the clipboard, try to insert it into
+        # a block label
+        if self._focus_out_id is not None:
+            self._text_entry.get_buffer().insert_at_cursor(text)
+        else:
+            label = self.selected_blk.spr.labels[0]
+            label += text
+            self.selected_blk.spr.labels[0] = label
+
     def _test_string(self):
         if hasattr(self, '_text_entry'):
             bounds = self._text_buffer.get_bounds()
@@ -4658,7 +4665,8 @@ class TurtleArtWindow():
         else:
             suffix = '.png'
 
-        if not self.interactive_mode:  # png only
+        # If we are running in non-interactive mode, we save as PNG
+        if not self.interactive_mode:
             save_picture(self.canvas, name[:-3] + suffix)
             return
 
@@ -4688,6 +4696,7 @@ class TurtleArtWindow():
                 return
             self.canvas.svg_close()
             self.canvas.svg_reset()
+            svg_path = self.canvas.get_svg_path()
         else:
             save_picture(self.canvas, file_path)
 
@@ -4704,7 +4713,7 @@ class TurtleArtWindow():
             dsobject.metadata['icon-color'] = profile.get_color().to_string()
             if svg:
                 dsobject.metadata['mime_type'] = 'image/svg+xml'
-                dsobject.set_file_path(TMP_SVG_PATH)
+                dsobject.set_file_path(svg_path)
             else:
                 dsobject.metadata['mime_type'] = 'image/png'
                 dsobject.set_file_path(file_path)
@@ -4712,13 +4721,13 @@ class TurtleArtWindow():
             dsobject.destroy()
             self.saved_pictures.append((dsobject.object_id, svg))
             if svg:
-                os.remove(TMP_SVG_PATH)
+                os.remove(svg_path)
             else:
                 os.remove(file_path)
         else:
             if svg:
                 subprocess.check_output(
-                    ['cp', TMP_SVG_PATH, os.path.join(datapath, filename)])
+                    ['cp', svg_path, os.path.join(datapath, filename)])
             self.saved_pictures.append((file_path, svg))
 
     def just_blocks(self):

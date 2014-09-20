@@ -83,6 +83,7 @@ XO175 = 'xo1.75'
 XO30 = 'xo3.0'
 XO4 = 'xo4'
 UNKNOWN = 'unknown'
+PASTE_OFFSET = 20
 TMP_SVG_PATH = os.path.join(
     '/tmp', 'turtle-blocks-%d.svg' % int(uniform(0, 10000)))
 TMP_ODP_PATH = os.path.join(

@@ -68,8 +68,8 @@ from TurtleArt.taplugin import (load_a_plugin, cancel_plugin_install,
 from TurtleArt.tapalette import (palette_names, help_strings, help_palettes,
                                  help_windows, default_values)
 from TurtleArt.taconstants import (BLOCK_SCALE, XO1, XO15, XO175, XO4,
-                                   MIMETYPE, TMP_SVG_PATH,
-                                   TMP_ODP_PATH)
+                                   MIMETYPE, TMP_SVG_PATH, TMP_ODP_PATH,
+                                   PASTE_OFFSET)
 from TurtleArt.taexportlogo import save_logo
 from TurtleArt.taexportpython import save_python
 from TurtleArt.tautils import (data_to_file, data_to_string, data_from_string,
@@ -1601,13 +1601,13 @@ class TurtleArtActivity(activity.Activity):
             if self.tw.selected_blk is not None and \
                self.tw.selected_blk.name == 'string' and \
                text[0:2] != '[[':  # Don't paste block data into a string
-                for i in text:
-                    self.tw.process_alphanumeric_input(i, -1)
+                self.tw.paste_text_in_block_label(text)
                 self.tw.selected_blk.resize()
             else:
                 self.tw.process_data(data_from_string(text),
                                      self.tw.paste_offset)
-                self.tw.paste_offset += 20
+                self.tw.paste_offset += PASTE_OFFSET
+
 
     def _undo_cb(self, button):
         ''' Restore most recent item added to the trash '''

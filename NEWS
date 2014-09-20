@@ -2,10 +2,14 @@
 
 ENHANCEMENT:
 * Add export SVG and Icon to GNOME menu (Alan Aguiar)
+* New example project: pinwheel
+* Save and restore private block data
 
 BUG FIXES:
 * Fine-tune some block label positioning
 * Use unique name (by user) for tmp files for multiuser systems (#4788)
+* Fix regression in saving to SVG
+* Fix regression in paste from GNOME
 
 208
 

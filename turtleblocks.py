@@ -55,7 +55,7 @@ from gettext import gettext as _
 
 from TurtleArt.taconstants import (OVERLAY_LAYER, DEFAULT_TURTLE_COLORS,
                                    TAB_LAYER, SUFFIX, TMP_SVG_PATH,
-                                   TMP_ODP_PATH)
+                                   TMP_ODP_PATH, PASTE_OFFSET)
 from TurtleArt.tautils import (data_from_string, get_load_name,
                                get_path, get_save_name, is_writeable)
 from TurtleArt.tapalette import default_values
@@ -889,19 +889,18 @@ Would you like to save before quitting?'))
         self.tw.saving_blocks = False
         self.tw.deleting_blocks = False
         self.win.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.LEFT_PTR))
-        clipBoard = gtk.Clipboard()
-        text = clipBoard.wait_for_text()
+        clipboard = gtk.Clipboard()
+        text = clipboard.wait_for_text()
         if text is not None:
             if self.tw.selected_blk is not None and \
-               self.tw.selected_blk.name == 'string':
-                self.tw.text_buffer.set_text(
-                    self.tw.text_buffer.get_text() + text)
-                self.tw.text_entry.set_buffer(self.tw.text_buffer)
+               self.tw.selected_blk.name == 'string' and \
+               text[0:2] != '[[':  # Don't paste block data into a string
+                self.tw.paste_text_in_block_label(text)
                 self.tw.selected_blk.resize()
-            elif text[0:2] == '[[':
+            else:
                 self.tw.process_data(data_from_string(text),
                                      self.tw.paste_offset)
-                self.tw.paste_offset += 20
+                self.tw.paste_offset += PASTE_OFFSET
 
     def _do_about_cb(self, widget):
         about = gtk.AboutDialog()
