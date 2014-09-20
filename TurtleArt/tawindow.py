@@ -2161,8 +2161,12 @@ class TurtleArtWindow():
         self._process_block_data = []
         for blk in block_data:
             if not (self._found_a_turtle(blk) or self._found_font_scale(blk)):
-                self._process_block_data.append(
-                    [blk[0], blk[1], blk[2], blk[3], blk[4]])
+                if len(blk) > 5:
+                    self._process_block_data.append(
+                        [blk[0], blk[1], blk[2], blk[3], blk[4], blk[5]])
+                else:
+                    self._process_block_data.append(
+                        [blk[0], blk[1], blk[2], blk[3], blk[4]])
         self._extra_block_data = []
         # Create the blocks (or turtle).
         blocks = []
@@ -3935,8 +3939,9 @@ class TurtleArtWindow():
 
         if b[1] == 0:
             return None
-        # A block is saved as: (i, (btype, value), x, y, (c0,... cn))
+        # A block is saved as: (i, (btype, value), x, y, (c0,... cn), private)
         # The x, y position is saved/loaded for backward compatibility
+        # private is an optional field
         btype, value = b[1], None
         if isinstance(btype, tuple):
             btype, value = btype
@@ -3965,6 +3970,12 @@ class TurtleArtWindow():
         # FIXME: blocks after sandwichtop should be in a sandwich clamp
         elif btype in ['sandwichtop', 'sandwichtop_no_arm']:
             btype = 'comment'
+
+        # Optional private data
+        if len(b) > 5:
+            private = b[5]
+        else:
+            private = None
 
         # Some blocks can only appear once...
         if btype in ['start', 'hat1', 'hat2']:
@@ -4038,6 +4049,10 @@ class TurtleArtWindow():
 
         blk = Block(self.block_list, self.sprite_list, btype,
                     b[2] + offset, b[3] + offset, 'block', values)
+
+        if private is not None:
+            blk.private = private
+
         if self.block_scale != BLOCK_SCALE[3]:
             blk.rescale(self.block_scale)
 
@@ -4302,7 +4317,10 @@ class TurtleArtWindow():
             if not save_project:
                 sx += 20
                 sy += 20
-            data.append((blk.id, name, sx, sy, connections))
+            if blk.private is not None:
+                data.append((blk.id, name, sx, sy, connections, blk.private))
+            else:
+                data.append((blk.id, name, sx, sy, connections))
         if save_turtle:
             for turtle in iter(self.turtles.dict):
                 # Don't save remote turtles
