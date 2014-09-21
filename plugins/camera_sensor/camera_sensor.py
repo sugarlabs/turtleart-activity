@@ -37,6 +37,8 @@ from TurtleArt.taconstants import MEDIA_SHAPES, NO_IMPORT, SKIN_PATHS, \
 from TurtleArt.taprimitive import (ConstantArg, Primitive)
 from TurtleArt.tatype import TYPE_NUMBER
 
+from power import get_power_manager
+
 
 class Camera_sensor(Plugin):
 
@@ -147,6 +149,7 @@ class Camera_sensor(Plugin):
             if self._status and len(self.cameras) == 0:
                 for device in self.devices:
                     self.cameras.append(Camera(device))
+                get_power_manager().inhibit_suspend()
 
     def quit(self):
         ''' This gets called when the activity quits '''
@@ -165,6 +168,7 @@ class Camera_sensor(Plugin):
             for i, camera in enumerate(self.cameras):
                 camera.stop_camera_input()
                 self._set_autogain(1, camera=i)  # enable AUTOGAIN
+        get_power_manager().restore_suspend()
 
     def _status_report(self):
         debug_output('Reporting camera status: %s' % (str(self._status)),
