@@ -40,7 +40,10 @@ class PowerManager():
         self._suspend_inhibit_counter = 0
 
     def __del__(self):
-        self._remove_flag_file()
+        try:
+            self._remove_flag_file()
+        except AttributeError as e:
+            pass
 
     def suspend_breaks_collaboration(self):
         return True
@@ -81,5 +84,6 @@ class PowerManager():
         try:
             os.unlink(path)
         except OSError:
-            logging.error("Inhibit Suspend: Could not delete file %s", path)
+            # logging.error("Inhibit Suspend: Could not delete file %s", path)
+            pass
         self._suspend_inhibit_counter = 0
