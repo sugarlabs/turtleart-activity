@@ -22,6 +22,7 @@
 help_palettes = {}
 help_windows = {}
 palette_names = []
+palettes = {}
 palette_i18n_names = []
 palette_init_on_start = []
 palette_blocks = []
@@ -147,6 +148,7 @@ class Palette():
             i = position
 
         if self._name not in palette_names:
+            palettes[self._name] = self
             palette_names.insert(i, self._name)
             palette_i18n_names.insert(i, _(self._name))
             palette_blocks.insert(i, [])
@@ -236,14 +238,17 @@ class Palette():
 def make_palette(palette_name, colors=None, help_string=None, position=None,
                  init_on_start=False, translation=None):
     """ Palette helper function """
-    if colors is None:
-        palette = Palette(palette_name)
+    if palette_name in palettes:
+        return palettes[palette_name]
     else:
-        palette = Palette(palette_name, colors)
-    if help_string is not None:
-        palette.set_help(help_string)
-    palette.add_palette(position, init_on_start=init_on_start)
-    return palette
+        if colors is None:
+            palette = Palette(palette_name)
+        else:
+            palette = Palette(palette_name, colors)
+        if help_string is not None:
+            palette.set_help(help_string)
+        palette.add_palette(position, init_on_start=init_on_start)
+        return palette
 
 
 def palette_name_to_index(palette_name):
