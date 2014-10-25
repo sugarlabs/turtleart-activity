@@ -10,6 +10,7 @@ BUG FIXES:
 * Use unique name (by user) for tmp files for multiuser systems (#4788)
 * Fix regression in saving to SVG
 * Fix regression in paste from GNOME
+* Fixed problem with camera crash (SL#2624)
 
 208
 
