@@ -187,11 +187,14 @@ class Turtles:
         else:
             self._active_turtle = self.get_turtle(turtle_name, False)
         self._active_turtle.show()
-        self._active_turtle.set_color(share=False)
-        self._active_turtle.set_gray(share=False)
-        self._active_turtle.set_shade(share=False)
-        self._active_turtle.set_pen_size(share=False)
-        self._active_turtle.set_pen_state(share=False)
+        # self._active_turtle.set_color(share=False)
+        # self._active_turtle.set_gray(share=False)
+        # self._active_turtle.set_shade(share=False)
+        # self._active_turtle.set_pen_size(share=False)
+        # self._active_turtle.set_pen_state(share=False)
+
+        # self._active_turtle.set_xy(share=False)
+        # self._active_turtle.set_heading(share=False)
 
     def set_default_turtle_name(self, name):
         self._default_turtle_name = name
@@ -345,9 +348,10 @@ class Turtle:
             self._custom_shapes = False
             self._calculate_sizes()
 
-    def set_heading(self, heading, share=True):
+    def set_heading(self, heading=None, share=True):
         ''' Set the turtle heading (one shape per 360/SHAPES degrees) '''
-        self._heading = heading
+        if heading is not None:
+            self._heading = heading
         self._heading %= 360
 
         self._update_sprite_heading()
@@ -569,8 +573,11 @@ class Turtle:
         distance = 0 - distance
         self.forward(distance, share)
 
-    def set_xy(self, x, y, share=True, pendown=True, dragging=False):
+    def set_xy(self, x=None, y=None, share=True, pendown=True, dragging=False):
         old = self.get_xy()
+        if x is None or y is None:
+            x = old[0]
+            y = old[1]
         if dragging:
             xcor = x
             ycor = y
