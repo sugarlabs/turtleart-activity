@@ -841,7 +841,7 @@ msgid ""
 "program"
 msgstr ""
 "Por favor, aperte o botão de Pare antes de fazer mudanças "
-"no seu programa Turtle Blocks
+"no seu programa Turtle Blocks"
 
 #: TurtleArt/tawindow.py:1369
 msgid "Select blocks to share"
