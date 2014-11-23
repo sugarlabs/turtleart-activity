@@ -13,15 +13,15 @@ if len(sys.argv) > 1 and '--no-sugar' == sys.argv[1]:
     DATA_FILES = [
         ('icons', glob.glob('icons/*')),
         ('images', glob.glob('images/*')),
-        ('/usr/share/applications', ['turtleart.desktop'])
+        ('/usr/share/applications', ['turtleblocks.desktop'])
         ]
 
     setup (name = 'Turtle Art',
            description = "A LOGO-like tool for teaching programming",
            author = "Walter Bender",
            author_email = "walter.bender@gmail.com",
-           version = '0.9.4',
-           packages = ['TurtleArt'],
+           version = '2.0.9',
+           packages = ['TurtleArt', 'util'],
            scripts = ['turtleart'],
            data_files = DATA_FILES,
            )

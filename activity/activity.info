@@ -1,5 +1,5 @@
 [Activity]
-name = TurtleBlocks
+name = TurtleArt
 activity_version = 209
 license = MIT
 bundle_id = org.laptop.TurtleArtActivity
