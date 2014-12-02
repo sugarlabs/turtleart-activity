@@ -159,7 +159,7 @@ class Blocks:
 
 class Block:
     """ A class for the individual blocks
-    
+
     Attributes:
     docks -- a list of docks, i.e. connection points where other blocks
         could be attached. Each dock is a list of the form
@@ -238,6 +238,7 @@ class Block:
             'number-style-1arg': self._make_number_style_1arg,
             'number-style-1strarg': self._make_number_style_1strarg,
             'number-style-var-arg': self._make_number_style_var_arg,
+            'number-style-var-3arg': self._make_number_style_var_3arg,
             'compare-style': self._make_compare_style,
             'compare-porch-style': self._make_compare_porch_style,
             'boolean-style': self._make_boolean_style,
@@ -970,6 +971,27 @@ class Block:
                       ['number', False, self.svg.docks[0][0],
                                         self.svg.docks[0][1]]]
         for i in range(self._ei + 1):
+            self.docks.append(['number', False, self.svg.docks[i + 1][0],
+                                                self.svg.docks[i + 1][1]])
+        self.docks.append(['unavailable', False, 0, 0])
+
+    def _make_number_style_var_3arg(self, svg):
+        self.svg.expand(self.dx + self.ex, self.ey)
+        _ei = 1
+        innie = [True]
+        for i in range(_ei + 1):
+            innie.append(True)
+        self.svg.set_innie(innie)
+        self.svg.set_outie(True)
+        self.svg.set_tab(False)
+        self.svg.set_slot(False)
+        self._make_block_graphics(svg, self.svg.basic_block)
+        self.docks = [['number', True, self.svg.docks[2 + _ei][0],
+                                       self.svg.docks[2 + _ei][1]],
+                      ['number', False, self.svg.docks[0][0],
+                                        self.svg.docks[0][1]]]
+
+        for i in range(_ei + 1):
             self.docks.append(['number', False, self.svg.docks[i + 1][0],
                                                 self.svg.docks[i + 1][1]])
         self.docks.append(['unavailable', False, 0, 0])

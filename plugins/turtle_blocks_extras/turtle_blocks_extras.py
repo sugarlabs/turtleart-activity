@@ -906,6 +906,22 @@ _('gets a text string or an image from a URL'))
                                                  ArgSlot(TYPE_OBJECT),
                                                  ArgSlot(TYPE_OBJECT)]))
 
+        palette.add_block('indexblock',
+                          style='number-style-var-3arg',
+                          label=[_('index') + '\n\n', _('string'),
+                                 _('start'), _('end')],
+                          prim_name='indexblock',
+                          default=[_('text'), 0, 0],
+                          string_or_number=True,
+                          help_string=_('return the text of the positions'))
+
+        self.tw.lc.def_prim('indexblock', 3,
+                            Primitive(self.prim_index,
+                                      return_type=TYPE_STRING,
+                                      arg_descs=[ArgSlot(TYPE_STRING),
+                                                 ArgSlot(TYPE_INT),
+                                                 ArgSlot(TYPE_INT)]))
+
     def _portfolio_palette(self):
 
         palette = make_palette('portfolio',
@@ -1337,3 +1353,9 @@ Journal objects'))
         if value is not None:
             if self.tw.lc.update_values:
                 self.tw.lc.update_label_value(name, value)
+
+    def prim_index(self, string, start, end):
+        start = int(start)
+        end = int(end)
+
+        return string[start:end]
