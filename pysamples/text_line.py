@@ -1,4 +1,4 @@
-#Copyright (c) 2014, Walter Bender
+# Copyright (c) 2014, Walter Bender
 
 # Usage: Import this code into a Python (user-definable) block; when
 # this code is run, the turtle will draw a line composed of text of

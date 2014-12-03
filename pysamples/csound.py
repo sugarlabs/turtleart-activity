@@ -1,4 +1,4 @@
-#Copyright (c) 2011 Walter Bender
+# Copyright (c) 2011 Walter Bender
 
 # This procedure is invoked when the user-definable block on the
 # "extras" palette is selected.
@@ -17,14 +17,14 @@ def myblock(tw, sound):
     import os
 
     dirs = [os.path.join(
-                os.environ['HOME'],
-                'Activities/TamTamMini.activity/common/Resources/Sounds/'),
-            os.path.join(
-                os.environ['HOME'],
-                'Activities/TamTamJam.activity/common/Resources/Sounds/'),
-            os.path.join(
-                os.environ['HOME'],
-                'Activities/TamTamEdit.activity/common/Resources/Sounds/')]
+        os.environ['HOME'],
+        'Activities/TamTamMini.activity/common/Resources/Sounds/'),
+        os.path.join(
+        os.environ['HOME'],
+        'Activities/TamTamJam.activity/common/Resources/Sounds/'),
+        os.path.join(
+        os.environ['HOME'],
+        'Activities/TamTamEdit.activity/common/Resources/Sounds/')]
     orchlines = []
     scorelines = []
     instrlist = []
@@ -54,7 +54,7 @@ def myblock(tw, sound):
         else:
             ampenv = amplitude_envelope
 
-        if not 1 in instrlist:
+        if 1 not in instrlist:
             orchlines.append("instr 1\n")
             orchlines.append("kpitenv oscil 1, 1/p3, p6\n")
             orchlines.append("aenv oscil 1, 1/p3, p7\n")
@@ -93,7 +93,7 @@ def myblock(tw, sound):
         else:
             ampenv = amplitude_envelope
 
-        if not 9 in instrlist:
+        if 9 not in instrlist:
             orchlines.append("instr 9\n")
             orchlines.append("kpitenv oscil 1, 1/p3, p8\n")
             orchlines.append("aenv oscil 1, 1/p3, p9\n")

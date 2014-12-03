@@ -1,4 +1,4 @@
-#Copyright (c) 2009-11, Walter Bender
+# Copyright (c) 2009-11, Walter Bender
 
 # This procedure is invoked when the user-definable block on the
 # "extras" palette is selected and expanded to 3 arguments.

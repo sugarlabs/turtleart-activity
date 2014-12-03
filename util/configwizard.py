@@ -15,11 +15,12 @@
 # Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 # Boston, MA 02111-1307, USA.
 
-from configfile import ConfigFile
+from .configfile import ConfigFile
 import gtk
 
 
 class ConfigWizard():
+
     """Simple configuration wizard window."""
 
     def __init__(self, config_file_path):
@@ -31,6 +32,7 @@ class ConfigWizard():
     """
     [ {item_label, item_type, item_name, item_with_value} , ... ]
     """
+
     def set_config_items(self, items):
         self._config_items = items
         keys = {}
@@ -82,7 +84,7 @@ class ConfigWizard():
     def _save_config_cb(self, widget):
         try:
             self._do_save_config()
-        except Exception, e:
+        except Exception as e:
             w = gtk.Window()
             l = gtk.Label(e.message)
             w.add(l)
@@ -107,6 +109,7 @@ class ConfigWizard():
     """
       {item_label, item_type, item_name, item_with_value}
     """
+
     def _create_param(self, opts):
         param_name = opts["item_name"]
         with_value = opts["item_with_value"] if "item_with_value" in opts \
@@ -211,6 +214,6 @@ def test_wizard_from_config_file_path(test_config_file):
 
 
 if __name__ == "__main__":
-    #test_wizard_from_config_file_obj("/tmp/configwizard.test.0001")
+    # test_wizard_from_config_file_obj("/tmp/configwizard.test.0001")
     test_wizard_from_config_file_path("/tmp/configwizard.test.0002")
     gtk.main()

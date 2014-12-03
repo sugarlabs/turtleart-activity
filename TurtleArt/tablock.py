@@ -1,43 +1,45 @@
 # -*- coding: utf-8 -*-
-#Copyright (c) 2010-2012 Walter Bender
+# Copyright (c) 2010-2012 Walter Bender
 
-#Permission is hereby granted, free of charge, to any person obtaining a copy
-#of this software and associated documentation files (the "Software"), to deal
-#in the Software without restriction, including without limitation the rights
-#to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-#copies of the Software, and to permit persons to whom the Software is
-#furnished to do so, subject to the following conditions:
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
 
-#The above copyright notice and this permission notice shall be included in
-#all copies or substantial portions of the Software.
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
 
-#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-#IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-#FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-#AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-#LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-#OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-#THE SOFTWARE.
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+# THE SOFTWARE.
 
 import gtk
 import cairo
 
-from taconstants import (EXPANDABLE, EXPANDABLE_ARGS, OLD_NAMES, CONSTANTS,
-                         STANDARD_STROKE_WIDTH, BLOCK_SCALE, BOX_COLORS,
-                         GRADIENT_COLOR, EXPANDABLE_FLOW, Color,
-                         MEDIA_BLOCK2TYPE, BLOCKS_WITH_SKIN)
-from tapalette import (palette_blocks, block_colors, expandable_blocks,
-                       content_blocks, block_names, block_primitives,
-                       block_styles, special_block_colors)
-from tasprite_factory import (SVG, svg_str_to_pixbuf)
-import sprites
+from .taconstants import (EXPANDABLE, EXPANDABLE_ARGS, OLD_NAMES, CONSTANTS,
+                          STANDARD_STROKE_WIDTH, BLOCK_SCALE, BOX_COLORS,
+                          GRADIENT_COLOR, EXPANDABLE_FLOW, Color,
+                          MEDIA_BLOCK2TYPE, BLOCKS_WITH_SKIN)
+from .tapalette import (palette_blocks, block_colors, expandable_blocks,
+                        content_blocks, block_names, block_primitives,
+                        block_styles, special_block_colors)
+from .tasprite_factory import (SVG, svg_str_to_pixbuf)
+from . import sprites
 
-from tautils import (debug_output, error_output)
+from .tautils import (debug_output, error_output)
 
 
 media_blocks_dictionary = {}  # new media blocks get added here
 
+
 class Media(object):
+
     """ Media objects can be images, audio files, videos, Journal
     descriptions, or camera snapshots. """
 
@@ -158,6 +160,7 @@ class Blocks:
 
 
 class Block:
+
     """ A class for the individual blocks
 
     Attributes:
@@ -631,8 +634,11 @@ class Block:
             for i, v in enumerate(self.values):
                 if v is not None:
                     if self.name == 'number':
-                        self._set_labels(i,
-                           str(v).replace('.', self.block_list.decimal_point))
+                        self._set_labels(
+                            i,
+                            str(v).replace(
+                                '.',
+                                self.block_list.decimal_point))
                     else:
                         self._set_labels(i, str(v))
         elif self.type == 'block' and self.name in CONSTANTS:
@@ -722,7 +728,7 @@ class Block:
             self.spr.set_label_attributes(int(self.font_size[0] + 0.5),
                                           True, 'right', y_pos=y, i=0)
         elif self.name in block_styles['clamp-style-boolean'] or \
-             self.name in block_styles['clamp-style-until']:
+                self.name in block_styles['clamp-style-until']:
             y = self.docks[1][3] - int(int(self.font_size[0] * 1.3))
             self.spr.set_label_attributes(int(self.font_size[0] + 0.5),
                                           True, 'right', y_pos=y, i=0)
@@ -730,7 +736,7 @@ class Block:
             self.spr.set_label_attributes(int(self.font_size[1] + 0.5),
                                           True, 'right', y_pos=y, i=1)
         elif self.name in block_styles['clamp-style-else']:
-            self.spr.set_margins(l=10*self.scale, r=10*self.scale)
+            self.spr.set_margins(l=10 * self.scale, r=10 * self.scale)
             y = self.docks[1][3] - int(int(self.font_size[0] * 1.3))
             self.spr.set_label_attributes(int(self.font_size[0] + 0.5),
                                           True, 'right', y_pos=y, i=0)
@@ -740,7 +746,6 @@ class Block:
             y = self.docks[3][3] - int(int(self.font_size[0] * 1.45))
             self.spr.set_label_attributes(int(self.font_size[1] + 0.5),
                                           True, 'left', y_pos=y, i=2)
-
 
     def _set_labels(self, i, label):
         if self.spr is None:
@@ -759,7 +764,7 @@ class Block:
             if self.name in block_styles[k]:
                 if isinstance(self._block_methods[k], list):
                     self._block_methods[k][0](svg, self._block_methods[k][1],
-                                             self._block_methods[k][2])
+                                              self._block_methods[k][2])
                 else:
                     self._block_methods[k](svg)
                 return
@@ -784,9 +789,14 @@ class Block:
     def _make_basic_style(self, svg, extend_x=0, extend_y=0):
         self.svg.expand(self.dx + self.ex + extend_x, self.ey + extend_y)
         self._make_block_graphics(svg, self.svg.basic_block)
-        self.docks = [['flow', True, self.svg.docks[0][0],
-                       self.svg.docks[0][1]], ['flow',
-                       False, self.svg.docks[1][0], self.svg.docks[1][1]]]
+        self.docks = [['flow',
+                       True,
+                       self.svg.docks[0][0],
+                       self.svg.docks[0][1]],
+                      ['flow',
+                       False,
+                       self.svg.docks[1][0],
+                       self.svg.docks[1][1]]]
 
     def _make_blank_style(self, svg, extend_x=0, extend_y=0):
         self.svg.expand(self.dx + self.ex + extend_x, self.ey + extend_y)
@@ -803,7 +813,7 @@ class Block:
         self._make_block_graphics(svg, self.svg.basic_block)
         self.docks = [['unavailable', False, 0, 0],
                       ['flow', False, self.svg.docks[0][0],
-                                      self.svg.docks[0][1]]]
+                       self.svg.docks[0][1]]]
 
     def _make_basic_style_head_1arg(self, svg):
         self.svg.expand(10 + self.dx + self.ex, self.ey)
@@ -813,9 +823,9 @@ class Block:
         self._make_block_graphics(svg, self.svg.basic_block)
         self.docks = [['unavailable', False, 0, 0],
                       ['string', False, self.svg.docks[0][0],
-                                        self.svg.docks[0][1]],
+                       self.svg.docks[0][1]],
                       ['flow', False, self.svg.docks[1][0],
-                                      self.svg.docks[1][1]]]
+                       self.svg.docks[1][1]]]
 
     def _make_basic_style_tail(self, svg):
         self.svg.expand(10 + self.dx + self.ex, self.ey)
@@ -823,7 +833,7 @@ class Block:
         self.svg.set_tail(True)
         self._make_block_graphics(svg, self.svg.basic_block)
         self.docks = [['flow', True, self.svg.docks[0][0],
-                                     self.svg.docks[0][1]],
+                       self.svg.docks[0][1]],
                       ['unavailable', False, 0, 0]]
 
     def _make_basic_style_1arg(self, svg):
@@ -831,62 +841,62 @@ class Block:
         self.svg.set_innie([True])
         self._make_block_graphics(svg, self.svg.basic_block)
         self.docks = [['flow', True, self.svg.docks[0][0],
-                                     self.svg.docks[0][1]],
+                       self.svg.docks[0][1]],
                       ['number', False, self.svg.docks[1][0],
-                                        self.svg.docks[1][1]],
+                       self.svg.docks[1][1]],
                       ['flow', False, self.svg.docks[2][0],
-                                      self.svg.docks[2][1]]]
+                       self.svg.docks[2][1]]]
 
     def _make_basic_style_2arg(self, svg):
         self.svg.expand(10 + self.dx + self.ex, self.ey)
         self.svg.set_innie([True, True])
         self._make_block_graphics(svg, self.svg.basic_block)
         self.docks = [['flow', True, self.svg.docks[0][0],
-                                     self.svg.docks[0][1]],
+                       self.svg.docks[0][1]],
                       ['number', False, self.svg.docks[1][0],
-                                        self.svg.docks[1][1]],
+                       self.svg.docks[1][1]],
                       ['number', False, self.svg.docks[2][0],
-                                        self.svg.docks[2][1]],
+                       self.svg.docks[2][1]],
                       ['flow', False, self.svg.docks[3][0],
-                                      self.svg.docks[3][1]]]
+                       self.svg.docks[3][1]]]
 
     def _make_basic_style_3arg(self, svg):
         self.svg.expand(10 + self.dx + self.ex, self.ey, 0, self.ey2)
         self.svg.set_innie([True, True, True])
         self._make_block_graphics(svg, self.svg.basic_block)
         self.docks = [['flow', True, self.svg.docks[0][0],
-                                     self.svg.docks[0][1]],
+                       self.svg.docks[0][1]],
                       ['number', False, self.svg.docks[1][0],
-                                        self.svg.docks[1][1]],
+                       self.svg.docks[1][1]],
                       ['number', False, self.svg.docks[2][0],
-                                        self.svg.docks[2][1]],
+                       self.svg.docks[2][1]],
                       ['number', False, self.svg.docks[3][0],
-                                        self.svg.docks[3][1]],
+                       self.svg.docks[3][1]],
                       ['flow', False, self.svg.docks[4][0],
-                                      self.svg.docks[4][1]]]
+                       self.svg.docks[4][1]]]
 
     def _make_basic_style_7arg(self, svg):
         self.svg.expand(10 + self.dx + self.ex, self.ey)
         self.svg.set_innie([True, True, True, True, True, True, True])
         self._make_block_graphics(svg, self.svg.basic_block)
         self.docks = [['flow', True, self.svg.docks[0][0],
-                                     self.svg.docks[0][1]],
+                       self.svg.docks[0][1]],
                       ['string', False, self.svg.docks[1][0],
-                                        self.svg.docks[1][1]],
+                       self.svg.docks[1][1]],
                       ['media', False, self.svg.docks[2][0],
-                                        self.svg.docks[2][1]],
+                       self.svg.docks[2][1]],
                       ['number', False, self.svg.docks[3][0],
-                                        self.svg.docks[3][1]],
+                       self.svg.docks[3][1]],
                       ['number', False, self.svg.docks[4][0],
-                                        self.svg.docks[4][1]],
+                       self.svg.docks[4][1]],
                       ['number', False, self.svg.docks[5][0],
-                                        self.svg.docks[5][1]],
+                       self.svg.docks[5][1]],
                       ['number', False, self.svg.docks[6][0],
-                                        self.svg.docks[6][1]],
+                       self.svg.docks[6][1]],
                       ['number', False, self.svg.docks[7][0],
-                                        self.svg.docks[7][1]],
+                       self.svg.docks[7][1]],
                       ['flow', False, self.svg.docks[8][0],
-                                      self.svg.docks[8][1]]]
+                       self.svg.docks[8][1]]]
 
     def _make_basic_style_var_arg(self, svg):
         self.svg.expand(10 + self.dx + self.ex, self.ey)
@@ -896,14 +906,14 @@ class Block:
         self.svg.set_innie(innie)
         self._make_block_graphics(svg, self.svg.basic_block)
         self.docks = [['flow', True, self.svg.docks[0][0],
-                                     self.svg.docks[0][1]],
+                       self.svg.docks[0][1]],
                       ['number', False, self.svg.docks[1][0],
-                                        self.svg.docks[1][1]]]
+                       self.svg.docks[1][1]]]
         for i in range(self._ei):
             self.docks.append(['number', False, self.svg.docks[i + 2][0],
-                                                self.svg.docks[i + 2][1]])
+                               self.svg.docks[i + 2][1]])
         self.docks.append(['flow', False, self.svg.docks[self._ei + 2][0],
-                                      self.svg.docks[self._ei + 2][1]])
+                           self.svg.docks[self._ei + 2][1]])
 
     def _make_bullet_style(self, svg):
         self.svg.expand(10 + self.dx + self.ex, self.ey)
@@ -913,29 +923,29 @@ class Block:
         self.svg.set_innie(innie)
         self._make_block_graphics(svg, self.svg.basic_block)
         self.docks = [['flow', True, self.svg.docks[0][0],
-                                     self.svg.docks[0][1]],
+                       self.svg.docks[0][1]],
                       ['string', False, self.svg.docks[1][0],
-                                        self.svg.docks[1][1], '['],
+                       self.svg.docks[1][1], '['],
                       ['string', False, self.svg.docks[2][0],
-                                        self.svg.docks[2][1]]]
+                       self.svg.docks[2][1]]]
         for i in range(self._ei):
             self.docks.append(['string', False, self.svg.docks[i + 3][0],
-                                                self.svg.docks[i + 3][1]])
+                               self.svg.docks[i + 3][1]])
         self.docks.append(['flow', False, self.svg.docks[self._ei + 3][0],
-                                      self.svg.docks[self._ei + 3][1], ']'])
+                           self.svg.docks[self._ei + 3][1], ']'])
 
     def _make_box_style(self, svg):
         self.svg.expand(60 + self.dx + self.ex, self.ey)
         self._make_block_graphics(svg, self.svg.basic_box)
         self.docks = [['number', True, self.svg.docks[0][0],
-                                       self.svg.docks[0][1]],
+                       self.svg.docks[0][1]],
                       ['unavailable', False, 0, 0]]
 
     def _make_media_style(self, svg):
         self.svg.expand(40 + self.dx + self.ex, 10 + self.ey)
         self._make_block_graphics(svg, self.svg.basic_box)
         self.docks = [['number', True, self.svg.docks[0][0],
-                                       self.svg.docks[0][1]],
+                       self.svg.docks[0][1]],
                       ['unavailable', False, 0, 0]]
 
     def _make_number_style(self, svg):
@@ -950,11 +960,11 @@ class Block:
               blocks needs to be modified.
         """
         self.docks = [['number', True, self.svg.docks[2][0],
-                                       self.svg.docks[2][1]],
+                       self.svg.docks[2][1]],
                       ['number', False, self.svg.docks[0][0],
-                                        self.svg.docks[0][1]],
+                       self.svg.docks[0][1]],
                       ['number', False, self.svg.docks[1][0],
-                                        self.svg.docks[1][1]]]
+                       self.svg.docks[1][1]]]
 
     def _make_number_style_var_arg(self, svg):
         self.svg.expand(self.dx + self.ex, self.ey)
@@ -967,12 +977,12 @@ class Block:
         self.svg.set_slot(False)
         self._make_block_graphics(svg, self.svg.basic_block)
         self.docks = [['number', True, self.svg.docks[2 + self._ei][0],
-                                       self.svg.docks[2 + self._ei][1]],
+                       self.svg.docks[2 + self._ei][1]],
                       ['number', False, self.svg.docks[0][0],
-                                        self.svg.docks[0][1]]]
+                       self.svg.docks[0][1]]]
         for i in range(self._ei + 1):
             self.docks.append(['number', False, self.svg.docks[i + 1][0],
-                                                self.svg.docks[i + 1][1]])
+                               self.svg.docks[i + 1][1]])
         self.docks.append(['unavailable', False, 0, 0])
 
     def _make_number_style_var_3arg(self, svg):
@@ -987,13 +997,13 @@ class Block:
         self.svg.set_slot(False)
         self._make_block_graphics(svg, self.svg.basic_block)
         self.docks = [['number', True, self.svg.docks[2 + _ei][0],
-                                       self.svg.docks[2 + _ei][1]],
+                       self.svg.docks[2 + _ei][1]],
                       ['number', False, self.svg.docks[0][0],
-                                        self.svg.docks[0][1]]]
+                       self.svg.docks[0][1]]]
 
         for i in range(_ei + 1):
             self.docks.append(['number', False, self.svg.docks[i + 1][0],
-                                                self.svg.docks[i + 1][1]])
+                               self.svg.docks[i + 1][1]])
         self.docks.append(['unavailable', False, 0, 0])
 
     def _make_number_style_block(self, svg):
@@ -1004,11 +1014,11 @@ class Block:
         self.svg.set_slot(False)
         self._make_block_graphics(svg, self.svg.basic_block)
         self.docks = [['number', True, self.svg.docks[2][0],
-                                       self.svg.docks[2][1], '('],
+                       self.svg.docks[2][1], '('],
                       ['number', False, self.svg.docks[0][0],
-                                        self.svg.docks[0][1]],
+                       self.svg.docks[0][1]],
                       ['number', False, self.svg.docks[1][0],
-                                        self.svg.docks[1][1]],
+                       self.svg.docks[1][1]],
                       ['unavailable', False, 0, 0, ')']]
 
     def _make_number_style_1arg(self, svg):
@@ -1019,9 +1029,9 @@ class Block:
         self.svg.set_slot(False)
         self._make_block_graphics(svg, self.svg.basic_block)
         self.docks = [['number', True, self.svg.docks[1][0],
-                                       self.svg.docks[1][1]],
+                       self.svg.docks[1][1]],
                       ['number', False, self.svg.docks[0][0],
-                                        self.svg.docks[0][1]]]
+                       self.svg.docks[0][1]]]
 
     def _make_number_style_1strarg(self, svg):
         self.svg.expand(self.dx + self.ex, self.ey)
@@ -1031,9 +1041,9 @@ class Block:
         self.svg.set_slot(False)
         self._make_block_graphics(svg, self.svg.basic_block)
         self.docks = [['number', True, self.svg.docks[1][0],
-                                       self.svg.docks[1][1]],
+                       self.svg.docks[1][1]],
                       ['string', False, self.svg.docks[0][0],
-                                        self.svg.docks[0][1]],
+                       self.svg.docks[0][1]],
                       ['unavailable', False, 0, 0]]
 
     def _make_number_style_porch(self, svg):
@@ -1045,21 +1055,21 @@ class Block:
         self.svg.set_porch(True)
         self._make_block_graphics(svg, self.svg.basic_block)
         self.docks = [['number', True, self.svg.docks[2][0],
-                                       self.svg.docks[2][1]],
+                       self.svg.docks[2][1]],
                       ['number', False, self.svg.docks[0][0],
-                                        self.svg.docks[0][1]],
+                       self.svg.docks[0][1]],
                       ['number', False, self.svg.docks[1][0],
-                                        self.svg.docks[1][1]]]
+                       self.svg.docks[1][1]]]
 
     def _make_compare_style(self, svg):
         self.svg.expand(15 + self.dx + self.ex, self.ey)
         self._make_block_graphics(svg, self.svg.boolean_compare)
         self.docks = [['bool', True, self.svg.docks[0][0],
-                                     self.svg.docks[0][1], '('],
+                       self.svg.docks[0][1], '('],
                       ['number', False, self.svg.docks[1][0],
-                                        self.svg.docks[1][1]],
+                       self.svg.docks[1][1]],
                       ['number', False, self.svg.docks[2][0],
-                                        self.svg.docks[2][1]],
+                       self.svg.docks[2][1]],
                       ['unavailable', False, 0, 0, ')']]
 
     def _make_compare_porch_style(self, svg):
@@ -1070,25 +1080,25 @@ class Block:
         self.svg.expand(15 + self.dx + self.ex, self.ey)
         self._make_block_graphics(svg, self.svg.boolean_and_or)
         self.docks = [['bool', True, self.svg.docks[0][0],
-                                     self.svg.docks[0][1]],
+                       self.svg.docks[0][1]],
                       ['bool', False, self.svg.docks[1][0],
-                                      self.svg.docks[1][1]],
+                       self.svg.docks[1][1]],
                       ['bool', False, self.svg.docks[2][0],
-                                      self.svg.docks[2][1]]]
+                       self.svg.docks[2][1]]]
 
     def _make_not_style(self, svg):
         self.svg.expand(15 + self.dx + self.ex, self.ey)
         self._make_block_graphics(svg, self.svg.boolean_not, arg=False)
         self.docks = [['bool', True, self.svg.docks[0][0],
-                                     self.svg.docks[0][1]],
+                       self.svg.docks[0][1]],
                       ['bool', False, self.svg.docks[1][0],
-                                      self.svg.docks[1][1]]]
+                       self.svg.docks[1][1]]]
 
     def _make_boolean_block_style(self, svg):
         self.svg.expand(15 + self.dx + self.ex, self.ey)
         self._make_block_graphics(svg, self.svg.boolean_not, arg=True)
         self.docks = [['bool', True, self.svg.docks[0][0],
-                                     self.svg.docks[0][1]],
+                       self.svg.docks[0][1]],
                       ['unavailable', False, 0, 0]]
 
     def _make_boolean_1arg_block_style(self, svg):
@@ -1096,9 +1106,9 @@ class Block:
         self.svg.set_innie([True])
         self._make_block_graphics(svg, self.svg.boolean_not, arg=True)
         self.docks = [['bool', True, self.svg.docks[0][0],
-                                     self.svg.docks[0][1]],
+                       self.svg.docks[0][1]],
                       ['number', False, self.svg.docks[1][0],
-                                        self.svg.docks[1][1]]]
+                       self.svg.docks[1][1]]]
 
     def _make_clamp_style(self, svg, extend_x=0, extend_y=4):
         self.svg.expand(self.dx + self.ex + extend_x, self.ey + extend_y)
@@ -1107,12 +1117,12 @@ class Block:
         self.svg.second_clamp(False)
         self._make_block_graphics(svg, self.svg.clamp)
         self.docks = [['flow', True, self.svg.docks[0][0],
-                                     self.svg.docks[0][1]],
+                       self.svg.docks[0][1]],
                       ['flow', False, self.svg.docks[1][0],
-                                      self.svg.docks[1][1], '['],
+                       self.svg.docks[1][1], '['],
                       # Skip bottom of clamp
                       ['flow', False, self.svg.docks[3][0],
-                                      self.svg.docks[3][1], ']']]
+                       self.svg.docks[3][1], ']']]
 
     def _make_clamp_style_collapsible(self, svg, extend_x=0, extend_y=4):
         self.svg.expand(self.dx + self.ex + extend_x, self.ey + extend_y)
@@ -1122,12 +1132,12 @@ class Block:
         self.svg.second_clamp(False)
         self._make_block_graphics(svg, self.svg.clamp)
         self.docks = [['flow', True, self.svg.docks[0][0],
-                                     self.svg.docks[0][1]],
+                       self.svg.docks[0][1]],
                       ['flow', False, self.svg.docks[1][0],
-                                      self.svg.docks[1][1], '['],
+                       self.svg.docks[1][1], '['],
                       # Skip bottom of clamp
                       ['flow', False, self.svg.docks[3][0],
-                                      self.svg.docks[3][1], ']']]
+                       self.svg.docks[3][1], ']']]
 
     def _make_clamp_style_collapsed(self, svg, extend_x=0, extend_y=4):
         self.svg.expand(self.dx + self.ex + extend_x, self.ey + extend_y)
@@ -1147,14 +1157,14 @@ class Block:
         self.svg.second_clamp(False)
         self._make_block_graphics(svg, self.svg.clamp)
         self.docks = [['flow', True, self.svg.docks[0][0],
-                                     self.svg.docks[0][1]],
+                       self.svg.docks[0][1]],
                       ['number', False, self.svg.docks[1][0],
-                                        self.svg.docks[1][1]],
+                       self.svg.docks[1][1]],
                       ['flow', False, self.svg.docks[2][0],
-                                      self.svg.docks[2][1], '['],
+                       self.svg.docks[2][1], '['],
                       # Skip bottom of clamp
                       ['flow', False, self.svg.docks[4][0],
-                                      self.svg.docks[4][1], ']']]
+                       self.svg.docks[4][1], ']']]
 
     def _make_clamp_style_hat(self, svg, extend_x=0, extend_y=4):
         self.svg.expand(self.dx + self.ex + extend_x, self.ey + extend_y)
@@ -1166,7 +1176,7 @@ class Block:
         self._make_block_graphics(svg, self.svg.clamp)
         self.docks = [['unavailable', False, 0, 0],
                       ['flow', False, self.svg.docks[0][0],
-                                      self.svg.docks[0][1]]]
+                       self.svg.docks[0][1]]]
 
     def _make_clamp_style_hat_1arg(self, svg, extend_x=0, extend_y=4):
         self.svg.expand(self.dx + self.ex + extend_x, self.ey + extend_y)
@@ -1179,9 +1189,9 @@ class Block:
         self._make_block_graphics(svg, self.svg.clamp)
         self.docks = [['unavailable', False, 0, 0],
                       ['number', False, self.svg.docks[0][0],
-                                        self.svg.docks[0][1]],
+                       self.svg.docks[0][1]],
                       ['flow', False, self.svg.docks[1][0],
-                                      self.svg.docks[1][1]]]
+                       self.svg.docks[1][1]]]
 
     def _make_clamp_style_boolean(self, svg, extend_x=0, extend_y=4):
         self.svg.expand(self.dx + self.ex + extend_x, self.ey + extend_y)
@@ -1191,14 +1201,14 @@ class Block:
         self.svg.second_clamp(False)
         self._make_block_graphics(svg, self.svg.clamp)
         self.docks = [['flow', True, self.svg.docks[0][0],
-                                     self.svg.docks[0][1]],
+                       self.svg.docks[0][1]],
                       ['bool', False, self.svg.docks[1][0],
-                                        self.svg.docks[1][1]],
+                       self.svg.docks[1][1]],
                       ['flow', False, self.svg.docks[2][0],
-                                      self.svg.docks[2][1], '['],
+                       self.svg.docks[2][1], '['],
                       # Skip bottom of clamp
                       ['flow', False, self.svg.docks[4][0],
-                                      self.svg.docks[4][1], ']']]
+                       self.svg.docks[4][1], ']']]
 
     def _make_clamp_style_until(self, svg, extend_x=0, extend_y=4):
         self.svg.expand(self.dx + self.ex + extend_x, self.ey + extend_y,
@@ -1210,14 +1220,14 @@ class Block:
         self._make_block_graphics(svg, self.svg.clamp_until)
         # Dock positions are flipped
         self.docks = [['flow', True, self.svg.docks[0][0],
-                                     self.svg.docks[0][1]],
+                       self.svg.docks[0][1]],
                       ['bool', False, self.svg.docks[3][0],
-                                        self.svg.docks[3][1]],
+                       self.svg.docks[3][1]],
                       ['flow', False, self.svg.docks[1][0],
-                                      self.svg.docks[1][1], '['],
+                       self.svg.docks[1][1], '['],
                       # Skip bottom of clamp
                       ['flow', False, self.svg.docks[4][0],
-                                      self.svg.docks[4][1], ']']]
+                       self.svg.docks[4][1], ']']]
 
     def _make_clamp_style_else(self, svg, extend_x=0, extend_y=4):
         self.svg.expand(self.dx + self.ex + extend_x, self.ey + extend_y,
@@ -1228,17 +1238,17 @@ class Block:
         self.svg.second_clamp(True)
         self._make_block_graphics(svg, self.svg.clamp)
         self.docks = [['flow', True, self.svg.docks[0][0],
-                                     self.svg.docks[0][1]],
+                       self.svg.docks[0][1]],
                       ['bool', False, self.svg.docks[1][0],
-                                      self.svg.docks[1][1]],
+                       self.svg.docks[1][1]],
                       ['flow', False, self.svg.docks[2][0],
-                                      self.svg.docks[2][1], '['],
+                       self.svg.docks[2][1], '['],
                       # Skip bottom of clamp
                       ['flow', False, self.svg.docks[4][0],
-                                      self.svg.docks[4][1], ']['],
+                       self.svg.docks[4][1], ']['],
                       # Skip bottom of clamp
                       ['flow', False, self.svg.docks[6][0],
-                                      self.svg.docks[6][1], ']']]
+                       self.svg.docks[6][1], ']']]
 
     def _make_flow_style_tail(self, svg):
         self.svg.expand(10 + self.dx + self.ex, self.ey)
@@ -1246,9 +1256,9 @@ class Block:
         self.svg.set_tab(False)
         self._make_block_graphics(svg, self.svg.basic_flow)
         self.docks = [['flow', True, self.svg.docks[0][0],
-                                     self.svg.docks[0][1]],
+                       self.svg.docks[0][1]],
                       ['flow', False, self.svg.docks[1][0],
-                                      self.svg.docks[1][1]]]
+                       self.svg.docks[1][1]]]
 
     # Depreciated block styles
 
@@ -1259,19 +1269,19 @@ class Block:
         self.svg.set_innie([True, True, False, True])
         self._make_block_graphics(svg, self.svg.portfolio)
         self.docks = [['flow', True, self.svg.docks[0][0],
-                                     self.svg.docks[0][1]],
+                       self.svg.docks[0][1]],
                       ['string', False, self.svg.docks[6][0],
-                                      self.svg.docks[6][1]],
+                       self.svg.docks[6][1]],
                       ['media', False, self.svg.docks[5][0],
-                                      self.svg.docks[5][1]],
+                       self.svg.docks[5][1]],
                       ['media', False, self.svg.docks[1][0],
-                                      self.svg.docks[1][1]],
+                       self.svg.docks[1][1]],
                       ['media', False, self.svg.docks[4][0],
-                                      self.svg.docks[4][1]],
+                       self.svg.docks[4][1]],
                       ['media', False, self.svg.docks[2][0],
-                                      self.svg.docks[2][1]],
+                       self.svg.docks[2][1]],
                       ['flow', False, self.svg.docks[3][0],
-                                      self.svg.docks[3][1]]]
+                       self.svg.docks[3][1]]]
 
     def _make_portfolio_style_2x1(self, svg):
         self.svg.expand(30 + self.dx + self.ex, 10 + self.ey)
@@ -1280,15 +1290,15 @@ class Block:
         self.svg.set_innie([True, True])
         self._make_block_graphics(svg, self.svg.portfolio)
         self.docks = [['flow', True, self.svg.docks[0][0],
-                                     self.svg.docks[0][1]],
+                       self.svg.docks[0][1]],
                       ['string', False, self.svg.docks[4][0],
-                                      self.svg.docks[4][1]],
+                       self.svg.docks[4][1]],
                       ['media', False, self.svg.docks[3][0],
-                                      self.svg.docks[3][1]],
+                       self.svg.docks[3][1]],
                       ['media', False, self.svg.docks[1][0],
-                                      self.svg.docks[1][1]],
+                       self.svg.docks[1][1]],
                       ['flow', False, self.svg.docks[2][0],
-                                      self.svg.docks[2][1]]]
+                       self.svg.docks[2][1]]]
 
     def _make_portfolio_style_1x2(self, svg):
         self.svg.expand(30 + self.dx + self.ex, 15 + self.ey)
@@ -1298,15 +1308,15 @@ class Block:
         self.svg.set_draw_innies(False)
         self._make_block_graphics(svg, self.svg.portfolio)
         self.docks = [['flow', True, self.svg.docks[0][0],
-                                     self.svg.docks[0][1]],
+                       self.svg.docks[0][1]],
                       ['string', False, self.svg.docks[4][0],
-                                      self.svg.docks[4][1]],
+                       self.svg.docks[4][1]],
                       ['media', False, self.svg.docks[3][0],
-                                      self.svg.docks[3][1]],
+                       self.svg.docks[3][1]],
                       ['media', False, self.svg.docks[2][0],
-                                      self.svg.docks[2][1]],
+                       self.svg.docks[2][1]],
                       ['flow', False, self.svg.docks[1][0],
-                                      self.svg.docks[1][1]]]
+                       self.svg.docks[1][1]]]
 
     def _make_portfolio_style_1x1(self, svg):
         self.svg.expand(30 + self.dx + self.ex, 15 + self.ey)
@@ -1316,13 +1326,13 @@ class Block:
         self.svg.set_draw_innies(False)
         self._make_block_graphics(svg, self.svg.portfolio)
         self.docks = [['flow', True, self.svg.docks[0][0],
-                                     self.svg.docks[0][1]],
+                       self.svg.docks[0][1]],
                       ['string', False, self.svg.docks[3][0],
-                                      self.svg.docks[3][1]],
+                       self.svg.docks[3][1]],
                       ['media', False, self.svg.docks[2][0],
-                                      self.svg.docks[2][1]],
+                       self.svg.docks[2][1]],
                       ['flow', False, self.svg.docks[1][0],
-                                      self.svg.docks[1][1]]]
+                       self.svg.docks[1][1]]]
 
     def _make_block_graphics(self, svg, function, arg=None):
         self._set_colors(svg)
@@ -1344,6 +1354,7 @@ class Block:
             pixbuf = svg_str_to_pixbuf(function(arg))
         self.shapes[1] = _pixbuf_to_cairo_surface(pixbuf,
                                                   self.width, self.height)
+
 
 def _pixbuf_to_cairo_surface(image, width, height):
     surface = cairo.ImageSurface(

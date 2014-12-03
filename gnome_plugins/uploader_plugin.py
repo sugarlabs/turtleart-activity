@@ -1,25 +1,25 @@
 #!/usr/bin/env python
-#Copyright (c) 2011 Walter Bender
-#Copyright (c) 2010 Jamie Boisture
-#Copyright (c) 2011 Collabora Ltd. <http://www.collabora.co.uk/>
+# Copyright (c) 2011 Walter Bender
+# Copyright (c) 2010 Jamie Boisture
+# Copyright (c) 2011 Collabora Ltd. <http://www.collabora.co.uk/>
 
-#Permission is hereby granted, free of charge, to any person obtaining a copy
-#of this software and associated documentation files (the "Software"), to deal
-#in the Software without restriction, including without limitation the rights
-#to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-#copies of the Software, and to permit persons to whom the Software is
-#furnished to do so, subject to the following conditions:
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
 
-#The above copyright notice and this permission notice shall be included in
-#all copies or substantial portions of the Software.
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
 
-#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-#IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-#FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-#AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-#LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-#OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-#THE SOFTWARE.
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+# THE SOFTWARE.
 
 #!/usr/bin/python
 
@@ -27,14 +27,14 @@ try:
     import pycurl
     import xmlrpclib
     _UPLOAD_AVAILABLE = True
-except ImportError, e:
+except ImportError as e:
     print "Import Error: %s. Project upload is disabled." % (e)
     _UPLOAD_AVAILABLE = False
 
 import os
 import gtk
 
-from plugin import Plugin
+from .plugin import Plugin
 from util.menubuilder import MenuBuilder, MENUBAR
 
 from gettext import gettext as _
@@ -163,7 +163,7 @@ http://turtleartsite.sugarlabs.org to upload your project.'))
         logged_in = None
         try:
             logged_in = server.login_remote(username, password)
-        except socket.gaierror, e:
+        except socket.gaierror as e:
             print "Login failed %s" % e
         if logged_in:
             upload_key = logged_in

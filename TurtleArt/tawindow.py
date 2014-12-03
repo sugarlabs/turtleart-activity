@@ -1,26 +1,26 @@
 # -*- coding: utf-8 -*-
-#Copyright (c) 2007, Playful Invention Company
-#Copyright (c) 2008-14, Walter Bender
-#Copyright (c) 2009-11 Raúl Gutiérrez Segalés
-#Copyright (c) 2011 Collabora Ltd. <http://www.collabora.co.uk/>
+# Copyright (c) 2007, Playful Invention Company
+# Copyright (c) 2008-14, Walter Bender
+# Copyright (c) 2009-11 Raúl Gutiérrez Segalés
+# Copyright (c) 2011 Collabora Ltd. <http://www.collabora.co.uk/>
 
-#Permission is hereby granted, free of charge, to any person obtaining a copy
-#of this software and associated documentation files (the "Software"), to deal
-#in the Software without restriction, including without limitation the rights
-#to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-#copies of the Software, and to permit persons to whom the Software is
-#furnished to do so, subject to the following conditions:
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
 
-#The above copyright notice and this permission notice shall be included in
-#all copies or substantial portions of the Software.
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
 
-#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-#IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-#FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-#AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-#LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-#OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-#THE SOFTWARE.
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+# THE SOFTWARE.
 
 import pygtk
 pygtk.require('2.0')
@@ -48,47 +48,83 @@ DEGTOR = 2 * pi / 360
 
 import locale
 
-from taconstants import (HORIZONTAL_PALETTE, VERTICAL_PALETTE, BLOCK_SCALE,
-                         MEDIA_SHAPES, STATUS_SHAPES, OVERLAY_SHAPES,
-                         TOOLBAR_SHAPES, TAB_LAYER, RETURN, OVERLAY_LAYER,
-                         CATEGORY_LAYER, BLOCKS_WITH_SKIN, ICON_SIZE,
-                         PALETTE_WIDTH, SKIN_PATHS, MACROS, Color, KEY_DICT,
-                         TOP_LAYER, BLOCK_LAYER, OLD_NAMES, DEFAULT_TURTLE,
-                         TURTLE_LAYER, EXPANDABLE, NO_IMPORT, TEMPLATES,
-                         PYTHON_SKIN, PALETTE_HEIGHT, STATUS_LAYER, OLD_DOCK,
-                         EXPANDABLE_ARGS, XO1, XO15, XO175, XO30, XO4, TITLEXY,
-                         CONTENT_ARGS, CONSTANTS, EXPAND_SKIN, PROTO_LAYER,
-                         EXPANDABLE_FLOW, SUFFIX, TMP_SVG_PATH, TMP_ODP_PATH,
-                         Vector, PASTE_OFFSET)
-from tapalette import (palette_names, palette_blocks, expandable_blocks,
-                       block_names, content_blocks, default_values,
-                       special_names, block_styles, help_strings,
-                       string_or_number_args, make_palette,
-                       palette_name_to_index, palette_init_on_start,
-                       palette_i18n_names)
-from talogo import (LogoCode, logoerror)
-from tacanvas import TurtleGraphics
-from tablock import (Blocks, Block, Media, media_blocks_dictionary)
-from taturtle import (Turtles, Turtle)
-from tautils import (magnitude, get_load_name, get_save_name, data_from_file,
-                     data_to_file, round_int, get_id, get_pixbuf_from_journal,
-                     movie_media_type, audio_media_type, image_media_type,
-                     save_picture, calc_image_size, get_path, hide_button_hit,
-                     show_button_hit, chooser_dialog, arithmetic_check, xy,
-                     find_block_to_run, find_top_block, journal_check,
-                     find_group, find_blk_below, data_to_string,
-                     find_start_stack, get_hardware, debug_output,
-                     error_output, find_hat, find_bot_block,
-                     restore_clamp, collapse_clamp, data_from_string,
-                     increment_name, get_screen_dpi, is_writeable)
-from tasprite_factory import (svg_str_to_pixbuf, svg_from_file)
-from tapalette import block_primitives
-from tapaletteview import PaletteView
-from taselector import (Selector, create_toolbar_background)
-from sprites import (Sprites, Sprite)
+from .taconstants import (
+    HORIZONTAL_PALETTE,
+    VERTICAL_PALETTE,
+    BLOCK_SCALE,
+    MEDIA_SHAPES,
+    STATUS_SHAPES,
+    OVERLAY_SHAPES,
+    TOOLBAR_SHAPES,
+    TAB_LAYER,
+    RETURN,
+    OVERLAY_LAYER,
+    CATEGORY_LAYER,
+    BLOCKS_WITH_SKIN,
+    ICON_SIZE,
+    PALETTE_WIDTH,
+    SKIN_PATHS,
+    MACROS,
+    Color,
+    KEY_DICT,
+    TOP_LAYER,
+    BLOCK_LAYER,
+    OLD_NAMES,
+    DEFAULT_TURTLE,
+    TURTLE_LAYER,
+    EXPANDABLE,
+    NO_IMPORT,
+    TEMPLATES,
+    PYTHON_SKIN,
+    PALETTE_HEIGHT,
+    STATUS_LAYER,
+    OLD_DOCK,
+    EXPANDABLE_ARGS,
+    XO1,
+    XO15,
+    XO175,
+    XO30,
+    XO4,
+    TITLEXY,
+    CONTENT_ARGS,
+    CONSTANTS,
+    EXPAND_SKIN,
+    PROTO_LAYER,
+    EXPANDABLE_FLOW,
+    SUFFIX,
+    TMP_SVG_PATH,
+    TMP_ODP_PATH,
+    Vector,
+    PASTE_OFFSET)
+from .tapalette import (palette_names, palette_blocks, expandable_blocks,
+                        block_names, content_blocks, default_values,
+                        special_names, block_styles, help_strings,
+                        string_or_number_args, make_palette,
+                        palette_name_to_index, palette_init_on_start,
+                        palette_i18n_names)
+from .talogo import (LogoCode, logoerror)
+from .tacanvas import TurtleGraphics
+from .tablock import (Blocks, Block, Media, media_blocks_dictionary)
+from .taturtle import (Turtles, Turtle)
+from .tautils import (magnitude, get_load_name, get_save_name, data_from_file,
+                      data_to_file, round_int, get_id, get_pixbuf_from_journal,
+                      movie_media_type, audio_media_type, image_media_type,
+                      save_picture, calc_image_size, get_path, hide_button_hit,
+                      show_button_hit, chooser_dialog, arithmetic_check, xy,
+                      find_block_to_run, find_top_block, journal_check,
+                      find_group, find_blk_below, data_to_string,
+                      find_start_stack, get_hardware, debug_output,
+                      error_output, find_hat, find_bot_block,
+                      restore_clamp, collapse_clamp, data_from_string,
+                      increment_name, get_screen_dpi, is_writeable)
+from .tasprite_factory import (svg_str_to_pixbuf, svg_from_file)
+from .tapalette import block_primitives
+from .tapaletteview import PaletteView
+from .taselector import (Selector, create_toolbar_background)
+from .sprites import (Sprites, Sprite)
 
 if _GST_AVAILABLE:
-    from tagplay import stop_media
+    from .tagplay import stop_media
 
 _MOTION_THRESHOLD = 6
 _SNAP_THRESHOLD = 200
@@ -105,6 +141,7 @@ plugins_in_use = []
 
 
 class TurtleArtWindow():
+
     ''' TurtleArt Window class abstraction  '''
 
     def __init__(self, canvas_window, path, parent=None, activity=None,
@@ -305,7 +342,7 @@ class TurtleArtWindow():
 
         # only in TA: setup basic palettes
         if self.running_turtleart:
-            from tabasics import Palettes
+            from .tabasics import Palettes
             self._basic_palettes = Palettes(self)
 
         global_objects["window"] = self
@@ -374,8 +411,7 @@ class TurtleArtWindow():
         ''' Look for plugin files in plugin dir. '''
         plugin_files = []
         for path in paths:
-            candidates = os.listdir(path)
-            candidates.sort()
+            candidates = sorted(os.listdir(path))
             for dirname in candidates:
                 pname = os.path.join(path, dirname, dirname + '.py')
                 if os.path.exists(pname):
@@ -683,7 +719,6 @@ class TurtleArtWindow():
                                                CONSTANTS[blk.name]))
                 blk.resize()
 
-
     def _configure_cb(self, event):
         ''' Screen size has changed '''
         self.width = gtk.gdk.screen_width()
@@ -716,7 +751,7 @@ class TurtleArtWindow():
             cr.rectangle(self.rect.x, self.rect.y,
                          self.rect.width, self.rect.height)
         else:
-        # Restrict Cairo to the exposed area; avoid extra work
+            # Restrict Cairo to the exposed area; avoid extra work
             cr.rectangle(event.area.x, event.area.y,
                          event.area.width, event.area.height)
         cr.clip()
@@ -1194,7 +1229,8 @@ class TurtleArtWindow():
         return int((self.mouse_x - (self.canvas.width / 2)) / self.coord_scale)
 
     def get_mouse_y(self):
-        return int(((self.canvas.height / 2) - self.mouse_y) / self.coord_scale)
+        return int(
+            ((self.canvas.height / 2) - self.mouse_y) / self.coord_scale)
 
     def button_press(self, mask, x, y):
         if self.running_turtleart:
@@ -1527,25 +1563,25 @@ class TurtleArtWindow():
             self._delete_stack(blk)
 
     def _delete_stack(self, blk):
-            name = blk.spr.labels[0]
-            error_output('deleting proto: clicked on %s %s' % (blk.name, name),
-                         self.running_sugar)
-            macro_path = os.path.join(self.macros_path, '%s.tb' % (name))
-            if os.path.exists(macro_path):
-                try:
-                    os.remove(macro_path)
-                except Exception, e:
-                    error_output('Could not remove macro %s: %s' %
-                                 (macro_path, e))
-                    return
-                i = palette_names.index('myblocks')
-                palette_blocks[i].remove(blk.name)
-                for pblk in self.palette_views[i].blocks:
-                    if pblk.name == blk.name:
-                        pblk.spr.hide()
-                        self.palette_views[i].blocks.remove(pblk)
-                        break
-                self.show_toolbar_palette(i, regenerate=True)
+        name = blk.spr.labels[0]
+        error_output('deleting proto: clicked on %s %s' % (blk.name, name),
+                     self.running_sugar)
+        macro_path = os.path.join(self.macros_path, '%s.tb' % (name))
+        if os.path.exists(macro_path):
+            try:
+                os.remove(macro_path)
+            except Exception as e:
+                error_output('Could not remove macro %s: %s' %
+                             (macro_path, e))
+                return
+            i = palette_names.index('myblocks')
+            palette_blocks[i].remove(blk.name)
+            for pblk in self.palette_views[i].blocks:
+                if pblk.name == blk.name:
+                    pblk.spr.hide()
+                    self.palette_views[i].blocks.remove(pblk)
+                    break
+            self.show_toolbar_palette(i, regenerate=True)
 
     def _look_for_a_turtle(self, spr, x, y):
         # Next, look for a turtle
@@ -1695,7 +1731,7 @@ class TurtleArtWindow():
 
         if old in block_names:
             del block_names[old]
-        if not new in block_names:
+        if new not in block_names:
             block_names[new] = name
 
         i = palette_name_to_index(palette)
@@ -1975,7 +2011,7 @@ class TurtleArtWindow():
                             if not os.path.exists(self.macros_path):
                                 try:
                                     os.makedirs(self.macros_path)
-                                except OSError, exc:
+                                except OSError as exc:
                                     if exc.errno == errno.EEXIST:
                                         pass
                                     else:
@@ -2279,8 +2315,8 @@ class TurtleArtWindow():
                     if blk.connections[1] is not None:
                         self._resize_clamp(blk, blk.connections[1], dockn=1)
                 elif blk.name in block_styles['clamp-style'] or \
-                     blk.name in block_styles['clamp-style-collapsible'] or \
-                     blk.name in block_styles['clamp-style-hat']:
+                        blk.name in block_styles['clamp-style-collapsible'] or \
+                        blk.name in block_styles['clamp-style-hat']:
                     if blk.connections[1] is not None:
                         self._resize_clamp(blk, blk.connections[1])
                 elif blk.name in block_styles['clamp-style-else']:
@@ -3141,7 +3177,7 @@ class TurtleArtWindow():
                         self._resize_clamp(best_destination,
                                            self.drag_group[0])
                 elif best_destination.name in \
-                     block_styles['clamp-style-until']:
+                        block_styles['clamp-style-until']:
                     if best_destination_dockn == 2:
                         self._resize_clamp(best_destination,
                                            self.drag_group[0])
@@ -3202,7 +3238,8 @@ class TurtleArtWindow():
                 if dy != 0:
                     # Move the dock1 contents up
                     if best_destination.connections[1] is not None:
-                        drag_group = find_group(best_destination.connections[1])
+                        drag_group = find_group(
+                            best_destination.connections[1])
                         for gblk in drag_group:
                             gblk.spr.move_relative((0, -dy * gblk.scale))
                     self._expand_expandable(
@@ -3351,7 +3388,7 @@ class TurtleArtWindow():
         if blk.connections[-1] is not None:
             drag_group = find_group(blk.connections[-1])
             for gblk in drag_group:
-                gblk.spr.move_relative((0, y2-y1))
+                gblk.spr.move_relative((0, y2 - y1))
         # We may have to move the else clamp group up or down too.
         if blk.name in block_styles['clamp-style-else'] and dockn == 2:
             if blk.connections[3] is not None:
@@ -4571,7 +4608,6 @@ class TurtleArtWindow():
             if name is not None:
                 subprocess.check_output(
                     ['cp', TMP_ODP_PATH, os.path.join(datapath, name)])
-                
 
     def save_as_icon(self, name=''):
         from util.sugariconify import SugarIconify
@@ -5069,7 +5105,7 @@ variable'))
             else:
                 self.show_toolbar_palette(int(arg))
         else:
-            if type(arg) == unicode:
+            if isinstance(arg, unicode):
                 arg = arg.encode('utf-8')
             if arg in palette_names or arg in palette_i18n_names:
                 self.show_toolbar_palette(palette_name_to_index(arg))

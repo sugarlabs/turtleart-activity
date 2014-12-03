@@ -1,4 +1,4 @@
-#Copyright (c) 2010-11, Walter Bender, Tony Forster
+# Copyright (c) 2010-11, Walter Bender, Tony Forster
 #
 # This Python block writes serial output to a USB port and pushes
 # serial input to the heap.

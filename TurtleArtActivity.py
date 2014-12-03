@@ -1,26 +1,26 @@
 # -*- coding: utf-8 -*-
-#Copyright (c) 2007, Playful Invention Company
-#Copyright (c) 2008-14, Walter Bender
-#Copyright (c) 2009-13 Raul Gutierrez Segales
-#Copyright (c) 2012 Alan Aguiar
+# Copyright (c) 2007, Playful Invention Company
+# Copyright (c) 2008-14, Walter Bender
+# Copyright (c) 2009-13 Raul Gutierrez Segales
+# Copyright (c) 2012 Alan Aguiar
 
-#Permission is hereby granted, free of charge, to any person obtaining a copy
-#of this software and associated documentation files (the "Software"), to deal
-#in the Software without restriction, including without limitation the rights
-#to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-#copies of the Software, and to permit persons to whom the Software is
-#furnished to do so, subject to the following conditions:
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
 
-#The above copyright notice and this permission notice shall be included in
-#all copies or substantial portions of the Software.
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
 
-#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-#IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-#FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-#AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-#LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-#OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-#THE SOFTWARE.
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+# THE SOFTWARE.
 
 import pygtk
 pygtk.require('2.0')
@@ -83,6 +83,7 @@ if HAS_TOOLBARBOX:
 
 
 class TurtleArtActivity(activity.Activity):
+
     ''' Activity subclass for Turtle Art '''
     _HOVER_HELP = '/desktop/sugar/activities/turtleart/hoverhelp'
     _ORIENTATION = '/desktop/sugar/activities/turtleart/orientation'
@@ -92,7 +93,7 @@ class TurtleArtActivity(activity.Activity):
         ''' Set up the toolbars, canvas, sharing, etc. '''
         try:
             super(TurtleArtActivity, self).__init__(handle)
-        except dbus.exceptions.DBusException, e:
+        except dbus.exceptions.DBusException as e:
             _logger.error(str(e))
 
         self.tw = None
@@ -683,7 +684,7 @@ class TurtleArtActivity(activity.Activity):
             f = file(tmpfile, 'w')
             f.write(code)
             f.close()
-        except Exception, e:
+        except Exception as e:
             _logger.error("Couldn't save Logo code: " + str(e))
             tmpfile = None
         return tmpfile
@@ -694,7 +695,7 @@ class TurtleArtActivity(activity.Activity):
         tmpfile = os.path.join(datapath, 'tmpfile.ta')
         try:
             data_to_file(self.tw.assemble_data_to_save(), tmpfile)
-        except Exception, e:
+        except Exception as e:
             _logger.error("Couldn't save project code: " + str(e))
             tmpfile = None
         return tmpfile
@@ -933,9 +934,9 @@ class TurtleArtActivity(activity.Activity):
 
         # TRANS: ODP is Open Office presentation
         self.save_as_odp = add_paragraph(help_box, _('Save as ODP'),
-            icon='odp-saveoff')
+                                         icon='odp-saveoff')
         self.save_as_odp.connect('expose-event',
-            self._save_as_odp_expose_cb)
+                                 self._save_as_odp_expose_cb)
 
         add_paragraph(help_box, _('Save as Logo'), icon='logo-saveoff')
         add_paragraph(help_box, _('Save as Python'), icon='python-saveoff')
@@ -1136,10 +1137,12 @@ class TurtleArtActivity(activity.Activity):
             self.save_as_odp = self._add_button_and_label(
                 'odp-saveoff', _('Save as ODP'), self.do_save_as_odp_cb,
                 None, button_box)
-            self.save_as_icon[0].get_parent().connect('expose-event',
+            self.save_as_icon[0].get_parent().connect(
+                'expose-event',
                 self._save_as_icon_expose_cb)
 
-            self.save_as_odp[0].get_parent().connect('expose-event',
+            self.save_as_odp[0].get_parent().connect(
+                'expose-event',
                 self._save_as_odp_expose_cb)
 
             self.save_as_logo, label = self._add_button_and_label(
@@ -1199,9 +1202,9 @@ class TurtleArtActivity(activity.Activity):
                 toolbar)
 
             self.save_as_icon.connect('expose-event',
-                self._save_as_icon_expose_cb)
+                                      self._save_as_icon_expose_cb)
             self.save_as_odp.connect('expose-event',
-                self._save_as_odp_expose_cb)
+                                     self._save_as_odp_expose_cb)
 
             self.save_as_logo = self._add_button(
                 'logo-saveoff', _('Save as Logo'), self.do_save_as_logo_cb,
@@ -1608,7 +1611,6 @@ class TurtleArtActivity(activity.Activity):
                                      self.tw.paste_offset)
                 self.tw.paste_offset += PASTE_OFFSET
 
-
     def _undo_cb(self, button):
         ''' Restore most recent item added to the trash '''
         self.tw.restore_latest_from_trash()
@@ -1690,7 +1692,7 @@ class TurtleArtActivity(activity.Activity):
             else:  # ...or a secondary toolbar.
                 toolbar.props.page.insert(button, -1)
 
-        if not name in help_strings:
+        if name not in help_strings:
             help_strings[name] = tooltip
         return button
 
@@ -1820,9 +1822,13 @@ class TurtleArtActivity(activity.Activity):
             store.append([pixbuf, filepath])
 
     def _scan_for_samples(self):
-        samples = glob.glob(os.path.join(activity.get_bundle_path(),
-                                         'samples', 'thumbnails', '*.png'))
-        samples.sort()
+        samples = sorted(
+            glob.glob(
+                os.path.join(
+                    activity.get_bundle_path(),
+                    'samples',
+                    'thumbnails',
+                    '*.png')))
         return samples
 
     def is_toolbar_expanded(self):

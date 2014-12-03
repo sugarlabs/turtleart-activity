@@ -1,25 +1,25 @@
 # -*- coding: utf-8 -*-
-#Copyright (c) 2007-8, Playful Invention Company.
-#Copyright (c) 2008-13, Walter Bender
-#Copyright (c) 2008-10, Raúl Gutiérrez Segalés
+# Copyright (c) 2007-8, Playful Invention Company.
+# Copyright (c) 2008-13, Walter Bender
+# Copyright (c) 2008-10, Raúl Gutiérrez Segalés
 
-#Permission is hereby granted, free of charge, to any person obtaining a copy
-#of this software and associated documentation files (the "Software"), to deal
-#in the Software without restriction, including without limitation the rights
-#to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-#copies of the Software, and to permit persons to whom the Software is
-#furnished to do so, subject to the following conditions:
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
 
-#The above copyright notice and this permission notice shall be included in
-#all copies or substantial portions of the Software.
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
 
-#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-#IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-#FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-#AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-#LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-#OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-#THE SOFTWARE.
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+# THE SOFTWARE.
 
 import gtk
 import gobject
@@ -42,16 +42,16 @@ USER_HOME = os.path.expanduser('~')
 
 import traceback
 
-from tablock import (Block, Media, media_blocks_dictionary)
-from taconstants import (TAB_LAYER, DEFAULT_SCALE, ICON_SIZE, Color)
-from tajail import (myfunc, myfunc_import)
-from tapalette import (block_names, value_blocks)
-from tatype import (TATypeError, TYPES_NUMERIC)
-from tautils import (get_pixbuf_from_journal, data_from_file, get_stack_name,
-                     movie_media_type, audio_media_type, image_media_type,
-                     text_media_type, round_int, debug_output, find_group,
-                     get_path, image_to_base64, data_to_string, data_to_file,
-                     get_load_name, chooser_dialog)
+from .tablock import (Block, Media, media_blocks_dictionary)
+from .taconstants import (TAB_LAYER, DEFAULT_SCALE, ICON_SIZE, Color)
+from .tajail import (myfunc, myfunc_import)
+from .tapalette import (block_names, value_blocks)
+from .tatype import (TATypeError, TYPES_NUMERIC)
+from .tautils import (get_pixbuf_from_journal, data_from_file, get_stack_name,
+                      movie_media_type, audio_media_type, image_media_type,
+                      text_media_type, round_int, debug_output, find_group,
+                      get_path, image_to_base64, data_to_string, data_to_file,
+                      get_load_name, chooser_dialog)
 
 try:
     from util.RtfParser import RtfTextOnly
@@ -94,6 +94,7 @@ class logoerror(Exception):
 
 
 class NegativeRootError(BaseException):
+
     """ Similar to the ZeroDivisionError, this error is raised at runtime
     when trying to computer the square root of a negative number. """
 
@@ -154,6 +155,7 @@ def _millisecond():
 
 
 class LogoCode:
+
     """ A class for parsing Logo code """
 
     def __init__(self, tw):
@@ -211,7 +213,7 @@ class LogoCode:
         self.iline = None
         self.tw.stop_plugins()
         if self.tw.gst_available:
-            from tagplay import stop_media
+            from .tagplay import stop_media
             stop_media(self)
         self.tw.turtles.get_active_turtle().show()
         self.tw.running_blocks = False
@@ -650,7 +652,7 @@ class LogoCode:
                         return False
                     else:
                         self.ireturn()
-        except logoerror, e:
+        except logoerror as e:
             if self.tw.running_turtleart:
                 self.tw.showblocks()
                 self.tw.display_coordinates()
@@ -724,7 +726,7 @@ class LogoCode:
 
     def stop_playing_media(self):
         if self.tw.gst_available:
-            from tagplay import stop_media
+            from .tagplay import stop_media
             stop_media(self)
 
     def reset_scale(self):
@@ -978,13 +980,13 @@ class LogoCode:
         except ZeroDivisionError:
             self.stop_logo()
             raise logoerror("#zerodivide")
-        except ValueError, e:
+        except ValueError as e:
             self.stop_logo()
             raise logoerror('#' + str(e))
-        except SyntaxError, e:
+        except SyntaxError as e:
             self.stop_logo()
             raise logoerror('#' + str(e))
-        except NameError, e:
+        except NameError as e:
             self.stop_logo()
             raise logoerror('#' + str(e))
         except OverflowError:
@@ -1133,16 +1135,16 @@ class LogoCode:
 
     def get_from_url(self, url):
         """ Get contents of URL as text or tempfile to image """
-        if "://" not in url: # no protocol
-            url = "http://" + url # assume HTTP
+        if "://" not in url:  # no protocol
+            url = "http://" + url  # assume HTTP
 
         try:
             req = urllib2.urlopen(url)
-        except urllib2.HTTPError, e:
+        except urllib2.HTTPError as e:
             debug_output("Couldn't open %s: %s" % (url, e),
                          self.tw.running_sugar)
             raise logoerror(url + ' [%d]' % (e.code))
-        except urllib2.URLError, e:
+        except urllib2.URLError as e:
             if hasattr(e, 'code'):
                 debug_output("Couldn't open %s: %s" % (url, e),
                              self.tw.running_sugar)
@@ -1406,7 +1408,7 @@ class LogoCode:
     def media_wait(self):
         """ Wait for media to stop playing """
         if self.tw.gst_available:
-            from tagplay import media_playing
+            from .tagplay import media_playing
             while(media_playing(self)):
                 yield True
         self.ireturn()
@@ -1415,7 +1417,7 @@ class LogoCode:
     def media_stop(self):
         """ Stop playing media"""
         if self.tw.gst_available:
-            from tagplay import stop_media
+            from .tagplay import stop_media
             stop_media(self)
         self.ireturn()
         yield True
@@ -1423,7 +1425,7 @@ class LogoCode:
     def media_pause(self):
         """ Pause media"""
         if self.tw.gst_available:
-            from tagplay import pause_media
+            from .tagplay import pause_media
             pause_media(self)
         self.ireturn()
         yield True
@@ -1431,7 +1433,7 @@ class LogoCode:
     def media_play(self):
         """ Play media"""
         if self.tw.gst_available:
-            from tagplay import play_media
+            from .tagplay import play_media
             play_media(self)
         self.ireturn()
         yield True
@@ -1439,7 +1441,7 @@ class LogoCode:
     def play_sound(self):
         """ Sound file from Journal """
         if self.tw.gst_available:
-            from tagplay import play_audio_from_file
+            from .tagplay import play_audio_from_file
             play_audio_from_file(self, self.filepath)
 
     def play_video(self):
@@ -1448,7 +1450,7 @@ class LogoCode:
         if w < 1 or h < 1:
             return
         if self.tw.gst_available:
-            from tagplay import play_movie_from_file
+            from .tagplay import play_movie_from_file
             # The video window is an overlay, so we need to know where
             # the canvas is relative to the window, e.g., which
             # toolbars, if any are open.

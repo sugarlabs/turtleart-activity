@@ -1,25 +1,25 @@
 #!/usr/bin/env python
-#Copyright (c) 2007-8, Playful Invention Company
-#Copyright (c) 2008-14, Walter Bender
-#Copyright (c) 2011 Collabora Ltd. <http://www.collabora.co.uk/>
+# Copyright (c) 2007-8, Playful Invention Company
+# Copyright (c) 2008-14, Walter Bender
+# Copyright (c) 2011 Collabora Ltd. <http://www.collabora.co.uk/>
 
-#Permission is hereby granted, free of charge, to any person obtaining a copy
-#of this software and associated documentation files (the "Software"), to deal
-#in the Software without restriction, including without limitation the rights
-#to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-#copies of the Software, and to permit persons to whom the Software is
-#furnished to do so, subject to the following conditions:
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
 
-#The above copyright notice and this permission notice shall be included in
-#all copies or substantial portions of the Software.
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
 
-#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-#IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-#FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-#AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-#LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-#OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-#THE SOFTWARE.
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+# THE SOFTWARE.
 
 import pygtk
 pygtk.require('2.0')
@@ -43,7 +43,7 @@ try:
     # Try to use XDG Base Directory standard for config files.
     import xdg.BaseDirectory
     CONFIG_HOME = os.path.join(xdg.BaseDirectory.xdg_config_home, 'turtleart')
-except ImportError, e:
+except ImportError as e:
     # Default to `.config` per the spec.
     CONFIG_HOME = os.path.expanduser(os.path.join('~', '.config', 'turtleart'))
 
@@ -70,6 +70,7 @@ from util.menubuilder import MenuBuilder
 
 
 class TurtleMain():
+
     ''' Launch Turtle Art in GNOME (from outside of Sugar). '''
     _INSTALL_PATH = '/usr/share/sugar/activities/TurtleArt.activity'
     _ALTERNATIVE_INSTALL_PATH = \
@@ -164,7 +165,7 @@ return %s(self)" % (p, P, P)
             try:
                 exec f in globals(), plugin
                 self._gnome_plugins.append(plugin.values()[0](self))
-            except ImportError, e:
+            except ImportError as e:
                 print 'failed to import %s: %s' % (P, str(e))
 
     def _run_gnome_plugins(self):
@@ -176,7 +177,7 @@ return %s(self)" % (p, P, P)
         '''Create a directory in a fashion similar to `mkdir -p`.'''
         try:
             os.makedirs(path)
-        except OSError, exc:
+        except OSError as exc:
             if exc.errno == errno.EEXIST:
                 pass
             else:
@@ -286,7 +287,7 @@ return %s(self)" % (p, P, P)
         try:
             opts, args = getopt.getopt(argv[1:], 'hor',
                                        ['help', 'output_png', 'run'])
-        except getopt.GetoptError, err:
+        except getopt.GetoptError as err:
             print str(err)
             print self._HELP_MSG
             sys.exit(2)
@@ -335,7 +336,7 @@ return %s(self)" % (p, P, P)
                 self._mkdir_p(CONFIG_HOME)
                 data_file = open(os.path.join(CONFIG_HOME, 'turtleartrc'),
                                  'a+')
-            except IOError, e:
+            except IOError as e:
                 # We can't write to the configuration file, use
                 # a faux file that will persist for the length of
                 # the session.
@@ -528,7 +529,7 @@ return %s(self)" % (p, P, P)
         ''' Save changes on exit '''
         project_empty = self.tw.is_project_empty()
         if not project_empty:
-            resp = self._show_save_dialog(e == None)
+            resp = self._show_save_dialog(e is None)
             if resp == gtk.RESPONSE_YES:
                 if self.tw.is_new_project():
                     self._save_as()
@@ -1045,9 +1046,13 @@ Would you like to save before quitting?'))
             store.append([pixbuf, filepath])
 
     def _scan_for_samples(self):
-        samples = glob.glob(os.path.join(self._get_execution_dir(),
-                                      'samples', 'thumbnails', '*.png'))
-        samples.sort()
+        samples = sorted(
+            glob.glob(
+                os.path.join(
+                    self._get_execution_dir(),
+                    'samples',
+                    'thumbnails',
+                    '*.png')))
         return samples
 
 

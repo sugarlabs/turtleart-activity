@@ -1,4 +1,4 @@
-#Copyright (c) 2009-11, Walter Bender, Tony Forster
+# Copyright (c) 2009-11, Walter Bender, Tony Forster
 
 # This procedure is invoked when the user-definable block on the
 # "extras" palette is selected.

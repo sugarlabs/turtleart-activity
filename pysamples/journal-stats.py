@@ -26,6 +26,7 @@ def myblock(tw, x):  # ignore second argument
     DIROFINTEREST = 'datastore'
 
     class ParseJournal():
+
         ''' Simple parser of datastore '''
 
         def __init__(self):

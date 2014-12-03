@@ -1,6 +1,6 @@
 #!/usr/bin/env python
-#Copyright (c) 2011 Walter Bender
-#Copyright (c) 2011 Collabora Ltd. <http://www.collabora.co.uk/>
+# Copyright (c) 2011 Walter Bender
+# Copyright (c) 2011 Collabora Ltd. <http://www.collabora.co.uk/>
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -20,6 +20,7 @@ import gobject
 
 
 class Plugin(gobject.GObject):
+
     def __init__(self):
         gobject.GObject.__init__(self)
 

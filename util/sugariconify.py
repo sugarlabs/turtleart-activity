@@ -85,7 +85,7 @@ class SugarIconify():
         except:
             self.usage()
             sys.exit(2)
-        
+
         if len(arg) < 1:
             self.usage()
             sys.exit(2)
@@ -132,13 +132,13 @@ class SugarIconify():
 
     def percent_to_hex(self, num):
         number = float(num.strip()[:-1])
-        decimal = (number*255)/100
+        decimal = (number * 255) / 100
         decimal = int(round(decimal, 0))
         hex_val = hex(decimal).split('x')[1]
         if len(hex_val) == 1:
             hex_val = '0' + hex_val
         return hex_val
-    
+
     def set_stroke_color(self, s=None):
         if s is not None:
             if 'rgb' in s.lower():
@@ -223,7 +223,7 @@ class SugarIconify():
 
         # Hack the entities into the readonly DTD
         if self.use_entities:
-            
+
             # Before replacing them, we read the stroke/fill values
             # out, should they have previously been defined, to prevent
             # needing to make guesses for them later
@@ -252,7 +252,7 @@ class SugarIconify():
                 self.entities  = '\t<!ENTITY ' + self.stroke_entity + ' "' + \
                                  self.default_stroke_color + '">\n'
                 self.entities += '\t<!ENTITY ' + self.fill_entity + ' "' + \
-                                 self.default_fill_color   + '">\n'
+                                 self.default_fill_color + '">\n'
                 if self.use_iso_strokes:
                     self.entities += '\t<!ENTITY ' + self.iso_stroke_entity + \
                                      ' "' + self.default_stroke_color + '">\n'
@@ -272,8 +272,8 @@ class SugarIconify():
                 self.svgtext, self.n = \
                     re.subn('<svg',
                             "<!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN' \
-'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd' [\n" + \
-self.entities + "]>\n<svg", self.svgtext)
+'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd' [\n" +
+                            self.entities + "]>\n<svg", self.svgtext)
                 if self.n == 0:
                     sys.exit('Error: Could not insert self.entities into DTD')
 
@@ -283,25 +283,25 @@ self.entities + "]>\n<svg", self.svgtext)
 
         # Create the SVG DOM
         try:
-            self.svgxml = xml.dom.minidom.parseString(self.svgtext);
-        except Exception, e:
+            self.svgxml = xml.dom.minidom.parseString(self.svgtext)
+        except Exception as e:
             sys.exit('Error: Could not parse ' + self.svgfilename + str(e))
 
         # Extract top-level nodes
         self.i = 0
-        self.svgindex = 0;
-        self.docindex = 0;
+        self.svgindex = 0
+        self.docindex = 0
         for element in self.svgxml.childNodes:
             if element.nodeType == 10:
-                self.docindex = self.i;
+                self.docindex = self.i
             elif element.localName == 'svg':
-                self.svgindex = self.i;
-                break;
-            self.i += 1;
+                self.svgindex = self.i
+                break
+            self.i += 1
 
         self.doctype = self.svgxml.childNodes[self.docindex]
         self.svg = self.svgxml.childNodes[self.svgindex]
-        icons = self.svg.childNodes;
+        icons = self.svg.childNodes
 
         # Validate canvas size
         self.w = self.svg.getAttribute('width')
@@ -310,7 +310,7 @@ self.entities + "]>\n<svg", self.svgtext)
         if self.w != '55px' or self.h != '55px':
             print 'Warning: invalid canvas size (%s, %s); \
 Should be (55px, 55px)' % (self.w, self.h)
-            
+
         # Guess the entity values, if they aren't passed in
         if self.use_entities:
             print 'entities_passed ==', self.entities_passed
@@ -450,53 +450,54 @@ Should be (55px, 55px)' % (self.w, self.h)
         </body>\n\
         </html>\n\
         "
-        
+
         # Finally, do the icon conversion and export
         if self.multiple:
             # Export each icon as a separate file by top level group
             n_icons_exported = 0
             n_warnings = 0
             for icon in icons:
-            
+
                 try:
                     # Skip whitespace and unnamed icons
                     if icon.localName == 'g' and icon.attributes:
-                    
+
                         icon_name = ''
                         try:
                             if self.creator == 'inkscape' and \
                                icon.attributes.getNamedItem('inkscape:label'):
                                 icon_name = icon.attributes.getNamedItem(
-                                        'inkscape:label').nodeValue
+                                    'inkscape:label').nodeValue
                             else:
-                                icon_name = \
-                                    icon.attributes.getNamedItem('id').nodeValue
+                                icon_name = icon.attributes.getNamedItem(
+                                    'id').nodeValue
                         except:
-                            pass        
+                            pass
 
                         # Skip the template layers
                         if not icon_name.startswith('_'):
-                
+
                             # Skip non-matches
                             if self.pattern == '' or \
                                re.search(self.pattern, icon_name):
 
                                 if self.verbose:
                                     print '\nExporting ' + icon_name + \
-                                            '.self.svg...'
-                                icon_xml = xml.dom.minidom.Document();
-                    
+                                        '.self.svg...'
+                                icon_xml = xml.dom.minidom.Document()
+
                                 # Construct the self.svg
                                 icon_xml.appendChild(doctype)
                                 icon_xml.appendChild(self.svg.cloneNode(0))
-                    
-                                icon_xml.childNodes[1].appendChild(icon) 
-                                icon_xml.childNodes[1].childNodes[0].setAttribute('display', 'block')
-                    
+
+                                icon_xml.childNodes[1].appendChild(icon)
+                                icon_xml.childNodes[1].childNodes[
+                                    0].setAttribute('display', 'block')
+
                                 if self.use_entities:
                                     strokes_replaced, fills_replaced = \
-                                    self.replaceEntities(icon_xml.childNodes[1])
-                        
+                                        self.replaceEntities(icon_xml.childNodes[1])
+
                                     if not strokes_replaced and not fills_replaced:
                                         print 'Warning: no entity replacements were made in %s' % icon_name
                                     elif not strokes_replaced:
@@ -506,46 +507,61 @@ Should be (55px, 55px)' % (self.w, self.h)
 
                                     if not strokes_replaced or not fills_replaced:
                                         n_warnings += 1
-                    
+
                                 # Write the file
                                 try:
-                                    f = open(self.output_path + icon_name + \
+                                    f = open(self.output_path + icon_name +
                                              '.self.svg', 'w')
                                 except:
-                                    sys.exit('Error: Could not locate directory ' + self.output_path)
-                    
+                                    sys.exit(
+                                        'Error: Could not locate directory ' +
+                                        self.output_path)
+
                                 try:
                                     # Had to hack here to remove the
-                                    #automatic encoding of '&' by
-                                    #toxml() in entity refs I'm sure
-                                    #there is a way to prevent need
-                                    #for this if I knew the XML DOM
-                                    #better
+                                    # automatic encoding of '&' by
+                                    # toxml() in entity refs I'm sure
+                                    # there is a way to prevent need
+                                    # for this if I knew the XML DOM
+                                    # better
                                     icon_svgtext = icon_xml.toxml()
                                     icon_svgtext = re.sub('&amp;', '&',
                                                           icon_svgtext)
                                     if not self.use_default_colors:
-                                        icon_svgtext = re.sub(r'ENTITY self.stroke_color "[^"]*"', r'ENTITY self.stroke_color "' + self.stroke_color  + '"', icon_svgtext)
-                                        icon_svgtext = re.sub(r'ENTITY self.fill_color "[^"]*"', r'ENTITY self.fill_color "' + self.fill_color  + '"', icon_svgtext)
+                                        icon_svgtext = re.sub(
+                                            r'ENTITY self.stroke_color "[^"]*"',
+                                            r'ENTITY self.stroke_color "' +
+                                            self.stroke_color +
+                                            '"',
+                                            icon_svgtext)
+                                        icon_svgtext = re.sub(
+                                            r'ENTITY self.fill_color "[^"]*"',
+                                            r'ENTITY self.fill_color "' +
+                                            self.fill_color +
+                                            '"',
+                                            icon_svgtext)
                                     f.write(icon_svgtext)
                                     f.close()
                                 except:
-                                    sys.exit('Error: Could not write file ' + icon_name + '.self.svg')
-                                
+                                    sys.exit(
+                                        'Error: Could not write file ' +
+                                        icon_name +
+                                        '.self.svg')
+
                                 n_icons_exported += 1
                 except:
                     # Catch any errors we may have missed, so the rest
                     # of the icons can export normally
                     if(icon_name):
                         print 'Error: Could not export' + icon_name + \
-                                '.self.svg'
+                            '.self.svg'
 
             if self.verbose:
                 if n_icons_exported == 1:
-                    print 'Successfully exported 1 icon' 
+                    print 'Successfully exported 1 icon'
                 else:
                     print 'Successfully exported %d icons' % n_icons_exported
-                
+
                 if n_warnings == 1:
                     print 'Warnings were reported for 1 icon'
                 elif n_warnings > 1:
@@ -565,15 +581,17 @@ Should be (55px, 55px)' % (self.w, self.h)
 
             # Remove the template layers
             for node in self.svg.childNodes:
-                
+
                 # Only check named nodes
-                if node.localName == 'g' and node.attributes:        
+                if node.localName == 'g' and node.attributes:
                     try:
                         if self.creator == 'inkscape' and \
                            node.attributes.getNamedItem('inkscape:label'):
-                            node_name = node.attributes.getNamedItem('inkscape:label').nodeValue
+                            node_name = node.attributes.getNamedItem(
+                                'inkscape:label').nodeValue
                         else:
-                            node_name = node.attributes.getNamedItem('id').nodeValue
+                            node_name = node.attributes.getNamedItem(
+                                'id').nodeValue
 
                         if node_name.startswith('_'):
                             node.parentNode.removeChild(node)
@@ -599,8 +617,8 @@ Should be (55px, 55px)' % (self.w, self.h)
             if self.output_examples:
 
                 example_path = self.output_path + \
-                               re.sub(r'(.*\.)([^.]+)', r'\1preview',
-                                      self.svgfilename) + '/'
+                    re.sub(r'(.*\.)([^.]+)', r'\1preview',
+                           self.svgfilename) + '/'
                 try:
                     os.mkdir(example_path)
                 except:
@@ -618,16 +636,16 @@ Should be (55px, 55px)' % (self.w, self.h)
                     sys.exit('Error: could not write to HTML preview file')
 
                 example_colors = [(self.default_stroke_color, '#FFFFFF',
-                                   self.default_stroke_color), 
-                          ('#FFFFFF', self.default_stroke_color,
-                           self.default_stroke_color), 
-                                          ('#0000AA', '#00DD00', '#0000AA')]
+                                   self.default_stroke_color),
+                                  ('#FFFFFF', self.default_stroke_color,
+                                   self.default_stroke_color),
+                                  ('#0000AA', '#00DD00', '#0000AA')]
                 example_filenames = [re.sub(r'(.*\.)([^.]+)', r'\1stroke.\2',
                                             self.svgfilename),
-                             re.sub(r'(.*\.)([^.]+)', r'\1fill.\2',
-                                    self.svgfilename),
-                             re.sub(r'(.*\.)([^.]+)', r'\1both.\2',
-                                    self.svgfilename) ]
+                                     re.sub(r'(.*\.)([^.]+)', r'\1fill.\2',
+                                            self.svgfilename),
+                                     re.sub(r'(.*\.)([^.]+)', r'\1both.\2',
+                                            self.svgfilename)]
 
                 icon_svgtext = self.svgxml.toxml()
                 icon_svgtext = re.sub('&amp;', '&', icon_svgtext)
@@ -636,49 +654,85 @@ Should be (55px, 55px)' % (self.w, self.h)
                     try:
                         f = open(example_path + example_filenames[i], 'w')
                     except:
-                        sys.exit('Error: Could not save to ' + example_path + \
+                        sys.exit('Error: Could not save to ' + example_path +
                                  example_filenames[i])
                     try:
-                        icon_svgtext = re.sub(r'ENTITY self.stroke_color "[^"]*"', r'ENTITY self.stroke_color "' + example_colors[i][0]  + '"', icon_svgtext)
-                        icon_svgtext = re.sub(r'ENTITY self.fill_color "[^"]*"', r'ENTITY self.fill_color "' + example_colors[i][1]  + '"', icon_svgtext)
+                        icon_svgtext = re.sub(
+                            r'ENTITY self.stroke_color "[^"]*"',
+                            r'ENTITY self.stroke_color "' +
+                            example_colors[i][0] +
+                            '"',
+                            icon_svgtext)
+                        icon_svgtext = re.sub(
+                            r'ENTITY self.fill_color "[^"]*"',
+                            r'ENTITY self.fill_color "' +
+                            example_colors[i][1] +
+                            '"',
+                            icon_svgtext)
                         if self.use_iso_strokes:
-                            icon_svgtext = re.sub(r'ENTITY iso_stroke_color "[^"]*"', r'ENTITY iso_stroke_color "' + example_colors[i][2]  + '"', icon_svgtext)                    
+                            icon_svgtext = re.sub(
+                                r'ENTITY iso_stroke_color "[^"]*"',
+                                r'ENTITY iso_stroke_color "' +
+                                example_colors[i][2] +
+                                '"',
+                                icon_svgtext)
                         f.write(icon_svgtext)
                         f.close()
                     except:
-                        sys.exit('Error: Could not write file ' + \
+                        sys.exit('Error: Could not write file ' +
                                  self.output_path + example_filenames[i])
 
             try:
                 f = open(self.output_path + outfilename, 'w')
             except:
-                sys.exit('Error: Could not save to ' + self.output_path + \
+                sys.exit('Error: Could not save to ' + self.output_path +
                          outfilename)
 
             try:
                 icon_svgtext = self.svgxml.toxml()
                 icon_svgtext = re.sub('&amp;', '&', icon_svgtext)
                 if not self.use_default_colors:
-                    icon_svgtext = re.sub(r'ENTITY self.stroke_color "[^"]*"', r'ENTITY self.stroke_color "' + self.stroke_color  + '"', icon_svgtext)
-                    icon_svgtext = re.sub(r'ENTITY self.fill_color "[^"]*"', r'ENTITY self.fill_color "' + self.fill_color  + '"', icon_svgtext)
+                    icon_svgtext = re.sub(
+                        r'ENTITY self.stroke_color "[^"]*"',
+                        r'ENTITY self.stroke_color "' +
+                        self.stroke_color +
+                        '"',
+                        icon_svgtext)
+                    icon_svgtext = re.sub(
+                        r'ENTITY self.fill_color "[^"]*"',
+                        r'ENTITY self.fill_color "' +
+                        self.fill_color +
+                        '"',
+                        icon_svgtext)
                     if self.use_iso_strokes:
-                        icon_svgtext = re.sub(r'ENTITY iso_stroke_color "[^"]*"', r'ENTITY iso_stroke_color "' + self.stroke_color  + '"', icon_svgtext)
+                        icon_svgtext = re.sub(
+                            r'ENTITY iso_stroke_color "[^"]*"',
+                            r'ENTITY iso_stroke_color "' +
+                            self.stroke_color +
+                            '"',
+                            icon_svgtext)
                 f.write(icon_svgtext)
                 f.close()
 
             except:
-                sys.exit('Error: Could not write file ' + self.output_path + \
+                sys.exit('Error: Could not write file ' + self.output_path +
                          outfilename)
 
     # Define utility functions
-    def getStroke(self, node):    
+    def getStroke(self, node):
         s = node.getAttribute('stroke')
         if s:
             return s.lower()
         else:
             if re.search(r'stroke:', node.getAttribute('style')):
-                s = re.sub(r'.*stroke:\s*(#*[^;]*).*', r'\1', node.getAttribute('style'))
-                s2 = re.sub(r'.*stroke:\s*rgb\(([^)]*).*', r'\1', node.getAttribute('style'))
+                s = re.sub(
+                    r'.*stroke:\s*(#*[^;]*).*',
+                    r'\1',
+                    node.getAttribute('style'))
+                s2 = re.sub(
+                    r'.*stroke:\s*rgb\(([^)]*).*',
+                    r'\1',
+                    node.getAttribute('style'))
                 if 'rgb' not in s:
                     return s.lower()
                 else:
@@ -719,7 +773,7 @@ Should be (55px, 55px)' % (self.w, self.h)
                     return hex_str
             else:
                 return 'none'
-        
+
     def setFill(self, node, value):
         f = node.getAttribute('fill')
         if f:
@@ -730,37 +784,37 @@ Should be (55px, 55px)' % (self.w, self.h)
             node.setAttribute('style', s)
 
     def replaceEntities(self, node, indent=''):
-        
+
         strokes_replaced = 0
         fills_replaced = 0
 
         if node.localName:
             str = indent + node.localName
-        
-        if node.nodeType == 1: # Only element nodes have attrs
-            
+
+        if node.nodeType == 1:  # Only element nodes have attrs
+
             # Replace self.entities for matches
             if self.getStroke(node) == self.stroke_color:
                 self.setStroke(node, self.stroke_entity)
                 strokes_replaced += 1
-            
+
             if self.getStroke(node) == self.fill_color:
                 self.setStroke(node, self.fill_entity)
                 strokes_replaced += 1
-            
+
             if self.getFill(node) == self.fill_color:
                 self.setFill(node, self.fill_entity)
                 fills_replaced += 1
-                
+
             if self.getFill(node) == self.stroke_color:
                 self.setFill(node, self.stroke_entity)
                 fills_replaced += 1
-            
+
             str = str + " (" + self.getStroke(node) + ", " + \
-                  self.getFill(node) + ")"
+                self.getFill(node) + ")"
             if self.verbose:
                 print str
-                
+
         # Recurse on DOM
         for n in node.childNodes:
             sr, fr = self.replaceEntities(n, indent + "   ")
@@ -779,12 +833,12 @@ Should be (55px, 55px)' % (self.w, self.h)
             strokes_fixed += sf
 
         if node.nodeType == 1:  # Only element nodes have attrs
-            
+
             # Find strokes with no associated fill
             if self.getStroke(node) != 'none' and self.getFill(node) == 'none':
                 strokes_fixed += 1
                 self.setStroke(node, "&iso_stroke_color;")
-            
+
         # Return the number of strokes fixed
         return strokes_fixed
 
@@ -793,7 +847,7 @@ Should be (55px, 55px)' % (self.w, self.h)
 
     def getColorPairs(self, node, pairs=[]):
         if node.nodeType == 1:
-            
+
             # Skip masks
             if node.localName == 'mask':
                 return pairs
@@ -802,7 +856,8 @@ Should be (55px, 55px)' % (self.w, self.h)
             try:
                 if self.creator == 'inkscape' and \
                    node.attributes.getNamedItem('inkscape:label'):
-                    node_name = node.attributes.getNamedItem('inkscape:label').nodeValue
+                    node_name = node.attributes.getNamedItem(
+                        'inkscape:label').nodeValue
                 else:
                     node_name = node.attributes.getNamedItem('id').nodeValue
             except:

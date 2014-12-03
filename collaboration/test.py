@@ -4,7 +4,7 @@ import gobject
 import dbus
 import dbus.mainloop
 import dbus.mainloop.glib
-from connectionmanager import get_connection_manager
+from .connectionmanager import get_connection_manager
 
 dbus.mainloop.glib.DBusGMainLoop(set_as_default=True)
 

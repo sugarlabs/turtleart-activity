@@ -1,23 +1,23 @@
-#Copyright (c) 2011-13 Walter Bender
-#Copyright (c) 2011 Collabora Ltd. <http://www.collabora.co.uk/>
+# Copyright (c) 2011-13 Walter Bender
+# Copyright (c) 2011 Collabora Ltd. <http://www.collabora.co.uk/>
 
-#Permission is hereby granted, free of charge, to any person obtaining a copy
-#of this software and associated documentation files (the "Software"), to deal
-#in the Software without restriction, including without limitation the rights
-#to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-#copies of the Software, and to permit persons to whom the Software is
-#furnished to do so, subject to the following conditions:
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
 
-#The above copyright notice and this permission notice shall be included in
-#all copies or substantial portions of the Software.
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
 
-#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-#IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-#FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-#AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-#LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-#OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-#THE SOFTWARE.
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+# THE SOFTWARE.
 
 from dbus.service import signal
 from dbus.gobject_service import ExportedGObject
@@ -46,6 +46,7 @@ PATH = '/org/laptop/TurtleArtActivity'
 
 
 class Collaboration():
+
     def __init__(self, tw, activity):
         """ A simplistic sharing model: the sharer is the master """
         self._tw = tw
@@ -160,9 +161,10 @@ class Collaboration():
 
     def _new_tube_cb(self, id, initiator, type, service, params, state):
         """ Create a new tube. """
-        debug_output('New tube: ID=%d initator=%d type=%d service=%s \
-                     params=%r state=%d' % (id, initiator, type, service,
-                     params, state), self._tw.running_sugar)
+        debug_output(
+            'New tube: ID=%d initator=%d type=%d service=%s \
+                     params=%r state=%d' %
+            (id, initiator, type, service, params, state), self._tw.running_sugar)
 
         if (type == telepathy.TUBE_TYPE_DBUS and service == SERVICE):
             if state == telepathy.TUBE_STATE_LOCAL_PENDING:
@@ -286,15 +288,15 @@ class Collaboration():
         else:
             put_pen_back_down = False
         self.send_event('x|%s' % (data_to_string(
-                    [self._get_nick(),
-                     [int(self._tw.turtles.get_active_turtle().get_xy()[0]),
-                      int(self._tw.turtles.get_active_turtle().get_xy()[1])]])))
+            [self._get_nick(),
+             [int(self._tw.turtles.get_active_turtle().get_xy()[0]),
+              int(self._tw.turtles.get_active_turtle().get_xy()[1])]])))
         if put_pen_back_down:
             self.send_event('p|%s' % (data_to_string([self._get_nick(),
                                                       True])))
         self.send_event('r|%s' % (data_to_string(
-                    [self._get_nick(),
-                     int(self._tw.turtles.get_active_turtle().get_heading())])))
+            [self._get_nick(),
+             int(self._tw.turtles.get_active_turtle().get_heading())])))
 
     def _reskin_turtle(self, payload):
         if len(payload) > 0:
@@ -403,13 +405,17 @@ class Collaboration():
             shared_poly_points = []
             for i in range(len(poly_points)):
                 x, y = self._tw.turtles.screen_to_turtle_coordinates(
-                         (poly_points[i][1], poly_points[i][2]))
+                    (poly_points[i][1], poly_points[i][2]))
                 if poly_points[i][0] in ['move', 'line']:
                     shared_poly_points.append((poly_points[i][0], x, y))
                 elif poly_points[i][0] in ['rarc', 'larc']:
-                    shared_poly_points.append((poly_points[i][0], x, y,
-                         poly_points[i][3], poly_points[i][4],
-                         poly_points[i][5]))
+                    shared_poly_points.append(
+                        (poly_points[i][0],
+                         x,
+                         y,
+                         poly_points[i][3],
+                            poly_points[i][4],
+                            poly_points[i][5]))
             if nick != self._tw.nick:
                 self._tw.turtles.set_turtle(nick)
                 self._tw.turtles.get_active_turtle().set_poly_points(

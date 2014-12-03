@@ -1,23 +1,23 @@
-#Copyright (c) 2013 Marion Zepf
-#Copyright (c) 2014 Walter Bender
+# Copyright (c) 2013 Marion Zepf
+# Copyright (c) 2014 Walter Bender
 
-#Permission is hereby granted, free of charge, to any person obtaining a copy
-#of this software and associated documentation files (the "Software"), to deal
-#in the Software without restriction, including without limitation the rights
-#to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-#copies of the Software, and to permit persons to whom the Software is
-#furnished to do so, subject to the following conditions:
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
 
-#The above copyright notice and this permission notice shall be included in
-#all copies or substantial portions of the Software.
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
 
-#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-#IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-#FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-#AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-#LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-#OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-#THE SOFTWARE.
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+# THE SOFTWARE.
 
 import ast
 from gettext import gettext as _
@@ -25,15 +25,15 @@ from math import sqrt
 from random import uniform
 import traceback
 
-#from ast_pprint import * # only used for debugging, safe to comment out
+# from ast_pprint import * # only used for debugging, safe to comment out
 
 
-from tablock import Media
+from .tablock import Media
 
-from tacanvas import TurtleGraphics
-from taconstants import (Color, CONSTANTS, ColorObj, Vector)
-from talogo import (LogoCode, logoerror, NegativeRootError)
-from taturtle import (Turtle, Turtles)
+from .tacanvas import TurtleGraphics
+from .taconstants import (Color, CONSTANTS, ColorObj, Vector)
+from .talogo import (LogoCode, logoerror, NegativeRootError)
+from .taturtle import (Turtle, Turtles)
 from TurtleArt.tatype import (TYPE_CHAR, TYPE_INT, TYPE_FLOAT, TYPE_OBJECT,
                               TYPE_MEDIA, TYPE_COLOR, BOX_AST, ACTION_AST,
                               TYPE_VECTOR,
@@ -41,12 +41,13 @@ from TurtleArt.tatype import (TYPE_CHAR, TYPE_INT, TYPE_FLOAT, TYPE_OBJECT,
                               TypedSubscript, TypedName, is_bound_method,
                               is_instancemethod, is_staticmethod,
                               identity, get_converter, convert, get_call_ast)
-from tautils import debug_output
-from tawindow import (TurtleArtWindow, global_objects, plugins_in_use)
+from .tautils import debug_output
+from .tawindow import (TurtleArtWindow, global_objects, plugins_in_use)
 from util import ast_extensions
 
 
 class PyExportError(BaseException):
+
     """ Error that is raised when something goes wrong while converting the
     blocks to python code """
 
@@ -64,6 +65,7 @@ class PyExportError(BaseException):
 
 
 class Primitive(object):
+
     """ Something that can be called when the block code is executed in TA,
     but that can also be transformed into a Python AST."""
 
@@ -457,7 +459,7 @@ class Primitive(object):
         # f(x)
         elif self == LogoCode.prim_myfunction:
             param_asts = []
-            for id_ in ['x', 'y', 'z'][:len(new_arg_asts)-1]:
+            for id_ in ['x', 'y', 'z'][:len(new_arg_asts) - 1]:
                 param_asts.append(ast.Name(id=id_, ctx=ast.Param))
             func_ast = ast_extensions.LambdaWithStrBody(
                 body_str=new_arg_asts[0].s, args=param_asts)
@@ -846,6 +848,7 @@ class Primitive(object):
 
 
 class Disjunction(tuple):
+
     """ Abstract disjunction class (not to be instantiated directly) """
 
     def __init__(self, iterable):
@@ -866,6 +869,7 @@ class Disjunction(tuple):
 
 
 class PrimitiveDisjunction(Disjunction, Primitive):
+
     """ Disjunction of two or more Primitives. PrimitiveDisjunctions may not
     be nested. """
 
@@ -902,11 +906,13 @@ class PrimitiveDisjunction(Disjunction, Primitive):
 
 
 class ArgListDisjunction(Disjunction):
+
     """ Disjunction of two or more argument lists """
     pass
 
 
 class ArgSlot(object):
+
     """ Description of the requirements that a Primitive demands from an
     argument or keyword argument. An ArgSlot is filled at runtime, based
     on the block program structure. """
@@ -1102,11 +1108,13 @@ class ArgSlot(object):
 
 
 class ArgSlotDisjunction(Disjunction, ArgSlot):
+
     """ Disjunction of two or more argument slots """
     pass
 
 
 class ConstantArg(object):
+
     """ A constant argument or keyword argument to a Primitive. It is
     independent of the block program structure. """
 
