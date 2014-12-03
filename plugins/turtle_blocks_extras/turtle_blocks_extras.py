@@ -911,7 +911,7 @@ _('gets a text string or an image from a URL'))
                           label=[_('index') + '\n\n', _('string'),
                                  _('start'), _('end')],
                           prim_name='indexblock',
-                          default=[_('text'), 0, 0],
+                          default=[_('text'), 0, 1],
                           string_or_number=True,
                           help_string=_('return the text of the positions'))
 
