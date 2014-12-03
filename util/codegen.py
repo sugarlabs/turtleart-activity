@@ -35,7 +35,7 @@
     Modified by Marion Zepf.
 """
 from ast import *
-from ast_extensions import Comment, ExtraCode
+from .ast_extensions import Comment, ExtraCode
 
 
 def to_source(node, indent_with=' ' * 4, add_line_information=False):
@@ -62,6 +62,7 @@ def to_source(node, indent_with=' ' * 4, add_line_information=False):
 
 
 class SourceGenerator(NodeVisitor):
+
     """This visitor is able to transform a well formed syntax tree into python
     sourcecode.  For more details have a look at the docstring of the
     `node_to_source` function.
@@ -70,7 +71,7 @@ class SourceGenerator(NodeVisitor):
     UNARYOP_SYMBOLS = {Invert: "~", Not: "not", UAdd: "+", USub: "-"}
     # TODO use parentheses around expressions only where necessary
     BINOP_SYMBOLS = {Add: "+", Sub: "-", Mult: "*", Div: "/", Mod: "%",
-                     LShift: "<<", RShift:">>", BitOr: "|", BitXor: "^",
+                     LShift: "<<", RShift: ">>", BitOr: "|", BitXor: "^",
                      BitAnd: "&", FloorDiv: "//", Pow: "**"}
     BOOLOP_SYMBOLS = {And: "and", Or: "or"}
     CMPOP_SYMBOLS = {Eq: "==", NotEq: "!=", Lt: "<", LtE: "<=", Gt: ">",
@@ -116,6 +117,7 @@ class SourceGenerator(NodeVisitor):
 
     def signature(self, node):
         want_comma = []
+
         def write_comma():
             if want_comma:
                 self.write(', ')
@@ -191,6 +193,7 @@ class SourceGenerator(NodeVisitor):
 
     def visit_ClassDef(self, node):
         have_args = []
+
         def paren_or_comma():
             if have_args:
                 self.write(', ')
@@ -374,6 +377,7 @@ class SourceGenerator(NodeVisitor):
 
     def visit_Call(self, node):
         want_comma = []
+
         def write_comma():
             if want_comma:
                 self.write(', ')

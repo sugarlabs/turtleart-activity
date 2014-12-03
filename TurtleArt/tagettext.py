@@ -14,7 +14,7 @@ import os
 # In a git checkout, locale is in the root of the project
 # so one dir "up" from tagettext.py
 localedir = os.path.join(os.path.dirname(os.path.dirname(__file__)),
-                          'locale' )
+                         'locale')
 
 if os.path.exists(localedir):
     # works from a git checkout

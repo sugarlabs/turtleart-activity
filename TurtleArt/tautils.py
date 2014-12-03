@@ -1,24 +1,24 @@
-#copyright (c) 2007-8, Playful Invention Company
-#Copyright (c) 2008-13, Walter Bender
-#Copyright (c) 2013 Alan Aguiar
+# copyright (c) 2007-8, Playful Invention Company
+# Copyright (c) 2008-13, Walter Bender
+# Copyright (c) 2013 Alan Aguiar
 
-#Permission is hereby granted, free of charge, to any person obtaining a copy
-#of this software and associated documentation files (the "Software"), to deal
-#in the Software without restriction, including without limitation the rights
-#to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-#copies of the Software, and to permit persons to whom the Software is
-#furnished to do so, subject to the following conditions:
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
 
-#The above copyright notice and this permission notice shall be included in
-#all copies or substantial portions of the Software.
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
 
-#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-#IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-#FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-#AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-#LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-#OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-#THE SOFTWARE.
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+# THE SOFTWARE.
 
 import gtk
 import gobject
@@ -52,8 +52,8 @@ except (ImportError, AttributeError):
         OLD_SUGAR_SYSTEM = True
 from StringIO import StringIO
 
-from taconstants import (HIT_HIDE, HIT_SHOW, XO1, XO15, XO175, XO4, UNKNOWN,
-                         MAGICNUMBER, SUFFIX, ARG_MUST_BE_NUMBER)
+from .taconstants import (HIT_HIDE, HIT_SHOW, XO1, XO15, XO175, XO4, UNKNOWN,
+                          MAGICNUMBER, SUFFIX, ARG_MUST_BE_NUMBER)
 
 import logging
 _logger = logging.getLogger('turtleart-activity')
@@ -382,20 +382,20 @@ def data_to_file(data, ta_file):
     ''' Write data to a file. '''
     try:
         file_handle = file(ta_file, 'w')
-    except IOError, e:
+    except IOError as e:
         error_output('Could not write to %s: %s.' % (ta_file, e))
         tmp_file = os.path.join(os.path.expanduser('~'),
                                 os.path.basename(ta_file))
         try:
             debug_output('Trying to write to %s' % (tmp_file))
             file_handle = file(tmp_file, 'w')
-        except IOError, e:
+        except IOError as e:
             error_output('Could not write to %s: %s.' % (tmp_file, e))
             tmp_file = os.path.join('/tmp', os.path.basename(ta_file))
             try:
                 debug_output('Trying to write to %s' % (tmp_file))
                 file_handle = file(tmp_file, 'w')
-            except IOError, e:
+            except IOError as e:
                 error_output('Could not write to %s: %s.' % (tmp_file, e))
                 return
     file_handle.write(data_to_string(data))

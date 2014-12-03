@@ -1,23 +1,23 @@
 # -*- coding: utf-8 -*-
-#Copyright (c) 2010-13 Walter Bender
+# Copyright (c) 2010-13 Walter Bender
 
-#Permission is hereby granted, free of charge, to any person obtaining a copy
-#of this software and associated documentation files (the "Software"), to deal
-#in the Software without restriction, including without limitation the rights
-#to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-#copies of the Software, and to permit persons to whom the Software is
-#furnished to do so, subject to the following conditions:
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
 
-#The above copyright notice and this permission notice shall be included in
-#all copies or substantial portions of the Software.
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
 
-#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-#IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-#FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-#AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-#LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-#OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-#THE SOFTWARE.
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+# THE SOFTWARE.
 
 import os
 
@@ -27,13 +27,13 @@ import cairo
 
 from random import uniform
 from math import sin, cos, pi, sqrt
-from taconstants import (TURTLE_LAYER, DEFAULT_TURTLE_COLORS, DEFAULT_TURTLE,
-                         CONSTANTS, Color, ColorObj)
-from tasprite_factory import SVG, svg_str_to_pixbuf
-from tacanvas import wrap100, COLOR_TABLE
-from sprites import Sprite
-from tautils import (debug_output, data_to_string, round_int, get_path,
-                     image_to_base64)
+from .taconstants import (TURTLE_LAYER, DEFAULT_TURTLE_COLORS, DEFAULT_TURTLE,
+                          CONSTANTS, Color, ColorObj)
+from .tasprite_factory import SVG, svg_str_to_pixbuf
+from .tacanvas import wrap100, COLOR_TABLE
+from .sprites import Sprite
+from .tautils import (debug_output, data_to_string, round_int, get_path,
+                      image_to_base64)
 from TurtleArt.talogo import logoerror
 
 SHAPES = 36
@@ -267,7 +267,7 @@ class Turtle:
         self._half_width = int(self.spr.rect.width / 2.0)
         self._half_height = int(self.spr.rect.height / 2.0)
         self._drag_radius = ((self._half_width * self._half_width) +
-                            (self._half_height * self._half_height)) / 6
+                             (self._half_height * self._half_height)) / 6
 
     def set_remote(self):
         self._remote = True
@@ -722,10 +722,10 @@ class Turtle:
 
     def get_xy(self):
         return [self._x, self._y]
-    
+
     def get_x(self):
         return self._x
-    
+
     def get_y(self):
         return self._y
 

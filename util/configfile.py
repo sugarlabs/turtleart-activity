@@ -20,6 +20,7 @@ import gobject
 
 
 class ConfigFile(gobject.GObject):
+
     """Load/save a simple (key = value) config file"""
 
     __gsignals__ = {
@@ -87,7 +88,7 @@ class ConfigFile(gobject.GObject):
                 self._config_hash[k] = value
             self._is_loaded = True
             self.emit('configuration-loaded')
-        except Exception, e:
+        except Exception as e:
             print e
 
         return self._is_loaded

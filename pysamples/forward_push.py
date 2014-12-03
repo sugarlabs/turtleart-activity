@@ -1,4 +1,4 @@
-#Copyright (c) 2012-2013, Walter Bender
+# Copyright (c) 2012-2013, Walter Bender
 
 # Usage: Import this code into a Python (user-definable) block; when
 # this code is run, a new block will be added to the Turtle Palette.

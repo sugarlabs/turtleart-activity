@@ -51,6 +51,7 @@ CONN_INTERFACE_ACTIVITY_PROPERTIES = 'org.laptop.Telepathy.ActivityProperties'
 
 
 class PresenceService(gobject.GObject):
+
     """Provides simplified access to the Telepathy framework to activities"""
     __gsignals__ = {
         'activity-shared': (gobject.SIGNAL_RUN_FIRST, gobject.TYPE_NONE,
@@ -90,7 +91,7 @@ class PresenceService(gobject.GObject):
                     room_handle = connection.connection.GetActivity(
                         activity_id,
                         dbus_interface=CONN_INTERFACE_ACTIVITY_PROPERTIES)
-                except dbus.exceptions.DBusException, e:
+                except dbus.exceptions.DBusException as e:
                     name = 'org.freedesktop.Telepathy.Error.NotAvailable'
                     if e.get_dbus_name() == name:
                         logging.debug("There's no shared activity with the id "
@@ -171,7 +172,7 @@ class PresenceService(gobject.GObject):
 
     def get_owner(self):
         """Retrieves the laptop Buddy object."""
-        #return Owner()
+        # return Owner()
         return None
 
     def __share_activity_cb(self, activity):

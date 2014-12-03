@@ -24,6 +24,7 @@ def myblock(tw, x):  # ignore second argument
     _DIROFINTEREST = 'datastore'
 
     class ParseJournal():
+
         ''' Simple parser of datastore for turtle art entries '''
 
         def __init__(self):

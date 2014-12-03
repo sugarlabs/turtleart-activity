@@ -1,23 +1,23 @@
 #!/usr/bin/env python
-#Copyright (c) 2011-13 Walter Bender
+# Copyright (c) 2011-13 Walter Bender
 
-#Permission is hereby granted, free of charge, to any person obtaining a copy
-#of this software and associated documentation files (the "Software"), to deal
-#in the Software without restriction, including without limitation the rights
-#to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-#copies of the Software, and to permit persons to whom the Software is
-#furnished to do so, subject to the following conditions:
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
 
-#The above copyright notice and this permission notice shall be included in
-#all copies or substantial portions of the Software.
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
 
-#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-#IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-#FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-#AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-#LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-#OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-#THE SOFTWARE.
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+# THE SOFTWARE.
 
 help_palettes = {}
 help_windows = {}
@@ -95,7 +95,7 @@ except ImportError:
     GRID_CELL_SIZE = 55
     HELP_PALETTE = False
 
-from taconstants import (EXPANDABLE_STYLE, EXPANDABLE_FLOW)
+from .taconstants import (EXPANDABLE_STYLE, EXPANDABLE_FLOW)
 
 from gettext import gettext as _
 
@@ -105,6 +105,7 @@ help_strings = {
 
 
 class Palette():
+
     """ a class for defining new palettes """
 
     def __init__(self, name, colors=["#00FF00", "#00A000"], position=None):
@@ -269,6 +270,7 @@ def define_logo_function(key, value):
 
 
 class _ProtoBlock():
+
     """ a class for defining new block primitives """
 
     def __init__(self, name):
@@ -380,7 +382,7 @@ class _ProtoBlock():
         self._content_block = value
 
     def set_palette(self, palette):
-        if not palette in palette_names:
+        if palette not in palette_names:
             print 'Could not find palette %s' % (palette)
         else:
             self._palette = palette

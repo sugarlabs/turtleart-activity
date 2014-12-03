@@ -31,6 +31,7 @@ ACCOUNT_MANAGER_PATH = '/org/freedesktop/Telepathy/AccountManager'
 
 
 class Connection(object):
+
     def __init__(self, account_path, connection):
         self.account_path = account_path
         self.connection = connection
@@ -38,6 +39,7 @@ class Connection(object):
 
 
 class ConnectionManager(object):
+
     """Track available telepathy connections"""
 
     def __init__(self):

@@ -34,7 +34,7 @@ import gst
 import gst.interfaces
 import gtk
 
-from tautils import error_output, debug_output
+from .tautils import error_output, debug_output
 
 
 def play_audio_from_file(lc, file_path):
@@ -172,7 +172,7 @@ class Gplay():
                 self.player.set_uri(self.playlist[0])
                 self.currentplaying = 0
                 self.play_toggled()
-        except Exception, e:
+        except Exception as e:
             error_output('Error playing %s: %s' % (self.playlist[0], e),
                          self.running_sugar)
         return False

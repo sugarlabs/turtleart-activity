@@ -1,38 +1,39 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#Copyright (c) 2009-12 Walter Bender
+# Copyright (c) 2009-12 Walter Bender
 
-#Permission is hereby granted, free of charge, to any person obtaining a copy
-#of this software and associated documentation files (the "Software"), to deal
-#in the Software without restriction, including without limitation the rights
-#to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-#copies of the Software, and to permit persons to whom the Software is
-#furnished to do so, subject to the following conditions:
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
 
-#The above copyright notice and this permission notice shall be included in
-#all copies or substantial portions of the Software.
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
 
-#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-#IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-#FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-#AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-#LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-#OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-#THE SOFTWARE.
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+# THE SOFTWARE.
 
 import pygtk
 pygtk.require('2.0')
 import gtk
 import os
 
-from taconstants import HIT_RED, HIT_GREEN, HIDE_WHITE, SHOW_WHITE, \
+from .taconstants import HIT_RED, HIT_GREEN, HIDE_WHITE, SHOW_WHITE, \
     PALETTE_COLOR, TOOLBAR_COLOR
 
 
 class SVG:
-    """ Interface to the graphical representation of blocks, turtles, 
+
+    """ Interface to the graphical representation of blocks, turtles,
     palettes, etc. on screen
-    
+
     terms used here:
     docks -- list of connection points of a block to other blocks
     innies -- right hand side docks of a block, argument slots
@@ -939,15 +940,33 @@ stroke-width="3.5" fill="%s" stroke="none" />\n' % (self._stroke)
 
     def _rect(self, w, h, x, y):
         return "%s%s%s%s%s%f%s%f%s%f%s%f%s" % ("<rect style=\"fill:",
-               self._fill, ";stroke:", self._stroke, ";\" width=\"", w,
-               "\" height=\"", h, "\" x=\"", x, "\" y=\"", y, "\" />\n")
+                                               self._fill,
+                                               ";stroke:",
+                                               self._stroke,
+                                               ";\" width=\"",
+                                               w,
+                                               "\" height=\"",
+                                               h,
+                                               "\" x=\"",
+                                               x,
+                                               "\" y=\"",
+                                               y,
+                                               "\" />\n")
 
     def background(self, fill):
         return "%s%s%s%s%s%f%s%f%s%f%s%f%s" % ("<rect style=\"fill:",
-               fill, ";stroke:", fill, ";\" width=\"",
-               self._max_x - self._min_x,
-               "\" height=\"", self._max_y - self._min_y, "\" x=\"",
-               self._min_x, "\" y=\"", self._min_y, "\" />\n")
+                                               fill,
+                                               ";stroke:",
+                                               fill,
+                                               ";\" width=\"",
+                                               self._max_x - self._min_x,
+                                               "\" height=\"",
+                                               self._max_y - self._min_y,
+                                               "\" x=\"",
+                                               self._min_x,
+                                               "\" y=\"",
+                                               self._min_y,
+                                               "\" />\n")
 
     def _check_min_max(self):
         if self._x < self._min_x:
@@ -1301,7 +1320,6 @@ def close_file(f):
 
 
 def generator(datapath):
-
     '''
     svg = SVG()
     f = open_file(datapath, "turtle.svg")

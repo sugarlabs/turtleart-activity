@@ -1,23 +1,23 @@
 # -*- coding: utf-8 -*-
-#Copyright (c) 2010-14 Walter Bender
+# Copyright (c) 2010-14 Walter Bender
 
-#Permission is hereby granted, free of charge, to any person obtaining a copy
-#of this software and associated documentation files (the "Software"), to deal
-#in the Software without restriction, including without limitation the rights
-#to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-#copies of the Software, and to permit persons to whom the Software is
-#furnished to do so, subject to the following conditions:
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
 
-#The above copyright notice and this permission notice shall be included in
-#all copies or substantial portions of the Software.
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
 
-#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-#IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-#FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-#AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-#LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-#OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-#THE SOFTWARE.
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+# THE SOFTWARE.
 
 import os
 from random import uniform
@@ -96,71 +96,72 @@ ARG_MUST_BE_NUMBER = ['product2', 'minus2', 'random', 'remainder2', 'forward',
                       'fillscreen2']
 
 KEY_DICT = {
-            'Left': 1,
-            'KP_Left': 1,
-            'Up': 2,
-            'KP_Up': 2,
-            'Right': 3,
-            'KP_Right': 3,
-            'Down': 4,
-            'KP_Down': 4,
-            'BackSpace': 8,
-            'Tab': 9,
-            'Return': 13,
-            'Escape': 27,
-            'space': 32,
-            ' ': 32,
-            'exclam': 33,
-            'quotedbl': 34,
-            'numbersign': 35,
-            'dollar': 36,
-            'percent': 37,
-            'ampersand': 38,
-            'apostrophe': 39,
-            'parenleft': 40,
-            'parenright': 41,
-            'asterisk': 42,
-            'plus': 43,
-            'comma': 44,
-            'minus': 45,
-            'period': 46,
-            'slash': 47,
-            'colon': 58,
-            'semicolon': 59,
-            'less': 60,
-            'equal': 61,
-            'greater': 62,
-            'question': 63,
-            'at': 64,
-            'underscore': 95,
-            'bracketleft': 91,
-            'backslash': 92,
-            'bracketright': 93,
-            'asciicircum': 94,
-            'grave': 96,
-            'braceleft': 123,
-            'bar': 124,
-            'braceright': 125,
-            'asciitilde': 126,
-            'Delete': 127,
-        }
+    'Left': 1,
+    'KP_Left': 1,
+    'Up': 2,
+    'KP_Up': 2,
+    'Right': 3,
+    'KP_Right': 3,
+    'Down': 4,
+    'KP_Down': 4,
+    'BackSpace': 8,
+    'Tab': 9,
+    'Return': 13,
+    'Escape': 27,
+    'space': 32,
+    ' ': 32,
+    'exclam': 33,
+    'quotedbl': 34,
+    'numbersign': 35,
+    'dollar': 36,
+    'percent': 37,
+    'ampersand': 38,
+    'apostrophe': 39,
+    'parenleft': 40,
+    'parenright': 41,
+    'asterisk': 42,
+    'plus': 43,
+    'comma': 44,
+    'minus': 45,
+    'period': 46,
+    'slash': 47,
+    'colon': 58,
+    'semicolon': 59,
+    'less': 60,
+    'equal': 61,
+    'greater': 62,
+    'question': 63,
+    'at': 64,
+    'underscore': 95,
+    'bracketleft': 91,
+    'backslash': 92,
+    'bracketright': 93,
+    'asciicircum': 94,
+    'grave': 96,
+    'braceleft': 123,
+    'bar': 124,
+    'braceright': 125,
+    'asciitilde': 126,
+    'Delete': 127,
+}
 REVERSE_KEY_DICT = {
-            1: _('left'),
-            2: _('up'),
-            3: _('right'),
-            4: _('down'),
-            8: _('backspace'),
-            9: _('tab'),
-            # TRANS: enter is the name of the enter (or return) key
-            13: _('enter'),
-            27: 'esc',
-            # TRANS: space is the name of the space key
-            32: _('space'),
-            127: _('delete')
-        }
+    1: _('left'),
+    2: _('up'),
+    3: _('right'),
+    4: _('down'),
+    8: _('backspace'),
+    9: _('tab'),
+    # TRANS: enter is the name of the enter (or return) key
+    13: _('enter'),
+    27: 'esc',
+    # TRANS: space is the name of the space key
+    32: _('space'),
+    127: _('delete')
+}
 
 
 class ColorObj(object):
+
     def __init__(self, color):
         self.color = color
 
@@ -191,6 +192,7 @@ class ColorObj(object):
 
 
 class Color(object):
+
     """ A color used in block programs (e.g., as pen color). """
 
     def __init__(self, name, color=0, shade=50, gray=100):
@@ -234,8 +236,8 @@ class Color(object):
                     and self.gray == other.gray)
         elif isinstance(other, (int, float, long)):
             return int(self) == other
-        ## * a basestring that equals str(self)
-        #elif isinstance(other, basestring):
+        # * a basestring that equals str(self)
+        # elif isinstance(other, basestring):
         #    return str(self) == other
         else:
             return False
@@ -275,6 +277,7 @@ class Color(object):
 
 
 class Vector(object):
+
     """ A vector object used in block programs (e.g., as food object). """
 
     def __init__(self, name, vector):
@@ -334,15 +337,15 @@ class Vector(object):
 
 CONSTANTS = {'leftpos': None, 'toppos': None, 'rightpos': None,
              'bottompos': None, 'width': None, 'height': None,
-             'black':  Color('black', None,   0,   0),
-             'white':  Color('white', None, 100,   0),
-             'red':    Color('red',      0,  50, 100),
-             'orange': Color('orange',  10,  50, 100),
-             'yellow': Color('yellow',  20,  50, 100),
-             'green':  Color('green',   40,  50, 100),
-             'cyan':   Color('cyan',    50,  50, 100),
-             'blue':   Color('blue',    70,  50, 100),
-             'purple': Color('purple',  90,  50, 100),
+             'black': Color('black', None, 0, 0),
+             'white': Color('white', None, 100, 0),
+             'red': Color('red', 0, 50, 100),
+             'orange': Color('orange', 10, 50, 100),
+             'yellow': Color('yellow', 20, 50, 100),
+             'green': Color('green', 40, 50, 100),
+             'cyan': Color('cyan', 50, 50, 100),
+             'blue': Color('blue', 70, 50, 100),
+             'purple': Color('purple', 90, 50, 100),
              'titlex': None, 'titley': None, 'leftx': None,
              'topy': None, 'rightx': None, 'bottomy': None}
 

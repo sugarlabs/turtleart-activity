@@ -1,4 +1,4 @@
-#Copyright (c) 2009-11, Walter Bender, Tony Forster
+# Copyright (c) 2009-11, Walter Bender, Tony Forster
 
 # This procedure is invoked when the user-definable block on the
 # "extras" palette is selected.
@@ -41,7 +41,7 @@ def myblock(tw, arg):
 
     # Turtle Art numbers are passed as float,
     # but they may be integer values.
-    if type(text) == float and int(text) == text:
+    if isinstance(text, float) and int(text) == text:
         text = int(text)
 
     lang = os.environ['LANG'][0:2]
@@ -51,7 +51,7 @@ def myblock(tw, arg):
         language_option = ''
     if pitch is None:
         os.system('espeak %s "%s" --stdout | aplay' % (language_option,
-                                                         text))
+                                                       text))
     else:
         os.system('espeak %s "%s" -p "%s" --stdout | aplay' % (
-                language_option, text, pitch))
+            language_option, text, pitch))

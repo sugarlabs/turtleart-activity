@@ -1,22 +1,22 @@
-#Copyright (c) 2013 Marion Zepf
+# Copyright (c) 2013 Marion Zepf
 
-#Permission is hereby granted, free of charge, to any person obtaining a copy
-#of this software and associated documentation files (the "Software"), to deal
-#in the Software without restriction, including without limitation the rights
-#to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-#copies of the Software, and to permit persons to whom the Software is
-#furnished to do so, subject to the following conditions:
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
 
-#The above copyright notice and this permission notice shall be included in
-#all copies or substantial portions of the Software.
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
 
-#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-#IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-#FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-#AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-#LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-#OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-#THE SOFTWARE.
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+# THE SOFTWARE.
 
 """ Python export tool """
 
@@ -27,13 +27,13 @@ import re
 import traceback
 import util.codegen as codegen
 
-#from ast_pprint import * # only used for debugging, safe to comment out
+# from ast_pprint import * # only used for debugging, safe to comment out
 
-from talogo import LogoCode
-from taprimitive import (ast_yield_true, Primitive, PyExportError,
-                         value_to_ast)
-from tautils import (find_group, find_top_block, get_stack_name)
-from tawindow import plugins_in_use
+from .talogo import LogoCode
+from .taprimitive import (ast_yield_true, Primitive, PyExportError,
+                          value_to_ast)
+from .tautils import (find_group, find_top_block, get_stack_name)
+from .tawindow import plugins_in_use
 
 
 _SETUP_CODE_START = """\
@@ -58,7 +58,7 @@ for path in paths:
         if os.path.exists(p):
             flag = True
             sys.path.insert(0, p)
-    
+
 if not flag:
     print 'This code require the Turtle Blocks/Bots activity to be installed.'
     exit(1)

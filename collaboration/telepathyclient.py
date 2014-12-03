@@ -25,7 +25,7 @@ from telepathy.interfaces import CLIENT, \
     CLIENT_INTERFACE_REQUESTS
 from telepathy.server import DBusProperties
 
-import dispatch
+from . import dispatch
 
 
 SUGAR_CLIENT_SERVICE = 'org.freedesktop.Telepathy.Client.Sugar'
@@ -93,7 +93,7 @@ class TelepathyClient(dbus.service.Object, DBusProperties):
                 channels=channels,
                 dispatch_operation_path=dispatch_operation_path,
                 properties=properties)
-        except Exception, e:
+        except Exception as e:
             logging.exception(e)
 
 

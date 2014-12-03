@@ -1,4 +1,4 @@
-#Copyright (c) 2010-11, Walter Bender, Tony Forster
+# Copyright (c) 2010-11, Walter Bender, Tony Forster
 #
 # This Python block returns with the brightness sensor value in the heap
 # a range of parameters can be measured, for example, substitute any of

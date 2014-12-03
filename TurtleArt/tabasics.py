@@ -1,23 +1,23 @@
 # -*- coding: utf-8 -*-
-#Copyright (c) 2011, 2012 Walter Bender
+# Copyright (c) 2011, 2012 Walter Bender
 
-#Permission is hereby granted, free of charge, to any person obtaining a copy
-#of this software and associated documentation files (the "Software"), to deal
-#in the Software without restriction, including without limitation the rights
-#to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-#copies of the Software, and to permit persons to whom the Software is
-#furnished to do so, subject to the following conditions:
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
 
-#The above copyright notice and this permission notice shall be included in
-#all copies or substantial portions of the Software.
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
 
-#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-#IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-#FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-#AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-#LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-#OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-#THE SOFTWARE.
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+# THE SOFTWARE.
 
 '''
 This file contains the constants  that by-in-large determine the
@@ -100,14 +100,17 @@ the others. (This is the default icon size for Sugar toolbars.)
 from time import time
 from gettext import gettext as _
 
-from tapalette import (make_palette, define_logo_function)
-from talogo import primitive_dictionary
-from taconstants import (Color, CONSTANTS, DEFAULT_BACKGROUND_COLOR_SHADE_GRAY)
-from taprimitive import (ArgSlot, ConstantArg, or_, Primitive)
-from tatype import (TYPE_BOOL, TYPE_BOX, TYPE_CHAR, TYPE_COLOR, TYPE_FLOAT,
-                    TYPE_INT, TYPE_NUMBER, TYPE_NUMERIC_STRING, TYPE_OBJECT,
-                    TYPE_STRING, TYPE_VECTOR)
-from taturtle import Turtle
+from .tapalette import (make_palette, define_logo_function)
+from .talogo import primitive_dictionary
+from .taconstants import (
+    Color,
+    CONSTANTS,
+    DEFAULT_BACKGROUND_COLOR_SHADE_GRAY)
+from .taprimitive import (ArgSlot, ConstantArg, or_, Primitive)
+from .tatype import (TYPE_BOOL, TYPE_BOX, TYPE_CHAR, TYPE_COLOR, TYPE_FLOAT,
+                     TYPE_INT, TYPE_NUMBER, TYPE_NUMERIC_STRING, TYPE_OBJECT,
+                     TYPE_STRING, TYPE_VECTOR)
+from .taturtle import Turtle
 
 
 def _millisecond():
@@ -116,6 +119,7 @@ def _millisecond():
 
 
 class Palettes():
+
     ''' a class for creating the palettes of blocks '''
 
     def __init__(self, turtle_window):
@@ -446,8 +450,12 @@ in place of a number block)'),
                           value_block=True,
                           prim_name='shade',
                           logo_command=':shade')
-        self.tw.lc.def_prim('shade', 0,
-                            Primitive(Turtle.get_shade, return_type=TYPE_NUMBER))
+        self.tw.lc.def_prim(
+            'shade',
+            0,
+            Primitive(
+                Turtle.get_shade,
+                return_type=TYPE_NUMBER))
 
         palette.add_block('gray',
                           style='box-style',

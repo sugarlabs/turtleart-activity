@@ -47,6 +47,7 @@ _logger = logging.getLogger('sugar.presence.activity')
 
 
 class Activity(gobject.GObject):
+
     """UI interface for an Activity in the presence service
 
     Activities in the presence service represent your and other user's
@@ -321,7 +322,7 @@ class Activity(gobject.GObject):
 
     def _add_initial_buddies(self, contact_ids):
         print('__add_initial_buddies %r', contact_ids)
-        #for contact_id in contact_ids:
+        # for contact_id in contact_ids:
         #    self._buddies[contact_id] = self._get_buddy(contact_id)
         # Once we have the initial members, we can finish the join process
         self._joined = True
@@ -359,9 +360,9 @@ class Activity(gobject.GObject):
 
     def _get_buddy(self, contact_id):
         return None
-        #if contact_id in self._buddies:
+        # if contact_id in self._buddies:
         #    return self._buddies[contact_id]
-        #else:
+        # else:
         #    return Buddy(self._account_path, contact_id)
 
     def join(self):
@@ -490,6 +491,7 @@ class _BaseCommand(gobject.GObject):
 
 
 class _ShareCommand(_BaseCommand):
+
     def __init__(self, connection, activity_id):
         _BaseCommand.__init__(self)
 
@@ -542,6 +544,7 @@ class _ShareCommand(_BaseCommand):
 
 
 class _JoinCommand(_BaseCommand):
+
     def __init__(self, connection, room_handle):
         _BaseCommand.__init__(self)
 

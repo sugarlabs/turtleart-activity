@@ -1,40 +1,41 @@
 # -*- coding: utf-8 -*-
-#Copyright (c) 2014, Walter Bender
+# Copyright (c) 2014, Walter Bender
 
-#Permission is hereby granted, free of charge, to any person obtaining a copy
-#of this software and associated documentation files (the "Software"), to deal
-#in the Software without restriction, including without limitation the rights
-#to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-#copies of the Software, and to permit persons to whom the Software is
-#furnished to do so, subject to the following conditions:
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
 
-#The above copyright notice and this permission notice shall be included in
-#all copies or substantial portions of the Software.
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
 
-#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-#IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-#FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-#AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-#LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-#OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-#THE SOFTWARE.
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+# THE SOFTWARE.
 
 _SKIN_IMAGE = 1
 _MARGIN = 5
 _BUTTON_SIZE = 32
 
-from tautils import find_group, debug_output, get_stack_width_and_height
-from tablock import Block
-from tapalette import (palette_names, palette_blocks, hidden_proto_blocks,
-                       block_styles)
-from taconstants import (PALETTE_SCALE, ICON_SIZE, PYTHON_SKIN, XO1,
-                         HORIZONTAL_PALETTE, PALETTE_WIDTH, PALETTE_HEIGHT,
-                         CATEGORY_LAYER, TOP_LAYER, PROTO_LAYER)
-from tasprite_factory import SVG, svg_str_to_pixbuf
-from sprites import Sprite
+from .tautils import find_group, debug_output, get_stack_width_and_height
+from .tablock import Block
+from .tapalette import (palette_names, palette_blocks, hidden_proto_blocks,
+                        block_styles)
+from .taconstants import (PALETTE_SCALE, ICON_SIZE, PYTHON_SKIN, XO1,
+                          HORIZONTAL_PALETTE, PALETTE_WIDTH, PALETTE_HEIGHT,
+                          CATEGORY_LAYER, TOP_LAYER, PROTO_LAYER)
+from .tasprite_factory import SVG, svg_str_to_pixbuf
+from .sprites import Sprite
 
 
 class PaletteView():
+
     ''' Palette View class abstraction  '''
 
     def __init__(self, turtle_window, n):
@@ -64,8 +65,8 @@ class PaletteView():
 
             save_selected = self._turtle_window.selected_palette
             self.layout(regenerate=regenerate,
-                                show=(show or
-                                      save_selected == self._palette_index))
+                        show=(show or
+                              save_selected == self._palette_index))
 
     def show(self):
         ''' Show palette background and proto blocks. If needed, display
@@ -304,7 +305,7 @@ class PaletteView():
                 self.backgrounds[orientation].type = \
                     'category-shift-horizontal'
             elif orientation == 1 and \
-                 h > self._turtle_window.height - ICON_SIZE:
+                    h > self._turtle_window.height - ICON_SIZE:
                 self.backgrounds[orientation].type = \
                     'category-shift-vertical'
             else:
