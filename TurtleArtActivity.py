@@ -287,6 +287,10 @@ class TurtleArtActivity(activity.Activity):
             dsobject.destroy()
 
             os.remove(python_code_path)
+        else:
+            self.tw.showlabel('syntaxerror',
+                              _("You need start block for export to python"))
+
         self.save_as_python.set_icon('python-saveoff')
         if hasattr(self, 'get_window'):
             self.get_window().set_cursor(self._old_cursor)
