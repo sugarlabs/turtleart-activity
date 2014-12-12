@@ -41,7 +41,7 @@ except ImportError:
     HAS_TOOLBARBOX = False
 from sugar.graphics.toolbutton import ToolButton
 from sugar.graphics.radiotoolbutton import RadioToolButton
-from sugar.graphics.alert import (ConfirmationAlert, Alert)
+from sugar.graphics.alert import (ConfirmationAlert, Alert, NotifyAlert)
 from sugar.graphics import style
 from sugar.graphics.icon import Icon
 from sugar.graphics.xocolor import XoColor
@@ -287,6 +287,18 @@ class TurtleArtActivity(activity.Activity):
             dsobject.destroy()
 
             os.remove(python_code_path)
+        else:
+            title = _("Export as python")
+            msg = _("Error: You must use a Start Block when exporting to Python.")
+            alert = NotifyAlert(5)
+            alert.props.title = title
+            alert.props.msg = msg
+            alert.connect(
+                'response',
+                lambda alert,
+                response: self.remove_alert(alert))
+            self.add_alert(alert)
+
         self.save_as_python.set_icon('python-saveoff')
         if hasattr(self, 'get_window'):
             self.get_window().set_cursor(self._old_cursor)

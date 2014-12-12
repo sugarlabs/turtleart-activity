@@ -109,6 +109,13 @@ PAT_IDENTIFIER_ILLEGAL_CHAR = re.compile("[^A-Za-z0-9_]")
 def save_python(tw):
     """ Find all the action stacks and turn each into Python code """
     all_blocks = tw.just_blocks()
+    blocks_name = []
+    for block in all_blocks:
+        blocks_name.append(block.name)
+
+    if not 'start' in blocks_name:
+        return None
+
     blocks_covered = set()
     tops_of_stacks = []
     for block in all_blocks:
