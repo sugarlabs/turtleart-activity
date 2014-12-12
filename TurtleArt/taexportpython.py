@@ -44,7 +44,7 @@ _INSTALL_PATH = '/usr/share/sugar/activities/TurtleArt.activity'
 _ALTERNATIVE_INSTALL_PATH = \\
     '/usr/local/share/sugar/activities/TurtleArt.activity'
 
-import os, sys
+import os, sys, dbus
 paths = []
 paths.append('../%s.activity')
 paths.append(os.path.expanduser('~') + '/Activities/%s.activity')
