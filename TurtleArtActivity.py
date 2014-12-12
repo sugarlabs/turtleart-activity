@@ -289,7 +289,7 @@ class TurtleArtActivity(activity.Activity):
             os.remove(python_code_path)
         else:
             title = _("Export as python")
-            msg = _("Error: You need start block for export to python")
+            msg = _("Error: You must use a Start Block when exporting to Python.")
             alert = NotifyAlert(5)
             alert.props.title = title
             alert.props.msg = msg
