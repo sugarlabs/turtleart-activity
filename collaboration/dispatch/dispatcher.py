@@ -1,5 +1,5 @@
 import weakref
-import saferef
+from . import saferef
 
 WEAKREF_TYPES = (weakref.ReferenceType, saferef.BoundMethodWeakref)
 
@@ -11,6 +11,7 @@ def _make_id(target):
 
 
 class Signal(object):
+
     """Base class for all signals
 
     Internal attributes:
@@ -65,7 +66,7 @@ class Signal(object):
 
         if weak:
             receiver = saferef.safeRef(receiver,
-                onDelete=self._remove_receiver)
+                                       onDelete=self._remove_receiver)
 
         for r_key, _ in self.receivers:
             if r_key == lookup_key:
@@ -74,7 +75,7 @@ class Signal(object):
             self.receivers.append((lookup_key, receiver))
 
     def disconnect(self, receiver=None, sender=None, weak=True,
-            dispatch_uid=None):
+                   dispatch_uid=None):
         """Disconnect receiver from sender for signal
 
         receiver -- the registered receiver to disconnect. May be none if
@@ -153,7 +154,7 @@ class Signal(object):
         for receiver in self._live_receivers(_make_id(sender)):
             try:
                 response = receiver(signal=self, sender=sender, **named)
-            except Exception, err:
+            except Exception as err:
                 responses.append((receiver, err))
             else:
                 responses.append((receiver, response))

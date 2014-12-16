@@ -19,6 +19,7 @@ import numpy as np
 
 
 class RingBuffer1d(object):
+
     """This class implements an array being written in as a ring and that can
     be read from continuously ending with the newest data or starting with the
     oldest. It returns a numpy array copy of the data;
@@ -81,7 +82,7 @@ class RingBuffer1d(object):
         Positive values will give the latest information, negative values will
         give the newest added information from the buffer. (in normal order)
         """
-        if number == None:
+        if number is None:
             number = len(self._data) // step
 
         number *= step

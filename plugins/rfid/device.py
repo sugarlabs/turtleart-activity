@@ -1,6 +1,8 @@
 import gobject
 
+
 class RFIDDevice(gobject.GObject):
+
     """
     Ancestor class for every supported device.
     The main class for the device driver must be called "RFIDReader".
@@ -15,6 +17,7 @@ class RFIDDevice(gobject.GObject):
         'disconnected': (gobject.SIGNAL_RUN_LAST, gobject.TYPE_NONE,
                          (gobject.TYPE_STRING,))
     }
+
     def __init__(self):
         """
         Initializer. Subclasses must call this method.

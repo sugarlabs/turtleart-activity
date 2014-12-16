@@ -61,7 +61,7 @@ _IOC_DIRSHIFT = _IOC_SIZESHIFT + _IOC_SIZEBITS
 
 _IOC_NONE = 0
 _IOC_WRITE = 1
-_IOC_READ  = 2
+_IOC_READ = 2
 
 
 def _IOC(dir_, type_, nr, size):
@@ -126,7 +126,7 @@ VID_TYPE_OVERLAY = 8
 VID_TYPE_CHROMAKEY = 16
 VID_TYPE_CLIPPING = 32
 VID_TYPE_FRAMERAM = 64
-VID_TYPE_SCALES	= 128
+VID_TYPE_SCALES = 128
 VID_TYPE_MONOCHROME = 256
 VID_TYPE_SUBCAPTURE = 512
 VID_TYPE_MPEG_DECODER = 1024
@@ -156,12 +156,12 @@ v4l2_field = enum
 
 def V4L2_FIELD_HAS_TOP(field):
     return (
-	field == V4L2_FIELD_TOP or
-	field == V4L2_FIELD_INTERLACED or
-	field == V4L2_FIELD_INTERLACED_TB or
-	field == V4L2_FIELD_INTERLACED_BT or
-	field == V4L2_FIELD_SEQ_TB or
-	field == V4L2_FIELD_SEQ_BT)
+        field == V4L2_FIELD_TOP or
+        field == V4L2_FIELD_INTERLACED or
+        field == V4L2_FIELD_INTERLACED_TB or
+        field == V4L2_FIELD_INTERLACED_BT or
+        field == V4L2_FIELD_SEQ_TB or
+        field == V4L2_FIELD_SEQ_BT)
 
 
 def V4L2_FIELD_HAS_BOTTOM(field):
@@ -335,7 +335,7 @@ V4L2_PIX_FMT_RGB32 = v4l2_fourcc('R', 'G', 'B', '4')
 
 # Grey formats
 V4L2_PIX_FMT_GREY = v4l2_fourcc('G', 'R', 'E', 'Y')
-V4L2_PIX_FMT_Y10 =  v4l2_fourcc('Y', '1', '0', ' ')
+V4L2_PIX_FMT_Y10 = v4l2_fourcc('Y', '1', '0', ' ')
 V4L2_PIX_FMT_Y16 = v4l2_fourcc('Y', '1', '6', ' ')
 
 # Palette formats
@@ -456,6 +456,7 @@ class v4l2_frmsize_stepwise(ctypes.Structure):
 
 
 class v4l2_frmsizeenum(ctypes.Structure):
+
     class _u(ctypes.Union):
         _fields_ = [
             ('discrete', v4l2_frmsize_discrete),
@@ -494,6 +495,7 @@ class v4l2_frmival_stepwise(ctypes.Structure):
 
 
 class v4l2_frmivalenum(ctypes.Structure):
+
     class _u(ctypes.Union):
         _fields_ = [
             ('discrete', v4l2_fract),
@@ -575,6 +577,7 @@ class v4l2_requestbuffers(ctypes.Structure):
 
 
 class v4l2_buffer(ctypes.Structure):
+
     class _u(ctypes.Union):
         _fields_ = [
             ('offset', ctypes.c_uint32),
@@ -621,7 +624,7 @@ class v4l2_framebuffer(ctypes.Structure):
     ]
 
 V4L2_FBUF_CAP_EXTERNOVERLAY = 0x0001
-V4L2_FBUF_CAP_CHROMAKEY	= 0x0002
+V4L2_FBUF_CAP_CHROMAKEY = 0x0002
 V4L2_FBUF_CAP_LIST_CLIPPING = 0x0004
 V4L2_FBUF_CAP_BITMAP_CLIPPING = 0x0008
 V4L2_FBUF_CAP_LOCAL_ALPHA = 0x0010
@@ -750,22 +753,28 @@ V4L2_STD_ATSC_16_VSB = 0x02000000
 # some common needed stuff
 V4L2_STD_PAL_BG = (V4L2_STD_PAL_B | V4L2_STD_PAL_B1 | V4L2_STD_PAL_G)
 V4L2_STD_PAL_DK = (V4L2_STD_PAL_D | V4L2_STD_PAL_D1 | V4L2_STD_PAL_K)
-V4L2_STD_PAL = (V4L2_STD_PAL_BG | V4L2_STD_PAL_DK | V4L2_STD_PAL_H | V4L2_STD_PAL_I)
+V4L2_STD_PAL = (
+    V4L2_STD_PAL_BG | V4L2_STD_PAL_DK | V4L2_STD_PAL_H | V4L2_STD_PAL_I)
 V4L2_STD_NTSC = (V4L2_STD_NTSC_M | V4L2_STD_NTSC_M_JP | V4L2_STD_NTSC_M_KR)
 V4L2_STD_SECAM_DK = (V4L2_STD_SECAM_D | V4L2_STD_SECAM_K | V4L2_STD_SECAM_K1)
-V4L2_STD_SECAM = (V4L2_STD_SECAM_B | V4L2_STD_SECAM_G | V4L2_STD_SECAM_H | V4L2_STD_SECAM_DK | V4L2_STD_SECAM_L | V4L2_STD_SECAM_LC)
+V4L2_STD_SECAM = (V4L2_STD_SECAM_B | V4L2_STD_SECAM_G | V4L2_STD_SECAM_H |
+                  V4L2_STD_SECAM_DK | V4L2_STD_SECAM_L | V4L2_STD_SECAM_LC)
 
-V4L2_STD_525_60 = (V4L2_STD_PAL_M | V4L2_STD_PAL_60 | V4L2_STD_NTSC | V4L2_STD_NTSC_443)
-V4L2_STD_625_50 = (V4L2_STD_PAL | V4L2_STD_PAL_N | V4L2_STD_PAL_Nc | V4L2_STD_SECAM)
+V4L2_STD_525_60 = (
+    V4L2_STD_PAL_M | V4L2_STD_PAL_60 | V4L2_STD_NTSC | V4L2_STD_NTSC_443)
+V4L2_STD_625_50 = (
+    V4L2_STD_PAL | V4L2_STD_PAL_N | V4L2_STD_PAL_Nc | V4L2_STD_SECAM)
 V4L2_STD_ATSC = (V4L2_STD_ATSC_8_VSB | V4L2_STD_ATSC_16_VSB)
 
 V4L2_STD_UNKNOWN = 0
 V4L2_STD_ALL = (V4L2_STD_525_60 | V4L2_STD_625_50)
 
 # some merged standards
-V4L2_STD_MN = (V4L2_STD_PAL_M | V4L2_STD_PAL_N | V4L2_STD_PAL_Nc | V4L2_STD_NTSC)
+V4L2_STD_MN = (
+    V4L2_STD_PAL_M | V4L2_STD_PAL_N | V4L2_STD_PAL_Nc | V4L2_STD_NTSC)
 V4L2_STD_B = (V4L2_STD_PAL_B | V4L2_STD_PAL_B1 | V4L2_STD_SECAM_B)
-V4L2_STD_GH = (V4L2_STD_PAL_G | V4L2_STD_PAL_H|V4L2_STD_SECAM_G | V4L2_STD_SECAM_H)
+V4L2_STD_GH = (
+    V4L2_STD_PAL_G | V4L2_STD_PAL_H | V4L2_STD_SECAM_G | V4L2_STD_SECAM_H)
 V4L2_STD_DK = (V4L2_STD_PAL_DK | V4L2_STD_SECAM_DK)
 
 
@@ -819,15 +828,15 @@ V4L2_DV_720P50 = 6
 V4L2_DV_720P59_94 = 7
 V4L2_DV_720P60 = 8
 V4L2_DV_1080I29_97 = 9
-V4L2_DV_1080I30	= 10
-V4L2_DV_1080I25	= 11
-V4L2_DV_1080I50	= 12
-V4L2_DV_1080I60	= 13
-V4L2_DV_1080P24	= 14
-V4L2_DV_1080P25	= 15
-V4L2_DV_1080P30	= 16
-V4L2_DV_1080P50	= 17
-V4L2_DV_1080P60	= 18
+V4L2_DV_1080I30 = 10
+V4L2_DV_1080I25 = 11
+V4L2_DV_1080I50 = 12
+V4L2_DV_1080I60 = 13
+V4L2_DV_1080P24 = 14
+V4L2_DV_1080P25 = 15
+V4L2_DV_1080P30 = 16
+V4L2_DV_1080P50 = 17
+V4L2_DV_1080P60 = 18
 
 
 #
@@ -865,6 +874,7 @@ V4L2_DV_HSYNC_POS_POL = 0x00000002
 
 
 class v4l2_dv_timings(ctypes.Structure):
+
     class _u(ctypes.Union):
         _fields_ = [
             ('bt', v4l2_bt_timings),
@@ -930,6 +940,7 @@ V4L2_IN_CAP_STD = 0x00000004
 # Video outputs
 #
 
+
 class v4l2_output(ctypes.Structure):
     _fields_ = [
         ('index', ctypes.c_uint32),
@@ -943,7 +954,7 @@ class v4l2_output(ctypes.Structure):
 
 
 V4L2_OUTPUT_TYPE_MODULATOR = 1
-V4L2_OUTPUT_TYPE_ANALOG	= 2
+V4L2_OUTPUT_TYPE_ANALOG = 2
 V4L2_OUTPUT_TYPE_ANALOGVGAOVERLAY = 3
 
 V4L2_OUT_CAP_PRESETS = 0x00000001
@@ -954,6 +965,7 @@ V4L2_OUT_CAP_STD = 0x00000004
 # Controls
 #
 
+
 class v4l2_control(ctypes.Structure):
     _fields_ = [
         ('id', ctypes.c_uint32),
@@ -962,6 +974,7 @@ class v4l2_control(ctypes.Structure):
 
 
 class v4l2_ext_control(ctypes.Structure):
+
     class _u(ctypes.Union):
         _fields_ = [
             ('value', ctypes.c_int32),
@@ -1000,7 +1013,7 @@ def V4L2_CTRL_ID_MASK():
 
 
 def V4L2_CTRL_ID2CLASS(id_):
-    return id_ & 0x0fff0000 # unsigned long
+    return id_ & 0x0fff0000  # unsigned long
 
 
 def V4L2_CTRL_DRIVER_PRIV(id_):
@@ -1055,13 +1068,13 @@ V4L2_CID_AUDIO_BASS = V4L2_CID_BASE + 7
 V4L2_CID_AUDIO_TREBLE = V4L2_CID_BASE + 8
 V4L2_CID_AUDIO_MUTE = V4L2_CID_BASE + 9
 V4L2_CID_AUDIO_LOUDNESS = V4L2_CID_BASE + 10
-V4L2_CID_BLACK_LEVEL = V4L2_CID_BASE + 11 # Deprecated
+V4L2_CID_BLACK_LEVEL = V4L2_CID_BASE + 11  # Deprecated
 V4L2_CID_AUTO_WHITE_BALANCE = V4L2_CID_BASE + 12
 V4L2_CID_DO_WHITE_BALANCE = V4L2_CID_BASE + 13
 V4L2_CID_RED_BALANCE = V4L2_CID_BASE + 14
 V4L2_CID_BLUE_BALANCE = V4L2_CID_BASE + 15
 V4L2_CID_GAMMA = V4L2_CID_BASE + 16
-V4L2_CID_WHITENESS = V4L2_CID_GAMMA # Deprecated
+V4L2_CID_WHITENESS = V4L2_CID_GAMMA  # Deprecated
 V4L2_CID_EXPOSURE = V4L2_CID_BASE + 17
 V4L2_CID_AUTOGAIN = V4L2_CID_BASE + 18
 V4L2_CID_GAIN = V4L2_CID_BASE + 19
@@ -1252,7 +1265,7 @@ v4l2_mpeg_audio_crc = enum
 
 V4L2_CID_MPEG_AUDIO_MUTE = V4L2_CID_MPEG_BASE + 109
 V4L2_CID_MPEG_AUDIO_AAC_BITRATE = V4L2_CID_MPEG_BASE + 110
-V4L2_CID_MPEG_AUDIO_AC3_BITRATE	= V4L2_CID_MPEG_BASE + 111
+V4L2_CID_MPEG_AUDIO_AC3_BITRATE = V4L2_CID_MPEG_BASE + 111
 
 v4l2_mpeg_audio_ac3_bitrate = enum
 (
@@ -1315,7 +1328,8 @@ V4L2_CID_MPEG_VIDEO_MUTE = V4L2_CID_MPEG_BASE + 210
 V4L2_CID_MPEG_VIDEO_MUTE_YUV = V4L2_CID_MPEG_BASE + 211
 
 V4L2_CID_MPEG_CX2341X_BASE = V4L2_CTRL_CLASS_MPEG | 0x1000
-V4L2_CID_MPEG_CX2341X_VIDEO_SPATIAL_FILTER_MODE = V4L2_CID_MPEG_CX2341X_BASE + 0
+V4L2_CID_MPEG_CX2341X_VIDEO_SPATIAL_FILTER_MODE = V4L2_CID_MPEG_CX2341X_BASE + \
+    0
 
 v4l2_mpeg_cx2341x_video_spatial_filter_mode = enum
 (
@@ -1324,18 +1338,20 @@ v4l2_mpeg_cx2341x_video_spatial_filter_mode = enum
 ) = range(2)
 
 V4L2_CID_MPEG_CX2341X_VIDEO_SPATIAL_FILTER = V4L2_CID_MPEG_CX2341X_BASE + 1
-V4L2_CID_MPEG_CX2341X_VIDEO_LUMA_SPATIAL_FILTER_TYPE = V4L2_CID_MPEG_CX2341X_BASE + 2
+V4L2_CID_MPEG_CX2341X_VIDEO_LUMA_SPATIAL_FILTER_TYPE = V4L2_CID_MPEG_CX2341X_BASE + \
+    2
 
 v4l2_mpeg_cx2341x_video_luma_spatial_filter_type = enum
 (
-    V4L2_MPEG_CX2341X_VIDEO_LUMA_SPATIAL_FILTER_TYPE_OFF, 
+    V4L2_MPEG_CX2341X_VIDEO_LUMA_SPATIAL_FILTER_TYPE_OFF,
     V4L2_MPEG_CX2341X_VIDEO_LUMA_SPATIAL_FILTER_TYPE_1D_HOR,
     V4L2_MPEG_CX2341X_VIDEO_LUMA_SPATIAL_FILTER_TYPE_1D_VERT,
     V4L2_MPEG_CX2341X_VIDEO_LUMA_SPATIAL_FILTER_TYPE_2D_HV_SEPARABLE,
     V4L2_MPEG_CX2341X_VIDEO_LUMA_SPATIAL_FILTER_TYPE_2D_SYM_NON_SEPARABLE,
 ) = range(5)
 
-V4L2_CID_MPEG_CX2341X_VIDEO_CHROMA_SPATIAL_FILTER_TYPE = V4L2_CID_MPEG_CX2341X_BASE + 3
+V4L2_CID_MPEG_CX2341X_VIDEO_CHROMA_SPATIAL_FILTER_TYPE = V4L2_CID_MPEG_CX2341X_BASE + \
+    3
 
 v4l2_mpeg_cx2341x_video_chroma_spatial_filter_type = enum
 (
@@ -1343,7 +1359,8 @@ v4l2_mpeg_cx2341x_video_chroma_spatial_filter_type = enum
     V4L2_MPEG_CX2341X_VIDEO_CHROMA_SPATIAL_FILTER_TYPE_1D_HOR,
 ) = range(2)
 
-V4L2_CID_MPEG_CX2341X_VIDEO_TEMPORAL_FILTER_MODE = V4L2_CID_MPEG_CX2341X_BASE + 4
+V4L2_CID_MPEG_CX2341X_VIDEO_TEMPORAL_FILTER_MODE = V4L2_CID_MPEG_CX2341X_BASE + \
+    4
 
 v4l2_mpeg_cx2341x_video_temporal_filter_mode = enum
 (
@@ -1363,11 +1380,16 @@ v4l2_mpeg_cx2341x_video_median_filter_type = enum
     V4L2_MPEG_CX2341X_VIDEO_MEDIAN_FILTER_TYPE_DIAG,
 ) = range(5)
 
-V4L2_CID_MPEG_CX2341X_VIDEO_LUMA_MEDIAN_FILTER_BOTTOM = V4L2_CID_MPEG_CX2341X_BASE + 7
-V4L2_CID_MPEG_CX2341X_VIDEO_LUMA_MEDIAN_FILTER_TOP = V4L2_CID_MPEG_CX2341X_BASE + 8
-V4L2_CID_MPEG_CX2341X_VIDEO_CHROMA_MEDIAN_FILTER_BOTTOM = V4L2_CID_MPEG_CX2341X_BASE + 9
-V4L2_CID_MPEG_CX2341X_VIDEO_CHROMA_MEDIAN_FILTER_TOP = V4L2_CID_MPEG_CX2341X_BASE + 10
-V4L2_CID_MPEG_CX2341X_STREAM_INSERT_NAV_PACKETS = V4L2_CID_MPEG_CX2341X_BASE + 11
+V4L2_CID_MPEG_CX2341X_VIDEO_LUMA_MEDIAN_FILTER_BOTTOM = V4L2_CID_MPEG_CX2341X_BASE + \
+    7
+V4L2_CID_MPEG_CX2341X_VIDEO_LUMA_MEDIAN_FILTER_TOP = V4L2_CID_MPEG_CX2341X_BASE + \
+    8
+V4L2_CID_MPEG_CX2341X_VIDEO_CHROMA_MEDIAN_FILTER_BOTTOM = V4L2_CID_MPEG_CX2341X_BASE + \
+    9
+V4L2_CID_MPEG_CX2341X_VIDEO_CHROMA_MEDIAN_FILTER_TOP = V4L2_CID_MPEG_CX2341X_BASE + \
+    10
+V4L2_CID_MPEG_CX2341X_STREAM_INSERT_NAV_PACKETS = V4L2_CID_MPEG_CX2341X_BASE + \
+    11
 
 V4L2_CID_CAMERA_CLASS_BASE = V4L2_CTRL_CLASS_CAMERA | 0x900
 V4L2_CID_CAMERA_CLASS = V4L2_CTRL_CLASS_CAMERA | 1
@@ -1527,7 +1549,7 @@ class v4l2_rds_data(ctypes.Structure):
     _pack_ = True
 
 
-V4L2_RDS_BLOCK_MSK =  0x7
+V4L2_RDS_BLOCK_MSK = 0x7
 V4L2_RDS_BLOCK_A = 0
 V4L2_RDS_BLOCK_B = 1
 V4L2_RDS_BLOCK_C = 2
@@ -1610,7 +1632,9 @@ V4L2_ENC_CMD_STOP_AT_GOP_END = 1 << 0
 
 
 class v4l2_encoder_cmd(ctypes.Structure):
+
     class _u(ctypes.Union):
+
         class _s(ctypes.Structure):
             _fields_ = [
                 ('data', ctypes.c_uint32 * 8),
@@ -1709,7 +1733,7 @@ class v4l2_mpeg_vbi_itv0_line(ctypes.Structure):
 
 class v4l2_mpeg_vbi_itv0(ctypes.Structure):
     _fields_ = [
-        ('linemask', ctypes.c_uint32 * 2), # how to define __le32 in ctypes?
+        ('linemask', ctypes.c_uint32 * 2),  # how to define __le32 in ctypes?
         ('line', v4l2_mpeg_vbi_itv0_line * 35),
     ]
 
@@ -1729,6 +1753,7 @@ V4L2_MPEG_VBI_IVTV_MAGIC1 = "ITV0"
 
 
 class v4l2_mpeg_vbi_fmt_ivtv(ctypes.Structure):
+
     class _u(ctypes.Union):
         _fields_ = [
             ('itv0', v4l2_mpeg_vbi_itv0),
@@ -1749,6 +1774,7 @@ class v4l2_mpeg_vbi_fmt_ivtv(ctypes.Structure):
 #
 
 class v4l2_format(ctypes.Structure):
+
     class _u(ctypes.Union):
         _fields_ = [
             ('pix', v4l2_pix_format),
@@ -1765,6 +1791,7 @@ class v4l2_format(ctypes.Structure):
 
 
 class v4l2_streamparm(ctypes.Structure):
+
     class _u(ctypes.Union):
         _fields_ = [
             ('capture', v4l2_captureparm),
@@ -1789,6 +1816,7 @@ V4L2_CHIP_MATCH_AC97 = 3
 
 
 class v4l2_dbg_match(ctypes.Structure):
+
     class _u(ctypes.Union):
         _fields_ = [
             ('addr', ctypes.c_uint32),
@@ -1835,7 +1863,7 @@ VIDIOC_ENUM_FMT = _IOWR('V', 2, v4l2_fmtdesc)
 VIDIOC_G_FMT = _IOWR('V', 4, v4l2_format)
 VIDIOC_S_FMT = _IOWR('V', 5, v4l2_format)
 VIDIOC_REQBUFS = _IOWR('V', 8, v4l2_requestbuffers)
-VIDIOC_QUERYBUF	= _IOWR('V', 9, v4l2_buffer)
+VIDIOC_QUERYBUF = _IOWR('V', 9, v4l2_buffer)
 VIDIOC_G_FBUF = _IOR('V', 10, v4l2_framebuffer)
 VIDIOC_S_FBUF = _IOW('V', 11, v4l2_framebuffer)
 VIDIOC_OVERLAY = _IOW('V', 14, ctypes.c_int)
@@ -1863,7 +1891,7 @@ VIDIOC_G_OUTPUT = _IOR('V', 46, ctypes.c_int)
 VIDIOC_S_OUTPUT = _IOWR('V', 47, ctypes.c_int)
 VIDIOC_ENUMOUTPUT = _IOWR('V', 48, v4l2_output)
 VIDIOC_G_AUDOUT = _IOR('V', 49, v4l2_audioout)
-VIDIOC_S_AUDOUT	= _IOW('V', 50, v4l2_audioout)
+VIDIOC_S_AUDOUT = _IOW('V', 50, v4l2_audioout)
 VIDIOC_G_MODULATOR = _IOWR('V', 54, v4l2_modulator)
 VIDIOC_S_MODULATOR = _IOW('V', 55, v4l2_modulator)
 VIDIOC_G_FREQUENCY = _IOWR('V', 56, v4l2_frequency)
