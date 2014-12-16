@@ -906,16 +906,23 @@ _('gets a text string or an image from a URL'))
                                                  ArgSlot(TYPE_OBJECT),
                                                  ArgSlot(TYPE_OBJECT)]))
 
+        # macro
         palette.add_block('indexblock',
+                          style='basic-style-extended-vertical',
+                          label=_('index'),
+                          help_string=_('return the text of the positions'))
+
+        palette.add_block('index',
+                          hidden=True,
                           style='number-style-var-3arg',
                           label=[_('index') + '\n\n', _('string'),
                                  _('start'), _('end')],
-                          prim_name='indexblock',
+                          prim_name='index',
                           default=[_('text'), 0, 1],
                           string_or_number=True,
                           help_string=_('return the text of the positions'))
 
-        self.tw.lc.def_prim('indexblock', 3,
+        self.tw.lc.def_prim('index', 3,
                             Primitive(self.prim_index,
                                       return_type=TYPE_STRING,
                                       arg_descs=[ArgSlot(TYPE_STRING),
