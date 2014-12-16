@@ -446,6 +446,11 @@ VOICES = {'af': 'afrikaans', 'cy': 'welsh-test', 'el': 'greek',
 MACROS = {
     'ifthenelse':  # Because it is too big to fit on the palette
     [[0, 'ifelse', 0, 0, [None, None, None, None, None]]],
+    'indexblock':
+    [[0, 'index', 0, 0, [None, 1, 2, 3]],
+     [1, ['string', _('text')], 0, 0, [0, None]],
+     [2, ['number', 0], 0, 0, [0, None]],
+     [3, ['number', 1], 0, 0, [0, None]]],
     'kbinput':
     [[0, 'until', 0, 0, [None, 1, 4, None]],
      [1, 'greater2', 0, 0, [0, 2, 3, None]],
