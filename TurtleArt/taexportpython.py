@@ -50,11 +50,12 @@ paths.append('../%s.activity')
 paths.append(os.path.expanduser('~') + '/Activities/%s.activity')
 paths.append('/usr/share/sugar/activities/%s.activity')
 paths.append('/usr/local/share/sugar/activities/%s.activity')
-paths.append('/home/broot/sugar-build/%s')
+paths.append(
+    '/home/broot/sugar-build/build/install/share/sugar/activities/%s.activity')
 
 flag = False
 for path in paths:
-    for activity in ['TurtleBots', 'TurtleBlocks', 'turtleart']:
+    for activity in ['TurtleBots', 'TurtleBlocks']:
         p = path % activity
         if os.path.exists(p):
             flag = True
