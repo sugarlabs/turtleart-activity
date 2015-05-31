@@ -1313,7 +1313,7 @@ class TurtleArtWindow():
             # Un-highlight any blocks in the stack
             grp = find_group(self.selected_blk)
             for blk in grp:
-                if blk.status != 'collapsed':
+                if hasattr(blk, 'status') and blk.status != 'collapsed':
                     blk.unhighlight()
             self._unselect_block()
             if self.running_sugar and self._sharing and \

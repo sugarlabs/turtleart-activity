@@ -185,6 +185,7 @@ class LogoCode:
         self.istack = []
         self.stacks = {}
         self.boxes = {'box1': 0, 'box2': 0}
+        self.return_values = []
         self.heap = []
         self.iresults = None
         self.step = None
@@ -253,15 +254,24 @@ class LogoCode:
     def generate_code(self, blk, blocks):
         """ Generate code to be passed to run_blocks() from a stack of blocks.
         """
+        self._save_all_connections = []
+        for b in blocks:
+             tmp = []
+             for c in b.connections:
+                 tmp.append(c)
+             self._save_all_connections.append(
+                 {'blk':b, 'connections':tmp})
+
         for k in self.stacks.keys():
             self.stacks[k] = None
         self.stacks['stack1'] = None
         self.stacks['stack2'] = None
 
         # Save state in case there is a hidden macro expansion
-        self.save_blocks = None
-        self.save_blk = blk
-        self.save_while_blks = []
+        self._save_blocks = None
+        self._save_blk = blk
+        self._save_while_blocks = []
+        # self._save_connections = []
 
         if self.trace > 0:
             self.update_values = True
@@ -277,6 +287,13 @@ class LogoCode:
             b.unhighlight()
 
         # Hidden macro expansions
+        for b in blocks:
+            if b.name in ['returnstack']:
+                action_blk, new_blocks = self._expand_return(b, blk, blocks)
+                blocks = new_blocks[:]
+                if b == blk:
+                    blk = action_blk
+
         for b in blocks:
             if b.name in ['while', 'until']:
                 action_blk, new_blocks = self._expand_forever(b, blk, blocks)
@@ -305,17 +322,25 @@ class LogoCode:
 
         code = self._blocks_to_code(blk)
 
-        if self.save_blocks is not None:
+        if self._save_blocks is not None:
             # Undo any hidden macro expansion
-            blocks = self.save_blocks[:]
-            blk = self.save_blk
-            for b in self.save_while_blks:
+            blocks = self._save_blocks[:]
+            blk = self._save_blk
+            for b in self._save_while_blocks:
                 if b[1] is not None:
                     b[0].connections[0].connections[b[1]] = b[0]
                 if b[2] is not None:
                     b[0].connections[-1].connections[b[2]] = b[0]
                 if b[3] is not None:
                     b[0].connections[-2].connections[b[3]] = b[0]
+
+        if self._save_all_connections is not None:
+            # Restore any connections that may have been mangled
+            # during macro expansion.
+            for entry in self._save_all_connections:
+                b = entry['blk']
+                connections = entry['connections']
+                b.connections = connections[:]
 
         return code
 
@@ -782,6 +807,12 @@ class LogoCode:
         """ Stop execution of a stack """
         self.procstop = True
 
+    def prim_return(self, value):
+        """ Stop execution of a stack and sets return value"""
+        # self.boxes['__return__'] = value
+        self.return_values.append(value)
+        self.procstop = True
+
     def active_turtle(self):
         ''' NOP used to add get_active_turtle to Python export '''
         # turtle = self.tw.turtles.get_turtle()
@@ -831,6 +862,11 @@ class LogoCode:
 
     def prim_get_box(self, name):
         """ Retrieve value from named box """
+        if name == '__return__':
+            if len(self.return_values) == 0:
+                raise logoerror("#emptybox")
+            return self.return_values.pop()
+
         (key, is_native) = self._get_box_key(name)
         try:
             return self.boxes[key]
@@ -843,6 +879,8 @@ class LogoCode:
         boolean indicating whether it is a 'native' box """
         if name in ('box1', 'box2'):
             return (name, True)
+        # elif name == '__return__':
+        #     return (name, True)
         else:
             # make sure '5' and '5.0' point to the same box
             if isinstance(name, (basestring, int, long)):
@@ -866,6 +904,11 @@ class LogoCode:
         self.procstop = False
         self.ireturn()
         yield True
+
+    def prim_invoke_return_stack(self, name):
+        """ Process a named stack and return a value"""
+        self.prim_invoke_stack(name)
+        return self.boxes['__return__']
 
     def _get_stack_key(self, name):
         """ Return the key used for this stack in the stacks dictionary """
@@ -1463,6 +1506,65 @@ class LogoCode:
             play_movie_from_file(self, self.filepath, self.x2tx(),
                                  self.y2ty() + yoffset, w, h)
 
+    def _expand_return(self, b, blk, blocks):
+        """ Expand a returnstack block into action name, box '__return__'
+            Parameters: the repeatstack block, the top block, all blocks.
+            Return all blocks."""
+
+        # We'll restore the original blocks when we are finished
+        if self._save_blocks is None:
+            self._save_blocks = blocks[:]
+
+        # Create an action block and a box
+        action_blk = HiddenBlock('stack')
+        blocks.append(action_blk)
+        box_blk = HiddenBlock('box')
+        blocks.append(box_blk)
+        box_label_blk = HiddenBlock('string', value='__return__')
+        blocks.append(box_label_blk)
+
+        # Make connections to substitute blocks
+        inflow = None
+        cblk = None
+
+        # FIXME: Need to use a stack for return values
+        # Find a flow block to use for adding the action blk.
+        tmp = b
+        while tmp.connections[0] is not None:
+            cblk = tmp.connections[0]
+            if cblk.docks[0][0] == 'flow':
+                break
+            else:
+                tmp = cblk
+
+        if cblk is not None:
+            if cblk.connections[0] is not None:
+                inflow = cblk.connections[0]
+                inflow.connections[-1] = action_blk
+            cblk.connections[0] = action_blk
+
+        action_blk.connections.append(inflow)
+        action_blk.docks.append(['flow', True, 0, 0])
+        action_blk.connections.append(b.connections[1])
+        b.connections[1].connections[0] = action_blk
+        action_blk.docks.append(['string', False, 0, 0])
+        action_blk.connections.append(cblk)
+        action_blk.docks.append(['flow', False, 0, 0])
+
+        # Replace the returnstack block with a box and label.
+        box_label_blk.connections.append(box_blk)
+        box_label_blk.docks.append(['string', True, 0, 0])
+        box_blk.connections.append(b.connections[0])
+        if b.connections[0] is not None:
+            for i in range(len(b.connections[0].connections)):
+              if b.connections[0].connections[i] == b:
+                  b.connections[0].connections[i] = box_blk
+        box_blk.docks.append(['number', True, 0, 0])
+        box_blk.connections.append(box_label_blk)
+        box_blk.docks.append(['string', False, 0, 0])
+
+        return action_blk, blocks
+
     def _expand_forever(self, b, blk, blocks):
         """ Expand a while or until block into: forever, ifelse, stopstack
             Expand a forever block to run in a separate stack
@@ -1484,11 +1586,11 @@ class LogoCode:
             until_blk = False
 
         # We'll restore the original blocks when we are finished
-        if self.save_blocks is None:
-            self.save_blocks = blocks[:]
+        if self._save_blocks is None:
+            self._save_blocks = blocks[:]
 
         # Create an action block that will jump to the new stack
-        action_name = '_forever %d' % (len(self.save_while_blks) + 1)
+        action_name = '_forever %d' % (len(self._save_while_blocks) + 1)
         action_blk = HiddenBlock('stack')
         action_label_blk = HiddenBlock('string', value=action_name)
 
@@ -1510,7 +1612,7 @@ class LogoCode:
 
         # Create action block(s) to run the code inside the forever loop
         if until_blk and whileflow is not None:  # run until flow at least once
-            action_flow_name = '_flow %d' % (len(self.save_while_blks) + 1)
+            action_flow_name = '_flow %d' % (len(self._save_while_blocks) + 1)
             action_first = HiddenBlock('stack')
             first_label_blk = HiddenBlock('string', value=action_flow_name)
 
@@ -1597,9 +1699,9 @@ class LogoCode:
 
         # Save the connections so we can restore them later
         if whileflow is not None:
-            self.save_while_blks.append([b, i, j, 0])
+            self._save_while_blocks.append([b, i, j, 0])
         else:
-            self.save_while_blks.append([b, i, j, None])
+            self._save_while_blocks.append([b, i, j, None])
 
         # Insert the new blocks into the stack
         i = blocks.index(b)
