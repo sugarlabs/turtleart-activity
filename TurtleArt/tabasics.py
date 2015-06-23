@@ -1213,6 +1213,34 @@ variable'))
                       arg_descs=[ConstantArg('stack2')]),
             True)
 
+        primitive_dictionary['returnstack'] = Primitive(
+            self.tw.lc.prim_invoke_return_stack,
+            return_type=TYPE_OBJECT,
+            arg_descs=[ArgSlot(TYPE_OBJECT)])
+        palette.add_block('returnstack',
+                          # hidden=True,
+                          style='number-style-1arg',
+                          label=_('action'),
+                          string_or_number=True,
+                          prim_name='returnstack',
+                          logo_command='action',
+                          default=_('action'),
+                          help_string=_('invokes named action stack and returns value'))
+        self.tw.lc.def_prim('returnstack', 1,
+                            primitive_dictionary['returnstack'], True)
+
+        palette.add_block('return',
+                          # hidden=True,
+                          style='basic-style-1arg',
+                          label=_('return'),
+                          prim_name='return',
+                          logo_command='stop',
+                          help_string=_('returns a value'))
+        self.tw.lc.def_prim(
+            'return', 1,
+            Primitive(self.tw.lc.prim_return,
+                      arg_descs=[ArgSlot(TYPE_OBJECT)]))
+
     def _trash_palette(self):
         ''' The basic Turtle Art turtle palette '''
 

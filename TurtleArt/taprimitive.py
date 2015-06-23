@@ -420,6 +420,13 @@ class Primitive(object):
                 slice=ast.Index(value=new_arg_asts[0]), ctx=ast.Load)
             call_ast = get_call_ast('logo.icall', [stack_func])
             return [call_ast, ast_yield_true()]
+        elif self == LogoCode.prim_invoke_return_stack:
+            # FIXME: Need to return value
+            stack_func = ast.Subscript(
+                value=ACTION_AST,
+                slice=ast.Index(value=new_arg_asts[0]), ctx=ast.Load)
+            call_ast = get_call_ast('logo.icall', [stack_func])
+            return [call_ast, ast_yield_true()]
 
         # stop stack
         elif self == LogoCode.prim_stop_stack:
