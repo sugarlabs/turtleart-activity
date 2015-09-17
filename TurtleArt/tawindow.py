@@ -340,7 +340,7 @@ class TurtleArtWindow():
 
         self.turtleart_plugins = {}
         self.turtleart_favorites_plugins = []
-        self.turtleart_plugin_list = []
+        #self.turtleart_plugin_list = {}
         self.saved_pictures = []
         self.block_operation = ''
 
@@ -429,10 +429,10 @@ class TurtleArtWindow():
         paths = [self._get_plugin_home()]
         if paths[0] != homepath and os.path.exists(homepath):
             paths.append(homepath)
-        self.turtleart_plugin_list = self._get_plugins_from_plugins_dir(paths)
+        turtleart_plugin_list = self._get_plugins_from_plugins_dir(paths)
    
-        for plugin_dir in self.turtleart_plugin_list:
-            plugin_path = self.turtleart_plugin_list[plugin_dir]
+        for plugin_dir in turtleart_plugin_list:
+            plugin_path = turtleart_plugin_list[plugin_dir]
             # add icons paths of all plugins
             self._add_plugin_icon_dir(os.path.join(plugin_path, plugin_dir))
             if self.running_sugar:
@@ -447,7 +447,8 @@ class TurtleArtWindow():
             if status:
                 self.init_plugin(plugin_dir, plugin_path)
                 self.turtleart_favorites_plugins.append(plugin_dir)
-            MenuBuilder.make_checkmenu_item(self.activity._plugin_menu, plugin_dir, self.activity._do_toggle_plugin_cb, status)
+            MenuBuilder.make_checkmenu_item(self.activity._plugin_menu, \
+                         plugin_dir, self.activity._do_toggle_plugin_cb, status)
 
     def init_plugin(self, plugin_dir, plugin_path):
         ''' Initialize plugin in plugin_dir '''
@@ -487,9 +488,9 @@ class TurtleArtWindow():
 
     def _setup_plugins(self):
         ''' Initial setup -- called just once. '''
-        for plugin in self.turtleart_plugins:
+        for plugin in self.turtleart_plugins.values():
             try:
-                self.turtleart_plugins[plugin].setup()
+                plugin.setup()
             except Exception as e:
                 debug_output('Plugin %s failed during setup: %s' %
                              (plugin, str(e)), self.running_sugar)

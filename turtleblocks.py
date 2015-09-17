@@ -802,10 +802,13 @@ Would you like to save before quitting?'))
             #instance = self.tw._get_plugin_instance(name)
             #instance.setup()
             self.client.set_int(path_gconf, 1)
+            l = _('Please restart %s in order to use the plugin.') % self.name
         else:
             #instance = self.tw._get_plugin_instance(name)
             #instance.quit()
             self.client.set_int(path_gconf, 0)
+            l = _('Please restart %s in order to unload the plugin.') % self.name
+        self.tw.showlabel('status', l)
 
     def _do_hover_help_on_cb(self):
         ''' Turn hover help on '''
