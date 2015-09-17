@@ -431,14 +431,16 @@ class TurtleArtWindow():
             paths.append(homepath)
         self.turtleart_plugin_list = self._get_plugins_from_plugins_dir(paths)
    
-
         for p in self.turtleart_plugin_list:
-            status = False
-            path = self.activity._PLUGINS_PATH + p
-            try:
-                status = (self.activity.client.get_int(path) == 1)
-            except:
-                pass
+            if self.running_sugar:
+                status = True
+            else:
+                status = False
+                path = self.activity._PLUGINS_PATH + p
+                try:
+                    status = (self.activity.client.get_int(path) == 1)
+                except:
+                    pass
             if status:
                 self.init_plugin(p, self.turtleart_plugin_list[p])
                 self.turtleart_favorites_plugins.append(p)
