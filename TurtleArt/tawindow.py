@@ -431,20 +431,23 @@ class TurtleArtWindow():
             paths.append(homepath)
         self.turtleart_plugin_list = self._get_plugins_from_plugins_dir(paths)
    
-        for p in self.turtleart_plugin_list:
+        for plugin_dir in self.turtleart_plugin_list:
+            plugin_path = self.turtleart_plugin_list[plugin_dir]
+            # add icons paths of all plugins
+            self._add_plugin_icon_dir(os.path.join(plugin_path, plugin_dir))
             if self.running_sugar:
                 status = True
             else:
                 status = False
-                path = self.activity._PLUGINS_PATH + p
+                gconf_path = self.activity._PLUGINS_PATH + plugin_dir
                 try:
-                    status = (self.activity.client.get_int(path) == 1)
+                    status = (self.activity.client.get_int(gconf_path) == 1)
                 except:
                     pass
             if status:
-                self.init_plugin(p, self.turtleart_plugin_list[p])
-                self.turtleart_favorites_plugins.append(p)
-            MenuBuilder.make_checkmenu_item(self.activity._plugin_menu, p, self.activity._do_toggle_plugin_cb, status)
+                self.init_plugin(plugin_dir, plugin_path)
+                self.turtleart_favorites_plugins.append(plugin_dir)
+            MenuBuilder.make_checkmenu_item(self.activity._plugin_menu, plugin_dir, self.activity._do_toggle_plugin_cb, status)
 
     def init_plugin(self, plugin_dir, plugin_path):
         ''' Initialize plugin in plugin_dir '''
@@ -471,8 +474,9 @@ class TurtleArtWindow():
         icon_theme = gtk.icon_theme_get_default()
         icon_path = os.path.join(dirname, 'icons')
         if os.path.exists(icon_path):
-            icon_theme.append_search_path(icon_path)
-            self.icon_paths.append(icon_path)
+            if not(icon_path in self.icon_paths):
+                icon_theme.append_search_path(icon_path)
+                self.icon_paths.append(icon_path)
 
     def _get_plugin_instance(self, plugin_name):
         ''' Returns the plugin 'plugin_name' instance '''
