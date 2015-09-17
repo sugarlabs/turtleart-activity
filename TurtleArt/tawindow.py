@@ -123,6 +123,8 @@ from .tapaletteview import PaletteView
 from .taselector import (Selector, create_toolbar_background)
 from .sprites import (Sprites, Sprite)
 
+from util.menubuilder import MenuBuilder
+
 if _GST_AVAILABLE:
     from .tagplay import stop_media
 
@@ -336,7 +338,9 @@ class TurtleArtWindow():
 
         self.lc = LogoCode(self)
 
-        self.turtleart_plugins = []
+        self.turtleart_plugins = {}
+        self.turtleart_favorites_plugins = []
+        #self.turtleart_plugin_list = {}
         self.saved_pictures = []
         self.block_operation = ''
 
@@ -409,13 +413,13 @@ class TurtleArtWindow():
 
     def _get_plugins_from_plugins_dir(self, paths):
         ''' Look for plugin files in plugin dir. '''
-        plugin_files = []
+        plugin_files = {}
         for path in paths:
             candidates = sorted(os.listdir(path))
             for dirname in candidates:
                 pname = os.path.join(path, dirname, dirname + '.py')
                 if os.path.exists(pname):
-                    plugin_files.append({'dirname': dirname, 'path': path})
+                    plugin_files[dirname] = path
         return plugin_files
 
     def _init_plugins(self):
@@ -425,9 +429,26 @@ class TurtleArtWindow():
         paths = [self._get_plugin_home()]
         if paths[0] != homepath and os.path.exists(homepath):
             paths.append(homepath)
-        plist = self._get_plugins_from_plugins_dir(paths)
-        for plugin in plist:
-            self.init_plugin(plugin['dirname'], plugin['path'])
+        turtleart_plugin_list = self._get_plugins_from_plugins_dir(paths)
+   
+        for plugin_dir in turtleart_plugin_list:
+            plugin_path = turtleart_plugin_list[plugin_dir]
+            # add icons paths of all plugins
+            self._add_plugin_icon_dir(os.path.join(plugin_path, plugin_dir))
+            if self.running_sugar:
+                status = True
+            else:
+                status = False
+                gconf_path = self.activity._PLUGINS_PATH + plugin_dir
+                try:
+                    status = (self.activity.client.get_int(gconf_path) == 1)
+                except:
+                    pass
+            if status:
+                self.init_plugin(plugin_dir, plugin_path)
+                self.turtleart_favorites_plugins.append(plugin_dir)
+            MenuBuilder.make_checkmenu_item(self.activity._plugin_menu, \
+                         plugin_dir, self.activity._do_toggle_plugin_cb, status)
 
     def init_plugin(self, plugin_dir, plugin_path):
         ''' Initialize plugin in plugin_dir '''
@@ -438,13 +459,13 @@ class TurtleArtWindow():
         # NOTE: When debugging plugins, it may be useful to not trap errors
         try:
             exec f in globals(), plugins
-            self.turtleart_plugins.append(plugins.values()[0](self))
+            self.turtleart_plugins[plugin_dir] = plugins.values()[0](self)
             debug_output('Successfully importing %s' % (plugin_class),
                          self.running_sugar)
             # Add the icon dir to the icon_theme search path
             self._add_plugin_icon_dir(os.path.join(plugin_path, plugin_dir))
             # Add the plugin to the list of global objects
-            global_objects[plugin_class] = self.turtleart_plugins[-1]
+            global_objects[plugin_class] = self.turtleart_plugins[plugin_dir]
         except Exception as e:
             debug_output('Failed to load %s: %s' % (plugin_class, str(e)),
                          self.running_sugar)
@@ -454,33 +475,31 @@ class TurtleArtWindow():
         icon_theme = gtk.icon_theme_get_default()
         icon_path = os.path.join(dirname, 'icons')
         if os.path.exists(icon_path):
-            icon_theme.append_search_path(icon_path)
-            self.icon_paths.append(icon_path)
+            if not(icon_path in self.icon_paths):
+                icon_theme.append_search_path(icon_path)
+                self.icon_paths.append(icon_path)
 
     def _get_plugin_instance(self, plugin_name):
         ''' Returns the plugin 'plugin_name' instance '''
-        list_plugins = self._get_plugins_from_plugins_dir(
-            self._get_plugin_home())
-        if plugin_name in list_plugins:
-            number_plugin = list_plugins.index(plugin_name)
-            return self.turtleart_plugins[number_plugin]
+        if plugin_name in self.turtleart_plugins:
+            return self.turtleart_plugins[plugin_name]
         else:
             return None
 
     def _setup_plugins(self):
         ''' Initial setup -- called just once. '''
-        for plugin in self.turtleart_plugins:
+        for plugin in self.turtleart_plugins.values():
             try:
                 plugin.setup()
             except Exception as e:
                 debug_output('Plugin %s failed during setup: %s' %
                              (plugin, str(e)), self.running_sugar)
                 # If setup fails, remove the plugin from the list
-                self.turtleart_plugins.remove(plugin)
+                self.turtleart_plugins.pop(plugin)
 
     def start_plugins(self):
         ''' Start is called everytime we execute blocks. '''
-        for plugin in self.turtleart_plugins:
+        for plugin in self.turtleart_plugins.values():
             if hasattr(plugin, 'start'):
                 try:
                     plugin.start()
@@ -490,7 +509,7 @@ class TurtleArtWindow():
 
     def stop_plugins(self):
         ''' Stop is called whenever we stop execution. '''
-        for plugin in self.turtleart_plugins:
+        for plugin in self.turtleart_plugins.values():
             if hasattr(plugin, 'stop'):
                 try:
                     plugin.stop()
@@ -500,7 +519,7 @@ class TurtleArtWindow():
 
     def clear_plugins(self):
         ''' Clear is called from the clean block and erase button. '''
-        for plugin in self.turtleart_plugins:
+        for plugin in self.turtleart_plugins.values():
             if hasattr(plugin, 'clear'):
                 try:
                     plugin.clear()
@@ -510,7 +529,7 @@ class TurtleArtWindow():
 
     def background_plugins(self):
         ''' Background is called when we are pushed to the background. '''
-        for plugin in self.turtleart_plugins:
+        for plugin in self.turtleart_plugins.values():
             if hasattr(plugin, 'goto_background'):
                 try:
                     plugin.goto_background()
@@ -520,7 +539,7 @@ class TurtleArtWindow():
 
     def foreground_plugins(self):
         ''' Foreground is called when we are return from the background. '''
-        for plugin in self.turtleart_plugins:
+        for plugin in self.turtleart_plugins.values():
             if hasattr(plugin, 'return_to_foreground'):
                 try:
                     plugin.return_to_foreground()
@@ -530,7 +549,7 @@ class TurtleArtWindow():
 
     def quit_plugins(self):
         ''' Quit is called upon program exit. '''
-        for plugin in self.turtleart_plugins:
+        for plugin in self.turtleart_plugins.values():
             if hasattr(plugin, 'quit'):
                 try:
                     plugin.quit()

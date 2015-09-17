@@ -80,6 +80,7 @@ class TurtleMain():
     _HOVER_HELP = '/desktop/sugar/activities/turtleart/hoverhelp'
     _ORIENTATION = '/desktop/sugar/activities/turtleart/orientation'
     _COORDINATE_SCALE = '/desktop/sugar/activities/turtleart/coordinatescale'
+    _PLUGINS_PATH = '/desktop/sugar/activities/turtleart/plugins/'
 
     def __init__(self):
         self._setting_gconf_overrides = False
@@ -504,6 +505,9 @@ return %s(self)" % (p, P, P)
         MenuBuilder.make_menu_item(menu, _('Stop'), self._do_stop_cb)
         turtle_menu = MenuBuilder.make_sub_menu(menu, _('Turtle'))
 
+        self._plugin_menu = gtk.Menu()
+        plugin_men = MenuBuilder.make_sub_menu(self._plugin_menu, _('Plugins'))
+
         menu = gtk.Menu()
         MenuBuilder.make_menu_item(menu, _('About...'), self._do_about_cb)
         help_menu = MenuBuilder.make_sub_menu(menu, _('Help'))
@@ -514,6 +518,7 @@ return %s(self)" % (p, P, P)
         menu_bar.append(view_menu)
         menu_bar.append(tool_menu)
         menu_bar.append(turtle_menu)
+        menu_bar.append(plugin_men)
 
         # Add menus for plugins
         for p in self._gnome_plugins:
@@ -542,7 +547,7 @@ return %s(self)" % (p, P, P)
         if hasattr(self, 'client'):
             self.client.set_int(self._ORIENTATION, self.tw.orientation)
 
-        for plugin in self.tw.turtleart_plugins:
+        for plugin in self.tw.turtleart_plugins.values():
             if hasattr(plugin, 'quit'):
                 plugin.quit()
 
@@ -787,6 +792,23 @@ Would you like to save before quitting?'))
             self._do_hover_help_off_cb()
         else:
             self._do_hover_help_on_cb()
+
+    def _do_toggle_plugin_cb(self, button):
+        name = button.get_label()
+        path_gconf = self._PLUGINS_PATH + name
+        if button.get_active():
+            #path = self.tw.turtleart_plugin_list[name]
+            #self.tw.init_plugin(name, path)
+            #instance = self.tw._get_plugin_instance(name)
+            #instance.setup()
+            self.client.set_int(path_gconf, 1)
+            l = _('Please restart %s in order to use the plugin.') % self.name
+        else:
+            #instance = self.tw._get_plugin_instance(name)
+            #instance.quit()
+            self.client.set_int(path_gconf, 0)
+            l = _('Please restart %s in order to unload the plugin.') % self.name
+        self.tw.showlabel('status', l)
 
     def _do_hover_help_on_cb(self):
         ''' Turn hover help on '''

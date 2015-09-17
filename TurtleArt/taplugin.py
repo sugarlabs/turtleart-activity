@@ -87,10 +87,10 @@ def complete_plugin_install(self, tmp_dir, tmp_path, plugin_path,
                         'clicked', self.do_palette_buttons_cb, j - 1)
                     self._setup_palette_toolbar()
         else:
-            self.tw.showlabel('status', label=_('Please restart Turtle Art \
-in order to use the plugin.'))
+            l = _('Please restart %s in order to use the plugin.') % self.name
+            self.tw.showlabel('status', l)
     else:
-        self.tw.showlabel('status', label=_('Plugin could not be installed.'))
+        self.tw.showlabel('status', _('Plugin could not be installed.'))
     status = subprocess.call(['rm', '-r', tmp_path])
     shutil.rmtree(tmp_dir)
 
@@ -100,11 +100,9 @@ def load_a_plugin(self, tmp_dir):
     plugin_path = os.path.join(tmp_dir, 'plugin.info')
     file_info = ConfigParser.ConfigParser()
     if len(file_info.read(plugin_path)) == 0:
-        self.tw.showlabel('status',
-                          label=_('Plugin could not be installed.'))
+        self.tw.showlabel('status', _('Plugin could not be installed.'))
     elif not file_info.has_option('Plugin', 'name'):
-        self.tw.showlabel(
-            'status', label=_('Plugin could not be installed.'))
+        self.tw.showlabel('status', _('Plugin could not be installed.'))
     else:
         plugin_name = file_info.get('Plugin', 'name')
         tmp_path = os.path.join(tmp_dir, plugin_name)
