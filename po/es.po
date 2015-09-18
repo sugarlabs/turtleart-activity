@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-23 19:40+0000\n"
-"PO-Revision-Date: 2015-08-02 14:22+0000\n"
+"POT-Creation-Date: 2015-09-18 02:43+0000\n"
+"PO-Revision-Date: 2015-09-18 03:07+0000\n"
 "Last-Translator: Alan <alanjas@hotmail.com>\n"
 "Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
 "Language: es\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pootle 2.5.1.1\n"
-"X-POOTLE-MTIME: 1438525344.000000\n"
+"X-POOTLE-MTIME: 1442545641.000000\n"
 
 #. TRANS: "name" option from activity.info file
 msgid "TurtleBlocks"
@@ -62,15 +62,15 @@ msgstr "instantánea"
 msgid "Turn off hover help"
 msgstr "Deshabilitar ayuda flotante"
 
-#: TurtleArtActivity.py:474 turtleblocks.py:477
+#: TurtleArtActivity.py:474 turtleblocks.py:478
 msgid "Turn on hover help"
 msgstr "Habilitar ayuda flotante"
 
-#: TurtleArtActivity.py:484 turtleblocks.py:491
+#: TurtleArtActivity.py:484 turtleblocks.py:492
 msgid "Show palette"
 msgstr "Mostrar paleta"
 
-#: TurtleArtActivity.py:490 TurtleArtActivity.py:1255 turtleblocks.py:493
+#: TurtleArtActivity.py:490 TurtleArtActivity.py:1255 turtleblocks.py:494
 msgid "Hide palette"
 msgstr "Ocultar paleta"
 
@@ -93,12 +93,12 @@ msgid "Rescale coordinates up"
 msgstr "Escalar coordenadas hacia arriba"
 
 #: TurtleArtActivity.py:768 TurtleArtActivity.py:803 TurtleArtActivity.py:913
-#: TurtleArtActivity.py:976 turtleblocks.py:488
+#: TurtleArtActivity.py:976 turtleblocks.py:489
 msgid "Edit"
 msgstr "Editar"
 
 #: TurtleArtActivity.py:773 TurtleArtActivity.py:801 TurtleArtActivity.py:914
-#: TurtleArtActivity.py:994 turtleblocks.py:479
+#: TurtleArtActivity.py:994 turtleblocks.py:480
 msgid "View"
 msgstr "Ver"
 
@@ -110,11 +110,11 @@ msgstr "Proyecto"
 msgid "Save/Load"
 msgstr "Guardar/Cargar"
 
-#: TurtleArtActivity.py:813 TurtleArtActivity.py:977 turtleblocks.py:482
+#: TurtleArtActivity.py:813 TurtleArtActivity.py:977 turtleblocks.py:483
 msgid "Copy"
 msgstr "Copiar"
 
-#: TurtleArtActivity.py:815 TurtleArtActivity.py:978 turtleblocks.py:483
+#: TurtleArtActivity.py:815 TurtleArtActivity.py:978 turtleblocks.py:484
 msgid "Paste"
 msgstr "Pegar"
 
@@ -122,13 +122,13 @@ msgstr "Pegar"
 msgid "Restore blocks from trash"
 msgstr "Restaura los bloques de la papelera"
 
-#: TurtleArtActivity.py:820 TurtleArtActivity.py:979 turtleblocks.py:484
-#: TurtleArt/tawindow.py:1498
+#: TurtleArtActivity.py:820 TurtleArtActivity.py:979 turtleblocks.py:485
+#: TurtleArt/tawindow.py:1517
 msgid "Save stack"
 msgstr "Guardar pila"
 
-#: TurtleArtActivity.py:822 turtleblocks.py:486 TurtleArt/tawindow.py:1537
-#: TurtleArt/tawindow.py:1545 TurtleArt/tawindow.py:1554
+#: TurtleArtActivity.py:822 turtleblocks.py:487 TurtleArt/tawindow.py:1556
+#: TurtleArt/tawindow.py:1564 TurtleArt/tawindow.py:1573
 msgid "Delete stack"
 msgstr "Borrar pila"
 
@@ -137,11 +137,11 @@ msgstr "Borrar pila"
 msgid "Fullscreen"
 msgstr "Pantalla completa"
 
-#: TurtleArtActivity.py:828 TurtleArtActivity.py:996 turtleblocks.py:463
+#: TurtleArtActivity.py:828 TurtleArtActivity.py:996 turtleblocks.py:464
 msgid "Cartesian coordinates"
 msgstr "Coordenadas cartesianas"
 
-#: TurtleArtActivity.py:830 TurtleArtActivity.py:998 turtleblocks.py:465
+#: TurtleArtActivity.py:830 TurtleArtActivity.py:998 turtleblocks.py:466
 msgid "Polar coordinates"
 msgstr "Coordenadas polares"
 
@@ -149,11 +149,11 @@ msgstr "Coordenadas polares"
 msgid "Metric coordinates"
 msgstr "Coordenadas centímetros"
 
-#: TurtleArtActivity.py:839 TurtleArtActivity.py:1004 turtleblocks.py:470
+#: TurtleArtActivity.py:839 TurtleArtActivity.py:1004 turtleblocks.py:471
 msgid "Grow blocks"
 msgstr "Agrandar bloques"
 
-#: TurtleArtActivity.py:842 TurtleArtActivity.py:1005 turtleblocks.py:472
+#: TurtleArtActivity.py:842 TurtleArtActivity.py:1005 turtleblocks.py:473
 msgid "Shrink blocks"
 msgstr "Empequeñecer bloques"
 
@@ -162,33 +162,33 @@ msgstr "Empequeñecer bloques"
 msgid "Load example"
 msgstr "Cargar ejemplos"
 
-#: TurtleArtActivity.py:916 TurtleArtActivity.py:1261 turtleblocks.py:500
+#: TurtleArtActivity.py:916 TurtleArtActivity.py:1261 turtleblocks.py:501
 msgid "Clean"
 msgstr "Limpiar"
 
-#: TurtleArtActivity.py:917 TurtleArtActivity.py:1263 turtleblocks.py:501
+#: TurtleArtActivity.py:917 TurtleArtActivity.py:1263 turtleblocks.py:502
 msgid "Run"
 msgstr "Ejecutar"
 
-#: TurtleArtActivity.py:918 TurtleArtActivity.py:1265 turtleblocks.py:502
+#: TurtleArtActivity.py:918 TurtleArtActivity.py:1265 turtleblocks.py:503
 msgid "Step"
 msgstr "Dar un paso"
 
 #: TurtleArtActivity.py:919
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1356
-#: TurtleArt/tawindow.py:1254 TurtleArt/talogo.py:432
+#: TurtleArt/tawindow.py:1273 TurtleArt/talogo.py:432
 msgid "Stop turtle"
 msgstr "Parar tortuga"
 
-#: TurtleArtActivity.py:922 util/helpbutton.py:44 turtleblocks.py:509
+#: TurtleArtActivity.py:922 util/helpbutton.py:44 turtleblocks.py:513
 msgid "Help"
 msgstr "Ayuda"
 
-#: TurtleArtActivity.py:923 turtleblocks.py:504
+#: TurtleArtActivity.py:923 turtleblocks.py:505
 msgid "Stop"
 msgstr "Parar"
 
-#: TurtleArtActivity.py:938 TurtleArt/tawindow.py:2044
+#: TurtleArtActivity.py:938 TurtleArt/tawindow.py:2063
 #: TurtleArt/tacollaboration.py:153
 msgid "Share selected blocks"
 msgstr "Compartir bloques seleccionados"
@@ -225,12 +225,12 @@ msgid "Save snapshot"
 msgstr "Guardar instantánea"
 
 #: TurtleArtActivity.py:956 TurtleArtActivity.py:1192
-#: TurtleArtActivity.py:1231 turtleblocks.py:435
+#: TurtleArtActivity.py:1231 turtleblocks.py:436
 msgid "Add project"
 msgstr "Agregar proyecto"
 
 #: TurtleArtActivity.py:959 TurtleArtActivity.py:1197
-#: TurtleArtActivity.py:1237 turtleblocks.py:436
+#: TurtleArtActivity.py:1237 turtleblocks.py:437
 msgid "Load plugin"
 msgstr "Cargar plugin"
 
@@ -247,7 +247,7 @@ msgstr "Paletas"
 msgid "Sharing blocks disabled"
 msgstr "Compartir bloques deshabilitado"
 
-#: TurtleArtActivity.py:1138 turtleblocks.py:438
+#: TurtleArtActivity.py:1138 turtleblocks.py:439
 msgid "Save"
 msgstr "Guardar"
 
@@ -255,7 +255,7 @@ msgstr "Guardar"
 msgid "Load"
 msgstr "Cargar"
 
-#: TurtleArtActivity.py:1189 turtleblocks.py:434
+#: TurtleArtActivity.py:1189 turtleblocks.py:435
 msgid "Open"
 msgstr "Abrir"
 
@@ -284,125 +284,139 @@ msgstr "<Ctrl>s"
 msgid "Plugin %s already installed."
 msgstr "El plugin %s ya se encuentra instalado."
 
-#: TurtleArtActivity.py:1453 turtleblocks.py:578
+#: TurtleArtActivity.py:1453 turtleblocks.py:583
 #, python-format
 msgid "Do you want to reinstall %s?"
 msgstr "¿Desea reinstalar %s?"
 
-#: turtleblocks.py:105
+#: turtleblocks.py:106
 msgid "usage is"
 msgstr "el uso es"
 
-#: turtleblocks.py:304
+#: turtleblocks.py:305
 msgid "No option action:"
 msgstr "Sin acción alternativa:"
 
-#: turtleblocks.py:319
+#: turtleblocks.py:320
 msgid "File not found"
 msgstr "Fichero no encontrado"
 
-#: turtleblocks.py:343
+#: turtleblocks.py:344
 #, python-format
 msgid "Configuration directory not writable: %s"
 msgstr "Directorio de configuración no modificable: %s"
 
-#: turtleblocks.py:431
+#: turtleblocks.py:432
 msgid "New"
 msgstr "Nuevo"
 
-#: turtleblocks.py:432
+#: turtleblocks.py:433
 msgid "Show sample projects"
 msgstr "Mostrar proyectos de ejemplo"
 
-#: turtleblocks.py:439
+#: turtleblocks.py:440
 msgid "Save as"
 msgstr "Guardar como"
 
-#: turtleblocks.py:443
+#: turtleblocks.py:444
 msgid "Export as"
 msgstr "Exportar como"
 
-#: turtleblocks.py:446 TurtleArt/tawindow.py:4746
+#: turtleblocks.py:447 TurtleArt/tawindow.py:4765
 msgid "image"
 msgstr "imagen"
 
-#: turtleblocks.py:448
+#: turtleblocks.py:449
 msgid "SVG"
 msgstr "SVG"
 
-#: turtleblocks.py:450 TurtleArt/tawindow.py:4637
+#: turtleblocks.py:451 TurtleArt/tawindow.py:4656
 msgid "icon"
 msgstr "icono"
 
 #. TRANS: ODP is Open Office presentation
-#: turtleblocks.py:453
+#: turtleblocks.py:454
 msgid "ODP"
 msgstr "ODP"
 
-#: turtleblocks.py:455
+#: turtleblocks.py:456
 msgid "Logo"
 msgstr "Logo"
 
-#: turtleblocks.py:457
+#: turtleblocks.py:458
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:654
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:669
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:685
 msgid "Python"
 msgstr "Python"
 
-#: turtleblocks.py:459
+#: turtleblocks.py:460
 msgid "Quit"
 msgstr "Salir"
 
-#: turtleblocks.py:460
+#: turtleblocks.py:461
 msgid "File"
 msgstr "Archivo"
 
-#: turtleblocks.py:468
+#: turtleblocks.py:469
 msgid "Rescale coordinates"
 msgstr "Escalar coordenadas"
 
-#: turtleblocks.py:474
+#: turtleblocks.py:475
 msgid "Reset block size"
 msgstr "Restaurar el tamaño del bloque"
 
-#: turtleblocks.py:495
+#: turtleblocks.py:496
 msgid "Show/hide blocks"
 msgstr "Mostar/ocultar bloques"
 
-#: turtleblocks.py:497
+#: turtleblocks.py:498
 msgid "Tools"
 msgstr "Herramientas"
 
-#: turtleblocks.py:503
+#: turtleblocks.py:504
 msgid "Debug"
 msgstr "Depurar"
 
-#: turtleblocks.py:505
+#: turtleblocks.py:506
 msgid "Turtle"
 msgstr "Tortuga"
 
-#: turtleblocks.py:508
+#: turtleblocks.py:509
+msgid "Plugins"
+msgstr "Extensiones"
+
+#: turtleblocks.py:512
 msgid "About..."
 msgstr "Acerca..."
 
-#: turtleblocks.py:562
+#: turtleblocks.py:567
 msgid "You have unsaved work. Would you like to save before quitting?"
 msgstr "Hay trabajo sin guardar. ¿Le gustaría guardar antes de salir?"
 
-#: turtleblocks.py:567
+#: turtleblocks.py:572
 msgid "Save project?"
 msgstr "¿Guardar el proyecto?"
 
-#: turtleblocks.py:577
+#: turtleblocks.py:582
 #, python-format
 #, python-format,
 msgid "Plugin %s already installed"
 msgstr "El plugin %s ya está instalado."
 
-#: turtleblocks.py:721
+#: turtleblocks.py:726
 msgid "myproject"
 msgstr "miproyecto"
+
+#: turtleblocks.py:805 TurtleArt/taplugin.py:90
+#, python-format
+msgid "Please restart %s in order to use the plugin."
+msgstr "Reinicie %s para poder usar el plugin."
+
+#: turtleblocks.py:810
+#, python-format
+msgid "Please restart %s in order to unload the plugin."
+msgstr "Reinicie %s para poder remover el plugin."
 
 #: plugins/camera_sensor/camera_sensor.py:67
 #: plugins/light_sensor/light_sensor.py:52
@@ -1255,8 +1269,8 @@ msgstr "Descripción:"
 msgid "Submit to Web"
 msgstr "Enviar a la Web"
 
-#: gnome_plugins/uploader_plugin.py:144 TurtleArt/tawindow.py:1502
-#: TurtleArt/tawindow.py:1541
+#: gnome_plugins/uploader_plugin.py:144 TurtleArt/tawindow.py:1521
+#: TurtleArt/tawindow.py:1560
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -1341,128 +1355,128 @@ msgstr "cambia la orientación de la paleta de bloques"
 msgid "trash"
 msgstr "basura"
 
-#: TurtleArt/tawindow.py:1128 TurtleArt/tawindow.py:1129
+#: TurtleArt/tawindow.py:1147 TurtleArt/tawindow.py:1148
 msgid "orientation"
 msgstr "orientación"
 
-#: TurtleArt/tawindow.py:1143 TurtleArt/tawindow.py:1610
+#: TurtleArt/tawindow.py:1162 TurtleArt/tawindow.py:1629
 msgid "next"
 msgstr "siguiente"
 
-#: TurtleArt/tawindow.py:1182 TurtleArt/tawindow.py:1631
+#: TurtleArt/tawindow.py:1201 TurtleArt/tawindow.py:1650
 msgid "shift"
 msgstr "desplazar"
 
-#: TurtleArt/tawindow.py:1258
+#: TurtleArt/tawindow.py:1277
 msgid "Please hit the Stop Button before making changes to your program"
 msgstr "Por favor, pulsa el Botón Detener antes de hacer cambios a tu programa"
 
-#: TurtleArt/tawindow.py:1301 TurtleArt/tawindow.py:1414
-#: TurtleArt/tawindow.py:1427 TurtleArt/tawindow.py:2074
-#: TurtleArt/tawindow.py:4892 TurtleArt/tabasics.py:1057
+#: TurtleArt/tawindow.py:1320 TurtleArt/tawindow.py:1433
+#: TurtleArt/tawindow.py:1446 TurtleArt/tawindow.py:2093
+#: TurtleArt/tawindow.py:4911 TurtleArt/tabasics.py:1057
 #: TurtleArt/tabasics.py:1060 TurtleArt/tabasics.py:1073
 #: TurtleArt/tabasics.py:1077 TurtleArt/tabasics.py:1223
 #: TurtleArt/tabasics.py:1227
 msgid "action"
 msgstr "acción"
 
-#: TurtleArt/tawindow.py:1307 TurtleArt/tawindow.py:1453
-#: TurtleArt/tawindow.py:2080 TurtleArt/tawindow.py:4919
-#: TurtleArt/tawindow.py:4946 TurtleArt/tabasics.py:1145
+#: TurtleArt/tawindow.py:1326 TurtleArt/tawindow.py:1472
+#: TurtleArt/tawindow.py:2099 TurtleArt/tawindow.py:4938
+#: TurtleArt/tawindow.py:4965 TurtleArt/tabasics.py:1145
 #: TurtleArt/tabasics.py:1160
 msgid "my box"
 msgstr "mi caja"
 
-#: TurtleArt/tawindow.py:1322
+#: TurtleArt/tawindow.py:1341
 msgid "Select blocks to share"
 msgstr "Selecciona bloques para compartir"
 
-#: TurtleArt/tawindow.py:1499 TurtleArt/tawindow.py:1513
+#: TurtleArt/tawindow.py:1518 TurtleArt/tawindow.py:1532
 msgid "Really overwrite stack?"
 msgstr "¿Desea sobrescribir la pila?"
 
-#: TurtleArt/tawindow.py:1506 TurtleArt/tawindow.py:1516
+#: TurtleArt/tawindow.py:1525 TurtleArt/tawindow.py:1535
 msgid "Overwrite stack"
 msgstr "Sobrescribir pila"
 
-#: TurtleArt/tawindow.py:1538 TurtleArt/tawindow.py:1551
+#: TurtleArt/tawindow.py:1557 TurtleArt/tawindow.py:1570
 msgid "Really delete stack?"
 msgstr "¿Desea eliminar la pila?"
 
-#: TurtleArt/tawindow.py:1943 TurtleArt/tabasics.py:1254
+#: TurtleArt/tawindow.py:1962 TurtleArt/tabasics.py:1254
 msgid "empty trash"
 msgstr "vaciar papelera"
 
-#: TurtleArt/tawindow.py:1944
+#: TurtleArt/tawindow.py:1963
 msgid "Do you really want to empty the trash?"
 msgstr "¿Desea realmente vaciar la papelera?"
 
-#: TurtleArt/tawindow.py:4281 TurtleArt/tawindow.py:4302
+#: TurtleArt/tawindow.py:4300 TurtleArt/tawindow.py:4321
 #, python-format
 msgid "Cannot write data to %s."
 msgstr "No se puede escribir datos en el archivo %s."
 
-#: TurtleArt/tawindow.py:4282
+#: TurtleArt/tawindow.py:4301
 msgid "Please choose a different save directory."
 msgstr "Por favor elige una carpeta diferente para guardar."
 
-#: TurtleArt/tawindow.py:4303
+#: TurtleArt/tawindow.py:4322
 msgid "Please choose a different file name."
 msgstr "Por favor elija un nombre de archivo diferente."
 
-#: TurtleArt/tawindow.py:4411 TurtleArt/tabasics.py:285
+#: TurtleArt/tawindow.py:4430 TurtleArt/tabasics.py:285
 msgid "xcor"
 msgstr "coorx"
 
-#: TurtleArt/tawindow.py:4412 TurtleArt/tabasics.py:300
+#: TurtleArt/tawindow.py:4431 TurtleArt/tabasics.py:300
 msgid "ycor"
 msgstr "coory"
 
-#: TurtleArt/tawindow.py:4412 TurtleArt/tabasics.py:315
+#: TurtleArt/tawindow.py:4431 TurtleArt/tabasics.py:315
 msgid "heading"
 msgstr "rumbo"
 
-#: TurtleArt/tawindow.py:4438 TurtleArt/tawindow.py:4443
+#: TurtleArt/tawindow.py:4457 TurtleArt/tawindow.py:4462
 #: TurtleArt/tabasics.py:360 TurtleArt/tabasics.py:374
 #: TurtleArt/tabasics.py:448
 msgid "shade"
 msgstr "tono"
 
-#: TurtleArt/tawindow.py:4439 TurtleArt/tawindow.py:4444
+#: TurtleArt/tawindow.py:4458 TurtleArt/tawindow.py:4463
 #: TurtleArt/tabasics.py:374 TurtleArt/tabasics.py:462
 msgid "gray"
 msgstr "gris"
 
-#: TurtleArt/tawindow.py:4442 TurtleArt/tabasics.py:360
+#: TurtleArt/tawindow.py:4461 TurtleArt/tabasics.py:360
 #: TurtleArt/tabasics.py:373 TurtleArt/tabasics.py:436
 msgid "color"
 msgstr "color"
 
-#: TurtleArt/tawindow.py:4512
+#: TurtleArt/tawindow.py:4531
 msgid "True"
 msgstr "Verdadero"
 
-#: TurtleArt/tawindow.py:4512
+#: TurtleArt/tawindow.py:4531
 msgid "False"
 msgstr "Falso"
 
-#: TurtleArt/tawindow.py:4905 TurtleArt/tabasics.py:1078
+#: TurtleArt/tawindow.py:4924 TurtleArt/tabasics.py:1078
 msgid "invokes named action stack"
 msgstr "invocar la pila de acción nombrado"
 
-#: TurtleArt/tawindow.py:4932 TurtleArt/tabasics.py:1163
+#: TurtleArt/tawindow.py:4951 TurtleArt/tabasics.py:1163
 msgid "named variable (numeric value)"
 msgstr "variable nombrado (valor numérico)"
 
-#: TurtleArt/tawindow.py:4954 TurtleArt/tabasics.py:1141
+#: TurtleArt/tawindow.py:4973 TurtleArt/tabasics.py:1141
 msgid "store in"
 msgstr "guardar en"
 
-#: TurtleArt/tawindow.py:4954 TurtleArt/tabasics.py:1141
+#: TurtleArt/tawindow.py:4973 TurtleArt/tabasics.py:1141
 msgid "value"
 msgstr "valor"
 
-#: TurtleArt/tawindow.py:4959 TurtleArt/tabasics.py:1146
+#: TurtleArt/tawindow.py:4978 TurtleArt/tabasics.py:1146
 msgid "stores numeric value in named variable"
 msgstr "guarda valor numérico en la variable nombrada"
 
@@ -2144,12 +2158,8 @@ msgstr "el bloque no es exportable"
 msgid "error while exporting block"
 msgstr "error mientras se exportaba el bloque"
 
-#: TurtleArt/taplugin.py:90
-msgid "Please restart Turtle Art in order to use the plugin."
-msgstr "Reinicie TortugArte para poder usar el plugin."
-
-#: TurtleArt/taplugin.py:93 TurtleArt/taplugin.py:104
-#: TurtleArt/taplugin.py:107
+#: TurtleArt/taplugin.py:93 TurtleArt/taplugin.py:103
+#: TurtleArt/taplugin.py:105
 msgid "Plugin could not be installed."
 msgstr "El plugin no puede ser instalado."
 
@@ -2205,6 +2215,9 @@ msgstr "reproducir"
 #: pysamples/grecord.py:218
 msgid "save"
 msgstr "guardar"
+
+#~ msgid "Please restart Turtle Art in order to use the plugin."
+#~ msgstr "Reinicie TortugArte para poder usar el plugin."
 
 #~ msgid "set text color"
 #~ msgstr "fijar el color del texto"
