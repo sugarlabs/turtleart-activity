@@ -415,7 +415,7 @@ class TurtleArtWindow():
         ''' Look for plugin files in plugin dir. '''
         plugin_files = {}
         for path in paths:
-            candidates = sorted(os.listdir(path))
+            candidates = os.listdir(path)
             for dirname in candidates:
                 pname = os.path.join(path, dirname, dirname + '.py')
                 if os.path.exists(pname):
@@ -430,8 +430,8 @@ class TurtleArtWindow():
         if paths[0] != homepath and os.path.exists(homepath):
             paths.append(homepath)
         turtleart_plugin_list = self._get_plugins_from_plugins_dir(paths)
-   
-        for plugin_dir in turtleart_plugin_list:
+        plist = sorted(turtleart_plugin_list.keys())
+        for plugin_dir in plist:
             plugin_path = turtleart_plugin_list[plugin_dir]
             # add icons paths of all plugins
             self._add_plugin_icon_dir(os.path.join(plugin_path, plugin_dir))
@@ -488,9 +488,9 @@ class TurtleArtWindow():
 
     def _setup_plugins(self):
         ''' Initial setup -- called just once. '''
-        for plugin in self.turtleart_plugins.values():
+        for plugin in sorted(self.turtleart_plugins.keys()):
             try:
-                plugin.setup()
+                self.turtleart_plugins[plugin].setup()
             except Exception as e:
                 debug_output('Plugin %s failed during setup: %s' %
                              (plugin, str(e)), self.running_sugar)
