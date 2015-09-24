@@ -59,5 +59,5 @@ class MenuBuilder():
             menu_items.connect('activate', callback)
         else:
             menu_items.connect('activate', callback, arg)
-        menu_items.show()
+        #menu_items.show()
         return menu_items

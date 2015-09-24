@@ -449,6 +449,7 @@ class TurtleArtWindow():
                 self.turtleart_favorites_plugins.append(plugin_dir)
             MenuBuilder.make_checkmenu_item(self.activity._plugin_menu, \
                          plugin_dir, self.activity._do_toggle_plugin_cb, status)
+        self.activity._plugin_menu.show_all()
 
     def init_plugin(self, plugin_dir, plugin_path):
         ''' Initialize plugin in plugin_dir '''
