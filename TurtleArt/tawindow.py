@@ -444,12 +444,13 @@ class TurtleArtWindow():
                     status = (self.activity.client.get_int(gconf_path) == 1)
                 except:
                     pass
+                MenuBuilder.make_checkmenu_item(self.activity._plugin_menu, \
+                         plugin_dir, self.activity._do_toggle_plugin_cb, status)
             if status:
                 self.init_plugin(plugin_dir, plugin_path)
                 self.turtleart_favorites_plugins.append(plugin_dir)
-            MenuBuilder.make_checkmenu_item(self.activity._plugin_menu, \
-                         plugin_dir, self.activity._do_toggle_plugin_cb, status)
-        self.activity._plugin_menu.show_all()
+        if not(self.running_sugar):
+            self.activity._plugin_menu.show_all()
 
     def init_plugin(self, plugin_dir, plugin_path):
         ''' Initialize plugin in plugin_dir '''
