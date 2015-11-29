@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-#Copyright (c) 2011, 2012 Walter Bender
+# Copyright (c) 2011, 2012 Walter Bender
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -64,7 +64,7 @@ class Camera_sensor(Plugin):
         sensors_palette = make_palette('sensor',
                                        colors=["#FF6060", "#A06060"],
                                        help_string=_(
-                'Palette of sensor blocks'),
+                                           'Palette of sensor blocks'),
                                        position=6)
         media_palette = make_palette('media',
                                      colors=["#A0FF00", "#80A000"],
@@ -84,14 +84,14 @@ class Camera_sensor(Plugin):
             if len(self.devices) > 1:
                 second_cam = True
 
-        sensors_palette.add_block('luminance',
-                                  hidden=hidden,
-                                  style='box-style',
-                                  label=_('brightness'),
-                                  help_string=
-                                      _('light level detected by camera'),
-                                  value_block=True,
-                                  prim_name='luminance')
+        sensors_palette.add_block(
+            'luminance',
+            hidden=hidden,
+            style='box-style',
+            label=_('brightness'),
+            help_string=_('light level detected by camera'),
+            value_block=True,
+            prim_name='luminance')
         self._parent.lc.def_prim(
             'luminance', 0,
             Primitive(self.prim_read_camera,
@@ -116,14 +116,14 @@ class Camera_sensor(Plugin):
                                 content_block=True)
 
         # Depreciated block
-        sensors_palette.add_block('read_camera',
-                                  hidden=True,
-                                  style='box-style',
-                                  label=_('brightness'),
-                                  help_string=_(
-                        'Average RGB color from camera is pushed to the stack'),
-                                  value_block=True,
-                                  prim_name='read_camera')
+        sensors_palette.add_block(
+            'read_camera',
+            hidden=True,
+            style='box-style',
+            label=_('brightness'),
+            help_string=_('Average RGB color from camera is pushed to the stack'),
+            value_block=True,
+            prim_name='read_camera')
         self._parent.lc.def_prim(
             'read_camera', 0,
             Primitive(self.prim_read_camera,
@@ -218,8 +218,8 @@ class Camera_sensor(Plugin):
         if array is not None:
             length = int(len(array) / 3)
             if length != width * height:
-                debug_output('array length != width x height (%d != %dx%d)' % \
-                                 (length, width, height),
+                debug_output('array length != width x height (%d != %dx%d)' %
+                             (length, width, height),
                              self._parent.running_sugar)
 
             # Average the 100 pixels in the center of the screen

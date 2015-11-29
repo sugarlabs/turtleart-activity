@@ -49,6 +49,7 @@ SENSOR_DC_BIAS = 'resistance'
 
 
 class AudioGrab():
+
     """ The interface between measure and the audio device """
 
     def __init__(self, callable1, parent,
@@ -357,7 +358,7 @@ class AudioGrab():
         if not control:
             return 100
         volume = self._mixer.get_volume(control)
-        if type(volume) == tuple:
+        if isinstance(volume, tuple):
             hw_volume = volume[0]
         else:
             hw_volume = volume
@@ -533,7 +534,7 @@ class AudioGrab():
                     self._set_volume(self._mic_boost_control, 'boost', 0)
             # Else if there is a flag property, use set_mute
             elif self._mic_boost_control not in self._mixer.list_tracks() or \
-               hasattr(self._mic_boost_control.props, 'flags'):
+                    hasattr(self._mic_boost_control.props, 'flags'):
                 self._set_mute(
                     self._mic_boost_control, 'Mic Boost', not mic_boost)
         else:
