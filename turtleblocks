@@ -21,4 +21,14 @@ import os
 from TurtleArt import turtleblocks
 
 mydir = os.path.dirname(os.path.abspath(__file__))
-turtleblocks.TurtleMain(mydir, mydir)
+if os.path.exists(os.path.join(mydir, "activity", "activity.info")):
+    # Running from git checkout
+    libdir = mydir
+    sharedir = mydir
+else:
+    # Running as installed package
+    from TurtleArt.installinfo import INSTALL_PREFIX
+    libdir = os.path.join(INSTALL_PREFIX, "lib", "TurtleBlocks")
+    sharedir = os.path.join(INSTALL_PREFIX, "share", "TurtleBlocks")
+
+turtleblocks.TurtleMain(libdir, sharedir)
