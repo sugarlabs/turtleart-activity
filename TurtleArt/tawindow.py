@@ -146,9 +146,10 @@ class TurtleArtWindow():
 
     ''' TurtleArt Window class abstraction  '''
 
-    def __init__(self, canvas_window, path, parent=None, activity=None,
-                 mycolors=None, mynick=None, turtle_canvas=None,
-                 running_sugar=True, running_turtleart=True):
+    def __init__(self, canvas_window, lib_path, share_path, parent=None,
+                 activity=None, mycolors=None, mynick=None,
+                 turtle_canvas=None, running_sugar=True,
+                 running_turtleart=True):
         '''
         parent: the GTK Window that TA runs in
         activity: the object that instantiated this TurtleArtWindow (in
@@ -184,7 +185,7 @@ class TurtleArtWindow():
                 # Make sure macros_path is somewhere writable
                 self.macros_path = os.path.join(
                     os.path.expanduser('~'), 'Activities',
-                    os.path.basename(path), _MACROS_SUBPATH)
+                    os.path.basename(lib_path), _MACROS_SUBPATH)
             self._setup_events()
         else:
             self.interactive_mode = False
@@ -196,10 +197,13 @@ class TurtleArtWindow():
         else:
             self.activity = parent
 
-        # loading and saving
-        self.path = path
-        self.load_save_folder = os.path.join(path, 'samples')
-        self.py_load_save_folder = os.path.join(path, 'pysamples')
+        # paths
+        self.lib_path = lib_path
+        self.share_path = share_path
+        self.load_save_folder = os.path.join(self.share_path, 'samples')
+        self.py_load_save_folder = os.path.join(self.share_path, 'pysamples')
+        self.images_path = os.path.join(self.share_path, 'images')
+
         self._py_cache = {}
         self.used_block_list = []  # Which blocks has the user used?
         self.save_folder = None
@@ -334,7 +338,7 @@ class TurtleArtWindow():
 
         self._configure_cb(None)
 
-        self.icon_paths = [os.path.join(self.path, 'icons')]
+        self.icon_paths = [os.path.join(self.share_path, 'icons')]
 
         self.lc = LogoCode(self)
 
@@ -405,7 +409,7 @@ class TurtleArtWindow():
 
     def _get_plugin_home(self):
         ''' Look in the execution directory '''
-        path = os.path.join(self.path, _PLUGIN_SUBPATH)
+        path = os.path.join(self.lib_path, _PLUGIN_SUBPATH)
         if os.path.exists(path):
             return path
         else:
@@ -425,7 +429,7 @@ class TurtleArtWindow():
     def _init_plugins(self):
         ''' Try importing plugin files from the plugin dir. '''
         homepath = os.path.join(os.path.expanduser('~'), 'Activities',
-                                os.path.basename(self.path), _PLUGIN_SUBPATH)
+                                os.path.basename(self.lib_path), _PLUGIN_SUBPATH)
         paths = [self._get_plugin_home()]
         if paths[0] != homepath and os.path.exists(homepath):
             paths.append(homepath)
@@ -628,11 +632,12 @@ class TurtleArtWindow():
                 filename = name
             # Try both images/ and plugins/*/images/
             for path in SKIN_PATHS:
-                if os.path.exists(os.path.join(self.path, path,
+                if os.path.exists(os.path.join(self.share_path, path,
                                                filename + '.svg')):
                     self.media_shapes[name] = svg_str_to_pixbuf(
                         svg_from_file(
-                            os.path.join(self.path, path, filename + '.svg')))
+                            os.path.join(self.share_path, path,
+                                         filename + '.svg')))
                     break
 
     def _setup_misc(self):
@@ -643,11 +648,11 @@ class TurtleArtWindow():
             if name in ['print', 'help', 'status'] and self.width > 1024:
                 self.status_shapes[name] = svg_str_to_pixbuf(
                     svg_from_file(
-                        os.path.join(self.path, 'images', name + '1200.svg')))
+                        os.path.join(self.images_path, name + '1200.svg')))
             else:
                 self.status_shapes[name] = svg_str_to_pixbuf(
                     svg_from_file(
-                        os.path.join(self.path, 'images', name + '.svg')))
+                        os.path.join(self.images_path, name + '.svg')))
         self.status_spr = Sprite(self.sprite_list, 0, self.height - 200,
                                  self.status_shapes['status'])
         self.status_spr.hide()
@@ -662,7 +667,7 @@ class TurtleArtWindow():
                 int(self.width / 2 - 600),
                 int(self.height / 2 - 450),
                 svg_str_to_pixbuf(
-                    svg_from_file('%s/images/%s.svg' % (self.path, name))))
+                    svg_from_file('%s/%s.svg' % (self.images_path, name))))
             self.overlay_shapes[name].hide()
             self.overlay_shapes[name].type = 'overlay'
 
@@ -677,7 +682,7 @@ class TurtleArtWindow():
                     svg_str_to_pixbuf(
                         svg_from_file(
                             os.path.join(
-                                self.path, 'icons', '%s.svg' % (name)))))
+                                self.share_path, 'icons', '%s.svg' % (name)))))
                 self.toolbar_shapes[name].set_layer(TAB_LAYER)
                 self.toolbar_shapes[name].name = name
                 self.toolbar_shapes[name].type = 'toolbar'
@@ -687,7 +692,7 @@ class TurtleArtWindow():
         # Cartesian overlay has to be scaled to match the coordinate_scale
         # 200 pixels in the graphic == height / 4. (10 units)
         pixbuf = svg_str_to_pixbuf(
-            svg_from_file('%s/images/%s.svg' % (self.path, 'Cartesian')))
+            svg_from_file('%s/%s.svg' % (self.images_path, 'Cartesian')))
 
         if self.running_sugar:
             scale = self.height / 800.
@@ -914,7 +919,7 @@ class TurtleArtWindow():
                 int(self.width / 2 - 600),
                 int(self.height / 2 - 450),
                 svg_str_to_pixbuf(
-                    svg_from_file('%s/images/%s.svg' % (self.path, name))))
+                    svg_from_file('%s/%s.svg' % (self.images_path, name))))
             '''
             if showing:
                 self.overlay_shapes[name].set_layer(OVERLAY_LAYER)
@@ -1137,7 +1142,7 @@ class TurtleArtWindow():
                 self.toolbar_offset,
                 svg_str_to_pixbuf(
                     svg_from_file(
-                        '%s/images/palettehorizontal.svg' % (self.path)))))
+                        '%s/palettehorizontal.svg' % (self.images_path)))))
         self.palette_button.append(
             Sprite(
                 self.sprite_list,
@@ -1145,7 +1150,7 @@ class TurtleArtWindow():
                 self.toolbar_offset,
                 svg_str_to_pixbuf(
                     svg_from_file(
-                        '%s/images/palettevertical.svg' % (self.path)))))
+                        '%s/palettevertical.svg' % (self.images_path)))))
         self.palette_button[0].name = _('orientation')
         self.palette_button[1].name = _('orientation')
         self.palette_button[0].type = 'palette'
@@ -1160,7 +1165,7 @@ class TurtleArtWindow():
                 self.toolbar_offset,
                 svg_str_to_pixbuf(
                     svg_from_file(
-                        '%s/images/palettenext.svg' % (self.path)))))
+                        '%s/palettenext.svg' % (self.images_path)))))
         self.palette_button[2].name = _('next')
         self.palette_button[2].type = 'palette'
         self.palette_button[2].set_layer(TAB_LAYER)
@@ -1174,7 +1179,7 @@ class TurtleArtWindow():
                 self.toolbar_offset + dims[1],
                 svg_str_to_pixbuf(
                     svg_from_file(
-                        '%s/images/palettehshift.svg' % (self.path)))))
+                        '%s/palettehshift.svg' % (self.images_path)))))
         self.palette_button.append(
             Sprite(
                 self.sprite_list,
@@ -1182,7 +1187,7 @@ class TurtleArtWindow():
                 self.toolbar_offset,
                 svg_str_to_pixbuf(
                     svg_from_file(
-                        '%s/images/palettevshift.svg' % (self.path)))))
+                        '%s/palettevshift.svg' % (self.images_path)))))
         self.palette_button.append(
             Sprite(
                 self.sprite_list,
@@ -1190,7 +1195,7 @@ class TurtleArtWindow():
                 self.toolbar_offset + dims[1],
                 svg_str_to_pixbuf(
                     svg_from_file(
-                        '%s/images/palettehshift2.svg' % (self.path)))))
+                        '%s/palettehshift2.svg' % (self.images_path)))))
         self.palette_button.append(
             Sprite(
                 self.sprite_list,
@@ -1198,7 +1203,7 @@ class TurtleArtWindow():
                 self.toolbar_offset,
                 svg_str_to_pixbuf(
                     svg_from_file(
-                        '%s/images/palettevshift2.svg' % (self.path)))))
+                        '%s/palettevshift2.svg' % (self.images_path)))))
         for i in range(4):
             self.palette_button[3 + i].name = _('shift')
             self.palette_button[3 + i].type = 'palette'
@@ -4138,11 +4143,11 @@ class TurtleArtWindow():
                 if self.running_sugar:
                     # For security reasons, only open files found in
                     # Python samples directory
-                    if os.path.exists(os.path.join(self.path, value)) and \
+                    if os.path.exists(os.path.join(self.share_path, value)) and \
                             value[0:9] == 'pysamples':
                         self.selected_blk = blk
                         self.load_python_code_from_file(
-                            fname=os.path.join(self.path, value),
+                            fname=os.path.join(self.share_path, value),
                             add_new_block=False)
                         self.selected_blk = None
                     else:  # or files from the Journal

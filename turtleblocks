@@ -18,19 +18,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 import os
-import string
-import sys
+from TurtleArt import turtleblocks
 
-argv = sys.argv[:]
-
-
-TAPATH = '/usr/share/sugar/activities/TurtleArt.activity'
-
-
-if len(argv) > 1:
-    argv = argv[1:]
-    params = string.join(argv, ' ')
-    os.system(os.path.join(TAPATH, 'turtleblocks.py') + ' ' + params)
-else:
-    os.system(os.path.join(TAPATH, 'turtleblocks.py'))
-
+mydir = os.path.dirname(os.path.abspath(__file__))
+turtleblocks.TurtleMain(mydir, mydir)

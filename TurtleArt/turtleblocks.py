@@ -82,14 +82,15 @@ class TurtleMain():
     _COORDINATE_SCALE = '/desktop/sugar/activities/turtleart/coordinatescale'
     _PLUGINS_PATH = '/desktop/sugar/activities/turtleart/plugins/'
 
-    def __init__(self):
+    def __init__(self, lib_path, share_path):
         self._setting_gconf_overrides = False
+
+        self._lib_path = lib_path
+        self._share_path = share_path
         self._abspath = os.path.abspath('.')
-        self._execdirname = self._get_execution_dir()
-        if self._execdirname is not None:
-            os.chdir(self._execdirname)
+
         file_activity_info = ConfigParser.ConfigParser()
-        activity_info_path = os.path.abspath('./activity/activity.info')
+        activity_info_path = os.path.join(share_path, 'activity/activity.info')
         file_activity_info.read(activity_info_path)
         bundle_id = file_activity_info.get('Activity', 'bundle_id')
         self.version = file_activity_info.get('Activity', 'activity_version')
@@ -97,9 +98,10 @@ class TurtleMain():
         self.summary = file_activity_info.get('Activity', 'summary')
         self.website = file_activity_info.get('Activity', 'website')
         self.icon_name = file_activity_info.get('Activity', 'icon')
-        self.bundle_path = self._abspath
-        path = os.path.abspath('./locale/')
-        gettext.bindtextdomain(bundle_id, path)
+
+        path = os.path.join(share_path, 'locale')
+        if os.path.isdir(path):
+            gettext.bindtextdomain(bundle_id, path)
         gettext.textdomain(bundle_id)
         global _
         _ = gettext.gettext
@@ -140,9 +142,9 @@ class TurtleMain():
 
     def _get_gnome_plugin_home(self):
         ''' Use plugin directory associated with execution path. '''
-        if os.path.exists(os.path.join(self._execdirname,
+        if os.path.exists(os.path.join(self._lib_path,
                                        self._GNOME_PLUGIN_SUBPATH)):
-            return os.path.join(self._execdirname, self._GNOME_PLUGIN_SUBPATH)
+            return os.path.join(self._lib_path, self._GNOME_PLUGIN_SUBPATH)
         else:
             return None
 
@@ -240,12 +242,12 @@ return %s(self)" % (p, P, P)
             gtk.gdk.screen_height() * 2)
 
         # Make sure the autosave directory is writeable
-        if is_writeable(self._execdirname):
-            self._autosavedirname = self._execdirname
+        if is_writeable(self._share_path):
+            self._autosavedirname = self._share_path
         else:
             self._autosavedirname = os.path.expanduser('~')
 
-        self.tw = TurtleArtWindow(self.canvas, self._execdirname,
+        self.tw = TurtleArtWindow(self.canvas, self._lib_path, self._share_path,
                                   turtle_canvas=self.turtle_canvas,
                                   activity=self, running_sugar=False)
         self.tw.save_folder = self._abspath  # os.path.expanduser('~')
@@ -384,8 +386,8 @@ return %s(self)" % (p, P, P)
         win.move(self.x, self.y)
         win.maximize()
         win.set_title('%s %s' % (self.name, str(self.version)))
-        if os.path.exists(os.path.join(self._execdirname, self._ICON_SUBPATH)):
-            win.set_icon_from_file(os.path.join(self._execdirname,
+        if os.path.exists(os.path.join(self._share_path, self._ICON_SUBPATH)):
+            win.set_icon_from_file(os.path.join(self._share_path,
                                                 self._ICON_SUBPATH))
         win.show()
         win.connect('delete_event', self._quit_ta)
@@ -611,8 +613,7 @@ Would you like to save before quitting?'))
         self.tw.load_file_from_chooser(False)
 
     def _do_load_plugin_cb(self, widget):
-        self.tw.load_save_folder = self._get_execution_dir()
-        file_path, loaddir = get_load_name('.tar.gz', self.tw.load_save_folder)
+        file_path, loaddir = get_load_name('.tar.gz')
         if file_path is None:
             return
         try:
@@ -697,9 +698,8 @@ Would you like to save before quitting?'))
         if len(logocode) == 0:
             return
         save_type = '.lg'
-        self.tw.load_save_folder = self._get_execution_dir()
         filename, self.tw.load_save_folder = get_save_name(
-            save_type, self.tw.load_save_folder, 'logosession')
+            save_type, None, 'logosession')
         if isinstance(filename, unicode):
             filename = filename.encode('utf-8')
         if filename is not None:
@@ -727,9 +727,8 @@ Would you like to save before quitting?'))
         elif default_name.endswith(".ta") or default_name.endswith(".tb"):
             default_name = default_name[:-3]
         save_type = '.py'
-        self.tw.load_save_folder = self._get_execution_dir()
         filename, self.tw.load_save_folder = get_save_name(
-            save_type, self.tw.load_save_folder, default_name)
+            save_type, None, default_name)
         if isinstance(filename, unicode):
             filename = filename.encode('utf-8')
         if filename is not None:
@@ -931,9 +930,10 @@ Would you like to save before quitting?'))
         about.set_version(self.version)
         about.set_comments(_(self.summary))
         about.set_website(self.website)
+        logo_path = os.path.join(self._share_path, 'activity',
+                                 self.icon_name + '.svg')
         about.set_logo(
-            gtk.gdk.pixbuf_new_from_file(
-                'activity/' + self.icon_name + '.svg'))
+            gtk.gdk.pixbuf_new_from_file(logo_path))
         about.run()
         about.destroy()
 
@@ -1048,13 +1048,11 @@ Would you like to save before quitting?'))
         # Convert from thumbnail path to sample path
         basename = os.path.basename(self._selected_sample)[:-4]
         for suffix in ['.ta', '.tb']:
-            file_path = os.path.join(self._execdirname,
+            file_path = os.path.join(self._share_path,
                                      'samples', basename + suffix)
             if os.path.exists(file_path):
                 self.tw.load_files(file_path)
                 break
-        self.tw.load_save_folder = os.path.join(self._get_execution_dir(),
-                                                'samples')
         self.win.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.LEFT_PTR))
 
     def _fill_samples_list(self, store):
@@ -1071,7 +1069,7 @@ Would you like to save before quitting?'))
         samples = sorted(
             glob.glob(
                 os.path.join(
-                    self._get_execution_dir(),
+                    self._share_path,
                     'samples',
                     'thumbnails',
                     '*.png')))

@@ -17,16 +17,12 @@
 import os
 import logging
 
-def find_device(path=None):
+def find_device():
     """
     Search for devices.
     Return a device instance or None.
     """
-    device = None
-    if path is not None:
-        path = os.path.join(path, 'plugins/rfid')
-    else:
-        path = os.path.join('.', 'plugins/rfid')
+    path = os.path.dirname(os.path.abspath(__file__))
     for i in os.listdir(path):
         if not os.path.isdir(os.path.join(path, i)):
             try:
