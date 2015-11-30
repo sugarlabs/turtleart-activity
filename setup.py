@@ -21,7 +21,7 @@ if len(sys.argv) > 1 and '--no-sugar' == sys.argv[1]:
           author="Walter Bender",
           author_email="walter.bender@gmail.com",
           version='0.9.4',
-          packages=['TurtleArt'],
+          packages=['TurtleArt', 'TurtleArt.util'],
           scripts=['turtleart'],
           data_files=DATA_FILES,
           )
