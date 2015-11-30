@@ -10,6 +10,7 @@ if len(sys.argv) > 1 and '--no-sugar' == sys.argv[1]:
     import os
     import glob
     import shutil
+    import subprocess
     from distutils.core import setup
     from distutils.command.install import install
 
@@ -39,6 +40,24 @@ if len(sys.argv) > 1 and '--no-sugar' == sys.argv[1]:
 
             shutil.copytree("plugins", os.path.join(libdir, "plugins"))
             shutil.copytree("samples", os.path.join(sharedir, "samples"))
+
+            localedir = os.path.join(self.root + self.install_base, "share",
+                                     "locale")
+            for f in os.listdir('po'):
+                if not f.endswith('.po') or f == 'pseudo.po':
+                    continue
+
+                file_name = os.path.join('po', f)
+                lang = f[:-3]
+
+                mo_path = os.path.join(localedir, lang, 'LC_MESSAGES')
+                if not os.path.isdir(mo_path):
+                    os.makedirs(mo_path)
+
+                mo_file = os.path.join(mo_path, 'org.laptop.TurtleArtActivity.mo')
+                retcode = subprocess.call(['msgfmt', '--output-file=%s' % mo_file, file_name])
+                if retcode:
+                    print 'ERROR - msgfmt failed with return code %i.' % retcode
 
     DATA_FILES = [
         ('activity', glob.glob('activity/*')),
