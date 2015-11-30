@@ -34,7 +34,6 @@ import glob
 import cStringIO
 import errno
 import ConfigParser
-import gconf
 import tarfile
 import tempfile
 import subprocess
@@ -135,7 +134,11 @@ class TurtleMain():
             self._start_gtk()
 
     def _get_gconf_settings(self):
-        self.client = gconf.client_get_default()
+        try:
+            import gconf
+            self.client = gconf.client_get_default()
+        except ImportError:
+            pass
 
     def get_config_home(self):
         return CONFIG_HOME
@@ -263,6 +266,8 @@ return %s(self)" % (p, P, P)
                 self.tw.coord_scale = 0
             if self.client.get_int(self._ORIENTATION) == 1:
                 self.tw.orientation = 1
+        else:
+            self.tw.coord_scale = 0
 
     def _set_gconf_overrides(self):
         if self.tw.coord_scale == 0:
