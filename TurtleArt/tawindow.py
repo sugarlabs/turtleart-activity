@@ -29,6 +29,7 @@ import gobject
 import pango
 import pangocairo
 
+import sys
 from gettext import gettext as _
 
 try:
@@ -407,14 +408,6 @@ class TurtleArtWindow():
         ''' DEPRECATED '''
         return False  # Sugar will autoscroll the window for me
 
-    def _get_plugin_home(self):
-        ''' Look in the execution directory '''
-        path = os.path.join(self.lib_path, _PLUGIN_SUBPATH)
-        if os.path.exists(path):
-            return path
-        else:
-            return None
-
     def _get_plugins_from_plugins_dir(self, paths):
         ''' Look for plugin files in plugin dir. '''
         plugin_files = {}
@@ -428,11 +421,18 @@ class TurtleArtWindow():
 
     def _init_plugins(self):
         ''' Try importing plugin files from the plugin dir. '''
+        paths = set()
+
         homepath = os.path.join(os.path.expanduser('~'), 'Activities',
                                 os.path.basename(self.lib_path), _PLUGIN_SUBPATH)
-        paths = [self._get_plugin_home()]
-        if paths[0] != homepath and os.path.exists(homepath):
-            paths.append(homepath)
+        if os.path.exists(homepath):
+            paths.add(homepath)
+
+        path = os.path.join(self.lib_path, _PLUGIN_SUBPATH)
+        if os.path.exists(path):
+            sys.path.append(self.lib_path)
+            paths.add(path)
+
         turtleart_plugin_list = self._get_plugins_from_plugins_dir(paths)
         plist = sorted(turtleart_plugin_list.keys())
         for plugin_dir in plist:
