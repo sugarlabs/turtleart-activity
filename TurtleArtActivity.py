@@ -1353,6 +1353,7 @@ class TurtleArtActivity(activity.Activity):
             gtk.gdk.screen_height() * 2)
         self.tw = TurtleArtWindow(canvas_window,
                                   activity.get_bundle_path(),
+                                  activity.get_bundle_path(),
                                   self,
                                   mycolors=profile.get_color().to_string(),
                                   mynick=profile.get_nick_name(),

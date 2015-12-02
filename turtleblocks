@@ -18,19 +18,17 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 import os
-import string
-import sys
+from TurtleArt import turtleblocks
 
-argv = sys.argv[:]
-
-
-TAPATH = '/usr/share/sugar/activities/TurtleArt.activity'
-
-
-if len(argv) > 1:
-    argv = argv[1:]
-    params = string.join(argv, ' ')
-    os.system(os.path.join(TAPATH, 'turtleblocks.py') + ' ' + params)
+mydir = os.path.dirname(os.path.abspath(__file__))
+if os.path.exists(os.path.join(mydir, "activity", "activity.info")):
+    # Running from git checkout
+    libdir = mydir
+    sharedir = mydir
 else:
-    os.system(os.path.join(TAPATH, 'turtleblocks.py'))
+    # Running as installed package
+    from TurtleArt.installinfo import INSTALL_PREFIX
+    libdir = os.path.join(INSTALL_PREFIX, "lib", "TurtleBlocks")
+    sharedir = os.path.join(INSTALL_PREFIX, "share", "TurtleBlocks")
 
+turtleblocks.TurtleMain(libdir, sharedir)

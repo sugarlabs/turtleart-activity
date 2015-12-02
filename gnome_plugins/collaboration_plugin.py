@@ -31,9 +31,9 @@ import gtk
 
 from .plugin import Plugin
 
-from util.menubuilder import MenuBuilder
-from util.configfile import ConfigFile
-from util.configwizard import ConfigWizard
+from TurtleArt.util.menubuilder import MenuBuilder
+from TurtleArt.util.configfile import ConfigFile
+from TurtleArt.util.configwizard import ConfigWizard
 
 from collaboration.neighborhood import get_neighborhood
 from collaboration.connectionmanager import get_connection_manager

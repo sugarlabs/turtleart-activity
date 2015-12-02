@@ -35,7 +35,7 @@ import os
 import gtk
 
 from .plugin import Plugin
-from util.menubuilder import MenuBuilder, MENUBAR
+from TurtleArt.util.menubuilder import MenuBuilder, MENUBAR
 
 from gettext import gettext as _
 

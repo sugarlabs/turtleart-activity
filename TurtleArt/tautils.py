@@ -294,7 +294,7 @@ def json_dump(data):
         return io.getvalue()
 
 
-def get_load_name(filefilter, load_save_folder):
+def get_load_name(filefilter, load_save_folder=None):
     ''' Open a load file dialog. '''
     dialog = gtk.FileChooserDialog(
         _('Load...'), None,
@@ -414,7 +414,10 @@ def do_dialog(dialog, suffix, load_save_folder):
     file_filter.add_pattern('*' + suffix)
     file_filter.set_name('Turtle Art')
     dialog.add_filter(file_filter)
-    dialog.set_current_folder(load_save_folder)
+
+    if load_save_folder is not None:
+        dialog.set_current_folder(load_save_folder)
+
     response = dialog.run()
     if response == gtk.RESPONSE_OK:
         result = dialog.get_filename()
