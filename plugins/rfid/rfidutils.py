@@ -22,6 +22,7 @@ def find_device():
     Search for devices.
     Return a device instance or None.
     """
+    device = None
     path = os.path.dirname(os.path.abspath(__file__))
     for i in os.listdir(path):
         if not os.path.isdir(os.path.join(path, i)):
