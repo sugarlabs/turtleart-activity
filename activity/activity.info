@@ -1,6 +1,6 @@
 [Activity]
 name = TurtleBlocks
-activity_version = 213
+activity_version = 214
 license = MIT
 bundle_id = org.laptop.TurtleArtActivity
 exec = sugar-activity TurtleArtActivity.TurtleArtActivity
@@ -10,3 +10,4 @@ website = http://wiki.sugarlabs.org/go/Activities/Turtle_Art
 mime_types = application/x-turtle-art;application/vnd.turtleblocks
 categories = programming art
 summary = A Logo-inspired turtle that draws colorful pictures with snap-together visual programming blocks
+repository = https://github.com/walterbender/turtleart
