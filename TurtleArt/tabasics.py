@@ -544,7 +544,7 @@ in place of a number block)'),
         define_logo_function('tapensize', 'to tapensize\noutput first round \
 pensize\nend\n')
 
-	def converter(self, r, g, b):
+    def converter(self, r, g, b):
         tg = TurtleGraphics(self.tw, 1, 1)
         return float(tg.get_color_index(r, g, b))
 
@@ -567,7 +567,7 @@ pensize\nend\n')
         
         palette.add_block('RGB to color',
                         style='number-style-var-3arg',
-                        label=[_('RGB to \ncolor'), _('Red'), _('Green'), _('Blue') ],
+                        label=[_('RGB to \ncolor'), _('red'), _('green'), _('blue') ],
                         default=[0, 0, 0],
                         help_string=_('converter'),
                         prim_name='converter')
