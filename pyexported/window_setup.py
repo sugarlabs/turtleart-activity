@@ -93,7 +93,9 @@ class DummyTurtleMain(object):
         # instantiate an instance of a dummy sub-class that supports only
         # the stuff TurtleGraphics needs
         # TODO don't hardcode running_sugar
+        share_path = _TA_INSTALLATION_PATH
         self.tw = TurtleArtWindow(self.canvas, _TA_INSTALLATION_PATH,
+                                  share_path,
                                   turtle_canvas=self.turtle_canvas,
                                   parent=self, running_sugar=False,
                                   running_turtleart=False)
