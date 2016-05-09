@@ -1564,14 +1564,10 @@ msgstr "mostra pilha"
 msgid "shows values in FILO (first-in last-out heap)"
 msgstr "mostra valores na pilha (entra primeiro, sai por último)"
 
-# KSp54N  <a href="http://ntmbjiiaoekm.com/">ntmbjiiaoekm</a>, [url=http://bewqzxbwopvt.com/]bewqzxbwopvt[/url], [link=http://vsvihmzobocj.com/]vsvihmzobocj[/link], http://elhuengzhnsf.com/
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:496
 #, fuzzy
 msgid "empty heap"
 msgstr "esvazia pilha"
-"KSp54N  <a href=\"http://ntmbjiiaoekm.com/\">ntmbjiiaoekm</a>, "
-"[url=http://bewqzxbwopvt.com/]bewqzxbwopvt[/url], "
-"[link=http://vsvihmzobocj.com/]vsvihmzobocj[/link], http://elhuengzhnsf.com/"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:499
 msgid "emptys FILO (first-in-last-out heap)"
@@ -1587,15 +1583,11 @@ msgstr "saca"
 msgid "pops value off FILO (first-in last-out heap)"
 msgstr "saca valor do topo da pilha" 
 
-# KSp54N  <a href="http://ntmbjiiaoekm.com/">ntmbjiiaoekm</a>, [url=http://bewqzxbwopvt.com/]bewqzxbwopvt[/url], [link=http://vsvihmzobocj.com/]vsvihmzobocj[/link], http://elhuengzhnsf.com/
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:525
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:535
 #, fuzzy
 msgid "empty heap?"
 msgstr "pilha vazia?"
-"KSp54N  <a href=\"http://ntmbjiiaoekm.com/\">ntmbjiiaoekm</a>, "
-"[url=http://bewqzxbwopvt.com/]bewqzxbwopvt[/url], "
-"[link=http://vsvihmzobocj.com/]vsvihmzobocj[/link], http://elhuengzhnsf.com/"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:528
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:538
