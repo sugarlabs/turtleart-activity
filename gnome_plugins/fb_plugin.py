@@ -41,7 +41,7 @@ try:
 except ImportError:
     WEBKIT = False
 from .plugin import Plugin
-from TurtleArt.util.menubuilder import MenuBuilder, MENUBAR
+from TurtleArt.util.menubuilder import make_menu_item, MENUBAR
 from gettext import gettext as _
 
 
@@ -84,8 +84,7 @@ class Fb_plugin(Plugin):
         else:
             upload_menu = None
             menu = gtk.Menu()
-        MenuBuilder.make_menu_item(menu, _('Facebook wall post'),
-                                   self._post_menu_cb)
+        make_menu_item(menu, _('Facebook wall post'), self._post_menu_cb)
         if upload_menu is not None:
             return None  # We don't have to add it since it already exists
         else:

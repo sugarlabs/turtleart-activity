@@ -31,7 +31,7 @@ import gtk
 
 from .plugin import Plugin
 
-from TurtleArt.util.menubuilder import MenuBuilder
+from TurtleArt.util.menubuilder import make_menu_item, make_sub_menu
 from TurtleArt.util.configfile import ConfigFile
 from TurtleArt.util.configwizard import ConfigWizard
 
@@ -108,24 +108,24 @@ class Collaboration_plugin(Plugin):
     def get_menu(self):
         menu = gtk.Menu()
 
-        MenuBuilder.make_menu_item(menu, _('Enable collaboration'),
+        make_menu_item(menu, _('Enable collaboration'),
                                    self._connect_cb)
 
         self._activities_submenu = gtk.Menu()
-        activities_menu = MenuBuilder.make_sub_menu(self._activities_submenu,
+        activities_menu = make_sub_menu(self._activities_submenu,
                                                     _('Activities'))
         menu.append(activities_menu)
 
         self._buddies_submenu = gtk.Menu()
-        buddies_menu = MenuBuilder.make_sub_menu(self._buddies_submenu,
+        buddies_menu = make_sub_menu(self._buddies_submenu,
                                                  _('Buddies'))
         menu.append(buddies_menu)
 
-        MenuBuilder.make_menu_item(menu, _('Share'), self._share_cb)
-        MenuBuilder.make_menu_item(menu, _('Configuration'),
+        make_menu_item(menu, _('Share'), self._share_cb)
+        make_menu_item(menu, _('Configuration'),
                                    self._config_neighborhood_cb)
 
-        neighborhood_menu = MenuBuilder.make_sub_menu(menu, _('Neighborhood'))
+        neighborhood_menu = make_sub_menu(menu, _('Neighborhood'))
 
         return neighborhood_menu
 
@@ -225,7 +225,7 @@ class Collaboration_plugin(Plugin):
             if key is None:
                 key = ''
             n = buddy.get_nick() + '|' + key[0:15]
-            MenuBuilder.make_menu_item(self._buddies_submenu, n,
+            make_menu_item(self._buddies_submenu, n,
                                        self._buddy_actions_cb, buddy)
 
     def _buddy_actions_cb(self, widget, buddy):
@@ -239,7 +239,7 @@ class Collaboration_plugin(Plugin):
 
         for activity in self._activities.values():
             n = activity.props.name
-            MenuBuilder.make_menu_item(self._activities_submenu, n,
+            make_menu_item(self._activities_submenu, n,
                                        self._join_activity_cb, activity)
 
     def _join_activity_cb(self, widget, activity):

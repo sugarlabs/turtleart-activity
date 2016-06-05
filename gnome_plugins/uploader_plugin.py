@@ -35,7 +35,7 @@ import os
 import gtk
 
 from .plugin import Plugin
-from TurtleArt.util.menubuilder import MenuBuilder, MENUBAR
+from TurtleArt.util.menubuilder import make_menu_item, make_sub_menu, MENUBAR
 
 from gettext import gettext as _
 
@@ -65,12 +65,12 @@ class Uploader_plugin(Plugin):
         else:
             upload_menu = None
             menu = gtk.Menu()
-        MenuBuilder.make_menu_item(menu, _('Upload to Web'),
+        make_menu_item(menu, _('Upload to Web'),
                                    self.do_upload_to_web)
         if upload_menu is not None:
             return None  # We don't have to add it since it already exists
         else:
-            upload_menu = MenuBuilder.make_sub_menu(menu, _('Upload'))
+            upload_menu = make_sub_menu(menu, _('Upload'))
             return upload_menu
 
     def enabled(self):

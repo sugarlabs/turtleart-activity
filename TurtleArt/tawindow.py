@@ -124,7 +124,7 @@ from .tapaletteview import PaletteView
 from .taselector import (Selector, create_toolbar_background)
 from .sprites import (Sprites, Sprite)
 
-from util.menubuilder import MenuBuilder
+from util.menubuilder import make_checkmenu_item
 
 if _GST_AVAILABLE:
     from .tagplay import stop_media
@@ -444,7 +444,7 @@ class TurtleArtWindow():
                     status = (self.activity.client.get_int(gconf_path) == 1)
                 except:
                     pass
-                MenuBuilder.make_checkmenu_item(self.activity._plugin_menu, \
+                make_checkmenu_item(self.activity._plugin_menu, \
                          plugin_dir, self.activity._do_toggle_plugin_cb, status)
             else:
                 status = True
