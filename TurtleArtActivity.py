@@ -33,12 +33,8 @@ import logging
 _logger = logging.getLogger('turtleart-activity')
 
 from sugar.activity import activity
-try:  # 0.86 toolbar widgets
-    from sugar.activity.widgets import (ActivityToolbarButton, StopButton)
-    from sugar.graphics.toolbarbox import (ToolbarBox, ToolbarButton)
-    HAS_TOOLBARBOX = True
-except ImportError:
-    HAS_TOOLBARBOX = False
+from sugar.activity.widgets import (ActivityToolbarButton, StopButton)
+from sugar.graphics.toolbarbox import (ToolbarBox, ToolbarButton)
 from sugar.graphics.toolbutton import ToolButton
 from sugar.graphics.radiotoolbutton import RadioToolButton
 from sugar.graphics.alert import (ConfirmationAlert, Alert, NotifyAlert)
@@ -77,10 +73,7 @@ from TurtleArt.tautils import (data_to_file, data_to_string, data_from_string,
 from TurtleArt.tawindow import TurtleArtWindow
 from TurtleArt.tacollaboration import Collaboration
 from TurtleArt.taprimitive import PyExportError
-
-if HAS_TOOLBARBOX:
-    from TurtleArt.util.helpbutton import (HelpButton, add_section,
-                                           add_paragraph)
+from TurtleArt.util.helpbutton import (HelpButton, add_section, add_paragraph)
 
 
 class TurtleArtActivity(activity.Activity):
@@ -111,7 +104,6 @@ class TurtleArtActivity(activity.Activity):
         self._check_ver_change(get_path(activity, 'data'))
         self.connect("notify::active", self._notify_active_cb)
 
-        self.has_toolbarbox = HAS_TOOLBARBOX
         _logger.debug('_setup_toolbar')
         self._setup_toolbar()
         self.label_offset = style.GRID_CELL_SIZE
@@ -195,9 +187,7 @@ class TurtleArtActivity(activity.Activity):
 
     def check_buttons_for_fit(self):
         ''' Check to see which set of buttons to display '''
-        if not self.has_toolbarbox:
-            return
-
+ 
         # If there are too many palettes to fit, put them in a
         # scrolling window
         self._setup_palette_toolbar()
@@ -426,15 +416,10 @@ class TurtleArtActivity(activity.Activity):
         if self.tw.palette:
             self.tw.hideshow_palette(False)
             self.do_hidepalette()
-            if not self.has_toolbarbox and \
-               self.tw.selected_palette is not None:
-                self.palette_buttons[self.tw.selected_palette].set_icon(
-                    palette_names[self.tw.selected_palette] + 'off')
         else:
             self.tw.hideshow_palette(True)
             self.do_showpalette()
-            if self.has_toolbarbox:
-                self.palette_buttons[0].set_icon(palette_names[0] + 'on')
+            self.palette_buttons[0].set_icon(palette_names[0] + 'on')
 
     def do_palette_buttons_cb(self, button, i):
         ''' Palette selector buttons '''
@@ -443,18 +428,12 @@ class TurtleArtActivity(activity.Activity):
         if self._overflow_palette.is_up():
             self._overflow_palette.popdown(immediate=True)
         if self.tw.selected_palette is not None:
-            if not self.has_toolbarbox:
-                self.palette_buttons[self.tw.selected_palette].set_icon(
-                    palette_names[self.tw.selected_palette] + 'off')
             if self.tw.selected_palette == i:
                 # Hide the palette if it is already selected.
                 self.tw.hideshow_palette(False)
                 self.tw.selected_palette = None
                 return
-        if not self.has_toolbarbox:
-            self.palette_buttons[i].set_icon(palette_names[i] + 'on')
-        else:
-            self._help_button.set_current_palette(palette_names[i])
+        self._help_button.set_current_palette(palette_names[i])
         self.tw.show_palette(n=i)
         self.do_showpalette()
 
@@ -724,11 +703,6 @@ class TurtleArtActivity(activity.Activity):
 
     def toolbars_expanded(self, palette=False):
         ''' Are any toolbars expanded? '''
-        if not self.has_toolbarbox:
-            if palette:
-                return None
-            else:
-                return False
         if self.palette_toolbar_button.is_expanded():
             if palette:
                 return self.palette_toolbar_button
@@ -757,59 +731,41 @@ class TurtleArtActivity(activity.Activity):
 
     def _setup_toolbar(self):
         ''' Setup toolbar according to Sugar version. '''
-        if self.has_toolbarbox:
-            self.max_participants = 4
 
-            self._setup_toolbar_help()
-            self.toolbox = ToolbarBox()
+        self.max_participants = 4
 
-            self.activity_toolbar_button = ActivityToolbarButton(self)
+        self._setup_toolbar_help()
+        self.toolbox = ToolbarBox()
 
-            edit_toolbar = gtk.Toolbar()
-            self.edit_toolbar_button = ToolbarButton(label=_('Edit'),
-                                                     page=edit_toolbar,
-                                                     icon_name='toolbar-edit')
+        self.activity_toolbar_button = ActivityToolbarButton(self)
 
-            self._view_toolbar = gtk.Toolbar()
-            self.view_toolbar_button = ToolbarButton(label=_('View'),
-                                                     page=self._view_toolbar,
-                                                     icon_name='toolbar-view')
-            self._palette_toolbar = gtk.Toolbar()
-            self.palette_toolbar_button = ToolbarButton(
-                page=self._palette_toolbar, icon_name='palette')
+        edit_toolbar = gtk.Toolbar()
+        self.edit_toolbar_button = ToolbarButton(label=_('Edit'),
+                                                 page=edit_toolbar,
+                                                 icon_name='toolbar-edit')
 
-            self._help_button = HelpButton(self)
+        self._view_toolbar = gtk.Toolbar()
+        self.view_toolbar_button = ToolbarButton(label=_('View'),
+                                                 page=self._view_toolbar,
+                                                 icon_name='toolbar-view')
+        self._palette_toolbar = gtk.Toolbar()
+        self.palette_toolbar_button = ToolbarButton(
+            page=self._palette_toolbar, icon_name='palette')
 
-            self._make_load_save_buttons(self.activity_toolbar_button)
+        self._help_button = HelpButton(self)
 
-            self.activity_toolbar_button.show()
-            self.toolbox.toolbar.insert(self.activity_toolbar_button, -1)
-            self.edit_toolbar_button.show()
-            self.toolbox.toolbar.insert(self.edit_toolbar_button, -1)
-            self.view_toolbar_button.show()
-            self.toolbox.toolbar.insert(self.view_toolbar_button, -1)
-            self.palette_toolbar_button.show()
-            self.toolbox.toolbar.insert(self.palette_toolbar_button, -1)
+        self._make_load_save_buttons(self.activity_toolbar_button)
 
-            self.set_toolbar_box(self.toolbox)
-        else:
-            self.toolbox = activity.ActivityToolbox(self)
-            self.set_toolbox(self.toolbox)
+        self.activity_toolbar_button.show()
+        self.toolbox.toolbar.insert(self.activity_toolbar_button, -1)
+        self.edit_toolbar_button.show()
+        self.toolbox.toolbar.insert(self.edit_toolbar_button, -1)
+        self.view_toolbar_button.show()
+        self.toolbox.toolbar.insert(self.view_toolbar_button, -1)
+        self.palette_toolbar_button.show()
+        self.toolbox.toolbar.insert(self.palette_toolbar_button, -1)
 
-            self._project_toolbar = gtk.Toolbar()
-            self.toolbox.add_toolbar(_('Project'), self._project_toolbar)
-            self._view_toolbar = gtk.Toolbar()
-            self.toolbox.add_toolbar(_('View'), self._view_toolbar)
-            edit_toolbar = gtk.Toolbar()
-            self.toolbox.add_toolbar(_('Edit'), edit_toolbar)
-            journal_toolbar = gtk.Toolbar()
-            self.toolbox.add_toolbar(_('Save/Load'), journal_toolbar)
-
-            self._make_palette_buttons(self._project_toolbar,
-                                       palette_button=True)
-
-            self._add_separator(self._project_toolbar)
-            self._make_load_save_buttons(journal_toolbar)
+        self.set_toolbar_box(self.toolbox)
 
         self._add_button('edit-copy', _('Copy'), self._copy_cb,
                          edit_toolbar, '<Ctrl>c')
@@ -857,23 +813,12 @@ class TurtleArtActivity(activity.Activity):
         self._view_toolbar.show()
         self.toolbox.show()
 
-        if self.has_toolbarbox:
-            self.edit_toolbar_button.set_expanded(True)
-            self.edit_toolbar_button.set_expanded(False)
-            self.palette_toolbar_button.set_expanded(True)
-        else:
-            self.toolbox.set_current_toolbar(1)
+        self.edit_toolbar_button.set_expanded(True)
+        self.edit_toolbar_button.set_expanded(False)
+        self.palette_toolbar_button.set_expanded(True)
 
     def _setup_extra_controls(self):
         ''' Add the rest of the buttons to the main toolbar '''
-        if not self.has_toolbarbox:
-            self.samples_button = self._add_button(
-                'ta-open', _('Load example'), self.do_samples_cb,
-                self._project_toolbar)
-            self._add_separator(self._project_toolbar, expand=False,
-                                visible=True)
-            self._make_project_buttons(self._project_toolbar)
-            return
 
         self._make_project_buttons(self.toolbox.toolbar)
 
@@ -1016,58 +961,58 @@ class TurtleArtActivity(activity.Activity):
 
     def _setup_palette_toolbar(self):
         ''' The palette toolbar must be setup *after* plugins are loaded. '''
-        if self.has_toolbarbox:
-            max_palettes = int(gtk.gdk.screen_width() / style.GRID_CELL_SIZE)
-            max_palettes -= 2  # the margins
-            if len(palette_names) > max_palettes:
-                max_palettes -= 1  # Make room for the palette button
-            overflow = len(palette_names) - max_palettes
-            if overflow < 1 or \
-                    gtk.gdk.screen_width() - style.GRID_CELL_SIZE < \
-                    int(overflow * (style.GRID_CELL_SIZE + 2)):
-                width = gtk.gdk.screen_width() - style.GRID_CELL_SIZE
-                height = int(style.GRID_CELL_SIZE * 1.5)
-            else:
-                width = int(overflow * (style.GRID_CELL_SIZE + 2))
-                height = style.GRID_CELL_SIZE
+        
+        max_palettes = int(gtk.gdk.screen_width() / style.GRID_CELL_SIZE)
+        max_palettes -= 2  # the margins
+        if len(palette_names) > max_palettes:
+            max_palettes -= 1  # Make room for the palette button
+        overflow = len(palette_names) - max_palettes
+        if overflow < 1 or \
+                gtk.gdk.screen_width() - style.GRID_CELL_SIZE < \
+                int(overflow * (style.GRID_CELL_SIZE + 2)):
+            width = gtk.gdk.screen_width() - style.GRID_CELL_SIZE
+            height = int(style.GRID_CELL_SIZE * 1.5)
+        else:
+            width = int(overflow * (style.GRID_CELL_SIZE + 2))
+            height = style.GRID_CELL_SIZE
 
-            if len(self.palette_buttons) == 0:
-                self._generate_palette_buttons()
-                self._overflow_palette = \
-                    self._overflow_palette_button.get_palette()
-                self._overflow_box = gtk.HBox()
-                self._overflow_box.set_homogeneous(False)
-                self._overflow_sw = gtk.ScrolledWindow()
-                self._overflow_sw.set_policy(gtk.POLICY_AUTOMATIC,
-                                             gtk.POLICY_NEVER)
-                self._overflow_sw.add_with_viewport(self._overflow_box)
-            elif len(self.palette_buttons) < len(palette_names):
-                # add new buttons for palettes generated since last time
-                self._generate_palette_buttons(add_buttons=True)
-                self._remove_palette_buttons()
-            else:  # remove the radio buttons and overflow buttons
-                self._remove_palette_buttons()
+        if len(self.palette_buttons) == 0:
+            self._generate_palette_buttons()
+            self._overflow_palette = \
+                self._overflow_palette_button.get_palette()
+            self._overflow_box = gtk.HBox()
+            self._overflow_box.set_homogeneous(False)
+            self._overflow_sw = gtk.ScrolledWindow()
+            self._overflow_sw.set_policy(gtk.POLICY_AUTOMATIC,
+                                         gtk.POLICY_NEVER)
+            self._overflow_sw.add_with_viewport(self._overflow_box)
+        elif len(self.palette_buttons) < len(palette_names):
+            # add new buttons for palettes generated since last time
+            self._generate_palette_buttons(add_buttons=True)
+            self._remove_palette_buttons()
+        else:  # remove the radio buttons and overflow buttons
+            self._remove_palette_buttons()
 
-            for i in range(len(self.palette_buttons)):
-                if i < max_palettes:
-                    self._palette_toolbar.insert(self.palette_buttons[i], -1)
-                if i == max_palettes and \
-                   max_palettes < len(self.palette_buttons):
-                    self._palette_toolbar.insert(
-                        self._overflow_palette_button, -1)
-                if i >= max_palettes:
-                    self._overflow_box.pack_start(self._overflow_buttons[i])
+        for i in range(len(self.palette_buttons)):
+            if i < max_palettes:
+                self._palette_toolbar.insert(self.palette_buttons[i], -1)
+            if i == max_palettes and \
+               max_palettes < len(self.palette_buttons):
+                self._palette_toolbar.insert(
+                    self._overflow_palette_button, -1)
+            if i >= max_palettes:
+                self._overflow_box.pack_start(self._overflow_buttons[i])
 
-            self._overflow_sw.set_size_request(width, height)
-            self._overflow_sw.show()
+        self._overflow_sw.set_size_request(width, height)
+        self._overflow_sw.show()
 
-            '''
-            if self.tw.hw in [XO1, XO15, XO175, XO4]:
-                self._make_palette_buttons(self._palette_toolbar)
-            '''
-            self._palette_toolbar.show()
-            self._overflow_box.show_all()
-            self._overflow_palette.set_content(self._overflow_sw)
+        '''
+        if self.tw.hw in [XO1, XO15, XO175, XO4]:
+            self._make_palette_buttons(self._palette_toolbar)
+        '''
+        self._palette_toolbar.show()
+        self._overflow_box.show_all()
+        self._overflow_palette.set_content(self._overflow_sw)
 
     def _remove_palette_buttons(self):
         for button in self.palette_buttons:
@@ -1133,113 +1078,75 @@ class TurtleArtActivity(activity.Activity):
         self.share_button = self._add_button('shareoff',
                                              _('Sharing blocks disabled'),
                                              self._share_cb, toolbar)
-        if self.has_toolbarbox:
-            self._add_separator(toolbar, expand=False, visible=True)
-            save_button = self._add_button(
-                'save', _('Save'), self._save_load_palette_cb,
-                toolbar)
-            self._save_palette = save_button.get_palette()
-            button_box = gtk.VBox()
-            self.save_as_image, label = self._add_button_and_label(
-                'image-saveoff', _('Save as image'), self.do_save_as_image_cb,
-                None, button_box)
-            self.save_as_icon = self._add_button_and_label(
-                'image-saveoff', _('Save as icon'), self.do_save_as_icon_cb,
-                None, button_box)
-            # TRANS: ODP is Open Office presentation
-            self.save_as_odp = self._add_button_and_label(
-                'odp-saveoff', _('Save as ODP'), self.do_save_as_odp_cb,
-                None, button_box)
-            self.save_as_icon[0].get_parent().connect(
-                'expose-event',
-                self._save_as_icon_expose_cb)
 
-            self.save_as_odp[0].get_parent().connect(
-                'expose-event',
-                self._save_as_odp_expose_cb)
+        self._add_separator(toolbar, expand=False, visible=True)
+        save_button = self._add_button(
+            'save', _('Save'), self._save_load_palette_cb,
+            toolbar)
+        self._save_palette = save_button.get_palette()
+        button_box = gtk.VBox()
+        self.save_as_image, label = self._add_button_and_label(
+            'image-saveoff', _('Save as image'), self.do_save_as_image_cb,
+            None, button_box)
+        self.save_as_icon = self._add_button_and_label(
+            'image-saveoff', _('Save as icon'), self.do_save_as_icon_cb,
+            None, button_box)
+        # TRANS: ODP is Open Office presentation
+        self.save_as_odp = self._add_button_and_label(
+            'odp-saveoff', _('Save as ODP'), self.do_save_as_odp_cb,
+            None, button_box)
+        self.save_as_icon[0].get_parent().connect(
+            'expose-event',
+            self._save_as_icon_expose_cb)
 
-            self.save_as_logo, label = self._add_button_and_label(
-                'logo-saveoff', _('Save as Logo'), self.do_save_as_logo_cb,
-                None, button_box)
-            self.save_as_python, label = self._add_button_and_label(
-                'python-saveoff', _('Save as Python'),
-                self.do_save_as_python_cb,
-                None, button_box)
-            self.keep_button2, self.keep_label2 = self._add_button_and_label(
-                'filesaveoff', _('Save snapshot'), self.do_keep_cb,
-                None, button_box)
+        self.save_as_odp[0].get_parent().connect(
+            'expose-event',
+            self._save_as_odp_expose_cb)
 
-            load_button = self._add_button(
-                'load', _('Load'), self._save_load_palette_cb,
-                toolbar)
-            button_box.show_all()
-            self._save_palette.set_content(button_box)
+        self.save_as_logo, label = self._add_button_and_label(
+            'logo-saveoff', _('Save as Logo'), self.do_save_as_logo_cb,
+            None, button_box)
+        self.save_as_python, label = self._add_button_and_label(
+            'python-saveoff', _('Save as Python'),
+            self.do_save_as_python_cb,
+            None, button_box)
+        self.keep_button2, self.keep_label2 = self._add_button_and_label(
+            'filesaveoff', _('Save snapshot'), self.do_keep_cb,
+            None, button_box)
 
-            self._load_palette = load_button.get_palette()
-            button_box = gtk.VBox()
-            # When screen is in portrait mode, the buttons don't fit
-            # on the main toolbar, so put them here.
-            self.samples_button2, self.samples_label2 = \
-                self._add_button_and_label('ta-open',
-                                           _('Load example'),
-                                           self.do_samples_cb,
-                                           None,
-                                           button_box)
+        load_button = self._add_button(
+            'load', _('Load'), self._save_load_palette_cb,
+            toolbar)
+        button_box.show_all()
+        self._save_palette.set_content(button_box)
 
-            self.load_ta_project, label = self._add_button_and_label(
-                'load-from-journal', _('Open'),
-                self.do_load_ta_project_cb, True, button_box)
-            self.load_ta_project, label = self._add_button_and_label(
-                'load-from-journal', _('Add project'),
-                self.do_load_ta_project_cb, False, button_box)
-            # Only enable plugin loading if installed in $HOME
-            if activity.get_bundle_path()[0:len(home)] == home:
-                self.load_ta_plugin, label = self._add_button_and_label(
-                    'pluginoff', _('Load plugin'),
-                    self.do_load_ta_plugin_cb, None, button_box)
-            self.load_python, label = self._add_button_and_label(
-                'pippy-openoff', _('Load Python block'),
-                self.do_load_python_cb, None, button_box)
-            button_box.show_all()
-            self._load_palette.set_content(button_box)
-        else:
-            self.save_as_image = self._add_button(
-                'image-saveoff', _('Save as image'), self.do_save_as_image_cb,
-                toolbar)
-            self.save_as_icon = self._add_button(
-                'image-saveoff', _('Save as icon'), self.do_save_as_icon_cb,
-                toolbar)
-            # TRANS: ODP is Open Office presentation
-            self.save_as_odp = self._add_button(
-                'odp-saveoff', _('Save as ODP'), self.do_save_as_odp_cb,
-                toolbar)
+        self._load_palette = load_button.get_palette()
+        button_box = gtk.VBox()
+        # When screen is in portrait mode, the buttons don't fit
+        # on the main toolbar, so put them here.
+        self.samples_button2, self.samples_label2 = \
+            self._add_button_and_label('ta-open',
+                                       _('Load example'),
+                                       self.do_samples_cb,
+                                       None,
+                                       button_box)
 
-            self.save_as_icon.connect('expose-event',
-                                      self._save_as_icon_expose_cb)
-            self.save_as_odp.connect('expose-event',
-                                     self._save_as_odp_expose_cb)
-
-            self.save_as_logo = self._add_button(
-                'logo-saveoff', _('Save as Logo'), self.do_save_as_logo_cb,
-                toolbar)
-            self.save_as_python = self._add_button(
-                'python-saveoff', _('Save as Python'),
-                self.do_save_as_python_cb,
-                toolbar)
-            self.keep_button = self._add_button(
-                'filesaveoff', _('Save snapshot'), self.do_keep_cb, toolbar)
-            self.load_ta_project = self._add_button(
-                'load-from-journal', _('Add project'),
-                self.do_load_ta_project_cb, toolbar)
-
-            # Only enable plugin loading if installed in $HOME
-            if activity.get_bundle_path()[0:len(home)] == home:
-                self.load_ta_plugin = self._add_button(
-                    'pluginoff', _('Load plugin'),
-                    self.do_load_ta_plugin_cb, toolbar)
-            self.load_python = self._add_button(
-                'pippy-openoff', _('Load Python block'),
-                self.do_load_python_cb, toolbar)
+        self.load_ta_project, label = self._add_button_and_label(
+            'load-from-journal', _('Open'),
+            self.do_load_ta_project_cb, True, button_box)
+        self.load_ta_project, label = self._add_button_and_label(
+            'load-from-journal', _('Add project'),
+            self.do_load_ta_project_cb, False, button_box)
+        # Only enable plugin loading if installed in $HOME
+        if activity.get_bundle_path()[0:len(home)] == home:
+            self.load_ta_plugin, label = self._add_button_and_label(
+                'pluginoff', _('Load plugin'),
+                self.do_load_ta_plugin_cb, None, button_box)
+        self.load_python, label = self._add_button_and_label(
+            'pippy-openoff', _('Load Python block'),
+            self.do_load_python_cb, None, button_box)
+        button_box.show_all()
+        self._load_palette.set_content(button_box)
 
     def _save_load_palette_cb(self, button):
         palette = button.get_palette()

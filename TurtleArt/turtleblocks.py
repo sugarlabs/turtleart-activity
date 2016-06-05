@@ -117,7 +117,6 @@ class TurtleMain():
         self._gnome_plugins = []
         self._selected_sample = None
         self._sample_window = None
-        self.has_toolbarbox = False
 
         if self._output_png:
             # Outputing to file, so no need for a canvas

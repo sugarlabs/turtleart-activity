@@ -254,8 +254,6 @@ class TurtleArtWindow():
                 self.color_mode = '565'
             else:
                 self.color_mode = '888'
-            if self.running_sugar and not self.activity.has_toolbarbox:
-                self.orientation = VERTICAL_PALETTE
         else:
             self.scale = 1.0
             self.entry_scale = 1.0
@@ -985,7 +983,7 @@ class TurtleArtWindow():
         self.palette_button[self.orientation].set_layer(TAB_LAYER)
         self.palette_button[2].set_layer(TAB_LAYER)
         self.palette_views[n].display_palette_shift_buttons()
-        if not self.running_sugar or not self.activity.has_toolbarbox:
+        if not self.running_sugar:
             self.toolbar_spr.set_layer(CATEGORY_LAYER)
         self.palette = True
         self._set_coordinates_label(palette_names[n])
@@ -995,7 +993,7 @@ class TurtleArtWindow():
         self._hide_toolbar_palette()
         for button in self.palette_button:
             button.hide()
-        if not self.running_sugar or not self.activity.has_toolbarbox:
+        if not self.running_sugar:
             self.toolbar_spr.hide()
         self.palette = False
 
@@ -1049,15 +1047,14 @@ class TurtleArtWindow():
             self._text_entry.modify_font(font_desc)
 
     def _has_selectors(self):
-        return not (self.running_sugar and self.activity.has_toolbarbox)
+        return not self.running_sugar
 
     def show_toolbar_palette(self, n, init_only=False, regenerate=False,
                              show=True):
         ''' Show the toolbar palettes, creating them on init_only '''
         # If we are running the 0.86+ toolbar, the selectors are already
         # created, as toolbar buttons. Otherwise, we need to create them.
-        if (not self.running_sugar or not self.activity.has_toolbarbox) and \
-           self.selectors == []:
+        if (not self.running_sugar) and self.selectors == []:
             # First, create the selector buttons
             self._create_the_selectors()
 
@@ -1214,14 +1211,10 @@ class TurtleArtWindow():
     def _hide_toolbar_palette(self):
         ''' Hide the toolbar palettes '''
         self._hide_previous_palette()
-        if not self.running_sugar or not self.activity.has_toolbarbox:
+        if not self.running_sugar:
             # Hide the selectors
             for i in range(len(palette_blocks)):
                 self.selectors[i].hide()
-        elif self.selected_palette is not None and \
-                not self.activity.has_toolbarbox:
-            self.activity.palette_buttons[self.selected_palette].set_icon(
-                palette_names[self.selected_palette] + 'off')
 
     def _hide_previous_palette(self, palette=None):
         ''' Hide just the previously viewed toolbar palette '''
@@ -1232,10 +1225,6 @@ class TurtleArtWindow():
             self.palette_views[palette].hide()
             if self._has_selectors():
                 self.selectors[palette].set_shape(0)
-            elif palette is not None and palette != self.selected_palette \
-                    and not self.activity.has_toolbarbox:
-                self.activity.palette_buttons[palette].set_icon(
-                    palette_names[palette] + 'off')
 
     def _buttonpress_cb(self, win, event):
         ''' Button press '''
@@ -1639,22 +1628,10 @@ class TurtleArtWindow():
                     i = self.selected_palette + 1
                     if i == len(palette_names):
                         i = 0
-                    if not self.running_sugar or \
-                       not self.activity.has_toolbarbox:
+                    if not self.running_sugar:
                         self._select_category(self.selectors[i].spr)
                     else:
-                        if self.selected_palette is not None and \
-                                not self.activity.has_toolbarbox:
-                            self.activity.palette_buttons[
-                                self.selected_palette].set_icon(
-                                    palette_names[self.selected_palette] +
-                                    'off')
-                        else:
-                            # select radio button associated with this palette
-                            self.activity.palette_buttons[i].set_active(True)
-                        if not self.activity.has_toolbarbox:
-                            self.activity.palette_buttons[i].set_icon(
-                                palette_names[i] + 'on')
+                        self.activity.palette_buttons[i].set_active(True)
                         self.show_palette(i)
                 elif spr.name == _('shift'):
                     self.palette_views[self.selected_palette].shift()
