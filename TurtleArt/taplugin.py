@@ -40,55 +40,55 @@ def complete_plugin_install(self, tmp_dir, tmp_path, plugin_path,
         # Save the plugin.info file in the plugin directory
         subprocess.call(['cp', os.path.join(tmp_dir, 'plugin.info'),
                          os.path.join(plugin_path, plugin_name) + '/'])
-        if self.has_toolbarbox:
-            palette_name_list = []
-            if file_info.has_option('Plugin', 'palette'):
-                palette_name_list = file_info.get(
-                    'Plugin', 'palette').split(',')
-                create_palette = []
-                for palette_name in palette_name_list:
-                    if not palette_name.strip() in palette_names:
-                        create_palette.append(True)
-                    else:
-                        create_palette.append(False)
-            self.tw.init_plugin(plugin_name)
-            self.tw.turtleart_plugins[-1].setup()
-            self.tw.load_media_shapes()
-            for i, palette_name in enumerate(palette_name_list):
-                if create_palette[i]:
-                    j = len(self.palette_buttons)
-                    self.palette_buttons.append(
-                        self._radio_button_factory(
-                            palette_name.strip() + 'off',
-                            self._palette_toolbar,
-                            self.do_palette_buttons_cb,
-                            j - 1,
-                            help_strings[palette_name.strip()],
-                            self.palette_buttons[0]))
-                    self._overflow_buttons.append(
-                        self._add_button(
-                            palette_name.strip() + 'off',
-                            None,
-                            self.do_palette_buttons_cb,
-                            None,
-                            arg=j - 1))
-                    self._overflow_box.pack_start(
-                        self._overflow_buttons[j - 1])
-                    self.tw.palettes.insert(j - 1, [])
-                    self.tw.palette_sprs.insert(j - 1, [None, None])
+
+        palette_name_list = []
+        if file_info.has_option('Plugin', 'palette'):
+            palette_name_list = file_info.get(
+                'Plugin', 'palette').split(',')
+            create_palette = []
+            for palette_name in palette_name_list:
+                if not palette_name.strip() in palette_names:
+                    create_palette.append(True)
                 else:
-                    # We need to change the index associated with the
-                    # Trash Palette Button.
-                    j = len(palette_names)
-                    pidx = palette_names.index(palette_name.strip())
-                    self.palette_buttons[pidx].connect(
-                        'clicked', self.do_palette_buttons_cb, j - 1)
-                    self._overflow_buttons[pidx].connect(
-                        'clicked', self.do_palette_buttons_cb, j - 1)
-                    self._setup_palette_toolbar()
-        else:
-            l = _('Please restart %s in order to use the plugin.') % self.name
-            self.tw.showlabel('status', l)
+                    create_palette.append(False)
+        self.tw.init_plugin(plugin_name)
+        self.tw.turtleart_plugins[-1].setup()
+        self.tw.load_media_shapes()
+        for i, palette_name in enumerate(palette_name_list):
+            if create_palette[i]:
+                j = len(self.palette_buttons)
+                self.palette_buttons.append(
+                    self._radio_button_factory(
+                        palette_name.strip() + 'off',
+                        self._palette_toolbar,
+                        self.do_palette_buttons_cb,
+                        j - 1,
+                        help_strings[palette_name.strip()],
+                        self.palette_buttons[0]))
+                self._overflow_buttons.append(
+                    self._add_button(
+                        palette_name.strip() + 'off',
+                        None,
+                        self.do_palette_buttons_cb,
+                        None,
+                        arg=j - 1))
+                self._overflow_box.pack_start(
+                    self._overflow_buttons[j - 1])
+                self.tw.palettes.insert(j - 1, [])
+                self.tw.palette_sprs.insert(j - 1, [None, None])
+            else:
+                # We need to change the index associated with the
+                # Trash Palette Button.
+                j = len(palette_names)
+                pidx = palette_names.index(palette_name.strip())
+                self.palette_buttons[pidx].connect(
+                    'clicked', self.do_palette_buttons_cb, j - 1)
+                self._overflow_buttons[pidx].connect(
+                    'clicked', self.do_palette_buttons_cb, j - 1)
+                self._setup_palette_toolbar()
+        #l = _('Please restart %s in order to use the plugin.') % self.name
+        #self.tw.showlabel('status', l)
+
     else:
         self.tw.showlabel('status', _('Plugin could not be installed.'))
     status = subprocess.call(['rm', '-r', tmp_path])
