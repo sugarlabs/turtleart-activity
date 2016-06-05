@@ -293,6 +293,14 @@ def json_dump(data):
         jdump(data, io)
         return io.getvalue()
 
+def get_endswith_files(path, end):
+    f = os.listdir(path)
+    files = []
+    for name in f:
+        if name.endswith(end):
+            files.append(os.path.join(path, f))
+    return files
+
 
 def get_load_name(filefilter, load_save_folder=None):
     ''' Open a load file dialog. '''

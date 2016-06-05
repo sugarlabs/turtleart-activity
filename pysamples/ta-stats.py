@@ -19,7 +19,6 @@ def myblock(tw, x):  # ignore second argument
     ''' Load journal stats to heap (Sugar only) '''
 
     import os
-    import glob
 
     _DIROFINTEREST = 'datastore'
 
@@ -31,13 +30,16 @@ def myblock(tw, x):  # ignore second argument
             self._score = []
 
             homepath = os.environ['HOME']
-            for path in glob.glob(os.path.join(homepath, '.sugar', '*')):
+            for name in os.listdir(os.path.join(homepath, '.sugar')):
+                path = os.path.join(homepath, ".sugar", name)
                 if isdsdir(path):
-                    dsobjdirs = glob.glob(
-                        os.path.join(path, _DIROFINTEREST, '??'))
-                    for dsobjdir in dsobjdirs:
-                        dsobjs = glob.glob(os.path.join(dsobjdir, '*'))
-                        for dsobj in dsobjs:
+                    for dsobjdir in os.listdir(path):
+                        if len(dsobjdir) != DIROFINTEREST + 2:
+                            continue
+
+                        dsobjdir = os.path.join(path, dsobjdir)
+                        for dsobj in dsobjdir:
+                            dsobj = os.path.join(dsobjdir, dsobj)
                             if not isactivity(dsobj) == 'TurtleArtActivity':
                                 continue
                             if hascomponent(dsobj, 'mime_type') != \

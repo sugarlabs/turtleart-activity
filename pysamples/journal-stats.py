@@ -19,7 +19,6 @@ def myblock(tw, x):  # ignore second argument
     ''' Load journal stats to heap (Sugar only) '''
 
     import os
-    import glob
     from gettext import gettext as _
 
     MAX = 19
@@ -35,14 +34,24 @@ def myblock(tw, x):  # ignore second argument
             self._activity_count = []
 
             homepath = os.environ['HOME']
-            for path in glob.glob(os.path.join(homepath, '.sugar', '*')):
+            for name in os.listdir(os.path.join(homepath, ".sugar")):
+                path = os.path.join(homepath, ".sugar", name)
                 if isdsdir(path):
                     self._dsdict[os.path.basename(path)] = []
-                    dsobjdirs = glob.glob(
-                        os.path.join(path, DIROFINTEREST, '??'))
-                    for dsobjdir in dsobjdirs:
-                        dsobjs = glob.glob(os.path.join(dsobjdir, '*'))
-                        for dsobj in dsobjs:
+                    if not os.path.isdir(path):
+                        continue
+
+                    for dsobjdir in os.listdir(path):
+                        if len(dsobjdir) != DIROFINTEREST + 2:
+                            continue
+
+                        dsobjdir = os.path.join(path, dsobjdir)
+                        if not os.path.isdir(dsobjdir):
+                            continue
+
+                        for dsobj in os.listdir(dsobjdir):
+                            dsobj = os.path.join(dsobjdir, dsobj)
+
                             self._dsdict[os.path.basename(path)].append({})
                             activity = isactivity(dsobj)
                             if not activity:
