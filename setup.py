@@ -2,13 +2,18 @@
 
 import sys
 
+def get_files(path):
+    files = []
+    for name in path:
+        files.append(os.path.join(path, name))
+    return files
+
 if len(sys.argv) > 1 and '--no-sugar' == sys.argv[1]:
     # Remove the argument from the stack so we don't cause problems
     # for distutils
     sys.argv.pop(1)
 
     import os
-    import glob
     import shutil
     import subprocess
     from distutils.core import setup
@@ -60,9 +65,9 @@ if len(sys.argv) > 1 and '--no-sugar' == sys.argv[1]:
                     print 'ERROR - msgfmt failed with return code %i.' % retcode
 
     DATA_FILES = [
-        ('activity', glob.glob('activity/*')),
-        ('icons', glob.glob('icons/*')),
-        ('images', glob.glob('images/*')),
+        ('activity', get_files('activity/')),
+        ('icons', get_files('icons/')),
+        ('images', get_files('images/')),
         ('/usr/share/applications', ['turtleblocks.desktop'])
     ]
 

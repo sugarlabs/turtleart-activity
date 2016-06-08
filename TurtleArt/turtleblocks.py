@@ -30,7 +30,6 @@ import getopt
 import sys
 import os
 import os.path
-import glob
 import cStringIO
 import errno
 import ConfigParser
@@ -65,7 +64,7 @@ from TurtleArt.taprimitive import PyExportError
 from TurtleArt.taplugin import (load_a_plugin, cancel_plugin_install,
                                 complete_plugin_install)
 
-from util.menubuilder import MenuBuilder
+from util.menubuilder import make_menu_item, make_sub_menu, make_checkmenu_item
 
 
 class TurtleMain():
@@ -435,88 +434,88 @@ return %s(self)" % (p, P, P)
     def _get_menu_bar(self):
         ''' Instead of Sugar toolbars, use GNOME menus. '''
         menu = gtk.Menu()
-        MenuBuilder.make_menu_item(menu, _('New'), self._do_new_cb)
-        MenuBuilder.make_menu_item(menu, _('Show sample projects'),
+        make_menu_item(menu, _('New'), self._do_new_cb)
+        make_menu_item(menu, _('Show sample projects'),
                                    self._create_store)
-        MenuBuilder.make_menu_item(menu, _('Open'), self._do_open_cb)
-        MenuBuilder.make_menu_item(menu, _('Add project'), self._do_load_cb)
-        MenuBuilder.make_menu_item(menu, _('Load plugin'),
+        make_menu_item(menu, _('Open'), self._do_open_cb)
+        make_menu_item(menu, _('Add project'), self._do_load_cb)
+        make_menu_item(menu, _('Load plugin'),
                                    self._do_load_plugin_cb)
-        MenuBuilder.make_menu_item(menu, _('Save'), self._do_save_cb)
-        MenuBuilder.make_menu_item(menu, _('Save as'), self._do_save_as_cb)
+        make_menu_item(menu, _('Save'), self._do_save_cb)
+        make_menu_item(menu, _('Save as'), self._do_save_as_cb)
 
         # export submenu
         export_submenu = gtk.Menu()
-        export_menu = MenuBuilder.make_sub_menu(export_submenu, _('Export as'))
+        export_menu = make_sub_menu(export_submenu, _('Export as'))
         menu.append(export_menu)
 
-        MenuBuilder.make_menu_item(export_submenu, _('image'),
+        make_menu_item(export_submenu, _('image'),
                                    self._do_save_picture_cb)
-        MenuBuilder.make_menu_item(export_submenu, _('SVG'),
+        make_menu_item(export_submenu, _('SVG'),
                                    self._do_save_svg_cb)
-        MenuBuilder.make_menu_item(export_submenu, _('icon'),
+        make_menu_item(export_submenu, _('icon'),
                                    self._do_save_as_icon_cb)
         # TRANS: ODP is Open Office presentation
-        MenuBuilder.make_menu_item(export_submenu, _('ODP'),
+        make_menu_item(export_submenu, _('ODP'),
                                    self._do_save_as_odp_cb)
-        MenuBuilder.make_menu_item(export_submenu, _('Logo'),
+        make_menu_item(export_submenu, _('Logo'),
                                    self._do_save_logo_cb)
-        MenuBuilder.make_menu_item(export_submenu, _('Python'),
+        make_menu_item(export_submenu, _('Python'),
                                    self._do_save_python_cb)
-        MenuBuilder.make_menu_item(menu, _('Quit'), self._quit_ta)
-        activity_menu = MenuBuilder.make_sub_menu(menu, _('File'))
+        make_menu_item(menu, _('Quit'), self._quit_ta)
+        activity_menu = make_sub_menu(menu, _('File'))
 
         menu = gtk.Menu()
-        MenuBuilder.make_menu_item(menu, _('Cartesian coordinates'),
+        make_menu_item(menu, _('Cartesian coordinates'),
                                    self._do_cartesian_cb)
-        MenuBuilder.make_menu_item(menu, _('Polar coordinates'),
+        make_menu_item(menu, _('Polar coordinates'),
                                    self._do_polar_cb)
-        self.coords = MenuBuilder.make_checkmenu_item(
+        self.coords = make_checkmenu_item(
             menu, _('Rescale coordinates'),
             self._do_rescale_cb, status=False)
-        MenuBuilder.make_menu_item(menu, _('Grow blocks'),
+        make_menu_item(menu, _('Grow blocks'),
                                    self._do_resize_cb, 1.5)
-        MenuBuilder.make_menu_item(menu, _('Shrink blocks'),
+        make_menu_item(menu, _('Shrink blocks'),
                                    self._do_resize_cb, 0.667)
-        MenuBuilder.make_menu_item(menu, _('Reset block size'),
+        make_menu_item(menu, _('Reset block size'),
                                    self._do_resize_cb, -1)
-        self.hover = MenuBuilder.make_checkmenu_item(
+        self.hover = make_checkmenu_item(
             menu, _('Turn on hover help'),
             self._do_toggle_hover_help_cb, status=True)
-        view_menu = MenuBuilder.make_sub_menu(menu, _('View'))
+        view_menu = make_sub_menu(menu, _('View'))
 
         menu = gtk.Menu()
-        MenuBuilder.make_menu_item(menu, _('Copy'), self._do_copy_cb)
-        MenuBuilder.make_menu_item(menu, _('Paste'), self._do_paste_cb)
-        MenuBuilder.make_menu_item(menu, _('Save stack'),
+        make_menu_item(menu, _('Copy'), self._do_copy_cb)
+        make_menu_item(menu, _('Paste'), self._do_paste_cb)
+        make_menu_item(menu, _('Save stack'),
                                    self._do_save_macro_cb)
-        MenuBuilder.make_menu_item(menu, _('Delete stack'),
+        make_menu_item(menu, _('Delete stack'),
                                    self._do_delete_macro_cb)
-        edit_menu = MenuBuilder.make_sub_menu(menu, _('Edit'))
+        edit_menu = make_sub_menu(menu, _('Edit'))
 
         menu = gtk.Menu()
-        MenuBuilder.make_menu_item(menu, _('Show palette'),
+        make_menu_item(menu, _('Show palette'),
                                    self._do_palette_cb)
-        MenuBuilder.make_menu_item(menu, _('Hide palette'),
+        make_menu_item(menu, _('Hide palette'),
                                    self._do_hide_palette_cb)
-        MenuBuilder.make_menu_item(menu, _('Show/hide blocks'),
+        make_menu_item(menu, _('Show/hide blocks'),
                                    self._do_hideshow_cb)
-        tool_menu = MenuBuilder.make_sub_menu(menu, _('Tools'))
+        tool_menu = make_sub_menu(menu, _('Tools'))
 
         menu = gtk.Menu()
-        MenuBuilder.make_menu_item(menu, _('Clean'), self._do_eraser_cb)
-        MenuBuilder.make_menu_item(menu, _('Run'), self._do_run_cb)
-        MenuBuilder.make_menu_item(menu, _('Step'), self._do_step_cb)
-        MenuBuilder.make_menu_item(menu, _('Debug'), self._do_trace_cb)
-        MenuBuilder.make_menu_item(menu, _('Stop'), self._do_stop_cb)
-        turtle_menu = MenuBuilder.make_sub_menu(menu, _('Turtle'))
+        make_menu_item(menu, _('Clean'), self._do_eraser_cb)
+        make_menu_item(menu, _('Run'), self._do_run_cb)
+        make_menu_item(menu, _('Step'), self._do_step_cb)
+        make_menu_item(menu, _('Debug'), self._do_trace_cb)
+        make_menu_item(menu, _('Stop'), self._do_stop_cb)
+        turtle_menu = make_sub_menu(menu, _('Turtle'))
 
         self._plugin_menu = gtk.Menu()
-        plugin_men = MenuBuilder.make_sub_menu(self._plugin_menu, _('Plugins'))
+        plugin_men = make_sub_menu(self._plugin_menu, _('Plugins'))
 
         menu = gtk.Menu()
-        MenuBuilder.make_menu_item(menu, _('About...'), self._do_about_cb)
-        help_menu = MenuBuilder.make_sub_menu(menu, _('Help'))
+        make_menu_item(menu, _('About...'), self._do_about_cb)
+        help_menu = make_sub_menu(menu, _('Help'))
 
         menu_bar = gtk.MenuBar()
         menu_bar.append(activity_menu)
@@ -1070,13 +1069,12 @@ Would you like to save before quitting?'))
             store.append([pixbuf, filepath])
 
     def _scan_for_samples(self):
-        samples = sorted(
-            glob.glob(
-                os.path.join(
-                    self._share_path,
-                    'samples',
-                    'thumbnails',
-                    '*.png')))
+        path = os.path.join(self._share_path, "samples/thumbnails")
+        samples = []
+        for name in os.listdir(path):
+            if name.endswith(".png"):
+                samples.append(os.path.join(self._share_path, name))
+        samples.sort()
         return samples
 
 

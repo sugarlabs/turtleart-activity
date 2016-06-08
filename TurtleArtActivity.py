@@ -45,7 +45,6 @@ from sugar.datastore import datastore
 from sugar import profile
 
 import os
-import glob
 import tarfile
 import subprocess
 import ConfigParser
@@ -1743,13 +1742,12 @@ class TurtleArtActivity(activity.Activity):
             store.append([pixbuf, filepath])
 
     def _scan_for_samples(self):
-        samples = sorted(
-            glob.glob(
-                os.path.join(
-                    activity.get_bundle_path(),
-                    'samples',
-                    'thumbnails',
-                    '*.png')))
+        path = os.path.join(self._share_path, "samples/thumbnails")
+        samples = []
+        for name in os.listdir(path):
+            if name.endswith(".png"):
+                samples.append(os.path.join(self._share_path, name))
+        samples.sort()
         return samples
 
     def is_toolbar_expanded(self):
