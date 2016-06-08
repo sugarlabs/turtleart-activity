@@ -1341,11 +1341,12 @@ class TurtleArtWindow():
 
     def _hide_status_layer(self, spr):
         # Almost always hide the status layer on a click
-        if self._autohide_shape and self.status_spr is not None:
-            self.status_spr.hide()
-        elif spr == self.status_spr:
-            self.status_spr.hide()
-            self._autohide_shape = True
+        if self.status_spr is not None:
+            if self._autohide_shape:
+                self.status_spr.hide()
+            elif spr == self.status_spr:
+                self.status_spr.hide()
+                self._autohide_shape = True
 
     def _look_for_a_blk(self, spr, x, y, blk=None):
         # From the sprite at x, y, look for a corresponding block
