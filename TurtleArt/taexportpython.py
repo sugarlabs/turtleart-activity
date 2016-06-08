@@ -23,7 +23,7 @@
 import ast
 from gettext import gettext as _
 from os import linesep
-from os import path,pardir
+from os import path, pardir
 import re
 import traceback
 import util.codegen as codegen
@@ -54,7 +54,10 @@ paths.append('/usr/share/sugar/activities/%s.activity')
 paths.append('/usr/local/share/sugar/activities/%s.activity')
 paths.append(
     '/home/broot/sugar-build/build/install/share/sugar/activities/%s.activity')
-"""+"paths.append('%s')"%path.abspath(path.join(path.dirname(__file__), pardir))+"""
+""" + \
+"paths.append('%s')" % \
+    path.abspath(path.join(path.dirname(__file__), pardir)) + \
+"""\
 
 flag = False
 for path in paths:
@@ -123,7 +126,7 @@ def save_python(tw):
     for block in all_blocks:
         blocks_name.append(block.name)
 
-    if not 'start' in blocks_name:
+    if 'start' not in blocks_name:
         return None
 
     blocks_covered = set()
@@ -138,10 +141,10 @@ def save_python(tw):
     snippets = [_SETUP_CODE_START]
 
     for k in plugins_in_use:
-        snippets.append("%s = None\n" % (k.lower(),))
+        snippets.append('%s = None\n' % (k.lower(),))
 
-    snippets.append("\n")
-        
+    snippets.append('\n')
+
     for block in tops_of_stacks:
         stack_name = get_stack_name(block)
         if stack_name:
@@ -149,7 +152,7 @@ def save_python(tw):
             snippets.append(pythoncode)
             snippets.append(linesep)
     snippets.append(_SETUP_CODE_END)
-    return "".join(snippets)
+    return ''.join(snippets)
 
 
 def _action_stack_to_python(block, tw, name='start'):
@@ -175,13 +178,13 @@ def _action_stack_to_python(block, tw, name='start'):
     if name == 'start':
         pre_preamble = _START_STACK_START_ADD
         for k in plugins_in_use:
-            pre_preamble += "    global %s\n" % (k.lower(),)
+            pre_preamble += '    global %s\n' % (k.lower(),)
             pre_preamble += "    %s = global_objects['%s']\n" % (k.lower(), k)
     else:
         pre_preamble = ''
     generated_code = _indent(generated_code, 1)
     if generated_code.endswith(linesep):
-        newline = ""
+        newline = ''
     else:
         newline = linesep
     snippets = [_ACTION_STACK_START % (name_id),
@@ -190,7 +193,7 @@ def _action_stack_to_python(block, tw, name='start'):
                 generated_code,
                 newline,
                 _ACTION_STACK_END % (name, name_id)]
-    return "".join(snippets)
+    return ''.join(snippets)
 
 
 def _walk_action_stack(top_block, lc, convert_me=True):
@@ -219,7 +222,7 @@ def _walk_action_stack(top_block, lc, convert_me=True):
         prim = lc.get_prim_callable(block.primitive)
         # fail gracefully if primitive is not a Primitive object
         if not isinstance(prim, Primitive):
-            raise PyExportError(_("block is not exportable"), block=block)
+            raise PyExportError(_('block is not exportable'), block=block)
         return prim
 
     prim = _get_prim(block)
@@ -238,7 +241,7 @@ def _walk_action_stack(top_block, lc, convert_me=True):
                     new_ast = prim.get_ast(*arg_asts)
                 except ValueError:
                     traceback.print_exc()
-                    raise PyExportError(_("error while exporting block"),
+                    raise PyExportError(_('error while exporting block'),
                                         block=block)
                 if isinstance(new_ast, (list, tuple)):
                     ast_list.extend(new_ast)
@@ -293,10 +296,10 @@ def _walk_action_stack(top_block, lc, convert_me=True):
 def _make_identifier(name):
     """ Turn name into a Python identifier name by replacing illegal
     characters """
-    replaced = re.sub(PAT_IDENTIFIER_ILLEGAL_CHAR, "_", name)
+    replaced = re.sub(PAT_IDENTIFIER_ILLEGAL_CHAR, '_', name)
     # TODO find better strategy to avoid number at beginning
-    if re.match("[0-9]", replaced):
-        replaced = "_" + replaced
+    if re.match('[0-9]', replaced):
+        replaced = '_' + replaced
     return replaced
 
 
@@ -309,4 +312,3 @@ def _indent(code, num_levels=1):
     for line in line_list:
         new_line_list.append(indentation + line)
     return linesep.join(new_line_list)
-
