@@ -23,6 +23,7 @@
 import ast
 from gettext import gettext as _
 from os import linesep
+from os import path,pardir
 import re
 import traceback
 import util.codegen as codegen
@@ -46,18 +47,21 @@ _ALTERNATIVE_INSTALL_PATH = \\
 
 import os, sys, dbus
 paths = []
+
 paths.append('../%s.activity')
 paths.append(os.path.expanduser('~') + '/Activities/%s.activity')
 paths.append('/usr/share/sugar/activities/%s.activity')
 paths.append('/usr/local/share/sugar/activities/%s.activity')
 paths.append(
     '/home/broot/sugar-build/build/install/share/sugar/activities/%s.activity')
+"""+"paths.append('%s')"%path.abspath(path.join(path.dirname(__file__), pardir))+"""
 
 flag = False
 for path in paths:
     for activity in ['TurtleBots', 'TurtleBlocks']:
-        p = path % activity
-        if os.path.exists(p):
+        p = (path % activity) if "%" in path else path
+
+        if os.path.exists(p) and p not in sys.path:
             flag = True
             sys.path.insert(0, p)
 
@@ -77,8 +81,12 @@ tw = get_tw()
 BOX = {}
 ACTION = {}
 
-
+global_objects = None
+turtles = None
+canvas = None
+logo = None
 """
+
 _SETUP_CODE_END = """\
 
 if __name__ == '__main__':
@@ -92,14 +100,14 @@ def %s():
 """
 _START_STACK_START_ADD = """\
     tw.start_plugins()
+    global global_objects,turtles,canvas,logo
     global_objects = tw.get_global_objects()
-"""
-_ACTION_STACK_PREAMBLE = """\
     turtles = tw.turtles
-    turtle = turtles.get_active_turtle()
     canvas = tw.canvas
     logo = tw.lc
-
+"""
+_ACTION_STACK_PREAMBLE = """\
+    turtle = turtles.get_active_turtle()
 """
 _ACTION_STACK_END = """\
 ACTION["%s"] = %s
@@ -128,6 +136,12 @@ def save_python(tw):
             blocks_covered.update(set(block_stack))
 
     snippets = [_SETUP_CODE_START]
+
+    for k in plugins_in_use:
+        snippets.append("%s = None\n" % (k.lower(),))
+
+    snippets.append("\n")
+        
     for block in tops_of_stacks:
         stack_name = get_stack_name(block)
         if stack_name:
@@ -161,6 +175,7 @@ def _action_stack_to_python(block, tw, name='start'):
     if name == 'start':
         pre_preamble = _START_STACK_START_ADD
         for k in plugins_in_use:
+            pre_preamble += "    global %s\n" % (k.lower(),)
             pre_preamble += "    %s = global_objects['%s']\n" % (k.lower(), k)
     else:
         pre_preamble = ''
@@ -294,3 +309,4 @@ def _indent(code, num_levels=1):
     for line in line_list:
         new_line_list.append(indentation + line)
     return linesep.join(new_line_list)
+
