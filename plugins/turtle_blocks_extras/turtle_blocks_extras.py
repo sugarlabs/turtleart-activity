@@ -1166,7 +1166,7 @@ Journal objects'))
 
         if hasattr(self.tw, 'macros_path') and \
                 os.path.exists(self.tw.macros_path):
-            files = get_endswith_files(self.tw.macros_path ".tb");
+            files = get_endswith_files(self.tw.macros_path, ".tb")
             if len(files) > 0:
                 palette = make_palette(
                     'myblocks',
