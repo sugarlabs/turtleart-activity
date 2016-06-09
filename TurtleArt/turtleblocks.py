@@ -189,12 +189,9 @@ return %s(self)" % (p, P, P)
 
     def _makepath(self, path):
         ''' Make a path if it doesn't previously exist '''
-        from os import makedirs
-        from os.path import normpath, dirname, exists
-
-        dpath = normpath(dirname(path))
-        if not exists(dpath):
-            makedirs(dpath)
+        dpath = os.path.normpath(os.path.dirname(path))
+        if not os.path.exists(dpath):
+            os.makedirs(dpath)
 
     def _start_gtk(self):
         ''' Get a main window set up. '''
@@ -597,7 +594,7 @@ Would you like to save before quitting?'))
         dlg.destroy()
 
         if resp is gtk.RESPONSE_OK:
-            complete_plugin_install(tmp_dir, tmp_path, plugin_path,
+            complete_plugin_install(self, tmp_dir, tmp_path, plugin_path,
                                     plugin_name, file_info)
         elif resp is gtk.RESPONSE_CANCEL:
             cancel_plugin_install(tmp_dir)
@@ -1077,6 +1074,3 @@ Would you like to save before quitting?'))
         samples.sort()
         return samples
 
-
-if __name__ == '__main__':
-    TurtleMain()
