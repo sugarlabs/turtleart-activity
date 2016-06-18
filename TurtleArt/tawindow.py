@@ -441,7 +441,7 @@ class TurtleArtWindow():
             if not self.running_sugar and hasattr(self.activity, 'client'):
                 gconf_path = self.activity._PLUGINS_PATH + plugin_dir
                 try:
-                    status = (self.activity.client.get_int(gconf_path) == 0)
+                    status = (self.activity.client.get_int(gconf_path) == 1)
                 except:
                     pass
                 make_checkmenu_item(self.activity._plugin_menu, \
