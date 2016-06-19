@@ -89,6 +89,7 @@ class TurtleArtActivity(activity.Activity):
         except dbus.exceptions.DBusException as e:
             _logger.error(str(e))
 
+        self.handle = handle
         self.tw = None
         self.init_complete = False
 
@@ -1276,13 +1277,14 @@ class TurtleArtActivity(activity.Activity):
             self._old_cursor = gtk.gdk.Cursor(gtk.gdk.LEFT_PTR)
 
         # Try restoring an existing project...
-        if self._jobject and self._jobject.file_path:
+        if self._jobject and self._jobject.file_path or \
+                                             os.path.isfile(str(self.handle.uri)):
             if hasattr(self, 'get_window'):
                 _logger.debug('setting watch cursor')
                 if hasattr(self.get_window(), 'get_cursor'):
                     self._old_cursor = self.get_window().get_cursor()
                     self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.WATCH))
-            self.read_file(self._jobject.file_path)
+            self.read_file(self._jobject.file_path or self.handle.uri)
         else:  # ...or else, load a Start Block onto the canvas.
             self.tw.load_start()
 
