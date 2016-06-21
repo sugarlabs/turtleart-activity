@@ -383,6 +383,20 @@ class TurtleArtActivity(activity.Activity):
         if hasattr(self, 'get_window'):
             self.get_window().set_cursor(self._old_cursor)
 
+    def do_save_blocks_img_cb(self, button):
+        ''' Save the canvas to the Journal. '''
+        _logger.debug('saving block image to journal')
+        if hasattr(self, 'get_window'):
+            if hasattr(self.get_window(), 'get_cursor'):
+                self._old_cursor = self.get_window().get_cursor()
+                self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.WATCH))
+        gobject.timeout_add(250, self.__save_blocks_as_image)
+
+    def __save_blocks_as_image(self):
+        self.tw.save_blocks_as_image()
+        if hasattr(self, 'get_window'):
+            self.get_window().set_cursor(self._old_cursor)
+
     def do_keep_cb(self, button):
         ''' Save a snapshot of the project to the Journal. '''
         if hasattr(self, 'get_window'):
@@ -1111,6 +1125,9 @@ class TurtleArtActivity(activity.Activity):
             None, button_box)
         self.keep_button2, self.keep_label2 = self._add_button_and_label(
             'filesaveoff', _('Save snapshot'), self.do_keep_cb,
+            None, button_box)
+        self.save_blocks_img, label = self._add_button_and_label(
+            'save-blocks', _('Save blocks as image'), self.do_save_blocks_img_cb,
             None, button_box)
 
         load_button = self._add_button(
