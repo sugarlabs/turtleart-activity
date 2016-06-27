@@ -108,6 +108,7 @@ _START_STACK_START_ADD = """\
     turtles = tw.turtles
     canvas = tw.canvas
     logo = tw.lc
+    logo.boxes = BOX
 """
 _ACTION_STACK_PREAMBLE = """\
     turtle = turtles.get_active_turtle()
