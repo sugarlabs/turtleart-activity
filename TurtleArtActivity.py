@@ -1744,13 +1744,11 @@ class TurtleArtActivity(activity.Activity):
             store.append([pixbuf, filepath])
 
     def _scan_for_samples(self):
-        path = os.path.join(activity.get_bundle_path(),
-                                            'samples', 'thumbnails')
+        path = os.path.join(activity.get_bundle_path(), 'samples', 'thumbnails')
         samples = []
         for name in os.listdir(path):
             if name.endswith(".png"):
-                samples.append(os.path.join(activity.get_bundle_path(),
-                                            'samples', 'thumbnails', name))
+                samples.append(os.path.join(path, name))
         samples.sort()
         return samples
 

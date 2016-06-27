@@ -1066,11 +1066,11 @@ Would you like to save before quitting?'))
             store.append([pixbuf, filepath])
 
     def _scan_for_samples(self):
-        path = os.path.join(self._share_path, "samples/thumbnails")
+        path = os.path.join(self._share_path, 'samples', 'thumbnails')
         samples = []
         for name in os.listdir(path):
             if name.endswith(".png"):
-                samples.append(os.path.join(self._share_path, name))
+                samples.append(os.path.join(path, name))
         samples.sort()
         return samples
 
