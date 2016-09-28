@@ -27,7 +27,11 @@ try:
     HAS_GCONF = True
 except ImportError:
     HAS_GCONF = False
-import dbus
+try:
+    import dbus
+    HAS_DBUS = True
+except ImportError:
+    HAS_DBUS = False
 import cairo
 import pickle
 import subprocess
@@ -966,6 +970,10 @@ def power_manager_off(status):
     '''
     if not HAS_GCONF:
         return
+
+    if not HAS_DBUS:
+        return
+
 
     global FIRST_TIME
 
