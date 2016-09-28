@@ -27,7 +27,11 @@ try:
     HAS_GCONF = True
 except ImportError:
     HAS_GCONF = False
-import dbus
+try:
+    import dbus
+    HAS_DBUS = True
+except ImportError:
+    HAS_DBUS = False
 import cairo
 import pickle
 import subprocess
@@ -928,9 +932,12 @@ def _get_dmi(node):
 
 def get_screen_dpi():
     ''' Return screen DPI '''
-    xft_dpi = gtk.settings_get_default().get_property('gtk-xft-dpi')
-    dpi = float(xft_dpi / 1024)
-    return dpi
+    try:
+        xft_dpi = gtk.settings_get_default().get_property('gtk-xft-dpi')
+        dpi = float(xft_dpi / 1024)
+        return dpi
+    except:
+        return 100
 
 
 def check_output(command, warning):
@@ -963,6 +970,10 @@ def power_manager_off(status):
     '''
     if not HAS_GCONF:
         return
+
+    if not HAS_DBUS:
+        return
+
 
     global FIRST_TIME
 
@@ -1010,6 +1021,8 @@ def power_manager_off(status):
 
 def is_writeable(path):
     ''' Make sure we can write to the directory or file '''
+    return os.access(path, os.W_OK)
+    """
     if not os.path.exists(path):
         return False
     stats = os.stat(path)
@@ -1018,3 +1031,5 @@ def is_writeable(path):
        (stats.st_mode & stat.S_IWOTH):
         return True
     return False
+    """
+
