@@ -1010,6 +1010,8 @@ def power_manager_off(status):
 
 def is_writeable(path):
     ''' Make sure we can write to the directory or file '''
+    return os.access(path, os.W_OK)
+    """
     if not os.path.exists(path):
         return False
     stats = os.stat(path)
@@ -1018,3 +1020,5 @@ def is_writeable(path):
        (stats.st_mode & stat.S_IWOTH):
         return True
     return False
+    """
+
