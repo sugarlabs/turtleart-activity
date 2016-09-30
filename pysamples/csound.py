@@ -15,6 +15,7 @@ def myblock(tw, sound):
 
     from TurtleArt.tautils import get_path
     import os
+    import tempfile
 
     dirs = [os.path.join(
         os.environ['HOME'],
@@ -150,6 +151,6 @@ def myblock(tw, sound):
     if tw.running_sugar:
         path = os.path.join(get_path(tw.activity, 'instance'), 'tmp.csd')
     else:
-        path = os.path.join('/tmp', 'tmp.csd')
+        path = os.path.join(tempfile.gettempdir(), 'tmp.csd')
     audioWrite(path)  # Create a csound file from the score.
     os.system('csound ' + path)  # Play the csound file.

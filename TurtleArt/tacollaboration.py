@@ -24,6 +24,7 @@ from dbus.gobject_service import ExportedGObject
 import telepathy
 import os
 import gtk
+import tempfile
 
 from gettext import gettext as _
 
@@ -305,7 +306,7 @@ class Collaboration():
                 if self._tw.running_sugar:
                     tmp_path = get_path(self._tw.activity, 'instance')
                 else:
-                    tmp_path = '/tmp'
+                    tmp_path = tempfile.gettempdir()
                 file_name = base64_to_image(data, tmp_path)
                 pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(file_name,
                                                               width, height)
@@ -320,7 +321,7 @@ class Collaboration():
                 if self._tw.running_sugar:
                     tmp_path = get_path(self._tw.activity, 'instance')
                 else:
-                    tmp_path = '/tmp'
+                    tmp_path = tempfile.gettempdir()
                 file_name = base64_to_image(data, tmp_path)
                 pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(file_name,
                                                               width, height)

@@ -554,10 +554,14 @@ return %s(self)" % (p, P, P)
                 plugin.quit()
 
         # Clean up temporary files
-        if os.path.exists(TMP_SVG_PATH):
+        try:
             os.remove(TMP_SVG_PATH)
-        if os.path.exists(TMP_ODP_PATH):
+        except:
+            pass
+        try:
             os.remove(TMP_ODP_PATH)
+        except:
+            pass
 
         gtk.main_quit()
         exit()
