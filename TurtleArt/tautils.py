@@ -22,6 +22,7 @@
 
 import gtk
 import gobject
+import tempfile
 try:
     import gconf
     HAS_GCONF = True
@@ -403,7 +404,8 @@ def data_to_file(data, ta_file):
             file_handle = file(tmp_file, 'w')
         except IOError as e:
             error_output('Could not write to %s: %s.' % (tmp_file, e))
-            tmp_file = os.path.join('/tmp', os.path.basename(ta_file))
+            tmp_file = os.path.join(tempfile.gettempdir(),
+                                                     os.path.basename(ta_file))
             try:
                 debug_output('Trying to write to %s' % (tmp_file))
                 file_handle = file(tmp_file, 'w')

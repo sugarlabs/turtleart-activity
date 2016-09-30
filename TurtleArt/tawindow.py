@@ -3023,6 +3023,8 @@ class TurtleArtWindow():
         if blk is None:
             return
         self.lc.find_value_blocks()  # Are there blocks to update?
+        if self.canvas.cr_svg is None:
+            self.canvas.setup_svg_surface()
         self.running_blocks = True
         self.start_plugins()  # Let the plugins know we are running.
         top = find_top_block(blk)
@@ -4729,8 +4731,6 @@ class TurtleArtWindow():
 
         file_path = os.path.join(datapath, filename)
         if svg:
-            if self.canvas.cr_svg is None:
-                self.canvas.setup_svg_surface()
             if self.canvas.cr_svg is None:
                 return
             self.canvas.svg_close()

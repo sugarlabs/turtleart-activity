@@ -24,6 +24,7 @@ import os
 import gtk
 import gobject
 import cairo
+import tempfile
 
 from random import uniform
 from math import sin, cos, pi, sqrt
@@ -668,7 +669,7 @@ class Turtle:
                 tmp_path = get_path(self._turtles.turtle_window.activity,
                                     'instance')
             else:
-                tmp_path = '/tmp'
+                tmp_path = tempfile.gettempdir()
             tmp_file = os.path.join(
                 get_path(self._turtles.turtle_window.activity, 'instance'),
                 'tmpfile.png')

@@ -23,6 +23,7 @@
 
 import gtk
 import gobject
+import tempfile
 from time import time, sleep
 
 from operator import isNumberType
@@ -1162,7 +1163,7 @@ class LogoCode:
             if self.tw.running_sugar:
                 tmp_path = get_path(self.tw.activity, 'instance')
             else:
-                tmp_path = '/tmp'
+                tmp_path = tempfile.gettempdir()
             tmp_file = os.path.join(get_path(self.tw.activity, 'instance'),
                                     'tmpfile.png')
             pixbuf.save(tmp_file, 'png', {'quality': '100'})

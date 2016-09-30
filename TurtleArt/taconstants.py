@@ -20,6 +20,7 @@
 # THE SOFTWARE.
 
 import os
+import tempfile
 from random import uniform
 from gettext import gettext as _
 
@@ -85,9 +86,9 @@ XO4 = 'xo4'
 UNKNOWN = 'unknown'
 PASTE_OFFSET = 20
 TMP_SVG_PATH = os.path.join(
-    '/tmp', 'turtle-blocks-%d.svg' % int(uniform(0, 10000)))
+    tempfile.gettempdir(), 'turtle-blocks-%d.svg' % int(uniform(0, 10000)))
 TMP_ODP_PATH = os.path.join(
-    '/tmp', 'turtle-blocks-%d.odp' % int(uniform(0, 10000)))
+    tempfile.gettempdir(), 'turtle-blocks-%d.odp' % int(uniform(0, 10000)))
 
 ARG_MUST_BE_NUMBER = ['product2', 'minus2', 'random', 'remainder2', 'forward',
                       'back', 'left', 'right', 'arc', 'setxy2', 'setxy',

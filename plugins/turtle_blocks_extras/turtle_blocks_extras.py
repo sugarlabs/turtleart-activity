@@ -15,9 +15,9 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
-from time import time
 import os
-
+import tempfile
+from time import time
 from gettext import gettext as _
 
 from plugins.plugin import Plugin
@@ -1254,7 +1254,7 @@ Journal objects'))
             path = os.path.join(get_path(self.tw.activity, 'instance'),
                                 'tmp.csd')
         else:
-            path = os.path.join('/tmp', 'tmp.csd')
+            path = os.path.join(tempfile.gettempdir(), 'tmp.csd')
         # Create a csound file from the score.
         self._audio_write(path)
         # Play the csound file.
