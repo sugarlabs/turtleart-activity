@@ -31,7 +31,6 @@ import os
 from os.path import exists as os_path_exists
 from UserDict import UserDict
 import urllib2
-import tempfile
 
 try:
     from sugar.graphics import style
