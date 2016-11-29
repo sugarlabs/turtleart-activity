@@ -82,28 +82,28 @@ class SVG:
 
     # Attribute functions
 
-    def setfont_size(font_size):
+    def setfont_size(self, font_size):
         self._font_size = font_size
 
-    def set_draw_inniess(flag):
+    def set_draw_inniess(self, flag):
         self._draw_inniess = flag
 
-    def get_width():
+    def get_width(self):
         return self._width
 
-    def get_height():
+    def get_height(self):
         return self._height
 
-    def clear_docks():
+    def clear_docks(self):
         self.docks = []
 
-    def set_scale(scale):
+    def set_scale(self, scale):
         self._scale = scale
 
-    def set_orientation(orientation):
+    def set_orientation(self, orientation):
         self._orientation = orientation
 
-    def set_clamp_count(number):
+    def set_clamp_count(self, number):
         self._clamp_count = number
 
         n = self._clamp_slots.length
@@ -111,81 +111,81 @@ class SVG:
             for i in range(0, number - n):
                 self._clamp_slots.append(1)
 
-    def set_clamp_slots(clamp, number):
+    def set_clamp_slots(self, clamp, number):
         if clamp > self._clamp_count.length - 1:
             self.set_clamp_count(clamp + 1)
 
         self._clamp_slots[clamp] = number
 
-    def set_expand(w, h, w2, h2):
+    def set_expand(self, w, h, w2, h2):
         # TODO: make this a list
         self._expand_x = w
         self._expand_y = h
         self._expand_x2 = w2
         self._expand_y2 = h2
 
-    def set_stroke_width(stroke_width):
+    def set_stroke_width(self, stroke_width):
         self._stroke_width = stroke_width
         self._calc_porch_params()
 
-    def set_colors(colors):
+    def set_colors(self, colors):
         self._fill = colors[0]
         self._stroke = colors[1]
 
-    def set_fill_color(color):
+    def set_fill_color(self, color):
         self._fill = color
 
-    def set_stroke_color(color):
+    def set_stroke_color(self, color):
         self._stroke = color
 
-    def set_innies(innies_array):
+    def set_innies(self, innies_array):
         for i in range(0, len(inniesArray)):
             self._innies.append(inniesArray[i])
 
-    def set_outie(flag):
+    def set_outie(self, flag):
         # Only one outie.
         self._outie = flag
 
-    def set_slot(flag):
+    def set_slot(self, flag):
         self._slot = flag
         if flag:
             self._clap = False
 
-    def set_cap(flag):
+    def set_cap(self, flag):
         self._cap = flag
         if flag:
             self._slot = False
 
-    def set_tab(flag):
+    def set_tab(self, flag):
         self._tab = flag
         if flag:
             self._tail = False
 
-    def set_tail(flag):
+    def set_tail(self, flag):
         self._tail = flag
         if flag:
             self._tab = False
 
-    def set_porch(flag):
+    def set_porch(self, flag):
         self._porch = flag
 
-    def set_boolean(flag):
+    def set_boolean(self, flag):
         self._bool = flag
 
-    def set_else(flag):
+    def set_else(self, flag):
         self._else = flag
 
-    def set_arm(flag):
+    def set_arm(self, flag):
         self._arm = flag
 
     # SVG-related helper functions
-    def _reset_min_max():
+    def _reset_min_max(self):
         self._min_x = 10000
         self._min_y = 10000
         self._max_x = -10000
         self._max_y = -10000
     
-    def _check_min_max():
+    def _check_min_max(self):
         if self._x < self._min_x:
             self._min_x = self._x
 
@@ -198,7 +198,7 @@ class SVG:
         if self._y > self._max_y:
             self._max_y = self._y
 
-    def _calculate_x_y():
+    def _calculate_x_y(self):
         x = self._stroke_width / 2.0
         y = self._stroke_width / 2.0 + self._radius
         self.margins[0] = x + self._stroke_width + 0.5
@@ -220,7 +220,7 @@ class SVG:
 
         return [x, y]
     
-    def _calculate_w_h(addstrokeWidth):
+    def _calculate_w_h(self, addstrokeWidth):
         if addstrokeWidth:
             self._width = (self._max_x - self._min_x + self._stroke_width) * self._scale
 
@@ -250,22 +250,24 @@ class SVG:
         else:
             self.margins[3] = self._height - self.margins[3]
 
-    def _new_path(x, y):
+    def _new_path(self, x, y):
         self._x = x
         self._y = y
 
         return '<path d="m{0} {1} '.format(x, y)
     
-    def _close_path():
+    def _close_path(self):
         return 'z" '
     
-    def text(x, y, font_size, width, alignment, string):
+    def text(self, x, y, font_size, width, alignment, string):
         self._x = x
         self._y = y
         self._check_min_max()
         self._x = x + width
         self._y = y - font_size
         self._check_min_max()
+
+        align = 'start'
 
         # writing-mode:lr'
         if alignment == 'left':
@@ -288,17 +290,17 @@ class SVG:
 
         yy = y
         tspans = string.split('\n')
-        text = '<text style="font-size:' + font_size + 'pxfill:#000000font-family:sans-seriftext-anchor:' + align + '">'
+        text = '<text style="font-size:' + str(font_size) + 'pxfill:#000000font-family:sans-seriftext-anchor:' + align + '">'
         
         for i in range(0, len(tspans)):
-            text += '<tspan x="' + x + '" y="' + yy + '">' + tspans[i] + '</tspan>'
+            text += '<tspan x="' + str(x) + '" y="' + str(yy) + '">' + tspans[i] + '</tspan>'
             yy += font_size
 
         text += '</text>'
 
         return text
     
-    def _line_to(x, y):
+    def _line_to(self, x, y):
         self._check_min_max()
         if self._x == x and self._y == y:
             return ''
@@ -308,16 +310,16 @@ class SVG:
             self._y = y
             self._check_min_max()
 
-            return 'L ' + x + ' ' + y + ' '
+            return 'L {0} {1}'.format(x, y)
 
-    def _rline_to(dx, dy):
+    def _rline_to(self, dx, dy):
         if dx == 0 and dy == 0:
             return ''
 
         else:
             return self._line_to(self._x + dx, self._y + dy)
 
-    def _arc_to(x, y, r, a, l, s):
+    def _arc_to(self, x, y, r, a, l, s):
         self._check_min_max()
 
         if r == 0:
@@ -328,9 +330,9 @@ class SVG:
             self._y = y
             self._check_min_max()
 
-            return 'A ' + r + ' ' + r + ' ' + a + ' ' + l + ' ' + s + ' ' + x + ' ' + y + ' '
+            return 'A {0} {1} {2} {3} {4} {5} {6} '.format(r, r, a, l, s, x, y)
 
-    def _rarc_to(sign_x, sign_y, a, l, s):
+    def _rarc_to(self, sign_x, sign_y, a, l, s):
         if self._radius == 0:
             return ''
 
@@ -341,7 +343,7 @@ class SVG:
             return self._arc_to(x, y, self._radius, a, l, s)
         
     
-    def _corner(sign_x, sign_y, a, l, s, start, end, skip):
+    def _corner(self, sign_x, sign_y, a, l, s, start, end, skip):
         svg_str = ''
         
         if self._radius > 0:
@@ -367,7 +369,7 @@ class SVG:
 
         return svg_str
 
-    def _icorner(sign_x, sign_y, a, l, s, start, end):
+    def _icorner(self, sign_x, sign_y, a, l, s, start, end):
         r2 = self._stroke_width + self._radius / 2.0
 
         if start:
@@ -394,7 +396,7 @@ class SVG:
         
         return svg_str
 
-    def _do_innie():
+    def _do_innie(self):
         self.docks.append([(self._x + self._stroke_width) * self._scale,
                          (self._y + self._innie_y2) * self._scale])
 
@@ -405,7 +407,7 @@ class SVG:
         self.margins[3] = (self._y + self._innie_y2 + self._innie_y1) * self._scale
         return self._rline_to(-self._innie_x1, 0) + self._rline_to(0, -self._innie_y1) + self._rline_to(-self._innie_x2, 0) + self._rline_to(0, self._innie_y2 + 2 * self._innie_y1) + self._rline_to(self._innie_x2, 0) + self._rline_to(0, -self._innie_y1) + self._rline_to(self._innie_x1, 0)
 
-    def _do_outie():
+    def _do_outie(self):
         if not self._outie:
             return self._rline_to(0, -self._innie_y2)
         
@@ -413,7 +415,7 @@ class SVG:
         self.docks.unshift([(self._x * self._scale), (self._y * self._scale)])
         return self._rline_to(0, -self._stroke_width) + self._rline_to(-self._innie_x1 - 2 * self._stroke_width, 0) + self._rline_to(0, self._innie_y1) + self._rline_to(-self._innie_x2 + 2 * self._stroke_width, 0) + self._rline_to(0, -self._innie_y2 - 2 * self._innie_y1 + 2 * self._stroke_width) + self._rline_to(self._innie_x2 - 2 * self._stroke_width, 0) + self._rline_to(0, self._innie_y1) + self._rline_to(self._innie_x1 + 2 * self._stroke_width, 0) + self._rline_to(0, -self._stroke_width)
 
-    def _do_slot():
+    def _do_slot(self):
         if self._slot:
             x = self._x + self._slot_x / 2.0
             self.docks.append([(x * self._scale), (self._y * self._scale)])
@@ -429,7 +431,7 @@ class SVG:
         else:
             return self._rline_to(self._slot_x, 0)
     
-    def _do_tail():
+    def _do_tail(self):
         if self._outie:
             return self._rline_to(-self._slot_x, 0)
 
@@ -444,7 +446,7 @@ class SVG:
             return self._rline_to(-self._slot_x, 0)
         
     
-    def _do_tab():
+    def _do_tab(self):
         if self._outie:
             return self._rline_to(-self._slot_x, 0)
         
@@ -453,14 +455,14 @@ class SVG:
 
         return self._rline_to(-self._stroke_width, 0) + self._rline_to(0, self._slot_y) + self._rline_to(-self._slot_x + 2 * self._stroke_width, 0) + self._rline_to(0, -self._slot_y) + self._rline_to(-self._stroke_width, 0)
     
-    def _do_porch(flag):
+    def _do_porch(self, flag):
         if flag:
             return self._rline_to(0, self._porch_y + self._innie_y1) + self._rline_to(self._porch_x - self._radius, 0) + self._corner(1, 1, 90, 0, 1, True, True, False)
 
         else:
             return self._rline_to(0, self._porch_y - self._padding) + self._rline_to(self._porch_x - self._radius, 0) + self._corner(1, 1, 90, 0, 1, True, True, False)
 
-    def _start_boolean(xoffset, yoffset):
+    def _start_boolean(self, xoffset, yoffset):
         svg = self._new_path(xoffset, yoffset) # - self._radius)
         self._radius -= self._stroke_width
         self.docks.append([self._x * self._scale, self._y * self._scale])
@@ -471,14 +473,14 @@ class SVG:
 
         return svg
     
-    def _do_boolean():
+    def _do_boolean(self):
         self.docks.append([(self._x - self._radius + self._stroke_width) * self._scale, (self._y + self._radius) * self._scale])
         self.margins[2] = (self._x - self._radius - self._stroke_width) * self._scale
         svg = self._rarc_to(-1, 1, 90, 0, 0) + self._rarc_to(1, 1, 90, 0, 0)
 
         return svg
     
-    def _end_boolean(notnot):
+    def _end_boolean(self, notnot):
         if not notnot:
             svg = self._rline_to(-self._radius * 1.5, 0)
 
@@ -496,10 +498,10 @@ class SVG:
 
         return svg
     
-    def _header(center):
+    def _header(self, center):
         # FIXME: Why are our calculations off by 2 x strokeWidth?
         width = self._width + 2 * self._stroke_width
-        return '<svg xmlns="http:#www.w3.org/2000/svg" width="' + width * 1.1 + '" height="' + self._height * 1.3 + '">' + self._transform(center) + '<filter id="dropshadow" height="130%">\n' +\
+        return '<svg xmlns="http:#www.w3.org/2000/svg" width="' + str(width * 1.1) + '" height="' + str(self._height * 1.3) + '">' + self._transform(center) + '<filter id="dropshadow" height="130%">\n' +\
             '  <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>\n' +\
             '  <feOffset dx="2" dy="2" result="offsetblur"/>\n' +\
             '  <feComponentTransfer xmlns="http:#www.w3.org/2000/svg">\n' +\
@@ -511,7 +513,7 @@ class SVG:
             '  </feMerge>\n' +\
             '</filter>'
     
-    def _transform(center):
+    def _transform(self, center):
         if self._orientation != 0:
             w = self._width / 2.0
             h = self._height / 2.0
@@ -527,17 +529,17 @@ class SVG:
             return '<g transform="translate(' + x + ', ' + y + ')">'
 
         else:
-            return '<g transform="scale(' + self._scale + ', ' + self._scale + ')">' + orientation
+            return '<g transform="scale(' + str(self._scale) + ', ' + str(self._scale) + ')">' + orientation
 
-    def _footer():
+    def _footer(self):
         if self._orientation != 0:
             return '</g></g></svg>'
 
         else:
             return '</g></svg>'
 
-    def _style():
-        return 'style="fill:' + self._fill + 'fill-opacity:1stroke:' + self._stroke + 'stroke-width:' + self._stroke_width + 'stroke-linecap:roundstroke-opacity:1filter:url(#dropshadow)" />'
+    def _style(self):
+        return 'style="fill:' + str(self._fill) + 'fill-opacity:1stroke:' + self._stroke + 'stroke-width:' + str(self._stroke_width) + 'stroke-linecap:roundstroke-opacity:1filter:url(#dropshadow)" />'
 
     """
     The block construction methods typically start on the upper-left side
@@ -551,7 +553,7 @@ class SVG:
      * Docking coordinates are calculated for each innies, outie, tab, and slot.
     """
 
-    def basic_block():
+    def basic_block(self):
         # The most common block type: used for 0, 1, 2, or 3
         # argument commands (forward, setxy, plus, sqrt, etc.)
         self._reset_min_max()
@@ -642,7 +644,7 @@ class SVG:
 
         return self._header(False) + svg
     
-    def basic_box():
+    def basic_box(self):
         # Basic argument style used for numbers, text, media, parameters
         self._reset_min_max()
         self.set_outie(True)
@@ -672,7 +674,7 @@ class SVG:
 
         return self._header(False) + svg
     
-    def boolean_and_or():
+    def boolean_and_or(self):
         # Booleans are in a class of their own
         self._reset_min_max()
         svg = self._start_boolean(self._stroke_width / 2.0, self._radius * 5.5 + self._stroke_width / 2.0 + self._innie_y2 + self._innies_spacer + self._expand_y)
@@ -707,7 +709,7 @@ class SVG:
 
         return self._header(False) + svg
     
-    def boolean_not(notnot):
+    def boolean_not(self, notnot):
         # Booleans are in a class of their own: not and not not
         self._reset_min_max()
         if self._innies[0]:
@@ -788,7 +790,7 @@ class SVG:
 
         return self._header(False) + svg
     
-    def boolean_compare():
+    def boolean_compare(self):
         # Booleans are in a class of their own (greater than, less than, etc)
         self._reset_min_max()
         yoffset = self._radius * 2 + 2 * self._innie_y2 + self._innies_spacer + self._stroke_width / 2.0 + self._expand_y
@@ -854,7 +856,7 @@ class SVG:
 
         return self._header(False) + svg
     
-    def basic_clamp():
+    def basic_clamp(self):
         # Special block for collapsible stacks includes an 'arm'
         # that extends down the left side of a stack and a bottom jaw
         # to clamp the blocks. (Used for start, action, repeat, etc.)
@@ -886,7 +888,7 @@ class SVG:
         svg += self._rline_to(self._expand_x, 0)
         svg += self._corner(1, 1 , 90, 0, 1, True, True, False)
 
-        if self._innies[0]:
+        if self._innies and elf._innies[0]:
             # svg += self._do_innie()
             for i in range(0, len(self._innies)):
                 if self._innies[i]:
@@ -1008,7 +1010,7 @@ class SVG:
 
         return self._header(False) + svg
     
-    def arg_clamp():
+    def arg_clamp(self):
         # A clamp that contains innies rather than flow blocks
         self._reset_min_max()
         if self._outie:
@@ -1112,7 +1114,7 @@ class SVG:
 
         return self._header(False) + svg
     
-    def until_clamp():
+    def until_clamp(self):
         # Until block is like clamp but docks are flipped
         self._reset_min_max()
         x = self._stroke_width / 2.0
@@ -1185,7 +1187,7 @@ class SVG:
 
         return self._header(False) + svg
     
-    def status_block(graphic):
+    def status_block(self, graphic):
         # Generate a status block
         self._reset_min_max()
         obj = self._calculate_x_y()
@@ -1229,14 +1231,14 @@ def generator(datapath):
     svg = SVG()
     f = open_file(datapath, "start.svg")
     svg.set_scale(2)
-    svg.expand(30, 0, 0, 0)
+    svg.set_expand(30, 0, 0, 0)
     svg.set_slot(False)
     svg.set_cap(True)
     svg.set_tail(True)
     svg.set_tab(True)
     svg.set_boolean(False)
-    svg.second_clamp(False)
-    svg_str = svg.clamp()
+    #svg.second_clamp(False)
+    svg_str = svg.basic_clamp()
     f.write(svg_str)
     close_file(f)
 
