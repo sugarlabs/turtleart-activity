@@ -1,5 +1,5 @@
 [Activity]
-name = TurtleBlocks
+name = TurtleBlocks Gtk2
 activity_version = 214
 license = MIT
 bundle_id = org.laptop.TurtleArtActivity
