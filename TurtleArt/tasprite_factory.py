@@ -9,6 +9,13 @@
 
 # Borrowing loosely from tasprite_factory.py in the Python version.
 
+import pygtk
+pygtk.require('2.0')
+
+import gtk
+import os
+
+
 class SVG:
 
     """ Interface to the graphical representation of blocks, turtles,
@@ -1203,3 +1210,67 @@ class SVG:
         svg += self._footer()
 
         return self._header(False) + svg
+
+
+#
+# Command-line tools for testing
+#
+
+
+def open_file(datapath, filename):
+    return file(os.path.join(datapath, filename), "w")
+
+
+def close_file(f):
+    f.close()
+
+
+def generator(datapath):
+    svg = SVG()
+    f = open_file(datapath, "start.svg")
+    svg.set_scale(2)
+    svg.expand(30, 0, 0, 0)
+    svg.set_slot(False)
+    svg.set_cap(True)
+    svg.set_tail(True)
+    svg.set_tab(True)
+    svg.set_boolean(False)
+    svg.second_clamp(False)
+    svg_str = svg.clamp()
+    f.write(svg_str)
+    close_file(f)
+
+
+def main():
+    return 0
+
+
+if __name__ == "__main__":
+    generator(os.path.abspath('.'))
+    main()
+
+
+def svg_str_to_pixbuf(svg_string):
+    """ Load pixbuf from SVG string """
+    pl = gtk.gdk.PixbufLoader('svg')
+    pl.write(svg_string)
+    pl.close()
+    pixbuf = pl.get_pixbuf()
+
+    return pixbuf
+
+
+def svg_str_to_pixmap(svg_string):
+    """ Load pixmap from SVG string """
+    (pixmap, mask) = svg_str_to_pixbuf(svg_string).render_pixmap_and_mask()
+
+    return pixmap
+
+
+def svg_from_file(pathname):
+    """ Read SVG string from a file """
+    f = file(pathname, 'r')
+    svg = f.read()
+    f.close()
+
+    return svg
