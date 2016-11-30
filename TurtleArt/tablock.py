@@ -817,7 +817,7 @@ class Block:
 
     def _make_basic_style_head_1arg(self, svg):
         self.svg.set_expand(10 + self.dx + self.ex, self.ey)
-        self.svg.set_innie([True])
+        self.svg.set_innies([True])
         self.svg.set_slot(False)
         self.svg.set_cap(True)
         self._make_block_graphics(svg, self.svg.basic_block)
@@ -838,7 +838,7 @@ class Block:
 
     def _make_basic_style_1arg(self, svg):
         self.svg.set_expand(10 + self.dx + self.ex, self.ey)
-        self.svg.set_innie([True])
+        self.svg.set_innies([True])
         self._make_block_graphics(svg, self.svg.basic_block)
         self.docks = [['flow', True, self.svg.docks[0][0],
                        self.svg.docks[0][1]],
@@ -849,7 +849,7 @@ class Block:
 
     def _make_basic_style_2arg(self, svg):
         self.svg.set_expand(10 + self.dx + self.ex, self.ey)
-        self.svg.set_innie([True, True])
+        self.svg.set_innies([True, True])
         self._make_block_graphics(svg, self.svg.basic_block)
         self.docks = [['flow', True, self.svg.docks[0][0],
                        self.svg.docks[0][1]],
@@ -862,7 +862,7 @@ class Block:
 
     def _make_basic_style_3arg(self, svg):
         self.svg.set_expand(10 + self.dx + self.ex, self.ey, 0, self.ey2)
-        self.svg.set_innie([True, True, True])
+        self.svg.set_innies([True, True, True])
         self._make_block_graphics(svg, self.svg.basic_block)
         self.docks = [['flow', True, self.svg.docks[0][0],
                        self.svg.docks[0][1]],
@@ -877,7 +877,7 @@ class Block:
 
     def _make_basic_style_7arg(self, svg):
         self.svg.set_expand(10 + self.dx + self.ex, self.ey)
-        self.svg.set_innie([True, True, True, True, True, True, True])
+        self.svg.set_innies([True, True, True, True, True, True, True])
         self._make_block_graphics(svg, self.svg.basic_block)
         self.docks = [['flow', True, self.svg.docks[0][0],
                        self.svg.docks[0][1]],
@@ -903,7 +903,7 @@ class Block:
         innie = [True]
         for i in range(self._ei):
             innie.append(True)
-        self.svg.set_innie(innie)
+        self.svg.set_innies(innie)
         self._make_block_graphics(svg, self.svg.basic_block)
         self.docks = [['flow', True, self.svg.docks[0][0],
                        self.svg.docks[0][1]],
@@ -920,7 +920,7 @@ class Block:
         innie = [True, True]
         for i in range(self._ei):
             innie.append(True)
-        self.svg.set_innie(innie)
+        self.svg.set_innies(innie)
         self._make_block_graphics(svg, self.svg.basic_block)
         self.docks = [['flow', True, self.svg.docks[0][0],
                        self.svg.docks[0][1]],
@@ -937,6 +937,7 @@ class Block:
     def _make_box_style(self, svg):
         self.svg.set_expand(60 + self.dx + self.ex, self.ey)
         self._make_block_graphics(svg, self.svg.basic_box)
+        print self.svg.docks
         self.docks = [['number', True, self.svg.docks[0][0],
                        self.svg.docks[0][1]],
                       ['unavailable', False, 0, 0]]
@@ -950,7 +951,7 @@ class Block:
 
     def _make_number_style(self, svg):
         self.svg.set_expand(self.dx + self.ex, self.ey)
-        self.svg.set_innie([True, True])
+        self.svg.set_innies([True, True])
         self.svg.set_outie(True)
         self.svg.set_tab(False)
         self.svg.set_slot(False)
@@ -971,7 +972,7 @@ class Block:
         innie = [True]
         for i in range(self._ei + 1):
             innie.append(True)
-        self.svg.set_innie(innie)
+        self.svg.set_innies(innie)
         self.svg.set_outie(True)
         self.svg.set_tab(False)
         self.svg.set_slot(False)
@@ -991,7 +992,7 @@ class Block:
         innie = [True]
         for i in range(_ei + 1):
             innie.append(True)
-        self.svg.set_innie(innie)
+        self.svg.set_innies(innie)
         self.svg.set_outie(True)
         self.svg.set_tab(False)
         self.svg.set_slot(False)
@@ -1008,7 +1009,7 @@ class Block:
 
     def _make_number_style_block(self, svg):
         self.svg.set_expand(self.dx + self.ex, self.ey)
-        self.svg.set_innie([True, True])
+        self.svg.set_innies([True, True])
         self.svg.set_outie(True)
         self.svg.set_tab(False)
         self.svg.set_slot(False)
@@ -1023,7 +1024,7 @@ class Block:
 
     def _make_number_style_1arg(self, svg):
         self.svg.set_expand(self.dx + self.ex, self.ey)
-        self.svg.set_innie([True])
+        self.svg.set_innies([True])
         self.svg.set_outie(True)
         self.svg.set_tab(False)
         self.svg.set_slot(False)
@@ -1035,7 +1036,7 @@ class Block:
 
     def _make_number_style_1strarg(self, svg):
         self.svg.set_expand(self.dx + self.ex, self.ey)
-        self.svg.set_innie([True])
+        self.svg.set_innies([True])
         self.svg.set_outie(True)
         self.svg.set_tab(False)
         self.svg.set_slot(False)
@@ -1048,7 +1049,7 @@ class Block:
 
     def _make_number_style_porch(self, svg):
         self.svg.set_expand(self.dx + self.ex, self.ey)
-        self.svg.set_innie([True, True])
+        self.svg.set_innies([True, True])
         self.svg.set_outie(True)
         self.svg.set_tab(False)
         self.svg.set_slot(False)
@@ -1103,7 +1104,7 @@ class Block:
 
     def _make_boolean_1arg_block_style(self, svg):
         self.svg.set_expand(15 + self.dx + self.ex, self.ey)
-        self.svg.set_innie([True])
+        self.svg.set_innies([True])
         self._make_block_graphics(svg, self.svg.boolean_not, arg=True)
         self.docks = [['bool', True, self.svg.docks[0][0],
                        self.svg.docks[0][1]],
@@ -1153,7 +1154,7 @@ class Block:
         self.svg.set_expand(self.dx + self.ex + extend_x, self.ey + extend_y)
         self.svg.set_slot(True)
         self.svg.set_tab(True)
-        self.svg.set_innie([True])
+        self.svg.set_innies([True])
         ###self.svg.second_clamp(False)
         self._make_block_graphics(svg, self.svg.basic_clamp)
         self.docks = [['flow', True, self.svg.docks[0][0],
@@ -1184,7 +1185,7 @@ class Block:
         self.svg.set_cap(True)
         self.svg.set_tab(True)
         self.svg.set_tail(True)
-        self.svg.set_innie([True])
+        self.svg.set_innies([True])
         ###self.svg.second_clamp(False)
         self._make_block_graphics(svg, self.svg.basic_clamp)
         self.docks = [['unavailable', False, 0, 0],
@@ -1266,7 +1267,7 @@ class Block:
         self.svg.set_expand(30 + self.dx + self.ex, 10 + self.ey)
         self.svg.set_slot(True)
         self.svg.set_tab(True)
-        self.svg.set_innie([True, True, False, True])
+        self.svg.set_inniesset_innies([True, True, False, True])
         self._make_block_graphics(svg, self.svg.portfolio)
         self.docks = [['flow', True, self.svg.docks[0][0],
                        self.svg.docks[0][1]],
@@ -1287,7 +1288,7 @@ class Block:
         self.svg.set_expand(30 + self.dx + self.ex, 10 + self.ey)
         self.svg.set_slot(True)
         self.svg.set_tab(True)
-        self.svg.set_innie([True, True])
+        self.svg.set_innies([True, True])
         self._make_block_graphics(svg, self.svg.portfolio)
         self.docks = [['flow', True, self.svg.docks[0][0],
                        self.svg.docks[0][1]],
@@ -1304,7 +1305,7 @@ class Block:
         self.svg.set_expand(30 + self.dx + self.ex, 15 + self.ey)
         self.svg.set_slot(True)
         self.svg.set_tab(True)
-        self.svg.set_innie([True, True, False, True])
+        self.svg.set_innies([True, True, False, True])
         self.svg.set_draw_innies(False)
         self._make_block_graphics(svg, self.svg.portfolio)
         self.docks = [['flow', True, self.svg.docks[0][0],
@@ -1322,7 +1323,7 @@ class Block:
         self.svg.set_expand(30 + self.dx + self.ex, 15 + self.ey)
         self.svg.set_slot(True)
         self.svg.set_tab(True)
-        self.svg.set_innie([True, True])
+        self.svg.set_innies([True, True])
         self.svg.set_draw_innies(False)
         self._make_block_graphics(svg, self.svg.portfolio)
         self.docks = [['flow', True, self.svg.docks[0][0],

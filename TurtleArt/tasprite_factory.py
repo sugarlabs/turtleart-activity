@@ -15,7 +15,7 @@ pygtk.require('2.0')
 import gtk
 import os
 
-from .taconstants import TOOLBAR_COLOR
+from .taconstants import HIT_RED, HIDE_WHITE, PALETTE_COLOR, TOOLBAR_COLOR
 
 
 class SVG:
@@ -108,13 +108,13 @@ class SVG:
     def set_clamp_count(self, number):
         self._clamp_count = number
 
-        n = self._clamp_slots.length
+        n = len(self._clamp_slots)
         if n < number:
             for i in range(0, number - n):
                 self._clamp_slots.append(1)
 
     def set_clamp_slots(self, clamp, number):
-        if clamp > self._clamp_count.length - 1:
+        if clamp > len(self._clamp_count) - 1:
             self.set_clamp_count(clamp + 1)
 
         self._clamp_slots[clamp] = number
@@ -186,7 +186,21 @@ class SVG:
         self._min_y = 10000
         self._max_x = -10000
         self._max_y = -10000
-    
+
+    def _circle(self, r, cx, cy):
+        return "%s%s%s%s%s%f%s%f%s%f%s" % \
+            ("<circle style=\"fill:", self._fill, ";stroke:", self._stroke,
+             ";\" r=\"", r, "\" cx=\"", cx, "\" cy=\"", cy, "\" />\n")
+
+    def _rect(self, w, h, x, y):
+        return "%s%s%s%s%s%f%s%f%s%f%s%f%s" % ("<rect style=\"fill:", self._fill,
+                                               ";stroke:", self._stroke,
+                                               ";\" width=\"", w,
+                                               "\" height=\"", h,
+                                               "\" x=\"", x,
+                                               "\" y=\"", y,
+                                               "\" />\n")
+
     def _check_min_max(self):
         if self._x < self._min_x:
             self._min_x = self._x
@@ -257,9 +271,40 @@ class SVG:
         self._y = y
 
         return '<path d="m{0} {1} '.format(x, y)
-    
+
     def _close_path(self):
         return 'z" '
+
+    def _hide_dot(self, noscale=False):
+        _saved_fill, _saved_stroke = self._fill, self._stroke
+        self._fill, self._stroke = HIT_RED, HIT_RED
+        svg = "</g>/n<g>/n"
+        if noscale:
+            scale = 2.0
+            x = self._hide_x * scale
+            y = self._hide_y * scale
+            r = 16
+            scale = 5
+            scale2 = 2
+            y2 = y - 10
+            svg += self._circle(r, x - r / 2, y - r / 2)
+            self._fill, self._stroke = HIDE_WHITE, HIDE_WHITE
+            svg += self._rect(10 * scale2, scale, x - 9 * scale2, y2)
+            self._fill, self._stroke = _saved_fill, _saved_stroke
+
+        else:
+            scale = self._scale * 1.75
+            scale2 = scale / 2
+            x = self._hide_x * self._scale
+            y = self._hide_y * self._scale
+            r = 8 * scale2
+            y2 = y - scale2
+            svg += self._circle(r, x, y)
+            self._fill, self._stroke = HIDE_WHITE, HIDE_WHITE
+            svg += self._rect(10 * scale2, scale, x - 5 * scale2, y2)
+            self._fill, self._stroke = _saved_fill, _saved_stroke
+
+        return svg
     
     def text(self, x, y, font_size, width, alignment, string):
         self._x = x
@@ -400,7 +445,7 @@ class SVG:
 
     def _do_innie(self):
         self.docks.append([(self._x + self._stroke_width) * self._scale,
-                         (self._y + self._innie_y2) * self._scale])
+                           (self._y + self._innie_y2) * self._scale])
 
         if self.margins[2] == 0:
             self.margins[1] = (self._y - self._innie_y1) * self._scale
@@ -414,19 +459,23 @@ class SVG:
             return self._rline_to(0, -self._innie_y2)
         
         # Outie needs to be the first dock element.
-        self.docks.unshift([(self._x * self._scale), (self._y * self._scale)])
+        if self.docks != []:
+            self.docks = [self._x * self._scale, self._y * self._scale] + self.docks
+        else:
+            self.docks = [[self._x * self._scale, self._y * self._scale]]
+
         return self._rline_to(0, -self._stroke_width) + self._rline_to(-self._innie_x1 - 2 * self._stroke_width, 0) + self._rline_to(0, self._innie_y1) + self._rline_to(-self._innie_x2 + 2 * self._stroke_width, 0) + self._rline_to(0, -self._innie_y2 - 2 * self._innie_y1 + 2 * self._stroke_width) + self._rline_to(self._innie_x2 - 2 * self._stroke_width, 0) + self._rline_to(0, self._innie_y1) + self._rline_to(self._innie_x1 + 2 * self._stroke_width, 0) + self._rline_to(0, -self._stroke_width)
 
     def _do_slot(self):
         if self._slot:
             x = self._x + self._slot_x / 2.0
-            self.docks.append([(x * self._scale), (self._y * self._scale)])
+            self.docks.append([x * self._scale, self._y * self._scale])
 
             return self._rline_to(0, self._slot_y) + self._rline_to(self._slot_x, 0) + self._rline_to(0, -self._slot_y)
 
         elif self._cap:
             x = self._x + self._slot_x / 2.0
-            self.docks.append([(x * self._scale), (self._y * self._scale)])
+            self.docks.append([x * self._scale, self._y * self._scale])
 
             return self._rline_to(self._slot_x / 2.0, -self._slot_y * 3.0) + self._rline_to(self._slot_x / 2.0, self._slot_y * 3.0)
 
@@ -439,8 +488,7 @@ class SVG:
 
         elif self._tail:
             x = self._x + self._slot_x / 2.0
-            self.docks.append([(x * self._scale),
-                             (self._y * self._scale)])
+            self.docks.append([x * self._scale, self._y * self._scale])
 
             return self._rline_to(-self._slot_x / 2.0, self._slot_y * 3.0) + self._rline_to(-self._slot_x / 2.0, -self._slot_y * 3.0)
 
@@ -577,7 +625,7 @@ class SVG:
         svg += self._rline_to(self._expand_x, 0)
         xx = self._x
         svg += self._corner(1, 1 , 90, 0, 1, True, True, False)
-        if self._innies.length == 0:
+        if len(self._innies) == 0:
             # To maintain standard block height
             svg += self._rline_to(0, self._padding)
          
@@ -595,7 +643,7 @@ class SVG:
                 if i == 0 and self._porch:
                     svg += self._do_porch(False)
 
-                elif self._innies.length - 1 > i:
+                elif len(self._innies) - 1 > i:
                     svg += self._rline_to(0, 2 * self._innie_y2 + self._innies_spacer)
 
         svg += self._corner(-1, 1 , 90, 0, 1, True, True, False)
@@ -611,7 +659,7 @@ class SVG:
         svg += self._corner(-1, -1 , 90, 0, 1, True, True, False)
         svg += self._rline_to(0, -self._expand_y)
 
-        if self._innies.indexOf(True) != -1:
+        if True in self._innies:
             svg += self._line_to(x, self._radius + self._innie_y2 + self._stroke_width / 2.0)
             svg += self._do_outie()
 
@@ -625,8 +673,8 @@ class SVG:
 
         # If we have an odd number of innie slots, we need to avoid a
         # collision between the block label and the slot label.
-        nInnies = self._innies.length
-        if nInnies > 2 and Math.round(nInnies / 2) * 2 != nInnies:
+        n_innies = len(self._innies)
+        if n_innies > 2 and round(n_innies / 2) * 2 != n_innies:
             ty -= 2 * self._font_size
 
         svg += self.text(tx / self._scale, ty / self._scale, self._font_size, self._width, 'right', 'block_label')
@@ -642,7 +690,7 @@ class SVG:
         for i in range(0, len(self._innies)):
             if self._innies[i]:
                 ty = self.docks[di][1] - (self._font_size / (8 / self._scale))
-                svg += self.text(tx / self._scale, ty / self._scale, self._font_size / 1.5, self._width, 'right', 'arg_label_' + count)
+                svg += self.text(tx / self._scale, ty / self._scale, self._font_size / 1.5, self._width, 'right', 'arg_label_' + str(count))
                 count += 1
                 di += 1
 
@@ -894,20 +942,26 @@ class SVG:
 
         return self._header(False) + svg
 
+    def palette(self, width, height):
+        ''' Just a rectangle with a hide button. '''
+        self._reset_min_max()
+        self._width, self._height = width, height
+        self._fill, self._stroke = PALETTE_COLOR, "none"
+        svg = self._rect(width, height, 0, 0)
+        self._hide_x = (width - self._radius) / 2
+        self._hide_y = (height - self._radius) / 2
+        svg += self._hide_dot(noscale=True)
+        svg += self._footer()
+
+        return self._header(False) + svg
+
     def toolbar(self, width, height):
         ''' Just a rectangle '''
         self._reset_min_max()
         self._width, self._height = width, height
         self._fill, self._stroke = TOOLBAR_COLOR, "none"
 
-        svg = "%s%s%s%s%s%f%s%f%s%f%s%f%s" % ("<rect style=\"fill:", self._fill,
-                                              ";stroke:", self._stroke,
-                                              ";\" width=\"", width,
-                                               "\" height=\"", height,
-                                               "\" x=\"", 0,
-                                               "\" y=\"", 0,
-                                               "\" />\n")
-
+        svg = self._rect(width, height, 0, 0)
         svg += self._footer()
 
         return self._header(False) + svg
@@ -959,7 +1013,7 @@ class SVG:
                 if i == 0 and self._porch:
                     svg += self._do_porch(False)
 
-                elif self._innies.length - 1 > i:
+                elif len(self._innies) - 1 > i:
                     svg += self._rline_to(0, 2 * self._innie_y2 + self._innies_spacer)
 
         elif self._bool:
@@ -1023,7 +1077,7 @@ class SVG:
         if self._cap:
             ty = (self._stroke_width / 2.0 + self._radius + self._slot_y) * self._scale
 
-        elif self._innies.length > 1:
+        elif len(self._innies) > 1:
             ty = (self._stroke_width / 2.0 + self._radius) * self._scale / 2
             ty += self._font_size
  
