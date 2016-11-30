@@ -2772,15 +2772,15 @@ class TurtleArtWindow():
             else:
                 self._text_buffer.set_text(self._saved_string)
                 h = blk.spr.label_safe_height()
-            self._text_entry.set_size_request(w, h)
+            self._text_entry.set_size_request(int(w), int(h))
             bx, by = blk.spr.get_xy()
             if not self.running_sugar:
                 by += self.activity.menu_height
             mx, my = blk.spr.label_left_top()
-            self._text_entry.set_pixels_above_lines(my)
+            self._text_entry.set_pixels_above_lines(int(my))
             bx -= int(self.activity.sw.get_hadjustment().get_value())
             by -= int(self.activity.sw.get_vadjustment().get_value())
-            self.activity.fixed.move(self._text_entry, bx + mx, by + my * 2)
+            self.activity.fixed.move(self._text_entry, int(bx + mx), int(by + my * 2))
             self.activity.fixed.show()
             if blk.name == 'number':
                 self._insert_text_id = self._text_buffer.connect(
