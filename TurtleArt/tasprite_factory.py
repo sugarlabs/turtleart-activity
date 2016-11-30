@@ -15,6 +15,8 @@ pygtk.require('2.0')
 import gtk
 import os
 
+from .taconstants import TOOLBAR_COLOR
+
 
 class SVG:
 
@@ -888,6 +890,24 @@ class SVG:
         svg += '   <path d="M 31.3 34.0 L 32.6 29.6 L 36.8 28.0 C 36.8 28.0 37.5 30.7 36.8 33.7 C 36.2 36.0 34.7 38.1 34.7 38.1 L 31.3 34.0 Z" stroke-width="3.5" fill="%s" stroke="none" />\n' % (self._stroke)
 
         self._width, self._height = 55, 55
+        svg += self._footer()
+
+        return self._header(False) + svg
+
+    def toolbar(self, width, height):
+        ''' Just a rectangle '''
+        self._reset_min_max()
+        self._width, self._height = width, height
+        self._fill, self._stroke = TOOLBAR_COLOR, "none"
+
+        svg = "%s%s%s%s%s%f%s%f%s%f%s%f%s" % ("<rect style=\"fill:", self._fill,
+                                              ";stroke:", self._stroke,
+                                              ";\" width=\"", width,
+                                               "\" height=\"", height,
+                                               "\" x=\"", 0,
+                                               "\" y=\"", 0,
+                                               "\" />\n")
+
         svg += self._footer()
 
         return self._header(False) + svg
