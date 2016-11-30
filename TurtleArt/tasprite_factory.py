@@ -339,7 +339,7 @@ class SVG:
         text = '<text style="font-size:' + str(font_size) + 'pxfill:#000000font-family:sans-seriftext-anchor:' + align + '">'
         
         for i in range(0, len(tspans)):
-            text += '<tspan x="' + str(x) + '" y="' + str(yy) + '">' + tspans[i] + '</tspan>'
+            text += '<tspan x="' + str(x) + '" y="' + str(yy) + '">' + str(tspans[i]) + '</tspan>'
             yy += font_size
 
         text += '</text>'
@@ -570,7 +570,7 @@ class SVG:
             x = -self._min_x
             y = -self._min_y
 
-            return '<g transform="translate(' + x + ', ' + y + ')">'
+            return '<g transform="translate(' + str(x) + ', ' + str(y) + ')">'
 
         else:
             return '<g transform="scale(' + str(self._scale) + ', ' + str(self._scale) + ')">' + orientation
@@ -841,7 +841,7 @@ class SVG:
         xoffset = self._stroke_width / 2.0
 
         yoff = self._radius * 2
-        svg = '<g transform="matrix(1,0,0,1,0,-' + yoff + ')"> '
+        svg = '<g transform="matrix(1,0,0,1,0,-' + str(yoff) + ')"> '
 
         svg += self._new_path(xoffset, yoffset + self._radius)
         self.docks.append([self._x * self._scale, (self._y - 2 * self._radius) * self._scale])
@@ -1087,7 +1087,7 @@ class SVG:
             tx = self._width - self._radius
             for clamp in range(0, self._clamp_count):
                 ty = self.docks[clamp + 2][1] - self._font_size + 3 * self._stroke_width
-                svg += self.text(tx / self._scale, ty / self._scale, self._font_size / 1.5, self._width, 'right', 'arg_label_' + count)
+                svg += self.text(tx / self._scale, ty / self._scale, self._font_size / 1.5, self._width, 'right', 'arg_label_' + str(count))
                 count += 1
 
         # Add a label for each innies
@@ -1102,7 +1102,7 @@ class SVG:
         for i in range(0, len(self._innies)):
             if self._innies[i]:
                 ty = self.docks[di][1] - (self._font_size / (8 / self._scale))
-                svg += self.text(tx / self._scale, ty / self._scale, self._font_size / 1.5, self._width, 'right', 'arg_label_' + count)
+                svg += self.text(tx / self._scale, ty / self._scale, self._font_size / 1.5, self._width, 'right', 'arg_label_' + str(count))
                 count += 1
                 di += 1
 
