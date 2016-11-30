@@ -141,8 +141,7 @@ class SVG:
         self._stroke = color
 
     def set_innies(self, innies_array):
-        for i in range(0, len(innies_array)):
-            self._innies.append(innies_array[i])
+        self._innies += innies_array
 
     def set_outie(self, flag):
         # Only one outie.
@@ -459,29 +458,21 @@ class SVG:
             return self._rline_to(0, -self._innie_y2)
         
         # Outie needs to be the first dock element.
-        if self.docks != []:
-            self.docks = [self._x * self._scale, self._y * self._scale] + self.docks
-        else:
-            self.docks = [[self._x * self._scale, self._y * self._scale]]
-
+        self.docks = [[self._x * self._scale, self._y * self._scale]] + self.docks
         return self._rline_to(0, -self._stroke_width) + self._rline_to(-self._innie_x1 - 2 * self._stroke_width, 0) + self._rline_to(0, self._innie_y1) + self._rline_to(-self._innie_x2 + 2 * self._stroke_width, 0) + self._rline_to(0, -self._innie_y2 - 2 * self._innie_y1 + 2 * self._stroke_width) + self._rline_to(self._innie_x2 - 2 * self._stroke_width, 0) + self._rline_to(0, self._innie_y1) + self._rline_to(self._innie_x1 + 2 * self._stroke_width, 0) + self._rline_to(0, -self._stroke_width)
 
     def _do_slot(self):
         if self._slot:
-            x = self._x + self._slot_x / 2.0
-            self.docks.append([x * self._scale, self._y * self._scale])
-
+            self.docks.append([((self._x + self._slot_x / 2.0) * self._scale), (self._y * self._scale)])
             return self._rline_to(0, self._slot_y) + self._rline_to(self._slot_x, 0) + self._rline_to(0, -self._slot_y)
 
-        elif self._cap:
-            x = self._x + self._slot_x / 2.0
-            self.docks.append([x * self._scale, self._y * self._scale])
-
+        elif self._clap:
+            self.docks.append([((self._x + self._slot_x / 2.0) * self._scale), (self._y * self._scale)])
             return self._rline_to(self._slot_x / 2.0, -self._slot_y * 3.0) + self._rline_to(self._slot_x / 2.0, self._slot_y * 3.0)
 
         else:
             return self._rline_to(self._slot_x, 0)
-    
+
     def _do_tail(self):
         if self._outie:
             return self._rline_to(-self._slot_x, 0)
