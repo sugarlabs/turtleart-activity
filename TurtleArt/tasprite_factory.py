@@ -917,7 +917,6 @@ class SVG:
 
         # Tail
         svg = '    <path d="M 27.5 48.3 C 26.9 48.3 26.4 48.2 25.9 48.2 L 27.2 50.5 L 28.6 48.2 C 28.2 48.2 27.9 48.3 27.5 48.3 Z" stroke-width="3.5" fill="%s" stroke="%s" />\n' % (self._fill, self._stroke)
-        svg = '    <path d="M 27.5 48.3 C 26.9 48.3 26.4 48.2 25.9 48.2 L 27.2 50.5 L 28.6 48.2 C 28.2 48.2 27.9 48.3 27.5 48.3 Z stroke-width="3.5" fill="%s" stroke="%s" />\n' % (self._fill, self._stroke)
 
         # Feet x 4
         svg += '   <path d="M 40.2 11.7 C 38.0 11.7 36.2 13.3 35.8 15.3 C 37.7 16.7 39.3 18.4 40.5 20.5 C 42.8 20.4 44.6 18.5 44.6 16.2 C 44.6 13.7 42.6 11.7 40.2 11.7 Z" stroke-width="3.5" fill="%s" stroke="%s" />\n' % (self._fill, self._stroke)

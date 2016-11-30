@@ -937,7 +937,6 @@ class Block:
     def _make_box_style(self, svg):
         self.svg.set_expand(60 + self.dx + self.ex, self.ey)
         self._make_block_graphics(svg, self.svg.basic_box)
-        print self.svg.docks
         self.docks = [['number', True, self.svg.docks[0][0],
                        self.svg.docks[0][1]],
                       ['unavailable', False, 0, 0]]
@@ -1353,9 +1352,7 @@ class Block:
             pixbuf = svg_str_to_pixbuf(function())
         else:
             pixbuf = svg_str_to_pixbuf(function(arg))
-        self.shapes[1] = _pixbuf_to_cairo_surface(pixbuf,
-                                                  self.width, self.height)
-
+        self.shapes[1] = _pixbuf_to_cairo_surface(pixbuf, self.width, self.height)
 
 def _pixbuf_to_cairo_surface(image, width, height):
     surface = cairo.ImageSurface(
