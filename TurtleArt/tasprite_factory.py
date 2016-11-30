@@ -141,7 +141,7 @@ class SVG:
         self._stroke = color
 
     def set_innies(self, innies_array):
-        self._innies += innies_array
+        self._innies = innies_array
 
     def set_outie(self, flag):
         # Only one outie.
@@ -443,8 +443,7 @@ class SVG:
         return svg_str
 
     def _do_innie(self):
-        self.docks.append([(self._x + self._stroke_width) * self._scale,
-                           (self._y + self._innie_y2) * self._scale])
+        self.docks += [[(self._x + self._stroke_width) * self._scale, (self._y + self._innie_y2) * self._scale]]
 
         if self.margins[2] == 0:
             self.margins[1] = (self._y - self._innie_y1) * self._scale
@@ -624,7 +623,7 @@ class SVG:
             for i in range(0, len(self._innies)):
                 if self._innies[i]:
                     svg += self._do_innie()
-                
+
                 if i == 0:
                     svg += self._rline_to(0, self._expand_y)
 
@@ -1136,6 +1135,7 @@ class SVG:
 
         if self._innies[0]:
             svg += self._do_innie()
+            pass
 
         else:
             svg += self._rline_to(0, self._padding)
