@@ -303,7 +303,7 @@ def get_endswith_files(path, end):
     files = []
     for name in f:
         if name.endswith(end):
-            files.append(os.path.join(path, f))
+            files.append(os.path.join(path, name))
     return files
 
 

@@ -1373,7 +1373,7 @@ class TurtleArtActivity(activity.Activity):
             elif response_id is gtk.RESPONSE_CANCEL:
                 _logger.debug('cancel install')
                 self.remove_alert(alert)
-                cancel_plugin_install(self, tmp_dir)
+                cancel_plugin_install(tmp_dir)
 
         alert.connect('response', _reload_plugin_alert_response_cb, self,
                       tmp_dir, tmp_path, plugin_path, plugin_name, file_info)
