@@ -28,6 +28,7 @@ import gtk
 import gobject
 import pango
 import pangocairo
+import cairo
 
 import sys
 from gettext import gettext as _
@@ -4696,6 +4697,44 @@ class TurtleArtWindow():
         fil = open(path, 'w+')
         fil.write(svg_text)
         fil.close()
+
+    def save_blocks_as_image(self):
+        surface = cairo.ImageSurface(cairo.FORMAT_ARGB32,
+                                     self.canvas.width, self.canvas.height)
+        context = cairo.Context(surface)
+        s = Sprites(self.window)
+        s.set_cairo_context(context)
+        blocks = self.just_blocks()
+        for block in blocks:
+            s.append_to_list(block.spr)
+        s.redraw_sprites(cr=context)
+
+        if self.running_sugar:
+            datapath = get_path(self.activity, 'instance')
+            filename = _('%s blocks image' % (self.activity.metadata['title']))
+            file_path = os.path.join(datapath, filename + '.png')
+
+            surface.write_to_png(file_path)
+
+            from sugar.datastore import datastore
+            from sugar import profile
+
+            dsobject = datastore.create()
+            dsobject.metadata['title'] = filename
+            dsobject.metadata['icon-color'] = profile.get_color().to_string()
+            dsobject.metadata['mime_type'] = 'image/png'
+            dsobject.set_file_path(file_path)
+            datastore.write(dsobject)
+            dsobject.destroy()
+        else:
+            datapath = os.getcwd()
+            filename = 'turtleblocks'
+            if self.save_folder is not None:
+                datapath = self.save_folder
+            filename, datapath = get_save_name('.png', datapath, filename)
+            file_path = os.path.join(datapath, filename)
+
+            surface.write_to_png(file_path)
 
     def save_as_image(self, name='', svg=False):
         ''' Grab the current canvas and save it. '''

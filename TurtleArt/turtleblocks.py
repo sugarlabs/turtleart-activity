@@ -448,6 +448,8 @@ return %s(self)" % (p, P, P)
 
         make_menu_item(export_submenu, _('image'),
                                    self._do_save_picture_cb)
+        make_menu_item(export_submenu, _('image (blocks)'),
+                                   self._do_save_blocks_image_cb)
         make_menu_item(export_submenu, _('SVG'),
                                    self._do_save_svg_cb)
         make_menu_item(export_submenu, _('icon'),
@@ -678,6 +680,10 @@ Would you like to save before quitting?'))
         ''' Save changes to current project '''
         self.tw.save_file_name = self._ta_file
         self.tw.save_file(self.tw._loaded_project)
+
+    def _do_save_blocks_image_cb(self, widget):
+        ''' Callback for save blocks as image. '''
+        self.tw.save_blocks_as_image()
 
     def _do_save_picture_cb(self, widget):
         ''' Callback for save canvas. '''
