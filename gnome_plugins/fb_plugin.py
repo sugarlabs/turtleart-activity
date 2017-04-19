@@ -41,7 +41,7 @@ try:
 except ImportError:
     WEBKIT = False
 from .plugin import Plugin
-from TurtleArt.util.menubuilder import make_menu_item, MENUBAR
+from TurtleArt.util.menubuilder import make_menu_item, make_sub_menu, MENUBAR
 from gettext import gettext as _
 
 
@@ -88,7 +88,7 @@ class Fb_plugin(Plugin):
         if upload_menu is not None:
             return None  # We don't have to add it since it already exists
         else:
-            upload_menu = MenuBuilder.make_sub_menu(menu, _('Upload'))
+            upload_menu = make_sub_menu(menu, _('Upload'))
             return upload_menu
 
     def set_tw(self, turtleart_window):
