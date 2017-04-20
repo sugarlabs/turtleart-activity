@@ -1,3 +1,39 @@
+215
+* fix error on fb_plugin menu creation  (AlanJAS)
+* fix get_endswith_files function (AlanJAS)
+* fix parameter on cancel_plugin_install call (AlanJAS)
+* remove duplicated import (AlanJAS)
+* better handle of temporary folder use (AlanJAS)
+* fix when dbus is not supported (AlanJAS)
+* workarround for gtk-xft-dpi possible error (AlanJAS)
+* simplify is_writeable function (AlanJAS)
+* create svg surface only when export (AlanJAS)
+* new translations (Chris Leonard)
+* fix show show samples in gnome (AlanJAS)
+* update logo.boxes with BOX (AlanJAS)
+* Fix bug introduced in 70e9d98 for samples picker. (Icarito)
+* Add feature to export blocks as image. (Icarito)
+* Add uri handler (Icarito)
+* fix logic of plugin active (AlanJAS)
+* show all plugins by default (AlanJAS)
+* fixes in taplugin (AlanJAS)
+* check for None case (Walter Bender)
+* pep8 fixes; using single quotes where available (Walter Bender)
+* make plugin global to python code (AlanJAS)
+* fix typo (AlanJAS)
+* remove glob dependency (AlanJAS)
+* simplify menubuilder (AlanJAS)
+* removing has_toolbarbox (AlanJAS)
+* Remove suspicious code (rbuj)
+* workarround for pyexported path problem (AlanJAS)
+* fix error of no menu in pyexported (AlanJAS)
+* updates to hi.po
+* tweaks to converter block code: use existing turtle graphics canvas
+  (Walter Bender)
+* use TB instead of TA (Walter Bender)
+* lowercased colors names in new adapter block (Rafael Cordano)
+* Added apater color block (Rafael Cordano)
+
 214
 * Updated translations
 * Added repository to activity.info
