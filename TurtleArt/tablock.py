@@ -19,20 +19,24 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-import gtk
 import cairo
 
-from .taconstants import (EXPANDABLE, EXPANDABLE_ARGS, OLD_NAMES, CONSTANTS,
-                          STANDARD_STROKE_WIDTH, BLOCK_SCALE, BOX_COLORS,
-                          GRADIENT_COLOR, EXPANDABLE_FLOW, Color,
-                          MEDIA_BLOCK2TYPE, BLOCKS_WITH_SKIN)
-from .tapalette import (palette_blocks, block_colors, expandable_blocks,
-                        content_blocks, block_names, block_primitives,
-                        block_styles, special_block_colors)
-from .tasprite_factory import (SVG, svg_str_to_pixbuf)
-from . import sprites
+from gi.repository import Gdk
+from gi.repository import GdkPixbuf
 
-from .tautils import (debug_output, error_output)
+from taconstants import EXPANDABLE, EXPANDABLE_ARGS, OLD_NAMES, CONSTANTS, \
+                        STANDARD_STROKE_WIDTH, BLOCK_SCALE, BOX_COLORS, \
+                        GRADIENT_COLOR, EXPANDABLE_FLOW, Color, \
+                        MEDIA_BLOCK2TYPE, BLOCKS_WITH_SKIN
+
+from tapalette import palette_blocks, block_colors, expandable_blocks, \
+                      content_blocks, block_names, block_primitives, \
+                      block_styles, special_block_colors
+
+from tasprite_factory import SVG, svg_str_to_pixbuf
+import sprites
+
+from tautils import debug_output, error_output
 
 
 media_blocks_dictionary = {}  # new media blocks get added here
@@ -408,7 +412,7 @@ class Block:
         if self.spr is None:
             return
         if self._image is not None:
-            tmp = self._image.scale_simple(w, h, gtk.gdk.INTERP_NEAREST)
+            tmp = self._image.scale_simple(w, h, GdkPixbuf.InterpType.NEAREST)
             self.spr.set_image(tmp, 1, x, y)
 
     def rescale(self, scale):
@@ -1360,8 +1364,7 @@ def _pixbuf_to_cairo_surface(image, width, height):
     surface = cairo.ImageSurface(
         cairo.FORMAT_ARGB32, int(width), int(height))
     context = cairo.Context(surface)
-    context = gtk.gdk.CairoContext(context)
-    context.set_source_pixbuf(image, 0, 0)
+    Gdk.cairo_set_source_pixbuf(context, image, 0, 0)
     context.rectangle(0, 0, int(width), int(height))
     context.fill()
     return surface

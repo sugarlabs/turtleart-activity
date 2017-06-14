@@ -21,10 +21,11 @@
 
 from gettext import gettext as _
 
-import gtk
+from gi.repository import Gtk
+from gi.repository import Gdk
 
-from sugar.graphics.toolbutton import ToolButton
-from sugar.graphics.icon import Icon
+from sugar3.graphics.toolbutton import ToolButton
+from sugar3.graphics.icon import Icon
 
 from TurtleArt.tapalette import help_windows
 
@@ -32,13 +33,13 @@ import logging
 _logger = logging.getLogger('turtleart-activity')
 
 
-class HelpButton(gtk.ToolItem):
+class HelpButton(Gtk.ToolItem):
 
     def __init__(self, activity):
         self._activity = activity
         self._current_palette = 'turtle'
 
-        gtk.ToolItem.__init__(self)
+        Gtk.ToolItem.__init__(self)
 
         help_button = ToolButton('help-toolbar')
         help_button.set_tooltip(_('Help'))
@@ -78,9 +79,9 @@ class HelpButton(gtk.ToolItem):
 def add_section(help_box, section_text, icon=None):
     ''' Add a section to the help palette. From helpbutton.py by
     Gonzalo Odiard '''
-    max_text_width = int(gtk.gdk.screen_width() / 3) - 20
-    hbox = gtk.HBox()
-    label = gtk.Label()
+    max_text_width = int(Gdk.Screen.width() / 3) - 20
+    hbox = Gtk.HBox()
+    label = Gtk.Label()
     label.set_use_markup(True)
     label.set_markup('<b>%s</b>' % section_text)
     label.set_line_wrap(True)
@@ -100,10 +101,10 @@ def add_section(help_box, section_text, icon=None):
 def add_paragraph(help_box, text, icon=None):
     ''' Add an entry to the help palette. From helpbutton.py by
     Gonzalo Odiard '''
-    max_text_width = int(gtk.gdk.screen_width() / 3) - 20
-    hbox = gtk.HBox()
-    label = gtk.Label(text)
-    label.set_justify(gtk.JUSTIFY_LEFT)
+    max_text_width = int(Gdk.Screen.width() / 3) - 20
+    hbox = Gtk.HBox()
+    label = Gtk.Label(text)
+    label.set_justify(Gtk.Justification.LEFT)
     label.set_line_wrap(True)
     hbox.add(label)
     if icon is not None:

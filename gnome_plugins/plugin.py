@@ -20,13 +20,13 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-import gobject
+from gi.repository import GObject
 
 
-class Plugin(gobject.GObject):
+class Plugin(GObject.GObject):
 
     def __init__(self):
-        gobject.GObject.__init__(self)
+        GObject.GObject.__init__(self)
 
     def get_menu(self):
         raise RuntimeError("You need to define get__menu for your plugin.")

@@ -21,10 +21,6 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-import pygtk
-pygtk.require('2.0')
-import gtk
-import gobject
 import cairo
 import getopt
 import sys
@@ -36,7 +32,12 @@ import ConfigParser
 import tarfile
 import tempfile
 import subprocess
-
+import gi
+gi.require_version("Gtk", "3.0")
+from gi.repository import Gtk
+from gi.repository import Gdk
+from gi.repository import GObject
+from gi.repository import GdkPixbuf
 try:
     # Try to use XDG Base Directory standard for config files.
     import xdg.BaseDirectory
@@ -133,8 +134,8 @@ class TurtleMain():
 
     def _get_gconf_settings(self):
         try:
-            import gconf
-            self.client = gconf.client_get_default()
+            from gi.repository import GConf
+            self.client = GConf.Client.get_default()
         except ImportError:
             pass
 
@@ -201,17 +202,17 @@ return %s(self)" % (p, P, P)
         if self._ta_file is None:
             self.tw.load_start()
         else:
-            self.win.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.WATCH))
-            gobject.idle_add(self._project_loader, self._ta_file)
+            self.win.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.WATCH))
+            GObject.idle_add(self._project_loader, self._ta_file)
         self._set_gconf_overrides()
-        gtk.main()
+        Gtk.main()
 
     def _project_loader(self, file_name):
         self.tw.load_start(self._ta_file)
         self.tw.lc.trace = 0
         if self._run_on_launch:
             self._do_run_cb()
-        self.win.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.LEFT_PTR))
+        self.win.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.LEFT_PTR))
 
     def _draw_and_quit(self):
         ''' Non-interactive mode: run the project, save it to a file
@@ -234,10 +235,10 @@ return %s(self)" % (p, P, P)
             surface = cr.get_target()
         self.turtle_canvas = surface.create_similar(
             cairo.CONTENT_COLOR,
-            # max(1024, gtk.gdk.screen_width() * 2),
-            # max(768, gtk.gdk.screen_height() * 2))
-            gtk.gdk.screen_width() * 2,
-            gtk.gdk.screen_height() * 2)
+            # max(1024,  Gdk.Screen.width() * 2),
+            # max(768, Gdk.Screen.height() * 2))
+            Gdk.Screen.width() * 2,
+            Gdk.Screen.height() * 2)
 
         # Make sure the autosave directory is writeable
         if is_writeable(self._share_path):
@@ -364,8 +365,8 @@ return %s(self)" % (p, P, P)
     def _fixed_resize_cb(self, widget=None, rect=None):
         ''' If a toolbar opens or closes, we need to resize the vbox
         holding out scrolling window. '''
-        self.vbox.set_size_request(rect[2], rect[3])
-        self.menu_height = self.menu_bar.size_request()[1]
+        self.vbox.set_size_request(rect.width, rect.height)
+        self.menu_height = self.menu_bar.get_size_request()[1]
 
     def restore_cursor(self):
         ''' No longer copying or sharing, so restore standard cursor. '''
@@ -377,11 +378,11 @@ return %s(self)" % (p, P, P)
             if hasattr(self.get_window(), 'get_cursor'):
                 self.get_window().set_cursor(self._old_cursor)
             else:
-                self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.LEFT_PTR))
+                self.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.LEFT_PTR))
 
     def _setup_gtk(self):
         ''' Set up a scrolled window in which to run Turtle Blocks. '''
-        win = gtk.Window(gtk.WINDOW_TOPLEVEL)
+        win = Gtk.Window(Gtk.WindowType.TOPLEVEL)
         win.set_default_size(self.width, self.height)
         win.move(self.x, self.y)
         win.maximize()
@@ -396,30 +397,30 @@ return %s(self)" % (p, P, P)
         add a Fixed container in order to position text Entry widgets
         on top of string and number blocks.'''
 
-        self.fixed = gtk.Fixed()
+        self.fixed = Gtk.Fixed()
         self.fixed.connect('size-allocate', self._fixed_resize_cb)
-        width = gtk.gdk.screen_width() - 80
-        height = gtk.gdk.screen_height() - 80
+        width = Gdk.Screen.width() - 80
+        height = Gdk.Screen.height() - 80
         self.fixed.set_size_request(width, height)
 
-        self.vbox = gtk.VBox(False, 0)
+        self.vbox = Gtk.VBox(False, 0)
         self.vbox.show()
 
         self.menu_bar = self._get_menu_bar()
-        self.vbox.pack_start(self.menu_bar, False, False)
+        self.vbox.pack_start(self.menu_bar, False, False, 0)
         self.menu_bar.show()
-        self.menu_height = self.menu_bar.size_request()[1]
+        self.menu_height = self.menu_bar.get_size_request()[1]
 
-        self.sw = gtk.ScrolledWindow()
-        self.sw.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
+        self.sw = Gtk.ScrolledWindow()
+        self.sw.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
         self.sw.show()
-        canvas = gtk.DrawingArea()
-        width = gtk.gdk.screen_width() * 2
-        height = gtk.gdk.screen_height() * 2
+        canvas = Gtk.DrawingArea()
+        width = Gdk.Screen.width() * 2
+        height = Gdk.Screen.height() * 2
         canvas.set_size_request(width, height)
         self.sw.add_with_viewport(canvas)
         canvas.show()
-        self.vbox.pack_end(self.sw, True, True)
+        self.vbox.pack_end(self.sw, True, True, 0)
         self.fixed.put(self.vbox, 0, 0)
         self.fixed.show()
 
@@ -430,7 +431,7 @@ return %s(self)" % (p, P, P)
 
     def _get_menu_bar(self):
         ''' Instead of Sugar toolbars, use GNOME menus. '''
-        menu = gtk.Menu()
+        menu = Gtk.Menu()
         make_menu_item(menu, _('New'), self._do_new_cb)
         make_menu_item(menu, _('Show sample projects'),
                                    self._create_store)
@@ -442,7 +443,7 @@ return %s(self)" % (p, P, P)
         make_menu_item(menu, _('Save as'), self._do_save_as_cb)
 
         # export submenu
-        export_submenu = gtk.Menu()
+        export_submenu = Gtk.Menu()
         export_menu = make_sub_menu(export_submenu, _('Export as'))
         menu.append(export_menu)
 
@@ -464,7 +465,7 @@ return %s(self)" % (p, P, P)
         make_menu_item(menu, _('Quit'), self._quit_ta)
         activity_menu = make_sub_menu(menu, _('File'))
 
-        menu = gtk.Menu()
+        menu = Gtk.Menu()
         make_menu_item(menu, _('Cartesian coordinates'),
                                    self._do_cartesian_cb)
         make_menu_item(menu, _('Polar coordinates'),
@@ -483,7 +484,7 @@ return %s(self)" % (p, P, P)
             self._do_toggle_hover_help_cb, status=True)
         view_menu = make_sub_menu(menu, _('View'))
 
-        menu = gtk.Menu()
+        menu = Gtk.Menu()
         make_menu_item(menu, _('Copy'), self._do_copy_cb)
         make_menu_item(menu, _('Paste'), self._do_paste_cb)
         make_menu_item(menu, _('Save stack'),
@@ -492,7 +493,7 @@ return %s(self)" % (p, P, P)
                                    self._do_delete_macro_cb)
         edit_menu = make_sub_menu(menu, _('Edit'))
 
-        menu = gtk.Menu()
+        menu = Gtk.Menu()
         make_menu_item(menu, _('Show palette'),
                                    self._do_palette_cb)
         make_menu_item(menu, _('Hide palette'),
@@ -501,7 +502,7 @@ return %s(self)" % (p, P, P)
                                    self._do_hideshow_cb)
         tool_menu = make_sub_menu(menu, _('Tools'))
 
-        menu = gtk.Menu()
+        menu = Gtk.Menu()
         make_menu_item(menu, _('Clean'), self._do_eraser_cb)
         make_menu_item(menu, _('Run'), self._do_run_cb)
         make_menu_item(menu, _('Step'), self._do_step_cb)
@@ -509,14 +510,14 @@ return %s(self)" % (p, P, P)
         make_menu_item(menu, _('Stop'), self._do_stop_cb)
         turtle_menu = make_sub_menu(menu, _('Turtle'))
 
-        self._plugin_menu = gtk.Menu()
+        self._plugin_menu = Gtk.Menu()
         plugin_men = make_sub_menu(self._plugin_menu, _('Plugins'))
 
-        menu = gtk.Menu()
+        menu = Gtk.Menu()
         make_menu_item(menu, _('About...'), self._do_about_cb)
         help_menu = make_sub_menu(menu, _('Help'))
 
-        menu_bar = gtk.MenuBar()
+        menu_bar = Gtk.MenuBar()
         menu_bar.append(activity_menu)
         menu_bar.append(edit_menu)
         menu_bar.append(view_menu)
@@ -539,13 +540,13 @@ return %s(self)" % (p, P, P)
         project_empty = self.tw.is_project_empty()
         if not project_empty:
             resp = self._show_save_dialog(e is None)
-            if resp == gtk.RESPONSE_YES:
+            if resp == Gtk.ResponseType.YES:
                 if self.tw.is_new_project():
                     self._save_as()
                 else:
                     if self.tw.project_has_changed():
                         self._save_changes()
-            elif resp == gtk.RESPONSE_CANCEL:
+            elif resp == Gtk.ResponseType.CANCEL:
                 return
 
         if hasattr(self, 'client'):
@@ -565,18 +566,18 @@ return %s(self)" % (p, P, P)
         except:
             pass
 
-        gtk.main_quit()
+        Gtk.main_quit()
         exit()
 
     def _show_save_dialog(self, add_cancel=False):
         ''' Dialog for save project '''
-        dlg = gtk.MessageDialog(parent=None, type=gtk.MESSAGE_INFO,
-                                buttons=gtk.BUTTONS_YES_NO,
+        dlg = Gtk.MessageDialog(parent=None, type=Gtk.MessageType.INFO,
+                                buttons=Gtk.ButtonsType.YES_NO,
                                 message_format=_('You have unsaved work. \
 Would you like to save before quitting?'))
-        dlg.set_default_response(gtk.RESPONSE_YES)
+        dlg.set_default_response(Gtk.ResponseType.YES)
         if add_cancel:
-            dlg.add_button(gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL)
+            dlg.add_button(Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL)
         dlg.set_title(_('Save project?'))
         dlg.set_property('skip-taskbar-hint', False)
 
@@ -589,8 +590,8 @@ Would you like to save before quitting?'))
         print "Already installed"
         title = _('Plugin %s already installed') % plugin_name
         msg = _('Do you want to reinstall %s?') % plugin_name
-        dlg = gtk.MessageDialog(parent=None, type=gtk.MESSAGE_INFO,
-                                buttons=gtk.BUTTONS_YES_NO,
+        dlg = Gtk.MessageDialog(parent=None, type=Gtk.MessageType.INFO,
+                                buttons=Gtk.ButtonsType.YES_NO,
                                 message_format=title)
         dlg.format_secondary_text(msg)
         dlg.set_title(title)
@@ -599,10 +600,10 @@ Would you like to save before quitting?'))
         resp = dlg.run()
         dlg.destroy()
 
-        if resp is gtk.RESPONSE_OK:
+        if resp is Gtk.ResponseType.OK:
             complete_plugin_install(self, tmp_dir, tmp_path, plugin_path,
                                     plugin_name, file_info)
-        elif resp is gtk.RESPONSE_CANCEL:
+        elif resp is Gtk.ResponseType.CANCEL:
             cancel_plugin_install(tmp_dir)
 
     def _do_new_cb(self, widget):
@@ -887,10 +888,10 @@ Would you like to save before quitting?'))
         self.tw.copying_blocks = False
         self.tw.deleting_blocks = False
         if self.tw.saving_blocks:
-            self.win.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.LEFT_PTR))
+            self.win.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.LEFT_PTR))
             self.tw.saving_blocks = False
         else:
-            self.win.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.HAND1))
+            self.win.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.HAND1))
             self.tw.saving_blocks = True
 
     def _do_delete_macro_cb(self, widget):
@@ -898,10 +899,10 @@ Would you like to save before quitting?'))
         self.tw.copying_blocks = False
         self.tw.saving_blocks = False
         if self.tw.deleting_blocks:
-            self.win.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.LEFT_PTR))
+            self.win.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.LEFT_PTR))
             self.tw.deleting_blocks = False
         else:
-            self.win.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.HAND1))
+            self.win.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.HAND1))
             self.tw.deleting_blocks = True
 
     def _do_copy_cb(self, button):
@@ -909,10 +910,10 @@ Would you like to save before quitting?'))
         self.tw.saving_blocks = False
         self.tw.deleting_blocks = False
         if self.tw.copying_blocks:
-            self.win.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.LEFT_PTR))
+            self.win.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.LEFT_PTR))
             self.tw.copying_blocks = False
         else:
-            self.win.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.HAND1))
+            self.win.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.HAND1))
             self.tw.copying_blocks = True
 
     def _do_paste_cb(self, button):
@@ -920,8 +921,8 @@ Would you like to save before quitting?'))
         self.tw.copying_blocks = False
         self.tw.saving_blocks = False
         self.tw.deleting_blocks = False
-        self.win.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.LEFT_PTR))
-        clipboard = gtk.Clipboard()
+        self.win.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.LEFT_PTR))
+        clipboard = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD)
         text = clipboard.wait_for_text()
         if text is not None:
             if self.tw.selected_blk is not None and \
@@ -935,7 +936,7 @@ Would you like to save before quitting?'))
                 self.tw.paste_offset += PASTE_OFFSET
 
     def _do_about_cb(self, widget):
-        about = gtk.AboutDialog()
+        about = Gtk.AboutDialog()
         about.set_program_name(_(self.name))
         about.set_version(self.version)
         about.set_comments(_(self.summary))
@@ -943,7 +944,7 @@ Would you like to save before quitting?'))
         logo_path = os.path.join(self._share_path, 'activity',
                                  self.icon_name + '.svg')
         about.set_logo(
-            gtk.gdk.pixbuf_new_from_file(logo_path))
+            GdkPixbuf.Pixbuf.new_from_file(logo_path))
         about.run()
         about.destroy()
 
@@ -996,20 +997,20 @@ Would you like to save before quitting?'))
 
     def _create_store(self, widget=None):
         if self._sample_window is None:
-            self._sample_box = gtk.EventBox()
-            self._sample_window = gtk.ScrolledWindow()
-            self._sample_window.set_policy(gtk.POLICY_NEVER,
-                                           gtk.POLICY_AUTOMATIC)
-            width = gtk.gdk.screen_width() / 2
-            height = gtk.gdk.screen_height() / 2
+            self._sample_box = Gtk.EventBox()
+            self._sample_window = Gtk.ScrolledWindow()
+            self._sample_window.set_policy(Gtk.PolicyType.NEVER,
+                                           Gtk.PolicyType.AUTOMATIC)
+            width = Gdk.Screen.width() / 2
+            height = Gdk.Screen.height() / 2
             self._sample_window.set_size_request(width, height)
             self._sample_window.show()
 
-            store = gtk.ListStore(gtk.gdk.Pixbuf, str)
+            store = Gtk.ListStore(GdkPixbuf.Pixbuf, str)
 
-            icon_view = gtk.IconView()
+            icon_view = Gtk.IconView()
             icon_view.set_model(store)
-            icon_view.set_selection_mode(gtk.SELECTION_SINGLE)
+            icon_view.set_selection_mode(Gtk.SelectionMode.SINGLE)
             icon_view.connect('selection-changed', self._sample_selected,
                               store)
             icon_view.set_pixbuf_column(0)
@@ -1018,8 +1019,8 @@ Would you like to save before quitting?'))
             icon_view.show()
             self._fill_samples_list(store)
 
-            width = gtk.gdk.screen_width() / 4
-            height = gtk.gdk.screen_height() / 4
+            width = Gdk.Screen.width() / 4
+            height = Gdk.Screen.height() / 4
 
             self._sample_box.add(self._sample_window)
             self.fixed.put(self._sample_box, width, height)
@@ -1051,8 +1052,8 @@ Would you like to save before quitting?'))
         self._selected_sample = image_path
         self._sample_window.hide()
 
-        self.win.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.WATCH))
-        gobject.idle_add(self._sample_loader)
+        self.win.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.WATCH))
+        GObject.idle_add(self._sample_loader)
 
     def _sample_loader(self):
         # Convert from thumbnail path to sample path
@@ -1063,7 +1064,7 @@ Would you like to save before quitting?'))
             if os.path.exists(file_path):
                 self.tw.load_files(file_path)
                 break
-        self.win.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.LEFT_PTR))
+        self.win.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.LEFT_PTR))
 
     def _fill_samples_list(self, store):
         '''
@@ -1071,7 +1072,7 @@ Would you like to save before quitting?'))
         '''
         for filepath in self._scan_for_samples():
             pixbuf = None
-            pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(
+            pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_size(
                 filepath, 100, 100)
             store.append([pixbuf, filepath])
 

@@ -30,11 +30,11 @@ import util.codegen as codegen
 
 # from ast_pprint import * # only used for debugging, safe to comment out
 
-from .talogo import LogoCode
-from .taprimitive import (ast_yield_true, Primitive, PyExportError,
+from talogo import LogoCode
+from taprimitive import (ast_yield_true, Primitive, PyExportError,
                           value_to_ast)
-from .tautils import (find_group, find_top_block, get_stack_name)
-from .tawindow import plugins_in_use
+from tautils import (find_group, find_top_block, get_stack_name)
+from tawindow import plugins_in_use
 
 
 _SETUP_CODE_START = """\

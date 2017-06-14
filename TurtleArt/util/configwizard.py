@@ -15,8 +15,8 @@
 # Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 # Boston, MA 02111-1307, USA.
 
-from .configfile import ConfigFile
-import gtk
+from configfile import ConfigFile
+from gi.repository import Gtk
 
 
 class ConfigWizard():
@@ -56,10 +56,10 @@ class ConfigWizard():
             if self._config_file_obj is None:
                 raise RuntimeError("I need the run time obj")
 
-        self._config_popup = gtk.Window()
+        self._config_popup = Gtk.Window()
         self._config_popup.set_default_size(200, 200)
         self._config_popup.connect('delete_event', self._close_config_cb)
-        table = gtk.Table(12, 1, True)
+        table = Gtk.Table(12, 1, True)
         self._config_popup.add(table)
 
         row = 1
@@ -68,12 +68,12 @@ class ConfigWizard():
             table.attach(hbox, 0, 1, row, row + 1, xpadding=5, ypadding=2)
             row = row + 1
 
-        hbox = gtk.HBox()
-        save_button = gtk.Button('Save')
+        hbox = Gtk.HBox()
+        save_button = Gtk.Button.new_with_label('Save')
         save_button.set_size_request(50, 15)
         save_button.connect('pressed', self._save_config_cb)
         hbox.add(save_button)
-        cancel_button = gtk.Button('Cancel')
+        cancel_button = Gtk.Button.new_with_label('Cancel')
         cancel_button.set_size_request(50, 15)
         cancel_button.connect('pressed', self._close_config_cb)
         hbox.add(cancel_button)
@@ -85,8 +85,8 @@ class ConfigWizard():
         try:
             self._do_save_config()
         except Exception as e:
-            w = gtk.Window()
-            l = gtk.Label(e.message)
+            w = Gtk.Window()
+            l = Gtk.Label(e.message)
             w.add(l)
             w.show_all()
         finally:
@@ -96,9 +96,9 @@ class ConfigWizard():
         for i in self._config_items:
             param_name = i["item_name"]
             v = self._config_entries[param_name]
-            if v.__class__ is gtk.Entry:
+            if v.__class__ is Gtk.Entry:
                 value = v.get_text()
-            elif v.__class__ is gtk.CheckButton:
+            elif v.__class__ is Gtk.CheckButton:
                 value = v.get_active()
             else:
                 raise RuntimeError("Don't recognize the class %s" % type(v))
@@ -114,20 +114,20 @@ class ConfigWizard():
         param_name = opts["item_name"]
         with_value = opts["item_with_value"] if "item_with_value" in opts \
             else True
-        hbox = gtk.HBox()
+        hbox = Gtk.HBox()
         if opts["item_type"] == "text":
-            entry = gtk.Entry()
+            entry = Gtk.Entry()
             entry.set_size_request(150, 25)
             if with_value:
                 value = self._config_file_obj.get(param_name, True)
                 entry.set_text(str(value))
         elif opts["item_type"] == "boolean":
-            entry = gtk.CheckButton()
+            entry = Gtk.CheckButton()
             if with_value:
                 value = self._config_file_obj.get(param_name, True)
                 entry.set_active(value)
         self._config_entries[param_name] = entry
-        label = gtk.Label(opts["item_label"] + ': ')
+        label = Gtk.Label(opts["item_label"] + ': ')
         label.set_alignment(1.0, 0.5)
         label.set_size_request(100, 25)
         hbox.add(label)
@@ -216,4 +216,4 @@ def test_wizard_from_config_file_path(test_config_file):
 if __name__ == "__main__":
     # test_wizard_from_config_file_obj("/tmp/configwizard.test.0001")
     test_wizard_from_config_file_path("/tmp/configwizard.test.0002")
-    gtk.main()
+    Gtk.main()

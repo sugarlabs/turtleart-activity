@@ -23,8 +23,8 @@
 
 import ast
 
-from .tablock import Media
-from .taconstants import (Color, ColorObj, CONSTANTS, Vector)
+from tablock import Media
+from taconstants import (Color, ColorObj, CONSTANTS, Vector)
 
 
 class Type(object):

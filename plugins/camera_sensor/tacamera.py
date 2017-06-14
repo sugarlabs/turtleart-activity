@@ -20,9 +20,13 @@
 #OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 #THE SOFTWARE.
 
-import gst, time
-import gobject
-
+import gi
+gi.require_version('Gst', '1.0')
+from gi.repository import Gst 
+Gst.init(None)
+import time
+#from gi.repository import GObject
+#GObject.threads_init()
 from TurtleArt.tautils import debug_output
 
 
@@ -32,15 +36,16 @@ class Camera():
 
     def __init__(self, device='/dev/video0'):
         ''' Prepare camera pipeline to pixbuf and signal watch '''
-        self.pipe = gst.Pipeline('pipeline')
-        v4l2src = gst.element_factory_make('v4l2src', None)
+        self.pipe = Gst.Pipeline()
+        v4l2src = Gst.ElementFactory.make('v4l2src', None)
         v4l2src.props.device = device
         self.pipe.add(v4l2src)
-        ffmpegcolorspace = gst.element_factory_make('ffmpegcolorspace', None)
-        self.pipe.add(ffmpegcolorspace)
-        gdkpixbufsink = gst.element_factory_make('gdkpixbufsink', None)
-        self.pipe.add(gdkpixbufsink)
-        gst.element_link_many(v4l2src, ffmpegcolorspace, gdkpixbufsink)
+        videoconvert = Gst.ElementFactory.make('videoconvert', None)
+        self.pipe.add(videoconvert)
+        self.gdkpixbufsink = Gst.ElementFactory.make('gdkpixbufsink', None)
+        self.pipe.add(self.gdkpixbufsink)
+        v4l2src.link(videoconvert)
+        videoconvert.link(self.gdkpixbufsink)
         if self.pipe is not None:
             self.bus = self.pipe.get_bus()
             self.bus.add_signal_watch()
@@ -51,19 +56,19 @@ class Camera():
 
     def _on_message(self, bus, message):
         ''' We get a message if a pixbuf is available '''
-        if message.structure is not None:
-            if message.structure.get_name() == 'pixbuf':
-                self.pixbuf = message.structure['pixbuf']
+        if message.get_structure() is not None:
+            if message.get_structure().get_name() == 'pixbuf':
+                self.pixbuf = self.gdkpixbufsink.get_property("last-pixbuf")
                 self.image_ready = True
 
     def start_camera_input(self):
         ''' Start grabbing '''
         self.pixbuf = None
         self.image_ready = False
-        self.pipe.set_state(gst.STATE_PLAYING)
+        self.pipe.set_state(Gst.State.PLAYING)
         while not self.image_ready:
-            self.bus.poll(gst.MESSAGE_ANY, -1)
+            self.bus.poll(Gst.MessageType.ANY, 1)
 
     def stop_camera_input(self):
         ''' Stop grabbing '''
-        self.pipe.set_state(gst.STATE_NULL)
+        self.pipe.set_state(Gst.State.NULL)

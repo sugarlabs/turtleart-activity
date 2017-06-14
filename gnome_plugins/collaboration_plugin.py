@@ -26,10 +26,8 @@ import os.path
 
 import dbus
 from gettext import gettext as _
-import gobject
-import gtk
 
-from .plugin import Plugin
+from plugin import Plugin
 
 from TurtleArt.util.menubuilder import make_menu_item, make_sub_menu
 from TurtleArt.util.configfile import ConfigFile
@@ -44,6 +42,9 @@ from TurtleArt.tacollaboration import Collaboration
 
 import traceback
 
+from gi.repository import Gtk
+from gi.repository import GObject
+
 CONNECTION_INTERFACE_ACTIVITY_PROPERTIES = \
     'org.laptop.Telepathy.ActivityProperties'
 
@@ -51,9 +52,9 @@ CONNECTION_INTERFACE_ACTIVITY_PROPERTIES = \
 class Collaboration_plugin(Plugin):
 
     __gsignals__ = {
-        'joined': (gobject.SIGNAL_RUN_FIRST, gobject.TYPE_NONE,
+        'joined': (GObject.SIGNAL_RUN_FIRST, GObject.TYPE_NONE,
                    ()),
-        'shared': (gobject.SIGNAL_RUN_FIRST, gobject.TYPE_NONE,
+        'shared': (GObject.SIGNAL_RUN_FIRST, GObject.TYPE_NONE,
                    ()), }
 
     def __init__(self, parent):
@@ -106,17 +107,17 @@ class Collaboration_plugin(Plugin):
         self._setup_config_file(self._parent.get_config_home())
 
     def get_menu(self):
-        menu = gtk.Menu()
+        menu = Gtk.Menu()
 
         make_menu_item(menu, _('Enable collaboration'),
                                    self._connect_cb)
 
-        self._activities_submenu = gtk.Menu()
+        self._activities_submenu = Gtk.Menu()
         activities_menu = make_sub_menu(self._activities_submenu,
                                                     _('Activities'))
         menu.append(activities_menu)
 
-        self._buddies_submenu = gtk.Menu()
+        self._buddies_submenu = Gtk.Menu()
         buddies_menu = make_sub_menu(self._buddies_submenu,
                                                  _('Buddies'))
         menu.append(buddies_menu)

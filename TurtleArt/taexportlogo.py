@@ -18,12 +18,8 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-try:
-    from sugar.datastore import datastore
-    HAS_DATASTORE = True
-except:
-    HAS_DATASTORE = False
 
+from sugar3.datastore import datastore
 from TurtleArt.tapalette import (logo_commands, logo_functions)
 from TurtleArt.taconstants import (TITLEXY, CONSTANTS)
 
