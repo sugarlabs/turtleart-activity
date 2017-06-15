@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # Copyright (c) 2007, Playful Invention Company
-# Copyright (c) 2008-14, Walter Bender
+# Copyright (c) 2008-17, Walter Bender
 # Copyright (c) 2009-13 Raul Gutierrez Segales
 # Copyright (c) 2012 Alan Aguiar
 
@@ -141,19 +141,18 @@ class TurtleArtActivity(activity.Activity):
                 count += 1
             self.metadata['activity count'] = str(count)
 
-        
         # Now called from lazy_init
         # self.check_buttons_for_fit()
-        
+
         self.client = GConf.Client.get_default()
         if self.client.get_int(self._HOVER_HELP) == 1:
-             self._do_hover_help_toggle(None)
+            self._do_hover_help_toggle(None)
         if not self.client.get_int(self._COORDINATE_SCALE) in [0, 1]:
-             self.tw.coord_scale = 1
-             self.do_rescale_cb(None)
+            self.tw.coord_scale = 1
+            self.do_rescale_cb(None)
         else:
-             self.tw.coord_scale = 0
-             self.do_rescale_cb(None)
+            self.tw.coord_scale = 0
+            self.do_rescale_cb(None)
 
         self._selected_sample = None
         self._sample_window = None
@@ -161,7 +160,6 @@ class TurtleArtActivity(activity.Activity):
         self.init_complete = True
 
     def update_palette_from_metadata(self):
-     
         # We have to wait to set the orientation for the palettes
         # to be loaded.
         self.client = GConf.Client.get_default()
@@ -186,7 +184,7 @@ class TurtleArtActivity(activity.Activity):
 
     def check_buttons_for_fit(self):
         ''' Check to see which set of buttons to display '''
- 
+
         # If there are too many palettes to fit, put them in a
         # scrolling window
         self._setup_palette_toolbar()
@@ -322,7 +320,7 @@ class TurtleArtActivity(activity.Activity):
             if hasattr(self.get_window(), 'get_cursor'):
                 self._old_cursor = self.get_window().get_cursor()
                 self.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.WATCH))
-        # FIXME: we are looking for tar files
+                # FIXME: we are looking for tar files
         chooser_dialog(self, '', self._load_ta_plugin)
 
     def _load_ta_plugin(self, dsobject):
@@ -661,7 +659,7 @@ class TurtleArtActivity(activity.Activity):
             default_values['arc'] = [90, 100]
             default_values['setpensize'] = [5]
             self.tw.turtles.get_active_turtle().set_pen_size(5)
-        
+
         self.client.set_int(self._COORDINATE_SCALE, self.tw.coord_scale)
 
         self.tw.recalculate_constants()
@@ -972,7 +970,7 @@ class TurtleArtActivity(activity.Activity):
 
     def _setup_palette_toolbar(self):
         ''' The palette toolbar must be setup *after* plugins are loaded. '''
-        
+
         max_palettes = int(Gdk.Screen.width() / style.GRID_CELL_SIZE)
         max_palettes -= 2  # the margins
         if len(palette_names) > max_palettes:
@@ -1096,7 +1094,7 @@ class TurtleArtActivity(activity.Activity):
             toolbar)
         self._save_palette = save_button.get_palette()
         button_box = Gtk.VBox()
-        self.save_as_image, label = self._add_button_and_label(
+        self.save_as_image = self._add_button_and_label(
             'image-saveoff', _('Save as image'), self.do_save_as_image_cb,
             None, button_box)
         self.save_as_icon = self._add_button_and_label(
@@ -1356,7 +1354,7 @@ class TurtleArtActivity(activity.Activity):
             self.metadata['palette'] = str(self.tw.selected_palette)
         else:
             self.metadata['palette'] = '-1'
-        self.metadata['orientation'] = str(self.tw.orientation)     
+        self.metadata['orientation'] = str(self.tw.orientation)
         self.client.set_int(self._ORIENTATION, self.tw.orientation)
         if len(self.error_list) > 0:
             errors = []
@@ -1677,7 +1675,7 @@ class TurtleArtActivity(activity.Activity):
         if self._sample_window is None:
             self._sample_box = Gtk.EventBox()
             self._sample_window = Gtk.ScrolledWindow()
-            self._sample_window.set_policy(Gtk.PolicyType.NEVER,
+            self._sample_window.set_policy(Gtk.PolicyType.AUTOMATIC,
                                            Gtk.PolicyType.AUTOMATIC)
             width = Gdk.Screen.width() / 2
             height = Gdk.Screen.height() / 2

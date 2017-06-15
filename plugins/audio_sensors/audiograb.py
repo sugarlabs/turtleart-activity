@@ -95,7 +95,7 @@ class AudioGrab():
         self.set_bias(BIAS)
         self.set_capture_gain(CAPTURE_GAIN)
         self.set_mic_boost(MIC_BOOST)
-        
+
         self._set_sensor_type(mode, bias, gain, boost)
         self.master = self.get_master()
         self.dc_mode = self.get_dc_mode()
@@ -167,7 +167,6 @@ class AudioGrab():
             self._pad_count += 1
         else:
             log.debug('ignoring channels > %d' % self.channels)
-                                                      
 
     def set_handoff_signal(self, handoff_state):
         '''Sets whether the handoff signal would generate an interrupt
@@ -468,7 +467,7 @@ class AudioGrab():
         '''Helper to modify (some) of the sensor settings.'''
 
         if mode is not None:
-            self.set_dc_mode(mode) 
+            self.set_dc_mode(mode)
 
         if bias is not None:
             self.set_bias(bias)
@@ -488,7 +487,6 @@ class AudioGrab():
         self.set_capture_gain(QUIT_CAPTURE_GAIN)
         self.set_bias(QUIT_BIAS)
         self.stop_sound_device()
-       
 
     def on_activity_quit(self):
         AudioGrab._on_activity_quit(self)
@@ -501,7 +499,6 @@ def check_output(command, warning):
     if hasattr(subprocess, 'check_output'):
         try:
             output = subprocess.check_output(command)
-            
         except subprocess.CalledProcessError:
             log.warning(warning)
             return None

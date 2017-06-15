@@ -98,26 +98,26 @@ from taconstants import (
     Vector,
     PASTE_OFFSET)
 from tapalette import (palette_names, palette_blocks, expandable_blocks,
-                        block_names, content_blocks, default_values,
-                        special_names, block_styles, help_strings,
-                        string_or_number_args, make_palette,
-                        palette_name_to_index, palette_init_on_start,
-                        palette_i18n_names)
+                       block_names, content_blocks, default_values,
+                       special_names, block_styles, help_strings,
+                       string_or_number_args, make_palette,
+                       palette_name_to_index, palette_init_on_start,
+                       palette_i18n_names)
 from talogo import (LogoCode, logoerror)
 from tacanvas import TurtleGraphics
 from tablock import (Blocks, Block, Media, media_blocks_dictionary)
 from taturtle import (Turtles, Turtle)
 from tautils import (magnitude, get_load_name, get_save_name, data_from_file,
-                      data_to_file, round_int, get_id, get_pixbuf_from_journal,
-                      movie_media_type, audio_media_type, image_media_type,
-                      save_picture, calc_image_size, get_path, hide_button_hit,
-                      show_button_hit, chooser_dialog, arithmetic_check, xy,
-                      find_block_to_run, find_top_block, journal_check,
-                      find_group, find_blk_below, data_to_string,
-                      find_start_stack, get_hardware, debug_output,
-                      error_output, find_hat, find_bot_block,
-                      restore_clamp, collapse_clamp, data_from_string,
-                      increment_name, get_screen_dpi, is_writeable)
+                     data_to_file, round_int, get_id, get_pixbuf_from_journal,
+                     movie_media_type, audio_media_type, image_media_type,
+                     save_picture, calc_image_size, get_path, hide_button_hit,
+                     show_button_hit, chooser_dialog, arithmetic_check, xy,
+                     find_block_to_run, find_top_block, journal_check,
+                     find_group, find_blk_below, data_to_string,
+                     find_start_stack, get_hardware, debug_output,
+                     error_output, find_hat, find_bot_block,
+                     restore_clamp, collapse_clamp, data_from_string,
+                     increment_name, get_screen_dpi, is_writeable)
 from tasprite_factory import (svg_str_to_pixbuf, svg_from_file)
 from tapalette import block_primitives
 from tapaletteview import PaletteView
@@ -449,7 +449,7 @@ class TurtleArtWindow():
             if status:
                 self.init_plugin(plugin_dir, plugin_path)
                 self.turtleart_favorites_plugins.append(plugin_dir)
-        if not(self.running_sugar):
+        if not self.running_sugar:
             if hasattr(self.activity, '_plugin_menu'):
                 self.activity._plugin_menu.show_all()
 
@@ -478,7 +478,7 @@ class TurtleArtWindow():
         icon_theme = Gtk.IconTheme.get_default()
         icon_path = os.path.join(dirname, 'icons')
         if os.path.exists(icon_path):
-            if not(icon_path in self.icon_paths):
+            if not icon_path in self.icon_paths:
                 icon_theme.append_search_path(icon_path)
                 self.icon_paths.append(icon_path)
 
@@ -578,11 +578,7 @@ class TurtleArtWindow():
         self.window.connect('drag_data_received', self._drag_data_received)
 
         Gdk.Screen.get_default().connect('size-changed',
-                                             self._configure_cb)
-
-     
-
-        
+                                         self._configure_cb)
 
     def _show_unfullscreen_button(self):
         if self.activity._is_fullscreen and \
@@ -723,9 +719,9 @@ class TurtleArtWindow():
 
     def recalculate_constants(self):
         CONSTANTS['titlex'] = int(-(self.width * TITLEXY[0]) /
-                                   (self.coord_scale * 2))
-        CONSTANTS['leftx'] = int(-(self.width * TITLEXY[0]) /
                                   (self.coord_scale * 2))
+        CONSTANTS['leftx'] = int(-(self.width * TITLEXY[0]) /
+                                 (self.coord_scale * 2))
         CONSTANTS['rightx'] = 0
         CONSTANTS['titley'] = int((self.height * TITLEXY[1]) /
                                   (self.coord_scale * 2))
@@ -772,10 +768,8 @@ class TurtleArtWindow():
         # sw needs new bounds set
         # cr.scale(self.activity.global_x_scale, self.activity.global_y_scale)
 
-      
         cr.rectangle(self.rect.x, self.rect.y,
-                         self.rect.width, self.rect.height)
-      
+                     self.rect.width, self.rect.height)
 
         if self.turtle_canvas is not None:
             cr.set_source_surface(self.turtle_canvas)
@@ -1946,7 +1940,7 @@ class TurtleArtWindow():
             self.activity.empty_trash_alert(title, msg)
         else:
             dialog = Gtk.MessageDialog(None, 0, Gtk.MessageType.WARNING,
-                                      Gtk.ButtonsType.OK_CANCEL, msg)
+                                       Gtk.ButtonsType.OK_CANCEL, msg)
             dialog.set_title(title)
             res = dialog.run()
             dialog.destroy()
@@ -2035,7 +2029,7 @@ class TurtleArtWindow():
             self.paste_offset = 20
 
             self.parent.get_window().set_cursor(
-               Gdk.Cursor(Gdk.CursorType.LEFT_PTR))
+                Gdk.Cursor(Gdk.CursorType.LEFT_PTR))
             self.saving_blocks = False
 
             if self.running_sugar and self._sharing and \
@@ -3158,7 +3152,7 @@ class TurtleArtWindow():
                          block_styles['compare-style'] or
                          selected_block.name in
                          block_styles['compare-porch-style']
-                         ):
+                        ):
                     dy = selected_block.ey - best_destination.ey
                     if selected_block.name in block_styles['boolean-style']:
                         # Even without expanding, boolean blocks are
@@ -3200,7 +3194,7 @@ class TurtleArtWindow():
                         self._resize_clamp(
                             best_destination, self.drag_group[0], dockn=3)
             elif best_destination.name in expandable_blocks and \
-                    best_destination_dockn == 1:
+                 best_destination_dockn == 1:
                 dy = 0
                 if (selected_block.name in expandable_blocks or
                     selected_block.name in block_styles[
@@ -3553,7 +3547,7 @@ class TurtleArtWindow():
                         i = 0
                     else:
                         i += 1
-                        while(not p[i].get_visibility()):
+                        while not p[i].get_visibility():
                             i += 1
                             if i >= len(p) - 1:
                                 i = 0

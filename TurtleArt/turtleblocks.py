@@ -434,11 +434,11 @@ return %s(self)" % (p, P, P)
         menu = Gtk.Menu()
         make_menu_item(menu, _('New'), self._do_new_cb)
         make_menu_item(menu, _('Show sample projects'),
-                                   self._create_store)
+                       self._create_store)
         make_menu_item(menu, _('Open'), self._do_open_cb)
         make_menu_item(menu, _('Add project'), self._do_load_cb)
         make_menu_item(menu, _('Load plugin'),
-                                   self._do_load_plugin_cb)
+                       self._do_load_plugin_cb)
         make_menu_item(menu, _('Save'), self._do_save_cb)
         make_menu_item(menu, _('Save as'), self._do_save_as_cb)
 
@@ -448,37 +448,37 @@ return %s(self)" % (p, P, P)
         menu.append(export_menu)
 
         make_menu_item(export_submenu, _('image'),
-                                   self._do_save_picture_cb)
+                       self._do_save_picture_cb)
         make_menu_item(export_submenu, _('image (blocks)'),
-                                   self._do_save_blocks_image_cb)
+                       self._do_save_blocks_image_cb)
         make_menu_item(export_submenu, _('SVG'),
-                                   self._do_save_svg_cb)
+                       self._do_save_svg_cb)
         make_menu_item(export_submenu, _('icon'),
-                                   self._do_save_as_icon_cb)
+                       self._do_save_as_icon_cb)
         # TRANS: ODP is Open Office presentation
         make_menu_item(export_submenu, _('ODP'),
-                                   self._do_save_as_odp_cb)
+                       self._do_save_as_odp_cb)
         make_menu_item(export_submenu, _('Logo'),
-                                   self._do_save_logo_cb)
+                       self._do_save_logo_cb)
         make_menu_item(export_submenu, _('Python'),
-                                   self._do_save_python_cb)
+                       self._do_save_python_cb)
         make_menu_item(menu, _('Quit'), self._quit_ta)
         activity_menu = make_sub_menu(menu, _('File'))
 
         menu = Gtk.Menu()
         make_menu_item(menu, _('Cartesian coordinates'),
-                                   self._do_cartesian_cb)
+                       self._do_cartesian_cb)
         make_menu_item(menu, _('Polar coordinates'),
-                                   self._do_polar_cb)
+                       self._do_polar_cb)
         self.coords = make_checkmenu_item(
             menu, _('Rescale coordinates'),
             self._do_rescale_cb, status=False)
         make_menu_item(menu, _('Grow blocks'),
-                                   self._do_resize_cb, 1.5)
+                       self._do_resize_cb, 1.5)
         make_menu_item(menu, _('Shrink blocks'),
-                                   self._do_resize_cb, 0.667)
+                       self._do_resize_cb, 0.667)
         make_menu_item(menu, _('Reset block size'),
-                                   self._do_resize_cb, -1)
+                       self._do_resize_cb, -1)
         self.hover = make_checkmenu_item(
             menu, _('Turn on hover help'),
             self._do_toggle_hover_help_cb, status=True)
@@ -488,18 +488,18 @@ return %s(self)" % (p, P, P)
         make_menu_item(menu, _('Copy'), self._do_copy_cb)
         make_menu_item(menu, _('Paste'), self._do_paste_cb)
         make_menu_item(menu, _('Save stack'),
-                                   self._do_save_macro_cb)
+                       self._do_save_macro_cb)
         make_menu_item(menu, _('Delete stack'),
-                                   self._do_delete_macro_cb)
+                       self._do_delete_macro_cb)
         edit_menu = make_sub_menu(menu, _('Edit'))
 
         menu = Gtk.Menu()
         make_menu_item(menu, _('Show palette'),
-                                   self._do_palette_cb)
+                       self._do_palette_cb)
         make_menu_item(menu, _('Hide palette'),
-                                   self._do_hide_palette_cb)
+                       self._do_hide_palette_cb)
         make_menu_item(menu, _('Show/hide blocks'),
-                                   self._do_hideshow_cb)
+                       self._do_hideshow_cb)
         tool_menu = make_sub_menu(menu, _('Tools'))
 
         menu = Gtk.Menu()
@@ -797,7 +797,7 @@ Would you like to save before quitting?'))
 
     def _do_toggle_hover_help_cb(self, button):
         ''' Toggle hover help on/off '''
-        self.tw.no_help = not(button.get_active())
+        self.tw.no_help = not button.get_active()
         if self.tw.no_help:
             self._do_hover_help_off_cb()
         else:
@@ -999,7 +999,7 @@ Would you like to save before quitting?'))
         if self._sample_window is None:
             self._sample_box = Gtk.EventBox()
             self._sample_window = Gtk.ScrolledWindow()
-            self._sample_window.set_policy(Gtk.PolicyType.NEVER,
+            self._sample_window.set_policy(Gtk.PolicyType.AUTOMATIC,
                                            Gtk.PolicyType.AUTOMATIC)
             width = Gdk.Screen.width() / 2
             height = Gdk.Screen.height() / 2
