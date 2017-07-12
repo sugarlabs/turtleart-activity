@@ -106,3 +106,4 @@ class RingBuffer1d(object):
                             (len(self._data) - self.offset):step]))
 
         return self._data[self.offset:self.offset + number:step].copy()
+

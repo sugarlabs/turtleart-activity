@@ -84,10 +84,12 @@ block_styles = {'basic-style': [],
                 'portfolio-style-1x2': []}
 
 
-import gtk
+
+from gi.repository import Gtk
+from gi.repository import Gdk
 
 try:
-    from sugar.graphics import style
+    from sugar3.graphics import style
     from util.helpbutton import (add_section, add_paragraph)
     GRID_CELL_SIZE = style.GRID_CELL_SIZE
     HELP_PALETTE = True
@@ -95,7 +97,7 @@ except ImportError:
     GRID_CELL_SIZE = 55
     HELP_PALETTE = False
 
-from .taconstants import (EXPANDABLE_STYLE, EXPANDABLE_FLOW)
+from taconstants import (EXPANDABLE_STYLE, EXPANDABLE_FLOW)
 
 from gettext import gettext as _
 
@@ -112,19 +114,19 @@ class Palette():
         self._name = name
         self._special_name = _(name)
         self._colors = colors
-        self._max_text_width = int(gtk.gdk.screen_width() / 3) - 20
+        self._max_text_width = int(Gdk.Screen.width() / 3) - 20
 
         # Prepare a vbox for the help palette
         if not self._name in help_palettes:
-            self._help_box = gtk.VBox()
+            self._help_box = Gtk.VBox()
             self._help_box.set_homogeneous(False)
             help_palettes[self._name] = self._help_box
-            help_windows[self._name] = gtk.ScrolledWindow()
+            help_windows[self._name] = Gtk.ScrolledWindow()
             help_windows[self._name].set_size_request(
-                int(gtk.gdk.screen_width() / 3),
-                gtk.gdk.screen_height() - GRID_CELL_SIZE * 3)
+                int(Gdk.Screen.width() / 3),
+                Gdk.Screen.height() - GRID_CELL_SIZE * 3)
             help_windows[self._name].set_policy(
-                gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
+                Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
             help_windows[self._name].add_with_viewport(
                 help_palettes[self._name])
             help_palettes[self._name].show()

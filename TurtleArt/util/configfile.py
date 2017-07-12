@@ -16,22 +16,22 @@
 # Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 # Boston, MA 02111-1307, USA.
 
-import gobject
+from gi.repository import GObject
 
 
-class ConfigFile(gobject.GObject):
+class ConfigFile(GObject.GObject):
 
     """Load/save a simple (key = value) config file"""
 
     __gsignals__ = {
-        'configuration-loaded': (gobject.SIGNAL_RUN_FIRST, gobject.TYPE_NONE,
+        'configuration-loaded': (GObject.SIGNAL_RUN_FIRST, GObject.TYPE_NONE,
                                  ()),
-        'configuration-saved': (gobject.SIGNAL_RUN_FIRST, gobject.TYPE_NONE,
+        'configuration-saved': (GObject.SIGNAL_RUN_FIRST, GObject.TYPE_NONE,
                                 ()),
     }
 
     def __init__(self, config_file_path, valid_keys={}):
-        gobject.GObject.__init__(self)
+        GObject.GObject.__init__(self)
 
         self._config_file_path = config_file_path
         self._valid_keys = valid_keys

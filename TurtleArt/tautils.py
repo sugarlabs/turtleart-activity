@@ -20,19 +20,10 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-import gtk
-import gobject
+import gi
+gi.require_version('GConf', '2.0')
 import tempfile
-try:
-    import gconf
-    HAS_GCONF = True
-except ImportError:
-    HAS_GCONF = False
-try:
-    import dbus
-    HAS_DBUS = True
-except ImportError:
-    HAS_DBUS = False
+import dbus
 import cairo
 import pickle
 import subprocess
@@ -41,23 +32,17 @@ import stat
 import string
 import mimetypes
 from gettext import gettext as _
-
-try:
-    OLD_SUGAR_SYSTEM = False
-    import json
-    json.dumps
-    from json import load as jload
-    from json import dump as jdump
-except (ImportError, AttributeError):
-    try:
-        import simplejson as json
-        from simplejson import load as jload
-        from simplejson import dump as jdump
-    except:
-        OLD_SUGAR_SYSTEM = True
+from gi.repository import Gtk
+from gi.repository import GObject
+from gi.repository import GdkPixbuf
+from gi.repository import GConf
+import json
+json.dumps
+from json import load as jload
+from json import dump as jdump           
 from StringIO import StringIO
 
-from .taconstants import (HIT_HIDE, HIT_SHOW, XO1, XO15, XO175, XO4, UNKNOWN,
+from taconstants import (HIT_HIDE, HIT_SHOW, XO1, XO15, XO175, XO4, UNKNOWN,
                           MAGICNUMBER, SUFFIX, ARG_MUST_BE_NUMBER)
 
 import logging
@@ -149,10 +134,8 @@ def magnitude(pos):
 
 
 def json_load(text):
-    ''' Load JSON data using what ever resources are available. '''
-    if OLD_SUGAR_SYSTEM is True:
-        listdata = json.read(text)
-    else:
+        ''' Load JSON data using what ever resources are available. '''
+
         # Remove MAGIC NUMBER, if present, and leading whitespace
         if text[0:2] == MAGICNUMBER:
             clean_text = text[2:].lstrip()
@@ -176,8 +159,8 @@ def json_load(text):
             listdata = text.split()
             for i, value in enumerate(listdata):
                 listdata[i] = convert(value, float)
-    # json converts tuples to lists, so we need to convert back,
-    return _tuplify(listdata)
+        # json converts tuples to lists, so we need to convert back,
+        return _tuplify(listdata)
 
 
 def find_hat(data):
@@ -291,12 +274,9 @@ def get_id(connection):
 
 def json_dump(data):
     ''' Save data using available JSON tools. '''
-    if OLD_SUGAR_SYSTEM is True:
-        return json.write(data)
-    else:
-        io = StringIO()
-        jdump(data, io)
-        return io.getvalue()
+    io = StringIO()
+    jdump(data, io)
+    return io.getvalue()
 
 def get_endswith_files(path, end):
     f = os.listdir(path)
@@ -309,21 +289,21 @@ def get_endswith_files(path, end):
 
 def get_load_name(filefilter, load_save_folder=None):
     ''' Open a load file dialog. '''
-    dialog = gtk.FileChooserDialog(
+    dialog = Gtk.FileChooserDialog(
         _('Load...'), None,
-        gtk.FILE_CHOOSER_ACTION_OPEN, (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL,
-                                       gtk.STOCK_OPEN, gtk.RESPONSE_OK))
-    dialog.set_default_response(gtk.RESPONSE_OK)
+        Gtk.FileChooserAction.OPEN, (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
+                                       Gtk.STOCK_OPEN, Gtk.ResponseType.OK))
+    dialog.set_default_response(Gtk.ResponseType.OK)
     return do_dialog(dialog, filefilter, load_save_folder)
 
 
 def get_save_name(filefilter, load_save_folder, save_file_name):
     ''' Open a save file dialog. '''
-    dialog = gtk.FileChooserDialog(
+    dialog = Gtk.FileChooserDialog(
         _('Save...'), None,
-        gtk.FILE_CHOOSER_ACTION_SAVE, (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL,
-                                       gtk.STOCK_SAVE, gtk.RESPONSE_OK))
-    dialog.set_default_response(gtk.RESPONSE_OK)
+        Gtk.FileChooserAction.SAVE, (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
+                                       Gtk.STOCK_SAVE, Gtk.ResponseType.OK))
+    dialog.set_default_response(Gtk.ResponseType.OK)
     if filefilter in ['.png', '.svg', '.lg', '.py', '.odp']:
         suffix = filefilter
     else:
@@ -337,7 +317,7 @@ def get_save_name(filefilter, load_save_folder, save_file_name):
 
 def chooser_dialog(parent_window, filter, action):
     ''' Choose an object from the datastore and take some action '''
-    from sugar.graphics.objectchooser import ObjectChooser
+    from sugar3.graphics.objectchooser import ObjectChooser
 
     chooser = None
     dsobject = None
@@ -348,17 +328,17 @@ def chooser_dialog(parent_window, filter, action):
         chooser = ObjectChooser(
             None,
             parent_window,
-            gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT)
+            Gtk.DialogFlags.MODAL | Gtk.DialogFlags.DESTROY_WITH_PARENT)
         cleanup_needed = True
 
     if chooser is not None:
         result = chooser.run()
-        if result == gtk.RESPONSE_ACCEPT:
+        if result == Gtk.ResponseType.ACCEPT:
             dsobject = chooser.get_selected_object()
         if cleanup_needed:
             chooser.destroy()
             del chooser
-    gobject.idle_add(action, dsobject)
+    GObject.idle_add(action, dsobject)
 
 
 def data_from_file(ta_file):
@@ -424,7 +404,7 @@ def data_to_string(data):
 def do_dialog(dialog, suffix, load_save_folder):
     ''' Open a file dialog. '''
     result = None
-    file_filter = gtk.FileFilter()
+    file_filter = Gtk.FileFilter()
     file_filter.add_pattern('*' + suffix)
     file_filter.set_name('Turtle Art')
     dialog.add_filter(file_filter)
@@ -433,7 +413,7 @@ def do_dialog(dialog, suffix, load_save_folder):
         dialog.set_current_folder(load_save_folder)
 
     response = dialog.run()
-    if response == gtk.RESPONSE_OK:
+    if response == Gtk.ResponseType:
         result = dialog.get_filename()
         load_save_folder = dialog.get_current_folder()
     dialog.destroy()
@@ -468,10 +448,10 @@ def get_canvas_data(canvas):
 def get_pixbuf_from_journal(dsobject, w, h):
     ''' Load a pixbuf from a Journal object. '''
     if hasattr(dsobject, 'file_path'):
-        pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(dsobject.file_path,
+        pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_size(dsobject.file_path,
                                                       int(w), int(h))
     else:
-        pixbufloader = gtk.gdk.pixbuf_loader_new_with_mime_type('image/png')
+        pixbufloader = GdkPixbuf.PixbufLoader.new_with_mime_type('image/png')
         pixbufloader.set_size(min(300, int(w)), min(225, int(h)))
         try:
             pixbufloader.write(dsobject.metadata['preview'])
@@ -935,7 +915,7 @@ def _get_dmi(node):
 def get_screen_dpi():
     ''' Return screen DPI '''
     try:
-        xft_dpi = gtk.settings_get_default().get_property('gtk-xft-dpi')
+        xft_dpi = Gtk.settings_get_default().get_property('gtk-xft-dpi')
         dpi = float(xft_dpi / 1024)
         return dpi
     except:
@@ -970,13 +950,7 @@ def power_manager_off(status):
          power_manager_off(True) --> Disable power manager
          power_manager_off(False) --> Use custom power manager
     '''
-    if not HAS_GCONF:
-        return
-
-    if not HAS_DBUS:
-        return
-
-
+ 
     global FIRST_TIME
 
     OHM_SERVICE_NAME = 'org.freedesktop.ohm'
@@ -984,7 +958,7 @@ def power_manager_off(status):
     OHM_SERVICE_IFACE = 'org.freedesktop.ohm.Keystore'
     PATH = '/etc/powerd/flags/inhibit-suspend'
 
-    client = gconf.client_get_default()
+    client = GConf.Client.get_default()
 
     ACTUAL_POWER = True
 
@@ -999,7 +973,7 @@ def power_manager_off(status):
 
     try:
         client.set_bool('/desktop/sugar/power/automatic', VALUE)
-    except gconf.GError:
+    except GConf.GError:
         pass
 
     bus = dbus.SystemBus()

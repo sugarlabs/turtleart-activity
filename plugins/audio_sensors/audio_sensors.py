@@ -25,8 +25,8 @@ except:
 
 from plugins.plugin import Plugin
 
-from plugins.audio_sensors.audiograb import (AudioGrab,
-    SENSOR_DC_NO_BIAS, SENSOR_DC_BIAS, SENSOR_AC_BIAS)
+from plugins.audio_sensors.audiograb import (
+    AudioGrab, SENSOR_DC_NO_BIAS, SENSOR_DC_BIAS, SENSOR_AC_BIAS)
 
 from plugins.audio_sensors.ringbuffer import RingBuffer1d
 
@@ -143,7 +143,7 @@ class Audio_sensors(Plugin):
             elif self.hw == XO15:
                 self.voltage_gain = -0.00015
                 self.voltage_bias = 1.70
-            elif self.hw == XO175:  # Range 0.01V to 3.01V 
+            elif self.hw == XO175:  # Range 0.01V to 3.01V
                 self.voltage_gain = 0.0000516
                 self.voltage_bias = 1.3598
             elif self.hw == XO4:  # Range 0.17V to 3.08V

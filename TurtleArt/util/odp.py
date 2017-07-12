@@ -19,9 +19,9 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-from .odf.opendocument import OpenDocumentPresentation
-from .odf.style import Style, MasterPage, PageLayout, PageLayoutProperties
-from .odf.draw import Page, Frame, Image
+from odf.opendocument import OpenDocumentPresentation
+from odf.style import Style, MasterPage, PageLayout, PageLayoutProperties
+from odf.draw import Page, Frame, Image
 
 
 class TurtleODP:

@@ -34,13 +34,15 @@
 import pycurl
 import urlparse
 
-import gtk
+from gi.repository import Gtk
+
 try:
-    import webkit
-    WEBKIT = True
-except ImportError:
-    WEBKIT = False
-from .plugin import Plugin
+    from gi.repository import WebKit
+    HAS_WEBKIT = True
+except:
+    pass
+    HAS_WEBKIT = False
+from plugin import Plugin
 from TurtleArt.util.menubuilder import make_menu_item, make_sub_menu, MENUBAR
 from gettext import gettext as _
 
@@ -83,7 +85,8 @@ class Fb_plugin(Plugin):
             menu, upload_menu = MENUBAR[_('Upload')]
         else:
             upload_menu = None
-            menu = gtk.Menu()
+            menu = Gtk.Menu()
+
         make_menu_item(menu, _('Facebook wall post'), self._post_menu_cb)
         if upload_menu is not None:
             return None  # We don't have to add it since it already exists
@@ -98,12 +101,7 @@ class Fb_plugin(Plugin):
         return True
 
     def _post_menu_cb(self, widget):
-        if not WEBKIT:
-            self.tw.showlabel('status',
-                              'install webkit: sudo yum install pywebkitgtk')
-            print('webkit not installed: sudo yum install pywebkitgtk')
-            return
-
+        
         if self._access_token == "":
             self._grab_fb_app_token()
             return
@@ -115,9 +113,9 @@ class Fb_plugin(Plugin):
 
     def _grab_fb_app_token(self):
         url = self._get_auth_url()
-        w = gtk.Window()
-        sw = gtk.ScrolledWindow()
-        sw.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
+        w = Gtk.Window()
+        sw = Gtk.ScrolledWindow()
+        sw.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
         sw.show()
         w.move(200, 200)
         w.set_size_request(800, 400)

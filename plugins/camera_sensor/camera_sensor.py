@@ -15,8 +15,11 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
-import gst
-import gtk
+
+import gi
+gi.require_version("Gst", "1.0")
+from gi.repository import Gst
+Gst.init(None)
 from fcntl import ioctl
 import os
 from time import time
@@ -64,7 +67,7 @@ class Camera_sensor(Plugin):
         sensors_palette = make_palette('sensor',
                                        colors=["#FF6060", "#A06060"],
                                        help_string=_(
-                'Palette of sensor blocks'),
+                                           'Palette of sensor blocks'),
                                        position=6)
         media_palette = make_palette('media',
                                      colors=["#A0FF00", "#80A000"],
@@ -89,7 +92,7 @@ class Camera_sensor(Plugin):
                                   style='box-style',
                                   label=_('brightness'),
                                   help_string=
-                                      _('light level detected by camera'),
+                                  _('light level detected by camera'),
                                   value_block=True,
                                   prim_name='luminance')
         self._parent.lc.def_prim(
@@ -121,7 +124,7 @@ class Camera_sensor(Plugin):
                                   style='box-style',
                                   label=_('brightness'),
                                   help_string=_(
-                        'Average RGB color from camera is pushed to the stack'),
+                                      'Average RGB color from camera is pushed to the stack'),
                                   value_block=True,
                                   prim_name='read_camera')
         self._parent.lc.def_prim(

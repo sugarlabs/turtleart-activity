@@ -28,12 +28,12 @@ import traceback
 # from ast_pprint import * # only used for debugging, safe to comment out
 
 
-from .tablock import Media
+from tablock import Media
 
-from .tacanvas import TurtleGraphics
-from .taconstants import (Color, CONSTANTS, ColorObj, Vector)
-from .talogo import (LogoCode, logoerror, NegativeRootError)
-from .taturtle import (Turtle, Turtles)
+from tacanvas import TurtleGraphics
+from taconstants import (Color, CONSTANTS, ColorObj, Vector)
+from talogo import (LogoCode, logoerror, NegativeRootError)
+from taturtle import (Turtle, Turtles)
 from TurtleArt.tatype import (TYPE_CHAR, TYPE_INT, TYPE_FLOAT, TYPE_OBJECT,
                               TYPE_MEDIA, TYPE_COLOR, BOX_AST, ACTION_AST,
                               TYPE_VECTOR,
@@ -41,8 +41,8 @@ from TurtleArt.tatype import (TYPE_CHAR, TYPE_INT, TYPE_FLOAT, TYPE_OBJECT,
                               TypedSubscript, TypedName, is_bound_method,
                               is_instancemethod, is_staticmethod,
                               identity, get_converter, convert, get_call_ast)
-from .tautils import debug_output
-from .tawindow import (TurtleArtWindow, global_objects, plugins_in_use)
+from tautils import debug_output
+from tawindow import (TurtleArtWindow, global_objects, plugins_in_use)
 from util import ast_extensions
 
 

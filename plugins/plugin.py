@@ -16,13 +16,13 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
-import gobject
+from gi.repository import GObject
 
 
-class Plugin(gobject.GObject):
+class Plugin(GObject.GObject):
 
     def __init__(self):
-        gobject.GObject.__init__(self)
+        GObject.GObject.__init__(self)
 
     def setup(self):
         """ Setup is called once, when the Turtle Window is created. """

@@ -21,33 +21,31 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-import gtk
-import gobject
-import tempfile
-from time import time, sleep
-
-from operator import isNumberType
 import os
+import tempfile
+import urllib2
+from time import time, sleep
+from operator import isNumberType
 from os.path import exists as os_path_exists
 from UserDict import UserDict
-import urllib2
 
-try:
-    from sugar.graphics import style
-    GRID_CELL_SIZE = style.GRID_CELL_SIZE
-except ImportError:
-    GRID_CELL_SIZE = 55
+from gi.repository import Gtk
+from gi.repository import GObject
+from gi.repository import GdkPixbuf
+
+from sugar3.graphics import style
+GRID_CELL_SIZE = style.GRID_CELL_SIZE
 
 USER_HOME = os.path.expanduser('~')
 
 import traceback
 
-from .tablock import (Block, Media, media_blocks_dictionary)
-from .taconstants import (TAB_LAYER, DEFAULT_SCALE, ICON_SIZE, Color)
-from .tajail import (myfunc, myfunc_import)
-from .tapalette import (block_names, value_blocks)
-from .tatype import (TATypeError, TYPES_NUMERIC)
-from .tautils import (get_pixbuf_from_journal, data_from_file, get_stack_name,
+from tablock import (Block, Media, media_blocks_dictionary)
+from taconstants import (TAB_LAYER, DEFAULT_SCALE, ICON_SIZE, Color)
+from tajail import (myfunc, myfunc_import)
+from tapalette import (block_names, value_blocks)
+from tatype import (TATypeError, TYPES_NUMERIC)
+from tautils import (get_pixbuf_from_journal, data_from_file, get_stack_name,
                       movie_media_type, audio_media_type, image_media_type,
                       text_media_type, round_int, debug_output, find_group,
                       get_path, image_to_base64, data_to_string, data_to_file,
@@ -427,7 +425,7 @@ class LogoCode:
     def _start_eval(self, blklist):
         """ Step through the list. """
         if self.tw.running_sugar:
-            self.tw.activity.stop_turtle_button.set_icon("stopiton")
+            self.tw.activity.stop_turtle_button.set_icon_name("stopiton")
             self.tw.activity.stop_turtle_button.set_tooltip(
                 _('Stop turtle'))
         elif self.tw.interactive_mode:
@@ -437,11 +435,11 @@ class LogoCode:
         yield True
         if self.tw.running_sugar:
             if self.tw.step_time == 0 and self.tw.selected_blk is None:
-                self.tw.activity.stop_turtle_button.set_icon("hideshowon")
+                self.tw.activity.stop_turtle_button.set_icon_name("hideshowon")
                 self.tw.activity.stop_turtle_button.set_tooltip(
                     _('Show blocks'))
             else:
-                self.tw.activity.stop_turtle_button.set_icon("hideshowoff")
+                self.tw.activity.stop_turtle_button.set_icon_name("hideshowoff")
                 self.tw.activity.stop_turtle_button.set_tooltip(
                     _('Hide blocks'))
         elif self.tw.interactive_mode:
@@ -930,7 +928,7 @@ class LogoCode:
         if self.tw.running_sugar:
             # Is the object a dsobject?
             if isinstance(obj, Media) and obj.value:
-                from sugar.datastore import datastore
+                from sugar3.datastore import datastore
                 try:
                     dsobject = datastore.get(obj.value)
                 except:
@@ -965,9 +963,9 @@ class LogoCode:
     def save_heap(self, obj):
         """ save FILO to file """
         if self.tw.running_sugar:
-            from sugar import profile
-            from sugar.datastore import datastore
-            from sugar.activity import activity
+            from sugar3 import profile
+            from sugar3.datastore import datastore
+            from sugar3.activity import activity
 
             # Save JSON-encoded heap to temporary file
             heap_file = os.path.join(get_path(activity, 'instance'),
@@ -1128,7 +1126,7 @@ class LogoCode:
         elif user_path is not None and os.path.exists(user_path):
             self.filepath = user_path
         elif self.tw.running_sugar:  # datastore object
-            from sugar.datastore import datastore
+            from suga3.datastore import datastore
             try:
                 self.dsobject = datastore.get(obj.value)
             except:
@@ -1143,7 +1141,7 @@ class LogoCode:
 
         pixbuf = None
         try:
-            pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(
+            pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_size(
                 self.filepath, scale, scale)
         except:
             self.tw.showlabel('nojournal', self.filepath)
@@ -1173,7 +1171,7 @@ class LogoCode:
                                               [round_int(width),
                                                round_int(height),
                                                data]]))
-            gobject.idle_add(self.tw.send_event, event)
+            GObject.idle_add(self.tw.send_event, event)
             os.remove(tmp_file)
 
     def get_from_url(self, url):
@@ -1258,7 +1256,7 @@ class LogoCode:
                     elif text_media_type(self.filepath):
                         mediatype = 'text'
             elif self.tw.running_sugar:
-                from sugar.datastore import datastore
+                from sugar3.datastore import datastore
                 try:
                     self.dsobject = datastore.get(obj.value)
                 except:
@@ -1371,7 +1369,7 @@ class LogoCode:
         if pixbuf:  # We may have to rescale the picture
             if w != self.pixbuf.get_width() or h != self.pixbuf.get_height():
                 self.pixbuf = self.pixbuf.scale_simple(
-                    w, h, gtk.gdk.INTERP_BILINEAR)
+                    w, h, GdkPixbuf.InterpType.BILINEAR)
         elif self.dsobject is not None:
             try:
                 self.pixbuf = get_pixbuf_from_journal(self.dsobject, w, h)
@@ -1383,11 +1381,11 @@ class LogoCode:
            self.filepath != '':
             try:
                 if not resize:
-                    self.pixbuf = gtk.gdk.pixbuf_new_from_file(self.filepath)
+                    self.pixbuf = GdkPixbuf.Pixbuf.new_from_file(self.filepath)
                     w = self.pixbuf.get_width()
                     h = self.pixbuf.get_height()
                 else:
-                    self.pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(
+                    self.pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_size(
                         self.filepath, w, h)
             except:
                 self.tw.showlabel('nojournal', self.filepath)
