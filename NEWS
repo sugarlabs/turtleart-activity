@@ -1,3 +1,7 @@
+216
+* conversion to GTK3 (zeecoder)
+* update repository field in activity.info
+
 215
 * fix error on fb_plugin menu creation  (AlanJAS)
 * fix get_endswith_files function (AlanJAS)
