@@ -42,7 +42,6 @@ from sugar3.activity import activity
 _GST_AVAILABLE = False
 
 
-
 from random import uniform
 from math import atan2, pi
 DEGTOR = 2 * pi / 360
@@ -126,7 +125,7 @@ from sprites import (Sprites, Sprite)
 
 from util.menubuilder import make_checkmenu_item
 
-#if _GST_AVAILABLE:
+# if _GST_AVAILABLE:
 #   from .tagplay import stop_media
 
 _MOTION_THRESHOLD = 6
@@ -442,10 +441,10 @@ class TurtleArtWindow():
                 gconf_path = self.activity._PLUGINS_PATH + plugin_dir
                 try:
                     status = (self.activity.client.get_int(gconf_path) == 1)
-                except:
+                except BaseException:
                     pass
-                make_checkmenu_item(self.activity._plugin_menu, \
-                         plugin_dir, self.activity._do_toggle_plugin_cb, status)
+                make_checkmenu_item(self.activity._plugin_menu,
+                                    plugin_dir, self.activity._do_toggle_plugin_cb, status)
             if status:
                 self.init_plugin(plugin_dir, plugin_path)
                 self.turtleart_favorites_plugins.append(plugin_dir)
@@ -1222,7 +1221,8 @@ class TurtleArtWindow():
         self.mouse_flag = 1
         self.mouse_x = x
         self.mouse_y = y
-        self.button_press(event.get_state() & Gdk.ModifierType.CONTROL_MASK, x, y)
+        self.button_press(event.get_state() &
+                          Gdk.ModifierType.CONTROL_MASK, x, y)
         return True
 
     def get_mouse_flag(self):
@@ -1255,7 +1255,8 @@ class TurtleArtWindow():
                 if blk is not None:
                     # Make sure stop button is visible
                     if self.running_sugar and self.running_turtleart:
-                        self.activity.stop_turtle_button.set_icon_name("stopiton")
+                        self.activity.stop_turtle_button.set_icon_name(
+                            "stopiton")
                         self.activity.stop_turtle_button.set_tooltip(
                             _('Stop turtle'))
                     elif self.interactive_mode:
@@ -1996,7 +1997,7 @@ class TurtleArtWindow():
                             name = ''
                             try:
                                 name = str(data[data[i][4][1]][1][1])
-                            except:
+                            except BaseException:
                                 pass
                             if name == '':
                                 name = 'stack_%d' % (int(uniform(0, 10000)))
@@ -2024,7 +2025,8 @@ class TurtleArtWindow():
                         clipboard.set_text(text)
                     elif self.sharing():
                         text = data_to_string(data)
-                        payload = {"payload": data_to_string([self.nick, text])}
+                        payload = {"payload": data_to_string(
+                            [self.nick, text])}
                         self.send_event("B", payload)
             self.paste_offset = 20
 
@@ -2402,7 +2404,8 @@ class TurtleArtWindow():
                 [nick,
                  round_int(self.turtles.get_active_turtle().get_heading())])})
             if self.turtles.get_active_turtle().get_pen_state():
-                self.send_event("p", {"payload": data_to_string([nick, False])})
+                self.send_event(
+                    "p", {"payload": data_to_string([nick, False])})
                 put_pen_back_down = True
             else:
                 put_pen_back_down = False
@@ -2555,7 +2558,7 @@ class TurtleArtWindow():
                     try:
                         GObject.source_remove(self._timeout_tag[0])
                         self._timeout_tag[0] = 0
-                    except:
+                    except BaseException:
                         self._timeout_tag[0] = 0
         elif spr and hasattr(spr, 'type') and \
                 (spr.type == 'selector' or
@@ -2569,14 +2572,14 @@ class TurtleArtWindow():
                     try:
                         GObject.source_remove(self._timeout_tag[0])
                         self._timeout_tag[0] = 0
-                    except:
+                    except BaseException:
                         self._timeout_tag[0] = 0
         else:
             if self._timeout_tag[0] > 0:
                 try:
                     GObject.source_remove(self._timeout_tag[0])
                     self._timeout_tag[0] = 0
-                except:
+                except BaseException:
                     self._timeout_tag[0] = 0
 
     def _do_show_popup(self, block_name):
@@ -3152,7 +3155,7 @@ class TurtleArtWindow():
                          block_styles['compare-style'] or
                          selected_block.name in
                          block_styles['compare-porch-style']
-                        ):
+                         ):
                     dy = selected_block.ey - best_destination.ey
                     if selected_block.name in block_styles['boolean-style']:
                         # Even without expanding, boolean blocks are
@@ -3194,7 +3197,7 @@ class TurtleArtWindow():
                         self._resize_clamp(
                             best_destination, self.drag_group[0], dockn=3)
             elif best_destination.name in expandable_blocks and \
-                 best_destination_dockn == 1:
+                    best_destination_dockn == 1:
                 dy = 0
                 if (selected_block.name in expandable_blocks or
                     selected_block.name in block_styles[
@@ -3490,7 +3493,8 @@ class TurtleArtWindow():
                 pixbuf = get_pixbuf_from_journal(media, w, h)
             else:
                 w, h = calc_image_size(blk.spr)
-                pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_size(media_path, w, h)
+                pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_size(
+                    media_path, w, h)
         else:
             blk.name = 'description'
             self._block_skin('descriptionon', blk)
@@ -3906,7 +3910,7 @@ class TurtleArtWindow():
             f = open(self._loaded_project, 'r')
             saved_project_data = f.read()
             f.close()
-        except:
+        except BaseException:
             debug_output('problem loading saved project data from %s' %
                          (self._loaded_project), self.running_sugar)
             saved_project_data = ''
@@ -4121,7 +4125,7 @@ class TurtleArtWindow():
                     else:  # or files from the Journal
                         try:
                             dsobject = datastore.get(value)
-                        except:  # Should be IOError, but dbus error is raised
+                        except BaseException:  # Should be IOError, but dbus error is raised
                             dsobject = None
                             debug_output('Could not get dsobject %s' % (value),
                                          self.running_sugar)
@@ -4164,14 +4168,14 @@ class TurtleArtWindow():
                         else:
                             self._block_skin('journalon', blk)
                     dsobject.destroy()
-                except:
+                except BaseException:
                     try:
                         w, h, = calc_image_size(blk.spr)
                         pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_size(
                             blk.values[0], w, h)
                         x, y = self.calc_image_offset('', blk.spr)
                         blk.set_image(pixbuf, x, y)
-                    except:
+                    except BaseException:
                         debug_output('Could not open dsobject (%s)' %
                                      (blk.values[0]), self.running_sugar)
                         self._block_skin('journaloff', blk)
@@ -4183,7 +4187,7 @@ class TurtleArtWindow():
                             blk.values[0], w, h)
                         x, y = self.calc_image_offset('', blk.spr)
                         blk.set_image(pixbuf, x, y)
-                    except:
+                    except BaseException:
                         self._block_skin('journaloff', blk)
                 else:
                     self._block_skin('journalon', blk)
@@ -4448,7 +4452,7 @@ class TurtleArtWindow():
                         from sugar3.datastore import datastore
                         try:
                             dsobject = datastore.get(n.value)
-                        except:
+                        except BaseException:
                             debug_output("Couldn't open %s" % (n.value),
                                          self.running_sugar)
                         self.showlabel('print', dsobject.metadata['title'])

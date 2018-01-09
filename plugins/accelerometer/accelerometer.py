@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-#Copyright (c) 2011 Walter Bender
+# Copyright (c) 2011 Walter Bender
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -54,15 +54,15 @@ class Accelerometer(Plugin):
             palette.add_block('xyz',
                               style='basic-style-extended-vertical',
                               label=_('acceleration'),
-                              help_string=\
-                                  _('push acceleration in x, y, z to heap'),
+                              help_string=_(
+                                  'push acceleration in x, y, z to heap'),
                               prim_name='xyz')
         else:
             palette.add_block('xyz',
                               style='basic-style-extended-vertical',
                               label=_('acceleration'),
-                              help_string=\
-                                  _('push acceleration in x, y, z to heap'),
+                              help_string=_(
+                                  'push acceleration in x, y, z to heap'),
                               hidden=True,
                               prim_name='xyz')
 

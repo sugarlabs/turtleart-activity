@@ -59,7 +59,7 @@ class ConnectionManager(object):
             if connection_path != '/':
                 try:
                     self._track_connection(account_path, connection_path)
-                except:
+                except BaseException:
                     pass
 
     def __account_property_changed_cb(self, account_path, properties):

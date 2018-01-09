@@ -44,6 +44,6 @@ def myfunc_import(parent, f, args):
     try:
         exec f in globals(), userdefined
         return userdefined['myblock'](base_class, args)
-    except:
+    except BaseException:
         traceback.print_exc()
         return None

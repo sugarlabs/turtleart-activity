@@ -84,7 +84,6 @@ block_styles = {'basic-style': [],
                 'portfolio-style-1x2': []}
 
 
-
 from gi.repository import Gtk
 from gi.repository import Gdk
 

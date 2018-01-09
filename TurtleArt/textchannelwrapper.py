@@ -376,7 +376,6 @@ class _BaseFileTransfer(GObject.GObject):
         transferred_bytes (int), number of bytes transfered so far
     '''
 
-
     def __init__(self):
         GObject.GObject.__init__(self)
         self._state = FT_STATE_NONE

@@ -2,11 +2,13 @@
 
 import sys
 
+
 def get_files(path):
     files = []
     for name in path:
         files.append(os.path.join(path, name))
     return files
+
 
 if len(sys.argv) > 1 and '--no-sugar' == sys.argv[1]:
     # Remove the argument from the stack so we don't cause problems
@@ -59,10 +61,13 @@ if len(sys.argv) > 1 and '--no-sugar' == sys.argv[1]:
                 if not os.path.isdir(mo_path):
                     os.makedirs(mo_path)
 
-                mo_file = os.path.join(mo_path, 'org.laptop.TurtleArtActivity.mo')
-                retcode = subprocess.call(['msgfmt', '--output-file=%s' % mo_file, file_name])
+                mo_file = os.path.join(
+                    mo_path, 'org.laptop.TurtleArtActivity.mo')
+                retcode = subprocess.call(
+                    ['msgfmt', '--output-file=%s' % mo_file, file_name])
                 if retcode:
-                    print 'ERROR - msgfmt failed with return code %i.' % retcode
+                    print ('ERROR - msgfmt failed with return code %i.'
+                           % retcode)
 
     DATA_FILES = [
         ('activity', get_files('activity/')),

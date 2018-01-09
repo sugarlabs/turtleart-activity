@@ -31,8 +31,8 @@ from gi.repository import Pango
 from gi.repository import PangoCairo
 from gi.repository import GObject
 from tautils import get_path
-from taconstants import (Color, TMP_SVG_PATH, DEFAULT_PEN_COLOR, 
-                          DEFAULT_BACKGROUND_COLOR, DEFAULT_FONT)
+from taconstants import (Color, TMP_SVG_PATH, DEFAULT_PEN_COLOR,
+                         DEFAULT_BACKGROUND_COLOR, DEFAULT_FONT)
 
 
 def wrap100(n):
@@ -335,7 +335,6 @@ class TurtleGraphics:
                 text = str(label)
             else:
                 text = label
-            
 
             pl.set_text(str(label), len(str(label)))
             pl.set_width(int(width) * Pango.SCALE)

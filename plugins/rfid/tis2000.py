@@ -17,6 +17,7 @@ STATE_WAITING = 0
 STATE_WAITING2 = 1
 STATE_READING = 2
 
+
 class RFIDReader(RFIDDevice):
     """
     TIS-2000 interface.
@@ -35,7 +36,7 @@ class RFIDReader(RFIDDevice):
         loop = DBusGMainLoop()
         self.bus = dbus.SystemBus(mainloop=loop)
         hmgr_iface = dbus.Interface(self.bus.get_object(HAL_SERVICE,
-                                    HAL_MGR_PATH), HAL_MGR_IFACE)
+                                                        HAL_MGR_PATH), HAL_MGR_IFACE)
 
         hmgr_iface.connect_to_signal('DeviceRemoved', self._device_removed_cb)
 
@@ -45,13 +46,13 @@ class RFIDReader(RFIDDevice):
         Returns True if so, False otherwise.
         """
         hmgr_if = dbus.Interface(self.bus.get_object(HAL_SERVICE, HAL_MGR_PATH),
-                                HAL_MGR_IFACE)
+                                 HAL_MGR_IFACE)
         tiusb_devices = set(hmgr_if.FindDeviceStringMatch('serial.type',
-                            'usb')) & set(hmgr_if.FindDeviceStringMatch(
-                            'info.product', 'TUSB3410 Microcontroller'))
+                                                          'usb')) & set(hmgr_if.FindDeviceStringMatch(
+                                                              'info.product', 'TUSB3410 Microcontroller'))
         for i in tiusb_devices:
-            tiusb_if = dbus.Interface(self.bus.get_object(HAL_SERVICE, i), 
-                                         HAL_DEV_IFACE)
+            tiusb_if = dbus.Interface(self.bus.get_object(HAL_SERVICE, i),
+                                      HAL_DEV_IFACE)
             if tiusb_if.PropertyExists('linux.device_file'):
                 self.device = str(tiusb_if.GetProperty('linux.device_file'))
                 self.device_path = i
@@ -73,7 +74,7 @@ class RFIDReader(RFIDDevice):
                 self._format()
                 gobject.idle_add(self._loop)
                 retval = True
-            except:
+            except BaseException:
                 self._connected = False
         return retval
 
@@ -97,7 +98,7 @@ class RFIDReader(RFIDDevice):
             Writes the hexadecimal string "hexval" into the tag.
             Returns True if successfull, False otherwise.
         """
-        #self.ser.flushInput()
+        # self.ser.flushInput()
         reg = re.compile('([^0-9A-F]+)')
         if not (hexval.__len__() == 16 and reg.findall(hexval) == []):
             return False
@@ -112,13 +113,13 @@ class RFIDReader(RFIDDevice):
             return True
         else:
             return False
-        
+
     def _escape(self):
         """
         Sends the scape command to the TIS-2000 device.
         """
         try:
-            #self.ser.flushInput()
+            # self.ser.flushInput()
             self.ser.read(100)
             self.ser.write('\x1B')
             resp = self.ser.read()
@@ -126,7 +127,7 @@ class RFIDReader(RFIDDevice):
                 return True
             else:
                 return False
-        except:
+        except BaseException:
             return False
 
     def _format(self):
@@ -134,7 +135,7 @@ class RFIDReader(RFIDDevice):
         Sends the format command to the TIS-2000 device.
         """
         try:
-            #self.ser.flushInput()
+            # self.ser.flushInput()
             self.ser.read(100)
             self.ser.write('F')
             resp = self.ser.read()
@@ -142,7 +143,7 @@ class RFIDReader(RFIDDevice):
                 return True
             else:
                 return False
-        except:
+        except BaseException:
             return False
 
     def _clear(self):
@@ -150,7 +151,7 @@ class RFIDReader(RFIDDevice):
         Sends the clear command to the TIS-2000 device.
         """
         try:
-            #self.ser.flushInput()
+            # self.ser.flushInput()
             self.ser.read(100)
             self.ser.write('C')
             resp = self.ser.read()
@@ -158,7 +159,7 @@ class RFIDReader(RFIDDevice):
                 return True
             else:
                 return False
-        except:
+        except BaseException:
             return False
 
     def get_version(self):
@@ -166,12 +167,12 @@ class RFIDReader(RFIDDevice):
         Sends the version command to the TIS-2000 device and returns
         a string with the device version.
         """
-        #self.ser.flushInput()
+        # self.ser.flushInput()
         self.ser.read(100)
         self.ser.write('V')
         version = []
         tver = ""
-        while 1:
+        while True:
             resp = self.ser.read()
             if resp == '\x0A' or resp == '':
                 break
@@ -193,7 +194,7 @@ class RFIDReader(RFIDDevice):
             self.device_path = ''
             self.ser.close()
             self._connected = False
-            self.emit("disconnected","TIS-2000")
+            self.emit("disconnected", "TIS-2000")
 
     def _loop(self):
         """
@@ -233,7 +234,7 @@ class RFIDReader(RFIDDevice):
         return True
 
 # Testing
-#if __name__ == '__main__':
+# if __name__ == '__main__':
 #    def handler(device, idhex):
 #        """
 #        Handler for "tag-read" signal.

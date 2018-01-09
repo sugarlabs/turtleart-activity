@@ -110,21 +110,21 @@ class Collaboration_plugin(Plugin):
         menu = Gtk.Menu()
 
         make_menu_item(menu, _('Enable collaboration'),
-                                   self._connect_cb)
+                       self._connect_cb)
 
         self._activities_submenu = Gtk.Menu()
         activities_menu = make_sub_menu(self._activities_submenu,
-                                                    _('Activities'))
+                                        _('Activities'))
         menu.append(activities_menu)
 
         self._buddies_submenu = Gtk.Menu()
         buddies_menu = make_sub_menu(self._buddies_submenu,
-                                                 _('Buddies'))
+                                     _('Buddies'))
         menu.append(buddies_menu)
 
         make_menu_item(menu, _('Share'), self._share_cb)
         make_menu_item(menu, _('Configuration'),
-                                   self._config_neighborhood_cb)
+                       self._config_neighborhood_cb)
 
         neighborhood_menu = make_sub_menu(menu, _('Neighborhood'))
 
@@ -197,7 +197,7 @@ class Collaboration_plugin(Plugin):
     def _activity_removed_cb(self, model, activity_model):
         try:
             self._activities.pop(activity_model.props.name)
-        except:
+        except BaseException:
             print 'Failed to remove activity %s' % activity_model.props.name
 
         self._recreate_available_activities_menu()
@@ -209,7 +209,7 @@ class Collaboration_plugin(Plugin):
     def _buddy_removed_cb(self, activity, buddy):
         try:
             self._buddies.pop(buddy.get_key())
-        except:
+        except BaseException:
             print "Couldn't remove buddy %s" % buddy.get_key()
         self._recreate_available_buddies_menu()
 
@@ -227,7 +227,7 @@ class Collaboration_plugin(Plugin):
                 key = ''
             n = buddy.get_nick() + '|' + key[0:15]
             make_menu_item(self._buddies_submenu, n,
-                                       self._buddy_actions_cb, buddy)
+                           self._buddy_actions_cb, buddy)
 
     def _buddy_actions_cb(self, widget, buddy):
         print 'do something with %s' % buddy.get_nick()
@@ -241,7 +241,7 @@ class Collaboration_plugin(Plugin):
         for activity in self._activities.values():
             n = activity.props.name
             make_menu_item(self._activities_submenu, n,
-                                       self._join_activity_cb, activity)
+                           self._join_activity_cb, activity)
 
     def _join_activity_cb(self, widget, activity):
         print 'Lets try to join...'
@@ -268,7 +268,7 @@ class Collaboration_plugin(Plugin):
                 account_path, connection, room_handle, properties=properties)
             # FIXME: this should be unified, no need to keep 2 references
             self._shared_activity = self._joined_activity
-        except:
+        except BaseException:
             traceback.print_exc(file=sys.stdout)
 
         if self._joined_activity.props.joined:
@@ -329,7 +329,7 @@ class Collaboration_plugin(Plugin):
                                                      properties=properties)
             # FIXME: this should be unified, no need to keep 2 references
             self._shared_activity = self._parent._shared_activity
-        except:
+        except BaseException:
             traceback.print_exc(file=sys.stdout)
 
         if self._parent._shared_parent.props.joined:
@@ -346,6 +346,7 @@ class Collaboration_plugin(Plugin):
     def __share_activity_error_cb(self, activity, error):
         """Notify with GObject event of unsuccessful sharing of activity"""
         print '%s got error: %s' % (activity, error)
+
 
 if __name__ == '__main__':
     print 'testing collaboration'

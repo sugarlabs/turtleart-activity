@@ -15,6 +15,7 @@ REGEXP_SERUSB = '\/org\/freedesktop\/Hal\/devices\/usb_device['\
 
 VERSIONS = ['301']
 
+
 class RFIDReader(RFIDDevice):
     """
     RFIDRW-E-W interface.
@@ -33,7 +34,7 @@ class RFIDReader(RFIDDevice):
         loop = DBusGMainLoop()
         self.bus = dbus.SystemBus(mainloop=loop)
         hmgr_iface = dbus.Interface(self.bus.get_object(HAL_SERVICE,
-                                    HAL_MGR_PATH), HAL_MGR_IFACE)
+                                                        HAL_MGR_PATH), HAL_MGR_IFACE)
 
         hmgr_iface.connect_to_signal('DeviceRemoved', self._device_removed_cb)
 
@@ -43,19 +44,19 @@ class RFIDReader(RFIDDevice):
         Returns True if so, False otherwise.
         """
         hmgr_if = dbus.Interface(self.bus.get_object(HAL_SERVICE, HAL_MGR_PATH),
-                                HAL_MGR_IFACE)
+                                 HAL_MGR_IFACE)
         serialusb_devices = set(hmgr_if.FindDeviceStringMatch('serial.type',
-                            'usb')) & set(hmgr_if.FindDeviceStringMatch(
-                            'info.subsystem', 'tty'))
+                                                              'usb')) & set(hmgr_if.FindDeviceStringMatch(
+                                                                  'info.subsystem', 'tty'))
         for i in serialusb_devices:
-            serialusb_if = dbus.Interface(self.bus.get_object(HAL_SERVICE, i), 
-                                         HAL_DEV_IFACE)
+            serialusb_if = dbus.Interface(self.bus.get_object(HAL_SERVICE, i),
+                                          HAL_DEV_IFACE)
             if serialusb_if.PropertyExists('info.parent'):
                 parent_udi = str(serialusb_if.GetProperty('info.parent'))
                 parent = dbus.Interface(self.bus.get_object(HAL_SERVICE,
-                                        parent_udi), HAL_DEV_IFACE)
+                                                            parent_udi), HAL_DEV_IFACE)
                 if parent.PropertyExists('info.linux.driver') and \
-                str(parent.GetProperty('info.linux.driver')) == 'ftdi_sio':
+                        str(parent.GetProperty('info.linux.driver')) == 'ftdi_sio':
                     device = str(serialusb_if.GetProperty('linux.device_file'))
                     ser = Serial(device, 9600, timeout=0.1)
                     ser.read(100)
@@ -81,10 +82,10 @@ class RFIDReader(RFIDDevice):
                 self.ser = Serial(self.device, 9600, timeout=0.1)
                 self._connected = True
                 if self._select_animal_tag:
-                    #gobject.idle_add(self._loop)
+                    # gobject.idle_add(self._loop)
                     gobject.timeout_add(1000, self._loop)
                     retval = True
-            except:
+            except BaseException:
                 self._connected = False
         return retval
 
@@ -120,7 +121,7 @@ class RFIDReader(RFIDDevice):
         Sends the version command to the device and returns
         a string with the device version.
         """
-        #self.ser.flushInput()
+        # self.ser.flushInput()
         ver = "???"
         self.ser.read(100)
         self.ser.write('v')
@@ -143,7 +144,7 @@ class RFIDReader(RFIDDevice):
             self.ser.close()
             self._connected = False
             self.tags = []
-            self.emit("disconnected","RFID-RW-USB")
+            self.emit("disconnected", "RFID-RW-USB")
 
     def _loop(self):
         """
@@ -151,7 +152,7 @@ class RFIDReader(RFIDDevice):
         """
         if not self._connected:
             return False
-        
+
         self.ser.read(100)
         self.ser.write('r')
         self.ser.write('a')
@@ -176,11 +177,11 @@ class RFIDReader(RFIDDevice):
         data = utils.bin2hex(tag_bin)
         self.emit("tag-read", data)
         self.last_tag = data
-        #sleep(1)
+        # sleep(1)
         return True
 
 # Testing
-#if __name__ == '__main__':
+# if __name__ == '__main__':
 #    def handler(device, idhex):
 #        """
 #        Handler for "tag-read" signal.

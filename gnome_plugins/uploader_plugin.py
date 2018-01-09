@@ -39,6 +39,7 @@ from TurtleArt.util.menubuilder import make_menu_item, make_sub_menu, MENUBAR
 from gettext import gettext as _
 from gi.repository import Gtk
 
+
 class Uploader_plugin(Plugin):
     MAX_FILE_SIZE = 950000
     UPLOAD_SERVER = 'http://turtleartsite.appspot.com'
@@ -65,7 +66,7 @@ class Uploader_plugin(Plugin):
             upload_menu = None
             menu = Gtk.Menu()
         make_menu_item(menu, _('Upload to Web'),
-                                   self.do_upload_to_web)
+                       self.do_upload_to_web)
         if upload_menu is not None:
             return None  # We don't have to add it since it already exists
         else:
@@ -209,6 +210,7 @@ http://turtleartsite.sugarlabs.org to upload your project.'))
         else:
             self.pop_up.hide()
             self.uploading = False
+
 
 if __name__ == "__main__":
     # TODO: create test data...

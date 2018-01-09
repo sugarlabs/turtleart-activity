@@ -668,14 +668,14 @@ class Neighborhood(GObject.GObject):
         for k in self._nicks.keys():
             try:
                 print "%s = %s" % (k, self._nicks[k])
-            except:
+            except BaseException:
                 pass
 
         print "\n\nActivities list\n\n"
         for k in self._activities.keys():
             try:
                 print "%s" % k
-            except:
+            except BaseException:
                 pass
 
     def __got_accounts_cb(self, account_paths):
@@ -873,7 +873,7 @@ class Neighborhood(GObject.GObject):
         #print('Neighborhood.__buddy_removed_cb %r', contact_id)
         try:
             self._nicks.pop(contact_id)
-        except:
+        except BaseException:
             pass
         if contact_id not in self._buddies:
             # print('Neighborhood.__buddy_removed_cb Unknown buddy with '
@@ -1021,6 +1021,7 @@ class Neighborhood(GObject.GObject):
     def get_activities(self):
         return self._activities.values()
 
+
 _neighborhood = None
 
 
@@ -1029,6 +1030,7 @@ def get_neighborhood(params={}):
     if _neighborhood is None:
         _neighborhood = Neighborhood(params)
     return _neighborhood
+
 
 if __name__ == "__main__":
     params = {}

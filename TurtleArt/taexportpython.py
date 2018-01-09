@@ -32,7 +32,7 @@ import util.codegen as codegen
 
 from talogo import LogoCode
 from taprimitive import (ast_yield_true, Primitive, PyExportError,
-                          value_to_ast)
+                         value_to_ast)
 from tautils import (find_group, find_top_block, get_stack_name)
 from tawindow import plugins_in_use
 
@@ -55,9 +55,9 @@ paths.append('/usr/local/share/sugar/activities/%s.activity')
 paths.append(
     '/home/broot/sugar-build/build/install/share/sugar/activities/%s.activity')
 """ + \
-"paths.append('%s')" % \
+    "paths.append('%s')" % \
     path.abspath(path.join(path.dirname(__file__), pardir)) + \
-"""\
+    """\
 
 flag = False
 for path in paths:

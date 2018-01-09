@@ -157,12 +157,12 @@ def myblock(tw, args):
             ''' Where are we in the stream? '''
             try:
                 position, format = pipe.query_position(gst.FORMAT_TIME)
-            except:
+            except BaseException:
                 position = gst.CLOCK_TIME_NONE
 
             try:
                 duration, format = pipe.query_duration(gst.FORMAT_TIME)
-            except:
+            except BaseException:
                 duration = gst.CLOCK_TIME_NONE
 
             return (position, duration)

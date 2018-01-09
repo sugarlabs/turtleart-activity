@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-#Copyright (c) 2011, 2012 Walter Bender
+# Copyright (c) 2011, 2012 Walter Bender
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -91,8 +91,8 @@ class Camera_sensor(Plugin):
                                   hidden=hidden,
                                   style='box-style',
                                   label=_('brightness'),
-                                  help_string=
-                                  _('light level detected by camera'),
+                                  help_string=_(
+                                      'light level detected by camera'),
                                   value_block=True,
                                   prim_name='luminance')
         self._parent.lc.def_prim(
@@ -221,8 +221,8 @@ class Camera_sensor(Plugin):
         if array is not None:
             length = int(len(array) / 3)
             if length != width * height:
-                debug_output('array length != width x height (%d != %dx%d)' % \
-                                 (length, width, height),
+                debug_output('array length != width x height (%d != %dx%d)' %
+                             (length, width, height),
                              self._parent.running_sugar)
 
             # Average the 100 pixels in the center of the screen
@@ -263,7 +263,7 @@ class Camera_sensor(Plugin):
             return
         try:
             video_capture_device = open(self.devices[camera], 'rw')
-        except:
+        except BaseException:
             video_capture_device = None
             debug_output('video capture device not available',
                          self._parent.running_sugar)
@@ -273,7 +273,7 @@ class Camera_sensor(Plugin):
             ioctl(video_capture_device, VIDIOC_G_CTRL, self._ag_control)
             self._ag_control.value = state
             ioctl(video_capture_device, VIDIOC_S_CTRL, self._ag_control)
-        except:
+        except BaseException:
             pass
         video_capture_device.close()
 

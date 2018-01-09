@@ -31,7 +31,7 @@ from dbus.gobject_service import ExportedGObject
 from gi.repository import GdkPixbuf
 
 from TurtleArt.tautils import data_to_string, data_from_string, get_path, \
-                              base64_to_image, debug_output, error_output
+    base64_to_image, debug_output, error_output
 from TurtleArt.taconstants import DEFAULT_TURTLE_COLORS
 
 from sugar3 import profile
@@ -277,16 +277,16 @@ class Collaboration():
         self._tw.turtles.set_turtle(self._get_nick())
         if self._tw.turtles.get_active_turtle().get_pen_state():
             self.send_event("p", {"payload": data_to_string([self._get_nick(),
-                                                      False])})
+                                                             False])})
             put_pen_back_down = True
         else:
             put_pen_back_down = False
         self.send_event("x", {"payload": data_to_string([self._get_nick(),
-             [int(self._tw.turtles.get_active_turtle().get_xy()[0]),
-              int(self._tw.turtles.get_active_turtle().get_xy()[1])]])})
+                                                         [int(self._tw.turtles.get_active_turtle().get_xy()[0]),
+                                                          int(self._tw.turtles.get_active_turtle().get_xy()[1])]])})
         if put_pen_back_down:
             self.send_event("p", {"payload": data_to_string([self._get_nick(),
-                                                      True])})
+                                                             True])})
         self.send_event("r", {"payload": data_to_string(
             [self._get_nick(),
              int(self._tw.turtles.get_active_turtle().get_heading())])})
@@ -301,7 +301,7 @@ class Collaboration():
                     tmp_path = '/tmp'
                 file_name = base64_to_image(data, tmp_path)
                 pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_size(file_name,
-                                                              width, height)
+                                                                width, height)
                 self._tw.turtles.set_turtle(nick)
                 self._tw.turtles.get_active_turtle().set_shapes([pixbuf])
 
@@ -316,7 +316,7 @@ class Collaboration():
                     tmp_path = '/tmp'
                 file_name = base64_to_image(data, tmp_path)
                 pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_size(file_name,
-                                                              width, height)
+                                                                width, height)
                 pos = self._tw.turtles.turtle_to_screen_coordinates((x, y))
                 self._tw.turtles.get_active_turtle().draw_pixbuf(
                     pixbuf, a, b, pos[0], pos[1], w, h, file_name, False)
