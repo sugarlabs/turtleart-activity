@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-#Copyright (c) 2011, 2012 Walter Bender
+# Copyright (c) 2011, 2012 Walter Bender
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -20,7 +20,7 @@ from gettext import gettext as _
 try:
     from numpy.fft import rfft
     PITCH_AVAILABLE = True
-except:
+except BaseException:
     PITCH_AVAILABLE = False
 
 from plugins.plugin import Plugin
@@ -214,19 +214,19 @@ class Audio_sensors(Plugin):
                 SENSOR_AC_BIAS: (False, True, 80, True),
                 SENSOR_DC_NO_BIAS: (True, False, 80, False),
                 SENSOR_DC_BIAS: (True, True, 90, False)
-                }
+            }
         elif self.hw == XO1:
             self.PARAMETERS = {
                 SENSOR_AC_BIAS: (False, True, 40, True),
                 SENSOR_DC_NO_BIAS: (True, False, 0, False),
                 SENSOR_DC_BIAS: (True, True, 0, False)
-                }
+            }
         else:
             self.PARAMETERS = {
                 SENSOR_AC_BIAS: (None, True, 40, True),
                 SENSOR_DC_NO_BIAS: (True, False, 80, False),
                 SENSOR_DC_BIAS: (True, True, 90, False)
-                }
+            }
 
     def start(self):
         ''' Start grabbing audio if there is an audio block in use '''

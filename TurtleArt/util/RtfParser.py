@@ -15,6 +15,7 @@
 class RtfException(Exception):
     pass
 
+
 plaintext = 1
 control = 2
 argument = 3

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
-#Copyright (C) 2010,11 Emiliano Pastorino <epastorino@plan.ceibal.edu.uy>
-#Copyright (c) 2011 Walter Bender
+# Copyright (C) 2010,11 Emiliano Pastorino <epastorino@plan.ceibal.edu.uy>
+# Copyright (c) 2011 Walter Bender
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -74,7 +74,7 @@ class Rfid(Plugin):
             loop = DBusGMainLoop()
             bus = dbus.SystemBus(mainloop=loop)
             hmgr_iface = dbus.Interface(bus.get_object(HAL_SERVICE,
-                HAL_MGR_PATH), HAL_MGR_IFACE)
+                                                       HAL_MGR_PATH), HAL_MGR_IFACE)
 
             hmgr_iface.connect_to_signal('DeviceAdded', self._device_added_cb)
 

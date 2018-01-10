@@ -190,6 +190,7 @@ def is_staticmethod(method):
 def identity(x):
     return x
 
+
 TYPE_CONVERTERS = {
     # Type hierarchy: If there is a converter A -> B, then A is a subtype of B.
     # The converter from A to B is stored under TYPE_CONVERTERS[A][B].

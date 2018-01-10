@@ -209,7 +209,7 @@ class _Account(GObject.GObject):
                                                           error))
 
     def __got_connection_cb(self, connection_path):
-        #print('_Account.__got_connection_cb %r', connection_path)
+        # print('_Account.__got_connection_cb %r', connection_path)
 
         if connection_path == '/':
             self._check_registration_error()
@@ -230,7 +230,7 @@ class _Account(GObject.GObject):
                                       'Account.GetConnectionError'))
 
     def __got_connection_error_cb(self, error):
-        #print('_Account.__got_connection_error_cb %r', error)
+        # print('_Account.__got_connection_error_cb %r', error)
         if error == 'org.freedesktop.Telepathy.Error.RegistrationExists':
             bus = dbus.Bus()
             obj = bus.get_object(ACCOUNT_MANAGER_SERVICE, self.object_path)
@@ -239,7 +239,7 @@ class _Account(GObject.GObject):
 
     def __account_property_changed_cb(self, properties):
         # print('_Account.__account_property_changed_cb %r %r %r',
-        #self.object_path, properties.get('Connection', None),
+        # self.object_path, properties.get('Connection', None),
         #          self._connection)
         if 'Connection' not in properties:
             return
@@ -273,7 +273,7 @@ class _Account(GObject.GObject):
         self._update_status(status)
 
     def __status_changed_cb(self, status, reason):
-        #print('_Account.__status_changed_cb %r %r', status, reason)
+        # print('_Account.__status_changed_cb %r %r', status, reason)
         self._update_status(status)
 
     def _update_status(self, status):
@@ -390,7 +390,7 @@ class _Account(GObject.GObject):
                           properties)
 
     def __presences_changed_cb(self, presences):
-        #print('_Account.__presences_changed_cb %r', presences)
+        # print('_Account.__presences_changed_cb %r', presences)
         for handle, presence in presences.iteritems():
             if handle in self._buddy_handles:
                 presence_type, status_, message_ = presence
@@ -400,7 +400,7 @@ class _Account(GObject.GObject):
                     self.emit('buddy-removed', contact_id)
 
     def __buddy_info_updated_cb(self, handle, properties):
-        #print('_Account.__buddy_info_updated_cb %r', handle)
+        # print('_Account.__buddy_info_updated_cb %r', handle)
         self.emit('buddy-updated', self._buddy_handles[handle], properties)
 
     def __current_activity_changed_cb(self, contact_handle, activity_id,
@@ -425,10 +425,10 @@ class _Account(GObject.GObject):
 
     def _update_buddy_activities(self, buddy_handle, activities):
         # print('_Account._update_buddy_activities')
-        if not buddy_handle in self._buddy_handles:
+        if buddy_handle not in self._buddy_handles:
             self._buddy_handles[buddy_handle] = None
 
-        if not buddy_handle in self._activities_per_buddy:
+        if buddy_handle not in self._activities_per_buddy:
             self._activities_per_buddy[buddy_handle] = set()
 
         for activity_id, room_handle in activities:
@@ -456,7 +456,7 @@ class _Account(GObject.GObject):
                     error_handler=partial(self.__error_handler_cb,
                                           'BuddyInfo.GetCurrentActivity'))
 
-            if not activity_id in self._buddies_per_activity:
+            if activity_id not in self._buddies_per_activity:
                 self._buddies_per_activity[activity_id] = set()
             self._buddies_per_activity[activity_id].add(buddy_handle)
             if activity_id not in self._activities_per_buddy[buddy_handle]:
@@ -528,14 +528,14 @@ class _Account(GObject.GObject):
         self._add_buddy_handles(added)
 
     def __get_members_ready_cb(self, handles):
-        #print('_Account.__get_members_ready_cb %r', handles)
+        # print('_Account.__get_members_ready_cb %r', handles)
         if not handles:
             return
 
         self._add_buddy_handles(handles)
 
     def _add_buddy_handles(self, handles):
-        #print('_Account._add_buddy_handles %r', handles)
+        # print('_Account._add_buddy_handles %r', handles)
         interfaces = [CONNECTION, CONNECTION_INTERFACE_ALIASING]
         self._connection[CONNECTION_INTERFACE_CONTACTS].GetContactAttributes(
             handles, interfaces, False,
@@ -544,7 +544,7 @@ class _Account(GObject.GObject):
                                   'Contacts.GetContactAttributes'))
 
     def __got_buddy_info_cb(self, handle, nick, properties):
-        #print('_Account.__got_buddy_info_cb %r', handle)
+        # print('_Account.__got_buddy_info_cb %r', handle)
         self.emit('buddy-updated', self._buddy_handles[handle], properties)
 
     def __get_contact_attributes_cb(self, attributes):
@@ -604,11 +604,11 @@ class _Account(GObject.GObject):
         self._update_buddy_activities(buddy_handle, activities)
 
     def enable(self):
-        #print('_Account.enable %s', self.object_path)
+        # print('_Account.enable %s', self.object_path)
         self._set_enabled(True)
 
     def disable(self):
-        #print('_Account.disable %s', self.object_path)
+        # print('_Account.disable %s', self.object_path)
         self._set_enabled(False)
         self._connection = None
 
@@ -622,7 +622,7 @@ class _Account(GObject.GObject):
                 dbus_interface='org.freedesktop.DBus.Properties')
 
     def __set_enabled_cb(self):
-        #print('_Account.__set_enabled_cb success')
+        # print('_Account.__set_enabled_cb success')
         pass
 
 
@@ -668,14 +668,14 @@ class Neighborhood(GObject.GObject):
         for k in self._nicks.keys():
             try:
                 print "%s = %s" % (k, self._nicks[k])
-            except:
+            except BaseException:
                 pass
 
         print "\n\nActivities list\n\n"
         for k in self._activities.keys():
             try:
                 print "%s" % k
-            except:
+            except BaseException:
                 pass
 
     def __got_accounts_cb(self, account_paths):
@@ -701,25 +701,25 @@ class Neighborhood(GObject.GObject):
         account.connect('disconnected', self.__account_disconnected_cb)
 
     def __account_connected_cb(self, account):
-        #print('__account_connected_cb %s', account.object_path)
+        # print('__account_connected_cb %s', account.object_path)
         if account == self._server_account:
             # self._link_local_account.disable()
             pass
 
     def __account_disconnected_cb(self, account):
-        #print('__account_disconnected_cb %s', account.object_path)
+        # print('__account_disconnected_cb %s', account.object_path)
         if account == self._server_account:
             self._link_local_account.enable()
 
     def _ensure_link_local_account(self, account_paths):
         for account_path in account_paths:
             if 'salut' in account_path:
-                #print('Already have a Salut account')
+                # print('Already have a Salut account')
                 account = _Account(account_path)
                 account.enable()
                 return account
 
-        #print('Still dont have a Salut account, creating one')
+        # print('Still dont have a Salut account, creating one')
 
         client = GConf.client.get_default()
         nick = client.get_string('/desktop/sugar/user/nick')
@@ -832,7 +832,7 @@ class Neighborhood(GObject.GObject):
     def __buddy_added_cb(self, account, contact_id, nick, handle):
         self._nicks[contact_id] = nick
         if contact_id in self._buddies:
-            #print('__buddy_added_cb buddy already tracked')
+            # print('__buddy_added_cb buddy already tracked')
             return
 
         buddy = BuddyModel(
@@ -843,7 +843,7 @@ class Neighborhood(GObject.GObject):
         self._buddies[contact_id] = buddy
 
     def __buddy_updated_cb(self, account, contact_id, properties):
-        #print('__buddy_updated_cb %r', contact_id)
+        # print('__buddy_updated_cb %r', contact_id)
         if contact_id is None:
             # Don't know the contact-id yet, will get the full state later
             return
@@ -870,10 +870,10 @@ class Neighborhood(GObject.GObject):
             self.emit('buddy-added', buddy)
 
     def __buddy_removed_cb(self, account, contact_id):
-        #print('Neighborhood.__buddy_removed_cb %r', contact_id)
+        # print('Neighborhood.__buddy_removed_cb %r', contact_id)
         try:
             self._nicks.pop(contact_id)
-        except:
+        except BaseException:
             pass
         if contact_id not in self._buddies:
             # print('Neighborhood.__buddy_removed_cb Unknown buddy with '
@@ -887,9 +887,9 @@ class Neighborhood(GObject.GObject):
             self.emit('buddy-removed', buddy)
 
     def __activity_added_cb(self, account, room_handle, activity_id):
-        #print('__activity_added_cb %r %r', room_handle, activity_id)
+        # print('__activity_added_cb %r %r', room_handle, activity_id)
         if activity_id in self._activities:
-            #print('__activity_added_cb activity already tracked')
+            # print('__activity_added_cb activity already tracked')
             return
 
         activity = ActivityModel(activity_id, room_handle)
@@ -904,9 +904,9 @@ class Neighborhood(GObject.GObject):
             return
 
         # we should somehow emulate this and say we only have TurtleArtActivity
-        #registry = bundleregistry.get_registry()
-        #bundle = registry.get_bundle(properties['type'])
-        #bundle = None
+        # registry = bundleregistry.get_registry()
+        # bundle = registry.get_bundle(properties['type'])
+        # bundle = None
         # if not bundle:
         # print('Ignoring shared activity we don''t have')
         #   return
@@ -1021,6 +1021,7 @@ class Neighborhood(GObject.GObject):
     def get_activities(self):
         return self._activities.values()
 
+
 _neighborhood = None
 
 
@@ -1029,6 +1030,7 @@ def get_neighborhood(params={}):
     if _neighborhood is None:
         _neighborhood = Neighborhood(params)
     return _neighborhood
+
 
 if __name__ == "__main__":
     params = {}

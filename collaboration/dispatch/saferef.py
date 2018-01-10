@@ -25,11 +25,11 @@ def safeRef(target, onDelete=None):
             # Turn a bound method into a BoundMethodWeakref instance.
             # Keep track of these instances for lookup by disconnect().
             if not hasattr(target, 'im_func'):
-                raise TypeError("safeRef target %r has im_self, but no"
-                    " im_func, don't know how to create reference" %
-                    (target, ))
+                raise TypeError("safeRef target %r has im_self, but no "
+                                "im_func, don't know how to create reference" %
+                                (target, ))
             reference = get_bound_method_weakref(target=target,
-                onDelete=onDelete)
+                                                 onDelete=onDelete)
             return reference
     if callable(onDelete):
         return weakref.ref(target, onDelete)
@@ -123,12 +123,12 @@ class BoundMethodWeakref(object):
                 try:
                     if callable(function):
                         function(self)
-                except Exception, e:
+                except Exception as e:
                     try:
                         traceback.print_exc()
                     except AttributeError:
                         print ('Exception during saferef %s cleanup function'
-                            ' %s: %s' % (self, function, e))
+                               ' %s: %s' % (self, function, e))
         self.deletionMethods = [onDelete]
         self.key = self.calculateKey(target)
         self.weakSelf = weakref.ref(target.im_self, remove)
@@ -148,7 +148,7 @@ class BoundMethodWeakref(object):
     def __str__(self):
         """Give a friendly representation of the object"""
         return '%s( %s.%s )' % (self.__class__.__name__, self.selfName,
-            self.funcName)
+                                self.funcName)
 
     __repr__ = __str__
 
@@ -198,6 +198,7 @@ class BoundNonDescriptorMethodWeakref(BoundMethodWeakref):
     aren't descriptors (such as Jython) this implementation has the advantage
     of working in the most cases.
     """
+
     def __init__(self, target, onDelete=None):
         """Return a weak-reference-like instance for a bound method
 
@@ -213,8 +214,8 @@ class BoundNonDescriptorMethodWeakref(BoundMethodWeakref):
             which will be passed a pointer to this object.
         """
         assert getattr(target.im_self, target.__name__) == target, \
-               ("method %s isn't available as the attribute %s of %s" %
-                (target, target.__name__, target.im_self))
+            ("method %s isn't available as the attribute %s of %s" %
+             (target, target.__name__, target.im_self))
         super(BoundNonDescriptorMethodWeakref, self).__init__(target, onDelete)
 
     def __call__(self):
@@ -251,4 +252,4 @@ def get_bound_method_weakref(target, onDelete):
     else:
         # no luck, use the alternative implementation:
         return BoundNonDescriptorMethodWeakref(target=target,
-            onDelete=onDelete)
+                                               onDelete=onDelete)

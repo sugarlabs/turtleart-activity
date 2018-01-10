@@ -39,7 +39,7 @@ from gi.repository import Gtk
 try:
     from gi.repository import WebKit
     HAS_WEBKIT = True
-except:
+except BaseException:
     pass
     HAS_WEBKIT = False
 from plugin import Plugin
@@ -101,7 +101,7 @@ class Fb_plugin(Plugin):
         return True
 
     def _post_menu_cb(self, widget):
-        
+
         if self._access_token == "":
             self._grab_fb_app_token()
             return

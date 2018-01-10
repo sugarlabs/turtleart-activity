@@ -405,13 +405,14 @@ class Sprite:
             w = pl.get_size()[0] / Pango.SCALE
             if w > my_width:
                 if self._rescale[i]:
-                    self._fd.set_size(int(self._scale[i] * Pango.SCALE * my_width / w))
+                    self._fd.set_size(
+                        int(self._scale[i] * Pango.SCALE * my_width / w))
                     pl.set_font_description(self._fd)
                     w = pl.get_size()[0] / Pango.SCALE
                 else:
                     pl.set_ellipsize(Pango.EllipsizeMode.MIDDLE)
                     self._fd.set_size(int(self._scale[i] * Pango.SCALE))
-                    pl.set_font_description(self._fd) 
+                    pl.set_font_description(self._fd)
                     w = pl.get_size()[0] / Pango.SCALE
             if self._x_pos[i] is not None:
                 x = int(self.rect.x + self._x_pos[i])
@@ -436,7 +437,7 @@ class Sprite:
             cr.set_source_rgb(self._color[0], self._color[1], self._color[2])
             PangoCairo.update_layout(cr, pl)
             PangoCairo.show_layout(cr, pl)
-     
+
             cr.restore()
 
     def label_width(self):

@@ -195,7 +195,7 @@ class Serial(SerialBase):
 
         try:
             self._reconfigurePort()
-        except:
+        except BaseException:
             os.close(self.fd)
             self.fd = None
         else:
@@ -510,6 +510,7 @@ class Serial(SerialBase):
         if self.fd is None:
             raise portNotOpenError
         return self.fd
+
 
 if __name__ == '__main__':
     s = Serial(0,

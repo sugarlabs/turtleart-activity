@@ -148,7 +148,7 @@ class AudioGrab():
             try:
                 self.splitter.unlink(self.queue[i])
                 self.queue[i].unlink(self.fakesink[i])
-            except:
+            except BaseException:
                 traceback.print_exc()
 
         # Build the new pipelines
@@ -182,11 +182,11 @@ class AudioGrab():
     def on_buffer(self, element, data_buffer, pad, channel):
         '''The function that is called whenever new data is available
         This is the signal handler for the handoff signal'''
-        temp_buffer = fromstring(data_buffer.extract_dup(0, data_buffer.get_size()), 'int16')
+        temp_buffer = fromstring(data_buffer.extract_dup(
+            0, data_buffer.get_size()), 'int16')
         if not self._dont_queue_the_buffer:
             self._new_buffer(temp_buffer, channel=channel)
         return False
-
 
     def set_freeze_the_display(self, freeze=False):
         ''' Useful when just the display is needed to be frozen, but
@@ -196,7 +196,6 @@ class AudioGrab():
     def get_freeze_the_display(self):
         '''Returns state of queueing the buffer'''
         return not self._dont_queue_the_buffer
-
 
     def start_sound_device(self):
         '''Start or Restart grabbing data from the audio capture'''
@@ -493,6 +492,7 @@ class AudioGrab():
         output = check_output(
             ['amixer', 'set', 'Analog Mic Boost', "62%"],
             'restore Analog Mic Boost')
+
 
 def check_output(command, warning):
     ''' Workaround for old systems without subprocess.check_output'''

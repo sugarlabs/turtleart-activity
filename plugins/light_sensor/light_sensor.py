@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-#Copyright (c) 2011 Walter Bender
+# Copyright (c) 2011 Walter Bender
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -57,16 +57,16 @@ class Light_sensor(Plugin):
                               style='box-style',
                               label=_('brightness'),
                               value_block=True,
-                              help_string=\
-                                  _('light level detected by light sensor'),
+                              help_string=_(
+                                  'light level detected by light sensor'),
                               prim_name='lightsensor')
         else:
             palette.add_block('lightsensor',
                               style='box-style',
                               label=_('brightness'),
                               value_block=True,
-                              help_string=\
-                                  _('light level detected by light sensor'),
+                              help_string=_(
+                                  'light level detected by light sensor'),
                               hidden=True,
                               prim_name='lightsensor')
 

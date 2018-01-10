@@ -559,11 +559,11 @@ return %s(self)" % (p, P, P)
         # Clean up temporary files
         try:
             os.remove(TMP_SVG_PATH)
-        except:
+        except BaseException:
             pass
         try:
             os.remove(TMP_ODP_PATH)
-        except:
+        except BaseException:
             pass
 
         Gtk.main_quit()
@@ -636,7 +636,7 @@ Would you like to save before quitting?'))
                 tar_fd = tarfile.open(tmpfile[:-3], 'r')
             else:
                 tar_fd = tarfile.open(tmpfile, 'r')
-        except:
+        except BaseException:
             tar_fd = tarfile.open(file_path, 'r')
 
         tmp_dir = tempfile.mkdtemp()
@@ -645,7 +645,7 @@ Would you like to save before quitting?'))
             tar_fd.extractall(tmp_dir)
             load_a_plugin(self, tmp_dir)
             self.restore_cursor()
-        except:
+        except BaseException:
             self.restore_cursor()
         finally:
             tar_fd.close()
@@ -810,12 +810,12 @@ Would you like to save before quitting?'))
             #path = self.tw.turtleart_plugin_list[name]
             #self.tw.init_plugin(name, path)
             #instance = self.tw._get_plugin_instance(name)
-            #instance.setup()
+            # instance.setup()
             self.client.set_int(path_gconf, 1)
             l = _('Please restart %s in order to use the plugin.') % self.name
         else:
             #instance = self.tw._get_plugin_instance(name)
-            #instance.quit()
+            # instance.quit()
             self.client.set_int(path_gconf, 0)
             l = _('Please restart %s in order to unload the plugin.') % self.name
         self.tw.showlabel('status', l)
@@ -965,7 +965,7 @@ Would you like to save before quitting?'))
         turtle = self.tw.turtles.get_turtle(self.tw.default_turtle_name)
         try:
             turtle.colors = colors.split(',')
-        except:
+        except BaseException:
             turtle.colors = DEFAULT_TURTLE_COLORS
         turtle.custom_shapes = True  # Force regeneration of shapes
         turtle.reset_shapes()
@@ -1034,7 +1034,7 @@ Would you like to save before quitting?'))
             image_path = store.get(iter_, 1)[0]
 
             return image_path, iter_
-        except:
+        except BaseException:
             return None
 
     def _sample_selected(self, widget, store):
@@ -1084,4 +1084,3 @@ Would you like to save before quitting?'))
                 samples.append(os.path.join(path, name))
         samples.sort()
         return samples
-

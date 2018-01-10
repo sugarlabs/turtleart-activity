@@ -36,7 +36,7 @@ from gi.repository import GdkX11, GstVideo
 GObject.threads_init()
 Gst.init(None)
 
-			
+
 from tautils import error_output, debug_output
 
 
@@ -275,7 +275,7 @@ class GstPlayer(GObject.GObject):
         self.bin.add(conv)
         videosink = Gst.ElementFactory.make('autovideosink')
         self.bin.add(videosink)
-       
+
         videoscale.link(self.filter)
         self.filter.link(conv)
         conv.link(videosink)

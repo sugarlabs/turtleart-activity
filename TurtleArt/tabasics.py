@@ -108,9 +108,10 @@ from taconstants import (
     DEFAULT_BACKGROUND_COLOR_SHADE_GRAY)
 from taprimitive import (ArgSlot, ConstantArg, or_, Primitive)
 from tatype import (TYPE_BOOL, TYPE_BOX, TYPE_CHAR, TYPE_COLOR, TYPE_FLOAT,
-                     TYPE_INT, TYPE_NUMBER, TYPE_NUMERIC_STRING, TYPE_OBJECT,
-                     TYPE_STRING, TYPE_VECTOR)
+                    TYPE_INT, TYPE_NUMBER, TYPE_NUMERIC_STRING, TYPE_OBJECT,
+                    TYPE_STRING, TYPE_VECTOR)
 from taturtle import Turtle
+
 
 def _millisecond():
     ''' Current time in milliseconds '''
@@ -562,18 +563,19 @@ pensize\nend\n')
                             _('black'))
         for name in color_names:
             self._make_constant(palette, name, _(name), name)
-        
+
         palette.add_block('RGB to color',
-                        style='number-style-var-3arg',
-                        label=[_('RGB to\n\ncolor'), _('red'), _('green'), _('blue') ],
-                        default=[0, 0, 0],
-                        help_string=_('converter'),
-                        prim_name='converter')
-                        
+                          style='number-style-var-3arg',
+                          label=[_('RGB to\n\ncolor'), _(
+                              'red'), _('green'), _('blue')],
+                          default=[0, 0, 0],
+                          help_string=_('converter'),
+                          prim_name='converter')
+
         self.tw.lc.def_prim(
             'converter', 3,
             Primitive(self._rgb_converter, return_type=TYPE_FLOAT, arg_descs=[ArgSlot(TYPE_INT), ArgSlot(TYPE_INT), ArgSlot(TYPE_INT)]))
-        
+
         # In order to map Turtle Art colors to the standard UCB Logo palette,
         # we need to define a somewhat complex set of functions.
         define_logo_function('tacolor', '\

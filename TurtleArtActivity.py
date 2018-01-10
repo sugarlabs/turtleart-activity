@@ -147,7 +147,7 @@ class TurtleArtActivity(activity.Activity):
         self.client = GConf.Client.get_default()
         if self.client.get_int(self._HOVER_HELP) == 1:
             self._do_hover_help_toggle(None)
-        if not self.client.get_int(self._COORDINATE_SCALE) in [0, 1]:
+        if self.client.get_int(self._COORDINATE_SCALE) not in [0, 1]:
             self.tw.coord_scale = 1
             self.do_rescale_cb(None)
         else:
@@ -277,7 +277,9 @@ class TurtleArtActivity(activity.Activity):
             os.remove(python_code_path)
         else:
             title = _("Export as python")
-            msg = _("Error: You must use a Start Block when exporting to Python.")
+            msg = _(
+                "Error: You must use a Start Block when exporting to Python."
+            )
             alert = NotifyAlert(5)
             alert.props.title = title
             alert.props.msg = msg
@@ -311,7 +313,7 @@ class TurtleArtActivity(activity.Activity):
             _logger.debug('Opening %s ' % (dsobject.file_path))
             self._tmp_dsobject = dsobject
             self.read_file(dsobject.file_path, plugin=False)
-        except:
+        except BaseException:
             _logger.debug("Couldn't open %s" % (dsobject.file_path))
 
     def do_load_ta_plugin_cb(self, button):
@@ -336,7 +338,8 @@ class TurtleArtActivity(activity.Activity):
         ''' Load Python code from the Journal. '''
         self.load_python.set_icon_name('pippy-openon')
         self.tw.load_python_code_from_file(fname=None, add_new_block=True)
-        GObject.timeout_add(250, self.load_python.set_icon_name, 'pippy-openoff')
+        GObject.timeout_add(
+            250, self.load_python.set_icon_name, 'pippy-openoff')
 
     def do_save_as_odp_cb(self, button):
         _logger.debug('saving odp to journal')
@@ -545,7 +548,7 @@ class TurtleArtActivity(activity.Activity):
 
     def adjust_sw(self, dx, dy):
         ''' Adjust the scrolled window position. '''
-        if not self.tw.hw in [XO1]:
+        if self.tw.hw not in [XO1]:
             self._defer_palette_move = True
         hadj = self.sw.get_hadjustment()
         hvalue = hadj.get_value() + dx
@@ -574,7 +577,7 @@ class TurtleArtActivity(activity.Activity):
 
     def adjust_palette(self):
         ''' Align palette to scrolled window position. '''
-        if not self.tw.hw in [XO1]:
+        if self.tw.hw not in [XO1]:
             self.tw.move_palettes(self.sw.get_hadjustment().get_value(),
                                   self.sw.get_vadjustment().get_value())
         self._defer_palette_move = False
@@ -1010,7 +1013,8 @@ class TurtleArtActivity(activity.Activity):
                 self._palette_toolbar.insert(
                     self._overflow_palette_button, -1)
             if i >= max_palettes:
-                self._overflow_box.pack_start(self._overflow_buttons[i], True, True, 0)
+                self._overflow_box.pack_start(
+                    self._overflow_buttons[i], True, True, 0)
 
         self._overflow_sw.set_size_request(width, height)
         self._overflow_sw.show()
@@ -1123,7 +1127,8 @@ class TurtleArtActivity(activity.Activity):
             'filesaveoff', _('Save snapshot'), self.do_keep_cb,
             None, button_box)
         self.save_blocks_img, label = self._add_button_and_label(
-            'save-blocks', _('Save blocks as image'), self.do_save_blocks_img_cb,
+            'save-blocks', _('Save blocks as image'),
+            self.do_save_blocks_img_cb,
             None, button_box)
 
         load_button = self._add_button(
@@ -1290,12 +1295,13 @@ class TurtleArtActivity(activity.Activity):
 
         # Try restoring an existing project...
         if self._jobject and self._jobject.file_path or \
-                                             os.path.isfile(str(self.handle.uri)):
+                os.path.isfile(str(self.handle.uri)):
             if hasattr(self, 'get_window'):
                 _logger.debug('setting watch cursor')
                 if hasattr(self.get_window(), 'get_cursor'):
                     self._old_cursor = self.get_window().get_cursor()
-                    self.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.WATCH))
+                    self.get_window().set_cursor(
+                        Gdk.Cursor(Gdk.CursorType.WATCH))
             self.read_file(self._jobject.file_path or self.handle.uri)
         else:  # ...or else, load a Start Block onto the canvas.
             self.tw.load_start()
@@ -1412,7 +1418,7 @@ class TurtleArtActivity(activity.Activity):
                     else:
                         _logger.debug('tarfile.open %s' % (tmpfile))
                         tar_fd = tarfile.open(tmpfile, 'r')
-                except:
+                except BaseException:
                     _logger.debug('tarfile.open %s' % (file_path))
                     tar_fd = tarfile.open(file_path, 'r')
 
@@ -1429,7 +1435,7 @@ class TurtleArtActivity(activity.Activity):
                         _logger.debug('load a plugin from %s' % (tmp_dir))
                         load_a_plugin(self, tmp_dir)
                         self.restore_cursor()
-                except:
+                except BaseException:
                     _logger.debug('Could not extract files from %s.' %
                                   (file_path))
                     self.restore_cursor()
@@ -1488,7 +1494,8 @@ class TurtleArtActivity(activity.Activity):
             if hasattr(self.get_window(), 'get_cursor'):
                 self.get_window().set_cursor(self._old_cursor)
             else:
-                self.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.LEFT_PTR))
+                self.get_window().set_cursor(
+                    Gdk.Cursor(Gdk.CursorType.LEFT_PTR))
 
     def _copy_cb(self, button):
         ''' Copy to the clipboard. '''
@@ -1710,7 +1717,7 @@ class TurtleArtActivity(activity.Activity):
             image_path = store.get(iter_, 1)[0]
 
             return image_path, iter_
-        except:
+        except BaseException:
             return None
 
     def _sample_selected(self, widget, store):
@@ -1755,7 +1762,8 @@ class TurtleArtActivity(activity.Activity):
             store.append([pixbuf, filepath])
 
     def _scan_for_samples(self):
-        path = os.path.join(activity.get_bundle_path(), 'samples', 'thumbnails')
+        path = os.path.join(activity.get_bundle_path(),
+                            'samples', 'thumbnails')
         samples = []
         for name in os.listdir(path):
             if name.endswith(".png"):

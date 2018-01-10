@@ -23,7 +23,7 @@ XOFF = chr(19)
 # Python < 2.2.3 compatibility
 try:
     True
-except:
+except BaseException:
     True = 1
     False = not True
 
@@ -32,12 +32,14 @@ class SerialException(Exception):
 
     """Base class for serial port related exceptions."""
 
+
 portNotOpenError = SerialException('Port not open')
 
 
 class SerialTimeoutException(SerialException):
 
     """Write timeouts give an exception"""
+
 
 writeTimeoutError = SerialTimeoutException("Write timeout")
 
@@ -468,6 +470,7 @@ class SerialBase(FileLike):
             self.rtscts,
             self.dsrdtr,
         )
+
 
 if __name__ == '__main__':
     s = SerialBase()

@@ -27,12 +27,12 @@ from gi.repository import GObject
 from random import uniform
 from math import sin, cos, pi, sqrt
 from taconstants import (TURTLE_LAYER, DEFAULT_TURTLE_COLORS, DEFAULT_TURTLE,
-                          CONSTANTS, Color, ColorObj)
+                         CONSTANTS, Color, ColorObj)
 from tasprite_factory import SVG, svg_str_to_pixbuf
 from tacanvas import wrap100, COLOR_TABLE
 from sprites import Sprite
 from tautils import (debug_output, data_to_string, round_int, get_path,
-                      image_to_base64)
+                     image_to_base64)
 from TurtleArt.talogo import logoerror
 
 SHAPES = 36
@@ -323,11 +323,12 @@ class Turtle:
                 for i in range(SHAPES):
                     surface = cairo.ImageSurface(cairo.FORMAT_ARGB32, nw, nh)
                     context = cairo.Context(surface)
-               
+
                     context.translate(nw / 2.0, nh / 2.0)
                     context.rotate(i * 10 * pi / 180.)
                     context.translate(-nw / 2.0, -nh / 2.0)
-                    Gdk.cairo_set_source_pixbuf(context, shapes[0], (nw - w) / 2.0, (nh - h) / 2.0)
+                    Gdk.cairo_set_source_pixbuf(
+                        context, shapes[0], (nw - w) / 2.0, (nh - h) / 2.0)
                     context.rectangle(0, 0, nw, nh)
                     context.fill()
                     images.append(surface)

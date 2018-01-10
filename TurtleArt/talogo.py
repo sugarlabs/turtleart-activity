@@ -46,10 +46,10 @@ from tajail import (myfunc, myfunc_import)
 from tapalette import (block_names, value_blocks)
 from tatype import (TATypeError, TYPES_NUMERIC)
 from tautils import (get_pixbuf_from_journal, data_from_file, get_stack_name,
-                      movie_media_type, audio_media_type, image_media_type,
-                      text_media_type, round_int, debug_output, find_group,
-                      get_path, image_to_base64, data_to_string, data_to_file,
-                      get_load_name, chooser_dialog)
+                     movie_media_type, audio_media_type, image_media_type,
+                     text_media_type, round_int, debug_output, find_group,
+                     get_path, image_to_base64, data_to_string, data_to_file,
+                     get_load_name, chooser_dialog)
 
 try:
     from util.RtfParser import RtfTextOnly
@@ -64,7 +64,7 @@ primitive_dictionary = {}  # new block primitives get added here
 
 class noKeyError(UserDict):
 
-    __missing__ = lambda x, y: 0
+    def __missing__(x, y): return 0
 
 
 class symbol:
@@ -254,11 +254,11 @@ class LogoCode:
         """
         self._save_all_connections = []
         for b in blocks:
-             tmp = []
-             for c in b.connections:
-                 tmp.append(c)
-             self._save_all_connections.append(
-                 {'blk':b, 'connections':tmp})
+            tmp = []
+            for c in b.connections:
+                tmp.append(c)
+            self._save_all_connections.append(
+                {'blk': b, 'connections': tmp})
 
         for k in self.stacks.keys():
             self.stacks[k] = None
@@ -439,7 +439,8 @@ class LogoCode:
                 self.tw.activity.stop_turtle_button.set_tooltip(
                     _('Show blocks'))
             else:
-                self.tw.activity.stop_turtle_button.set_icon_name("hideshowoff")
+                self.tw.activity.stop_turtle_button.set_icon_name(
+                    "hideshowoff")
                 self.tw.activity.stop_turtle_button.set_tooltip(
                     _('Hide blocks'))
         elif self.tw.interactive_mode:
@@ -931,7 +932,7 @@ class LogoCode:
                 from sugar3.datastore import datastore
                 try:
                     dsobject = datastore.get(obj.value)
-                except:
+                except BaseException:
                     debug_output("Couldn't find dsobject %s" %
                                  (obj.value), self.tw.running_sugar)
                 if dsobject is not None:
@@ -1003,7 +1004,7 @@ class LogoCode:
         if self.bindex is not None and self.bindex in self.tw.myblock:
             try:
                 myfunc_import(self, self.tw.myblock[self.bindex], args)
-            except:
+            except BaseException:
                 raise logoerror("#syntaxerror")
 
     def prim_myfunction(self, f, *args):
@@ -1129,7 +1130,7 @@ class LogoCode:
             from suga3.datastore import datastore
             try:
                 self.dsobject = datastore.get(obj.value)
-            except:
+            except BaseException:
                 debug_output("Couldn't find dsobject %s" %
                              (obj.value), self.tw.running_sugar)
             if self.dsobject is not None:
@@ -1143,7 +1144,7 @@ class LogoCode:
         try:
             pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_size(
                 self.filepath, scale, scale)
-        except:
+        except BaseException:
             self.tw.showlabel('nojournal', self.filepath)
             debug_output("Couldn't open skin %s" % (self.filepath),
                          self.tw.running_sugar)
@@ -1259,7 +1260,7 @@ class LogoCode:
                 from sugar3.datastore import datastore
                 try:
                     self.dsobject = datastore.get(obj.value)
-                except:
+                except BaseException:
                     debug_output("Couldn't find dsobject %s" %
                                  (obj.value), self.tw.running_sugar)
 
@@ -1373,7 +1374,7 @@ class LogoCode:
         elif self.dsobject is not None:
             try:
                 self.pixbuf = get_pixbuf_from_journal(self.dsobject, w, h)
-            except:
+            except BaseException:
                 debug_output("Couldn't open dsobject %s" % (self.dsobject),
                              self.tw.running_sugar)
         if self.pixbuf is None and \
@@ -1387,7 +1388,7 @@ class LogoCode:
                 else:
                     self.pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_size(
                         self.filepath, w, h)
-            except:
+            except BaseException:
                 self.tw.showlabel('nojournal', self.filepath)
                 debug_output("Couldn't open filepath %s" % (self.filepath),
                              self.tw.running_sugar)
@@ -1555,8 +1556,8 @@ class LogoCode:
         box_blk.connections.append(b.connections[0])
         if b.connections[0] is not None:
             for i in range(len(b.connections[0].connections)):
-              if b.connections[0].connections[i] == b:
-                  b.connections[0].connections[i] = box_blk
+                if b.connections[0].connections[i] == b:
+                    b.connections[0].connections[i] = box_blk
         box_blk.docks.append(['number', True, 0, 0])
         box_blk.connections.append(box_label_blk)
         box_blk.docks.append(['string', False, 0, 0])

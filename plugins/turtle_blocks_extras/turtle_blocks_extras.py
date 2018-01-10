@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-#Copyright (c) 2012, Walter Bender
+# Copyright (c) 2012, Walter Bender
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -465,7 +465,7 @@ program started'))
 
         palette.add_block('push',
                           style='basic-style-1arg',
-                          #TRANS: push adds a new item to the program stack
+                          # TRANS: push adds a new item to the program stack
                           label=_('push'),
                           prim_name='push',
                           logo_command='tapush',
@@ -509,7 +509,8 @@ end\n')
 
         palette.add_block('pop',
                           style='box-style',
-                          #TRANS: pop removes a new item from the program stack
+                          # TRANS: pop removes a new item from the program
+                          # stack
                           label=_('pop'),
                           prim_name='pop',
                           value_block=True,
@@ -759,17 +760,14 @@ module found in the Journal'))
 
         palette.add_block('getfromurl',
                           style='number-style-1arg',
-                          #TRANS: URL is universal resource locator
+                          # TRANS: URL is universal resource locator
                           label=_('URL'),
-                          default=\
-'http://wiki.sugarlabs.org/images/2/2c/Logo_alt_3.svg',
+                          default='http://wiki.sugarlabs.org/images/2/2c/Logo_alt_3.svg',
                           prim_name='getfromurl',
-                          help_string=\
-_('gets a text string or an image from a URL'))
+                          help_string=_('gets a text string or an image from a URL'))
         self.tw.lc.def_prim('getfromurl', 1,
                             Primitive(self.tw.lc.get_from_url,
                                       arg_descs=[ArgSlot(TYPE_STRING)]))
-
 
         palette.add_block('skin',
                           hidden=True,
@@ -1216,7 +1214,7 @@ Journal objects'))
 
     def prim_speak(self, text):
         """ Speak text """
-        if type(text) == float and int(text) == text:
+        if isinstance(text, float) and int(text) == text:
             text = int(text)
 
         lang = os.environ['LANG'][0:2]

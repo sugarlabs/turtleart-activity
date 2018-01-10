@@ -109,7 +109,7 @@ def load_a_plugin(cls, tmp_dir):
         plugin_path = os.path.join(cls.bundle_path, 'plugins')
         if os.path.exists(os.path.join(plugin_path, plugin_name)):
             cls._reload_plugin_alert(tmp_dir, tmp_path, plugin_path,
-                                      plugin_name, file_info)
+                                     plugin_name, file_info)
         else:
             complete_plugin_install(cls, tmp_dir, tmp_path, plugin_path,
                                     plugin_name, file_info)
