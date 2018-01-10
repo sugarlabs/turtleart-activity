@@ -94,13 +94,13 @@ class OwnerBuddyModel(BaseBuddyModel):
     def __init__(self):
         BaseBuddyModel.__init__(self)
 
-        #client = gconf.client_get_default()
-        #self.props.nick = client.get_string('/desktop/sugar/user/nick')
+        # client = gconf.client_get_default()
+        # self.props.nick = client.get_string('/desktop/sugar/user/nick')
         self.props.nick = "rgs"
-        #color = client.get_string('/desktop/sugar/user/color')
+        # color = client.get_string('/desktop/sugar/user/color')
         self.props.color = XoColor(None)
 
-        #self.props.key = get_profile().pubkey
+        # self.props.key = get_profile().pubkey
         self.props.key = "foobar"
 
         self.connect('notify::nick', self.__property_changed_cb)
