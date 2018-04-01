@@ -45,7 +45,7 @@ class ConfigFile(GObject.GObject):
         return self._is_loaded
 
     def get(self, key, empty_if_not_loaded=False):
-        if not key in self._valid_keys:
+        if key not in self._valid_keys:
             raise RuntimeError("Unknown config value %s" % key)
 
         if key in self._config_hash:
@@ -61,7 +61,7 @@ class ConfigFile(GObject.GObject):
         return value
 
     def set(self, key, value):
-        if not key in self._valid_keys:
+        if key not in self._valid_keys:
             raise RuntimeError("Unknown config value %s" % key)
 
         self._config_hash[key] = value
@@ -76,7 +76,7 @@ class ConfigFile(GObject.GObject):
                 k, v = line.split('=')
                 k = k.strip(' ')
                 v = v.strip(' ')
-                if not k in self._valid_keys:
+                if k not in self._valid_keys:
                     raise RuntimeError("Unknown config value %s" % k)
                 value_type = self._valid_keys[k]["type"]
                 if value_type == "text":

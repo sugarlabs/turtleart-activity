@@ -216,7 +216,7 @@ class PaletteView():
     def _float_palette(self, spr):
         ''' We sometimes let the palette move with the canvas. '''
         if self._turtle_window.running_sugar and \
-           not self._turtle_window.hw in [XO1]:
+           self._turtle_window.hw not in [XO1]:
             spr.move_relative(
                 (self._turtle_window.activity.hadj_value,
                  self._turtle_window.activity.vadj_value))

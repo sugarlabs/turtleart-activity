@@ -116,7 +116,7 @@ class Palette():
         self._max_text_width = int(Gdk.Screen.width() / 3) - 20
 
         # Prepare a vbox for the help palette
-        if not self._name in help_palettes:
+        if self._name not in help_palettes:
             self._help_box = Gtk.VBox()
             self._help_box.set_homogeneous(False)
             help_palettes[self._name] = self._help_box
@@ -157,7 +157,7 @@ class Palette():
             palette_blocks.insert(i, [])
             block_colors.insert(i, self._colors)
             if init_on_start:
-                if not self._name in palette_init_on_start:
+                if self._name not in palette_init_on_start:
                     palette_init_on_start.append(self._name)
         else:
             return

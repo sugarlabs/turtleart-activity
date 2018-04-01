@@ -33,8 +33,11 @@ class RFIDReader(RFIDDevice):
 
         loop = DBusGMainLoop()
         self.bus = dbus.SystemBus(mainloop=loop)
-        hmgr_iface = dbus.Interface(self.bus.get_object(HAL_SERVICE,
-                                                        HAL_MGR_PATH), HAL_MGR_IFACE)
+        hmgr_iface = dbus.Interface(
+            self.bus.get_object(
+                HAL_SERVICE,
+                HAL_MGR_PATH),
+            HAL_MGR_IFACE)
 
         hmgr_iface.connect_to_signal('DeviceRemoved', self._device_removed_cb)
 
@@ -43,20 +46,28 @@ class RFIDReader(RFIDDevice):
         Checks if RFID-RW-USB device is present.
         Returns True if so, False otherwise.
         """
-        hmgr_if = dbus.Interface(self.bus.get_object(HAL_SERVICE, HAL_MGR_PATH),
-                                 HAL_MGR_IFACE)
-        serialusb_devices = set(hmgr_if.FindDeviceStringMatch('serial.type',
-                                                              'usb')) & set(hmgr_if.FindDeviceStringMatch(
-                                                                  'info.subsystem', 'tty'))
+        hmgr_if = dbus.Interface(
+            self.bus.get_object(
+                HAL_SERVICE,
+                HAL_MGR_PATH),
+            HAL_MGR_IFACE)
+        serialusb_devices = set(
+            hmgr_if.FindDeviceStringMatch(
+                'serial.type', 'usb')) & set(
+            hmgr_if.FindDeviceStringMatch(
+                'info.subsystem', 'tty'))
         for i in serialusb_devices:
             serialusb_if = dbus.Interface(self.bus.get_object(HAL_SERVICE, i),
                                           HAL_DEV_IFACE)
             if serialusb_if.PropertyExists('info.parent'):
                 parent_udi = str(serialusb_if.GetProperty('info.parent'))
-                parent = dbus.Interface(self.bus.get_object(HAL_SERVICE,
-                                                            parent_udi), HAL_DEV_IFACE)
-                if parent.PropertyExists('info.linux.driver') and \
-                        str(parent.GetProperty('info.linux.driver')) == 'ftdi_sio':
+                parent = dbus.Interface(
+                    self.bus.get_object(
+                        HAL_SERVICE,
+                        parent_udi),
+                    HAL_DEV_IFACE)
+                if parent.PropertyExists('info.linux.driver') and str(
+                        parent.GetProperty('info.linux.driver')) == 'ftdi_sio':
                     device = str(serialusb_if.GetProperty('linux.device_file'))
                     ser = Serial(device, 9600, timeout=0.1)
                     ser.read(100)

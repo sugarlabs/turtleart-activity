@@ -379,7 +379,7 @@ class Audio_sensors(Plugin):
             self._parent.lc.update_label_value('pitch', self._pitch[channel])
 
     def prim_resistance(self, channel=0):
-        if not self.hw in [XO1, XO15, XO175, XO30, XO4] or not self._status:
+        if self.hw not in [XO1, XO15, XO175, XO30, XO4] or not self._status:
             return 0
 
         if not self._resistance_init:
@@ -455,7 +455,7 @@ class Audio_sensors(Plugin):
                 self._resistance[channel])
 
     def prim_voltage(self, channel=0):
-        if not self.hw in [XO1, XO15, XO175, XO30, XO4] or not self._status:
+        if self.hw not in [XO1, XO15, XO175, XO30, XO4] or not self._status:
             return 0
 
         if not self._voltage_init:

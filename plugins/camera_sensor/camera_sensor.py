@@ -119,14 +119,14 @@ class Camera_sensor(Plugin):
                                 content_block=True)
 
         # Depreciated block
-        sensors_palette.add_block('read_camera',
-                                  hidden=True,
-                                  style='box-style',
-                                  label=_('brightness'),
-                                  help_string=_(
-                                      'Average RGB color from camera is pushed to the stack'),
-                                  value_block=True,
-                                  prim_name='read_camera')
+        sensors_palette.add_block(
+            'read_camera',
+            hidden=True,
+            style='box-style',
+            label=_('brightness'),
+            help_string=_('Average RGB color from camera is pushed to the stack'),
+            value_block=True,
+            prim_name='read_camera')
         self._parent.lc.def_prim(
             'read_camera', 0,
             Primitive(self.prim_read_camera,
