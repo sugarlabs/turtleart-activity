@@ -83,7 +83,7 @@ def save_logo(tw):
                 logo_command = logo_commands[blk]
             else:
                 logo_command = None
-            if i == 0 and not logo_command in ['to stack1\n', 'to stack2\n',
+            if i == 0 and logo_command not in ['to stack1\n', 'to stack2\n',
                                                'to action', 'to start\n']:
                 this_stack = 'to turtleblocks_%d\n' % (stack_count)
                 stack_count += 1
@@ -99,7 +99,7 @@ def save_logo(tw):
             elif logo_command is not None:
                 this_stack += logo_command
             else:  # assume it is an argument
-                if not blk in ['nop', 'nop1', 'nop2', 'nop3']:
+                if blk not in ['nop', 'nop1', 'nop2', 'nop3']:
                     if isinstance(blk, str) and blk[0:2] == '#s':
                         this_stack += str(blk[2:]).replace(' ', '_')
                     else:

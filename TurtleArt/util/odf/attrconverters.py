@@ -97,8 +97,19 @@ def cnv_duration(attribute, arg, element):
 
 def cnv_family(attribute, arg, element):
     """ A style family """
-    if str(arg) not in ("text", "paragraph", "section", "ruby", "table", "table-column", "table-row", "table-cell",
-                        "graphic", "presentation", "drawing-page", "chart"):
+    if str(arg) not in (
+        "text",
+        "paragraph",
+        "section",
+        "ruby",
+        "table",
+        "table-column",
+        "table-row",
+        "table-cell",
+        "graphic",
+        "presentation",
+        "drawing-page",
+            "chart"):
         raise ValueError("'%s' not allowed" % str(arg))
     return str(arg)
 

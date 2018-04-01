@@ -573,8 +573,15 @@ pensize\nend\n')
                           prim_name='converter')
 
         self.tw.lc.def_prim(
-            'converter', 3,
-            Primitive(self._rgb_converter, return_type=TYPE_FLOAT, arg_descs=[ArgSlot(TYPE_INT), ArgSlot(TYPE_INT), ArgSlot(TYPE_INT)]))
+            'converter',
+            3,
+            Primitive(
+                self._rgb_converter,
+                return_type=TYPE_FLOAT,
+                arg_descs=[
+                    ArgSlot(TYPE_INT),
+                    ArgSlot(TYPE_INT),
+                    ArgSlot(TYPE_INT)]))
 
         # In order to map Turtle Art colors to the standard UCB Logo palette,
         # we need to define a somewhat complex set of functions.

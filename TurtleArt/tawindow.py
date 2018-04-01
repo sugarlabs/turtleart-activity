@@ -420,8 +420,12 @@ class TurtleArtWindow():
         ''' Try importing plugin files from the plugin dir. '''
         paths = set()
 
-        homepath = os.path.join(os.path.expanduser('~'), 'Activities',
-                                os.path.basename(self.lib_path), _PLUGIN_SUBPATH)
+        homepath = os.path.join(
+            os.path.expanduser('~'),
+            'Activities',
+            os.path.basename(
+                self.lib_path),
+            _PLUGIN_SUBPATH)
         if os.path.exists(homepath):
             paths.add(homepath)
 
@@ -443,8 +447,11 @@ class TurtleArtWindow():
                     status = (self.activity.client.get_int(gconf_path) == 1)
                 except BaseException:
                     pass
-                make_checkmenu_item(self.activity._plugin_menu,
-                                    plugin_dir, self.activity._do_toggle_plugin_cb, status)
+                make_checkmenu_item(
+                    self.activity._plugin_menu,
+                    plugin_dir,
+                    self.activity._do_toggle_plugin_cb,
+                    status)
             if status:
                 self.init_plugin(plugin_dir, plugin_path)
                 self.turtleart_favorites_plugins.append(plugin_dir)
@@ -477,7 +484,7 @@ class TurtleArtWindow():
         icon_theme = Gtk.IconTheme.get_default()
         icon_path = os.path.join(dirname, 'icons')
         if os.path.exists(icon_path):
-            if not icon_path in self.icon_paths:
+            if icon_path not in self.icon_paths:
                 icon_theme.append_search_path(icon_path)
                 self.icon_paths.append(icon_path)
 
@@ -612,7 +619,8 @@ class TurtleArtWindow():
                 self.selected_blk.name == 'string':
             bounds = self._text_buffer.get_bounds()
             self._text_buffer.set_text(
-                self._text_buffer.get_text(bounds[0], bounds[1]) + data.data, True)
+                self._text_buffer.get_text(
+                    bounds[0], bounds[1]) + data.data, True)
             self._text_entry.set_buffer(self._text_buffer)
             context.finish(True, False, time)
         else:
@@ -892,7 +900,7 @@ class TurtleArtWindow():
         self.height = Gdk.Screen.height()
 
         for name in OVERLAY_SHAPES:
-            if not name in self.overlay_shapes:
+            if name not in self.overlay_shapes:
                 continue
             shape = self.overlay_shapes[name]
             showing = False
@@ -1278,7 +1286,7 @@ class TurtleArtWindow():
         self.dragging_canvas[1] = x
         self.dragging_canvas[2] = y
         if spr is None:
-            if not self.running_blocks and not self.hw in [XO1]:
+            if not self.running_blocks and self.hw not in [XO1]:
                 self.dragging_canvas[0] = True
                 self.dragging_counter = 0
                 self.dragging_dx = 0
@@ -1721,7 +1729,7 @@ class TurtleArtWindow():
 
         if old in block_styles[style]:
             block_styles[style].remove(old)
-        if not new in block_styles[style]:
+        if new not in block_styles[style]:
             block_styles[style].append(new)
 
         if old in block_names:
@@ -1740,7 +1748,7 @@ class TurtleArtWindow():
 
         if old in palette_blocks[i]:
             palette_blocks[i].remove(old)
-        if not new in palette_blocks[i]:
+        if new not in palette_blocks[i]:
             palette_blocks[i].append(new)
 
         self.show_toolbar_palette(i, regenerate=True)
@@ -1831,7 +1839,7 @@ class TurtleArtWindow():
             if gblk.name in BLOCKS_WITH_SKIN:
                 self._resize_skin(gblk)
 
-        if not 'trash' in palette_names or \
+        if 'trash' not in palette_names or \
                 self.selected_palette != palette_names.index('trash'):
             for gblk in group:
                 gblk.spr.hide()
@@ -4115,8 +4123,8 @@ class TurtleArtWindow():
                 if self.running_sugar:
                     # For security reasons, only open files found in
                     # Python samples directory
-                    if os.path.exists(os.path.join(self.share_path, value)) and \
-                            value[0:9] == 'pysamples':
+                    if os.path.exists(os.path.join(
+                            self.share_path, value)) and value[0:9] == 'pysamples':
                         self.selected_blk = blk
                         self.load_python_code_from_file(
                             fname=os.path.join(self.share_path, value),

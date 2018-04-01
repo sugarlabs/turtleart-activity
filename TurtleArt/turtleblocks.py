@@ -246,9 +246,13 @@ return %s(self)" % (p, P, P)
         else:
             self._autosavedirname = os.path.expanduser('~')
 
-        self.tw = TurtleArtWindow(self.canvas, self._lib_path, self._share_path,
-                                  turtle_canvas=self.turtle_canvas,
-                                  activity=self, running_sugar=False)
+        self.tw = TurtleArtWindow(
+            self.canvas,
+            self._lib_path,
+            self._share_path,
+            turtle_canvas=self.turtle_canvas,
+            activity=self,
+            running_sugar=False)
         self.tw.save_folder = self._abspath  # os.path.expanduser('~')
 
         if hasattr(self, 'client'):

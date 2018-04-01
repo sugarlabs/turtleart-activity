@@ -35,8 +35,11 @@ class RFIDReader(RFIDDevice):
 
         loop = DBusGMainLoop()
         self.bus = dbus.SystemBus(mainloop=loop)
-        hmgr_iface = dbus.Interface(self.bus.get_object(HAL_SERVICE,
-                                                        HAL_MGR_PATH), HAL_MGR_IFACE)
+        hmgr_iface = dbus.Interface(
+            self.bus.get_object(
+                HAL_SERVICE,
+                HAL_MGR_PATH),
+            HAL_MGR_IFACE)
 
         hmgr_iface.connect_to_signal('DeviceRemoved', self._device_removed_cb)
 
@@ -45,11 +48,13 @@ class RFIDReader(RFIDDevice):
         Checks if TI-S2000 device is present.
         Returns True if so, False otherwise.
         """
-        hmgr_if = dbus.Interface(self.bus.get_object(HAL_SERVICE, HAL_MGR_PATH),
-                                 HAL_MGR_IFACE)
-        tiusb_devices = set(hmgr_if.FindDeviceStringMatch('serial.type',
-                                                          'usb')) & set(hmgr_if.FindDeviceStringMatch(
-                                                              'info.product', 'TUSB3410 Microcontroller'))
+        hmgr_if = dbus.Interface(
+            self.bus.get_object(
+                HAL_SERVICE,
+                HAL_MGR_PATH),
+            HAL_MGR_IFACE)
+        tiusb_devices = set(hmgr_if.FindDeviceStringMatch('serial.type', 'usb')) & set(
+            hmgr_if.FindDeviceStringMatch('info.product', 'TUSB3410 Microcontroller'))
         for i in tiusb_devices:
             tiusb_if = dbus.Interface(self.bus.get_object(HAL_SERVICE, i),
                                       HAL_DEV_IFACE)

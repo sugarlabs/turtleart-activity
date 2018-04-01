@@ -223,7 +223,7 @@ class Collaboration():
                 # There may not be a turtle dictionary.
                 if hasattr(self._tw, 'remote_turtle_dictionary'):
                     # Make sure it is not a "rejoin".
-                    if not nick in self._tw.remote_turtle_dictionary:
+                    if nick not in self._tw.remote_turtle_dictionary:
                         # Add new turtle for the joiner.
                         self._tw.turtles.set_turtle(nick, colors)
                         self._tw.label_remote_turtle(nick, colors)
@@ -236,7 +236,7 @@ class Collaboration():
 
         # Sharer should send the updated remote turtle dictionary to everyone.
         if self.initiating:
-            if not self._tw.nick in self._tw.remote_turtle_dictionary:
+            if self._tw.nick not in self._tw.remote_turtle_dictionary:
                 self._tw.remote_turtle_dictionary[self._tw.nick] = \
                     self._get_colors()
             event_payload = data_to_string(self._tw.remote_turtle_dictionary)
@@ -281,9 +281,10 @@ class Collaboration():
             put_pen_back_down = True
         else:
             put_pen_back_down = False
-        self.send_event("x", {"payload": data_to_string([self._get_nick(),
-                                                         [int(self._tw.turtles.get_active_turtle().get_xy()[0]),
-                                                          int(self._tw.turtles.get_active_turtle().get_xy()[1])]])})
+        self.send_event("x",
+                        {"payload": data_to_string([self._get_nick(),
+                                                    [int(self._tw.turtles.get_active_turtle().get_xy()[0]),
+                                                     int(self._tw.turtles.get_active_turtle().get_xy()[1])]])})
         if put_pen_back_down:
             self.send_event("p", {"payload": data_to_string([self._get_nick(),
                                                              True])})

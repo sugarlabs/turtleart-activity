@@ -131,7 +131,7 @@ def _change_user_path(path):
         return None
     if len(path) < 7:
         return None
-    if not '/' in path[6:]:
+    if '/' not in path[6:]:
         return None
     if path[0:5] == '/home' and '/':
         i = path[6:].index('/')

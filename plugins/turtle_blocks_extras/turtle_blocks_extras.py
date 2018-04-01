@@ -234,12 +234,13 @@ Journal'))
                       call_afterwards=lambda value: self.after_set(
                           'scale', value)))
 
-        palette.add_block('setfont',
-                          style='basic-style-1arg',
-                          label=_('set font'),
-                          prim_name='setfont',
-                          default='Sans',
-                          help_string=_('sets the font used by the show block'))
+        palette.add_block(
+            'setfont',
+            style='basic-style-1arg',
+            label=_('set font'),
+            prim_name='setfont',
+            default='Sans',
+            help_string=_('sets the font used by the show block'))
         self.tw.lc.def_prim('setfont', 1,
                             Primitive(self.tw.canvas.set_font,
                                       arg_descs=[ArgSlot(TYPE_STRING)]))
@@ -1264,7 +1265,7 @@ Journal objects'))
 
         pitenv = pitch_envelope
         ampenv = amplitude_envelope
-        if not 1 in self.instrlist:
+        if 1 not in self.instrlist:
             self.orchlines.append("instr 1\n")
             self.orchlines.append("kpitenv oscil 1, 1/p3, p6\n")
             self.orchlines.append("aenv oscil 1, 1/p3, p7\n")

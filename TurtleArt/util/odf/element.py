@@ -346,8 +346,10 @@ class Element(Node):
         if required:
             for r in required:
                 if self.getAttrNS(r[0], r[1]) is None:
-                    raise AttributeError("Required attribute missing: %s in <%s>" % (
-                        r[1].lower().replace('-', ''), self.tagName))
+                    raise AttributeError(
+                        "Required attribute missing: %s in <%s>" %
+                        (r[1].lower().replace(
+                            '-', ''), self.tagName))
 
     def get_knownns(self, prefix):
         """ Odfpy maintains a list of known namespaces. In some cases a prefix is used, and
@@ -509,8 +511,12 @@ class Element(Node):
                         _escape(str(namespace)) + '"')
         for qname in self.attributes.keys():
             prefix = self.get_nsprefix(qname[0])
-            f.write(' ' + _escape(str(prefix + ':' + qname[1])) + '=' + _quoteattr(
-                unicode(self.attributes[qname]).encode('utf-8')))
+            f.write(' ' +
+                    _escape(str(prefix +
+                                ':' +
+                                qname[1])) +
+                    '=' +
+                    _quoteattr(unicode(self.attributes[qname]).encode('utf-8')))
         f.write('>')
 
     def write_close_tag(self, level, f):
@@ -525,8 +531,12 @@ class Element(Node):
                         _escape(str(namespace)) + '"')
         for qname in self.attributes.keys():
             prefix = self.get_nsprefix(qname[0])
-            f.write(' ' + _escape(str(prefix + ':' + qname[1])) + '=' + _quoteattr(
-                unicode(self.attributes[qname]).encode('utf-8')))
+            f.write(' ' +
+                    _escape(str(prefix +
+                                ':' +
+                                qname[1])) +
+                    '=' +
+                    _quoteattr(unicode(self.attributes[qname]).encode('utf-8')))
         if self.childNodes:
             f.write('>')
             for element in self.childNodes:

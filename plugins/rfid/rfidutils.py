@@ -31,7 +31,7 @@ def find_device():
                 _tempmod = __import__('rfid.%s' % i.split('.')[0], globals(),
                                       locals(), ['RFIDReader'], -1)
                 devtemp = _tempmod.RFIDReader()
-                if devtemp.get_present() == True:
+                if devtemp.get_present():
                     device = devtemp
             except Exception as e:
                 # logging.error("FIND_DEVICE: %s: %s"%(i, e))
