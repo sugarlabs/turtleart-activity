@@ -31,7 +31,7 @@ from gi.repository import Gtk
 from gi.repository import Gdk
 from gi.repository import GObject
 from gi.repository import GdkPixbuf
-from gi.repository import GConf
+from gi.repository import Gio
 import logging
 _logger = logging.getLogger('turtleart-activity')
 
@@ -77,9 +77,12 @@ from TurtleArt.util.helpbutton import (HelpButton, add_section, add_paragraph)
 class TurtleArtActivity(activity.Activity):
 
     ''' Activity subclass for Turtle Art '''
-    _HOVER_HELP = '/desktop/sugar/activities/turtleart/hoverhelp'
-    _ORIENTATION = '/desktop/sugar/activities/turtleart/orientation'
-    _COORDINATE_SCALE = '/desktop/sugar/activities/turtleart/coordinatescale'
+
+    _GIO_SETTINGS = 'org.laptop.TurtleArtActivity'
+    _HOVER_HELP = 'hover-help'
+    _ORIENTATION = 'palette-orientation'
+    _COORDINATE_SCALE = 'coordinate-scale'
+    _PLUGINS_LIST = 'plugins-list'
 
     def __init__(self, handle):
         ''' Set up the toolbars, canvas, sharing, etc. '''
@@ -144,10 +147,10 @@ class TurtleArtActivity(activity.Activity):
         # Now called from lazy_init
         # self.check_buttons_for_fit()
 
-        self.client = GConf.Client.get_default()
-        if self.client.get_int(self._HOVER_HELP) == 1:
+        self._settings = self._get_local_settings()
+        if self._settings.get_int(self._HOVER_HELP) == 1:
             self._do_hover_help_toggle(None)
-        if self.client.get_int(self._COORDINATE_SCALE) not in [0, 1]:
+        if self._settings.get_int(self._COORDINATE_SCALE) not in [0, 1]:
             self.tw.coord_scale = 1
             self.do_rescale_cb(None)
         else:
@@ -159,11 +162,33 @@ class TurtleArtActivity(activity.Activity):
 
         self.init_complete = True
 
+    def _get_local_settings(self):
+        """ return an activity-specific Gio.Settings
+        """
+        # create schemas directory if missing
+        path = os.path.join(self.bundle_path, 'schemas')
+        if not os.access(path, os.F_OK):
+            os.makedirs(path)
+
+        # create compiled schema file if missing
+        compiled = os.path.join(path, 'gschemas.compiled')
+        if not os.access(compiled, os.R_OK):
+            src = '%s.gschema.xml' % self._GIO_SETTINGS
+            lines = open(os.path.join(self.bundle_path, src), 'r').readlines()
+            open(os.path.join(path, src), 'w').writelines(lines)
+            os.system('glib-compile-schemas %s' % path)
+            os.remove(os.path.join(path, src))
+
+        # create a local Gio.Settings based on the compiled schema
+        source = Gio.SettingsSchemaSource.new_from_directory(path, None, True)
+        schema = source.lookup(self._GIO_SETTINGS, True)
+        _settings = Gio.Settings.new_full(schema, None, None)
+        return _settings
+
     def update_palette_from_metadata(self):
         # We have to wait to set the orientation for the palettes
         # to be loaded.
-        self.client = GConf.Client.get_default()
-        if self.client.get_int(self._ORIENTATION) == 1:
+        if self._settings.get_int(self._ORIENTATION) == 1:
             self.tw.set_orientation(1)
 
         if 'palette' in self.metadata:
@@ -457,7 +482,7 @@ class TurtleArtActivity(activity.Activity):
             self.tw.no_help = False
             self._hover_help_toggle.set_icon_name('help-off')
             self._hover_help_toggle.set_tooltip(_('Turn off hover help'))
-            self.client.set_int(self._HOVER_HELP, 0)
+            self._settings.set_int(self._HOVER_HELP, 0)
         else:
             self.tw.no_help = True
             self.tw.last_label = None
@@ -465,7 +490,7 @@ class TurtleArtActivity(activity.Activity):
                 self.tw.status_spr.hide()
             self._hover_help_toggle.set_icon_name('help-on')
             self._hover_help_toggle.set_tooltip(_('Turn on hover help'))
-            self.client.set_int(self._HOVER_HELP, 1)
+            self._settings.set_int(self._HOVER_HELP, 1)
 
     # These methods are called both from toolbar buttons and blocks.
 
@@ -663,7 +688,7 @@ class TurtleArtActivity(activity.Activity):
             default_values['setpensize'] = [5]
             self.tw.turtles.get_active_turtle().set_pen_size(5)
 
-        self.client.set_int(self._COORDINATE_SCALE, self.tw.coord_scale)
+        self._settings.set_int(self._COORDINATE_SCALE, self.tw.coord_scale)
 
         self.tw.recalculate_constants()
 
@@ -1361,7 +1386,7 @@ class TurtleArtActivity(activity.Activity):
         else:
             self.metadata['palette'] = '-1'
         self.metadata['orientation'] = str(self.tw.orientation)
-        self.client.set_int(self._ORIENTATION, self.tw.orientation)
+        self._settings.set_int(self._ORIENTATION, self.tw.orientation)
         if len(self.error_list) > 0:
             errors = []
             if 'error_list' in self.metadata:

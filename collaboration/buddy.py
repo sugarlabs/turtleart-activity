@@ -17,7 +17,6 @@
 
 import logging
 
-from gi.repository import GConf
 import dbus
 from telepathy.client import Connection
 from telepathy.interfaces import CONNECTION
@@ -94,10 +93,7 @@ class OwnerBuddyModel(BaseBuddyModel):
     def __init__(self):
         BaseBuddyModel.__init__(self)
 
-        # client = gconf.client_get_default()
-        # self.props.nick = client.get_string('/desktop/sugar/user/nick')
         self.props.nick = "rgs"
-        # color = client.get_string('/desktop/sugar/user/color')
         self.props.color = XoColor(None)
 
         # self.props.key = get_profile().pubkey
