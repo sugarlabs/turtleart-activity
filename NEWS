@@ -1,3 +1,6 @@
+217
+* migrate from GConf to Gio.Settings (walter)
+
 216
 * conversion to GTK3 (zeecoder)
 * update repository field in activity.info
