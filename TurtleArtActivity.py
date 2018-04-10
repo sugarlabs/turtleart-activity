@@ -147,7 +147,7 @@ class TurtleArtActivity(activity.Activity):
         # Now called from lazy_init
         # self.check_buttons_for_fit()
 
-        self._settings = self._get_local_settings()
+        self._settings = self._get_local_settings(activity.get_activity_root())
         if self._settings.get_int(self._HOVER_HELP) == 1:
             self._do_hover_help_toggle(None)
         if self._settings.get_int(self._COORDINATE_SCALE) not in [0, 1]:
@@ -162,11 +162,11 @@ class TurtleArtActivity(activity.Activity):
 
         self.init_complete = True
 
-    def _get_local_settings(self):
+    def _get_local_settings(self, activity_root):
         """ return an activity-specific Gio.Settings
         """
         # create schemas directory if missing
-        path = os.path.join(self.bundle_path, 'schemas')
+        path = os.path.join(activity_root, 'data', 'schemas')
         if not os.access(path, os.F_OK):
             os.makedirs(path)
 

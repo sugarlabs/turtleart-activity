@@ -139,7 +139,7 @@ class TurtleMain():
         """ return an activity-specific Gio.Settings
         """
         # create schemas directory if missing
-        path = os.path.join(activity_root, 'schemas')
+        path = os.path.join(get_path(None, 'data'), 'schemas')
         if not os.access(path, os.F_OK):
             os.makedirs(path)
 
