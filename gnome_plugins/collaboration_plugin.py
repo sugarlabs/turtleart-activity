@@ -27,7 +27,7 @@ import os.path
 import dbus
 from gettext import gettext as _
 
-from plugin import Plugin
+from .plugin import Plugin
 
 from TurtleArt.util.menubuilder import make_menu_item, make_sub_menu
 from TurtleArt.util.configfile import ConfigFile
@@ -198,7 +198,7 @@ class Collaboration_plugin(Plugin):
         try:
             self._activities.pop(activity_model.props.name)
         except BaseException:
-            print 'Failed to remove activity %s' % activity_model.props.name
+            print('Failed to remove activity %s' % activity_model.props.name)
 
         self._recreate_available_activities_menu()
 
@@ -210,7 +210,7 @@ class Collaboration_plugin(Plugin):
         try:
             self._buddies.pop(buddy.get_key())
         except BaseException:
-            print "Couldn't remove buddy %s" % buddy.get_key()
+            print("Couldn't remove buddy %s" % buddy.get_key())
         self._recreate_available_buddies_menu()
 
     # TODO: we should have a list of available actions over
@@ -221,7 +221,7 @@ class Collaboration_plugin(Plugin):
         for child in self._buddies_submenu.get_children():
             self._buddies_submenu.remove(child)
 
-        for buddy in self._buddies.values():
+        for buddy in list(self._buddies.values()):
             key = buddy.get_key()
             if key is None:
                 key = ''
@@ -230,7 +230,7 @@ class Collaboration_plugin(Plugin):
                            self._buddy_actions_cb, buddy)
 
     def _buddy_actions_cb(self, widget, buddy):
-        print 'do something with %s' % buddy.get_nick()
+        print('do something with %s' % buddy.get_nick())
 
     # TODO:
     #     we need an extra menu branch with a) 'Join' button b) List of buddies
@@ -238,13 +238,13 @@ class Collaboration_plugin(Plugin):
         for child in self._activities_submenu.get_children():
             self._activities_submenu.remove(child)
 
-        for activity in self._activities.values():
+        for activity in list(self._activities.values()):
             n = activity.props.name
             make_menu_item(self._activities_submenu, n,
                            self._join_activity_cb, activity)
 
     def _join_activity_cb(self, widget, activity):
-        print 'Lets try to join...'
+        print('Lets try to join...')
 
         connection_manager = get_connection_manager()
         account_path, connection = \
@@ -256,14 +256,14 @@ class Collaboration_plugin(Plugin):
         properties = {}
         properties['id'] = activity.activity_id
         properties['color'] = activity.get_color()
-        print 'room handle according to activity %s' % activity.room_handle
+        print('room handle according to activity %s' % activity.room_handle)
         properties['private'] = True
 
         try:
             room_handle = connection.GetActivity(
                 activity.activity_id,
                 dbus_interface=CONNECTION_INTERFACE_ACTIVITY_PROPERTIES)
-            print('room_handle = %s' % str(room_handle))
+            print(('room_handle = %s' % str(room_handle)))
             self._joined_activity = Activity(
                 account_path, connection, room_handle, properties=properties)
             # FIXME: this should be unified, no need to keep 2 references
@@ -279,7 +279,7 @@ class Collaboration_plugin(Plugin):
         self._joined_activity.join()
 
     def __joined_cb(self, activity, success, err):
-        print "We've joined an activity"
+        print("We've joined an activity")
         self.emit('joined')
 
     def _config_neighborhood_cb(self, widget):
@@ -345,8 +345,8 @@ class Collaboration_plugin(Plugin):
 
     def __share_activity_error_cb(self, activity, error):
         """Notify with GObject event of unsuccessful sharing of activity"""
-        print '%s got error: %s' % (activity, error)
+        print('%s got error: %s' % (activity, error))
 
 
 if __name__ == '__main__':
-    print 'testing collaboration'
+    print('testing collaboration')

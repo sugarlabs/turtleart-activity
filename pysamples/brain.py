@@ -99,7 +99,7 @@ Close other activities and try once more.'))
             return kernel
 
         kernel.loadBrain(brain['brain'])
-        for name, value in brain['predicates'].items():
+        for name, value in list(brain['predicates'].items()):
             kernel.setBotPredicate(name, value)
 
         return kernel

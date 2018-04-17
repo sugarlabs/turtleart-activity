@@ -51,7 +51,7 @@ _logger.debug('Started Sugar3')
 import os
 import tarfile
 import subprocess
-import ConfigParser
+import configparser
 import shutil
 import tempfile
 

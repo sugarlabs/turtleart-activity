@@ -7,6 +7,7 @@ aren't handled by the core weakref module).
 
 import weakref
 import traceback
+import collections
 
 
 def safeRef(target, onDelete=None):
@@ -21,7 +22,7 @@ def safeRef(target, onDelete=None):
         weakref or a BoundMethodWeakref) as argument.
     """
     if hasattr(target, 'im_self'):
-        if target.im_self is not None:
+        if target.__self__ is not None:
             # Turn a bound method into a BoundMethodWeakref instance.
             # Keep track of these instances for lookup by disconnect().
             if not hasattr(target, 'im_func'):
@@ -31,7 +32,7 @@ def safeRef(target, onDelete=None):
             reference = get_bound_method_weakref(target=target,
                                                  onDelete=onDelete)
             return reference
-    if callable(onDelete):
+    if isinstance(onDelete, collections.Callable):
         return weakref.ref(target, onDelete)
     else:
         return weakref.ref(target)
@@ -121,20 +122,20 @@ class BoundMethodWeakref(object):
                 pass
             for function in methods:
                 try:
-                    if callable(function):
+                    if isinstance(function, collections.Callable):
                         function(self)
                 except Exception as e:
                     try:
                         traceback.print_exc()
                     except AttributeError:
-                        print ('Exception during saferef %s cleanup function'
-                               ' %s: %s' % (self, function, e))
+                        print(('Exception during saferef %s cleanup function'
+                               ' %s: %s' % (self, function, e)))
         self.deletionMethods = [onDelete]
         self.key = self.calculateKey(target)
-        self.weakSelf = weakref.ref(target.im_self, remove)
-        self.weakFunc = weakref.ref(target.im_func, remove)
-        self.selfName = str(target.im_self)
-        self.funcName = str(target.im_func.__name__)
+        self.weakSelf = weakref.ref(target.__self__, remove)
+        self.weakFunc = weakref.ref(target.__func__, remove)
+        self.selfName = str(target.__self__)
+        self.funcName = str(target.__func__.__name__)
 
     def calculateKey(cls, target):
         """Calculate the reference key for this reference
@@ -142,7 +143,7 @@ class BoundMethodWeakref(object):
         Currently this is a two-tuple of the id()'s of the
         target object and the target function respectively.
         """
-        return (id(target.im_self), id(target.im_func))
+        return (id(target.__self__), id(target.__func__))
     calculateKey = classmethod(calculateKey)
 
     def __str__(self):
@@ -152,7 +153,7 @@ class BoundMethodWeakref(object):
 
     __repr__ = __str__
 
-    def __nonzero__(self):
+    def __bool__(self):
         """Whether we are still a valid reference"""
         return self() is not None
 
@@ -213,9 +214,9 @@ class BoundNonDescriptorMethodWeakref(BoundMethodWeakref):
             collected).  Should take a single argument,
             which will be passed a pointer to this object.
         """
-        assert getattr(target.im_self, target.__name__) == target, \
+        assert getattr(target.__self__, target.__name__) == target, \
             ("method %s isn't available as the attribute %s of %s" %
-             (target, target.__name__, target.im_self))
+             (target, target.__name__, target.__self__))
         super(BoundNonDescriptorMethodWeakref, self).__init__(target, onDelete)
 
     def __call__(self):

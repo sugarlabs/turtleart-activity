@@ -146,7 +146,7 @@ class Rfid(Plugin):
         self.rfid_idn = strbin2dec(idbin[26:64])
         while self.rfid_idn.__len__() < 9:
             self.rfid_idn = '0' + self.rfid_idn
-        print tagid, idbin, self.rfid_idn
+        print(tagid, idbin, self.rfid_idn)
         self.tw.lc.update_label_value('rfid', self.rfid_idn)
 
     # Block primitives used in talogo

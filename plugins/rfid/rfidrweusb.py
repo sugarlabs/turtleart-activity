@@ -1,10 +1,10 @@
-from device import RFIDDevice
-from serial import Serial
+from .device import RFIDDevice
+from .serial import Serial
 import dbus
 from dbus.mainloop.glib import DBusGMainLoop
 import gobject
 from time import sleep
-import utils
+from . import utils
 
 HAL_SERVICE = 'org.freedesktop.Hal'
 HAL_MGR_PATH = '/org/freedesktop/Hal/Manager'

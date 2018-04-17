@@ -25,11 +25,11 @@ escapedChar = 5
 
 class RtfParser(object):
 
-    def __init__(self, unicode=False):
+    def __init__(self, str=False):
         self.state = plaintext
         self.arg = ''
         self.token = ''
-        self.unicode = unicode
+        self.str = str
         self.par = False
         self.output = ''
 

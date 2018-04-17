@@ -26,15 +26,15 @@ from os import linesep
 from os import path, pardir
 import re
 import traceback
-import util.codegen as codegen
+from . import util.codegen as codegen
 
 # from ast_pprint import * # only used for debugging, safe to comment out
 
-from talogo import LogoCode
-from taprimitive import (ast_yield_true, Primitive, PyExportError,
-                         value_to_ast)
-from tautils import (find_group, find_top_block, get_stack_name)
-from tawindow import plugins_in_use
+from .talogo import LogoCode
+from .taprimitive import (ast_yield_true, Primitive, PyExportError,
+                          value_to_ast)
+from .tautils import (find_group, find_top_block, get_stack_name)
+from .tawindow import plugins_in_use
 
 
 _SETUP_CODE_START = """\
@@ -162,7 +162,7 @@ def _action_stack_to_python(block, tw, name='start'):
 
     if isinstance(name, int):
         name = float(name)
-    if not isinstance(name, basestring):
+    if not isinstance(name, str):
         name = str(name)
 
     # traverse the block stack and get the AST for every block

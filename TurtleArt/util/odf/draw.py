@@ -18,8 +18,8 @@
 # Contributor(s):
 #
 
-from namespaces import DRAWNS, STYLENS, PRESENTATIONNS
-from element import Element
+from .namespaces import DRAWNS, STYLENS, PRESENTATIONNS
+from .element import Element
 
 
 def StyleRefElement(stylename=None, classnames=None, **args):
@@ -27,18 +27,18 @@ def StyleRefElement(stylename=None, classnames=None, **args):
     if stylename is not None:
         f = stylename.getAttrNS(STYLENS, 'family')
         if f == 'graphic':
-            qattrs[(DRAWNS, u'style-name')] = stylename
+            qattrs[(DRAWNS, 'style-name')] = stylename
         elif f == 'presentation':
-            qattrs[(PRESENTATIONNS, u'style-name')] = stylename
+            qattrs[(PRESENTATIONNS, 'style-name')] = stylename
         else:
             raise ValueError(
                 "Style's family must be either 'graphic' or 'presentation'")
     if classnames is not None:
         f = classnames[0].getAttrNS(STYLENS, 'family')
         if f == 'graphic':
-            qattrs[(DRAWNS, u'class-names')] = classnames
+            qattrs[(DRAWNS, 'class-names')] = classnames
         elif f == 'presentation':
-            qattrs[(PRESENTATIONNS, u'class-names')] = classnames
+            qattrs[(PRESENTATIONNS, 'class-names')] = classnames
         else:
             raise ValueError(
                 "Style's family must be either 'graphic' or 'presentation'")

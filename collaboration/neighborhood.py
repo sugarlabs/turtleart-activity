@@ -42,10 +42,10 @@ from telepathy.constants import (HANDLE_TYPE_CONTACT,
                                  CONNECTION_STATUS_DISCONNECTED)
 from telepathy.client import Connection, Channel
 
-from buddy import get_owner_instance
-from buddy import BuddyModel
+from .buddy import get_owner_instance
+from .buddy import BuddyModel
 
-from xocolor import XoColor
+from .xocolor import XoColor
 from gi.repository import GObject
 
 ACCOUNT_MANAGER_SERVICE = 'org.freedesktop.Telepathy.AccountManager'
@@ -251,12 +251,12 @@ class _Account(GObject.GObject):
 
     def _prepare_connection(self, connection_path):
         connection_name = connection_path.replace('/', '.')[1:]
-        print("Preparing %s" % connection_name)
+        print(("Preparing %s" % connection_name))
         self._connection = Connection(connection_name, connection_path,
                                       ready_handler=self.__connection_ready_cb)
 
     def __connection_ready_cb(self, connection):
-        print('_Account.__connection_ready_cb %r', connection.object_path)
+        print(('_Account.__connection_ready_cb %r', connection.object_path))
         connection.connect_to_signal('StatusChanged',
                                      self.__status_changed_cb)
 
@@ -286,11 +286,13 @@ class _Account(GObject.GObject):
                                       'Connection.GetSelfHandle'))
             self.emit('connected')
         else:
-            for contact_handle, contact_id in self._buddy_handles.items():
+            for contact_handle, contact_id in list(
+                    self._buddy_handles.items()):
                 if contact_id is not None:
                     self.emit('buddy-removed', contact_id)
 
-            for room_handle, activity_id in self._activity_handles.items():
+            for room_handle, activity_id in list(
+                    self._activity_handles.items()):
                 self.emit('activity-removed', activity_id)
 
             self._buddy_handles = {}
@@ -340,8 +342,8 @@ class _Account(GObject.GObject):
             connection.connect_to_signal('CurrentActivityChanged',
                                          self.__current_activity_changed_cb)
         else:
-            print('Connection %s does not support OLPC buddy '
-                  'properties', self._connection.object_path)
+            print(('Connection %s does not support OLPC buddy '
+                   'properties', self._connection.object_path))
             pass
 
         if CONNECTION_INTERFACE_ACTIVITY_PROPERTIES in self._connection:
@@ -351,8 +353,8 @@ class _Account(GObject.GObject):
                 'ActivityPropertiesChanged',
                 self.__activity_properties_changed_cb)
         else:
-            print('Connection %s does not support OLPC activity '
-                  'properties', self._connection.object_path)
+            print(('Connection %s does not support OLPC activity '
+                   'properties', self._connection.object_path))
             pass
 
         properties = {
@@ -391,7 +393,7 @@ class _Account(GObject.GObject):
 
     def __presences_changed_cb(self, presences):
         # print('_Account.__presences_changed_cb %r', presences)
-        for handle, presence in presences.iteritems():
+        for handle, presence in presences.items():
             if handle in self._buddy_handles:
                 presence_type, status_, message_ = presence
                 if presence_type == CONNECTION_PRESENCE_TYPE_OFFLINE:
@@ -551,7 +553,7 @@ class _Account(GObject.GObject):
         # print('_Account.__get_contact_attributes_cb %r',
         #              attributes.keys())
 
-        for handle in attributes.keys():
+        for handle in list(attributes.keys()):
             nick = attributes[handle][CONNECTION_INTERFACE_ALIASING + '/alias']
 
             if handle in self._buddy_handles and \
@@ -664,17 +666,17 @@ class Neighborhood(GObject.GObject):
                             error_handler=self.__error_handler_cb)
 
     def show_buddies(self):
-        print "\n\nBuddy list\n\n"
-        for k in self._nicks.keys():
+        print("\n\nBuddy list\n\n")
+        for k in list(self._nicks.keys()):
             try:
-                print "%s = %s" % (k, self._nicks[k])
+                print("%s = %s" % (k, self._nicks[k]))
             except BaseException:
                 pass
 
-        print "\n\nActivities list\n\n"
-        for k in self._activities.keys():
+        print("\n\nActivities list\n\n")
+        for k in list(self._activities.keys()):
             try:
-                print "%s" % k
+                print("%s" % k)
             except BaseException:
                 pass
 
@@ -755,8 +757,8 @@ class Neighborhood(GObject.GObject):
                 properties = obj_acct_mgr.Get(ACCOUNT, 'Parameters')
                 if "server" in properties and \
                         properties["server"] == self._server:
-                    print("Enabiling account_path = %s, server = %s",
-                          account_path, self._server)
+                    print(("Enabiling account_path = %s, server = %s",
+                           account_path, self._server))
                     account = _Account(account_path)
                     account.enable()
                     return account
@@ -896,11 +898,11 @@ class Neighborhood(GObject.GObject):
         self._activities[activity_id] = activity
 
     def __activity_updated_cb(self, account, activity_id, properties):
-        print('__activity_updated_cb %r %r', activity_id, properties)
+        print(('__activity_updated_cb %r %r', activity_id, properties))
         if activity_id not in self._activities:
-            print(
+            print((
                 '__activity_updated_cb: Unknown activity with activity_id %r',
-                activity_id)
+                activity_id))
             return
 
         # we should somehow emulate this and say we only have TurtleArtActivity
@@ -929,14 +931,14 @@ class Neighborhood(GObject.GObject):
             activity.props.bundle = properties['type']
 
         if is_new:
-            print "The activity is new"
+            print("The activity is new")
             self.emit('activity-added', activity)
         else:
-            print "The activity is *NOT* new"
+            print("The activity is *NOT* new")
 
     def __activity_removed_cb(self, account, activity_id):
         if activity_id not in self._activities:
-            print('Unknown activity with id %s. Already removed?', activity_id)
+            print(('Unknown activity with id %s. Already removed?', activity_id))
             return
         activity = self._activities[activity_id]
         del self._activities[activity_id]
@@ -995,16 +997,16 @@ class Neighborhood(GObject.GObject):
         self._activities[activity_id].remove_buddy(self._buddies[contact_id])
 
     def get_buddies(self):
-        return self._buddies.values()
+        return list(self._buddies.values())
 
     def get_buddy_by_key(self, key):
-        for buddy in self._buddies.values():
+        for buddy in list(self._buddies.values()):
             if buddy.key == key:
                 return buddy
         return None
 
     def get_buddy_by_handle(self, contact_handle):
-        for buddy in self._buddies.values():
+        for buddy in list(self._buddies.values()):
             if not buddy.is_owner() and buddy.handle == contact_handle:
                 return buddy
         return None
@@ -1013,13 +1015,13 @@ class Neighborhood(GObject.GObject):
         return self._activities.get(activity_id, None)
 
     def get_activity_by_room(self, room_handle):
-        for activity in self._activities.values():
+        for activity in list(self._activities.values()):
             if activity.room_handle == room_handle:
                 return activity
         return None
 
     def get_activities(self):
-        return self._activities.values()
+        return list(self._activities.values())
 
 
 _neighborhood = None

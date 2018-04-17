@@ -93,7 +93,7 @@ def save_logo(tw):
                         psuedocode[i + 1])
                     skip = True
                 else:
-                    print 'missing arg to %s' % (logo_command)
+                    print('missing arg to %s' % (logo_command))
             elif logo_command in constants_table:
                 this_stack += str(constants_table[logo_command](tw))
             elif logo_command is not None:
@@ -110,7 +110,7 @@ def save_logo(tw):
         logocode += '\nend\n'
 
     # We may need to prepend some additional procedures.
-    for key in logo_functions.iterkeys():
+    for key in logo_functions.keys():
         if key in logocode:
             logocode = logo_functions[key] + logocode
 
