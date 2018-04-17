@@ -235,7 +235,7 @@ class Color(object):
         if isinstance(other, Color):
             return (self.color == other.color and self.shade == other.shade
                     and self.gray == other.gray)
-        elif isinstance(other, (int, float, long)):
+        elif isinstance(other, (int, float)):
             return int(self) == other
         # * a basestring that equals str(self)
         # elif isinstance(other, basestring):
@@ -250,9 +250,9 @@ class Color(object):
         * a string that appears before the underscore in the ASCII table """
         if isinstance(other, Color):
             return str(self) < str(other)
-        elif isinstance(other, (int, float, long)):
+        elif isinstance(other, (int, float)):
             return int(self) < other
-        elif isinstance(other, basestring):
+        elif isinstance(other, str):
             return '_' + str(self) < other
         else:
             return False
@@ -264,9 +264,9 @@ class Color(object):
         * a string that appears after the underscore in the ASCII table """
         if isinstance(other, Color):
             return str(self) > str(other)
-        elif isinstance(other, (int, float, long)):
+        elif isinstance(other, (int, float)):
             return int(self) > other
-        elif isinstance(other, basestring):
+        elif isinstance(other, str):
             return '_' + str(self) > other
         else:
             return False

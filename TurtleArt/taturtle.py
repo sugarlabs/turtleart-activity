@@ -26,13 +26,13 @@ import tempfile
 from gi.repository import GObject
 from random import uniform
 from math import sin, cos, pi, sqrt
-from taconstants import (TURTLE_LAYER, DEFAULT_TURTLE_COLORS, DEFAULT_TURTLE,
-                         CONSTANTS, Color, ColorObj)
-from tasprite_factory import SVG, svg_str_to_pixbuf
-from tacanvas import wrap100, COLOR_TABLE
-from sprites import Sprite
-from tautils import (debug_output, data_to_string, round_int, get_path,
-                     image_to_base64)
+from .taconstants import (TURTLE_LAYER, DEFAULT_TURTLE_COLORS, DEFAULT_TURTLE,
+                          CONSTANTS, Color, ColorObj)
+from .tasprite_factory import SVG, svg_str_to_pixbuf
+from .tacanvas import wrap100, COLOR_TABLE
+from .sprites import Sprite
+from .tautils import (debug_output, data_to_string, round_int, get_path,
+                      image_to_base64)
 from TurtleArt.talogo import logoerror
 
 SHAPES = 36

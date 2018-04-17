@@ -23,7 +23,9 @@
 
 import os
 import tempfile
-import urllib2
+import urllib.request
+import urllib.error
+import urllib.parse
 from time import time, sleep
 from operator import isNumberType
 from os.path import exists as os_path_exists
@@ -34,25 +36,26 @@ from gi.repository import GObject
 from gi.repository import GdkPixbuf
 
 from sugar3.graphics import style
+import collections
 GRID_CELL_SIZE = style.GRID_CELL_SIZE
 
 USER_HOME = os.path.expanduser('~')
 
 import traceback
 
-from tablock import (Block, Media, media_blocks_dictionary)
-from taconstants import (TAB_LAYER, DEFAULT_SCALE, ICON_SIZE, Color)
-from tajail import (myfunc, myfunc_import)
-from tapalette import (block_names, value_blocks)
-from tatype import (TATypeError, TYPES_NUMERIC)
-from tautils import (get_pixbuf_from_journal, data_from_file, get_stack_name,
-                     movie_media_type, audio_media_type, image_media_type,
-                     text_media_type, round_int, debug_output, find_group,
-                     get_path, image_to_base64, data_to_string, data_to_file,
-                     get_load_name, chooser_dialog)
+from .tablock import (Block, Media, media_blocks_dictionary)
+from .taconstants import (TAB_LAYER, DEFAULT_SCALE, ICON_SIZE, Color)
+from .tajail import (myfunc, myfunc_import)
+from .tapalette import (block_names, value_blocks)
+from .tatype import (TATypeError, TYPES_NUMERIC)
+from .tautils import (get_pixbuf_from_journal, data_from_file, get_stack_name,
+                      movie_media_type, audio_media_type, image_media_type,
+                      text_media_type, round_int, debug_output, find_group,
+                      get_path, image_to_base64, data_to_string, data_to_file,
+                      get_load_name, chooser_dialog)
 
 try:
-    from util.RtfParser import RtfTextOnly
+    from .util.RtfParser import RtfTextOnly
     RTFPARSE = True
 except ImportError:
     RTFPARSE = False
@@ -260,7 +263,7 @@ class LogoCode:
             self._save_all_connections.append(
                 {'blk': b, 'connections': tmp})
 
-        for k in self.stacks.keys():
+        for k in list(self.stacks.keys()):
             self.stacks[k] = None
         self.stacks['stack1'] = None
         self.stacks['stack2'] = None
@@ -624,7 +627,7 @@ class LogoCode:
                         return False
                     if self.tw.running_turtleart:
                         try:
-                            self.step.next()
+                            next(self.step)
                         except ValueError:
                             debug_output('generator already executing',
                                          self.tw.running_sugar)
@@ -651,7 +654,7 @@ class LogoCode:
                             raise logoerror("#emptyheap")
                     else:
                         try:
-                            self.step.next()
+                            next(self.step)
                         except BaseException as error:
                             if isinstance(error, (StopIteration,
                                                   logoerror)):
@@ -773,7 +776,7 @@ class LogoCode:
             once more OR a callable that returns such an iterator
         blklist -- list of callables that form the loop body """
         if not hasattr(controller, "next"):
-            if callable(controller):
+            if isinstance(controller, collections.Callable):
                 controller = controller()
             else:
                 raise TypeError("a loop controller must be either an iterator "
@@ -882,7 +885,7 @@ class LogoCode:
         #     return (name, True)
         else:
             # make sure '5' and '5.0' point to the same box
-            if isinstance(name, (basestring, int, long)):
+            if isinstance(name, (str, int)):
                 try:
                     name = float(name)
                 except ValueError:
@@ -915,7 +918,7 @@ class LogoCode:
             return name
         else:
             # make sure '5' and '5.0' point to the same action stack
-            if isinstance(name, (int, long, float)):
+            if isinstance(name, (int, float)):
                 if int(name) == name:
                     name = int(name)
                 else:
@@ -1181,12 +1184,12 @@ class LogoCode:
             url = "http://" + url  # assume HTTP
 
         try:
-            req = urllib2.urlopen(url)
-        except urllib2.HTTPError as e:
+            req = urllib.request.urlopen(url)
+        except urllib.error.HTTPError as e:
             debug_output("Couldn't open %s: %s" % (url, e),
                          self.tw.running_sugar)
             raise logoerror(url + ' [%d]' % (e.code))
-        except urllib2.URLError as e:
+        except urllib.error.URLError as e:
             if hasattr(e, 'code'):
                 debug_output("Couldn't open %s: %s" % (url, e),
                              self.tw.running_sugar)
@@ -1312,7 +1315,7 @@ class LogoCode:
             if self.dsobject is not None:
                 self.dsobject.destroy()
 
-        elif isinstance(obj, (basestring, float, int)):  # text or number
+        elif isinstance(obj, (str, float, int)):  # text or number
             if isinstance(obj, (float, int)):
                 obj = round_int(obj)
 

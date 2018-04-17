@@ -77,7 +77,9 @@ class TubeConnection(Connection):
 
     def close(self):
         self._dbus_names_changed_match.remove()
-        self._on_dbus_names_changed(self.tube_id, (), self.participants.keys())
+        self._on_dbus_names_changed(
+            self.tube_id, (), list(
+                self.participants.keys()))
         super(TubeConnection, self).close()
 
     def _on_get_dbus_names_reply(self, names):
@@ -111,6 +113,6 @@ class TubeConnection(Connection):
             # GetDBusNames already returned: fake a participant add event
             # immediately
             added = []
-            for k, v in self.participants.iteritems():
+            for k, v in self.participants.items():
                 added.append((k, v))
             callback(added, [])

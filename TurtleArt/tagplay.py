@@ -37,7 +37,7 @@ GObject.threads_init()
 Gst.init(None)
 
 
-from tautils import error_output, debug_output
+from .tautils import error_output, debug_output
 
 
 def play_audio_from_file(lc, file_path):

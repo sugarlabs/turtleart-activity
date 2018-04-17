@@ -503,13 +503,13 @@ def check_output(command, warning):
             log.warning(warning)
             return None
     else:
-        import commands
+        import subprocess
 
         cmd = ''
         for c in command:
             cmd += c
             cmd += ' '
-        (status, output) = commands.getstatusoutput(cmd)
+        (status, output) = subprocess.getstatusoutput(cmd)
         if status != 0:
             log.warning(warning)
             return None

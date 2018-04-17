@@ -112,7 +112,7 @@ class FileLike(object):
         pass
 
     # iterator for e.g. "for line in Serial(0): ..." usage
-    def next(self):
+    def __next__(self):
         line = self.readline()
         if not line:
             raise StopIteration
@@ -259,7 +259,7 @@ class SerialBase(FileLike):
         if port is not None:
             if type(port) in [
                     type(''),
-                    type(u'')]:  # strings are taken directly
+                    type('')]:  # strings are taken directly
                 self.portstr = port
             else:
                 self.portstr = self.makeDeviceName(port)
@@ -474,9 +474,9 @@ class SerialBase(FileLike):
 
 if __name__ == '__main__':
     s = SerialBase()
-    print s.portstr
-    print s.getSupportedBaudrates()
-    print s.getSupportedByteSizes()
-    print s.getSupportedParities()
-    print s.getSupportedStopbits()
-    print s
+    print(s.portstr)
+    print(s.getSupportedBaudrates())
+    print(s.getSupportedByteSizes())
+    print(s.getSupportedParities())
+    print(s.getSupportedStopbits())
+    print(s)

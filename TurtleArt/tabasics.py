@@ -100,17 +100,17 @@ the others. (This is the default icon size for Sugar toolbars.)
 from time import time
 from gettext import gettext as _
 
-from tapalette import (make_palette, define_logo_function)
-from talogo import primitive_dictionary
-from taconstants import (
+from .tapalette import (make_palette, define_logo_function)
+from .talogo import primitive_dictionary
+from .taconstants import (
     Color,
     CONSTANTS,
     DEFAULT_BACKGROUND_COLOR_SHADE_GRAY)
-from taprimitive import (ArgSlot, ConstantArg, or_, Primitive)
-from tatype import (TYPE_BOOL, TYPE_BOX, TYPE_CHAR, TYPE_COLOR, TYPE_FLOAT,
-                    TYPE_INT, TYPE_NUMBER, TYPE_NUMERIC_STRING, TYPE_OBJECT,
-                    TYPE_STRING, TYPE_VECTOR)
-from taturtle import Turtle
+from .taprimitive import (ArgSlot, ConstantArg, or_, Primitive)
+from .tatype import (TYPE_BOOL, TYPE_BOX, TYPE_CHAR, TYPE_COLOR, TYPE_FLOAT,
+                     TYPE_INT, TYPE_NUMBER, TYPE_NUMERIC_STRING, TYPE_OBJECT,
+                     TYPE_STRING, TYPE_VECTOR)
+from .taturtle import Turtle
 
 
 def _millisecond():

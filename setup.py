@@ -24,7 +24,7 @@ if len(sys.argv) > 1 and '--no-sugar' == sys.argv[1]:
     class post_install(install):
         def run(self):
             install.run(self)
-            print "Running post_install"
+            print("Running post_install")
 
             # Create a simple module that allows the app where to discover
             # its lib and share content.
@@ -66,8 +66,8 @@ if len(sys.argv) > 1 and '--no-sugar' == sys.argv[1]:
                 retcode = subprocess.call(
                     ['msgfmt', '--output-file=%s' % mo_file, file_name])
                 if retcode:
-                    print ('ERROR - msgfmt failed with return code %i.'
-                           % retcode)
+                    print(('ERROR - msgfmt failed with return code %i.'
+                           % retcode))
 
     DATA_FILES = [
         ('activity', get_files('activity/')),

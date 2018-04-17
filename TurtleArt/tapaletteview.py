@@ -23,15 +23,15 @@ _SKIN_IMAGE = 1
 _MARGIN = 5
 _BUTTON_SIZE = 32
 
-from tautils import find_group, debug_output, get_stack_width_and_height
-from tablock import Block
-from tapalette import (palette_names, palette_blocks, hidden_proto_blocks,
-                       block_styles)
-from taconstants import (PALETTE_SCALE, ICON_SIZE, PYTHON_SKIN, XO1,
-                         HORIZONTAL_PALETTE, PALETTE_WIDTH, PALETTE_HEIGHT,
-                         CATEGORY_LAYER, TOP_LAYER, PROTO_LAYER)
-from tasprite_factory import SVG, svg_str_to_pixbuf
-from sprites import Sprite
+from .tautils import find_group, debug_output, get_stack_width_and_height
+from .tablock import Block
+from .tapalette import (palette_names, palette_blocks, hidden_proto_blocks,
+                        block_styles)
+from .taconstants import (PALETTE_SCALE, ICON_SIZE, PYTHON_SKIN, XO1,
+                          HORIZONTAL_PALETTE, PALETTE_WIDTH, PALETTE_HEIGHT,
+                          CATEGORY_LAYER, TOP_LAYER, PROTO_LAYER)
+from .tasprite_factory import SVG, svg_str_to_pixbuf
+from .sprites import Sprite
 
 
 class PaletteView():

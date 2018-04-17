@@ -40,7 +40,7 @@ from sugar3.presence import presenceservice
 try:
     from sugar3.presence.wrapper import CollabWrapper
 except ImportError:
-    from textchannelwrapper import CollabWrapper
+    from .textchannelwrapper import CollabWrapper
 
 
 SERVICE = 'org.laptop.TurtleArtActivity'
