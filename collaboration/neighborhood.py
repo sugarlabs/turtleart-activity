@@ -19,7 +19,6 @@
 
 from functools import partial
 
-from gi.repository import GConf
 import dbus
 from dbus import PROPERTIES_IFACE
 from telepathy.interfaces import (ACCOUNT,
@@ -47,6 +46,7 @@ from buddy import BuddyModel
 
 from xocolor import XoColor
 from gi.repository import GObject
+from gi.repository import Gio
 
 ACCOUNT_MANAGER_SERVICE = 'org.freedesktop.Telepathy.AccountManager'
 ACCOUNT_MANAGER_PATH = '/org/freedesktop/Telepathy/AccountManager'
@@ -89,6 +89,14 @@ class ActivityModel(GObject.GObject):
         self._name = None
         self._current_buddies = []
         self._buddies = []
+
+        self._settings_collaboration = \
+            Gio.Settings('org.sugarlabs.collaboration')
+        self._settings_collaboration.connect(
+            'changed::jabber-server', self.__jabber_server_changed_cb)
+        self._settings_user = Gio.Settings('org.sugarlabs.user')
+        self._settings_user.connect(
+            'changed::nick', self.__nick_changed_cb)
 
     def get_color(self):
         return self._color
@@ -721,8 +729,7 @@ class Neighborhood(GObject.GObject):
 
         # print('Still dont have a Salut account, creating one')
 
-        client = GConf.client.get_default()
-        nick = client.get_string('/desktop/sugar/user/nick')
+        nick = self._settings_user.get_string('nick')
 
         params = {
             'nickname': nick,
@@ -787,15 +794,14 @@ class Neighborhood(GObject.GObject):
     def _get_jabber_account_id(self):
         return self._account_id
 
-    def __jabber_server_changed_cb(self, client, timestamp, entry, *extra):
+    def __jabber_server_changed_cb(self, settings, key):
         # print('__jabber_server_changed_cb')
 
         bus = dbus.Bus()
         account = bus.get_object(ACCOUNT_MANAGER_SERVICE,
                                  self._server_account.object_path)
 
-        server = client.get_string(
-            '/desktop/sugar/collaboration/jabber_server')
+        server = settings.get_string('jabber_server')
         account_id = self._get_jabber_account_id()
         needs_reconnect = account.UpdateParameters(
             {'server': server,
@@ -808,8 +814,8 @@ class Neighborhood(GObject.GObject):
 
         self._update_jid()
 
-    def __nick_changed_cb(self, client, timestamp, entry, *extra):
-        nick = client.get_string('/desktop/sugar/user/nick')
+    def __nick_changed_cb(self, settings, key):
+        nick = settings.get_string('nick')
         for account in self._server_account, self._link_local_account:
             bus = dbus.Bus()
             obj = bus.get_object(ACCOUNT_MANAGER_SERVICE, account.object_path)

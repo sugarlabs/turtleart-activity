@@ -21,7 +21,6 @@
 # THE SOFTWARE.
 
 import gi
-gi.require_version('GConf', '2.0')
 import tempfile
 import dbus
 import cairo
@@ -35,7 +34,7 @@ from gettext import gettext as _
 from gi.repository import Gtk
 from gi.repository import GObject
 from gi.repository import GdkPixbuf
-from gi.repository import GConf
+from gi.repository import Gio
 import json
 json.dumps
 from json import load as jload
@@ -959,12 +958,12 @@ def power_manager_off(status):
     OHM_SERVICE_IFACE = 'org.freedesktop.ohm.Keystore'
     PATH = '/etc/powerd/flags/inhibit-suspend'
 
-    client = GConf.Client.get_default()
+    settings = Gio.Settings('org.sugarlabs.power');
 
     ACTUAL_POWER = True
 
     if FIRST_TIME:
-        ACTUAL_POWER = client.get_bool('/desktop/sugar/power/automatic')
+        ACTUAL_POWER = settings.get_bool('automatic')
         FIRST_TIME = False
 
     if status:
@@ -972,10 +971,7 @@ def power_manager_off(status):
     else:
         VALUE = ACTUAL_POWER
 
-    try:
-        client.set_bool('/desktop/sugar/power/automatic', VALUE)
-    except GConf.GError:
-        pass
+    settings.set_bool('automatic', VALUE)
 
     bus = dbus.SystemBus()
     try:

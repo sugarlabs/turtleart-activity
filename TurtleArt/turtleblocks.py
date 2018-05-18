@@ -38,6 +38,8 @@ from gi.repository import Gtk
 from gi.repository import Gdk
 from gi.repository import GObject
 from gi.repository import GdkPixbuf
+from gi.repository import Gio
+
 try:
     # Try to use XDG Base Directory standard for config files.
     import xdg.BaseDirectory
@@ -76,13 +78,14 @@ class TurtleMain():
         '/usr/local/share/sugar/activities/TurtleArt.activity'
     _ICON_SUBPATH = 'images/turtle.png'
     _GNOME_PLUGIN_SUBPATH = 'gnome_plugins'
-    _HOVER_HELP = '/desktop/sugar/activities/turtleart/hoverhelp'
-    _ORIENTATION = '/desktop/sugar/activities/turtleart/orientation'
-    _COORDINATE_SCALE = '/desktop/sugar/activities/turtleart/coordinatescale'
-    _PLUGINS_PATH = '/desktop/sugar/activities/turtleart/plugins/'
+    _GIO_SETTINGS = 'org.laptop.TurtleArtActivity'
+    _HOVER_HELP = 'hover-help'
+    _ORIENTATION = 'palette-orientation'
+    _COORDINATE_SCALE = 'coordinate-scale'
+    _PLUGINS_LIST = 'plugins'
 
     def __init__(self, lib_path, share_path):
-        self._setting_gconf_overrides = False
+        self._gio_settings_overrides = False
 
         self._lib_path = lib_path
         self._share_path = share_path
@@ -126,18 +129,37 @@ class TurtleMain():
         else:
             self._read_initial_pos()
             self._init_gnome_plugins()
-            self._get_gconf_settings()
+            self._get_gio_settings()
             self._setup_gtk()
             self._build_window()
             self._run_gnome_plugins()
             self._start_gtk()
 
-    def _get_gconf_settings(self):
-        try:
-            from gi.repository import GConf
-            self.client = GConf.Client.get_default()
-        except ImportError:
-            pass
+    def _get_local_settings(self, activity_root):
+        """ return an activity-specific Gio.Settings
+        """
+        # create schemas directory if missing
+        path = os.path.join(get_path(None, 'data'), 'schemas')
+        if not os.access(path, os.F_OK):
+            os.makedirs(path)
+
+        # create compiled schema file if missing
+        compiled = os.path.join(path, 'gschemas.compiled')
+        if not os.access(compiled, os.R_OK):
+            src = '%s.gschema.xml' % self._GIO_SETTINGS
+            lines = open(os.path.join(activity_root, src), 'r').readlines()
+            open(os.path.join(path, src), 'w').writelines(lines)
+            os.system('glib-compile-schemas %s' % path)
+            os.remove(os.path.join(path, src))
+
+        # create a local Gio.Settings based on the compiled schema
+        source = Gio.SettingsSchemaSource.new_from_directory(path, None, True)
+        schema = source.lookup(self._GIO_SETTINGS, True)
+        _settings = Gio.Settings.new_full(schema, None, None)
+        return _settings
+
+    def _get_gio_settings(self):
+        self._settings = self._get_local_settings(self._share_path)
 
     def get_config_home(self):
         return CONFIG_HOME
@@ -204,7 +226,7 @@ return %s(self)" % (p, P, P)
         else:
             self.win.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.WATCH))
             GObject.idle_add(self._project_loader, self._ta_file)
-        self._set_gconf_overrides()
+        self._set_gio_settings_overrides()
         Gtk.main()
 
     def _project_loader(self, file_name):
@@ -255,29 +277,29 @@ return %s(self)" % (p, P, P)
             running_sugar=False)
         self.tw.save_folder = self._abspath  # os.path.expanduser('~')
 
-        if hasattr(self, 'client'):
-            if self.client.get_int(self._HOVER_HELP) == 1:
+        if hasattr(self, '_settings'):
+            if self._settings.get_int(self._HOVER_HELP) == 1:
                 self.tw.no_help = True
                 self.hover.set_active(False)
                 self._do_hover_help_off_cb()
-            if not self.client.get_int(self._COORDINATE_SCALE) in [0, 1]:
+            if not self._settings.get_int(self._COORDINATE_SCALE) in [0, 1]:
                 self.tw.coord_scale = 1
             else:
                 self.tw.coord_scale = 0
-            if self.client.get_int(self._ORIENTATION) == 1:
+            if self._settings.get_int(self._ORIENTATION) == 1:
                 self.tw.orientation = 1
         else:
             self.tw.coord_scale = 0
 
-    def _set_gconf_overrides(self):
+    def _set_gio_settings_overrides(self):
         if self.tw.coord_scale == 0:
             self.tw.coord_scale = 1
         else:
             self._do_rescale_cb(None)
         if self.tw.coord_scale != 1:
-            self._setting_gconf_overrides = True
+            self._gio_settings_overrides = True
             self.coords.set_active(True)
-            self._setting_gconf_overrides = False
+            self._gio_settings_overrides = False
 
     def _init_vars(self):
         ''' If we are invoked to start a project from Gnome, we should make
@@ -553,8 +575,8 @@ return %s(self)" % (p, P, P)
             elif resp == Gtk.ResponseType.CANCEL:
                 return
 
-        if hasattr(self, 'client'):
-            self.client.set_int(self._ORIENTATION, self.tw.orientation)
+        if hasattr(self, '_settings'):
+            self._settings.set_int(self._ORIENTATION, self.tw.orientation)
 
         for plugin in self.tw.turtleart_plugins.values():
             if hasattr(plugin, 'quit'):
@@ -769,7 +791,7 @@ Would you like to save before quitting?'))
 
     def _do_rescale_cb(self, button):
         ''' Callback to rescale coordinate space. '''
-        if self._setting_gconf_overrides:
+        if self._gio_settings_overrides:
             return
         if self.tw.coord_scale == 1:
             self.tw.coord_scale = self.tw.height / 40
@@ -793,9 +815,9 @@ Would you like to save before quitting?'))
             default_values['arc'] = [90, 100]
             default_values['setpensize'] = [5]
             self.tw.turtles.get_active_turtle().set_pen_size(5)
-        if hasattr(self, 'client'):
-            self.client.set_int(self._COORDINATE_SCALE,
-                                int(self.tw.coord_scale))
+        if hasattr(self, '_settings'):
+            self._settings.set_int(self._COORDINATE_SCALE,
+                                   int(self.tw.coord_scale))
 
         self.tw.recalculate_constants()
 
@@ -809,33 +831,37 @@ Would you like to save before quitting?'))
 
     def _do_toggle_plugin_cb(self, button):
         name = button.get_label()
-        path_gconf = self._PLUGINS_PATH + name
-        if button.get_active():
-            #path = self.tw.turtleart_plugin_list[name]
-            #self.tw.init_plugin(name, path)
-            #instance = self.tw._get_plugin_instance(name)
-            # instance.setup()
-            self.client.set_int(path_gconf, 1)
-            l = _('Please restart %s in order to use the plugin.') % self.name
-        else:
-            #instance = self.tw._get_plugin_instance(name)
-            # instance.quit()
-            self.client.set_int(path_gconf, 0)
-            l = _('Please restart %s in order to unload the plugin.') % self.name
-        self.tw.showlabel('status', l)
+        if hasattr(self, '_settings'):
+            plugins_list = self._settings.get_string(self._PLUGINS_LIST)
+            plugins = plugins_list.split(',')
+            if button.get_active():
+                if not name in plugins:
+                    plugins.append(name)
+                    self._settings.set_string(
+                        self._PLUGINS_LIST, ','.join(plugins))
+                label = _('Please restart %s in order to use the plugin.') \
+                        % self.name
+            else:
+                if name in plugins:
+                    plugins.remove(name)
+                    self._settings.set_string(
+                        self._PLUGINS_LIST, ','.join(plugins))
+                label = _('Please restart %s in order to unload the plugin.') \
+                        % self.name
+        self.tw.showlabel('status', label)
 
     def _do_hover_help_on_cb(self):
         ''' Turn hover help on '''
-        if hasattr(self, 'client'):
-            self.client.set_int(self._HOVER_HELP, 0)
+        if hasattr(self, '_settings'):
+            self._settings.set_int(self._HOVER_HELP, 0)
 
     def _do_hover_help_off_cb(self):
         ''' Turn hover help off '''
         self.tw.last_label = None
         if self.tw.status_spr is not None:
             self.tw.status_spr.hide()
-        if hasattr(self, 'client'):
-            self.client.set_int(self._HOVER_HELP, 1)
+        if hasattr(self, '_settings'):
+            self._settings.set_int(self._HOVER_HELP, 1)
 
     def _do_palette_cb(self, widget):
         ''' Callback to show/hide palette of blocks. '''
