@@ -124,6 +124,7 @@ class TurtleMain():
         if self._output_png:
             # Outputing to file, so no need for a canvas
             self.canvas = None
+            self._get_gconf_settings()
             self._build_window(interactive=False)
             self._draw_and_quit()
         else:
@@ -241,7 +242,7 @@ return %s(self)" % (p, P, P)
         and quit. '''
         self.tw.load_start(self._ta_file)
         self.tw.lc.trace = 0
-        self.tw.run_button(0)
+        self.tw.run_button(0, running_from_button_push=True)
         self.tw.save_as_image(self._ta_file)
 
     def _build_window(self, interactive=True):
@@ -267,7 +268,6 @@ return %s(self)" % (p, P, P)
             self._autosavedirname = self._share_path
         else:
             self._autosavedirname = os.path.expanduser('~')
-
         self.tw = TurtleArtWindow(
             self.canvas,
             self._lib_path,
@@ -277,8 +277,8 @@ return %s(self)" % (p, P, P)
             running_sugar=False)
         self.tw.save_folder = self._abspath  # os.path.expanduser('~')
 
-        if hasattr(self, '_settings'):
-            if self._settings.get_int(self._HOVER_HELP) == 1:
+        if interactive and hasattr(self, 'client'):
+            if self.client.get_int(self._HOVER_HELP) == 1:
                 self.tw.no_help = True
                 self.hover.set_active(False)
                 self._do_hover_help_off_cb()

@@ -441,19 +441,18 @@ class TurtleArtWindow():
             # add icons paths of all plugins
             self._add_plugin_icon_dir(os.path.join(plugin_path, plugin_dir))
             status = True
-            if not self.running_sugar and hasattr(self.activity, '_settings'):
-                plugins_list = self.activity._settings.get_string(self.activity._PLUGINS_LIST)
-                plugins = plugins_list.split(',')
-                if plugin_dir in plugins:
-                    status = 1
-                else:
-                    status = 0
-
-                make_checkmenu_item(
-                    self.activity._plugin_menu,
-                    plugin_dir,
-                    self.activity._do_toggle_plugin_cb,
-                    status)
+            if not self.running_sugar and hasattr(self.activity, 'client'):
+                gconf_path = self.activity._PLUGINS_PATH + plugin_dir
+                try:
+                    status = (self.activity.client.get_int(gconf_path) == 1)
+                except BaseException:
+                    pass
+                if hasattr(self.activity, '_plugin_menu'):
+                    make_checkmenu_item(
+                        self.activity._plugin_menu,
+                        plugin_dir,
+                        self.activity._do_toggle_plugin_cb,
+                        status)
             if status:
                 self.init_plugin(plugin_dir, plugin_path)
                 self.turtleart_favorites_plugins.append(plugin_dir)
