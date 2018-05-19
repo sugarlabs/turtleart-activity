@@ -31,6 +31,8 @@ import subprocess
 import errno
 from gettext import gettext as _
 
+import cairo
+
 from gi.repository import Gtk
 from gi.repository import Gdk
 from gi.repository import GObject
