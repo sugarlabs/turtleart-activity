@@ -1103,9 +1103,7 @@ class TurtleArtActivity(activity.Activity):
         _logger.debug('overflow palette cb')
         if self._overflow_palette:
             if not self._overflow_palette.is_up():
-                self._overflow_palette.popup(
-                    immediate=True,
-                    state=self._overflow_palette.SECONDARY)
+                self._overflow_palette.popup(immediate=True)
             else:
                 self._overflow_palette.popdown(immediate=True)
             return
@@ -1194,7 +1192,7 @@ class TurtleArtActivity(activity.Activity):
         palette = button.get_palette()
         if palette:
             if not palette.is_up():
-                palette.popup(immediate=True, state=palette.SECONDARY)
+                palette.popup(immediate=True)
             else:
                 palette.popdown(immediate=True)
 
