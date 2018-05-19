@@ -267,7 +267,7 @@ class TurtleArtActivity(activity.Activity):
 
     def do_save_as_python_cb(self, widget):
         ''' Callback for saving the project as Python code. '''
-        self.save_as_python[0].set_icon('python-saveon')
+        self.save_as_python.set_icon_name('python-saveon')
         if hasattr(self, 'get_window'):
             if hasattr(self.get_window(), 'get_cursor'):
                 self._old_cursor = self.get_window().get_cursor()
@@ -395,7 +395,7 @@ class TurtleArtActivity(activity.Activity):
 
     def do_save_as_image_cb(self, button):
         ''' Save the canvas to the Journal. '''
-        self.save_as_image[0].set_icon_name('image-saveon')
+        self.save_as_image.set_icon_name('image-saveon')
         _logger.debug('saving image to journal')
         if hasattr(self, 'get_window'):
             if hasattr(self.get_window(), 'get_cursor'):
@@ -405,7 +405,7 @@ class TurtleArtActivity(activity.Activity):
 
     def __save_as_image(self):
         self.tw.save_as_image()
-        self.save_as_image[0].set_icon_name('image-saveoff')
+        self.save_as_image.set_icon_name('image-saveoff')
         if hasattr(self, 'get_window'):
             self.get_window().set_cursor(self._old_cursor)
 
@@ -553,8 +553,8 @@ class TurtleArtActivity(activity.Activity):
             self.stop_turtle_button.set_tooltip(_('Hide blocks'))
         # Note: We leave the old button state highlighted to indicate
         # speed if blocks are clicked to run.
-        # self.run_button.set_icon('run-fastoff')
-        # self.step_button.set_icon('run-slowoff')
+        # self.run_button.set_icon_name('run-fastoff')
+        # self.step_button.set_icon_name('run-slowoff')
         self.tw.stop_button()
         self.tw.display_coordinates()
 
@@ -1121,21 +1121,21 @@ class TurtleArtActivity(activity.Activity):
             toolbar)
         self._save_palette = save_button.get_palette()
         button_box = Gtk.VBox()
-        self.save_as_image = self._add_button_and_label(
+        self.save_as_image, label = self._add_button_and_label(
             'image-saveoff', _('Save as image'), self.do_save_as_image_cb,
             None, button_box)
-        self.save_as_icon = self._add_button_and_label(
+        self.save_as_icon, label = self._add_button_and_label(
             'image-saveoff', _('Save as icon'), self.do_save_as_icon_cb,
             None, button_box)
         # TRANS: ODP is Open Office presentation
-        self.save_as_odp = self._add_button_and_label(
+        self.save_as_odp, label = self._add_button_and_label(
             'odp-saveoff', _('Save as ODP'), self.do_save_as_odp_cb,
             None, button_box)
-        self.save_as_icon[0].get_parent().connect(
+        self.save_as_icon.get_parent().connect(
             'draw',
             self._save_as_icon_expose_cb)
 
-        self.save_as_odp[0].get_parent().connect(
+        self.save_as_odp.get_parent().connect(
             'draw',
             self._save_as_odp_expose_cb)
 
