@@ -267,7 +267,7 @@ class TurtleArtActivity(activity.Activity):
 
     def do_save_as_python_cb(self, widget):
         ''' Callback for saving the project as Python code. '''
-        self.save_as_python.set_icon('python-saveon')
+        self.save_as_python[0].set_icon('python-saveon')
         if hasattr(self, 'get_window'):
             if hasattr(self.get_window(), 'get_cursor'):
                 self._old_cursor = self.get_window().get_cursor()
@@ -395,7 +395,7 @@ class TurtleArtActivity(activity.Activity):
 
     def do_save_as_image_cb(self, button):
         ''' Save the canvas to the Journal. '''
-        self.save_as_image.set_icon_name('image-saveon')
+        self.save_as_image[0].set_icon_name('image-saveon')
         _logger.debug('saving image to journal')
         if hasattr(self, 'get_window'):
             if hasattr(self.get_window(), 'get_cursor'):
@@ -405,7 +405,7 @@ class TurtleArtActivity(activity.Activity):
 
     def __save_as_image(self):
         self.tw.save_as_image()
-        self.save_as_image.set_icon_name('image-saveoff')
+        self.save_as_image[0].set_icon_name('image-saveoff')
         if hasattr(self, 'get_window'):
             self.get_window().set_cursor(self._old_cursor)
 
@@ -416,7 +416,7 @@ class TurtleArtActivity(activity.Activity):
             if hasattr(self.get_window(), 'get_cursor'):
                 self._old_cursor = self.get_window().get_cursor()
                 self.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.WATCH))
-        Gobject.timeout_add(250, self.__save_blocks_as_image)
+        GObject.timeout_add(250, self.__save_blocks_as_image)
 
     def __save_blocks_as_image(self):
         self.tw.save_blocks_as_image()
