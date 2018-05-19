@@ -3013,11 +3013,12 @@ class TurtleArtWindow():
             if len(self.block_list.get_similar_blocks('block', 'forever')) > 0:
                 debug_output('WARNING: Projects with forever blocks \
  may not terminate.', False)
+            self.__run_stack(blk)
         else:
             self._hide_text_entry()
             self.parent.get_window().set_cursor(
                 Gdk.Cursor(Gdk.CursorType.WATCH))
-        GObject.idle_add(self.__run_stack, blk)
+            GObject.idle_add(self.__run_stack, blk)
 
     def __run_stack(self, blk):
         if self.status_spr is not None:
@@ -3025,7 +3026,8 @@ class TurtleArtWindow():
         self._autohide_shape = True
         if blk is None:
             return
-        self.lc.find_value_blocks()  # Are there blocks to update?
+        if not self.interactive_mode:
+            self.lc.find_value_blocks()  # Are there blocks to update?
         if self.canvas.cr_svg is None:
             self.canvas.setup_svg_surface()
         self.running_blocks = True
@@ -4395,6 +4397,8 @@ class TurtleArtWindow():
 
     def display_coordinates(self, clear=False):
         ''' Display the coordinates of the current turtle on the toolbar '''
+        if not self.interactive_mode:
+            return
         if clear:
             self._set_coordinates_label('')
         else:

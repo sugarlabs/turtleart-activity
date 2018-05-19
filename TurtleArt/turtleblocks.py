@@ -289,7 +289,7 @@ return %s(self)" % (p, P, P)
             if self._settings.get_int(self._ORIENTATION) == 1:
                 self.tw.orientation = 1
         else:
-            self.tw.coord_scale = 0
+            self.tw.coord_scale = 1
 
     def _set_gio_settings_overrides(self):
         if self.tw.coord_scale == 0:
