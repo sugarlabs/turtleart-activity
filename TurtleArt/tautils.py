@@ -963,7 +963,7 @@ def power_manager_off(status):
     ACTUAL_POWER = True
 
     if FIRST_TIME:
-        ACTUAL_POWER = settings.get_bool('automatic')
+        ACTUAL_POWER = settings.get_boolean('automatic')
         FIRST_TIME = False
 
     if status:
