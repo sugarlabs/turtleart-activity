@@ -623,6 +623,15 @@ class TurtleArtActivity(activity.Activity):
         ''' Hide the Sugar toolbars. '''
         self.fullscreen()
         self.recenter()
+        self.vbox.set_size_request(Gdk.Screen.width(), Gdk.Screen.height())
+
+    def do_unfullscreen_cb(self, button):
+        ''' Show the Sugar toolbars. '''
+        self.unfullscreen()
+        self.recenter()
+        self.vbox.set_size_request(Gdk.Screen.width(),
+                                   Gdk.Screen.height() -
+                                   2 * style.GRID_CELL_SIZE)
 
     def do_grow_blocks_cb(self, button):
         ''' Grow the blocks. '''
@@ -853,6 +862,8 @@ class TurtleArtActivity(activity.Activity):
         self.edit_toolbar_button.set_expanded(True)
         self.edit_toolbar_button.set_expanded(False)
         self.palette_toolbar_button.set_expanded(True)
+
+        self._unfullscreen_button._button.connect('clicked', self.do_unfullscreen_cb)
 
     def _setup_extra_controls(self):
         ''' Add the rest of the buttons to the main toolbar '''

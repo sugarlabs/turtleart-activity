@@ -857,6 +857,8 @@ class TurtleArtWindow():
         if self.running_sugar:
             self.activity.fullscreen()
             self.activity.recenter()
+            self.activity.vbox.set_size_request(Gdk.Screen.width(),
+                                                Gdk.Screen.height())
 
     def set_cartesian(self, flag):
         ''' Turn on/off Cartesian coordinates '''
@@ -3656,6 +3658,9 @@ class TurtleArtWindow():
             # Always exit fullscreen mode if applicable
             if self.running_sugar and self.activity.is_fullscreen:
                 self.activity.unfullscreen()
+                self.vbox.set_size_request(Gdk.Screen.width(),
+                                           Gdk.Screen.height() -
+                                           2 * style.GRID_CELL_SIZE)
         return True
 
     def _jog_turtle(self, dx, dy):
