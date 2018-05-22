@@ -277,8 +277,8 @@ return %s(self)" % (p, P, P)
             running_sugar=False)
         self.tw.save_folder = self._abspath  # os.path.expanduser('~')
 
-        if interactive and hasattr(self, 'client'):
-            if self.client.get_int(self._HOVER_HELP) == 1:
+        if interactive:
+            if self._settings.get_int(self._HOVER_HELP) == 1:
                 self.tw.no_help = True
                 self.hover.set_active(False)
                 self._do_hover_help_off_cb()
