@@ -366,6 +366,7 @@ class TurtleGraphics:
         ''' Draw a line '''
 
         def _draw_line(cr, x1, y1, x2, y2):
+            cr.set_line_cap(1)  # Set the line cap to be round
             cr.move_to(x1, y1)
             cr.line_to(x2, y2)
             cr.stroke()

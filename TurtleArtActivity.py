@@ -267,7 +267,7 @@ class TurtleArtActivity(activity.Activity):
 
     def do_save_as_python_cb(self, widget):
         ''' Callback for saving the project as Python code. '''
-        self.save_as_python.set_icon('python-saveon')
+        self.save_as_python.set_icon_name('python-saveon')
         if hasattr(self, 'get_window'):
             if hasattr(self.get_window(), 'get_cursor'):
                 self._old_cursor = self.get_window().get_cursor()
@@ -416,7 +416,7 @@ class TurtleArtActivity(activity.Activity):
             if hasattr(self.get_window(), 'get_cursor'):
                 self._old_cursor = self.get_window().get_cursor()
                 self.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.WATCH))
-        Gobject.timeout_add(250, self.__save_blocks_as_image)
+        GObject.timeout_add(250, self.__save_blocks_as_image)
 
     def __save_blocks_as_image(self):
         self.tw.save_blocks_as_image()
@@ -553,8 +553,8 @@ class TurtleArtActivity(activity.Activity):
             self.stop_turtle_button.set_tooltip(_('Hide blocks'))
         # Note: We leave the old button state highlighted to indicate
         # speed if blocks are clicked to run.
-        # self.run_button.set_icon('run-fastoff')
-        # self.step_button.set_icon('run-slowoff')
+        # self.run_button.set_icon_name('run-fastoff')
+        # self.step_button.set_icon_name('run-slowoff')
         self.tw.stop_button()
         self.tw.display_coordinates()
 
@@ -623,6 +623,15 @@ class TurtleArtActivity(activity.Activity):
         ''' Hide the Sugar toolbars. '''
         self.fullscreen()
         self.recenter()
+        self.vbox.set_size_request(Gdk.Screen.width(), Gdk.Screen.height())
+
+    def do_unfullscreen_cb(self, button):
+        ''' Show the Sugar toolbars. '''
+        self.unfullscreen()
+        self.recenter()
+        self.vbox.set_size_request(Gdk.Screen.width(),
+                                   Gdk.Screen.height() -
+                                   2 * style.GRID_CELL_SIZE)
 
     def do_grow_blocks_cb(self, button):
         ''' Grow the blocks. '''
@@ -853,6 +862,8 @@ class TurtleArtActivity(activity.Activity):
         self.edit_toolbar_button.set_expanded(True)
         self.edit_toolbar_button.set_expanded(False)
         self.palette_toolbar_button.set_expanded(True)
+
+        self._unfullscreen_button._button.connect('clicked', self.do_unfullscreen_cb)
 
     def _setup_extra_controls(self):
         ''' Add the rest of the buttons to the main toolbar '''
@@ -1103,9 +1114,7 @@ class TurtleArtActivity(activity.Activity):
         _logger.debug('overflow palette cb')
         if self._overflow_palette:
             if not self._overflow_palette.is_up():
-                self._overflow_palette.popup(
-                    immediate=True,
-                    state=self._overflow_palette.SECONDARY)
+                self._overflow_palette.popup(immediate=True)
             else:
                 self._overflow_palette.popdown(immediate=True)
             return
@@ -1123,21 +1132,21 @@ class TurtleArtActivity(activity.Activity):
             toolbar)
         self._save_palette = save_button.get_palette()
         button_box = Gtk.VBox()
-        self.save_as_image = self._add_button_and_label(
+        self.save_as_image, label = self._add_button_and_label(
             'image-saveoff', _('Save as image'), self.do_save_as_image_cb,
             None, button_box)
-        self.save_as_icon = self._add_button_and_label(
+        self.save_as_icon, label = self._add_button_and_label(
             'image-saveoff', _('Save as icon'), self.do_save_as_icon_cb,
             None, button_box)
         # TRANS: ODP is Open Office presentation
-        self.save_as_odp = self._add_button_and_label(
+        self.save_as_odp, label = self._add_button_and_label(
             'odp-saveoff', _('Save as ODP'), self.do_save_as_odp_cb,
             None, button_box)
-        self.save_as_icon[0].get_parent().connect(
+        self.save_as_icon.get_parent().connect(
             'draw',
             self._save_as_icon_expose_cb)
 
-        self.save_as_odp[0].get_parent().connect(
+        self.save_as_odp.get_parent().connect(
             'draw',
             self._save_as_odp_expose_cb)
 
@@ -1194,7 +1203,7 @@ class TurtleArtActivity(activity.Activity):
         palette = button.get_palette()
         if palette:
             if not palette.is_up():
-                palette.popup(immediate=True, state=palette.SECONDARY)
+                palette.popup(immediate=True)
             else:
                 palette.popdown(immediate=True)
 

@@ -413,7 +413,7 @@ def do_dialog(dialog, suffix, load_save_folder):
         dialog.set_current_folder(load_save_folder)
 
     response = dialog.run()
-    if response == Gtk.ResponseType:
+    if response == Gtk.ResponseType.OK:
         result = dialog.get_filename()
         load_save_folder = dialog.get_current_folder()
     dialog.destroy()
@@ -963,7 +963,7 @@ def power_manager_off(status):
     ACTUAL_POWER = True
 
     if FIRST_TIME:
-        ACTUAL_POWER = settings.get_bool('automatic')
+        ACTUAL_POWER = settings.get_boolean('automatic')
         FIRST_TIME = False
 
     if status:

@@ -31,6 +31,8 @@ import subprocess
 import errno
 from gettext import gettext as _
 
+import cairo
+
 from gi.repository import Gtk
 from gi.repository import Gdk
 from gi.repository import GObject
@@ -441,19 +443,18 @@ class TurtleArtWindow():
             # add icons paths of all plugins
             self._add_plugin_icon_dir(os.path.join(plugin_path, plugin_dir))
             status = True
-            if not self.running_sugar and hasattr(self.activity, '_settings'):
-                plugins_list = self.activity._settings.get_string(self.activity._PLUGINS_LIST)
-                plugins = plugins_list.split(',')
-                if plugin_dir in plugins:
-                    status = 1
-                else:
-                    status = 0
-
-                make_checkmenu_item(
-                    self.activity._plugin_menu,
-                    plugin_dir,
-                    self.activity._do_toggle_plugin_cb,
-                    status)
+            if not self.running_sugar and hasattr(self.activity, 'client'):
+                gconf_path = self.activity._PLUGINS_PATH + plugin_dir
+                try:
+                    status = (self.activity.client.get_int(gconf_path) == 1)
+                except BaseException:
+                    pass
+                if hasattr(self.activity, '_plugin_menu'):
+                    make_checkmenu_item(
+                        self.activity._plugin_menu,
+                        plugin_dir,
+                        self.activity._do_toggle_plugin_cb,
+                        status)
             if status:
                 self.init_plugin(plugin_dir, plugin_path)
                 self.turtleart_favorites_plugins.append(plugin_dir)
@@ -856,6 +857,8 @@ class TurtleArtWindow():
         if self.running_sugar:
             self.activity.fullscreen()
             self.activity.recenter()
+            self.activity.vbox.set_size_request(Gdk.Screen.width(),
+                                                Gdk.Screen.height())
 
     def set_cartesian(self, flag):
         ''' Turn on/off Cartesian coordinates '''
@@ -3014,11 +3017,12 @@ class TurtleArtWindow():
             if len(self.block_list.get_similar_blocks('block', 'forever')) > 0:
                 debug_output('WARNING: Projects with forever blocks \
  may not terminate.', False)
+            self.__run_stack(blk)
         else:
             self._hide_text_entry()
             self.parent.get_window().set_cursor(
                 Gdk.Cursor(Gdk.CursorType.WATCH))
-        GObject.idle_add(self.__run_stack, blk)
+            GObject.idle_add(self.__run_stack, blk)
 
     def __run_stack(self, blk):
         if self.status_spr is not None:
@@ -3026,7 +3030,8 @@ class TurtleArtWindow():
         self._autohide_shape = True
         if blk is None:
             return
-        self.lc.find_value_blocks()  # Are there blocks to update?
+        if not self.interactive_mode:
+            self.lc.find_value_blocks()  # Are there blocks to update?
         if self.canvas.cr_svg is None:
             self.canvas.setup_svg_surface()
         self.running_blocks = True
@@ -3653,6 +3658,9 @@ class TurtleArtWindow():
             # Always exit fullscreen mode if applicable
             if self.running_sugar and self.activity.is_fullscreen:
                 self.activity.unfullscreen()
+                self.vbox.set_size_request(Gdk.Screen.width(),
+                                           Gdk.Screen.height() -
+                                           2 * style.GRID_CELL_SIZE)
         return True
 
     def _jog_turtle(self, dx, dy):
@@ -4396,6 +4404,8 @@ class TurtleArtWindow():
 
     def display_coordinates(self, clear=False):
         ''' Display the coordinates of the current turtle on the toolbar '''
+        if not self.interactive_mode:
+            return
         if clear:
             self._set_coordinates_label('')
         else:
