@@ -1,3 +1,11 @@
+218
+* fix problem with Gio.Settings in cmdline version (walter)
+* fix problem with -o from  cmdline version (walter)
+* fix problem with line cap (walter)
+* fix problem with fullscreen/unfullscreen (walter)
+* fix numerous problems with file save buttons (walter)
+* fix import require warning (walter)
+
 217
 * migrate from GConf to Gio.Settings (walter)
 
