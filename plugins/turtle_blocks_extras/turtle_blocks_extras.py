@@ -1342,7 +1342,7 @@ Journal objects'))
         self.tw.lc.trace = 0
         self.tw.step_time = 0
         if self.tw.running_sugar:
-            self.tw.activity.stop_turtle_button.set_icon("hideshowoff")
+            self.tw.activity.stop_turtle_button.set_icon_name("hideshowoff")
             self.tw.activity.stop_turtle_button.set_tooltip(_('Show blocks'))
 
     def _prim_showblocks(self):
@@ -1351,7 +1351,7 @@ Journal objects'))
         self.tw.lc.trace = 1
         self.tw.step_time = 3
         if self.tw.running_sugar:
-            self.tw.activity.stop_turtle_button.set_icon("stopiton")
+            self.tw.activity.stop_turtle_button.set_icon_name("stopiton")
             self.tw.activity.stop_turtle_button.set_tooltip(_('Stop turtle'))
 
     def after_set(self, name, value=None):

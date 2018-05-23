@@ -152,7 +152,7 @@ class Collaboration():
         self._enable_share_button()
 
     def _enable_share_button(self):
-        self._activity.share_button.set_icon('shareon')
+        self._activity.share_button.set_icon_name('shareon')
         self._activity.share_button.set_tooltip(_('Share selected blocks'))
 
     def _list_tubes_reply_cb(self, tubes):
