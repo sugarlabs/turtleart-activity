@@ -608,6 +608,8 @@ class TurtleArtWindow():
 
     def __unfullscreen_button_timeout_cb(self):
         self.activity._unfullscreen_button.hide()
+        self.activity._unfullscreen_button_timeout_id = None
+        return False
 
     def _drag_data_received(self, w, context, x, y, data, info, time):
         ''' Handle dragging of block data from clipboard to canvas. '''
