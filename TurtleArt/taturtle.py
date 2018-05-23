@@ -24,6 +24,7 @@ import cairo
 import tempfile
 
 from gi.repository import GObject
+from gi.repository import Gdk
 from random import uniform
 from math import sin, cos, pi, sqrt
 from taconstants import (TURTLE_LAYER, DEFAULT_TURTLE_COLORS, DEFAULT_TURTLE,
