@@ -3032,7 +3032,7 @@ class TurtleArtWindow():
         self._autohide_shape = True
         if blk is None:
             return
-        if not self.interactive_mode:
+        if self.interactive_mode:
             self.lc.find_value_blocks()  # Are there blocks to update?
         if self.canvas.cr_svg is None:
             self.canvas.setup_svg_surface()
