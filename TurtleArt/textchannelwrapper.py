@@ -68,7 +68,6 @@ from telepathy.interfaces import \
     CHANNEL_TYPE_TEXT, \
     CHANNEL_TYPE_FILE_TRANSFER, \
     CONN_INTERFACE_ALIASING, \
-    CONNECTION_INTERFACE_REQUESTS, \
     CHANNEL, \
     CLIENT
 from telepathy.constants import \
@@ -82,7 +81,7 @@ from telepathy.client import Connection, Channel
 
 from sugar3.presence import presenceservice
 from sugar3.activity.activity import SCOPE_PRIVATE
-from sugar3.graphics.alert import NotifyAlert, Alert
+from sugar3.graphics.alert import NotifyAlert
 
 import logging
 _logger = logging.getLogger('text-channel-wrapper')

@@ -233,8 +233,9 @@ class Color(object):
         * another Color with the same color, shade, and gray values
         * an integer, float, or long that equals int(self) """
         if isinstance(other, Color):
-            return (self.color == other.color and self.shade == other.shade
-                    and self.gray == other.gray)
+            return (self.color == other.color and
+                    self.shade == other.shade and
+                    self.gray == other.gray)
         elif isinstance(other, (int, float, long)):
             return int(self) == other
         # * a basestring that equals str(self)

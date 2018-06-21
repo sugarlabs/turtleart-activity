@@ -3,7 +3,6 @@ from serial import Serial
 import dbus
 from dbus.mainloop.glib import DBusGMainLoop
 import gobject
-from time import sleep
 import utils
 
 HAL_SERVICE = 'org.freedesktop.Hal'
@@ -188,7 +187,6 @@ class RFIDReader(RFIDDevice):
         data = utils.bin2hex(tag_bin)
         self.emit("tag-read", data)
         self.last_tag = data
-        # sleep(1)
         return True
 
 # Testing

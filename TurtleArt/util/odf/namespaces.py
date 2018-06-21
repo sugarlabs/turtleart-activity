@@ -13,7 +13,7 @@
 #
 # You should have received a copy of the GNU Lesser General Public
 # License along with this library; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301  USA
 #
 # Contributor(s):
 #
@@ -24,7 +24,6 @@ CHARTNS = u"urn:oasis:names:tc:opendocument:xmlns:chart:1.0"
 CHARTOOONS = u"http://openoffice.org/2010/chart"
 CONFIGNS = u"urn:oasis:names:tc:opendocument:xmlns:config:1.0"
 CSS3TNS = u"http://www.w3.org/TR/css3-text/"
-#DBNS           = u"http://openoffice.org/2004/database"
 DBNS = u"urn:oasis:names:tc:opendocument:xmlns:database:1.0"
 DCNS = u"http://purl.org/dc/elements/1.1/"
 DOMNS = u"http://www.w3.org/2001/xml-events"

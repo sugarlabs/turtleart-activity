@@ -206,8 +206,9 @@ def _leftx(tw):
 
 
 def _topy(tw):
-    return int((tw.canvas.height * (TITLEXY[1] - 0.125))
-               / (tw.coord_scale * 2))
+    return int(
+        (tw.canvas.height * (TITLEXY[1] - 0.125)) /
+        (tw.coord_scale * 2))
 
 
 def _rightx(tw):

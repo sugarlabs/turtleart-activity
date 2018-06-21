@@ -93,7 +93,6 @@ def myblock(tw, args):
 
         def _log_queue_overrun(self, queue):
             ''' We use a buffer, which may overflow. '''
-            cbuffers = queue.get_property("current-level-buffers")
             cbytes = queue.get_property("current-level-bytes")
             ctime = queue.get_property("current-level-time")
 

@@ -1,5 +1,5 @@
-# -*- coding: utf-8 -*-
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 # Copyright (C) 2008 Eben Eliason
 # Copyright (C) 2013 Jorge Alberto Gómez López
@@ -22,7 +22,6 @@ import xml.dom.minidom
 import getopt
 import re
 import os
-import string
 
 HELP = '''\nUsage: sugar-iconify.py [options] input.svg\n
 Options:\n

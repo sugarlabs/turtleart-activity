@@ -77,8 +77,9 @@ def svg_str_to_pixbuf(svg_string):
 '''
 import cairo
 import gi
-gi.require_version('PangoCairo', '1.0')
+gi.require_version("Gtk", "3.0")
 
+from gi.repository import Gtk
 from gi.repository import Gdk
 from gi.repository import GdkPixbuf
 from gi.repository import Pango
@@ -225,6 +226,7 @@ class Sprite:
             surface = cairo.ImageSurface(
                 cairo.FORMAT_ARGB32, self.rect.width, self.rect.height)
             context = cairo.Context(surface)
+
             Gdk.cairo_set_source_pixbuf(context, image, 0, 0)
             context.rectangle(0, 0, self.rect.width, self.rect.height)
             context.fill()
@@ -379,109 +381,3 @@ class Sprite:
             return False
         if y < self.rect.y:
             return False
-        if y > self.rect.y + self.rect.height:
-            return False
-        if readpixel:
-            r, g, b, a = self.get_pixel(pos)
-            if r == g == b == a == 0:
-                return False
-            if a == -1:
-                return False
-        return self._sprites.find_in_list(self)
-
-    def draw_label(self, cr):
-        ''' Draw the label based on its attributes '''
-
-        my_width = self.rect.width - self._margins[0] - self._margins[2]
-        if my_width < 0:
-            my_width = 0
-        my_height = self.rect.height - self._margins[1] - self._margins[3]
-        for i in range(len(self.labels)):
-            pl = PangoCairo.create_layout(cr)
-            pl.set_text(str(self.labels[i]), len(str(self.labels[i])))
-            self._fd.set_size(int(self._scale[i] * Pango.SCALE))
-            pl.set_font_description(self._fd)
-            w = pl.get_size()[0] / Pango.SCALE
-            if w > my_width:
-                if self._rescale[i]:
-                    self._fd.set_size(
-                        int(self._scale[i] * Pango.SCALE * my_width / w))
-                    pl.set_font_description(self._fd)
-                    w = pl.get_size()[0] / Pango.SCALE
-                else:
-                    pl.set_ellipsize(Pango.EllipsizeMode.MIDDLE)
-                    self._fd.set_size(int(self._scale[i] * Pango.SCALE))
-                    pl.set_font_description(self._fd)
-                    w = pl.get_size()[0] / Pango.SCALE
-            if self._x_pos[i] is not None:
-                x = int(self.rect.x + self._x_pos[i])
-            elif self._horiz_align[i] == 'center':
-                x = int(self.rect.x + self._margins[0] + (my_width - w) / 2)
-            elif self._horiz_align[i] == 'left':
-                x = int(self.rect.x + self._margins[0])
-            else:  # right
-                x = int(self.rect.x + self.rect.width - w - self._margins[2])
-            h = pl.get_size()[1] / Pango.SCALE
-            if self._y_pos[i] is not None:
-                y = int(self.rect.y + self._y_pos[i])
-            elif self._vert_align[i] == 'middle':
-                y = int(self.rect.y + self._margins[1] + (my_height - h) / 2)
-            elif self._vert_align[i] == 'top':
-                y = int(self.rect.y + self._margins[1])
-            else:  # bottom
-                y = int(self.rect.y + self.rect.height - h - self._margins[3])
-
-            cr.save()
-            cr.translate(x, y)
-            cr.set_source_rgb(self._color[0], self._color[1], self._color[2])
-            PangoCairo.update_layout(cr, pl)
-            PangoCairo.show_layout(cr, pl)
-
-            cr.restore()
-
-    def label_width(self):
-        ''' Calculate the width of a label '''
-        cr = self._sprites.cr
-        if cr is not None:
-            max = 0
-            for i in range(len(self.labels)):
-                pl = PangoCairo.create_layout(cr)
-                pl.set_text(self.labels[i], len(self.labels[i]))
-                self._fd.set_size(int(self._scale[i] * Pango.SCALE))
-                pl.set_font_description(self._fd)
-                w = pl.get_size()[0] / Pango.SCALE
-                if w > max:
-                    max = w
-            return max
-        else:
-            return self.rect.width
-
-    def label_safe_width(self):
-        ''' Return maximum width for a label '''
-        return self.rect.width - self._margins[0] - self._margins[2]
-
-    def label_safe_height(self):
-        ''' Return maximum height for a label '''
-        return self.rect.height - self._margins[1] - self._margins[3]
-
-    def label_left_top(self):
-        ''' Return the upper-left corner of the label safe zone '''
-        return(self._margins[0], self._margins[1])
-
-    def get_pixel(self, pos, i=0):
-        ''' Return the pixel at (x, y) '''
-        x = int(pos[0] - self.rect.x)
-        y = int(pos[1] - self.rect.y)
-        if x < 0 or x > (self.rect.width - 1) or \
-                y < 0 or y > (self.rect.height - 1):
-            return(-1, -1, -1, -1)
-        # Create a new 1x1 cairo surface.
-        cs = cairo.ImageSurface(cairo.FORMAT_RGB24, 1, 1)
-        cr = cairo.Context(cs)
-        cr.set_source_surface(self.cached_surfaces[i], -x, -y)
-        cr.rectangle(0, 0, 1, 1)
-        cr.set_operator(cairo.OPERATOR_SOURCE)
-        cr.fill()
-        cs.flush()  # Ensure all the writing is done.
-        pixels = cs.get_data()  # Read the pixel.
-        return (ord(pixels[2]), ord(pixels[1]), ord(pixels[0]), 0)

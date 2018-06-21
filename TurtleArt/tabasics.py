@@ -1239,15 +1239,16 @@ variable'))
             self.tw.lc.prim_invoke_return_stack,
             return_type=TYPE_OBJECT,
             arg_descs=[ArgSlot(TYPE_OBJECT)])
-        palette.add_block('returnstack',
-                          # hidden=True,
-                          style='number-style-1arg',
-                          label=_('action'),
-                          string_or_number=True,
-                          prim_name='returnstack',
-                          logo_command='action',
-                          default=_('action'),
-                          help_string=_('invokes named action stack and returns value'))
+        palette.add_block(
+            'returnstack',
+            # hidden=True,
+            style='number-style-1arg',
+            label=_('action'),
+            string_or_number=True,
+            prim_name='returnstack',
+            logo_command='action',
+            default=_('action'),
+            help_string=_('invokes named action stack and returns value'))
         self.tw.lc.def_prim('returnstack', 1,
                             primitive_dictionary['returnstack'], True)
 

@@ -28,7 +28,6 @@ import subprocess
 import traceback
 from string import find
 from threading import Timer
-from numpy import append
 from TurtleArt.taconstants import XO1, XO4
 
 import logging
@@ -84,8 +83,6 @@ class AudioGrab():
 
         self._dont_queue_the_buffer = False
 
-        #self._display_counter = DISPLAY_DUTY_CYCLE
-
         # self.activity.wave.set_channels(self.channels)
         for i in range(self.channels):
             self._channels_logged.append(False)
@@ -113,7 +110,8 @@ class AudioGrab():
         self.pipeline.add(self.alsasrc)
         self.caps1 = Gst.ElementFactory.make('capsfilter', 'caps1')
         self.pipeline.add(self.caps1)
-        caps_str = 'audio/x-raw,rate=(int)%d,channels=(int)%d,depth=(int)16' % (
+        caps_str = 'audio/x-raw,\
+            rate=(int)%d,channels=(int)%d,depth=(int)16' % (
             RATE, self.channels)
         self.caps1.set_property('caps', Gst.caps_from_string(caps_str))
         if self.channels == 1:

@@ -27,7 +27,7 @@ from TurtleArt.taconstants import (CONSTANTS, MACROS, KEY_DICT, MEDIA_SHAPES,
                                    REVERSE_KEY_DICT, SKIN_PATHS,
                                    BLOCKS_WITH_SKIN, PYTHON_SKIN,
                                    MEDIA_BLOCK2TYPE, VOICES)
-from TurtleArt.tautils import (debug_output, get_path, data_to_string,
+from TurtleArt.tautils import (get_path, data_to_string,
                                hat_on_top, listify, data_from_file,
                                get_endswith_files)
 from TurtleArt.taprimitive import (ArgSlot, ConstantArg, Primitive)
@@ -759,13 +759,14 @@ module found in the Journal'))
         MEDIA_SHAPES.append('pythonoff')
         MEDIA_SHAPES.append('pythonon')
 
-        palette.add_block('getfromurl',
-                          style='number-style-1arg',
-                          # TRANS: URL is universal resource locator
-                          label=_('URL'),
-                          default='http://wiki.sugarlabs.org/images/2/2c/Logo_alt_3.svg',
-                          prim_name='getfromurl',
-                          help_string=_('gets a text string or an image from a URL'))
+        palette.add_block(
+            'getfromurl',
+            style='number-style-1arg',
+            # TRANS: URL is universal resource locator
+            label=_('URL'),
+            default='http://wiki.sugarlabs.org/images/2/2c/Logo_alt_3.svg',
+            prim_name='getfromurl',
+            help_string=_('gets a text string or an image from a URL'))
         self.tw.lc.def_prim('getfromurl', 1,
                             Primitive(self.tw.lc.get_from_url,
                                       arg_descs=[ArgSlot(TYPE_STRING)]))

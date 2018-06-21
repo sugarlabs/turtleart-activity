@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
-# Copyright (c) 2007, Playful Invention Company
-# Copyright (c) 2008-14, Walter Bender
-# Copyright (c) 2009-11 Raúl Gutiérrez Segalés
-# Copyright (c) 2011 Collabora Ltd. <http://www.collabora.co.uk/>
+# Copyright (C) 2007, Playful Invention Company
+# Copyright (C) 2008-14, Walter Bender
+# Copyright (C) 2009-11 Raúl Gutiérrez Segalés
+# Copyright (C) 2011 Collabora Ltd. <http://www.collabora.co.uk/>
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -41,6 +41,7 @@ from gi.repository import Pango
 from gi.repository import PangoCairo
 
 from sugar3.activity import activity
+from sugar3.graphics import style
 _GST_AVAILABLE = False
 
 
@@ -52,7 +53,6 @@ import locale
 
 from taconstants import (
     HORIZONTAL_PALETTE,
-    VERTICAL_PALETTE,
     BLOCK_SCALE,
     MEDIA_SHAPES,
     STATUS_SHAPES,
@@ -128,7 +128,7 @@ from sprites import (Sprites, Sprite)
 from util.menubuilder import make_checkmenu_item
 
 # if _GST_AVAILABLE:
-#   from .tagplay import stop_media
+from tagplay import stop_media
 
 _MOTION_THRESHOLD = 6
 _SNAP_THRESHOLD = 200
@@ -344,7 +344,6 @@ class TurtleArtWindow():
 
         self.turtleart_plugins = {}
         self.turtleart_favorites_plugins = []
-        #self.turtleart_plugin_list = {}
         self.saved_pictures = []
         self.block_operation = ''
 
@@ -2326,7 +2325,7 @@ class TurtleArtWindow():
                     if blk.connections[1] is not None:
                         self._resize_clamp(blk, blk.connections[1], dockn=1)
                 elif blk.name in block_styles['clamp-style'] or \
-                        blk.name in block_styles['clamp-style-collapsible'] or \
+                        blk.name in block_styles['clamp-style-collapsible'] or\
                         blk.name in block_styles['clamp-style-hat']:
                     if blk.connections[1] is not None:
                         self._resize_clamp(blk, blk.connections[1])
@@ -2340,8 +2339,8 @@ class TurtleArtWindow():
                     dy = 0
                     drag_group = find_group(blk.connections[2])
                     gblk = drag_group[0]
-                    d = int((gblk.docks[-1][3] - gblk.docks[0][3])
-                            / gblk.scale)
+                    d = int((gblk.docks[-1][3] - gblk.docks[0][3]) /
+                            gblk.scale)
                     if d == 0:
                         dy += 21  # Fixme: don't hardcode size of slot
                     else:
@@ -3233,7 +3232,7 @@ class TurtleArtWindow():
                     self._expand_expandable(
                         best_destination, selected_block, dy)
                 self._cascade_expandable(best_destination)
-            elif best_destination.name in block_styles['basic-style-3arg'] and \
+            elif best_destination.name in block_styles['basic-style-3arg'] and\
                     best_destination_dockn == 2:
                 dy = 0
                 if (selected_block.name in expandable_blocks or
@@ -4136,7 +4135,8 @@ class TurtleArtWindow():
                     # For security reasons, only open files found in
                     # Python samples directory
                     if os.path.exists(os.path.join(
-                            self.share_path, value)) and value[0:9] == 'pysamples':
+                            self.share_path, value)) and\
+                            value[0:9] == 'pysamples':
                         self.selected_blk = blk
                         self.load_python_code_from_file(
                             fname=os.path.join(self.share_path, value),
@@ -4145,7 +4145,8 @@ class TurtleArtWindow():
                     else:  # or files from the Journal
                         try:
                             dsobject = datastore.get(value)
-                        except BaseException:  # Should be IOError, but dbus error is raised
+                        # Should be IOError, but dbus error is raised
+                        except BaseException:
                             dsobject = None
                             debug_output('Could not get dsobject %s' % (value),
                                          self.running_sugar)

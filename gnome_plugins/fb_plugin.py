@@ -119,7 +119,7 @@ class Fb_plugin(Plugin):
         sw.show()
         w.move(200, 200)
         w.set_size_request(800, 400)
-        wkv = webkit.WebView()
+        wkv = WebKit.WebView()
         wkv.load_uri(url)
         wkv.grab_focus()
         wkv.connect('navigation-policy-decision-requested',

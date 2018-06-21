@@ -14,7 +14,7 @@
 #
 # You should have received a copy of the GNU Lesser General Public
 # License along with this library; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301  USA
 #
 # Contributor(s):
 #
@@ -23,16 +23,15 @@
 import zipfile
 from xml.sax import make_parser, handler
 from xml.sax.xmlreader import InputSource
-import xml.sax.saxutils
 from cStringIO import StringIO
 
 MANIFESTNS = "urn:oasis:names:tc:opendocument:xmlns:manifest:1.0"
 
-#-----------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
 #
 # ODFMANIFESTHANDLER
 #
-#-----------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
 
 
 class ODFManifestHandler(handler.ContentHandler):
@@ -83,11 +82,11 @@ class ODFManifestHandler(handler.ContentHandler):
         self.manifest[p] = {'media-type': m, 'full-path': p}
 
 
-#-----------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
 #
 # Reading the file
 #
-#-----------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
 
 def manifestlist(manifestxml):
     odhandler = ODFManifestHandler()

@@ -53,8 +53,10 @@ class RFIDReader(RFIDDevice):
                 HAL_SERVICE,
                 HAL_MGR_PATH),
             HAL_MGR_IFACE)
-        tiusb_devices = set(hmgr_if.FindDeviceStringMatch('serial.type', 'usb')) & set(
-            hmgr_if.FindDeviceStringMatch('info.product', 'TUSB3410 Microcontroller'))
+        tiusb_devices = set(
+            hmgr_if.FindDeviceStringMatch('serial.type', 'usb'))\
+            & set(hmgr_if.FindDeviceStringMatch('info.product',
+                  'TUSB3410 Microcontroller'))
         for i in tiusb_devices:
             tiusb_if = dbus.Interface(self.bus.get_object(HAL_SERVICE, i),
                                       HAL_DEV_IFACE)

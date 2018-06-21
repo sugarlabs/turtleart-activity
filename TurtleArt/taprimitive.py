@@ -237,15 +237,15 @@ class Primitive(object):
             to ASTs instead of calling them """
         new_args = []
         for c_arg in self.arg_descs:
-            if (isinstance(c_arg, ConstantArg)
-                and (not exportable_only
-                     or export_me(c_arg.value))):
+            if (isinstance(c_arg, ConstantArg) and
+                    (not exportable_only or
+                     export_me(c_arg.value))):
                 new_args.append(c_arg.get(convert_to_ast=exportable_only))
         new_kwargs = {}
         for key in self.kwarg_descs:
-            if (isinstance(self.kwarg_descs[key], ConstantArg)
-                and (not exportable_only
-                     or export_me(self.kwarg_descs[key].value))):
+            if (isinstance(self.kwarg_descs[key], ConstantArg) and
+                (not exportable_only or
+                 export_me(self.kwarg_descs[key].value))):
                 new_kwargs[key] = self.kwarg_descs[key].get(
                     convert_to_ast=exportable_only)
         return (new_args, new_kwargs)
@@ -669,8 +669,8 @@ class Primitive(object):
         """ Return the controller for this loop Primitive. Raise a
         ValueError if no controller was found. """
         def _is_loop_controller(candidate):
-            return (callable(candidate)
-                    and candidate in Primitive.LOOP_CONTROLLERS)
+            return (callable(candidate) and
+                    candidate in Primitive.LOOP_CONTROLLERS)
 
         for desc in self.arg_descs:
             if isinstance(desc, ConstantArg):
@@ -963,8 +963,8 @@ class ArgSlot(object):
 
         # 1. can the argument be called?
         (func_disjunction, args) = (None, [])
-        if (isinstance(argument, tuple) and argument
-                and callable(argument[0])):
+        if (isinstance(argument, tuple) and argument and
+           callable(argument[0])):
             func_disjunction = argument[0]
             if len(argument) >= 2 and isinstance(argument[1], LogoCode):
                 args = argument[2:]

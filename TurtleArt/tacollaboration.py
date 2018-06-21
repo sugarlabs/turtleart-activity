@@ -20,7 +20,6 @@
 # THE SOFTWARE.
 
 import os
-import base64
 import telepathy
 
 from gettext import gettext as _
@@ -167,7 +166,8 @@ class Collaboration():
         debug_output(
             'New tube: ID=%d initator=%d type=%d service=%s \
                      params=%r state=%d' %
-            (id, initiator, type, service, params, state), self._tw.running_sugar)
+            (id, initiator, type, service, params, state),
+            self._tw.running_sugar)
 
         if (type == telepathy.TUBE_TYPE_DBUS and service == SERVICE):
             if state == telepathy.TUBE_STATE_LOCAL_PENDING:
@@ -195,10 +195,10 @@ class Collaboration():
         the sharer and watches for 't' events, which indicate that a new
         turtle has joined.
         """
-        if len(event_message) == 0:
+        if len(msg) == 0:
             return
 
-       # Save active Turtle
+        # Save active Turtle
         save_active_turtle = self._tw.turtles.get_active_turtle()
 
         command = msg.get("msg")
@@ -281,10 +281,11 @@ class Collaboration():
             put_pen_back_down = True
         else:
             put_pen_back_down = False
-        self.send_event("x",
-                        {"payload": data_to_string([self._get_nick(),
-                                                    [int(self._tw.turtles.get_active_turtle().get_xy()[0]),
-                                                     int(self._tw.turtles.get_active_turtle().get_xy()[1])]])})
+        self.send_event(
+            "x",
+            {"payload": data_to_string([self._get_nick(), [
+                int(self._tw.turtles.get_active_turtle().get_xy()[0]),
+                int(self._tw.turtles.get_active_turtle().get_xy()[1])]])})
         if put_pen_back_down:
             self.send_event("p", {"payload": data_to_string([self._get_nick(),
                                                              True])})

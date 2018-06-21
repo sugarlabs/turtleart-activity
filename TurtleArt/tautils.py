@@ -20,14 +20,12 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-import gi
 import tempfile
 import dbus
 import cairo
 import pickle
 import subprocess
 import os
-import stat
 import string
 import mimetypes
 from gettext import gettext as _
@@ -958,7 +956,7 @@ def power_manager_off(status):
     OHM_SERVICE_IFACE = 'org.freedesktop.ohm.Keystore'
     PATH = '/etc/powerd/flags/inhibit-suspend'
 
-    settings = Gio.Settings('org.sugarlabs.power');
+    settings = Gio.Settings('org.sugarlabs.power')
 
     ACTUAL_POWER = True
 

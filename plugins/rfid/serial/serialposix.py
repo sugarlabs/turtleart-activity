@@ -17,7 +17,7 @@ import termios
 import struct
 import select
 import errno
-from .serialutil import *
+from serialutil import *
 
 # Do check the Python version as some constants have moved.
 if (sys.hexversion < 0x020100f0):
@@ -94,7 +94,7 @@ and with a bit luck you can get this module running...
 
     def device(portum):
         return '/dev/ttyS%d' % portnum
-    #~ raise Exception, "this module does not run on this platform, sorry."
+    # ~ raise Exception, "this module does not run on this platform, sorry."
 
 # whats up with "aix", "beos", ....
 # they should work, just need to know the device names.
@@ -107,11 +107,8 @@ TIOCMBIS = hasattr(TERMIOS, 'TIOCMBIS') and TERMIOS.TIOCMBIS or 0x5416
 TIOCMBIC = hasattr(TERMIOS, 'TIOCMBIC') and TERMIOS.TIOCMBIC or 0x5417
 TIOCMSET = hasattr(TERMIOS, 'TIOCMSET') and TERMIOS.TIOCMSET or 0x5418
 
-#TIOCM_LE = hasattr(TERMIOS, 'TIOCM_LE') and TERMIOS.TIOCM_LE or 0x001
 TIOCM_DTR = hasattr(TERMIOS, 'TIOCM_DTR') and TERMIOS.TIOCM_DTR or 0x002
 TIOCM_RTS = hasattr(TERMIOS, 'TIOCM_RTS') and TERMIOS.TIOCM_RTS or 0x004
-#TIOCM_ST = hasattr(TERMIOS, 'TIOCM_ST') and TERMIOS.TIOCM_ST or 0x008
-#TIOCM_SR = hasattr(TERMIOS, 'TIOCM_SR') and TERMIOS.TIOCM_SR or 0x010
 
 TIOCM_CTS = hasattr(TERMIOS, 'TIOCM_CTS') and TERMIOS.TIOCM_CTS or 0x020
 TIOCM_CAR = hasattr(TERMIOS, 'TIOCM_CAR') and TERMIOS.TIOCM_CAR or 0x040
@@ -119,8 +116,6 @@ TIOCM_RNG = hasattr(TERMIOS, 'TIOCM_RNG') and TERMIOS.TIOCM_RNG or 0x080
 TIOCM_DSR = hasattr(TERMIOS, 'TIOCM_DSR') and TERMIOS.TIOCM_DSR or 0x100
 TIOCM_CD = hasattr(TERMIOS, 'TIOCM_CD') and TERMIOS.TIOCM_CD or TIOCM_CAR
 TIOCM_RI = hasattr(TERMIOS, 'TIOCM_RI') and TERMIOS.TIOCM_RI or TIOCM_RNG
-#TIOCM_OUT1 = hasattr(TERMIOS, 'TIOCM_OUT1') and TERMIOS.TIOCM_OUT1 or 0x2000
-#TIOCM_OUT2 = hasattr(TERMIOS, 'TIOCM_OUT2') and TERMIOS.TIOCM_OUT2 or 0x4000
 TIOCINQ = hasattr(TERMIOS, 'FIONREAD') and TERMIOS.FIONREAD or 0x541B
 
 TIOCM_zero_str = struct.pack('I', 0)
@@ -200,7 +195,7 @@ class Serial(SerialBase):
             self.fd = None
         else:
             self._isOpen = True
-        #~ self.flushInput()
+        # ~ self.flushInput()
 
     def _reconfigurePort(self):
         """Set communication parameters on opened port."""
@@ -220,8 +215,9 @@ class Serial(SerialBase):
             raise SerialException("Could not configure port: %s" % msg)
         # set up raw mode / no echo / binary
         cflag |= (TERMIOS.CLOCAL | TERMIOS.CREAD)
-        lflag &= ~(TERMIOS.ICANON | TERMIOS.ECHO | TERMIOS.ECHOE | TERMIOS.ECHOK |
-                   TERMIOS.ECHONL | TERMIOS.ISIG | TERMIOS.IEXTEN)  # |TERMIOS.ECHOPRT
+        lflag &= ~(
+            TERMIOS.ICANON | TERMIOS.ECHO | TERMIOS.ECHOE | TERMIOS.ECHOK |
+            TERMIOS.ECHONL | TERMIOS.ISIG | TERMIOS.IEXTEN)  # |TERMIOS.ECHOPRT
         for flag in ('ECHOCTL', 'ECHOKE'):  # netbsd workaround for Erk
             if hasattr(TERMIOS, flag):
                 lflag &= ~getattr(TERMIOS, flag)
@@ -241,7 +237,7 @@ class Serial(SerialBase):
             try:
                 ispeed = ospeed = baudrate_constants[self._baudrate]
             except KeyError:
-                #~ raise ValueError('Invalid baud rate: %r' % self._baudrate)
+                # ~ raise ValueError('Invalid baud rate: %r' % self._baudrate)
                 # may need custom baud rate, it isnt in our list.
                 ispeed = ospeed = getattr(TERMIOS, 'B38400')
                 custom_baud = int(self._baudrate)  # store for later
@@ -357,7 +353,7 @@ class Serial(SerialBase):
 
     def inWaiting(self):
         """Return the number of characters currently in the input buffer."""
-        #~ s = fcntl.ioctl(self.fd, TERMIOS.FIONREAD, TIOCM_zero_str)
+        # ~ s = fcntl.ioctl(self.fd, TERMIOS.FIONREAD, TIOCM_zero_str)
         s = fcntl.ioctl(self.fd, TIOCINQ, TIOCM_zero_str)
         return struct.unpack('I', s)[0]
 
@@ -430,13 +426,19 @@ class Serial(SerialBase):
         termios.tcflush(self.fd, TERMIOS.TCOFLUSH)
 
     def sendBreak(self, duration=0.25):
-        """Send break condition. Timed, returns to idle state after given duration."""
+        """
+        Send break condition.
+        Timed, returns to idle state after given duration.
+        """
         if self.fd is None:
             raise portNotOpenError
         termios.tcsendbreak(self.fd, int(duration / 0.25))
 
     def setBreak(self, level=1):
-        """Set break: Controls TXD. When active, to transmitting is possible."""
+        """
+        Set break: Controls TXD.
+        When active, to transmitting is possible.
+        """
         if self.fd is None:
             raise portNotOpenError
         if level:

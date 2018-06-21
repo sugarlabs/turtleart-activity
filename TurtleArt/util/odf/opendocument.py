@@ -24,7 +24,6 @@ import zipfile
 import time
 import sys
 import mimetypes
-import copy
 from cStringIO import StringIO
 from namespaces import *
 import manifest
@@ -364,8 +363,9 @@ class OpenDocument:
             self.thumbnail = filecontent
 
     def addObject(self, document, objectname=None):
-        """ Adds an object (subdocument). The object must be an OpenDocument class
-            The return value will be the folder in the zipfile the object is stored in
+        """
+        Adds an object (subdocument). The object must be an OpenDocument class
+        The return value will be the folder in the zipfile the object is stored in
         """
         self.childobjects.append(document)
         if objectname is None:
@@ -389,9 +389,8 @@ class OpenDocument:
                 zi.compress_type = zipfile.ZIP_STORED
                 zi.external_attr = UNIXPERMS
                 self._z.writestr(zi, fileobj)
-        # According to section 17.7.3 in ODF 1.1, the pictures folder should not have a manifest entry
-#       if hasPictures:
-#           self.manifest.addElement(manifest.FileEntry(fullpath="%sPictures/" % folder, mediatype=""))
+        # According to section 17.7.3 in ODF 1.1,
+        # the pictures folder should not have a manifest entry
         # Look in subobjects
         subobjectnum = 1
         for subobject in object.childobjects:
@@ -529,8 +528,9 @@ class OpenDocument:
 
 # Document's DOM methods
     def createElement(self, element):
-        """ Inconvenient interface to create an element, but follows XML-DOM.
-            Does not allow attributes as argument, therefore can't check grammar.
+        """
+        Inconvenient interface to create an element, but follows XML-DOM.
+        Does not allow attributes as argument, therefore can't check grammar.
         """
         return element(check_grammar=False)
 
@@ -554,7 +554,10 @@ class OpenDocument:
         return self._styles_dict.get(ncname, None)
 
     def getElementsByType(self, element):
-        """ Gets elements based on the type, which is function from text.py, draw.py etc. """
+        """
+        Gets elements based on the type, which is function from text.py,
+        draw.py etc.
+        """
         obj = element(check_grammar=False)
         if self.element_dict == {}:
             self.rebuild_caches()
@@ -662,7 +665,10 @@ def load(odffile):
                            mvalue['media-type'], z.read(mentry))
         elif mentry == "Thumbnails/thumbnail.png":
             doc.addThumbnail(z.read(mentry))
-        elif mentry in ('settings.xml', 'meta.xml', 'content.xml', 'styles.xml'):
+        elif mentry in ('settings.xml',
+                        'meta.xml',
+                        'content.xml',
+                        'styles.xml'):
             pass
         # Load subobjects into structure
         elif mentry[:7] == "Object " and len(mentry) < 11 and mentry[-1] == "/":

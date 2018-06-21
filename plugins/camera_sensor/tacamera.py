@@ -24,10 +24,6 @@ import gi
 gi.require_version('Gst', '1.0')
 from gi.repository import Gst
 Gst.init(None)
-import time
-#from gi.repository import GObject
-# GObject.threads_init()
-from TurtleArt.tautils import debug_output
 
 
 class Camera():

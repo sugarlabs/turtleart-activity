@@ -404,7 +404,8 @@ return %s(self)" % (p, P, P)
             if hasattr(self.get_window(), 'get_cursor'):
                 self.get_window().set_cursor(self._old_cursor)
             else:
-                self.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.LEFT_PTR))
+                self.get_window().set_cursor(
+                    Gdk.Cursor(Gdk.CursorType.LEFT_PTR))
 
     def _setup_gtk(self):
         ''' Set up a scrolled window in which to run Turtle Blocks. '''
@@ -835,19 +836,19 @@ Would you like to save before quitting?'))
             plugins_list = self._settings.get_string(self._PLUGINS_LIST)
             plugins = plugins_list.split(',')
             if button.get_active():
-                if not name in plugins:
+                if not(name in plugins):
                     plugins.append(name)
                     self._settings.set_string(
                         self._PLUGINS_LIST, ','.join(plugins))
                 label = _('Please restart %s in order to use the plugin.') \
-                        % self.name
+                    % self.name
             else:
                 if name in plugins:
                     plugins.remove(name)
                     self._settings.set_string(
                         self._PLUGINS_LIST, ','.join(plugins))
                 label = _('Please restart %s in order to unload the plugin.') \
-                        % self.name
+                    % self.name
         self.tw.showlabel('status', label)
 
     def _do_hover_help_on_cb(self):
@@ -918,7 +919,8 @@ Would you like to save before quitting?'))
         self.tw.copying_blocks = False
         self.tw.deleting_blocks = False
         if self.tw.saving_blocks:
-            self.win.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.LEFT_PTR))
+            self.win.get_window().set_cursor(
+                Gdk.Cursor(Gdk.CursorType.LEFT_PTR))
             self.tw.saving_blocks = False
         else:
             self.win.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.HAND1))
@@ -929,7 +931,8 @@ Would you like to save before quitting?'))
         self.tw.copying_blocks = False
         self.tw.saving_blocks = False
         if self.tw.deleting_blocks:
-            self.win.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.LEFT_PTR))
+            self.win.get_window().set_cursor(
+                Gdk.Cursor(Gdk.CursorType.LEFT_PTR))
             self.tw.deleting_blocks = False
         else:
             self.win.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.HAND1))
@@ -940,7 +943,8 @@ Would you like to save before quitting?'))
         self.tw.saving_blocks = False
         self.tw.deleting_blocks = False
         if self.tw.copying_blocks:
-            self.win.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.LEFT_PTR))
+            self.win.get_window().set_cursor(
+                Gdk.Cursor(Gdk.CursorType.LEFT_PTR))
             self.tw.copying_blocks = False
         else:
             self.win.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.HAND1))

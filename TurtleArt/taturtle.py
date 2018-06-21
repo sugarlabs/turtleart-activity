@@ -28,7 +28,7 @@ from gi.repository import Gdk
 from random import uniform
 from math import sin, cos, pi, sqrt
 from taconstants import (TURTLE_LAYER, DEFAULT_TURTLE_COLORS, DEFAULT_TURTLE,
-                         CONSTANTS, Color, ColorObj)
+                         Color, ColorObj)
 from tasprite_factory import SVG, svg_str_to_pixbuf
 from tacanvas import wrap100, COLOR_TABLE
 from sprites import Sprite

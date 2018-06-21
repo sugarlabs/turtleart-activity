@@ -4,15 +4,12 @@ import cairo
 import pygtk
 pygtk.require('2.0')
 import gtk
-import gobject
 
 from gettext import gettext as _
 
 import os
 import sys
 
-from TurtleArt.tablock import Media
-from TurtleArt.taconstants import CONSTANTS
 from TurtleArt.tatype import *
 from TurtleArt.tawindow import TurtleArtWindow
 

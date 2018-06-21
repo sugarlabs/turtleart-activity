@@ -22,7 +22,6 @@ from gi.repository import Gst
 Gst.init(None)
 from fcntl import ioctl
 import os
-from time import time
 
 from gettext import gettext as _
 
@@ -34,7 +33,7 @@ from plugins.plugin import Plugin
 
 from TurtleArt.tapalette import make_palette
 from TurtleArt.talogo import media_blocks_dictionary
-from TurtleArt.tautils import get_path, debug_output, power_manager_off
+from TurtleArt.tautils import debug_output, power_manager_off
 from TurtleArt.taconstants import MEDIA_SHAPES, NO_IMPORT, SKIN_PATHS, \
     BLOCKS_WITH_SKIN
 from TurtleArt.taprimitive import (ConstantArg, Primitive)
@@ -124,7 +123,8 @@ class Camera_sensor(Plugin):
             hidden=True,
             style='box-style',
             label=_('brightness'),
-            help_string=_('Average RGB color from camera is pushed to the stack'),
+            help_string=_(
+                'Average RGB color from camera is pushed to the stack'),
             value_block=True,
             prim_name='read_camera')
         self._parent.lc.def_prim(
