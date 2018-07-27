@@ -35,7 +35,7 @@ import cairo
 
 from gi.repository import Gtk
 from gi.repository import Gdk
-from gi.repository import GObject
+from gi.repository import GLib
 from gi.repository import GdkPixbuf
 from gi.repository import Pango
 from gi.repository import PangoCairo
@@ -363,7 +363,7 @@ class TurtleArtWindow():
         global_objects["turtles"] = self.turtles
 
         if self.interactive_mode:
-            GObject.idle_add(self._lazy_init)
+            GLib.idle_add(self._lazy_init)
         else:
             self._init_plugins()
             self._setup_plugins()
@@ -601,12 +601,12 @@ class TurtleArtWindow():
         # Reset the timer
         if hasattr(self.activity, '_unfullscreen_button_timeout_id'):
             if self.activity._unfullscreen_button_timeout_id is not None:
-                GObject.source_remove(
+                GLib.source_remove(
                     self.activity._unfullscreen_button_timeout_id)
                 self.activity._unfullscreen_button_timeout_id = None
 
             self.activity._unfullscreen_button_timeout_id = \
-                GObject.timeout_add_seconds(
+                GLib.timeout_add_seconds(
                     _UNFULLSCREEN_VISIBILITY_TIMEOUT,
                     self.__unfullscreen_button_timeout_cb)
 
@@ -2575,7 +2575,7 @@ class TurtleArtWindow():
             else:
                 if self._timeout_tag[0] > 0:
                     try:
-                        GObject.source_remove(self._timeout_tag[0])
+                        GLib.source_remove(self._timeout_tag[0])
                         self._timeout_tag[0] = 0
                     except BaseException:
                         self._timeout_tag[0] = 0
@@ -2589,14 +2589,14 @@ class TurtleArtWindow():
             else:
                 if self._timeout_tag[0] > 0:
                     try:
-                        GObject.source_remove(self._timeout_tag[0])
+                        GLib.source_remove(self._timeout_tag[0])
                         self._timeout_tag[0] = 0
                     except BaseException:
                         self._timeout_tag[0] = 0
         else:
             if self._timeout_tag[0] > 0:
                 try:
-                    GObject.source_remove(self._timeout_tag[0])
+                    GLib.source_remove(self._timeout_tag[0])
                     self._timeout_tag[0] = 0
                 except BaseException:
                     self._timeout_tag[0] = 0
@@ -2707,7 +2707,7 @@ class TurtleArtWindow():
                 abs(self.dy < _MOTION_THRESHOLD))):
             self._click_block(x, y)
         elif self.block_operation == 'copying':
-            GObject.timeout_add(500, self._unhighlight_drag_group, blk)
+            GLib.timeout_add(500, self._unhighlight_drag_group, blk)
 
     def _unhighlight_drag_group(self, blk):
         self.drag_group = find_group(blk)
@@ -3028,7 +3028,7 @@ class TurtleArtWindow():
             self._hide_text_entry()
             self.parent.get_window().set_cursor(
                 Gdk.Cursor(Gdk.CursorType.WATCH))
-            GObject.idle_add(self.__run_stack, blk)
+            GLib.idle_add(self.__run_stack, blk)
 
     def __run_stack(self, blk):
         if self.status_spr is not None:
@@ -3049,7 +3049,7 @@ class TurtleArtWindow():
                 Gdk.Cursor(Gdk.CursorType.LEFT_PTR))
         self.lc.run_blocks(code)
         if self.interactive_mode:
-            GObject.idle_add(self.lc.doevalstep)
+            GLib.idle_add(self.lc.doevalstep)
         else:
             while self.lc.doevalstep():
                 pass

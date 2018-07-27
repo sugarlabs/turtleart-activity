@@ -421,7 +421,7 @@ class _BaseFileTransfer(GObject.GObject):
     def _get_transferred_bytes(self):
         return self._transferred_bytes
 
-    transferred_bytes = GObject.property(type=int,
+    transferred_bytes = GObject.Property(type=int,
                                          default=0,
                                          getter=_get_transferred_bytes,
                                          setter=_set_transferred_bytes)
@@ -441,7 +441,7 @@ class _BaseFileTransfer(GObject.GObject):
     def _get_state(self):
         return self._state
 
-    state = GObject.property(type=int, getter=_get_state, setter=_set_state)
+    state = GObject.Property(type=int, getter=_get_state, setter=_set_state)
 
     def cancel(self):
         '''

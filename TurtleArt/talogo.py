@@ -30,7 +30,7 @@ from os.path import exists as os_path_exists
 from UserDict import UserDict
 
 from gi.repository import Gtk
-from gi.repository import GObject
+from gi.repository import GLib
 from gi.repository import GdkPixbuf
 
 from sugar3.graphics import style
@@ -1172,7 +1172,7 @@ class LogoCode:
                                               [round_int(width),
                                                round_int(height),
                                                data]]))
-            GObject.idle_add(self.tw.send_event, event)
+            GLib.idle_add(self.tw.send_event, event)
             os.remove(tmp_file)
 
     def get_from_url(self, url):
