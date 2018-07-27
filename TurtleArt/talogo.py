@@ -29,7 +29,7 @@ from operator import isNumberType
 from os.path import exists as os_path_exists
 from UserDict import UserDict
 
-from gi.repository import GObject
+from gi.repository import GLib
 from gi.repository import GdkPixbuf
 
 from sugar3.graphics import style
@@ -1175,7 +1175,7 @@ class LogoCode:
                 self.tw.send_event('R', event)
                 return False
 
-            GObject.idle_add(send_event)
+            GLib.idle_add(send_event)
             os.remove(tmp_file)
 
     def get_from_url(self, url):

@@ -30,7 +30,7 @@ import string
 import mimetypes
 from gettext import gettext as _
 from gi.repository import Gtk
-from gi.repository import GObject
+from gi.repository import GLib
 from gi.repository import GdkPixbuf
 from gi.repository import Gio
 import json
@@ -336,7 +336,7 @@ def chooser_dialog(parent_window, filter, action):
         if cleanup_needed:
             chooser.destroy()
             del chooser
-    GObject.idle_add(action, dsobject)
+    GLib.idle_add(action, dsobject)
 
 
 def data_from_file(ta_file):

@@ -35,7 +35,7 @@ import subprocess
 
 from gi.repository import Gtk
 from gi.repository import Gdk
-from gi.repository import GObject
+from gi.repository import GLib
 from gi.repository import GdkPixbuf
 from gi.repository import Gio
 
@@ -232,7 +232,7 @@ return %s(self)" % (p, P, P)
             self.tw.load_start()
         else:
             self.win.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.WATCH))
-            GObject.idle_add(self._project_loader, self._ta_file)
+            GLib.idle_add(self._project_loader, self._ta_file)
         self._set_gio_settings_overrides()
         Gtk.main()
 
@@ -1097,7 +1097,7 @@ Would you like to save before quitting?'))
         self._sample_window.hide()
 
         self.win.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.WATCH))
-        GObject.idle_add(self._sample_loader)
+        GLib.idle_add(self._sample_loader)
 
     def _sample_loader(self):
         # Convert from thumbnail path to sample path

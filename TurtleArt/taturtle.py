@@ -23,7 +23,7 @@ import os
 import cairo
 import tempfile
 
-from gi.repository import GObject
+from gi.repository import GLib
 from gi.repository import Gdk
 from random import uniform
 from math import sin, cos, pi, sqrt
@@ -699,7 +699,7 @@ class Turtle:
                 self._turtles.turtle_window.send_event('P', event)
                 return False
 
-            GObject.idle_add(send_event)
+            GLib.idle_add(send_event)
 
             os.remove(tmp_file)
 
