@@ -38,6 +38,8 @@ def generate_appdata(prefix, bundle_id):
         info.get('Activity', 'description')))
     root.append(desc)
 
+    ET.SubElement(root, 'content_rating', type='oars-1.1')
+
     copy_pairs = [('metadata_license', 'metadata_license'),
                   ('license', 'project_license'),
                   ('summary', 'summary'),
