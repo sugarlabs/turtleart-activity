@@ -73,7 +73,8 @@ if len(sys.argv) > 1 and '--no-sugar' == sys.argv[1]:
         ('activity', get_files('activity/')),
         ('icons', get_files('icons/')),
         ('images', get_files('images/')),
-        ('/usr/share/applications', ['turtleblocks.desktop'])
+        ('/usr/share/applications', ['turtleblocks.desktop']),
+        ('org.laptop.TurtleArtActivity.gschema.xml')
     ]
 
     setup(name='Turtle Art',
