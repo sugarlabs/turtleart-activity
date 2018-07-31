@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 
 import sys
+from ConfigParser import ConfigParser
+import xml.etree.cElementTree as ET
 
 
 def get_files(path):
@@ -8,6 +10,66 @@ def get_files(path):
     for name in os.listdir(path):
         files.append(os.path.join(path, name))
     return files
+
+
+def generate_appdata(prefix, bundle_id):
+    info = ConfigParser()
+    info.read(os.path.join('activity', 'activity.info'))
+
+    required_fields = ['metadata_license', 'license', 'name', 'icon',
+                       'description']
+    for name in required_fields:
+        if not info.has_option('Activity', name):
+            print('[WARNING] Activity needs more metadata for AppStream '
+                  'file')
+            print('  Without an AppStream file, the activity will NOT '
+                  'show in software stores!')
+            print('  Please `pydoc sugar3.activity.bundlebuilder` for'
+                  'more info')
+            return
+
+    # See https://www.freedesktop.org/software/appstream/docs/
+    root = ET.Element('component', type='desktop')
+    ET.SubElement(root, 'translation', type='gettext').text = \
+        bundle_id
+    ET.SubElement(root, 'id').text = \
+        bundle_id + '.desktop'
+    desc = ET.fromstring('<description>{}</description>'.format(
+        info.get('Activity', 'description')))
+    root.append(desc)
+
+    copy_pairs = [('metadata_license', 'metadata_license'),
+                  ('license', 'project_license'),
+                  ('summary', 'summary'),
+                  ('name', 'name')]
+    for key, ename in copy_pairs:
+        ET.SubElement(root, ename).text = info.get('Activity', key)
+
+    if info.has_option('Activity', 'screenshots'):
+        screenshots = info.get('Activity', 'screenshots').split()
+        ss_root = ET.SubElement(root, 'screenshots')
+        for i, screenshot in enumerate(screenshots):
+            e = ET.SubElement(ss_root, 'screenshot')
+            if i == 0:
+                e.set('type', 'default')
+            ET.SubElement(e, 'image').text = screenshot
+
+    if info.has_option('Activity', 'url'):
+        ET.SubElement(root, 'url', type='homepage').text = \
+            info.get('Activity', 'url')
+    if info.has_option('Activity', 'repository_url'):
+        ET.SubElement(root, 'url', type='bugtracker').text = \
+            info.get('Activity', 'repository_url')
+    elif info.has_option('Activity', 'repository'):
+        ET.SubElement(root, 'url', type='bugtracker').text = \
+            info.get('Activity', 'repository')
+
+    path = os.path.join(prefix, 'share', 'metainfo',
+                        bundle_id + '.appdata.xml')
+    if not os.path.isdir(os.path.dirname(path)):
+        os.makedirs(os.path.dirname(path))
+    tree = ET.ElementTree(root)
+    tree.write(path, encoding='UTF-8')
 
 
 if len(sys.argv) > 1 and '--no-sugar' == sys.argv[1]:
@@ -25,6 +87,9 @@ if len(sys.argv) > 1 and '--no-sugar' == sys.argv[1]:
         def run(self):
             install.run(self)
             print "Running post_install"
+
+            generate_appdata(self.prefix,
+                             'org.laptop.TurtleArtActivity')
 
             # Create a simple module that allows the app where to discover
             # its lib and share content.
