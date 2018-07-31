@@ -33,14 +33,16 @@ if len(sys.argv) > 1 and '--no-sugar' == sys.argv[1]:
             fd.write("INSTALL_PREFIX='%s'\n" % self.prefix)
             fd.close()
 
+            root = self.root or ''
+
             # distutils doesn't offer a nice way to do recursive install of
             # a directory tree, so we install the remaining parts here.
-            libdir = os.path.join(self.root + self.install_base, "lib",
+            libdir = os.path.join(root + self.install_base, "lib",
                                   "TurtleBlocks")
             if not os.path.isdir(libdir):
                 os.makedirs(libdir)
 
-            sharedir = os.path.join(self.root + self.install_base, "share",
+            sharedir = os.path.join(root + self.install_base, "share",
                                     "TurtleBlocks")
             if not os.path.isdir(sharedir):
                 os.makedirs(sharedir)
@@ -48,7 +50,7 @@ if len(sys.argv) > 1 and '--no-sugar' == sys.argv[1]:
             shutil.copytree("plugins", os.path.join(libdir, "plugins"))
             shutil.copytree("samples", os.path.join(sharedir, "samples"))
 
-            localedir = os.path.join(self.root + self.install_base, "share",
+            localedir = os.path.join(root + self.install_base, "share",
                                      "locale")
             for f in os.listdir('po'):
                 if not f.endswith('.po') or f == 'pseudo.po':
