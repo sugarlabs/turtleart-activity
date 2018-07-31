@@ -5,7 +5,7 @@ import sys
 
 def get_files(path):
     files = []
-    for name in path:
+    for name in os.listdir(path):
         files.append(os.path.join(path, name))
     return files
 
