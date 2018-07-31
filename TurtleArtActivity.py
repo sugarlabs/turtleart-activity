@@ -566,7 +566,6 @@ class TurtleArtActivity(activity.Activity):
                 self._old_cursor = self.get_window().get_cursor()
             self.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.WATCH))
         self._create_store()
-        # self.tw.load_file_from_chooser(True)
         # Now that the file is loaded, restore the cursor
         _logger.debug('restoring cursor')
         self.restore_cursor()

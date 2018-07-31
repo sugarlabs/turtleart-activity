@@ -8,6 +8,6 @@ icon = activity-turtleart
 show_launcher = yes
 url = https://help.sugarlabs.org/en/turtleart.html
 mime_types = application/x-turtle-art;application/vnd.turtleblocks
-tags = Programming;Art
+tags = Maths;Game;Programming;Art
 summary = A Logo-inspired turtle that draws colorful pictures with snap-together visual programming blocks
 repository = https://github.com/sugarlabs/turtleart-activity

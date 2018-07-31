@@ -32,6 +32,7 @@ except ImportError as e:
     _UPLOAD_AVAILABLE = False
 
 import os
+import socket
 
 from plugin import Plugin
 from TurtleArt.util.menubuilder import make_menu_item, make_sub_menu, MENUBAR
@@ -155,8 +156,6 @@ http://turtleartsite.sugarlabs.org to upload your project.'))
 
     def _do_remote_logon(self, widget):
         """ Log into the upload server """
-        import socket
-
         username = self.username_entry.get_text()
         password = self.password_entry.get_text()
         server = xmlrpclib.ServerProxy(self._upload_server + '/call/xmlrpc')
