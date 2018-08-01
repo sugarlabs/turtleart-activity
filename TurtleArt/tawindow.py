@@ -199,6 +199,10 @@ class TurtleArtWindow():
         else:
             self.activity = parent
 
+        self.variant = 'Art'
+        if type(self.activity).__name__ == 'TurtleConfusionActivity':
+            self.variant = 'Confusion'
+
         # paths
         self.lib_path = lib_path
         self.share_path = share_path
