@@ -1826,3 +1826,140 @@ class TurtleArtActivity(activity.Activity):
         elif self.activity_toolbar_button.is_expanded():
             return True
         return False
+
+
+class TurtleConfusionActivity(TurtleArtActivity):
+    def __init__(self, handle):
+        TurtleArtActivity.__init__(self, handle)
+
+        self._stop_help = False
+        self._offsets = {'confusion-01': [0, 0, 33]}
+        self._selected_sample = os.path.join(activity.get_bundle_path(),
+                                             'samples', 'thumbnails',
+                                             'confusion-01.svg')
+        self._sample_box = None
+        self._sample_window = None
+        GObject.idle_add(self._sample_loader)
+
+    def _setup_samples_button(self):
+        self.samples_button = self._add_button(
+            'ta-open-confusion', _('Load challenge'), self._create_store,
+            self.toolbox.toolbar)
+
+    def _setup_toolbar_help_load_example(self, help_box):
+        add_paragraph(help_box, _('Save snapshot'), icon='filesaveoff')
+        add_paragraph(help_box, _('Load challenge'), icon='ta-open-confusion')
+
+    def _setup_toolbar_help_add_project(self, help_box):
+        add_paragraph(help_box, _('Add project'),
+                      icon='load-from-journal-confusion')
+
+    def do_eraser_cb(self, button):
+        TurtleArtActivity.do_eraser_cb(self, button)
+        self.restore_state()
+
+    def restore_state(self):
+        ''' Restore the current challange after a clear screen '''
+        self._sample_loader()
+
+    def _draw_cartoon(self):
+        pos = self.tw.turtles.get_active_turtle().get_xy()
+        self.tw.turtles.get_active_turtle().set_xy(
+            int(-Gdk.Screen.width() / 2), 0, pendown=False)
+        self.tw.lc.insert_image(
+            center=False, resize=False, filepath=os.path.join(
+                activity.get_bundle_path(), 'images', 'turtle-a-small.png'))
+        self.tw.turtles.get_active_turtle().set_xy(pos[0], pos[1],
+                                                   pendown=False)
+
+    def do_stop_cb(self, button):
+        if not self._stop_help:
+            self._stop_help = True
+            self.tw.showblocks()
+            self.stop_turtle_button.set_icon_name('hideshowoff')
+            self.stop_turtle_button.set_tooltip(_('Hide blocks'))
+            return
+
+        TurtleArtActivity.do_stop_cb(self, button)
+
+    def write_file(self, file_path):
+        if self._selected_sample is not None:
+            basename = os.path.basename(self._selected_sample)[:-4]
+            self.metadata['challenge'] = basename
+            if basename in self._offsets:
+                self.metadata['offsets'] = '[%d, %d, %d]' % (
+                    self._offsets[basename][0],
+                    self._offsets[basename][1],
+                    self._offsets[basename][2])
+
+        TurtleArtActivity.write_file(self, file_path)
+
+    def read_file(self, file_path, plugin=False):
+        if 'challenge' in self.metadata and \
+                self._selected_sample is None:
+            self._selected_sample = os.path.join(
+                activity.get_bundle_path(),
+                'samples', 'thumbnails',
+                self.metadata['challenge'] + '.svg')
+            if 'offsets' in self.metadata:
+                x, y, s = self.metadata['offsets'][1:-1].split(',')
+                self._offsets = {self.metadata['challenge']: [int(x), int(y),
+                                                              int(s)]}
+            else:
+                self._offsets = {self.metadata['challenge']: [0, 0, 33]}
+
+        TurtleArtActivity.read_file(self, file_path)
+
+    def _sample_loader(self):
+        self.tw.canvas.clearscreen()
+        self._draw_cartoon()
+        if self._selected_sample is not None:
+            _logger.debug(self._selected_sample)
+            basename = os.path.basename(self._selected_sample)[:-4]
+            if basename in self._offsets:
+                offset = [self._offsets[basename][0] - 3,
+                          self._offsets[basename][1] - 3]
+                scale = self._offsets[basename][2]
+            else:
+                offset = [-3, -3]
+                scale = 33
+            save_scale = self.tw.lc.scale
+            self.tw.turtles.get_active_turtle().set_xy(offset[0],
+                                                       offset[1],
+                                                       pendown=False)
+
+            self.tw.lc.scale = scale
+            self.tw.lc.insert_image(center=False,
+                                    filepath=self._selected_sample,
+                                    resize=False,
+                                    offset=True)
+            self.tw.lc.scale = save_scale
+        self.tw.turtles.get_active_turtle().set_xy(0, 0, pendown=False)
+
+        self.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.LEFT_PTR))
+
+    def _create_store(self, widget=None):
+
+        TurtleArtActivity._create_store(self)
+
+        if self._sample_window is None:
+            self._sample_window.set_policy(Gtk.PolicyType.NEVER,
+                                           Gtk.PolicyType.AUTOMATIC)
+            self._offsets = {}
+            offset_fd = open(os.path.join(activity.get_bundle_path(),
+                                          'challenges',
+                                          'offsets'))
+            for line in offset_fd:
+                try:
+                    idx, offsets = line.strip('\n').split(':')
+                    xoffset, yoffset, scale = offsets.split(',')
+                    self._offsets['confusion-' + idx] = (int(xoffset),
+                                                        int(yoffset),
+                                                        int(scale))
+                except ValueError:
+                    pass
+            offset_fd.close()
+
+    def _scan_for_samples(self):
+        return self._scan_for_samples_by_suffix('.svg')
+
