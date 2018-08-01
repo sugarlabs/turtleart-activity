@@ -1,7 +1,7 @@
 [Activity]
 name = TurtleBlocks
 activity_version = 218
-license = MIT;GPLv2+;LGPLv2+;LGPLv2.1+;GPLv3+
+license = MIT;GPLv2+;LGPLv2+;LGPLv2.1+;LGPLv3+;GPLv3+;BSD
 bundle_id = org.laptop.TurtleArtActivity
 exec = sugar-activity TurtleArtActivity.TurtleArtActivity
 icon = activity-turtleart
