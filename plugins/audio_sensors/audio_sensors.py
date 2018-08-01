@@ -68,6 +68,24 @@ class Audio_sensors(Plugin):
         self.hw = self._parent.hw
         self.running_sugar = self._parent.running_sugar
 
+        self.variant = self._parent.variant
+
+        if self.variant == 'Art':
+            self.hidden = not self._status
+            self.palette_name = 'sensor'
+            self.translation = _('sensor')
+            self.colors = ["#FF6060", "#A06060"]
+            self.help_string = _('Palette of sensor blocks')
+            self.position = 6
+
+        elif self.variant == 'Confusion':
+            self.hidden = True
+            self.palette_name = 'extras'
+            self.translation = _('extras')
+            self.colors = colors=["#FF0000", "#A00000"]
+            self.help_string = _('Palette of extra options')
+            self.position = 8
+
     def setup(self):
         ''' set up audio-sensor-specific blocks '''
         self._sound = [0, 0]
@@ -79,13 +97,13 @@ class Audio_sensors(Plugin):
         self.input_step = 1
         self.ringbuffer = []
 
-        palette = make_palette('sensor',
-                               colors=["#FF6060", "#A06060"],
-                               help_string=_('Palette of sensor blocks'),
-                               position=6)
-        hidden = True
-        if self._status:
-            hidden = False
+        palette = make_palette(self.palette_name,
+                               colors=self.colors,
+                               help_string=self.help_string,
+                               position=self.position,
+                               translation=self.translation)
+
+        hidden = self.hidden
 
         palette.add_block('sound',
                           hidden=hidden,
@@ -116,7 +134,7 @@ class Audio_sensors(Plugin):
                       kwarg_descs={'channel': ConstantArg(0)},
                       call_afterwards=self.after_volume))
 
-        hidden = True
+        hidden = self.hidden
         if PITCH_AVAILABLE and self._status:
             hidden = False
 
