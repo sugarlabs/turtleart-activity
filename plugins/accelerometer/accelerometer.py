@@ -43,28 +43,39 @@ class Accelerometer(Plugin):
             self._status = False
         self.running_sugar = self._parent.running_sugar
 
+        self.variant = self._parent.variant
+
+        if self.variant == 'Art':
+            self.hidden = not self._status
+            self.palette_name = 'sensor'
+            self.translation = _('sensor')
+            self.colors = ["#FF6060", "#A06060"]
+            self.help_string = _('Palette of sensor blocks')
+            self.position = 6
+
+        elif self.variant == 'Confusion':
+            self.hidden = True
+            self.palette_name = 'extras'
+            self.translation = _('extras')
+            self.colors = colors=["#FF0000", "#A00000"]
+            self.help_string = _('Palette of extra options')
+            self.position = 8
+
     def setup(self):
         # set up accelerometer specific blocks
-        palette = make_palette('sensor',
-                               colors=["#FF6060", "#A06060"],
-                               help_string=_('Palette of sensor blocks'),
-                               position=6)
+        palette = make_palette(self.palette_name,
+                               colors=self.colors,
+                               help_string=self.help_string,
+                               position=self.position,
+                               translation=self.translation)
 
-        if self._status:
-            palette.add_block('xyz',
-                              style='basic-style-extended-vertical',
-                              label=_('acceleration'),
-                              help_string=_(
+        palette.add_block('xyz',
+                          hidden=self.hidden,
+                          style='basic-style-extended-vertical',
+                          label=_('acceleration'),
+                          help_string=_(
                                   'push acceleration in x, y, z to heap'),
-                              prim_name='xyz')
-        else:
-            palette.add_block('xyz',
-                              style='basic-style-extended-vertical',
-                              label=_('acceleration'),
-                              help_string=_(
-                                  'push acceleration in x, y, z to heap'),
-                              hidden=True,
-                              prim_name='xyz')
+                          prim_name='xyz')
 
         self._parent.lc.def_prim(
             'xyz', 0,
