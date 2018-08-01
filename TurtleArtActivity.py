@@ -872,9 +872,7 @@ class TurtleArtActivity(activity.Activity):
         self.extras_separator = self._add_separator(
             self.toolbox.toolbar, expand=False, visible=True)
 
-        self.samples_button = self._add_button(
-            'ta-open', _('Load example'), self.do_samples_cb,
-            self.toolbox.toolbar)
+        self._setup_samples_button()
 
         self.toolbox.toolbar.insert(self._help_button, -1)
         self._help_button.show()
@@ -886,6 +884,11 @@ class TurtleArtActivity(activity.Activity):
         self.stop_button.props.accelerator = '<Ctrl>Q'
         self.toolbox.toolbar.insert(self.stop_button, -1)
         self.stop_button.show()
+
+    def _setup_samples_button(self):
+        self.samples_button = self._add_button(
+            'ta-open', _('Load example'), self.do_samples_cb,
+            self.toolbox.toolbar)
 
     def _setup_toolbar_help(self):
         ''' Set up a help palette for the main toolbars '''
@@ -911,7 +914,7 @@ class TurtleArtActivity(activity.Activity):
         add_paragraph(help_box, _('Step'), icon='run-slowoff')
         add_paragraph(help_box, _('Stop turtle'), icon='stopitoff')
         add_paragraph(help_box, _('Show blocks'), icon='hideshowoff')
-        add_paragraph(help_box, _('Load example'), icon='ta-open')
+        self._setup_toolbar_help_load_example(help_box)
         add_paragraph(help_box, _('Help'), icon='help-toolbar')
         add_paragraph(help_box, _('Stop'), icon='activity-stop')
 
@@ -946,7 +949,7 @@ class TurtleArtActivity(activity.Activity):
         add_paragraph(help_box, _('Save as Logo'), icon='logo-saveoff')
         add_paragraph(help_box, _('Save as Python'), icon='python-saveoff')
         add_paragraph(help_box, _('Save snapshot'), icon='filesaveoff')
-        add_paragraph(help_box, _('Add project'), icon='load-from-journal')
+        self._setup_toolbar_help_add_project(help_box)
         home = os.environ['HOME']
         if activity.get_bundle_path()[0:len(home)] == home:
             add_paragraph(help_box, _('Load plugin'), icon='pluginoff')
@@ -997,6 +1000,12 @@ class TurtleArtActivity(activity.Activity):
         add_paragraph(help_box, _('Grow blocks'), icon='resize+')
         add_paragraph(help_box, _('Shrink blocks'), icon='resize-')
         add_paragraph(help_box, _('Turn off hover help'), icon='help-off')
+
+    def _setup_toolbar_help_load_example(self, help_box):
+        add_paragraph(help_box, _('Load example'), icon='ta-open')
+
+    def _setup_toolbar_help_add_project(self, help_box):
+        add_paragraph(help_box, _('Add project'), icon='load-from-journal')
 
     def _save_as_icon_expose_cb(self, box, context):
         for widget in box.get_children():
@@ -1795,11 +1804,14 @@ class TurtleArtActivity(activity.Activity):
             store.append([pixbuf, filepath])
 
     def _scan_for_samples(self):
+        return self._scan_for_samples_by_suffix('.png')
+
+    def _scan_for_samples_by_suffix(self, suffix):
         path = os.path.join(activity.get_bundle_path(),
                             'samples', 'thumbnails')
         samples = []
         for name in os.listdir(path):
-            if name.endswith(".png"):
+            if name.endswith(suffix):
                 samples.append(os.path.join(path, name))
         samples.sort()
         return samples
