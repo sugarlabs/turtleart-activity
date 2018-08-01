@@ -73,7 +73,7 @@ class HelpButton(Gtk.ToolItem):
             self._palette.set_content(help_windows['main-toolbar'])
             help_windows['main-toolbar'].show_all()
 
-        self._palette.popup(immediate=True, state=1)
+        self._palette.popup(immediate=True)
 
 
 def add_section(help_box, section_text, icon=None):
