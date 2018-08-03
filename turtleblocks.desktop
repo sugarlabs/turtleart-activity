@@ -15,3 +15,4 @@ Comment[es]=Un entorno de programación Logo
 Terminal=false
 StartupNotify=true
 Categories=Education;Art;
+MimeType=application/x-turtle-art;
