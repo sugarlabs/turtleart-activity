@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
+#
 # Python Serial Port Extension for Win32, Linux, BSD, Jython
 # module for serial IO for POSIX compatible systems, like Linux
 # see __init__.py
@@ -17,7 +19,11 @@ import termios
 import struct
 import select
 import errno
-from serialutil import *
+from serialutil import portnum, SerialBase, SerialException, \
+    portNotOpenError, writeTimeoutError
+
+from serialutil import VERSION, STOPBITS_ONE, STOPBITS_TWO, \
+    PARITY_NONE, PARITY_EVEN, PARITY_ODD, EIGHTBITS
 
 # Do check the Python version as some constants have moved.
 if (sys.hexversion < 0x020100f0):
@@ -364,7 +370,6 @@ class Serial(SerialBase):
         if self.fd is None:
             raise portNotOpenError
         read = ''
-        inp = None
         if size > 0:
             while len(read) < size:
                 # print "\tread(): size",size, "have", len(read)    #debug

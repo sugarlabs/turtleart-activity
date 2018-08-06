@@ -13,11 +13,15 @@
 #
 # You should have received a copy of the GNU Lesser General Public
 # License along with this library; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 #
 # Contributor(s):
 #
-from namespaces import *
+from namespaces import STYLENS, DRAWNS, ANIMNS, CHARTNS, CONFIGNS, \
+    DR3DNS, FONS, FORMNS, MANIFESTNS, METANS, NUMBERNS, OFFICENS, \
+    PRESENTATIONNS, SCRIPTNS, SMILNS, SVGNS, TABLENS, TEXTNS, \
+    XLINKNS, XFORMSNS
+
 import re
 import types
 
@@ -125,7 +129,6 @@ def __save_prefix(attribute, arg, element):
     namespace = element.get_knownns(prefix)
     if namespace is None:
         return unicode(arg)
-    p = element.get_nsprefix(namespace)
     return unicode(arg)
 
 
@@ -134,8 +137,8 @@ def cnv_formula(attribute, arg, element):
     A string containing a formula. Formulas do not have a predefined syntax,
     but the string should begin with a namespace prefix, followed by a “:”
     (COLON, U+003A) separator, followed by the text of the formula.
-    The namespace bound to the prefix determines the syntax and semantics of the
-    formula.
+    The namespace bound to the prefix determines the syntax and semantics of
+    the formula.
     """
     return __save_prefix(attribute, arg, element)
 
@@ -267,7 +270,6 @@ def cnv_percent(attribute, arg, element):
 
 # Real one doesn't allow floating point values
 pattern_points = re.compile(r'-?[0-9]+,-?[0-9]+([ ]+-?[0-9]+,-?[0-9]+)*')
-#pattern_points = re.compile(r'-?[0-9.]+,-?[0-9.]+([ ]+-?[0-9.]+,-?[0-9.]+)*')
 
 
 def cnv_points(attribute, arg, element):
@@ -275,7 +277,8 @@ def cnv_points(attribute, arg, element):
     if type(arg) in types.StringTypes:
         if not pattern_points.match(arg):
             raise ValueError(
-                "x,y are separated by a comma and the points are separated by white spaces")
+                "x,y are separated by a comma and the points are separated\
+                by white spaces")
         return arg
     else:
         try:
@@ -340,7 +343,7 @@ attrconverters = {
     ((ANIMNS, u'name'), None): cnv_string,
     ((ANIMNS, u'sub-item'), None): cnv_string,
     ((ANIMNS, u'value'), None): cnv_string,
-    #	((DBNS,u'type'), None): cnv_namespacedToken,
+    #    ((DBNS,u'type'), None): cnv_namespacedToken,
     ((CHARTNS, u'attached-axis'), None): cnv_string,
     ((CHARTNS, u'class'), (CHARTNS, u'grid')): cnv_major_minor,
     ((CHARTNS, u'class'), None): cnv_namespacedToken,
@@ -791,7 +794,8 @@ attrconverters = {
     ((METANS, u'frame-count'), None): cnv_nonNegativeInteger,
     ((METANS, u'image-count'), None): cnv_nonNegativeInteger,
     ((METANS, u'name'), None): cnv_string,
-    ((METANS, u'non-whitespace-character-count'), None): cnv_nonNegativeInteger,
+    ((METANS, u'non-whitespace-character-count'),
+     None): cnv_nonNegativeInteger,
     ((METANS, u'object-count'), None): cnv_nonNegativeInteger,
     ((METANS, u'ole-object-count'), None): cnv_nonNegativeInteger,
     ((METANS, u'page-count'), None): cnv_nonNegativeInteger,
@@ -876,7 +880,8 @@ attrconverters = {
     ((PRESENTATIONNS, u'pause'), None): cnv_duration,
     ((PRESENTATIONNS, u'placeholder'), None): cnv_boolean,
     ((PRESENTATIONNS, u'play-full'), None): cnv_boolean,
-    ((PRESENTATIONNS, u'presentation-page-layout-name'), None): cnv_StyleNameRef,
+    ((PRESENTATIONNS, u'presentation-page-layout-name'),
+     None): cnv_StyleNameRef,
     ((PRESENTATIONNS, u'preset-class'), None): cnv_string,
     ((PRESENTATIONNS, u'preset-id'), None): cnv_string,
     ((PRESENTATIONNS, u'preset-sub-type'), None): cnv_string,
@@ -1058,7 +1063,7 @@ attrconverters = {
     ((STYLENS, u'print-page-order'), None): cnv_string,
     ((STYLENS, u'protect'), (STYLENS, u'section-properties')): cnv_boolean,
     ((STYLENS, u'protect'), (STYLENS, u'graphic-properties')): cnv_string,
-    #	((STYLENS,u'protect'), None): cnv_boolean,
+    #    ((STYLENS,u'protect'), None): cnv_boolean,
     ((STYLENS, u'punctuation-wrap'), None): cnv_string,
     ((STYLENS, u'register-true'), None): cnv_boolean,
     ((STYLENS, u'register-truth-ref-style-name'), None): cnv_string,
@@ -1199,11 +1204,9 @@ attrconverters = {
     ((TABLENS, u'border-color'), None): cnv_string,
     ((TABLENS, u'border-model'), None): cnv_string,
     ((TABLENS, u'buttons'), None): cnv_string,
-    ((TABLENS, u'buttons'), None): cnv_string,
     ((TABLENS, u'case-sensitive'), None): cnv_boolean,
     ((TABLENS, u'case-sensitive'), None): cnv_string,
     ((TABLENS, u'cell-address'), None): cnv_string,
-    ((TABLENS, u'cell-range-address'), None): cnv_string,
     ((TABLENS, u'cell-range-address'), None): cnv_string,
     ((TABLENS, u'cell-range'), None): cnv_string,
     ((TABLENS, u'column'), None): cnv_integer,
@@ -1317,7 +1320,8 @@ attrconverters = {
     ((TABLENS, u'rejecting-change-id'), None): cnv_string,
     ((TABLENS, u'row'), None): cnv_integer,
     ((TABLENS, u'scenario-ranges'), None): cnv_string,
-    ((TABLENS, u'search-criteria-must-apply-to-whole-cell'), None): cnv_boolean,
+    ((TABLENS, u'search-criteria-must-apply-to-whole-cell'),
+     None): cnv_boolean,
     ((TABLENS, u'selected-page'), None): cnv_string,
     ((TABLENS, u'show-details'), None): cnv_boolean,
     ((TABLENS, u'show-empty'), None): cnv_boolean,
@@ -1408,7 +1412,7 @@ attrconverters = {
     ((TEXTNS, u'database-name'), None): cnv_string,
     ((TEXTNS, u'date-adjust'), None): cnv_duration,
     ((TEXTNS, u'date-value'), None): cnv_date,
-    #	((TEXTNS,u'date-value'), None): cnv_dateTime,
+    #    ((TEXTNS,u'date-value'), None): cnv_dateTime,
     ((TEXTNS, u'default-style-name'), None): cnv_StyleNameRef,
     ((TEXTNS, u'description'), None): cnv_string,
     ((TEXTNS, u'display'), None): cnv_string,
@@ -1427,7 +1431,7 @@ attrconverters = {
     ((TEXTNS, u'global'), None): cnv_boolean,
     ((TEXTNS, u'howpublished'), None): cnv_string,
     ((TEXTNS, u'id'), None): cnv_ID,
-    #	((TEXTNS,u'id'), None): cnv_string,
+    #    ((TEXTNS,u'id'), None): cnv_string,
     ((TEXTNS, u'identifier'), None): cnv_string,
     ((TEXTNS, u'ignore-case'), None): cnv_boolean,
     ((TEXTNS, u'increment'), None): cnv_nonNegativeInteger,

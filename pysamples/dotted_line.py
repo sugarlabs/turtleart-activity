@@ -66,7 +66,7 @@
 # tamyblock.py, tw.turtles.get_active_turtle() is the class instance)
 #
 # set_pen_state(self, flag)
-#	tw.turtles.get_active_turtle().set_pen_state(True)
+#       tw.turtles.get_active_turtle().set_pen_state(True)
 # Note: True will set the pen "down", enabling drawing;
 #       False will set the pen "up"
 # forward(self, n)		tw.turtles.get_active_turtle().forward(100)
@@ -92,7 +92,7 @@
 # self.get_shade()		tw.turtles.get_active_turtle().get_shade()
 # Note: The current pen shade
 # fillscreen(self, c, s)
-#	tw.turtles.get_active_turtle().fillscreen(70, 90)
+#       tw.turtles.get_active_turtle().fillscreen(70, 90)
 # Note: Fill the screen with color 70, shade 90 (light blue)
 # self.set_xy(self, x, y)
 #       tw.turtles.get_active_turtle().set_xy(100,100)

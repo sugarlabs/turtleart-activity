@@ -20,8 +20,6 @@
 
 # A naive approach to running myfunc in a jail
 import traceback
-from time import *
-from math import *
 
 
 def myfunc(f, args):

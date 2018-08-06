@@ -201,7 +201,6 @@ class Camera_sensor(Plugin):
                 self._parent.lc.heap.append(-1)
                 self._parent.lc.heap.append(-1)
                 return
-        array = None
         self._set_autogain(0, camera=camera)  # disable AUTOGAIN
         self._get_pixbuf_from_camera(camera=camera)
         self.calc_luminance(camera=camera)

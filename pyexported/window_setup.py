@@ -10,7 +10,6 @@ from gettext import gettext as _
 import os
 import sys
 
-from TurtleArt.tatype import *
 from TurtleArt.tawindow import TurtleArtWindow
 
 

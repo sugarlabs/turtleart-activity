@@ -25,14 +25,19 @@ import time
 import sys
 import mimetypes
 from cStringIO import StringIO
-from namespaces import *
 import manifest
 import meta
-from office import *
 import element
 from attrconverters import make_NCName
 from xml.sax.xmlreader import InputSource
 from odfmanifest import manifestlist
+from office import Document, Meta, Scripts, FontFaceDecls, \
+    Settings, Styles, AutomaticStyles, MasterStyles, Body, \
+    DocumentContent, DocumentMeta, DocumentSettings, DocumentStyles, \
+    Chart, Drawing, Image, Presentation, Spreadsheet, Text
+from namespaces import STYLENS, DRAWNS, CHARTNS, METANS, OFFICENS, \
+    PRESENTATIONNS, TABLENS, TEXTNS, TOOLSVERSION
+
 
 __version__ = TOOLSVERSION
 
@@ -365,7 +370,8 @@ class OpenDocument:
     def addObject(self, document, objectname=None):
         """
         Adds an object (subdocument). The object must be an OpenDocument class
-        The return value will be the folder in the zipfile the object is stored in
+        The return value will be the folder in the zipfile the object is stored
+        in
         """
         self.childobjects.append(document)
         if objectname is None:
@@ -376,12 +382,10 @@ class OpenDocument:
         return ".%s" % document.folder
 
     def _savePictures(self, object, folder):
-        hasPictures = False
         for arcname, picturerec in object.Pictures.items():
             what_it_is, fileobj, mediatype = picturerec
             self.manifest.addElement(manifest.FileEntry(
                 fullpath="%s%s" % (folder, arcname), mediatype=mediatype))
-            hasPictures = True
             if what_it_is == IS_FILENAME:
                 self._z.write(fileobj, arcname, zipfile.ZIP_STORED)
             else:
@@ -643,7 +647,7 @@ def __loadxmlparts(z, manifest, doc, objectpath):
             inpsrc.setByteStream(StringIO(xmlpart))
             parser.parse(inpsrc)
             del doc._parsing
-        except KeyError as v:
+        except KeyError:
             pass
 
 

@@ -14,7 +14,7 @@
 #
 # You should have received a copy of the GNU Lesser General Public
 # License along with this library; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 #
 # Contributor(s):
 #
@@ -23,7 +23,7 @@
 # Whatever license applies to that file also applies to this file.
 #
 import xml.dom
-from xml.dom.minicompat import *
+from xml.dom.minicompat import defproperty, EmptyNodeList
 from namespaces import nsdict
 import grammar
 from attrconverters import AttrConverters
@@ -93,7 +93,10 @@ class IllegalChild(Exception):
 
 
 class IllegalText(Exception):
-    """Complains if you add text or cdata to an element where it is not allowed"""
+    """
+    Complains if you add text or cdata to an element where it is not
+    allowed
+    """
 
 
 class Node(xml.dom.Node):
@@ -125,7 +128,8 @@ class Node(xml.dom.Node):
     def insertBefore(self, newChild, refChild):
         """
         Inserts the node newChild before the existing child node refChild.
-        If refChild is null, insert newChild at the end of the list of children.
+        If refChild is null, insert newChild at the end of the list of
+        children.
         """
         if newChild.nodeType not in self._child_node_types:
             raise IllegalChild("%s cannot be child of %s" % (
@@ -170,7 +174,7 @@ class Node(xml.dom.Node):
         return newChild
 
     def removeChild(self, oldChild):
-        """ 
+        """
         Removes the child node indicated by oldChild from the list of children,
         and returns it.
         """
@@ -435,7 +439,8 @@ class Element(Node):
                 self.removeAttrNS(prefix, localname)
             else:
                 raise AttributeError(
-                    "Unable to add simple attribute - use (namespace, localpart)")
+                    "Unable to add simple attribute -\
+                    use (namespace, localpart)")
         else:
             # Construct a list of allowed arguments
             allowed_args = [a[1].lower().replace('-', '')
@@ -462,7 +467,8 @@ class Element(Node):
                 self.setAttrNS(prefix, localname, value)
             else:
                 raise AttributeError(
-                    "Unable to add simple attribute - use (namespace, localpart)")
+                    "Unable to add simple attribute -\
+                    use (namespace, localpart)")
         else:
             # Construct a list of allowed arguments
             allowed_args = [a[1].lower().replace('-', '')
@@ -506,7 +512,8 @@ class Element(Node):
                 return self.getAttrNS(prefix, localname)
             else:
                 raise AttributeError(
-                    "Unable to get simple attribute - use (namespace, localpart)")
+                    "Unable to get simple attribute -\
+                    use (namespace, localpart)")
         else:
             # Construct a list of allowed arguments
             allowed_args = [a[1].lower().replace('-', '')
@@ -527,7 +534,8 @@ class Element(Node):
                                 ':' +
                                 qname[1])) +
                     '=' +
-                    _quoteattr(unicode(self.attributes[qname]).encode('utf-8')))
+                    _quoteattr(
+                        unicode(self.attributes[qname]).encode('utf-8')))
         f.write('>')
 
     def write_close_tag(self, level, f):
@@ -547,7 +555,8 @@ class Element(Node):
                                 ':' +
                                 qname[1])) +
                     '=' +
-                    _quoteattr(unicode(self.attributes[qname]).encode('utf-8')))
+                    _quoteattr(
+                        unicode(self.attributes[qname]).encode('utf-8')))
         if self.childNodes:
             f.write('>')
             for element in self.childNodes:

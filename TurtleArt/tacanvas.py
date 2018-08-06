@@ -327,13 +327,6 @@ class TurtleGraphics:
             fd = Pango.FontDescription(self._font)
             fd.set_size(final_scale)
             pl.set_font_description(fd)
-            if isinstance(label, (str, unicode)):
-                text = label.replace('\0', ' ')
-            elif isinstance(label, (float, int)):
-                text = str(label)
-            else:
-                text = label
-
             pl.set_text(str(label), len(str(label)))
             pl.set_width(int(width) * Pango.SCALE)
             cc.save()

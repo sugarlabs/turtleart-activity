@@ -110,7 +110,7 @@ class SugarIconify():
             elif o == '-p':
                 self.set_pattern(a)
             elif o in ['-h', '--help']:
-                usage()
+                self.usage()
                 sys.exit(2)
             elif o == '-m':
                 self.set_multiple(True)
@@ -325,9 +325,12 @@ Should be (55px, 55px)' % (self.w, self.h)
 
             '''if self.entities_passed < 2:
                 if self.confirm_guess:
-                    response = raw_input('\nAre these self.entities correct? [y/n] ')
+                    response = raw_input(
+                        '\nAre these self.entities correct? [y/n] ')
                     if response.lower() != 'y':
-                        print 'Please run this script again, passing the proper colors with the -s and -f flags.'
+                        print 'Please run this script again,
+                            passing the proper colors with the\
+                             -s and -f flags.'
                         sys.exit(1)'''
 
         # Define the HTML for preview output

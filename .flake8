@@ -2,9 +2,6 @@
 
 # E402 module level import not at top of file
 # gi.require_version() is required before later imports
-# E741 ambiguous variable name 'l'
+# F401 'TurtleArt.tatype.*' imported but unused
 
-ignore = E402
-ignore = E741
-ignore = F405
-ignore = F403
+ignore = E402, F401

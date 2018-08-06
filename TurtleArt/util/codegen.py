@@ -35,7 +35,6 @@
     Modified by Marion Zepf.
 """
 from ast import *
-from .ast_extensions import Comment, ExtraCode
 
 
 def to_source(node, indent_with=' ' * 4, add_line_information=False):

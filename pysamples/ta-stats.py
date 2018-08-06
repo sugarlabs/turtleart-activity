@@ -20,7 +20,7 @@ def myblock(tw, x):  # ignore second argument
 
     import os
 
-    _DIROFINTEREST = 'datastore'
+    DIROFINTEREST = 'datastore'
 
     class ParseJournal():
 
@@ -74,7 +74,7 @@ def myblock(tw, x):  # ignore second argument
         ''' Only interested if it is a datastore directory '''
         if not os.path.isdir(path):
             return False
-        if not os.path.exists(os.path.join(path, _DIROFINTEREST)):
+        if not os.path.exists(os.path.join(path, DIROFINTEREST)):
             return False
         return True
 
