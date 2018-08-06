@@ -46,9 +46,6 @@ class Camera():
             self.bus = self.pipe.get_bus()
             self.bus.add_signal_watch()
             self.bus.connect('message', self._on_message)
-            status = True
-        else:
-            status = False
 
     def _on_message(self, bus, message):
         ''' We get a message if a pixbuf is available '''
