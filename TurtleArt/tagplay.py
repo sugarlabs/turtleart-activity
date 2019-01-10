@@ -207,7 +207,7 @@ class GstPlayer(GObject.GObject):
 
         videowidget.realize()
         self.videowidget = videowidget
-        self.videowidget_xid = videowidget.get_proprerty('window').get_xid()
+        self.videowidget_xid = videowidget.get_property('window').get_xid()
         self._init_video_sink()
 
         bus = self.player.get_bus()
