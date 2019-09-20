@@ -127,8 +127,7 @@ from sprites import (Sprites, Sprite)
 
 from util.menubuilder import make_checkmenu_item
 
-# if _GST_AVAILABLE:
-#   from .tagplay import stop_media
+from .tagplay import stop_media
 
 _MOTION_THRESHOLD = 6
 _SNAP_THRESHOLD = 200
