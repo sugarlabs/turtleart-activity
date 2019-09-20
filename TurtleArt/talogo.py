@@ -1127,7 +1127,7 @@ class LogoCode:
         elif user_path is not None and os.path.exists(user_path):
             self.filepath = user_path
         elif self.tw.running_sugar:  # datastore object
-            from suga3.datastore import datastore
+            from sugar3.datastore import datastore
             try:
                 self.dsobject = datastore.get(obj.value)
             except BaseException:
