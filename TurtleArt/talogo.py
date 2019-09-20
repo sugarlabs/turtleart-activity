@@ -1168,11 +1168,14 @@ class LogoCode:
             data = image_to_base64(tmp_file, tmp_path)
             height = pixbuf.get_height()
             width = pixbuf.get_width()
-            event = 'R|%s' % (data_to_string([self.tw.nick,
-                                              [round_int(width),
-                                               round_int(height),
-                                               data]]))
-            GObject.idle_add(self.tw.send_event, event)
+            event = data_to_string(
+                [self.tw.nick, [round_int(width), round_int(height), data]])
+
+            def send_event(p):
+                self.tw.send_event('R', event)
+                return False
+
+            GObject.idle_add(send_event)
             os.remove(tmp_file)
 
     def get_from_url(self, url):

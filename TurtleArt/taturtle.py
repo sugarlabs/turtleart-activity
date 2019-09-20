@@ -357,9 +357,9 @@ class Turtle:
         self._update_sprite_heading()
 
         if self._turtles.turtle_window.sharing() and share:
-            event = 'r|%s' % (data_to_string([self._turtles.turtle_window.nick,
-                                              round_int(self._heading)]))
-            self._turtles.turtle_window.send_event(event)
+            event = data_to_string([self._turtles.turtle_window.nick,
+                                     round_int(self._heading)])
+            self._turtles.turtle_window.send_event('r', event)
 
     def _update_sprite_heading(self):
         ''' Update the sprite to reflect the current heading '''
@@ -393,9 +393,9 @@ class Turtle:
                                                        color=self._pen_color)
 
         if self._turtles.turtle_window.sharing() and share:
-            event = 'c|%s' % (data_to_string([self._turtles.turtle_window.nick,
-                                              round_int(self._pen_color)]))
-            self._turtles.turtle_window.send_event(event)
+            event = data_to_string([self._turtles.turtle_window.nick,
+                                    round_int(self._pen_color)])
+            self._turtles.turtle_window.send_event('c', event)
 
     def set_gray(self, gray=None, share=True):
         ''' Set the pen gray level for this turtle. '''
@@ -412,9 +412,9 @@ class Turtle:
                                                        color=self._pen_color)
 
         if self._turtles.turtle_window.sharing() and share:
-            event = 'g|%s' % (data_to_string([self._turtles.turtle_window.nick,
-                                              round_int(self._pen_gray)]))
-            self._turtles.turtle_window.send_event(event)
+            event = data_to_string([self._turtles.turtle_window.nick,
+                                    round_int(self._pen_gray)])
+            self._turtles.turtle_window.send_event('g', event)
 
     def set_shade(self, shade=None, share=True):
         ''' Set the pen shade for this turtle. '''
@@ -426,9 +426,9 @@ class Turtle:
                                                        color=self._pen_color)
 
         if self._turtles.turtle_window.sharing() and share:
-            event = 's|%s' % (data_to_string([self._turtles.turtle_window.nick,
-                                              round_int(self._pen_shade)]))
-            self._turtles.turtle_window.send_event(event)
+            event = data_to_string([self._turtles.turtle_window.nick,
+                                    round_int(self._pen_shade)])
+            self._turtles.turtle_window.send_event('s', event)
 
     def set_pen_size(self, pen_size=None, share=True):
         ''' Set the pen size for this turtle. '''
@@ -439,9 +439,9 @@ class Turtle:
             self._pen_size * self._turtles.turtle_window.coord_scale)
 
         if self._turtles.turtle_window.sharing() and share:
-            event = 'w|%s' % (data_to_string([self._turtles.turtle_window.nick,
-                                              round_int(self._pen_size)]))
-            self._turtles.turtle_window.send_event(event)
+            event = data_to_string([self._turtles.turtle_window.nick,
+                                    round_int(self._pen_size)])
+            self._turtles.turtle_window.send_event('w', event)
 
     def set_pen_state(self, pen_state=None, share=True):
         ''' Set the pen state (down==True) for this turtle. '''
@@ -449,9 +449,9 @@ class Turtle:
             self._pen_state = pen_state
 
         if self._turtles.turtle_window.sharing() and share:
-            event = 'p|%s' % (data_to_string([self._turtles.turtle_window.nick,
-                                              self._pen_state]))
-            self._turtles.turtle_window.send_event(event)
+            event = data_to_string([self._turtles.turtle_window.nick,
+                                    self._pen_state])
+            self._turtles.turtle_window.send_event('p', event)
 
     def set_fill(self, state=False):
         self._pen_fill = state
@@ -482,10 +482,9 @@ class Turtle:
                     shared_poly_points.append((p[0], x, y))
                 elif p[0] in ['rarc', 'larc']:
                     shared_poly_points.append((p[0], x, y, p[3], p[4], p[5]))
-                event = 'F|%s' % (data_to_string(
-                        [self._turtles.turtle_window.nick,
-                         shared_poly_points]))
-            self._turtles.turtle_window.send_event(event)
+                event = data_to_string([self._turtles.turtle_window.nick,
+                                        shared_poly_points])
+                self._turtles.turtle_window.send_event('F', event)
         self._poly_points = []
 
     def hide(self):
@@ -534,9 +533,9 @@ class Turtle:
         self._update_sprite_heading()
 
         if self._turtles.turtle_window.sharing() and share:
-            event = 'r|%s' % (data_to_string([self._turtles.turtle_window.nick,
-                                              round_int(self._heading)]))
-            self._turtles.turtle_window.send_event(event)
+            event = data_to_string([self._turtles.turtle_window.nick,
+                                    round_int(self._heading)])
+            self._turtles.turtle_window.send_event('r', event)
 
     def left(self, degrees, share=True):
         degrees = 0 - degrees
@@ -565,9 +564,9 @@ class Turtle:
         self.move_turtle((xcor, ycor))
 
         if self._turtles.turtle_window.sharing() and share:
-            event = 'f|%s' % (data_to_string([self._turtles.turtle_window.nick,
-                                              int(distance)]))
-            self._turtles.turtle_window.send_event(event)
+            event = data_to_string([self._turtles.turtle_window.nick,
+                                    int(distance)])
+            self._turtles.turtle_window.send_event('f', event)
 
     def backward(self, distance, share=True):
         distance = 0 - distance
@@ -589,10 +588,9 @@ class Turtle:
         self.move_turtle((xcor, ycor))
 
         if self._turtles.turtle_window.sharing() and share:
-            event = 'x|%s' % (data_to_string([self._turtles.turtle_window.nick,
-                                              [round_int(xcor),
-                                               round_int(ycor)]]))
-            self._turtles.turtle_window.send_event(event)
+            event = data_to_string([self._turtles.turtle_window.nick,
+                                    [round_int(xcor), round_int(ycor)]])
+            self._turtles.turtle_window.send_event('x', event)
 
     def arc(self, a, r, share=True):
         ''' Draw an arc '''
@@ -606,9 +604,9 @@ class Turtle:
         self.move_turtle(pos)
 
         if self._turtles.turtle_window.sharing() and share:
-            event = 'a|%s' % (data_to_string([self._turtles.turtle_window.nick,
-                                              [round_int(a), round_int(r)]]))
-            self._turtles.turtle_window.send_event(event)
+            event = data_to_string([self._turtles.turtle_window.nick,
+                                    [round_int(a), round_int(r)]])
+            self._turtles.turtle_window.send_event('a', event)
 
     def rarc(self, a, r):
         ''' draw a clockwise arc '''
@@ -679,15 +677,20 @@ class Turtle:
 
             pos = self._turtles.screen_to_turtle_coordinates((x, y))
 
-            event = 'P|%s' % (data_to_string([self._turtles.turtle_window.nick,
-                                              [round_int(a), round_int(b),
-                                               round_int(pos[0]),
-                                               round_int(pos[1]),
-                                               round_int(w), round_int(h),
-                                               round_int(width),
-                                               round_int(height),
-                                               data]]))
-            GObject.idle_add(self._turtles.turtle_window.send_event, event)
+            event = data_to_string([self._turtles.turtle_window.nick,
+                                    [round_int(a), round_int(b),
+                                     round_int(pos[0]),
+                                     round_int(pos[1]),
+                                     round_int(w), round_int(h),
+                                     round_int(width),
+                                     round_int(height),
+                                     data]])
+
+            def send_event():
+                self._turtles.turtle_window.send_event('P', event)
+                return False
+
+            GObject.idle_add(send_event)
 
             os.remove(tmp_file)
 
@@ -698,11 +701,10 @@ class Turtle:
             self._turtles.turtle_window.coord_scale)
 
         if self._turtles.turtle_window.sharing() and share:
-            event = 'W|%s' % (data_to_string([self._turtles.turtle_window.nick,
-                                              [label, round_int(x),
-                                               round_int(y), round_int(size),
-                                               round_int(w)]]))
-            self._turtles.turtle_window.send_event(event)
+            event = data_to_string([self._turtles.turtle_window.nick,
+                                    [label, round_int(x), round_int(y),
+                                     round_int(size), round_int(w)]])
+            self._turtles.turtle_window.send_event('W', event)
 
     def read_pixel(self):
         """ Read r, g, b, a from the canvas and push b, g, r to the stack """

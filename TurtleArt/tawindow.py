@@ -2034,9 +2034,7 @@ class TurtleArtWindow():
                         clipboard.set_text(text)
                     elif self.sharing():
                         text = data_to_string(data)
-                        payload = {"payload": data_to_string(
-                            [self.nick, text])}
-                        self.send_event("B", payload)
+                        self.send_event('B', data_to_string([self.nick, text]))
             self.paste_offset = 20
 
             self.parent.get_window().set_cursor(
@@ -2410,21 +2408,22 @@ class TurtleArtWindow():
         ''' Share turtle movement and rotation after button up '''
         if self.sharing():
             nick = self.turtle_movement_to_share.get_name()
-            self.send_event("r", {"payload": data_to_string(
+            event = data_to_string(
                 [nick,
-                 round_int(self.turtles.get_active_turtle().get_heading())])})
+                 round_int(self.turtles.get_active_turtle().get_heading())])
+            self.send_event('r', event)
             if self.turtles.get_active_turtle().get_pen_state():
-                self.send_event(
-                    "p", {"payload": data_to_string([nick, False])})
+                self.send_event('p', data_to_string([nick, False]))
                 put_pen_back_down = True
             else:
                 put_pen_back_down = False
-            self.send_event("x", {"payload": data_to_string(
+            event = data_to_string(
                 [nick,
                  [round_int(self.turtles.get_active_turtle().get_xy()[0]),
-                  round_int(self.turtles.get_active_turtle().get_xy()[1])]])})
+                  round_int(self.turtles.get_active_turtle().get_xy()[1])]])
+            self.send_event('x', event)
             if put_pen_back_down:
-                self.send_event("p", {"payload", data_to_string([nick, True])})
+                self.send_event('p', data_to_string([nick, True]))
         self.turtle_movement_to_share = None
 
     def _mouse_move(self, x, y):

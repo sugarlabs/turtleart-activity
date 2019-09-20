@@ -186,7 +186,7 @@ class Collaboration():
                 colors = self._get_colors()
                 event = data_to_string([self._get_nick(), colors])
                 debug_output(event, self._tw.running_sugar)
-                self.send_event("t", {"payload": event})
+                self.send_event('t', event)
 
     def event_received_cb(self, colab, buddy, msg):
         """
@@ -196,22 +196,25 @@ class Collaboration():
         turtle has joined.
         """
 
-        # Save active Turtle
-        save_active_turtle = self._tw.turtles.get_active_turtle()
 
-        command = msg.get("msg")
-        payload = msg.get("payload")
-        self._processing_methods[command](payload)
+        action = msg.get('action')
 
-        # Restore active Turtle
-        self._tw.turtles.set_turtle(
-            self._tw.turtles.get_turtle_key(save_active_turtle))
+        if action in self._processing_methods:
+            save_active_turtle = self._tw.turtles.get_active_turtle()
+            self._processing_methods[action](msg.get('event'))
+            self._tw.turtles.set_turtle(
+                self._tw.turtles.get_turtle_key(save_active_turtle))
+            return
 
-    def send_event(self, message, payload):
+        if action == '!!ACTION_INIT_REQUEST':
+            return
+
+
+    def send_event(self, action, event):
         """ Send event through the tube. """
-        if hasattr(self, 'chattube') and self.chattube is not None:
-            payload["msg"] = message
-            self.chattube.post(payload)
+        event = {'action': action, 'event': event}
+
+        self.collab.post(event)
 
     def _turtle_request(self, payload):
         ''' incoming turtle from a joiner '''
@@ -237,8 +240,8 @@ class Collaboration():
             if self._tw.nick not in self._tw.remote_turtle_dictionary:
                 self._tw.remote_turtle_dictionary[self._tw.nick] = \
                     self._get_colors()
-            event_payload = data_to_string(self._tw.remote_turtle_dictionary)
-            self.send_event("T", {"payload": event_payload})
+            event = data_to_string(self._tw.remote_turtle_dictionary)
+            self.send_event('T', event)
             self.send_my_xy()  # And the sender should report her xy position.
 
     def _receive_turtle_dict(self, payload):
@@ -274,22 +277,21 @@ class Collaboration():
         used to sync positions after turtle drag. '''
         self._tw.turtles.set_turtle(self._get_nick())
         if self._tw.turtles.get_active_turtle().get_pen_state():
-            self.send_event("p", {"payload": data_to_string([self._get_nick(),
-                                                             False])})
+            self.send_event('p', data_to_string([self._get_nick(), False]))
             put_pen_back_down = True
         else:
             put_pen_back_down = False
         self.send_event(
-            "x", {"payload": data_to_string(
+            'x', data_to_string(
                 [self._get_nick(),
                  [int(self._tw.turtles.get_active_turtle().get_xy()[0]),
-                  int(self._tw.turtles.get_active_turtle().get_xy()[1])]])})
+                  int(self._tw.turtles.get_active_turtle().get_xy()[1])]]))
         if put_pen_back_down:
-            self.send_event("p", {"payload": data_to_string([self._get_nick(),
-                                                             True])})
-        self.send_event("r", {"payload": data_to_string(
-            [self._get_nick(),
-             int(self._tw.turtles.get_active_turtle().get_heading())])})
+            self.send_event('p', data_to_string([self._get_nick(), True]))
+        self.send_event(
+            'r', data_to_string(
+                [self._get_nick(),
+                int(self._tw.turtles.get_active_turtle().get_heading())]))
 
     def _reskin_turtle(self, payload):
         if len(payload) > 0:
