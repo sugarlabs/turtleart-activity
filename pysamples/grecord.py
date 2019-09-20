@@ -78,7 +78,6 @@ def myblock(tw, args):
             queue.set_property("leaky", True)  # prefer fresh data
             queue.set_property("max-size-time", 5000000000)  # 5 seconds
             queue.set_property("max-size-buffers", 500)
-            queue.connect("overrun", self._log_queue_overrun)
 
             enc = gst.element_factory_make("wavenc", "abenc")
 
@@ -90,12 +89,6 @@ def myblock(tw, args):
 
             src.link(rate, srccaps)
             gst.element_link_many(rate, queue, enc, sink)
-
-        def _log_queue_overrun(self, queue):
-            ''' We use a buffer, which may overflow. '''
-            cbuffers = queue.get_property("current-level-buffers")
-            cbytes = queue.get_property("current-level-bytes")
-            ctime = queue.get_property("current-level-time")
 
         def is_recording(self):
             ''' Are we recording? '''
