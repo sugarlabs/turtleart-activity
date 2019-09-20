@@ -76,9 +76,6 @@ def svg_str_to_pixbuf(svg_string):
 
 '''
 import cairo
-import gi
-gi.require_version("Gtk", "3.0")
-gi.require_version('PangoCairo', '1.0')
 
 from gi.repository import Gdk
 from gi.repository import GdkPixbuf

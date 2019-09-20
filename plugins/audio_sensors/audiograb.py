@@ -18,8 +18,6 @@
 # Foundation, 51 Franklin Street, Suite 500 Boston, MA 02110-1335 USA
 
 
-import gi
-gi.require_version('Gst', '1.0')
 from gi.repository import Gst
 Gst.init(None)
 

@@ -22,9 +22,6 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-import gi
-gi.require_version("Gtk", "3.0")
-gi.require_version('PangoCairo', '1.0')
 import os
 import sys
 import subprocess
