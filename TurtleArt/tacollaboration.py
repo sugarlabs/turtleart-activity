@@ -449,27 +449,3 @@ class Collaboration():
             colors = '%s,%s' % (DEFAULT_TURTLE_COLORS[0],
                                 DEFAULT_TURTLE_COLORS[1])
         return colors.split(',')
-
-
-class ChatTube(ExportedGObject):
-
-    def __init__(self, tube, is_initiator, stack_received_cb):
-        """Class for setting up tube for sharing."""
-        super(ChatTube, self).__init__(tube, PATH)
-        self.tube = tube
-        self.is_initiator = is_initiator  # Are we sharing or joining activity?
-        self.stack_received_cb = stack_received_cb
-        self.stack = ''
-
-        self.tube.add_signal_receiver(self.send_stack_cb, 'SendText', IFACE,
-                                      path=PATH, sender_keyword='sender')
-
-    def send_stack_cb(self, text, sender=None):
-        if sender == self.tube.get_unique_name():
-            return
-        self.stack = text
-        self.stack_received_cb(text)
-
-    @signal(dbus_interface=IFACE, signature='s')
-    def SendText(self, text):
-        self.stack = text
