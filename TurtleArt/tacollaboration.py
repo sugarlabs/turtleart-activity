@@ -195,10 +195,8 @@ class Collaboration():
         the sharer and watches for 't' events, which indicate that a new
         turtle has joined.
         """
-        if len(event_message) == 0:
-            return
 
-       # Save active Turtle
+        # Save active Turtle
         save_active_turtle = self._tw.turtles.get_active_turtle()
 
         command = msg.get("msg")
