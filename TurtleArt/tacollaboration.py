@@ -174,7 +174,7 @@ class Collaboration():
                 self.tubes_chan[telepathy.CHANNEL_TYPE_TUBES]\
                     .AcceptDBusTube(id)
 
-            self.collab = CollabWrapper(self)
+            self.collab = CollabWrapper(self._activity)
             self.collab.message.connect(self.event_received_cb)
             self.collab.setup()
 
