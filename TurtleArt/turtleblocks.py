@@ -404,7 +404,8 @@ return %s(self)" % (p, P, P)
             if hasattr(self.get_window(), 'get_cursor'):
                 self.get_window().set_cursor(self._old_cursor)
             else:
-                self.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.LEFT_PTR))
+                self.get_window().set_cursor(
+                    Gdk.Cursor(Gdk.CursorType.LEFT_PTR))
 
     def _setup_gtk(self):
         ''' Set up a scrolled window in which to run Turtle Blocks. '''
@@ -918,10 +919,12 @@ Would you like to save before quitting?'))
         self.tw.copying_blocks = False
         self.tw.deleting_blocks = False
         if self.tw.saving_blocks:
-            self.win.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.LEFT_PTR))
+            self.win.get_window().set_cursor(
+                Gdk.Cursor(Gdk.CursorType.LEFT_PTR))
             self.tw.saving_blocks = False
         else:
-            self.win.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.HAND1))
+            self.win.get_window().set_cursor(
+                Gdk.Cursor(Gdk.CursorType.HAND1))
             self.tw.saving_blocks = True
 
     def _do_delete_macro_cb(self, widget):
@@ -929,10 +932,12 @@ Would you like to save before quitting?'))
         self.tw.copying_blocks = False
         self.tw.saving_blocks = False
         if self.tw.deleting_blocks:
-            self.win.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.LEFT_PTR))
+            self.win.get_window().set_cursor(
+                Gdk.Cursor(Gdk.CursorType.LEFT_PTR))
             self.tw.deleting_blocks = False
         else:
-            self.win.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.HAND1))
+            self.win.get_window().set_cursor(
+                Gdk.Cursor(Gdk.CursorType.HAND1))
             self.tw.deleting_blocks = True
 
     def _do_copy_cb(self, button):
@@ -940,10 +945,12 @@ Would you like to save before quitting?'))
         self.tw.saving_blocks = False
         self.tw.deleting_blocks = False
         if self.tw.copying_blocks:
-            self.win.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.LEFT_PTR))
+            self.win.get_window().set_cursor(
+                Gdk.Cursor(Gdk.CursorType.LEFT_PTR))
             self.tw.copying_blocks = False
         else:
-            self.win.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.HAND1))
+            self.win.get_window().set_cursor(
+                Gdk.Cursor(Gdk.CursorType.HAND1))
             self.tw.copying_blocks = True
 
     def _do_paste_cb(self, button):
@@ -951,7 +958,8 @@ Would you like to save before quitting?'))
         self.tw.copying_blocks = False
         self.tw.saving_blocks = False
         self.tw.deleting_blocks = False
-        self.win.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.LEFT_PTR))
+        self.win.get_window().set_cursor(
+            Gdk.Cursor(Gdk.CursorType.LEFT_PTR))
         clipboard = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD)
         text = clipboard.wait_for_text()
         if text is not None:

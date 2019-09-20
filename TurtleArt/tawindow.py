@@ -40,7 +40,6 @@ from gi.repository import GdkPixbuf
 from gi.repository import Pango
 from gi.repository import PangoCairo
 
-from sugar3.activity import activity
 _GST_AVAILABLE = False
 
 
@@ -52,7 +51,6 @@ import locale
 
 from taconstants import (
     HORIZONTAL_PALETTE,
-    VERTICAL_PALETTE,
     BLOCK_SCALE,
     MEDIA_SHAPES,
     STATUS_SHAPES,
@@ -343,7 +341,7 @@ class TurtleArtWindow():
 
         self.turtleart_plugins = {}
         self.turtleart_favorites_plugins = []
-        #self.turtleart_plugin_list = {}
+        # self.turtleart_plugin_list = {}
         self.saved_pictures = []
         self.block_operation = ''
 
@@ -2325,7 +2323,8 @@ class TurtleArtWindow():
                     if blk.connections[1] is not None:
                         self._resize_clamp(blk, blk.connections[1], dockn=1)
                 elif blk.name in block_styles['clamp-style'] or \
-                        blk.name in block_styles['clamp-style-collapsible'] or \
+                        blk.name in \
+                        block_styles['clamp-style-collapsible'] or \
                         blk.name in block_styles['clamp-style-hat']:
                     if blk.connections[1] is not None:
                         self._resize_clamp(blk, blk.connections[1])
@@ -3232,7 +3231,8 @@ class TurtleArtWindow():
                     self._expand_expandable(
                         best_destination, selected_block, dy)
                 self._cascade_expandable(best_destination)
-            elif best_destination.name in block_styles['basic-style-3arg'] and \
+            elif best_destination.name in \
+                    block_styles['basic-style-3arg'] and \
                     best_destination_dockn == 2:
                 dy = 0
                 if (selected_block.name in expandable_blocks or
@@ -4135,8 +4135,9 @@ class TurtleArtWindow():
                 if self.running_sugar:
                     # For security reasons, only open files found in
                     # Python samples directory
-                    if os.path.exists(os.path.join(
-                            self.share_path, value)) and value[0:9] == 'pysamples':
+                    if os.path.exists(
+                            os.path.join(self.share_path, value)) and \
+                            value[0:9] == 'pysamples':
                         self.selected_blk = blk
                         self.load_python_code_from_file(
                             fname=os.path.join(self.share_path, value),
@@ -4145,7 +4146,8 @@ class TurtleArtWindow():
                     else:  # or files from the Journal
                         try:
                             dsobject = datastore.get(value)
-                        except BaseException:  # Should be IOError, but dbus error is raised
+                        except BaseException:
+                            # Should be IOError, but dbus error is raised
                             dsobject = None
                             debug_output('Could not get dsobject %s' % (value),
                                          self.running_sugar)
@@ -4305,7 +4307,7 @@ class TurtleArtWindow():
                 dlg.set_title(title)
                 dlg.set_property('skip-taskbar-hint', False)
 
-                resp = dlg.run()
+                dlg.run()
                 dlg.destroy()
             return
         if file_name is None:
@@ -4326,7 +4328,7 @@ class TurtleArtWindow():
                 dlg.set_title(title)
                 dlg.set_property('skip-taskbar-hint', False)
 
-                resp = dlg.run()
+                dlg.run()
                 dlg.destroy()
             return
         data_to_file(self.assemble_data_to_save(), file_name)

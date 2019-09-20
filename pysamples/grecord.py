@@ -200,7 +200,7 @@ def myblock(tw, args):
     save_name = '%s_%s' % (tw.activity.name, _('sound'))
     cmd = args[0].lower()
     if len(args) > 1:
-        save_name = str(arg[1])
+        save_name = str(args[1])
 
     if cmd == 'start' or cmd == _('start').lower():
         tw.grecord.start_recording_audio()

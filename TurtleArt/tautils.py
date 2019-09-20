@@ -20,14 +20,12 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-import gi
 import tempfile
 import dbus
 import cairo
 import pickle
 import subprocess
 import os
-import stat
 import string
 import mimetypes
 from gettext import gettext as _

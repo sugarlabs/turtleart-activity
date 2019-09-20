@@ -29,7 +29,6 @@ from operator import isNumberType
 from os.path import exists as os_path_exists
 from UserDict import UserDict
 
-from gi.repository import Gtk
 from gi.repository import GObject
 from gi.repository import GdkPixbuf
 
@@ -41,7 +40,7 @@ USER_HOME = os.path.expanduser('~')
 import traceback
 
 from tablock import (Block, Media, media_blocks_dictionary)
-from taconstants import (TAB_LAYER, DEFAULT_SCALE, ICON_SIZE, Color)
+from taconstants import (TAB_LAYER, DEFAULT_SCALE, ICON_SIZE)
 from tajail import (myfunc, myfunc_import)
 from tapalette import (block_names, value_blocks)
 from tatype import (TATypeError, TYPES_NUMERIC)
@@ -64,7 +63,8 @@ primitive_dictionary = {}  # new block primitives get added here
 
 class noKeyError(UserDict):
 
-    def __missing__(x, y): return 0
+    def __missing__(x, y):
+        return 0
 
 
 class symbol:

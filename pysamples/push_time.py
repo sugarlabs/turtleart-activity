@@ -8,6 +8,8 @@
 # the FILO heap. To use these values, pop second, then minute, then
 # hour from the FILO.
 
+from time import localtime
+
 
 def myblock(tw, x):  # ignore second argument
     ''' Push hours, minutes, seconds onto the FILO. '''

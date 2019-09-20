@@ -24,7 +24,7 @@
 import ast
 
 from tablock import Media
-from taconstants import (Color, ColorObj, CONSTANTS, Vector)
+from taconstants import (Color, ColorObj, Vector)
 
 
 class Type(object):

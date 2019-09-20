@@ -25,11 +25,9 @@ import os
 
 from math import pi
 
-from gi.repository import Gtk
 from gi.repository import Gdk
 from gi.repository import Pango
 from gi.repository import PangoCairo
-from gi.repository import GObject
 from tautils import get_path
 from taconstants import (Color, TMP_SVG_PATH, DEFAULT_PEN_COLOR,
                          DEFAULT_BACKGROUND_COLOR, DEFAULT_FONT)

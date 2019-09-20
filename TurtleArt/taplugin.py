@@ -86,8 +86,9 @@ def complete_plugin_install(cls, tmp_dir, tmp_path, plugin_path,
                 cls._overflow_buttons[pidx].connect(
                     'clicked', cls.do_palette_buttons_cb, j - 1)
                 cls._setup_palette_toolbar()
-        l = _('Please restart %s in order to use the plugin.') % cls.name
-        cls.tw.showlabel('status', l)
+        cls.tw.showlabel(
+            'status',
+            _('Please restart %s in order to use the plugin.') % cls.name)
 
     else:
         cls.tw.showlabel('status', _('Plugin could not be installed.'))

@@ -66,36 +66,36 @@
 # tamyblock.py, tw.turtles.get_active_turtle() is the class instance)
 #
 # set_pen_state(self, flag)
-#	tw.turtles.get_active_turtle().set_pen_state(True)
+#       tw.turtles.get_active_turtle().set_pen_state(True)
 # Note: True will set the pen "down", enabling drawing;
 #       False will set the pen "up"
-# forward(self, n)		tw.turtles.get_active_turtle().forward(100)
+# forward(self, n)              tw.turtles.get_active_turtle().forward(100)
 # Note: Move the turtle forward 100 units
-# arc(self, a, r)		tw.turtles.get_active_turtle().arc(120, 50)
+# arc(self, a, r)               tw.turtles.get_active_turtle().arc(120, 50)
 # Note: Move the turtle along an arc of 120 degrees
 #       (clockwise) and radius of 50 units
-# set_heading(self, a)		tw.turtles.get_active_turtle().set_heading(180)
+# set_heading(self, a)          tw.turtles.get_active_turtle().set_heading(180)
 # Note: Set the turtle heading to 180
 #       (towards the bottom of the screen)
-# self.get_heading()		tw.turtles.get_active_turtle().get_heading()
+# self.get_heading()            tw.turtles.get_active_turtle().get_heading()
 # Note: The current heading
-# set_pen_size(self, n)		tw.turtles.get_active_turtle().set_pen_size(25)
+# set_pen_size(self, n)         tw.turtles.get_active_turtle().set_pen_size(25)
 # Note: Set the turtle pensize to 25 units
-# self.get_pen_size()		tw.turtles.get_active_turtle().get_pen_size()
+# self.get_pen_size()           tw.turtles.get_active_turtle().get_pen_size()
 # Note: The current pen size
-# self.set_color(self, c)	tw.turtles.get_active_turtle().set_color(70)
-# Note:	Set the pen color to 70 (blue)
-# self.color()			tw.turtles.get_active_turtle().get_color()
+# self.set_color(self, c)       tw.turtles.get_active_turtle().set_color(70)
+# Note: Set the pen color to 70 (blue)
+# self.color()                  tw.turtles.get_active_turtle().get_color()
 # Note: The current pen color
-# self.set_shade(self, s)	tw.turtles.get_active_turtle().set_shade(50)
-# Note:	Set the pen shade to 50
-# self.get_shade()		tw.turtles.get_active_turtle().get_shade()
+# self.set_shade(self, s)       tw.turtles.get_active_turtle().set_shade(50)
+# Note: Set the pen shade to 50
+# self.get_shade()              tw.turtles.get_active_turtle().get_shade()
 # Note: The current pen shade
 # fillscreen(self, c, s)
-#	tw.turtles.get_active_turtle().fillscreen(70, 90)
+#       tw.turtles.get_active_turtle().fillscreen(70, 90)
 # Note: Fill the screen with color 70, shade 90 (light blue)
 # self.set_xy(self, x, y)
-#		tw.turtles.get_active_turtle().set_xy(100,100)
+#               tw.turtles.get_active_turtle().set_xy(100,100)
 # Note: Move the turtle to position (100, 100)
 # self.get_xy			tw.turtles.get_active_turtle().get_xy()[0]
 # Note: The current x coordinate of the turtle
