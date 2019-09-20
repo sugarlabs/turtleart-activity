@@ -532,8 +532,7 @@ Should be (55px, 55px)' % (self.w, self.h)
                                         icon_svgtext = re.sub(
                                             r'ENTITY self.stroke_color "[^"]*"',
                                             r'ENTITY self.stroke_color "' +
-                                            self.stroke_color +
-                                            '"',
+                                            self.stroke_color + '"',
                                             icon_svgtext)
                                         icon_svgtext = re.sub(
                                             r'ENTITY self.fill_color "[^"]*"',

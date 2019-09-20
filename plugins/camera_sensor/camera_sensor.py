@@ -124,7 +124,8 @@ class Camera_sensor(Plugin):
             hidden=True,
             style='box-style',
             label=_('brightness'),
-            help_string=_('Average RGB color from camera is pushed to the stack'),
+            help_string=_(
+                'Average RGB color from camera is pushed to the stack'),
             value_block=True,
             prim_name='read_camera')
         self._parent.lc.def_prim(

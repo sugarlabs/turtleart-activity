@@ -2340,8 +2340,8 @@ class TurtleArtWindow():
                     dy = 0
                     drag_group = find_group(blk.connections[2])
                     gblk = drag_group[0]
-                    d = int((gblk.docks[-1][3] - gblk.docks[0][3])
-                            / gblk.scale)
+                    d = int((gblk.docks[-1][3] - gblk.docks[0][3]) /
+                            gblk.scale)
                     if d == 0:
                         dy += 21  # Fixme: don't hardcode size of slot
                     else:

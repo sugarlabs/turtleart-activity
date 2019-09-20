@@ -958,7 +958,7 @@ def power_manager_off(status):
     OHM_SERVICE_IFACE = 'org.freedesktop.ohm.Keystore'
     PATH = '/etc/powerd/flags/inhibit-suspend'
 
-    settings = Gio.Settings('org.sugarlabs.power');
+    settings = Gio.Settings('org.sugarlabs.power')
 
     ACTUAL_POWER = True
 

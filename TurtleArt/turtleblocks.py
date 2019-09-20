@@ -835,19 +835,19 @@ Would you like to save before quitting?'))
             plugins_list = self._settings.get_string(self._PLUGINS_LIST)
             plugins = plugins_list.split(',')
             if button.get_active():
-                if not name in plugins:
+                if name not in plugins:
                     plugins.append(name)
                     self._settings.set_string(
                         self._PLUGINS_LIST, ','.join(plugins))
                 label = _('Please restart %s in order to use the plugin.') \
-                        % self.name
+                    % self.name
             else:
                 if name in plugins:
                     plugins.remove(name)
                     self._settings.set_string(
                         self._PLUGINS_LIST, ','.join(plugins))
                 label = _('Please restart %s in order to unload the plugin.') \
-                        % self.name
+                    % self.name
         self.tw.showlabel('status', label)
 
     def _do_hover_help_on_cb(self):

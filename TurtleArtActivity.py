@@ -863,7 +863,8 @@ class TurtleArtActivity(activity.Activity):
         self.edit_toolbar_button.set_expanded(False)
         self.palette_toolbar_button.set_expanded(True)
 
-        self._unfullscreen_button._button.connect('clicked', self.do_unfullscreen_cb)
+        self._unfullscreen_button._button.connect(
+            'clicked', self.do_unfullscreen_cb)
 
     def _setup_extra_controls(self):
         ''' Add the rest of the buttons to the main toolbar '''

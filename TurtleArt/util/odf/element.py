@@ -511,12 +511,9 @@ class Element(Node):
                         _escape(str(namespace)) + '"')
         for qname in self.attributes.keys():
             prefix = self.get_nsprefix(qname[0])
-            f.write(' ' +
-                    _escape(str(prefix +
-                                ':' +
-                                qname[1])) +
-                    '=' +
-                    _quoteattr(unicode(self.attributes[qname]).encode('utf-8')))
+            f.write(
+                ' ' + _escape(str(prefix + ':' + qname[1])) + '=' +
+                _quoteattr(unicode(self.attributes[qname]).encode('utf-8')))
         f.write('>')
 
     def write_close_tag(self, level, f):
@@ -531,12 +528,9 @@ class Element(Node):
                         _escape(str(namespace)) + '"')
         for qname in self.attributes.keys():
             prefix = self.get_nsprefix(qname[0])
-            f.write(' ' +
-                    _escape(str(prefix +
-                                ':' +
-                                qname[1])) +
-                    '=' +
-                    _quoteattr(unicode(self.attributes[qname]).encode('utf-8')))
+            f.write(
+                ' ' + _escape(str(prefix + ':' + qname[1])) + '=' +
+                _quoteattr(unicode(self.attributes[qname]).encode('utf-8')))
         if self.childNodes:
             f.write('>')
             for element in self.childNodes:
