@@ -126,10 +126,9 @@ def _add_label(string):
     if isinstance(string, str) and string[0:8] in ['#smedia_', '#saudio_',
                                                    '#svideo_', '#sdescr_']:
         string = string[8:]
-        if HAS_DATASTORE:
-            dsobject = datastore.get(string[8:])
-            if 'title' in dsobject.metadata:
-                string = dsobject.metadata['title']
+        dsobject = datastore.get(string[8:])
+        if 'title' in dsobject.metadata:
+            string = dsobject.metadata['title']
     else:
         string = str(string)
     if string[0:2] == '#s':
