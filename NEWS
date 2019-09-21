@@ -1,3 +1,15 @@
+219
+* fix a source not found when removing warning (James Cameron)
+* fix traceback in extras plugin (James Cameron)
+* fix traceback on turtle reskin (James Cameron)
+* update metadata in activity.info, licenses, and screenshots (Vipul Gupta)
+* fix typo (Ibiam Chihurumnaya, James Cameron)
+* add flatpak packaging (Cosimo Cecchi)
+* remove empty locale files (James Cameron)
+* autopep and flake8 fixes for core source (James Cameron)
+* colocate the PyGObject require_version calls (James Cameron)
+* fix collaboration (James Cameron)
+
 218
 * fix problem with Gio.Settings in cmdline version (walter)
 * fix problem with -o from  cmdline version (walter)
