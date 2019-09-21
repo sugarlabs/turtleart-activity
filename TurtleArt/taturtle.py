@@ -136,20 +136,7 @@ class Turtles:
         for turtle_name in iter(self.dict):
             self.set_turtle(turtle_name)
             if not self._active_turtle.get_remote():
-                self._active_turtle.set_color(0)
-                self._active_turtle.set_shade(50)
-                self._active_turtle.set_gray(100)
-                if self.turtle_window.coord_scale == 1:
-                    self._active_turtle.set_pen_size(5)
-                else:
-                    self._active_turtle.set_pen_size(1)
-                self._active_turtle.reset_shapes()
-                self._active_turtle.set_heading(0.0)
-                self._active_turtle.set_pen_state(False)
-                self._active_turtle.move_turtle((0.0, 0.0))
-                self._active_turtle.set_pen_state(True)
-                self._active_turtle.set_fill(False)
-                self._active_turtle.hide()
+                self._active_turtle.reset_turtle()
         self.set_turtle(self._default_turtle_name)
 
     def get_turtle_x(self, turtle_name):
@@ -340,6 +327,28 @@ class Turtle:
         self._custom_shapes = True
         self.show()
         self._calculate_sizes()
+
+    def reset_turtle(self):
+        self.set_color(0)
+        self.set_shade(50)
+        self.set_gray(100)
+        if self._turtles.turtle_window.coord_scale == 1:
+            self.set_pen_size(5)
+        else:
+            self.set_pen_size(1)
+        self.reset_shapes()
+        self.set_heading(0.0)
+        self.set_pen_state(False)
+        self.move_turtle((0.0, 0.0))
+
+        if self._turtles.turtle_window.sharing():
+            event = data_to_string([self._turtles.turtle_window.nick,
+                                    [0, 0]])
+            self._turtles.turtle_window.send_event('x', event)
+
+        self.set_pen_state(True)
+        self.set_fill(False)
+        self.hide()
 
     def reset_shapes(self):
         ''' Reset the shapes to the standard turtle '''
