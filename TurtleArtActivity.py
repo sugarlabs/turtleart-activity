@@ -1820,3 +1820,9 @@ class TurtleArtActivity(activity.Activity):
         elif self.activity_toolbar_button.is_expanded():
             return True
         return False
+
+    def get_data(self):
+        return None
+
+    def set_data(self, data):
+        pass

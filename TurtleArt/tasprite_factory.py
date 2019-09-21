@@ -1617,7 +1617,7 @@ if __name__ == "__main__":
 def svg_str_to_pixbuf(svg_string):
     """ Load pixbuf from SVG string """
     pl = GdkPixbuf.PixbufLoader()
-    pl.write(svg_string)
+    pl.write(str(svg_string))
     pl.close()
     pixbuf = pl.get_pixbuf()
     return pixbuf
