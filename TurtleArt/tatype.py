@@ -50,6 +50,9 @@ class Type(object):
         return str(self.constant_name)
     __repr__ = __str__
 
+    def __hash__(self):
+        return self.value
+
 
 class TypeDisjunction(tuple, Type):
 

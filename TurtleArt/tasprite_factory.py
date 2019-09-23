@@ -1617,7 +1617,7 @@ if __name__ == "__main__":
 def svg_str_to_pixbuf(svg_string):
     """ Load pixbuf from SVG string """
     pl = GdkPixbuf.PixbufLoader()
-    pl.write(str(svg_string))
+    pl.write(svg_string.encode())
     pl.close()
     pixbuf = pl.get_pixbuf()
     return pixbuf
@@ -1631,7 +1631,7 @@ def svg_str_to_pixmap(svg_string):
 
 def svg_from_file(pathname):
     """ Read SVG string from a file """
-    f = file(pathname, 'r')
+    f = open(pathname, 'r')
     svg = f.read()
     f.close()
     return(svg)

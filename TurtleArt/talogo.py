@@ -25,9 +25,9 @@ import os
 import tempfile
 import urllib.request, urllib.error, urllib.parse
 from time import time, sleep
-from operator import isNumberType
+import numbers
 from os.path import exists as os_path_exists
-from UserDict import UserDict
+from collections import UserDict
 
 from gi.repository import GLib
 from gi.repository import GdkPixbuf
@@ -402,7 +402,7 @@ class LogoCode:
                 (token, bindex) = token
             if isinstance(token, Media):
                 res.append(token)
-            elif isNumberType(token):
+            elif isinstance(token, numbers.Number):
                 res.append(token)
             elif token.isdigit():
                 res.append(float(token))

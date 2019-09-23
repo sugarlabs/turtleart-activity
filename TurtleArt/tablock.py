@@ -670,8 +670,6 @@ class Block:
     def _set_label_attributes(self):
         if self.spr is None:
             return
-        if isinstance(self.name, str):
-            self.name = self.name.encode('utf-8')
         if self.name in content_blocks:
             n = len(self.values)
             if n == 0:
@@ -762,8 +760,6 @@ class Block:
         self._right = 0
         self._bottom = 0
         self.svg.set_stroke_width(STANDARD_STROKE_WIDTH)
-        if isinstance(self.name, str):
-            self.name = self.name.encode('utf-8')
         for k in list(block_styles.keys()):
             if self.name in block_styles[k]:
                 if isinstance(self._block_methods[k], list):

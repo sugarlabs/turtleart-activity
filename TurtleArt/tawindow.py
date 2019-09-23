@@ -1428,14 +1428,10 @@ class TurtleArtWindow():
                         # First look for a hat with _('action') as its label
                         found_the_action_block = False
                         bname = _('action')
-                        if isinstance(bname, str):
-                            bname = bname.encode('utf-8')
                         for sblk in similars:
                             cblk = sblk.connections[1]
                             if cblk is not None:
                                 blabel = cblk.spr.labels[0]
-                                if isinstance(blabel, str):
-                                    blabel = blabel.encode('utf-8')
                                 if bname == blabel:
                                     found_the_action_block = True
                         # If there is an action block in use, change the name
@@ -1655,8 +1651,6 @@ class TurtleArtWindow():
         ''' change the label on action blocks of the same name '''
         if isinstance(name, (float, int)):
             return
-        if isinstance(name, str):
-            name = name.encode('utf-8')
         for blk in self.just_blocks():
             if self._action_name(blk, hat=False):
                 if blk.spr.labels[0] == self._saved_action_name:
@@ -1673,8 +1667,6 @@ class TurtleArtWindow():
         ''' change the label on box blocks of the same name '''
         if isinstance(name, (float, int)):
             return
-        if isinstance(name, str):
-            name = name.encode('utf-8')
         for blk in self.just_blocks():
             if self._box_name(blk, storein=False):
                 if blk.spr.labels[0] == self._saved_box_name:
@@ -1691,8 +1683,6 @@ class TurtleArtWindow():
         ''' change the label on storin blocks of the same name '''
         if isinstance(name, (float, int)):
             return
-        if isinstance(name, str):
-            name = name.encode('utf-8')
         for blk in self.just_blocks():
             if self._box_name(blk, storein=True):
                 if blk.spr.labels[0] == self._saved_box_name:
@@ -1714,12 +1704,6 @@ class TurtleArtWindow():
         # (2) The list of block styles
         # (3) The list of proto blocks on the palette
         # (4) The list of block names
-        if isinstance(name, str):
-            name = name.encode('utf-8')
-        if isinstance(old, str):
-            old = old.encode('utf-8')
-        if isinstance(new, str):
-            new = new.encode('utf-8')
 
         if old == new:
             '''
@@ -4160,8 +4144,6 @@ class TurtleArtWindow():
                     self.set_userdefined(blk)
         if btype == 'string' and blk.spr is not None:
             value = blk.values[0]
-            if isinstance(value, str):
-                value = value.encode('utf-8')
             blk.spr.set_label(value.replace('\n', RETURN))
         elif btype in block_styles['box-style-media'] and blk.spr is not None:
             if btype in EXPAND_SKIN:
@@ -4917,17 +4899,9 @@ class TurtleArtWindow():
         ''' Look for a protoblock with this name '''
         if not self.interactive_mode:
             return False
-        if isinstance(name, str):
-            name = name.encode('utf-8')
-        if isinstance(label, str):
-            label = label.encode('utf-8')
         i = palette_name_to_index(palette)
         for blk in self.palette_views[i].blocks:
             blk_label = blk.spr.labels[0]
-            if isinstance(blk.name, str):
-                blk.name = blk.name.encode('utf-8')
-            if isinstance(blk_label, str):
-                blk_label = blk_label.encode('utf-8')
             if blk.name == name and blk_label == label:
                 return True
             # Check labels[1] too (e.g., store in block)
@@ -4943,8 +4917,6 @@ class TurtleArtWindow():
             return
         if isinstance(name, (float, int)):
             return
-        if isinstance(name, str):
-            name = name.encode('utf-8')
         if name == _('action'):
             return
         # Choose a palette for the new block.
@@ -4970,8 +4942,6 @@ class TurtleArtWindow():
             return
         if isinstance(name, (float, int)):
             return
-        if isinstance(name, str):
-            name = name.encode('utf-8')
         if name == _('my box'):
             return
         # Choose a palette for the new block.
@@ -4997,8 +4967,6 @@ class TurtleArtWindow():
             return
         if isinstance(name, (float, int)):
             return
-        if isinstance(name, str):
-            name = name.encode('utf-8')
         if name == _('my box'):
             return
         # Choose a palette for the new block.
@@ -5161,8 +5129,6 @@ variable'))
             else:
                 self.show_toolbar_palette(int(arg))
         else:
-            if isinstance(arg, str):
-                arg = arg.encode('utf-8')
             if arg in palette_names or arg in palette_i18n_names:
                 self.show_toolbar_palette(palette_name_to_index(arg))
             else:

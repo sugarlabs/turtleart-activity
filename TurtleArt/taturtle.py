@@ -372,7 +372,7 @@ class Turtle:
 
     def _update_sprite_heading(self):
         ''' Update the sprite to reflect the current heading '''
-        i = (int(self._heading + 5) % 360) / (360 / SHAPES)
+        i = (int(self._heading + 5) % 360) // (360 // SHAPES)
         if not self._hidden and self.spr is not None:
             try:
                 self.spr.set_shape(self._shapes[i])

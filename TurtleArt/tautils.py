@@ -171,8 +171,6 @@ def find_hat(data):
 def _to_str(text):
     ''' Convert whatever to a str type '''
     if isinstance(text, str):
-        return text.encode('utf-8')
-    elif isinstance(text, str):
         return text
     else:
         try:
@@ -361,9 +359,6 @@ def data_from_string(text):
     ''' JSON load data from a string. '''
     if isinstance(text, str):
         return json_load(text.replace(']],\n', ']], '))
-    elif isinstance(text, str):
-        text = text.encode('utf-8')
-        return json_load(text.replace(']],\n', ']], '))
     else:
         print('type error (%s) in data_from_string' % (type(text)))
         return None
@@ -372,21 +367,21 @@ def data_from_string(text):
 def data_to_file(data, ta_file):
     ''' Write data to a file. '''
     try:
-        file_handle = file(ta_file, 'w')
+        file_handle = open(ta_file, 'w')
     except IOError as e:
         error_output('Could not write to %s: %s.' % (ta_file, e))
         tmp_file = os.path.join(os.path.expanduser('~'),
                                 os.path.basename(ta_file))
         try:
             debug_output('Trying to write to %s' % (tmp_file))
-            file_handle = file(tmp_file, 'w')
+            file_handle = open(tmp_file, 'w')
         except IOError as e:
             error_output('Could not write to %s: %s.' % (tmp_file, e))
             tmp_file = os.path.join(tempfile.gettempdir(),
                                     os.path.basename(ta_file))
             try:
                 debug_output('Trying to write to %s' % (tmp_file))
-                file_handle = file(tmp_file, 'w')
+                file_handle = open(tmp_file, 'w')
             except IOError as e:
                 error_output('Could not write to %s: %s.' % (tmp_file, e))
                 return
@@ -426,10 +421,7 @@ def save_picture(canvas, file_name):
     cr = cairo.Context(img_surface)
     cr.set_source_surface(x_surface)
     cr.paint()
-    if isinstance(file_name, str):
-        img_surface.write_to_png(str(file_name.encode('utf-8')))
-    else:
-        img_surface.write_to_png(str(file_name))
+    img_surface.write_to_png(str(file_name))
 
 
 def get_canvas_data(canvas):
