@@ -21,11 +21,11 @@
 
 import os
 
-from tautils import debug_output, error_output
-from tapalette import palette_names
-from taconstants import ICON_SIZE, CATEGORY_LAYER, TAB_LAYER
-from tasprite_factory import SVG, svg_from_file, svg_str_to_pixbuf
-from sprites import Sprite
+from .tautils import debug_output, error_output
+from .tapalette import palette_names
+from .taconstants import ICON_SIZE, CATEGORY_LAYER, TAB_LAYER
+from .tasprite_factory import SVG, svg_from_file, svg_str_to_pixbuf
+from .sprites import Sprite
 
 
 def create_toolbar_background(sprite_list, width):

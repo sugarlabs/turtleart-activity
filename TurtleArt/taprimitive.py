@@ -28,12 +28,12 @@ import traceback
 # from ast_pprint import * # only used for debugging, safe to comment out
 
 
-from tablock import Media
+from .tablock import Media
 
-from tacanvas import TurtleGraphics
-from taconstants import (Color, CONSTANTS, ColorObj, Vector)
-from talogo import (LogoCode, logoerror, NegativeRootError)
-from taturtle import (Turtle, Turtles)
+from .tacanvas import TurtleGraphics
+from .taconstants import (Color, CONSTANTS, ColorObj, Vector)
+from .talogo import (LogoCode, logoerror, NegativeRootError)
+from .taturtle import (Turtle, Turtles)
 from TurtleArt.tatype import (TYPE_CHAR, TYPE_INT, TYPE_FLOAT, TYPE_OBJECT,
                               TYPE_MEDIA, TYPE_COLOR, BOX_AST, ACTION_AST,
                               TYPE_VECTOR,
@@ -41,9 +41,9 @@ from TurtleArt.tatype import (TYPE_CHAR, TYPE_INT, TYPE_FLOAT, TYPE_OBJECT,
                               TypedSubscript, TypedName, is_bound_method,
                               is_instancemethod, is_staticmethod,
                               identity, get_converter, convert, get_call_ast)
-from tautils import debug_output
-from tawindow import (TurtleArtWindow, global_objects, plugins_in_use)
-from util import ast_extensions
+from .tautils import debug_output
+from .tawindow import (TurtleArtWindow, global_objects, plugins_in_use)
+from .util import ast_extensions
 
 
 class PyExportError(BaseException):
@@ -151,7 +151,7 @@ class Primitive(object):
         else:
             results, plugin = self.wants_plugin()
             if results:
-                for k in global_objects.keys():
+                for k in list(global_objects.keys()):
                     if k == plugin:
                         if k not in plugins_in_use:
                             plugins_in_use.append(k)
@@ -566,8 +566,8 @@ class Primitive(object):
             if is_instancemethod(self.func) != is_instancemethod(other):
                 return False
             elif is_instancemethod(self.func):  # and is_instancemethod(other):
-                return (self.func.im_class == other.im_class and
-                        self.func.im_func == other.im_func)
+                return (self.func.__self__.__class__ == other.__self__.__class__ and
+                        self.func.__func__ == other.__func__)
             else:
                 return self.func == other
 
@@ -602,7 +602,7 @@ class Primitive(object):
         """ Does this Primitive want to get the heap as its first argument? """
         return ((hasattr(self.func, '__self__') and
                  isinstance(self.func.__self__, list)) or
-                self.func in list.__dict__.values())
+                self.func in list(list.__dict__.values()))
 
     def wants_tawindow(self):
         """ Does this Primitive want to get the TurtleArtWindow instance
@@ -612,7 +612,7 @@ class Primitive(object):
     def wants_plugin(self):
         """Does this Primitive want to get a plugin instance as its first
         argument? """
-        for obj in global_objects.keys():
+        for obj in list(global_objects.keys()):
             if self._wants(global_objects[obj].__class__):
                 return True, obj
         return False, None
@@ -624,7 +624,7 @@ class Primitive(object):
         return not is_instancemethod(self.func)
 
     def _wants(self, theClass):
-        return is_instancemethod(self.func) and self.func.im_class == theClass
+        return is_instancemethod(self.func) and self.func.__self__.__class__ == theClass
 
     # treat the following methods in a special way when converting the
     # Primitive to an AST
@@ -1203,7 +1203,7 @@ def value_to_ast(value, *args_for_prim, **kwargs_for_prim):
     elif isinstance(value, (int, float)):
         return ast.Num(n=value)
     # string
-    elif isinstance(value, basestring):
+    elif isinstance(value, str):
         return ast.Str(value)
     # list (recursively transform to an AST)
     elif isinstance(value, list):

@@ -32,7 +32,7 @@ from TurtleArt.taconstants import DEFAULT_TURTLE_COLORS
 from sugar3 import profile
 from sugar3.presence import presenceservice
 
-from textchannelwrapper import CollabWrapper
+from .textchannelwrapper import CollabWrapper
 
 
 SERVICE = 'org.laptop.TurtleArtActivity'

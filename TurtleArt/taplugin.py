@@ -19,7 +19,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-import ConfigParser
+import configparser
 from gettext import gettext as _
 import os
 import shutil
@@ -99,7 +99,7 @@ def complete_plugin_install(cls, tmp_dir, tmp_path, plugin_path,
 def load_a_plugin(cls, tmp_dir):
     ''' Load a plugin from the Journal and initialize it '''
     plugin_path = os.path.join(tmp_dir, 'plugin.info')
-    file_info = ConfigParser.ConfigParser()
+    file_info = configparser.ConfigParser()
     if len(file_info.read(plugin_path)) == 0:
         cls.tw.showlabel('status', _('Plugin could not be installed.'))
     elif not file_info.has_option('Plugin', 'name'):

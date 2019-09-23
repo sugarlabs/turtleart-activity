@@ -23,8 +23,8 @@
 
 import ast
 
-from tablock import Media
-from taconstants import (Color, ColorObj, Vector)
+from .tablock import Media
+from .taconstants import (Color, ColorObj, Vector)
 
 
 class Type(object):
@@ -96,11 +96,11 @@ def get_type(x):
     and a boolean indicating whether x is an AST. If the type cannot be
     determined, return TYPE_OBJECT as the type. """
     # non-AST types
-    if isinstance(x, (int, long)):
+    if isinstance(x, int):
         return (TYPE_INT, False)
     elif isinstance(x, float):
         return (TYPE_FLOAT, False)
-    elif isinstance(x, basestring):
+    elif isinstance(x, str):
         if len(x) == 1:
             return (TYPE_CHAR, False)
         try:
@@ -178,7 +178,7 @@ def is_instancemethod(method):
 
 
 def is_bound_method(method):
-    return ((is_instancemethod(method) and method.im_self is not None) or
+    return ((is_instancemethod(method) and method.__self__ is not None) or
             (hasattr(method, '__self__') and method.__self__ is not None))
 
 
@@ -357,7 +357,7 @@ def convert(x, new_type, old_type=None, converter=None):
                     return y
                 elif is_instancemethod(converter):
                     func = ast.Attribute(value=y,
-                                         attr=converter.im_func.__name__,
+                                         attr=converter.__func__.__name__,
                                          ctx=ast.Load)
                     return get_call_ast(func)
                 else:
@@ -443,7 +443,7 @@ def get_call_ast(func_name, args=None, kwargs=None, return_type=None):
     # convert keyword argument dict to a list of (key, value) pairs
     keywords = []
     if kwargs is not None:
-        for (key, value) in kwargs.iteritems():
+        for (key, value) in kwargs.items():
             keywords.append(ast.keyword(arg=key, value=value))
     # get or generate the AST representing the callable
     if isinstance(func_name, ast.AST):

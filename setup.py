@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import sys
-from ConfigParser import ConfigParser
+from configparser import ConfigParser
 import xml.etree.cElementTree as ET
 
 
@@ -95,7 +95,7 @@ if len(sys.argv) > 1 and '--no-sugar' == sys.argv[1]:
     class post_install(install):
         def run(self):
             install.run(self)
-            print "Running post_install"
+            print("Running post_install")
 
             generate_appdata(self.prefix,
                              'org.laptop.TurtleArtActivity')

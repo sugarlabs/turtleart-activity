@@ -24,7 +24,7 @@ import os
 
 from gi.repository import GdkPixbuf
 
-from taconstants import HIT_RED, HIT_GREEN, HIDE_WHITE, SHOW_WHITE, \
+from .taconstants import HIT_RED, HIT_GREEN, HIDE_WHITE, SHOW_WHITE, \
     PALETTE_COLOR, TOOLBAR_COLOR
 
 

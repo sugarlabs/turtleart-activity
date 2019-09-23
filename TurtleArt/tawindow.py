@@ -46,7 +46,7 @@ DEGTOR = 2 * pi / 360
 
 import locale
 
-from taconstants import (
+from .taconstants import (
     HORIZONTAL_PALETTE,
     BLOCK_SCALE,
     MEDIA_SHAPES,
@@ -93,17 +93,17 @@ from taconstants import (
     TMP_ODP_PATH,
     Vector,
     PASTE_OFFSET)
-from tapalette import (palette_names, palette_blocks, expandable_blocks,
+from .tapalette import (palette_names, palette_blocks, expandable_blocks,
                        block_names, content_blocks, default_values,
                        special_names, block_styles, help_strings,
                        string_or_number_args, make_palette,
                        palette_name_to_index, palette_init_on_start,
                        palette_i18n_names)
-from talogo import (LogoCode, logoerror)
-from tacanvas import TurtleGraphics
-from tablock import (Blocks, Block, Media, media_blocks_dictionary)
-from taturtle import (Turtles, Turtle)
-from tautils import (magnitude, get_load_name, get_save_name, data_from_file,
+from .talogo import (LogoCode, logoerror)
+from .tacanvas import TurtleGraphics
+from .tablock import (Blocks, Block, Media, media_blocks_dictionary)
+from .taturtle import (Turtles, Turtle)
+from .tautils import (magnitude, get_load_name, get_save_name, data_from_file,
                      data_to_file, round_int, get_id, get_pixbuf_from_journal,
                      movie_media_type, audio_media_type, image_media_type,
                      save_picture, calc_image_size, get_path, hide_button_hit,
@@ -114,13 +114,13 @@ from tautils import (magnitude, get_load_name, get_save_name, data_from_file,
                      error_output, find_hat, find_bot_block,
                      restore_clamp, collapse_clamp, data_from_string,
                      increment_name, get_screen_dpi, is_writeable)
-from tasprite_factory import (svg_str_to_pixbuf, svg_from_file)
-from tapalette import block_primitives
-from tapaletteview import PaletteView
-from taselector import (Selector, create_toolbar_background)
-from sprites import (Sprites, Sprite)
+from .tasprite_factory import (svg_str_to_pixbuf, svg_from_file)
+from .tapalette import block_primitives
+from .tapaletteview import PaletteView
+from .taselector import (Selector, create_toolbar_background)
+from .sprites import (Sprites, Sprite)
 
-from util.menubuilder import make_checkmenu_item
+from .util.menubuilder import make_checkmenu_item
 
 from .tagplay import stop_media
 
@@ -464,8 +464,8 @@ class TurtleArtWindow():
         plugins = {}
         # NOTE: When debugging plugins, it may be useful to not trap errors
         try:
-            exec f in globals(), plugins
-            self.turtleart_plugins[plugin_dir] = plugins.values()[0](self)
+            exec(f, globals(), plugins)
+            self.turtleart_plugins[plugin_dir] = list(plugins.values())[0](self)
             debug_output('Successfully importing %s' % (plugin_class),
                          self.running_sugar)
             # Add the icon dir to the icon_theme search path
@@ -505,7 +505,7 @@ class TurtleArtWindow():
 
     def start_plugins(self):
         ''' Start is called everytime we execute blocks. '''
-        for plugin in self.turtleart_plugins.values():
+        for plugin in list(self.turtleart_plugins.values()):
             if hasattr(plugin, 'start'):
                 try:
                     plugin.start()
@@ -515,7 +515,7 @@ class TurtleArtWindow():
 
     def stop_plugins(self):
         ''' Stop is called whenever we stop execution. '''
-        for plugin in self.turtleart_plugins.values():
+        for plugin in list(self.turtleart_plugins.values()):
             if hasattr(plugin, 'stop'):
                 try:
                     plugin.stop()
@@ -525,7 +525,7 @@ class TurtleArtWindow():
 
     def clear_plugins(self):
         ''' Clear is called from the clean block and erase button. '''
-        for plugin in self.turtleart_plugins.values():
+        for plugin in list(self.turtleart_plugins.values()):
             if hasattr(plugin, 'clear'):
                 try:
                     plugin.clear()
@@ -535,7 +535,7 @@ class TurtleArtWindow():
 
     def background_plugins(self):
         ''' Background is called when we are pushed to the background. '''
-        for plugin in self.turtleart_plugins.values():
+        for plugin in list(self.turtleart_plugins.values()):
             if hasattr(plugin, 'goto_background'):
                 try:
                     plugin.goto_background()
@@ -545,7 +545,7 @@ class TurtleArtWindow():
 
     def foreground_plugins(self):
         ''' Foreground is called when we are return from the background. '''
-        for plugin in self.turtleart_plugins.values():
+        for plugin in list(self.turtleart_plugins.values()):
             if hasattr(plugin, 'return_to_foreground'):
                 try:
                     plugin.return_to_foreground()
@@ -555,7 +555,7 @@ class TurtleArtWindow():
 
     def quit_plugins(self):
         ''' Quit is called upon program exit. '''
-        for plugin in self.turtleart_plugins.values():
+        for plugin in list(self.turtleart_plugins.values()):
             if hasattr(plugin, 'quit'):
                 try:
                     plugin.quit()
@@ -1428,13 +1428,13 @@ class TurtleArtWindow():
                         # First look for a hat with _('action') as its label
                         found_the_action_block = False
                         bname = _('action')
-                        if isinstance(bname, unicode):
+                        if isinstance(bname, str):
                             bname = bname.encode('utf-8')
                         for sblk in similars:
                             cblk = sblk.connections[1]
                             if cblk is not None:
                                 blabel = cblk.spr.labels[0]
-                                if isinstance(blabel, unicode):
+                                if isinstance(blabel, str):
                                     blabel = blabel.encode('utf-8')
                                 if bname == blabel:
                                     found_the_action_block = True
@@ -1655,7 +1655,7 @@ class TurtleArtWindow():
         ''' change the label on action blocks of the same name '''
         if isinstance(name, (float, int)):
             return
-        if isinstance(name, unicode):
+        if isinstance(name, str):
             name = name.encode('utf-8')
         for blk in self.just_blocks():
             if self._action_name(blk, hat=False):
@@ -1673,7 +1673,7 @@ class TurtleArtWindow():
         ''' change the label on box blocks of the same name '''
         if isinstance(name, (float, int)):
             return
-        if isinstance(name, unicode):
+        if isinstance(name, str):
             name = name.encode('utf-8')
         for blk in self.just_blocks():
             if self._box_name(blk, storein=False):
@@ -1691,7 +1691,7 @@ class TurtleArtWindow():
         ''' change the label on storin blocks of the same name '''
         if isinstance(name, (float, int)):
             return
-        if isinstance(name, unicode):
+        if isinstance(name, str):
             name = name.encode('utf-8')
         for blk in self.just_blocks():
             if self._box_name(blk, storein=True):
@@ -1714,11 +1714,11 @@ class TurtleArtWindow():
         # (2) The list of block styles
         # (3) The list of proto blocks on the palette
         # (4) The list of block names
-        if isinstance(name, unicode):
+        if isinstance(name, str):
             name = name.encode('utf-8')
-        if isinstance(old, unicode):
+        if isinstance(old, str):
             old = old.encode('utf-8')
-        if isinstance(new, unicode):
+        if isinstance(new, str):
             new = new.encode('utf-8')
 
         if old == new:
@@ -2136,7 +2136,7 @@ class TurtleArtWindow():
                 if argname == 'media':
                     argname = 'journal'
                 elif argname == 'number' and \
-                        isinstance(argvalue, (str, unicode)):
+                        isinstance(argvalue, str):
                     argname = 'string'
                 elif argname == 'string' and \
                         name in block_styles['number-style-1strarg'] and \
@@ -3550,7 +3550,7 @@ class TurtleArtWindow():
         elif keyname == 'Tab':
             # For the first pass, just tab through palettes
             if self.selected_palette is None:
-                print 'selected palette is None'
+                print('selected palette is None')
                 return True
             else:
                 p = self.palette_views[self.selected_palette].blocks
@@ -4160,7 +4160,7 @@ class TurtleArtWindow():
                     self.set_userdefined(blk)
         if btype == 'string' and blk.spr is not None:
             value = blk.values[0]
-            if isinstance(value, unicode):
+            if isinstance(value, str):
                 value = value.encode('utf-8')
             blk.spr.set_label(value.replace('\n', RETURN))
         elif btype in block_styles['box-style-media'] and blk.spr is not None:
@@ -4484,7 +4484,7 @@ class TurtleArtWindow():
             else:
                 self.showlabel('print', str(n))
         # string
-        elif isinstance(n, basestring):
+        elif isinstance(n, str):
             self.showlabel('print', n)
         # integer
         elif isinstance(n, int):
@@ -4577,7 +4577,7 @@ class TurtleArtWindow():
         return ta_file, image_file
 
     def save_as_odp(self, name=None):
-        from util.odp import TurtleODP
+        from .util.odp import TurtleODP
 
         path_list = []
         if self.running_sugar:
@@ -4628,7 +4628,7 @@ class TurtleArtWindow():
                     ['cp', TMP_ODP_PATH, os.path.join(datapath, name)])
 
     def save_as_icon(self, name=''):
-        from util.sugariconify import SugarIconify
+        from .util.sugariconify import SugarIconify
 
         path = self.canvas.get_svg_path()
         self._ensure_square_svg(path)  # icons are square
@@ -4917,16 +4917,16 @@ class TurtleArtWindow():
         ''' Look for a protoblock with this name '''
         if not self.interactive_mode:
             return False
-        if isinstance(name, unicode):
+        if isinstance(name, str):
             name = name.encode('utf-8')
-        if isinstance(label, unicode):
+        if isinstance(label, str):
             label = label.encode('utf-8')
         i = palette_name_to_index(palette)
         for blk in self.palette_views[i].blocks:
             blk_label = blk.spr.labels[0]
-            if isinstance(blk.name, unicode):
+            if isinstance(blk.name, str):
                 blk.name = blk.name.encode('utf-8')
-            if isinstance(blk_label, unicode):
+            if isinstance(blk_label, str):
                 blk_label = blk_label.encode('utf-8')
             if blk.name == name and blk_label == label:
                 return True
@@ -4943,7 +4943,7 @@ class TurtleArtWindow():
             return
         if isinstance(name, (float, int)):
             return
-        if isinstance(name, unicode):
+        if isinstance(name, str):
             name = name.encode('utf-8')
         if name == _('action'):
             return
@@ -4970,7 +4970,7 @@ class TurtleArtWindow():
             return
         if isinstance(name, (float, int)):
             return
-        if isinstance(name, unicode):
+        if isinstance(name, str):
             name = name.encode('utf-8')
         if name == _('my box'):
             return
@@ -4997,7 +4997,7 @@ class TurtleArtWindow():
             return
         if isinstance(name, (float, int)):
             return
-        if isinstance(name, unicode):
+        if isinstance(name, str):
             name = name.encode('utf-8')
         if name == _('my box'):
             return
@@ -5161,7 +5161,7 @@ variable'))
             else:
                 self.show_toolbar_palette(int(arg))
         else:
-            if isinstance(arg, unicode):
+            if isinstance(arg, str):
                 arg = arg.encode('utf-8')
             if arg in palette_names or arg in palette_i18n_names:
                 self.show_toolbar_palette(palette_name_to_index(arg))
