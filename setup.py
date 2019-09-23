@@ -142,8 +142,8 @@ if len(sys.argv) > 1 and '--no-sugar' == sys.argv[1]:
                 retcode = subprocess.call(
                     ['msgfmt', '--output-file=%s' % mo_file, file_name])
                 if retcode:
-                    print ('ERROR - msgfmt failed with return code %i.'
-                           % retcode)
+                    print('ERROR - msgfmt failed with return code %i.'
+                          % retcode)
 
     DATA_FILES = [
         ('activity', get_files('activity/')),
