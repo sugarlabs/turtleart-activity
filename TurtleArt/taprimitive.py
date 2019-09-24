@@ -205,7 +205,8 @@ class Primitive(object):
                         const = slot.fill(filler,
                                           convert_to_ast=convert_to_ast,
                                           call_my_args=call_my_args)
-                    except TATypeError as error:
+                    except TATypeError as e:
+                        error = e
                         if Primitive._DEBUG:
                             traceback.print_exc()
                         break
