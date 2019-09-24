@@ -176,13 +176,15 @@ def get_type(x):
 
 
 def is_instancemethod(method):
-    # TODO how to access the type `instancemethod` directly?
-    return type(method).__name__ == "instancemethod"
+    # FIXME: a way to identify an instance method in python 3
+    # until then, assume everything is an instance method
+    return True
 
 
 def is_bound_method(method):
-    return ((is_instancemethod(method) and method.__self__ is not None) or
-            (hasattr(method, '__self__') and method.__self__ is not None))
+    return type(method).__name__ == 'method' and \
+        hasattr(method, '__self__') and \
+        method.__self__ is not None
 
 
 def is_staticmethod(method):

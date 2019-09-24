@@ -24,6 +24,7 @@ from gettext import gettext as _
 from math import sqrt
 from random import uniform
 import traceback
+import inspect
 
 # from ast_pprint import * # only used for debugging, safe to comment out
 
@@ -624,7 +625,11 @@ class Primitive(object):
         return not is_instancemethod(self.func)
 
     def _wants(self, theClass):
-        return is_instancemethod(self.func) and self.func.__self__.__class__ == theClass
+        try:
+            return inspect.getattr_static(
+                theClass, self.func.__name__).__class__.__name__ == 'function'
+        except AttributeError:
+            return False
 
     # treat the following methods in a special way when converting the
     # Primitive to an AST
