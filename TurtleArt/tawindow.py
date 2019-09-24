@@ -3640,9 +3640,9 @@ class TurtleArtWindow():
             if self.running_sugar and self.activity.is_fullscreen:
                 self.activity.unfullscreen()
                 from sugar3.graphics.style import GRID_CELL_SIZE
-                self.vbox.set_size_request(Gdk.Screen.width(),
-                                           Gdk.Screen.height() -
-                                           2 * GRID_CELL_SIZE)
+                self.activity.vbox.set_size_request(
+                    Gdk.Screen.width(),
+                    Gdk.Screen.height() - 2 * GRID_CELL_SIZE)
         return True
 
     def _jog_turtle(self, dx, dy):
