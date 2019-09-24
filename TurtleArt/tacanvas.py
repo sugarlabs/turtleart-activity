@@ -334,7 +334,7 @@ class TurtleGraphics:
             else:
                 text = label
 
-            pl.set_text(str(text), len(str(text)))
+            pl.set_text(text, -1)
             pl.set_width(int(width) * Pango.SCALE)
             cc.save()
             cc.translate(x, y)
