@@ -772,7 +772,7 @@ class LogoCode:
         controller -- iterator that yields True iff the loop should be run
             once more OR a callable that returns such an iterator
         blklist -- list of callables that form the loop body """
-        if not hasattr(controller, "next"):
+        if not hasattr(controller, "__next__"):
             if callable(controller):
                 controller = controller()
             else:
