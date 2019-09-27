@@ -474,7 +474,7 @@ program started'))
 last-out heap)'))
         self.tw.lc.def_prim(
             'push', 1,
-            Primitive(self.tw.lc.heap.append,
+            Primitive(self.tw.lc.append_heap,
                       arg_descs=[ArgSlot(TYPE_OBJECT)],
                       call_afterwards=self.after_push))
         define_logo_function('tapush', 'to tapush :foo\nmake "taheap fput \
@@ -520,7 +520,7 @@ end\n')
 last-out heap)'))
         self.tw.lc.def_prim(
             'pop', 0,
-            Primitive(self.tw.lc.heap.pop, return_type=TYPE_BOX,
+            Primitive(self.tw.lc.pop_heap, return_type=TYPE_BOX,
                       call_afterwards=self.after_pop))
         define_logo_function('tapop', 'to tapop\nif emptyp :taheap [stop]\n\
 make "tmp first :taheap\nmake "taheap butfirst :taheap\noutput :tmp\nend\n')

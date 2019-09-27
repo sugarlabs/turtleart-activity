@@ -1000,6 +1000,12 @@ class LogoCode:
         while self.heap:
             self.heap.pop()
 
+    def append_heap(self, arg):
+        self.heap.append(arg)
+
+    def pop_heap(self):
+        return self.heap.pop()
+
     def prim_myblock(self, *args):
         """ Run Python code imported from Journal """
         if self.bindex is not None and self.bindex in self.tw.myblock:
