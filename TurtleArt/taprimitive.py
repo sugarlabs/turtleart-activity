@@ -1043,7 +1043,8 @@ class ArgSlot(object):
                                 args,
                                 convert_to_ast=convert_to_ast,
                                 call_my_args=(slot.call_arg and call_my_args))
-                        except TATypeError as error:
+                        except TATypeError as e:
+                            error = e
                             if Primitive._DEBUG:
                                 traceback.print_exc()
                             # on failure, try next wrapper/ slot/ func
@@ -1093,7 +1094,8 @@ class ArgSlot(object):
                                 wrapped_argument,
                                 new_type, old_type=old_type,
                                 converter=converter)
-                        except TATypeError as error:
+                        except TATypeError as e:
+                            error = e
                             if Primitive._DEBUG:
                                 traceback.print_exc()
                             # on failure, try next wrapper/ slot/ func
