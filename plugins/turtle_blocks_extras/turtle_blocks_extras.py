@@ -1223,8 +1223,16 @@ Journal objects'))
             language_option = '-v ' + VOICES[lang]
         else:
             language_option = ''
-        os.system('espeak %s "%s" --stdout | aplay' %
-                  (language_option, str(text)))
+
+        if self.tw.running_sugar:
+            from sugar3.speech import SpeechManager
+            sm = SpeechManager()
+            sm.say_text(text)
+        else:
+            os.system(
+                'espeak %s "%s" --stdout | aplay' %
+                (language_option, str(text)))
+
         if self.tw.sharing():
             if language_option == '':
                 event = 'S|%s' % (data_to_string([self.tw.nick, 'None', text]))

@@ -354,8 +354,14 @@ class Collaboration():
             if language_option == 'None':
                 language_option = ''
             if text is not None:
-                os.system('espeak %s "%s" --stdout | aplay' %
-                          (language_option, str(text)))
+                if self._tw.running_sugar:
+                    from sugar3.speech import SpeechManager
+                    sm = SpeechManager()
+                    sm.say_text(text)
+                else:
+                    os.system(
+                        'espeak %s "%s" --stdout | aplay' %
+                        (language_option, str(text)))
 
     def _paste(self, payload):
         if len(payload) > 0:
