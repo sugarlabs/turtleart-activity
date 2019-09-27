@@ -1192,7 +1192,7 @@ class LogoCode:
                              self.tw.running_sugar)
                 raise logoerror('#noconnection')
 
-        mediatype = req.info().getheader('Content-Type')
+        mediatype = req.getheader('Content-Type')
         if mediatype[0:5] in ['image', 'audio', 'video']:
             tmp = tempfile.NamedTemporaryFile(delete=False)
             tmp.write(req.read())
