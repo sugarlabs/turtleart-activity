@@ -24,3 +24,25 @@ the palette to the main area. You can delete a block by dragging it
 back onto the palette. Click anywhere on a "stack" of blocks to start
 executing that stack or by clicking in the Rabbit (fast) or Turtle
 (slow) on the Main Toolbar.
+
+Dependencies
+------------
+
+* Python 2,
+* PyGObject,
+* GLib,
+* GTK 3,
+* Pango,
+* Pango Cairo,
+* Telepathy GLib,
+* Sugar Toolkit,
+* GStreamer,
+* Csound,
+* WebKit,
+
+Copied Dependencies
+-------------------
+
+* CollabWrapper,
+* sugariconify,
+
