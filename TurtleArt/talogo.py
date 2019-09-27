@@ -1044,20 +1044,6 @@ class LogoCode:
         for name in value_blocks:
             self.update_label_value(name)
 
-    def int(self, n):
-        """ Raise an error if n doesn't convert to int. """
-        if isinstance(n, int):
-            return n
-        elif isinstance(n, float):
-            return int(n)
-        elif isinstance(n, str):
-            return int(ord(n[0]))
-        else:
-            self.tw.showblocks()
-            raise logoerror("%s %s %s %s" %
-                            (self.cfun.name, _("doesn't like"), str(n),
-                             _("as input")))
-
     def find_value_blocks(self):
         """ Find any value blocks that may need label updates """
         self.value_blocks_to_update = {}
