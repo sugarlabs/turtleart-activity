@@ -924,7 +924,8 @@ class LogoCode:
 
     def load_heap(self, obj):
         """ Load FILO from file """
-        user_path = _change_user_path(obj)
+        if not isinstance(obj, Media):
+            user_path = _change_user_path(obj)
 
         if self.tw.running_sugar:
             # Is the object a dsobject?
