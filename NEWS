@@ -1,3 +1,13 @@
+220
+* fix help button error (James Cameron)
+* port from GObject to GLib (James Cameron),
+* more flake8 fixes (James Cameron)
+* port to Python 3 (James Cameron)
+* fix query keyboard AttributeError (James Cameron)
+* list dependencies (James Cameron)
+* port to sugar3.speech (James Cameron)
+* fix missing datastore import change (James Cameron)
+
 219
 * fix a source not found when removing warning (James Cameron)
 * fix traceback in extras plugin (James Cameron)
