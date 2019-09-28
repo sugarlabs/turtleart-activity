@@ -4730,8 +4730,8 @@ class TurtleArtWindow():
 
             surface.write_to_png(file_path)
 
-            from sugar.datastore import datastore
-            from sugar import profile
+            from sugar3.datastore import datastore
+            from sugar3 import profile
 
             dsobject = datastore.create()
             dsobject.metadata['title'] = filename
