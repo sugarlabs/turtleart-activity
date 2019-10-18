@@ -97,7 +97,7 @@ class TurtleMain():
         self.version = file_activity_info.get('Activity', 'activity_version')
         self.name = file_activity_info.get('Activity', 'name')
         self.summary = file_activity_info.get('Activity', 'summary')
-        self.website = file_activity_info.get('Activity', 'website')
+        self.website = file_activity_info.get('Activity', 'url')
         self.icon_name = file_activity_info.get('Activity', 'icon')
 
         path = os.path.join(share_path, 'locale')
