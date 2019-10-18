@@ -24,7 +24,7 @@
 '''
 
 sprites.py is a simple sprites library for managing graphics objects,
-'sprites', on a gtk.DrawingArea. It manages multiple sprites with
+'sprites', on a Gtk.DrawingArea. It manages multiple sprites with
 methods such as move, hide, set_layer, etc.
 
 There are two classes:
@@ -68,7 +68,7 @@ Example usage:
 
 # method for converting SVG to a gtk pixbuf
 def svg_str_to_pixbuf(svg_string):
-    pl = gtk.gdk.PixbufLoader('svg')
+    pl = GdkPixbuf.PixbufLoader('svg')
     pl.write(svg_string)
     pl.close()
     pixbuf = pl.get_pixbuf()
