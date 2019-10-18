@@ -26,9 +26,9 @@ import getopt
 import sys
 import os
 import os.path
-import cStringIO
+import io
 import errno
-import ConfigParser
+import configparser
 import tarfile
 import tempfile
 import subprocess
@@ -66,7 +66,7 @@ from TurtleArt.taprimitive import PyExportError
 from TurtleArt.taplugin import (load_a_plugin, cancel_plugin_install,
                                 complete_plugin_install)
 
-from util.menubuilder import make_menu_item, make_sub_menu, make_checkmenu_item
+from TurtleArt.util.menubuilder import make_menu_item, make_sub_menu, make_checkmenu_item
 
 
 class TurtleMain():
@@ -90,7 +90,7 @@ class TurtleMain():
         self._share_path = share_path
         self._abspath = os.path.abspath('.')
 
-        file_activity_info = ConfigParser.ConfigParser()
+        file_activity_info = configparser.ConfigParser()
         activity_info_path = os.path.join(share_path, 'activity/activity.info')
         file_activity_info.read(activity_info_path)
         bundle_id = file_activity_info.get('Activity', 'bundle_id')
@@ -197,10 +197,10 @@ class TurtleMain():
 return %s(self)" % (p, P, P)
             plugin = {}
             try:
-                exec f in globals(), plugin
+                exec(f, globals(), plugin)
                 self._gnome_plugins.append(plugin.values()[0](self))
             except ImportError as e:
-                print 'failed to import %s: %s' % (P, str(e))
+                print('failed to import %s: %s' % (P, str(e)))
 
     def _run_gnome_plugins(self):
         ''' Tell the plugin about the TurtleWindow instance. '''
@@ -324,13 +324,13 @@ return %s(self)" % (p, P, P)
             opts, args = getopt.getopt(argv[1:], 'hor',
                                        ['help', 'output_png', 'run'])
         except getopt.GetoptError as err:
-            print str(err)
-            print self._HELP_MSG
+            print(str(err))
+            print(self._HELP_MSG)
             sys.exit(2)
         self._run_on_launch = False
         for o, a in opts:
             if o in ('-h', '--help'):
-                print self._HELP_MSG
+                print(self._HELP_MSG)
                 sys.exit()
             if o in ('-o', '--output_png'):
                 self._output_png = True
@@ -342,7 +342,7 @@ return %s(self)" % (p, P, P)
             self._ta_file = args[0]
 
         if len(args) > 1 or self._output_png and self._ta_file is None:
-            print self._HELP_MSG
+            print(self._HELP_MSG)
             sys.exit()
 
         if self._ta_file is not None:
@@ -376,8 +376,8 @@ return %s(self)" % (p, P, P)
                 # We can't write to the configuration file, use
                 # a faux file that will persist for the length of
                 # the session.
-                print _('Configuration directory not writable: %s') % (e)
-            data_file = cStringIO.StringIO()
+                print(_('Configuration directory not writable: %s') % (e))
+            data_file = io.StringIO()
             data_file.write(str(50) + '\n')
             data_file.write(str(50) + '\n')
             data_file.write(str(800) + '\n')
@@ -620,7 +620,7 @@ Would you like to save before quitting?'))
 
     def _reload_plugin_alert(self, tmp_dir, tmp_path, plugin_path, plugin_name,
                              file_info):
-        print "Already installed"
+        print("Already installed")
         title = _('Plugin %s already installed') % plugin_name
         msg = _('Do you want to reinstall %s?') % plugin_name
         dlg = Gtk.MessageDialog(parent=None, type=Gtk.MessageType.INFO,
@@ -760,7 +760,7 @@ Would you like to save before quitting?'))
             if pyee.block is not None:
                 pyee.block.highlight()
             self.tw.showlabel('status', str(pyee))
-            print pyee
+            print(pyee)
             return
         if not pythoncode:
             return
