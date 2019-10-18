@@ -66,13 +66,13 @@ def generate_appdata(prefix, bundle_id):
         ET.SubElement(root, ename).text = info.get('Activity', key)
 
     if info.has_option('Activity', 'screenshots'):
-        screenshots = info.get('Activity', 'screenshots').split()
+        screenshots = info.get('Activity', 'screenshots').split(',')
         ss_root = ET.SubElement(root, 'screenshots')
         for i, screenshot in enumerate(screenshots):
             e = ET.SubElement(ss_root, 'screenshot')
             if i == 0:
                 e.set('type', 'default')
-            ET.SubElement(e, 'image').text = screenshot
+            ET.SubElement(e, 'image').text = screenshot.strip()
 
     if info.has_option('Activity', 'url'):
         ET.SubElement(root, 'url', type='homepage').text = \
