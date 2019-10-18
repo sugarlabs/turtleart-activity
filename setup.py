@@ -49,8 +49,17 @@ def generate_appdata(prefix, bundle_id):
     for version, date in release_pairs:
         ET.SubElement(releases_root, 'release', date=date, version=version)
 
+    license_map = {
+      'GPLv2+': 'GPL-2.0-or-later',
+      'GPLv3+': 'GPL-3.0-or-later',
+      'LGPLv2+': 'LGPL-2.0-or-later',
+      'LGPLv2.1+': 'LGPL-2.1-or-later',
+    }
+    licenses = info.get('Activity', 'license').split(';')
+    spdx_licenses = map(lambda x: license_map.get(x, x), licenses)
+    ET.SubElement(root, 'project_license').text = " AND ".join(spdx_licenses)
+
     copy_pairs = [('metadata_license', 'metadata_license'),
-                  ('license', 'project_license'),
                   ('summary', 'summary'),
                   ('name', 'name')]
     for key, ename in copy_pairs:
