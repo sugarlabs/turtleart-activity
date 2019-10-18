@@ -29,18 +29,20 @@ def generate_appdata(prefix, bundle_id):
             return
 
     # See https://www.freedesktop.org/software/appstream/docs/
-    root = ET.Element('component', type='desktop')
+    root = ET.Element('component', type='desktop-application')
     ET.SubElement(root, 'translation', type='gettext').text = \
         bundle_id
-    ET.SubElement(root, 'id').text = \
-        bundle_id + '.desktop'
-    desc = ET.fromstring('<description>{}</description>'.format(
+    ET.SubElement(root, 'id').text = bundle_id
+    ET.SubElement(root, 'launchable', type='desktop-id').text = \
+        bundle_id + ".desktop"
+    desc = ET.fromstring('<description><p>{}</p></description>'.format(
         info.get('Activity', 'description')))
     root.append(desc)
 
     ET.SubElement(root, 'content_rating', type='oars-1.1')
 
-    release_pairs = [('218', '2018-05-22'),
+    release_pairs = [('220', '2019-09-28'),
+                     ('218', '2018-05-22'),
                      ('216', '2017-06-24'),
                      ('215', '2017-04-19')]
     releases_root = ET.SubElement(root, 'releases')
