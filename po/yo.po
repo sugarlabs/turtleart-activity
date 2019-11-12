@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-18 02:43+0000\n"
+"POT-Creation-Date: 2017-03-24 17:39+1100\n"
 "PO-Revision-Date: 2016-09-24 20:38+0000\n"
 "Last-Translator: Chris <cjl@sugarlabs.org>\n"
 "Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
@@ -18,17 +18,379 @@ msgstr ""
 "X-Generator: Pootle 2.5.1.1\n"
 "X-POOTLE-MTIME: 1474749512.000000\n"
 
-#. TRANS: "name" option from activity.info file
+#: activity/activity.info:2
 msgid "TurtleBlocks"
 msgstr "AdabaBlocks"
 
-#. TRANS: "summary" option from activity.info file
-msgid ""
-"A Logo-inspired turtle that draws colorful pictures with snap-together "
-"visual programming blocks"
+#: TurtleArtActivity.py:127
+msgid "Please wait"
+msgstr "Jọwọ duro"
+
+#: TurtleArtActivity.py:128
+msgid "Starting connection..."
+msgstr "Ti o bere asopọ..."
+
+#: TurtleArtActivity.py:282
+msgid "Export as python"
+msgstr "Export bi Python"
+
+#: TurtleArtActivity.py:283
+msgid "Error: You must use a Start Block when exporting to Python."
+msgstr "Aṣiṣe: O gbọdọ lo a Bẹrẹ Block nigba ti tajasita to Python."
+
+#: TurtleArtActivity.py:414
+msgid "snapshot"
+msgstr "foto"
+
+#: TurtleArtActivity.py:459 TurtleArtActivity.py:816 TurtleArtActivity.py:966
+msgid "Turn off hover help"
+msgstr "Pa rababa iranlọwọ"
+
+#: TurtleArtActivity.py:468 TurtleArt/turtleblocks.py:482
+msgid "Turn on hover help"
+msgstr "Tan rababa iranlọwọ"
+
+#: TurtleArtActivity.py:478 TurtleArt/turtleblocks.py:496
+msgid "Show palette"
+msgstr "fihan paleti"
+
+#: TurtleArtActivity.py:484 TurtleArtActivity.py:1180
+#: TurtleArt/turtleblocks.py:498
+msgid "Hide palette"
+msgstr "Ìbòmọlẹ paleti"
+
+#: TurtleArtActivity.py:526 TurtleArtActivity.py:880
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1347
+#: TurtleArt/talogo.py:442
+msgid "Show blocks"
+msgstr "fihan ohun amorindun"
+
+#: TurtleArtActivity.py:530 TurtleArtActivity.py:1192 TurtleArt/talogo.py:446
+msgid "Hide blocks"
+msgstr "Ìbòmọlẹ ohun amorindun"
+
+#: TurtleArtActivity.py:652
+msgid "Rescale coordinates down"
+msgstr "Rescale ipoidojuko si isalẹ"
+
+#: TurtleArtActivity.py:661 TurtleArtActivity.py:807 TurtleArtActivity.py:962
+msgid "Rescale coordinates up"
+msgstr "Rescale ipoidojuko soke"
+
+#: TurtleArtActivity.py:757 TurtleArtActivity.py:873 TurtleArtActivity.py:936
+#: TurtleArt/turtleblocks.py:493
+msgid "Edit"
+msgstr "Ṣatunkọ"
+
+#: TurtleArtActivity.py:762 TurtleArtActivity.py:874 TurtleArtActivity.py:954
+#: TurtleArt/turtleblocks.py:484
+msgid "View"
+msgstr "Wo"
+
+#: TurtleArtActivity.py:784 TurtleArtActivity.py:937
+#: TurtleArt/turtleblocks.py:487
+msgid "Copy"
+msgstr "Ṣẹ̀dà"
+
+#: TurtleArtActivity.py:786 TurtleArtActivity.py:938
+#: TurtleArt/turtleblocks.py:488
+msgid "Paste"
+msgstr "Lẹ"
+
+#: TurtleArtActivity.py:788
+msgid "Restore blocks from trash"
+msgstr "Pada ohun amorindun lati idọti"
+
+#: TurtleArtActivity.py:791 TurtleArtActivity.py:939
+#: TurtleArt/turtleblocks.py:489 TurtleArt/tawindow.py:1514
+msgid "Save stack"
+msgstr "Fi akopọ"
+
+#: TurtleArtActivity.py:793 TurtleArt/turtleblocks.py:491
+#: TurtleArt/tawindow.py:1553 TurtleArt/tawindow.py:1561
+#: TurtleArt/tawindow.py:1570
+msgid "Delete stack"
+msgstr "Pa akopọ"
+
+#: TurtleArtActivity.py:796 TurtleArtActivity.py:955
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:961
+msgid "Fullscreen"
+msgstr "Gbogbo sikirini"
+
+#: TurtleArtActivity.py:799 TurtleArtActivity.py:956
+#: TurtleArt/turtleblocks.py:468
+msgid "Cartesian coordinates"
+msgstr "Kartesi fun ipoidojuko"
+
+#: TurtleArtActivity.py:801 TurtleArtActivity.py:958
+#: TurtleArt/turtleblocks.py:470
+msgid "Polar coordinates"
+msgstr "Pola ipoidojuko"
+
+#: TurtleArtActivity.py:804 TurtleArtActivity.py:960
+msgid "Metric coordinates"
+msgstr "Metric ipoidojuko"
+
+#: TurtleArtActivity.py:810 TurtleArtActivity.py:964
+#: TurtleArt/turtleblocks.py:475
+msgid "Grow blocks"
+msgstr "Dagba ohun amorindun"
+
+#: TurtleArtActivity.py:813 TurtleArtActivity.py:965
+#: TurtleArt/turtleblocks.py:477
+msgid "Shrink blocks"
+msgstr "Isunki ohun amorindun"
+
+#: TurtleArtActivity.py:843 TurtleArtActivity.py:881 TurtleArtActivity.py:1146
+msgid "Load example"
+msgstr "Fifuye apẹẹrẹ"
+
+#: TurtleArtActivity.py:872 TurtleArtActivity.py:899
+msgid "Save/Load"
+msgstr "Fi / Fifuye"
+
+#: TurtleArtActivity.py:875
+msgid "Project"
+msgstr "idawọle"
+
+#: TurtleArtActivity.py:876 TurtleArtActivity.py:1186
+#: TurtleArt/turtleblocks.py:505
+msgid "Clean"
+msgstr "Mọ"
+
+#: TurtleArtActivity.py:877 TurtleArtActivity.py:1188
+#: TurtleArt/turtleblocks.py:506
+msgid "Run"
+msgstr "Rọ́ọ̀nù"
+
+#: TurtleArtActivity.py:878 TurtleArtActivity.py:1190
+#: TurtleArt/turtleblocks.py:507
+msgid "Step"
+msgstr "Igbese"
+
+#: TurtleArtActivity.py:879
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1356
+#: TurtleArt/talogo.py:432 TurtleArt/tawindow.py:1269
+msgid "Stop turtle"
+msgstr "Da adaba"
+
+#: TurtleArtActivity.py:882 TurtleArt/turtleblocks.py:517
+#: TurtleArt/util/helpbutton.py:44
+msgid "Help"
+msgstr "Egba Mi O"
+
+#: TurtleArtActivity.py:883 TurtleArt/turtleblocks.py:509
+msgid "Stop"
+msgstr "Duro"
+
+#: TurtleArtActivity.py:898 TurtleArt/tawindow.py:2048
+#: TurtleArt/tacollaboration.py:154
+msgid "Share selected blocks"
+msgstr "Share ti a ti yan ohun amorindun"
+
+#: TurtleArtActivity.py:900 TurtleArtActivity.py:1103
+msgid "Save as image"
+msgstr "Fi bi aworan"
+
+#: TurtleArtActivity.py:903 TurtleArtActivity.py:1106
+msgid "Save as icon"
+msgstr "Fi bi icon"
+
+#. TRANS: ODP is Open Office presentation
+#: TurtleArtActivity.py:908 TurtleArtActivity.py:1110
+msgid "Save as ODP"
+msgstr "Fi bi ODP"
+
+#: TurtleArtActivity.py:913 TurtleArtActivity.py:1121
+msgid "Save as Logo"
+msgstr "Fi bi Logo"
+
+#: TurtleArtActivity.py:914 TurtleArtActivity.py:1124
+msgid "Save as Python"
+msgstr "Fi bi Python"
+
+#: TurtleArtActivity.py:915 TurtleArtActivity.py:1128
+msgid "Save snapshot"
+msgstr "Fi foto"
+
+#: TurtleArtActivity.py:916 TurtleArtActivity.py:1155
+#: TurtleArt/turtleblocks.py:438
+msgid "Add project"
+msgstr "Fi ise agbese"
+
+#: TurtleArtActivity.py:919 TurtleArtActivity.py:1160
+#: TurtleArt/turtleblocks.py:439
+msgid "Load plugin"
+msgstr "Fifuye itanna"
+
+#: TurtleArtActivity.py:920 TurtleArtActivity.py:1163
+msgid "Load Python block"
+msgstr "Fifuye Python block"
+
+#: TurtleArtActivity.py:1075
+msgid "Palettes"
+msgstr "paleti"
+
+#: TurtleArtActivity.py:1093
+msgid "Sharing blocks disabled"
+msgstr "Pinpin awọn bulọọki alaabo"
+
+#: TurtleArtActivity.py:1098 TurtleArt/turtleblocks.py:441
+msgid "Save"
+msgstr "Fipamọ"
+
+#: TurtleArtActivity.py:1131
+msgid "Save blocks as image"
 msgstr ""
-"A Logo-atilẹyin adaba ti o fa lo ri awọn aworan pẹlu imolara-pọ visual "
-"siseto awọn bulọọki"
+
+#: TurtleArtActivity.py:1135
+msgid "Load"
+msgstr "Fifuye"
+
+#: TurtleArtActivity.py:1152 TurtleArt/turtleblocks.py:437
+msgid "Open"
+msgstr "Shì"
+
+#: TurtleArtActivity.py:1181
+msgid "<Ctrl>p"
+msgstr "<Ctrl>p"
+
+#: TurtleArtActivity.py:1186
+msgid "<Ctrl>e"
+msgstr "<Ctrl>e"
+
+#: TurtleArtActivity.py:1188
+msgid "<Ctrl>r"
+msgstr "<Ctrl>r"
+
+#: TurtleArtActivity.py:1190
+msgid "<Ctrl>w"
+msgstr "<Ctrl>w"
+
+#: TurtleArtActivity.py:1193
+msgid "<Ctrl>s"
+msgstr "<Ctrl>s"
+
+#: TurtleArtActivity.py:1379
+#, python-format
+msgid "Plugin %s already installed."
+msgstr "Itanna %s tẹlẹ sori ẹrọ."
+
+#: TurtleArtActivity.py:1380 TurtleArt/turtleblocks.py:591
+#, python-format
+msgid "Do you want to reinstall %s?"
+msgstr "Ṣe o fẹ lati tun %s?"
+
+#: gnome_plugins/collaboration_plugin.py:64
+msgid "My Turtle Art session"
+msgstr "Mi adaba Art igba"
+
+#: gnome_plugins/collaboration_plugin.py:111
+msgid "Enable collaboration"
+msgstr "jeki ifowosowopo"
+
+#: gnome_plugins/collaboration_plugin.py:116
+msgid "Activities"
+msgstr "akitiyan"
+
+#: gnome_plugins/collaboration_plugin.py:121
+msgid "Buddies"
+msgstr "ore"
+
+#: gnome_plugins/collaboration_plugin.py:124
+msgid "Share"
+msgstr "Ìpín"
+
+#: gnome_plugins/collaboration_plugin.py:125
+msgid "Configuration"
+msgstr "Iṣeto ni"
+
+#: gnome_plugins/collaboration_plugin.py:128
+msgid "Neighborhood"
+msgstr "Adugbo"
+
+#: gnome_plugins/collaboration_plugin.py:289
+msgid "Nickname"
+msgstr "Apeso"
+
+#: gnome_plugins/collaboration_plugin.py:291
+msgid "Account ID"
+msgstr "iroyin idanimọ"
+
+#: gnome_plugins/collaboration_plugin.py:293
+msgid "Server"
+msgstr "Sáfà"
+
+#: gnome_plugins/collaboration_plugin.py:295
+msgid "Port"
+msgstr "ebute"
+
+#: gnome_plugins/collaboration_plugin.py:297
+msgid "Password"
+msgstr "Ọrọigbaniwọle"
+
+#: gnome_plugins/collaboration_plugin.py:299
+msgid "Register"
+msgstr "Forukọsilẹ"
+
+#: gnome_plugins/collaboration_plugin.py:301
+msgid "Colors"
+msgstr "Àwọn Àwọ̀"
+
+#: gnome_plugins/fb_plugin.py:82 gnome_plugins/fb_plugin.py:83
+#: gnome_plugins/fb_plugin.py:91 gnome_plugins/uploader_plugin.py:63
+#: gnome_plugins/uploader_plugin.py:64 gnome_plugins/uploader_plugin.py:73
+msgid "Upload"
+msgstr "Po"
+
+#: gnome_plugins/fb_plugin.py:87
+msgid "Facebook wall post"
+msgstr "Facebook odi post"
+
+#: gnome_plugins/uploader_plugin.py:68
+msgid "Upload to Web"
+msgstr "Po si to Web"
+
+#: gnome_plugins/uploader_plugin.py:90
+msgid ""
+"You must have an account at http://turtleartsite.sugarlabs.org to upload "
+"your project."
+msgstr ""
+"O gbọdọ ni ohun iroyin ni http://turtleartsite.sugarlabs.org to po si rẹ ise "
+"agbese."
+
+#: gnome_plugins/uploader_plugin.py:99
+msgid "Username:"
+msgstr "olumulo:"
+
+#: gnome_plugins/uploader_plugin.py:109
+msgid "Password:"
+msgstr "ọrọigbaniwọle:"
+
+#: gnome_plugins/uploader_plugin.py:120
+msgid "Title:"
+msgstr "Àkọ́lé:"
+
+#: gnome_plugins/uploader_plugin.py:130
+msgid "Description:"
+msgstr "Apejuwe:"
+
+#: gnome_plugins/uploader_plugin.py:140
+msgid "Submit to Web"
+msgstr "Fi to Web"
+
+#: gnome_plugins/uploader_plugin.py:144 TurtleArt/tawindow.py:1518
+#: TurtleArt/tawindow.py:1557
+msgid "Cancel"
+msgstr "fagilee"
+
+#: gnome_plugins/uploader_plugin.py:172
+msgid "Login failed"
+msgstr "wiwọle kuna"
+
+#: gnome_plugins/uploader_plugin.py:209
+msgid "Failed to upload!"
+msgstr "Kuna lati po si!"
 
 #: pyexported/window_setup.py:39
 msgid ""
@@ -38,488 +400,8 @@ msgstr ""
 "Ni ona to awọn adabaArt fifi sori gbọdọ wa ni akojọ si ni awọn ayika ayípadà "
 "PYTHONPATH."
 
-#: TurtleArtActivity.py:134
-msgid "Please wait"
-msgstr "Jọwọ duro"
-
-#: TurtleArtActivity.py:135
-msgid "Starting connection..."
-msgstr "Ti o bere asopọ..."
-
-#: TurtleArtActivity.py:291
-msgid "Export as python"
-msgstr "Export bi Python"
-
-#: TurtleArtActivity.py:292
-msgid "Error: You must use a Start Block when exporting to Python."
-msgstr "Aṣiṣe: O gbọdọ lo a Bẹrẹ Block nigba ti tajasita to Python."
-
-#: TurtleArtActivity.py:409
-msgid "snapshot"
-msgstr "foto"
-
-#: TurtleArtActivity.py:465 TurtleArtActivity.py:845 TurtleArtActivity.py:1006
-msgid "Turn off hover help"
-msgstr "Pa rababa iranlọwọ"
-
-#: TurtleArtActivity.py:474 turtleblocks.py:478
-msgid "Turn on hover help"
-msgstr "Tan rababa iranlọwọ"
-
-#: TurtleArtActivity.py:484 turtleblocks.py:492
-msgid "Show palette"
-msgstr "fihan paleti"
-
-#: TurtleArtActivity.py:490 TurtleArtActivity.py:1255 turtleblocks.py:494
-msgid "Hide palette"
-msgstr "Ìbòmọlẹ paleti"
-
-#: TurtleArtActivity.py:532 TurtleArtActivity.py:920
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1347
-#: TurtleArt/talogo.py:442
-msgid "Show blocks"
-msgstr "fihan ohun amorindun"
-
-#: TurtleArtActivity.py:536 TurtleArtActivity.py:1267 TurtleArt/talogo.py:446
-msgid "Hide blocks"
-msgstr "Ìbòmọlẹ ohun amorindun"
-
-#: TurtleArtActivity.py:658
-msgid "Rescale coordinates down"
-msgstr "Rescale ipoidojuko si isalẹ"
-
-#: TurtleArtActivity.py:667 TurtleArtActivity.py:836 TurtleArtActivity.py:1002
-msgid "Rescale coordinates up"
-msgstr "Rescale ipoidojuko soke"
-
-#: TurtleArtActivity.py:768 TurtleArtActivity.py:803 TurtleArtActivity.py:913
-#: TurtleArtActivity.py:976 turtleblocks.py:489
-msgid "Edit"
-msgstr "Ṣatunkọ"
-
-#: TurtleArtActivity.py:773 TurtleArtActivity.py:801 TurtleArtActivity.py:914
-#: TurtleArtActivity.py:994 turtleblocks.py:480
-msgid "View"
-msgstr "Wo"
-
-#: TurtleArtActivity.py:799 TurtleArtActivity.py:915
-msgid "Project"
-msgstr "idawọle"
-
-#: TurtleArtActivity.py:805 TurtleArtActivity.py:912 TurtleArtActivity.py:939
-msgid "Save/Load"
-msgstr "Fi / Fifuye"
-
-#: TurtleArtActivity.py:813 TurtleArtActivity.py:977 turtleblocks.py:483
-msgid "Copy"
-msgstr "Ṣẹ̀dà"
-
-#: TurtleArtActivity.py:815 TurtleArtActivity.py:978 turtleblocks.py:484
-msgid "Paste"
-msgstr "Lẹ"
-
-#: TurtleArtActivity.py:817
-msgid "Restore blocks from trash"
-msgstr "Pada ohun amorindun lati idọti"
-
-#: TurtleArtActivity.py:820 TurtleArtActivity.py:979 turtleblocks.py:485
-#: TurtleArt/tawindow.py:1517
-msgid "Save stack"
-msgstr "Fi akopọ"
-
-#: TurtleArtActivity.py:822 turtleblocks.py:487 TurtleArt/tawindow.py:1556
-#: TurtleArt/tawindow.py:1564 TurtleArt/tawindow.py:1573
-msgid "Delete stack"
-msgstr "Pa akopọ"
-
-#: TurtleArtActivity.py:825 TurtleArtActivity.py:995
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:961
-msgid "Fullscreen"
-msgstr "Gbogbo sikirini"
-
-#: TurtleArtActivity.py:828 TurtleArtActivity.py:996 turtleblocks.py:464
-msgid "Cartesian coordinates"
-msgstr "Kartesi fun ipoidojuko"
-
-#: TurtleArtActivity.py:830 TurtleArtActivity.py:998 turtleblocks.py:466
-msgid "Polar coordinates"
-msgstr "Pola ipoidojuko"
-
-#: TurtleArtActivity.py:833 TurtleArtActivity.py:1000
-msgid "Metric coordinates"
-msgstr "Metric ipoidojuko"
-
-#: TurtleArtActivity.py:839 TurtleArtActivity.py:1004 turtleblocks.py:471
-msgid "Grow blocks"
-msgstr "Dagba ohun amorindun"
-
-#: TurtleArtActivity.py:842 TurtleArtActivity.py:1005 turtleblocks.py:473
-msgid "Shrink blocks"
-msgstr "Isunki ohun amorindun"
-
-#: TurtleArtActivity.py:870 TurtleArtActivity.py:883 TurtleArtActivity.py:921
-#: TurtleArtActivity.py:1183
-msgid "Load example"
-msgstr "Fifuye apẹẹrẹ"
-
-#: TurtleArtActivity.py:916 TurtleArtActivity.py:1261 turtleblocks.py:501
-msgid "Clean"
-msgstr "Mọ"
-
-#: TurtleArtActivity.py:917 TurtleArtActivity.py:1263 turtleblocks.py:502
-msgid "Run"
-msgstr "Rọ́ọ̀nù"
-
-#: TurtleArtActivity.py:918 TurtleArtActivity.py:1265 turtleblocks.py:503
-msgid "Step"
-msgstr "Igbese"
-
-#: TurtleArtActivity.py:919
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1356
-#: TurtleArt/tawindow.py:1273 TurtleArt/talogo.py:432
-msgid "Stop turtle"
-msgstr "Da adaba"
-
-#: TurtleArtActivity.py:922 util/helpbutton.py:44 turtleblocks.py:513
-msgid "Help"
-msgstr "Egba Mi O"
-
-#: TurtleArtActivity.py:923 turtleblocks.py:505
-msgid "Stop"
-msgstr "Duro"
-
-#: TurtleArtActivity.py:938 TurtleArt/tawindow.py:2063
-#: TurtleArt/tacollaboration.py:153
-msgid "Share selected blocks"
-msgstr "Share ti a ti yan ohun amorindun"
-
-#: TurtleArtActivity.py:940 TurtleArtActivity.py:1143
-#: TurtleArtActivity.py:1206
-msgid "Save as image"
-msgstr "Fi bi aworan"
-
-#: TurtleArtActivity.py:943 TurtleArtActivity.py:1146
-#: TurtleArtActivity.py:1209
-msgid "Save as icon"
-msgstr "Fi bi icon"
-
-#. TRANS: ODP is Open Office presentation
-#: TurtleArtActivity.py:948 TurtleArtActivity.py:1150
-#: TurtleArtActivity.py:1213
-msgid "Save as ODP"
-msgstr "Fi bi ODP"
-
-#: TurtleArtActivity.py:953 TurtleArtActivity.py:1161
-#: TurtleArtActivity.py:1222
-msgid "Save as Logo"
-msgstr "Fi bi Logo"
-
-#: TurtleArtActivity.py:954 TurtleArtActivity.py:1164
-#: TurtleArtActivity.py:1225
-msgid "Save as Python"
-msgstr "Fi bi Python"
-
-#: TurtleArtActivity.py:955 TurtleArtActivity.py:1168
-#: TurtleArtActivity.py:1229
-msgid "Save snapshot"
-msgstr "Fi foto"
-
-#: TurtleArtActivity.py:956 TurtleArtActivity.py:1192
-#: TurtleArtActivity.py:1231 turtleblocks.py:436
-msgid "Add project"
-msgstr "Fi ise agbese"
-
-#: TurtleArtActivity.py:959 TurtleArtActivity.py:1197
-#: TurtleArtActivity.py:1237 turtleblocks.py:437
-msgid "Load plugin"
-msgstr "Fifuye itanna"
-
-#: TurtleArtActivity.py:960 TurtleArtActivity.py:1200
-#: TurtleArtActivity.py:1240
-msgid "Load Python block"
-msgstr "Fifuye Python block"
-
-#: TurtleArtActivity.py:1115
-msgid "Palettes"
-msgstr "paleti"
-
-#: TurtleArtActivity.py:1133
-msgid "Sharing blocks disabled"
-msgstr "Pinpin awọn bulọọki alaabo"
-
-#: TurtleArtActivity.py:1138 turtleblocks.py:439
-msgid "Save"
-msgstr "Fipamọ"
-
-#: TurtleArtActivity.py:1172
-msgid "Load"
-msgstr "Fifuye"
-
-#: TurtleArtActivity.py:1189 turtleblocks.py:435
-msgid "Open"
-msgstr "Shì"
-
-#: TurtleArtActivity.py:1256
-msgid "<Ctrl>p"
-msgstr "<Ctrl>p"
-
-#: TurtleArtActivity.py:1261
-msgid "<Ctrl>e"
-msgstr "<Ctrl>e"
-
-#: TurtleArtActivity.py:1263
-msgid "<Ctrl>r"
-msgstr "<Ctrl>r"
-
-#: TurtleArtActivity.py:1265
-msgid "<Ctrl>w"
-msgstr "<Ctrl>w"
-
-#: TurtleArtActivity.py:1268
-msgid "<Ctrl>s"
-msgstr "<Ctrl>s"
-
-#: TurtleArtActivity.py:1452
-#, python-format
-msgid "Plugin %s already installed."
-msgstr "Itanna %s tẹlẹ sori ẹrọ."
-
-#: TurtleArtActivity.py:1453 turtleblocks.py:583
-#, python-format
-msgid "Do you want to reinstall %s?"
-msgstr "Ṣe o fẹ lati tun %s?"
-
-#: turtleblocks.py:106
-msgid "usage is"
-msgstr "lilo ni"
-
-#: turtleblocks.py:305
-msgid "No option action:"
-msgstr "Ko si aṣayan igbese:"
-
-#: turtleblocks.py:320
-msgid "File not found"
-msgstr "A ko ri faili"
-
-#: turtleblocks.py:344
-#, python-format
-msgid "Configuration directory not writable: %s"
-msgstr "Iṣeto ni liana ko kọ: %s"
-
-#: turtleblocks.py:432
-msgid "New"
-msgstr "Tuntun"
-
-#: turtleblocks.py:433
-msgid "Show sample projects"
-msgstr "Fi ayẹwo ise agbese"
-
-#: turtleblocks.py:440
-msgid "Save as"
-msgstr "Fi bi"
-
-#: turtleblocks.py:444
-msgid "Export as"
-msgstr "Export bi"
-
-#: turtleblocks.py:447 TurtleArt/tawindow.py:4765
-msgid "image"
-msgstr "Àwòrán"
-
-#: turtleblocks.py:449
-msgid "SVG"
-msgstr "SVG"
-
-#: turtleblocks.py:451 TurtleArt/tawindow.py:4656
-msgid "icon"
-msgstr "áíkànnù"
-
-#. TRANS: ODP is Open Office presentation
-#: turtleblocks.py:454
-msgid "ODP"
-msgstr "ODP"
-
-#: turtleblocks.py:456
-msgid "Logo"
-msgstr "aami"
-
-#: turtleblocks.py:458
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:654
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:669
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:685
-msgid "Python"
-msgstr "a ga-ipele gbogbo-idi kọmputa siseto ede"
-
-#: turtleblocks.py:460
-msgid "Quit"
-msgstr "olodun-"
-
-#: turtleblocks.py:461
-msgid "File"
-msgstr "faili"
-
-#: turtleblocks.py:469
-msgid "Rescale coordinates"
-msgstr "Rescale ipoidojuko"
-
-#: turtleblocks.py:475
-msgid "Reset block size"
-msgstr "Tun block iwọn"
-
-#: turtleblocks.py:496
-msgid "Show/hide blocks"
-msgstr "Fihan / tọju awọn bulọọki"
-
-#: turtleblocks.py:498
-msgid "Tools"
-msgstr "irinṣẹ"
-
-#: turtleblocks.py:504
-msgid "Debug"
-msgstr "yokokoro"
-
-#: turtleblocks.py:506
-msgid "Turtle"
-msgstr "adaba"
-
-#: turtleblocks.py:509
-msgid "Plugins"
-msgstr "afikun"
-
-#: turtleblocks.py:512
-msgid "About..."
-msgstr "Nipa..."
-
-#: turtleblocks.py:567
-msgid "You have unsaved work. Would you like to save before quitting?"
-msgstr "O ni aláìní iṣẹ. Ṣe o fẹ lati fi ṣaaju ki o to quitting?"
-
-#: turtleblocks.py:572
-msgid "Save project?"
-msgstr "Fi ise agbese?"
-
-#: turtleblocks.py:582
-#, python-format
-msgid "Plugin %s already installed"
-msgstr "Itanna %s tẹlẹ sori ẹrọ"
-
-#: turtleblocks.py:726
-msgid "myproject"
-msgstr "myproject"
-
-#: turtleblocks.py:805 TurtleArt/taplugin.py:90
-#, python-format
-msgid "Please restart %s in order to use the plugin."
-msgstr "Jọwọ tun %s ni ibere lati lo awọn ohun itanna."
-
-#: turtleblocks.py:810
-#, python-format
-msgid "Please restart %s in order to unload the plugin."
-msgstr "Jọwọ tun %s ni ibere lati unload awọn ohun itanna."
-
-#: plugins/camera_sensor/camera_sensor.py:67
-#: plugins/light_sensor/light_sensor.py:52
-#: plugins/accelerometer/accelerometer.py:50 plugins/rfid/rfid.py:87
-#: plugins/audio_sensors/audio_sensors.py:84
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:339
-msgid "Palette of sensor blocks"
-msgstr "Paleti ti sensọ awọn bulọọki"
-
-#: plugins/camera_sensor/camera_sensor.py:71
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:133
-msgid "Palette of media objects"
-msgstr "Paleti ti media ohun"
-
-#: plugins/camera_sensor/camera_sensor.py:90
-#: plugins/camera_sensor/camera_sensor.py:122
-#: plugins/light_sensor/light_sensor.py:58
-#: plugins/light_sensor/light_sensor.py:66
-msgid "brightness"
-msgstr "imọlẹ"
-
-#: plugins/camera_sensor/camera_sensor.py:92
-msgid "light level detected by camera"
-msgstr "ina ipele ri nipa kamẹra"
-
-#: plugins/camera_sensor/camera_sensor.py:107
-#: plugins/camera_sensor/camera_sensor.py:115
-msgid "camera output"
-msgstr "kamẹra wu"
-
-#: plugins/camera_sensor/camera_sensor.py:124
-msgid "Average RGB color from camera is pushed to the stack"
-msgstr "Išẹ RGB awọ lati kamẹra ti wa ni ti si awọn akopọ"
-
-#: plugins/light_sensor/light_sensor.py:61
-#: plugins/light_sensor/light_sensor.py:69
-msgid "light level detected by light sensor"
-msgstr "ina ipele ri nipa ina"
-
-#: plugins/accelerometer/accelerometer.py:56
-#: plugins/accelerometer/accelerometer.py:63
-msgid "acceleration"
-msgstr "isare"
-
-#: plugins/accelerometer/accelerometer.py:58
-#: plugins/accelerometer/accelerometer.py:65
-msgid "push acceleration in x, y, z to heap"
-msgstr "Titari isare ni x, y, z to kó"
-
-#: plugins/rfid/rfid.py:93 plugins/rfid/rfid.py:101
-msgid "RFID"
-msgstr "RFID"
-
-#: plugins/rfid/rfid.py:94 plugins/rfid/rfid.py:102
-msgid "read value from RFID device"
-msgstr "ka iye lati RFID ẹrọ"
-
-#: plugins/audio_sensors/audio_sensors.py:93 pysamples/grecord.py:207
-msgid "sound"
-msgstr "dun"
-
-#: plugins/audio_sensors/audio_sensors.py:94
-msgid "raw microphone input signal"
-msgstr "aise gbohungbohun input ifihan agbara"
-
-#: plugins/audio_sensors/audio_sensors.py:100
-msgid "loudness"
-msgstr "ipariwo"
-
-#: plugins/audio_sensors/audio_sensors.py:101
-msgid "microphone input volume"
-msgstr "gbohungbohun input iwọn didun"
-
-#: plugins/audio_sensors/audio_sensors.py:126
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:323
-msgid "pitch"
-msgstr "ipolowo"
-
-#: plugins/audio_sensors/audio_sensors.py:127
-msgid "microphone input pitch"
-msgstr "gbohungbohun input ipolowo"
-
-#: plugins/audio_sensors/audio_sensors.py:160
-#: plugins/audio_sensors/audio_sensors.py:178
-msgid "resistance"
-msgstr "atako"
-
-#: plugins/audio_sensors/audio_sensors.py:161
-#: plugins/audio_sensors/audio_sensors.py:179
-msgid "microphone input resistance"
-msgstr "gbohungbohun input resistance"
-
-#: plugins/audio_sensors/audio_sensors.py:166
-#: plugins/audio_sensors/audio_sensors.py:184
-msgid "voltage"
-msgstr "foliteji"
-
-#: plugins/audio_sensors/audio_sensors.py:167
-#: plugins/audio_sensors/audio_sensors.py:185
-msgid "microphone input voltage"
-msgstr "gbohungbohun input foliteji"
-
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:72
-#: TurtleArt/tabasics.py:913
+#: TurtleArt/tabasics.py:926
 msgid "Palette of flow operators"
 msgstr "Paleti ti sisan awọn oniṣẹ"
 
@@ -550,6 +432,11 @@ msgstr "oke"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:123
 msgid "top of a collapsible stack"
 msgstr "oke kan ti a ti collapsible akopọ"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:133
+#: plugins/camera_sensor/camera_sensor.py:71
+msgid "Palette of media objects"
+msgstr "Paleti ti media ohun"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:135
 msgid "media"
@@ -593,7 +480,7 @@ msgstr "Sugar Journal apejuwe oko"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:198
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:213
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:921
-#: TurtleArt/taconstants.py:451
+#: TurtleArt/taconstants.py:452
 msgid "text"
 msgstr "ọrọ"
 
@@ -708,6 +595,11 @@ msgstr "soro ọrọ"
 msgid "sinewave"
 msgstr "sinewave"
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:323
+#: plugins/audio_sensors/audio_sensors.py:126
+msgid "pitch"
+msgstr "ipolowo"
+
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:324
 msgid "amplitude"
 msgstr "titobi"
@@ -719,6 +611,14 @@ msgstr "iye"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:327
 msgid "plays a sinewave at frequency, amplitude, and duration (in seconds)"
 msgstr "yoo kan sinewave ni igbohunsafẹfẹ, titobi, ati iye (ni aaya)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:339
+#: plugins/camera_sensor/camera_sensor.py:67 plugins/rfid/rfid.py:87
+#: plugins/accelerometer/accelerometer.py:50
+#: plugins/light_sensor/light_sensor.py:52
+#: plugins/audio_sensors/audio_sensors.py:84
+msgid "Palette of sensor blocks"
+msgstr "Paleti ti sensọ awọn bulọọki"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:341
 msgid "sensor"
@@ -904,6 +804,13 @@ msgstr "pola"
 msgid "displays polar coordinates"
 msgstr "han pola ipoidojuko"
 
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:654
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:669
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:685
+#: TurtleArt/turtleblocks.py:462
+msgid "Python"
+msgstr "a ga-ipele gbogbo-idi kọmputa siseto ede"
+
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:658
 msgid ""
 "a programmable block: used to add advanced single-variable math equations, e."
@@ -969,7 +876,7 @@ msgstr "fi kan aṣa 'ikarahun' lori awọn adaba"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:793
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:862
-#: TurtleArt/tabasics.py:160
+#: TurtleArt/tabasics.py:159
 msgid "turtle"
 msgstr "adaba"
 
@@ -1010,7 +917,7 @@ msgid "Returns heading of turtle"
 msgstr "Padà nlọ ti adaba"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:852
-#: TurtleArt/tautils.py:621
+#: TurtleArt/tautils.py:638
 msgid "click to open"
 msgstr "tẹ lati ṣii"
 
@@ -1034,7 +941,7 @@ msgstr "fifuye"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:873
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:886
-#: TurtleArt/tabasics.py:164
+#: TurtleArt/tabasics.py:163
 msgid "forward"
 msgstr "siwaju"
 
@@ -1063,7 +970,7 @@ msgid "string"
 msgstr "okun"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:919
-#: TurtleArt/tabasics.py:1042 pysamples/grecord.py:212
+#: pysamples/grecord.py:212 TurtleArt/tabasics.py:1055
 msgid "start"
 msgstr "ibere"
 
@@ -1129,7 +1036,7 @@ msgid "presentation template: select two Journal objects"
 msgstr "igbejade awoṣe: yan meji Journal ohun"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1027
-#: TurtleArt/tabasics.py:211 TurtleArt/taconstants.py:148
+#: TurtleArt/taconstants.py:149 TurtleArt/tabasics.py:210
 msgid "left"
 msgstr "osi"
 
@@ -1154,7 +1061,7 @@ msgid "the canvas width"
 msgstr "kanfasi iwọn"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1060
-#: TurtleArt/tabasics.py:225 TurtleArt/taconstants.py:150
+#: TurtleArt/taconstants.py:151 TurtleArt/tabasics.py:224
 msgid "right"
 msgstr "ọtun"
 
@@ -1206,926 +1113,88 @@ msgstr "Paleti ti olumulo-telẹ awọn oniṣẹ"
 msgid "my blocks"
 msgstr "mi amorindun"
 
-#: gnome_plugins/uploader_plugin.py:63 gnome_plugins/uploader_plugin.py:64
-#: gnome_plugins/uploader_plugin.py:73 gnome_plugins/fb_plugin.py:82
-#: gnome_plugins/fb_plugin.py:83 gnome_plugins/fb_plugin.py:92
-msgid "Upload"
-msgstr "Po"
-
-#: gnome_plugins/uploader_plugin.py:68
-msgid "Upload to Web"
-msgstr "Po si to Web"
-
-#: gnome_plugins/uploader_plugin.py:90
-msgid ""
-"You must have an account at http://turtleartsite.sugarlabs.org to upload "
-"your project."
-msgstr ""
-"O gbọdọ ni ohun iroyin ni http://turtleartsite.sugarlabs.org to po si rẹ ise "
-"agbese."
-
-#: gnome_plugins/uploader_plugin.py:99
-msgid "Username:"
-msgstr "olumulo:"
-
-#: gnome_plugins/uploader_plugin.py:109
-msgid "Password:"
-msgstr "ọrọigbaniwọle:"
-
-#: gnome_plugins/uploader_plugin.py:120
-msgid "Title:"
-msgstr "Àkọ́lé:"
-
-#: gnome_plugins/uploader_plugin.py:130
-msgid "Description:"
-msgstr "Apejuwe:"
-
-#: gnome_plugins/uploader_plugin.py:140
-msgid "Submit to Web"
-msgstr "Fi to Web"
-
-#: gnome_plugins/uploader_plugin.py:144 TurtleArt/tawindow.py:1521
-#: TurtleArt/tawindow.py:1560
-msgid "Cancel"
-msgstr "fagilee"
-
-#: gnome_plugins/uploader_plugin.py:172
-msgid "Login failed"
-msgstr "wiwọle kuna"
-
-#: gnome_plugins/uploader_plugin.py:209
-msgid "Failed to upload!"
-msgstr "Kuna lati po si!"
-
-#: gnome_plugins/collaboration_plugin.py:64
-msgid "My Turtle Art session"
-msgstr "Mi adaba Art igba"
-
-#: gnome_plugins/collaboration_plugin.py:111
-msgid "Enable collaboration"
-msgstr "jeki ifowosowopo"
-
-#: gnome_plugins/collaboration_plugin.py:116
-msgid "Activities"
-msgstr "akitiyan"
-
-#: gnome_plugins/collaboration_plugin.py:121
-msgid "Buddies"
-msgstr "ore"
-
-#: gnome_plugins/collaboration_plugin.py:124
-msgid "Share"
-msgstr "Ìpín"
-
-#: gnome_plugins/collaboration_plugin.py:125
-msgid "Configuration"
-msgstr "Iṣeto ni"
-
-#: gnome_plugins/collaboration_plugin.py:128
-msgid "Neighborhood"
-msgstr "Adugbo"
-
-#: gnome_plugins/collaboration_plugin.py:289
-msgid "Nickname"
-msgstr "Apeso"
-
-#: gnome_plugins/collaboration_plugin.py:291
-msgid "Account ID"
-msgstr "iroyin idanimọ"
-
-#: gnome_plugins/collaboration_plugin.py:293
-msgid "Server"
-msgstr "Sáfà"
-
-#: gnome_plugins/collaboration_plugin.py:295
-msgid "Port"
-msgstr "ebute"
-
-#: gnome_plugins/collaboration_plugin.py:297
-msgid "Password"
-msgstr "Ọrọigbaniwọle"
-
-#: gnome_plugins/collaboration_plugin.py:299
-msgid "Register"
-msgstr "Forukọsilẹ"
-
-#: gnome_plugins/collaboration_plugin.py:301
-msgid "Colors"
-msgstr "Àwọn Àwọ̀"
-
-#: gnome_plugins/fb_plugin.py:87
-msgid "Facebook wall post"
-msgstr "Facebook odi post"
-
-#: TurtleArt/tapalette.py:103
-msgid "displays next palette"
-msgstr "han tókàn paleti"
-
-#: TurtleArt/tapalette.py:104
-msgid "changes the orientation of the palette of blocks"
-msgstr "ayipada ni Iṣalaye ti awọn paleti ti ohun amorindun"
-
-#: TurtleArt/tapalette.py:144 TurtleArt/tapalette.py:145
-#: TurtleArt/tabasics.py:1249 TurtleArt/tabasics.py:1250
-msgid "trash"
-msgstr "idọti"
-
-#: TurtleArt/tawindow.py:1147 TurtleArt/tawindow.py:1148
-msgid "orientation"
-msgstr "iṣalaye"
-
-#: TurtleArt/tawindow.py:1162 TurtleArt/tawindow.py:1629
-msgid "next"
-msgstr "Itele"
-
-#: TurtleArt/tawindow.py:1201 TurtleArt/tawindow.py:1650
-msgid "shift"
-msgstr "naficula"
-
-#: TurtleArt/tawindow.py:1277
-msgid "Please hit the Stop Button before making changes to your program"
-msgstr "Jọwọ lu awọn Duro Button ṣaaju ṣiṣe awọn ayipada si eto rẹ"
-
-#: TurtleArt/tawindow.py:1320 TurtleArt/tawindow.py:1433
-#: TurtleArt/tawindow.py:1446 TurtleArt/tawindow.py:2093
-#: TurtleArt/tawindow.py:4911 TurtleArt/tabasics.py:1057
-#: TurtleArt/tabasics.py:1060 TurtleArt/tabasics.py:1073
-#: TurtleArt/tabasics.py:1077 TurtleArt/tabasics.py:1223
-#: TurtleArt/tabasics.py:1227
-msgid "action"
-msgstr "igbese"
-
-#: TurtleArt/tawindow.py:1326 TurtleArt/tawindow.py:1472
-#: TurtleArt/tawindow.py:2099 TurtleArt/tawindow.py:4938
-#: TurtleArt/tawindow.py:4965 TurtleArt/tabasics.py:1145
-#: TurtleArt/tabasics.py:1160
-msgid "my box"
-msgstr "mi apoti"
-
-#: TurtleArt/tawindow.py:1341
-msgid "Select blocks to share"
-msgstr "Yan awọn bulọọki lati pin"
-
-#: TurtleArt/tawindow.py:1518 TurtleArt/tawindow.py:1532
-msgid "Really overwrite stack?"
-msgstr "Really ìkọlélórí akopọ?"
-
-#: TurtleArt/tawindow.py:1525 TurtleArt/tawindow.py:1535
-msgid "Overwrite stack"
-msgstr "ìkọlélórí akopọ"
-
-#: TurtleArt/tawindow.py:1557 TurtleArt/tawindow.py:1570
-msgid "Really delete stack?"
-msgstr "Really pa akopọ?"
-
-#: TurtleArt/tawindow.py:1962 TurtleArt/tabasics.py:1254
-msgid "empty trash"
-msgstr "sofo idọti"
-
-#: TurtleArt/tawindow.py:1963
-msgid "Do you really want to empty the trash?"
-msgstr "Ṣe o gan fẹ lati ofo awọn idọti?"
-
-#: TurtleArt/tawindow.py:4300 TurtleArt/tawindow.py:4321
-#, python-format
-msgid "Cannot write data to %s."
-msgstr "Ko le kọ data to %s."
-
-#: TurtleArt/tawindow.py:4301
-msgid "Please choose a different save directory."
-msgstr "Jọwọ yan kan ti o yatọ fifipamọ liana."
-
-#: TurtleArt/tawindow.py:4322
-msgid "Please choose a different file name."
-msgstr "Jọwọ yan kan ti o yatọ faili orukọ."
-
-#: TurtleArt/tawindow.py:4430 TurtleArt/tabasics.py:285
-msgid "xcor"
-msgstr "xcor"
-
-#: TurtleArt/tawindow.py:4431 TurtleArt/tabasics.py:300
-msgid "ycor"
-msgstr "ycor"
-
-#: TurtleArt/tawindow.py:4431 TurtleArt/tabasics.py:315
-msgid "heading"
-msgstr "nlọ"
-
-#: TurtleArt/tawindow.py:4457 TurtleArt/tawindow.py:4462
-#: TurtleArt/tabasics.py:360 TurtleArt/tabasics.py:374
-#: TurtleArt/tabasics.py:448
-msgid "shade"
-msgstr "iboji"
-
-#: TurtleArt/tawindow.py:4458 TurtleArt/tawindow.py:4463
-#: TurtleArt/tabasics.py:374 TurtleArt/tabasics.py:462
-msgid "gray"
-msgstr "grẹy"
-
-#: TurtleArt/tawindow.py:4461 TurtleArt/tabasics.py:360
-#: TurtleArt/tabasics.py:373 TurtleArt/tabasics.py:436
-msgid "color"
-msgstr "awọ"
-
-#: TurtleArt/tawindow.py:4531
-msgid "True"
-msgstr "Otitọ"
-
-#: TurtleArt/tawindow.py:4531
-msgid "False"
-msgstr "Eke"
-
-#: TurtleArt/tawindow.py:4924 TurtleArt/tabasics.py:1078
-msgid "invokes named action stack"
-msgstr "invokes ti a npè ni igbese akopọ"
-
-#: TurtleArt/tawindow.py:4951 TurtleArt/tabasics.py:1163
-msgid "named variable (numeric value)"
-msgstr "ti a npè ni ayípadà (nomba iye)"
-
-#: TurtleArt/tawindow.py:4973 TurtleArt/tabasics.py:1141
-msgid "store in"
-msgstr "fipamọ ni"
-
-#: TurtleArt/tawindow.py:4973 TurtleArt/tabasics.py:1141
-msgid "value"
-msgstr "iye"
-
-#: TurtleArt/tawindow.py:4978 TurtleArt/tabasics.py:1146
-msgid "stores numeric value in named variable"
-msgstr "tọjú nomba iye ni ti a npè ni ayípadà"
-
-#: TurtleArt/talogo.py:604
-msgid "did not output to"
-msgstr "kò wu to"
-
-#: TurtleArt/talogo.py:645 TurtleArt/talogo.py:1059
-msgid "doesn't like"
-msgstr "ko ni fẹ"
-
-#: TurtleArt/talogo.py:646 TurtleArt/talogo.py:1060
-msgid "as input"
-msgstr "bi input"
-
-#: TurtleArt/talogo.py:709
-msgid "I don't know how to"
-msgstr "Emi ko mo bi lati"
-
-#: TurtleArt/tabasics.py:159
-msgid "Palette of turtle commands"
-msgstr "Paleti ti adaba ofin"
-
-#: TurtleArt/tabasics.py:168
-msgid "moves turtle forward"
-msgstr "e adaba siwaju"
-
-#: TurtleArt/tabasics.py:177
-msgid "back"
-msgstr "pada"
-
-#: TurtleArt/tabasics.py:181
-msgid "moves turtle backward"
-msgstr "e adaba sẹhin"
-
-#: TurtleArt/tabasics.py:190
-msgid "clean"
-msgstr "mọ"
-
-#: TurtleArt/tabasics.py:193
-msgid "clears the screen and reset the turtle"
-msgstr "clears iboju ki o si tun adaba"
-
-#: TurtleArt/tabasics.py:215
-msgid "turns turtle counterclockwise (angle in degrees)"
-msgstr "wa ni adaba counterclockwise (igun ni iwọn)"
-
-#: TurtleArt/tabasics.py:229
-msgid "turns turtle clockwise (angle in degrees)"
-msgstr "wa ni adaba clockwise (igun ni iwọn)"
-
-#: TurtleArt/tabasics.py:239
-msgid "arc"
-msgstr "aaki"
-
-#: TurtleArt/tabasics.py:239
-msgid "angle"
-msgstr "igun"
-
-#: TurtleArt/tabasics.py:239
-msgid "radius"
-msgstr "rediosi"
-
-#: TurtleArt/tabasics.py:243
-msgid "moves turtle along an arc"
-msgstr "rare adaba pẹlú ohun aaki"
-
-#: TurtleArt/tabasics.py:255 TurtleArt/tabasics.py:334
-msgid "set xy"
-msgstr "ṣeto xy"
-
-#: TurtleArt/tabasics.py:255 TurtleArt/tabasics.py:334
-msgid "x"
-msgstr "x"
-
-#: TurtleArt/tabasics.py:255 TurtleArt/tabasics.py:334
-msgid "y"
-msgstr "y"
-
-#: TurtleArt/tabasics.py:259 TurtleArt/tabasics.py:338
-msgid ""
-"moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
-msgstr "e adaba lati ipo xcor, ycor; (0, 0) ni ni aarin ti iboju."
-
-#
-#: TurtleArt/tabasics.py:270
-msgid "set heading"
-msgstr "seth"
-
-#: TurtleArt/tabasics.py:274
-msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
-msgstr "kn awọn akori ti awọn adaba (0 wa ni si ọna oke ti awọn iboju.)"
-
-#: TurtleArt/tabasics.py:286
-msgid ""
-"holds current x-coordinate value of the turtle (can be used in place of a "
-"number block)"
-msgstr ""
-"Oun ni isiyi x-ipoidojuko iye ti awọn adaba (le ṣee lo ni ibi ti a nọmba "
-"block)"
-
-#: TurtleArt/tabasics.py:301
-msgid ""
-"holds current y-coordinate value of the turtle (can be used in place of a "
-"number block)"
-msgstr ""
-"Oun ni isiyi y-ipoidojuko iye ti awọn adaba (le ṣee lo ni ibi ti a nọmba "
-"block)"
-
-#: TurtleArt/tabasics.py:316
-msgid ""
-"holds current heading value of the turtle (can be used in place of a number "
-"block)"
-msgstr ""
-"Oun ni isiyi akori iye ti awọn adaba (le ṣee lo ni ibi ti a nọmba block)"
-
-#: TurtleArt/tabasics.py:354
-msgid "Palette of pen commands"
-msgstr "Paleti ti pen ofin"
-
-#: TurtleArt/tabasics.py:355
-msgid "pen"
-msgstr "pen"
-
-#: TurtleArt/tabasics.py:360 TurtleArt/tabasics.py:373
-msgid "fill screen"
-msgstr "fọwọsi iboju"
-
-#: TurtleArt/tabasics.py:364 TurtleArt/tabasics.py:378
-msgid "fills the background with (color, shade)"
-msgstr "kún lẹhin pẹlu (awọ, iboji)"
-
-#: TurtleArt/tabasics.py:391
-msgid "set color"
-msgstr "ṣeto awọ"
-
-#: TurtleArt/tabasics.py:395
-msgid "sets color of the line drawn by the turtle"
-msgstr "kn awọ ti ila kale nipa awọn adaba"
-
-#: TurtleArt/tabasics.py:407
-msgid "set shade"
-msgstr "ṣeto iboji"
-
-#: TurtleArt/tabasics.py:411
-msgid "sets shade of the line drawn by the turtle"
-msgstr "kn iboji ti ila kale nipa awọn adaba"
-
-#: TurtleArt/tabasics.py:422
-msgid "set gray"
-msgstr "ṣeto grẹy"
-
-#: TurtleArt/tabasics.py:425
-msgid "sets gray level of the line drawn by the turtle"
-msgstr "kn grẹy ipele ti ila kale nipa awọn adaba"
-
-#: TurtleArt/tabasics.py:437
-msgid "holds current pen color (can be used in place of a number block)"
-msgstr "Oun ni isiyi pen awọ (le ṣee lo ni ibi ti a nọmba block)"
-
-#: TurtleArt/tabasics.py:449
-msgid "holds current pen shade"
-msgstr "Oun ni isiyi pen iboji"
-
-#: TurtleArt/tabasics.py:463
-msgid "holds current gray level (can be used in place of a number block)"
-msgstr "Oun ni isiyi grẹy ipele (le ṣee lo ni ibi ti a nọmba block)"
-
-#: TurtleArt/tabasics.py:473
-msgid "pen up"
-msgstr "pen soke"
-
-#: TurtleArt/tabasics.py:476
-msgid "Turtle will not draw when moved."
-msgstr "Adaba yoo ko fa nigba ti gbe."
-
-#: TurtleArt/tabasics.py:483
-msgid "pen down"
-msgstr "pen si isalẹ"
-
-#: TurtleArt/tabasics.py:486
-msgid "Turtle will draw when moved."
-msgstr "Adaba yoo fa nigba ti gbe."
-
-#: TurtleArt/tabasics.py:493
-msgid "pen down?"
-msgstr "pen si isalẹ?"
-
-#: TurtleArt/tabasics.py:495
-msgid "returns True if pen is down"
-msgstr "pada Otitọ ti o ba ti pen ni isalẹ"
-
-#: TurtleArt/tabasics.py:502
-msgid "set pen size"
-msgstr "ṣeto pen iwọn"
-
-#: TurtleArt/tabasics.py:506
-msgid "sets size of the line drawn by the turtle"
-msgstr "kn iwọn ti awọn ila kale nipa awọn adaba"
-
-#: TurtleArt/tabasics.py:519
-msgid "start fill"
-msgstr "bẹrẹ yó"
-
-#: TurtleArt/tabasics.py:521
-msgid "starts filled polygon (used with end fill block)"
-msgstr "bẹrẹ kún polygon (lo pẹlu opin yó block)"
-
-#: TurtleArt/tabasics.py:527
-msgid "end fill"
-msgstr "opin yó"
-
-#: TurtleArt/tabasics.py:529
-msgid "completes filled polygon (used with start fill block)"
-msgstr "pari kún polygon (lo pẹlu ibere yó block)"
-
-#: TurtleArt/tabasics.py:535
-msgid "pen size"
-msgstr "pen iwọn"
-
-#: TurtleArt/tabasics.py:536
-msgid "holds current pen size (can be used in place of a number block)"
-msgstr "oun ni isiyi pen iwọn (le ṣee lo ni ibi ti a nọmba block)"
-
-#: TurtleArt/tabasics.py:552
-msgid "Palette of pen colors"
-msgstr "Paleti ti pen awọn awọ"
-
-#: TurtleArt/tabasics.py:553
-msgid "colors"
-msgstr "awọn awọ"
-
-#: TurtleArt/tabasics.py:558
-msgid "red"
-msgstr "pupa"
-
-#: TurtleArt/tabasics.py:558
-msgid "orange"
-msgstr "ọsan"
-
-#: TurtleArt/tabasics.py:558
-msgid "yellow"
-msgstr "ofeefee"
-
-#: TurtleArt/tabasics.py:558
-msgid "green"
-msgstr "alawọ ewe"
-
-#: TurtleArt/tabasics.py:559
-msgid "cyan"
-msgstr "cyan"
-
-#: TurtleArt/tabasics.py:559
-msgid "blue"
-msgstr "àwö sánmà"
-
-#: TurtleArt/tabasics.py:559
-msgid "purple"
-msgstr "eleyi ti"
-
-#: TurtleArt/tabasics.py:559
-msgid "white"
-msgstr "funfun"
-
-#: TurtleArt/tabasics.py:560
-msgid "black"
-msgstr "dudu"
-
-#: TurtleArt/tabasics.py:642
-msgid "Palette of numeric operators"
-msgstr "Paleti ti nomba awọn oniṣẹ"
-
-#: TurtleArt/tabasics.py:643
-msgid "numbers"
-msgstr "awọn nọmba"
-
-#: TurtleArt/tabasics.py:648
-msgid "plus"
-msgstr "pẹlu"
-
-#: TurtleArt/tabasics.py:652
-msgid "adds two alphanumeric inputs"
-msgstr "afikun meji alphanumeric igbewọle"
-
-#: TurtleArt/tabasics.py:671
-msgid "minus"
-msgstr "iyokuro"
-
-#: TurtleArt/tabasics.py:674
-msgid "subtracts bottom numeric input from top numeric input"
-msgstr "subtracts isalẹ nomba input lati oke nomba input"
-
-#: TurtleArt/tabasics.py:692
-msgid "multiply"
-msgstr "isodipupo"
-
-#: TurtleArt/tabasics.py:695
-msgid "multiplies two numeric inputs"
-msgstr "pupọ meji nomba igbewọle"
-
-#: TurtleArt/tabasics.py:711
-msgid "divide"
-msgstr "pin"
-
-#: TurtleArt/tabasics.py:714
-msgid ""
-"divides top numeric input (numerator) by bottom numeric input (denominator)"
-msgstr "pin oke nomba input (iyeipin) nipa isalẹ nomba input (iyeida)"
-
-#: TurtleArt/tabasics.py:731
-msgid "identity"
-msgstr "idanimo"
-
-#: TurtleArt/tabasics.py:733
-msgid "identity operator used for extending blocks"
-msgstr "idanimo oniṣẹ lo fun extending awọn bulọọki"
-
-#: TurtleArt/tabasics.py:759 TurtleArt/tabasics.py:760
-msgid "mod"
-msgstr "moodi"
-
-#: TurtleArt/tabasics.py:763
-msgid "modular (remainder) operator"
-msgstr "apọjuwọn (ku) onišẹ"
-
-#: TurtleArt/tabasics.py:771
-msgid "√"
-msgstr "√"
-
-#: TurtleArt/tabasics.py:772
-msgid "square root"
-msgstr "nọmba kan ti wa a pàtó kan opoiye nigba ti pupọ nipa ara"
-
-#: TurtleArt/tabasics.py:775
-msgid "calculates square root"
-msgstr "iṣiro nọmba kan ti fun wa a pàtó kan opoiye nigba ti pupọ nipa ara"
-
-#: TurtleArt/tabasics.py:783
-msgid "random"
-msgstr "àjọsọpọ"
-
-#: TurtleArt/tabasics.py:783
-msgid "min"
-msgstr "iseju"
-
-#: TurtleArt/tabasics.py:783
-msgid "max"
-msgstr "o pọju"
-
-#: TurtleArt/tabasics.py:787
-msgid "returns random number between minimum (top) and maximum (bottom) values"
-msgstr "pada ID nọmba laarin to kere (oke) ati ki o pọju (isalẹ) iye"
-
-#: TurtleArt/tabasics.py:809
-msgid "number"
-msgstr "nọmba"
-
-#: TurtleArt/tabasics.py:810
-msgid "used as numeric input in mathematic operators"
-msgstr "lo bi nomba input ni mathematic awọn oniṣẹ"
-
-#: TurtleArt/tabasics.py:817
-msgid "greater than"
-msgstr "tobi ju"
-
-#: TurtleArt/tabasics.py:820
-msgid "logical greater-than operator"
-msgstr "mogbonwa ti o tobi ju onišẹ"
-
-#: TurtleArt/tabasics.py:836
-msgid "less than"
-msgstr "kere ju"
-
-#: TurtleArt/tabasics.py:840
-msgid "logical less-than operator"
-msgstr "mogbonwa kere ju onišẹ"
-
-#: TurtleArt/tabasics.py:856
-msgid "equal"
-msgstr "dogba"
-
-#: TurtleArt/tabasics.py:860
-msgid "logical equal-to operator"
-msgstr "mogbonwa dogba-to onišẹ"
-
-#: TurtleArt/tabasics.py:875
-msgid "not"
-msgstr "ko"
-
-#: TurtleArt/tabasics.py:878
-msgid "logical NOT operator"
-msgstr "mogbonwa ko si oniṣẹ"
-
-#: TurtleArt/tabasics.py:886 TurtleArt/tabasics.py:889
-msgid "and"
-msgstr "ati"
-
-#: TurtleArt/tabasics.py:890
-msgid "logical AND operator"
-msgstr "mogbonwa AND"
-
-#: TurtleArt/tabasics.py:898 TurtleArt/tabasics.py:901
-msgid "or"
-msgstr "tabi"
-
-#: TurtleArt/tabasics.py:902
-msgid "logical OR operator"
-msgstr "mogbonwa OR onišẹ"
-
-#: TurtleArt/tabasics.py:914
-msgid "flow"
-msgstr "ṣàn"
-
-#: TurtleArt/tabasics.py:918
-msgid "wait"
-msgstr "duro"
-
-#: TurtleArt/tabasics.py:922
-msgid "pauses program execution a specified number of seconds"
-msgstr "danuduro eto ipaniyan kan pàtó kan nọmba ti aaya"
-
-#: TurtleArt/tabasics.py:931
-msgid "forever"
-msgstr "lailai"
-
-#: TurtleArt/tabasics.py:935
-msgid "loops forever"
-msgstr "losiwajulosehin lailai"
-
-#: TurtleArt/tabasics.py:945 TurtleArt/tabasics.py:949
-msgid "repeat"
-msgstr "tun"
-
-#: TurtleArt/tabasics.py:950
-msgid "loops specified number of times"
-msgstr "losiwajulosehin pàtó nọmba ti igba"
-
-#: TurtleArt/tabasics.py:963 TurtleArt/tabasics.py:979
-msgid "if"
-msgstr "ti o ba ti"
-
-#: TurtleArt/tabasics.py:963 TurtleArt/tabasics.py:979
-msgid "then"
-msgstr "ki o si"
-
-#: TurtleArt/tabasics.py:966
-msgid "if then"
-msgstr "ti o ba ti ki o si"
-
-#: TurtleArt/tabasics.py:968
-msgid "if-then operator that uses boolean operators from Numbers palette"
-msgstr "ti o ba ti-ki o si onišẹ ti o nlo Bolianu awọn oniṣẹ lati NỌMBA paleti"
-
-#: TurtleArt/tabasics.py:979
-msgid "else"
-msgstr "miran"
-
-#: TurtleArt/tabasics.py:983 TurtleArt/tabasics.py:996
-msgid "if then else"
-msgstr "ti o ba ti ki o si miran"
-
-#: TurtleArt/tabasics.py:984 TurtleArt/tabasics.py:997
-msgid "if-then-else operator that uses boolean operators from Numbers palette"
-msgstr ""
-"ti o ba ti-ki o si-miran onišẹ ti o nlo Bolianu awọn oniṣẹ lati NỌMBA paleti"
-
-#: TurtleArt/tabasics.py:1006
-msgid "horizontal space"
-msgstr "petele aaye"
-
-#: TurtleArt/tabasics.py:1007
-msgid "jogs stack right"
-msgstr "jogs akopọ ọtun"
-
-#: TurtleArt/tabasics.py:1016
-msgid "vertical space"
-msgstr "inaro aaye"
-
-#: TurtleArt/tabasics.py:1017
-msgid "jogs stack down"
-msgstr "jogs akopọ si isalẹ"
-
-#: TurtleArt/tabasics.py:1024
-msgid "stop action"
-msgstr "duro igbese"
-
-#: TurtleArt/tabasics.py:1027
-msgid "stops current action"
-msgstr "ma duro lọwọlọwọ igbese"
-
-#: TurtleArt/tabasics.py:1037
-msgid "Palette of variable blocks"
-msgstr "Paleti ti ayípadà amorindun"
-
-#: TurtleArt/tabasics.py:1038
-msgid "blocks"
-msgstr "ohun amorindun"
-
-#: TurtleArt/tabasics.py:1045
-msgid "connects action to toolbar run buttons"
-msgstr "so igbese lati bọtini iboju run bọtini"
-
-#: TurtleArt/tabasics.py:1062
-msgid "top of nameable action stack"
-msgstr "oke ti nameable igbese akopọ"
-
-#: TurtleArt/tabasics.py:1085
-msgid "store in box 1"
-msgstr "itaja ni apoti 1"
-
-#: TurtleArt/tabasics.py:1090
-msgid "stores numeric value in Variable 1"
-msgstr "oja nomba iye ninu ayípadà 1"
-
-#: TurtleArt/tabasics.py:1099
-msgid "store in box 2"
-msgstr "itaja ni apoti 2"
-
-#: TurtleArt/tabasics.py:1104
-msgid "stores numeric value in Variable 2"
-msgstr "oja nomba iye ninu ayípadà 2"
-
-#: TurtleArt/tabasics.py:1113
-msgid "box 1"
-msgstr "apoti 1"
-
-#: TurtleArt/tabasics.py:1116
-msgid "Variable 1 (numeric value)"
-msgstr "Ayípadà 1 (nomba iye)"
-
-#: TurtleArt/tabasics.py:1126
-msgid "box 2"
-msgstr "apoti 2"
-
-#: TurtleArt/tabasics.py:1129
-msgid "Variable 2 (numeric value)"
-msgstr "Ayípadà 2 (nomba iye)"
-
-#: TurtleArt/tabasics.py:1141 TurtleArt/tabasics.py:1157
-msgid "box"
-msgstr "apoti"
-
-#: TurtleArt/tabasics.py:1169 TurtleArt/tabasics.py:1193
-msgid "action 1"
-msgstr "igbese 1"
-
-#: TurtleArt/tabasics.py:1172
-msgid "top of Action 1 stack"
-msgstr "oke ti Action 1 akopọ"
-
-#: TurtleArt/tabasics.py:1181 TurtleArt/tabasics.py:1206
-msgid "action 2"
-msgstr "igbese 2"
-
-#: TurtleArt/tabasics.py:1184
-msgid "top of Action 2 stack"
-msgstr "oke ti Action 2 akopọ"
-
-#: TurtleArt/tabasics.py:1196
-msgid "invokes Action 1 stack"
-msgstr "invokes Action 1 akopọ"
-
-#: TurtleArt/tabasics.py:1209
-msgid "invokes Action 2 stack"
-msgstr "invokes Action 2 akopọ"
-
-#: TurtleArt/tabasics.py:1228
-msgid "invokes named action stack and returns value"
-msgstr "invokes ti a npè ni igbese akopọ ati padà iye"
-
-#: TurtleArt/tabasics.py:1235
-msgid "return"
-msgstr "pada"
-
-#: TurtleArt/tabasics.py:1238
-msgid "returns a value"
-msgstr "pada a iye"
-
-#: TurtleArt/tabasics.py:1255
-msgid "permanently deletes items in trash"
-msgstr "patapata npa awọn ohun kan ninu idọti"
-
-#: TurtleArt/tabasics.py:1259
-msgid "restore all"
-msgstr "pada gbogbo"
-
-#: TurtleArt/tabasics.py:1260
-msgid "restore all blocks from trash"
-msgstr "pada sipo gbogbo awọn ohun amorindun lati idọti"
-
-#: TurtleArt/tabasics.py:1264
-msgid "clear all"
-msgstr "ko gbogbo"
-
-#: TurtleArt/tabasics.py:1265
-msgid "move all blocks to trash"
-msgstr "gbe gbogbo awọn ohun amorindun to idọti"
-
-#: TurtleArt/taprimitive.py:62
-msgid "error in highlighted block"
-msgstr "ašiše ni fa ila block"
-
-#: TurtleArt/taprimitive.py:64
-msgid "error"
-msgstr "aṣiṣe"
-
-#: TurtleArt/tautils.py:300
-msgid "Load..."
-msgstr "Fifuye..."
-
-#: TurtleArt/tautils.py:310
-msgid "Save..."
-msgstr "Fi..."
-
-#: TurtleArt/taconstants.py:149
-msgid "up"
-msgstr "soke"
-
-#: TurtleArt/taconstants.py:151
-msgid "down"
-msgstr "si isalẹ"
-
-#: TurtleArt/taconstants.py:152
-msgid "backspace"
-msgstr "pa"
-
-#: TurtleArt/taconstants.py:153
-msgid "tab"
-msgstr "taabu"
-
-#. TRANS: enter is the name of the enter (or return) key
-#: TurtleArt/taconstants.py:155
-msgid "enter"
-msgstr "tẹ"
-
-#. TRANS: space is the name of the space key
-#: TurtleArt/taconstants.py:158
-msgid "space"
-msgstr "aaye"
-
-#: TurtleArt/taconstants.py:159
-msgid "delete"
-msgstr "pa"
-
-#: TurtleArt/taconstants.py:472 TurtleArt/taconstants.py:493
-#: TurtleArt/taconstants.py:513 TurtleArt/taconstants.py:554
-#: TurtleArt/taconstants.py:595 TurtleArt/taconstants.py:636
-msgid "Title"
-msgstr "Àkọ́lé"
-
-#: TurtleArt/taconstants.py:658
-msgid "banana"
-msgstr "ogede"
-
-#: TurtleArt/taexportpython.py:207
-msgid "block is not exportable"
-msgstr "block ni ko exportable"
-
-#: TurtleArt/taexportpython.py:226
-msgid "error while exporting block"
-msgstr "aṣiṣe nigba ti tajasita block"
-
-#: TurtleArt/taplugin.py:93 TurtleArt/taplugin.py:103
-#: TurtleArt/taplugin.py:105
-msgid "Plugin could not be installed."
-msgstr "Itanna ko le wa ni fi sori ẹrọ."
-
-#: pysamples/forward_push.py:48
-msgid "push destination rgb value to heap"
-msgstr "titari nlo RGB iye to kó"
-
-#: pysamples/journal-stats.py:81
-msgid "other"
-msgstr "miiran"
+#: plugins/camera_sensor/camera_sensor.py:90
+#: plugins/camera_sensor/camera_sensor.py:122
+#: plugins/light_sensor/light_sensor.py:58
+#: plugins/light_sensor/light_sensor.py:66
+msgid "brightness"
+msgstr "imọlẹ"
+
+#: plugins/camera_sensor/camera_sensor.py:92
+msgid "light level detected by camera"
+msgstr "ina ipele ri nipa kamẹra"
+
+#: plugins/camera_sensor/camera_sensor.py:107
+#: plugins/camera_sensor/camera_sensor.py:115
+msgid "camera output"
+msgstr "kamẹra wu"
+
+#: plugins/camera_sensor/camera_sensor.py:124
+msgid "Average RGB color from camera is pushed to the stack"
+msgstr "Išẹ RGB awọ lati kamẹra ti wa ni ti si awọn akopọ"
+
+#: plugins/rfid/rfid.py:93 plugins/rfid/rfid.py:101
+msgid "RFID"
+msgstr "RFID"
+
+#: plugins/rfid/rfid.py:94 plugins/rfid/rfid.py:102
+msgid "read value from RFID device"
+msgstr "ka iye lati RFID ẹrọ"
+
+#: plugins/accelerometer/accelerometer.py:56
+#: plugins/accelerometer/accelerometer.py:63
+msgid "acceleration"
+msgstr "isare"
+
+#: plugins/accelerometer/accelerometer.py:58
+#: plugins/accelerometer/accelerometer.py:65
+msgid "push acceleration in x, y, z to heap"
+msgstr "Titari isare ni x, y, z to kó"
+
+#: plugins/light_sensor/light_sensor.py:61
+#: plugins/light_sensor/light_sensor.py:69
+msgid "light level detected by light sensor"
+msgstr "ina ipele ri nipa ina"
+
+#: plugins/audio_sensors/audio_sensors.py:93 pysamples/grecord.py:207
+msgid "sound"
+msgstr "dun"
+
+#: plugins/audio_sensors/audio_sensors.py:94
+msgid "raw microphone input signal"
+msgstr "aise gbohungbohun input ifihan agbara"
+
+#: plugins/audio_sensors/audio_sensors.py:100
+msgid "loudness"
+msgstr "ipariwo"
+
+#: plugins/audio_sensors/audio_sensors.py:101
+msgid "microphone input volume"
+msgstr "gbohungbohun input iwọn didun"
+
+#: plugins/audio_sensors/audio_sensors.py:127
+msgid "microphone input pitch"
+msgstr "gbohungbohun input ipolowo"
+
+#: plugins/audio_sensors/audio_sensors.py:160
+#: plugins/audio_sensors/audio_sensors.py:178
+msgid "resistance"
+msgstr "atako"
+
+#: plugins/audio_sensors/audio_sensors.py:161
+#: plugins/audio_sensors/audio_sensors.py:179
+msgid "microphone input resistance"
+msgstr "gbohungbohun input resistance"
+
+#: plugins/audio_sensors/audio_sensors.py:166
+#: plugins/audio_sensors/audio_sensors.py:184
+msgid "voltage"
+msgstr "foliteji"
+
+#: plugins/audio_sensors/audio_sensors.py:167
+#: plugins/audio_sensors/audio_sensors.py:185
+msgid "microphone input voltage"
+msgstr "gbohungbohun input foliteji"
 
 #: pysamples/uturn.py:35
 msgid "uturn"
@@ -2160,6 +1229,14 @@ msgstr ""
 "Binu, nibẹ ni ko si free iranti lati fifuye mi ọpọlọ. Pa miiran akitiyan ki "
 "o si gbiyanju lẹẹkan siwaju sii."
 
+#: pysamples/journal-stats.py:90
+msgid "other"
+msgstr "miiran"
+
+#: pysamples/forward_push.py:48
+msgid "push destination rgb value to heap"
+msgstr "titari nlo RGB iye to kó"
+
 #: pysamples/grecord.py:214
 msgid "stop"
 msgstr "duro"
@@ -2171,6 +1248,955 @@ msgstr "mu"
 #: pysamples/grecord.py:218
 msgid "save"
 msgstr "fi"
+
+#: TurtleArt/talogo.py:604
+msgid "did not output to"
+msgstr "kò wu to"
+
+#: TurtleArt/talogo.py:645 TurtleArt/talogo.py:1059
+msgid "doesn't like"
+msgstr "ko ni fẹ"
+
+#: TurtleArt/talogo.py:646 TurtleArt/talogo.py:1060
+msgid "as input"
+msgstr "bi input"
+
+#: TurtleArt/talogo.py:709
+msgid "I don't know how to"
+msgstr "Emi ko mo bi lati"
+
+#: TurtleArt/turtleblocks.py:106
+msgid "usage is"
+msgstr "lilo ni"
+
+#: TurtleArt/turtleblocks.py:307
+msgid "No option action:"
+msgstr "Ko si aṣayan igbese:"
+
+#: TurtleArt/turtleblocks.py:322
+msgid "File not found"
+msgstr "A ko ri faili"
+
+#: TurtleArt/turtleblocks.py:346
+#, python-format
+msgid "Configuration directory not writable: %s"
+msgstr "Iṣeto ni liana ko kọ: %s"
+
+#: TurtleArt/turtleblocks.py:434
+msgid "New"
+msgstr "Tuntun"
+
+#: TurtleArt/turtleblocks.py:435
+msgid "Show sample projects"
+msgstr "Fi ayẹwo ise agbese"
+
+#: TurtleArt/turtleblocks.py:442
+msgid "Save as"
+msgstr "Fi bi"
+
+#: TurtleArt/turtleblocks.py:446
+msgid "Export as"
+msgstr "Export bi"
+
+#: TurtleArt/turtleblocks.py:449 TurtleArt/tawindow.py:4788
+msgid "image"
+msgstr "Àwòrán"
+
+#: TurtleArt/turtleblocks.py:451
+msgid "image (blocks)"
+msgstr ""
+
+#: TurtleArt/turtleblocks.py:453
+msgid "SVG"
+msgstr "SVG"
+
+#: TurtleArt/turtleblocks.py:455 TurtleArt/tawindow.py:4641
+msgid "icon"
+msgstr "áíkànnù"
+
+#. TRANS: ODP is Open Office presentation
+#: TurtleArt/turtleblocks.py:458
+msgid "ODP"
+msgstr "ODP"
+
+#: TurtleArt/turtleblocks.py:460
+msgid "Logo"
+msgstr "aami"
+
+#: TurtleArt/turtleblocks.py:464
+msgid "Quit"
+msgstr "olodun-"
+
+#: TurtleArt/turtleblocks.py:465
+msgid "File"
+msgstr "faili"
+
+#: TurtleArt/turtleblocks.py:473
+msgid "Rescale coordinates"
+msgstr "Rescale ipoidojuko"
+
+#: TurtleArt/turtleblocks.py:479
+msgid "Reset block size"
+msgstr "Tun block iwọn"
+
+#: TurtleArt/turtleblocks.py:500
+msgid "Show/hide blocks"
+msgstr "Fihan / tọju awọn bulọọki"
+
+#: TurtleArt/turtleblocks.py:502
+msgid "Tools"
+msgstr "irinṣẹ"
+
+#: TurtleArt/turtleblocks.py:508
+msgid "Debug"
+msgstr "yokokoro"
+
+#: TurtleArt/turtleblocks.py:510
+msgid "Turtle"
+msgstr "adaba"
+
+#: TurtleArt/turtleblocks.py:513
+msgid "Plugins"
+msgstr "afikun"
+
+#: TurtleArt/turtleblocks.py:516
+msgid "About..."
+msgstr "Nipa..."
+
+#: TurtleArt/turtleblocks.py:575
+msgid "You have unsaved work. Would you like to save before quitting?"
+msgstr "O ni aláìní iṣẹ. Ṣe o fẹ lati fi ṣaaju ki o to quitting?"
+
+#: TurtleArt/turtleblocks.py:580
+msgid "Save project?"
+msgstr "Fi ise agbese?"
+
+#: TurtleArt/turtleblocks.py:590
+#, python-format
+msgid "Plugin %s already installed"
+msgstr "Itanna %s tẹlẹ sori ẹrọ"
+
+#: TurtleArt/turtleblocks.py:736
+msgid "myproject"
+msgstr "myproject"
+
+#: TurtleArt/turtleblocks.py:814 TurtleArt/taplugin.py:89
+#, python-format
+msgid "Please restart %s in order to use the plugin."
+msgstr "Jọwọ tun %s ni ibere lati lo awọn ohun itanna."
+
+#: TurtleArt/turtleblocks.py:819
+#, python-format
+msgid "Please restart %s in order to unload the plugin."
+msgstr "Jọwọ tun %s ni ibere lati unload awọn ohun itanna."
+
+#: TurtleArt/tapalette.py:103
+msgid "displays next palette"
+msgstr "han tókàn paleti"
+
+#: TurtleArt/tapalette.py:104
+msgid "changes the orientation of the palette of blocks"
+msgstr "ayipada ni Iṣalaye ti awọn paleti ti ohun amorindun"
+
+#: TurtleArt/tapalette.py:144 TurtleArt/tapalette.py:145
+#: TurtleArt/tabasics.py:1262 TurtleArt/tabasics.py:1263
+msgid "trash"
+msgstr "idọti"
+
+#: TurtleArt/taexportpython.py:226
+msgid "block is not exportable"
+msgstr "block ni ko exportable"
+
+#: TurtleArt/taexportpython.py:245
+msgid "error while exporting block"
+msgstr "aṣiṣe nigba ti tajasita block"
+
+#: TurtleArt/taprimitive.py:62
+msgid "error in highlighted block"
+msgstr "ašiše ni fa ila block"
+
+#: TurtleArt/taprimitive.py:64
+msgid "error"
+msgstr "aṣiṣe"
+
+#: TurtleArt/tawindow.py:1151 TurtleArt/tawindow.py:1152
+msgid "orientation"
+msgstr "iṣalaye"
+
+#: TurtleArt/tawindow.py:1166 TurtleArt/tawindow.py:1626
+msgid "next"
+msgstr "Itele"
+
+#: TurtleArt/tawindow.py:1205 TurtleArt/tawindow.py:1635
+msgid "shift"
+msgstr "naficula"
+
+#: TurtleArt/tawindow.py:1273
+msgid "Please hit the Stop Button before making changes to your program"
+msgstr "Jọwọ lu awọn Duro Button ṣaaju ṣiṣe awọn ayipada si eto rẹ"
+
+#: TurtleArt/tawindow.py:1316 TurtleArt/tawindow.py:1430
+#: TurtleArt/tawindow.py:1443 TurtleArt/tawindow.py:2078
+#: TurtleArt/tawindow.py:4934 TurtleArt/tabasics.py:1070
+#: TurtleArt/tabasics.py:1073 TurtleArt/tabasics.py:1086
+#: TurtleArt/tabasics.py:1090 TurtleArt/tabasics.py:1236
+#: TurtleArt/tabasics.py:1240
+msgid "action"
+msgstr "igbese"
+
+#: TurtleArt/tawindow.py:1322 TurtleArt/tawindow.py:1469
+#: TurtleArt/tawindow.py:2084 TurtleArt/tawindow.py:4961
+#: TurtleArt/tawindow.py:4988 TurtleArt/tabasics.py:1158
+#: TurtleArt/tabasics.py:1173
+msgid "my box"
+msgstr "mi apoti"
+
+#: TurtleArt/tawindow.py:1337
+msgid "Select blocks to share"
+msgstr "Yan awọn bulọọki lati pin"
+
+#: TurtleArt/tawindow.py:1515 TurtleArt/tawindow.py:1529
+msgid "Really overwrite stack?"
+msgstr "Really ìkọlélórí akopọ?"
+
+#: TurtleArt/tawindow.py:1522 TurtleArt/tawindow.py:1532
+msgid "Overwrite stack"
+msgstr "ìkọlélórí akopọ"
+
+#: TurtleArt/tawindow.py:1554 TurtleArt/tawindow.py:1567
+msgid "Really delete stack?"
+msgstr "Really pa akopọ?"
+
+#: TurtleArt/tawindow.py:1947 TurtleArt/tabasics.py:1267
+msgid "empty trash"
+msgstr "sofo idọti"
+
+#: TurtleArt/tawindow.py:1948
+msgid "Do you really want to empty the trash?"
+msgstr "Ṣe o gan fẹ lati ofo awọn idọti?"
+
+#: TurtleArt/tawindow.py:4285 TurtleArt/tawindow.py:4306
+#, python-format
+msgid "Cannot write data to %s."
+msgstr "Ko le kọ data to %s."
+
+#: TurtleArt/tawindow.py:4286
+msgid "Please choose a different save directory."
+msgstr "Jọwọ yan kan ti o yatọ fifipamọ liana."
+
+#: TurtleArt/tawindow.py:4307
+msgid "Please choose a different file name."
+msgstr "Jọwọ yan kan ti o yatọ faili orukọ."
+
+#: TurtleArt/tawindow.py:4415 TurtleArt/tabasics.py:284
+msgid "xcor"
+msgstr "xcor"
+
+#: TurtleArt/tawindow.py:4416 TurtleArt/tabasics.py:299
+msgid "ycor"
+msgstr "ycor"
+
+#: TurtleArt/tawindow.py:4416 TurtleArt/tabasics.py:314
+msgid "heading"
+msgstr "nlọ"
+
+#: TurtleArt/tawindow.py:4442 TurtleArt/tawindow.py:4447
+#: TurtleArt/tabasics.py:359 TurtleArt/tabasics.py:373
+#: TurtleArt/tabasics.py:447
+msgid "shade"
+msgstr "iboji"
+
+#: TurtleArt/tawindow.py:4443 TurtleArt/tawindow.py:4448
+#: TurtleArt/tabasics.py:373 TurtleArt/tabasics.py:461
+msgid "gray"
+msgstr "grẹy"
+
+#: TurtleArt/tawindow.py:4446 TurtleArt/tabasics.py:359
+#: TurtleArt/tabasics.py:372 TurtleArt/tabasics.py:435
+msgid "color"
+msgstr "awọ"
+
+#: TurtleArt/tawindow.py:4516
+msgid "True"
+msgstr "Otitọ"
+
+#: TurtleArt/tawindow.py:4516
+msgid "False"
+msgstr "Eke"
+
+#: TurtleArt/tawindow.py:4714
+#, python-format
+msgid "%s blocks image"
+msgstr ""
+
+#: TurtleArt/tawindow.py:4947 TurtleArt/tabasics.py:1091
+msgid "invokes named action stack"
+msgstr "invokes ti a npè ni igbese akopọ"
+
+#: TurtleArt/tawindow.py:4974 TurtleArt/tabasics.py:1176
+msgid "named variable (numeric value)"
+msgstr "ti a npè ni ayípadà (nomba iye)"
+
+#: TurtleArt/tawindow.py:4996 TurtleArt/tabasics.py:1154
+msgid "store in"
+msgstr "fipamọ ni"
+
+#: TurtleArt/tawindow.py:4996 TurtleArt/tabasics.py:1154
+msgid "value"
+msgstr "iye"
+
+#: TurtleArt/tawindow.py:5001 TurtleArt/tabasics.py:1159
+msgid "stores numeric value in named variable"
+msgstr "tọjú nomba iye ni ti a npè ni ayípadà"
+
+#: TurtleArt/taplugin.py:93 TurtleArt/taplugin.py:103 TurtleArt/taplugin.py:105
+msgid "Plugin could not be installed."
+msgstr "Itanna ko le wa ni fi sori ẹrọ."
+
+#: TurtleArt/taconstants.py:150
+msgid "up"
+msgstr "soke"
+
+#: TurtleArt/taconstants.py:152
+msgid "down"
+msgstr "si isalẹ"
+
+#: TurtleArt/taconstants.py:153
+msgid "backspace"
+msgstr "pa"
+
+#: TurtleArt/taconstants.py:154
+msgid "tab"
+msgstr "taabu"
+
+#. TRANS: enter is the name of the enter (or return) key
+#: TurtleArt/taconstants.py:156
+msgid "enter"
+msgstr "tẹ"
+
+#. TRANS: space is the name of the space key
+#: TurtleArt/taconstants.py:159
+msgid "space"
+msgstr "aaye"
+
+#: TurtleArt/taconstants.py:160
+msgid "delete"
+msgstr "pa"
+
+#: TurtleArt/taconstants.py:473 TurtleArt/taconstants.py:494
+#: TurtleArt/taconstants.py:514 TurtleArt/taconstants.py:555
+#: TurtleArt/taconstants.py:596 TurtleArt/taconstants.py:637
+msgid "Title"
+msgstr "Àkọ́lé"
+
+#: TurtleArt/taconstants.py:659
+msgid "banana"
+msgstr "ogede"
+
+#: TurtleArt/tautils.py:313
+msgid "Load..."
+msgstr "Fifuye..."
+
+#: TurtleArt/tautils.py:323
+msgid "Save..."
+msgstr "Fi..."
+
+#: TurtleArt/tabasics.py:158
+msgid "Palette of turtle commands"
+msgstr "Paleti ti adaba ofin"
+
+#: TurtleArt/tabasics.py:167
+msgid "moves turtle forward"
+msgstr "e adaba siwaju"
+
+#: TurtleArt/tabasics.py:176
+msgid "back"
+msgstr "pada"
+
+#: TurtleArt/tabasics.py:180
+msgid "moves turtle backward"
+msgstr "e adaba sẹhin"
+
+#: TurtleArt/tabasics.py:189
+msgid "clean"
+msgstr "mọ"
+
+#: TurtleArt/tabasics.py:192
+msgid "clears the screen and reset the turtle"
+msgstr "clears iboju ki o si tun adaba"
+
+#: TurtleArt/tabasics.py:214
+msgid "turns turtle counterclockwise (angle in degrees)"
+msgstr "wa ni adaba counterclockwise (igun ni iwọn)"
+
+#: TurtleArt/tabasics.py:228
+msgid "turns turtle clockwise (angle in degrees)"
+msgstr "wa ni adaba clockwise (igun ni iwọn)"
+
+#: TurtleArt/tabasics.py:238
+msgid "arc"
+msgstr "aaki"
+
+#: TurtleArt/tabasics.py:238
+msgid "angle"
+msgstr "igun"
+
+#: TurtleArt/tabasics.py:238
+msgid "radius"
+msgstr "rediosi"
+
+#: TurtleArt/tabasics.py:242
+msgid "moves turtle along an arc"
+msgstr "rare adaba pẹlú ohun aaki"
+
+#: TurtleArt/tabasics.py:254 TurtleArt/tabasics.py:333
+msgid "set xy"
+msgstr "ṣeto xy"
+
+#: TurtleArt/tabasics.py:254 TurtleArt/tabasics.py:333
+msgid "x"
+msgstr "x"
+
+#: TurtleArt/tabasics.py:254 TurtleArt/tabasics.py:333
+msgid "y"
+msgstr "y"
+
+#: TurtleArt/tabasics.py:258 TurtleArt/tabasics.py:337
+msgid ""
+"moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
+msgstr "e adaba lati ipo xcor, ycor; (0, 0) ni ni aarin ti iboju."
+
+#
+#: TurtleArt/tabasics.py:269
+msgid "set heading"
+msgstr "seth"
+
+#: TurtleArt/tabasics.py:273
+msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
+msgstr "kn awọn akori ti awọn adaba (0 wa ni si ọna oke ti awọn iboju.)"
+
+#: TurtleArt/tabasics.py:285
+msgid ""
+"holds current x-coordinate value of the turtle (can be used in place of a "
+"number block)"
+msgstr ""
+"Oun ni isiyi x-ipoidojuko iye ti awọn adaba (le ṣee lo ni ibi ti a nọmba "
+"block)"
+
+#: TurtleArt/tabasics.py:300
+msgid ""
+"holds current y-coordinate value of the turtle (can be used in place of a "
+"number block)"
+msgstr ""
+"Oun ni isiyi y-ipoidojuko iye ti awọn adaba (le ṣee lo ni ibi ti a nọmba "
+"block)"
+
+#: TurtleArt/tabasics.py:315
+msgid ""
+"holds current heading value of the turtle (can be used in place of a number "
+"block)"
+msgstr ""
+"Oun ni isiyi akori iye ti awọn adaba (le ṣee lo ni ibi ti a nọmba block)"
+
+#: TurtleArt/tabasics.py:353
+msgid "Palette of pen commands"
+msgstr "Paleti ti pen ofin"
+
+#: TurtleArt/tabasics.py:354
+msgid "pen"
+msgstr "pen"
+
+#: TurtleArt/tabasics.py:359 TurtleArt/tabasics.py:372
+msgid "fill screen"
+msgstr "fọwọsi iboju"
+
+#: TurtleArt/tabasics.py:363 TurtleArt/tabasics.py:377
+msgid "fills the background with (color, shade)"
+msgstr "kún lẹhin pẹlu (awọ, iboji)"
+
+#: TurtleArt/tabasics.py:390
+msgid "set color"
+msgstr "ṣeto awọ"
+
+#: TurtleArt/tabasics.py:394
+msgid "sets color of the line drawn by the turtle"
+msgstr "kn awọ ti ila kale nipa awọn adaba"
+
+#: TurtleArt/tabasics.py:406
+msgid "set shade"
+msgstr "ṣeto iboji"
+
+#: TurtleArt/tabasics.py:410
+msgid "sets shade of the line drawn by the turtle"
+msgstr "kn iboji ti ila kale nipa awọn adaba"
+
+#: TurtleArt/tabasics.py:421
+msgid "set gray"
+msgstr "ṣeto grẹy"
+
+#: TurtleArt/tabasics.py:424
+msgid "sets gray level of the line drawn by the turtle"
+msgstr "kn grẹy ipele ti ila kale nipa awọn adaba"
+
+#: TurtleArt/tabasics.py:436
+msgid "holds current pen color (can be used in place of a number block)"
+msgstr "Oun ni isiyi pen awọ (le ṣee lo ni ibi ti a nọmba block)"
+
+#: TurtleArt/tabasics.py:448
+msgid "holds current pen shade"
+msgstr "Oun ni isiyi pen iboji"
+
+#: TurtleArt/tabasics.py:462
+msgid "holds current gray level (can be used in place of a number block)"
+msgstr "Oun ni isiyi grẹy ipele (le ṣee lo ni ibi ti a nọmba block)"
+
+#: TurtleArt/tabasics.py:472
+msgid "pen up"
+msgstr "pen soke"
+
+#: TurtleArt/tabasics.py:475
+msgid "Turtle will not draw when moved."
+msgstr "Adaba yoo ko fa nigba ti gbe."
+
+#: TurtleArt/tabasics.py:482
+msgid "pen down"
+msgstr "pen si isalẹ"
+
+#: TurtleArt/tabasics.py:485
+msgid "Turtle will draw when moved."
+msgstr "Adaba yoo fa nigba ti gbe."
+
+#: TurtleArt/tabasics.py:492
+msgid "pen down?"
+msgstr "pen si isalẹ?"
+
+#: TurtleArt/tabasics.py:494
+msgid "returns True if pen is down"
+msgstr "pada Otitọ ti o ba ti pen ni isalẹ"
+
+#: TurtleArt/tabasics.py:501
+msgid "set pen size"
+msgstr "ṣeto pen iwọn"
+
+#: TurtleArt/tabasics.py:505
+msgid "sets size of the line drawn by the turtle"
+msgstr "kn iwọn ti awọn ila kale nipa awọn adaba"
+
+#: TurtleArt/tabasics.py:518
+msgid "start fill"
+msgstr "bẹrẹ yó"
+
+#: TurtleArt/tabasics.py:520
+msgid "starts filled polygon (used with end fill block)"
+msgstr "bẹrẹ kún polygon (lo pẹlu opin yó block)"
+
+#: TurtleArt/tabasics.py:526
+msgid "end fill"
+msgstr "opin yó"
+
+#: TurtleArt/tabasics.py:528
+msgid "completes filled polygon (used with start fill block)"
+msgstr "pari kún polygon (lo pẹlu ibere yó block)"
+
+#: TurtleArt/tabasics.py:534
+msgid "pen size"
+msgstr "pen iwọn"
+
+#: TurtleArt/tabasics.py:535
+msgid "holds current pen size (can be used in place of a number block)"
+msgstr "oun ni isiyi pen iwọn (le ṣee lo ni ibi ti a nọmba block)"
+
+#: TurtleArt/tabasics.py:554
+msgid "Palette of pen colors"
+msgstr "Paleti ti pen awọn awọ"
+
+#: TurtleArt/tabasics.py:555
+msgid "colors"
+msgstr "awọn awọ"
+
+#: TurtleArt/tabasics.py:560 TurtleArt/tabasics.py:568
+msgid "red"
+msgstr "pupa"
+
+#: TurtleArt/tabasics.py:560
+msgid "orange"
+msgstr "ọsan"
+
+#: TurtleArt/tabasics.py:560
+msgid "yellow"
+msgstr "ofeefee"
+
+#: TurtleArt/tabasics.py:560 TurtleArt/tabasics.py:568
+msgid "green"
+msgstr "alawọ ewe"
+
+#: TurtleArt/tabasics.py:561
+msgid "cyan"
+msgstr "cyan"
+
+#: TurtleArt/tabasics.py:561 TurtleArt/tabasics.py:568
+msgid "blue"
+msgstr "àwö sánmà"
+
+#: TurtleArt/tabasics.py:561
+msgid "purple"
+msgstr "eleyi ti"
+
+#: TurtleArt/tabasics.py:561
+msgid "white"
+msgstr "funfun"
+
+#: TurtleArt/tabasics.py:562
+msgid "black"
+msgstr "dudu"
+
+#: TurtleArt/tabasics.py:568
+msgid ""
+"RGB to\n"
+"\n"
+"color"
+msgstr ""
+
+#: TurtleArt/tabasics.py:570
+msgid "converter"
+msgstr ""
+
+#: TurtleArt/tabasics.py:655
+msgid "Palette of numeric operators"
+msgstr "Paleti ti nomba awọn oniṣẹ"
+
+#: TurtleArt/tabasics.py:656
+msgid "numbers"
+msgstr "awọn nọmba"
+
+#: TurtleArt/tabasics.py:661
+msgid "plus"
+msgstr "pẹlu"
+
+#: TurtleArt/tabasics.py:665
+msgid "adds two alphanumeric inputs"
+msgstr "afikun meji alphanumeric igbewọle"
+
+#: TurtleArt/tabasics.py:684
+msgid "minus"
+msgstr "iyokuro"
+
+#: TurtleArt/tabasics.py:687
+msgid "subtracts bottom numeric input from top numeric input"
+msgstr "subtracts isalẹ nomba input lati oke nomba input"
+
+#: TurtleArt/tabasics.py:705
+msgid "multiply"
+msgstr "isodipupo"
+
+#: TurtleArt/tabasics.py:708
+msgid "multiplies two numeric inputs"
+msgstr "pupọ meji nomba igbewọle"
+
+#: TurtleArt/tabasics.py:724
+msgid "divide"
+msgstr "pin"
+
+#: TurtleArt/tabasics.py:727
+msgid ""
+"divides top numeric input (numerator) by bottom numeric input (denominator)"
+msgstr "pin oke nomba input (iyeipin) nipa isalẹ nomba input (iyeida)"
+
+#: TurtleArt/tabasics.py:744
+msgid "identity"
+msgstr "idanimo"
+
+#: TurtleArt/tabasics.py:746
+msgid "identity operator used for extending blocks"
+msgstr "idanimo oniṣẹ lo fun extending awọn bulọọki"
+
+#: TurtleArt/tabasics.py:772 TurtleArt/tabasics.py:773
+msgid "mod"
+msgstr "moodi"
+
+#: TurtleArt/tabasics.py:776
+msgid "modular (remainder) operator"
+msgstr "apọjuwọn (ku) onišẹ"
+
+#: TurtleArt/tabasics.py:784
+msgid "√"
+msgstr "√"
+
+#: TurtleArt/tabasics.py:785
+msgid "square root"
+msgstr "nọmba kan ti wa a pàtó kan opoiye nigba ti pupọ nipa ara"
+
+#: TurtleArt/tabasics.py:788
+msgid "calculates square root"
+msgstr "iṣiro nọmba kan ti fun wa a pàtó kan opoiye nigba ti pupọ nipa ara"
+
+#: TurtleArt/tabasics.py:796
+msgid "random"
+msgstr "àjọsọpọ"
+
+#: TurtleArt/tabasics.py:796
+msgid "min"
+msgstr "iseju"
+
+#: TurtleArt/tabasics.py:796
+msgid "max"
+msgstr "o pọju"
+
+#: TurtleArt/tabasics.py:800
+msgid "returns random number between minimum (top) and maximum (bottom) values"
+msgstr "pada ID nọmba laarin to kere (oke) ati ki o pọju (isalẹ) iye"
+
+#: TurtleArt/tabasics.py:822
+msgid "number"
+msgstr "nọmba"
+
+#: TurtleArt/tabasics.py:823
+msgid "used as numeric input in mathematic operators"
+msgstr "lo bi nomba input ni mathematic awọn oniṣẹ"
+
+#: TurtleArt/tabasics.py:830
+msgid "greater than"
+msgstr "tobi ju"
+
+#: TurtleArt/tabasics.py:833
+msgid "logical greater-than operator"
+msgstr "mogbonwa ti o tobi ju onišẹ"
+
+#: TurtleArt/tabasics.py:849
+msgid "less than"
+msgstr "kere ju"
+
+#: TurtleArt/tabasics.py:853
+msgid "logical less-than operator"
+msgstr "mogbonwa kere ju onišẹ"
+
+#: TurtleArt/tabasics.py:869
+msgid "equal"
+msgstr "dogba"
+
+#: TurtleArt/tabasics.py:873
+msgid "logical equal-to operator"
+msgstr "mogbonwa dogba-to onišẹ"
+
+#: TurtleArt/tabasics.py:888
+msgid "not"
+msgstr "ko"
+
+#: TurtleArt/tabasics.py:891
+msgid "logical NOT operator"
+msgstr "mogbonwa ko si oniṣẹ"
+
+#: TurtleArt/tabasics.py:899 TurtleArt/tabasics.py:902
+msgid "and"
+msgstr "ati"
+
+#: TurtleArt/tabasics.py:903
+msgid "logical AND operator"
+msgstr "mogbonwa AND"
+
+#: TurtleArt/tabasics.py:911 TurtleArt/tabasics.py:914
+msgid "or"
+msgstr "tabi"
+
+#: TurtleArt/tabasics.py:915
+msgid "logical OR operator"
+msgstr "mogbonwa OR onišẹ"
+
+#: TurtleArt/tabasics.py:927
+msgid "flow"
+msgstr "ṣàn"
+
+#: TurtleArt/tabasics.py:931
+msgid "wait"
+msgstr "duro"
+
+#: TurtleArt/tabasics.py:935
+msgid "pauses program execution a specified number of seconds"
+msgstr "danuduro eto ipaniyan kan pàtó kan nọmba ti aaya"
+
+#: TurtleArt/tabasics.py:944
+msgid "forever"
+msgstr "lailai"
+
+#: TurtleArt/tabasics.py:948
+msgid "loops forever"
+msgstr "losiwajulosehin lailai"
+
+#: TurtleArt/tabasics.py:958 TurtleArt/tabasics.py:962
+msgid "repeat"
+msgstr "tun"
+
+#: TurtleArt/tabasics.py:963
+msgid "loops specified number of times"
+msgstr "losiwajulosehin pàtó nọmba ti igba"
+
+#: TurtleArt/tabasics.py:976 TurtleArt/tabasics.py:992
+msgid "if"
+msgstr "ti o ba ti"
+
+#: TurtleArt/tabasics.py:976 TurtleArt/tabasics.py:992
+msgid "then"
+msgstr "ki o si"
+
+#: TurtleArt/tabasics.py:979
+msgid "if then"
+msgstr "ti o ba ti ki o si"
+
+#: TurtleArt/tabasics.py:981
+msgid "if-then operator that uses boolean operators from Numbers palette"
+msgstr "ti o ba ti-ki o si onišẹ ti o nlo Bolianu awọn oniṣẹ lati NỌMBA paleti"
+
+#: TurtleArt/tabasics.py:992
+msgid "else"
+msgstr "miran"
+
+#: TurtleArt/tabasics.py:996 TurtleArt/tabasics.py:1009
+msgid "if then else"
+msgstr "ti o ba ti ki o si miran"
+
+#: TurtleArt/tabasics.py:997 TurtleArt/tabasics.py:1010
+msgid "if-then-else operator that uses boolean operators from Numbers palette"
+msgstr ""
+"ti o ba ti-ki o si-miran onišẹ ti o nlo Bolianu awọn oniṣẹ lati NỌMBA paleti"
+
+#: TurtleArt/tabasics.py:1019
+msgid "horizontal space"
+msgstr "petele aaye"
+
+#: TurtleArt/tabasics.py:1020
+msgid "jogs stack right"
+msgstr "jogs akopọ ọtun"
+
+#: TurtleArt/tabasics.py:1029
+msgid "vertical space"
+msgstr "inaro aaye"
+
+#: TurtleArt/tabasics.py:1030
+msgid "jogs stack down"
+msgstr "jogs akopọ si isalẹ"
+
+#: TurtleArt/tabasics.py:1037
+msgid "stop action"
+msgstr "duro igbese"
+
+#: TurtleArt/tabasics.py:1040
+msgid "stops current action"
+msgstr "ma duro lọwọlọwọ igbese"
+
+#: TurtleArt/tabasics.py:1050
+msgid "Palette of variable blocks"
+msgstr "Paleti ti ayípadà amorindun"
+
+#: TurtleArt/tabasics.py:1051
+msgid "blocks"
+msgstr "ohun amorindun"
+
+#: TurtleArt/tabasics.py:1058
+msgid "connects action to toolbar run buttons"
+msgstr "so igbese lati bọtini iboju run bọtini"
+
+#: TurtleArt/tabasics.py:1075
+msgid "top of nameable action stack"
+msgstr "oke ti nameable igbese akopọ"
+
+#: TurtleArt/tabasics.py:1098
+msgid "store in box 1"
+msgstr "itaja ni apoti 1"
+
+#: TurtleArt/tabasics.py:1103
+msgid "stores numeric value in Variable 1"
+msgstr "oja nomba iye ninu ayípadà 1"
+
+#: TurtleArt/tabasics.py:1112
+msgid "store in box 2"
+msgstr "itaja ni apoti 2"
+
+#: TurtleArt/tabasics.py:1117
+msgid "stores numeric value in Variable 2"
+msgstr "oja nomba iye ninu ayípadà 2"
+
+#: TurtleArt/tabasics.py:1126
+msgid "box 1"
+msgstr "apoti 1"
+
+#: TurtleArt/tabasics.py:1129
+msgid "Variable 1 (numeric value)"
+msgstr "Ayípadà 1 (nomba iye)"
+
+#: TurtleArt/tabasics.py:1139
+msgid "box 2"
+msgstr "apoti 2"
+
+#: TurtleArt/tabasics.py:1142
+msgid "Variable 2 (numeric value)"
+msgstr "Ayípadà 2 (nomba iye)"
+
+#: TurtleArt/tabasics.py:1154 TurtleArt/tabasics.py:1170
+msgid "box"
+msgstr "apoti"
+
+#: TurtleArt/tabasics.py:1182 TurtleArt/tabasics.py:1206
+msgid "action 1"
+msgstr "igbese 1"
+
+#: TurtleArt/tabasics.py:1185
+msgid "top of Action 1 stack"
+msgstr "oke ti Action 1 akopọ"
+
+#: TurtleArt/tabasics.py:1194 TurtleArt/tabasics.py:1219
+msgid "action 2"
+msgstr "igbese 2"
+
+#: TurtleArt/tabasics.py:1197
+msgid "top of Action 2 stack"
+msgstr "oke ti Action 2 akopọ"
+
+#: TurtleArt/tabasics.py:1209
+msgid "invokes Action 1 stack"
+msgstr "invokes Action 1 akopọ"
+
+#: TurtleArt/tabasics.py:1222
+msgid "invokes Action 2 stack"
+msgstr "invokes Action 2 akopọ"
+
+#: TurtleArt/tabasics.py:1241
+msgid "invokes named action stack and returns value"
+msgstr "invokes ti a npè ni igbese akopọ ati padà iye"
+
+#: TurtleArt/tabasics.py:1248
+msgid "return"
+msgstr "pada"
+
+#: TurtleArt/tabasics.py:1251
+msgid "returns a value"
+msgstr "pada a iye"
+
+#: TurtleArt/tabasics.py:1268
+msgid "permanently deletes items in trash"
+msgstr "patapata npa awọn ohun kan ninu idọti"
+
+#: TurtleArt/tabasics.py:1272
+msgid "restore all"
+msgstr "pada gbogbo"
+
+#: TurtleArt/tabasics.py:1273
+msgid "restore all blocks from trash"
+msgstr "pada sipo gbogbo awọn ohun amorindun lati idọti"
+
+#: TurtleArt/tabasics.py:1277
+msgid "clear all"
+msgstr "ko gbogbo"
+
+#: TurtleArt/tabasics.py:1278
+msgid "move all blocks to trash"
+msgstr "gbe gbogbo awọn ohun amorindun to idọti"
+
+#~ msgid ""
+#~ "A Logo-inspired turtle that draws colorful pictures with snap-together "
+#~ "visual programming blocks"
+#~ msgstr ""
+#~ "A Logo-atilẹyin adaba ti o fa lo ri awọn aworan pẹlu imolara-pọ visual "
+#~ "siseto awọn bulọọki"
 
 #~ msgid " "
 #~ msgstr " "
