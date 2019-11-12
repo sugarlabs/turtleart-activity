@@ -7,21 +7,20 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-03-24 17:39+1100\n"
-"PO-Revision-Date: 2012-11-14 05:39+0200\n"
-"Last-Translator: Chris <cjl@laptop.org>\n"
-"Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
-"Language: pl\n"
+"PO-Revision-Date: 2016-05-24 02:33+0000\n"
+"Last-Translator: Chris <cjl@sugarlabs.org>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: agr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Pootle 2.0.5\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.5.1.1\n"
+"X-POOTLE-MTIME: 1464057238.000000\n"
 
 #: activity/activity.info:2
-#, fuzzy
 msgid "TurtleBlocks"
-msgstr "bloki żółwia"
+msgstr "Kugkúim"
 
 #: TurtleArtActivity.py:127
 msgid "Please wait"
@@ -41,157 +40,162 @@ msgstr ""
 
 #: TurtleArtActivity.py:414
 msgid "snapshot"
-msgstr "stopklatka"
+msgstr "Wáamak"
 
 #: TurtleArtActivity.py:459 TurtleArtActivity.py:816 TurtleArtActivity.py:966
 msgid "Turn off hover help"
-msgstr "Wyłącz pomoc przy najechaniu myszką"
+msgstr "Agkántu asamatai yáimu flotante tawa nunu."
 
 #: TurtleArtActivity.py:468 TurtleArt/turtleblocks.py:482
 msgid "Turn on hover help"
-msgstr "Włącz pomoc przy najechaniu myszką"
+msgstr "Shig wakeas atunit wampumát"
 
 #: TurtleArtActivity.py:478 TurtleArt/turtleblocks.py:496
 msgid "Show palette"
-msgstr "Pokaż przybornik"
+msgstr "Iwainakta paleta"
 
 #: TurtleArtActivity.py:484 TurtleArtActivity.py:1180
 #: TurtleArt/turtleblocks.py:498
 msgid "Hide palette"
-msgstr "Schowaj przybornik"
+msgstr "Uút paleta"
 
 #: TurtleArtActivity.py:526 TurtleArtActivity.py:880
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1347
 #: TurtleArt/talogo.py:442
 msgid "Show blocks"
-msgstr "Pokaż klocki"
+msgstr "Inakmasta ijundaiju"
 
 #: TurtleArtActivity.py:530 TurtleArtActivity.py:1192 TurtleArt/talogo.py:446
 msgid "Hide blocks"
-msgstr "Schowaj klocki"
+msgstr "Uúkta ijumjamu"
 
 #: TurtleArtActivity.py:652
 msgid "Rescale coordinates down"
-msgstr "Przeskaluj współrzędne w dół"
+msgstr "Wát coordenadas tawa nu nugkan."
 
 #: TurtleArtActivity.py:661 TurtleArtActivity.py:807 TurtleArtActivity.py:962
 msgid "Rescale coordinates up"
-msgstr "Przeskaluj współrzędne w górę"
+msgstr "Wát coordenadas tawa nu yakin."
 
 #: TurtleArtActivity.py:757 TurtleArtActivity.py:873 TurtleArtActivity.py:936
 #: TurtleArt/turtleblocks.py:493
 msgid "Edit"
-msgstr "Edytuje"
+msgstr "Agagta dutikam inakmasta"
 
 #: TurtleArtActivity.py:762 TurtleArtActivity.py:874 TurtleArtActivity.py:954
 #: TurtleArt/turtleblocks.py:484
 msgid "View"
-msgstr "Widok"
+msgstr "Diít"
 
 #: TurtleArtActivity.py:784 TurtleArtActivity.py:937
 #: TurtleArt/turtleblocks.py:487
 msgid "Copy"
-msgstr "Kopiuj"
+msgstr "Enagket"
 
 #: TurtleArtActivity.py:786 TurtleArtActivity.py:938
 #: TurtleArt/turtleblocks.py:488
 msgid "Paste"
-msgstr "Wklej"
+msgstr "Anujut"
 
 #: TurtleArtActivity.py:788
 msgid "Restore blocks from trash"
-msgstr "przywróć klocki z kosza"
+msgstr "Patakam awagkin itanta bloques de la papelera tawa nu"
 
 #: TurtleArtActivity.py:791 TurtleArtActivity.py:939
 #: TurtleArt/turtleblocks.py:489 TurtleArt/tawindow.py:1514
 msgid "Save stack"
-msgstr ""
+msgstr "Pira ukúkta"
 
 #: TurtleArtActivity.py:793 TurtleArt/turtleblocks.py:491
 #: TurtleArt/tawindow.py:1553 TurtleArt/tawindow.py:1561
 #: TurtleArt/tawindow.py:1570
 msgid "Delete stack"
-msgstr ""
+msgstr "Esakáut pira"
 
 #: TurtleArtActivity.py:796 TurtleArtActivity.py:955
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:961
 msgid "Fullscreen"
-msgstr "Pełen ekran"
+msgstr "Pantalla muun emata"
 
+# Determinar termino
 #: TurtleArtActivity.py:799 TurtleArtActivity.py:956
 #: TurtleArt/turtleblocks.py:468
 msgid "Cartesian coordinates"
-msgstr "współrzędne kartezjańskie"
+msgstr "Takasmi Coordenadas cartesianas"
 
+# Determinar termino
 #: TurtleArtActivity.py:801 TurtleArtActivity.py:958
 #: TurtleArt/turtleblocks.py:470
 msgid "Polar coordinates"
-msgstr "Współrzędne biegunowe"
+msgstr "Takasmi Coordenadas polares"
 
+# Determinar término
 #: TurtleArtActivity.py:804 TurtleArtActivity.py:960
 msgid "Metric coordinates"
-msgstr "Współrzędne metryczne"
+msgstr "Takasmi Coordenadas centímetros"
 
 #: TurtleArtActivity.py:810 TurtleArtActivity.py:964
 #: TurtleArt/turtleblocks.py:475
 msgid "Grow blocks"
-msgstr "Powiększ klocki"
+msgstr "Ayampaut bloques tawa nu."
 
+# Determinar término
 #: TurtleArtActivity.py:813 TurtleArtActivity.py:965
 #: TurtleArt/turtleblocks.py:477
 msgid "Shrink blocks"
-msgstr "Zmniejsz klocki"
+msgstr "Uchuchiji emamu bloques"
 
 #: TurtleArtActivity.py:843 TurtleArtActivity.py:881 TurtleArtActivity.py:1146
 msgid "Load example"
-msgstr "Załaduj przykład"
+msgstr "Egkét diisa takastin"
 
+# guardar/cargar (ARCHIVO)
 #: TurtleArtActivity.py:872 TurtleArtActivity.py:899
 msgid "Save/Load"
-msgstr "Zapisz/Załaduj"
+msgstr "Ukút/Aimat"
 
 #: TurtleArtActivity.py:875
 msgid "Project"
-msgstr "Projekt"
+msgstr "Takat umikbau najanamu"
 
 #: TurtleArtActivity.py:876 TurtleArtActivity.py:1186
 #: TurtleArt/turtleblocks.py:505
 msgid "Clean"
-msgstr "Wyczyść"
+msgstr "Jaupit"
 
 #: TurtleArtActivity.py:877 TurtleArtActivity.py:1188
 #: TurtleArt/turtleblocks.py:506
 msgid "Run"
-msgstr "Uruchom"
+msgstr "Dútikat, áikat"
 
 #: TurtleArtActivity.py:878 TurtleArtActivity.py:1190
 #: TurtleArt/turtleblocks.py:507
 msgid "Step"
-msgstr "Krok"
+msgstr "Sút makichik nagkáemamu"
 
 #: TurtleArtActivity.py:879
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1356
 #: TurtleArt/talogo.py:432 TurtleArt/tawindow.py:1269
 msgid "Stop turtle"
-msgstr "Zatrzymaj żółwia"
+msgstr "Itájitmikata kugkúim"
 
 #: TurtleArtActivity.py:882 TurtleArt/turtleblocks.py:517
 #: TurtleArt/util/helpbutton.py:44
 msgid "Help"
-msgstr "Pomoc"
+msgstr "Yaimat"
 
 #: TurtleArtActivity.py:883 TurtleArt/turtleblocks.py:509
 msgid "Stop"
-msgstr "Stop"
+msgstr "Itájit"
 
 #: TurtleArtActivity.py:898 TurtleArt/tawindow.py:2048
 #: TurtleArt/tacollaboration.py:154
 msgid "Share selected blocks"
-msgstr "Współdziel wybrane klocki"
+msgstr "Tindamdaikatajum bloques tawa nu etegjamu"
 
 #: TurtleArtActivity.py:900 TurtleArtActivity.py:1103
 msgid "Save as image"
-msgstr "Zapisz jako obraz"
+msgstr "Ukúkta kuitamkam dakumkamujai"
 
 #: TurtleArtActivity.py:903 TurtleArtActivity.py:1106
 msgid "Save as icon"
@@ -204,7 +208,7 @@ msgstr ""
 
 #: TurtleArtActivity.py:913 TurtleArtActivity.py:1121
 msgid "Save as Logo"
-msgstr "Zapisz jako Logo"
+msgstr "Ukút wajuk awa logo tawa nu"
 
 #: TurtleArtActivity.py:914 TurtleArtActivity.py:1124
 msgid "Save as Python"
@@ -212,46 +216,47 @@ msgstr ""
 
 #: TurtleArtActivity.py:915 TurtleArtActivity.py:1128
 msgid "Save snapshot"
-msgstr "Zapisz stopklatkę"
+msgstr "Ukút wáamak"
 
 #: TurtleArtActivity.py:916 TurtleArtActivity.py:1155
 #: TurtleArt/turtleblocks.py:438
+#, fuzzy
 msgid "Add project"
-msgstr ""
+msgstr "Entsát takat umiktin najanamu"
 
 #: TurtleArtActivity.py:919 TurtleArtActivity.py:1160
 #: TurtleArt/turtleblocks.py:439
 msgid "Load plugin"
-msgstr "Załaduj wtyczkę"
+msgstr "Aimkata plugin"
 
 #: TurtleArtActivity.py:920 TurtleArtActivity.py:1163
 msgid "Load Python block"
-msgstr "Ładuj blok Pythona"
+msgstr "Entsát bloque Python"
 
 #: TurtleArtActivity.py:1075
-#, fuzzy
 msgid "Palettes"
-msgstr "przybornik kolorów"
+msgstr "Dekami Paletas"
 
 #: TurtleArtActivity.py:1093
 msgid "Sharing blocks disabled"
-msgstr "Wspóldzielenie klocków zablokowane"
+msgstr "Tinamdaiyatajum bloques deshabilitado awa nu"
 
 #: TurtleArtActivity.py:1098 TurtleArt/turtleblocks.py:441
 msgid "Save"
-msgstr "Zapisz"
+msgstr "Ukukta"
 
 #: TurtleArtActivity.py:1131
 msgid "Save blocks as image"
 msgstr ""
 
 #: TurtleArtActivity.py:1135
+#, fuzzy
 msgid "Load"
-msgstr ""
+msgstr "Egkét"
 
 #: TurtleArtActivity.py:1152 TurtleArt/turtleblocks.py:437
 msgid "Open"
-msgstr "Otwórz"
+msgstr "Ujat"
 
 #: TurtleArtActivity.py:1181
 msgid "<Ctrl>p"
@@ -276,123 +281,123 @@ msgstr "<Ctrl>s"
 #: TurtleArtActivity.py:1379
 #, python-format
 msgid "Plugin %s already installed."
-msgstr "Wtyczka %s już jest zainstalowana."
+msgstr "El plugin %s juka instalamuwai."
 
 #: TurtleArtActivity.py:1380 TurtleArt/turtleblocks.py:591
 #, python-format
 msgid "Do you want to reinstall %s?"
-msgstr "Czy na pewno chcesz zainstalować ponownie %s?"
+msgstr "¿Patakam instalatakumek %s?"
 
 #: gnome_plugins/collaboration_plugin.py:64
 msgid "My Turtle Art session"
-msgstr "Moja sesja z Żółwia Sztuką"
+msgstr "Takat umikbau kugkúimArtenu"
 
 #: gnome_plugins/collaboration_plugin.py:111
 msgid "Enable collaboration"
-msgstr "Aktywuj tryb współpracy"
+msgstr "Tsagkamát shig wakegas yáimu"
 
 #: gnome_plugins/collaboration_plugin.py:116
 msgid "Activities"
-msgstr "Aktywności"
+msgstr "Unuimaku takastin"
 
 #: gnome_plugins/collaboration_plugin.py:121
 msgid "Buddies"
-msgstr "Koledzy"
+msgstr "Tsanitai"
 
 #: gnome_plugins/collaboration_plugin.py:124
 msgid "Share"
-msgstr "Podziel się"
+msgstr "Tinamdaiyatajum"
 
 #: gnome_plugins/collaboration_plugin.py:125
 msgid "Configuration"
-msgstr "Konfiguracja"
+msgstr "Ashi programa computadornum awa nuna tawai"
 
 #: gnome_plugins/collaboration_plugin.py:128
 msgid "Neighborhood"
-msgstr "Sąsiedztwo"
+msgstr "Pata ijuntsa batsatkamu"
 
 #: gnome_plugins/collaboration_plugin.py:289
 msgid "Nickname"
-msgstr "Ksywka"
+msgstr "Iwájsa andaikamu"
 
 #: gnome_plugins/collaboration_plugin.py:291
 msgid "Account ID"
-msgstr "ID konta"
+msgstr "Augmatsata"
 
 #: gnome_plugins/collaboration_plugin.py:293
 msgid "Server"
-msgstr "Serwer"
+msgstr "Aents tikichdau takau"
 
 #: gnome_plugins/collaboration_plugin.py:295
 msgid "Port"
-msgstr "Port"
+msgstr "Anuúmtai"
 
 #: gnome_plugins/collaboration_plugin.py:297
 msgid "Password"
-msgstr "Hasło"
+msgstr "Daa agagbau amek dekamu, tikich inaktumainchuitme."
 
 #: gnome_plugins/collaboration_plugin.py:299
 msgid "Register"
-msgstr "Zarejestruj się"
+msgstr "Daa agagbau abacha diisa"
 
 #: gnome_plugins/collaboration_plugin.py:301
 msgid "Colors"
-msgstr "Kolory"
+msgstr "Niimé"
 
 #: gnome_plugins/fb_plugin.py:82 gnome_plugins/fb_plugin.py:83
 #: gnome_plugins/fb_plugin.py:91 gnome_plugins/uploader_plugin.py:63
 #: gnome_plugins/uploader_plugin.py:64 gnome_plugins/uploader_plugin.py:73
 msgid "Upload"
-msgstr "Wgraj"
+msgstr "Aimat"
 
 #: gnome_plugins/fb_plugin.py:87
 msgid "Facebook wall post"
-msgstr ""
+msgstr "Diismi muro de facebook"
 
 #: gnome_plugins/uploader_plugin.py:68
 msgid "Upload to Web"
-msgstr "Wgraj do Sieci"
+msgstr "Awemata Webnum"
 
 #: gnome_plugins/uploader_plugin.py:90
 msgid ""
 "You must have an account at http://turtleartsite.sugarlabs.org to upload "
 "your project."
 msgstr ""
-"Musisz mieć konto w http://turtleartsite.sugarlabs.org aby wgrać tam swój "
-"projekt."
+"Ajumainai bakichik cuenta internetnum http://turtleartsite.sugarlabs.org "
+"Takat umiktin najanamu agagbau jiktatambau."
 
 #: gnome_plugins/uploader_plugin.py:99
 msgid "Username:"
-msgstr "Użytkownik:"
+msgstr "Usuario:"
 
 #: gnome_plugins/uploader_plugin.py:109
 msgid "Password:"
-msgstr "Hasło:"
+msgstr "Daa agagbau amek dekamu, tikich inaktumainchuitme."
 
 #: gnome_plugins/uploader_plugin.py:120
 msgid "Title:"
-msgstr "Tytuł:"
+msgstr "Umiktin"
 
 #: gnome_plugins/uploader_plugin.py:130
 msgid "Description:"
-msgstr "Opis:"
+msgstr "Niime augmatbau:"
 
 #: gnome_plugins/uploader_plugin.py:140
 msgid "Submit to Web"
-msgstr "Prześlij do Internetu"
+msgstr "Awamata nanum Webnum"
 
 #: gnome_plugins/uploader_plugin.py:144 TurtleArt/tawindow.py:1518
 #: TurtleArt/tawindow.py:1557
 msgid "Cancel"
-msgstr "Anuluj"
+msgstr "Takamu ukuta"
 
 #: gnome_plugins/uploader_plugin.py:172
 msgid "Login failed"
-msgstr "Nie można zalogować"
+msgstr "Besegbáu autentificación"
 
 #: gnome_plugins/uploader_plugin.py:209
 msgid "Failed to upload!"
-msgstr "Wgranie pliku nie powiodło się!"
+msgstr "¡Besegbau descargarDewat!"
 
 #: pyexported/window_setup.py:39
 msgid ""
@@ -403,44 +408,44 @@ msgstr ""
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:72
 #: TurtleArt/tabasics.py:926
 msgid "Palette of flow operators"
-msgstr "Przybornik operatorów kontroli przepływu"
+msgstr "Takasmi Paleta de operadores de flujo"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:76
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:79
 msgid "while"
-msgstr "podczas gdy"
+msgstr "Tujamtai"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:80
 msgid "do-while-True operator that uses boolean operators from Numbers palette"
 msgstr ""
-"operator 'powtarzaj-dopóki-Prawda', który używa operatorów logicznych z "
-"przybornika liczb"
+"Dutikattaji kuwashat takat bloquesnu nuniak umimkattawai wajuk jasa atatua "
+"yama nagkabau aanik."
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:97
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:100
 msgid "until"
-msgstr "dopóki"
+msgstr "Ejeyi"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:101
 msgid "do-until-True operator that uses boolean operators from Numbers palette"
-msgstr ""
-"operator 'wykonuj-dopóki-Prawda' używa operatorów logicznych z przybornika "
-"Liczby"
+msgstr "Takat dutikatin kuwashat bloquesnu ejetatabaunum shig pegken ati tambau"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:121
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:854
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1071
 msgid "top"
-msgstr "góra"
+msgstr "Náin"
 
+# definir termino plegable
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:123
 msgid "top of a collapsible stack"
-msgstr "wierzch zwijalnego stosu"
+msgstr "Náin pira abaunum plegable tawa nunu"
 
+# Definir término
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:133
 #: plugins/camera_sensor/camera_sensor.py:71
 msgid "Palette of media objects"
-msgstr "Paleta obiektów multimedialnych"
+msgstr "Paleta de bloques medios"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:135
 msgid "media"
@@ -448,35 +453,35 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:141
 msgid "journal"
-msgstr "dziennik"
+msgstr "Tsawantai"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:142
 msgid "Sugar Journal media object"
-msgstr "Obiekt z dziennika Bajtek.edu.pl"
+msgstr "Wají aidau takatai diarionun yumintsak"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:153
 msgid "audio"
-msgstr "audio"
+msgstr "Shinau antumu, ejesmamu egkekbau."
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:155
 msgid "Sugar Journal audio object"
-msgstr "obiekt audio Dziennika Bajtek.edu.pl"
+msgstr "Wají aidau antutainum diario nu yumintsak"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:166
 msgid "video"
-msgstr "wideo"
+msgstr "Dakumkamu inakmamu"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:168
 msgid "Sugar Journal video object"
-msgstr "obiekt wideo Dziennika Bajtek.edu.pl"
+msgstr "objeto de video del Diario de Sugar"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:179
 msgid "description"
-msgstr "opis"
+msgstr "Niíme augmatbau"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:181
 msgid "Sugar Journal description field"
-msgstr "pole opisowe Dziennika Bajtek.edu.pl"
+msgstr "Wasugkamtainum niime augmatbau diario nu yumintsak"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:190
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:191
@@ -486,32 +491,34 @@ msgstr "pole opisowe Dziennika Bajtek.edu.pl"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:921
 #: TurtleArt/taconstants.py:452
 msgid "text"
-msgstr "tekst"
+msgstr "Chicham agagbau"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:193
 msgid "string value"
-msgstr "wartość tekstowa"
+msgstr "Takasmi valor de cadena tawa nu"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:197
 msgid "show"
-msgstr "pokaż"
+msgstr "Inakmasta"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:201
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:216
 msgid "draws text or show media from the Journal"
-msgstr "wypisuje tekst lub pokazuje multimedia z Dziennika"
+msgstr ""
+"Dakumkata chicham agagbau nuniashkumesh inakmasta takatai aidau diarionu "
+"pujasa"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:212
 msgid "show aligned"
-msgstr "pokaż wyrównane"
+msgstr "Inakmasta tsegtsagbau"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:225
 msgid "set scale"
-msgstr "ustaw skalę"
+msgstr "Etégket"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:229
 msgid "sets the scale of media"
-msgstr "ustawia skalę (mediów)"
+msgstr "fijar la escala de mediosEtégket escala medios nu tawa nunu"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:239
 msgid "set font"
@@ -523,232 +530,250 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:249
 msgid "save picture"
-msgstr "zapisz obrazek"
+msgstr "Ukukta dakumkamu"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:251
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:262
 msgid "picture name"
-msgstr "nazwa obrazka"
+msgstr "Daa agagbau dakumkamunu"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:252
 msgid "saves a picture to the Sugar Journal"
-msgstr "zapisuje obraz do Dziennika Bajtek.edu.pl"
+msgstr "Egkékta dakumkamu diario yumintskanu"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:260
 msgid "save SVG"
-msgstr "zapisz SVG"
+msgstr "Ukukta SVG"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:263
 msgid "saves turtle graphics as an SVG file in the Sugar Journal"
-msgstr "zapisuje grafikę żółwia jako plik SVG w Dzienniku Bajtek.edu.pl"
+msgstr "Ukúkta kugkúimnu tsentsagbau wajuk archivo SVG diarionu yumintsakanu"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:272
 msgid "scale"
-msgstr "skala"
+msgstr "Wáit númi átuimunum"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:276
 msgid "holds current scale value"
-msgstr "przechowuje bieżącą wartość skali"
+msgstr "Aintsan wai senchiji yamaipat wáitnum"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:283
 msgid "media wait"
-msgstr "czeka na media"
+msgstr "Dakasta medios tawa nu."
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:285
 msgid "wait for current video or audio to complete"
-msgstr "poczekaj na zakończenie bieżącego audio lub video"
+msgstr "Dakasta ejeyi betekmam antutai nuwintu diitai"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:291
 msgid "media stop"
-msgstr "zatrzymaj media"
+msgstr "Itajitmikata medios tawa nu"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:293
 msgid "stop video or audio"
-msgstr "zatrzymaj video lub audio"
+msgstr "Itajit video diiyamu nuniashkush audio antamu"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:298
 msgid "media pause"
-msgstr "wstrzymaj media"
+msgstr "Itajitmikata medios tawa nu"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:300
 msgid "pause video or audio"
-msgstr "Wstrzymaj wideo lub audio"
+msgstr "Itajitmikata video diamnu nuniashkush antam nu"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:305
 msgid "media resume"
-msgstr "Wznów media"
+msgstr "Emát medios tawa nu"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:307
 msgid "resume playing video or audio"
-msgstr "Wznów odtwarzanie wideo lub audio"
+msgstr "Patakam video ipujata nuniaskumes ishigkata antukmi"
 
+# decir
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:312
 msgid "speak"
-msgstr "mówić"
+msgstr "Chichat"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:314
 msgid "hello"
-msgstr "cześć"
+msgstr "Amekaitam"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:315
 msgid "speaks text"
-msgstr "mówi tekst"
+msgstr "Tawai agagbaunum"
 
 #. TRANS: pitch, duration, amplitude
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:323
 msgid "sinewave"
-msgstr "fala sinusoidalna"
+msgstr "Tsegtsanbau aidau tuninniju."
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:323
 #: plugins/audio_sensors/audio_sensors.py:126
 msgid "pitch"
-msgstr "wysokość tonu"
+msgstr "Dekami frecuencia Radio chichamu antutai"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:324
 msgid "amplitude"
-msgstr "amplituda"
+msgstr "Agkáju"
 
+# Tiempo de duración
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:324
 msgid "duration"
-msgstr "czas trwania"
+msgstr "Dukap rsawan awai"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:327
 msgid "plays a sinewave at frequency, amplitude, and duration (in seconds)"
 msgstr ""
-"gra falę sinusoidalną o częstotliwości, amplitudzie i trwaniu ( w sekundach)"
+"Dakumjata tsegkagbau aidau frecuencianu pujusam, aintsan amplitud nuwintu "
+"dukap(segundos tawa nu)"
 
+# definir término
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:339
 #: plugins/camera_sensor/camera_sensor.py:67 plugins/rfid/rfid.py:87
 #: plugins/accelerometer/accelerometer.py:50
 #: plugins/light_sensor/light_sensor.py:52
 #: plugins/audio_sensors/audio_sensors.py:84
 msgid "Palette of sensor blocks"
-msgstr "Przybornik klocków z czujnikami"
+msgstr "Paleta de bloques sensor"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:341
 msgid "sensor"
-msgstr "czujnik"
+msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:346
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:357
 msgid "button down"
-msgstr "guzik w dół"
+msgstr "Butun iniinam awai"
 
+# devuelve en lugar de retorna - mouse en lugar de ratón
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:349
 msgid "returns 1 if mouse button is pressed"
-msgstr "zwraca 1 jeśli wciśnięty zostaje przycisk myszy"
+msgstr "Wakitkita chik1 butun katipnu iiniman nunishkush enekmam akuin"
 
+# devuelve en lugar de retorna - mouse en lugar de ratón
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:360
 msgid "returns True if mouse button is pressed"
-msgstr "zwraca Prawda jeśli wciśnięty zostaje przycisk myszy"
+msgstr "Awankita dekaskea nu, butun katipnu iininam ematuam akuin"
 
+# mouse x o cursor
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:368
 msgid "mouse x"
-msgstr "myszka x"
+msgstr "usor x tawa nunu"
 
+# devuelve en lugar de retorna - mouse en lugar de ratón
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:371
 msgid "returns mouse x coordinate"
-msgstr "zwraca współrzędną x myszki"
+msgstr "Awankita cordenada tawa nunu x corsornu"
 
+# mouse y - ratón y
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:379
 msgid "mouse y"
-msgstr "myszka y"
+msgstr ""
+"cursor y cursor tawa duka nágkijai betekai juka ujapawai utugni emattame "
+"pantallanum ame umuchiakme mause tawa nunu mainkatame betek buchitkattawai."
 
+# devuelve en lugar de retorna - mouse en lugar de ratón
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:382
 msgid "returns mouse y coordinate"
-msgstr "zwraca współrzędną y myszki"
+msgstr "retorna la coordenada y del cursor"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:390
 msgid "query keyboard"
-msgstr "odczytaj klawiaturę"
+msgstr "Iimimsa dekata teclado"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:392
 msgid "query for keyboard input (results stored in keyboard block)"
-msgstr "odczytuje klawiaturę (wynik zapisywany jest w klocku klawiatury)"
+msgstr ""
+"Inimsata wajuk wáitaita tecadonum (Jigbau aidau wai almacenamunum bloque "
+"tecladonum)"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:400
 msgid "keyboard"
-msgstr "klawiatura"
+msgstr "Abacha agagbau computadornum pekakbau, chicham agatai"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:404
 msgid "holds results of query-keyboard block as ASCII"
-msgstr "przechowuje wynik działania klocka odczytu klawiatury jako ASCII"
+msgstr ""
+"ASCII Imajuin jigbau awai bloque tawa nundau, aintsan teclado iinimain "
+"jutikam ACII"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:412
 msgid "read pixel"
-msgstr "odczytaj piksle"
+msgstr "Augbau pixel"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:415
 msgid "RGB color under the turtle is pushed to the stack"
-msgstr "Kolor RGB pod żółwiem jest odesłany do stosu"
+msgstr "Pira emaji jakimtikbaunum RGB kugkúma nugkanjin"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:422
 msgid "turtle sees"
-msgstr "żółw widzi"
+msgstr "Kugkúim waipawai"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:425
 msgid "returns the color that the turtle \"sees\""
-msgstr "zwraca kolor jaki \"widzi\" żółw"
+msgstr "Inakmasta jakimtiktai kugkúim wainu /\"ve\"/"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:434
 msgid "time"
-msgstr "czas"
+msgstr "Tsawan"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:437
 msgid "elapsed time (in seconds) since program started"
-msgstr "upływ czasu (w sekundach) od rozpoczęcia programu"
+msgstr "Tsawan nagkaemakbau(segundos tawa nu) takat nagkama umikbau"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:462
 msgid "Palette of extra options"
-msgstr "Przybornik z dodatkowymi opcjami"
+msgstr "Paletanu etegjata ame tuwa atsumame"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:464
 msgid "extras"
 msgstr ""
 
+# desconozco termino
 #. TRANS: push adds a new item to the program stack
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:469
 msgid "push"
-msgstr "na stos"
+msgstr "Ijumjamu pekakbau awántak"
 
+# término por definir
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:472
 msgid "pushes value onto FILO (first-in last-out heap)"
-msgstr "odkłada wartość na stos (FILO, first-in-last-out)"
+msgstr "Dekami apila ajánchat pira nu (primero en entrar, último en salir)"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:484
 msgid "show heap"
-msgstr "pokaż stos"
+msgstr "Inakmasta pira"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:487
 msgid "shows values in FILO (first-in last-out heap)"
-msgstr "pokazuje wartości ze stosu ( FILO, first-in last-out)"
+msgstr "Inakmasta valores a pira(émat wáit, inánamunum jinkittaja)"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:499
 msgid "empty heap"
-msgstr "opróżnij stos"
+msgstr "Agkán emata pira"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:502
 msgid "emptys FILO (first-in-last-out heap)"
-msgstr "opróżnia stos (FILO, first-in-last-out)"
+msgstr "Agkán emata pira(émat wáit, inánamunum jinkittajai)"
 
 #. TRANS: pop removes a new item from the program stack
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:513
 msgid "pop"
-msgstr "ze stosu"
+msgstr "Jikta"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:517
 msgid "pops value off FILO (first-in last-out heap)"
-msgstr "zdejmuje wartość ze stosu (FILO, first-in last-out)"
+msgstr "Jikta valor piranu (émat wáit, inágnamunum jiinkittajai)"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:529
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:585
 msgid "empty heap?"
-msgstr "opróżnić stos?"
+msgstr "pira agkán?"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:532
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:588
 msgid "returns True if heap is empty"
-msgstr "zwraca Prawda, gdy stos jest pusty"
+msgstr "Awankin tita dekasketkun pira agkán akug"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:544
 msgid "save heap to file"
@@ -779,36 +804,42 @@ msgstr ""
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:600
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:602
 msgid "comment"
-msgstr "komentarz"
+msgstr "Augmatsata"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:604
 msgid "places a comment in your code"
-msgstr "wstawia komentarz w twoim kodzie"
+msgstr "Agagta chicham sutamak augmatsata códigonum"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:611
 msgid "print"
-msgstr "pisz"
+msgstr "Papi agagbau egkekbau betek dakumak jiyau."
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:615
 msgid "prints value in status block at bottom of the screen"
-msgstr "wypisuje wartość w klocku stanu na dole ekranu"
+msgstr ""
+"Dakumak jiiyawai papin betek egkekbau nuwintu senchiji bloquenu shig "
+"takamain, aintsak pujawai initken pantallanum"
 
+# Determinar término
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:626
 msgid "Python chr operator"
-msgstr "Python chr operator"
+msgstr "Yacha aents ishinin chr de Python"
 
+# Definir término
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:636
 msgid "Python int operator"
-msgstr "Python int operator"
+msgstr "Yacha ishinin int de Python"
 
+# cordenadas falta determinar término en la lengua
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:646
 msgid "polar"
-msgstr "biegun"
+msgstr "polar"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:648
 msgid "displays polar coordinates"
-msgstr "wyświetla współrzędne biegunowe"
+msgstr "Iwainakta coordenadas polares tawa nu."
 
+# Definir término en la lengua
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:654
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:669
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:685
@@ -821,44 +852,47 @@ msgid ""
 "a programmable block: used to add advanced single-variable math equations, e."
 "g., sin(x)"
 msgstr ""
-"klocek programowalny: uzywany do dodawania zaawansowanych równań "
-"matematycznych z jedną zmienną, np. sin(x)"
+"Chik najankamu takamain: esegamu páchinat ecuaciones matemáticas avanzadas "
+"de una variable, p.e., seno(x)"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:673
 msgid ""
 "a programmable block: used to add advanced multi-variable math equations, e."
 "g., sqrt(x*x+y*y)"
 msgstr ""
-"klocek programowalny: używany aby dodać równania matematyczne wielu "
-"zmiennych np. sqrt(x*x+y*y)"
+"Chik najankamu takamain: esegamu íjut takamu ecuaciones matemáticas "
+"avanzadas de múltiples variables, i.e., sqrt(x*x+y*y)"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:689
 msgid ""
 "a programmable block: used to add advanced multi-variable math equations, e."
 "g., sin(x+y+z)"
 msgstr ""
-"klocek programowalny: używany do dodawania równań matematycznych wielu "
-"zmiennych, np. sin(x+y+z)"
+"Chik najankamu takamain: esegámu takamain ecuaciones matemáticas avanzadas "
+"multivariables, p.e. seno(x+y+z)"
 
+# desconocimiento proximos al término
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:699
 msgid "Cartesian"
-msgstr "Kartezjańskie"
+msgstr "Takasmi Cartesiana"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:701
 msgid "displays Cartesian coordinates"
-msgstr "wyświetla współrzędne kartezjańskie"
+msgstr "Inakmasta coordenadas cartesianas"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:710
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:727
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:744
 msgid "Python block"
-msgstr "blok Pythona"
+msgstr "Najankamu Python"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:712
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:729
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:747
 msgid "runs code found in the tamyblock.py module found in the Journal"
-msgstr "uruchom kod znaleziony w module tamyblock.py znalezionym w Dzienniku"
+msgstr ""
+"Umikta ejecuta el código del módulo tamyblock.py que se encuentra en el "
+"Diario"
 
 #. TRANS: URL is universal resource locator
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:763
@@ -872,34 +906,36 @@ msgstr ""
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:778
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:788
 msgid "turtle shell"
-msgstr "skorupa żółwia"
+msgstr "Duwáp kugkúimnu"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:780
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:789
 msgid "put a custom 'shell' on the turtle"
-msgstr "ustawia własną 'skorupę' żółwia"
+msgstr "Apujata kugkúima duwápe personaliza tawa nu kugkúimnu"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:793
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:862
 #: TurtleArt/tabasics.py:159
 msgid "turtle"
-msgstr "żółw"
+msgstr "Kugkúim"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:797
 msgid "chooses which turtle to command"
-msgstr "wybiera którym żółwiem kierować"
+msgstr "Ándaikata tuu kugkúima ijúmat"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:804
+#, fuzzy
 msgid "turtle x"
-msgstr ""
+msgstr "Kugkúim"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:807
 msgid "Returns x coordinate of turtle"
 msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:816
+#, fuzzy
 msgid "turtle y"
-msgstr ""
+msgstr "Kugkúim"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:819
 msgid "Returns y coordinate of turtle"
@@ -907,11 +943,11 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:828
 msgid "active turtle"
-msgstr ""
+msgstr "Kugkúim takamain tortuga activa"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:831
 msgid "the name of the active turtle"
-msgstr ""
+msgstr "Daa kugkúimnu takamain paan awai"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:839
 msgid "turtle heading"
@@ -924,42 +960,42 @@ msgstr ""
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:852
 #: TurtleArt/tautils.py:638
 msgid "click to open"
-msgstr "kliknij aby otworzyć"
+msgstr "Imajui pijit ininata dutikam ujanattawai"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:855
 msgid "top of a collapsed stack"
-msgstr "szczyt zwiniętego stosu"
+msgstr "Náin makichik pira awai kakekau"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:860
+#, fuzzy
 msgid "select palette"
-msgstr ""
+msgstr "Etegjata chik paleta"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:863
 msgid "selects a palette"
-msgstr "zaznacz przybornik kolorów"
+msgstr "Etegjata chik paleta"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:871
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:883
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:897
 msgid "load"
-msgstr "załaduj"
+msgstr "Egkét"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:873
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:886
 #: TurtleArt/tabasics.py:163
 msgid "forward"
-msgstr "idź"
+msgstr "Eem"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:874
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:887
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:901
 msgid "loads a block"
-msgstr "ładuje klocek"
+msgstr "Egkét chik bloquenum"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:900
-#, fuzzy
 msgid "setxy"
-msgstr "ustaw xy"
+msgstr "Etegkat xy"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:912
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:918
@@ -978,7 +1014,7 @@ msgstr ""
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:919
 #: pysamples/grecord.py:212 TurtleArt/tabasics.py:1055
 msgid "start"
-msgstr "start"
+msgstr "Nagkamu"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:919
 msgid "end"
@@ -986,7 +1022,7 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:936
 msgid "Palette of presentation templates"
-msgstr "Przybornik szablonów prezentacji"
+msgstr "Paleta plantillanu iwainmamu"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:939
 msgid "portfolio"
@@ -994,126 +1030,128 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:943
 msgid "hide blocks"
-msgstr "schowaj schemat"
+msgstr "Uumát bloques"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:945
 msgid "declutters canvas by hiding blocks"
-msgstr "uporządkuj ekran chowając klocki"
+msgstr "Jaupjata lienzo uwau bloquen"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:952
 msgid "show blocks"
-msgstr "pokaż schemat"
+msgstr "Iwainat bloques tawa nu."
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:954
 msgid "restores hidden blocks"
-msgstr "przywraca schowane klocki"
+msgstr "Iwainat blokes tawa nu uukbau"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:963
 msgid "hides the Sugar toolbars"
-msgstr "ukryj paski narzędzi Bajtek.edu.pl"
+msgstr "Uumát barras herramientas tawa nundau yumintskanu"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:973
 msgid "list"
-msgstr "lista"
+msgstr "Uminas"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:977
 msgid "presentation bulleted list"
-msgstr "lista wypuntkowana prezentacji"
+msgstr "Iwainmamu uminas viñetas tawa nunu."
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:985
 msgid "presentation template: list of bullets"
-msgstr "szablon prezentacji: lista punktów"
+msgstr "plantillanum iwainamu: Uminas awai viñetas tawa nu"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:992
 msgid "presentation template: select Journal object (no description)"
-msgstr "szablon prezentacj: wybierz obiekt Dziennika (brak opisu)"
+msgstr "plantillanum iwainmamu: Etegjata wají diarionu (niime augmattsashbau)"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:999
 msgid "presentation template: select Journal object (with description)"
-msgstr "szablon prezentacj: wybierz obiekt Dziennika (z opisem)"
+msgstr "plantillanum iwainmamu: Etegjata wají diarionum (niime augmatbau)"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1006
 msgid "presentation template: select four Journal objects"
-msgstr "szablon prezentacji: wybierz cztery obiekty Dziennika"
+msgstr "plantillanum iwainmamu:Etegjata sup wají Diarionu"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1013
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1020
 msgid "presentation template: select two Journal objects"
-msgstr "szablon prezentacji: wybierz dwa obiekty z Dziennika"
+msgstr "plantillanum iwainmamu: Etegjata jim wajì diarionu"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1027
 #: TurtleArt/taconstants.py:149 TurtleArt/tabasics.py:210
 msgid "left"
-msgstr "w lewo"
+msgstr "Mena"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1030
 msgid "xcor of left of screen"
-msgstr "współrzędna x lewej strony ekranu"
+msgstr "coorx awai menanum pantalllanum"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1038
 msgid "bottom"
-msgstr "dół"
+msgstr "Initken"
 
+# Falta determinar términos
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1041
 msgid "ycor of bottom of screen"
-msgstr "współrzędna y dołu ekranu"
+msgstr "coory tawa duka awai limiteinum nugkan pantallanum"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1049
 msgid "width"
-msgstr "szerokość"
+msgstr "Wegkantí"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1052
 msgid "the canvas width"
-msgstr "szerokość ramy"
+msgstr "Lienzo Wegkantí"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1060
 #: TurtleArt/taconstants.py:151 TurtleArt/tabasics.py:224
 msgid "right"
-msgstr "w prawo"
+msgstr "Untsun"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1063
 msgid "xcor of right of screen"
-msgstr "współrzędna x prawej strony ekranu"
+msgstr "xcornum awai yagtamen untsugnum pantallanu"
 
+# Por definir el término
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1074
 msgid "ycor of top of screen"
-msgstr "współrzędna y góry ekranu"
+msgstr "ycor pujawai limite yakig pantallanum"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1082
 msgid "height"
-msgstr "wysokość"
+msgstr "Esánji"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1085
 msgid "the canvas height"
-msgstr "wysokość ramy"
+msgstr "Yakinjin lienzo nu"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1095
 msgid "title x"
-msgstr "tytuł x"
+msgstr "Umiktin x"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1107
 msgid "title y"
-msgstr "tytuł y"
+msgstr "Umiktin y"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1119
 msgid "left x"
-msgstr "w lewo x"
+msgstr "Mena x"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1131
 msgid "top y"
-msgstr "góra y"
+msgstr "Yakí y"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1143
 msgid "right x"
-msgstr "w prawo x"
+msgstr "Untsugnum x"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1155
 msgid "bottom y"
-msgstr "dół y"
+msgstr "Initken y"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1174
 msgid "Palette of user-defined operators"
-msgstr ""
+msgstr "Paleta de operaciones tawa nunu umikbauwai usuario takamaina nunu"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1175
 msgid "my blocks"
@@ -1124,87 +1162,95 @@ msgstr ""
 #: plugins/light_sensor/light_sensor.py:58
 #: plugins/light_sensor/light_sensor.py:66
 msgid "brightness"
-msgstr "jasność"
+msgstr "Etsánbau"
 
 #: plugins/camera_sensor/camera_sensor.py:92
 msgid "light level detected by camera"
-msgstr "kamera wykryła poziom światła"
+msgstr "Betek etsánbauji wainkae cámara"
 
 #: plugins/camera_sensor/camera_sensor.py:107
 #: plugins/camera_sensor/camera_sensor.py:115
 msgid "camera output"
-msgstr "wyjście kamery"
+msgstr "Dakumkamu Kamarajai"
 
 #: plugins/camera_sensor/camera_sensor.py:124
 msgid "Average RGB color from camera is pushed to the stack"
-msgstr "Średni kolor RGB z kamery jest odkładany na stos"
+msgstr "Betek mamtin usuamu RGB cámaranu buchitui piranum"
 
+# Se utilizan las siglas en inglés para "Identificación por Radio Frecuencia"
 #: plugins/rfid/rfid.py:93 plugins/rfid/rfid.py:101
 msgid "RFID"
 msgstr "RFID"
 
 #: plugins/rfid/rfid.py:94 plugins/rfid/rfid.py:102
 msgid "read value from RFID device"
-msgstr "odczytaj wartość z urządzenia RFID"
+msgstr "Augui dispoditivo akíke radiofrecuenciaji (RFID)"
 
+# Definir término
 #: plugins/accelerometer/accelerometer.py:56
 #: plugins/accelerometer/accelerometer.py:63
 msgid "acceleration"
-msgstr "przyspieszenie"
+msgstr "acelerómetro"
 
 #: plugins/accelerometer/accelerometer.py:58
 #: plugins/accelerometer/accelerometer.py:65
 msgid "push acceleration in x, y, z to heap"
-msgstr "odłóż wartości przyspieszenia (x, y, z) na stos"
+msgstr "Apújut wamketush ejes tawa nundau x,y z piranum"
 
 #: plugins/light_sensor/light_sensor.py:61
 #: plugins/light_sensor/light_sensor.py:69
 msgid "light level detected by light sensor"
-msgstr "poziom światła wykryty przez czujnik światła"
+msgstr "Betek etsánbauji wainkae sensor tawa nunu."
 
 #: plugins/audio_sensors/audio_sensors.py:93 pysamples/grecord.py:207
 msgid "sound"
-msgstr "dźwięk"
+msgstr "Shinut"
 
 #: plugins/audio_sensors/audio_sensors.py:94
 msgid "raw microphone input signal"
-msgstr "surowy sygnał wejścia mikrofonowego"
+msgstr "Mamikit wait micrófonon"
 
 #: plugins/audio_sensors/audio_sensors.py:100
 msgid "loudness"
-msgstr "głośność"
+msgstr "Sénchi"
 
 #: plugins/audio_sensors/audio_sensors.py:101
 msgid "microphone input volume"
-msgstr "głośność wejścia mikrofonowego"
+msgstr "Sénchi wáit microfononum"
 
 #: plugins/audio_sensors/audio_sensors.py:127
 msgid "microphone input pitch"
-msgstr "wysokość tonu wejścia mikrofonu"
+msgstr ""
+"Riodio frecuenciaji senchi chuchau nuwintu shig antundau microfononum "
+"chichcam wayak"
 
 #: plugins/audio_sensors/audio_sensors.py:160
 #: plugins/audio_sensors/audio_sensors.py:178
 msgid "resistance"
-msgstr "opór"
+msgstr "Átsanbau"
 
 #: plugins/audio_sensors/audio_sensors.py:161
 #: plugins/audio_sensors/audio_sensors.py:179
 msgid "microphone input resistance"
-msgstr "opór wejścia mikrofonu"
+msgstr ""
+"Akíke átsanbau ijuk achitkau waitainum micrófononum (rango de medición: 700 "
+"a 14000 ohms)"
 
 #: plugins/audio_sensors/audio_sensors.py:166
 #: plugins/audio_sensors/audio_sensors.py:184
 msgid "voltage"
-msgstr "napięcie"
+msgstr "Sénchi japijatin"
 
 #: plugins/audio_sensors/audio_sensors.py:167
 #: plugins/audio_sensors/audio_sensors.py:185
 msgid "microphone input voltage"
-msgstr "napięcie wejścia mikrofonowego"
+msgstr ""
+"Akíke senchi japijatnunum DC ijuka waitnu micrófonunum (rango: 0.40 a 1.90 "
+"V),"
 
 #: pysamples/uturn.py:35
 msgid "uturn"
-msgstr "półobrót"
+msgstr "Ayampat U"
 
 #: pysamples/uturn.py:37
 msgid "turns the turtle 180 degrees"
@@ -1212,83 +1258,92 @@ msgstr ""
 
 #: pysamples/brain.py:43
 msgid "Please install the Speak Activity and try again."
-msgstr ""
+msgstr "Wait aneasam instalata unuimaku takastin Chichat patakam ataktu umikta."
 
 #: pysamples/brain.py:52
 msgid "Spanish"
-msgstr ""
+msgstr "Apach"
 
+# Chicham inglesnun
 #: pysamples/brain.py:56 pysamples/brain.py:69 pysamples/brain.py:71
 #: pysamples/brain.py:77
 msgid "English"
-msgstr ""
+msgstr "Inglésnum"
 
 #: pysamples/brain.py:88
 msgid "Sorry, I can't understand what you are asking about."
-msgstr ""
+msgstr "Tsagkuntunta, antumain dekapeasjai tuwa ininme."
 
 #: pysamples/brain.py:97
 msgid ""
 "Sorry, there is no free memory to load my brain. Close other activities and "
 "try once more."
 msgstr ""
+"Tsagkuntunta, atsawai memorianum agkan mina butsukjui egkéktatamunum. Epenta "
+"tikich unuimaku takastin dutikakum patakam ataktu egkékta."
 
 #: pysamples/journal-stats.py:90
 msgid "other"
-msgstr "inne"
+msgstr "Tikich"
 
+# Definir término a la lengua
 #: pysamples/forward_push.py:48
 msgid "push destination rgb value to heap"
-msgstr "zmień wartość końcową rgb, aby ułożyć"
+msgstr "Dekami apila el valor rgb a la pila"
 
 #: pysamples/grecord.py:214
 msgid "stop"
-msgstr "zatrzymaj"
+msgstr "Itájit"
 
 #: pysamples/grecord.py:216
 msgid "play"
-msgstr "graj"
+msgstr ""
+"Ataktu nagkama ishinat, nunishkush kuwashat papi agagbau copia jigbaush "
+"amainai."
 
 #: pysamples/grecord.py:218
 msgid "save"
-msgstr "Zapisz"
+msgstr "Ukukta"
 
 #: TurtleArt/talogo.py:604
 msgid "did not output to"
-msgstr "nie ma wyjścia na"
+msgstr "Agamainchau dekapeajai awi"
 
 #: TurtleArt/talogo.py:645 TurtleArt/talogo.py:1059
 msgid "doesn't like"
-msgstr "nie lubi"
+msgstr "Dakitun diiawai"
 
 #: TurtleArt/talogo.py:646 TurtleArt/talogo.py:1060
 msgid "as input"
-msgstr "jako wejście"
+msgstr "Wajuk waít"
 
 #: TurtleArt/talogo.py:709
 msgid "I don't know how to"
-msgstr "Nie wiem jak"
+msgstr "Dekasjai wajuk dutikmainitja"
 
 #: TurtleArt/turtleblocks.py:106
 msgid "usage is"
-msgstr "użycie"
+msgstr "Takatai juwai"
 
 #: TurtleArt/turtleblocks.py:307
 msgid "No option action:"
-msgstr "Brak opcji działania:"
+msgstr "Dutikmainchau nuwintu atsawai utunmainuk:"
 
 #: TurtleArt/turtleblocks.py:322
 msgid "File not found"
-msgstr "Nie znaleziono pliku"
+msgstr "Ficheronum wainkasbau"
 
 #: TurtleArt/turtleblocks.py:346
 #, python-format
 msgid "Configuration directory not writable: %s"
-msgstr "Nie można zapisać do katalogu z konfiguracją: %s"
+msgstr ""
+"Directorio tawa duka atsumtaiyai tsawan mamikia takamua nunu aintsan "
+"configuracion tawa duka etsejui wajiyai programa takame nuwintu yapajiam "
+"takamainchauwaitme %s directorinu"
 
 #: TurtleArt/turtleblocks.py:434
 msgid "New"
-msgstr "Nowy"
+msgstr "Yamájam, yamájma"
 
 #: TurtleArt/turtleblocks.py:435
 msgid "Show sample projects"
@@ -1296,7 +1351,7 @@ msgstr ""
 
 #: TurtleArt/turtleblocks.py:442
 msgid "Save as"
-msgstr "Zapisz jako"
+msgstr "Ukút wajúk ame wakegame"
 
 #: TurtleArt/turtleblocks.py:446
 msgid "Export as"
@@ -1304,7 +1359,7 @@ msgstr ""
 
 #: TurtleArt/turtleblocks.py:449 TurtleArt/tawindow.py:4788
 msgid "image"
-msgstr "obraz"
+msgstr "Dakumkamu"
 
 #: TurtleArt/turtleblocks.py:451
 msgid "image (blocks)"
@@ -1329,35 +1384,35 @@ msgstr ""
 
 #: TurtleArt/turtleblocks.py:464
 msgid "Quit"
-msgstr "Zakończ"
+msgstr "Jinat"
 
 #: TurtleArt/turtleblocks.py:465
 msgid "File"
-msgstr "Plik"
+msgstr "Papi agagbau shig ijumjamu wajuk takatan uminawa."
 
 #: TurtleArt/turtleblocks.py:473
 msgid "Rescale coordinates"
-msgstr "Przeskaluj współrzędne"
+msgstr "Iyántut coordenadas"
 
 #: TurtleArt/turtleblocks.py:479
 msgid "Reset block size"
-msgstr "Przywróć rozmiar klocków"
+msgstr "Pataka amaímat esánji bloquenu"
 
 #: TurtleArt/turtleblocks.py:500
 msgid "Show/hide blocks"
-msgstr "Pokaż/schowaj schemat"
+msgstr "Ináktut/uút bloques tawa nu"
 
 #: TurtleArt/turtleblocks.py:502
 msgid "Tools"
-msgstr "Narzędzia"
+msgstr "Ashi atsumkas takatai aidau xo"
 
 #: TurtleArt/turtleblocks.py:508
 msgid "Debug"
-msgstr "Śledź"
+msgstr "Shig jaupit, jiit pegkenchauji emau"
 
 #: TurtleArt/turtleblocks.py:510
 msgid "Turtle"
-msgstr "Żółw"
+msgstr "Kugkúim"
 
 #: TurtleArt/turtleblocks.py:513
 msgid "Plugins"
@@ -1365,20 +1420,23 @@ msgstr ""
 
 #: TurtleArt/turtleblocks.py:516
 msgid "About..."
-msgstr ""
+msgstr "Pachísa..."
 
+# Guardar o archivar sin salir
 #: TurtleArt/turtleblocks.py:575
 msgid "You have unsaved work. Would you like to save before quitting?"
-msgstr "Masz niezapisaną pracę. Czy chcesz ją zapisać przed zakończeniem?"
+msgstr ""
+"Away takat umikbau tujash ukukchamu.¿Wait aneasam eke jiintsuk ukúmainkitam?"
 
 #: TurtleArt/turtleblocks.py:580
 msgid "Save project?"
-msgstr "Zapisać projekt?"
+msgstr "Egkekta takat umiktin najanamu"
 
 #: TurtleArt/turtleblocks.py:590
 #, python-format
+#, fuzzy, python-format
 msgid "Plugin %s already installed"
-msgstr ""
+msgstr "El plugin %s juka instalamuwai."
 
 #: TurtleArt/turtleblocks.py:736
 msgid "myproject"
@@ -1387,25 +1445,25 @@ msgstr ""
 #: TurtleArt/turtleblocks.py:814 TurtleArt/taplugin.py:89
 #, python-format
 msgid "Please restart %s in order to use the plugin."
-msgstr ""
+msgstr "Patakam nagkamata %s tawa nu dutikam takamainitme Plugin,"
 
 #: TurtleArt/turtleblocks.py:819
 #, python-format
 msgid "Please restart %s in order to unload the plugin."
-msgstr ""
+msgstr "Patakam nagkamata %s tawa nu dutikam takamainitme Plugin,"
 
 #: TurtleArt/tapalette.py:103
 msgid "displays next palette"
-msgstr "wyświetla kolejny przybornik"
+msgstr "Iwainakta tikich paleta tawa nu"
 
 #: TurtleArt/tapalette.py:104
 msgid "changes the orientation of the palette of blocks"
-msgstr "zmienia orientację przybornika klocków"
+msgstr "Yapajiata wajuk paleta ijunjam awa nu."
 
 #: TurtleArt/tapalette.py:144 TurtleArt/tapalette.py:145
 #: TurtleArt/tabasics.py:1262 TurtleArt/tabasics.py:1263
 msgid "trash"
-msgstr "kosz"
+msgstr "Pegkenchau, tsuwat"
 
 #: TurtleArt/taexportpython.py:226
 msgid "block is not exportable"
@@ -1425,15 +1483,15 @@ msgstr ""
 
 #: TurtleArt/tawindow.py:1151 TurtleArt/tawindow.py:1152
 msgid "orientation"
-msgstr "orientacja"
+msgstr "Chichajut"
 
 #: TurtleArt/tawindow.py:1166 TurtleArt/tawindow.py:1626
 msgid "next"
-msgstr "następny"
+msgstr "Tikich"
 
 #: TurtleArt/tawindow.py:1205 TurtleArt/tawindow.py:1635
 msgid "shift"
-msgstr "przesuń"
+msgstr "Yaja emamu"
 
 #: TurtleArt/tawindow.py:1273
 msgid "Please hit the Stop Button before making changes to your program"
@@ -1446,35 +1504,34 @@ msgstr ""
 #: TurtleArt/tabasics.py:1090 TurtleArt/tabasics.py:1236
 #: TurtleArt/tabasics.py:1240
 msgid "action"
-msgstr "akcje"
+msgstr "Dutikin"
 
 #: TurtleArt/tawindow.py:1322 TurtleArt/tawindow.py:1469
 #: TurtleArt/tawindow.py:2084 TurtleArt/tawindow.py:4961
 #: TurtleArt/tawindow.py:4988 TurtleArt/tabasics.py:1158
 #: TurtleArt/tabasics.py:1173
 msgid "my box"
-msgstr "moje pudło"
+msgstr "Nima cajan"
 
 #: TurtleArt/tawindow.py:1337
 msgid "Select blocks to share"
-msgstr "Wybierz klock do współdzielenia"
+msgstr "Etegjata ikaugbau dutikam tikich aidaujai sudaisatajum."
 
 #: TurtleArt/tawindow.py:1515 TurtleArt/tawindow.py:1529
 msgid "Really overwrite stack?"
-msgstr ""
+msgstr "Wakeamek patakam agagta pira"
 
 #: TurtleArt/tawindow.py:1522 TurtleArt/tawindow.py:1532
 msgid "Overwrite stack"
-msgstr ""
+msgstr "Patakam agagta pira"
 
 #: TurtleArt/tawindow.py:1554 TurtleArt/tawindow.py:1567
 msgid "Really delete stack?"
-msgstr ""
+msgstr "¿Wakeamek pira ajápet ?"
 
-# A może "pusty"
 #: TurtleArt/tawindow.py:1947 TurtleArt/tabasics.py:1267
 msgid "empty trash"
-msgstr "opróżnij kosz"
+msgstr "Yajat papeleranum"
 
 #: TurtleArt/tawindow.py:1948
 msgid "Do you really want to empty the trash?"
@@ -1493,41 +1550,45 @@ msgstr ""
 msgid "Please choose a different file name."
 msgstr ""
 
+# Texo por traducir
 #: TurtleArt/tawindow.py:4415 TurtleArt/tabasics.py:284
 msgid "xcor"
-msgstr "wsp. x"
+msgstr "Dekami coorx"
 
+# desconozco
 #: TurtleArt/tawindow.py:4416 TurtleArt/tabasics.py:299
 msgid "ycor"
-msgstr "wsp. y"
+msgstr "Dekami coory"
 
+# Ir, dirigirse, determinar
 #: TurtleArt/tawindow.py:4416 TurtleArt/tabasics.py:314
 msgid "heading"
-msgstr "kierunek"
+msgstr "wétin"
 
 #: TurtleArt/tawindow.py:4442 TurtleArt/tawindow.py:4447
 #: TurtleArt/tabasics.py:359 TurtleArt/tabasics.py:373
 #: TurtleArt/tabasics.py:447
 msgid "shade"
-msgstr "cień"
+msgstr "Ameinai yakagbau, jakimtikbau"
 
+# Gris
 #: TurtleArt/tawindow.py:4443 TurtleArt/tawindow.py:4448
 #: TurtleArt/tabasics.py:373 TurtleArt/tabasics.py:461
 msgid "gray"
-msgstr "szary"
+msgstr "Bukusea"
 
 #: TurtleArt/tawindow.py:4446 TurtleArt/tabasics.py:359
 #: TurtleArt/tabasics.py:372 TurtleArt/tabasics.py:435
 msgid "color"
-msgstr "kolor"
+msgstr "Yakagta"
 
 #: TurtleArt/tawindow.py:4516
 msgid "True"
-msgstr "prawda"
+msgstr ""
 
 #: TurtleArt/tawindow.py:4516
 msgid "False"
-msgstr "fałsz"
+msgstr ""
 
 #: TurtleArt/tawindow.py:4714
 #, python-format
@@ -1536,27 +1597,27 @@ msgstr ""
 
 #: TurtleArt/tawindow.py:4947 TurtleArt/tabasics.py:1091
 msgid "invokes named action stack"
-msgstr "wywołuje nazwany stos akcji"
+msgstr "Wait aneasam pira de acción nombrado"
 
 #: TurtleArt/tawindow.py:4974 TurtleArt/tabasics.py:1176
 msgid "named variable (numeric value)"
-msgstr "zmienna nazwana (wartość liczbowa)"
+msgstr "Takasmi variable adaikamu (valor numérico)"
 
 #: TurtleArt/tawindow.py:4996 TurtleArt/tabasics.py:1154
 msgid "store in"
-msgstr "przechowaj w"
+msgstr "Egkét"
 
 #: TurtleArt/tawindow.py:4996 TurtleArt/tabasics.py:1154
 msgid "value"
-msgstr "wartość"
+msgstr "Akike"
 
 #: TurtleArt/tawindow.py:5001 TurtleArt/tabasics.py:1159
 msgid "stores numeric value in named variable"
-msgstr "przechowuje wartość liczbową w nazwanej zmiennej"
+msgstr "Ukúkta valor numérico en la variable adaikamunum"
 
 #: TurtleArt/taplugin.py:93 TurtleArt/taplugin.py:103 TurtleArt/taplugin.py:105
 msgid "Plugin could not be installed."
-msgstr "Wtyczka nie mogła zostać zainstalowana."
+msgstr "Plugin tawanunu instalaumainchui"
 
 #: TurtleArt/taconstants.py:150
 msgid "up"
@@ -1592,7 +1653,7 @@ msgstr ""
 #: TurtleArt/taconstants.py:514 TurtleArt/taconstants.py:555
 #: TurtleArt/taconstants.py:596 TurtleArt/taconstants.py:637
 msgid "Title"
-msgstr "Tytuł"
+msgstr "Umiktin"
 
 #: TurtleArt/taconstants.py:659
 msgid "banana"
@@ -1600,185 +1661,201 @@ msgstr ""
 
 #: TurtleArt/tautils.py:313
 msgid "Load..."
-msgstr "Załaduj..."
+msgstr "Egkét....aimat"
 
 #: TurtleArt/tautils.py:323
 msgid "Save..."
-msgstr "Zapisz..."
+msgstr "Ukút"
 
+# Desconocimiento
 #: TurtleArt/tabasics.py:158
 msgid "Palette of turtle commands"
-msgstr "Przybornik komend żółwia"
+msgstr "Paleta de comandos tawa nu kugkúimdau"
 
 #: TurtleArt/tabasics.py:167
 msgid "moves turtle forward"
-msgstr "przesuwa żółwia do przodu"
+msgstr "Kugkúim eem umushkata"
 
 #: TurtleArt/tabasics.py:176
 msgid "back"
-msgstr "cofaj"
+msgstr "Ukunmatai"
 
 #: TurtleArt/tabasics.py:180
 msgid "moves turtle backward"
-msgstr "przemieszcza żółwia do tyłu"
+msgstr "Kugkúim umushkata ukunum"
 
 #: TurtleArt/tabasics.py:189
 msgid "clean"
-msgstr "wyczyść"
+msgstr "Jaupit"
 
 #: TurtleArt/tabasics.py:192
 msgid "clears the screen and reset the turtle"
-msgstr "czyści ekran i ustawienia żółwia"
+msgstr ""
+"Jaupjata computador pantallaji, dutikamin ataktu iman shig pegken "
+"wantinkattawai"
 
 #: TurtleArt/tabasics.py:214
 msgid "turns turtle counterclockwise (angle in degrees)"
-msgstr "przekręca żółwia odwrotnie do ruchu wskazówe zegara o podany kąt"
+msgstr "Kugkúim papegátmikata sentido anti-horario tawa nui (ángulos en grados)"
 
 #: TurtleArt/tabasics.py:228
 msgid "turns turtle clockwise (angle in degrees)"
-msgstr "przekręca żółwia zgodnie z ruchem wskazówek zegara (kąt w stopniach)"
+msgstr "Kugkúim papegátmikata sentido horario( ángulos en grados)"
 
+# Término desconozco
 #: TurtleArt/tabasics.py:238
 msgid "arc"
-msgstr "łuk"
+msgstr "Dekami wajukuita arco"
 
+# Desconozco término
 #: TurtleArt/tabasics.py:238
 msgid "angle"
-msgstr "kąt"
+msgstr "Dekamiwajukuita ángulo"
 
+# Desconocimiento en la lengua
 #: TurtleArt/tabasics.py:238
 msgid "radius"
-msgstr "promień"
+msgstr "Dekami wajukuita arco"
 
+# Completar frase
 #: TurtleArt/tabasics.py:242
 msgid "moves turtle along an arc"
-msgstr "przemieszcza żółwia wzdłuż łuku"
+msgstr "Kugkúim umushkata a lo largo de un arco"
 
 #: TurtleArt/tabasics.py:254 TurtleArt/tabasics.py:333
 msgid "set xy"
-msgstr "ustaw xy"
+msgstr "Etégkat xy"
 
+# Signo conocido x de la multiplicación.
+# Signo para marcar x
+# signo que se utiliza en la en tablero posicional x  que va en la parte vertical.
 #: TurtleArt/tabasics.py:254 TurtleArt/tabasics.py:333
 msgid "x"
-msgstr "x"
+msgstr "Sapagket"
 
+# Se"y" utiliza en el tablero posicional y en la parte horizontal.
 #: TurtleArt/tabasics.py:254 TurtleArt/tabasics.py:333
 msgid "y"
-msgstr "y"
+msgstr "y (nuwintushkam)"
 
 #: TurtleArt/tabasics.py:258 TurtleArt/tabasics.py:337
 msgid ""
 "moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
 msgstr ""
-"przesuwa żółwia do pozycji xcor, ycor; gdzie (0, 0) jest środkiem ekranu."
+"Kugkúim umushkata jutik tawa nu xcor, ycor; (0,0) ejapen pujawai pantallanum."
 
-#
+# rumbo is the word traditionally used in LOGO; we should try to maintain consistency with the LOGO community
 #: TurtleArt/tabasics.py:269
 msgid "set heading"
-msgstr "ustaw kierunek"
+msgstr "Emamkemat rumbo tawa nu"
 
 #: TurtleArt/tabasics.py:273
 msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
-msgstr "ustawia kierunek żółwia w stopniach (0 kieruje żółwia do góry ekranu)"
+msgstr "Emamkemat kugkúim utugni etamua (Ten , emewai yakintin pantallanum )"
 
 #: TurtleArt/tabasics.py:285
 msgid ""
 "holds current x-coordinate value of the turtle (can be used in place of a "
 "number block)"
 msgstr ""
-"przechowuje bieżącą współrzędą x żółwia (może być użyty w miejscu klocka z "
-"liczbą)"
+"Awai coordenadas tawa nu x yamaipat kugkúimdau (takamainai atsumtsuk chik "
+"bloque tawau dekapat)"
 
+# Determinar tipos de cordenadas en la lengua awajún
 #: TurtleArt/tabasics.py:300
 msgid ""
 "holds current y-coordinate value of the turtle (can be used in place of a "
 "number block)"
 msgstr ""
-"przechowuje bieżącą współrzędną y żółwia (może być użyte w miejscu klocka z "
-"liczbą)"
+"Awai coordenada nuwintushkam yamaipat kugkúim (takamainai atsumtsuk "
+"makichik1 bloque tawa nu dukapdau)"
 
 #: TurtleArt/tabasics.py:315
 msgid ""
 "holds current heading value of the turtle (can be used in place of a number "
 "block)"
-msgstr ""
-"przechowuje bieżącą wartość kierunku żółwia (może być użyty w miejscu klocka "
-"z liczbą)"
+msgstr "Imajuig awai wajuk kugkúimash emattaji(Takamaini atsumtsuk dekapat )"
 
 #: TurtleArt/tabasics.py:353
 msgid "Palette of pen commands"
-msgstr "Przybornik komend pisaka"
+msgstr "Paleta tawa duka ujapawai wajiyaiya agagtatme"
 
 #: TurtleArt/tabasics.py:354
+#, fuzzy
 msgid "pen"
-msgstr ""
+msgstr "Ujat"
 
 #: TurtleArt/tabasics.py:359 TurtleArt/tabasics.py:372
 msgid "fill screen"
-msgstr "maluj ekran"
+msgstr "Pantallanum aimkata"
 
 #: TurtleArt/tabasics.py:363 TurtleArt/tabasics.py:377
 msgid "fills the background with (color, shade)"
-msgstr "wypełnia tło (kolorem, odcieniem)"
+msgstr "Aimkata initken (ususata, wakan)"
 
 #: TurtleArt/tabasics.py:390
 msgid "set color"
-msgstr "ustaw kolor"
+msgstr "Mamakjata wajiyaiya usuatmame"
 
 #: TurtleArt/tabasics.py:394
 msgid "sets color of the line drawn by the turtle"
-msgstr "ustawia kolor linii rysowanej przez żółwia"
+msgstr "Mamikjata wajiyaiya kugkúimash dakumkash tsegtakbaunas usuattawa"
 
 #: TurtleArt/tabasics.py:406
 msgid "set shade"
-msgstr "ustaw cień"
+msgstr "Mamikjata wajuk usuattame"
 
 #: TurtleArt/tabasics.py:410
 msgid "sets shade of the line drawn by the turtle"
-msgstr "ustawia cień linii rysowanej przez żółwia"
+msgstr "Mamikiata tsegtsakbaush wajuk ashimkattame usuamesh kugkúim dakumkamush"
 
 #: TurtleArt/tabasics.py:421
 msgid "set gray"
-msgstr "ustaw szary"
+msgstr "Mamikjata bukuseayai"
 
 #: TurtleArt/tabasics.py:424
 msgid "sets gray level of the line drawn by the turtle"
-msgstr "ustawia poziom szarości linii rysowanej przez żółwia"
+msgstr ""
+"Imajui awai wajupa usuamush washuttaku tsegtsagbaunum atsumtatme kugkúim "
+"dakumkamu"
 
 #: TurtleArt/tabasics.py:436
 msgid "holds current pen color (can be used in place of a number block)"
 msgstr ""
-"przechowuje bieżący kolor pisaka (może być użyty w miejscu klocka z liczbą)"
+"Awai yamaipat jakimtikbau agatainujai betek (Takamainai bloque dekapatainu "
+"achitsuk)"
 
 #: TurtleArt/tabasics.py:448
 msgid "holds current pen shade"
-msgstr "przechowuje bieżący odcień pisaka"
+msgstr "Yamaipat umikbau agatainum ashi awai"
 
 #: TurtleArt/tabasics.py:462
 msgid "holds current gray level (can be used in place of a number block)"
 msgstr ""
-"przechowuje bieżący poziom szarości (może być użyty w miejscu klocka z "
-"liczbą)"
+"Imajui ujapawai betekji washuttakunu(takamainai atsumtsuk bloque tawanu "
+"dekapatainu)"
 
+# verbo
 #: TurtleArt/tabasics.py:472
 msgid "pen up"
-msgstr "podnieś pisak"
+msgstr "Ujakta papi agatai"
 
 #: TurtleArt/tabasics.py:475
 msgid "Turtle will not draw when moved."
-msgstr "Żółw nie będzie rysował podczas poruszania się."
+msgstr "Kugkúim dakumkashtatui buchitkun"
 
 #: TurtleArt/tabasics.py:482
 msgid "pen down"
-msgstr "opuść pisak"
+msgstr "Nugkan emata agatai"
 
 #: TurtleArt/tabasics.py:485
 msgid "Turtle will draw when moved."
-msgstr "Żółw będzie rysował podczas poruszania się."
+msgstr "Kugkúim dakumkattawai buchitkun"
 
 #: TurtleArt/tabasics.py:492
+#, fuzzy
 msgid "pen down?"
-msgstr ""
+msgstr "Nugkan emata agatai"
 
 #: TurtleArt/tabasics.py:494
 msgid "returns True if pen is down"
@@ -1786,83 +1863,84 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:501
 msgid "set pen size"
-msgstr "zmień rozmiar pisaka"
+msgstr "Etégkata esanti"
 
 #: TurtleArt/tabasics.py:505
 msgid "sets size of the line drawn by the turtle"
-msgstr "ustawia szerokość linii rysowanej przez żółwia"
+msgstr "Etégkata tsegtsakbua wegkanti kugkuim dakumkamu."
 
 #: TurtleArt/tabasics.py:518
 msgid "start fill"
-msgstr "rozpocznij wypełnianie"
+msgstr "Nagkamam ainmat, betekmat"
 
 #: TurtleArt/tabasics.py:520
 msgid "starts filled polygon (used with end fill block)"
 msgstr ""
-"rozpoczyna wypełniony wielokąt (używany z klockiem kończącym wypełnianie)"
+"Kagkamam betekmata poligononum (takasbau nagkánbaunum betekmata bloquenum)"
 
 #: TurtleArt/tabasics.py:526
 msgid "end fill"
-msgstr "koniec wypełniania"
+msgstr "Inágnakta betekmam"
 
 #: TurtleArt/tabasics.py:528
 msgid "completes filled polygon (used with start fill block)"
-msgstr ""
-"dokańcza wielokąt wypełniony (używane z klockiem rozpoczynąjącym wypełnianie "
-"wielokąta)"
+msgstr "Betékmata polígononum ainmat (Esegámu nagkamata iammat bloquenum)"
 
 #: TurtleArt/tabasics.py:534
 msgid "pen size"
-msgstr "rozmiar pisaka"
+msgstr "Apují"
 
 #: TurtleArt/tabasics.py:535
 msgid "holds current pen size (can be used in place of a number block)"
 msgstr ""
-"przechowuje bieżący rozmiar pisaka (może być użyte w miejscu klocka z liczbą)"
+"Awai esánji yamaipat agatainu (Atsumkas takamainai bloquejainchukesh "
+"dekapatainu)"
 
 #: TurtleArt/tabasics.py:554
 msgid "Palette of pen colors"
-msgstr "Przybornik kolorów pisaka"
+msgstr "Paletaum wai kuwashat usumatai nuwintu agatai"
 
 #: TurtleArt/tabasics.py:555
+#, fuzzy
 msgid "colors"
-msgstr ""
+msgstr "Yakagta"
 
 #: TurtleArt/tabasics.py:560 TurtleArt/tabasics.py:568
 msgid "red"
-msgstr "czerwony"
+msgstr "Kapantu"
 
 #: TurtleArt/tabasics.py:560
 msgid "orange"
-msgstr "pomarańczowy"
+msgstr "Yagkuttaku"
 
 #: TurtleArt/tabasics.py:560
 msgid "yellow"
-msgstr "żółty"
+msgstr "Yagku"
 
 #: TurtleArt/tabasics.py:560 TurtleArt/tabasics.py:568
 msgid "green"
-msgstr "zielony"
+msgstr "Samekmau"
 
+# determinar término
 #: TurtleArt/tabasics.py:561
 msgid "cyan"
-msgstr "niebieski"
+msgstr "cian"
 
 #: TurtleArt/tabasics.py:561 TurtleArt/tabasics.py:568
 msgid "blue"
-msgstr "błękitny"
+msgstr "Wigka"
 
 #: TurtleArt/tabasics.py:561
 msgid "purple"
-msgstr "purpurowy"
+msgstr "Yamakái"
 
 #: TurtleArt/tabasics.py:561
 msgid "white"
-msgstr "biały"
+msgstr "Púju"
 
 #: TurtleArt/tabasics.py:562
 msgid "black"
-msgstr "czarny"
+msgstr "Bukúsea"
 
 #: TurtleArt/tabasics.py:568
 msgid ""
@@ -1875,149 +1953,164 @@ msgstr ""
 msgid "converter"
 msgstr ""
 
+# Identificar herramienta
 #: TurtleArt/tabasics.py:655
 msgid "Palette of numeric operators"
-msgstr "Przybornik operatorów liczbowych"
+msgstr "Paletanum awai operadores tawa nu numéricos"
 
 #: TurtleArt/tabasics.py:656
+#, fuzzy
 msgid "numbers"
-msgstr ""
+msgstr "Dekapat"
 
 #: TurtleArt/tabasics.py:661
 msgid "plus"
-msgstr "plus"
+msgstr "Ikaubau"
 
 #: TurtleArt/tabasics.py:665
 msgid "adds two alphanumeric inputs"
-msgstr "dodaje dwa alfanumeryczne wejścia"
+msgstr "Ikaubau jim agagta alfanumérica tawa nunui."
 
 #: TurtleArt/tabasics.py:684
 msgid "minus"
-msgstr "minus"
+msgstr "Atanbau"
 
+# Definir bien en la lengua
 #: TurtleArt/tabasics.py:687
 msgid "subtracts bottom numeric input from top numeric input"
-msgstr "odejmuje wartość z dolnego wejścia od wartości z górnego wejścia"
+msgstr "Jikta wayámunu numérica nugkan wayámunum numérica yakin awa nunu"
 
 #: TurtleArt/tabasics.py:705
 msgid "multiply"
-msgstr "pomnóż"
+msgstr "Uyugkami"
 
 #: TurtleArt/tabasics.py:708
 msgid "multiplies two numeric inputs"
-msgstr "mnoży przez siebie dwie podane liczby"
+msgstr "Uyugkami jim waít dekapatnum"
 
 #: TurtleArt/tabasics.py:724
 msgid "divide"
-msgstr "dzielenie"
+msgstr "Akanmau"
 
 #: TurtleArt/tabasics.py:727
 msgid ""
 "divides top numeric input (numerator) by bottom numeric input (denominator)"
-msgstr "dzieli wartość z górnego wejścia przez wartość z dolnego wejścia"
+msgstr ""
+"Akanmau wayámunum numérica yakin (numeradornum) waitainum numérica "
+"nugkan(denominadornum)"
 
 #: TurtleArt/tabasics.py:744
 msgid "identity"
-msgstr "równość"
+msgstr "Wainkámu"
 
-# A może "identyczności" lub "neutralny"
 #: TurtleArt/tabasics.py:746
 msgid "identity operator used for extending blocks"
-msgstr "operator tożsamości używany do rozbudowy klocków"
+msgstr ""
+"operador de identidad tawa duka atsumtaiyai ayapantatabaunum bloque de "
+"operador tawa nunu."
 
+# Falta traducir
 #: TurtleArt/tabasics.py:772 TurtleArt/tabasics.py:773
 msgid "mod"
-msgstr "modulo"
+msgstr "Juka ujapawai waji dutikattame nu"
 
+# definir término
 #: TurtleArt/tabasics.py:776
 msgid "modular (remainder) operator"
-msgstr "operator reszty"
+msgstr "operador módular (resto)"
 
+# Término por definir en la lengua
 #: TurtleArt/tabasics.py:784
 msgid "√"
-msgstr "√"
+msgstr "Raiz cuadrada niime √"
 
+# Dsconocimiento en la lengua
 #: TurtleArt/tabasics.py:785
 msgid "square root"
-msgstr "pierwiastek kwadratowy"
+msgstr "Raiz cuadrada takastin"
 
+# Falta definir
 #: TurtleArt/tabasics.py:788
 msgid "calculates square root"
-msgstr "wylicza pierwiastek kwadratowy"
+msgstr "Raíz cuadrada takastin"
 
+# Definir en la lengua
 #: TurtleArt/tabasics.py:796
 msgid "random"
-msgstr "losowy"
+msgstr "Kakastin aleatorio"
 
+# Definir en la lengua
 #: TurtleArt/tabasics.py:796
 msgid "min"
-msgstr "min"
+msgstr "Ujumak"
 
+# Traducir
 #: TurtleArt/tabasics.py:796
 msgid "max"
-msgstr "maks"
+msgstr "Kuwashat"
 
+# Definir
 #: TurtleArt/tabasics.py:800
 msgid "returns random number between minimum (top) and maximum (bottom) values"
 msgstr ""
-"zwraca liczbę (pseudo)losową z przedziału pomiędzy wartościami minimum "
-"(górna) i maksimum (dolna)"
+"Awankita dekap aleatorio entre los valores mínimo (yakin) y máximo (nugkan)"
 
 #: TurtleArt/tabasics.py:822
 msgid "number"
-msgstr "liczba"
+msgstr "Dekapat"
 
 #: TurtleArt/tabasics.py:823
 msgid "used as numeric input in mathematic operators"
-msgstr "używane jako wejście liczbowe w operatorach matematycznych"
+msgstr "Atsumtaiyai waitnum dekapanum operadores matemáticos tawa nu"
 
 #: TurtleArt/tabasics.py:830
 msgid "greater than"
-msgstr "większe niż"
+msgstr "Dúkape"
 
 #: TurtleArt/tabasics.py:833
 msgid "logical greater-than operator"
-msgstr "operator logiczny porównania 'większy niż'"
+msgstr "Dukape operador lógico tawa nu"
 
 #: TurtleArt/tabasics.py:849
 msgid "less than"
-msgstr "mniejszy niż"
+msgstr "Ujumke"
 
 #: TurtleArt/tabasics.py:853
 msgid "logical less-than operator"
-msgstr "operator logiczny porównania 'mniejszy niż'"
+msgstr "Ujumke operador lógico nu"
 
 #: TurtleArt/tabasics.py:869
 msgid "equal"
-msgstr "równy"
+msgstr "Betek"
 
 #: TurtleArt/tabasics.py:873
 msgid "logical equal-to operator"
-msgstr "operator logiczny 'równa się'"
+msgstr "Takasmi betek operador lógico nu"
 
 #: TurtleArt/tabasics.py:888
 msgid "not"
-msgstr "nie"
+msgstr "Atsa"
 
 #: TurtleArt/tabasics.py:891
 msgid "logical NOT operator"
-msgstr "operator logicznie 'NIE' (NOT)"
+msgstr "Takastin operador NO lógico"
 
 #: TurtleArt/tabasics.py:899 TurtleArt/tabasics.py:902
 msgid "and"
-msgstr "i"
+msgstr "y (nuwigtushkam)"
 
 #: TurtleArt/tabasics.py:903
 msgid "logical AND operator"
-msgstr "operator logiczny 'I' (AND)"
+msgstr "Dekami operador Y lógico"
 
+# Ten en 2da persona, de tener algo.
 #: TurtleArt/tabasics.py:911 TurtleArt/tabasics.py:914
 msgid "or"
-msgstr "lub"
+msgstr "Ajutjamu"
 
 #: TurtleArt/tabasics.py:915
 msgid "logical OR operator"
-msgstr "operator logiczny 'LUB' (OR)"
+msgstr "Dekami operador O lógico"
 
 #: TurtleArt/tabasics.py:927
 msgid "flow"
@@ -2025,158 +2118,162 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:931
 msgid "wait"
-msgstr "czekaj"
+msgstr "Dakamsata"
 
 #: TurtleArt/tabasics.py:935
 msgid "pauses program execution a specified number of seconds"
-msgstr "wstrzymuje wykonanie programu przez podaną liczbę sekund"
+msgstr "Itájitmikata takat umikbau dútikatnanu dekapat dutikatnanu segundos nu"
 
 #: TurtleArt/tabasics.py:944
 msgid "forever"
-msgstr "ciągle"
+msgstr "Tuke"
 
 #: TurtleArt/tabasics.py:948
 msgid "loops forever"
-msgstr "powtarzaj na zawsze"
+msgstr "Awénata tuke"
 
 #: TurtleArt/tabasics.py:958 TurtleArt/tabasics.py:962
 msgid "repeat"
-msgstr "powtarzaj"
+msgstr "Awénat"
 
 #: TurtleArt/tabasics.py:963
 msgid "loops specified number of times"
-msgstr "powtarzaj w pętli określoną liczbę razy"
+msgstr "Patakam dekapat imagnía"
 
 #: TurtleArt/tabasics.py:976 TurtleArt/tabasics.py:992
 msgid "if"
-msgstr "jeżeli"
+msgstr "iEh, Dekas"
 
 #: TurtleArt/tabasics.py:976 TurtleArt/tabasics.py:992
 msgid "then"
-msgstr "wtedy"
+msgstr "Untsukám"
 
 #: TurtleArt/tabasics.py:979
 msgid "if then"
-msgstr "jeżeli wtedy"
+msgstr "Dekas untsukám"
 
 #: TurtleArt/tabasics.py:981
 msgid "if-then operator that uses boolean operators from Numbers palette"
 msgstr ""
-"operator 'jeżeli-wtedy' używa operatorów logicznych z przybornika Liczby"
+"Aents takau, ehe, nuwintush takau operadores lógicos tawa npaletan "
+"dekapatainun"
 
 #: TurtleArt/tabasics.py:992
 msgid "else"
-msgstr "pozostałe"
+msgstr "Atsa"
 
+# afirmación dudosa
 #: TurtleArt/tabasics.py:996 TurtleArt/tabasics.py:1009
 msgid "if then else"
-msgstr "jeżeli wtedy w-przeciwnym-razie"
+msgstr "Ehé, Untsukám, Atsa"
 
 #: TurtleArt/tabasics.py:997 TurtleArt/tabasics.py:1010
 msgid "if-then-else operator that uses boolean operators from Numbers palette"
 msgstr ""
-"operator 'jeżeli-wtedy-w przeciwnym razie' używa operatorów logicznych z "
-"przybornika Liczby"
+"Aents takau computador ehe, úntsu- nuniashkush takau operador lógico paleta "
+"dekapatnun"
 
 #: TurtleArt/tabasics.py:1019
 msgid "horizontal space"
-msgstr "odstęp poziomy"
+msgstr "Agkáju Horiontal tawa nunui"
 
 #: TurtleArt/tabasics.py:1020
 msgid "jogs stack right"
-msgstr "popycha stos w prawo"
+msgstr "Akiíntut pila untsugmun"
 
 #: TurtleArt/tabasics.py:1029
 msgid "vertical space"
-msgstr "odstęp pionowy"
+msgstr "Akíntut akuúm"
 
 #: TurtleArt/tabasics.py:1030
 msgid "jogs stack down"
-msgstr "popycha stos w dół"
+msgstr "Akintut pila nunkan"
 
 #: TurtleArt/tabasics.py:1037
 msgid "stop action"
-msgstr "zatrzymaj akcję"
+msgstr "Itájit acción"
 
 #: TurtleArt/tabasics.py:1040
 msgid "stops current action"
-msgstr "zatrzymuje bieżącą akcję"
+msgstr "Itájit yamaipat acción"
 
 #: TurtleArt/tabasics.py:1050
 msgid "Palette of variable blocks"
-msgstr "Przybornik klocków ze zmiennymi"
+msgstr "Takasmi Paleta de bloques de variables"
 
 #: TurtleArt/tabasics.py:1051
 msgid "blocks"
 msgstr ""
 
 #: TurtleArt/tabasics.py:1058
+#, fuzzy
 msgid "connects action to toolbar run buttons"
-msgstr "łączy akcje z przycikami uruchamiania paska narzędzi"
+msgstr ""
+"conecta la acción a los botones de ejecución de la barra de herramientas"
 
 #: TurtleArt/tabasics.py:1075
 msgid "top of nameable action stack"
-msgstr "szczyt nazywalnego stosu akcji"
+msgstr "Yakin pira acción nombrable"
 
 #: TurtleArt/tabasics.py:1098
 msgid "store in box 1"
-msgstr "włóż do pudła 1"
+msgstr "Ukút cajanum makichik 1"
 
 #: TurtleArt/tabasics.py:1103
 msgid "stores numeric value in Variable 1"
-msgstr "przechowuje wartość liczbową w Zmiennej 1"
+msgstr "Ukúkta valor numérico en la variable makichik 1 tawa nunu"
 
 #: TurtleArt/tabasics.py:1112
 msgid "store in box 2"
-msgstr "włóż do pudła 2"
+msgstr "Ukút cajanum jimag 2"
 
 #: TurtleArt/tabasics.py:1117
 msgid "stores numeric value in Variable 2"
-msgstr "przechowuje wartość liczbową w Zmiennej 2"
+msgstr "Ukúkta valor numérico en la variable jimag 2"
 
 #: TurtleArt/tabasics.py:1126
 msgid "box 1"
-msgstr "pudło 1"
+msgstr "caja makichik 1"
 
 #: TurtleArt/tabasics.py:1129
 msgid "Variable 1 (numeric value)"
-msgstr "Zmienna 1 (wartość liczbowa)"
+msgstr "Takasmi Variable makichik 1 (valor numérico)"
 
 #: TurtleArt/tabasics.py:1139
 msgid "box 2"
-msgstr "pudło 2"
+msgstr "Egkekta caja jimag 2"
 
 #: TurtleArt/tabasics.py:1142
 msgid "Variable 2 (numeric value)"
-msgstr "Zmienna 2 (wartość liczbowa)"
+msgstr "Takasmi Variable jimag 2 (valor numérico)"
 
 #: TurtleArt/tabasics.py:1154 TurtleArt/tabasics.py:1170
 msgid "box"
-msgstr "pudło"
+msgstr "Egketai"
 
 #: TurtleArt/tabasics.py:1182 TurtleArt/tabasics.py:1206
 msgid "action 1"
-msgstr "akcja 1"
+msgstr "Dútikatna nu makichik 1"
 
 #: TurtleArt/tabasics.py:1185
 msgid "top of Action 1 stack"
-msgstr "szczyt stosu Akcja 1"
+msgstr "Dékatkau pira dútikatna nuwa makichik1"
 
 #: TurtleArt/tabasics.py:1194 TurtleArt/tabasics.py:1219
 msgid "action 2"
-msgstr "akcja 2"
+msgstr "Dútikatna nu jimag 2"
 
 #: TurtleArt/tabasics.py:1197
 msgid "top of Action 2 stack"
-msgstr "szczyt stosu akcji 2"
+msgstr "Dékatkau pira dutikatna nuwa jimag 2"
 
 #: TurtleArt/tabasics.py:1209
 msgid "invokes Action 1 stack"
-msgstr "wywołuje stos akcji 1"
+msgstr "Segamta atsumamu pira de acción tawa nu makichik 1"
 
 #: TurtleArt/tabasics.py:1222
 msgid "invokes Action 2 stack"
-msgstr "wywołanie stosu akcji 2"
+msgstr "Segamta atsumamu pira acción tawa nu jimag 2"
 
 #: TurtleArt/tabasics.py:1241
 msgid "invokes named action stack and returns value"
@@ -2192,1115 +2289,68 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:1268
 msgid "permanently deletes items in trash"
-msgstr "ostatecznie usuwa przedmioty z kosza"
+msgstr "Tuke esakat waji awa papeleranum"
 
 #: TurtleArt/tabasics.py:1272
 msgid "restore all"
-msgstr "przywróć wszystko"
+msgstr "Patakam magkamata"
 
 #: TurtleArt/tabasics.py:1273
 msgid "restore all blocks from trash"
-msgstr "przywróć wszystkie klocki z kosza"
+msgstr "Dekami wajuk takataiyaita restaurar tawa nunu ashi bloques papeleranun"
 
 #: TurtleArt/tabasics.py:1277
 msgid "clear all"
-msgstr "wyczyść wszystkie"
+msgstr "Ashi esakagta"
 
 #: TurtleArt/tabasics.py:1278
 msgid "move all blocks to trash"
-msgstr "przesuń wszystkie klocki do kosza"
+msgstr "tsétse umushkata ashi ijumjamu awa nu."
 
 #~ msgid ""
 #~ "A Logo-inspired turtle that draws colorful pictures with snap-together "
 #~ "visual programming blocks"
 #~ msgstr ""
-#~ "Żółw zainspirowany Logo, który rysuje kolorowe obrazki dzięki łączeniu "
-#~ "bloków programowania graficznego"
+#~ "Kugkúim shig wakegas dakumui, dutikak jakimtikbau aidau atsumkas takase, "
+#~ "shig paan waimainum"
 
 #~ msgid "Please restart Turtle Art in order to use the plugin."
-#~ msgstr "Proszę uruchom ponownie Żółwią Sztukę, aby użyć wtyczki."
+#~ msgstr "Patakam nagkamata kugkúimArte tawa nu dutikam takamainitme Plugin,"
 
 #~ msgid "set text color"
-#~ msgstr "ustaw kolor tekstu"
+#~ msgstr "Etegkáta jakimtikatin chicham agagbau"
 
 #~ msgid "sets color of text drawn by the turtle"
-#~ msgstr "ustawia kolor tekstu pisanego przez żółwia"
+#~ msgstr "Etegkáta jakimtikatin kugkúim dakumkamu"
 
 #~ msgid "set text size"
-#~ msgstr "zmień rozmiar tekstu"
+#~ msgstr "Etegkáta chicham apujíi agagmau"
 
 #~ msgid "sets size of text drawn by the turtle"
-#~ msgstr "ustawia rozmiar tekstu rysowanego przez żółwia"
+#~ msgstr "Etegkáta chicham esanti agagmau kugkúim dakumkamu"
+
+#~ msgid ""
+#~ "Please hit the Stop Button before making changes to your Turtle Blocks "
+#~ "program"
+#~ msgstr "Wait aneasam, itájitmikata butug eke yapagtsuk ame umikbau"
 
 #~ msgid "Load project"
-#~ msgstr "Załaduj projekt"
+#~ msgstr "Entsát takat umiktin najanamu"
 
 #~ msgid "palette"
-#~ msgstr "przybornik kolorów"
+#~ msgstr "paletanum"
 
 #~ msgid "presentation 1x1"
-#~ msgstr "prezentacja 1x1"
+#~ msgstr "Iwaimamu 1x1"
 
 #~ msgid "presentation 2x1"
-#~ msgstr "przezentacja 2x1"
+#~ msgstr "Iwaimamu 2x1"
 
 #~ msgid "presentation 1x2"
-#~ msgstr "prezentacja 1x2"
+#~ msgstr "Iwaimamu 1x2"
 
 #~ msgid "presentation 2x2"
-#~ msgstr "prezentacja 2x2"
+#~ msgstr "Iwaimamu 2x2"
 
 #~ msgid "make a uturn"
-#~ msgstr "Zrób półobrót"
-
-#~ msgid "Turtle Art"
-#~ msgstr "Żółwik"
-
-#~ msgid "Turtle Art Mini"
-#~ msgstr "Żółwia Sztuka - Mini"
-
-#~ msgid "Turtle Confusion"
-#~ msgstr "Żółwiowe Pomieszanie"
-
-#~ msgid "Select a challenge"
-#~ msgstr "Wybierz wyzwanie"
-
-#~ msgid "Palette of Mexican pesos"
-#~ msgstr "Paleta meksykańskich pesos"
-
-#~ msgid "Palette of Colombian pesos"
-#~ msgstr "Paleta kolumbijskich pesos"
-
-#~ msgid "Palette of Rwandan francs"
-#~ msgstr "Paleta rwandyjskich franków"
-
-#~ msgid "Palette of US dollars"
-#~ msgstr "przybornik dollarów amerykańskich"
-
-#~ msgid "Palette of Australian dollars"
-#~ msgstr "przybornik dollarów australijskich"
-
-#~ msgid "Palette of Paraguayan Guaranies"
-#~ msgstr "przybornik paragwajskich Guarani"
-
-#~ msgid "Palette of Peruvian Nuevo Soles"
-#~ msgstr "przybornik peruwiańskich Nuevo Soles"
-
-#~ msgid "Palette of Uruguayan Pesos"
-#~ msgstr "przybornik urugwajskich pesos"
-
-#~ msgid "TurtleBots"
-#~ msgstr "TurtleBots"
-
-#~ msgid "adjust LED intensity between 0 and 255"
-#~ msgstr "ustaw intensywność świecenia diody LED od 0 do 255"
-
-#~ msgid "returns the object gray level as a number between 0 and 1023"
-#~ msgstr "zwraca poziom szarości obiektu jako liczbę między 0 a 1023"
-
-#~ msgid "returns 1 when the button is press and 0 otherwise"
-#~ msgstr "zwraca 1, gdy przycisk zostanie naciśnięty i 0 w przeciwnym przypadku"
-
-#~ msgid "returns the ambient light level as a number between 0 and 1023"
-#~ msgstr "zwraca poziom światła otoczenia jako liczbę między 0 a 1023"
-
-#~ msgid "returns the ambient temperature as a number between 0 and 255"
-#~ msgstr "zwraca temperaturę otoczenia w postaci liczby od 0 do 255"
-
-#~ msgid ""
-#~ "returns the distance from the object in front of the sensor as a number "
-#~ "between 0 and 255"
-#~ msgstr "zwraca odległość od obiektu przed czujnikiem jako liczbę od 0 do 255"
-
-#~ msgid "returns 0 or 1 depending on the sensor inclination"
-#~ msgstr "zwraca 0 lub 1 w zależności od nachylenia czujnika"
-
-#~ msgid "returns 1 when the sensors detects a magnetic field, 0 otherwise"
-#~ msgstr ""
-#~ "zwraca 1, gdy czujnik wykrywa pole magnetyczne, 0 w przeciwnym przypadku"
-
-#~ msgid "switches from 0 to 1, the frequency depends on the vibration"
-#~ msgstr "przełącza z 0 na 1, częstotliwość zależy od wibracji"
-
-#~ msgid "LED"
-#~ msgstr "LED"
-
-#~ msgid "button"
-#~ msgstr "przycisk"
-
-#~ msgid "grayscale"
-#~ msgstr "skala szarości"
-
-#~ msgid "ambient light"
-#~ msgstr "światło otoczenia"
-
-#~ msgid "temperature"
-#~ msgstr "temperatura"
-
-#~ msgid "distance"
-#~ msgstr "odległość"
-
-#~ msgid "tilt"
-#~ msgstr "nachylenie"
-
-#~ msgid "magnetic induction"
-#~ msgstr "indukcja magnetyczna"
-
-#~ msgid "vibration"
-#~ msgstr "wibracja"
-
-#~ msgid "Butia Robot"
-#~ msgstr "Robot Butia"
-
-#~ msgid "refresh Butia"
-#~ msgstr "odświeź robota Butia"
-
-#~ msgid "refresh the state of the Butia palette and blocks"
-#~ msgstr "odśwież stan przybornika oraz klocków robota Butia"
-
-#~ msgid "battery charge Butia"
-#~ msgstr "naładowanie baterii Butia"
-
-#~ msgid "returns the battery charge as a number between 0 and 255"
-#~ msgstr "zwraca poziom naładowania baterii jako liczbę między 0 i 255"
-
-#~ msgid "speed Butia"
-#~ msgstr "prędkość Butia"
-
-#~ msgid "forward Butia"
-#~ msgstr "Butia do przodu"
-
-#~ msgid "move the Butia robot forward"
-#~ msgstr "przesuń robota Butia do przodu"
-
-#~ msgid "move the Butia robot forward a predefined distance"
-#~ msgstr "przesuń robota Butia do przodu o wcześniej określoną odległość"
-
-#~ msgid "left Butia"
-#~ msgstr "Butia w lewo"
-
-#, fuzzy
-#~ msgid "turn the Butia robot at left"
-#~ msgstr "obróć robota Butia w prawo"
-
-#~ msgid "backward Butia"
-#~ msgstr "Butia do tyłu"
-
-#~ msgid "move the Butia robot backward"
-#~ msgstr "przesuń robota Butia do tyłu"
-
-#~ msgid "move the Butia robot backward a predefined distance"
-#~ msgstr "przesuń robota Butia do tyłu o wcześniej określoną odległość"
-
-#~ msgid "right Butia"
-#~ msgstr "Butia w prawo"
-
-#~ msgid "turn the Butia robot at right"
-#~ msgstr "obróć robota Butia w prawo"
-
-#~ msgid "turn Butia"
-#~ msgstr "obrót Butia"
-
-#~ msgid "turn the Butia robot x degrees"
-#~ msgstr "obróć robota Butia o x stopni"
-
-#~ msgid "stop Butia"
-#~ msgstr "zatrzymaj Butia"
-
-#~ msgid "stop the Butia robot"
-#~ msgstr "zatrzymaj robota Butia"
-
-#~ msgid "Butia"
-#~ msgstr "Butia"
-
-#, fuzzy
-#~ msgid "Error on initialization of the camera"
-#~ msgstr "Błąd uruchomienia kamery."
-
-#, fuzzy
-#~ msgid "No camera was found"
-#~ msgstr "Brak odnalezienia kamery"
-
-#~ msgid "Error stopping camera"
-#~ msgstr "Błąd zatrzymania kamery"
-
-#~ msgid "Error starting camera"
-#~ msgstr "Błąd uruchamienia kamery"
-
-#~ msgid "FollowMe"
-#~ msgstr "ŚledźMnie"
-
-#, fuzzy
-#~ msgid "Search for a connected camera."
-#~ msgstr "Wyszukaj podłączone klocki NXT."
-
-#~ msgid "calibration"
-#~ msgstr "kalibracja"
-
-#, fuzzy
-#~ msgid "store a personalized calibration"
-#~ msgstr "zapisuje spersonalizowaną kalibrację"
-
-#~ msgid "return a personalized calibration"
-#~ msgstr "zwróć spersonalizowaną kalibrację"
-
-#~ msgid "follow"
-#~ msgstr "śledź"
-
-#~ msgid "follow a color or calibration"
-#~ msgstr "śledź kolor lub kalibrację"
-
-#~ msgid "minimum pixels"
-#~ msgstr "minimum pikseli"
-
-#~ msgid "set the minimal number of pixels to follow"
-#~ msgstr "ustaw minimalną liczbę pikseli do śledzenia"
-
-#~ msgid "threshold"
-#~ msgstr "próg"
-
-#~ msgid "set a threshold for a RGB color"
-#~ msgstr "ustaw próg dla koloru RGB"
-
-#~ msgid "camera mode"
-#~ msgstr "tryb kamery"
-
-#, fuzzy
-#~ msgid "set the color mode of the camera: RGB; YUV or HSV"
-#~ msgstr "ustaw kolor trybu kamery: RGB, YUV lub HSV"
-
-#~ msgid "x position"
-#~ msgstr "pozycja x"
-
-#~ msgid "return x position"
-#~ msgstr "zwróć pozycję x"
-
-#~ msgid "y position"
-#~ msgstr "pozycja y"
-
-#~ msgid "return y position"
-#~ msgstr "zwróć pozycję y"
-
-#~ msgid "pixels"
-#~ msgstr "piksele"
-
-#~ msgid "return the number of pixels of the biggest blob"
-#~ msgstr "zwróć liczbę pikseli największej plamy"
-
-#~ msgid "set the color mode of the camera to RGB"
-#~ msgstr "ustaw kolor trybu kamery na RGB"
-
-#~ msgid "set the color mode of the camera to YUV"
-#~ msgstr "ustaw kolor trybu kamery na YUV"
-
-#~ msgid "set the color mode of the camera to HSV"
-#~ msgstr "ustaw kolor trybu kamery na HSV"
-
-#~ msgid "empty calibration"
-#~ msgstr "opróżnij kalibrację"
-
-#~ msgid "error in string conversion"
-#~ msgstr "błąd w konwersji ciągu"
-
-#~ msgid "SumBot"
-#~ msgstr "SumBot"
-
-#~ msgid "speed SumBot"
-#~ msgstr "prędkość SumBot"
-
-#~ msgid "submit the speed to the SumBot"
-#~ msgstr "prześlij prędkość do SumBota"
-
-#~ msgid "set the default speed for the movement commands"
-#~ msgstr "ustaw domyślną prędkością dla komend ruchu"
-
-#~ msgid "forward SumBot"
-#~ msgstr "SumBot do przodu"
-
-#~ msgid "move SumBot forward"
-#~ msgstr "przesuń SumBota do przodu"
-
-#~ msgid "backward SumBot"
-#~ msgstr "SumBot do tyłu"
-
-#~ msgid "move SumBot backward"
-#~ msgstr "przesuń SumBota do tyłu"
-
-#~ msgid "stop SumBot"
-#~ msgstr "zatrzymaj SumBota"
-
-#~ msgid "stop the SumBot"
-#~ msgstr "zatrzymaj SumBota"
-
-#~ msgid "left SumBot"
-#~ msgstr "SumBot w lewo"
-
-#~ msgid "turn left the SumBot"
-#~ msgstr "obróć SumBota w lewo"
-
-#~ msgid "right SumBot"
-#~ msgstr "SumBot w prawo"
-
-#~ msgid "turn right the SumBot"
-#~ msgstr "obróć SumBota w prawo"
-
-#~ msgid "angle to center"
-#~ msgstr "kąt z centrum"
-
-#~ msgid "get the angle to the center of the dohyo"
-#~ msgstr "pobierz kąt w stosunku do centrum dohyo"
-
-#~ msgid "angle to Enemy"
-#~ msgstr "kąt do przeciwnika"
-
-#~ msgid "get the angle to the Enemy"
-#~ msgstr "pobierz kąt w stosunku do przeciwnika"
-
-#~ msgid "x coor. SumBot"
-#~ msgstr "współrz. x SumBota"
-
-#~ msgid "get the x coordinate of the SumBot"
-#~ msgstr "pobierz współrzędną x SumBota"
-
-#~ msgid "y coor. SumBot"
-#~ msgstr "współrz. y SumBota"
-
-#~ msgid "get the y coordinate of the SumBot"
-#~ msgstr "pobierz współrzędną y SumBota"
-
-#~ msgid "x coor. Enemy"
-#~ msgstr "współrz. x przeciwnika"
-
-#~ msgid "get the x coordinate of the Enemy"
-#~ msgstr "pobierz współrzędną x przeciwnika"
-
-#~ msgid "y coor. Enemy"
-#~ msgstr "współrz. y przeciwnika"
-
-#~ msgid "get the y coordinate of the Enemy"
-#~ msgstr "pobierz współrzędną y przeciwnika"
-
-#~ msgid "rotation SumBot"
-#~ msgstr "obrót SumBota"
-
-#~ msgid "get the rotation of the Sumbot"
-#~ msgstr "pobierz obrót SumBota"
-
-#~ msgid "rotation Enemy"
-#~ msgstr "obrót przeciwnika"
-
-#~ msgid "get the rotation of the Enemy"
-#~ msgstr "pobierz obrót przeciwnika"
-
-#~ msgid "distance to center"
-#~ msgstr "odległość do środka"
-
-#~ msgid "get the distance to the center of the dohyo"
-#~ msgstr "pobierz odległość do centrum dohyo"
-
-#~ msgid "distance to Enemy"
-#~ msgstr "odległość do przeciwnika"
-
-#~ msgid "get the distance to the Enemy"
-#~ msgstr "pobierz odległość do przeciwnika"
-
-#~ msgid "update information"
-#~ msgstr "aktualizuj informacje"
-
-#~ msgid "update information from the server"
-#~ msgstr "aktualizuj informacje z serwera"
-
-#~ msgid "Palette of physics blocks"
-#~ msgstr "Przybornik klocków do fizyki"
-
-#~ msgid "start polygon"
-#~ msgstr "rozpocznij wielokąt"
-
-#~ msgid "Begin defining a new polygon based on the current Turtle xy position."
-#~ msgstr ""
-#~ "Rozpocznij definiowanie nowego wielokąta, na podstawie bieżących "
-#~ "współrzędnych xy Żółwia."
-
-#~ msgid "add point"
-#~ msgstr "dodaj punkt"
-
-#~ msgid ""
-#~ "Add a new point to the current polygon based on the current Turtle xy "
-#~ "position."
-#~ msgstr "Dodaj nowy punkt do bieżącego wielokąta w obecnej pozycji Żółwia xy."
-
-#~ msgid "end polygon"
-#~ msgstr "zakończ wielokąt"
-
-#~ msgid "Define a new polygon."
-#~ msgstr "Zdefiniuj nowy wielokąt."
-
-#~ msgid "end filled polygon"
-#~ msgstr "zakończ wypełniony wielokąt"
-
-#~ msgid "Not a simple polygon"
-#~ msgstr "Nie prosty wielokąt"
-
-#~ msgid "Define a new filled polygon."
-#~ msgstr "Zdefiniuj nowy wypełniony wielokąt."
-
-#~ msgid "triangle"
-#~ msgstr "Trójkąt"
-
-#~ msgid "base"
-#~ msgstr "podstawa"
-
-#~ msgid "Add a triangle object to the project."
-#~ msgstr "Dodaj obiekt trójkątny do projektu."
-
-#~ msgid "circle"
-#~ msgstr "okrąg"
-
-#~ msgid "Add a circle object to the project."
-#~ msgstr "Dodaj okrągły obiekt do projektu."
-
-#~ msgid "rectangle"
-#~ msgstr "prostokąt"
-
-#~ msgid "Add a rectangle object to the project."
-#~ msgstr "Dodaj prostokątny obiekt do projektu."
-
-#~ msgid "reset"
-#~ msgstr "zresetuj"
-
-#~ msgid "Reset the project; clear the object list."
-#~ msgstr "Zresetuj projekt, wyczyść listę obiektów."
-
-#~ msgid "motor"
-#~ msgstr "silnik"
-
-#~ msgid "torque"
-#~ msgstr "moment obrotowy"
-
-#~ msgid "speed"
-#~ msgstr "prędkość"
-
-#~ msgid ""
-#~ "Motor torque and speed range from 0 (off) to positive numbers; motor is "
-#~ "placed on the most recent object created."
-#~ msgstr ""
-#~ "Moment obrotowy silnika i szybkość od 0 (wyłączony) do liczb dodatnich; "
-#~ "silnik znajduje się na ostatnio stworzonym obiekcie."
-
-#~ msgid "pin"
-#~ msgstr "pinezka"
-
-#~ msgid "Pin an object down so that it cannot fall."
-#~ msgstr "Przypnij obiekt żeby nie mógł spaść."
-
-#~ msgid "joint"
-#~ msgstr "Połączenie"
-
-#~ msgid ""
-#~ "Join two objects together (the most recent object created and the object at "
-#~ "point x, y)."
-#~ msgstr ""
-#~ "Połącz dwa obiekty razem (ostatnio stworzony obiekt z obiektem w punkcie x, "
-#~ "y)."
-
-#~ msgid "save as Physics activity"
-#~ msgstr "zapisz aktywność jako Fizykę"
-
-#~ msgid "Save the project to the Journal as a Physics activity."
-#~ msgstr "Zapisz projekt w Dzienniku jako Fizykę."
-
-#~ msgid "gear"
-#~ msgstr "przybory/koło"
-
-#, fuzzy
-#~ msgid "Add a gear object to the project."
-#~ msgstr "Dodaj okrągły obiekt do projektu."
-
-#~ msgid "density"
-#~ msgstr "gęstość"
-
-#~ msgid ""
-#~ "Set the density property for objects (density can be any positive number)."
-#~ msgstr "Ustaw gęstość dla obiektów (gęstość może być wartością dodatnią)."
-
-#~ msgid "friction"
-#~ msgstr "tarcie"
-
-#~ msgid ""
-#~ "Set the friction property for objects (value from 0 to 1, where 0 turns "
-#~ "friction off and 1 is strong friction)."
-#~ msgstr ""
-#~ "Ustaw tarcie dla obiektów (wartość od 0 do 1, gdzie 0 wyłącza tarcie a 1 to "
-#~ "silne tarcie)."
-
-#~ msgid "bounciness"
-#~ msgstr "elastyczność"
-
-#~ msgid ""
-#~ "Set the bounciness property for objects (a value from 0 to 1, where 0 means "
-#~ "no bounce and 1 is very bouncy)."
-#~ msgstr ""
-#~ "Ustaw elastyczność dla obiektów (wartość od 0 do 1, gdzie 0 oznacza brak "
-#~ "elastyczności a 1 dużą elastyczność)."
-
-#~ msgid "dynamic"
-#~ msgstr "dynamiczny"
-
-#~ msgid ""
-#~ "If dynamic = 1, the object can move; if dynamic = 0, it is fixed in position."
-#~ msgstr ""
-#~ "Jeżeli dynamicznie = 1, obiekt może się ruszać, jeśli dynamiczne = 0, obiekt "
-#~ "nie porusza się."
-
-#~ msgid "Palette of WeDo blocks"
-#~ msgstr "Paleta klocków WeDo"
-
-#~ msgid ""
-#~ "tilt sensor output: (-1 == no tilt, 0 == tilt forward, 3 == tilt back, 1 == "
-#~ "tilt left, 2 == tilt right)"
-#~ msgstr ""
-#~ "wyjście czujnika przechylenia: (-1 == brak przechylenia, 0 == przechylenie "
-#~ "do przodu, 3 == przechylenie do tyłu, 1 == przechylenie w lewo, 2 == "
-#~ "przechylenie w prawo)"
-
-#~ msgid "distance sensor output"
-#~ msgstr "wyjście czujnika odległości"
-
-#~ msgid "Motor A"
-#~ msgstr "Silnik A"
-
-#~ msgid "returns the current value of Motor A"
-#~ msgstr "zwraca bieżącą wartość Silnika A"
-
-#~ msgid "Motor B"
-#~ msgstr "Silnik B"
-
-#~ msgid "returns the current value of Motor B"
-#~ msgstr "zwraca bieżącą wartość Silnika B"
-
-#~ msgid "set the value for Motor A"
-#~ msgstr "ustaw wartość Silnika A"
-
-#~ msgid "set the value for Motor B"
-#~ msgstr "ustaw wartość Silnika B"
-
-#~ msgid "Palette of LEGO NXT blocks of motors"
-#~ msgstr "Paleta klocków silników LEGO NXT"
-
-#~ msgid "Palette of LEGO NXT blocks of sensors"
-#~ msgstr "Paleta klocków czujników LEGO NXT"
-
-#~ msgid "touch"
-#~ msgstr "dotyk"
-
-#~ msgid "ultrasonic"
-#~ msgstr "ultradźwiękowy"
-
-#~ msgid "light"
-#~ msgstr "światło"
-
-#, fuzzy
-#~ msgid "grey"
-#~ msgstr "szary"
-
-#, fuzzy
-#~ msgid "Please check the connection with the brick"
-#~ msgstr "Sprawdź połączenie z klockiem."
-
-#, fuzzy
-#~ msgid "The value of power must be between -127 to 127"
-#~ msgstr "Wartość mocy musi być między -127 a 127."
-
-#, fuzzy
-#~ msgid "An error has occurred: check all connections and try to reconnect"
-#~ msgstr "Wystąpił błąd: sprawdź wszystkie złącza i spróbuj połączyć ponownie."
-
-#~ msgid "NXT not found"
-#~ msgstr "nie znaleziono NXT"
-
-#~ msgid "refresh NXT"
-#~ msgstr "odśwież NXT"
-
-#~ msgid "Search for a connected NXT brick."
-#~ msgstr "Wyszukaj podłączone klocki NXT."
-
-#~ msgid "play tone"
-#~ msgstr "odwórz ton"
-
-#~ msgid "frequency"
-#~ msgstr "częstotliwość"
-
-#~ msgid "Play a tone at frequency for time."
-#~ msgstr "Odtwórz ton o częstotliwości przez czas."
-
-#~ msgid "port"
-#~ msgstr "port"
-
-#~ msgid "power"
-#~ msgstr "moc"
-
-#~ msgid "rotations"
-#~ msgstr "obroty"
-
-#~ msgid "turn a motor"
-#~ msgstr "obróć silnik"
-
-#, fuzzy
-#~ msgid ""
-#~ "synchronize\n"
-#~ "\n"
-#~ "motors"
-#~ msgstr "zsynchronizuj dwa motory"
-
-#~ msgid "synchronize two motors connected in PORT B and PORT C"
-#~ msgstr "synchronizuj dwa silniki podłączone do PORTU B i PORTU C"
-
-#~ msgid "PORT A"
-#~ msgstr "PORT A"
-
-#~ msgid "PORT A of the brick"
-#~ msgstr "PORT A klocka"
-
-#~ msgid "PORT B"
-#~ msgstr "PORT B"
-
-#~ msgid "PORT B of the brick"
-#~ msgstr "PORT B klocka"
-
-#~ msgid "PORT C"
-#~ msgstr "PORT C"
-
-#~ msgid "PORT C of the brick"
-#~ msgstr "PORT C klocka"
-
-#~ msgid "start motor"
-#~ msgstr "uruchom silnik"
-
-#~ msgid "Run a motor forever."
-#~ msgstr "Uruchom silnik na zawsze."
-
-#~ msgid "brake motor"
-#~ msgstr "zahamuj silnik"
-
-#~ msgid "Stop a specified motor."
-#~ msgstr "Zatrzymaj określony motor."
-
-#~ msgid "reset motor"
-#~ msgstr "resetuj silnik"
-
-#~ msgid "Reset the motor counter."
-#~ msgstr "Resetuj licznik silnika."
-
-#~ msgid "motor position"
-#~ msgstr "pozycja silnika"
-
-#~ msgid "Get the motor position."
-#~ msgstr "Pobierz pozycję silnika."
-
-#~ msgid "PORT 1"
-#~ msgstr "PORT 1"
-
-#~ msgid "PORT 1 of the brick"
-#~ msgstr "PORT 1 klocka"
-
-#~ msgid "read"
-#~ msgstr "wczytaj"
-
-#~ msgid "Read sensor output."
-#~ msgstr "Wczytaj wyjście czujnika."
-
-#~ msgid "PORT 2"
-#~ msgstr "PORT 2"
-
-#~ msgid "PORT 2 of the brick"
-#~ msgstr "PORT 2 klocka"
-
-#~ msgid "light sensor"
-#~ msgstr "czujnik światła"
-
-#~ msgid "PORT 3"
-#~ msgstr "PORT 3"
-
-#~ msgid "PORT 3 of the brick"
-#~ msgstr "PORT 3 klocka"
-
-#~ msgid "touch sensor"
-#~ msgstr "czujnik dotykowy"
-
-#~ msgid "distance sensor"
-#~ msgstr "czujnik odległości"
-
-#~ msgid "PORT 4"
-#~ msgstr "PORT 4"
-
-#~ msgid "PORT 4 of the brick"
-#~ msgstr "PORT 4 klocka"
-
-#~ msgid "sound sensor"
-#~ msgstr "czujnik dźwięku"
-
-#~ msgid "color sensor"
-#~ msgstr "czujnik koloru"
-
-#~ msgid "set light"
-#~ msgstr "ustaw światło"
-
-#~ msgid "Set color sensor light."
-#~ msgstr "Ustaw światło czujnika koloru."
-
-#~ msgid "battery level"
-#~ msgstr "poziom baterii"
-
-#~ msgid "HIGH"
-#~ msgstr "WYSOKO"
-
-#~ msgid "LOW"
-#~ msgstr "NISKO"
-
-#~ msgid "INPUT"
-#~ msgstr "WEJŚCIE"
-
-#~ msgid "OUTPUT"
-#~ msgstr "WYJŚCIE"
-
-#~ msgid "PWM"
-#~ msgstr "PWM"
-
-#~ msgid "SERVO"
-#~ msgstr "SERVO"
-
-#~ msgid "ERROR: Check the Arduino and the number of port."
-#~ msgstr "BŁĄD: Sprawdź Arduino i numer portu."
-
-#~ msgid "ERROR: Value must be a number from 0 to 255."
-#~ msgstr "BŁĄD: Wartość musi być liczbą między 0 a 255."
-
-#~ msgid "ERROR: Value must be either HIGH or LOW."
-#~ msgstr "BŁĄD: Wartość musi być albo WYSOKO albo NISKO."
-
-#~ msgid "ERROR: The mode must be either INPUT, OUTPUT, PWM or SERVO."
-#~ msgstr "BŁĄD: Tryb musi być WEJŚCIE, WYJŚCIE, PWN albo SERVO."
-
-#~ msgid "pin mode"
-#~ msgstr "tryb pin"
-
-#~ msgid "mode"
-#~ msgstr "tryb"
-
-#~ msgid "Select the pin function (INPUT, OUTPUT, PWM, SERVO)."
-#~ msgstr "Wybierz funkcję pinu (WEJŚCIE, WYJŚCIE, PWM, SERVO)."
-
-#~ msgid "analog write"
-#~ msgstr "analogowy zapis"
-
-#~ msgid "Write analog value in specified port."
-#~ msgstr "Zapisz analogową wartość w wybranym porcie."
-
-#~ msgid "analog read"
-#~ msgstr "analogowy odczyt"
-
-#~ msgid ""
-#~ "Read value from analog port. Value may be between 0 and 1023. Use Vref to "
-#~ "determine voltage. For USB, volt=((read)*5)/1024) approximately."
-#~ msgstr ""
-#~ "Wczytaj wartość z analogowego portu. Wartość może być między 0 a 1023. Użyj "
-#~ "Vref, aby ustalić napięcie. Dla USB, volt=((odczyt)*5)/1024), w "
-#~ "przybliżeniu."
-
-#~ msgid "digital write"
-#~ msgstr "cyfrowy zapis"
-
-#~ msgid "Write digital value to specified port."
-#~ msgstr "Zapisz cyfrową wartość do wybranego portu."
-
-#~ msgid "digital read"
-#~ msgstr "cyfrowy odczyt"
-
-#~ msgid "Read value from digital port."
-#~ msgstr "Odczytaj wartość z cyfrowego portu."
-
-#~ msgid "Set HIGH value for digital port."
-#~ msgstr "Ustaw wartość WYSOKO dla cyfrowego portu."
-
-#~ msgid "Configure Arduino port for digital input."
-#~ msgstr "Skonfiguruj port Arduino dla cyfrowego wejścia."
-
-#~ msgid "Configure Arduino port to drive a servo."
-#~ msgstr "Skonfiguruj port Arduino do kierowania servo."
-
-#~ msgid "Set LOW value for digital port."
-#~ msgstr "Ustaw wartość NISKO dla cyfrowego portu."
-
-#~ msgid "Configure Arduino port for digital output."
-#~ msgstr "Skonfiguruj port Arduino dla cyfrowego wyjścia."
-
-#~ msgid "Configure Arduino port for PWM (pulse-width modulation)."
-#~ msgstr "Skonfiguruj port Arduino dla PWM (modulacji szerokości impulsów)."
-
-#, fuzzy
-#~ msgid "Palette of Expeyes blocks"
-#~ msgstr "Paleta klocków WeDo"
-
-#, fuzzy
-#~ msgid ""
-#~ "set the speed of the Butia motors as a value between 0 and 1023, passed by "
-#~ "an argument"
-#~ msgstr ""
-#~ "ustaw prędkość silników Butia jako wartość pomiędzy 0 a 1023, przekazywaną "
-#~ "przez argument"
-
-#, fuzzy
-#~ msgid "turn the Butia robot to the left"
-#~ msgstr "obróć robota Butia w lewo"
-
-#~ msgid "display Butia"
-#~ msgstr "wyświetlacz Butia"
-
-#~ msgid "Hello World    Butia            "
-#~ msgstr "Witaj świecie              Butia"
-
-#~ msgid "print text in Butia robot 32-character ASCII display"
-#~ msgstr "wyświetl tekst na 32-znakowym wyświetlaczu ASCII robota Butia"
-
-#~ msgid "Error making mask"
-#~ msgstr "Błąd matrycy"
-
-#~ msgid "G"
-#~ msgstr "G"
-
-#~ msgid "R"
-#~ msgstr "R"
-
-#~ msgid "B"
-#~ msgstr "B"
-
-#~ msgid "follow a RGB color"
-#~ msgstr "idź za kolorem RGB"
-
-#~ msgid "save calibration 1"
-#~ msgstr "zapisz kalibrację 1"
-
-#~ msgid "stores a calibration in calibration 1"
-#~ msgstr "zapisuje kalibrację w kalibracji 1"
-
-#~ msgid "save calibration 2"
-#~ msgstr "zapisz kalibrację 2"
-
-#~ msgid "stores a calibration in calibration 2"
-#~ msgstr "zapisuje kalibrację w kalibracji 2"
-
-#~ msgid "calibration 1"
-#~ msgstr "kalibracja 1"
-
-#~ msgid "return calibration 1"
-#~ msgstr "zwróć kalibrację 1"
-
-#~ msgid "calibration 2"
-#~ msgstr "kalibracja 2"
-
-#~ msgid "return calibration 2"
-#~ msgstr "zwróć kalibrację 2"
-
-#~ msgid "RGB"
-#~ msgstr "RGB"
-
-#~ msgid "YUV"
-#~ msgstr "YUV"
-
-#~ msgid "HSV"
-#~ msgstr "HSV"
-
-#~ msgid "Please check the port."
-#~ msgstr "Sprawdź port."
-
-#~ msgid "NXT found"
-#~ msgstr "znaleziono NXT"
-
-#~ msgid ""
-#~ "turn motor\n"
-#~ "rotations"
-#~ msgstr ""
-#~ "obróć rotacje\n"
-#~ "silnika"
-
-#~ msgid ""
-#~ "synchronize motors\n"
-#~ "steering"
-#~ msgstr ""
-#~ "synchronizuj silniki\n"
-#~ "sterowanie"
-
-#~ msgid "Palette of Arduino blocks"
-#~ msgstr "Paleta klocków Arduino"
-
-#~ msgid "delay Butia"
-#~ msgstr "opóźnij Butia"
-
-#~ msgid "wait for argument seconds"
-#~ msgstr "odczekaj ilość sekund zgodnie z argumentem"
-
-#~ msgid "The camera was not found."
-#~ msgstr "Kamera nie została znaleziona."
-
-#~ msgid "then else"
-#~ msgstr "wtedy w-przeciwnym-razie"
-
-#~ msgid "bottom of a collapsible stack"
-#~ msgstr "spód zwijalnego stosu"
-
-#~ msgid "collapsed stack: click to open"
-#~ msgstr "zwinięty stos: kliknij, aby otworzyć"
-
-#~ msgid "bottom block in a collapsed stack: click to open"
-#~ msgstr "dolny klocek zwiniętego stosu klocków: kliknij aby otworzyć"
-
-#~ msgid "top of stack"
-#~ msgstr "szczyt stosu"
-
-#~ msgid "label"
-#~ msgstr "etykieta"
-
-#~ msgid "Save as HTML"
-#~ msgstr "zapisz jako HTML"
-
-#~ msgid "<Ctrl>d"
-#~ msgstr "<Ctrl>d"
-
-#~ msgid "Palette of US currencies"
-#~ msgstr "Paleta walut amerykańskich (US)"
-
-#~ msgid "Palette of Australian currencies"
-#~ msgstr "Paleta walut australijskich"
-
-#~ msgid "Palette of Guaranies"
-#~ msgstr "Paleta Guarani"
-
-#~ msgid "presentation"
-#~ msgstr "prezentacja"
-
-#~ msgid "follow a turtle color"
-#~ msgstr "idź za kolorem żółwia"
-
-#~ msgid "calibrate"
-#~ msgstr "kalibracja"
-
-#~ msgid "calibrate a color to follow"
-#~ msgstr "koryguj kolor do śledzenia"
-
-#~ msgid "freq"
-#~ msgstr "częstotliwość"
-
-#~ msgid ""
-#~ "sync motors\n"
-#~ "steering"
-#~ msgstr ""
-#~ "synchronizuj\n"
-#~ "sterowanie silników"
-
-#~ msgid "<Ctrl>b"
-#~ msgstr "<Ctrl>b"
-
-#~ msgid "Palette of LEGO NXT blocks"
-#~ msgstr "Paleta klocków LEGO NXT"
-
-#~ msgid "Move the cursor over the orange palette for help."
-#~ msgstr "Aby uzyskać pomoc przesuń kursor nad pomarańczowy przybornik."
-
-#~ msgid "Turtle Art Butia"
-#~ msgstr "Żółwiowa Sztuka Butia"
-
-#~ msgid "pushbutton"
-#~ msgstr "przycisk"
-
-#~ msgid "brake a specified motor"
-#~ msgstr "zahamuj określiony silnik"
-
-#~ msgid ""
-#~ "returns the object gray level encountered him as a number between 0 and 1023"
-#~ msgstr ""
-#~ "zwraca poziom szarości napotkanego obiektu jako liczbę w przedziale od 0 do "
-#~ "1023"
-
-#~ msgid "activity count"
-#~ msgstr "łącznie aktywności"
-
-#~ msgid "Import/Export"
-#~ msgstr "Import/Eksport"
-
-#~ msgid "Import project from the Journal"
-#~ msgstr "Importuj projekt z Dziennika"
-
-#~ msgid "Butia battery charge"
-#~ msgstr "ładowanie baterii Butia"
-
-#~ msgid "Butia speed"
-#~ msgstr "Szybkość Butia"
-
-#~ msgid "forward distance"
-#~ msgstr "odległość ruchu naprzód"
-
-#~ msgid "backward distance"
-#~ msgstr "odległość ruchu w tył"
-
-#~ msgid "Turn x degrees"
-#~ msgstr "Skręć o x stopni"
-
-#~ msgid "print Butia"
-#~ msgstr "wydrukuj Butia"
-
-#~ msgid "Sumo Butia"
-#~ msgstr "Butia Sumo"
-
-#~ msgid "submit speed​​"
-#~ msgstr "podaj prędkość"
-
-#~ msgid "Send speed to the robot."
-#~ msgstr "Wyślij prędkość do robota."
-
-#~ msgid "set speed"
-#~ msgstr "ustaw prędkość"
-
-#~ msgid "move"
-#~ msgstr "ruszaj"
-
-#~ msgid "turn left"
-#~ msgstr "skręć w lewo"
-
-#~ msgid "turn right"
-#~ msgstr "skręć w prawo"
-
-#~ msgid "angle to the opponent"
-#~ msgstr "kąt do przeciwnika"
-
-#~ msgid "Get the angle to the center of the opponent."
-#~ msgstr "Pobierz kąt w stosunku do centrum przeciwnika."
-
-#~ msgid "x coor."
-#~ msgstr "współrz. x."
-
-#~ msgid "y coor."
-#~ msgstr "współrz. y."
-
-#~ msgid "opponent x coor."
-#~ msgstr "współrz. x przeciwnika"
-
-#~ msgid "Get the x coordinate of the opponent."
-#~ msgstr "Pobierz współrzędną x przeciwnika."
-
-#~ msgid "opponent y coor."
-#~ msgstr "współrz. y przeciwnika"
-
-#~ msgid "Get the y coordinate of the opponent."
-#~ msgstr "Pobierz współrzędną y przeciwnika."
-
-#~ msgid "Get SumBot rotation."
-#~ msgstr "Pobierz obrót SumBot."
-
-#~ msgid "opponent rotation"
-#~ msgstr "obrót przeciwnika"
-
-#~ msgid "distance to opponent"
-#~ msgstr "odległość do przeciwnika"
-
-#~ msgid "full screen"
-#~ msgstr "pełen ekran"
+#~ msgstr "Ayapitkata makichkia jutikam U"
