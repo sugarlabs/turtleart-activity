@@ -21,25 +21,29 @@ from functools import partial
 
 import dbus
 from dbus import PROPERTIES_IFACE
-from telepathy.interfaces import (ACCOUNT,
-                                  ACCOUNT_MANAGER,
-                                  CHANNEL,
-                                  CHANNEL_INTERFACE_GROUP,
-                                  CHANNEL_TYPE_CONTACT_LIST,
-                                  CHANNEL_TYPE_FILE_TRANSFER,
-                                  CLIENT,
-                                  CONNECTION,
-                                  CONNECTION_INTERFACE_ALIASING,
-                                  CONNECTION_INTERFACE_CONTACTS,
-                                  CONNECTION_INTERFACE_CONTACT_CAPABILITIES,
-                                  CONNECTION_INTERFACE_REQUESTS,
-                                  CONNECTION_INTERFACE_SIMPLE_PRESENCE)
-from telepathy.constants import (HANDLE_TYPE_CONTACT,
-                                 HANDLE_TYPE_LIST,
-                                 CONNECTION_PRESENCE_TYPE_OFFLINE,
-                                 CONNECTION_STATUS_CONNECTED,
-                                 CONNECTION_STATUS_DISCONNECTED)
-from telepathy.client import Connection, Channel
+from gi.repository import TelepathyGLib
+ACCOUNT = TelepathyGLib.IFACE_ACCOUNT
+ACCOUNT_MANAGER = TelepathyGLib.IFACE_ACCOUNT_MANAGER
+CHANNEL = TelepathyGLib.IFACE_CHANNEL
+CHANNEL_INTERFACE_GROUP = TelepathyGLib.IFACE_CHANNEL_INTERFACE_GROUP
+CHANNEL_TYPE_CONTACT_LIST = TelepathyGLib.IFACE_CHANNEL_TYPE_CONTACT_LIST
+CHANNEL_TYPE_FILE_TRANSFER = TelepathyGLib.IFACE_CHANNEL_TYPE_FILE_TRANSFER
+CLIENT = TelepathyGLib.IFACE_CLIENT
+CONNECTION = TelepathyGLib.IFACE_CONNECTION
+CONNECTION_INTERFACE_ALIASING = TelepathyGLib.IFACE_CONNECTION_INTERFACE_ALIASING
+CONNECTION_INTERFACE_CONTACTS = TelepathyGLib.IFACE_CONNECTION_INTERFACE_CONTACTS
+CONNECTION_INTERFACE_CONTACT_CAPABILITIES = TelepathyGLib.IFACE_CONNECTION_INTERFACE_CONTACT_CAPABILITIES
+CONNECTION_INTERFACE_REQUESTS = TelepathyGLib.IFACE_CONNECTION_INTERFACE_REQUESTS
+CONNECTION_INTERFACE_SIMPLE_PRESENCE = TelepathyGLib.IFACE_CONNECTION_INTERFACE_SIMPLE_PRESENCE
+
+HANDLE_TYPE_CONTACT = TelepathyGLib.HandleType.CONTACT
+HANDLE_TYPE_LIST = TelepathyGLib.HandleType.LIST
+CONNECTION_PRESENCE_TYPE_OFFLINE = TelepathyGLib.ConnectionPresenceType.OFFLINE
+CONNECTION_STATUS_CONNECTED = TelepathyGLib.ConnectionStatus.CONNECTED
+CONNECTION_STATUS_DISCONNECTED = TelepathyGLib.ConnectionStatus.DISCONNECTED
+
+from gi.repository.TelepathyGLib import Connection
+from gi.repository.TelepathyGLib import Channel
 
 from .buddy import get_owner_instance
 from .buddy import BuddyModel
@@ -259,12 +263,12 @@ class _Account(GObject.GObject):
 
     def _prepare_connection(self, connection_path):
         connection_name = connection_path.replace('/', '.')[1:]
-        print("Preparing %s" % connection_name)
+        print(("Preparing %s" % connection_name))
         self._connection = Connection(connection_name, connection_path,
                                       ready_handler=self.__connection_ready_cb)
 
     def __connection_ready_cb(self, connection):
-        print('_Account.__connection_ready_cb %r', connection.object_path)
+        print(('_Account.__connection_ready_cb %r', connection.object_path))
         connection.connect_to_signal('StatusChanged',
                                      self.__status_changed_cb)
 
@@ -348,8 +352,8 @@ class _Account(GObject.GObject):
             connection.connect_to_signal('CurrentActivityChanged',
                                          self.__current_activity_changed_cb)
         else:
-            print('Connection %s does not support OLPC buddy '
-                  'properties', self._connection.object_path)
+            print(('Connection %s does not support OLPC buddy '
+                   'properties', self._connection.object_path))
             pass
 
         if CONNECTION_INTERFACE_ACTIVITY_PROPERTIES in self._connection:
@@ -359,8 +363,8 @@ class _Account(GObject.GObject):
                 'ActivityPropertiesChanged',
                 self.__activity_properties_changed_cb)
         else:
-            print('Connection %s does not support OLPC activity '
-                  'properties', self._connection.object_path)
+            print(('Connection %s does not support OLPC activity '
+                   'properties', self._connection.object_path))
             pass
 
         properties = {
@@ -762,8 +766,8 @@ class Neighborhood(GObject.GObject):
                 properties = obj_acct_mgr.Get(ACCOUNT, 'Parameters')
                 if "server" in properties and \
                         properties["server"] == self._server:
-                    print("Enabiling account_path = %s, server = %s",
-                          account_path, self._server)
+                    print(("Enabiling account_path = %s, server = %s",
+                           account_path, self._server))
                     account = _Account(account_path)
                     account.enable()
                     return account
@@ -902,11 +906,11 @@ class Neighborhood(GObject.GObject):
         self._activities[activity_id] = activity
 
     def __activity_updated_cb(self, account, activity_id, properties):
-        print('__activity_updated_cb %r %r', activity_id, properties)
+        print(('__activity_updated_cb %r %r', activity_id, properties))
         if activity_id not in self._activities:
-            print(
+            print((
                 '__activity_updated_cb: Unknown activity with activity_id %r',
-                activity_id)
+                activity_id))
             return
 
         # we should somehow emulate this and say we only have TurtleArtActivity
