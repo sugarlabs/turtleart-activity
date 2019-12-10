@@ -27,7 +27,7 @@ import dbus.exceptions
 import dbus.glib
 from dbus import PROPERTIES_IFACE
 
-""" FIXME ... """
+#FIXME ... 
 try:
     from sugar3.presence.buddy import Buddy
     from sugar3.presence.activity import Activity
@@ -35,10 +35,12 @@ try:
 except ImportError:
     pass
 
-from telepathy.interfaces import (ACCOUNT,
-                                  ACCOUNT_MANAGER,
-                                  CONNECTION)
-from telepathy.constants import HANDLE_TYPE_CONTACT
+from gi.repository import TelepathyGLib
+ACCOUNT = TelepathyGLib.IFACE_ACCOUNT
+ACCOUNT_MANAGER = TelepathyGLib.IFACE_ACCOUNT_MANAGER
+CONNECTION = TelepathyGLib.IFACE_CONNECTION
+
+HANDLE_TYPE_CONTACT = TelepathyGLib.HandleType.CONTACT
 from gi.repository import GObject
 
 _logger = logging.getLogger('sugar3.presence.presenceservice')

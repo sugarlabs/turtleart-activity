@@ -23,8 +23,13 @@ from functools import partial
 
 import dbus
 from dbus import PROPERTIES_IFACE
-from telepathy.interfaces import (ACCOUNT, ACCOUNT_MANAGER)
-from telepathy.constants import CONNECTION_STATUS_CONNECTED
+
+from gi.repository import TelepathyGLib
+
+# from telepathy.interfaces import (ACCOUNT, ACCOUNT_MANAGER)
+ACCOUNT = TelepathyGLib.IFACE_ACCOUNT
+ACCOUNT_MANAGER = TelepathyGLib.IFACE_ACCOUNT_MANAGER
+CONNECTION_STATUS_CONNECTED = TelepathyGLib.ConnectionStatus.CONNECTED
 
 ACCOUNT_MANAGER_SERVICE = 'org.freedesktop.Telepathy.AccountManager'
 ACCOUNT_MANAGER_PATH = '/org/freedesktop/Telepathy/AccountManager'
