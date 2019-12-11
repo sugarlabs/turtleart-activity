@@ -62,7 +62,7 @@ class TelepathyClient(dbus.service.Object):
             'HandlerChannelFilter': self.__get_filters_cb,
         })
 
-        self._prop_getters.setdefault(CLIENT_APPROVER, {{}).update({
+        self._prop_getters.setdefault(CLIENT_APPROVER, {}).update({
             'HandlerChannelFilter': self.__get_filters_cb,
         })
         self.got_channel = dispatch.Signal()
