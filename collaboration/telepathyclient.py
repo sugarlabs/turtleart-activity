@@ -18,12 +18,15 @@ import logging
 
 import dbus
 from dbus import PROPERTIES_IFACE
+from gi.repository import TelepathyGLib
 
-from telepathy.interfaces import CLIENT, \
-    CLIENT_APPROVER, \
-    CLIENT_HANDLER, \
-    CLIENT_INTERFACE_REQUESTS
-from telepathy.server import DBusProperties
+CLIENT = TelepathyGLib.IFACE_CLIENT
+CLIENT_APPROVER = TelepathyGLib.IFACE_CLIENT_APPROVER
+CLIENT_HANDLER = TelepathyGLib.IFACE_CLIENT_HANDLER
+CLIENT_INTERFACE_REQUESTS = TelepathyGLib.IFACE_CLIENT_INTERFACE_REQUESTS
+
+# FIXME Review the following code in replacement for telepathy.server.DBusProperties
+DBusProperties = TelepathyGLib.DBusPropertiesMixinClass
 
 from . import dispatch
 
