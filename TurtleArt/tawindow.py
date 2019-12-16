@@ -157,6 +157,7 @@ class TurtleArtWindow():
         '''
         self.parent = parent
         self.turtle_canvas = turtle_canvas
+        self._default_turtle_name = DEFAULT_TURTLE
         self._loaded_project = ''
         self._sharing = False
         self._timeout_tag = [0]
@@ -320,6 +321,9 @@ class TurtleArtWindow():
 
         self.turtles = Turtles(self)
         if self.nick is not None:
+            # FIXME Review assumed code changes here
+            self._default_turtle_name = str(self.nick)
+            self.turtles._default_turtle_name = str(self.nick)
             self.turtles.set_default_turtle_name(self.nick)
         if mycolors is None:
             Turtle(self.turtles, self.turtles.get_default_turtle_name())

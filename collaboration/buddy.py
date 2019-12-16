@@ -117,9 +117,9 @@ class OwnerBuddyModel(BaseBuddyModel):
         for service in bus_object.ListNames(
                 dbus_interface=dbus.BUS_DAEMON_IFACE):
             if service.startswith(CONNECTION + '.'):
-                path = '/%s' % service.replace('.', '/')
-                Connection(service, path, bus,
-                           ready_handler=self.__connection_ready_cb)
+                path = '/{}'.format(service.replace('.', '/'))
+                self._connection  = Connection.new(bus_object, service, path)
+               
 
     def __connection_ready_cb(self, connection):
         self._sync_properties_on_connection(connection)
