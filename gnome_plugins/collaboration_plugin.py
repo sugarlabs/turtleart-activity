@@ -68,6 +68,11 @@ class Collaboration_plugin(Plugin):
         self._activity_id = "1234567"
         self._nick = ""
         self._setup_has_been_called = False
+        # FIXME To fix attribution errors, had to add variable declaration
+        self.shared_activity = None
+        self.metadata = None
+        
+
 
     def _setup_config_file(self, config_file_path):
         self._config_file_path = os.path.join(config_file_path,

@@ -1006,7 +1006,7 @@ Would you like to save before quitting?'))
 
     def color_changed(self, colors):
         ''' Reskin turtle with collaboration colors '''
-        turtle = self.tw.turtles.get_turtle(self.tw.default_turtle_name)
+        turtle = self.tw.turtles.get_turtle(self.tw._default_turtle_name)
         try:
             turtle.colors = colors.split(',')
         except BaseException:
