@@ -267,7 +267,7 @@ class Collaboration_plugin(Plugin):
             self._joined_activity = Activity(
                 account_path, connection, room_handle, properties=properties)
             # FIXME: this should be unified, no need to keep 2 references
-            self._shared_activity = self._joined_activity
+            self.shared_activity = self._joined_activity
         except BaseException:
             traceback.print_exc(file=sys.stdout)
 
@@ -324,11 +324,11 @@ class Collaboration_plugin(Plugin):
             return
 
         try:
-            self._parent._shared_activity = Activity(account_path,
+            self._parent.shared_activity = Activity(account_path,
                                                      connection,
                                                      properties=properties)
             # FIXME: this should be unified, no need to keep 2 references
-            self._shared_activity = self._parent._shared_activity
+            self.shared_activity = self._parent.shared_activity
         except BaseException:
             traceback.print_exc(file=sys.stdout)
 
