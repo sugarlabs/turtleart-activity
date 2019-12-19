@@ -251,7 +251,7 @@ class TurtleArtActivity(activity.Activity):
         if hasattr(self, 'get_window'):
             if hasattr(self.get_window(), 'get_cursor'):
                 self._old_cursor = self.get_window().get_cursor()
-                self.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.WATCH))
+                self.get_window().set_cursor(Gdk.Cursor.new(Gdk.CursorType.WATCH))
         GLib.timeout_add(250, self.__save_as_logo)
 
     def __save_as_logo(self):
@@ -275,7 +275,7 @@ class TurtleArtActivity(activity.Activity):
         if hasattr(self, 'get_window'):
             if hasattr(self.get_window(), 'get_cursor'):
                 self._old_cursor = self.get_window().get_cursor()
-                self.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.WATCH))
+                self.get_window().set_cursor(Gdk.Cursor.new(Gdk.CursorType.WATCH))
         GLib.timeout_add(250, self.__save_as_python)
 
     def __save_as_python(self):
@@ -329,7 +329,7 @@ class TurtleArtActivity(activity.Activity):
             _logger.debug('setting watch cursor')
             if hasattr(self.get_window(), 'get_cursor'):
                 self._old_cursor = self.get_window().get_cursor()
-                self.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.WATCH))
+                self.get_window().set_cursor(Gdk.Cursor.new(Gdk.CursorType.WATCH))
         chooser_dialog(self, 'org.laptop.TurtleArtActivity',
                        self._load_ta_project)
 
@@ -350,7 +350,7 @@ class TurtleArtActivity(activity.Activity):
         if hasattr(self, 'get_window'):
             if hasattr(self.get_window(), 'get_cursor'):
                 self._old_cursor = self.get_window().get_cursor()
-                self.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.WATCH))
+                self.get_window().set_cursor(Gdk.Cursor.new(Gdk.CursorType.WATCH))
                 # FIXME: we are looking for tar files
         chooser_dialog(self, '', self._load_ta_plugin)
 
@@ -375,7 +375,7 @@ class TurtleArtActivity(activity.Activity):
         if hasattr(self, 'get_window'):
             if hasattr(self.get_window(), 'get_cursor'):
                 self._old_cursor = self.get_window().get_cursor()
-                self.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.WATCH))
+                self.get_window().set_cursor(Gdk.Cursor.new(Gdk.CursorType.WATCH))
         GLib.timeout_add(250, self.__save_as_odp)
 
     def __save_as_odp(self):
@@ -388,7 +388,7 @@ class TurtleArtActivity(activity.Activity):
         if hasattr(self, 'get_window'):
             if hasattr(self.get_window(), 'get_cursor'):
                 self._old_cursor = self.get_window().get_cursor()
-                self.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.WATCH))
+                self.get_window().set_cursor(Gdk.Cursor.new(Gdk.CursorType.WATCH))
         GLib.timeout_add(250, self.__save_as_icon)
 
     def __save_as_icon(self):
@@ -404,7 +404,7 @@ class TurtleArtActivity(activity.Activity):
         if hasattr(self, 'get_window'):
             if hasattr(self.get_window(), 'get_cursor'):
                 self._old_cursor = self.get_window().get_cursor()
-                self.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.WATCH))
+                self.get_window().set_cursor(Gdk.Cursor.new(Gdk.CursorType.WATCH))
         GLib.timeout_add(250, self.__save_as_image)
 
     def __save_as_image(self):
@@ -419,7 +419,7 @@ class TurtleArtActivity(activity.Activity):
         if hasattr(self, 'get_window'):
             if hasattr(self.get_window(), 'get_cursor'):
                 self._old_cursor = self.get_window().get_cursor()
-                self.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.WATCH))
+                self.get_window().set_cursor(Gdk.Cursor.new(Gdk.CursorType.WATCH))
         GLib.timeout_add(250, self.__save_blocks_as_image)
 
     def __save_blocks_as_image(self):
@@ -432,7 +432,7 @@ class TurtleArtActivity(activity.Activity):
         if hasattr(self, 'get_window'):
             if hasattr(self.get_window(), 'get_cursor'):
                 self._old_cursor = self.get_window().get_cursor()
-                self.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.WATCH))
+                self.get_window().set_cursor(Gdk.Cursor.new(Gdk.CursorType.WATCH))
         GLib.timeout_add(250, self.__keep)
 
     def __keep(self):
@@ -568,7 +568,7 @@ class TurtleArtActivity(activity.Activity):
             _logger.debug('setting watch cursor')
             if hasattr(self.get_window(), 'get_cursor'):
                 self._old_cursor = self.get_window().get_cursor()
-            self.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.WATCH))
+            self.get_window().set_cursor(Gdk.Cursor.new(Gdk.CursorType.WATCH))
         self._create_store()
         # self.tw.load_file_from_chooser(True)
         # Now that the file is loaded, restore the cursor
@@ -1330,7 +1330,7 @@ class TurtleArtActivity(activity.Activity):
            hasattr(self.get_window(), 'get_cursor'):
             self._old_cursor = self.get_window().get_cursor()
         else:
-            self._old_cursor = Gdk.Cursor(Gdk.CursorType.LEFT_PTR)
+            self._old_cursor = Gdk.Cursor.new(Gdk.CursorType.LEFT_PTR)
 
         # Try restoring an existing project...
         if self._jobject and self._jobject.file_path or \
@@ -1340,7 +1340,7 @@ class TurtleArtActivity(activity.Activity):
                 if hasattr(self.get_window(), 'get_cursor'):
                     self._old_cursor = self.get_window().get_cursor()
                     self.get_window().set_cursor(
-                        Gdk.Cursor(Gdk.CursorType.WATCH))
+                        Gdk.Cursor.new(Gdk.CursorType.WATCH))
             self.read_file(self._jobject.file_path or self.handle.uri)
         else:  # ...or else, load a Start Block onto the canvas.
             self.tw.load_start()
@@ -1440,7 +1440,7 @@ class TurtleArtActivity(activity.Activity):
         ''' Open a project or plugin and then run it. '''
         if hasattr(self, 'tw') and self.tw is not None:
             if not hasattr(self, '_old_cursor'):
-                self._old_cursor = Gdk.Cursor(Gdk.CursorType.LEFT_PTR)
+                self._old_cursor = Gdk.Cursor.new(Gdk.CursorType.LEFT_PTR)
             _logger.debug('Read file: %s' % (file_path))
             # Could be a plugin or deprecated gtar or tar file...
             if plugin or file_path.endswith(('.gtar', '.tar', '.tar.gz')):
@@ -1534,7 +1534,7 @@ class TurtleArtActivity(activity.Activity):
                 self.get_window().set_cursor(self._old_cursor)
             else:
                 self.get_window().set_cursor(
-                    Gdk.Cursor(Gdk.CursorType.LEFT_PTR))
+                    Gdk.Cursor.new(Gdk.CursorType.LEFT_PTR))
 
     def _copy_cb(self, button):
         ''' Copy to the clipboard. '''
@@ -1546,7 +1546,7 @@ class TurtleArtActivity(activity.Activity):
             if hasattr(self, 'get_window'):
                 if hasattr(self.get_window(), 'get_cursor'):
                     self._old_cursor = self.get_window().get_cursor()
-                self.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.HAND1))
+                self.get_window().set_cursor(Gdk.Cursor.new(Gdk.CursorType.HAND1))
 
     def _save_macro_cb(self, button):
         ''' Save stack to macros_path '''
@@ -1558,7 +1558,7 @@ class TurtleArtActivity(activity.Activity):
             if hasattr(self, 'get_window'):
                 if hasattr(self.get_window(), 'get_cursor'):
                     self._old_cursor = self.get_window().get_cursor()
-                self.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.HAND1))
+                self.get_window().set_cursor(Gdk.Cursor.new(Gdk.CursorType.HAND1))
 
     def _delete_macro_cb(self, button):
         ''' Delete stack from macros_path '''
@@ -1570,7 +1570,7 @@ class TurtleArtActivity(activity.Activity):
             if hasattr(self, 'get_window'):
                 if hasattr(self.get_window(), 'get_cursor'):
                     self._old_cursor = self.get_window().get_cursor()
-                self.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.HAND1))
+                self.get_window().set_cursor(Gdk.Cursor.new(Gdk.CursorType.HAND1))
 
     def _paste_cb(self, button):
         ''' Paste from the clipboard. '''
@@ -1603,7 +1603,7 @@ class TurtleArtActivity(activity.Activity):
             if hasattr(self, 'get_window'):
                 if hasattr(self.get_window(), 'get_cursor'):
                     self._old_cursor = self.get_window().get_cursor()
-                self.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.HAND1))
+                self.get_window().set_cursor(Gdk.Cursor.new(Gdk.CursorType.HAND1))
 
     def empty_trash_alert(self, title, msg):
         ''' We get confirmation from the user before emptying the trash '''
@@ -1626,7 +1626,7 @@ class TurtleArtActivity(activity.Activity):
 
     def _add_label(self, string, toolbar, width=None):
         ''' Add a label to a toolbar. '''
-        label = Gtk.Label(string)
+        label = Gtk.Label(label=string)
         label.set_line_wrap(True)
         if width is not None:
             label.set_size_request(width, -1)
@@ -1700,7 +1700,7 @@ class TurtleArtActivity(activity.Activity):
         button_and_label = Gtk.HBox()
         button = self._add_button(name, None, cb, None, arg=cb_args)
         button_and_label.pack_start(button, False, False, 5)
-        label = Gtk.Label(tooltip)
+        label = Gtk.Label(label=tooltip)
         label.set_justify(Gtk.Justification.LEFT)
         label.set_line_wrap(True)
         label.show()
@@ -1774,7 +1774,7 @@ class TurtleArtActivity(activity.Activity):
         self._selected_sample = image_path
         self._sample_window.hide()
 
-        self.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.WATCH))
+        self.get_window().set_cursor(Gdk.Cursor.new(Gdk.CursorType.WATCH))
         GLib.idle_add(self._sample_loader)
 
     def _sample_loader(self):
@@ -1788,7 +1788,7 @@ class TurtleArtActivity(activity.Activity):
                 break
         self.tw.load_save_folder = os.path.join(activity.get_bundle_path(),
                                                 'samples')
-        self.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.LEFT_PTR))
+        self.get_window().set_cursor(Gdk.Cursor.new(Gdk.CursorType.LEFT_PTR))
 
     def _fill_samples_list(self, store):
         '''

@@ -290,7 +290,7 @@ class TurtleGraphics:
         ''' Draw a pixbuf '''
 
         def _draw_pixbuf(cc, pixbuf, a, b, x, y, w, h, heading):
-            # Build a gtk.gdk.CairoContext from a cairo.Context to access
+            # Build a Gdk.CairoContext from a cairo.Context to access
             # the set_source_pixbuf attribute.
             cc.save()
             # center the rotation on the center of the image

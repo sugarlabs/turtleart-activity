@@ -231,7 +231,7 @@ return %s(self)" % (p, P, P)
         if self._ta_file is None:
             self.tw.load_start()
         else:
-            self.win.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.WATCH))
+            self.win.get_window().set_cursor(Gdk.Cursor.new(Gdk.CursorType.WATCH))
             GLib.idle_add(self._project_loader, self._ta_file)
         self._set_gio_settings_overrides()
         Gtk.main()
@@ -241,7 +241,7 @@ return %s(self)" % (p, P, P)
         self.tw.lc.trace = 0
         if self._run_on_launch:
             self._do_run_cb()
-        self.win.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.LEFT_PTR))
+        self.win.get_window().set_cursor(Gdk.Cursor.new(Gdk.CursorType.LEFT_PTR))
 
     def _draw_and_quit(self):
         ''' Non-interactive mode: run the project, save it to a file
@@ -411,7 +411,7 @@ return %s(self)" % (p, P, P)
                 self.get_window().set_cursor(self._old_cursor)
             else:
                 self.get_window().set_cursor(
-                    Gdk.Cursor(Gdk.CursorType.LEFT_PTR))
+                    Gdk.Cursor.new(Gdk.CursorType.LEFT_PTR))
 
     def _setup_gtk(self):
         ''' Set up a scrolled window in which to run Turtle Blocks. '''
@@ -926,11 +926,11 @@ Would you like to save before quitting?'))
         self.tw.deleting_blocks = False
         if self.tw.saving_blocks:
             self.win.get_window().set_cursor(
-                Gdk.Cursor(Gdk.CursorType.LEFT_PTR))
+                Gdk.Cursor.new(Gdk.CursorType.LEFT_PTR))
             self.tw.saving_blocks = False
         else:
             self.win.get_window().set_cursor(
-                Gdk.Cursor(Gdk.CursorType.HAND1))
+                Gdk.Cursor.new(Gdk.CursorType.HAND1))
             self.tw.saving_blocks = True
 
     def _do_delete_macro_cb(self, widget):
@@ -939,11 +939,11 @@ Would you like to save before quitting?'))
         self.tw.saving_blocks = False
         if self.tw.deleting_blocks:
             self.win.get_window().set_cursor(
-                Gdk.Cursor(Gdk.CursorType.LEFT_PTR))
+                Gdk.Cursor.new(Gdk.CursorType.LEFT_PTR))
             self.tw.deleting_blocks = False
         else:
             self.win.get_window().set_cursor(
-                Gdk.Cursor(Gdk.CursorType.HAND1))
+                Gdk.Cursor.new(Gdk.CursorType.HAND1))
             self.tw.deleting_blocks = True
 
     def _do_copy_cb(self, button):
@@ -952,11 +952,11 @@ Would you like to save before quitting?'))
         self.tw.deleting_blocks = False
         if self.tw.copying_blocks:
             self.win.get_window().set_cursor(
-                Gdk.Cursor(Gdk.CursorType.LEFT_PTR))
+                Gdk.Cursor.new(Gdk.CursorType.LEFT_PTR))
             self.tw.copying_blocks = False
         else:
             self.win.get_window().set_cursor(
-                Gdk.Cursor(Gdk.CursorType.HAND1))
+                Gdk.Cursor.new(Gdk.CursorType.HAND1))
             self.tw.copying_blocks = True
 
     def _do_paste_cb(self, button):
@@ -965,7 +965,7 @@ Would you like to save before quitting?'))
         self.tw.saving_blocks = False
         self.tw.deleting_blocks = False
         self.win.get_window().set_cursor(
-            Gdk.Cursor(Gdk.CursorType.LEFT_PTR))
+            Gdk.Cursor.new(Gdk.CursorType.LEFT_PTR))
         clipboard = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD)
         text = clipboard.wait_for_text()
         if text is not None:
@@ -1096,7 +1096,7 @@ Would you like to save before quitting?'))
         self._selected_sample = image_path
         self._sample_window.hide()
 
-        self.win.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.WATCH))
+        self.win.get_window().set_cursor(Gdk.Cursor.new(Gdk.CursorType.WATCH))
         GLib.idle_add(self._sample_loader)
 
     def _sample_loader(self):
@@ -1108,7 +1108,7 @@ Would you like to save before quitting?'))
             if os.path.exists(file_path):
                 self.tw.load_files(file_path)
                 break
-        self.win.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.LEFT_PTR))
+        self.win.get_window().set_cursor(Gdk.Cursor.new(Gdk.CursorType.LEFT_PTR))
 
     def _fill_samples_list(self, store):
         '''

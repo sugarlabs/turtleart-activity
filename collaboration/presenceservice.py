@@ -53,7 +53,7 @@ class PresenceService(GObject.GObject):
 
     """Provides simplified access to the Telepathy framework to activities"""
     __gsignals__ = {
-        'activity-shared': (GObject.SIGNAL_RUN_FIRST, GObject.TYPE_NONE,
+        'activity-shared': (GObject.SignalFlags.RUN_FIRST, None,
                             ([GObject.TYPE_PYOBJECT, GObject.TYPE_PYOBJECT,
                               GObject.TYPE_PYOBJECT])), }
 

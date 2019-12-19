@@ -33,9 +33,9 @@ _instance = None
 
 class ConnectionWatcher(GObject.GObject):
     __gsignals__ = {
-        'connection-added': (GObject.SIGNAL_RUN_FIRST, GObject.TYPE_NONE,
+        'connection-added': (GObject.SignalFlags.RUN_FIRST, None,
                              ([GObject.TYPE_PYOBJECT])),
-        'connection-removed': (GObject.SIGNAL_RUN_FIRST, GObject.TYPE_NONE,
+        'connection-removed': (GObject.SignalFlags.RUN_FIRST, None,
                                ([GObject.TYPE_PYOBJECT])),
     }
 

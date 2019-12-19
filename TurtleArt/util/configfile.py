@@ -24,9 +24,9 @@ class ConfigFile(GObject.GObject):
     """Load/save a simple (key = value) config file"""
 
     __gsignals__ = {
-        'configuration-loaded': (GObject.SIGNAL_RUN_FIRST, GObject.TYPE_NONE,
+        'configuration-loaded': (GObject.SignalFlags.RUN_FIRST, None,
                                  ()),
-        'configuration-saved': (GObject.SIGNAL_RUN_FIRST, GObject.TYPE_NONE,
+        'configuration-saved': (GObject.SignalFlags.RUN_FIRST, None,
                                 ()),
     }
 

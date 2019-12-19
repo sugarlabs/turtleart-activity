@@ -188,9 +188,9 @@ class Gplay():
 
 class GstPlayer(GObject.GObject):
     __gsignals__ = {
-        'error': (GObject.SIGNAL_RUN_FIRST, None, [str, str]),
-        'eos': (GObject.SIGNAL_RUN_FIRST, None, []),
-        'stream-info': (GObject.SIGNAL_RUN_FIRST, None, [object])}
+        'error': (GObject.SignalFlags.RUN_FIRST, None, [str, str]),
+        'eos': (GObject.SignalFlags.RUN_FIRST, None, []),
+        'stream-info': (GObject.SignalFlags.RUN_FIRST, None, [object])}
 
     def __init__(self, videowidget, running_sugar):
         GObject.GObject.__init__(self)
