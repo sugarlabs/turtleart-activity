@@ -1354,14 +1354,14 @@ class TurtleArtWindow():
         if self.copying_blocks or self.sharing_blocks or self.saving_blocks:
             if blk is None or blk.type != 'block':
                 self.parent.get_window().set_cursor(
-                    Gdk.Cursor(Gdk.CursorType.LEFT_PTR))
+                    Gdk.Cursor.new(Gdk.CursorType.LEFT_PTR))
                 self.copying_blocks = False
                 self.sharing_blocks = False
                 self.saving_blocks = False
         elif self.deleting_blocks:
             if blk is None or blk.type != 'proto':
                 self.parent.get_window().set_cursor(
-                    Gdk.Cursor(Gdk.CursorType.LEFT_PTR))
+                    Gdk.Cursor.new(Gdk.CursorType.LEFT_PTR))
                 self.deleting_blocks = False
         if blk is not None:
             if blk.type == 'block':
@@ -1376,7 +1376,7 @@ class TurtleArtWindow():
                             palette_names.index('myblocks'):
                         self._delete_stack_alert(blk)
                     self.parent.get_window().set_cursor(
-                        Gdk.Cursor(Gdk.CursorType.LEFT_PTR))
+                        Gdk.Cursor.new(Gdk.CursorType.LEFT_PTR))
                     self.deleting_blocks = False
                 elif blk.name == 'restoreall':
                     self._restore_all_from_trash()
@@ -2022,7 +2022,7 @@ class TurtleArtWindow():
             self.paste_offset = 20
 
             self.parent.get_window().set_cursor(
-                Gdk.Cursor(Gdk.CursorType.LEFT_PTR))
+                Gdk.Cursor.new(Gdk.CursorType.LEFT_PTR))
             self.saving_blocks = False
 
             if self.running_sugar and self._sharing and \
@@ -3001,7 +3001,7 @@ class TurtleArtWindow():
         else:
             self._hide_text_entry()
             self.parent.get_window().set_cursor(
-                Gdk.Cursor(Gdk.CursorType.WATCH))
+                Gdk.Cursor.new(Gdk.CursorType.WATCH))
             GLib.idle_add(self.__run_stack, blk)
 
     def __run_stack(self, blk):
@@ -3020,7 +3020,7 @@ class TurtleArtWindow():
         code = self.lc.generate_code(top, self.just_blocks())
         if self.interactive_mode:
             self.parent.get_window().set_cursor(
-                Gdk.Cursor(Gdk.CursorType.LEFT_PTR))
+                Gdk.Cursor.new(Gdk.CursorType.LEFT_PTR))
         self.lc.run_blocks(code)
         if self.interactive_mode:
             GLib.idle_add(self.lc.doevalstep)

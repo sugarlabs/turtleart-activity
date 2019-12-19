@@ -103,7 +103,7 @@ def add_paragraph(help_box, text, icon=None):
     Gonzalo Odiard '''
     max_text_width = int(Gdk.Screen.width() / 3) - 20
     hbox = Gtk.HBox()
-    label = Gtk.Label(text)
+    label = Gtk.Label(label=text)
     label.set_justify(Gtk.Justification.LEFT)
     label.set_line_wrap(True)
     hbox.add(label)

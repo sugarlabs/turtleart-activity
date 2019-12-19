@@ -52,9 +52,9 @@ CONNECTION_INTERFACE_ACTIVITY_PROPERTIES = \
 class Collaboration_plugin(Plugin):
 
     __gsignals__ = {
-        'joined': (GObject.SIGNAL_RUN_FIRST, GObject.TYPE_NONE,
+        'joined': (GObject.SignalFlags.RUN_FIRST, None,
                    ()),
-        'shared': (GObject.SIGNAL_RUN_FIRST, GObject.TYPE_NONE,
+        'shared': (GObject.SignalFlags.RUN_FIRST, None,
                    ()), }
 
     def __init__(self, parent):

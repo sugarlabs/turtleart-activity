@@ -68,13 +68,13 @@ will be very slow in returning these queries, so just be patient.
 
 class ActivityModel(GObject.GObject):
     __gsignals__ = {
-        'current-buddy-added': (GObject.SIGNAL_RUN_FIRST, GObject.TYPE_NONE,
+        'current-buddy-added': (GObject.SignalFlags.RUN_FIRST, None,
                                 ([object])),
-        'current-buddy-removed': (GObject.SIGNAL_RUN_FIRST, GObject.TYPE_NONE,
+        'current-buddy-removed': (GObject.SignalFlags.RUN_FIRST, None,
                                   ([object])),
-        'buddy-added': (GObject.SIGNAL_RUN_FIRST, GObject.TYPE_NONE,
+        'buddy-added': (GObject.SignalFlags.RUN_FIRST, None,
                         ([object])),
-        'buddy-removed': (GObject.SIGNAL_RUN_FIRST, GObject.TYPE_NONE,
+        'buddy-removed': (GObject.SignalFlags.RUN_FIRST, None,
                           ([object])),
     }
 
@@ -165,26 +165,26 @@ class ActivityModel(GObject.GObject):
 
 class _Account(GObject.GObject):
     __gsignals__ = {
-        'activity-added': (GObject.SIGNAL_RUN_FIRST, GObject.TYPE_NONE,
+        'activity-added': (GObject.SignalFlags.RUN_FIRST, None,
                            ([object, object])),
-        'activity-updated': (GObject.SIGNAL_RUN_FIRST, GObject.TYPE_NONE,
+        'activity-updated': (GObject.SignalFlags.RUN_FIRST, None,
                              ([object, object])),
-        'activity-removed': (GObject.SIGNAL_RUN_FIRST, GObject.TYPE_NONE,
+        'activity-removed': (GObject.SignalFlags.RUN_FIRST, None,
                              ([object])),
-        'buddy-added': (GObject.SIGNAL_RUN_FIRST, GObject.TYPE_NONE,
+        'buddy-added': (GObject.SignalFlags.RUN_FIRST, None,
                         ([object, object, object])),
-        'buddy-updated': (GObject.SIGNAL_RUN_FIRST, GObject.TYPE_NONE,
+        'buddy-updated': (GObject.SignalFlags.RUN_FIRST, None,
                           ([object, object])),
-        'buddy-removed': (GObject.SIGNAL_RUN_FIRST, GObject.TYPE_NONE,
+        'buddy-removed': (GObject.SignalFlags.RUN_FIRST, None,
                           ([object])),
-        'buddy-joined-activity': (GObject.SIGNAL_RUN_FIRST, GObject.TYPE_NONE,
+        'buddy-joined-activity': (GObject.SignalFlags.RUN_FIRST, None,
                                   ([object, object])),
-        'buddy-left-activity': (GObject.SIGNAL_RUN_FIRST, GObject.TYPE_NONE,
+        'buddy-left-activity': (GObject.SignalFlags.RUN_FIRST, None,
                                 ([object, object])),
-        'current-activity-updated': (GObject.SIGNAL_RUN_FIRST,
-                                     GObject.TYPE_NONE, ([object, object])),
-        'connected': (GObject.SIGNAL_RUN_FIRST, GObject.TYPE_NONE, ([])),
-        'disconnected': (GObject.SIGNAL_RUN_FIRST, GObject.TYPE_NONE, ([])),
+        'current-activity-updated': (GObject.SignalFlags.RUN_FIRST,
+                                     None, ([object, object])),
+        'connected': (GObject.SignalFlags.RUN_FIRST, None, ([])),
+        'disconnected': (GObject.SignalFlags.RUN_FIRST, None, ([])),
     }
 
     def __init__(self, account_path):
@@ -636,13 +636,13 @@ class _Account(GObject.GObject):
 
 class Neighborhood(GObject.GObject):
     __gsignals__ = {
-        'activity-added': (GObject.SIGNAL_RUN_FIRST, GObject.TYPE_NONE,
+        'activity-added': (GObject.SignalFlags.RUN_FIRST, None,
                            ([object])),
-        'activity-removed': (GObject.SIGNAL_RUN_FIRST, GObject.TYPE_NONE,
+        'activity-removed': (GObject.SignalFlags.RUN_FIRST, None,
                              ([object])),
-        'buddy-added': (GObject.SIGNAL_RUN_FIRST, GObject.TYPE_NONE,
+        'buddy-added': (GObject.SignalFlags.RUN_FIRST, None,
                         ([object])),
-        'buddy-removed': (GObject.SIGNAL_RUN_FIRST, GObject.TYPE_NONE,
+        'buddy-removed': (GObject.SignalFlags.RUN_FIRST, None,
                           ([object])), }
 
     def __init__(self, params={}):

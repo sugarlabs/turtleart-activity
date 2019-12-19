@@ -95,8 +95,8 @@ _SETUP_CODE_END = """\
 if __name__ == '__main__':
     tw.lc.start_time = time()
     tw.lc.icall(start)
-    gobject.idle_add(tw.lc.doevalstep)
-    gtk.main()
+    GObject.idle_add(tw.lc.doevalstep)
+    Gtk.main()
 """
 _ACTION_STACK_START = """\
 def %s():

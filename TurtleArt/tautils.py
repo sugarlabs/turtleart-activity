@@ -905,7 +905,7 @@ def _get_dmi(node):
 def get_screen_dpi():
     ''' Return screen DPI '''
     try:
-        xft_dpi = Gtk.settings_get_default().get_property('gtk-xft-dpi')
+        xft_dpi = Gtk.Settings.get_default().get_property('gtk-xft-dpi')
         dpi = float(xft_dpi / 1024)
         return dpi
     except BaseException:

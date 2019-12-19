@@ -73,7 +73,7 @@ def complete_plugin_install(cls, tmp_dir, tmp_path, plugin_path,
                         None,
                         arg=j - 1))
                 cls._overflow_box.pack_start(
-                    cls._overflow_buttons[j - 1])
+                    cls._overflow_buttons[j - 1], True, True, 0)
                 cls.tw.palettes.insert(j - 1, [])
                 cls.tw.palette_sprs.insert(j - 1, [None, None])
             else:

@@ -61,13 +61,13 @@ class Activity(GObject.GObject):
         joined
     """
     __gsignals__ = {
-        'buddy-joined': (GObject.SIGNAL_RUN_FIRST, GObject.TYPE_NONE,
+        'buddy-joined': (GObject.SignalFlags.RUN_FIRST, None,
                          ([GObject.TYPE_PYOBJECT])),
-        'buddy-left': (GObject.SIGNAL_RUN_FIRST, GObject.TYPE_NONE,
+        'buddy-left': (GObject.SignalFlags.RUN_FIRST, None,
                        ([GObject.TYPE_PYOBJECT])),
-        'new-channel': (GObject.SIGNAL_RUN_FIRST, GObject.TYPE_NONE,
+        'new-channel': (GObject.SignalFlags.RUN_FIRST, None,
                         ([GObject.TYPE_PYOBJECT])),
-        'joined': (GObject.SIGNAL_RUN_FIRST, GObject.TYPE_NONE,
+        'joined': (GObject.SignalFlags.RUN_FIRST, None,
                    ([GObject.TYPE_PYOBJECT, GObject.TYPE_PYOBJECT])),
     }
 
@@ -473,7 +473,7 @@ class Activity(GObject.GObject):
 
 class _BaseCommand(GObject.GObject):
     __gsignals__ = {
-        'finished': (GObject.SIGNAL_RUN_FIRST, GObject.TYPE_NONE,
+        'finished': (GObject.SignalFlags.RUN_FIRST, None,
                      ([object])),
     }
 

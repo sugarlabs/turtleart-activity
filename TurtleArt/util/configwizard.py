@@ -86,7 +86,7 @@ class ConfigWizard():
             self._do_save_config()
         except Exception as e:
             w = Gtk.Window()
-            l = Gtk.Label(e.message)
+            l = Gtk.Label(label=e.message)
             w.add(l)
             w.show_all()
         finally:
@@ -127,7 +127,7 @@ class ConfigWizard():
                 value = self._config_file_obj.get(param_name, True)
                 entry.set_active(value)
         self._config_entries[param_name] = entry
-        label = Gtk.Label(opts["item_label"] + ': ')
+        label = Gtk.Label(label=opts["item_label"] + ': ')
         label.set_alignment(1.0, 0.5)
         label.set_size_request(100, 25)
         hbox.add(label)
