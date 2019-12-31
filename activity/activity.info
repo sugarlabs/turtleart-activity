@@ -1,6 +1,6 @@
 [Activity]
 name = TurtleBlocks
-activity_version = 219
+activity_version = 219.1
 license = MIT;GPLv2+;LGPLv2+;LGPLv2.1+;GPLv3+
 metadata_license = CC0-1.0
 bundle_id = org.laptop.TurtleArtActivity

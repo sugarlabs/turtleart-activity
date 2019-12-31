@@ -1,3 +1,13 @@
+219.1
+* fix help button error (James Cameron)
+* port from GObject to GLib (Ibiam Chihurumnaya)
+* fix query keyboard AttributeError (James Cameron)
+* port to sugar3.speech (James Cameron)
+* port to GTK 3 datastore change (James Cameron)
+* port to GTK 3 sprites documentation (James Cameron)
+* port to GTK 3 late changes (Zakiyah)
+* new translations
+
 219
 * fix a source not found when removing warning (James Cameron)
 * fix traceback in extras plugin (James Cameron)
