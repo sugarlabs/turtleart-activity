@@ -1323,8 +1323,7 @@ class TurtleArtActivity(activity.Activity):
                                   mynick=profile.get_nick_name(),
                                   turtle_canvas=self.turtle_canvas)
         self.tw.window.grab_focus()
-        self.tw.save_folder = os.path.join(
-            os.environ['SUGAR_ACTIVITY_ROOT'], 'data')
+        self.tw.save_folder = os.path.join(self.get_activity_root(), 'data')
 
         if hasattr(self, 'get_window') and \
            hasattr(self.get_window(), 'get_cursor'):
