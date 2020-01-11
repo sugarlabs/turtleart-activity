@@ -56,7 +56,7 @@ def generate_appdata(prefix, bundle_id):
       'LGPLv2.1+': 'LGPL-2.1-or-later',
     }
     licenses = info.get('Activity', 'license').split(';')
-    spdx_licenses = map(lambda x: license_map.get(x, x), licenses)
+    spdx_licenses = [license_map.get(x, x) for x in licenses]
     ET.SubElement(root, 'project_license').text = " AND ".join(spdx_licenses)
 
     copy_pairs = [('metadata_license', 'metadata_license'),
