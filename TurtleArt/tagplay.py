@@ -304,7 +304,7 @@ class GstPlayer(GObject.GObject):
 class VideoWidget(Gtk.DrawingArea):
 
     def __init__(self):
-        Gtk.DrawingArea.__init__(self)
+        GObject.GObject.__init__(self)
         self.set_events(Gdk.EventMask.EXPOSURE_MASK)
         self.imagesink = None
         self.set_double_buffered(True)
