@@ -203,6 +203,8 @@ class LogoCode:
         self.body_height = int((self.tw.canvas.height / 40) * self.tw.scale)
 
         self.scale = DEFAULT_SCALE
+        
+        self.value_blocks_to_update = {}
 
     def stop_logo(self):
         """ Stop logo is called from the Stop button on the toolbar """
@@ -1067,6 +1069,8 @@ class LogoCode:
             return
         self.tw.display_coordinates()
         if value is None:
+            if name not in self.value_blocks_to_update:
+                return
             for block in self.value_blocks_to_update[name]:
                 block.spr.set_label(block_names[name][0])
                 if name == 'box':
@@ -1087,6 +1091,8 @@ class LogoCode:
                     '.', self.tw.decimal_point)
             else:
                 valstring = str(value)
+            if name not in self.value_blocks_to_update:
+                return
             for block in self.value_blocks_to_update[name]:
                 if label is None:
                     block.spr.set_label(
