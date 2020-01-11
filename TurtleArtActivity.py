@@ -117,8 +117,6 @@ class TurtleArtActivity(activity.Activity):
         _logger.debug('_setup_canvas')
         self._setup_canvas(self._setup_scrolled_window())
 
-        _logger.debug('_setup_palette_toolbar')
-        self._setup_palette_toolbar()
         self._setup_extra_controls()
 
         _logger.debug('_setup_sharing')
@@ -216,6 +214,7 @@ class TurtleArtActivity(activity.Activity):
 
         # If there are too many palettes to fit, put them in a
         # scrolling window
+        _logger.debug('_setup_palette_toolbar')
         self._setup_palette_toolbar()
 
         if self.samples_button in self.toolbox.toolbar:
