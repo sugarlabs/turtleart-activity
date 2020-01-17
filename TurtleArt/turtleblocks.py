@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # Copyright (c) 2007-8, Playful Invention Company
 # Copyright (c) 2008-14, Walter Bender
 # Copyright (c) 2011 Collabora Ltd. <http://www.collabora.co.uk/>

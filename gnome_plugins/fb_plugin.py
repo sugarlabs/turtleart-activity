@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 #
 # Copyright (c) 2012 Raul Gutierrez S. - rgs@itevenworks.net
 # Copyright (c) 2013 Alan Aguiar alanjas@hotmail.com
