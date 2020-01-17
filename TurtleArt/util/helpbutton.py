@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # Copyright (C) 2012, Gonzalo Odiard <godiard@gmail.com>
 # Copyright (C) 2012, Walter Bender <walter@sugarlabs.org>
