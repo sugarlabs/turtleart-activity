@@ -873,9 +873,6 @@ Would you like to save before quitting?'))
     def _do_palette_cb(self, widget):
         ''' Callback to show/hide palette of blocks. '''
         self.tw.show_palette(self.current_palette)
-        self.current_palette += 1
-        if self.current_palette == len(self.tw.palettes):
-            self.current_palette = 0
 
     def _do_hide_palette_cb(self, widget):
         ''' Hide the palette of blocks. '''
