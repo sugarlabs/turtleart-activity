@@ -2015,7 +2015,7 @@ class TurtleArtWindow():
                     elif self.copying_blocks:
                         clipboard = Gtk.Clipboard()
                         text = data_to_string(data)
-                        clipboard.set_text(text)
+                        clipboard.set_text(text, -1)
                     elif self.sharing():
                         text = data_to_string(data)
                         self.send_event('B', data_to_string([self.nick, text]))
