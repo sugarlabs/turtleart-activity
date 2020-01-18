@@ -69,7 +69,7 @@ for path in paths:
             sys.path.insert(0, p)
 
 if not flag:
-    print 'This code require the Turtle Blocks/Bots activity to be installed.'
+    print('This code require the Turtle Blocks/Bots activity to be installed.')
     exit(1)
 
 from time import *

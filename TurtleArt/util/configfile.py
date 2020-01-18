@@ -89,13 +89,13 @@ class ConfigFile(GObject.GObject):
             self._is_loaded = True
             self.emit('configuration-loaded')
         except Exception as e:
-            print e
+            print(e)
 
         return self._is_loaded
 
     def save(self):
         config_file = open(self._config_file_path, 'w')
-        for k in self._config_hash.keys():
+        for k in list(self._config_hash.keys()):
             v = self._config_hash[k]
             l = "%s = %s\n" % (k, v)
             config_file.write(l)
@@ -103,11 +103,11 @@ class ConfigFile(GObject.GObject):
         self.emit('configuration-saved')
 
     def dump_keys(self):
-        print "\n\nDumping keys\n\n"
-        for k in self._config_hash.keys():
+        print("\n\nDumping keys\n\n")
+        for k in list(self._config_hash.keys()):
             v = self._config_hash[k]
             l = "%s = %s\n" % (k, v)
-            print l
+            print(l)
 
 
 def test_save_load(test_config_file):
@@ -137,12 +137,12 @@ def test_save_load(test_config_file):
 
 
 def _configuration_saved_cb(config_file_obj):
-    print "_configuration_saved_cb called"
+    print("_configuration_saved_cb called")
     config_file_obj.dump_keys()
 
 
 def _configuration_loaded_cb(config_file_obj):
-    print "_configuration_loaded_cb called"
+    print("_configuration_loaded_cb called")
     config_file_obj.dump_keys()
 
 

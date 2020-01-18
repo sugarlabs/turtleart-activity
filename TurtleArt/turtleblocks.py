@@ -198,7 +198,7 @@ return %s(self)" % (p, P, P)
             plugin = {}
             try:
                 exec(f, globals(), plugin)
-                self._gnome_plugins.append(plugin.values()[0](self))
+                self._gnome_plugins.append(list(plugin.values())[0](self))
             except ImportError as e:
                 print('failed to import %s: %s' % (P, str(e)))
 
@@ -358,8 +358,8 @@ return %s(self)" % (p, P, P)
         ''' Make sure Sugar paths are present. '''
         tapath = os.path.join(os.environ['HOME'], '.sugar', 'default',
                               'org.laptop.TurtleArtActivity')
-        map(self._makepath, (os.path.join(tapath, 'data/'),
-                             os.path.join(tapath, 'instance/')))
+        list(map(self._makepath, (os.path.join(tapath, 'data/'),
+                             os.path.join(tapath, 'instance/'))))
 
     def _read_initial_pos(self):
         ''' Read saved configuration. '''
@@ -585,7 +585,7 @@ return %s(self)" % (p, P, P)
         if hasattr(self, '_settings'):
             self._settings.set_int(self._ORIENTATION, self.tw.orientation)
 
-        for plugin in self.tw.turtleart_plugins.values():
+        for plugin in list(self.tw.turtleart_plugins.values()):
             if hasattr(plugin, 'quit'):
                 plugin.quit()
 
@@ -744,10 +744,10 @@ Would you like to save before quitting?'))
         save_type = '.lg'
         filename, self.tw.load_save_folder = get_save_name(
             save_type, None, 'logosession')
-        if isinstance(filename, unicode):
+        if isinstance(filename, str):
             filename = filename.encode('utf-8')
         if filename is not None:
-            f = file(filename, 'w')
+            f = open(filename, 'w')
             f.write(logocode)
             f.close()
 
@@ -773,10 +773,10 @@ Would you like to save before quitting?'))
         save_type = '.py'
         filename, self.tw.load_save_folder = get_save_name(
             save_type, None, default_name)
-        if isinstance(filename, unicode):
+        if isinstance(filename, str):
             filename = filename.encode('utf-8')
         if filename is not None:
-            f = file(filename, 'w')
+            f = open(filename, 'w')
             f.write(pythoncode)
             f.close()
 

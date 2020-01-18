@@ -22,7 +22,7 @@ from telepathy.client import Connection
 from telepathy.interfaces import CONNECTION
 
 from .xocolor import XoColor
-import connection_watcher
+from . import connection_watcher
 from gi.repository import GObject
 
 CONNECTION_INTERFACE_BUDDY_INFO = 'org.laptop.Telepathy.BuddyInfo'

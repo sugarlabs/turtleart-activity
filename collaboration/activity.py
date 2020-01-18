@@ -230,7 +230,7 @@ class Activity(GObject.GObject):
         returns list of presence Buddy objects that we can successfully
         create from the buddy object paths that PS has for this activity.
         """
-        return self._buddies.values()
+        return list(self._buddies.values())
 
     def get_buddy_by_handle(self, handle):
         """Retrieve the Buddy object given a telepathy handle.
@@ -399,7 +399,7 @@ class Activity(GObject.GObject):
                     share_command, error):
         print('%r: Share finished %r', self, error)
         if error is None:
-            print "There was no error!"
+            print("There was no error!")
             self._joined = True
             self.room_handle = share_command.room_handle
             self.telepathy_text_chan = share_command.text_channel

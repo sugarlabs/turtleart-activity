@@ -145,7 +145,7 @@ def get_type(x):
                 return (TYPE_INT, True)
             elif x.func.id == 'chr':
                 return (TYPE_CHAR, True)
-            elif x.func.id in ('repr', 'str', 'unicode'):
+            elif x.func.id in ('repr', 'str'):
                 return (TYPE_STRING, True)
             elif x.func.id == 'Color':
                 return (TYPE_COLOR, True)
@@ -448,7 +448,7 @@ def get_call_ast(func_name, args=None, kwargs=None, return_type=None):
     # convert keyword argument dict to a list of (key, value) pairs
     keywords = []
     if kwargs is not None:
-        for (key, value) in kwargs.items():
+        for (key, value) in list(kwargs.items()):
             keywords.append(ast.keyword(arg=key, value=value))
     # get or generate the AST representing the callable
     if isinstance(func_name, ast.AST):

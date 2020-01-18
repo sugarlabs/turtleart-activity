@@ -25,19 +25,19 @@ import time
 import sys
 import mimetypes
 import copy
-from cStringIO import StringIO
-from namespaces import *
-import manifest
-import meta
-from office import *
-import element
-from attrconverters import make_NCName
+from io import StringIO
+from .namespaces import *
+from . import manifest
+from . import meta
+from .office import *
+from . import element
+from .attrconverters import make_NCName
 from xml.sax.xmlreader import InputSource
-from odfmanifest import manifestlist
+from .odfmanifest import manifestlist
 
 __version__ = TOOLSVERSION
 
-_XMLPROLOGUE = u"<?xml version='1.0' encoding='UTF-8'?>\n"
+_XMLPROLOGUE = "<?xml version='1.0' encoding='UTF-8'?>\n"
 
 UNIXPERMS = 0o100644 << 16  # -rw-r--r--
 
@@ -135,11 +135,11 @@ class OpenDocument:
         if element.qname not in self.element_dict:
             self.element_dict[element.qname] = []
         self.element_dict[element.qname].append(element)
-        if element.qname == (STYLENS, u'style'):
+        if element.qname == (STYLENS, 'style'):
             self.__register_stylename(element)  # Add to style dictionary
-        styleref = element.getAttrNS(TEXTNS, u'style-name')
+        styleref = element.getAttrNS(TEXTNS, 'style-name')
         if styleref is not None and styleref in self._styles_ooo_fix:
-            element.setAttrNS(TEXTNS, u'style-name',
+            element.setAttrNS(TEXTNS, 'style-name',
                               self._styles_ooo_fix[styleref])
 
     def __register_stylename(self, element):
@@ -147,18 +147,18 @@ class OpenDocument:
             office:styles, office:automatic-styles and office:master-styles
             Chapter 14
         '''
-        name = element.getAttrNS(STYLENS, u'name')
+        name = element.getAttrNS(STYLENS, 'name')
         if name is None:
             return
         if element.parentNode.qname in (
-                (OFFICENS, u'styles'), (OFFICENS, u'automatic-styles')):
+                (OFFICENS, 'styles'), (OFFICENS, 'automatic-styles')):
             if name in self._styles_dict:
                 newname = 'M' + name  # Rename style
                 self._styles_ooo_fix[name] = newname
                 # From here on all references to the old name will refer to the
                 # new one
                 name = newname
-                element.setAttrNS(STYLENS, u'name', name)
+                element.setAttrNS(STYLENS, 'name', name)
             self._styles_dict[name] = element
 
     def toXml(self, filename=''):
@@ -168,7 +168,7 @@ class OpenDocument:
         if not filename:
             return xml.getvalue()
         else:
-            f = file(filename, 'w')
+            f = open(filename, 'w')
             f.write(xml.getvalue())
             f.close()
 
@@ -244,17 +244,17 @@ class OpenDocument:
         for e in top.childNodes:
             if e.nodeType == element.Node.ELEMENT_NODE:
                 for styleref in (
-                        (CHARTNS, u'style-name'),
-                        (DRAWNS, u'style-name'),
-                        (DRAWNS, u'text-style-name'),
-                        (PRESENTATIONNS, u'style-name'),
-                        (STYLENS, u'data-style-name'),
-                        (STYLENS, u'list-style-name'),
-                        (STYLENS, u'page-layout-name'),
-                        (STYLENS, u'style-name'),
-                        (TABLENS, u'default-cell-style-name'),
-                        (TABLENS, u'style-name'),
-                        (TEXTNS, u'style-name')):
+                        (CHARTNS, 'style-name'),
+                        (DRAWNS, 'style-name'),
+                        (DRAWNS, 'text-style-name'),
+                        (PRESENTATIONNS, 'style-name'),
+                        (STYLENS, 'data-style-name'),
+                        (STYLENS, 'list-style-name'),
+                        (STYLENS, 'page-layout-name'),
+                        (STYLENS, 'style-name'),
+                        (TABLENS, 'default-cell-style-name'),
+                        (TABLENS, 'style-name'),
+                        (TEXTNS, 'style-name')):
                     if e.getAttrNS(styleref[0], styleref[1]):
                         stylename = e.getAttrNS(styleref[0], styleref[1])
                         if stylename not in stylenamelist:
@@ -272,7 +272,7 @@ class OpenDocument:
             stylenamelist = self._parseoneelement(top, stylenamelist)
         stylelist = []
         for e in self.automaticstyles.childNodes:
-            if e.getAttrNS(STYLENS, u'name') in stylenamelist:
+            if e.getAttrNS(STYLENS, 'name') in stylenamelist:
                 stylelist.append(e)
         return stylelist
 
@@ -377,7 +377,7 @@ class OpenDocument:
 
     def _savePictures(self, object, folder):
         hasPictures = False
-        for arcname, picturerec in object.Pictures.items():
+        for arcname, picturerec in list(object.Pictures.items()):
             what_it_is, fileobj, mediatype = picturerec
             self.manifest.addElement(manifest.FileEntry(
                 fullpath="%s%s" % (folder, arcname), mediatype=mediatype))
@@ -404,7 +404,7 @@ class OpenDocument:
             belonging to the application that created the document.
         """
         for m in self.meta.childNodes[:]:
-            if m.qname == (METANS, u'generator'):
+            if m.qname == (METANS, 'generator'):
                 self.meta.removeChild(m)
         self.meta.addElement(meta.Generator(text=TOOLSVERSION))
 
@@ -656,7 +656,7 @@ def load(odffile):
     manifestpart = z.read('META-INF/manifest.xml')
     manifest = manifestlist(manifestpart)
     __loadxmlparts(z, manifest, doc, '')
-    for mentry, mvalue in manifest.items():
+    for mentry, mvalue in list(manifest.items()):
         if mentry[:9] == "Pictures/" and len(mentry) > 9:
             doc.addPicture(mvalue['full-path'],
                            mvalue['media-type'], z.read(mentry))
