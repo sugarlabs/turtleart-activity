@@ -32,7 +32,7 @@
 
 
 import pycurl
-import urlparse
+import urllib.parse
 
 from gi.repository import Gtk
 
@@ -42,7 +42,7 @@ try:
 except BaseException:
     pass
     HAS_WEBKIT = False
-from plugin import Plugin
+from .plugin import Plugin
 from TurtleArt.util.menubuilder import make_menu_item, make_sub_menu, MENUBAR
 from gettext import gettext as _
 
@@ -60,7 +60,7 @@ class FbUploader():
         c.setopt(c.URL, self._get_url())
         c.setopt(c.HTTPPOST, self._get_params(c))
         c.perform()
-        print c.getinfo(c.HTTP_CODE)
+        print(c.getinfo(c.HTTP_CODE))
 
     def _get_url(self):
         return self.UPLOAD_URL % (self._access_token)
@@ -109,7 +109,7 @@ class Fb_plugin(Plugin):
         try:
             self._post_to_fb()
         except Exception as e:
-            print 'error while posting to Facebook:', e
+            print('error while posting to Facebook:', e)
 
     def _grab_fb_app_token(self):
         url = self._get_auth_url()
@@ -140,8 +140,8 @@ class Fb_plugin(Plugin):
     def _nav_policy_cb(self, view, frame, req, action, param):
         uri = req.get_uri()
         if uri:
-            url_o = urlparse.urlparse(uri)
-            params = urlparse.parse_qs(url_o.fragment)
+            url_o = urllib.parse.urlparse(uri)
+            params = urllib.parse.parse_qs(url_o.fragment)
             if 'access_token' in params:
                 self._access_token = params['access_token'][0]
                 self._auth_win.hide()

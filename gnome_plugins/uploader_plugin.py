@@ -23,15 +23,15 @@
 
 try:
     import pycurl
-    import xmlrpclib
+    import xmlrpc.client
     _UPLOAD_AVAILABLE = True
 except ImportError as e:
-    print "Import Error: %s. Project upload is disabled." % (e)
+    print("Import Error: %s. Project upload is disabled." % (e))
     _UPLOAD_AVAILABLE = False
 
 import os
 
-from plugin import Plugin
+from .plugin import Plugin
 from TurtleArt.util.menubuilder import make_menu_item, make_sub_menu, MENUBAR
 
 from gettext import gettext as _
@@ -157,12 +157,12 @@ http://turtleartsite.sugarlabs.org to upload your project.'))
 
         username = self.username_entry.get_text()
         password = self.password_entry.get_text()
-        server = xmlrpclib.ServerProxy(self._upload_server + '/call/xmlrpc')
+        server = xmlrpc.client.ServerProxy(self._upload_server + '/call/xmlrpc')
         logged_in = None
         try:
             logged_in = server.login_remote(username, password)
         except socket.gaierror as e:
-            print "Login failed %s" % e
+            print("Login failed %s" % e)
         if logged_in:
             upload_key = logged_in
             self._do_submit_to_web(upload_key)
@@ -214,8 +214,8 @@ if __name__ == "__main__":
     # TODO: create test data...
     u = Uploader_plugin(None)
     if u.enabled():
-        print "Uploader is enabled... trying to upload"
+        print("Uploader is enabled... trying to upload")
         u.do_upload_to_web()
         Gtk.main()
     else:
-        print "Uploader is not enabled... exiting"
+        print("Uploader is not enabled... exiting")

@@ -290,7 +290,7 @@ class TurtleArtActivity(activity.Activity):
         if pythoncode:
             datapath = get_path(activity, 'instance')
             python_code_path = os.path.join(datapath, 'tmpfile.py')
-            f = file(python_code_path, 'w')
+            f = open(python_code_path, 'w')
             f.write(pythoncode)
             f.close()
 
@@ -722,7 +722,7 @@ class TurtleArtActivity(activity.Activity):
             _logger.debug('save_logo returned None')
             return None
         try:
-            f = file(tmpfile, 'w')
+            f = open(tmpfile, 'w')
             f.write(code)
             f.close()
         except Exception as e:

@@ -31,7 +31,7 @@ def myblock(tw, sound):
     instrlist = []
 
     def finddir():
-        print dirs
+        print(dirs)
         for d in dirs:
             if os.path.isdir(d):
                 return d

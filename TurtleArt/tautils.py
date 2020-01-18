@@ -40,7 +40,7 @@ from json import dump as jdump
 from io import StringIO
 
 from .taconstants import (HIT_HIDE, HIT_SHOW, XO1, XO15, XO175, XO4, UNKNOWN,
-                         MAGICNUMBER, SUFFIX, ARG_MUST_BE_NUMBER)
+                          MAGICNUMBER, SUFFIX, ARG_MUST_BE_NUMBER)
 
 import logging
 _logger = logging.getLogger('turtleart-activity')
@@ -116,7 +116,7 @@ def increment_name(name):
             i = int(parts[-1])
             i += 1
             parts[-1] = str(i)
-            newname = string.join(parts, '_')
+            newname = '_'.join(parts)
         except ValueError:
             newname = '%s_1' % (name)
     else:

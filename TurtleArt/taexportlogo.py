@@ -110,7 +110,7 @@ def save_logo(tw):
         logocode += '\nend\n'
 
     # We may need to prepend some additional procedures.
-    for key in logo_functions.keys():
+    for key in list(logo_functions.keys()):
         if key in logocode:
             logocode = logo_functions[key] + logocode
 

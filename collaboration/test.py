@@ -10,4 +10,4 @@ dbus.mainloop.glib.DBusGMainLoop(set_as_default=True)
 
 conn_manager = get_connection_manager()
 account_path, connection = conn_manager.get_preferred_connection()
-print account_path
+print(account_path)
