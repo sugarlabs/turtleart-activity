@@ -24,7 +24,6 @@ Gst.init(None)
 from numpy import fromstring
 import subprocess
 import traceback
-from string import find
 from threading import Timer
 from numpy import append
 from TurtleArt.taconstants import XO1, XO4
@@ -338,12 +337,12 @@ class AudioGrab():
         if output is None:
             return 100
         else:
-            pos = find(output, 'Front Left:')
+            pos = output.find('Front Left:')
             if pos == -1:
-                pos = find(output, 'Mono:')
+                pos = output.find('Mono:')
             output = output[pos:]
-            output = output[find(output, '[') + 1:]
-            output = output[:find(output, '%]')]
+            output = output[output.find('[') + 1:]
+            output = output[:output.find('%]')]
             return int(output)
 
     def set_bias(self, bias_state=False):
@@ -364,9 +363,9 @@ class AudioGrab():
         if output is None:
             return False
         else:
-            output = output[find(output, 'Mono:'):]
-            output = output[find(output, '[') + 1:]
-            output = output[:find(output, ']')]
+            output = output[output.find('Mono:'):]
+            output = output[output.find('[') + 1:]
+            output = output[:output.find(']')]
             if output == 'on':
                 return True
             return False
@@ -384,9 +383,9 @@ class AudioGrab():
         if output is None:
             return False
         else:
-            output = output[find(output, 'Mono:'):]
-            output = output[find(output, '[') + 1:]
-            output = output[:find(output, ']')]
+            output = output[output.find('Mono:'):]
+            output = output[output.find('[') + 1:]
+            output = output[:output.find(']')]
             if output == 'on':
                 return True
             return False
@@ -406,9 +405,9 @@ class AudioGrab():
         if output is None:
             return False
         else:
-            output = output[find(output, 'Mono:'):]
-            output = output[find(output, '[') + 1:]
-            output = output[:find(output, ']')]
+            output = output[output.find('Mono:'):]
+            output = output[output.find('[') + 1:]
+            output = output[:output.find(']')]
             if output == 'on':
                 return True
             return False
@@ -430,12 +429,12 @@ class AudioGrab():
         if output is None:
             return 100
         else:
-            pos = find(output, 'Front Left:')
+            pos = output.find('Front Left:')
             if pos == -1:
-                pos = find(output, 'Mono:')
+                pos = output.find('Mono:')
             output = output[pos:]
-            output = output[find(output, '[') + 1:]
-            output = output[:find(output, '%]')]
+            output = output[output.find('[') + 1:]
+            output = output[:output.find('%]')]
             return int(output)
 
     def set_mic_gain(self, mic_val):
@@ -455,9 +454,9 @@ class AudioGrab():
         if output is None:
             return 100
         else:
-            output = output[find(output, 'Mono:'):]
-            output = output[find(output, '[') + 1:]
-            output = output[:find(output, '%]')]
+            output = output[output.find('Mono:'):]
+            output = output[output.find('[') + 1:]
+            output = output[:output.find('%]')]
             return int(output)
 
     def _set_sensor_type(self, mode=None, bias=None, gain=None, boost=None):
@@ -501,13 +500,13 @@ def check_output(command, warning):
             log.warning(warning)
             return None
     else:
-        import commands
+        import subprocess
 
         cmd = ''
         for c in command:
             cmd += c
             cmd += ' '
-        (status, output) = commands.getstatusoutput(cmd)
+        (status, output) = subprocess.getstatusoutput(cmd)
         if status != 0:
             log.warning(warning)
             return None

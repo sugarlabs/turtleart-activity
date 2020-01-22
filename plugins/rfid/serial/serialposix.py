@@ -19,10 +19,10 @@ import termios
 import struct
 import select
 import errno
-from serialutil import portnum, SerialBase, SerialException, \
+from .serialutil import portnum, SerialBase, SerialException, \
     portNotOpenError, writeTimeoutError
 
-from serialutil import VERSION, STOPBITS_ONE, STOPBITS_TWO, \
+from .serialutil import VERSION, STOPBITS_ONE, STOPBITS_TWO, \
     PARITY_NONE, PARITY_EVEN, PARITY_ODD, EIGHTBITS
 
 # Do check the Python version as some constants have moved.
@@ -81,7 +81,7 @@ elif plat[:3] == 'aix':  # aix
 
 else:
     # platform detection has failed...
-    print """don't know how to number ttys on this system.
+    print("""don't know how to number ttys on this system.
 ! Use an explicit path (eg /dev/ttyS1) or send this information to
 ! the author of this module:
 
@@ -93,7 +93,7 @@ also add the device name of the serial port and where the
 counting starts for the first serial port.
 e.g. 'first serial port: /dev/ttyS0'
 and with a bit luck you can get this module running...
-""" % (sys.platform, os.name, VERSION)
+""" % (sys.platform, os.name, VERSION))
     # no exception, just continue with a brave attempt to build a device name
     # even if the device name is not correct for the platform it has chances
     # to work using a string with the real device name as port paramter.
@@ -532,6 +532,6 @@ if __name__ == '__main__':
     s.flushInput()
     s.flushOutput()
     s.write('hello')
-    print repr(s.read(5))
-    print s.inWaiting()
+    print(repr(s.read(5)))
+    print(s.inWaiting())
     del s
