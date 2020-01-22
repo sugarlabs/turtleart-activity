@@ -2013,9 +2013,10 @@ class TurtleArtWindow():
                                 self._save_stack(data, macro_path)
                             self.drag_group = None
                     elif self.copying_blocks:
-                        clipboard = Gtk.Clipboard()
+                        clipboard = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD)
                         text = data_to_string(data)
-                        clipboard.set_text(text, -1)
+                        if text is not None:
+                            clipboard.set_text(text, -1)
                     elif self.sharing():
                         text = data_to_string(data)
                         self.send_event('B', data_to_string([self.nick, text]))
