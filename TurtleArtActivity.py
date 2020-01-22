@@ -1575,7 +1575,7 @@ class TurtleArtActivity(activity.Activity):
         ''' Paste from the clipboard. '''
         if self.tw.copying_blocks:
             self.restore_cursor()
-        clipboard = Gtk.Clipboard()
+        clipboard = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD)
         _logger.debug('Paste to the project.')
         text = clipboard.wait_for_text()
         if text is not None:
