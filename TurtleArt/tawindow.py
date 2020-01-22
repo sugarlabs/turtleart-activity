@@ -29,6 +29,8 @@ import errno
 from gettext import gettext as _
 
 import cairo
+import gi
+gi.require_version('PangoCairo', '1.0')
 
 from gi.repository import Gtk
 from gi.repository import Gdk
