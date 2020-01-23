@@ -148,7 +148,7 @@ class Collaboration():
 
     def _turtle_request(self, payload):
         ''' incoming turtle from a joiner '''
-        if payload > 0:
+        if len(payload) > 0:
             [nick, colors] = data_from_string(payload)
             # FIXME: nick may not be unique, use buddy hash
             if nick != self._tw.nick:  # It is not me.
