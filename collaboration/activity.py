@@ -27,15 +27,16 @@ from functools import partial
 import dbus
 from dbus import PROPERTIES_IFACE
 from gi.repository import GObject
-#from telepathy.client import Channel
+
 from gi.repository import TelepathyGLib
-#from telepathy.interfaces import (CHANNEL,
+
+# from telepathy.interfaces import (CHANNEL,
 #                                  CHANNEL_INTERFACE_GROUP,
 #                                  CHANNEL_TYPE_TUBES,
 #                                  CHANNEL_TYPE_TEXT,
 #                                  CONNECTION,
 #                                  PROPERTIES_INTERFACE)
-#from telepathy.constants import (CHANNEL_GROUP_FLAG_CHANNEL_SPECIFIC_HANDLES,
+# from telepathy.constants import (CHANNEL_GROUP_FLAG_CHANNEL_SPECIFIC_HANDLES,
 #                                 HANDLE_TYPE_ROOM,
 #                                 HANDLE_TYPE_CONTACT,
 #
@@ -49,11 +50,10 @@ PROPERTIES_INTERFACE = TelepathyGLib.PROP_CONNECTION_INTERFACES
 CHANNEL_GROUP_FLAG_CHANNEL_SPECIFIC_HANDLES = \
     TelepathyGLib.ChannelGroupFlags.CHANNEL_SPECIFIC_HANDLES
 CHANNEL_TEXT_MESSAGE_TYPE_NORMAL = TelepathyGLib.ChannelTextMessageType.NORMAL
-PROPERTIES_INTERFACE = TelepathyGLib.HandleType.ROOM
+HANDLE_TYPE_ROOM = TelepathyGLib.HandleType.ROOM
 HANDLE_TYPE_CONTACT = TelepathyGLib.HandleType.CONTACT
-CONN_INTERFACE_ALIASING = TelepathyGLib.IFACE_CONNECTION_INTERFACE_ALIASING 
-
-
+CONN_INTERFACE_ALIASING = TelepathyGLib.IFACE_CONNECTION_INTERFACE_ALIASING
+PROPERTY_FLAG_WRITE = TelepathyGLib.PropertyFlags.WRITE
 CONN_INTERFACE_ACTIVITY_PROPERTIES = 'org.laptop.Telepathy.ActivityProperties'
 CONN_INTERFACE_BUDDY_INFO = 'org.laptop.Telepathy.BuddyInfo'
 
@@ -61,7 +61,6 @@ _logger = logging.getLogger('sugar3.presence.activity')
 
 
 class Activity(GObject.GObject):
-
     """UI interface for an Activity in the presence service
 
     Activities in the presence service represent your and other user's
@@ -198,7 +197,7 @@ class Activity(GObject.GObject):
 
         if self._get_properties_call is not None:
             print(('%r: Blocking on GetProperties() because someone '
-                  'wants property %s', self, pspec.name))
+                   'wants property %s', self, pspec.name))
             self._get_properties_call.block()
 
         if pspec.name == 'id':
@@ -306,7 +305,7 @@ class Activity(GObject.GObject):
 
     def __get_all_members_cb(self, members, local_pending, remote_pending):
         print(('__get_all_members_cb %r %r', members,
-              self._text_channel_group_flags))
+               self._text_channel_group_flags))
         if self._channel_self_handle in members:
             members.remove(self._channel_self_handle)
 
@@ -346,8 +345,8 @@ class Activity(GObject.GObject):
                                           local_pending, remote_pending,
                                           actor, reason):
         print(('__text_channel_members_changed_cb %r',
-              [added, message, added, removed, local_pending,
-               remote_pending, actor, reason]))
+               [added, message, added, removed, local_pending,
+                remote_pending, actor, reason]))
         if self._channel_self_handle in added:
             added.remove(self._channel_self_handle)
         if added:
@@ -471,7 +470,7 @@ class Activity(GObject.GObject):
                     self.telepathy_tubes_chan.object_path]
 
         print(('%r: bus name is %s, connection is %s, channels are %r',
-              self, bus_name, connection_path, channels))
+               self, bus_name, connection_path, channels))
         return bus_name, connection_path, channels
 
     # Leaving
@@ -597,15 +596,15 @@ class _JoinCommand(_BaseCommand):
             dbus_interface=CONNECTION)
 
     def __create_text_channel_cb(self, channel_path):
-        Channel(self._connection.requested_bus_name, channel_path,
-                ready_handler=self.__text_channel_ready_cb)
+        TelepathyGLib.SimpleClientFactory.ensure_channel(self._connection.requested_bus_name, channel_path,
+                                                         ready_handler=self.__text_channel_ready_cb)
 
     def __create_tubes_channel_cb(self, channel_path):
         print(("Creating tubes channel with bus name %s" %
-              (self._connection.requested_bus_name)))
+               (self._connection.requested_bus_name)))
         print(("Creating tubes channel with channel path %s" % (channel_path)))
-        Channel(self._connection.requested_bus_name, channel_path,
-                ready_handler=self.__tubes_channel_ready_cb)
+        TelepathyGLib.SimpleClientFactory.ensure_channel(self._connection.requested_bus_name, channel_path,
+                                                         ready_handler=self.__tubes_channel_ready_cb)
 
     def __error_handler_cb(self, error):
         self._finished = True
@@ -632,7 +631,7 @@ class _JoinCommand(_BaseCommand):
 
     def __text_channel_group_flags_changed_cb(self, added, removed):
         print(('__text_channel_group_flags_changed_cb %r %r', added,
-              removed))
+               removed))
         self.text_channel_group_flags |= added
         self.text_channel_group_flags &= ~removed
 
@@ -644,8 +643,8 @@ class _JoinCommand(_BaseCommand):
 
         def got_all_members(members, local_pending, remote_pending):
             print(('got_all_members members %r local_pending %r '
-                  'remote_pending %r', members, local_pending,
-                  remote_pending))
+                   'remote_pending %r', members, local_pending,
+                   remote_pending))
 
             if self.text_channel_group_flags & \
                     CHANNEL_GROUP_FLAG_CHANNEL_SPECIFIC_HANDLES:
@@ -691,9 +690,9 @@ class _JoinCommand(_BaseCommand):
                                           local_pending, remote_pending,
                                           actor, reason):
         print(('__text_channel_members_changed_cb added %r removed %r '
-              'local_pending %r remote_pending %r channel_self_handle '
-              '%r', added, removed, local_pending, remote_pending,
-              self.channel_self_handle))
+               'local_pending %r remote_pending %r channel_self_handle '
+               '%r', added, removed, local_pending, remote_pending,
+               self.channel_self_handle))
 
         if self.text_channel_group_flags & \
                 CHANNEL_GROUP_FLAG_CHANNEL_SPECIFIC_HANDLES:

@@ -22,7 +22,6 @@ from gi.repository import TelepathyGLib
 import dbus.service
 from gi.repository import Gio
 
-
 CLIENT = TelepathyGLib.IFACE_CLIENT
 CLIENT_APPROVER = TelepathyGLib.IFACE_CLIENT_APPROVER
 CLIENT_HANDLER = TelepathyGLib.IFACE_CLIENT_HANDLER
@@ -32,7 +31,6 @@ CLIENT_INTERFACE_REQUESTS = TelepathyGLib.IFACE_CLIENT_INTERFACE_REQUESTS
 DBusProperties = Gio.DBusPropertyInfo
 
 from . import dispatch
-
 
 SUGAR_CLIENT_SERVICE = 'org.freedesktop.Telepathy.Client.Sugar'
 SUGAR_CLIENT_PATH = '/org/freedesktop/Telepathy/Client/Sugar'
@@ -51,7 +49,6 @@ class TelepathyClient(dbus.service.Object):
         bus_name = dbus.service.BusName(SUGAR_CLIENT_SERVICE, bus=bus)
 
         dbus.service.Object.__init__(self, bus_name, SUGAR_CLIENT_PATH)
-        
 
         self._prop_getters = {}
         self._prop_setters = {}
@@ -111,8 +108,8 @@ class TelepathyClient(dbus.service.Object):
                          in_signature='ss', out_signature='v')
     def Get(self, interface_name, property_name):
         if interface_name in self._prop_getters \
-            and property_name in self._prop_getters[interface_name]:
-                return self._prop_getters[interface_name][property_name]()
+                and property_name in self._prop_getters[interface_name]:
+            return self._prop_getters[interface_name][property_name]()
         else:
             logging.debug('InvalidArgument')
 
@@ -120,8 +117,8 @@ class TelepathyClient(dbus.service.Object):
                          in_signature='ssv', out_signature='')
     def Set(self, interface_name, property_name, value):
         if interface_name in self._prop_setters \
-            and property_name in self._prop_setters[interface_name]:
-                self._prop_setters[interface_name][property_name](value)
+                and property_name in self._prop_setters[interface_name]:
+            self._prop_setters[interface_name][property_name](value)
         else:
             logging.debug('PermissionDenied')
 
@@ -135,6 +132,7 @@ class TelepathyClient(dbus.service.Object):
             return r
         else:
             logging.debug('InvalidArgument')
+
 
 def get_instance():
     global _instance

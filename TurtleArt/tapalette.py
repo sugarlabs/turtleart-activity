@@ -321,8 +321,8 @@ class _ProtoBlock():
         if self._palette is not None:
             i = palette_names.index(self._palette)
             if self._name in palette_blocks[i]:
-                print('%s already in palette %s, skipping...' % \
-                    (self._name, self._palette))
+                print('%s already in palette %s, skipping...' %
+                      (self._name, self._palette))
             else:
                 if position is not None and isinstance(position, int) and \
                         position < len(palette_blocks[i]):

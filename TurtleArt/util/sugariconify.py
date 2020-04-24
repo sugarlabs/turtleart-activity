@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-#!/usr/bin/env python3
+# !/usr/bin/env python3
 
 # Copyright (C) 2008 Eben Eliason
 # Copyright (C) 2013 Jorge Alberto Gómez López
@@ -22,7 +22,6 @@ import xml.dom.minidom
 import getopt
 import re
 import os
-import string
 
 HELP = '''\nUsage: sugar-iconify.py [options] input.svg\n
 Options:\n
@@ -111,7 +110,7 @@ class SugarIconify():
             elif o == '-p':
                 self.set_pattern(a)
             elif o in ['-h', '--help']:
-                usage()
+                self.usage()
                 sys.exit(2)
             elif o == '-m':
                 self.set_multiple(True)
@@ -242,7 +241,7 @@ class SugarIconify():
             # Define the entities
             if self.fill_match and self.stroke_match:
                 self.entities = '\t<!ENTITY ' + self.stroke_entity + ' "' + \
-                    self.stroke_color + '">\n'
+                                self.stroke_color + '">\n'
                 self.entities += '\t<!ENTITY ' + self.fill_entity + ' "' + \
                                  self.fill_color + '">\n'
                 if self.use_iso_strokes:
@@ -250,7 +249,7 @@ class SugarIconify():
                                      ' "' + self.stroke_color + '">\n'
             else:
                 self.entities = '\t<!ENTITY ' + self.stroke_entity + ' "' + \
-                    self.default_stroke_color + '">\n'
+                                self.default_stroke_color + '">\n'
                 self.entities += '\t<!ENTITY ' + self.fill_entity + ' "' + \
                                  self.default_fill_color + '">\n'
                 if self.use_iso_strokes:
@@ -465,7 +464,7 @@ Should be (55px, 55px)' % (self.w, self.h))
                         icon_name = ''
                         try:
                             if self.creator == 'inkscape' and \
-                               icon.attributes.getNamedItem('inkscape:label'):
+                                    icon.attributes.getNamedItem('inkscape:label'):
                                 icon_name = icon.attributes.getNamedItem(
                                     'inkscape:label').nodeValue
                             else:
@@ -479,15 +478,15 @@ Should be (55px, 55px)' % (self.w, self.h))
 
                             # Skip non-matches
                             if self.pattern == '' or \
-                               re.search(self.pattern, icon_name):
+                                    re.search(self.pattern, icon_name):
 
                                 if self.verbose:
-                                    print('\nExporting ' + icon_name + \
-                                        '.self.svg...')
+                                    print('\nExporting ' + icon_name +
+                                          '.self.svg...')
                                 icon_xml = xml.dom.minidom.Document()
 
                                 # Construct the self.svg
-                                icon_xml.appendChild(doctype)
+                                icon_xml.appendChild(self.doctype)
                                 icon_xml.appendChild(self.svg.cloneNode(0))
 
                                 icon_xml.childNodes[1].appendChild(icon)
@@ -552,9 +551,9 @@ Should be (55px, 55px)' % (self.w, self.h))
                 except BaseException:
                     # Catch any errors we may have missed, so the rest
                     # of the icons can export normally
-                    if(icon_name):
-                        print('Error: Could not export' + icon_name + \
-                            '.self.svg')
+                    if (icon_name):
+                        print('Error: Could not export' + icon_name +
+                              '.self.svg')
 
             if self.verbose:
                 if n_icons_exported == 1:
@@ -586,7 +585,7 @@ Should be (55px, 55px)' % (self.w, self.h))
                 if node.localName == 'g' and node.attributes:
                     try:
                         if self.creator == 'inkscape' and \
-                           node.attributes.getNamedItem('inkscape:label'):
+                                node.attributes.getNamedItem('inkscape:label'):
                             node_name = node.attributes.getNamedItem(
                                 'inkscape:label').nodeValue
                         else:
@@ -810,10 +809,10 @@ Should be (55px, 55px)' % (self.w, self.h))
                 self.setFill(node, self.stroke_entity)
                 fills_replaced += 1
 
-            str = str + " (" + self.getStroke(node) + ", " + \
+            string = str + " (" + self.getStroke(node) + ", " + \
                 self.getFill(node) + ")"
             if self.verbose:
-                print(str)
+                print(string)
 
         # Recurse on DOM
         for n in node.childNodes:
@@ -827,7 +826,7 @@ Should be (55px, 55px)' % (self.w, self.h))
     def fix_isolated_strokes(self, node):
         strokes_fixed = 0
         # Recurse on DOM
-        last_n = None
+        # last_n = None
         for n in node.childNodes:
             sf = self.fix_isolated_strokes(n)
             strokes_fixed += sf
@@ -855,7 +854,7 @@ Should be (55px, 55px)' % (self.w, self.h))
             node_name = ''
             try:
                 if self.creator == 'inkscape' and \
-                   node.attributes.getNamedItem('inkscape:label'):
+                        node.attributes.getNamedItem('inkscape:label'):
                     node_name = node.attributes.getNamedItem(
                         'inkscape:label').nodeValue
                 else:

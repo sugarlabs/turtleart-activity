@@ -20,7 +20,6 @@ from gi.repository import GObject
 
 
 class ConfigFile(GObject.GObject):
-
     """Load/save a simple (key = value) config file"""
 
     __gsignals__ = {
@@ -97,8 +96,8 @@ class ConfigFile(GObject.GObject):
         config_file = open(self._config_file_path, 'w')
         for k in list(self._config_hash.keys()):
             v = self._config_hash[k]
-            l = "%s = %s\n" % (k, v)
-            config_file.write(l)
+            ls = "%s = %s\n" % (k, v)
+            config_file.write(ls)
         config_file.close()
         self.emit('configuration-saved')
 
@@ -106,8 +105,8 @@ class ConfigFile(GObject.GObject):
         print("\n\nDumping keys\n\n")
         for k in list(self._config_hash.keys()):
             v = self._config_hash[k]
-            l = "%s = %s\n" % (k, v)
-            print(l)
+            ls = "%s = %s\n" % (k, v)
+            print(ls)
 
 
 def test_save_load(test_config_file):

@@ -34,7 +34,7 @@
 
     Modified by Marion Zepf.
 """
-from ast import *
+import ast
 
 
 def to_source(node, indent_with=' ' * 4, add_line_information=False):
@@ -60,22 +60,22 @@ def to_source(node, indent_with=' ' * 4, add_line_information=False):
     return ''.join(generator.result)
 
 
-class SourceGenerator(NodeVisitor):
+class SourceGenerator(ast.NodeVisitor):
 
     """This visitor is able to transform a well formed syntax tree into python
     sourcecode.  For more details have a look at the docstring of the
     `node_to_source` function.
     """
 
-    UNARYOP_SYMBOLS = {Invert: "~", Not: "not", UAdd: "+", USub: "-"}
+    UNARYOP_SYMBOLS = {ast.Invert: "~", ast.Not: "not", ast.UAdd: "+", ast.USub: "-"}
     # TODO use parentheses around expressions only where necessary
-    BINOP_SYMBOLS = {Add: "+", Sub: "-", Mult: "*", Div: "/", Mod: "%",
-                     LShift: "<<", RShift: ">>", BitOr: "|", BitXor: "^",
-                     BitAnd: "&", FloorDiv: "//", Pow: "**"}
-    BOOLOP_SYMBOLS = {And: "and", Or: "or"}
-    CMPOP_SYMBOLS = {Eq: "==", NotEq: "!=", Lt: "<", LtE: "<=", Gt: ">",
-                     GtE: ">=", Is: "is", IsNot: "is not", In: "in",
-                     NotIn: "not in"}
+    BINOP_SYMBOLS = {ast.Add: "+", ast.Sub: "-", ast.Mult: "*", ast.Div: "/", ast.Mod: "%",
+                     ast.LShift: "<<", ast.RShift: ">>", ast.BitOr: "|", ast.BitXor: "^",
+                     ast.BitAnd: "&", ast.FloorDiv: "//", ast.Pow: "**"}
+    BOOLOP_SYMBOLS = {ast.And: "and", ast.Or: "or"}
+    CMPOP_SYMBOLS = {ast.Eq: "==", ast.NotEq: "!=", ast.Lt: "<", ast.LtE: "<=", ast.Gt: ">",
+                     ast.GtE: ">=", ast.Is: "is", ast.IsNot: "is not", ast.In: "in",
+                     ast.NotIn: "not in"}
 
     def __init__(self, indent_with, add_line_information=False):
         self.result = []
@@ -233,7 +233,7 @@ class SourceGenerator(NodeVisitor):
         self.body(node.body)
         while True:
             else_ = node.orelse
-            if len(else_) == 1 and isinstance(else_[0], If):
+            if len(else_) == 1 and isinstance(else_[0], ast.If):
                 node = else_[0]
                 self.newline()
                 self.write('elif ')
@@ -502,7 +502,7 @@ class SourceGenerator(NodeVisitor):
             self.visit(node.upper)
         if node.step is not None:
             self.write(':')
-            if not (isinstance(node.step, Name) and node.step.id == 'None'):
+            if not (isinstance(node.step, ast.Name) and node.step.id == 'None'):
                 self.visit(node.step)
 
     def visit_ExtSlice(self, node):

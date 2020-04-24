@@ -6,5 +6,3 @@ See license.txt for original license.
 
 Heavily modified for Django's purposes.
 """
-
-from .dispatcher import Signal

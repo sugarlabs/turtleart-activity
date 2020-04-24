@@ -32,7 +32,7 @@ from .util import codegen
 
 from .talogo import LogoCode
 from .taprimitive import (ast_yield_true, Primitive, PyExportError,
-                         value_to_ast)
+                          value_to_ast)
 from .tautils import (find_group, find_top_block, get_stack_name)
 from .tawindow import plugins_in_use
 

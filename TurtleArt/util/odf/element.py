@@ -23,8 +23,8 @@
 # Whatever license applies to that file also applies to this file.
 #
 import xml.dom
-from xml.dom.minicompat import *
-from .namespaces import nsdict
+from xml.dom.minicompat import defproperty, EmptyNodeList
+
 from . import grammar
 from .attrconverters import AttrConverters
 
@@ -320,9 +320,9 @@ class Element(Node):
             self.addCDATA(cdata)
 
         allowed_attrs = self.allowed_attributes()
-        if allowed_attrs is not None:
-            allowed_args = [a[1].lower().replace('-', '')
-                            for a in allowed_attrs]
+        # if allowed_attrs is not None:
+        #    allowed_args = [a[1].lower().replace('-', '')
+        #                    for a in allowed_attrs]
         self.attributes = {}
         # Load the attributes from the 'attributes' argument
         if attributes:
@@ -470,8 +470,8 @@ class Element(Node):
             It will not check that the attribute is legal according to the schema.
             Must overwrite, If attribute already exists.
         """
-        allowed_attrs = self.allowed_attributes()
-        prefix = self.get_nsprefix(namespace)
+#       allowed_attrs = self.allowed_attributes()
+#       prefix = self.get_nsprefix(namespace)
 #       if allowed_attrs and (namespace, localpart) not in allowed_attrs:
 #           raise AttributeError, "Attribute %s:%s is not allowed in element <%s>" % ( prefix, localpart, self.tagName)
         c = AttrConverters()
@@ -479,7 +479,7 @@ class Element(Node):
             (namespace, localpart), value, self)
 
     def getAttrNS(self, namespace, localpart):
-        prefix = self.get_nsprefix(namespace)
+        # prefix = self.get_nsprefix(namespace)
         return self.attributes.get((namespace, localpart))
 
     def removeAttrNS(self, namespace, localpart):

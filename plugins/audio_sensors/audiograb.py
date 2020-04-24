@@ -19,13 +19,13 @@
 
 
 from gi.repository import Gst
+
 Gst.init(None)
 
 from numpy import fromstring
 import subprocess
 import traceback
 from threading import Timer
-from numpy import append
 from TurtleArt.taconstants import XO1, XO4
 
 import logging
@@ -81,7 +81,7 @@ class AudioGrab():
 
         self._dont_queue_the_buffer = False
 
-        #self._display_counter = DISPLAY_DUTY_CYCLE
+        # self._display_counter = DISPLAY_DUTY_CYCLE
 
         # self.activity.wave.set_channels(self.channels)
         for i in range(self.channels):

@@ -23,16 +23,16 @@
 import zipfile
 from xml.sax import make_parser, handler
 from xml.sax.xmlreader import InputSource
-import xml.sax.saxutils
 from io import StringIO
 
 MANIFESTNS = "urn:oasis:names:tc:opendocument:xmlns:manifest:1.0"
 
-#-----------------------------------------------------------------------------
+
+# -----------------------------------------------------------------------------
 #
 # ODFMANIFESTHANDLER
 #
-#-----------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
 
 
 class ODFManifestHandler(handler.ContentHandler):
@@ -83,11 +83,11 @@ class ODFManifestHandler(handler.ContentHandler):
         self.manifest[p] = {'media-type': m, 'full-path': p}
 
 
-#-----------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
 #
 # Reading the file
 #
-#-----------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
 
 def manifestlist(manifestxml):
     odhandler = ODFManifestHandler()
@@ -112,6 +112,7 @@ def odfmanifest(odtfile):
 
 if __name__ == "__main__":
     import sys
+
     result = odfmanifest(sys.argv[1])
     for file in list(result.values()):
         print("%-40s %-40s" % (file['media-type'], file['full-path']))

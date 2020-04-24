@@ -8,13 +8,13 @@
 # it 'start' to start recording; 'stop' to stop recording; 'play' to
 # play back your recording; or 'save' to save your recording to the
 # Sugar Journal.
+from gi.repository import GObject
+from gi.repository import Gst
 
 
 def myblock(tw, args):
     ''' Record and playback a sound (Sugar only) '''
     import os
-    import gst
-    import gobject
     GObject.threads_init()
 
     from TurtleArt.tautils import get_path

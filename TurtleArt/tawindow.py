@@ -96,26 +96,26 @@ from .taconstants import (
     Vector,
     PASTE_OFFSET)
 from .tapalette import (palette_names, palette_blocks, expandable_blocks,
-                       block_names, content_blocks, default_values,
-                       special_names, block_styles, help_strings,
-                       string_or_number_args, make_palette,
-                       palette_name_to_index, palette_init_on_start,
-                       palette_i18n_names)
+                        block_names, content_blocks, default_values,
+                        special_names, block_styles, help_strings,
+                        string_or_number_args, make_palette,
+                        palette_name_to_index, palette_init_on_start,
+                        palette_i18n_names)
 from .talogo import (LogoCode, logoerror)
 from .tacanvas import TurtleGraphics
 from .tablock import (Blocks, Block, Media, media_blocks_dictionary)
 from .taturtle import (Turtles, Turtle)
 from .tautils import (magnitude, get_load_name, get_save_name, data_from_file,
-                     data_to_file, round_int, get_id, get_pixbuf_from_journal,
-                     movie_media_type, audio_media_type, image_media_type,
-                     save_picture, calc_image_size, get_path, hide_button_hit,
-                     show_button_hit, chooser_dialog, arithmetic_check, xy,
-                     find_block_to_run, find_top_block, journal_check,
-                     find_group, find_blk_below, data_to_string,
-                     find_start_stack, get_hardware, debug_output,
-                     error_output, find_hat, find_bot_block,
-                     restore_clamp, collapse_clamp, data_from_string,
-                     increment_name, get_screen_dpi, is_writeable)
+                      data_to_file, round_int, get_id, get_pixbuf_from_journal,
+                      movie_media_type, audio_media_type, image_media_type,
+                      save_picture, calc_image_size, get_path, hide_button_hit,
+                      show_button_hit, chooser_dialog, arithmetic_check, xy,
+                      find_block_to_run, find_top_block, journal_check,
+                      find_group, find_blk_below, data_to_string,
+                      find_start_stack, get_hardware, debug_output,
+                      error_output, find_hat, find_bot_block,
+                      restore_clamp, collapse_clamp, data_from_string,
+                      increment_name, get_screen_dpi, is_writeable)
 from .tasprite_factory import (svg_str_to_pixbuf, svg_from_file)
 from .tapalette import block_primitives
 from .tapaletteview import PaletteView
@@ -3962,7 +3962,7 @@ class TurtleArtWindow():
             return True
         elif isinstance(blk[1], (list, tuple)) and blk[1][0] == 'turtle':
             if blk[1][1] == DEFAULT_TURTLE:
-                if self.nick is not None and self.nick is not '':
+                if self.nick is not None and self.nick != '':
                     self.load_turtle(blk, self.nick)
             else:
                 self.load_turtle(blk, blk[1][1])
@@ -5014,7 +5014,7 @@ variable'))
         if d1dir == d2dir:
             return _NO_DOCK
         # Flow blocks can be inserted into the middle of a stack
-        if d2type is 'flow' and dock2n is 0:
+        if d2type == 'flow' and dock2n == 0:
             if block1.connections is not None and \
                dock1n == len(block1.connections) - 1 and \
                block1.connections[dock1n] is not None:
@@ -5024,7 +5024,7 @@ variable'))
                     block1.connections[dock1n] is not None:
                 self.inserting_block_mid_stack = True
         # Only number blocks can be docked when the dock is not empty
-        elif d2type is not 'number' or dock2n is not 0:
+        elif d2type != 'number' or dock2n != 0:
             if block1.connections is not None and \
                     dock1n < len(block1.connections) and \
                     block1.connections[dock1n] is not None:
