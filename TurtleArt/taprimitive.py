@@ -865,8 +865,7 @@ class Disjunction(tuple):
     """ Abstract disjunction class (not to be instantiated directly) """
 
     def __init__(self, iterable):
-        super.__init__(iterable)
-        # self = tuple(iterable)
+       self = tuple(iterable)
 
     def __repr__(self):
         s = ["("]
