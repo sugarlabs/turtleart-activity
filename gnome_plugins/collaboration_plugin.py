@@ -21,6 +21,7 @@
 # THE SOFTWARE.
 
 import sys
+
 sys.path.append("..")
 import os.path
 
@@ -50,7 +51,6 @@ CONNECTION_INTERFACE_ACTIVITY_PROPERTIES = \
 
 
 class Collaboration_plugin(Plugin):
-
     __gsignals__ = {
         'joined': (GObject.SignalFlags.RUN_FIRST, None,
                    ()),
@@ -71,8 +71,6 @@ class Collaboration_plugin(Plugin):
         # FIXME To fix attribution errors, had to add variable declaration
         self.shared_activity = None
         self.metadata = None
-        
-
 
     def _setup_config_file(self, config_file_path):
         self._config_file_path = os.path.join(config_file_path,
@@ -330,8 +328,8 @@ class Collaboration_plugin(Plugin):
 
         try:
             self._parent.shared_activity = Activity(account_path,
-                                                     connection,
-                                                     properties=properties)
+                                                    connection,
+                                                    properties=properties)
             # FIXME: this should be unified, no need to keep 2 references
             self.shared_activity = self._parent.shared_activity
         except BaseException:

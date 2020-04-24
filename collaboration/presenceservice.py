@@ -27,7 +27,7 @@ import dbus.exceptions
 import dbus.glib
 from dbus import PROPERTIES_IFACE
 
-#FIXME ... 
+# FIXME ...
 try:
     from sugar3.presence.buddy import Buddy
     from sugar3.presence.activity import Activity
@@ -36,6 +36,7 @@ except ImportError:
     pass
 
 from gi.repository import TelepathyGLib
+
 ACCOUNT = TelepathyGLib.IFACE_ACCOUNT
 ACCOUNT_MANAGER = TelepathyGLib.IFACE_ACCOUNT_MANAGER
 CONNECTION = TelepathyGLib.IFACE_CONNECTION
@@ -52,7 +53,6 @@ CONN_INTERFACE_ACTIVITY_PROPERTIES = 'org.laptop.Telepathy.ActivityProperties'
 
 
 class PresenceService(GObject.GObject):
-
     """Provides simplified access to the Telepathy framework to activities"""
     __gsignals__ = {
         'activity-shared': (GObject.SignalFlags.RUN_FIRST, None,

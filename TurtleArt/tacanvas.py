@@ -30,7 +30,7 @@ from gi.repository import Pango
 from gi.repository import PangoCairo
 from .tautils import get_path
 from .taconstants import (Color, TMP_SVG_PATH, DEFAULT_PEN_COLOR,
-                         DEFAULT_BACKGROUND_COLOR, DEFAULT_FONT)
+                          DEFAULT_BACKGROUND_COLOR, DEFAULT_FONT)
 
 
 def wrap100(n):

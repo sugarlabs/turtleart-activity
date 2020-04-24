@@ -26,7 +26,6 @@ import cairo
 import pickle
 import subprocess
 import os
-import string
 import mimetypes
 from gettext import gettext as _
 from gi.repository import Gtk
@@ -753,7 +752,7 @@ def xy(event):
 def find_block_to_run(blk):
     ''' Find a stack to run (any stack without a 'def action'on the top). '''
     top = find_top_block(blk)
-    if blk == top and blk.name[0:3] is not 'def':
+    if blk == top and blk.name[0:3] != 'def':
         return True
     else:
         return False

@@ -59,7 +59,8 @@ class TypeDisjunction(tuple, Type):
     """ Disjunction of two or more Types (from the type hierarchy) """
 
     def __init__(self, iterable):
-        self = tuple(iterable)
+        super.__init__(iterable)
+        # self = tuple(iterable)
 
     def __str__(self):
         s = ["("]

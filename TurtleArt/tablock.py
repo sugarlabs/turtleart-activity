@@ -375,12 +375,12 @@ class Block:
 
     def highlight(self):
         """ We may want to highlight a block... """
-        if self.spr is not None and self.status is not 'collapsed':
+        if self.spr is not None and self.status != 'collapsed':
             self.spr.set_shape(self.shapes[1])
 
     def unhighlight(self):
         """ Or unhighlight it. """
-        if self.spr is not None and self.status is not 'collapsed':
+        if self.spr is not None and self.status != 'collapsed':
             self.spr.set_shape(self.shapes[0])
 
     def resize(self):

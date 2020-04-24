@@ -50,10 +50,10 @@ def generate_appdata(prefix, bundle_id):
         ET.SubElement(releases_root, 'release', date=date, version=version)
 
     license_map = {
-      'GPLv2+': 'GPL-2.0-or-later',
-      'GPLv3+': 'GPL-3.0-or-later',
-      'LGPLv2+': 'LGPL-2.0-or-later',
-      'LGPLv2.1+': 'LGPL-2.1-or-later',
+        'GPLv2+': 'GPL-2.0-or-later',
+        'GPLv3+': 'GPL-3.0-or-later',
+        'LGPLv2+': 'LGPL-2.0-or-later',
+        'LGPLv2.1+': 'LGPL-2.1-or-later',
     }
     licenses = info.get('Activity', 'license').split(';')
     spdx_licenses = [license_map.get(x, x) for x in licenses]

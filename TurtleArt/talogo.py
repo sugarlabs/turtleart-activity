@@ -21,18 +21,20 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
+import numbers
 import os
 import tempfile
-import urllib.request, urllib.error, urllib.parse
-from time import time, sleep
-import numbers
-from os.path import exists as os_path_exists
+import urllib.error
+import urllib.parse
+import urllib.request
 from collections import UserDict
+from os.path import exists as os_path_exists
+from time import time, sleep
 
 from gi.repository import GLib
 from gi.repository import GdkPixbuf
-
 from sugar3.graphics import style
+
 GRID_CELL_SIZE = style.GRID_CELL_SIZE
 
 USER_HOME = os.path.expanduser('~')
@@ -45,10 +47,10 @@ from .tajail import (myfunc, myfunc_import)
 from .tapalette import (block_names, value_blocks)
 from .tatype import (TATypeError, TYPES_NUMERIC)
 from .tautils import (get_pixbuf_from_journal, data_from_file, get_stack_name,
-                     movie_media_type, audio_media_type, image_media_type,
-                     text_media_type, round_int, debug_output, find_group,
-                     get_path, image_to_base64, data_to_string, data_to_file,
-                     get_load_name, chooser_dialog)
+                      movie_media_type, audio_media_type, image_media_type,
+                      text_media_type, round_int, debug_output, find_group,
+                      get_path, image_to_base64, data_to_string, data_to_file,
+                      get_load_name, chooser_dialog)
 
 try:
     from .util.RtfParser import RtfTextOnly
@@ -201,9 +203,7 @@ class LogoCode:
         self._disable_help = False
 
         self.body_height = int((self.tw.canvas.height / 40) * self.tw.scale)
-
         self.scale = DEFAULT_SCALE
-        
         self.value_blocks_to_update = {}
 
     def stop_logo(self):

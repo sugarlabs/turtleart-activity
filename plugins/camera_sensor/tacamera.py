@@ -22,8 +22,6 @@
 
 from gi.repository import Gst
 Gst.init(None)
-import time
-from TurtleArt.tautils import debug_output
 
 
 class Camera():

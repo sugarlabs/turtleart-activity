@@ -29,13 +29,14 @@ from TurtleArt.taprimitive import Primitive
 from TurtleArt.tatype import TYPE_STRING
 
 import logging
+
 _logger = logging.getLogger('turtleart-activity RFID plugin')
 
 HAL_SERVICE = 'org.freedesktop.Hal'
 HAL_MGR_PATH = '/org/freedesktop/Hal/Manager'
 HAL_MGR_IFACE = 'org.freedesktop.Hal.Manager'
 HAL_DEV_IFACE = 'org.freedesktop.Hal.Device'
-REGEXP_SERUSB = '\/org\/freedesktop\/Hal\/devices\/usb_device['\
+REGEXP_SERUSB = '/org/freedesktop/Hal/devices/usb_device[' \
                 'a-z,A-Z,0-9,_]*serial_usb_[0-9]'
 
 

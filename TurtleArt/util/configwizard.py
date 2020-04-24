@@ -86,8 +86,8 @@ class ConfigWizard():
             self._do_save_config()
         except Exception as e:
             w = Gtk.Window()
-            l = Gtk.Label(label=e.message)
-            w.add(l)
+            ls = Gtk.Label(label=e.message)
+            w.add(ls)
             w.show_all()
         finally:
             self._config_popup.hide()

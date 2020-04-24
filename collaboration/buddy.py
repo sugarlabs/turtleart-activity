@@ -18,9 +18,10 @@
 import logging
 
 import dbus
-from gi.repository import TelepathyGLib 
+from gi.repository import TelepathyGLib
 from gi.repository.TelepathyGLib import Connection
-#from telepathy.interfaces import CONNECTION
+
+# from telepathy.interfaces import CONNECTION
 
 CONNECTION = TelepathyGLib.IFACE_CONNECTION
 
@@ -118,8 +119,7 @@ class OwnerBuddyModel(BaseBuddyModel):
                 dbus_interface=dbus.BUS_DAEMON_IFACE):
             if service.startswith(CONNECTION + '.'):
                 path = '/{}'.format(service.replace('.', '/'))
-                self._connection  = Connection.new(bus_object, service, path)
-               
+                self._connection = Connection.new(bus_object, service, path)
 
     def __connection_ready_cb(self, connection):
         self._sync_properties_on_connection(connection)
@@ -194,7 +194,6 @@ class BuddyModel(BaseBuddyModel):
     __gtype_name__ = 'SugarBuddyModel'
 
     def __init__(self, **kwargs):
-
         self._account = None
         self._contact_id = None
         self._handle = None

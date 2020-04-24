@@ -362,7 +362,7 @@ return %s(self)" % (p, P, P)
         tapath = os.path.join(os.environ['HOME'], '.sugar', 'default',
                               'org.laptop.TurtleArtActivity')
         list(map(self._makepath, (os.path.join(tapath, 'data/'),
-                             os.path.join(tapath, 'instance/'))))
+                                  os.path.join(tapath, 'instance/'))))
 
     def _read_initial_pos(self):
         ''' Read saved configuration. '''

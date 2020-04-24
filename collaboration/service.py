@@ -45,7 +45,6 @@ from dbus.lowlevel import ErrorMessage, MethodReturnMessage, MethodCallMessage
 from dbus.proxies import LOCAL_PATH
 from dbus._compat import is_py2
 
-
 _logger = logging.getLogger('dbus.service')
 
 
@@ -55,6 +54,7 @@ class _VariantSignature(object):
 
     It has no string representation.
     """
+
     def __iter__(self):
         """Return self."""
         return self
@@ -83,7 +83,8 @@ class BusName(object):
           if you request names from the bus directly, confusion may occur.
         - Does not handle queueing.
     """
-    def __new__(cls, name, bus=None, allow_replacement=False , replace_existing=False, do_not_queue=False):
+
+    def __new__(cls, name, bus=None, allow_replacement=False, replace_existing=False, do_not_queue=False):
         """Constructor, which may either return an existing cached object
         or a new object.
 
@@ -181,6 +182,7 @@ class BusName(object):
 
     def __repr__(self):
         return '<dbus.service.BusName %s on %r at %#x>' % (self._name, self._bus, id(self))
+
     __str__ = __repr__
 
 
@@ -203,7 +205,7 @@ def _method_lookup(self, method_name, dbus_interface):
             # suitably named member, save this as a candidate class
             if (not candidate_class and method_name in cls.__dict__):
                 if ("_dbus_is_method" in cls.__dict__[method_name].__dict__
-                    and "_dbus_interface" in cls.__dict__[method_name].__dict__):
+                        and "_dbus_interface" in cls.__dict__[method_name].__dict__):
                     # however if it is annotated for a different interface
                     # than we are looking for, it cannot be a candidate
                     if cls.__dict__[method_name]._dbus_interface == dbus_interface:
@@ -220,9 +222,9 @@ def _method_lookup(self, method_name, dbus_interface):
             # superclasses for a method annoated as a dbus method
             # on the correct interface
             if (candidate_class and method_name in cls.__dict__
-                and "_dbus_is_method" in cls.__dict__[method_name].__dict__
-                and "_dbus_interface" in cls.__dict__[method_name].__dict__
-                and cls.__dict__[method_name]._dbus_interface == dbus_interface):
+                    and "_dbus_is_method" in cls.__dict__[method_name].__dict__
+                    and "_dbus_interface" in cls.__dict__[method_name].__dict__
+                    and cls.__dict__[method_name]._dbus_interface == dbus_interface):
                 # the candidate class has a dbus method on the correct interface,
                 # or overrides a method that is, success!
                 parent_method = cls.__dict__[method_name]
@@ -236,7 +238,7 @@ def _method_lookup(self, method_name, dbus_interface):
                 candidate_class = cls
 
             if (candidate_class and method_name in cls.__dict__
-                and "_dbus_is_method" in cls.__dict__[method_name].__dict__):
+                    and "_dbus_is_method" in cls.__dict__[method_name].__dict__):
                 parent_method = cls.__dict__[method_name]
                 successful = True
                 break
@@ -293,7 +295,7 @@ def _method_reply_error(connection, message, exception):
         #   async_err_cb(MyException('Failed to badger the mushroom'))
         # see also https://bugs.freedesktop.org/show_bug.cgi?id=12403
         contents = ''.join(traceback.format_exception_only(exception.__class__,
-            exception))
+                                                           exception))
     reply = ErrorMessage(message, name, contents)
 
     if not message.get_no_reply():
@@ -379,10 +381,10 @@ class InterfaceType(type):
 # that is compatible across both Python 2 and Python 3.
 Interface = InterfaceType('Interface', (object,), {})
 
-
 #: A unique object used as the value of Object._object_path and
 #: Object._connection if it's actually in more than one place
 _MANY = object()
+
 
 class Object(Interface):
     r"""A base class for exporting your own Objects across the Bus.
@@ -564,14 +566,14 @@ class Object(Interface):
         self._locations_lock.acquire()
         try:
             if (self._connection is not None and
-                self._connection is not connection and
-                not self.SUPPORTS_MULTIPLE_CONNECTIONS):
+                    self._connection is not connection and
+                    not self.SUPPORTS_MULTIPLE_CONNECTIONS):
                 raise ValueError('%r is already exported on '
                                  'connection %r' % (self, self._connection))
 
             if (self._object_path is not None and
-                not self.SUPPORTS_MULTIPLE_OBJECT_PATHS and
-                self._object_path != path):
+                    not self.SUPPORTS_MULTIPLE_OBJECT_PATHS and
+                    self._object_path != path):
                 raise ValueError('%r is already exported at object '
                                  'path %s' % (self, self._object_path))
 
@@ -619,7 +621,7 @@ class Object(Interface):
                 dropped = []
                 for location in self._locations:
                     if ((connection is None or location[0] is connection) and
-                        (path is None or location[1] == path)):
+                            (path is None or location[1] == path)):
                         dropped.append(location)
             else:
                 dropped = self._locations
@@ -669,7 +671,8 @@ class Object(Interface):
             # set up async callback functions
             if parent_method._dbus_async_callbacks:
                 (return_callback, error_callback) = parent_method._dbus_async_callbacks
-                keywords[return_callback] = lambda *retval: _method_reply_return(connection, message, method_name, signature, *retval)
+                keywords[return_callback] = lambda *retval: _method_reply_return(connection, message, method_name,
+                                                                                 signature, *retval)
                 keywords[error_callback] = lambda exception: _method_reply_error(connection, message, exception)
 
             # include the sender etc. if desired
@@ -723,11 +726,11 @@ class Object(Interface):
                 # for the _method_reply_return function, otherwise we need
                 # to check we're passing it a sequence
                 if len(signature_tuple) == 0:
-                    if retval == None:
+                    if retval is None:
                         retval = ()
                     else:
                         raise TypeError('%s has an empty output signature but did not return None' %
-                            method_name)
+                                        method_name)
                 elif len(signature_tuple) == 1:
                     retval = (retval,)
                 else:
@@ -737,7 +740,7 @@ class Object(Interface):
                         pass
                     else:
                         raise TypeError('%s has multiple output values in signature %s but did not return a sequence' %
-                            (method_name, signature))
+                                        (method_name, signature))
 
             # no signature, so just turn the return into a tuple and send it as normal
             else:
@@ -745,9 +748,9 @@ class Object(Interface):
                     retval = ()
                 elif (isinstance(retval, tuple)
                       and not isinstance(retval, Struct)):
-                # If the return is a tuple that is not a Struct, we use it
-                # as-is on the assumption that there are multiple return
-                # values - this is the usual Python idiom. (fd.o #10174)
+                    # If the return is a tuple that is not a Struct, we use it
+                    # as-is on the assumption that there are multiple return
+                    # values - this is the usual Python idiom. (fd.o #10174)
                     pass
                 else:
                     retval = (retval,)
@@ -788,12 +791,14 @@ class Object(Interface):
     def __repr__(self):
         where = ''
         if (self._object_path is not _MANY
-            and self._object_path is not None):
+                and self._object_path is not None):
             where = ' at %s' % self._object_path
         return '<%s.%s%s at %#x>' % (self.__class__.__module__,
-                                   self.__class__.__name__, where,
-                                   id(self))
+                                     self.__class__.__name__, where,
+                                     id(self))
+
     __str__ = __repr__
+
 
 class FallbackObject(Object):
     """An object that implements an entire subtree of the object-path

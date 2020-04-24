@@ -3,14 +3,13 @@ from .serial import Serial
 import dbus
 from dbus.mainloop.glib import DBusGMainLoop
 import gobject
-from time import sleep
 from . import utils
 
 HAL_SERVICE = 'org.freedesktop.Hal'
 HAL_MGR_PATH = '/org/freedesktop/Hal/Manager'
 HAL_MGR_IFACE = 'org.freedesktop.Hal.Manager'
 HAL_DEV_IFACE = 'org.freedesktop.Hal.Device'
-REGEXP_SERUSB = '\/org\/freedesktop\/Hal\/devices\/usb_device['\
+REGEXP_SERUSB = '/org/freedesktop/Hal/devices/usb_device['\
                 'a-z,A-Z,0-9,_]*serial_usb_[0-9]'
 
 VERSIONS = ['301']
@@ -170,7 +169,7 @@ class RFIDReader(RFIDDevice):
         self.ser.write('t')
         self.ser.write('\x0d')
         resp = self.ser.read(33)[0:-1].split('_')
-        if resp.__len__() is not 6 or resp in self.tags:
+        if (resp.__len__() != 6) or resp in self.tags:
             return True
 
         self.tags.append(resp)
