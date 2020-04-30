@@ -126,10 +126,13 @@ class BusName(object):
             return bus._bus_names[name]
 
         # otherwise register the name
-        name_flags = (
-            (allow_replacement and _dbus_bindings.NAME_FLAG_ALLOW_REPLACEMENT or 0) |
-            (replace_existing and _dbus_bindings.NAME_FLAG_REPLACE_EXISTING or 0) |
-            (do_not_queue and _dbus_bindings.NAME_FLAG_DO_NOT_QUEUE or 0))
+        name_flags = \
+            (allow_replacement and _dbus_bindings.
+             NAME_FLAG_ALLOW_REPLACEMENT or 0) | \
+            (replace_existing and _dbus_bindings.
+             NAME_FLAG_REPLACE_EXISTING or 0) | \
+            (do_not_queue and _dbus_bindings.
+             NAME_FLAG_DO_NOT_QUEUE or 0)
 
         retval = bus.request_name(name, name_flags)
 
@@ -203,9 +206,9 @@ def _method_lookup(self, method_name, dbus_interface):
         for cls in self.__class__.__mro__:
             # if we haven't got a candidate class yet, and we find a class with a
             # suitably named member, save this as a candidate class
-            if (not candidate_class and method_name in cls.__dict__):
-                if ("_dbus_is_method" in cls.__dict__[method_name].__dict__
-                        and "_dbus_interface" in cls.__dict__[method_name].__dict__):
+            if not candidate_class and method_name in cls.__dict__:
+                if "_dbus_is_method" in cls.__dict__[method_name].__dict__ \
+                   and "_dbus_interface" in cls.__dict__[method_name].__dict__:
                     # however if it is annotated for a different interface
                     # than we are looking for, it cannot be a candidate
                     if cls.__dict__[method_name]._dbus_interface == dbus_interface:
@@ -221,12 +224,12 @@ def _method_lookup(self, method_name, dbus_interface):
             # if we have a candidate class, carry on checking this and all
             # superclasses for a method annoated as a dbus method
             # on the correct interface
-            if (candidate_class and method_name in cls.__dict__
-                    and "_dbus_is_method" in cls.__dict__[method_name].__dict__
-                    and "_dbus_interface" in cls.__dict__[method_name].__dict__
-                    and cls.__dict__[method_name]._dbus_interface == dbus_interface):
-                # the candidate class has a dbus method on the correct interface,
-                # or overrides a method that is, success!
+            if candidate_class and method_name in cls.__dict__ \
+               and "_dbus_is_method" in cls.__dict__[method_name].__dict__ \
+               and "_dbus_interface" in cls.__dict__[method_name].__dict__ \
+               and cls.__dict__[method_name]._dbus_interface == dbus_interface:
+                # the candidate class has a dbus method on the correct
+                # interface, or overrides a method that is, success!
                 parent_method = cls.__dict__[method_name]
                 successful = True
                 break
@@ -234,11 +237,11 @@ def _method_lookup(self, method_name, dbus_interface):
     else:
         # simpler version of above
         for cls in self.__class__.__mro__:
-            if (not candidate_class and method_name in cls.__dict__):
+            if not candidate_class and method_name in cls.__dict__:
                 candidate_class = cls
 
-            if (candidate_class and method_name in cls.__dict__
-                    and "_dbus_is_method" in cls.__dict__[method_name].__dict__):
+            if candidate_class and method_name in cls.__dict__ \
+               and "_dbus_is_method" in cls.__dict__[method_name].__dict__:
                 parent_method = cls.__dict__[method_name]
                 successful = True
                 break
@@ -565,15 +568,15 @@ class Object(Interface):
 
         self._locations_lock.acquire()
         try:
-            if (self._connection is not None and
-                    self._connection is not connection and
-                    not self.SUPPORTS_MULTIPLE_CONNECTIONS):
+            if self._connection is not None \
+               and self._connection is not connection \
+               and not self.SUPPORTS_MULTIPLE_CONNECTIONS:
                 raise ValueError('%r is already exported on '
                                  'connection %r' % (self, self._connection))
 
-            if (self._object_path is not None and
-                    not self.SUPPORTS_MULTIPLE_OBJECT_PATHS and
-                    self._object_path != path):
+            if self._object_path is not None \
+               and not self.SUPPORTS_MULTIPLE_OBJECT_PATHS \
+               and self._object_path != path:
                 raise ValueError('%r is already exported at object '
                                  'path %s' % (self, self._object_path))
 
@@ -620,8 +623,8 @@ class Object(Interface):
             if connection is not None or path is not None:
                 dropped = []
                 for location in self._locations:
-                    if ((connection is None or location[0] is connection) and
-                            (path is None or location[1] == path)):
+                    if (connection is None or location[0] is connection) \
+                       and (path is None or location[1] == path):
                         dropped.append(location)
             else:
                 dropped = self._locations
@@ -746,8 +749,9 @@ class Object(Interface):
             else:
                 if retval is None:
                     retval = ()
-                elif (isinstance(retval, tuple)
-                      and not isinstance(retval, Struct)):
+                elif isinstance(retval,
+                                tuple) and not isinstance(retval,
+                                                          Struct):
                     # If the return is a tuple that is not a Struct, we use it
                     # as-is on the assumption that there are multiple return
                     # values - this is the usual Python idiom. (fd.o #10174)
@@ -790,8 +794,8 @@ class Object(Interface):
 
     def __repr__(self):
         where = ''
-        if (self._object_path is not _MANY
-                and self._object_path is not None):
+        if self._object_path is not _MANY \
+           and self._object_path is not None:
             where = ' at %s' % self._object_path
         return '<%s.%s%s at %#x>' % (self.__class__.__module__,
                                      self.__class__.__name__, where,
