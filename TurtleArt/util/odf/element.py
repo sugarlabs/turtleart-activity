@@ -23,8 +23,8 @@
 # Whatever license applies to that file also applies to this file.
 #
 import xml.dom
-from xml.dom.minicompat import defproperty, EmptyNodeList
-
+from xml.dom.minicompat import *
+from .namespaces import nsdict
 from . import grammar
 from .attrconverters import AttrConverters
 
@@ -36,7 +36,6 @@ from .attrconverters import AttrConverters
 
 def _escape(data, entities={}):
     """ Escape &, <, and > in a string of data.
-
         You can escape other strings of data by passing a dictionary as
         the optional entities parameter.  The keys and values must all be
         strings; each key will be replaced with its corresponding value.
@@ -51,11 +50,9 @@ def _escape(data, entities={}):
 
 def _quoteattr(data, entities={}):
     """ Escape and quote an attribute value.
-
         Escape &, <, and > in a string of data, then quote it for use as
         an attribute value.  The \" character will be escaped as well, if
         necessary.
-
         You can escape other strings of data by passing a dictionary as
         the optional entities parameter.  The keys and values must all be
         strings; each key will be replaced with its corresponding value.
@@ -320,9 +317,9 @@ class Element(Node):
             self.addCDATA(cdata)
 
         allowed_attrs = self.allowed_attributes()
-        # if allowed_attrs is not None:
-        #    allowed_args = [a[1].lower().replace('-', '')
-        #                    for a in allowed_attrs]
+        if allowed_attrs is not None:
+            allowed_args = [a[1].lower().replace('-', '')
+                            for a in allowed_attrs]
         self.attributes = {}
         # Load the attributes from the 'attributes' argument
         if attributes:
@@ -382,7 +379,6 @@ class Element(Node):
 
     def addElement(self, element, check_grammar=True):
         """ adds an element to an Element
-
             Element.addElement(Element)
         """
         if check_grammar and self.allowed_children is not None:
@@ -470,8 +466,8 @@ class Element(Node):
             It will not check that the attribute is legal according to the schema.
             Must overwrite, If attribute already exists.
         """
-#       allowed_attrs = self.allowed_attributes()
-#       prefix = self.get_nsprefix(namespace)
+        allowed_attrs = self.allowed_attributes()
+        prefix = self.get_nsprefix(namespace)
 #       if allowed_attrs and (namespace, localpart) not in allowed_attrs:
 #           raise AttributeError, "Attribute %s:%s is not allowed in element <%s>" % ( prefix, localpart, self.tagName)
         c = AttrConverters()
@@ -479,7 +475,7 @@ class Element(Node):
             (namespace, localpart), value, self)
 
     def getAttrNS(self, namespace, localpart):
-        # prefix = self.get_nsprefix(namespace)
+        prefix = self.get_nsprefix(namespace)
         return self.attributes.get((namespace, localpart))
 
     def removeAttrNS(self, namespace, localpart):
