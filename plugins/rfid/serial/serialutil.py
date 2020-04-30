@@ -281,7 +281,7 @@ class SerialBase(FileLike):
         """Change baudrate. It raises a ValueError if the port is open and the
         baudrate is not possible. If the port is closed, then tha value is
         accepted and the exception is raised when the port is opened."""
-        #~ if baudrate not in self.BAUDRATES: raise ValueError("Not a valid baudrate: %r" % baudrate)
+        # ~ if baudrate not in self.BAUDRATES: raise ValueError("Not a valid baudrate: %r" % baudrate)
         try:
             self._baudrate = int(baudrate)
         except TypeError:
