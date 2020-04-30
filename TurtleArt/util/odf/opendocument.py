@@ -24,17 +24,18 @@ import zipfile
 import time
 import sys
 import mimetypes
+import copy
 from io import StringIO
-from . import namespaces
+from .namespaces import *
 from . import manifest
 from . import meta
-from . import office
+from .office import *
 from . import element
 from .attrconverters import make_NCName
 from xml.sax.xmlreader import InputSource
 from .odfmanifest import manifestlist
 
-__version__ = namespaces.TOOLSVERSION
+__version__ = TOOLSVERSION
 
 _XMLPROLOGUE = "<?xml version='1.0' encoding='UTF-8'?>\n"
 
@@ -90,29 +91,29 @@ class OpenDocument:
         self.childobjects = []
         self._extra = []
         self.folder = ""  # Always empty for toplevel documents
-        self.topnode = office.Document(mimetype=self.mimetype)
+        self.topnode = Document(mimetype=self.mimetype)
         self.topnode.ownerDocument = self
 
         self.clear_caches()
 
         self.Pictures = {}
-        self.meta = office.Meta()
+        self.meta = Meta()
         self.topnode.addElement(self.meta)
         if add_generator:
-            self.meta.addElement(meta.Generator(text=namespaces.TOOLSVERSION))
-        self.scripts = office.Scripts()
+            self.meta.addElement(meta.Generator(text=TOOLSVERSION))
+        self.scripts = Scripts()
         self.topnode.addElement(self.scripts)
-        self.fontfacedecls = office.FontFaceDecls()
+        self.fontfacedecls = FontFaceDecls()
         self.topnode.addElement(self.fontfacedecls)
-        self.settings = office.Settings()
+        self.settings = Settings()
         self.topnode.addElement(self.settings)
-        self.styles = office.Styles()
+        self.styles = Styles()
         self.topnode.addElement(self.styles)
-        self.automaticstyles = office.AutomaticStyles()
+        self.automaticstyles = AutomaticStyles()
         self.topnode.addElement(self.automaticstyles)
-        self.masterstyles = office.MasterStyles()
+        self.masterstyles = MasterStyles()
         self.topnode.addElement(self.masterstyles)
-        self.body = office.Body()
+        self.body = Body()
         self.topnode.addElement(self.body)
 
     def rebuild_caches(self, node=None):
@@ -134,11 +135,11 @@ class OpenDocument:
         if element.qname not in self.element_dict:
             self.element_dict[element.qname] = []
         self.element_dict[element.qname].append(element)
-        if element.qname == (namespaces.STYLENS, 'style'):
+        if element.qname == (STYLENS, 'style'):
             self.__register_stylename(element)  # Add to style dictionary
-        styleref = element.getAttrNS(namespaces.TEXTNS, 'style-name')
+        styleref = element.getAttrNS(TEXTNS, 'style-name')
         if styleref is not None and styleref in self._styles_ooo_fix:
-            element.setAttrNS(namespaces.TEXTNS, 'style-name',
+            element.setAttrNS(TEXTNS, 'style-name',
                               self._styles_ooo_fix[styleref])
 
     def __register_stylename(self, element):
@@ -146,18 +147,18 @@ class OpenDocument:
             office:styles, office:automatic-styles and office:master-styles
             Chapter 14
         '''
-        name = element.getAttrNS(namespaces.STYLENS, 'name')
+        name = element.getAttrNS(STYLENS, 'name')
         if name is None:
             return
         if element.parentNode.qname in (
-                (office.OFFICENS, 'styles'), (office.OFFICENS, 'automatic-styles')):
+                (OFFICENS, 'styles'), (OFFICENS, 'automatic-styles')):
             if name in self._styles_dict:
                 newname = 'M' + name  # Rename style
                 self._styles_ooo_fix[name] = newname
                 # From here on all references to the old name will refer to the
                 # new one
                 name = newname
-                element.setAttrNS(namespaces.STYLENS, 'name', name)
+                element.setAttrNS(STYLENS, 'name', name)
             self._styles_dict[name] = element
 
     def toXml(self, filename=''):
@@ -187,13 +188,13 @@ class OpenDocument:
         """
         xml = StringIO()
         xml.write(_XMLPROLOGUE)
-        x = office.DocumentContent()
+        x = DocumentContent()
         x.write_open_tag(0, xml)
         if self.scripts.hasChildNodes():
             self.scripts.toXml(1, xml)
         if self.fontfacedecls.hasChildNodes():
             self.fontfacedecls.toXml(1, xml)
-        a = office.AutomaticStyles()
+        a = AutomaticStyles()
         stylelist = self._used_auto_styles(
             [self.styles, self.automaticstyles, self.body])
         if len(stylelist) > 0:
@@ -219,7 +220,7 @@ class OpenDocument:
     def metaxml(self):
         """ Generates the meta.xml file """
         self.__replaceGenerator()
-        x = office.DocumentMeta()
+        x = DocumentMeta()
         x.addElement(self.meta)
         xml = StringIO()
         xml.write(_XMLPROLOGUE)
@@ -228,7 +229,7 @@ class OpenDocument:
 
     def settingsxml(self):
         """ Generates the settings.xml file """
-        x = office.DocumentSettings()
+        x = DocumentSettings()
         x.addElement(self.settings)
         xml = StringIO()
         xml.write(_XMLPROLOGUE)
@@ -243,17 +244,17 @@ class OpenDocument:
         for e in top.childNodes:
             if e.nodeType == element.Node.ELEMENT_NODE:
                 for styleref in (
-                        (namespaces.CHARTNS, 'style-name'),
-                        (namespaces.DRAWNS, 'style-name'),
-                        (namespaces.DRAWNS, 'text-style-name'),
-                        (namespaces.PRESENTATIONNS, 'style-name'),
-                        (namespaces.STYLENS, 'data-style-name'),
-                        (namespaces.STYLENS, 'list-style-name'),
-                        (namespaces.STYLENS, 'page-layout-name'),
-                        (namespaces.STYLENS, 'style-name'),
-                        (namespaces.TABLENS, 'default-cell-style-name'),
-                        (namespaces.TABLENS, 'style-name'),
-                        (namespaces.TEXTNS, 'style-name')):
+                        (CHARTNS, 'style-name'),
+                        (DRAWNS, 'style-name'),
+                        (DRAWNS, 'text-style-name'),
+                        (PRESENTATIONNS, 'style-name'),
+                        (STYLENS, 'data-style-name'),
+                        (STYLENS, 'list-style-name'),
+                        (STYLENS, 'page-layout-name'),
+                        (STYLENS, 'style-name'),
+                        (TABLENS, 'default-cell-style-name'),
+                        (TABLENS, 'style-name'),
+                        (TEXTNS, 'style-name')):
                     if e.getAttrNS(styleref[0], styleref[1]):
                         stylename = e.getAttrNS(styleref[0], styleref[1])
                         if stylename not in stylenamelist:
@@ -271,7 +272,7 @@ class OpenDocument:
             stylenamelist = self._parseoneelement(top, stylenamelist)
         stylelist = []
         for e in self.automaticstyles.childNodes:
-            if e.getAttrNS(namespaces.STYLENS, 'name') in stylenamelist:
+            if e.getAttrNS(STYLENS, 'name') in stylenamelist:
                 stylelist.append(e)
         return stylelist
 
@@ -279,12 +280,12 @@ class OpenDocument:
         """ Generates the styles.xml file """
         xml = StringIO()
         xml.write(_XMLPROLOGUE)
-        x = office.DocumentStyles()
+        x = DocumentStyles()
         x.write_open_tag(0, xml)
         if self.fontfacedecls.hasChildNodes():
             self.fontfacedecls.toXml(1, xml)
         self.styles.toXml(1, xml)
-        a = office.AutomaticStyles()
+        a = AutomaticStyles()
         a.write_open_tag(1, xml)
         for s in self._used_auto_styles([self.masterstyles]):
             s.toXml(2, xml)
@@ -375,12 +376,12 @@ class OpenDocument:
         return ".%s" % document.folder
 
     def _savePictures(self, object, folder):
-        # hasPictures = False
+        hasPictures = False
         for arcname, picturerec in list(object.Pictures.items()):
             what_it_is, fileobj, mediatype = picturerec
             self.manifest.addElement(manifest.FileEntry(
                 fullpath="%s%s" % (folder, arcname), mediatype=mediatype))
-            # hasPictures = True
+            hasPictures = True
             if what_it_is == IS_FILENAME:
                 self._z.write(fileobj, arcname, zipfile.ZIP_STORED)
             else:
@@ -403,9 +404,9 @@ class OpenDocument:
             belonging to the application that created the document.
         """
         for m in self.meta.childNodes[:]:
-            if m.qname == (namespaces.METANS, 'generator'):
+            if m.qname == (METANS, 'generator'):
                 self.meta.removeChild(m)
-        self.meta.addElement(meta.Generator(text=namespaces.TOOLSVERSION))
+        self.meta.addElement(meta.Generator(text=TOOLSVERSION))
 
     def save(self, outputfile, addsuffix=False):
         """ Save the document under the filename.
@@ -539,7 +540,7 @@ class OpenDocument:
 
     def createCDATASection(self, data):
         """ Method to create a CDATA section """
-        return element.CDATASection(data)
+        return element.CDATASection(cdata)
 
     def getMediaType(self):
         """ Returns the media type """
@@ -565,7 +566,7 @@ class OpenDocument:
 def OpenDocumentChart():
     """ Creates a chart document """
     doc = OpenDocument('application/vnd.oasis.opendocument.chart')
-    doc.chart = office.Chart()
+    doc.chart = Chart()
     doc.body.addElement(doc.chart)
     return doc
 
@@ -573,7 +574,7 @@ def OpenDocumentChart():
 def OpenDocumentDrawing():
     """ Creates a drawing document """
     doc = OpenDocument('application/vnd.oasis.opendocument.graphics')
-    doc.drawing = office.Drawing()
+    doc.drawing = Drawing()
     doc.body.addElement(doc.drawing)
     return doc
 
@@ -581,7 +582,7 @@ def OpenDocumentDrawing():
 def OpenDocumentImage():
     """ Creates an image document """
     doc = OpenDocument('application/vnd.oasis.opendocument.image')
-    doc.image = office.Image()
+    doc.image = Image()
     doc.body.addElement(doc.image)
     return doc
 
@@ -589,7 +590,7 @@ def OpenDocumentImage():
 def OpenDocumentPresentation():
     """ Creates a presentation document """
     doc = OpenDocument('application/vnd.oasis.opendocument.presentation')
-    doc.presentation = office.Presentation()
+    doc.presentation = Presentation()
     doc.body.addElement(doc.presentation)
     return doc
 
@@ -597,7 +598,7 @@ def OpenDocumentPresentation():
 def OpenDocumentSpreadsheet():
     """ Creates a spreadsheet document """
     doc = OpenDocument('application/vnd.oasis.opendocument.spreadsheet')
-    doc.spreadsheet = office.Spreadsheet()
+    doc.spreadsheet = Spreadsheet()
     doc.body.addElement(doc.spreadsheet)
     return doc
 
@@ -605,7 +606,7 @@ def OpenDocumentSpreadsheet():
 def OpenDocumentText():
     """ Creates a text document """
     doc = OpenDocument('application/vnd.oasis.opendocument.text')
-    doc.text = office.Text()
+    doc.text = Text()
     doc.body.addElement(doc.text)
     return doc
 
@@ -613,7 +614,7 @@ def OpenDocumentText():
 def OpenDocumentTextMaster():
     """ Creates a text master document """
     doc = OpenDocument('application/vnd.oasis.opendocument.text-master')
-    doc.text = office.Text()
+    doc.text = Text()
     doc.body.addElement(doc.text)
     return doc
 
@@ -639,7 +640,7 @@ def __loadxmlparts(z, manifest, doc, objectpath):
             inpsrc.setByteStream(StringIO(xmlpart))
             parser.parse(inpsrc)
             del doc._parsing
-        except KeyError:
+        except KeyError as v:
             pass
 
 
@@ -680,7 +681,7 @@ def load(odffile):
             # Add the SUN junk here to the struct somewhere
             # It is cached data, so it can be out-of-date
     z.close()
-    b = doc.getElementsByType(office.Body)
+    b = doc.getElementsByType(Body)
     if mimetype[:39] == 'application/vnd.oasis.opendocument.text':
         doc.text = b[0].firstChild
     elif mimetype[:43] == 'application/vnd.oasis.opendocument.graphics':
