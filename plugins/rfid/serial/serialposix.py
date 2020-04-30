@@ -51,7 +51,7 @@ elif plat == 'openbsd3':  # BSD (confirmed)
     def device(port):
         return '/dev/ttyp%d' % port
 
-elif plat[:3] == 'bsd' or  \
+elif plat[:3] == 'bsd' or \
         plat[:7] == 'freebsd' or \
         plat[:7] == 'openbsd' or \
         plat[:6] == 'darwin':  # BSD (confirmed for freebsd4: cuaa%d)
@@ -94,13 +94,15 @@ counting starts for the first serial port.
 e.g. 'first serial port: /dev/ttyS0'
 and with a bit luck you can get this module running...
 """ % (sys.platform, os.name, VERSION))
+
     # no exception, just continue with a brave attempt to build a device name
     # even if the device name is not correct for the platform it has chances
     # to work using a string with the real device name as port paramter.
 
     def device(portum):
         return '/dev/ttyS%d' % portnum
-    #~ raise Exception, "this module does not run on this platform, sorry."
+
+    # ~ raise Exception, "this module does not run on this platform, sorry."
 
 # whats up with "aix", "beos", ....
 # they should work, just need to know the device names.
@@ -113,11 +115,11 @@ TIOCMBIS = hasattr(TERMIOS, 'TIOCMBIS') and TERMIOS.TIOCMBIS or 0x5416
 TIOCMBIC = hasattr(TERMIOS, 'TIOCMBIC') and TERMIOS.TIOCMBIC or 0x5417
 TIOCMSET = hasattr(TERMIOS, 'TIOCMSET') and TERMIOS.TIOCMSET or 0x5418
 
-#TIOCM_LE = hasattr(TERMIOS, 'TIOCM_LE') and TERMIOS.TIOCM_LE or 0x001
+# TIOCM_LE = hasattr(TERMIOS, 'TIOCM_LE') and TERMIOS.TIOCM_LE or 0x001
 TIOCM_DTR = hasattr(TERMIOS, 'TIOCM_DTR') and TERMIOS.TIOCM_DTR or 0x002
 TIOCM_RTS = hasattr(TERMIOS, 'TIOCM_RTS') and TERMIOS.TIOCM_RTS or 0x004
-#TIOCM_ST = hasattr(TERMIOS, 'TIOCM_ST') and TERMIOS.TIOCM_ST or 0x008
-#TIOCM_SR = hasattr(TERMIOS, 'TIOCM_SR') and TERMIOS.TIOCM_SR or 0x010
+# TIOCM_ST = hasattr(TERMIOS, 'TIOCM_ST') and TERMIOS.TIOCM_ST or 0x008
+# TIOCM_SR = hasattr(TERMIOS, 'TIOCM_SR') and TERMIOS.TIOCM_SR or 0x010
 
 TIOCM_CTS = hasattr(TERMIOS, 'TIOCM_CTS') and TERMIOS.TIOCM_CTS or 0x020
 TIOCM_CAR = hasattr(TERMIOS, 'TIOCM_CAR') and TERMIOS.TIOCM_CAR or 0x040
@@ -125,8 +127,8 @@ TIOCM_RNG = hasattr(TERMIOS, 'TIOCM_RNG') and TERMIOS.TIOCM_RNG or 0x080
 TIOCM_DSR = hasattr(TERMIOS, 'TIOCM_DSR') and TERMIOS.TIOCM_DSR or 0x100
 TIOCM_CD = hasattr(TERMIOS, 'TIOCM_CD') and TERMIOS.TIOCM_CD or TIOCM_CAR
 TIOCM_RI = hasattr(TERMIOS, 'TIOCM_RI') and TERMIOS.TIOCM_RI or TIOCM_RNG
-#TIOCM_OUT1 = hasattr(TERMIOS, 'TIOCM_OUT1') and TERMIOS.TIOCM_OUT1 or 0x2000
-#TIOCM_OUT2 = hasattr(TERMIOS, 'TIOCM_OUT2') and TERMIOS.TIOCM_OUT2 or 0x4000
+# TIOCM_OUT1 = hasattr(TERMIOS, 'TIOCM_OUT1') and TERMIOS.TIOCM_OUT1 or 0x2000
+# TIOCM_OUT2 = hasattr(TERMIOS, 'TIOCM_OUT2') and TERMIOS.TIOCM_OUT2 or 0x4000
 TIOCINQ = hasattr(TERMIOS, 'FIONREAD') and TERMIOS.FIONREAD or 0x541B
 
 TIOCM_zero_str = struct.pack('I', 0)
@@ -175,7 +177,6 @@ baudrate_constants = {
 
 
 class Serial(SerialBase):
-
     """Serial port class POSIX implementation. Serial port configuration is
     done with termios and fcntl. Runs on Linux and many other Un*x like
     systems."""
@@ -206,7 +207,7 @@ class Serial(SerialBase):
             self.fd = None
         else:
             self._isOpen = True
-        #~ self.flushInput()
+        # ~ self.flushInput()
 
     def _reconfigurePort(self):
         """Set communication parameters on opened port."""
@@ -247,7 +248,7 @@ class Serial(SerialBase):
             try:
                 ispeed = ospeed = baudrate_constants[self._baudrate]
             except KeyError:
-                #~ raise ValueError('Invalid baud rate: %r' % self._baudrate)
+                # ~ raise ValueError('Invalid baud rate: %r' % self._baudrate)
                 # may need custom baud rate, it isnt in our list.
                 ispeed = ospeed = getattr(TERMIOS, 'B38400')
                 custom_baud = int(self._baudrate)  # store for later
@@ -363,7 +364,7 @@ class Serial(SerialBase):
 
     def inWaiting(self):
         """Return the number of characters currently in the input buffer."""
-        #~ s = fcntl.ioctl(self.fd, TERMIOS.FIONREAD, TIOCM_zero_str)
+        # ~ s = fcntl.ioctl(self.fd, TERMIOS.FIONREAD, TIOCM_zero_str)
         s = fcntl.ioctl(self.fd, TIOCINQ, TIOCM_zero_str)
         return struct.unpack('I', s)[0]
 
@@ -382,8 +383,7 @@ class Serial(SerialBase):
                     break  # timeout
                 buf = os.read(self.fd, size - len(read))
                 read = read + buf
-                if (self._timeout >=
-                        0 or self._interCharTimeout > 0) and not buf:
+                if (self._timeout >= 0 or self._interCharTimeout > 0) and not buf:
                     break  # early abort on timeout
         return read
 
