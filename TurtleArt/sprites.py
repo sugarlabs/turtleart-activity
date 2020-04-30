@@ -283,9 +283,9 @@ class Sprite:
             self.labels[i] = str(new_label)
         self.inval()
 
-    def set_margins(self, l=0, t=0, r=0, b=0):
+    def set_margins(self, left=0, top=0, right=0, bottom=0):
         ''' Set the margins for drawing the label '''
-        self._margins = [l, t, r, b]
+        self._margins = [left, top, right, bottom]
 
     def _extend_labels_array(self, i):
         ''' Append to the labels attribute list '''

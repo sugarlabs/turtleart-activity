@@ -689,7 +689,7 @@ class Block:
                 self.spr.set_label_attributes(size, True, 'center', 'bottom',
                                               i=i)
             elif self.name in block_styles['clamp-style-hat']:
-                self.spr.set_margins(t=10 * self.scale)
+                self.spr.set_margins(top=10 * self.scale)
                 self.spr.set_label_attributes(size, True, 'center', 'top',
                                               i=i)
             elif self.name in block_styles['clamp-style-hat-1arg']:
@@ -738,7 +738,8 @@ class Block:
             self.spr.set_label_attributes(int(self.font_size[1] + 0.5),
                                           True, 'right', y_pos=y, i=1)
         elif self.name in block_styles['clamp-style-else']:
-            self.spr.set_margins(l=10 * self.scale, r=10 * self.scale)
+            self.spr.set_margins(left=10 * self.scale,
+                                 right=10 * self.scale)
             y = self.docks[1][3] - int(int(self.font_size[0] * 1.3))
             self.spr.set_label_attributes(int(self.font_size[0] + 0.5),
                                           True, 'right', y_pos=y, i=0)
