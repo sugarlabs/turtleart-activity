@@ -79,12 +79,14 @@ class BusName(object):
 
     :Caveats:
 
-        - Assumes that named services are only ever requested using this class -
-          if you request names from the bus directly, confusion may occur.
+        - Assumes that named services are only ever requested using
+          this class - if you request names from the bus directly,
+          confusion may occur.
         - Does not handle queueing.
     """
 
-    def __new__(cls, name, bus=None, allow_replacement=False, replace_existing=False, do_not_queue=False):
+    def __new__(cls, name, bus=None, allow_replacement=False,
+            replace_existing=False, do_not_queue=False):
         """Constructor, which may either return an existing cached object
         or a new object.
 
@@ -151,7 +153,9 @@ class BusName(object):
             # else in this process, this can happen legitimately
             pass
         else:
-            raise RuntimeError('requesting bus name %s returned unexpected value %s' % (name, retval))
+            raise RuntimeError(
+                'requesting bus name %s returned unexpected value %s' %
+                (name, retval))
 
         # and create the object
         bus_name = object.__new__(cls)
@@ -184,7 +188,8 @@ class BusName(object):
         return self._name
 
     def __repr__(self):
-        return '<dbus.service.BusName %s on %r at %#x>' % (self._name, self._bus, id(self))
+        return '<dbus.service.BusName %s on %r at %#x>' % (
+            self._name, self._bus, id(self))
 
     __str__ = __repr__
 
@@ -204,14 +209,16 @@ def _method_lookup(self, method_name, dbus_interface):
     if dbus_interface:
         # search through the class hierarchy in python MRO order
         for cls in self.__class__.__mro__:
-            # if we haven't got a candidate class yet, and we find a class with a
-            # suitably named member, save this as a candidate class
+            # if we haven't got a candidate class yet, and we find a
+            # class with a suitably named member, save this as a
+            # candidate class
             if not candidate_class and method_name in cls.__dict__:
                 if "_dbus_is_method" in cls.__dict__[method_name].__dict__ \
                    and "_dbus_interface" in cls.__dict__[method_name].__dict__:
                     # however if it is annotated for a different interface
                     # than we are looking for, it cannot be a candidate
-                    if cls.__dict__[method_name]._dbus_interface == dbus_interface:
+                    if cls.__dict__[
+                            method_name]._dbus_interface == dbus_interface:
                         candidate_class = cls
                         parent_method = cls.__dict__[method_name]
                         successful = True
@@ -250,9 +257,12 @@ def _method_lookup(self, method_name, dbus_interface):
         return (candidate_class.__dict__[method_name], parent_method)
     else:
         if dbus_interface:
-            raise UnknownMethodException('%s is not a valid method of interface %s' % (method_name, dbus_interface))
+            raise UnknownMethodException(
+                '%s is not a valid method of interface %s' %
+                (method_name, dbus_interface))
         else:
-            raise UnknownMethodException('%s is not a valid method' % method_name)
+            raise UnknownMethodException(
+                '%s is not a valid method' % method_name)
 
 
 def _method_reply_return(connection, message, method_name, signature, *retval):
@@ -284,10 +294,13 @@ def _method_reply_error(connection, message, exception):
     elif getattr(exception, '__module__', '') in ('', '__main__'):
         name = 'org.freedesktop.DBus.Python.%s' % exception.__class__.__name__
     else:
-        name = 'org.freedesktop.DBus.Python.%s.%s' % (exception.__module__, exception.__class__.__name__)
+        name = 'org.freedesktop.DBus.Python.%s.%s' % (
+            exception.__module__, exception.__class__.__name__)
 
     et, ev, etb = sys.exc_info()
-    if isinstance(exception, DBusException) and not exception.include_traceback:
+    if isinstance(
+            exception,
+            DBusException) and not exception.include_traceback:
         # We don't actually want the traceback anyway
         contents = exception.get_dbus_message()
     elif ev is exception:
@@ -319,14 +332,18 @@ class InterfaceType(type):
         for b in bases:
             base_name = b.__module__ + '.' + b.__name__
             if getattr(b, '_dbus_class_table', False):
-                for (interface, method_table) in class_table[base_name].items():
-                    our_method_table = interface_table.setdefault(interface, {})
+                for (
+                    interface,
+                        method_table) in class_table[base_name].items():
+                    our_method_table = interface_table.setdefault(
+                        interface, {})
                     our_method_table.update(method_table)
 
         # add in all the name -> method entries for our own methods/signals
         for func in dct.values():
             if getattr(func, '_dbus_interface', False):
-                method_table = interface_table.setdefault(func._dbus_interface, {})
+                method_table = interface_table.setdefault(
+                    func._dbus_interface, {})
                 method_table[func.__name__] = func
 
         super(InterfaceType, cls).__init__(name, bases, dct)
@@ -354,9 +371,11 @@ class InterfaceType(type):
 
         reflection_data = '    <method name="%s">\n' % (func.__name__)
         for pair in zip(in_sig, args):
-            reflection_data += '      <arg direction="in"  type="%s" name="%s" />\n' % pair
+            reflection_data += \
+                '      <arg direction="in"  type="%s" name="%s" />\n' % pair
         for type in out_sig:
-            reflection_data += '      <arg direction="out" type="%s" />\n' % type
+            reflection_data += \
+                '      <arg direction="out" type="%s" />\n' % type
         reflection_data += '    </method>\n'
 
         return reflection_data
@@ -374,8 +393,9 @@ class InterfaceType(type):
 
         reflection_data = '    <signal name="%s">\n' % (func.__name__)
         for pair in zip(sig, args):
-            reflection_data = reflection_data + '      <arg type="%s" name="%s" />\n' % pair
-        reflection_data = reflection_data + '    </signal>\n'
+            reflection_data += \
+                '      <arg type="%s" name="%s" />\n' % pair
+        reflection_data += '    </signal>\n'
 
         return reflection_data
 
@@ -660,10 +680,12 @@ class Object(Interface):
             # lookup candidate method and parent method
             method_name = message.get_member()
             interface_name = message.get_interface()
-            (candidate_method, parent_method) = _method_lookup(self, method_name, interface_name)
+            (candidate_method, parent_method) = _method_lookup(
+                self, method_name, interface_name)
 
             # set up method call parameters
-            args = message.get_args_list(**parent_method._dbus_get_args_options)
+            args = message.get_args_list(
+                **parent_method._dbus_get_args_options)
             keywords = {}
 
             if parent_method._dbus_out_signature is not None:
@@ -673,14 +695,20 @@ class Object(Interface):
 
             # set up async callback functions
             if parent_method._dbus_async_callbacks:
-                (return_callback, error_callback) = parent_method._dbus_async_callbacks
-                keywords[return_callback] = lambda *retval: _method_reply_return(connection, message, method_name,
-                                                                                 signature, *retval)
-                keywords[error_callback] = lambda exception: _method_reply_error(connection, message, exception)
+                (return_callback, error_callback) = \
+                    parent_method._dbus_async_callbacks
+                keywords[return_callback] = \
+                    lambda *retval: \
+                    _method_reply_return(connection, message,
+                                         method_name, signature, *retval)
+                keywords[error_callback] = \
+                    lambda exception: \
+                    _method_reply_error(connection, message, exception)
 
             # include the sender etc. if desired
             if parent_method._dbus_sender_keyword:
-                keywords[parent_method._dbus_sender_keyword] = message.get_sender()
+                keywords[parent_method._dbus_sender_keyword] = \
+                    message.get_sender()
             if parent_method._dbus_path_keyword:
                 keywords[parent_method._dbus_path_keyword] = message.get_path()
             if parent_method._dbus_rel_path_keyword:
@@ -707,7 +735,8 @@ class Object(Interface):
                 keywords[parent_method._dbus_rel_path_keyword] = rel_path
 
             if parent_method._dbus_destination_keyword:
-                keywords[parent_method._dbus_destination_keyword] = message.get_destination()
+                keywords[parent_method._dbus_destination_keyword] = \
+                    message.get_destination()
             if parent_method._dbus_message_keyword:
                 keywords[parent_method._dbus_message_keyword] = message
             if parent_method._dbus_connection_keyword:
@@ -732,8 +761,10 @@ class Object(Interface):
                     if retval is None:
                         retval = ()
                     else:
-                        raise TypeError('%s has an empty output signature but did not return None' %
-                                        method_name)
+                        raise TypeError(
+                            '%s has an empty output signature'
+                            ' but did not return None' %
+                            method_name)
                 elif len(signature_tuple) == 1:
                     retval = (retval,)
                 else:
@@ -742,10 +773,13 @@ class Object(Interface):
                         # unchanged
                         pass
                     else:
-                        raise TypeError('%s has multiple output values in signature %s but did not return a sequence' %
-                                        (method_name, signature))
+                        raise TypeError(
+                            '%s has multiple output values in signature %s'
+                            ' but did not return a sequence' %
+                            (method_name, signature))
 
-            # no signature, so just turn the return into a tuple and send it as normal
+            # no signature, so just turn the return into a tuple and send it as
+            # normal
             else:
                 if retval is None:
                     retval = ()
@@ -759,7 +793,8 @@ class Object(Interface):
                 else:
                     retval = (retval,)
 
-            _method_reply_return(connection, message, method_name, signature, *retval)
+            _method_reply_return(connection, message,
+                                 method_name, signature, *retval)
         except Exception as exception:
             # send error reply
             _method_reply_error(connection, message, exception)
@@ -770,10 +805,12 @@ class Object(Interface):
         """Return a string of XML encoding this object's supported interfaces,
         methods and signals.
         """
-        reflection_data = _dbus_bindings.DBUS_INTROSPECT_1_0_XML_DOCTYPE_DECL_NODE
+        reflection_data = \
+            _dbus_bindings.DBUS_INTROSPECT_1_0_XML_DOCTYPE_DECL_NODE
         reflection_data += '<node name="%s">\n' % object_path
 
-        interfaces = self._dbus_class_table[self.__class__.__module__ + '.' + self.__class__.__name__]
+        interfaces = self._dbus_class_table[
+            self.__class__.__module__ + '.' + self.__class__.__name__]
         for (name, funcs) in interfaces.items():
             reflection_data += '  <interface name="%s">\n' % (name)
 
