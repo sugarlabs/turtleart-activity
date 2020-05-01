@@ -110,8 +110,8 @@ class AudioGrab():
         self.pipeline.add(self.alsasrc)
         self.caps1 = Gst.ElementFactory.make('capsfilter', 'caps1')
         self.pipeline.add(self.caps1)
-        caps_str = 'audio/x-raw,rate=(int)%d,channels=(int)%d,depth=(int)16' % (
-            RATE, self.channels)
+        caps_str = 'audio/x-raw,rate=(int)%d,channels=(int)%d,depth=(int)16'\
+                   % (RATE, self.channels)
         self.caps1.set_property('caps', Gst.caps_from_string(caps_str))
         if self.channels == 1:
             self.fakesink.append(Gst.ElementFactory.make('fakesink', 'fsink'))

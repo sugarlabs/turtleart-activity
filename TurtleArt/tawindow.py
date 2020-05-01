@@ -471,7 +471,8 @@ class TurtleArtWindow():
         # NOTE: When debugging plugins, it may be useful to not trap errors
         try:
             exec(f, globals(), plugins)
-            self.turtleart_plugins[plugin_dir] = list(plugins.values())[0](self)
+            self.turtleart_plugins[plugin_dir] = list(plugins.values())[
+                0](self)
             debug_output('Successfully importing %s' % (plugin_class),
                          self.running_sugar)
             # Add the icon dir to the icon_theme search path
@@ -730,15 +731,15 @@ class TurtleArtWindow():
         return len(self.just_blocks()) == 1
 
     def recalculate_constants(self):
-        CONSTANTS['titlex'] = int(-(self.width * TITLEXY[0]) /
-                                  (self.coord_scale * 2))
-        CONSTANTS['leftx'] = int(-(self.width * TITLEXY[0]) /
-                                 (self.coord_scale * 2))
+        CONSTANTS['titlex'] = int(-(self.width * TITLEXY[0]
+                                    ) / (self.coord_scale * 2))
+        CONSTANTS['leftx'] = int(-(self.width * TITLEXY[0]
+                                   ) / (self.coord_scale * 2))
         CONSTANTS['rightx'] = 0
-        CONSTANTS['titley'] = int((self.height * TITLEXY[1]) /
-                                  (self.coord_scale * 2))
-        CONSTANTS['topy'] = int((self.height * (TITLEXY[1] - 0.125)) /
-                                (self.coord_scale * 2))
+        CONSTANTS['titley'] = int(
+            (self.height * TITLEXY[1]) / (self.coord_scale * 2))
+        CONSTANTS['topy'] = int(
+            (self.height * (TITLEXY[1] - 0.125)) / (self.coord_scale * 2))
         CONSTANTS['bottomy'] = 0
         CONSTANTS['leftpos'] = int(-self.width / (self.coord_scale * 2))
         CONSTANTS['toppos'] = int(self.height / (self.coord_scale * 2))
@@ -1236,8 +1237,8 @@ class TurtleArtWindow():
         self.mouse_flag = 1
         self.mouse_x = x
         self.mouse_y = y
-        self.button_press(event.get_state() &
-                          Gdk.ModifierType.CONTROL_MASK, x, y)
+        self.button_press(
+            event.get_state() & Gdk.ModifierType.CONTROL_MASK, x, y)
         return True
 
     def get_mouse_flag(self):
@@ -2324,8 +2325,8 @@ class TurtleArtWindow():
                     dy = 0
                     drag_group = find_group(blk.connections[2])
                     gblk = drag_group[0]
-                    d = int((gblk.docks[-1][3] - gblk.docks[0][3]) /
-                            gblk.scale)
+                    d = int(
+                        (gblk.docks[-1][3] - gblk.docks[0][3]) / gblk.scale)
                     if d == 0:
                         dy += 21  # Fixme: don't hardcode size of slot
                     else:
@@ -2456,11 +2457,11 @@ class TurtleArtWindow():
                                                 dragging=True)
                 if self.update_counter % 5:
                     self.lc.update_label_value(
-                        'xcor', self.selected_turtle.get_xy()[0] /
-                        self.coord_scale)
+                        'xcor', self.selected_turtle.get_xy(
+                        )[0] / self.coord_scale)
                     self.lc.update_label_value(
-                        'ycor', self.selected_turtle.get_xy()[1] /
-                        self.coord_scale)
+                        'ycor', self.selected_turtle.get_xy(
+                        )[1] / self.coord_scale)
             else:
                 spos = self.turtles.turtle_to_screen_coordinates(
                     self.selected_turtle.get_xy())
@@ -2561,9 +2562,7 @@ class TurtleArtWindow():
                     except BaseException:
                         self._timeout_tag[0] = 0
         elif spr and hasattr(spr, 'type') and \
-                (spr.type == 'selector' or
-                 spr.type == 'palette' or
-                 spr.type == 'toolbar'):
+                (spr.type == 'selector' or spr.type == 'palette' or spr.type == 'toolbar'):
             if self._timeout_tag[0] == 0 and hasattr(spr, 'name'):
                 self._timeout_tag[0] = self._do_show_popup(spr.name)
                 self.selected_spr = spr
@@ -2681,11 +2680,12 @@ class TurtleArtWindow():
 
         # Find the block we clicked on and process it.
         # Consider a very small move a click (for touch interfaces)
-        if self.block_operation == 'click' or \
-           (self.hw in [XO175, XO30, XO4] and
-            self.block_operation == 'move' and (
-                abs(self.dx) < _MOTION_THRESHOLD and
-                abs(self.dy < _MOTION_THRESHOLD))):
+        if self.block_operation == 'click' or (
+            self.hw in [
+                XO175, XO30, XO4] and self.block_operation == 'move' and (
+                abs(
+                self.dx) < _MOTION_THRESHOLD and abs(
+                    self.dy < _MOTION_THRESHOLD))):
             self._click_block(x, y)
         elif self.block_operation == 'copying':
             GLib.timeout_add(500, self._unhighlight_drag_group, blk)
@@ -2732,11 +2732,13 @@ class TurtleArtWindow():
         if self.running_sugar:
             self.selected_turtle.spr.set_layer(TURTLE_LAYER)
             self.lc.update_label_value(
-                'xcor', self.turtles.get_active_turtle().get_xy()[0] /
-                self.coord_scale)
+                'xcor',
+                self.turtles.get_active_turtle().get_xy(
+                )[0] / self.coord_scale)
             self.lc.update_label_value(
-                'ycor', self.turtles.get_active_turtle().get_xy()[1] /
-                self.coord_scale)
+                'ycor',
+                self.turtles.get_active_turtle().get_xy(
+                )[1] / self.coord_scale)
 
     def _click_block(self, x, y):
         ''' Click block: lots of special cases to handle... '''
@@ -3152,10 +3154,8 @@ class TurtleArtWindow():
             if best_destination.name in block_styles['boolean-style']:
                 if best_destination_dockn == 2 and \
                         (selected_block.name in
-                         block_styles['boolean-style'] or
-                         selected_block.name in
-                         block_styles['compare-style'] or
-                         selected_block.name in
+                         block_styles['boolean-style'] or selected_block.name in
+                         block_styles['compare-style'] or selected_block.name in
                          block_styles['compare-porch-style']
                          ):
                     dy = selected_block.ey - best_destination.ey
@@ -3201,8 +3201,9 @@ class TurtleArtWindow():
             elif best_destination.name in expandable_blocks and \
                     best_destination_dockn == 1:
                 dy = 0
-                if (selected_block.name in expandable_blocks or
-                    selected_block.name in block_styles[
+                if (selected_block.name in
+                        expandable_blocks or selected_block.name
+                        in block_styles[
                         'number-style-var-arg']):
                     if selected_block.name == 'myfunc2arg':
                         dy = 40 + selected_block.ey - best_destination.ey
@@ -3222,9 +3223,9 @@ class TurtleArtWindow():
                     block_styles['basic-style-3arg'] and \
                     best_destination_dockn == 2:
                 dy = 0
-                if (selected_block.name in expandable_blocks or
-                    selected_block.name in block_styles[
-                        'number-style-var-arg']):
+                if (selected_block.name in
+                        expandable_blocks or selected_block.name
+                        in block_styles['number-style-var-arg']):
                     if selected_block.name == 'myfunc2arg':
                         dy = 40 + selected_block.ey - best_destination.ey2
                     elif selected_block.name == 'myfunc3arg':
@@ -4398,10 +4399,13 @@ class TurtleArtWindow():
         if clear:
             self._set_coordinates_label('')
         else:
-            x = round_int(float(self.turtles.get_active_turtle().get_xy()[0]) /
-                          self.coord_scale)
-            y = round_int(float(self.turtles.get_active_turtle().get_xy()[1]) /
-                          self.coord_scale)
+            x = round_int(
+                float(self.turtles.get_active_turtle().get_xy(
+                )[0]) / self.coord_scale)
+            y = round_int(
+                float(
+                    self.turtles.get_active_turtle().get_xy(
+                    )[1]) / self.coord_scale)
             h = round_int(self.turtles.get_active_turtle().get_heading())
             if self.running_sugar:
                 if int(x) == x and int(y) == y and int(h) == h:
@@ -4454,8 +4458,8 @@ class TurtleArtWindow():
             self.showlabel('print', '%s' % n.get_vector_string())
         # media
         elif isinstance(n, Media):
-            if (n.type == 'media' and
-                    n.value.lower() not in media_blocks_dictionary):
+            if (n.type == 'media' and n.value.lower()
+                    not in media_blocks_dictionary):
                 try:
                     if self.running_sugar:
                         from sugar3.datastore import datastore
@@ -4535,8 +4539,7 @@ class TurtleArtWindow():
                         offset_from_bottom *= 2
                 self.status_spr.move(
                     (0,
-                     self.height - offset_from_bottom +
-                     self.activity.sw.get_vadjustment().get_value()))
+                     self.height - offset_from_bottom + self.activity.sw.get_vadjustment().get_value()))
             elif self.interactive_mode:
                 self.status_spr.move(
                     (0, self.activity.win.get_window().get_height() - 80))
@@ -5111,8 +5114,7 @@ variable'))
             # Translate label name into block/prim name.
             if blkname in block_names[name]:  # block label is an array
                 if name in content_blocks or \
-                        (name in block_primitives and
-                         block_primitives[name] == name):
+                        (name in block_primitives and block_primitives[name] == name):
                     return self._make_block(name, x, y, defaults)
             elif blkname in block_names:
                 return self._make_block(blkname, x, y, defaults)

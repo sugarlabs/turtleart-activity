@@ -157,7 +157,8 @@ http://turtleartsite.sugarlabs.org to upload your project.'))
 
         username = self.username_entry.get_text()
         password = self.password_entry.get_text()
-        server = xmlrpc.client.ServerProxy(self._upload_server + '/call/xmlrpc')
+        server = xmlrpc.client.ServerProxy(
+            self._upload_server + '/call/xmlrpc')
         logged_in = None
         try:
             logged_in = server.login_remote(username, password)

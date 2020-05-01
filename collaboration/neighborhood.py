@@ -30,11 +30,16 @@ CHANNEL_TYPE_CONTACT_LIST = TelepathyGLib.IFACE_CHANNEL_TYPE_CONTACT_LIST
 CHANNEL_TYPE_FILE_TRANSFER = TelepathyGLib.IFACE_CHANNEL_TYPE_FILE_TRANSFER
 CLIENT = TelepathyGLib.IFACE_CLIENT
 CONNECTION = TelepathyGLib.IFACE_CONNECTION
-CONNECTION_INTERFACE_ALIASING = TelepathyGLib.IFACE_CONNECTION_INTERFACE_ALIASING
-CONNECTION_INTERFACE_CONTACTS = TelepathyGLib.IFACE_CONNECTION_INTERFACE_CONTACTS
-CONNECTION_INTERFACE_CONTACT_CAPABILITIES = TelepathyGLib.IFACE_CONNECTION_INTERFACE_CONTACT_CAPABILITIES
-CONNECTION_INTERFACE_REQUESTS = TelepathyGLib.IFACE_CONNECTION_INTERFACE_REQUESTS
-CONNECTION_INTERFACE_SIMPLE_PRESENCE = TelepathyGLib.IFACE_CONNECTION_INTERFACE_SIMPLE_PRESENCE
+CONNECTION_INTERFACE_ALIASING = \
+    TelepathyGLib.IFACE_CONNECTION_INTERFACE_ALIASING
+CONNECTION_INTERFACE_CONTACTS = \
+    TelepathyGLib.IFACE_CONNECTION_INTERFACE_CONTACTS
+CONNECTION_INTERFACE_CONTACT_CAPABILITIES = \
+    TelepathyGLib.IFACE_CONNECTION_INTERFACE_CONTACT_CAPABILITIES
+CONNECTION_INTERFACE_REQUESTS = \
+    TelepathyGLib.IFACE_CONNECTION_INTERFACE_REQUESTS
+CONNECTION_INTERFACE_SIMPLE_PRESENCE = \
+    TelepathyGLib.IFACE_CONNECTION_INTERFACE_SIMPLE_PRESENCE
 
 HANDLE_TYPE_CONTACT = TelepathyGLib.HandleType.CONTACT
 HANDLE_TYPE_LIST = TelepathyGLib.HandleType.LIST
@@ -298,11 +303,13 @@ class _Account(GObject.GObject):
                                       'Connection.GetSelfHandle'))
             self.emit('connected')
         else:
-            for contact_handle, contact_id in list(self._buddy_handles.items()):
+            for contact_handle, contact_id in list(
+                    self._buddy_handles.items()):
                 if contact_id is not None:
                     self.emit('buddy-removed', contact_id)
 
-            for room_handle, activity_id in list(self._activity_handles.items()):
+            for room_handle, activity_id in list(
+                    self._activity_handles.items()):
                 self.emit('activity-removed', activity_id)
 
             self._buddy_handles = {}
@@ -946,7 +953,8 @@ class Neighborhood(GObject.GObject):
 
     def __activity_removed_cb(self, account, activity_id):
         if activity_id not in self._activities:
-            print(('Unknown activity with id %s. Already removed?', activity_id))
+            print(('Unknown activity with id %s. Already removed?',
+                   activity_id))
             return
         activity = self._activities[activity_id]
         del self._activities[activity_id]

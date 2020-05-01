@@ -65,8 +65,7 @@ class PaletteView():
 
             save_selected = self._turtle_window.selected_palette
             self.layout(regenerate=regenerate,
-                        show=(show or
-                              save_selected == self._palette_index))
+                        show=(show or save_selected == self._palette_index))
 
     def show(self):
         ''' Show palette background and proto blocks. If needed, display

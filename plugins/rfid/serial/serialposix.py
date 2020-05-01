@@ -227,8 +227,7 @@ class Serial(SerialBase):
             raise SerialException("Could not configure port: %s" % msg)
         # set up raw mode / no echo / binary
         cflag |= (TERMIOS.CLOCAL | TERMIOS.CREAD)
-        lflag &= ~(TERMIOS.ICANON | TERMIOS.ECHO | TERMIOS.ECHOE | TERMIOS.ECHOK |
-                   TERMIOS.ECHONL | TERMIOS.ISIG | TERMIOS.IEXTEN)  # |TERMIOS.ECHOPRT
+        lflag &= ~(TERMIOS.ICANON | TERMIOS.ECHO | TERMIOS.ECHOE | TERMIOS.ECHOK | TERMIOS.ECHONL | TERMIOS.ISIG | TERMIOS.IEXTEN)  # |TERMIOS.ECHOPRT
         for flag in ('ECHOCTL', 'ECHOKE'):  # netbsd workaround for Erk
             if hasattr(TERMIOS, flag):
                 lflag &= ~getattr(TERMIOS, flag)

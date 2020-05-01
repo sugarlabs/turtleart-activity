@@ -27,7 +27,8 @@ CLIENT_APPROVER = TelepathyGLib.IFACE_CLIENT_APPROVER
 CLIENT_HANDLER = TelepathyGLib.IFACE_CLIENT_HANDLER
 CLIENT_INTERFACE_REQUESTS = TelepathyGLib.IFACE_CLIENT_INTERFACE_REQUESTS
 
-# FIXME Review the following code in replacement for telepathy.server.DBusProperties
+# FIXME Review the following code in replacement for
+# telepathy.server.DBusProperties
 DBusProperties = Gio.DBusPropertyInfo
 
 from . import dispatch

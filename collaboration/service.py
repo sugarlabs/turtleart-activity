@@ -86,7 +86,7 @@ class BusName(object):
     """
 
     def __new__(cls, name, bus=None, allow_replacement=False,
-            replace_existing=False, do_not_queue=False):
+                replace_existing=False, do_not_queue=False):
         """Constructor, which may either return an existing cached object
         or a new object.
 

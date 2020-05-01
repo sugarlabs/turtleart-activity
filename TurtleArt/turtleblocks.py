@@ -69,7 +69,8 @@ from TurtleArt.taprimitive import PyExportError
 from TurtleArt.taplugin import (load_a_plugin, cancel_plugin_install,
                                 complete_plugin_install)
 
-from TurtleArt.util.menubuilder import make_menu_item, make_sub_menu, make_checkmenu_item
+from TurtleArt.util.menubuilder import (make_menu_item,
+                                        make_sub_menu, make_checkmenu_item)
 
 
 class TurtleMain():
@@ -163,7 +164,8 @@ class TurtleMain():
             schemas_path = activity_root
 
         # create a local Gio.Settings based on the compiled schema
-        source = Gio.SettingsSchemaSource.new_from_directory(schemas_path, None, True)
+        source = Gio.SettingsSchemaSource.new_from_directory(
+            schemas_path, None, True)
         schema = source.lookup(self._GIO_SETTINGS, True)
         _settings = Gio.Settings.new_full(schema, None, None)
         return _settings
@@ -234,7 +236,8 @@ return %s(self)" % (p, P, P)
         if self._ta_file is None:
             self.tw.load_start()
         else:
-            self.win.get_window().set_cursor(Gdk.Cursor.new(Gdk.CursorType.WATCH))
+            self.win.get_window().set_cursor(
+                Gdk.Cursor.new(Gdk.CursorType.WATCH))
             GLib.idle_add(self._project_loader, self._ta_file)
         self._set_gio_settings_overrides()
         Gtk.main()
@@ -244,7 +247,8 @@ return %s(self)" % (p, P, P)
         self.tw.lc.trace = 0
         if self._run_on_launch:
             self._do_run_cb()
-        self.win.get_window().set_cursor(Gdk.Cursor.new(Gdk.CursorType.LEFT_PTR))
+        self.win.get_window().set_cursor(
+            Gdk.Cursor.new(Gdk.CursorType.LEFT_PTR))
 
     def _draw_and_quit(self):
         ''' Non-interactive mode: run the project, save it to a file
@@ -1108,7 +1112,8 @@ Would you like to save before quitting?'))
             if os.path.exists(file_path):
                 self.tw.load_files(file_path)
                 break
-        self.win.get_window().set_cursor(Gdk.Cursor.new(Gdk.CursorType.LEFT_PTR))
+        self.win.get_window().set_cursor(
+            Gdk.Cursor.new(Gdk.CursorType.LEFT_PTR))
 
     def _fill_samples_list(self, store):
         '''

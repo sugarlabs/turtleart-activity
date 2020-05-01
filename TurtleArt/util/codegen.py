@@ -67,15 +67,37 @@ class SourceGenerator(ast.NodeVisitor):
     `node_to_source` function.
     """
 
-    UNARYOP_SYMBOLS = {ast.Invert: "~", ast.Not: "not", ast.UAdd: "+", ast.USub: "-"}
+    UNARYOP_SYMBOLS = {
+        ast.Invert: "~",
+        ast.Not: "not",
+        ast.UAdd: "+",
+        ast.USub: "-"}
     # TODO use parentheses around expressions only where necessary
-    BINOP_SYMBOLS = {ast.Add: "+", ast.Sub: "-", ast.Mult: "*", ast.Div: "/", ast.Mod: "%",
-                     ast.LShift: "<<", ast.RShift: ">>", ast.BitOr: "|", ast.BitXor: "^",
-                     ast.BitAnd: "&", ast.FloorDiv: "//", ast.Pow: "**"}
+    BINOP_SYMBOLS = {
+        ast.Add: "+",
+        ast.Sub: "-",
+        ast.Mult: "*",
+        ast.Div: "/",
+        ast.Mod: "%",
+        ast.LShift: "<<",
+        ast.RShift: ">>",
+        ast.BitOr: "|",
+        ast.BitXor: "^",
+        ast.BitAnd: "&",
+        ast.FloorDiv: "//",
+        ast.Pow: "**"}
     BOOLOP_SYMBOLS = {ast.And: "and", ast.Or: "or"}
-    CMPOP_SYMBOLS = {ast.Eq: "==", ast.NotEq: "!=", ast.Lt: "<", ast.LtE: "<=", ast.Gt: ">",
-                     ast.GtE: ">=", ast.Is: "is", ast.IsNot: "is not", ast.In: "in",
-                     ast.NotIn: "not in"}
+    CMPOP_SYMBOLS = {
+        ast.Eq: "==",
+        ast.NotEq: "!=",
+        ast.Lt: "<",
+        ast.LtE: "<=",
+        ast.Gt: ">",
+        ast.GtE: ">=",
+        ast.Is: "is",
+        ast.IsNot: "is not",
+        ast.In: "in",
+        ast.NotIn: "not in"}
 
     def __init__(self, indent_with, add_line_information=False):
         self.result = []
@@ -502,7 +524,8 @@ class SourceGenerator(ast.NodeVisitor):
             self.visit(node.upper)
         if node.step is not None:
             self.write(':')
-            if not (isinstance(node.step, ast.Name) and node.step.id == 'None'):
+            if not (isinstance(
+                    node.step, ast.Name) and node.step.id == 'None'):
                 self.visit(node.step)
 
     def visit_ExtSlice(self, node):

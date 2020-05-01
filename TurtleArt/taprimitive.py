@@ -239,18 +239,16 @@ class Primitive(object):
             to ASTs instead of calling them """
         new_args = []
         for c_arg in self.arg_descs:
-            if (isinstance(c_arg, ConstantArg) and
-                (not exportable_only or
-                 export_me(c_arg.value))):
+            if isinstance(c_arg, ConstantArg) and \
+                    (not exportable_only or export_me(c_arg.value)):
                 new_args.append(c_arg.get(convert_to_ast=exportable_only))
         new_kwargs = {}
         for key in self.kwarg_descs:
-            if (isinstance(self.kwarg_descs[key], ConstantArg) and
-                (not exportable_only or
-                 export_me(self.kwarg_descs[key].value))):
+            if isinstance(self.kwarg_descs[key], ConstantArg) and \
+                    (not exportable_only or export_me(self.kwarg_descs[key].value)):
                 new_kwargs[key] = self.kwarg_descs[key].get(
                     convert_to_ast=exportable_only)
-        return (new_args, new_kwargs)
+        return new_args, new_kwargs
 
     def allow_call_args(self, recursive=False):
         """ Set call_args attribute of all argument descriptions to True
@@ -258,13 +256,13 @@ class Primitive(object):
             that are Primitives """
         for arg_desc in self.arg_descs:
             arg_desc.call_arg = True
-            if (recursive and isinstance(arg_desc, ConstantArg) and
-                    isinstance(arg_desc.value, Primitive)):
+            if recursive and isinstance(arg_desc, ConstantArg) and \
+                    isinstance(arg_desc.value, Primitive):
                 arg_desc.value.allow_call_args(recursive=True)
         for kwarg_desc in self.kwarg_descs:
             kwarg_desc.call_arg = True
-            if (recursive and isinstance(kwarg_desc, ConstantArg) and
-                    isinstance(kwarg_desc.value, Primitive)):
+            if recursive and isinstance(kwarg_desc, ConstantArg) and \
+                    isinstance(kwarg_desc.value, Primitive):
                 kwarg_desc.value.allow_call_args(recursive=True)
 
     def __call__(self, *runtime_args, **runtime_kwargs):
@@ -376,8 +374,7 @@ class Primitive(object):
                     condition_ast = ast.UnaryOp(op=ast.Not,
                                                 operand=pos_cond_ast)
                 else:
-                    raise PyExportError("unknown loop controller: " +
-                                        repr(controller))
+                    raise PyExportError("unknown loop controller: " + repr(controller))
                 loop_ast = ast.While(test=condition_ast,
                                      body=new_arg_asts[1],
                                      orelse=[])
@@ -445,8 +442,8 @@ class Primitive(object):
             if self == Primitive.divide:
                 def _is_float(x):
                     return get_type(x)[0] == TYPE_FLOAT
-                if (not _is_float(new_arg_asts[0]) and
-                        not _is_float(new_arg_asts[1])):
+                if not _is_float(new_arg_asts[0]) and \
+                        not _is_float(new_arg_asts[1]):
                     new_arg_asts[0] = get_call_ast('float', [new_arg_asts[0]],
                                                    return_type=TYPE_FLOAT)
             if len(new_arg_asts) == 1:
@@ -556,20 +553,20 @@ class Primitive(object):
         Consider bound and unbound methods equal. """
         # other is a Primitive
         if isinstance(other, Primitive):
-            return (self == other.func and
-                    self.return_type == other.return_type and
-                    self.arg_descs == other.arg_descs and
-                    self.kwarg_descs == other.kwarg_descs and
-                    self.call_afterwards == other.call_afterwards and
-                    self.export_me == other.export_me)
+            return self == other.func and \
+                self.return_type == other.return_type and \
+                self.arg_descs == other.arg_descs and \
+                self.kwarg_descs == other.kwarg_descs and \
+                self.call_afterwards == other.call_afterwards and \
+                self.export_me == other.export_me
 
         # other is a callable
         elif callable(other):
             if is_instancemethod(self.func) != is_instancemethod(other):
                 return False
             elif is_instancemethod(self.func):  # and is_instancemethod(other):
-                return (self.func.__self__.__class__ == other.__self__.__class__ and
-                        self.func.__func__ == other.__func__)
+                return self.func.__self__.__class__ == other.__self__.__class__ and \
+                    self.func.__func__ == other.__func__
             else:
                 return self.func == other
 
@@ -602,9 +599,9 @@ class Primitive(object):
 
     def wants_heap(self):
         """ Does this Primitive want to get the heap as its first argument? """
-        return ((hasattr(self.func, '__self__') and
-                 isinstance(self.func.__self__, list)) or
-                self.func in list(list.__dict__.values()))
+        return (hasattr(self.func, '__self__'
+                        ) and isinstance(self.func.__self__, list)) or \
+            self.func in list(list.__dict__.values())
 
     def wants_tawindow(self):
         """ Does this Primitive want to get the TurtleArtWindow instance
@@ -675,8 +672,8 @@ class Primitive(object):
         """ Return the controller for this loop Primitive. Raise a
         ValueError if no controller was found. """
         def _is_loop_controller(candidate):
-            return (callable(candidate) and
-                    candidate in Primitive.LOOP_CONTROLLERS)
+            return callable(candidate) and \
+                candidate in Primitive.LOOP_CONTROLLERS
 
         for desc in self.arg_descs:
             if isinstance(desc, ConstantArg):
@@ -969,8 +966,7 @@ class ArgSlot(object):
 
         # 1. can the argument be called?
         (func_disjunction, args) = (None, [])
-        if (isinstance(argument, tuple) and argument and
-                callable(argument[0])):
+        if isinstance(argument, tuple) and argument and callable(argument[0]):
             func_disjunction = argument[0]
             if len(argument) >= 2 and isinstance(argument[1], LogoCode):
                 args = argument[2:]
@@ -1079,11 +1075,9 @@ class ArgSlot(object):
 
                     # last chance to convert raw values to ASTs
                     # (but not lists of ASTs)
-                    if (convert_to_ast and
-                            not isinstance(wrapped_argument, ast.AST) and
-                            not (isinstance(wrapped_argument, list) and
-                                 wrapped_argument and
-                                 isinstance(wrapped_argument[0], ast.AST))):
+                    if convert_to_ast and not \
+                            isinstance(wrapped_argument, ast.AST) and not \
+                            (isinstance(wrapped_argument, list) and wrapped_argument and isinstance(wrapped_argument[0], ast.AST)):
                         wrapped_argument = value_to_ast(wrapped_argument)
 
                     # 3. check the type and convert the argument if necessary
