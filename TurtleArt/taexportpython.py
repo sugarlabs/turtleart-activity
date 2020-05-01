@@ -279,8 +279,8 @@ def _walk_action_stack(top_block, lc, convert_me=True):
                 # body of conditional or loop
                 new_arg_asts = _walk_action_stack(conn, lc,
                                                   convert_me=convert_me)
-                if (prim == LogoCode.prim_loop and
-                        not isinstance(new_arg_asts[-1], ast.Yield)):
+                if prim == LogoCode.prim_loop and not \
+                        isinstance(new_arg_asts[-1], ast.Yield):
                     new_arg_asts.append(ast_yield_true())
                 arg_asts.append(new_arg_asts)
             else:

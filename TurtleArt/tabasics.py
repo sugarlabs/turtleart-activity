@@ -1293,33 +1293,35 @@ variable'))
         if self.tw.lc.update_values:
             self.tw.lc.update_label_value(
                 'xcor',
-                self.tw.turtles.get_active_turtle().get_xy()[0] /
-                self.tw.coord_scale)
+                self.tw.turtles.get_active_turtle(
+                ).get_xy()[0] / self.tw.coord_scale)
             self.tw.lc.update_label_value(
                 'ycor',
-                self.tw.turtles.get_active_turtle().get_xy()[1] /
-                self.tw.coord_scale)
+                self.tw.turtles.get_active_turtle().get_xy(
+                )[1] / self.tw.coord_scale)
             self.tw.lc.update_label_value(
                 'heading',
-                self.tw.turtles.get_active_turtle().get_heading())
+                self.tw.turtles.get_active_turtle(
+                ).get_heading())
 
     def after_move(self, *ignored_args, **ignored_kwargs):
         ''' Update labels after moving the turtle '''
         if self.tw.lc.update_values:
             self.tw.lc.update_label_value(
                 'xcor',
-                self.tw.turtles.get_active_turtle().get_xy()[0] /
-                self.tw.coord_scale)
+                self.tw.turtles.get_active_turtle().get_xy(
+                )[0] / self.tw.coord_scale)
             self.tw.lc.update_label_value(
                 'ycor',
-                self.tw.turtles.get_active_turtle().get_xy()[1] /
-                self.tw.coord_scale)
+                self.tw.turtles.get_active_turtle().get_xy(
+                )[1] / self.tw.coord_scale)
 
     def after_right(self, *ignored_args):
         if self.tw.lc.update_values:
             self.tw.lc.update_label_value(
                 'heading',
-                self.tw.turtles.get_active_turtle().get_heading())
+                self.tw.turtles.get_active_turtle(
+                ).get_heading())
 
     def after_set(self, name, value=None):
         ''' Update the associated value blocks '''

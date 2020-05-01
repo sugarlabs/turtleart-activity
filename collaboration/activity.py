@@ -596,15 +596,19 @@ class _JoinCommand(_BaseCommand):
             dbus_interface=CONNECTION)
 
     def __create_text_channel_cb(self, channel_path):
-        TelepathyGLib.SimpleClientFactory.ensure_channel(self._connection.requested_bus_name, channel_path,
-                                                         ready_handler=self.__text_channel_ready_cb)
+        TelepathyGLib.SimpleClientFactory.ensure_channel(
+            self._connection.requested_bus_name,
+            channel_path,
+            ready_handler=self.__text_channel_ready_cb)
 
     def __create_tubes_channel_cb(self, channel_path):
         print(("Creating tubes channel with bus name %s" %
-               (self._connection.requested_bus_name)))
-        print(("Creating tubes channel with channel path %s" % (channel_path)))
-        TelepathyGLib.SimpleClientFactory.ensure_channel(self._connection.requested_bus_name, channel_path,
-                                                         ready_handler=self.__tubes_channel_ready_cb)
+               self._connection.requested_bus_name))
+        print(("Creating tubes channel with channel path %s" % channel_path))
+        TelepathyGLib.SimpleClientFactory.ensure_channel(
+            self._connection.requested_bus_name,
+            channel_path,
+            ready_handler=self.__tubes_channel_ready_cb)
 
     def __error_handler_cb(self, error):
         self._finished = True

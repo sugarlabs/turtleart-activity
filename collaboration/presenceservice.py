@@ -84,7 +84,8 @@ class PresenceService(GObject.GObject):
             connection_manager = get_connection_manager()
             connections_per_account = \
                 connection_manager.get_connections_per_account()
-            for account_path, connection in list(connections_per_account.items()):
+            for account_path, connection in list(
+                    connections_per_account.items()):
                 if not connection.connected:
                     continue
                 logging.debug('Calling GetActivity on %s', account_path)

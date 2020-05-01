@@ -637,8 +637,8 @@ class LogoCode:
                             # (self.cfun.name is only the name of the
                             # outermost block in this statement/ line of code)
                             # use logoerror("#notanumber") when possible
-                            if (tte.req_type in TYPES_NUMERIC and
-                                    tte.bad_type not in TYPES_NUMERIC):
+                            if tte.req_type in TYPES_NUMERIC and \
+                                    tte.bad_type not in TYPES_NUMERIC:
                                 raise logoerror("#notanumber")
                             else:
                                 raise logoerror(
@@ -1210,10 +1210,10 @@ class LogoCode:
 
     def showlist(self, objects):
         """ Display list of media objects """
-        x = (self.tw.turtles.get_active_turtle().get_xy()[0] /
-             self.tw.coord_scale)
-        y = (self.tw.turtles.get_active_turtle().get_xy()[1] /
-             self.tw.coord_scale)
+        x = (self.tw.turtles.get_active_turtle().get_xy(
+        )[0] / self.tw.coord_scale)
+        y = (self.tw.turtles.get_active_turtle().get_xy(
+        )[1] / self.tw.coord_scale)
         for obj in objects:
             self.tw.turtles.get_active_turtle().set_xy(x, y, pendown=False)
             self.show(obj)
@@ -1424,9 +1424,8 @@ class LogoCode:
             return
         text = None
         if text_media_type(self.filepath):
-            if RTFPARSE and (
-                mimetype == 'application/rtf' or
-                    self.filepath.endswith(('rtf'))):
+            if RTFPARSE and \
+                    (mimetype == 'application/rtf' or self.filepath.endswith('rtf')):
                 text_only = RtfTextOnly()
                 for line in open(self.filepath, 'r'):
                     text_only.feed(line)

@@ -61,8 +61,9 @@ class Media(object):
         if media_type == 'image':
             media_type = 'media'
         if media_type not in Media.ALL_TYPES:
-            raise ValueError("Media.type must be one of " +
-                             repr(Media.ALL_TYPES))
+            raise ValueError(
+                "Media.type must be one of " + repr(
+                    Media.ALL_TYPES))
         self.type = media_type
         self.value = value
 
@@ -353,8 +354,8 @@ class Block:
                 return float(self.values[0])
             except ValueError:
                 return float(ord(self.values[0][0]))
-        elif (self.name == 'string' or
-                self.name == 'title'):  # deprecated block
+        elif self.name == 'string' or \
+                self.name == 'title':  # deprecated block
             if add_type_prefix:
                 result = '#s'
             else:

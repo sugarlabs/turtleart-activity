@@ -253,8 +253,8 @@ class Turtle:
     def _calculate_sizes(self):
         self._half_width = int(self.spr.rect.width / 2.0)
         self._half_height = int(self.spr.rect.height / 2.0)
-        self._drag_radius = ((self._half_width * self._half_width) +
-                             (self._half_height * self._half_height)) / 6
+        self._drag_radius = ((self._half_width * self._half_width
+                              ) + (self._half_height * self._half_height)) / 6
 
     def set_remote(self):
         self._remote = True
