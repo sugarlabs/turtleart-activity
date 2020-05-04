@@ -642,8 +642,9 @@ class TurtleArtActivity(activity.Activity):
         ''' Show the Sugar toolbars. '''
         self.unfullscreen()
         self.recenter()
-        self.vbox.set_size_request(Gdk.Screen.width(),
-                                   Gdk.Screen.height() - 2 * style.GRID_CELL_SIZE)
+        self.vbox.set_size_request(
+            Gdk.Screen.width(),
+            Gdk.Screen.height() - 2 * style.GRID_CELL_SIZE)
 
     def do_grow_blocks_cb(self, button):
         ''' Grow the blocks. '''
@@ -1282,8 +1283,9 @@ class TurtleArtActivity(activity.Activity):
         self.fixed.show()
         self.set_canvas(self.fixed)
         self.vbox = Gtk.VBox(False, 0)
-        self.vbox.set_size_request(Gdk.Screen.width(),
-                                   Gdk.Screen.height() - 2 * style.GRID_CELL_SIZE)
+        self.vbox.set_size_request(
+            Gdk.Screen.width(),
+            Gdk.Screen.height() - 2 * style.GRID_CELL_SIZE)
         self.sw = Gtk.ScrolledWindow()
         # self.set_canvas(self.sw)
         self.vbox.pack_end(self.sw, True, True, 0)
