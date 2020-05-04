@@ -3154,9 +3154,9 @@ class TurtleArtWindow():
             if best_destination.name in block_styles['boolean-style']:
                 if best_destination_dockn == 2 and \
                         (selected_block.name in
-                         block_styles['boolean-style'] or selected_block.name in
-                         block_styles['compare-style'] or selected_block.name in
-                         block_styles['compare-porch-style']
+                         block_styles['boolean-style'] or selected_block.name
+                         in block_styles['compare-style'] or selected_block.name
+                         in block_styles['compare-porch-style']
                          ):
                     dy = selected_block.ey - best_destination.ey
                     if selected_block.name in block_styles['boolean-style']:
@@ -5114,7 +5114,8 @@ variable'))
             # Translate label name into block/prim name.
             if blkname in block_names[name]:  # block label is an array
                 if name in content_blocks or \
-                        (name in block_primitives and block_primitives[name] == name):
+                        (name in
+                         block_primitives and block_primitives[name] == name):
                     return self._make_block(name, x, y, defaults)
             elif blkname in block_names:
                 return self._make_block(blkname, x, y, defaults)

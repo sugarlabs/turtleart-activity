@@ -342,7 +342,7 @@ class Serial(SerialBase):
 
             # set serial_struct
             try:
-                res = FCNTL.ioctl(self.fd, TERMIOS.TIOCSSERIAL, buf)
+                FCNTL.ioctl(self.fd, TERMIOS.TIOCSSERIAL, buf)
             except IOError:
                 raise ValueError(
                     'Failed to set custom baud rate: %r' %
@@ -382,7 +382,8 @@ class Serial(SerialBase):
                     break  # timeout
                 buf = os.read(self.fd, size - len(read))
                 read = read + buf
-                if (self._timeout >= 0 or self._interCharTimeout > 0) and not buf:
+                if (self._timeout >= 0 or self._interCharTimeout > 0) and \
+                        not buf:
                     break  # early abort on timeout
         return read
 
@@ -434,13 +435,15 @@ class Serial(SerialBase):
         termios.tcflush(self.fd, TERMIOS.TCOFLUSH)
 
     def sendBreak(self, duration=0.25):
-        """Send break condition. Timed, returns to idle state after given duration."""
+        """Send break condition. Timed, returns to idle
+        state after given duration."""
         if self.fd is None:
             raise portNotOpenError
         termios.tcsendbreak(self.fd, int(duration / 0.25))
 
     def setBreak(self, level=1):
-        """Set break: Controls TXD. When active, to transmitting is possible."""
+        """Set break: Controls TXD. When active,
+        to transmitting is possible."""
         if self.fd is None:
             raise portNotOpenError
         if level:

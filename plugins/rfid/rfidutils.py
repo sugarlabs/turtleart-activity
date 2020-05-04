@@ -33,7 +33,7 @@ def find_device():
                 devtemp = _tempmod.RFIDReader()
                 if devtemp.get_present():
                     device = devtemp
-            except Exception as e:
+            except Exception:
                 # logging.error("FIND_DEVICE: %s: %s"%(i, e))
                 pass
     if device is None:

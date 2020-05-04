@@ -245,7 +245,8 @@ class Primitive(object):
         new_kwargs = {}
         for key in self.kwarg_descs:
             if isinstance(self.kwarg_descs[key], ConstantArg) and \
-                    (not exportable_only or export_me(self.kwarg_descs[key].value)):
+                    (not exportable_only or export_me(
+                        self.kwarg_descs[key].value)):
                 new_kwargs[key] = self.kwarg_descs[key].get(
                     convert_to_ast=exportable_only)
         return new_args, new_kwargs
@@ -374,7 +375,8 @@ class Primitive(object):
                     condition_ast = ast.UnaryOp(op=ast.Not,
                                                 operand=pos_cond_ast)
                 else:
-                    raise PyExportError("unknown loop controller: " + repr(controller))
+                    raise PyExportError("unknown loop controller: " + repr(
+                        controller))
                 loop_ast = ast.While(test=condition_ast,
                                      body=new_arg_asts[1],
                                      orelse=[])
@@ -565,7 +567,8 @@ class Primitive(object):
             if is_instancemethod(self.func) != is_instancemethod(other):
                 return False
             elif is_instancemethod(self.func):  # and is_instancemethod(other):
-                return self.func.__self__.__class__ == other.__self__.__class__ and \
+                return self.func.__self__.__class__ == \
+                    other.__self__.__class__ and \
                     self.func.__func__ == other.__func__
             else:
                 return self.func == other
@@ -595,7 +598,7 @@ class Primitive(object):
     def wants_logocode(self):
         """ Does this Primitive want to get the LogoCode instance as its
         first argument? """
-        return (self.func.__name__ == '<lambda>' or self._wants(LogoCode))
+        return self.func.__name__ == '<lambda>' or self._wants(LogoCode)
 
     def wants_heap(self):
         """ Does this Primitive want to get the heap as its first argument? """
@@ -862,7 +865,7 @@ class Disjunction(tuple):
     """ Abstract disjunction class (not to be instantiated directly) """
 
     def __init__(self, iterable):
-        self = tuple(iterable)
+        tuple(iterable)
 
     def __repr__(self):
         s = ["("]
@@ -903,7 +906,7 @@ class PrimitiveDisjunction(Disjunction, Primitive):
             try:
                 new_prim = prim.fill_slots(runtime_args, runtime_kwargs,
                                            convert_to_ast=False)
-            except TATypeError as error:
+            except TATypeError:
                 # on failure, try the next one
                 continue
             else:
@@ -1077,7 +1080,9 @@ class ArgSlot(object):
                     # (but not lists of ASTs)
                     if convert_to_ast and not \
                             isinstance(wrapped_argument, ast.AST) and not \
-                            (isinstance(wrapped_argument, list) and wrapped_argument and isinstance(wrapped_argument[0], ast.AST)):
+                            (isinstance(wrapped_argument, list
+                                        ) and wrapped_argument and isinstance(
+                                wrapped_argument[0], ast.AST)):
                         wrapped_argument = value_to_ast(wrapped_argument)
 
                     # 3. check the type and convert the argument if necessary
