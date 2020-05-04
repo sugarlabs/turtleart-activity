@@ -46,7 +46,7 @@ try:
     # Try to use XDG Base Directory standard for config files.
     import xdg.BaseDirectory
     CONFIG_HOME = os.path.join(xdg.BaseDirectory.xdg_config_home, 'turtleart')
-except ImportError as e:
+except ImportError:
     # Default to `.config` per the spec.
     CONFIG_HOME = os.path.expanduser(os.path.join('~', '.config', 'turtleart'))
 

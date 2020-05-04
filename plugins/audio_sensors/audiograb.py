@@ -304,11 +304,11 @@ class AudioGrab():
     def amixer_set(self, control, state):
         ''' Direct call to amixer for old systems. '''
         if state:
-            output = check_output(
+            check_output(
                 ['amixer', 'set', "%s" % (control), 'unmute'],
                 'Problem with amixer set "%s" unmute' % (control))
         else:
-            output = check_output(
+            check_output(
                 ['amixer', 'set', "%s" % (control), 'mute'],
                 'Problem with amixer set "%s" mute' % (control))
 
@@ -324,7 +324,7 @@ class AudioGrab():
         '''Sets the Master gain slider settings
         master_val must be given as an integer between 0 and 100 indicating the
         percentage of the slider to be set'''
-        output = check_output(
+        check_output(
             ['amixer', 'set', 'Master', "%d%s" % (master_val, '%')],
             'Problem with amixer set Master')
 
@@ -416,7 +416,7 @@ class AudioGrab():
         '''Sets the Capture gain slider settings capture_val must be
         given as an integer between 0 and 100 indicating the
         percentage of the slider to be set'''
-        output = check_output(
+        check_output(
             ['amixer', 'set', 'Capture', "%d%s" % (capture_val, '%')],
             'Problem with amixer set Capture')
 
@@ -441,7 +441,7 @@ class AudioGrab():
         '''Sets the MIC gain slider settings mic_val must be given as
         an integer between 0 and 100 indicating the percentage of the
         slider to be set'''
-        output = check_output(
+        check_output(
             ['amixer', 'set', 'Mic', "%d%s" % (mic_val, '%')],
             'Problem with amixer set Mic')
 
@@ -486,7 +486,7 @@ class AudioGrab():
 
     def on_activity_quit(self):
         AudioGrab._on_activity_quit(self)
-        output = check_output(
+        check_output(
             ['amixer', 'set', 'Analog Mic Boost', "62%"],
             'restore Analog Mic Boost')
 

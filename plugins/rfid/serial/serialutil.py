@@ -5,7 +5,8 @@
 # (C) 2001-2008 Chris Liechti <cliechti@gmx.net>
 # this is distributed under a free software license, see license.txt
 
-PARITY_NONE, PARITY_EVEN, PARITY_ODD, PARITY_MARK, PARITY_SPACE = 'N', 'E', 'O', 'M', 'S'
+PARITY_NONE, PARITY_EVEN, PARITY_ODD, PARITY_MARK, PARITY_SPACE = \
+    'N', 'E', 'O', 'M', 'S'
 STOPBITS_ONE, STOPBITS_TWO = (1, 2)
 FIVEBITS, SIXBITS, SEVENBITS, EIGHTBITS = (5, 6, 7, 8)
 
@@ -270,8 +271,9 @@ class SerialBase(FileLike):
             self.open()
 
     def getPort(self):
-        """Get the current port setting. The value that was passed on init or using
-           setPort() is passed back. See also the attribute portstr which contains
+        """Get the current port setting.
+        The value that was passed on init or using setPort() is passed back.
+        See also the attribute portstr which contains
            the name of the port as a string."""
         return self._port
 
@@ -281,7 +283,8 @@ class SerialBase(FileLike):
         """Change baudrate. It raises a ValueError if the port is open and the
         baudrate is not possible. If the port is closed, then tha value is
         accepted and the exception is raised when the port is opened."""
-        # ~ if baudrate not in self.BAUDRATES: raise ValueError("Not a valid baudrate: %r" % baudrate)
+        # ~ if baudrate not in self.BAUDRATES:
+        #     raise ValueError("Not a valid baudrate: %r" % baudrate)
         try:
             self._baudrate = int(baudrate)
         except TypeError:
@@ -456,20 +459,13 @@ class SerialBase(FileLike):
 
     def __repr__(self):
         """String representation of the current port settings and its state."""
-        return "%s<id=0x%x, open=%s>(port=%r, baudrate=%r, bytesize=%r, parity=%r, stopbits=%r, timeout=%r, xonxoff=%r, rtscts=%r, dsrdtr=%r)" % (
-            self.__class__.__name__,
-            id(self),
-            self._isOpen,
-            self.portstr,
-            self.baudrate,
-            self.bytesize,
-            self.parity,
-            self.stopbits,
-            self.timeout,
-            self.xonxoff,
-            self.rtscts,
-            self.dsrdtr,
-        )
+        return "%s<id=0x%x, " \
+            "open=%s>(port=%r, baudrate=%r, bytesize=%r, parity=%r, " \
+            "stopbits=%r, timeout=%r, xonxoff=%r, rtscts=%r, dsrdtr=%r)" \
+            % (self.__class__.__name__,
+               id(self), self._isOpen, self.portstr,
+               self.baudrate, self.bytesize, self.parity, self.stopbits,
+               self.timeout, self.xonxoff, self.rtscts, self.dsrdtr,)
 
 
 if __name__ == '__main__':

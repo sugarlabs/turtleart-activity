@@ -102,6 +102,7 @@ class RingBuffer1d(object):
             spam = ((self.offset + number) - self.offset - 1) % step
             return np.concatenate(
                 (self._data[self.offset:self.offset + number:step],
-                 self._data[spam:number - (len(self._data) - self.offset):step]))
+                 self._data[spam:number - (
+                     len(self._data) - self.offset):step]))
 
         return self._data[self.offset:self.offset + number:step].copy()

@@ -2,8 +2,6 @@
 
 # E402 module level import not at top of file
 # gi.require_version() is required before later imports
-# F401 'TurtleArt.tautils.debug_output' imported but unused
-# E501 line too long (82 > 79 characters)
 
 
-ignore = E402, F401, E501
+ignore = E402

@@ -239,7 +239,8 @@ class SVG:
         svg += self.footer()
         if self._bool is True:  # move secondary labels to arm
             self.margins[2] = self._radius * 1.5 * self._scale
-            self.margins[3] = (self._max_y - save_y - self._radius + self._stroke_width) * \
+            self.margins[3] = (
+                self._max_y - save_y - self._radius + self._stroke_width) * \
                 self._scale
         return self.header() + svg
 
@@ -870,7 +871,8 @@ stroke-width="3.5" fill="%s" stroke="none" />\n' % (self._stroke)
     def _transform(self, center):
         if self._orientation != 0:
             orientation = "<g\ntransform = \"rotate(%.1f %.1f %.1f)\">\n" % \
-                          (self._orientation, self._width / 2.0, self._height / 2.0)
+                          (self._orientation,
+                           self._width / 2.0, self._height / 2.0)
         else:
             orientation = ""
         if center:
@@ -991,7 +993,7 @@ stroke-width="3.5" fill="%s" stroke="none" />\n' % (self._stroke)
         else:
             return self.line_to(self._x + dx, self._y + dy)
 
-    def arc_to(self, x, y, r, a=90, l=0, s=1):
+    def arc_to(self, x, y, r, a=90, laf=0, s=1):
         self._check_min_max()
         if r == 0:
             return self.line_to(x, y)
@@ -1000,17 +1002,17 @@ stroke-width="3.5" fill="%s" stroke="none" />\n' % (self._stroke)
             self._y = y
             self._check_min_max()
             return "A %.1f %.1f %.1f %d %d %.1f %.1f " % (
-                r, r, a, l, s, x, y)
+                r, r, a, laf, s, x, y)
 
-    def _rarc_to(self, sign_x, sign_y, a=90, l=0, s=1):
+    def _rarc_to(self, sign_x, sign_y, a=90, laf=0, s=1):
         if self._radius == 0:
             return ""
         else:
             x = self._x + sign_x * self._radius
             y = self._y + sign_y * self._radius
-            return self.arc_to(x, y, self._radius, a, l, s)
+            return self.arc_to(x, y, self._radius, a, laf, s)
 
-    def _inverse_corner(self, sign_x, sign_y, a=90, l=0, s=1, start=True,
+    def _inverse_corner(self, sign_x, sign_y, a=90, laf=0, s=1, start=True,
                         end=True):
         r2 = self._stroke_width + self._radius / 2.0
         if start:
@@ -1020,7 +1022,7 @@ stroke-width="3.5" fill="%s" stroke="none" />\n' % (self._stroke)
                 svg_str = self._rline_to(0, sign_y * (r2 - self._stroke_width))
         x = self._x + sign_x * r2
         y = self._y + sign_y * r2
-        svg_str += self.arc_to(x, y, r2, a, l, s)
+        svg_str += self.arc_to(x, y, r2, a, laf, s)
         if end:
             if sign_x * sign_y == -1:
                 svg_str += self._rline_to(0,
@@ -1030,7 +1032,7 @@ stroke-width="3.5" fill="%s" stroke="none" />\n' % (self._stroke)
                                           0)
         return svg_str
 
-    def _corner(self, sign_x, sign_y, a=90, l=0, s=1, start=True, end=True,
+    def _corner(self, sign_x, sign_y, a=90, laf=0, s=1, start=True, end=True,
                 skip=False):
         svg_str = ""
         if sign_x == 1 and sign_y == -1:  # Upper-left corner
@@ -1055,7 +1057,7 @@ stroke-width="3.5" fill="%s" stroke="none" />\n' % (self._stroke)
                     svg_str += self._rline_to(0, sign_y * r2)
             x = self._x + sign_x * r2
             y = self._y + sign_y * r2
-            svg_str += self.arc_to(x, y, r2, a, l, s)
+            svg_str += self.arc_to(x, y, r2, a, laf, s)
             if end:
                 if sign_x * sign_y == 1:
                     svg_str += self._rline_to(0, sign_y * r2)
@@ -1183,7 +1185,7 @@ stroke-width="3.5" fill="%s" stroke="none" />\n' % (self._stroke)
 
     def _do_reverse_innie(self):
         self.docks.append((int((self._x + self._stroke_width) * self._scale),
-                           int((self._y) * self._scale)))
+                           int(self._y * self._scale)))
         return "%s%s%s%s%s%s%s" % (
             self._rline_to(-self._innie_x1, 0),
             self._rline_to(0, self._innie_y1),
@@ -1203,8 +1205,9 @@ stroke-width="3.5" fill="%s" stroke="none" />\n' % (self._stroke)
             self._rline_to(-self._innie_x1 - 2 * self._stroke_width, 0),
             self._rline_to(0, self._innie_y1),
             self._rline_to(-self._innie_x2 + 2 * self._stroke_width, 0),
-            self._rline_to(
-                0, -self._innie_y2 - 2 * self._innie_y1 + 2 * self._stroke_width),
+            self._rline_to(0,
+                           -self._innie_y2 - 2 * self._innie_y1 +
+                           2 * self._stroke_width),
             self._rline_to(self._innie_x2 - 2 * self._stroke_width, 0),
             self._rline_to(0, self._innie_y1),
             self._rline_to(self._innie_x1 + 2 * self._stroke_width, 0),
@@ -1283,7 +1286,8 @@ stroke-width="3.5" fill="%s" stroke="none" />\n' % (self._stroke)
                     (self._slot_y + self._stroke_width + 0.5) * self._scale)
             else:
                 self.margins[3] = int(
-                    (self._slot_y * 2 + self._stroke_width + 0.5) * self._scale)
+                    (self._slot_y * 2 + self._stroke_width + 0.5
+                     ) * self._scale)
         else:
             self.margins[3] = int(self._height - self.margins[3])
 

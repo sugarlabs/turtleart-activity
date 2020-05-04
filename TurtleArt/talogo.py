@@ -54,6 +54,7 @@ from .tautils import (get_pixbuf_from_journal, data_from_file, get_stack_name,
 
 try:
     from .util.RtfParser import RtfTextOnly
+
     RTFPARSE = True
 except ImportError:
     RTFPARSE = False
@@ -94,7 +95,6 @@ class logoerror(Exception):
 
 
 class NegativeRootError(BaseException):
-
     """ Similar to the ZeroDivisionError, this error is raised at runtime
     when trying to computer the square root of a negative number. """
 
@@ -155,7 +155,6 @@ def _millisecond():
 
 
 class LogoCode:
-
     """ A class for parsing Logo code """
 
     def __init__(self, tw):
@@ -591,7 +590,7 @@ class LogoCode:
                     need_to_pop_istack = True
                     result = None
                 else:
-                    result = (self.cfun.fcn, ) + tuple(self.arglist)
+                    result = (self.cfun.fcn,) + tuple(self.arglist)
         else:
             need_to_pop_istack = True
             if call_me:
@@ -1300,12 +1299,12 @@ class LogoCode:
             elif obj.type == 'descr' or mediatype == 'text':
                 mimetype = None
                 if self.dsobject is not None and \
-                   'mime_type' in self.dsobject.metadata:
+                        'mime_type' in self.dsobject.metadata:
                     mimetype = self.dsobject.metadata['mime_type']
 
                 description = None
                 if self.dsobject is not None and \
-                   'description' in self.dsobject.metadata:
+                        'description' in self.dsobject.metadata:
                     description = self.dsobject.metadata[
                         'description']
 
@@ -1380,8 +1379,8 @@ class LogoCode:
                 debug_output("Couldn't open dsobject %s" % (self.dsobject),
                              self.tw.running_sugar)
         if self.pixbuf is None and \
-           self.filepath is not None and \
-           self.filepath != '':
+                self.filepath is not None and \
+                self.filepath != '':
             try:
                 if not resize:
                     self.pixbuf = GdkPixbuf.Pixbuf.new_from_file(self.filepath)
@@ -1425,7 +1424,8 @@ class LogoCode:
         text = None
         if text_media_type(self.filepath):
             if RTFPARSE and \
-                    (mimetype == 'application/rtf' or self.filepath.endswith('rtf')):
+                    (mimetype == 'application/rtf' or self.filepath.endswith(
+                        'rtf')):
                 text_only = RtfTextOnly()
                 for line in open(self.filepath, 'r'):
                     text_only.feed(line)
@@ -1452,7 +1452,7 @@ class LogoCode:
         """ Wait for media to stop playing """
         if self.tw.gst_available:
             from .tagplay import media_playing
-            while(media_playing(self)):
+            while (media_playing(self)):
                 yield True
         self.ireturn()
         yield True

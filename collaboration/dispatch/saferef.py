@@ -7,6 +7,7 @@ aren't handled by the core weakref module).
 
 import weakref
 import traceback
+from filecmp import cmp
 
 
 def safeRef(target, onDelete=None):
