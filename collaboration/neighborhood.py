@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/python
 # Copyright (C) 2007, Red Hat, Inc.
 # Copyright (C) 2010-11 Collabora Ltd. <http://www.collabora.co.uk/>
 #
@@ -21,6 +21,8 @@ from functools import partial
 
 import dbus
 from dbus import PROPERTIES_IFACE
+import gi
+gi.require_version('TelepathyGLib', '0.12')
 from gi.repository import TelepathyGLib
 ACCOUNT = TelepathyGLib.IFACE_ACCOUNT
 ACCOUNT_MANAGER = TelepathyGLib.IFACE_ACCOUNT_MANAGER
