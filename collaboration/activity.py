@@ -30,17 +30,6 @@ from gi.repository import GObject
 
 from gi.repository import TelepathyGLib
 
-# from telepathy.interfaces import (CHANNEL,
-#                                  CHANNEL_INTERFACE_GROUP,
-#                                  CHANNEL_TYPE_TUBES,
-#                                  CHANNEL_TYPE_TEXT,
-#                                  CONNECTION,
-#                                  PROPERTIES_INTERFACE)
-# from telepathy.constants import (CHANNEL_GROUP_FLAG_CHANNEL_SPECIFIC_HANDLES,
-#                                 HANDLE_TYPE_ROOM,
-#                                 HANDLE_TYPE_CONTACT,
-#
-
 CHANNEL = TelepathyGLib.IFACE_CHANNEL
 CHANNEL_INTERFACE_GROUP = TelepathyGLib.IFACE_CHANNEL_INTERFACE_GROUP
 CHANNEL_TYPE_TEXT = TelepathyGLib.IFACE_CHANNEL_TYPE_TEXT

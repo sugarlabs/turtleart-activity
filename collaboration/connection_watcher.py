@@ -28,9 +28,6 @@ from gi.repository.TelepathyGLib import Connection
 CONN_INTERFACE = TelepathyGLib.IFACE_CONNECTION
 CONNECTION_STATUS_CONNECTED = TelepathyGLib.ConnectionStatus.CONNECTED
 CONNECTION_STATUS_DISCONNECTED = TelepathyGLib.ConnectionStatus.DISCONNECTED
-# from telepathy.interfaces import CONN_INTERFACE
-# from telepathy.constants import (CONNECTION_STATUS_CONNECTED,
-#                                 CONNECTION_STATUS_DISCONNECTED)
 
 from gi.repository import GObject
 

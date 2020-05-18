@@ -21,8 +21,6 @@ import dbus
 from gi.repository import TelepathyGLib
 from gi.repository.TelepathyGLib import Connection
 
-# from telepathy.interfaces import CONNECTION
-
 CONNECTION = TelepathyGLib.IFACE_CONNECTION
 
 from .xocolor import XoColor
