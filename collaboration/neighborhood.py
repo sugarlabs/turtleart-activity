@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 # Copyright (C) 2007, Red Hat, Inc.
 # Copyright (C) 2010-11 Collabora Ltd. <http://www.collabora.co.uk/>
 #
