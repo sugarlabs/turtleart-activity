@@ -1,5 +1,5 @@
 import weakref
-import saferef
+from . import saferef
 
 WEAKREF_TYPES = (weakref.ReferenceType, saferef.BoundMethodWeakref)
 
