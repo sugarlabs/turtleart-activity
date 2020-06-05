@@ -135,9 +135,9 @@ class Sprites:
 
     def find_sprite(self, pos, region=False):
         ''' Search based on (x, y) position. Return the 'top/first' one. '''
-        list = self.list[:]
-        list.reverse()
-        for spr in list:
+        list_pos = self.list[:]
+        list_pos.reverse()
+        for spr in list_pos:
             if spr.hit(pos, readpixel=not region):
                 return spr
         return None
