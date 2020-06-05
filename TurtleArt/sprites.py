@@ -441,16 +441,16 @@ class Sprite:
         ''' Calculate the width of a label '''
         cr = self._sprites.cr
         if cr is not None:
-            max = 0
+            maximum = 0
             for i in range(len(self.labels)):
                 pl = PangoCairo.create_layout(cr)
                 pl.set_text(self.labels[i], -1)
                 self._fd.set_size(int(self._scale[i] * Pango.SCALE))
                 pl.set_font_description(self._fd)
                 w = pl.get_size()[0] / Pango.SCALE
-                if w > max:
-                    max = w
-            return max
+                if w > maximum:
+                    maximum = w
+            return maximum
         else:
             return self.rect.width
 
