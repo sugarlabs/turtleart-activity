@@ -6,15 +6,16 @@
 # Usage: Import this code into a Python (user-definable) block; when
 # this code is run, the contents of the clipboard will be appended to
 # the FILO heap.
+from gi.repository import Gtk, Gdk
 
 
 def myblock(tw, x):  # ignore second argument
     ''' Paste from clipboard to heap '''
 
-    from gtk import Clipboard
-    from tautils import data_from_string
+    from TurtleArt.tautils import data_from_string
 
-    text = Clipboard().wait_for_text()
+    clipboard = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD)
+    text = clipboard.wait_for_text()
     if text is not None:
         for val in data_from_string(text):
             tw.lc.heap.append(val)

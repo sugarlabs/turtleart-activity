@@ -23,7 +23,6 @@
 import os
 
 from gi.repository import GdkPixbuf
-from gi.repository.RB import file
 
 from .taconstants import HIT_RED, HIT_GREEN, HIDE_WHITE, SHOW_WHITE, \
     PALETTE_COLOR, TOOLBAR_COLOR
@@ -1315,7 +1314,7 @@ stroke-width="3.5" fill="%s" stroke="none" />\n' % (self._stroke)
 
 
 def open_file(datapath, filename):
-    return file(os.path.join(datapath, filename), "w")
+    return open(os.path.join(datapath, filename), "w")
 
 
 def close_file(f):

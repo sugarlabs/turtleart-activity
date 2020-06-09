@@ -5,12 +5,14 @@
 
 # Usage: Import this code into a Python (user-definable) block; when
 # this code is run, the FILO heap will be copied to the clipboard.
+from gi.repository import Gtk, Gdk
 
 
 def myblock(tw, x):  # second argument is ignored
     ''' Copy heap to clipboard '''
 
-    from gtk import Clipboard
     from TurtleArt.tautils import data_to_string
 
-    Clipboard().set_text(data_to_string(tw.lc.heap))
+    clipboard = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD)
+
+    clipboard.set_text(data_to_string(tw.lc.heap))
