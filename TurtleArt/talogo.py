@@ -31,11 +31,15 @@ from collections import UserDict
 from os.path import exists as os_path_exists
 from time import time, sleep
 
+
 from gi.repository import GLib
 from gi.repository import GdkPixbuf
-from sugar3.graphics import style
+try:
+    from sugar3.graphics import style
+    GRID_CELL_SIZE = style.GRID_CELL_SIZE
+except ImportError:
+    GRID_CELL_SIZE = 55
 
-GRID_CELL_SIZE = style.GRID_CELL_SIZE
 
 USER_HOME = os.path.expanduser('~')
 
