@@ -33,26 +33,41 @@ from time import time, sleep
 
 from gi.repository import GLib
 from gi.repository import GdkPixbuf
+
 try:
     from sugar3.graphics import style
+
     GRID_CELL_SIZE = style.GRID_CELL_SIZE
 except ImportError:
     GRID_CELL_SIZE = 55
 
-USER_HOME = os.path.expanduser('~')
+USER_HOME = os.path.expanduser("~")
 
 import traceback
 
-from .tablock import (Block, Media, media_blocks_dictionary)
-from .taconstants import (TAB_LAYER, DEFAULT_SCALE, ICON_SIZE)
-from .tajail import (myfunc, myfunc_import)
-from .tapalette import (block_names, value_blocks)
-from .tatype import (TATypeError, TYPES_NUMERIC)
-from .tautils import (get_pixbuf_from_journal, data_from_file, get_stack_name,
-                      movie_media_type, audio_media_type, image_media_type,
-                      text_media_type, round_int, debug_output, find_group,
-                      get_path, image_to_base64, data_to_string, data_to_file,
-                      get_load_name, chooser_dialog)
+from .tablock import Block, Media, media_blocks_dictionary
+from .taconstants import TAB_LAYER, DEFAULT_SCALE, ICON_SIZE
+from .tajail import myfunc, myfunc_import
+from .tapalette import block_names, value_blocks
+from .tatype import TATypeError, TYPES_NUMERIC
+from .tautils import (
+    get_pixbuf_from_journal,
+    data_from_file,
+    get_stack_name,
+    movie_media_type,
+    audio_media_type,
+    image_media_type,
+    text_media_type,
+    round_int,
+    debug_output,
+    find_group,
+    get_path,
+    image_to_base64,
+    data_to_string,
+    data_to_file,
+    get_load_name,
+    chooser_dialog,
+)
 
 try:
     from .util.RtfParser import RtfTextOnly
@@ -67,13 +82,11 @@ primitive_dictionary = {}  # new block primitives get added here
 
 
 class noKeyError(UserDict):
-
     def __missing__(x, y):
         return 0
 
 
 class symbol:
-
     def __init__(self, name):
         self.name = name
         self.nargs = None
@@ -83,11 +96,10 @@ class symbol:
         return self.name
 
     def __repr__(self):
-        return '#' + self.name
+        return "#" + self.name
 
 
 class logoerror(Exception):
-
     def __init__(self, value):
         self.value = value
 
@@ -97,10 +109,10 @@ class logoerror(Exception):
 
 
 class NegativeRootError(BaseException):
-    """ Similar to the ZeroDivisionError, this error is raised at runtime
-    when trying to computer the square root of a negative number. """
+    """Similar to the ZeroDivisionError, this error is raised at runtime
+    when trying to computer the square root of a negative number."""
 
-    DEFAULT_MESSAGE = 'square root of negative number'
+    DEFAULT_MESSAGE = "square root of negative number"
 
     def __init__(self, neg_value=None, message=DEFAULT_MESSAGE):
         self.neg_value = neg_value
@@ -111,7 +123,6 @@ class NegativeRootError(BaseException):
 
 
 class HiddenBlock(Block):
-
     def __init__(self, name, value=None):
         self.name = name
         self.values = []
@@ -128,18 +139,18 @@ class HiddenBlock(Block):
 
 
 def _change_user_path(path):
-    ''' If the pathname saved in a project was from a different user, try
-    changing it.'''
+    """If the pathname saved in a project was from a different user, try
+    changing it."""
     # FIXME: Use regex
     if path is None:
         return None
     if len(path) < 7:
         return None
-    if '/' not in path[6:]:
+    if "/" not in path[6:]:
         return None
-    if path[0:5] == '/home' and '/':
-        i = path[6:].index('/')
-        new_path = USER_HOME + path[6 + i:]
+    if path[0:5] == "/home" and "/":
+        i = path[6:].index("/")
+        new_path = USER_HOME + path[6 + i :]
         if new_path == path:
             return None
         else:
@@ -164,9 +175,11 @@ class LogoCode:
         self.tw = tw
         self.oblist = {}
 
-        DEFPRIM = {'(': [1, lambda self, x: self._prim_opar(x)],
-                   'define': [2, self._prim_define],
-                   'nop': [0, lambda self: None]}
+        DEFPRIM = {
+            "(": [1, lambda self, x: self._prim_opar(x)],
+            "define": [2, self._prim_define],
+            "nop": [0, lambda self: None],
+        }
 
         for p in iter(DEFPRIM):
             if len(DEFPRIM[p]) == 2:
@@ -174,9 +187,9 @@ class LogoCode:
             else:
                 self.def_prim(p, DEFPRIM[p][0], DEFPRIM[p][1], DEFPRIM[p][2])
 
-        self.symtype = type(self._intern('print'))
-        self.symnothing = self._intern('%nothing%')
-        self.symopar = self._intern('(')
+        self.symtype = type(self._intern("print"))
+        self.symnothing = self._intern("%nothing%")
+        self.symopar = self._intern("(")
         self.iline = None
         self.cfun = None
         self.arglist = None
@@ -185,7 +198,7 @@ class LogoCode:
         self.running = False
         self.istack = []
         self.stacks = {}
-        self.boxes = {'box1': 0, 'box2': 0}
+        self.boxes = {"box1": 0, "box2": 0}
         self.return_values = []
         self.heap = []
         self.iresults = None
@@ -216,6 +229,7 @@ class LogoCode:
         self.tw.stop_plugins()
         if self.tw.gst_available:
             from .tagplay import stop_media
+
             stop_media(self)
         self.tw.turtles.get_active_turtle().show()
         self.tw.running_blocks = False
@@ -247,26 +261,23 @@ class LogoCode:
             return None
 
     def run_blocks(self, code):
-        """Run code generated by generate_code().
-        """
+        """Run code generated by generate_code()."""
         self.start_time = time()
         self._setup_cmd(code)
 
     def generate_code(self, blk, blocks):
-        """ Generate code to be passed to run_blocks() from a stack of blocks.
-        """
+        """Generate code to be passed to run_blocks() from a stack of blocks."""
         self._save_all_connections = []
         for b in blocks:
             tmp = []
             for c in b.connections:
                 tmp.append(c)
-            self._save_all_connections.append(
-                {'blk': b, 'connections': tmp})
+            self._save_all_connections.append({"blk": b, "connections": tmp})
 
         for k in list(self.stacks.keys()):
             self.stacks[k] = None
-        self.stacks['stack1'] = None
-        self.stacks['stack2'] = None
+        self.stacks["stack1"] = None
+        self.stacks["stack2"] = None
 
         # Save state in case there is a hidden macro expansion
         self._save_blocks = None
@@ -289,34 +300,34 @@ class LogoCode:
 
         # Hidden macro expansions
         for b in blocks:
-            if b.name in ['returnstack']:
+            if b.name in ["returnstack"]:
                 action_blk, new_blocks = self._expand_return(b, blk, blocks)
                 blocks = new_blocks[:]
                 if b == blk:
                     blk = action_blk
 
         for b in blocks:
-            if b.name in ['while', 'until']:
+            if b.name in ["while", "until"]:
                 action_blk, new_blocks = self._expand_forever(b, blk, blocks)
                 blocks = new_blocks[:]
                 if b == blk:
                     blk = action_blk
         for b in blocks:
-            if b.name in ['forever']:
+            if b.name in ["forever"]:
                 action_blk, new_blocks = self._expand_forever(b, blk, blocks)
                 blocks = new_blocks[:]
                 if b == blk:
                     blk = action_blk
 
         for b in blocks:
-            if b.name in ('hat', 'hat1', 'hat2'):
+            if b.name in ("hat", "hat1", "hat2"):
                 stack_name = get_stack_name(b)
                 if stack_name:
                     stack_key = self._get_stack_key(stack_name)
                     code = self._blocks_to_code(b)
                     self.stacks[stack_key] = self._readline(code)
                 else:
-                    self.tw.showlabel('#nostack')
+                    self.tw.showlabel("#nostack")
                     self.tw.showblocks()
                     self.tw.running_blocks = False
                     return None
@@ -339,8 +350,8 @@ class LogoCode:
             # Restore any connections that may have been mangled
             # during macro expansion.
             for entry in self._save_all_connections:
-                b = entry['blk']
-                connections = entry['connections']
+                b = entry["blk"]
+                connections = entry["connections"]
                 b.connections = connections[:]
 
         return code
@@ -348,38 +359,37 @@ class LogoCode:
     def _blocks_to_code(self, blk):
         """ Convert a stack of blocks to pseudocode. """
         if blk is None:
-            return ['%nothing%', '%nothing%']
+            return ["%nothing%", "%nothing%"]
         code = []
         dock = blk.docks[0]
         # There could be a '(', ')', '[' or ']'.
-        if len(dock) > 4 and dock[4] in ('[', ']', ']['):
+        if len(dock) > 4 and dock[4] in ("[", "]", "]["):
             code.append(dock[4])
         if blk.primitive is not None:  # make a tuple (prim, blk)
             if blk in self.tw.block_list.list:
-                code.append((blk.primitive,
-                             self.tw.block_list.list.index(blk)))
+                code.append((blk.primitive, self.tw.block_list.list.index(blk)))
             else:
                 code.append(blk.primitive)  # Hidden block
         elif blk.is_value_block():  # Extract the value from content blocks.
             value = blk.get_value()
             if value is None:
-                return ['%nothing%']
+                return ["%nothing%"]
             else:
                 code.append(value)
         else:
-            return ['%nothing%']
+            return ["%nothing%"]
         if blk.connections is not None and len(blk.connections) > 0:
             for i in range(1, len(blk.connections)):
                 b = blk.connections[i]
                 dock = blk.docks[i]
                 # There could be a '(', ')', '[' or ']'.
-                if len(dock) > 4 and dock[4] in ('[', ']', ']['):
+                if len(dock) > 4 and dock[4] in ("[", "]", "]["):
                     for c in dock[4]:
                         code.append(c)
                 if b is not None:
                     code.extend(self._blocks_to_code(b))
-                elif blk.docks[i][0] not in ['flow', 'unavailable']:
-                    code.append('%nothing%')
+                elif blk.docks[i][0] not in ["flow", "unavailable"]:
+                    code.append("%nothing%")
         return code
 
     def _setup_cmd(self, string):
@@ -409,15 +419,15 @@ class LogoCode:
                 res.append(token)
             elif token.isdigit():
                 res.append(float(token))
-            elif token[0] == '-' and token[1:].isdigit():
+            elif token[0] == "-" and token[1:].isdigit():
                 res.append(-float(token[1:]))
             elif token[0] == '"':
                 res.append(token[1:])
             elif token[0:2] == "#s":
                 res.append(token[2:])
-            elif token == '[':
+            elif token == "[":
                 res.append(self._readline(line))
-            elif token == ']':
+            elif token == "]":
                 return res
             elif bindex is None or not isinstance(bindex, int):
                 res.append(self._intern(token))
@@ -429,25 +439,21 @@ class LogoCode:
         """ Step through the list. """
         if self.tw.running_sugar:
             self.tw.activity.stop_turtle_button.set_icon_name("stopiton")
-            self.tw.activity.stop_turtle_button.set_tooltip(
-                _('Stop turtle'))
+            self.tw.activity.stop_turtle_button.set_tooltip(_("Stop turtle"))
         elif self.tw.interactive_mode:
-            self.tw.toolbar_shapes['stopiton'].set_layer(TAB_LAYER)
+            self.tw.toolbar_shapes["stopiton"].set_layer(TAB_LAYER)
         self.running = True
         self.icall(self.evline, blklist)
         yield True
         if self.tw.running_sugar:
             if self.tw.step_time == 0 and self.tw.selected_blk is None:
                 self.tw.activity.stop_turtle_button.set_icon_name("hideshowon")
-                self.tw.activity.stop_turtle_button.set_tooltip(
-                    _('Show blocks'))
+                self.tw.activity.stop_turtle_button.set_tooltip(_("Show blocks"))
             else:
-                self.tw.activity.stop_turtle_button.set_icon_name(
-                    "hideshowoff")
-                self.tw.activity.stop_turtle_button.set_tooltip(
-                    _('Hide blocks'))
+                self.tw.activity.stop_turtle_button.set_icon_name("hideshowoff")
+                self.tw.activity.stop_turtle_button.set_tooltip(_("Hide blocks"))
         elif self.tw.interactive_mode:
-            self.tw.toolbar_shapes['stopiton'].hide()
+            self.tw.toolbar_shapes["stopiton"].hide()
         yield False
         self.running = False
         # If we disabled hover help, reenable it
@@ -491,7 +497,7 @@ class LogoCode:
             # In debugging modes, we pause between steps and show the turtle.
             if self.tw.step_time > 0:
                 self.tw.turtles.get_active_turtle().show()
-                endtime = _millisecond() + self.tw.step_time * 100.
+                endtime = _millisecond() + self.tw.step_time * 100.0
                 while _millisecond() < endtime:
                     sleep(0.1)
                     yield True
@@ -567,9 +573,8 @@ class LogoCode:
             self.tw.showblocks()
             self.tw.display_coordinates()
             raise logoerror("#noinput")
-        is_Primitive = type(self.cfun.fcn).__name__ == 'Primitive'
-        is_PrimitiveDisjunction = type(self.cfun.fcn).__name__ == \
-            'PrimitiveDisjunction'
+        is_Primitive = type(self.cfun.fcn).__name__ == "Primitive"
+        is_PrimitiveDisjunction = type(self.cfun.fcn).__name__ == "PrimitiveDisjunction"
         call_args = not (is_Primitive or is_PrimitiveDisjunction)
         for i in range(token.nargs):
             self._no_args_check()
@@ -602,9 +607,9 @@ class LogoCode:
         self.cfun, self.arglist = oldcfun, oldarglist
         if self.arglist is not None and result is None:
             self.tw.showblocks()
-            raise logoerror("%s %s %s" %
-                            (oldcfun.name, _("did not output to"),
-                             self.cfun.name))
+            raise logoerror(
+                "%s %s %s" % (oldcfun.name, _("did not output to"), self.cfun.name)
+            )
         if need_to_pop_istack:
             self.ireturn(result)
             yield True
@@ -629,8 +634,9 @@ class LogoCode:
                         try:
                             next(self.step)
                         except ValueError:
-                            debug_output('generator already executing',
-                                         self.tw.running_sugar)
+                            debug_output(
+                                "generator already executing", self.tw.running_sugar
+                            )
                             self.tw.running_blocks = False
                             return False
                         except TATypeError as tte:
@@ -638,14 +644,21 @@ class LogoCode:
                             # (self.cfun.name is only the name of the
                             # outermost block in this statement/ line of code)
                             # use logoerror("#notanumber") when possible
-                            if tte.req_type in TYPES_NUMERIC and \
-                                    tte.bad_type not in TYPES_NUMERIC:
+                            if (
+                                tte.req_type in TYPES_NUMERIC
+                                and tte.bad_type not in TYPES_NUMERIC
+                            ):
                                 raise logoerror("#notanumber")
                             else:
                                 raise logoerror(
-                                    "%s %s %s %s" %
-                                    (self.cfun.name, _("doesn't like"),
-                                     str(tte.bad_value), _("as input")))
+                                    "%s %s %s %s"
+                                    % (
+                                        self.cfun.name,
+                                        _("doesn't like"),
+                                        str(tte.bad_value),
+                                        _("as input"),
+                                    )
+                                )
                         except ZeroDivisionError:
                             raise logoerror("#zerodivide")
                         except NegativeRootError:
@@ -656,15 +669,15 @@ class LogoCode:
                         try:
                             next(self.step)
                         except BaseException as error:
-                            if isinstance(error, (StopIteration,
-                                                  logoerror)):
+                            if isinstance(error, (StopIteration, logoerror)):
                                 self.tw.running_blocks = False
                                 raise error
                             else:
                                 traceback.print_exc()
                                 self.tw.showlabel(
-                                    'status', '%s: %s' %
-                                    (type(error).__name__, str(error)))
+                                    "status",
+                                    "%s: %s" % (type(error).__name__, str(error)),
+                                )
                                 self.tw.running_blocks = False
                                 return False
                 except StopIteration:
@@ -683,11 +696,11 @@ class LogoCode:
             if self.tw.running_turtleart:
                 self.tw.showblocks()
                 self.tw.display_coordinates()
-                self.tw.showlabel('syntaxerror', str(e))
+                self.tw.showlabel("syntaxerror", str(e))
                 self.tw.turtles.show_all()
             else:
                 traceback.print_exc()
-                self.tw.showlabel('status', 'logoerror: ' + str(e))
+                self.tw.showlabel("status", "logoerror: " + str(e))
             self.tw.running_blocks = False
             return False
         return True
@@ -705,8 +718,8 @@ class LogoCode:
         """ Make sure token has a definition """
         if token.fcn is not None:
             return False
-        if token.name == '%nothing%':
-            errormsg = ''
+        if token.name == "%nothing%":
+            errormsg = ""
         else:
             errormsg = "%s %s" % (_("I don't know how to"), _(token.name))
         self.tw.showblocks()
@@ -736,7 +749,7 @@ class LogoCode:
         name.rprim = True
 
     def prim_start(self, *ignored_args):
-        ''' Start block: recenter '''
+        """ Start block: recenter """
         if self.tw.running_sugar:
             self.tw.activity.recenter()
 
@@ -754,6 +767,7 @@ class LogoCode:
     def stop_playing_media(self):
         if self.tw.gst_available:
             from .tagplay import stop_media
+
             stop_media(self)
 
     def reset_scale(self):
@@ -771,16 +785,18 @@ class LogoCode:
             self.tw.activity.restore_state()
 
     def prim_loop(self, controller, blklist):
-        """ Execute a loop
+        """Execute a loop
         controller -- iterator that yields True iff the loop should be run
             once more OR a callable that returns such an iterator
-        blklist -- list of callables that form the loop body """
+        blklist -- list of callables that form the loop body"""
         if not hasattr(controller, "__next__"):
             if callable(controller):
                 controller = controller()
             else:
-                raise TypeError("a loop controller must be either an iterator "
-                                "or a callable that returns an iterator")
+                raise TypeError(
+                    "a loop controller must be either an iterator "
+                    "or a callable that returns an iterator"
+                )
         while next(controller):
             self.icall(self.evline, blklist[:])
             yield True
@@ -798,11 +814,11 @@ class LogoCode:
         yield True
 
     def set_scale(self, scale):
-        ''' Set scale for media blocks '''
+        """ Set scale for media blocks """
         self.scale = scale
 
     def get_scale(self):
-        ''' Set scale for media blocks '''
+        """ Set scale for media blocks """
         return self.scale
 
     def prim_stop_stack(self):
@@ -816,7 +832,7 @@ class LogoCode:
         self.procstop = True
 
     def active_turtle(self):
-        ''' NOP used to add get_active_turtle to Python export '''
+        """ NOP used to add get_active_turtle to Python export """
         # turtle = self.tw.turtles.get_turtle()
         pass
 
@@ -826,9 +842,9 @@ class LogoCode:
     def prim_wait(self, wait_time):
         """ Show the turtle while we wait """
         self.tw.turtles.get_active_turtle().show()
-        endtime = _millisecond() + wait_time * 1000.
+        endtime = _millisecond() + wait_time * 1000.0
         while _millisecond() < endtime:
-            sleep(wait_time / 10.)
+            sleep(wait_time / 10.0)
             yield True
         self.tw.turtles.get_active_turtle().hide()
         self.ireturn()
@@ -860,11 +876,11 @@ class LogoCode:
                 self.update_label_value(name, value)
         else:
             if self.update_values:
-                self.update_label_value('box', value, label=name)
+                self.update_label_value("box", value, label=name)
 
     def prim_get_box(self, name):
         """ Retrieve value from named box """
-        if name == '__return__':
+        if name == "__return__":
             if len(self.return_values) == 0:
                 raise logoerror("#emptybox")
             return self.return_values.pop()
@@ -877,9 +893,9 @@ class LogoCode:
             raise logoerror("#emptybox")
 
     def _get_box_key(self, name):
-        """ Return the key used for this box in the boxes dictionary and a
-        boolean indicating whether it is a 'native' box """
-        if name in ('box1', 'box2'):
+        """Return the key used for this box in the boxes dictionary and a
+        boolean indicating whether it is a 'native' box"""
+        if name in ("box1", "box2"):
             return (name, True)
         # elif name == '__return__':
         #     return (name, True)
@@ -890,7 +906,7 @@ class LogoCode:
                     name = float(name)
                 except ValueError:
                     pass
-            return ('box3_' + str(name), False)
+            return ("box3_" + str(name), False)
 
     def prim_define_stack(self, name):
         """ Top of a named stack """
@@ -910,11 +926,11 @@ class LogoCode:
     def prim_invoke_return_stack(self, name):
         """ Process a named stack and return a value"""
         self.prim_invoke_stack(name)
-        return self.boxes['__return__']
+        return self.boxes["__return__"]
 
     def _get_stack_key(self, name):
         """ Return the key used for this stack in the stacks dictionary """
-        if name in ('stack1', 'stack2'):
+        if name in ("stack1", "stack2"):
             return name
         else:
             # make sure '5' and '5.0' point to the same action stack
@@ -923,7 +939,7 @@ class LogoCode:
                     name = int(name)
                 else:
                     name = float(name)
-            return 'stack3' + str(name)
+            return "stack3" + str(name)
 
     def load_heap(self, obj):
         """ Load FILO from file """
@@ -934,11 +950,13 @@ class LogoCode:
             # Is the object a dsobject?
             if isinstance(obj, Media) and obj.value:
                 from sugar3.datastore import datastore
+
                 try:
                     dsobject = datastore.get(obj.value)
                 except BaseException:
-                    debug_output("Couldn't find dsobject %s" %
-                                 (obj.value), self.tw.running_sugar)
+                    debug_output(
+                        "Couldn't find dsobject %s" % (obj.value), self.tw.running_sugar
+                    )
                 if dsobject is not None:
                     self.push_file_data_to_heap(dsobject)
             # Or is it a path?
@@ -946,13 +964,11 @@ class LogoCode:
                 self.push_file_data_to_heap(None, path=obj)
             elif user_path is not None and os.path.exists(user_path):
                 self.push_file_data_to_heap(None, path=user_path)
-            elif os.path.exists(os.path.join(
-                    self.tw.activity.get_bundle_path(), obj)):
+            elif os.path.exists(os.path.join(self.tw.activity.get_bundle_path(), obj)):
                 self.push_file_data_to_heap(None, path=obj)
             else:
                 # Finally try choosing a datastore object
-                chooser_dialog(self.tw.parent, obj,
-                               self.push_file_data_to_heap)
+                chooser_dialog(self.tw.parent, obj, self.push_file_data_to_heap)
         else:
             # If you cannot find the file, open a chooser.
             if os.path.exists(obj):
@@ -961,7 +977,8 @@ class LogoCode:
                 self.push_file_data_to_heap(None, path=user_path)
             else:
                 obj, self.tw.load_save_folder = get_load_name(
-                    '.*', self.tw.load_save_folder)
+                    ".*", self.tw.load_save_folder
+                )
                 if obj is not None:
                     self.push_file_data_to_heap(None, path=obj)
 
@@ -973,8 +990,7 @@ class LogoCode:
             from sugar3.activity import activity
 
             # Save JSON-encoded heap to temporary file
-            heap_file = os.path.join(get_path(activity, 'instance'),
-                                     'heap.txt')
+            heap_file = os.path.join(get_path(activity, "instance"), "heap.txt")
             data_to_file(self.heap, heap_file)
 
             # Write to an existing or new dsobject
@@ -982,10 +998,9 @@ class LogoCode:
                 dsobject = datastore.get(obj.value)
             else:
                 dsobject = datastore.create()
-                dsobject.metadata['title'] = str(obj)
-                dsobject.metadata['icon-color'] = \
-                    profile.get_color().to_string()
-                dsobject.metadata['mime_type'] = 'text/plain'
+                dsobject.metadata["title"] = str(obj)
+                dsobject.metadata["icon-color"] = profile.get_color().to_string()
+                dsobject.metadata["mime_type"] = "text/plain"
             dsobject.set_file_path(heap_file)
             datastore.write(dsobject)
             dsobject.destroy()
@@ -1018,13 +1033,12 @@ class LogoCode:
                 raise logoerror("#syntaxerror")
 
     def prim_myfunction(self, f, *args):
-        """ Programmable block (Call tajail.myfunc and convert any errors to
-        logoerrors) """
+        """Programmable block (Call tajail.myfunc and convert any errors to
+        logoerrors)"""
         try:
             y = myfunc(f, args)
-            if str(y) == 'nan':
-                debug_output('Python function returned NAN',
-                             self.tw.running_sugar)
+            if str(y) == "nan":
+                debug_output("Python function returned NAN", self.tw.running_sugar)
                 self.stop_logo()
                 raise logoerror("#notanumber")
             else:
@@ -1034,13 +1048,13 @@ class LogoCode:
             raise logoerror("#zerodivide")
         except ValueError as e:
             self.stop_logo()
-            raise logoerror('#' + str(e))
+            raise logoerror("#" + str(e))
         except SyntaxError as e:
             self.stop_logo()
-            raise logoerror('#' + str(e))
+            raise logoerror("#" + str(e))
         except NameError as e:
             self.stop_logo()
-            raise logoerror('#' + str(e))
+            raise logoerror("#" + str(e))
         except OverflowError:
             self.stop_logo()
             raise logoerror("#overflowerror")
@@ -1049,7 +1063,7 @@ class LogoCode:
             raise logoerror("#notanumber")
 
     def clear_value_blocks(self):
-        if not hasattr(self, 'value_blocks_to_update'):
+        if not hasattr(self, "value_blocks_to_update"):
             return
         for name in value_blocks:
             self.update_label_value(name)
@@ -1058,8 +1072,9 @@ class LogoCode:
         """ Find any value blocks that may need label updates """
         self.value_blocks_to_update = {}
         for name in value_blocks:
-            self.value_blocks_to_update[name] = \
-                self.tw.block_list.get_similar_blocks('block', name)
+            self.value_blocks_to_update[name] = self.tw.block_list.get_similar_blocks(
+                "block", name
+            )
 
     def update_label_value(self, name, value=None, label=None):
         """ Update the label of value blocks to reflect current value """
@@ -1074,7 +1089,7 @@ class LogoCode:
                 return
             for block in self.value_blocks_to_update[name]:
                 block.spr.set_label(block_names[name][0])
-                if name == 'box':
+                if name == "box":
                     argblk = block.connections[-2]
                     dx = block.dx
                     block.resize()
@@ -1088,23 +1103,20 @@ class LogoCode:
                     block.resize()
         elif self.update_values:
             if isinstance(value, float):
-                valstring = str(round_int(value)).replace(
-                    '.', self.tw.decimal_point)
+                valstring = str(round_int(value)).replace(".", self.tw.decimal_point)
             else:
                 valstring = str(value)
             if name not in self.value_blocks_to_update:
                 return
             for block in self.value_blocks_to_update[name]:
                 if label is None:
-                    block.spr.set_label(
-                        block_names[name][0] + ' = ' + valstring)
+                    block.spr.set_label(block_names[name][0] + " = " + valstring)
                     block.resize()
                 else:
                     argblk = block.connections[-2]
                     # Only update if label matches
                     if argblk is not None and argblk.spr.labels[0] == label:
-                        block.spr.set_label(
-                            block_names[name][0] + ' = ' + valstring)
+                        block.spr.set_label(block_names[name][0] + " = " + valstring)
                         dx = block.dx
                         block.resize()
                         # Move connections over...
@@ -1128,26 +1140,28 @@ class LogoCode:
             self.filepath = user_path
         elif self.tw.running_sugar:  # datastore object
             from sugar3.datastore import datastore
+
             try:
                 self.dsobject = datastore.get(obj.value)
             except BaseException:
-                debug_output("Couldn't find dsobject %s" %
-                             (obj.value), self.tw.running_sugar)
+                debug_output(
+                    "Couldn't find dsobject %s" % (obj.value), self.tw.running_sugar
+                )
             if self.dsobject is not None:
                 self.filepath = self.dsobject.file_path
 
         if self.filepath is None:
-            self.tw.showlabel('nojournal', self.filepath)
+            self.tw.showlabel("nojournal", self.filepath)
             return
 
         pixbuf = None
         try:
-            pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_size(
-                self.filepath, scale, scale)
+            pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_size(self.filepath, scale, scale)
         except BaseException:
-            self.tw.showlabel('nojournal', self.filepath)
-            debug_output("Couldn't open skin %s" % (self.filepath),
-                         self.tw.running_sugar)
+            self.tw.showlabel("nojournal", self.filepath)
+            debug_output(
+                "Couldn't open skin %s" % (self.filepath), self.tw.running_sugar
+            )
         if pixbuf is not None:
             self.tw.turtles.get_active_turtle().set_shapes([pixbuf])
             pen_state = self.tw.turtles.get_active_turtle().get_pen_state()
@@ -1159,20 +1173,22 @@ class LogoCode:
 
         if self.tw.sharing():
             if self.tw.running_sugar:
-                tmp_path = get_path(self.tw.activity, 'instance')
+                tmp_path = get_path(self.tw.activity, "instance")
             else:
                 tmp_path = tempfile.gettempdir()
-            tmp_file = os.path.join(get_path(self.tw.activity, 'instance'),
-                                    'tmpfile.png')
-            pixbuf.save(tmp_file, 'png', {'quality': '100'})
+            tmp_file = os.path.join(
+                get_path(self.tw.activity, "instance"), "tmpfile.png"
+            )
+            pixbuf.save(tmp_file, "png", {"quality": "100"})
             data = image_to_base64(tmp_file, tmp_path)
             height = pixbuf.get_height()
             width = pixbuf.get_width()
             event = data_to_string(
-                [self.tw.nick, [round_int(width), round_int(height), data]])
+                [self.tw.nick, [round_int(width), round_int(height), data]]
+            )
 
             def send_event(p):
-                self.tw.send_event('R', event)
+                self.tw.send_event("R", event)
                 return False
 
             GLib.idle_add(send_event)
@@ -1186,21 +1202,18 @@ class LogoCode:
         try:
             req = urllib.request.urlopen(url)
         except urllib.error.HTTPError as e:
-            debug_output("Couldn't open %s: %s" % (url, e),
-                         self.tw.running_sugar)
-            raise logoerror(url + ' [%d]' % (e.code))
+            debug_output("Couldn't open %s: %s" % (url, e), self.tw.running_sugar)
+            raise logoerror(url + " [%d]" % (e.code))
         except urllib.error.URLError as e:
-            if hasattr(e, 'code'):
-                debug_output("Couldn't open %s: %s" % (url, e),
-                             self.tw.running_sugar)
-                raise logoerror(url + ' [%d]' % (e.code))
+            if hasattr(e, "code"):
+                debug_output("Couldn't open %s: %s" % (url, e), self.tw.running_sugar)
+                raise logoerror(url + " [%d]" % (e.code))
             else:  # elif hasattr(e, 'reason'):
-                debug_output("Couldn't reach server: %s" % (e),
-                             self.tw.running_sugar)
-                raise logoerror('#noconnection')
+                debug_output("Couldn't reach server: %s" % (e), self.tw.running_sugar)
+                raise logoerror("#noconnection")
 
-        mediatype = req.getheader('Content-Type')
-        if mediatype[0:5] in ['image', 'audio', 'video']:
+        mediatype = req.getheader("Content-Type")
+        if mediatype[0:5] in ["image", "audio", "video"]:
             tmp = tempfile.NamedTemporaryFile(delete=False)
             tmp.write(req.read())
             tmp.flush()
@@ -1211,10 +1224,8 @@ class LogoCode:
 
     def showlist(self, objects):
         """ Display list of media objects """
-        x = (self.tw.turtles.get_active_turtle().get_xy(
-        )[0] / self.tw.coord_scale)
-        y = (self.tw.turtles.get_active_turtle().get_xy(
-        )[1] / self.tw.coord_scale)
+        x = self.tw.turtles.get_active_turtle().get_xy()[0] / self.tw.coord_scale
+        y = self.tw.turtles.get_active_turtle().get_xy()[1] / self.tw.coord_scale
         for obj in objects:
             self.tw.turtles.get_active_turtle().set_xy(x, y, pendown=False)
             self.show(obj)
@@ -1232,83 +1243,82 @@ class LogoCode:
             user_path = _change_user_path(obj.value)
             if obj.value.lower() in media_blocks_dictionary:
                 media_blocks_dictionary[obj.value.lower()]()
-                mediatype = 'image'  # camera snapshot
+                mediatype = "image"  # camera snapshot
             elif os_path_exists(obj.value):
                 self.filepath = obj.value
                 mediatype = obj.type
                 # If for some reason the obj.type is not set, try guessing.
                 if mediatype is None and self.filepath is not None:
                     if movie_media_type(self.filepath):
-                        mediatype = 'video'
+                        mediatype = "video"
                     elif audio_media_type(self.filepath):
-                        mediatype = 'audio'
+                        mediatype = "audio"
                     elif image_media_type(self.filepath):
-                        mediatype = 'image'
+                        mediatype = "image"
                     elif text_media_type(self.filepath):
-                        mediatype = 'text'
+                        mediatype = "text"
             elif user_path is not None and os_path_exists(user_path):
                 self.filepath = user_path
                 mediatype = obj.type
                 # If for some reason the obj.type is not set, try guessing.
                 if mediatype is None and self.filepath is not None:
                     if movie_media_type(self.filepath):
-                        mediatype = 'video'
+                        mediatype = "video"
                     elif audio_media_type(self.filepath):
-                        mediatype = 'audio'
+                        mediatype = "audio"
                     elif image_media_type(self.filepath):
-                        mediatype = 'image'
+                        mediatype = "image"
                     elif text_media_type(self.filepath):
-                        mediatype = 'text'
+                        mediatype = "text"
             elif self.tw.running_sugar:
                 from sugar3.datastore import datastore
+
                 try:
                     self.dsobject = datastore.get(obj.value)
                 except BaseException:
-                    debug_output("Couldn't find dsobject %s" %
-                                 (obj.value), self.tw.running_sugar)
+                    debug_output(
+                        "Couldn't find dsobject %s" % (obj.value), self.tw.running_sugar
+                    )
 
                 if self.dsobject is not None:
                     self.filepath = self.dsobject.file_path
-                    if 'mime_type' in self.dsobject.metadata:
-                        mimetype = self.dsobject.metadata['mime_type']
-                        if mimetype[0:5] == 'video':
-                            mediatype = 'video'
-                        elif mimetype[0:5] == 'audio':
-                            mediatype = 'audio'
-                        elif mimetype[0:5] == 'image':
-                            mediatype = 'image'
+                    if "mime_type" in self.dsobject.metadata:
+                        mimetype = self.dsobject.metadata["mime_type"]
+                        if mimetype[0:5] == "video":
+                            mediatype = "video"
+                        elif mimetype[0:5] == "audio":
+                            mediatype = "audio"
+                        elif mimetype[0:5] == "image":
+                            mediatype = "image"
                         else:
-                            mediatype = 'text'
+                            mediatype = "text"
 
             if self.pixbuf is not None:
                 self.insert_image(center=center, pixbuf=True)
             elif self.filepath is None:
                 if self.dsobject is not None:
-                    self.tw.showlabel(
-                        'nojournal',
-                        self.dsobject.metadata['title'])
+                    self.tw.showlabel("nojournal", self.dsobject.metadata["title"])
                 else:
-                    self.tw.showlabel('nojournal', obj.value)
+                    self.tw.showlabel("nojournal", obj.value)
 
-                debug_output("Couldn't open %s" % (obj.value),
-                             self.tw.running_sugar)
-            elif obj.type == 'media' or mediatype == 'image':
+                debug_output("Couldn't open %s" % (obj.value), self.tw.running_sugar)
+            elif obj.type == "media" or mediatype == "image":
                 self.insert_image(center=center)
-            elif mediatype == 'audio':
+            elif mediatype == "audio":
                 self.play_sound()
-            elif mediatype == 'video':
+            elif mediatype == "video":
                 self.play_video()
-            elif obj.type == 'descr' or mediatype == 'text':
+            elif obj.type == "descr" or mediatype == "text":
                 mimetype = None
-                if self.dsobject is not None and \
-                        'mime_type' in self.dsobject.metadata:
-                    mimetype = self.dsobject.metadata['mime_type']
+                if self.dsobject is not None and "mime_type" in self.dsobject.metadata:
+                    mimetype = self.dsobject.metadata["mime_type"]
 
                 description = None
-                if self.dsobject is not None and \
-                        'description' in self.dsobject.metadata:
-                    description = self.dsobject.metadata[
-                        'description']
+                if (
+                    self.dsobject is not None
+                    and "description" in self.dsobject.metadata
+                ):
+                    description = self.dsobject.metadata["description"]
 
                 self.insert_desc(mimetype, description)
 
@@ -1324,9 +1334,12 @@ class LogoCode:
                 y -= self.tw.canvas.textsize
 
             self.tw.turtles.get_active_turtle().draw_text(
-                obj, x, y,
-                int(self.tw.canvas.textsize * self.scale / 100.),
-                self.tw.canvas.width - x)
+                obj,
+                x,
+                y,
+                int(self.tw.canvas.textsize * self.scale / 100.0),
+                self.tw.canvas.width - x,
+            )
 
     def push_file_data_to_heap(self, dsobject, path=None):
         """ push contents of a data store object (assuming json encoding) """
@@ -1340,28 +1353,31 @@ class LogoCode:
         if data is not None:
             for val in data:
                 self.heap.append(val)
-            self.update_label_value('pop', self.heap[-1])
+            self.update_label_value("pop", self.heap[-1])
 
     def x2tx(self):
         """ Convert screen coordinates to turtle coordinates """
-        return int(self.tw.canvas.width / 2) + \
-            int(self.tw.turtles.get_active_turtle().get_xy()[0])
+        return int(self.tw.canvas.width / 2) + int(
+            self.tw.turtles.get_active_turtle().get_xy()[0]
+        )
 
     def y2ty(self):
         """ Convert screen coordinates to turtle coordinates """
-        return int(self.tw.canvas.height / 2) - \
-            int(self.tw.turtles.get_active_turtle().get_xy()[1])
+        return int(self.tw.canvas.height / 2) - int(
+            self.tw.turtles.get_active_turtle().get_xy()[1]
+        )
 
     def wpercent(self):
         """ width as a percentage of screen coordinates """
-        return int((self.tw.canvas.width * self.scale) / 100.)
+        return int((self.tw.canvas.width * self.scale) / 100.0)
 
     def hpercent(self):
         """ height as a percentage of screen coordinates """
-        return int((self.tw.canvas.height * self.scale) / 100.)
+        return int((self.tw.canvas.height * self.scale) / 100.0)
 
-    def insert_image(self, center=False, filepath=None, resize=True,
-                     offset=False, pixbuf=False):
+    def insert_image(
+        self, center=False, filepath=None, resize=True, offset=False, pixbuf=False
+    ):
         """ Image only (at current x, y) """
         if filepath is not None:
             self.filepath = filepath
@@ -1373,16 +1389,16 @@ class LogoCode:
         if pixbuf:  # We may have to rescale the picture
             if w != self.pixbuf.get_width() or h != self.pixbuf.get_height():
                 self.pixbuf = self.pixbuf.scale_simple(
-                    w, h, GdkPixbuf.InterpType.BILINEAR)
+                    w, h, GdkPixbuf.InterpType.BILINEAR
+                )
         elif self.dsobject is not None:
             try:
                 self.pixbuf = get_pixbuf_from_journal(self.dsobject, w, h)
             except BaseException:
-                debug_output("Couldn't open dsobject %s" % (self.dsobject),
-                             self.tw.running_sugar)
-        if self.pixbuf is None and \
-                self.filepath is not None and \
-                self.filepath != '':
+                debug_output(
+                    "Couldn't open dsobject %s" % (self.dsobject), self.tw.running_sugar
+                )
+        if self.pixbuf is None and self.filepath is not None and self.filepath != "":
             try:
                 if not resize:
                     self.pixbuf = GdkPixbuf.Pixbuf.new_from_file(self.filepath)
@@ -1390,33 +1406,36 @@ class LogoCode:
                     h = self.pixbuf.get_height()
                 else:
                     self.pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_size(
-                        self.filepath, w, h)
+                        self.filepath, w, h
+                    )
             except BaseException:
-                self.tw.showlabel('nojournal', self.filepath)
-                debug_output("Couldn't open filepath %s" % (self.filepath),
-                             self.tw.running_sugar)
+                self.tw.showlabel("nojournal", self.filepath)
+                debug_output(
+                    "Couldn't open filepath %s" % (self.filepath), self.tw.running_sugar
+                )
         if self.pixbuf is not None:
             # w, h are relative to screen size, not coord_scale
             # w *= self.tw.coord_scale
             # h *= self.tw.coord_scale
             if center:
                 self.tw.turtles.get_active_turtle().draw_pixbuf(
-                    self.pixbuf, 0, 0,
+                    self.pixbuf,
+                    0,
+                    0,
                     self.x2tx() - int(w / 2),
-                    self.y2ty() - int(h / 2), w, h,
-                    self.filepath)
+                    self.y2ty() - int(h / 2),
+                    w,
+                    h,
+                    self.filepath,
+                )
             elif offset:
                 self.tw.turtles.get_active_turtle().draw_pixbuf(
-                    self.pixbuf, 0, 0,
-                    self.x2tx(),
-                    self.y2ty() - h,
-                    w, h, self.filepath)
+                    self.pixbuf, 0, 0, self.x2tx(), self.y2ty() - h, w, h, self.filepath
+                )
             else:
                 self.tw.turtles.get_active_turtle().draw_pixbuf(
-                    self.pixbuf, 0, 0,
-                    self.x2tx(),
-                    self.y2ty(),
-                    w, h, self.filepath)
+                    self.pixbuf, 0, 0, self.x2tx(), self.y2ty(), w, h, self.filepath
+                )
 
     def insert_desc(self, mimetype=None, description=None):
         """ Description text only (at current x, y) """
@@ -1425,22 +1444,23 @@ class LogoCode:
             return
         text = None
         if text_media_type(self.filepath):
-            if RTFPARSE and \
-                    (mimetype == 'application/rtf' or self.filepath.endswith(
-                        'rtf')):
+            if RTFPARSE and (
+                mimetype == "application/rtf" or self.filepath.endswith("rtf")
+            ):
                 text_only = RtfTextOnly()
-                for line in open(self.filepath, 'r'):
+                for line in open(self.filepath, "r"):
                     text_only.feed(line)
                     text = text_only.output
             else:
                 try:
-                    f = open(self.filepath, 'r')
+                    f = open(self.filepath, "r")
                     text = f.read()
                     f.close()
                 except IOError:
-                    self.tw.showlabel('nojournal', self.filepath)
-                    debug_output("Couldn't open %s" % (self.filepath),
-                                 self.tw.running_sugar)
+                    self.tw.showlabel("nojournal", self.filepath)
+                    debug_output(
+                        "Couldn't open %s" % (self.filepath), self.tw.running_sugar
+                    )
         else:
             if description is not None:
                 text = str(description)
@@ -1448,13 +1468,15 @@ class LogoCode:
                 text = self.filepath
         if text is not None:
             self.tw.turtles.get_active_turtle().draw_text(
-                text, self.x2tx(), self.y2ty(), self.body_height, w)
+                text, self.x2tx(), self.y2ty(), self.body_height, w
+            )
 
     def media_wait(self):
         """ Wait for media to stop playing """
         if self.tw.gst_available:
             from .tagplay import media_playing
-            while (media_playing(self)):
+
+            while media_playing(self):
                 yield True
         self.ireturn()
         yield True
@@ -1463,6 +1485,7 @@ class LogoCode:
         """ Stop playing media"""
         if self.tw.gst_available:
             from .tagplay import stop_media
+
             stop_media(self)
         self.ireturn()
         yield True
@@ -1471,6 +1494,7 @@ class LogoCode:
         """ Pause media"""
         if self.tw.gst_available:
             from .tagplay import pause_media
+
             pause_media(self)
         self.ireturn()
         yield True
@@ -1479,6 +1503,7 @@ class LogoCode:
         """ Play media"""
         if self.tw.gst_available:
             from .tagplay import play_media
+
             play_media(self)
         self.ireturn()
         yield True
@@ -1487,6 +1512,7 @@ class LogoCode:
         """ Sound file from Journal """
         if self.tw.gst_available:
             from .tagplay import play_audio_from_file
+
             play_audio_from_file(self, self.filepath)
 
     def play_video(self):
@@ -1496,6 +1522,7 @@ class LogoCode:
             return
         if self.tw.gst_available:
             from .tagplay import play_movie_from_file
+
             # The video window is an overlay, so we need to know where
             # the canvas is relative to the window, e.g., which
             # toolbars, if any are open.
@@ -1505,24 +1532,25 @@ class LogoCode:
                     yoffset += GRID_CELL_SIZE
                     if self.tw.activity.toolbars_expanded():
                         yoffset += GRID_CELL_SIZE
-            play_movie_from_file(self, self.filepath, self.x2tx(),
-                                 self.y2ty() + yoffset, w, h)
+            play_movie_from_file(
+                self, self.filepath, self.x2tx(), self.y2ty() + yoffset, w, h
+            )
 
     def _expand_return(self, b, blk, blocks):
-        """ Expand a returnstack block into action name, box '__return__'
-            Parameters: the repeatstack block, the top block, all blocks.
-            Return all blocks."""
+        """Expand a returnstack block into action name, box '__return__'
+        Parameters: the repeatstack block, the top block, all blocks.
+        Return all blocks."""
 
         # We'll restore the original blocks when we are finished
         if self._save_blocks is None:
             self._save_blocks = blocks[:]
 
         # Create an action block and a box
-        action_blk = HiddenBlock('stack')
+        action_blk = HiddenBlock("stack")
         blocks.append(action_blk)
-        box_blk = HiddenBlock('box')
+        box_blk = HiddenBlock("box")
         blocks.append(box_blk)
-        box_label_blk = HiddenBlock('string', value='__return__')
+        box_label_blk = HiddenBlock("string", value="__return__")
         blocks.append(box_label_blk)
 
         # Make connections to substitute blocks
@@ -1534,7 +1562,7 @@ class LogoCode:
         tmp = b
         while tmp.connections[0] is not None:
             cblk = tmp.connections[0]
-            if cblk.docks[0][0] == 'flow':
+            if cblk.docks[0][0] == "flow":
                 break
             else:
                 tmp = cblk
@@ -1546,43 +1574,43 @@ class LogoCode:
             cblk.connections[0] = action_blk
 
         action_blk.connections.append(inflow)
-        action_blk.docks.append(['flow', True, 0, 0])
+        action_blk.docks.append(["flow", True, 0, 0])
         action_blk.connections.append(b.connections[1])
         b.connections[1].connections[0] = action_blk
-        action_blk.docks.append(['string', False, 0, 0])
+        action_blk.docks.append(["string", False, 0, 0])
         action_blk.connections.append(cblk)
-        action_blk.docks.append(['flow', False, 0, 0])
+        action_blk.docks.append(["flow", False, 0, 0])
 
         # Replace the returnstack block with a box and label.
         box_label_blk.connections.append(box_blk)
-        box_label_blk.docks.append(['string', True, 0, 0])
+        box_label_blk.docks.append(["string", True, 0, 0])
         box_blk.connections.append(b.connections[0])
         if b.connections[0] is not None:
             for i in range(len(b.connections[0].connections)):
                 if b.connections[0].connections[i] == b:
                     b.connections[0].connections[i] = box_blk
-        box_blk.docks.append(['number', True, 0, 0])
+        box_blk.docks.append(["number", True, 0, 0])
         box_blk.connections.append(box_label_blk)
-        box_blk.docks.append(['string', False, 0, 0])
+        box_blk.docks.append(["string", False, 0, 0])
 
         return action_blk, blocks
 
     def _expand_forever(self, b, blk, blocks):
-        """ Expand a while or until block into: forever, ifelse, stopstack
-            Expand a forever block to run in a separate stack
-            Parameters: the loop block, the top block, all blocks.
-            Return the start block of the expanded loop, and all blocks."""
+        """Expand a while or until block into: forever, ifelse, stopstack
+        Expand a forever block to run in a separate stack
+        Parameters: the loop block, the top block, all blocks.
+        Return the start block of the expanded loop, and all blocks."""
 
         # TODO: create a less brittle way of doing this; having to
         # manage the connections and flows locally means we may run
         # into trouble if any of these block types (forever, while,
         # until. ifelse, stopstack, or stack) is changed in tablock.py
 
-        if b.name == 'while':
+        if b.name == "while":
             while_blk = True
         else:
             while_blk = False
-        if b.name == 'until':
+        if b.name == "until":
             until_blk = True
         else:
             until_blk = False
@@ -1592,15 +1620,15 @@ class LogoCode:
             self._save_blocks = blocks[:]
 
         # Create an action block that will jump to the new stack
-        action_name = '_forever %d' % (len(self._save_while_blocks) + 1)
-        action_blk = HiddenBlock('stack')
-        action_label_blk = HiddenBlock('string', value=action_name)
+        action_name = "_forever %d" % (len(self._save_while_blocks) + 1)
+        action_blk = HiddenBlock("stack")
+        action_label_blk = HiddenBlock("string", value=action_name)
 
         # Create the blocks we'll put in the new stack
-        forever_blk = HiddenBlock('forever')
+        forever_blk = HiddenBlock("forever")
         if while_blk or until_blk:
-            ifelse_blk = HiddenBlock('ifelse')
-            stopstack_blk = HiddenBlock('stopstack')
+            ifelse_blk = HiddenBlock("ifelse")
+            stopstack_blk = HiddenBlock("stopstack")
         inflow = None
         whileflow = None
         outflow = None
@@ -1614,9 +1642,9 @@ class LogoCode:
 
         # Create action block(s) to run the code inside the forever loop
         if until_blk and whileflow is not None:  # run until flow at least once
-            action_flow_name = '_flow %d' % (len(self._save_while_blocks) + 1)
-            action_first = HiddenBlock('stack')
-            first_label_blk = HiddenBlock('string', value=action_flow_name)
+            action_flow_name = "_flow %d" % (len(self._save_while_blocks) + 1)
+            action_first = HiddenBlock("stack")
+            first_label_blk = HiddenBlock("string", value=action_flow_name)
 
         # Assign new connections and build the docks
         if inflow is not None and b in inflow.connections:
@@ -1635,50 +1663,50 @@ class LogoCode:
 
         if until_blk and whileflow is not None:
             action_first.connections.append(inflow)
-            action_first.docks.append(['flow', True, 0, 0])
+            action_first.docks.append(["flow", True, 0, 0])
             action_first.connections.append(first_label_blk)
-            action_first.docks.append(['number', False, 0, 0])
+            action_first.docks.append(["number", False, 0, 0])
             action_first.connections.append(action_blk)
-            action_first.docks.append(['flow', False, 0, 0])
+            action_first.docks.append(["flow", False, 0, 0])
             first_label_blk.connections.append(action_first)
-            first_label_blk.docks.append(['number', True, 0, 0])
+            first_label_blk.docks.append(["number", True, 0, 0])
             action_blk.connections.append(action_first)
         else:
             action_blk.connections.append(inflow)
-        action_blk.docks.append(['flow', True, 0, 0])
+        action_blk.docks.append(["flow", True, 0, 0])
         action_blk.connections.append(action_label_blk)
-        action_blk.docks.append(['number', False, 0, 0])
+        action_blk.docks.append(["number", False, 0, 0])
         action_blk.connections.append(outflow)
-        action_blk.docks.append(['flow', False, 0, 0])
+        action_blk.docks.append(["flow", False, 0, 0])
         action_label_blk.connections.append(action_blk)
-        action_label_blk.docks.append(['number', True, 0, 0])
+        action_label_blk.docks.append(["number", True, 0, 0])
 
         forever_blk.connections.append(None)
-        forever_blk.docks.append(['flow', True, 0, 0])
+        forever_blk.docks.append(["flow", True, 0, 0])
         if while_blk or until_blk:
             forever_blk.connections.append(ifelse_blk)
         else:
             forever_blk.connections.append(whileflow)
-        forever_blk.docks.append(['flow', False, 0, 0, '['])
+        forever_blk.docks.append(["flow", False, 0, 0, "["])
         forever_blk.connections.append(outflow)
-        forever_blk.docks.append(['flow', False, 0, 0, ']'])
+        forever_blk.docks.append(["flow", False, 0, 0, "]"])
         if while_blk or until_blk:
             ifelse_blk.connections.append(forever_blk)
-            ifelse_blk.docks.append(['flow', True, 0, 0])
+            ifelse_blk.docks.append(["flow", True, 0, 0])
             ifelse_blk.connections.append(boolflow)
-            ifelse_blk.docks.append(['bool', False, 0, 0])
+            ifelse_blk.docks.append(["bool", False, 0, 0])
             if while_blk:
                 ifelse_blk.connections.append(whileflow)
                 ifelse_blk.connections.append(stopstack_blk)
             else:  # until
                 ifelse_blk.connections.append(stopstack_blk)
                 ifelse_blk.connections.append(whileflow)
-            ifelse_blk.docks.append(['flow', False, 0, 0, '['])
-            ifelse_blk.docks.append(['flow', False, 0, 0, ']['])
+            ifelse_blk.docks.append(["flow", False, 0, 0, "["])
+            ifelse_blk.docks.append(["flow", False, 0, 0, "]["])
             ifelse_blk.connections.append(None)
-            ifelse_blk.docks.append(['flow', False, 0, 0, ']'])
+            ifelse_blk.docks.append(["flow", False, 0, 0, "]"])
             stopstack_blk.connections.append(ifelse_blk)
-            stopstack_blk.docks.append(['flow', False, 0, 0])
+            stopstack_blk.docks.append(["flow", False, 0, 0])
 
         if whileflow is not None:
             if while_blk or until_blk:
@@ -1695,8 +1723,7 @@ class LogoCode:
             c = whileflow.connections[0]
             whileflow.connections[0] = None
             code = self._blocks_to_code(whileflow)
-            self.stacks[self._get_stack_key(action_flow_name)] = \
-                self._readline(code)
+            self.stacks[self._get_stack_key(action_flow_name)] = self._readline(code)
             whileflow.connections[0] = c
 
         # Save the connections so we can restore them later
@@ -1714,7 +1741,7 @@ class LogoCode:
         if i == len(blocks) - 1:
             blocks_right = []
         else:
-            blocks_right = blocks[i + 1:]
+            blocks_right = blocks[i + 1 :]
         blocks = blocks_left[:]
         if until_blk and whileflow is not None:
             blocks.append(action_first)
