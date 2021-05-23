@@ -19,7 +19,11 @@
 # THE SOFTWARE.
 
 
-from sugar3.datastore import datastore
+try:
+    from sugar3.datastore import datastore
+except ImportError:
+    datastore = None
+
 from TurtleArt.tapalette import (logo_commands, logo_functions)
 from TurtleArt.taconstants import (TITLEXY, CONSTANTS)
 
@@ -123,8 +127,7 @@ def save_logo(tw):
 
 
 def _add_label(string):
-    if isinstance(string, str) and string[0:8] in ['#smedia_', '#saudio_',
-                                                   '#svideo_', '#sdescr_']:
+    if datastore is not None and isinstance(string, str) and string[0:8] in ['#smedia_', '#saudio_', '#svideo_', '#sdescr_']:
         string = string[8:]
         dsobject = datastore.get(string[8:])
         if 'title' in dsobject.metadata:
