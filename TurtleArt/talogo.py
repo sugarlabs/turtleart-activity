@@ -33,9 +33,11 @@ from time import time, sleep
 
 from gi.repository import GLib
 from gi.repository import GdkPixbuf
-from sugar3.graphics import style
-
-GRID_CELL_SIZE = style.GRID_CELL_SIZE
+try:
+    from sugar3.graphics import style
+    GRID_CELL_SIZE = style.GRID_CELL_SIZE
+except ImportError:
+    GRID_CELL_SIZE = 55
 
 USER_HOME = os.path.expanduser('~')
 

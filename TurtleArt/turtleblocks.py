@@ -206,6 +206,8 @@ return %s(self)" % (p, P, P)
                 self._gnome_plugins.append(list(plugin.values())[0](self))
             except ImportError as e:
                 print('failed to import %s: %s' % (P, str(e)))
+            except ValueError as e:
+                print('failed to import %s: %s' % (P, str(e)))
 
     def _run_gnome_plugins(self):
         ''' Tell the plugin about the TurtleWindow instance. '''
