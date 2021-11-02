@@ -86,7 +86,7 @@ class TurtleArtActivity(activity.Activity):
     _HOVER_HELP = 'hover-help'
     _ORIENTATION = 'palette-orientation'
     _COORDINATE_SCALE = 'coordinate-scale'
-    _PLUGINS_LIST = 'plugins-list'
+    _PLUGINS_LIST = 'plugins'
 
     def __init__(self, handle):
         ''' Set up the toolbars, canvas, sharing, etc. '''
