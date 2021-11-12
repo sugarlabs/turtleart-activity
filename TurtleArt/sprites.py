@@ -253,6 +253,9 @@ class Sprite:
         ''' Return current layer '''
         return self.layer
 
+    def get_label(self):
+        return self.labels[0]
+
     def set_shape(self, image, i=0):
         ''' Set the current image associated with the sprite '''
         self.inval()
