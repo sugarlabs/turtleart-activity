@@ -100,8 +100,8 @@ if len(sys.argv) > 1 and '--no-sugar' == sys.argv[1]:
     import os
     import shutil
     import subprocess
-    from distutils.core import setup
-    from distutils.command.install import install
+    from setuptools import setup
+    from setuptools.command.install import install
 
     class post_install(install):
         def run(self):
@@ -171,7 +171,7 @@ if len(sys.argv) > 1 and '--no-sugar' == sys.argv[1]:
           version='0.9.4',
           packages=['TurtleArt', 'TurtleArt.util'],
           scripts=['turtleblocks'],
-          data_files=DATA_FILES,
+          package_data=DATA_FILES,
           cmdclass={"install": post_install}
           )
 else:
