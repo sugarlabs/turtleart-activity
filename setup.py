@@ -171,7 +171,7 @@ if len(sys.argv) > 1 and '--no-sugar' == sys.argv[1]:
           version='0.9.4',
           packages=['TurtleArt', 'TurtleArt.util'],
           scripts=['turtleblocks'],
-          package_data=DATA_FILES,
+          data_files=DATA_FILES,
           cmdclass={"install": post_install}
           )
 else:
