@@ -4539,7 +4539,7 @@ class TurtleArtWindow():
                     else:
                         offset_from_bottom *= 2
                 self.status_spr.move(
-                    (0,
+                    (self.activity.sw.get_hadjustment().get_value(),
                      self.height - offset_from_bottom + self.activity.sw.get_vadjustment().get_value()))
             elif self.interactive_mode:
                 self.status_spr.move(
