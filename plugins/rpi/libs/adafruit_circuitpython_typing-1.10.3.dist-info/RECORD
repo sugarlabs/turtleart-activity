@@ -1,0 +1,14 @@
+circuitpython_typing/__init__.py,sha256=AXRDqwU8TADlqAsoRp8rhiVNnRHGGqVOQ3cEVI_YWxg,5754
+circuitpython_typing/device_drivers.py,sha256=45bzbYanbXD1L_U4mRM_CnW7BKZu2l0rXn3igo32kgY,617
+circuitpython_typing/http.py,sha256=C4xOt7nE6JU3gzXB1y6JDcWkTHTYq4fW0dGy__nVZIc,899
+circuitpython_typing/io.py,sha256=F3dFZJX4zsjagQZ2nxCdJAABBOIrLGb2fPEK51X94zk,1124
+circuitpython_typing/led.py,sha256=Pv1pYDAGapR_Qsiom8Z6eAdNLwtOz5an3UhSwUrjbVM,951
+circuitpython_typing/pil.py,sha256=1OmBar3eVL90xsfg6KfM610WVw1mEKQsq28uuzAdsxM,1572
+circuitpython_typing/pwmio.py,sha256=idyhooFkQXuQWwMblwblJ7hnRr6tcHybW4VPHzLhRig,750
+circuitpython_typing/py.typed,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+circuitpython_typing/socket.py,sha256=NA5dk8t5xs0d09y5oxwsB1y4Oss-g7nnamT38fpBDrM,4812
+adafruit_circuitpython_typing-1.10.3.dist-info/LICENSE,sha256=gyhZwtwoqSsDGoSrV4MrLpKKWyG_jE3eROTZp1EjIUM,1102
+adafruit_circuitpython_typing-1.10.3.dist-info/METADATA,sha256=RCxvn5Oxh3PGC2O3xgia9_Ibt2fZU2LpnivJga_x5pE,3236
+adafruit_circuitpython_typing-1.10.3.dist-info/WHEEL,sha256=oiQVh_5PnQM0E3gPdiz09WCNmwiHDMaGer_elqB3coM,92
+adafruit_circuitpython_typing-1.10.3.dist-info/top_level.txt,sha256=yD2gwBW7bEHMY7qi6GMEON_PR7khV2EzkPPG7lHllzE,21
+adafruit_circuitpython_typing-1.10.3.dist-info/RECORD,,

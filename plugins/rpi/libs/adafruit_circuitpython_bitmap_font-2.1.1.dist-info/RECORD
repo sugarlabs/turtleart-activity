@@ -1,0 +1,11 @@
+adafruit_bitmap_font/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+adafruit_bitmap_font/bdf.py,sha256=8XesXD6Fwb03s4yCD5gHZ9LYh423sePx5IatM064wg4,8269
+adafruit_bitmap_font/bitmap_font.py,sha256=Q7RTBuljNA02Oh5LfE_1o8SeO4eyRJUIPdV0F6CFKeQ,1623
+adafruit_bitmap_font/glyph_cache.py,sha256=tpqziOggBcK7vLQ3NzpfwfglurOw0i6r6neMrZnk8zc,1414
+adafruit_bitmap_font/pcf.py,sha256=PMk6iURnboDtS3oDrK-D2gC4glSycHSrRK8T9H87mNI,13683
+adafruit_bitmap_font/ttf.py,sha256=s45-sHnEjpyHz_P9cQAf1Co53fMYq6-NtU4g2KjZ-1k,2145
+adafruit_circuitpython_bitmap_font-2.1.1.dist-info/LICENSE,sha256=sBqlieI8IeJUKB9bAr67qyT2yi9ts0myAC4XgRD2IR0,1110
+adafruit_circuitpython_bitmap_font-2.1.1.dist-info/METADATA,sha256=NQ7DaxxCvTQHQdfvKurodt_hkCYYl4istxPgh80Oxw0,3991
+adafruit_circuitpython_bitmap_font-2.1.1.dist-info/WHEEL,sha256=oiQVh_5PnQM0E3gPdiz09WCNmwiHDMaGer_elqB3coM,92
+adafruit_circuitpython_bitmap_font-2.1.1.dist-info/top_level.txt,sha256=DxubvPHBFdK6cLX9i20_v0nzYm_kxWzWc10lwL9BJ5o,21
+adafruit_circuitpython_bitmap_font-2.1.1.dist-info/RECORD,,

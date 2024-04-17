@@ -1,0 +1,8 @@
+adafruit_bus_device/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+adafruit_bus_device/i2c_device.py,sha256=SyufEgU1jAhnjcYmglSAAmint017Ww7RA-L2pvQ4PJA,6409
+adafruit_bus_device/spi_device.py,sha256=Lt0cBhJXd6d4ebU7ALJ1KWghhDmEzlJ-EFHip9zcUZw,3966
+adafruit_circuitpython_busdevice-5.2.9.dist-info/LICENSE,sha256=9gQ2ZE4GYwHUwujx8GdKFXsfYOT9VYZxe5nd4lXMGM0,1076
+adafruit_circuitpython_busdevice-5.2.9.dist-info/METADATA,sha256=61UJR9nqDfCYalt_ro9fYGxGZb6DKHfB6ZAnrxzmjx4,4016
+adafruit_circuitpython_busdevice-5.2.9.dist-info/WHEEL,sha256=GJ7t_kWBFywbagK5eo9IoUwLW6oyOeTKmQ-9iHFVNxQ,92
+adafruit_circuitpython_busdevice-5.2.9.dist-info/top_level.txt,sha256=RKvOxnVyFHh0cijS4daukt1_Cph3YhfkDZF-tRNZ-oo,20
+adafruit_circuitpython_busdevice-5.2.9.dist-info/RECORD,,
