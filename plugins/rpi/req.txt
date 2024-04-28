@@ -1,0 +1,6 @@
+RPi.GPIO
+adafruit-blinka
+adafruit-circuitpython-displayio-ssd1306
+adafruit-circuitpython-ssd1306
+adafruit-circuitpython-display-text
+adafruit-circuitpython-hcsr04
