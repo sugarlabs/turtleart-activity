@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-03-24 17:39+1100\n"
-"PO-Revision-Date: 2025-06-26 08:22+0000\n"
+"PO-Revision-Date: 2025-06-26 09:42+0000\n"
 "Last-Translator: Erdem Uygun <erdem.uygun@eba.gov.tr>\n"
 "Language-Team: Turkish <http://weblate.sugarlabs.org/projects/"
 "sugar-activities/turtleart/tr/>\n"
@@ -179,7 +179,7 @@ msgstr ""
 #: TurtleArtActivity.py:882 TurtleArt/turtleblocks.py:517
 #: TurtleArt/util/helpbutton.py:44
 msgid "Help"
-msgstr ""
+msgstr "Yardım"
 
 #: TurtleArtActivity.py:883 TurtleArt/turtleblocks.py:509
 msgid "Stop"
