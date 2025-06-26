@@ -7,14 +7,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-03-24 17:39+1100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
+"PO-Revision-Date: 2025-06-26 08:22+0000\n"
+"Last-Translator: Erdem Uygun <erdem.uygun@eba.gov.tr>\n"
+"Language-Team: Turkish <http://weblate.sugarlabs.org/projects/"
+"sugar-activities/turtleart/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.0.1\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.4.2\n"
 
 #: activity/activity.info:2
 msgid "TurtleBlocks"
@@ -78,7 +80,7 @@ msgstr ""
 #: TurtleArtActivity.py:757 TurtleArtActivity.py:873 TurtleArtActivity.py:936
 #: TurtleArt/turtleblocks.py:493
 msgid "Edit"
-msgstr ""
+msgstr "Düzenle"
 
 #: TurtleArtActivity.py:762 TurtleArtActivity.py:874 TurtleArtActivity.py:954
 #: TurtleArt/turtleblocks.py:484
@@ -88,12 +90,12 @@ msgstr ""
 #: TurtleArtActivity.py:784 TurtleArtActivity.py:937
 #: TurtleArt/turtleblocks.py:487
 msgid "Copy"
-msgstr ""
+msgstr "Kopyala"
 
 #: TurtleArtActivity.py:786 TurtleArtActivity.py:938
 #: TurtleArt/turtleblocks.py:488
 msgid "Paste"
-msgstr ""
+msgstr "Yapıştır"
 
 #: TurtleArtActivity.py:788
 msgid "Restore blocks from trash"
@@ -1316,7 +1318,7 @@ msgstr ""
 
 #: TurtleArt/turtleblocks.py:464
 msgid "Quit"
-msgstr ""
+msgstr "İptal"
 
 #: TurtleArt/turtleblocks.py:465
 msgid "File"
