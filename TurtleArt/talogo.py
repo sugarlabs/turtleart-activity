@@ -220,6 +220,15 @@ class LogoCode:
         self.scale = DEFAULT_SCALE
         self.value_blocks_to_update = {}
 
+        self.hollow_mode = False
+        self.hollow_thickness = 1
+
+    def hm(self):
+        return self.hollow_mode
+
+    def ht(self):
+        return self.hollow_thickness
+
     def stop_logo(self):
         """ Stop logo is called from the Stop button on the toolbar """
         self.step = _just_stop()
@@ -472,6 +481,18 @@ class LogoCode:
         oldiline = self.iline
         self.iline = blklist[:]
         self.arglist = None
+
+        if self.tw.step_time > 0: #Artificially modify the stack to support glide operations
+            factor=4
+            n=len(self.iline)
+            for i in range(n-1,-1,-1): #iterate from right to left to not mess up the stack
+                if isinstance(self.iline[i],tuple) and (self.iline[i][0].name=="left" or self.iline[i][0].name=="right"):
+                    degree=self.iline.pop(i+1) #Remove the number associated with the rotation
+                    action=self.iline.pop(i) #Remove the action
+                    for _ in range(factor):
+                        self.iline.insert(i,action) #Insert the action
+                        self.iline.insert(i+1,degree/factor) #Insert the degree divided by the value factor
+
         while self.iline:
             token = self.iline[0]
             self.bindex = None
@@ -783,6 +804,21 @@ class LogoCode:
         self.hidden_turtle = None
         if self.tw.running_turtleart:
             self.tw.activity.restore_state()
+
+    def hollow_line(self, num, blklist):
+
+        # Toggle thickness on for all blocks that supports it
+        self.hollow_mode = True
+        self.hollow_thickness = num
+
+        if blklist:
+            self.icall(self.evline, blklist[:])
+            yield True
+
+        # Set it back to normal
+        self.hollow_mode = False
+        self.ireturn()
+        yield True
 
     def prim_loop(self, controller, blklist):
         """Execute a loop
