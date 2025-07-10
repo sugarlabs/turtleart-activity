@@ -167,30 +167,28 @@ class Palettes():
                           logo_command='forward',
                           help_string=_('moves turtle forward'))
 
-
-
         self.tw.lc.def_prim(
             'forward', 1,
-            Primitive(Turtle.forward_wrapper, #Modificato aggiunto un wrapper
+            Primitive(Turtle.forward_wrapper,  # Modificato aggiunto un wrapper
                       arg_descs=[ArgSlot(TYPE_NUMBER)],
                       call_afterwards=self.after_move))
-
 
         palette.add_block("hollow_draw",
                           style='clamp-style-1arg',
                           label=_('hollow line'),
                           prim_name='hollow_line',
-                          default=[30, None], #originale era solo 10, ma è sbagliato
-                          #logo_command='forward_hollow',
-                          help_string=_('draws the block inside with a thickness equal to what it is specified, default 30' )
-                        )
+                          # originale era solo 10, ma è sbagliato
+                          default=[30, None],
+                          # logo_command='forward_hollow',
+                          help_string=_(
+                              'draws the block inside with a thickness equal to what it is specified, default 30')
+                          )
 
         self.tw.lc.def_prim(
             'hollow_line', 2,
             Primitive(self.tw.lc.hollow_line,
-                      arg_descs=[ArgSlot(TYPE_NUMBER), ArgSlot(TYPE_OBJECT,call_arg=False)]),
+                      arg_descs=[ArgSlot(TYPE_NUMBER), ArgSlot(TYPE_OBJECT, call_arg=False)]),
             rprim=True)
-
 
         palette.add_block('back',
                           style='basic-style-1arg',
@@ -204,7 +202,6 @@ class Palettes():
             Primitive(Turtle.backward_wrapper,
                       arg_descs=[ArgSlot(TYPE_NUMBER)],
                       call_afterwards=self.after_move))
-
 
         palette.add_block('clean',
                           style='basic-style-extended-vertical',
@@ -271,8 +268,6 @@ degrees)'))
                       call_afterwards=self.after_arc))
         define_logo_function('taarc', 'to taarc :a :r\nrepeat round :a \
 [right 1 forward (0.0175 * :r)]\nend\n')
-
-
 
         palette.add_block('setxy2',
                           style='basic-style-2arg',
