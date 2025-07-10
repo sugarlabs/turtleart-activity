@@ -1,0 +1,2256 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-03-24 17:39+1100\n"
+"PO-Revision-Date: 2017-09-25 00:28+0000\n"
+"Last-Translator: Chris <cjl@sugarlabs.org>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: gug\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Pootle 2.5.1.1\n"
+"X-POOTLE-MTIME: 1506299314.000000\n"
+
+#: activity/activity.info:2
+msgid "TurtleBlocks"
+msgstr "tortublock kuera"
+
+#: TurtleArtActivity.py:127
+msgid "Please wait"
+msgstr "﻿Rehe pytyvõ oha'arõ"
+
+#: TurtleArtActivity.py:128
+msgid "Starting connection..."
+msgstr "iniciando joapy . . ."
+
+#: TurtleArtActivity.py:282
+msgid "Export as python"
+msgstr "﻿Mondo akaru python"
+
+#: TurtleArtActivity.py:283
+msgid "Error: You must use a Start Block when exporting to Python."
+msgstr ""
+"error: ova'erã kuera puru peteĩ bloque empezar ave omondo kuera pythonpe."
+
+#: TurtleArtActivity.py:414
+msgid "snapshot"
+msgstr "instantánea"
+
+#: TurtleArtActivity.py:459 TurtleArtActivity.py:816 TurtleArtActivity.py:966
+msgid "Turn off hover help"
+msgstr "﻿Deshabilitar oipytyvõ ovevúiva"
+
+#: TurtleArtActivity.py:468 TurtleArt/turtleblocks.py:482
+msgid "Turn on hover help"
+msgstr "﻿ mbosako'i oipytyvõ ovevúiva  "
+
+#: TurtleArtActivity.py:478 TurtleArt/turtleblocks.py:496
+msgid "Show palette"
+msgstr "﻿ hechauka paleta "
+
+#: TurtleArtActivity.py:484 TurtleArtActivity.py:1180
+#: TurtleArt/turtleblocks.py:498
+msgid "Hide palette"
+msgstr "﻿ mo'ã paleta "
+
+#: TurtleArtActivity.py:526 TurtleArtActivity.py:880
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1347
+#: TurtleArt/talogo.py:442
+msgid "Show blocks"
+msgstr "﻿ hechauka bloque kuera "
+
+#: TurtleArtActivity.py:530 TurtleArtActivity.py:1192 TurtleArt/talogo.py:446
+msgid "Hide blocks"
+msgstr "﻿ mo'ã bloque kuera "
+
+#: TurtleArtActivity.py:652
+msgid "Rescale coordinates down"
+msgstr "﻿ jupijupi coordenada kuera kotyo yvýpe "
+
+#: TurtleArtActivity.py:661 TurtleArtActivity.py:807 TurtleArtActivity.py:962
+msgid "Rescale coordinates up"
+msgstr "﻿ jupijupi coordenada kuera kotyo yvate "
+
+#: TurtleArtActivity.py:757 TurtleArtActivity.py:873 TurtleArtActivity.py:936
+#: TurtleArt/turtleblocks.py:493
+msgid "Edit"
+msgstr "Editar"
+
+#: TurtleArtActivity.py:762 TurtleArtActivity.py:874 TurtleArtActivity.py:954
+#: TurtleArt/turtleblocks.py:484
+msgid "View"
+msgstr "hecha "
+
+#: TurtleArtActivity.py:784 TurtleArtActivity.py:937
+#: TurtleArt/turtleblocks.py:487
+msgid "Copy"
+msgstr "kopia "
+
+#: TurtleArtActivity.py:786 TurtleArtActivity.py:938
+#: TurtleArt/turtleblocks.py:488
+msgid "Paste"
+msgstr "nupã "
+
+#: TurtleArtActivity.py:788
+msgid "Restore blocks from trash"
+msgstr "﻿ restaura bloque kuera papelera "
+
+#: TurtleArtActivity.py:791 TurtleArtActivity.py:939
+#: TurtleArt/turtleblocks.py:489 TurtleArt/tawindow.py:1514
+msgid "Save stack"
+msgstr "﻿ ñongatu aty "
+
+#: TurtleArtActivity.py:793 TurtleArt/turtleblocks.py:491
+#: TurtleArt/tawindow.py:1553 TurtleArt/tawindow.py:1561
+#: TurtleArt/tawindow.py:1570
+msgid "Delete stack"
+msgstr "﻿ mbogue aty "
+
+#: TurtleArtActivity.py:796 TurtleArtActivity.py:955
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:961
+msgid "Fullscreen"
+msgstr "﻿ tenda jepyso ohechaukáva ta'anga ojapopa "
+
+#: TurtleArtActivity.py:799 TurtleArtActivity.py:956
+#: TurtleArt/turtleblocks.py:468
+msgid "Cartesian coordinates"
+msgstr "﻿ coordenada kuera cartesiana kuera "
+
+#: TurtleArtActivity.py:801 TurtleArtActivity.py:958
+#: TurtleArt/turtleblocks.py:470
+msgid "Polar coordinates"
+msgstr "﻿ coordenada kuera polar kuera "
+
+#: TurtleArtActivity.py:804 TurtleArtActivity.py:960
+msgid "Metric coordinates"
+msgstr "﻿ coordenada kuera centímetro kuera "
+
+#: TurtleArtActivity.py:810 TurtleArtActivity.py:964
+#: TurtleArt/turtleblocks.py:475
+msgid "Grow blocks"
+msgstr "﻿ mbotuicha bloque kuera "
+
+#: TurtleArtActivity.py:813 TurtleArtActivity.py:965
+#: TurtleArt/turtleblocks.py:477
+msgid "Shrink blocks"
+msgstr "﻿ empequeñecer bloque kuera "
+
+#: TurtleArtActivity.py:843 TurtleArtActivity.py:881 TurtleArtActivity.py:1146
+msgid "Load example"
+msgstr "﻿ hupi techapyrã kuera "
+
+#: TurtleArtActivity.py:872 TurtleArtActivity.py:899
+msgid "Save/Load"
+msgstr "Guardar/Cargar"
+
+#: TurtleArtActivity.py:875
+msgid "Project"
+msgstr "Proyecto"
+
+#: TurtleArtActivity.py:876 TurtleArtActivity.py:1186
+#: TurtleArt/turtleblocks.py:505
+msgid "Clean"
+msgstr "﻿ mopotĩ "
+
+#: TurtleArtActivity.py:877 TurtleArtActivity.py:1188
+#: TurtleArt/turtleblocks.py:506
+msgid "Run"
+msgstr "﻿ japo "
+
+#: TurtleArtActivity.py:878 TurtleArtActivity.py:1190
+#: TurtleArt/turtleblocks.py:507
+msgid "Step"
+msgstr "﻿ me'ẽ peteĩ ahasa "
+
+#: TurtleArtActivity.py:879
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1356
+#: TurtleArt/talogo.py:432 TurtleArt/tawindow.py:1269
+msgid "Stop turtle"
+msgstr "﻿ pyta karumbe "
+
+#: TurtleArtActivity.py:882 TurtleArt/turtleblocks.py:517
+#: TurtleArt/util/helpbutton.py:44
+msgid "Help"
+msgstr "oipytyvõ "
+
+#: TurtleArtActivity.py:883 TurtleArt/turtleblocks.py:509
+msgid "Stop"
+msgstr "pyta "
+
+#: TurtleArtActivity.py:898 TurtleArt/tawindow.py:2048
+#: TurtleArt/tacollaboration.py:154
+msgid "Share selected blocks"
+msgstr "﻿ mboja'o bloque kuera seleccionado kuera "
+
+#: TurtleArtActivity.py:900 TurtleArtActivity.py:1103
+msgid "Save as image"
+msgstr "﻿ ñongatu akaru ta'anga "
+
+#: TurtleArtActivity.py:903 TurtleArtActivity.py:1106
+msgid "Save as icon"
+msgstr "﻿ ñongatu akaru icono "
+
+#. TRANS: ODP is Open Office presentation
+#: TurtleArtActivity.py:908 TurtleArtActivity.py:1110
+msgid "Save as ODP"
+msgstr "﻿ ñongatu akaru odp "
+
+#: TurtleArtActivity.py:913 TurtleArtActivity.py:1121
+msgid "Save as Logo"
+msgstr "﻿ ñongatu akaru logo "
+
+#: TurtleArtActivity.py:914 TurtleArtActivity.py:1124
+msgid "Save as Python"
+msgstr "﻿ ñongatu akaru python "
+
+#: TurtleArtActivity.py:915 TurtleArtActivity.py:1128
+msgid "Save snapshot"
+msgstr "﻿ ñongatu instantánea "
+
+#: TurtleArtActivity.py:916 TurtleArtActivity.py:1155
+#: TurtleArt/turtleblocks.py:438
+msgid "Add project"
+msgstr "﻿ mbojo'a proyecto "
+
+#: TurtleArtActivity.py:919 TurtleArtActivity.py:1160
+#: TurtleArt/turtleblocks.py:439
+msgid "Load plugin"
+msgstr "﻿ hupi plugin "
+
+#: TurtleArtActivity.py:920 TurtleArtActivity.py:1163
+msgid "Load Python block"
+msgstr "﻿ hupi bloque python "
+
+#: TurtleArtActivity.py:1075
+msgid "Palettes"
+msgstr "﻿ paleta kuera "
+
+#: TurtleArtActivity.py:1093
+msgid "Sharing blocks disabled"
+msgstr "﻿ mboja'o bloque kuera deshabilitado "
+
+#: TurtleArtActivity.py:1098 TurtleArt/turtleblocks.py:441
+msgid "Save"
+msgstr "ñongatu "
+
+#: TurtleArtActivity.py:1131
+msgid "Save blocks as image"
+msgstr "﻿ ñongatu bloque kuera akaru ta'anga "
+
+#: TurtleArtActivity.py:1135
+msgid "Load"
+msgstr "﻿ hupi "
+
+#: TurtleArtActivity.py:1152 TurtleArt/turtleblocks.py:437
+msgid "Open"
+msgstr "mboty'o "
+
+#: TurtleArtActivity.py:1181
+msgid "<Ctrl>p"
+msgstr "<Ctrl>p"
+
+#: TurtleArtActivity.py:1186
+msgid "<Ctrl>e"
+msgstr "<Ctrl>e"
+
+#: TurtleArtActivity.py:1188
+msgid "<Ctrl>r"
+msgstr "<Ctrl>r"
+
+#: TurtleArtActivity.py:1190
+msgid "<Ctrl>w"
+msgstr "<Ctrl>w"
+
+#: TurtleArtActivity.py:1193
+msgid "<Ctrl>s"
+msgstr "<Ctrl>s"
+
+#: TurtleArtActivity.py:1379
+#, python-format
+msgid "Plugin %s already installed."
+msgstr "﻿ pe plugin %s kuera ojeojuhu instalado. ma "
+
+#: TurtleArtActivity.py:1380 TurtleArt/turtleblocks.py:591
+#, python-format
+msgid "Do you want to reinstall %s?"
+msgstr "﻿¿oipota reinstalar %s kuera? "
+
+#: gnome_plugins/collaboration_plugin.py:64
+msgid "My Turtle Art session"
+msgstr "﻿ che sesión tortugarte mba'e "
+
+#: gnome_plugins/collaboration_plugin.py:111
+msgid "Enable collaboration"
+msgstr "﻿ moneĩ pe ñepytyvõ "
+
+#: gnome_plugins/collaboration_plugin.py:116
+msgid "Activities"
+msgstr "﻿ actividade kuera "
+
+#: gnome_plugins/collaboration_plugin.py:121
+msgid "Buddies"
+msgstr "﻿ angirũ kuera "
+
+#: gnome_plugins/collaboration_plugin.py:124
+msgid "Share"
+msgstr "mboja'o "
+
+#: gnome_plugins/collaboration_plugin.py:125
+msgid "Configuration"
+msgstr "Configuración"
+
+#: gnome_plugins/collaboration_plugin.py:128
+msgid "Neighborhood"
+msgstr "amandaje "
+
+#: gnome_plugins/collaboration_plugin.py:289
+msgid "Nickname"
+msgstr "hero "
+
+#: gnome_plugins/collaboration_plugin.py:291
+msgid "Account ID"
+msgstr "﻿ jepaga arã kuatia "
+
+#: gnome_plugins/collaboration_plugin.py:293
+msgid "Server"
+msgstr "Servidor"
+
+#: gnome_plugins/collaboration_plugin.py:295
+msgid "Port"
+msgstr "﻿ ygarupa "
+
+#: gnome_plugins/collaboration_plugin.py:297
+msgid "Password"
+msgstr "Contraseña"
+
+#: gnome_plugins/collaboration_plugin.py:299
+msgid "Register"
+msgstr "﻿ téra ryru "
+
+#: gnome_plugins/collaboration_plugin.py:301
+msgid "Colors"
+msgstr "﻿ sa'y kuera "
+
+#: gnome_plugins/fb_plugin.py:82 gnome_plugins/fb_plugin.py:83
+#: gnome_plugins/fb_plugin.py:91 gnome_plugins/uploader_plugin.py:63
+#: gnome_plugins/uploader_plugin.py:64 gnome_plugins/uploader_plugin.py:73
+msgid "Upload"
+msgstr "hupi"
+
+#: gnome_plugins/fb_plugin.py:87
+msgid "Facebook wall post"
+msgstr "﻿ okyke facebook mba'e"
+
+#: gnome_plugins/uploader_plugin.py:68
+msgid "Upload to Web"
+msgstr "﻿ mondo lape web "
+
+#: gnome_plugins/uploader_plugin.py:90
+msgid ""
+"You must have an account at http://turtleartsite.sugarlabs.org to upload "
+"your project."
+msgstr ""
+"ova'erã mombe'u peteĩ ndive jepaga arã kuatia http://turtleartsite.sugarlab "
+"kuera.org opyta guejy iproyecto me/pe"
+
+#: gnome_plugins/uploader_plugin.py:99
+msgid "Username:"
+msgstr "oiporúva peteĩ mba'e "
+
+#: gnome_plugins/uploader_plugin.py:109
+msgid "Password:"
+msgstr "Contraseña"
+
+#: gnome_plugins/uploader_plugin.py:120
+msgid "Title:"
+msgstr "Contraseña"
+
+#: gnome_plugins/uploader_plugin.py:130
+msgid "Description:"
+msgstr "﻿ descripción: "
+
+#: gnome_plugins/uploader_plugin.py:140
+msgid "Submit to Web"
+msgstr "Enviar a la Web"
+
+#: gnome_plugins/uploader_plugin.py:144 TurtleArt/tawindow.py:1518
+#: TurtleArt/tawindow.py:1557
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: gnome_plugins/uploader_plugin.py:172
+msgid "Login failed"
+msgstr "﻿ jejavy autentificación mba'e "
+
+#: gnome_plugins/uploader_plugin.py:209
+msgid "Failed to upload!"
+msgstr "﻿ jejavy pe mboguejy ! "
+
+#: pyexported/window_setup.py:39
+msgid ""
+"The path to the TurtleArt installation must be listed in the environment "
+"variable PYTHONPATH."
+msgstr ""
+"La ruta a la instalación de TurtleArt debe estar listada en la variable de "
+"entorno PYTHONPATH."
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:72
+#: TurtleArt/tabasics.py:926
+msgid "Palette of flow operators"
+msgstr "﻿ paleta operador kuera mba'e syry "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:76
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:79
+msgid "while"
+msgstr "jave "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:80
+msgid "do-while-True operator that uses boolean operators from Numbers palette"
+msgstr ""
+"﻿ ojeojapo pe serie accion kuera mba'e siguiente kuera pe bloque jave "
+"ojecumpla pe teko fijada pe ñepyrũ ete gua "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:97
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:100
+msgid "until"
+msgstr "peve "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:101
+msgid "do-until-True operator that uses boolean operators from Numbers palette"
+msgstr ""
+"﻿ ojeojapo pe serie bloque kuera mba'e siguiente kuera peve hina ojecumpla "
+"pe teko "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:121
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:854
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1071
+msgid "top"
+msgstr "﻿ tu'ã "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:123
+msgid "top of a collapsible stack"
+msgstr "﻿ tu'ã peteĩ mba'e aty plegable "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:133
+#: plugins/camera_sensor/camera_sensor.py:71
+msgid "Palette of media objects"
+msgstr "﻿ paleta bloque kuera mba'e amombyte kuera "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:135
+msgid "media"
+msgstr "﻿ amombyte kuera "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:141
+msgid "journal"
+msgstr "﻿ kuatiahaipyre "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:142
+msgid "Sugar Journal media object"
+msgstr "﻿ mba'e amombyte kuera mba'e kuatiahaipyre gua sugar "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:153
+msgid "audio"
+msgstr "audio"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:155
+msgid "Sugar Journal audio object"
+msgstr "﻿ mba'e audio mba'e kuatiahaipyre gua sugar "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:166
+msgid "video"
+msgstr "video"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:168
+msgid "Sugar Journal video object"
+msgstr "﻿ mba'e video mba'e kuatiahaipyre gua sugar "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:179
+msgid "description"
+msgstr "﻿ ñemombe'upaite "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:181
+msgid "Sugar Journal description field"
+msgstr "﻿ ñu ñemombe'upaite mba'e kuatiahaipyre gua sugar "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:190
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:191
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:192
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:198
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:213
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:921
+#: TurtleArt/taconstants.py:452
+msgid "text"
+msgstr "texto"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:193
+msgid "string value"
+msgstr "﻿ py'aguasu itasã mba'e "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:197
+msgid "show"
+msgstr "hechauka "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:201
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:216
+msgid "draws text or show media from the Journal"
+msgstr "﻿ ha'ãngahai texto o hechauka amombyte kuera guive pe kuatiahaipyre "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:212
+msgid "show aligned"
+msgstr "﻿ hechauka mbohysýiva/papyre kuera "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:225
+msgid "set scale"
+msgstr "﻿ moĩ jupijupíva "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:229
+msgid "sets the scale of media"
+msgstr "﻿ moĩ pe jupijupíva amombyte kuera mba'e "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:239
+msgid "set font"
+msgstr "﻿ establecer fuente "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:242
+msgid "sets the font used by the show block"
+msgstr "﻿ establece pe fuente porupyre rehe pe bloque hechauka "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:249
+msgid "save picture"
+msgstr "﻿ ñongatu ta'anga "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:251
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:262
+msgid "picture name"
+msgstr "﻿ téra ta'anga "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:252
+msgid "saves a picture to the Sugar Journal"
+msgstr "﻿ oñongatu peteĩ ta'anga pe kuatiahaipyre asuka mba'e me/pe "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:260
+msgid "save SVG"
+msgstr "﻿ téra ta'anga "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:263
+msgid "saves turtle graphics as an SVG file in the Sugar Journal"
+msgstr ""
+"﻿ oñongatu gráfico kuera karumbe akaru peteĩ ñongatuha svg pe kuatiahaipyre "
+"asuka mba'e me/pe "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:272
+msgid "scale"
+msgstr "jupijupíva "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:276
+msgid "holds current scale value"
+msgstr "﻿ omongaru pe py'aguasu ko'ãgagua jupijupíva "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:283
+msgid "media wait"
+msgstr "﻿ ha'arõ amombyte kuera "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:285
+msgid "wait for current video or audio to complete"
+msgstr "﻿ ﻿ ha'arõ amombyte kuera "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:291
+msgid "media stop"
+msgstr "﻿ pyta amombyte kuera "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:293
+msgid "stop video or audio"
+msgstr "﻿ pyta amombyte kuera "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:298
+msgid "media pause"
+msgstr "﻿ pausar amombyte kuera "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:300
+msgid "pause video or audio"
+msgstr "﻿ pa'ũ pe video o audio "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:305
+msgid "media resume"
+msgstr "﻿ japo mante amombyte kuera "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:307
+msgid "resume playing video or audio"
+msgstr "﻿ reanudar pe reproducción video mba'e o audio "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:312
+msgid "speak"
+msgstr "ñe'ẽ "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:314
+msgid "hello"
+msgstr "﻿ maitei "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:315
+msgid "speaks text"
+msgstr "﻿ he'i texto "
+
+#. TRANS: pitch, duration, amplitude
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:323
+msgid "sinewave"
+msgstr "﻿ sinusoide "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:323
+#: plugins/audio_sensors/audio_sensors.py:126
+msgid "pitch"
+msgstr "frecuencia"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:324
+msgid "amplitude"
+msgstr "amplitud "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:324
+msgid "duration"
+msgstr "duración "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:327
+msgid "plays a sinewave at frequency, amplitude, and duration (in seconds)"
+msgstr ""
+"﻿ reproduce peteĩ sinusoide guive frecuencia, amplitud ha duración ( "
+"mokõiha-2-/aravo'ive kuera) me/pe "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:339
+#: plugins/camera_sensor/camera_sensor.py:67 plugins/rfid/rfid.py:87
+#: plugins/accelerometer/accelerometer.py:50
+#: plugins/light_sensor/light_sensor.py:52
+#: plugins/audio_sensors/audio_sensors.py:84
+msgid "Palette of sensor blocks"
+msgstr "﻿ paleta bloque kuera mba'e sensor "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:341
+msgid "sensor"
+msgstr "sensor "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:346
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:357
+msgid "button down"
+msgstr "﻿ votõ presionado "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:349
+msgid "returns 1 if mouse button is pressed"
+msgstr "retorna 1 si el botón del ratón está presionado"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:360
+msgid "returns True if mouse button is pressed"
+msgstr "retorna 1 si el botón del ratón está presionado"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:368
+msgid "mouse x"
+msgstr "﻿ cursor x "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:371
+msgid "returns mouse x coordinate"
+msgstr "﻿ omyengovia pe coordenada x cursorgua "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:379
+msgid "mouse y"
+msgstr "﻿ cursor ha "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:382
+msgid "returns mouse y coordinate"
+msgstr "﻿ retorna pe coordenada ha cursorgua "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:390
+msgid "query keyboard"
+msgstr "﻿ ñeporandu teclado mba'e "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:392
+msgid "query for keyboard input (results stored in keyboard block)"
+msgstr ""
+"﻿ ñeporandu opyta pe jeikeha teclado mba'e ( resultado kuera peĩme "
+"almacenado kuera pe bloque tecladogua ) me/pe "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:400
+msgid "keyboard"
+msgstr "teclado"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:404
+msgid "holds results of query-keyboard block as ASCII"
+msgstr ""
+"﻿ contiene resultado kuera bloquegua ñeporandu mba'e teclado akaru ascii "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:412
+msgid "read pixel"
+msgstr "﻿ moñe'ẽ pixel "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:415
+msgid "RGB color under the turtle is pushed to the stack"
+msgstr "﻿ ojeomondo lape aty pe sa'y rgb aguejy pe karumbe "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:422
+msgid "turtle sees"
+msgstr "﻿ pe karumbe ohecha "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:425
+msgid "returns the color that the turtle \"sees\""
+msgstr "muestra el color que \"ve\" la tortuga"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:434
+msgid "time"
+msgstr "﻿ ára "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:437
+msgid "elapsed time (in seconds) since program started"
+msgstr ""
+"﻿ pe ára transcurrido ( mokõiha-2-/aravo'ive kuera) guive pe inicio jejaporã "
+"gua me/pe "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:462
+msgid "Palette of extra options"
+msgstr " paleta opcion kuera mba'e adicionale kuera"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:464
+msgid "extras"
+msgstr " extra kuera"
+
+#. TRANS: push adds a new item to the program stack
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:469
+msgid "push"
+msgstr "mbojo'a"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:472
+msgid "pushes value onto FILO (first-in last-out heap)"
+msgstr "ombyaty pe py'aguasu pe aty (peteĩha hasa , pahague se me/pe"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:484
+msgid "show heap"
+msgstr "﻿ hechauka aty "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:487
+msgid "shows values in FILO (first-in last-out heap)"
+msgstr "﻿ techarã py'aguasu kuera pe aty (peteĩha hasa , pahague se ) me/pe "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:499
+msgid "empty heap"
+msgstr "﻿ monandi aty "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:502
+msgid "emptys FILO (first-in-last-out heap)"
+msgstr "﻿ ﻿ nandi tai 'p' réra aty (peteĩha hasa , pahagueoje ) me/pe "
+
+#. TRANS: pop removes a new item from the program stack
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:513
+msgid "pop"
+msgstr "﻿ nohẽ "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:517
+msgid "pops value off FILO (first-in last-out heap)"
+msgstr "﻿ onohẽ pe py'aguasu aty (peteĩha hasa , pahague se ) me/pe "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:529
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:585
+msgid "empty heap?"
+msgstr "﻿ aty nandi ? "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:532
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:588
+msgid "returns True if heap is empty"
+msgstr "﻿ omyengovia ete pe aty oĩ nandi rõ "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:544
+msgid "save heap to file"
+msgstr "﻿ omyengovia ete pe aty oĩ nandi rõ "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:545
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:559
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:573
+msgid "filename"
+msgstr "﻿ téra ñongatuha mba'e "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:547
+msgid "saves FILO (first-in last-out heap) to a file"
+msgstr "﻿ oñongatu pe aty (peteĩha hasa , pahague se ) unpe ñongatuha me/pe "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:558
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:566
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:572
+msgid "load heap from file"
+msgstr "﻿ hupi aty ñongatuha mba'e "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:561
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:567
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:575
+msgid "loads FILO (first-in last-out heap) from a file"
+msgstr ""
+"﻿ ohupi peteĩ aty (peteĩha hasa , pahague se ) guive peteĩ ñongatuha me/pe "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:600
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:602
+msgid "comment"
+msgstr "comentar"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:604
+msgid "places a comment in your code"
+msgstr "﻿ omoĩ peteĩ comentario nde código me/pe"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:611
+msgid "print"
+msgstr "﻿ imprimir "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:615
+msgid "prints value in status block at bottom of the screen"
+msgstr ""
+"﻿ imprime pe py'aguasu pe bloque pokatuenda mba'e pe osẽ inferior tenda "
+"jepyso ohechaukáva ta'anga me/pe "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:626
+msgid "Python chr operator"
+msgstr "Operador chr de Python"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:636
+msgid "Python int operator"
+msgstr "﻿ operador int python mba'e "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:646
+msgid "polar"
+msgstr "﻿ polar "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:648
+msgid "displays polar coordinates"
+msgstr "﻿ techarã coordenada kuera polar kuera "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:654
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:669
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:685
+#: TurtleArt/turtleblocks.py:462
+msgid "Python"
+msgstr "﻿ python "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:658
+msgid ""
+"a programmable block: used to add advanced single-variable math equations, e."
+"g., sin(x)"
+msgstr ""
+"﻿ peteĩ bloque programable: puruva/papyre opyta mbojo'a ecuacion kuera "
+"matemática kuera avanzada kuera peteĩ mba'e hendave'ỹ , p.e. , pyti´a (x) "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:673
+msgid ""
+"a programmable block: used to add advanced multi-variable math equations, e."
+"g., sqrt(x*x+y*y)"
+msgstr ""
+"peteĩ bloque programable: puruva/papyre opyta mbojo'a ecuacion kuera "
+"matemática kuera avanzada kuera hetaichagua kuera mba'e hendave'ỹ kuera, "
+"i.e. , sqrt(x*x ha "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:689
+msgid ""
+"a programmable block: used to add advanced multi-variable math equations, e."
+"g., sin(x+y+z)"
+msgstr ""
+"peteĩ bloque programable: puruva/papyre opyta mbojo'a ecuacion kuera "
+"matemática kuera avanzada kuera multivariable kuera, p.e. pyti´a (x ha z) "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:699
+msgid "Cartesian"
+msgstr "Cartesiana"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:701
+msgid "displays Cartesian coordinates"
+msgstr "techarã coordenada kuera cartesiana kuera"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:710
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:727
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:744
+msgid "Python block"
+msgstr "bloque Python"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:712
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:729
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:747
+msgid "runs code found in the tamyblock.py module found in the Journal"
+msgstr ""
+"﻿ ojapo pe código pehẽngue gua tamyblock.py hina ojeojuhu pe kuatiahaipyre "
+"me/pe"
+
+#. TRANS: URL is universal resource locator
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:763
+msgid "URL"
+msgstr "URL"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:768
+msgid "gets a text string or an image from a URL"
+msgstr "ohupytu peteĩ itasã texto mba'e o peteĩ ta'anga guive peteĩ url "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:778
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:788
+msgid "turtle shell"
+msgstr "apekue karumbe"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:780
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:789
+msgid "put a custom 'shell' on the turtle"
+msgstr "pone peteĩ apekue personalizada lape karumbe"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:793
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:862
+#: TurtleArt/tabasics.py:159
+msgid "turtle"
+msgstr "karumbe"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:797
+msgid "chooses which turtle to command"
+msgstr "﻿ oiporavo pe karumbe ordenarpe"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:804
+msgid "turtle x"
+msgstr "karumbe x"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:807
+msgid "Returns x coordinate of turtle"
+msgstr " omyengovia pe coordenada x karumbe"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:816
+msgid "turtle y"
+msgstr "karumbe y"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:819
+msgid "Returns y coordinate of turtle"
+msgstr "omyengovia pe coordenada ha karumbe"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:828
+msgid "active turtle"
+msgstr " karumbe activa"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:831
+msgid "the name of the active turtle"
+msgstr "téra karumbe activa"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:839
+msgid "turtle heading"
+msgstr "﻿ rumbo karumbe "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:842
+msgid "Returns heading of turtle"
+msgstr "﻿ omyengovia pe rumbo karumbe "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:852
+#: TurtleArt/tautils.py:638
+msgid "click to open"
+msgstr "﻿ clic opyta mboty'o "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:855
+msgid "top of a collapsed stack"
+msgstr "﻿ tu'ã peteĩ mba'e aty colapsada "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:860
+msgid "select palette"
+msgstr "seleccionar paleta"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:863
+msgid "selects a palette"
+msgstr "﻿ selecciona peteĩ paleta "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:871
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:883
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:897
+msgid "load"
+msgstr "﻿ hupi "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:873
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:886
+#: TurtleArt/tabasics.py:163
+msgid "forward"
+msgstr "﻿ tenonde "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:874
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:887
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:901
+msgid "loads a block"
+msgstr "﻿ ohupi peteĩ bloque "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:900
+msgid "setxy"
+msgstr "﻿ moĩ xy "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:912
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:918
+msgid "index"
+msgstr "índice "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:913
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:923
+msgid "return the text of the positions"
+msgstr "﻿ omyengovia pe texto mba'e posicion kuera "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:918
+msgid "string"
+msgstr "itasã "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:919
+#: pysamples/grecord.py:212 TurtleArt/tabasics.py:1055
+msgid "start"
+msgstr "﻿ empezar "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:919
+msgid "end"
+msgstr "paha "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:936
+msgid "Palette of presentation templates"
+msgstr "﻿ paleta plantilla kuera mba'e presentacion kuera "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:939
+msgid "portfolio"
+msgstr "voko "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:943
+msgid "hide blocks"
+msgstr "﻿ mo'ã bloque kuera "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:945
+msgid "declutters canvas by hiding blocks"
+msgstr "limpia pe lienzo ocultando bloque kuera"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:952
+msgid "show blocks"
+msgstr " hechauka bloque kuera"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:954
+msgid "restores hidden blocks"
+msgstr " restaura bloque kuera amo'ã kuera"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:963
+msgid "hides the Sugar toolbars"
+msgstr "﻿ omo'ã barra kuera tembipuru kuera mba'e asuka "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:973
+msgid "list"
+msgstr "lista"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:977
+msgid "presentation bulleted list"
+msgstr "﻿ presentación lista ndive viñeta kuera mba'e "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:985
+msgid "presentation template: list of bullets"
+msgstr "﻿ plantilla presentación: mba'e lista viñeta kuera "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:992
+msgid "presentation template: select Journal object (no description)"
+msgstr ""
+"﻿ plantilla presentación: mba'e seleccionar mba'e kuatiahaipyre gua ( "
+"ñemombe'upaite ỹre ) "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:999
+msgid "presentation template: select Journal object (with description)"
+msgstr ""
+"﻿ plantilla presentación: mba'e seleccionar mba'e kuatiahaipyre gua ( "
+"ñemombe'upaite ndive ) "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1006
+msgid "presentation template: select four Journal objects"
+msgstr ""
+"﻿ plantilla presentación: mba'e seleccionar irundy mba'e kuera kuatiahaipyre "
+"gua "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1013
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1020
+msgid "presentation template: select two Journal objects"
+msgstr ""
+"﻿ plantilla presentación: mba'e seleccionar irundy mba'e kuera kuatiahaipyre "
+"gua "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1027
+#: TurtleArt/taconstants.py:149 TurtleArt/tabasics.py:210
+msgid "left"
+msgstr "asúpe "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1030
+msgid "xcor of left of screen"
+msgstr "﻿ coorx asúpe tenda jepyso ohechaukáva ta'anga "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1038
+msgid "bottom"
+msgstr "﻿ guy "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1041
+msgid "ycor of bottom of screen"
+msgstr "﻿ coory limitegua inferior tenda jepyso ohechaukáva ta'anga "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1049
+msgid "width"
+msgstr "pytaku "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1052
+msgid "the canvas width"
+msgstr "﻿ pe pyrusu lienzogua "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1060
+#: TurtleArt/taconstants.py:151 TurtleArt/tabasics.py:224
+msgid "right"
+msgstr "akatúa "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1063
+msgid "xcor of right of screen"
+msgstr "﻿ xcor yke gua yvi tenda jepyso ohechaukáva ta'anga "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1074
+msgid "ycor of top of screen"
+msgstr "﻿ ycor limitegua superior tenda jepyso ohechaukáva ta'anga "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1082
+msgid "height"
+msgstr "﻿ yvatekue "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1085
+msgid "the canvas height"
+msgstr "﻿ pe yvatekue lienzogua "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1095
+msgid "title x"
+msgstr "﻿ título x "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1107
+msgid "title y"
+msgstr "título y"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1119
+msgid "left x"
+msgstr "﻿ asúpe x "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1131
+msgid "top y"
+msgstr "﻿ yvate ha "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1143
+msgid "right x"
+msgstr "﻿ akatúa x "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1155
+msgid "bottom y"
+msgstr "﻿ guy ha "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1174
+msgid "Palette of user-defined operators"
+msgstr ""
+"﻿ paleta operacion kuera mba'e definida kuera rehe pe oiporúva peteĩ mba'e "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1175
+msgid "my blocks"
+msgstr "﻿ che bloque kuera "
+
+#: plugins/camera_sensor/camera_sensor.py:90
+#: plugins/camera_sensor/camera_sensor.py:122
+#: plugins/light_sensor/light_sensor.py:58
+#: plugins/light_sensor/light_sensor.py:66
+msgid "brightness"
+msgstr "avera "
+
+#: plugins/camera_sensor/camera_sensor.py:92
+msgid "light level detected by camera"
+msgstr "﻿ yvatekue tendy mba'e detectado rehe pe koty "
+
+#: plugins/camera_sensor/camera_sensor.py:107
+#: plugins/camera_sensor/camera_sensor.py:115
+msgid "camera output"
+msgstr "﻿ ta'anga koty "
+
+#: plugins/camera_sensor/camera_sensor.py:124
+msgid "Average RGB color from camera is pushed to the stack"
+msgstr "﻿ mbytegua sa'y mba'e rgb koty ojeomboyke lape aty "
+
+#: plugins/rfid/rfid.py:93 plugins/rfid/rfid.py:101
+msgid "RFID"
+msgstr "RFID"
+
+#: plugins/rfid/rfid.py:94 plugins/rfid/rfid.py:102
+msgid "read value from RFID device"
+msgstr "﻿ moñe'ẽ pe py'aguasu dispositivogua radiofrecuencia mba'e (rfid) "
+
+#: plugins/accelerometer/accelerometer.py:56
+#: plugins/accelerometer/accelerometer.py:63
+msgid "acceleration"
+msgstr "acelerómetro"
+
+#: plugins/accelerometer/accelerometer.py:58
+#: plugins/accelerometer/accelerometer.py:65
+msgid "push acceleration in x, y, z to heap"
+msgstr "﻿ pone pe aceleración sapáva kuera x, ha z pe aty me/pe "
+
+#: plugins/light_sensor/light_sensor.py:61
+#: plugins/light_sensor/light_sensor.py:69
+msgid "light level detected by light sensor"
+msgstr "﻿ yvatekue tendy mba'e detectado rehe pe sensor "
+
+#: plugins/audio_sensors/audio_sensors.py:93 pysamples/grecord.py:207
+msgid "sound"
+msgstr "pu "
+
+#: plugins/audio_sensors/audio_sensors.py:94
+msgid "raw microphone input signal"
+msgstr "﻿ señal jeikeha mba'e pu mbotuichaha "
+
+#: plugins/audio_sensors/audio_sensors.py:100
+msgid "loudness"
+msgstr "﻿ tuichakue "
+
+#: plugins/audio_sensors/audio_sensors.py:101
+msgid "microphone input volume"
+msgstr "﻿ tuichakue jeikeha mba'e pu mbotuichaha "
+
+#: plugins/audio_sensors/audio_sensors.py:127
+msgid "microphone input pitch"
+msgstr ""
+"﻿ frecuencia componente má kuera intensa pu gua presente pe jeikeha pu "
+"mbotuichaha mba'e me/pe "
+
+#: plugins/audio_sensors/audio_sensors.py:160
+#: plugins/audio_sensors/audio_sensors.py:178
+msgid "resistance"
+msgstr "pyrakuã "
+
+#: plugins/audio_sensors/audio_sensors.py:161
+#: plugins/audio_sensors/audio_sensors.py:179
+msgid "microphone input resistance"
+msgstr ""
+"﻿ py'aguasu pyrakuã conectada lape jeikeha pu mbotuichaha mba'e (teko "
+"medición: 700 14000 ohm kuera) "
+
+#: plugins/audio_sensors/audio_sensors.py:166
+#: plugins/audio_sensors/audio_sensors.py:184
+msgid "voltage"
+msgstr "voltaje"
+
+#: plugins/audio_sensors/audio_sensors.py:167
+#: plugins/audio_sensors/audio_sensors.py:185
+msgid "microphone input voltage"
+msgstr ""
+"﻿ py'aguasu voltajegua dc mbojoapyva/papyre lape jeikeha pu mbotuichaha "
+"mba'e (rango: 0.40 1.90 pundie guaranímeicha ipúva hérava ve ) "
+
+#: pysamples/uturn.py:35
+msgid "uturn"
+msgstr "﻿ jere pu'ae guaranímeicha ipúva me/pe "
+
+#: pysamples/uturn.py:37
+msgid "turns the turtle 180 degrees"
+msgstr "﻿ ojere pe karumbe 180 grado kuera "
+
+#: pysamples/brain.py:43
+msgid "Please install the Speak Activity and try again."
+msgstr "﻿ rehe pytyvõ instala pe actividad ñe'ẽ e intenta pyahu mba'e . "
+
+#: pysamples/brain.py:52
+msgid "Spanish"
+msgstr "﻿ españaygua "
+
+#: pysamples/brain.py:56 pysamples/brain.py:69 pysamples/brain.py:71
+#: pysamples/brain.py:77
+msgid "English"
+msgstr "Inglés"
+
+#: pysamples/brain.py:88
+msgid "Sorry, I can't understand what you are asking about."
+msgstr "﻿ lo siento, nahániri aikatu kũmby reĩme preguntando. va "
+
+#: pysamples/brain.py:97
+msgid ""
+"Sorry, there is no free memory to load my brain. Close other activities and "
+"try once more."
+msgstr ""
+"﻿ lo siento, nahániri oĩ mandu'a sãso opyta hupi che apytu'ũ . cierra otra "
+"kuera actividade kuera e intenta peteĩ jevy má kuera. "
+
+#: pysamples/journal-stats.py:90
+msgid "other"
+msgstr "﻿ ambue kuera "
+
+#: pysamples/forward_push.py:48
+msgid "push destination rgb value to heap"
+msgstr "apila el valor rgb a la pila"
+
+#: pysamples/grecord.py:214
+msgid "stop"
+msgstr "﻿ pyta "
+
+#: pysamples/grecord.py:216
+msgid "play"
+msgstr "reproducir"
+
+#: pysamples/grecord.py:218
+msgid "save"
+msgstr "ñongatu "
+
+#: TurtleArt/talogo.py:604
+msgid "did not output to"
+msgstr "﻿ nahániri pudo hai me/pe "
+
+#: TurtleArt/talogo.py:645 TurtleArt/talogo.py:1059
+msgid "doesn't like"
+msgstr "﻿ nahániri chupe oha'ã "
+
+#: TurtleArt/talogo.py:646 TurtleArt/talogo.py:1060
+msgid "as input"
+msgstr "﻿ akaru jeikeha "
+
+#: TurtleArt/talogo.py:709
+msgid "I don't know how to"
+msgstr "﻿ nahániri aikuaa akaru japo "
+
+#: TurtleArt/turtleblocks.py:106
+msgid "usage is"
+msgstr "﻿ pe jeporu ha'e "
+
+#: TurtleArt/turtleblocks.py:307
+msgid "No option action:"
+msgstr "﻿ tembiapo ỹre alternativa: "
+
+#: TurtleArt/turtleblocks.py:322
+msgid "File not found"
+msgstr "﻿ fichero nahániri juhuva/papyre "
+
+#: TurtleArt/turtleblocks.py:346
+#, python-format
+msgid "Configuration directory not writable: %s"
+msgstr "﻿Directorio configuración mba'e nahániri modificable: %s kuera "
+
+#: TurtleArt/turtleblocks.py:434
+msgid "New"
+msgstr "pyahu "
+
+#: TurtleArt/turtleblocks.py:435
+msgid "Show sample projects"
+msgstr "﻿ hechauka proyecto kuera techapyrã mba'e "
+
+#: TurtleArt/turtleblocks.py:442
+msgid "Save as"
+msgstr "﻿ ñongatu akaru "
+
+#: TurtleArt/turtleblocks.py:446
+msgid "Export as"
+msgstr "﻿ mondo akaru "
+
+#: TurtleArt/turtleblocks.py:449 TurtleArt/tawindow.py:4788
+msgid "image"
+msgstr "﻿ ta'anga "
+
+#: TurtleArt/turtleblocks.py:451
+msgid "image (blocks)"
+msgstr "﻿ ta'anga (bloque kuera) "
+
+#: TurtleArt/turtleblocks.py:453
+msgid "SVG"
+msgstr "SVG"
+
+#: TurtleArt/turtleblocks.py:455 TurtleArt/tawindow.py:4641
+msgid "icon"
+msgstr "icono"
+
+#. TRANS: ODP is Open Office presentation
+#: TurtleArt/turtleblocks.py:458
+msgid "ODP"
+msgstr "odp "
+
+#: TurtleArt/turtleblocks.py:460
+msgid "Logo"
+msgstr "logo "
+
+#: TurtleArt/turtleblocks.py:464
+msgid "Quit"
+msgstr "﻿ se "
+
+#: TurtleArt/turtleblocks.py:465
+msgid "File"
+msgstr "﻿ ñongatuha "
+
+#: TurtleArt/turtleblocks.py:473
+msgid "Rescale coordinates"
+msgstr "﻿ jupijupi coordenada kuera "
+
+#: TurtleArt/turtleblocks.py:479
+msgid "Reset block size"
+msgstr "﻿ restaurar pe jakatuha bloquegua "
+
+#: TurtleArt/turtleblocks.py:500
+msgid "Show/hide blocks"
+msgstr "﻿ mostar/ocultar bloque kuera "
+
+#: TurtleArt/turtleblocks.py:502
+msgid "Tools"
+msgstr "﻿ tembipuru kuera "
+
+#: TurtleArt/turtleblocks.py:508
+msgid "Debug"
+msgstr "﻿ mopotĩ "
+
+#: TurtleArt/turtleblocks.py:510
+msgid "Turtle"
+msgstr "﻿ karumbe "
+
+#: TurtleArt/turtleblocks.py:513
+msgid "Plugins"
+msgstr "﻿ extension kuera "
+
+#: TurtleArt/turtleblocks.py:516
+msgid "About..."
+msgstr "﻿ omboja . . . "
+
+#: TurtleArt/turtleblocks.py:575
+msgid "You have unsaved work. Would you like to save before quitting?"
+msgstr "﻿ oĩ mba'apo ñongatu ỹre . ¿chupe gustaría ñongatu mboyve se mba'e ? "
+
+#: TurtleArt/turtleblocks.py:580
+msgid "Save project?"
+msgstr "﻿ ¿ñongatu pe proyecto? "
+
+#: TurtleArt/turtleblocks.py:590
+#, python-format
+msgid "Plugin %s already installed"
+msgstr "Pe plugin %s kuera oĩ instalado. ma "
+
+#: TurtleArt/turtleblocks.py:736
+msgid "myproject"
+msgstr "﻿ miproyecto "
+
+#: TurtleArt/turtleblocks.py:814 TurtleArt/taplugin.py:89
+#, python-format
+msgid "Please restart %s in order to use the plugin."
+msgstr "Reinicie %s kuera opyta katu puru pe plugin. "
+
+#: TurtleArt/turtleblocks.py:819
+#, python-format
+msgid "Please restart %s in order to unload the plugin."
+msgstr "﻿ reinicie %s kuera opyta katu pe´a pe plugin. "
+
+#: TurtleArt/tapalette.py:103
+msgid "displays next palette"
+msgstr "﻿ ﻿ techarã tai 'p' réra siguiente paleta "
+
+#: TurtleArt/tapalette.py:104
+msgid "changes the orientation of the palette of blocks"
+msgstr "﻿ omoambue pe orientación paleta bloque kuera mba'e "
+
+#: TurtleArt/tapalette.py:144 TurtleArt/tapalette.py:145
+#: TurtleArt/tabasics.py:1262 TurtleArt/tabasics.py:1263
+msgid "trash"
+msgstr "﻿ yty "
+
+#: TurtleArt/taexportpython.py:226
+msgid "block is not exportable"
+msgstr "﻿ pe bloque nahániri ha'e exportable "
+
+#: TurtleArt/taexportpython.py:245
+msgid "error while exporting block"
+msgstr "﻿ jejavy jave ojeexportaba pe bloque "
+
+#: TurtleArt/taprimitive.py:62
+msgid "error in highlighted block"
+msgstr "﻿ jejavy pe bloque resaltado me/pe "
+
+#: TurtleArt/taprimitive.py:64
+msgid "error"
+msgstr "jejavy "
+
+#: TurtleArt/tawindow.py:1151 TurtleArt/tawindow.py:1152
+msgid "orientation"
+msgstr "orientación"
+
+#: TurtleArt/tawindow.py:1166 TurtleArt/tawindow.py:1626
+msgid "next"
+msgstr "siguiente"
+
+#: TurtleArt/tawindow.py:1205 TurtleArt/tawindow.py:1635
+msgid "shift"
+msgstr "mboyke "
+
+#: TurtleArt/tawindow.py:1273
+msgid "Please hit the Stop Button before making changes to your program"
+msgstr ""
+"﻿ rehe pytyvõ , ombopu pe votõ monambi mboyve japo mba'e amoambue kuera tupe "
+"jejaporã "
+
+#: TurtleArt/tawindow.py:1316 TurtleArt/tawindow.py:1430
+#: TurtleArt/tawindow.py:1443 TurtleArt/tawindow.py:2078
+#: TurtleArt/tawindow.py:4934 TurtleArt/tabasics.py:1070
+#: TurtleArt/tabasics.py:1073 TurtleArt/tabasics.py:1086
+#: TurtleArt/tabasics.py:1090 TurtleArt/tabasics.py:1236
+#: TurtleArt/tabasics.py:1240
+msgid "action"
+msgstr "tembiapo "
+
+#: TurtleArt/tawindow.py:1322 TurtleArt/tawindow.py:1469
+#: TurtleArt/tawindow.py:2084 TurtleArt/tawindow.py:4961
+#: TurtleArt/tawindow.py:4988 TurtleArt/tabasics.py:1158
+#: TurtleArt/tabasics.py:1173
+msgid "my box"
+msgstr "﻿ che ryru "
+
+#: TurtleArt/tawindow.py:1337
+msgid "Select blocks to share"
+msgstr "﻿ selecciona bloque kuera opyta mboja'o "
+
+#: TurtleArt/tawindow.py:1515 TurtleArt/tawindow.py:1529
+msgid "Really overwrite stack?"
+msgstr "﻿ ¿oipota sobrescribir pe aty ? "
+
+#: TurtleArt/tawindow.py:1522 TurtleArt/tawindow.py:1532
+msgid "Overwrite stack"
+msgstr "﻿ sobrescribir aty "
+
+#: TurtleArt/tawindow.py:1554 TurtleArt/tawindow.py:1567
+msgid "Really delete stack?"
+msgstr "﻿ ¿oipota eliminar pe aty ? "
+
+#: TurtleArt/tawindow.py:1947 TurtleArt/tabasics.py:1267
+msgid "empty trash"
+msgstr "﻿ monandi papelera "
+
+#: TurtleArt/tawindow.py:1948
+msgid "Do you really want to empty the trash?"
+msgstr "﻿ ¿oipota realmente monandi pe papelera? "
+
+#: TurtleArt/tawindow.py:4285 TurtleArt/tawindow.py:4306
+#, python-format
+msgid "Cannot write data to %s."
+msgstr "﻿ nahániri ojeoikatu hai amoarange kuera pe ñongatuha %s kuera. me/pe "
+
+#: TurtleArt/tawindow.py:4286
+msgid "Please choose a different save directory."
+msgstr "﻿ rehe pytyvõ oiporavo peteĩ carpeta oikoéva opyta ñongatu . "
+
+#: TurtleArt/tawindow.py:4307
+msgid "Please choose a different file name."
+msgstr "﻿ rehe pytyvõ elija peteĩ téra ñongatuha mba'e oikoéva . "
+
+#: TurtleArt/tawindow.py:4415 TurtleArt/tabasics.py:284
+msgid "xcor"
+msgstr "coorx "
+
+#: TurtleArt/tawindow.py:4416 TurtleArt/tabasics.py:299
+msgid "ycor"
+msgstr "coory"
+
+#: TurtleArt/tawindow.py:4416 TurtleArt/tabasics.py:314
+msgid "heading"
+msgstr "rumbo "
+
+#: TurtleArt/tawindow.py:4442 TurtleArt/tawindow.py:4447
+#: TurtleArt/tabasics.py:359 TurtleArt/tabasics.py:373
+#: TurtleArt/tabasics.py:447
+msgid "shade"
+msgstr "tono "
+
+#: TurtleArt/tawindow.py:4443 TurtleArt/tawindow.py:4448
+#: TurtleArt/tabasics.py:373 TurtleArt/tabasics.py:461
+msgid "gray"
+msgstr "﻿ hungy "
+
+#: TurtleArt/tawindow.py:4446 TurtleArt/tabasics.py:359
+#: TurtleArt/tabasics.py:372 TurtleArt/tabasics.py:435
+msgid "color"
+msgstr "﻿ sa'y "
+
+#: TurtleArt/tawindow.py:4516
+msgid "True"
+msgstr "ete "
+
+#: TurtleArt/tawindow.py:4516
+msgid "False"
+msgstr "japu "
+
+#: TurtleArt/tawindow.py:4714
+#, python-format
+msgid "%s blocks image"
+msgstr "﻿%s kuera ta'anga bloque kuera"
+
+#: TurtleArt/tawindow.py:4947 TurtleArt/tabasics.py:1091
+msgid "invokes named action stack"
+msgstr "﻿ invocar pe aty tembiapo mba'e mbohérava/papyre "
+
+#: TurtleArt/tawindow.py:4974 TurtleArt/tabasics.py:1176
+msgid "named variable (numeric value)"
+msgstr "﻿ hendave'ỹ mbohérava/papyre (py'aguasu numérico) "
+
+#: TurtleArt/tawindow.py:4996 TurtleArt/tabasics.py:1154
+msgid "store in"
+msgstr "﻿ ñongatu me/pe "
+
+#: TurtleArt/tawindow.py:4996 TurtleArt/tabasics.py:1154
+msgid "value"
+msgstr "﻿ py'aguasu "
+
+#: TurtleArt/tawindow.py:5001 TurtleArt/tabasics.py:1159
+msgid "stores numeric value in named variable"
+msgstr "﻿ oñongatu py'aguasu numérico pe hendave'ỹ herakuãva me/pe "
+
+#: TurtleArt/taplugin.py:93 TurtleArt/taplugin.py:103 TurtleArt/taplugin.py:105
+msgid "Plugin could not be installed."
+msgstr "﻿ pe plugin nahániri oikatu teko instalado. "
+
+#: TurtleArt/taconstants.py:150
+msgid "up"
+msgstr "﻿ yvate "
+
+#: TurtleArt/taconstants.py:152
+msgid "down"
+msgstr "﻿ yvýpe "
+
+#: TurtleArt/taconstants.py:153
+msgid "backspace"
+msgstr "﻿ retroceso "
+
+#: TurtleArt/taconstants.py:154
+msgid "tab"
+msgstr "tabulador"
+
+#. TRANS: enter is the name of the enter (or return) key
+#: TurtleArt/taconstants.py:156
+msgid "enter"
+msgstr "enter "
+
+#. TRANS: space is the name of the space key
+#: TurtleArt/taconstants.py:159
+msgid "space"
+msgstr "﻿ arapy "
+
+#: TurtleArt/taconstants.py:160
+msgid "delete"
+msgstr "﻿ pe´a "
+
+#: TurtleArt/taconstants.py:473 TurtleArt/taconstants.py:494
+#: TurtleArt/taconstants.py:514 TurtleArt/taconstants.py:555
+#: TurtleArt/taconstants.py:596 TurtleArt/taconstants.py:637
+msgid "Title"
+msgstr "título "
+
+#: TurtleArt/taconstants.py:659
+msgid "banana"
+msgstr "pakova "
+
+#: TurtleArt/tautils.py:313
+msgid "Load..."
+msgstr "﻿ hupi . . . "
+
+#: TurtleArt/tautils.py:323
+msgid "Save..."
+msgstr "﻿ ñongatu . . . "
+
+#: TurtleArt/tabasics.py:158
+msgid "Palette of turtle commands"
+msgstr "﻿ paleta comando kuera mba'e karumbe "
+
+#: TurtleArt/tabasics.py:167
+msgid "moves turtle forward"
+msgstr "﻿ omomyi pe karumbe kotyo tenonde "
+
+#: TurtleArt/tabasics.py:176
+msgid "back"
+msgstr "﻿ tapykuépe "
+
+#: TurtleArt/tabasics.py:180
+msgid "moves turtle backward"
+msgstr "﻿ omomyi pe karumbe kotyo tapykuépe "
+
+#: TurtleArt/tabasics.py:189
+msgid "clean"
+msgstr "mopotĩ "
+
+#: TurtleArt/tabasics.py:192
+msgid "clears the screen and reset the turtle"
+msgstr "﻿ limpia pe tenda jepyso ohechaukáva ta'anga ha restaura pe karumbe "
+
+#: TurtleArt/tabasics.py:214
+msgid "turns turtle counterclockwise (angle in degrees)"
+msgstr "﻿ ojere pe karumbe andupáva anti-horario (takamby grado kuera) me/pe "
+
+#: TurtleArt/tabasics.py:228
+msgid "turns turtle clockwise (angle in degrees)"
+msgstr "﻿ ojere pe karumbe andupáva horario (takamby grado kuera) me/pe "
+
+#: TurtleArt/tabasics.py:238
+msgid "arc"
+msgstr "yvyrapã "
+
+#: TurtleArt/tabasics.py:238
+msgid "angle"
+msgstr "takamby "
+
+#: TurtleArt/tabasics.py:238
+msgid "radius"
+msgstr "﻿ ñe´ẽ mombyry inimbo´ỹre "
+
+#: TurtleArt/tabasics.py:242
+msgid "moves turtle along an arc"
+msgstr "﻿ omomyi pe karumbe lope puku peteĩ mba'e yvyrapã "
+
+#: TurtleArt/tabasics.py:254 TurtleArt/tabasics.py:333
+msgid "set xy"
+msgstr "﻿ moĩ xy "
+
+#: TurtleArt/tabasics.py:254 TurtleArt/tabasics.py:333
+msgid "x"
+msgstr "x"
+
+#: TurtleArt/tabasics.py:254 TurtleArt/tabasics.py:333
+msgid "y"
+msgstr "﻿ ha "
+
+#: TurtleArt/tabasics.py:258 TurtleArt/tabasics.py:337
+msgid ""
+"moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
+msgstr ""
+"﻿ omomyi pe karumbe lape posición xcor, ycor; (0, 0) oĩ pe amombyte tenda "
+"jepyso ohechaukáva ta'anga . me/pe "
+
+#: TurtleArt/tabasics.py:269
+msgid "set heading"
+msgstr "﻿ moĩ rumbo "
+
+#: TurtleArt/tabasics.py:273
+msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
+msgstr ""
+"﻿ omoĩ pe orientación karumbe (0 ha'e kotyo pe osẽ superior tenda jepyso "
+"ohechaukáva ta'anga . ) "
+
+#: TurtleArt/tabasics.py:285
+msgid ""
+"holds current x-coordinate value of the turtle (can be used in place of a "
+"number block)"
+msgstr ""
+"﻿ contiene pe coordenada x ko'ãgagua karumbe (oje oikatu puru jevy peteĩ "
+"mba'e bloque papaha ) me/pe "
+
+#: TurtleArt/tabasics.py:300
+msgid ""
+"holds current y-coordinate value of the turtle (can be used in place of a "
+"number block)"
+msgstr ""
+"﻿ contiene pe coordenada ha ko'ãgagua karumbe (oje oikatu puru jevy peteĩ "
+"mba'e bloque papaha ) me/pe "
+
+#: TurtleArt/tabasics.py:315
+msgid ""
+"holds current heading value of the turtle (can be used in place of a number "
+"block)"
+msgstr ""
+"﻿ contiene pe orientación ko'ãgagua karumbe (oje oikatu puru jevy peteĩ "
+"mba'e bloque papaha ) me/pe "
+
+#: TurtleArt/tabasics.py:353
+msgid "Palette of pen commands"
+msgstr "﻿ paleta órden kuera mba'e pluma "
+
+#: TurtleArt/tabasics.py:354
+msgid "pen"
+msgstr "pluma"
+
+#: TurtleArt/tabasics.py:359 TurtleArt/tabasics.py:372
+msgid "fill screen"
+msgstr "﻿ myenyhe tenda jepyso ohechaukáva ta'anga "
+
+#: TurtleArt/tabasics.py:363 TurtleArt/tabasics.py:377
+msgid "fills the background with (color, shade)"
+msgstr "﻿ rellena pe tugua ndive (sa'y , ã ) "
+
+#: TurtleArt/tabasics.py:390
+msgid "set color"
+msgstr "﻿ moĩ sa'y "
+
+#: TurtleArt/tabasics.py:394
+msgid "sets color of the line drawn by the turtle"
+msgstr "﻿ omoĩ pe sa'y línea hina pe karumbe oha'ãngahai "
+
+#: TurtleArt/tabasics.py:406
+msgid "set shade"
+msgstr "﻿ moĩ tono "
+
+#: TurtleArt/tabasics.py:410
+msgid "sets shade of the line drawn by the turtle"
+msgstr "﻿ omoĩ pe tonalidad linea hina pe karumbe oha'ãngahai "
+
+#: TurtleArt/tabasics.py:421
+msgid "set gray"
+msgstr "﻿ establecer hungy "
+
+#: TurtleArt/tabasics.py:424
+msgid "sets gray level of the line drawn by the turtle"
+msgstr "﻿ establece pe yvatekue hungy mba'e línea dibujada rehe pe karumbe "
+
+#: TurtleArt/tabasics.py:436
+msgid "holds current pen color (can be used in place of a number block)"
+msgstr ""
+"﻿ contiene pe sa'y ko'ãgagua pluma (oje oikatu puru jevy peteĩ mba'e bloque "
+"papaha ) me/pe "
+
+#: TurtleArt/tabasics.py:448
+msgid "holds current pen shade"
+msgstr "﻿ contiene pe tonalidad ko'ãgagua pluma "
+
+#: TurtleArt/tabasics.py:462
+msgid "holds current gray level (can be used in place of a number block)"
+msgstr ""
+"﻿ contiene pe yvatekue ko'ãgagua hungy mba'e (oikatu teko puruva/papyre jevy "
+"peteĩ bloque numérico) me/pe "
+
+#: TurtleArt/tabasics.py:472
+msgid "pen up"
+msgstr "﻿ jupi pluma "
+
+#: TurtleArt/tabasics.py:475
+msgid "Turtle will not draw when moved."
+msgstr "﻿ pe karumbe nahániri oha'ãngahaita ave ojemueva. "
+
+#: TurtleArt/tabasics.py:482
+msgid "pen down"
+msgstr "﻿ guejy pluma "
+
+#: TurtleArt/tabasics.py:485
+msgid "Turtle will draw when moved."
+msgstr "﻿ pe karumbe oha'ãngahaita ave ojemueva. "
+
+#: TurtleArt/tabasics.py:492
+msgid "pen down?"
+msgstr "﻿ ¿pluma oguejy ? "
+
+#: TurtleArt/tabasics.py:494
+msgid "returns True if pen is down"
+msgstr "﻿ omyengovia ete pe pluma oĩ oguejy rõ "
+
+#: TurtleArt/tabasics.py:501
+msgid "set pen size"
+msgstr "﻿ moĩ jakatuha "
+
+#: TurtleArt/tabasics.py:505
+msgid "sets size of the line drawn by the turtle"
+msgstr "﻿ omoĩ pe pyrusu línea hina pe karumbe oha'ãngahai "
+
+#: TurtleArt/tabasics.py:518
+msgid "start fill"
+msgstr "﻿ ñepyrũ rellenarpe "
+
+#: TurtleArt/tabasics.py:520
+msgid "starts filled polygon (used with end fill block)"
+msgstr ""
+"﻿ ñepyrũ rellenarpe pe poligono (puruva/papyre japopa ndive pe relleno "
+"bloquegua ) "
+
+#: TurtleArt/tabasics.py:526
+msgid "end fill"
+msgstr "﻿ japopa relleno "
+
+#: TurtleArt/tabasics.py:528
+msgid "completes filled polygon (used with start fill block)"
+msgstr ""
+"completa el polígono relleno (utilizado con comenzar relleno del bloque)"
+
+#: TurtleArt/tabasics.py:534
+msgid "pen size"
+msgstr "﻿ jakatuha "
+
+#: TurtleArt/tabasics.py:535
+msgid "holds current pen size (can be used in place of a number block)"
+msgstr ""
+"﻿ contiene pe jakatuha ko'ãgagua pluma (oje oikatu puru jevy peteĩ mba'e "
+"bloque papaha ) me/pe "
+
+#: TurtleArt/tabasics.py:554
+msgid "Palette of pen colors"
+msgstr "﻿ paleta sa'y kuera mba'e pluma "
+
+#: TurtleArt/tabasics.py:555
+msgid "colors"
+msgstr "﻿ sa'y kuera "
+
+#: TurtleArt/tabasics.py:560 TurtleArt/tabasics.py:568
+msgid "red"
+msgstr "﻿ pytã "
+
+#: TurtleArt/tabasics.py:560
+msgid "orange"
+msgstr "﻿ narã "
+
+#: TurtleArt/tabasics.py:560
+msgid "yellow"
+msgstr "﻿ sa'yju "
+
+#: TurtleArt/tabasics.py:560 TurtleArt/tabasics.py:568
+msgid "green"
+msgstr "﻿ hovy "
+
+#: TurtleArt/tabasics.py:561
+msgid "cyan"
+msgstr "﻿ cian "
+
+#: TurtleArt/tabasics.py:561 TurtleArt/tabasics.py:568
+msgid "blue"
+msgstr "﻿ hovy "
+
+#: TurtleArt/tabasics.py:561
+msgid "purple"
+msgstr "﻿ ikova/papyre "
+
+#: TurtleArt/tabasics.py:561
+msgid "white"
+msgstr "﻿ morotĩ "
+
+#: TurtleArt/tabasics.py:562
+msgid "black"
+msgstr "﻿ kamba "
+
+#: TurtleArt/tabasics.py:568
+msgid ""
+"RGB to\n"
+"\n"
+"color"
+msgstr ""
+"RGB a\n"
+"\n"
+"color"
+
+#: TurtleArt/tabasics.py:570
+msgid "converter"
+msgstr " ﻿ moambue "
+
+#: TurtleArt/tabasics.py:655
+msgid "Palette of numeric operators"
+msgstr "﻿ paleta operador kuera mba'e numérico kuera "
+
+#: TurtleArt/tabasics.py:656
+msgid "numbers"
+msgstr "﻿ papaha kuera "
+
+#: TurtleArt/tabasics.py:661
+msgid "plus"
+msgstr "sumar"
+
+#: TurtleArt/tabasics.py:665
+msgid "adds two alphanumeric inputs"
+msgstr "﻿ suma mokõi jeikeha kuera alfanumérica kuera "
+
+#: TurtleArt/tabasics.py:684
+msgid "minus"
+msgstr "﻿ mbovyve "
+
+#: TurtleArt/tabasics.py:687
+msgid "subtracts bottom numeric input from top numeric input"
+msgstr "﻿ sustrae pe jeikeha numérica yvýpe mba'e jeikeha numérica yvate "
+
+#: TurtleArt/tabasics.py:705
+msgid "multiply"
+msgstr "﻿ ñembohetave "
+
+#: TurtleArt/tabasics.py:708
+msgid "multiplies two numeric inputs"
+msgstr "﻿ oñembohetave mokõi jeikeha kuera numérica kuera "
+
+#: TurtleArt/tabasics.py:724
+msgid "divide"
+msgstr "﻿ pa'ũndy "
+
+#: TurtleArt/tabasics.py:727
+msgid ""
+"divides top numeric input (numerator) by bottom numeric input (denominator)"
+msgstr ""
+"﻿ opa'ũndy pe jeikeha numérica yvate mba'e (numerador) rehe pe jeikeha "
+"numérica aguejy (denominador) "
+
+#: TurtleArt/tabasics.py:744
+msgid "identity"
+msgstr "rekotee "
+
+#: TurtleArt/tabasics.py:746
+msgid "identity operator used for extending blocks"
+msgstr "﻿ operador rekotee mba'e puruva/papyre opyta myasãi bloque kuera "
+
+#: TurtleArt/tabasics.py:772 TurtleArt/tabasics.py:773
+msgid "mod"
+msgstr "mod"
+
+#: TurtleArt/tabasics.py:776
+msgid "modular (remainder) operator"
+msgstr "﻿ operador módular (resto) "
+
+#: TurtleArt/tabasics.py:784
+msgid "√"
+msgstr "√"
+
+#: TurtleArt/tabasics.py:785
+msgid "square root"
+msgstr "raiz cuadrada"
+
+#: TurtleArt/tabasics.py:788
+msgid "calculates square root"
+msgstr "﻿ calcula pe tapo cuadrada "
+
+#: TurtleArt/tabasics.py:796
+msgid "random"
+msgstr "aleatorio "
+
+#: TurtleArt/tabasics.py:796
+msgid "min"
+msgstr "min"
+
+#: TurtleArt/tabasics.py:796
+msgid "max"
+msgstr "max"
+
+#: TurtleArt/tabasics.py:800
+msgid "returns random number between minimum (top) and maximum (bottom) values"
+msgstr ""
+"﻿ omyengovia peteĩ papaha aleatorio apytépe py'aguasu kuera michĩvéva (yvate "
+") ha tuichaiteve (yvýpe ) "
+
+#: TurtleArt/tabasics.py:822
+msgid "number"
+msgstr "papaha "
+
+#: TurtleArt/tabasics.py:823
+msgid "used as numeric input in mathematic operators"
+msgstr ""
+"﻿ puruva/papyre akaru jeikeha numérica operador kuera matemático kuera me/pe "
+
+#: TurtleArt/tabasics.py:830
+msgid "greater than"
+msgstr "﻿ guasuve hina "
+
+#: TurtleArt/tabasics.py:833
+msgid "logical greater-than operator"
+msgstr "﻿ operador lógico guasuve hina "
+
+#: TurtleArt/tabasics.py:849
+msgid "less than"
+msgstr "﻿ michĩve hina "
+
+#: TurtleArt/tabasics.py:853
+msgid "logical less-than operator"
+msgstr "﻿ operador lógico michĩve hina "
+
+#: TurtleArt/tabasics.py:869
+msgid "equal"
+msgstr "﻿ ha'ete "
+
+#: TurtleArt/tabasics.py:873
+msgid "logical equal-to operator"
+msgstr "﻿ operador lógico joja mba'e "
+
+#: TurtleArt/tabasics.py:888
+msgid "not"
+msgstr "﻿ nahániri "
+
+#: TurtleArt/tabasics.py:891
+msgid "logical NOT operator"
+msgstr "﻿ operador nahániri lógico "
+
+#: TurtleArt/tabasics.py:899 TurtleArt/tabasics.py:902
+msgid "and"
+msgstr "﻿ ha "
+
+#: TurtleArt/tabasics.py:903
+msgid "logical AND operator"
+msgstr "﻿ operador ha lógico "
+
+#: TurtleArt/tabasics.py:911 TurtleArt/tabasics.py:914
+msgid "or"
+msgstr "o"
+
+#: TurtleArt/tabasics.py:915
+msgid "logical OR operator"
+msgstr "operador o lógico"
+
+#: TurtleArt/tabasics.py:927
+msgid "flow"
+msgstr "﻿ syry "
+
+#: TurtleArt/tabasics.py:931
+msgid "wait"
+msgstr "﻿ ha'arõ "
+
+#: TurtleArt/tabasics.py:935
+msgid "pauses program execution a specified number of seconds"
+msgstr ""
+"﻿ omonambi pe jejapo jejaporã gua rehe papaha japoukava/papyre mokõiha-2-/"
+"aravo'ive kuera mba'e "
+
+#: TurtleArt/tabasics.py:944
+msgid "forever"
+msgstr "﻿ rehe tapiã "
+
+#: TurtleArt/tabasics.py:948
+msgid "loops forever"
+msgstr "﻿ ha'ejevy opyta tapiã "
+
+#: TurtleArt/tabasics.py:958 TurtleArt/tabasics.py:962
+msgid "repeat"
+msgstr "ha'ejevy "
+
+#: TurtleArt/tabasics.py:963
+msgid "loops specified number of times"
+msgstr "﻿ repite pe papaha especificado vece kuera mba'e "
+
+#: TurtleArt/tabasics.py:976 TurtleArt/tabasics.py:992
+msgid "if"
+msgstr "﻿ rõ "
+
+#: TurtleArt/tabasics.py:976 TurtleArt/tabasics.py:992
+msgid "then"
+msgstr "﻿ upéicharõ "
+
+#: TurtleArt/tabasics.py:979
+msgid "if then"
+msgstr "﻿ upéicharõ rõ "
+
+#: TurtleArt/tabasics.py:981
+msgid "if-then operator that uses boolean operators from Numbers palette"
+msgstr ""
+"﻿ operador si-entonce kuera hina oipuru operador kuera lógico kuera paleta "
+"papaha kuera mba'e "
+
+#: TurtleArt/tabasics.py:992
+msgid "else"
+msgstr " sino"
+
+#: TurtleArt/tabasics.py:996 TurtleArt/tabasics.py:1009
+msgid "if then else"
+msgstr "﻿ upéicharõ sino rõ "
+
+#: TurtleArt/tabasics.py:997 TurtleArt/tabasics.py:1010
+msgid "if-then-else operator that uses boolean operators from Numbers palette"
+msgstr ""
+"﻿ operador si-entonces-sino hina oipuru operador kuera lógico kuera paleta "
+"papaha kuera mba'e "
+
+#: TurtleArt/tabasics.py:1019
+msgid "horizontal space"
+msgstr "﻿ arapy horizontal "
+
+#: TurtleArt/tabasics.py:1020
+msgid "jogs stack right"
+msgstr "﻿ omboyke pe aty lape akatúa "
+
+#: TurtleArt/tabasics.py:1029
+msgid "vertical space"
+msgstr "﻿ arapy oñembo'ýva "
+
+#: TurtleArt/tabasics.py:1030
+msgid "jogs stack down"
+msgstr "﻿ mboyke pe aty yvýpe "
+
+#: TurtleArt/tabasics.py:1037
+msgid "stop action"
+msgstr "﻿ pyta tembiapo "
+
+#: TurtleArt/tabasics.py:1040
+msgid "stops current action"
+msgstr "﻿ omonambi pe tembiapo ko'ãgagua "
+
+#: TurtleArt/tabasics.py:1050
+msgid "Palette of variable blocks"
+msgstr "﻿ paleta bloque kuera mba'e hendave'ỹ kuera "
+
+#: TurtleArt/tabasics.py:1051
+msgid "blocks"
+msgstr "﻿ bloque kuera "
+
+#: TurtleArt/tabasics.py:1058
+msgid "connects action to toolbar run buttons"
+msgstr ""
+"﻿ ombojoapy pe tembiapo los-pe botones jejapo mba'e barra tembipuru kuera "
+
+#: TurtleArt/tabasics.py:1075
+msgid "top of nameable action stack"
+msgstr "﻿ tu'ã aty tembiapo mba'e nombrable "
+
+#: TurtleArt/tabasics.py:1098
+msgid "store in box 1"
+msgstr "﻿ ñongatu ryru 1 me/pe "
+
+#: TurtleArt/tabasics.py:1103
+msgid "stores numeric value in Variable 1"
+msgstr "﻿ oñongatu py'aguasu numérico pe hendave'ỹ 1 me/pe "
+
+#: TurtleArt/tabasics.py:1112
+msgid "store in box 2"
+msgstr "﻿ ñongatu ryru 2 me/pe "
+
+#: TurtleArt/tabasics.py:1117
+msgid "stores numeric value in Variable 2"
+msgstr "﻿ oñongatu py'aguasu numérico pe hendave'ỹ 2 me/pe "
+
+#: TurtleArt/tabasics.py:1126
+msgid "box 1"
+msgstr "﻿ ryru 1 "
+
+#: TurtleArt/tabasics.py:1129
+msgid "Variable 1 (numeric value)"
+msgstr "﻿ hendave'ỹ 1 (py'aguasu numérico) "
+
+#: TurtleArt/tabasics.py:1139
+msgid "box 2"
+msgstr "﻿ ryru 2 "
+
+#: TurtleArt/tabasics.py:1142
+msgid "Variable 2 (numeric value)"
+msgstr "﻿ hendave'ỹ 2 (py'aguasu numérico) "
+
+#: TurtleArt/tabasics.py:1154 TurtleArt/tabasics.py:1170
+msgid "box"
+msgstr "ryru "
+
+#: TurtleArt/tabasics.py:1182 TurtleArt/tabasics.py:1206
+msgid "action 1"
+msgstr "﻿ tembiapo 1 "
+
+#: TurtleArt/tabasics.py:1185
+msgid "top of Action 1 stack"
+msgstr "primero de la pila de Acción 1"
+
+#: TurtleArt/tabasics.py:1194 TurtleArt/tabasics.py:1219
+msgid "action 2"
+msgstr "﻿ tembiapo 2 "
+
+#: TurtleArt/tabasics.py:1197
+msgid "top of Action 2 stack"
+msgstr "﻿ peteĩha aty tembiapo mba'e 2 "
+
+#: TurtleArt/tabasics.py:1209
+msgid "invokes Action 1 stack"
+msgstr "﻿ invoca pe aty tembiapo 1 "
+
+#: TurtleArt/tabasics.py:1222
+msgid "invokes Action 2 stack"
+msgstr "﻿ invoca pe aty tembiapo 2 "
+
+#: TurtleArt/tabasics.py:1241
+msgid "invokes named action stack and returns value"
+msgstr "﻿ invoca peteĩ tembiapo rehe pe téra ha omyengovia peteĩ py'aguasu "
+
+#: TurtleArt/tabasics.py:1248
+msgid "return"
+msgstr "jere "
+
+#: TurtleArt/tabasics.py:1251
+msgid "returns a value"
+msgstr "﻿ omyengovia peteĩ py'aguasu "
+
+#: TurtleArt/tabasics.py:1268
+msgid "permanently deletes items in trash"
+msgstr "﻿ ombogue manterei apỹi kuera papelera "
+
+#: TurtleArt/tabasics.py:1272
+msgid "restore all"
+msgstr "﻿ restaurar opakatu "
+
+#: TurtleArt/tabasics.py:1273
+msgid "restore all blocks from trash"
+msgstr "﻿ restaura opakatu kuera bloque kuera papelera "
+
+#: TurtleArt/tabasics.py:1277
+msgid "clear all"
+msgstr "﻿ mbogue opakatu kuera "
+
+#: TurtleArt/tabasics.py:1278
+msgid "move all blocks to trash"
+msgstr "﻿ omomyi opakatu kuera bloque kuera lape yty "

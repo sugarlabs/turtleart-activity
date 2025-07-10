@@ -1,0 +1,2421 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-03-24 17:39+1100\n"
+"PO-Revision-Date: 2012-02-03 22:50+0200\n"
+"Last-Translator: Chris <cjl@laptop.org>\n"
+"Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
+"Language: si\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.0.5\n"
+
+#: activity/activity.info:2
+msgid "TurtleBlocks"
+msgstr ""
+
+#: TurtleArtActivity.py:127
+msgid "Please wait"
+msgstr ""
+
+#: TurtleArtActivity.py:128
+msgid "Starting connection..."
+msgstr ""
+
+#: TurtleArtActivity.py:282
+msgid "Export as python"
+msgstr ""
+
+#: TurtleArtActivity.py:283
+msgid "Error: You must use a Start Block when exporting to Python."
+msgstr ""
+
+#: TurtleArtActivity.py:414
+msgid "snapshot"
+msgstr "ක්ෂණික ඡායාරූපය"
+
+#: TurtleArtActivity.py:459 TurtleArtActivity.py:816 TurtleArtActivity.py:966
+msgid "Turn off hover help"
+msgstr ""
+
+#: TurtleArtActivity.py:468 TurtleArt/turtleblocks.py:482
+msgid "Turn on hover help"
+msgstr ""
+
+#: TurtleArtActivity.py:478 TurtleArt/turtleblocks.py:496
+msgid "Show palette"
+msgstr "ඵලකය පෙන්වන්න"
+
+#: TurtleArtActivity.py:484 TurtleArtActivity.py:1180
+#: TurtleArt/turtleblocks.py:498
+msgid "Hide palette"
+msgstr "ඵලකය සගවන්න"
+
+#: TurtleArtActivity.py:526 TurtleArtActivity.py:880
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1347
+#: TurtleArt/talogo.py:442
+msgid "Show blocks"
+msgstr "කොටස් පෙන්වන්න"
+
+#: TurtleArtActivity.py:530 TurtleArtActivity.py:1192 TurtleArt/talogo.py:446
+msgid "Hide blocks"
+msgstr "කොටස් සගවන්න"
+
+#: TurtleArtActivity.py:652
+msgid "Rescale coordinates down"
+msgstr "ඛණ්ඩාංක පහළට නැවත පරිමාණනය කරන්න"
+
+#: TurtleArtActivity.py:661 TurtleArtActivity.py:807 TurtleArtActivity.py:962
+msgid "Rescale coordinates up"
+msgstr "ඛණ්ඩාංක ඉහළට නැවත පරිමාණනය කරන්න"
+
+#: TurtleArtActivity.py:757 TurtleArtActivity.py:873 TurtleArtActivity.py:936
+#: TurtleArt/turtleblocks.py:493
+msgid "Edit"
+msgstr "සංස්කරනය කරන්න"
+
+#: TurtleArtActivity.py:762 TurtleArtActivity.py:874 TurtleArtActivity.py:954
+#: TurtleArt/turtleblocks.py:484
+msgid "View"
+msgstr "දර්ශනය කරන්න"
+
+#: TurtleArtActivity.py:784 TurtleArtActivity.py:937
+#: TurtleArt/turtleblocks.py:487
+msgid "Copy"
+msgstr "පිටපත් කරන්න"
+
+#: TurtleArtActivity.py:786 TurtleArtActivity.py:938
+#: TurtleArt/turtleblocks.py:488
+msgid "Paste"
+msgstr "අලවන්න"
+
+#: TurtleArtActivity.py:788
+#, fuzzy
+msgid "Restore blocks from trash"
+msgstr "කුණු කූඩයෙන් සියළු කුට්ටි නැවත පිහිටුවන්න"
+
+#: TurtleArtActivity.py:791 TurtleArtActivity.py:939
+#: TurtleArt/turtleblocks.py:489 TurtleArt/tawindow.py:1514
+msgid "Save stack"
+msgstr ""
+
+#: TurtleArtActivity.py:793 TurtleArt/turtleblocks.py:491
+#: TurtleArt/tawindow.py:1553 TurtleArt/tawindow.py:1561
+#: TurtleArt/tawindow.py:1570
+msgid "Delete stack"
+msgstr ""
+
+#: TurtleArtActivity.py:796 TurtleArtActivity.py:955
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:961
+msgid "Fullscreen"
+msgstr "මුළු තිරයම"
+
+#: TurtleArtActivity.py:799 TurtleArtActivity.py:956
+#: TurtleArt/turtleblocks.py:468
+msgid "Cartesian coordinates"
+msgstr "කාටිසියානු ඛණ්ඩාංක"
+
+#: TurtleArtActivity.py:801 TurtleArtActivity.py:958
+#: TurtleArt/turtleblocks.py:470
+msgid "Polar coordinates"
+msgstr "ධ්‍රැවක ඛණ්ඩාංක"
+
+#: TurtleArtActivity.py:804 TurtleArtActivity.py:960
+msgid "Metric coordinates"
+msgstr "ප්‍රමිතික ඛණ්ඩාංක"
+
+#: TurtleArtActivity.py:810 TurtleArtActivity.py:964
+#: TurtleArt/turtleblocks.py:475
+msgid "Grow blocks"
+msgstr "කුට්ටි වවන්න"
+
+#: TurtleArtActivity.py:813 TurtleArtActivity.py:965
+#: TurtleArt/turtleblocks.py:477
+msgid "Shrink blocks"
+msgstr "කුට්ටු හකුළුවන්න"
+
+#: TurtleArtActivity.py:843 TurtleArtActivity.py:881 TurtleArtActivity.py:1146
+msgid "Load example"
+msgstr "උදාහරණය ප්‍රවේශ කරන්න"
+
+#: TurtleArtActivity.py:872 TurtleArtActivity.py:899
+msgid "Save/Load"
+msgstr ""
+
+#: TurtleArtActivity.py:875
+msgid "Project"
+msgstr "ව්‍යාපෘතිය"
+
+#: TurtleArtActivity.py:876 TurtleArtActivity.py:1186
+#: TurtleArt/turtleblocks.py:505
+msgid "Clean"
+msgstr "පැහැදිලි කරන්න"
+
+#: TurtleArtActivity.py:877 TurtleArtActivity.py:1188
+#: TurtleArt/turtleblocks.py:506
+msgid "Run"
+msgstr "ධාවනය කරන්න"
+
+#: TurtleArtActivity.py:878 TurtleArtActivity.py:1190
+#: TurtleArt/turtleblocks.py:507
+msgid "Step"
+msgstr "පියවර"
+
+#: TurtleArtActivity.py:879
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1356
+#: TurtleArt/talogo.py:432 TurtleArt/tawindow.py:1269
+msgid "Stop turtle"
+msgstr "කැස්බෑවා නවත්වන්න"
+
+#: TurtleArtActivity.py:882 TurtleArt/turtleblocks.py:517
+#: TurtleArt/util/helpbutton.py:44
+msgid "Help"
+msgstr "උදව්"
+
+#: TurtleArtActivity.py:883 TurtleArt/turtleblocks.py:509
+msgid "Stop"
+msgstr "පියවර"
+
+#: TurtleArtActivity.py:898 TurtleArt/tawindow.py:2048
+#: TurtleArt/tacollaboration.py:154
+msgid "Share selected blocks"
+msgstr ""
+
+#: TurtleArtActivity.py:900 TurtleArtActivity.py:1103
+msgid "Save as image"
+msgstr "පින්තූරයක් ලෙස සුරකින්න"
+
+#: TurtleArtActivity.py:903 TurtleArtActivity.py:1106
+msgid "Save as icon"
+msgstr ""
+
+#. TRANS: ODP is Open Office presentation
+#: TurtleArtActivity.py:908 TurtleArtActivity.py:1110
+msgid "Save as ODP"
+msgstr ""
+
+#: TurtleArtActivity.py:913 TurtleArtActivity.py:1121
+msgid "Save as Logo"
+msgstr "Logo ලෙස සුරකින්න"
+
+#: TurtleArtActivity.py:914 TurtleArtActivity.py:1124
+msgid "Save as Python"
+msgstr ""
+
+#: TurtleArtActivity.py:915 TurtleArtActivity.py:1128
+msgid "Save snapshot"
+msgstr "ක්ෂණික ඡායාරූපය සුරකින්න"
+
+#: TurtleArtActivity.py:916 TurtleArtActivity.py:1155
+#: TurtleArt/turtleblocks.py:438
+msgid "Add project"
+msgstr ""
+
+#: TurtleArtActivity.py:919 TurtleArtActivity.py:1160
+#: TurtleArt/turtleblocks.py:439
+msgid "Load plugin"
+msgstr ""
+
+#: TurtleArtActivity.py:920 TurtleArtActivity.py:1163
+msgid "Load Python block"
+msgstr "Python කුට්ටිය ප්‍රවේශනය කරන්න"
+
+#: TurtleArtActivity.py:1075
+msgid "Palettes"
+msgstr ""
+
+#: TurtleArtActivity.py:1093
+msgid "Sharing blocks disabled"
+msgstr ""
+
+#: TurtleArtActivity.py:1098 TurtleArt/turtleblocks.py:441
+msgid "Save"
+msgstr "සුරකින්න"
+
+#: TurtleArtActivity.py:1131
+msgid "Save blocks as image"
+msgstr ""
+
+#: TurtleArtActivity.py:1135
+msgid "Load"
+msgstr ""
+
+#: TurtleArtActivity.py:1152 TurtleArt/turtleblocks.py:437
+msgid "Open"
+msgstr "විවෘත කරන්න"
+
+#: TurtleArtActivity.py:1181
+msgid "<Ctrl>p"
+msgstr "<Ctrl>p"
+
+#: TurtleArtActivity.py:1186
+msgid "<Ctrl>e"
+msgstr "<Ctrl>e"
+
+#: TurtleArtActivity.py:1188
+msgid "<Ctrl>r"
+msgstr "<Ctrl>r"
+
+#: TurtleArtActivity.py:1190
+msgid "<Ctrl>w"
+msgstr "<Ctrl>w"
+
+#: TurtleArtActivity.py:1193
+msgid "<Ctrl>s"
+msgstr "<Ctrl>s"
+
+#: TurtleArtActivity.py:1379
+#, python-format
+msgid "Plugin %s already installed."
+msgstr ""
+
+#: TurtleArtActivity.py:1380 TurtleArt/turtleblocks.py:591
+#, python-format
+msgid "Do you want to reinstall %s?"
+msgstr ""
+
+#: gnome_plugins/collaboration_plugin.py:64
+msgid "My Turtle Art session"
+msgstr ""
+
+#: gnome_plugins/collaboration_plugin.py:111
+msgid "Enable collaboration"
+msgstr ""
+
+#: gnome_plugins/collaboration_plugin.py:116
+msgid "Activities"
+msgstr "ක්‍රියාකාරකම්"
+
+#: gnome_plugins/collaboration_plugin.py:121
+msgid "Buddies"
+msgstr "මිතුරන්"
+
+#: gnome_plugins/collaboration_plugin.py:124
+msgid "Share"
+msgstr "හවුල් කරන්න"
+
+#: gnome_plugins/collaboration_plugin.py:125
+msgid "Configuration"
+msgstr "වින්‍යාසය"
+
+#: gnome_plugins/collaboration_plugin.py:128
+msgid "Neighborhood"
+msgstr "අසල්වාසීන්"
+
+#: gnome_plugins/collaboration_plugin.py:289
+msgid "Nickname"
+msgstr "අන්වර්ථ නාමය"
+
+#: gnome_plugins/collaboration_plugin.py:291
+msgid "Account ID"
+msgstr "ගිණුම් ID"
+
+#: gnome_plugins/collaboration_plugin.py:293
+msgid "Server"
+msgstr "සේවාදායකය"
+
+#: gnome_plugins/collaboration_plugin.py:295
+msgid "Port"
+msgstr "පේනුව"
+
+#: gnome_plugins/collaboration_plugin.py:297
+msgid "Password"
+msgstr "මුරපදය"
+
+#: gnome_plugins/collaboration_plugin.py:299
+msgid "Register"
+msgstr "ලියාපදිංවි කරන්න"
+
+#: gnome_plugins/collaboration_plugin.py:301
+msgid "Colors"
+msgstr "වර්ණ"
+
+#: gnome_plugins/fb_plugin.py:82 gnome_plugins/fb_plugin.py:83
+#: gnome_plugins/fb_plugin.py:91 gnome_plugins/uploader_plugin.py:63
+#: gnome_plugins/uploader_plugin.py:64 gnome_plugins/uploader_plugin.py:73
+msgid "Upload"
+msgstr "උඩුගත කරන්න"
+
+#: gnome_plugins/fb_plugin.py:87
+msgid "Facebook wall post"
+msgstr ""
+
+#: gnome_plugins/uploader_plugin.py:68
+msgid "Upload to Web"
+msgstr "වෙබයට උඩුගත කරන්න"
+
+#: gnome_plugins/uploader_plugin.py:90
+msgid ""
+"You must have an account at http://turtleartsite.sugarlabs.org to upload "
+"your project."
+msgstr ""
+
+#: gnome_plugins/uploader_plugin.py:99
+msgid "Username:"
+msgstr "පරිශීලක නාමය:"
+
+#: gnome_plugins/uploader_plugin.py:109
+msgid "Password:"
+msgstr "මුරපදය:"
+
+#: gnome_plugins/uploader_plugin.py:120
+msgid "Title:"
+msgstr "තේමාව:"
+
+#: gnome_plugins/uploader_plugin.py:130
+msgid "Description:"
+msgstr "විස්තරය:"
+
+#: gnome_plugins/uploader_plugin.py:140
+msgid "Submit to Web"
+msgstr "වෙබයට ඉදිරිපත් කරන්න"
+
+#: gnome_plugins/uploader_plugin.py:144 TurtleArt/tawindow.py:1518
+#: TurtleArt/tawindow.py:1557
+msgid "Cancel"
+msgstr "අවලංගු කරන්න"
+
+#: gnome_plugins/uploader_plugin.py:172
+msgid "Login failed"
+msgstr "පිවිසීම අසාර්ථක විය"
+
+#: gnome_plugins/uploader_plugin.py:209
+msgid "Failed to upload!"
+msgstr "උඩුගත කිරීමට අසාර්ථක විය!"
+
+#: pyexported/window_setup.py:39
+msgid ""
+"The path to the TurtleArt installation must be listed in the environment "
+"variable PYTHONPATH."
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:72
+#: TurtleArt/tabasics.py:926
+#, fuzzy
+msgid "Palette of flow operators"
+msgstr "අංකිත මෙහෙයුම් වල ඵලකය"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:76
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:79
+msgid "while"
+msgstr "අතරතුර"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:80
+#, fuzzy
+msgid "do-while-True operator that uses boolean operators from Numbers palette"
+msgstr "අංක ඵලකයෙන් ද්වීමය මෙහෙයුම් භාවිතා කරන if-then-else මෙහෙයුම"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:97
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:100
+msgid "until"
+msgstr "දක්වා"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:101
+#, fuzzy
+msgid "do-until-True operator that uses boolean operators from Numbers palette"
+msgstr "අංක ඵලකයෙන් ද්වීමය මෙහෙයුම් භාවිතා කරන if-then-else මෙහෙයුම"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:121
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:854
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1071
+msgid "top"
+msgstr "ඉහළ"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:123
+msgid "top of a collapsible stack"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:133
+#: plugins/camera_sensor/camera_sensor.py:71
+msgid "Palette of media objects"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:135
+msgid "media"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:141
+msgid "journal"
+msgstr "ජර්නලය"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:142
+msgid "Sugar Journal media object"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:153
+msgid "audio"
+msgstr "ශ්‍රව්‍ය"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:155
+msgid "Sugar Journal audio object"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:166
+msgid "video"
+msgstr "දෘශ්‍ය"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:168
+msgid "Sugar Journal video object"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:179
+msgid "description"
+msgstr "විස්තරය"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:181
+msgid "Sugar Journal description field"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:190
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:191
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:192
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:198
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:213
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:921
+#: TurtleArt/taconstants.py:452
+msgid "text"
+msgstr "පෙළ"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:193
+msgid "string value"
+msgstr "අනු ලකුණු වැල අගය"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:197
+msgid "show"
+msgstr "පෙන්වන්න"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:201
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:216
+msgid "draws text or show media from the Journal"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:212
+msgid "show aligned"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:225
+msgid "set scale"
+msgstr "පරිමාණය සකසන්න"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:229
+msgid "sets the scale of media"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:239
+msgid "set font"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:242
+msgid "sets the font used by the show block"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:249
+msgid "save picture"
+msgstr "පින්තූරය සුරකින්න"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:251
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:262
+msgid "picture name"
+msgstr "පින්තූර නාමය"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:252
+msgid "saves a picture to the Sugar Journal"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:260
+msgid "save SVG"
+msgstr "SVG සුරකින්න"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:263
+msgid "saves turtle graphics as an SVG file in the Sugar Journal"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:272
+msgid "scale"
+msgstr "පරිමාණය"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:276
+msgid "holds current scale value"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:283
+msgid "media wait"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:285
+msgid "wait for current video or audio to complete"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:291
+msgid "media stop"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:293
+msgid "stop video or audio"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:298
+msgid "media pause"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:300
+msgid "pause video or audio"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:305
+msgid "media resume"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:307
+msgid "resume playing video or audio"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:312
+msgid "speak"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:314
+msgid "hello"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:315
+msgid "speaks text"
+msgstr ""
+
+#. TRANS: pitch, duration, amplitude
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:323
+msgid "sinewave"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:323
+#: plugins/audio_sensors/audio_sensors.py:126
+msgid "pitch"
+msgstr "තාරතාව"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:324
+msgid "amplitude"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:324
+msgid "duration"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:327
+msgid "plays a sinewave at frequency, amplitude, and duration (in seconds)"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:339
+#: plugins/camera_sensor/camera_sensor.py:67 plugins/rfid/rfid.py:87
+#: plugins/accelerometer/accelerometer.py:50
+#: plugins/light_sensor/light_sensor.py:52
+#: plugins/audio_sensors/audio_sensors.py:84
+msgid "Palette of sensor blocks"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:341
+msgid "sensor"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:346
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:357
+msgid "button down"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:349
+msgid "returns 1 if mouse button is pressed"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:360
+msgid "returns True if mouse button is pressed"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:368
+msgid "mouse x"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:371
+msgid "returns mouse x coordinate"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:379
+msgid "mouse y"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:382
+msgid "returns mouse y coordinate"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:390
+msgid "query keyboard"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:392
+msgid "query for keyboard input (results stored in keyboard block)"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:400
+msgid "keyboard"
+msgstr "යතුරු පුවරුව"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:404
+msgid "holds results of query-keyboard block as ASCII"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:412
+msgid "read pixel"
+msgstr "පික්සලය කියවන්න"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:415
+msgid "RGB color under the turtle is pushed to the stack"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:422
+msgid "turtle sees"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:425
+msgid "returns the color that the turtle \"sees\""
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:434
+msgid "time"
+msgstr "කාලය"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:437
+msgid "elapsed time (in seconds) since program started"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:462
+msgid "Palette of extra options"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:464
+msgid "extras"
+msgstr ""
+
+#. TRANS: push adds a new item to the program stack
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:469
+msgid "push"
+msgstr "ඔබන්න"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:472
+msgid "pushes value onto FILO (first-in last-out heap)"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:484
+msgid "show heap"
+msgstr "සංචිතය දක්වන්න"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:487
+msgid "shows values in FILO (first-in last-out heap)"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:499
+msgid "empty heap"
+msgstr "හිස් මතක කොටස"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:502
+msgid "emptys FILO (first-in-last-out heap)"
+msgstr ""
+
+#. TRANS: pop removes a new item from the program stack
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:513
+msgid "pop"
+msgstr "පොප්"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:517
+msgid "pops value off FILO (first-in last-out heap)"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:529
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:585
+#, fuzzy
+msgid "empty heap?"
+msgstr "හිස් මතක කොටස"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:532
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:588
+msgid "returns True if heap is empty"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:544
+msgid "save heap to file"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:545
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:559
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:573
+msgid "filename"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:547
+msgid "saves FILO (first-in last-out heap) to a file"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:558
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:566
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:572
+msgid "load heap from file"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:561
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:567
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:575
+msgid "loads FILO (first-in last-out heap) from a file"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:600
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:602
+msgid "comment"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:604
+msgid "places a comment in your code"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:611
+msgid "print"
+msgstr "මුද්‍රණය"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:615
+msgid "prints value in status block at bottom of the screen"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:626
+msgid "Python chr operator"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:636
+msgid "Python int operator"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:646
+msgid "polar"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:648
+msgid "displays polar coordinates"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:654
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:669
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:685
+#: TurtleArt/turtleblocks.py:462
+msgid "Python"
+msgstr "Python"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:658
+msgid ""
+"a programmable block: used to add advanced single-variable math equations, e."
+"g., sin(x)"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:673
+msgid ""
+"a programmable block: used to add advanced multi-variable math equations, e."
+"g., sqrt(x*x+y*y)"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:689
+msgid ""
+"a programmable block: used to add advanced multi-variable math equations, e."
+"g., sin(x+y+z)"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:699
+msgid "Cartesian"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:701
+msgid "displays Cartesian coordinates"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:710
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:727
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:744
+msgid "Python block"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:712
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:729
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:747
+msgid "runs code found in the tamyblock.py module found in the Journal"
+msgstr ""
+
+#. TRANS: URL is universal resource locator
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:763
+msgid "URL"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:768
+msgid "gets a text string or an image from a URL"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:778
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:788
+msgid "turtle shell"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:780
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:789
+msgid "put a custom 'shell' on the turtle"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:793
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:862
+#: TurtleArt/tabasics.py:159
+msgid "turtle"
+msgstr "කැස්බෑවා"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:797
+msgid "chooses which turtle to command"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:804
+#, fuzzy
+msgid "turtle x"
+msgstr "කැස්බෑවා"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:807
+msgid "Returns x coordinate of turtle"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:816
+#, fuzzy
+msgid "turtle y"
+msgstr "කැස්බෑවා"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:819
+msgid "Returns y coordinate of turtle"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:828
+msgid "active turtle"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:831
+msgid "the name of the active turtle"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:839
+msgid "turtle heading"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:842
+msgid "Returns heading of turtle"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:852
+#: TurtleArt/tautils.py:638
+msgid "click to open"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:855
+msgid "top of a collapsed stack"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:860
+msgid "select palette"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:863
+msgid "selects a palette"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:871
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:883
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:897
+msgid "load"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:873
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:886
+#: TurtleArt/tabasics.py:163
+msgid "forward"
+msgstr "ඉදිරියට"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:874
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:887
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:901
+#, fuzzy
+msgid "loads a block"
+msgstr "මාගේ කොටස පූරණය කරන්න"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:900
+#, fuzzy
+msgid "setxy"
+msgstr "xy සකසන්න"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:912
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:918
+msgid "index"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:913
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:923
+msgid "return the text of the positions"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:918
+msgid "string"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:919
+#: pysamples/grecord.py:212 TurtleArt/tabasics.py:1055
+msgid "start"
+msgstr "ආරම්භය"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:919
+msgid "end"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:936
+msgid "Palette of presentation templates"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:939
+msgid "portfolio"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:943
+msgid "hide blocks"
+msgstr "කොටස් සගවන්න"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:945
+msgid "declutters canvas by hiding blocks"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:952
+msgid "show blocks"
+msgstr "කොටස් පෙන්වන්න"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:954
+msgid "restores hidden blocks"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:963
+msgid "hides the Sugar toolbars"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:973
+msgid "list"
+msgstr "ලැයිස්තුව"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:977
+msgid "presentation bulleted list"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:985
+msgid "presentation template: list of bullets"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:992
+msgid "presentation template: select Journal object (no description)"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:999
+msgid "presentation template: select Journal object (with description)"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1006
+msgid "presentation template: select four Journal objects"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1013
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1020
+msgid "presentation template: select two Journal objects"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1027
+#: TurtleArt/taconstants.py:149 TurtleArt/tabasics.py:210
+msgid "left"
+msgstr "වම"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1030
+msgid "xcor of left of screen"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1038
+#, fuzzy
+msgid "bottom"
+msgstr "y පහළ"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1041
+msgid "ycor of bottom of screen"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1049
+msgid "width"
+msgstr "පළල"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1052
+msgid "the canvas width"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1060
+#: TurtleArt/taconstants.py:151 TurtleArt/tabasics.py:224
+msgid "right"
+msgstr "දකුණ"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1063
+msgid "xcor of right of screen"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1074
+msgid "ycor of top of screen"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1082
+msgid "height"
+msgstr "උස"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1085
+msgid "the canvas height"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1095
+msgid "title x"
+msgstr "x තේමාව"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1107
+msgid "title y"
+msgstr "y තේමාව"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1119
+msgid "left x"
+msgstr "x වම"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1131
+msgid "top y"
+msgstr "y ඉහළ"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1143
+msgid "right x"
+msgstr "x දකුණ"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1155
+msgid "bottom y"
+msgstr "y පහළ"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1174
+msgid "Palette of user-defined operators"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1175
+#, fuzzy
+msgid "my blocks"
+msgstr "මගේ කොටස්"
+
+#: plugins/camera_sensor/camera_sensor.py:90
+#: plugins/camera_sensor/camera_sensor.py:122
+#: plugins/light_sensor/light_sensor.py:58
+#: plugins/light_sensor/light_sensor.py:66
+msgid "brightness"
+msgstr "දීප්තිය"
+
+#: plugins/camera_sensor/camera_sensor.py:92
+msgid "light level detected by camera"
+msgstr ""
+
+#: plugins/camera_sensor/camera_sensor.py:107
+#: plugins/camera_sensor/camera_sensor.py:115
+msgid "camera output"
+msgstr "කැමරා ප්‍රතිදානය"
+
+#: plugins/camera_sensor/camera_sensor.py:124
+msgid "Average RGB color from camera is pushed to the stack"
+msgstr ""
+
+#: plugins/rfid/rfid.py:93 plugins/rfid/rfid.py:101
+msgid "RFID"
+msgstr "RFID"
+
+#: plugins/rfid/rfid.py:94 plugins/rfid/rfid.py:102
+msgid "read value from RFID device"
+msgstr ""
+
+#: plugins/accelerometer/accelerometer.py:56
+#: plugins/accelerometer/accelerometer.py:63
+msgid "acceleration"
+msgstr "ත්වරණය"
+
+#: plugins/accelerometer/accelerometer.py:58
+#: plugins/accelerometer/accelerometer.py:65
+msgid "push acceleration in x, y, z to heap"
+msgstr ""
+
+#: plugins/light_sensor/light_sensor.py:61
+#: plugins/light_sensor/light_sensor.py:69
+msgid "light level detected by light sensor"
+msgstr ""
+
+#: plugins/audio_sensors/audio_sensors.py:93 pysamples/grecord.py:207
+msgid "sound"
+msgstr "හඬ"
+
+#: plugins/audio_sensors/audio_sensors.py:94
+msgid "raw microphone input signal"
+msgstr ""
+
+#: plugins/audio_sensors/audio_sensors.py:100
+msgid "loudness"
+msgstr ""
+
+#: plugins/audio_sensors/audio_sensors.py:101
+msgid "microphone input volume"
+msgstr ""
+
+#: plugins/audio_sensors/audio_sensors.py:127
+msgid "microphone input pitch"
+msgstr ""
+
+#: plugins/audio_sensors/audio_sensors.py:160
+#: plugins/audio_sensors/audio_sensors.py:178
+msgid "resistance"
+msgstr "ප්‍රතිරෝධය"
+
+#: plugins/audio_sensors/audio_sensors.py:161
+#: plugins/audio_sensors/audio_sensors.py:179
+msgid "microphone input resistance"
+msgstr ""
+
+#: plugins/audio_sensors/audio_sensors.py:166
+#: plugins/audio_sensors/audio_sensors.py:184
+msgid "voltage"
+msgstr "වෝල්ටීයතාව"
+
+#: plugins/audio_sensors/audio_sensors.py:167
+#: plugins/audio_sensors/audio_sensors.py:185
+msgid "microphone input voltage"
+msgstr ""
+
+#: pysamples/uturn.py:35
+msgid "uturn"
+msgstr ""
+
+#: pysamples/uturn.py:37
+msgid "turns the turtle 180 degrees"
+msgstr ""
+
+#: pysamples/brain.py:43
+msgid "Please install the Speak Activity and try again."
+msgstr ""
+
+#: pysamples/brain.py:52
+msgid "Spanish"
+msgstr ""
+
+#: pysamples/brain.py:56 pysamples/brain.py:69 pysamples/brain.py:71
+#: pysamples/brain.py:77
+msgid "English"
+msgstr ""
+
+#: pysamples/brain.py:88
+msgid "Sorry, I can't understand what you are asking about."
+msgstr ""
+
+#: pysamples/brain.py:97
+msgid ""
+"Sorry, there is no free memory to load my brain. Close other activities and "
+"try once more."
+msgstr ""
+
+#: pysamples/journal-stats.py:90
+msgid "other"
+msgstr ""
+
+#: pysamples/forward_push.py:48
+msgid "push destination rgb value to heap"
+msgstr ""
+
+#: pysamples/grecord.py:214
+msgid "stop"
+msgstr "නවත්වන්න"
+
+#: pysamples/grecord.py:216
+msgid "play"
+msgstr "වාදනය කරන්න"
+
+#: pysamples/grecord.py:218
+msgid "save"
+msgstr "සුරකින්න"
+
+#: TurtleArt/talogo.py:604
+msgid "did not output to"
+msgstr "වෙත ප්‍රතිදානය කරන්න එපා"
+
+#: TurtleArt/talogo.py:645 TurtleArt/talogo.py:1059
+msgid "doesn't like"
+msgstr "කැමති නෑ"
+
+#: TurtleArt/talogo.py:646 TurtleArt/talogo.py:1060
+msgid "as input"
+msgstr "ආදානය ලෙද"
+
+#: TurtleArt/talogo.py:709
+msgid "I don't know how to"
+msgstr "කෙසේ කරන්නද මම දන්නෙ නෑ"
+
+#: TurtleArt/turtleblocks.py:106
+msgid "usage is"
+msgstr "භාවිතය"
+
+#: TurtleArt/turtleblocks.py:307
+msgid "No option action:"
+msgstr "විකල්ප ක්‍රියාව නැත:"
+
+#: TurtleArt/turtleblocks.py:322
+msgid "File not found"
+msgstr "ගොනුව හමු නොවුණි"
+
+#: TurtleArt/turtleblocks.py:346
+#, python-format
+msgid "Configuration directory not writable: %s"
+msgstr "වින්‍යාසගත කිරීමේ නාමාවලිය ලිවිය නොහැක: %s"
+
+#: TurtleArt/turtleblocks.py:434
+msgid "New"
+msgstr "නව"
+
+#: TurtleArt/turtleblocks.py:435
+msgid "Show sample projects"
+msgstr ""
+
+#: TurtleArt/turtleblocks.py:442
+msgid "Save as"
+msgstr "ලෙස සුරකින්න"
+
+#: TurtleArt/turtleblocks.py:446
+msgid "Export as"
+msgstr ""
+
+#: TurtleArt/turtleblocks.py:449 TurtleArt/tawindow.py:4788
+msgid "image"
+msgstr "පින්තූරය"
+
+#: TurtleArt/turtleblocks.py:451
+msgid "image (blocks)"
+msgstr ""
+
+#: TurtleArt/turtleblocks.py:453
+msgid "SVG"
+msgstr ""
+
+#: TurtleArt/turtleblocks.py:455 TurtleArt/tawindow.py:4641
+msgid "icon"
+msgstr ""
+
+#. TRANS: ODP is Open Office presentation
+#: TurtleArt/turtleblocks.py:458
+msgid "ODP"
+msgstr ""
+
+#: TurtleArt/turtleblocks.py:460
+msgid "Logo"
+msgstr ""
+
+#: TurtleArt/turtleblocks.py:464
+msgid "Quit"
+msgstr "ඉවත් වෙන්න"
+
+#: TurtleArt/turtleblocks.py:465
+msgid "File"
+msgstr "ගොනුව"
+
+#: TurtleArt/turtleblocks.py:473
+msgid "Rescale coordinates"
+msgstr "ඛණ්ඩාංක ප්‍රමාණනය කරන්න"
+
+#: TurtleArt/turtleblocks.py:479
+msgid "Reset block size"
+msgstr "කුට්ටි ප්‍රමාණය නැවත සකසන්න"
+
+#: TurtleArt/turtleblocks.py:500
+msgid "Show/hide blocks"
+msgstr "කුට්ටි පෙන්වන්න/සඟවන්න"
+
+#: TurtleArt/turtleblocks.py:502
+msgid "Tools"
+msgstr "මෙවලම්"
+
+#: TurtleArt/turtleblocks.py:508
+msgid "Debug"
+msgstr "දෝෂහරණය"
+
+#: TurtleArt/turtleblocks.py:510
+msgid "Turtle"
+msgstr "ටර්ටලය"
+
+#: TurtleArt/turtleblocks.py:513
+msgid "Plugins"
+msgstr ""
+
+#: TurtleArt/turtleblocks.py:516
+msgid "About..."
+msgstr ""
+
+#: TurtleArt/turtleblocks.py:575
+msgid "You have unsaved work. Would you like to save before quitting?"
+msgstr "ඔබ සුරැකා නැති වැඩ ඇත. ඉවත් වීමට පෙර සුරැකීමට ඔබ කැමතිද?"
+
+#: TurtleArt/turtleblocks.py:580
+msgid "Save project?"
+msgstr "ව්‍යාපෘතිය සුරකින්නද?"
+
+#: TurtleArt/turtleblocks.py:590
+#, python-format
+msgid "Plugin %s already installed"
+msgstr ""
+
+#: TurtleArt/turtleblocks.py:736
+msgid "myproject"
+msgstr ""
+
+#: TurtleArt/turtleblocks.py:814 TurtleArt/taplugin.py:89
+#, python-format
+msgid "Please restart %s in order to use the plugin."
+msgstr ""
+
+#: TurtleArt/turtleblocks.py:819
+#, python-format
+msgid "Please restart %s in order to unload the plugin."
+msgstr ""
+
+#: TurtleArt/tapalette.py:103
+msgid "displays next palette"
+msgstr "ඊළඟ ඵලකය ප්‍රදර්ශනය කරයි"
+
+#: TurtleArt/tapalette.py:104
+msgid "changes the orientation of the palette of blocks"
+msgstr ""
+
+#: TurtleArt/tapalette.py:144 TurtleArt/tapalette.py:145
+#: TurtleArt/tabasics.py:1262 TurtleArt/tabasics.py:1263
+msgid "trash"
+msgstr "කුණු කූඩය"
+
+#: TurtleArt/taexportpython.py:226
+msgid "block is not exportable"
+msgstr ""
+
+#: TurtleArt/taexportpython.py:245
+msgid "error while exporting block"
+msgstr ""
+
+#: TurtleArt/taprimitive.py:62
+msgid "error in highlighted block"
+msgstr ""
+
+#: TurtleArt/taprimitive.py:64
+msgid "error"
+msgstr ""
+
+#: TurtleArt/tawindow.py:1151 TurtleArt/tawindow.py:1152
+msgid "orientation"
+msgstr "දිශානතිය"
+
+#: TurtleArt/tawindow.py:1166 TurtleArt/tawindow.py:1626
+msgid "next"
+msgstr "ඊලඟ"
+
+#: TurtleArt/tawindow.py:1205 TurtleArt/tawindow.py:1635
+msgid "shift"
+msgstr ""
+
+#: TurtleArt/tawindow.py:1273
+msgid "Please hit the Stop Button before making changes to your program"
+msgstr ""
+
+#: TurtleArt/tawindow.py:1316 TurtleArt/tawindow.py:1430
+#: TurtleArt/tawindow.py:1443 TurtleArt/tawindow.py:2078
+#: TurtleArt/tawindow.py:4934 TurtleArt/tabasics.py:1070
+#: TurtleArt/tabasics.py:1073 TurtleArt/tabasics.py:1086
+#: TurtleArt/tabasics.py:1090 TurtleArt/tabasics.py:1236
+#: TurtleArt/tabasics.py:1240
+msgid "action"
+msgstr "ක්‍රියාව"
+
+#: TurtleArt/tawindow.py:1322 TurtleArt/tawindow.py:1469
+#: TurtleArt/tawindow.py:2084 TurtleArt/tawindow.py:4961
+#: TurtleArt/tawindow.py:4988 TurtleArt/tabasics.py:1158
+#: TurtleArt/tabasics.py:1173
+msgid "my box"
+msgstr "මගේ පෙට්ටිය"
+
+#: TurtleArt/tawindow.py:1337
+msgid "Select blocks to share"
+msgstr ""
+
+#: TurtleArt/tawindow.py:1515 TurtleArt/tawindow.py:1529
+msgid "Really overwrite stack?"
+msgstr ""
+
+#: TurtleArt/tawindow.py:1522 TurtleArt/tawindow.py:1532
+msgid "Overwrite stack"
+msgstr ""
+
+#: TurtleArt/tawindow.py:1554 TurtleArt/tawindow.py:1567
+msgid "Really delete stack?"
+msgstr ""
+
+#: TurtleArt/tawindow.py:1947 TurtleArt/tabasics.py:1267
+msgid "empty trash"
+msgstr "කුණු කූඩය හිස් කරන්න"
+
+#: TurtleArt/tawindow.py:1948
+msgid "Do you really want to empty the trash?"
+msgstr ""
+
+#: TurtleArt/tawindow.py:4285 TurtleArt/tawindow.py:4306
+#, python-format
+msgid "Cannot write data to %s."
+msgstr ""
+
+#: TurtleArt/tawindow.py:4286
+msgid "Please choose a different save directory."
+msgstr ""
+
+#: TurtleArt/tawindow.py:4307
+msgid "Please choose a different file name."
+msgstr ""
+
+#: TurtleArt/tawindow.py:4415 TurtleArt/tabasics.py:284
+msgid "xcor"
+msgstr "xcor"
+
+#: TurtleArt/tawindow.py:4416 TurtleArt/tabasics.py:299
+msgid "ycor"
+msgstr "ycor"
+
+#: TurtleArt/tawindow.py:4416 TurtleArt/tabasics.py:314
+msgid "heading"
+msgstr "ශීර්ෂකය"
+
+#: TurtleArt/tawindow.py:4442 TurtleArt/tawindow.py:4447
+#: TurtleArt/tabasics.py:359 TurtleArt/tabasics.py:373
+#: TurtleArt/tabasics.py:447
+msgid "shade"
+msgstr "අඳුරු කරන්න"
+
+#: TurtleArt/tawindow.py:4443 TurtleArt/tawindow.py:4448
+#: TurtleArt/tabasics.py:373 TurtleArt/tabasics.py:461
+msgid "gray"
+msgstr ""
+
+#: TurtleArt/tawindow.py:4446 TurtleArt/tabasics.py:359
+#: TurtleArt/tabasics.py:372 TurtleArt/tabasics.py:435
+msgid "color"
+msgstr "වර්ණ"
+
+#: TurtleArt/tawindow.py:4516
+msgid "True"
+msgstr ""
+
+#: TurtleArt/tawindow.py:4516
+msgid "False"
+msgstr ""
+
+#: TurtleArt/tawindow.py:4714
+#, python-format
+msgid "%s blocks image"
+msgstr ""
+
+#: TurtleArt/tawindow.py:4947 TurtleArt/tabasics.py:1091
+msgid "invokes named action stack"
+msgstr ""
+
+#: TurtleArt/tawindow.py:4974 TurtleArt/tabasics.py:1176
+msgid "named variable (numeric value)"
+msgstr "නම් කරන ලද විචල්‍යය (අංකිත අගය)"
+
+#: TurtleArt/tawindow.py:4996 TurtleArt/tabasics.py:1154
+msgid "store in"
+msgstr "මෙහි ගබඩා කරන්න"
+
+#: TurtleArt/tawindow.py:4996 TurtleArt/tabasics.py:1154
+msgid "value"
+msgstr "අග"
+
+#: TurtleArt/tawindow.py:5001 TurtleArt/tabasics.py:1159
+msgid "stores numeric value in named variable"
+msgstr "අංකිත අගය නම් කරන ලද විචල්‍යයක ගබඩා කරයි"
+
+#: TurtleArt/taplugin.py:93 TurtleArt/taplugin.py:103 TurtleArt/taplugin.py:105
+msgid "Plugin could not be installed."
+msgstr ""
+
+#: TurtleArt/taconstants.py:150
+msgid "up"
+msgstr ""
+
+#: TurtleArt/taconstants.py:152
+msgid "down"
+msgstr ""
+
+#: TurtleArt/taconstants.py:153
+msgid "backspace"
+msgstr ""
+
+#: TurtleArt/taconstants.py:154
+msgid "tab"
+msgstr ""
+
+#. TRANS: enter is the name of the enter (or return) key
+#: TurtleArt/taconstants.py:156
+msgid "enter"
+msgstr ""
+
+#. TRANS: space is the name of the space key
+#: TurtleArt/taconstants.py:159
+msgid "space"
+msgstr ""
+
+#: TurtleArt/taconstants.py:160
+msgid "delete"
+msgstr ""
+
+#: TurtleArt/taconstants.py:473 TurtleArt/taconstants.py:494
+#: TurtleArt/taconstants.py:514 TurtleArt/taconstants.py:555
+#: TurtleArt/taconstants.py:596 TurtleArt/taconstants.py:637
+msgid "Title"
+msgstr "තේමාව"
+
+#: TurtleArt/taconstants.py:659
+msgid "banana"
+msgstr ""
+
+#: TurtleArt/tautils.py:313
+msgid "Load..."
+msgstr "ප්‍රවේශනය කරන්න..."
+
+#: TurtleArt/tautils.py:323
+msgid "Save..."
+msgstr "සුරකින්න..."
+
+#: TurtleArt/tabasics.py:158
+#, fuzzy
+msgid "Palette of turtle commands"
+msgstr "පෑන් විධාන ඵලකය"
+
+#: TurtleArt/tabasics.py:167
+msgid "moves turtle forward"
+msgstr "කැස්බෑවා ඉදිරියට ගමන් කරවයි"
+
+#: TurtleArt/tabasics.py:176
+msgid "back"
+msgstr "පසුපසට"
+
+#: TurtleArt/tabasics.py:180
+msgid "moves turtle backward"
+msgstr "කැස්බෑවා පසුපසට ගමන් කරවයි"
+
+#: TurtleArt/tabasics.py:189
+msgid "clean"
+msgstr "මකන්න"
+
+#: TurtleArt/tabasics.py:192
+msgid "clears the screen and reset the turtle"
+msgstr ""
+
+#: TurtleArt/tabasics.py:214
+msgid "turns turtle counterclockwise (angle in degrees)"
+msgstr ""
+
+#: TurtleArt/tabasics.py:228
+msgid "turns turtle clockwise (angle in degrees)"
+msgstr ""
+
+#: TurtleArt/tabasics.py:238
+msgid "arc"
+msgstr "arc"
+
+#: TurtleArt/tabasics.py:238
+msgid "angle"
+msgstr "ඇලය"
+
+#: TurtleArt/tabasics.py:238
+msgid "radius"
+msgstr "අරය"
+
+#: TurtleArt/tabasics.py:242
+msgid "moves turtle along an arc"
+msgstr ""
+
+#: TurtleArt/tabasics.py:254 TurtleArt/tabasics.py:333
+msgid "set xy"
+msgstr "xy සකසන්න"
+
+#: TurtleArt/tabasics.py:254 TurtleArt/tabasics.py:333
+msgid "x"
+msgstr "x"
+
+#: TurtleArt/tabasics.py:254 TurtleArt/tabasics.py:333
+msgid "y"
+msgstr "y"
+
+#: TurtleArt/tabasics.py:258 TurtleArt/tabasics.py:337
+msgid ""
+"moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
+msgstr ""
+
+#
+#: TurtleArt/tabasics.py:269
+msgid "set heading"
+msgstr "seth"
+
+#: TurtleArt/tabasics.py:273
+msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
+msgstr ""
+
+#: TurtleArt/tabasics.py:285
+msgid ""
+"holds current x-coordinate value of the turtle (can be used in place of a "
+"number block)"
+msgstr ""
+
+#: TurtleArt/tabasics.py:300
+msgid ""
+"holds current y-coordinate value of the turtle (can be used in place of a "
+"number block)"
+msgstr ""
+
+#: TurtleArt/tabasics.py:315
+msgid ""
+"holds current heading value of the turtle (can be used in place of a number "
+"block)"
+msgstr ""
+
+#: TurtleArt/tabasics.py:353
+msgid "Palette of pen commands"
+msgstr "පෑන් විධාන ඵලකය"
+
+#: TurtleArt/tabasics.py:354
+#, fuzzy
+msgid "pen"
+msgstr "විවෘත කරන්න"
+
+#: TurtleArt/tabasics.py:359 TurtleArt/tabasics.py:372
+msgid "fill screen"
+msgstr "පුර්ණතිරය"
+
+#: TurtleArt/tabasics.py:363 TurtleArt/tabasics.py:377
+msgid "fills the background with (color, shade)"
+msgstr ""
+
+#: TurtleArt/tabasics.py:390
+msgid "set color"
+msgstr "වර්ණය සකසන්න"
+
+#: TurtleArt/tabasics.py:394
+msgid "sets color of the line drawn by the turtle"
+msgstr "කැස්බෑවා විසින් අදින රේඛාවේ වර්ණය පිහිටුවයි"
+
+#: TurtleArt/tabasics.py:406
+msgid "set shade"
+msgstr "අඳුරුකිරීම් සකසන්න"
+
+#: TurtleArt/tabasics.py:410
+#, fuzzy
+msgid "sets shade of the line drawn by the turtle"
+msgstr "කැස්බෑවා විසින් අදින රේඛාවේ ප්‍රමාණය පිහිටුවයි"
+
+#: TurtleArt/tabasics.py:421
+msgid "set gray"
+msgstr ""
+
+#: TurtleArt/tabasics.py:424
+#, fuzzy
+msgid "sets gray level of the line drawn by the turtle"
+msgstr "කැස්බෑවා විසින් අදින රේඛාවේ ප්‍රමාණය පිහිටුවයි"
+
+#: TurtleArt/tabasics.py:436
+msgid "holds current pen color (can be used in place of a number block)"
+msgstr ""
+
+#: TurtleArt/tabasics.py:448
+msgid "holds current pen shade"
+msgstr ""
+
+#: TurtleArt/tabasics.py:462
+msgid "holds current gray level (can be used in place of a number block)"
+msgstr ""
+
+#: TurtleArt/tabasics.py:472
+msgid "pen up"
+msgstr "පෑන ඔසවන්න"
+
+#: TurtleArt/tabasics.py:475
+msgid "Turtle will not draw when moved."
+msgstr "කැස්බෑවා ගමන් කරවූ විට නොඅදිනු ඇත."
+
+#: TurtleArt/tabasics.py:482
+msgid "pen down"
+msgstr "පැන් පහර පහළට"
+
+#: TurtleArt/tabasics.py:485
+msgid "Turtle will draw when moved."
+msgstr "කැස්බෑවා ගමන් කරවූ විට අදිනු ඇත."
+
+#: TurtleArt/tabasics.py:492
+#, fuzzy
+msgid "pen down?"
+msgstr "පැන් පහර පහළට"
+
+#: TurtleArt/tabasics.py:494
+msgid "returns True if pen is down"
+msgstr ""
+
+#: TurtleArt/tabasics.py:501
+msgid "set pen size"
+msgstr "පෑනේ විශාලත්වය සකසන්න"
+
+#: TurtleArt/tabasics.py:505
+msgid "sets size of the line drawn by the turtle"
+msgstr "කැස්බෑවා විසින් අදින රේඛාවේ ප්‍රමාණය පිහිටුවයි"
+
+#: TurtleArt/tabasics.py:518
+msgid "start fill"
+msgstr "පිරවීම ආරම්භ කරන්න"
+
+#: TurtleArt/tabasics.py:520
+msgid "starts filled polygon (used with end fill block)"
+msgstr "පිරවූ බහුඅශ්‍රය ආරම්භ කරයි (පිරවුම් කුට්ටිය අවසාන කිරීම සමඟ භාවිතා කල)"
+
+#: TurtleArt/tabasics.py:526
+msgid "end fill"
+msgstr "පිරවීම අවසාන කරන්න"
+
+#: TurtleArt/tabasics.py:528
+msgid "completes filled polygon (used with start fill block)"
+msgstr ""
+"පිරවූ බහුඅශ්‍රය සම්පූර්ණ කරයි (පිරවුම් කුට්ටිය ආරම්භ කිරීම සමඟ භාවිතා කල)"
+
+#: TurtleArt/tabasics.py:534
+msgid "pen size"
+msgstr "පෑනේ විශාලත්වය"
+
+#: TurtleArt/tabasics.py:535
+msgid "holds current pen size (can be used in place of a number block)"
+msgstr ""
+
+#: TurtleArt/tabasics.py:554
+msgid "Palette of pen colors"
+msgstr "පෑන් වර්ණ සඳහා ඵලකය"
+
+#: TurtleArt/tabasics.py:555
+#, fuzzy
+msgid "colors"
+msgstr "වර්ණ"
+
+#: TurtleArt/tabasics.py:560 TurtleArt/tabasics.py:568
+msgid "red"
+msgstr ""
+
+#: TurtleArt/tabasics.py:560
+msgid "orange"
+msgstr ""
+
+#: TurtleArt/tabasics.py:560
+msgid "yellow"
+msgstr ""
+
+#: TurtleArt/tabasics.py:560 TurtleArt/tabasics.py:568
+msgid "green"
+msgstr ""
+
+#: TurtleArt/tabasics.py:561
+msgid "cyan"
+msgstr ""
+
+#: TurtleArt/tabasics.py:561 TurtleArt/tabasics.py:568
+msgid "blue"
+msgstr ""
+
+#: TurtleArt/tabasics.py:561
+msgid "purple"
+msgstr ""
+
+#: TurtleArt/tabasics.py:561
+#, fuzzy
+msgid "white"
+msgstr "අතරතුර"
+
+#: TurtleArt/tabasics.py:562
+#, fuzzy
+msgid "black"
+msgstr "පසුපසට"
+
+#: TurtleArt/tabasics.py:568
+msgid ""
+"RGB to\n"
+"\n"
+"color"
+msgstr ""
+
+#: TurtleArt/tabasics.py:570
+msgid "converter"
+msgstr ""
+
+#: TurtleArt/tabasics.py:655
+msgid "Palette of numeric operators"
+msgstr "අංකිත මෙහෙයුම් වල ඵලකය"
+
+#: TurtleArt/tabasics.py:656
+#, fuzzy
+msgid "numbers"
+msgstr "අංකය"
+
+#: TurtleArt/tabasics.py:661
+msgid "plus"
+msgstr "එකතු කිරීම"
+
+#: TurtleArt/tabasics.py:665
+msgid "adds two alphanumeric inputs"
+msgstr ""
+
+#: TurtleArt/tabasics.py:684
+msgid "minus"
+msgstr "අඩු කිරීම"
+
+#: TurtleArt/tabasics.py:687
+msgid "subtracts bottom numeric input from top numeric input"
+msgstr "ඉහළ අංකිත ආදානයෙන් පහළ අංකිත ආදානය අඩු කරයි"
+
+#: TurtleArt/tabasics.py:705
+msgid "multiply"
+msgstr "ගුණ කිරීම"
+
+#: TurtleArt/tabasics.py:708
+msgid "multiplies two numeric inputs"
+msgstr "අංකිත ආදාන දෙකක් ගුණ කරයි"
+
+#: TurtleArt/tabasics.py:724
+msgid "divide"
+msgstr "බෙදීම"
+
+#: TurtleArt/tabasics.py:727
+msgid ""
+"divides top numeric input (numerator) by bottom numeric input (denominator)"
+msgstr ""
+
+#: TurtleArt/tabasics.py:744
+msgid "identity"
+msgstr "අනන්‍යතාව"
+
+#: TurtleArt/tabasics.py:746
+msgid "identity operator used for extending blocks"
+msgstr "කුට්ටි විස්තාරණය කිරීම සඳහා භාවිතා කරන අනන්‍යතා මෙහෙයුම"
+
+#: TurtleArt/tabasics.py:772 TurtleArt/tabasics.py:773
+msgid "mod"
+msgstr "ඉතිරි"
+
+#: TurtleArt/tabasics.py:776
+msgid "modular (remainder) operator"
+msgstr ""
+
+#: TurtleArt/tabasics.py:784
+msgid "√"
+msgstr "√"
+
+#: TurtleArt/tabasics.py:785
+msgid "square root"
+msgstr "වර්ගමූලය"
+
+#: TurtleArt/tabasics.py:788
+msgid "calculates square root"
+msgstr "වර්ගමූලය ගණනය කරයි"
+
+#: TurtleArt/tabasics.py:796
+msgid "random"
+msgstr "අහඹු"
+
+#: TurtleArt/tabasics.py:796
+msgid "min"
+msgstr "අවම"
+
+#: TurtleArt/tabasics.py:796
+msgid "max"
+msgstr "උපරිම"
+
+#: TurtleArt/tabasics.py:800
+msgid "returns random number between minimum (top) and maximum (bottom) values"
+msgstr "අවම (ඉහළ) සහ උපරිම (පහළ) අගයන් අතර අහඹු අංකයක් ලබා දෙයි"
+
+#: TurtleArt/tabasics.py:822
+msgid "number"
+msgstr "අංකය"
+
+#: TurtleArt/tabasics.py:823
+msgid "used as numeric input in mathematic operators"
+msgstr "ගණිතමය මෙහෙයුම් වලදී අංකිත මෙහෙයුම් ලෙස භාවිතා කරනු ලබයි"
+
+#: TurtleArt/tabasics.py:830
+msgid "greater than"
+msgstr "වඩා වැඩි"
+
+#: TurtleArt/tabasics.py:833
+msgid "logical greater-than operator"
+msgstr "තාර්කික greater-than මෙහෙයුම"
+
+#: TurtleArt/tabasics.py:849
+msgid "less than"
+msgstr "වඩා අඩු"
+
+#: TurtleArt/tabasics.py:853
+msgid "logical less-than operator"
+msgstr "තාර්කික less-than මෙහෙයුම"
+
+#: TurtleArt/tabasics.py:869
+msgid "equal"
+msgstr "සමාන"
+
+#: TurtleArt/tabasics.py:873
+msgid "logical equal-to operator"
+msgstr "තාර්කික equal-to මෙහෙයුම"
+
+#: TurtleArt/tabasics.py:888
+msgid "not"
+msgstr "නැති"
+
+#: TurtleArt/tabasics.py:891
+msgid "logical NOT operator"
+msgstr "තාර්කික NOT මෙහෙයුම"
+
+#: TurtleArt/tabasics.py:899 TurtleArt/tabasics.py:902
+msgid "and"
+msgstr "සහ"
+
+#: TurtleArt/tabasics.py:903
+msgid "logical AND operator"
+msgstr "තාර්කික AND මෙහෙයුම"
+
+#: TurtleArt/tabasics.py:911 TurtleArt/tabasics.py:914
+msgid "or"
+msgstr "හෝ"
+
+#: TurtleArt/tabasics.py:915
+msgid "logical OR operator"
+msgstr "තාර්කික OR මෙහෙයුම"
+
+#: TurtleArt/tabasics.py:927
+#, fuzzy
+msgid "flow"
+msgstr "ගලනවා"
+
+#: TurtleArt/tabasics.py:931
+msgid "wait"
+msgstr "රැඳීසිටින්න"
+
+#: TurtleArt/tabasics.py:935
+msgid "pauses program execution a specified number of seconds"
+msgstr "විශේෂණය කල තත්පර ගණනක් වැඩසටහන ක්‍රියාත්මක වීම තාවකාලිකව නවත්වයි"
+
+#: TurtleArt/tabasics.py:944
+msgid "forever"
+msgstr "සෑමවිටම"
+
+#: TurtleArt/tabasics.py:948
+msgid "loops forever"
+msgstr "සදාකාලිකවම නැවත නැවත සිදු කරයි"
+
+#: TurtleArt/tabasics.py:958 TurtleArt/tabasics.py:962
+msgid "repeat"
+msgstr "නැවත කරන්න"
+
+#: TurtleArt/tabasics.py:963
+msgid "loops specified number of times"
+msgstr "විශේෂණය කල වාර ගණනක් නැවත නැවත සිදු කරයි"
+
+#: TurtleArt/tabasics.py:976 TurtleArt/tabasics.py:992
+msgid "if"
+msgstr "නම්"
+
+#: TurtleArt/tabasics.py:976 TurtleArt/tabasics.py:992
+msgid "then"
+msgstr "ඊළගට"
+
+#: TurtleArt/tabasics.py:979
+#, fuzzy
+msgid "if then"
+msgstr "if then"
+
+#: TurtleArt/tabasics.py:981
+msgid "if-then operator that uses boolean operators from Numbers palette"
+msgstr "අංක ඵලකයෙන් ද්වීමය මෙහෙයුම් භාවිතා කරන if-then මෙහෙයුම"
+
+#: TurtleArt/tabasics.py:992
+msgid "else"
+msgstr "else"
+
+#: TurtleArt/tabasics.py:996 TurtleArt/tabasics.py:1009
+#, fuzzy
+msgid "if then else"
+msgstr "if then else"
+
+#: TurtleArt/tabasics.py:997 TurtleArt/tabasics.py:1010
+msgid "if-then-else operator that uses boolean operators from Numbers palette"
+msgstr "අංක ඵලකයෙන් ද්වීමය මෙහෙයුම් භාවිතා කරන if-then-else මෙහෙයුම"
+
+#: TurtleArt/tabasics.py:1019
+msgid "horizontal space"
+msgstr "තිරස් ඉඩ"
+
+#: TurtleArt/tabasics.py:1020
+msgid "jogs stack right"
+msgstr ""
+
+#: TurtleArt/tabasics.py:1029
+msgid "vertical space"
+msgstr "සිරස් ඉඩ"
+
+#: TurtleArt/tabasics.py:1030
+msgid "jogs stack down"
+msgstr ""
+
+#: TurtleArt/tabasics.py:1037
+msgid "stop action"
+msgstr "ක්‍රියාව නවත්වන්න"
+
+#: TurtleArt/tabasics.py:1040
+msgid "stops current action"
+msgstr "වත්මන් ක්‍රියාව නතර කරයි"
+
+#: TurtleArt/tabasics.py:1050
+msgid "Palette of variable blocks"
+msgstr "විචල්‍යය කුට්ටි සඳහා ඵලකය"
+
+#: TurtleArt/tabasics.py:1051
+msgid "blocks"
+msgstr ""
+
+#: TurtleArt/tabasics.py:1058
+msgid "connects action to toolbar run buttons"
+msgstr "මෙවලම් තීරු ධාවනය කරන්න බොත්තම් වලට ක්‍රියා සම්බන්ධ කරයි"
+
+#: TurtleArt/tabasics.py:1075
+msgid "top of nameable action stack"
+msgstr ""
+
+#: TurtleArt/tabasics.py:1098
+msgid "store in box 1"
+msgstr "1 වන කොටුව තුළ තබන්න"
+
+#: TurtleArt/tabasics.py:1103
+msgid "stores numeric value in Variable 1"
+msgstr "අංකිත අගය විචල්‍යය 1 හි ගබඩා කරයි"
+
+#: TurtleArt/tabasics.py:1112
+msgid "store in box 2"
+msgstr "2 වන කොටුව තුළ තබන්න"
+
+#: TurtleArt/tabasics.py:1117
+msgid "stores numeric value in Variable 2"
+msgstr "අංකිත අගය විචල්‍යය 2 හි ගබඩා කරයි"
+
+#: TurtleArt/tabasics.py:1126
+msgid "box 1"
+msgstr "1 වන කොටුව"
+
+#: TurtleArt/tabasics.py:1129
+msgid "Variable 1 (numeric value)"
+msgstr "විචල්‍යය 1 (අංකිත අගය)"
+
+#: TurtleArt/tabasics.py:1139
+msgid "box 2"
+msgstr "1 වන කොටුව"
+
+#: TurtleArt/tabasics.py:1142
+msgid "Variable 2 (numeric value)"
+msgstr "විචල්‍යය 2 (අංකිත අගය)"
+
+#: TurtleArt/tabasics.py:1154 TurtleArt/tabasics.py:1170
+msgid "box"
+msgstr "පෙට්ටිය"
+
+#: TurtleArt/tabasics.py:1182 TurtleArt/tabasics.py:1206
+msgid "action 1"
+msgstr "ක්‍රියාව 1"
+
+#: TurtleArt/tabasics.py:1185
+msgid "top of Action 1 stack"
+msgstr ""
+
+#: TurtleArt/tabasics.py:1194 TurtleArt/tabasics.py:1219
+msgid "action 2"
+msgstr "ක්‍රියාව 2"
+
+#: TurtleArt/tabasics.py:1197
+msgid "top of Action 2 stack"
+msgstr ""
+
+#: TurtleArt/tabasics.py:1209
+msgid "invokes Action 1 stack"
+msgstr ""
+
+#: TurtleArt/tabasics.py:1222
+msgid "invokes Action 2 stack"
+msgstr ""
+
+#: TurtleArt/tabasics.py:1241
+msgid "invokes named action stack and returns value"
+msgstr ""
+
+#: TurtleArt/tabasics.py:1248
+msgid "return"
+msgstr ""
+
+#: TurtleArt/tabasics.py:1251
+msgid "returns a value"
+msgstr ""
+
+#: TurtleArt/tabasics.py:1268
+msgid "permanently deletes items in trash"
+msgstr "කුණු කූඩයේ ඇති අයිතම ස්ථිරවම මකයි"
+
+#: TurtleArt/tabasics.py:1272
+msgid "restore all"
+msgstr "සියල්ල නැවත පිහිටුවන්න"
+
+#: TurtleArt/tabasics.py:1273
+msgid "restore all blocks from trash"
+msgstr "කුණු කූඩයෙන් සියළු කුට්ටි නැවත පිහිටුවන්න"
+
+#: TurtleArt/tabasics.py:1277
+msgid "clear all"
+msgstr "සියල්ල පැහැදිලි කරන්න"
+
+#: TurtleArt/tabasics.py:1278
+msgid "move all blocks to trash"
+msgstr "සියළු කුට්ටි කුණු කූඩයට දමන්න"
+
+#~ msgid "set text color"
+#~ msgstr "පෙළ වර්ණය සකසන්න"
+
+#~ msgid "sets color of text drawn by the turtle"
+#~ msgstr "කැස්බෑවා විසින් අදින පෙළෙහි වර්ණය පිහිටුවයි"
+
+#~ msgid "set text size"
+#~ msgstr "පෙළ විශාලත්වය සකසන්න"
+
+#~ msgid "sets size of text drawn by the turtle"
+#~ msgstr "කැස්බෑවා විසින් අදින පෙළෙහි ප්‍රමාණය පිහිටුවයි"
+
+#~ msgid "presentation 1x1"
+#~ msgstr "ඉදිරිපත් කිරීම 1x1"
+
+#~ msgid "presentation 2x1"
+#~ msgstr "ඉදිරිපත් කිරීම 2x1"
+
+#~ msgid "presentation 1x2"
+#~ msgstr "ඉදිරිපත් කිරීම 1x2"
+
+#~ msgid "presentation 2x2"
+#~ msgstr "ඉදිරිපත් කිරීම 2x2"
+
+#~ msgid "Turtle Art"
+#~ msgstr "ටර්ටල් ආර්ට්"
+
+#~ msgid "Select a challenge"
+#~ msgstr "අභියෝගයක් තෝරන්න"
+
+#~ msgid "Palette of Mexican pesos"
+#~ msgstr "මෙක්සිකානු පෙසෝ ඵලකය"
+
+#~ msgid "Palette of Colombian pesos"
+#~ msgstr "කොලොම්බියානු පෙසෝ ඵලකය"
+
+#~ msgid "Palette of Rwandan francs"
+#~ msgstr "රුවන්ඩා ෆ්‍රෑන්ක් ඵලකය"
+
+#, fuzzy
+#~ msgid "adjust LED intensity between 0 and 255"
+#~ msgstr "LED තීව්රතාව 0 සහ 255 අතර සීරු මාරු කරන්න."
+
+#, fuzzy
+#~ msgid "returns 1 when the button is press and 0 otherwise"
+#~ msgstr "බොත්තම තද කල විට 1 සහ අනෙක් විට 0 ලබා දෙයි."
+
+#, fuzzy
+#~ msgid ""
+#~ "returns the distance from the object in front of the sensor as a number "
+#~ "between 0 and 255"
+#~ msgstr "සංවේදකය ඉදිරිපස ඇති වස්තුවේ සිට දුර 0 සහ 255 අතර අංකයක් ලෙස ලබා දෙයි."
+
+#, fuzzy
+#~ msgid "returns 0 or 1 depending on the sensor inclination"
+#~ msgstr "සංවේදකයේ ආනතිය මත 0 හෝ 1 ලබා දෙයි."
+
+#, fuzzy
+#~ msgid "returns 1 when the sensors detects a magnetic field, 0 otherwise"
+#~ msgstr "සංවේදකය චුම්භක ක්‍ෂේත්‍රයක් සංවේදනය කල විට 1 සහ අනෙක් විට 0 ලබා දෙයි."
+
+#, fuzzy
+#~ msgid "switches from 0 to 1, the frequency depends on the vibration"
+#~ msgstr "0 සිට 1ට මාරු වෙයි, සංඛ්‍යාතය කම්පනය මත රදා පවතී."
+
+#~ msgid "LED"
+#~ msgstr "LED"
+
+#~ msgid "grayscale"
+#~ msgstr "කළු සුදු පරාසය"
+
+#~ msgid "temperature"
+#~ msgstr "උෂ්ණත්වය"
+
+#~ msgid "distance"
+#~ msgstr "දුර"
+
+#~ msgid "magnetic induction"
+#~ msgstr "චුම්භක ප්‍රේරණය"
+
+#~ msgid "vibration"
+#~ msgstr "කම්පනය"
+
+#, fuzzy
+#~ msgid "Error on initialization of the camera"
+#~ msgstr "කැමරාව ආරම්භ කිරීමේදී දෝෂය."
+
+#~ msgid "FollowMe"
+#~ msgstr "මාව අනුගමනය කරන්න"
+
+#~ msgid "x position"
+#~ msgstr "x පිහිටීම"
+
+#~ msgid "return x position"
+#~ msgstr "x පිහිටීම ලබා දෙන්න"
+
+#~ msgid "y position"
+#~ msgstr "y පිහිටීම"
+
+#~ msgid "return y position"
+#~ msgstr "y පිහිටීම ලබා දෙන්න"
+
+#, fuzzy
+#~ msgid "density"
+#~ msgstr "අනන්‍යතාව"
+
+#, fuzzy
+#~ msgid "light"
+#~ msgstr "දකුණ"
+
+#, fuzzy
+#~ msgid "port"
+#~ msgstr "පේනුව"
+
+#, fuzzy
+#~ msgid "mode"
+#~ msgstr "ඉතිරි"
+
+#, fuzzy
+#~ msgid "samples"
+#~ msgstr "සාම්පලය"
+
+#~ msgid "follow a RGB color"
+#~ msgstr "RGB වර්ණයක් අනුගමනය කරන්න"
+
+#~ msgid "The camera was not found."
+#~ msgstr "කැමරාව හමු නොවුණි."
+
+#, fuzzy
+#~ msgid "then else"
+#~ msgstr "then else"
+
+#~ msgid "label"
+#~ msgstr "ලේබලය"
+
+#~ msgid "Save as HTML"
+#~ msgstr "HTML ලෙස සුරකින්න"
+
+#~ msgid "<Ctrl>d"
+#~ msgstr "<Ctrl>d"
+
+#~ msgid "Palette of US currencies"
+#~ msgstr "US මුදල් ඒකක ඵලකය"
+
+#~ msgid "Palette of Australian currencies"
+#~ msgstr "ඕස්ට්‍රේලියානු මුදල් ඒකක ඵලකය"
+
+#~ msgid "presentation"
+#~ msgstr "ඉදිරිපත් කිරීම"
+
+#~ msgid "follow a turtle color"
+#~ msgstr "කැස්බෑ වර්ණයක් අනුගමනය කරන්න"
+
+#~ msgid "<Ctrl>b"
+#~ msgstr "<Ctrl>b"
+
+#~ msgid "Move the cursor over the orange palette for help."
+#~ msgstr "උදව් සඳහා කර්සරය තැඹිලි පැහැ ඵලකය මතින් ගමන් කරවන්න."
+
+#~ msgid "pushbutton"
+#~ msgstr "ඔබුම් බොත්තම"
+
+#~ msgid "Import/Export"
+#~ msgstr "ආයාත/නිර්යාත කරන්න"
+
+#~ msgid "Import project from the Journal"
+#~ msgstr "ජර්නලයෙන් ව්‍යාපෘතිය ආයාත කරන්න"
+
+#~ msgid "forward distance"
+#~ msgstr "ඉදිරියට දුර"
+
+#~ msgid "backward distance"
+#~ msgstr "පිටුපසට දුර"
+
+#~ msgid "full screen"
+#~ msgstr "මුළු තිරයම"
+
+#~ msgid "stack"
+#~ msgstr "අට්ටිය"
+
+#, fuzzy
+#~ msgid "Load my block"
+#~ msgstr "මාගේ කොටස පූරණය කරන්න"
+
+#~ msgid "name"
+#~ msgstr "නම"
+
+#~ msgid "stack 2"
+#~ msgstr "අට්ටිය 2"
+
+#~ msgid "stack 1"
+#~ msgstr "අට්ටිය 1"
+
+#~ msgid "Keyboard"
+#~ msgstr "යතුරු පුවරුව"
+
+#~ msgid "Numbers"
+#~ msgstr "අංක"
+
+#~ msgid "Templates"
+#~ msgstr "ආකෘති"
+
+#~ msgid "read key"
+#~ msgstr "කියවීමේ යතුර"
+
+#~ msgid "setyx"
+#~ msgstr "setyx"
+
+#, fuzzy
+#~ msgid "text color"
+#~ msgstr "වර්ණය සකසන්න"
+
+#~ msgid "Pen"
+#~ msgstr "පෑණ"
+
+#~ msgid "hide palette"
+#~ msgstr "වර්ණ ඵලකය සගවන්න"
+
+#~ msgid "run"
+#~ msgstr "ධාවනය කරන්න"
+
+#~ msgid "stop stack"
+#~ msgstr "අට්ටිය නවත්වන්න"

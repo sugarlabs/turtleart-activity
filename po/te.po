@@ -1,0 +1,2334 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-03-24 17:39+1100\n"
+"PO-Revision-Date: 2012-11-25 06:59+0200\n"
+"Last-Translator: Chris <cjl@laptop.org>\n"
+"Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
+"Language: te\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.0.5\n"
+
+#: activity/activity.info:2
+msgid "TurtleBlocks"
+msgstr ""
+
+#: TurtleArtActivity.py:127
+msgid "Please wait"
+msgstr ""
+
+#: TurtleArtActivity.py:128
+msgid "Starting connection..."
+msgstr ""
+
+#: TurtleArtActivity.py:282
+msgid "Export as python"
+msgstr ""
+
+#: TurtleArtActivity.py:283
+msgid "Error: You must use a Start Block when exporting to Python."
+msgstr ""
+
+#: TurtleArtActivity.py:414
+msgid "snapshot"
+msgstr "ఛాయా చిత్రం"
+
+#: TurtleArtActivity.py:459 TurtleArtActivity.py:816 TurtleArtActivity.py:966
+msgid "Turn off hover help"
+msgstr ""
+
+#: TurtleArtActivity.py:468 TurtleArt/turtleblocks.py:482
+msgid "Turn on hover help"
+msgstr ""
+
+#: TurtleArtActivity.py:478 TurtleArt/turtleblocks.py:496
+msgid "Show palette"
+msgstr "వర్ణపలకాన్ని చూపుము"
+
+#: TurtleArtActivity.py:484 TurtleArtActivity.py:1180
+#: TurtleArt/turtleblocks.py:498
+msgid "Hide palette"
+msgstr "పలకాన్ని దాచుము"
+
+#: TurtleArtActivity.py:526 TurtleArtActivity.py:880
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1347
+#: TurtleArt/talogo.py:442
+msgid "Show blocks"
+msgstr "భాగాలను చూపుము"
+
+#: TurtleArtActivity.py:530 TurtleArtActivity.py:1192 TurtleArt/talogo.py:446
+msgid "Hide blocks"
+msgstr "భాగాలను దాచుము"
+
+#: TurtleArtActivity.py:652
+msgid "Rescale coordinates down"
+msgstr ""
+
+#: TurtleArtActivity.py:661 TurtleArtActivity.py:807 TurtleArtActivity.py:962
+msgid "Rescale coordinates up"
+msgstr ""
+
+#: TurtleArtActivity.py:757 TurtleArtActivity.py:873 TurtleArtActivity.py:936
+#: TurtleArt/turtleblocks.py:493
+msgid "Edit"
+msgstr "సరిచేయు"
+
+#: TurtleArtActivity.py:762 TurtleArtActivity.py:874 TurtleArtActivity.py:954
+#: TurtleArt/turtleblocks.py:484
+msgid "View"
+msgstr "దర్శించు"
+
+#: TurtleArtActivity.py:784 TurtleArtActivity.py:937
+#: TurtleArt/turtleblocks.py:487
+msgid "Copy"
+msgstr "కాపీ"
+
+#: TurtleArtActivity.py:786 TurtleArtActivity.py:938
+#: TurtleArt/turtleblocks.py:488
+msgid "Paste"
+msgstr "అతికించు"
+
+#: TurtleArtActivity.py:788
+msgid "Restore blocks from trash"
+msgstr ""
+
+#: TurtleArtActivity.py:791 TurtleArtActivity.py:939
+#: TurtleArt/turtleblocks.py:489 TurtleArt/tawindow.py:1514
+msgid "Save stack"
+msgstr ""
+
+#: TurtleArtActivity.py:793 TurtleArt/turtleblocks.py:491
+#: TurtleArt/tawindow.py:1553 TurtleArt/tawindow.py:1561
+#: TurtleArt/tawindow.py:1570
+msgid "Delete stack"
+msgstr ""
+
+#: TurtleArtActivity.py:796 TurtleArtActivity.py:955
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:961
+msgid "Fullscreen"
+msgstr "తెర మొత్తం"
+
+#: TurtleArtActivity.py:799 TurtleArtActivity.py:956
+#: TurtleArt/turtleblocks.py:468
+msgid "Cartesian coordinates"
+msgstr ""
+
+#: TurtleArtActivity.py:801 TurtleArtActivity.py:958
+#: TurtleArt/turtleblocks.py:470
+msgid "Polar coordinates"
+msgstr ""
+
+#: TurtleArtActivity.py:804 TurtleArtActivity.py:960
+msgid "Metric coordinates"
+msgstr ""
+
+#: TurtleArtActivity.py:810 TurtleArtActivity.py:964
+#: TurtleArt/turtleblocks.py:475
+msgid "Grow blocks"
+msgstr "భాగాలను పెంచుము"
+
+#: TurtleArtActivity.py:813 TurtleArtActivity.py:965
+#: TurtleArt/turtleblocks.py:477
+msgid "Shrink blocks"
+msgstr "భాగాలను కుంచించుము"
+
+#: TurtleArtActivity.py:843 TurtleArtActivity.py:881 TurtleArtActivity.py:1146
+msgid "Load example"
+msgstr ""
+
+#: TurtleArtActivity.py:872 TurtleArtActivity.py:899
+msgid "Save/Load"
+msgstr ""
+
+#: TurtleArtActivity.py:875
+msgid "Project"
+msgstr "పథకం"
+
+#: TurtleArtActivity.py:876 TurtleArtActivity.py:1186
+#: TurtleArt/turtleblocks.py:505
+msgid "Clean"
+msgstr "శుభ్రపరుచు"
+
+#: TurtleArtActivity.py:877 TurtleArtActivity.py:1188
+#: TurtleArt/turtleblocks.py:506
+msgid "Run"
+msgstr "నడుపు"
+
+#: TurtleArtActivity.py:878 TurtleArtActivity.py:1190
+#: TurtleArt/turtleblocks.py:507
+msgid "Step"
+msgstr "మెట్టు"
+
+#: TurtleArtActivity.py:879
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1356
+#: TurtleArt/talogo.py:432 TurtleArt/tawindow.py:1269
+msgid "Stop turtle"
+msgstr "టర్టిల్ ని ఆపు"
+
+#: TurtleArtActivity.py:882 TurtleArt/turtleblocks.py:517
+#: TurtleArt/util/helpbutton.py:44
+msgid "Help"
+msgstr "సహాయం"
+
+#: TurtleArtActivity.py:883 TurtleArt/turtleblocks.py:509
+msgid "Stop"
+msgstr "నిలిపివేయి"
+
+#: TurtleArtActivity.py:898 TurtleArt/tawindow.py:2048
+#: TurtleArt/tacollaboration.py:154
+msgid "Share selected blocks"
+msgstr ""
+
+#: TurtleArtActivity.py:900 TurtleArtActivity.py:1103
+msgid "Save as image"
+msgstr "ప్రతిరూపంగా దాచు"
+
+#: TurtleArtActivity.py:903 TurtleArtActivity.py:1106
+msgid "Save as icon"
+msgstr ""
+
+#. TRANS: ODP is Open Office presentation
+#: TurtleArtActivity.py:908 TurtleArtActivity.py:1110
+msgid "Save as ODP"
+msgstr ""
+
+#: TurtleArtActivity.py:913 TurtleArtActivity.py:1121
+msgid "Save as Logo"
+msgstr "ముద్రికగా దాచు"
+
+#: TurtleArtActivity.py:914 TurtleArtActivity.py:1124
+msgid "Save as Python"
+msgstr ""
+
+#: TurtleArtActivity.py:915 TurtleArtActivity.py:1128
+msgid "Save snapshot"
+msgstr "ఛాయా చిత్రాన్ని దాచుము"
+
+#: TurtleArtActivity.py:916 TurtleArtActivity.py:1155
+#: TurtleArt/turtleblocks.py:438
+msgid "Add project"
+msgstr ""
+
+#: TurtleArtActivity.py:919 TurtleArtActivity.py:1160
+#: TurtleArt/turtleblocks.py:439
+msgid "Load plugin"
+msgstr ""
+
+#: TurtleArtActivity.py:920 TurtleArtActivity.py:1163
+msgid "Load Python block"
+msgstr ""
+
+#: TurtleArtActivity.py:1075
+msgid "Palettes"
+msgstr ""
+
+#: TurtleArtActivity.py:1093
+msgid "Sharing blocks disabled"
+msgstr ""
+
+#: TurtleArtActivity.py:1098 TurtleArt/turtleblocks.py:441
+msgid "Save"
+msgstr "దాచు"
+
+#: TurtleArtActivity.py:1131
+msgid "Save blocks as image"
+msgstr ""
+
+#: TurtleArtActivity.py:1135
+msgid "Load"
+msgstr ""
+
+#: TurtleArtActivity.py:1152 TurtleArt/turtleblocks.py:437
+msgid "Open"
+msgstr "తెరుచు"
+
+#: TurtleArtActivity.py:1181
+msgid "<Ctrl>p"
+msgstr ""
+
+#: TurtleArtActivity.py:1186
+msgid "<Ctrl>e"
+msgstr ""
+
+#: TurtleArtActivity.py:1188
+msgid "<Ctrl>r"
+msgstr ""
+
+#: TurtleArtActivity.py:1190
+msgid "<Ctrl>w"
+msgstr ""
+
+#: TurtleArtActivity.py:1193
+msgid "<Ctrl>s"
+msgstr ""
+
+#: TurtleArtActivity.py:1379
+#, python-format
+msgid "Plugin %s already installed."
+msgstr ""
+
+#: TurtleArtActivity.py:1380 TurtleArt/turtleblocks.py:591
+#, python-format
+msgid "Do you want to reinstall %s?"
+msgstr ""
+
+#: gnome_plugins/collaboration_plugin.py:64
+msgid "My Turtle Art session"
+msgstr ""
+
+#: gnome_plugins/collaboration_plugin.py:111
+msgid "Enable collaboration"
+msgstr ""
+
+#: gnome_plugins/collaboration_plugin.py:116
+msgid "Activities"
+msgstr ""
+
+#: gnome_plugins/collaboration_plugin.py:121
+msgid "Buddies"
+msgstr ""
+
+#: gnome_plugins/collaboration_plugin.py:124
+msgid "Share"
+msgstr ""
+
+#: gnome_plugins/collaboration_plugin.py:125
+msgid "Configuration"
+msgstr ""
+
+#: gnome_plugins/collaboration_plugin.py:128
+msgid "Neighborhood"
+msgstr ""
+
+#: gnome_plugins/collaboration_plugin.py:289
+msgid "Nickname"
+msgstr ""
+
+#: gnome_plugins/collaboration_plugin.py:291
+msgid "Account ID"
+msgstr ""
+
+#: gnome_plugins/collaboration_plugin.py:293
+msgid "Server"
+msgstr ""
+
+#: gnome_plugins/collaboration_plugin.py:295
+msgid "Port"
+msgstr ""
+
+#: gnome_plugins/collaboration_plugin.py:297
+msgid "Password"
+msgstr ""
+
+#: gnome_plugins/collaboration_plugin.py:299
+msgid "Register"
+msgstr ""
+
+#: gnome_plugins/collaboration_plugin.py:301
+#, fuzzy
+msgid "Colors"
+msgstr "వర్ణము"
+
+#: gnome_plugins/fb_plugin.py:82 gnome_plugins/fb_plugin.py:83
+#: gnome_plugins/fb_plugin.py:91 gnome_plugins/uploader_plugin.py:63
+#: gnome_plugins/uploader_plugin.py:64 gnome_plugins/uploader_plugin.py:73
+msgid "Upload"
+msgstr ""
+
+#: gnome_plugins/fb_plugin.py:87
+msgid "Facebook wall post"
+msgstr ""
+
+#: gnome_plugins/uploader_plugin.py:68
+msgid "Upload to Web"
+msgstr ""
+
+#: gnome_plugins/uploader_plugin.py:90
+msgid ""
+"You must have an account at http://turtleartsite.sugarlabs.org to upload "
+"your project."
+msgstr ""
+
+#: gnome_plugins/uploader_plugin.py:99
+msgid "Username:"
+msgstr ""
+
+#: gnome_plugins/uploader_plugin.py:109
+msgid "Password:"
+msgstr ""
+
+#: gnome_plugins/uploader_plugin.py:120
+#, fuzzy
+msgid "Title:"
+msgstr "పీఠిక "
+
+#: gnome_plugins/uploader_plugin.py:130
+msgid "Description:"
+msgstr ""
+
+#: gnome_plugins/uploader_plugin.py:140
+msgid "Submit to Web"
+msgstr ""
+
+#: gnome_plugins/uploader_plugin.py:144 TurtleArt/tawindow.py:1518
+#: TurtleArt/tawindow.py:1557
+msgid "Cancel"
+msgstr ""
+
+#: gnome_plugins/uploader_plugin.py:172
+msgid "Login failed"
+msgstr ""
+
+#: gnome_plugins/uploader_plugin.py:209
+msgid "Failed to upload!"
+msgstr ""
+
+#: pyexported/window_setup.py:39
+msgid ""
+"The path to the TurtleArt installation must be listed in the environment "
+"variable PYTHONPATH."
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:72
+#: TurtleArt/tabasics.py:926
+msgid "Palette of flow operators"
+msgstr "ప్రస్రణా కార్యవాహికల పలకం"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:76
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:79
+#, fuzzy
+msgid "while"
+msgstr "రాయు "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:80
+msgid "do-while-True operator that uses boolean operators from Numbers palette"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:97
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:100
+msgid "until"
+msgstr "అప్పటివరకు"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:101
+msgid "do-until-True operator that uses boolean operators from Numbers palette"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:121
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:854
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1071
+#, fuzzy
+msgid "top"
+msgstr "పైన"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:123
+msgid "top of a collapsible stack"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:133
+#: plugins/camera_sensor/camera_sensor.py:71
+msgid "Palette of media objects"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:135
+msgid "media"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:141
+msgid "journal"
+msgstr "పొద్దు"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:142
+msgid "Sugar Journal media object"
+msgstr "శుగర్ పొద్దు మాధ్యమ తాత్పర్యం"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:153
+msgid "audio"
+msgstr "శ్రావణ"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:155
+msgid "Sugar Journal audio object"
+msgstr "శుగర్ పొద్దు శ్రావ్య తాత్పర్యం"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:166
+msgid "video"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:168
+#, fuzzy
+msgid "Sugar Journal video object"
+msgstr "శుగర్ పొద్దు శ్రావ్య తాత్పర్యం "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:179
+msgid "description"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:181
+msgid "Sugar Journal description field"
+msgstr "శుగర్ పొద్దును వివరించే ప్రాంతం"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:190
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:191
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:192
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:198
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:213
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:921
+#: TurtleArt/taconstants.py:452
+msgid "text"
+msgstr "పాఠము"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:193
+msgid "string value"
+msgstr "పద బంధం విలువ"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:197
+msgid "show"
+msgstr "చూపు"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:201
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:216
+msgid "draws text or show media from the Journal"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:212
+msgid "show aligned"
+msgstr "లీనంగా చూపు"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:225
+msgid "set scale"
+msgstr "కొలబద్దను అమర్చు"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:229
+msgid "sets the scale of media"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:239
+msgid "set font"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:242
+msgid "sets the font used by the show block"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:249
+msgid "save picture"
+msgstr "ప్రతిరూపాన్ని దాచు"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:251
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:262
+msgid "picture name"
+msgstr "ప్రతిరూప నామం"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:252
+msgid "saves a picture to the Sugar Journal"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:260
+msgid "save SVG"
+msgstr "SVG గా దాచు"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:263
+msgid "saves turtle graphics as an SVG file in the Sugar Journal"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:272
+msgid "scale"
+msgstr "కొలబద్ద"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:276
+msgid "holds current scale value"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:283
+msgid "media wait"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:285
+msgid "wait for current video or audio to complete"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:291
+msgid "media stop"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:293
+msgid "stop video or audio"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:298
+msgid "media pause"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:300
+msgid "pause video or audio"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:305
+msgid "media resume"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:307
+msgid "resume playing video or audio"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:312
+msgid "speak"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:314
+msgid "hello"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:315
+msgid "speaks text"
+msgstr ""
+
+#. TRANS: pitch, duration, amplitude
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:323
+msgid "sinewave"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:323
+#: plugins/audio_sensors/audio_sensors.py:126
+msgid "pitch"
+msgstr "శృతి"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:324
+msgid "amplitude"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:324
+msgid "duration"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:327
+msgid "plays a sinewave at frequency, amplitude, and duration (in seconds)"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:339
+#: plugins/camera_sensor/camera_sensor.py:67 plugins/rfid/rfid.py:87
+#: plugins/accelerometer/accelerometer.py:50
+#: plugins/light_sensor/light_sensor.py:52
+#: plugins/audio_sensors/audio_sensors.py:84
+msgid "Palette of sensor blocks"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:341
+msgid "sensor"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:346
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:357
+msgid "button down"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:349
+msgid "returns 1 if mouse button is pressed"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:360
+msgid "returns True if mouse button is pressed"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:368
+msgid "mouse x"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:371
+msgid "returns mouse x coordinate"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:379
+msgid "mouse y"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:382
+msgid "returns mouse y coordinate"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:390
+msgid "query keyboard"
+msgstr "query మీటల పలకం"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:392
+msgid "query for keyboard input (results stored in keyboard block)"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:400
+msgid "keyboard"
+msgstr "మీటల పలకం"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:404
+msgid "holds results of query-keyboard block as ASCII"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:412
+msgid "read pixel"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:415
+msgid "RGB color under the turtle is pushed to the stack"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:422
+msgid "turtle sees"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:425
+msgid "returns the color that the turtle \"sees\""
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:434
+msgid "time"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:437
+msgid "elapsed time (in seconds) since program started"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:462
+msgid "Palette of extra options"
+msgstr "అదనపు  ఇచ్ఛాపూర్వకాల పలకం"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:464
+msgid "extras"
+msgstr ""
+
+#. TRANS: push adds a new item to the program stack
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:469
+msgid "push"
+msgstr "నెట్టు"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:472
+msgid "pushes value onto FILO (first-in last-out heap)"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:484
+msgid "show heap"
+msgstr "కుప్పను చూపుము"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:487
+msgid "shows values in FILO (first-in last-out heap)"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:499
+msgid "empty heap"
+msgstr "ఖాళీ కుప్ప"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:502
+msgid "emptys FILO (first-in-last-out heap)"
+msgstr ""
+"FILO క్రమంలో ఖాళీ చేస్తుంది (మొదట-వచ్చినది - కుప్పనుండి -చరకు -వెళుతుంది )"
+
+#. TRANS: pop removes a new item from the program stack
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:513
+msgid "pop"
+msgstr "ఎగసి"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:517
+msgid "pops value off FILO (first-in last-out heap)"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:529
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:585
+#, fuzzy
+msgid "empty heap?"
+msgstr "ఖాళీ కుప్ప "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:532
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:588
+msgid "returns True if heap is empty"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:544
+msgid "save heap to file"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:545
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:559
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:573
+msgid "filename"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:547
+msgid "saves FILO (first-in last-out heap) to a file"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:558
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:566
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:572
+msgid "load heap from file"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:561
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:567
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:575
+msgid "loads FILO (first-in last-out heap) from a file"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:600
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:602
+msgid "comment"
+msgstr "వ్యాఖ్య"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:604
+msgid "places a comment in your code"
+msgstr "మీ సంకేతాలలో వ్యాఖ్యనుంచుతుంది"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:611
+msgid "print"
+msgstr "ముద్రణ"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:615
+msgid "prints value in status block at bottom of the screen"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:626
+msgid "Python chr operator"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:636
+msgid "Python int operator"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:646
+msgid "polar"
+msgstr "ధృవ"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:648
+msgid "displays polar coordinates"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:654
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:669
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:685
+#: TurtleArt/turtleblocks.py:462
+msgid "Python"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:658
+msgid ""
+"a programmable block: used to add advanced single-variable math equations, e."
+"g., sin(x)"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:673
+msgid ""
+"a programmable block: used to add advanced multi-variable math equations, e."
+"g., sqrt(x*x+y*y)"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:689
+msgid ""
+"a programmable block: used to add advanced multi-variable math equations, e."
+"g., sin(x+y+z)"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:699
+msgid "Cartesian"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:701
+msgid "displays Cartesian coordinates"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:710
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:727
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:744
+msgid "Python block"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:712
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:729
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:747
+msgid "runs code found in the tamyblock.py module found in the Journal"
+msgstr ""
+
+#. TRANS: URL is universal resource locator
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:763
+msgid "URL"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:768
+msgid "gets a text string or an image from a URL"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:778
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:788
+msgid "turtle shell"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:780
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:789
+msgid "put a custom 'shell' on the turtle"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:793
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:862
+#: TurtleArt/tabasics.py:159
+msgid "turtle"
+msgstr "టర్టిల్"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:797
+msgid "chooses which turtle to command"
+msgstr "ఏ టర్టిల్‌ను నిర్దేశించాలో ఎంచుకొంటుంది"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:804
+msgid "turtle x"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:807
+msgid "Returns x coordinate of turtle"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:816
+msgid "turtle y"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:819
+msgid "Returns y coordinate of turtle"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:828
+msgid "active turtle"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:831
+msgid "the name of the active turtle"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:839
+msgid "turtle heading"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:842
+msgid "Returns heading of turtle"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:852
+#: TurtleArt/tautils.py:638
+msgid "click to open"
+msgstr "తెరుచుటకు నొక్కుము"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:855
+msgid "top of a collapsed stack"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:860
+msgid "select palette"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:863
+msgid "selects a palette"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:871
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:883
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:897
+msgid "load"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:873
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:886
+#: TurtleArt/tabasics.py:163
+msgid "forward"
+msgstr "ముందుకు"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:874
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:887
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:901
+msgid "loads a block"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:900
+#, fuzzy
+msgid "setxy"
+msgstr "xy లను అమర్చు"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:912
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:918
+msgid "index"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:913
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:923
+msgid "return the text of the positions"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:918
+msgid "string"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:919
+#: pysamples/grecord.py:212 TurtleArt/tabasics.py:1055
+msgid "start"
+msgstr "ప్రారంభించు"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:919
+msgid "end"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:936
+msgid "Palette of presentation templates"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:939
+msgid "portfolio"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:943
+msgid "hide blocks"
+msgstr "భాగాలను దాచు"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:945
+msgid "declutters canvas by hiding blocks"
+msgstr "భాగాలను దాచటం ద్వారా యవనికను శుబ్రపరుస్తుంది"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:952
+msgid "show blocks"
+msgstr "భాగాలను చూపు"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:954
+msgid "restores hidden blocks"
+msgstr "దాగి ఉన్న భాగాల్ని పున:స్థాపిస్తుంది"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:963
+msgid "hides the Sugar toolbars"
+msgstr "శుగర్  పనిముట్ల పట్టాను దాచుతుంది"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:973
+msgid "list"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:977
+msgid "presentation bulleted list"
+msgstr "సమర్పణ  విశేషణ సూచిక జాబితా"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:985
+msgid "presentation template: list of bullets"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:992
+msgid "presentation template: select Journal object (no description)"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:999
+msgid "presentation template: select Journal object (with description)"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1006
+msgid "presentation template: select four Journal objects"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1013
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1020
+msgid "presentation template: select two Journal objects"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1027
+#: TurtleArt/taconstants.py:149 TurtleArt/tabasics.py:210
+msgid "left"
+msgstr "ఎడమ"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1030
+#, fuzzy
+msgid "xcor of left of screen"
+msgstr "తెర దిగువున y అక్షము"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1038
+msgid "bottom"
+msgstr "దిగువ"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1041
+msgid "ycor of bottom of screen"
+msgstr "తెర దిగువున y అక్షము"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1049
+msgid "width"
+msgstr "వెడల్పు"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1052
+msgid "the canvas width"
+msgstr "యవనిక వెడల్పు"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1060
+#: TurtleArt/taconstants.py:151 TurtleArt/tabasics.py:224
+msgid "right"
+msgstr "కుడి"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1063
+#, fuzzy
+msgid "xcor of right of screen"
+msgstr "తెర దిగువున y అక్షము "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1074
+#, fuzzy
+msgid "ycor of top of screen"
+msgstr "తెర దిగువున y అక్షము "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1082
+msgid "height"
+msgstr "ఎత్తు"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1085
+msgid "the canvas height"
+msgstr "యవనిక ఎత్తు"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1095
+msgid "title x"
+msgstr "పీఠిక x"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1107
+msgid "title y"
+msgstr "పీఠిక y"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1119
+msgid "left x"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1131
+msgid "top y"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1143
+msgid "right x"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1155
+#, fuzzy
+msgid "bottom y"
+msgstr "దిగువ "
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1174
+msgid "Palette of user-defined operators"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1175
+msgid "my blocks"
+msgstr ""
+
+#: plugins/camera_sensor/camera_sensor.py:90
+#: plugins/camera_sensor/camera_sensor.py:122
+#: plugins/light_sensor/light_sensor.py:58
+#: plugins/light_sensor/light_sensor.py:66
+msgid "brightness"
+msgstr ""
+
+#: plugins/camera_sensor/camera_sensor.py:92
+msgid "light level detected by camera"
+msgstr ""
+
+#: plugins/camera_sensor/camera_sensor.py:107
+#: plugins/camera_sensor/camera_sensor.py:115
+msgid "camera output"
+msgstr ""
+
+#: plugins/camera_sensor/camera_sensor.py:124
+msgid "Average RGB color from camera is pushed to the stack"
+msgstr ""
+
+#: plugins/rfid/rfid.py:93 plugins/rfid/rfid.py:101
+msgid "RFID"
+msgstr ""
+
+#: plugins/rfid/rfid.py:94 plugins/rfid/rfid.py:102
+msgid "read value from RFID device"
+msgstr ""
+
+#: plugins/accelerometer/accelerometer.py:56
+#: plugins/accelerometer/accelerometer.py:63
+msgid "acceleration"
+msgstr ""
+
+#: plugins/accelerometer/accelerometer.py:58
+#: plugins/accelerometer/accelerometer.py:65
+msgid "push acceleration in x, y, z to heap"
+msgstr ""
+
+#: plugins/light_sensor/light_sensor.py:61
+#: plugins/light_sensor/light_sensor.py:69
+msgid "light level detected by light sensor"
+msgstr ""
+
+#: plugins/audio_sensors/audio_sensors.py:93 pysamples/grecord.py:207
+msgid "sound"
+msgstr ""
+
+#: plugins/audio_sensors/audio_sensors.py:94
+msgid "raw microphone input signal"
+msgstr ""
+
+#: plugins/audio_sensors/audio_sensors.py:100
+msgid "loudness"
+msgstr ""
+
+#: plugins/audio_sensors/audio_sensors.py:101
+msgid "microphone input volume"
+msgstr "మైకు ఎగుబడి పరిమాణం"
+
+#: plugins/audio_sensors/audio_sensors.py:127
+#, fuzzy
+msgid "microphone input pitch"
+msgstr "మైకు ఎగుబడి పరిమాణం"
+
+#: plugins/audio_sensors/audio_sensors.py:160
+#: plugins/audio_sensors/audio_sensors.py:178
+msgid "resistance"
+msgstr "ప్రతిఘటన"
+
+#: plugins/audio_sensors/audio_sensors.py:161
+#: plugins/audio_sensors/audio_sensors.py:179
+msgid "microphone input resistance"
+msgstr ""
+
+#: plugins/audio_sensors/audio_sensors.py:166
+#: plugins/audio_sensors/audio_sensors.py:184
+msgid "voltage"
+msgstr ""
+
+#: plugins/audio_sensors/audio_sensors.py:167
+#: plugins/audio_sensors/audio_sensors.py:185
+#, fuzzy
+msgid "microphone input voltage"
+msgstr "మైకు ఎగుబడి పరిమాణం"
+
+#: pysamples/uturn.py:35
+msgid "uturn"
+msgstr ""
+
+#: pysamples/uturn.py:37
+msgid "turns the turtle 180 degrees"
+msgstr ""
+
+#: pysamples/brain.py:43
+msgid "Please install the Speak Activity and try again."
+msgstr ""
+
+#: pysamples/brain.py:52
+msgid "Spanish"
+msgstr ""
+
+#: pysamples/brain.py:56 pysamples/brain.py:69 pysamples/brain.py:71
+#: pysamples/brain.py:77
+msgid "English"
+msgstr ""
+
+#: pysamples/brain.py:88
+msgid "Sorry, I can't understand what you are asking about."
+msgstr ""
+
+#: pysamples/brain.py:97
+msgid ""
+"Sorry, there is no free memory to load my brain. Close other activities and "
+"try once more."
+msgstr ""
+
+#: pysamples/journal-stats.py:90
+msgid "other"
+msgstr ""
+
+#: pysamples/forward_push.py:48
+msgid "push destination rgb value to heap"
+msgstr ""
+
+#: pysamples/grecord.py:214
+#, fuzzy
+msgid "stop"
+msgstr "పైన "
+
+#: pysamples/grecord.py:216
+msgid "play"
+msgstr ""
+
+#: pysamples/grecord.py:218
+#, fuzzy
+msgid "save"
+msgstr "దాచు "
+
+#: TurtleArt/talogo.py:604
+msgid "did not output to"
+msgstr "అక్కడకి దిగుబడి కాలేదు"
+
+#: TurtleArt/talogo.py:645 TurtleArt/talogo.py:1059
+msgid "doesn't like"
+msgstr "నచ్చని"
+
+#: TurtleArt/talogo.py:646 TurtleArt/talogo.py:1060
+msgid "as input"
+msgstr "ఎగుబడిలా"
+
+#: TurtleArt/talogo.py:709
+msgid "I don't know how to"
+msgstr "ఎలాగో నాకు తెలియదు"
+
+#: TurtleArt/turtleblocks.py:106
+msgid "usage is"
+msgstr ""
+
+#: TurtleArt/turtleblocks.py:307
+msgid "No option action:"
+msgstr ""
+
+#: TurtleArt/turtleblocks.py:322
+msgid "File not found"
+msgstr ""
+
+#: TurtleArt/turtleblocks.py:346
+#, python-format
+msgid "Configuration directory not writable: %s"
+msgstr ""
+
+#: TurtleArt/turtleblocks.py:434
+msgid "New"
+msgstr ""
+
+#: TurtleArt/turtleblocks.py:435
+msgid "Show sample projects"
+msgstr ""
+
+#: TurtleArt/turtleblocks.py:442
+msgid "Save as"
+msgstr ""
+
+#: TurtleArt/turtleblocks.py:446
+msgid "Export as"
+msgstr ""
+
+#: TurtleArt/turtleblocks.py:449 TurtleArt/tawindow.py:4788
+msgid "image"
+msgstr "ప్రతిరూపము"
+
+#: TurtleArt/turtleblocks.py:451
+msgid "image (blocks)"
+msgstr ""
+
+#: TurtleArt/turtleblocks.py:453
+msgid "SVG"
+msgstr ""
+
+#: TurtleArt/turtleblocks.py:455 TurtleArt/tawindow.py:4641
+msgid "icon"
+msgstr ""
+
+#. TRANS: ODP is Open Office presentation
+#: TurtleArt/turtleblocks.py:458
+msgid "ODP"
+msgstr ""
+
+#: TurtleArt/turtleblocks.py:460
+msgid "Logo"
+msgstr ""
+
+#: TurtleArt/turtleblocks.py:464
+msgid "Quit"
+msgstr ""
+
+#: TurtleArt/turtleblocks.py:465
+msgid "File"
+msgstr "దస్త్రము"
+
+#: TurtleArt/turtleblocks.py:473
+msgid "Rescale coordinates"
+msgstr ""
+
+#: TurtleArt/turtleblocks.py:479
+msgid "Reset block size"
+msgstr "బాగం పరిమాణాన్ని  పున:స్థాపించు"
+
+#: TurtleArt/turtleblocks.py:500
+msgid "Show/hide blocks"
+msgstr "భాగాలను చూపుము/దాచుము"
+
+#: TurtleArt/turtleblocks.py:502
+msgid "Tools"
+msgstr "పనిముట్లు"
+
+#: TurtleArt/turtleblocks.py:508
+msgid "Debug"
+msgstr "లోప నిర్మూలన"
+
+#: TurtleArt/turtleblocks.py:510
+msgid "Turtle"
+msgstr "టర్టిల్"
+
+#: TurtleArt/turtleblocks.py:513
+msgid "Plugins"
+msgstr ""
+
+#: TurtleArt/turtleblocks.py:516
+msgid "About..."
+msgstr ""
+
+#: TurtleArt/turtleblocks.py:575
+msgid "You have unsaved work. Would you like to save before quitting?"
+msgstr ""
+
+#: TurtleArt/turtleblocks.py:580
+msgid "Save project?"
+msgstr ""
+
+#: TurtleArt/turtleblocks.py:590
+#, python-format
+msgid "Plugin %s already installed"
+msgstr ""
+
+#: TurtleArt/turtleblocks.py:736
+msgid "myproject"
+msgstr ""
+
+#: TurtleArt/turtleblocks.py:814 TurtleArt/taplugin.py:89
+#, python-format
+msgid "Please restart %s in order to use the plugin."
+msgstr ""
+
+#: TurtleArt/turtleblocks.py:819
+#, python-format
+msgid "Please restart %s in order to unload the plugin."
+msgstr ""
+
+#: TurtleArt/tapalette.py:103
+msgid "displays next palette"
+msgstr "తదుపరి పలకాన్ని ప్రదర్శిస్తుంది"
+
+#: TurtleArt/tapalette.py:104
+msgid "changes the orientation of the palette of blocks"
+msgstr ""
+
+#: TurtleArt/tapalette.py:144 TurtleArt/tapalette.py:145
+#: TurtleArt/tabasics.py:1262 TurtleArt/tabasics.py:1263
+msgid "trash"
+msgstr ""
+
+#: TurtleArt/taexportpython.py:226
+msgid "block is not exportable"
+msgstr ""
+
+#: TurtleArt/taexportpython.py:245
+msgid "error while exporting block"
+msgstr ""
+
+#: TurtleArt/taprimitive.py:62
+msgid "error in highlighted block"
+msgstr ""
+
+#: TurtleArt/taprimitive.py:64
+msgid "error"
+msgstr ""
+
+#: TurtleArt/tawindow.py:1151 TurtleArt/tawindow.py:1152
+#, fuzzy
+msgid "orientation"
+msgstr "సమర్పణ"
+
+#: TurtleArt/tawindow.py:1166 TurtleArt/tawindow.py:1626
+msgid "next"
+msgstr "తర్వాత"
+
+#: TurtleArt/tawindow.py:1205 TurtleArt/tawindow.py:1635
+msgid "shift"
+msgstr ""
+
+#: TurtleArt/tawindow.py:1273
+msgid "Please hit the Stop Button before making changes to your program"
+msgstr ""
+
+#: TurtleArt/tawindow.py:1316 TurtleArt/tawindow.py:1430
+#: TurtleArt/tawindow.py:1443 TurtleArt/tawindow.py:2078
+#: TurtleArt/tawindow.py:4934 TurtleArt/tabasics.py:1070
+#: TurtleArt/tabasics.py:1073 TurtleArt/tabasics.py:1086
+#: TurtleArt/tabasics.py:1090 TurtleArt/tabasics.py:1236
+#: TurtleArt/tabasics.py:1240
+msgid "action"
+msgstr "చర్య"
+
+#: TurtleArt/tawindow.py:1322 TurtleArt/tawindow.py:1469
+#: TurtleArt/tawindow.py:2084 TurtleArt/tawindow.py:4961
+#: TurtleArt/tawindow.py:4988 TurtleArt/tabasics.py:1158
+#: TurtleArt/tabasics.py:1173
+msgid "my box"
+msgstr "నా పేటిక"
+
+#: TurtleArt/tawindow.py:1337
+msgid "Select blocks to share"
+msgstr ""
+
+#: TurtleArt/tawindow.py:1515 TurtleArt/tawindow.py:1529
+msgid "Really overwrite stack?"
+msgstr ""
+
+#: TurtleArt/tawindow.py:1522 TurtleArt/tawindow.py:1532
+msgid "Overwrite stack"
+msgstr ""
+
+#: TurtleArt/tawindow.py:1554 TurtleArt/tawindow.py:1567
+msgid "Really delete stack?"
+msgstr ""
+
+#: TurtleArt/tawindow.py:1947 TurtleArt/tabasics.py:1267
+msgid "empty trash"
+msgstr "చెత్తకుండీ ఖాళీ చేయు"
+
+#: TurtleArt/tawindow.py:1948
+msgid "Do you really want to empty the trash?"
+msgstr ""
+
+#: TurtleArt/tawindow.py:4285 TurtleArt/tawindow.py:4306
+#, python-format
+msgid "Cannot write data to %s."
+msgstr ""
+
+#: TurtleArt/tawindow.py:4286
+msgid "Please choose a different save directory."
+msgstr ""
+
+#: TurtleArt/tawindow.py:4307
+msgid "Please choose a different file name."
+msgstr ""
+
+#: TurtleArt/tawindow.py:4415 TurtleArt/tabasics.py:284
+msgid "xcor"
+msgstr "x అక్షము"
+
+#: TurtleArt/tawindow.py:4416 TurtleArt/tabasics.py:299
+msgid "ycor"
+msgstr "y అక్షము"
+
+#: TurtleArt/tawindow.py:4416 TurtleArt/tabasics.py:314
+msgid "heading"
+msgstr "పీఠిక"
+
+#: TurtleArt/tawindow.py:4442 TurtleArt/tawindow.py:4447
+#: TurtleArt/tabasics.py:359 TurtleArt/tabasics.py:373
+#: TurtleArt/tabasics.py:447
+msgid "shade"
+msgstr "ఛాయ"
+
+#: TurtleArt/tawindow.py:4443 TurtleArt/tawindow.py:4448
+#: TurtleArt/tabasics.py:373 TurtleArt/tabasics.py:461
+msgid "gray"
+msgstr ""
+
+#: TurtleArt/tawindow.py:4446 TurtleArt/tabasics.py:359
+#: TurtleArt/tabasics.py:372 TurtleArt/tabasics.py:435
+msgid "color"
+msgstr "వర్ణము"
+
+#: TurtleArt/tawindow.py:4516
+msgid "True"
+msgstr ""
+
+#: TurtleArt/tawindow.py:4516
+msgid "False"
+msgstr ""
+
+#: TurtleArt/tawindow.py:4714
+#, python-format
+msgid "%s blocks image"
+msgstr ""
+
+#: TurtleArt/tawindow.py:4947 TurtleArt/tabasics.py:1091
+msgid "invokes named action stack"
+msgstr "నామకరణ అయిన చర్య కుప్పను ప్రేరేపిస్తుంది"
+
+#: TurtleArt/tawindow.py:4974 TurtleArt/tabasics.py:1176
+msgid "named variable (numeric value)"
+msgstr "నామకరణం అయిన చరరాశి  ( పూర్ణసంఖ్య  విలువ )"
+
+#: TurtleArt/tawindow.py:4996 TurtleArt/tabasics.py:1154
+msgid "store in"
+msgstr "దీనిలో దాచు"
+
+#: TurtleArt/tawindow.py:4996 TurtleArt/tabasics.py:1154
+msgid "value"
+msgstr "విలువ"
+
+#: TurtleArt/tawindow.py:5001 TurtleArt/tabasics.py:1159
+msgid "stores numeric value in named variable"
+msgstr "సంఖ్యా విలువను  పేరు గల చరరాశి రూపంలో నిక్షిప్తం చేస్తుంది"
+
+#: TurtleArt/taplugin.py:93 TurtleArt/taplugin.py:103 TurtleArt/taplugin.py:105
+msgid "Plugin could not be installed."
+msgstr ""
+
+#: TurtleArt/taconstants.py:150
+msgid "up"
+msgstr ""
+
+#: TurtleArt/taconstants.py:152
+msgid "down"
+msgstr ""
+
+#: TurtleArt/taconstants.py:153
+msgid "backspace"
+msgstr ""
+
+#: TurtleArt/taconstants.py:154
+msgid "tab"
+msgstr ""
+
+#. TRANS: enter is the name of the enter (or return) key
+#: TurtleArt/taconstants.py:156
+msgid "enter"
+msgstr ""
+
+#. TRANS: space is the name of the space key
+#: TurtleArt/taconstants.py:159
+msgid "space"
+msgstr ""
+
+#: TurtleArt/taconstants.py:160
+msgid "delete"
+msgstr ""
+
+#: TurtleArt/taconstants.py:473 TurtleArt/taconstants.py:494
+#: TurtleArt/taconstants.py:514 TurtleArt/taconstants.py:555
+#: TurtleArt/taconstants.py:596 TurtleArt/taconstants.py:637
+msgid "Title"
+msgstr "పీఠిక"
+
+#: TurtleArt/taconstants.py:659
+msgid "banana"
+msgstr ""
+
+#: TurtleArt/tautils.py:313
+msgid "Load..."
+msgstr ""
+
+#: TurtleArt/tautils.py:323
+msgid "Save..."
+msgstr ""
+
+#: TurtleArt/tabasics.py:158
+msgid "Palette of turtle commands"
+msgstr "టర్టిల్ నిర్దేశాల పలకం"
+
+#: TurtleArt/tabasics.py:167
+msgid "moves turtle forward"
+msgstr "టర్టిల్‌ను ముందుకు నడుపుతుంది"
+
+#: TurtleArt/tabasics.py:176
+msgid "back"
+msgstr "వెనుక"
+
+#: TurtleArt/tabasics.py:180
+msgid "moves turtle backward"
+msgstr "టర్టిల్‌ని వెనుకకు నడుపుతుంది"
+
+#: TurtleArt/tabasics.py:189
+#, fuzzy
+msgid "clean"
+msgstr "శుభ్రపరుచు"
+
+#: TurtleArt/tabasics.py:192
+msgid "clears the screen and reset the turtle"
+msgstr "తెరను శుభ్ర పరచి టర్టిల్‌ను పున:స్థాపిస్తుంది"
+
+#: TurtleArt/tabasics.py:214
+msgid "turns turtle counterclockwise (angle in degrees)"
+msgstr ""
+
+#: TurtleArt/tabasics.py:228
+msgid "turns turtle clockwise (angle in degrees)"
+msgstr ""
+
+#: TurtleArt/tabasics.py:238
+msgid "arc"
+msgstr "జ్యా"
+
+#: TurtleArt/tabasics.py:238
+msgid "angle"
+msgstr "కోణం"
+
+#: TurtleArt/tabasics.py:238
+msgid "radius"
+msgstr "వ్యాసార్ధం"
+
+#: TurtleArt/tabasics.py:242
+msgid "moves turtle along an arc"
+msgstr "జ్యా వెంబడి టర్టిల్‌ని కదుపుతుంది"
+
+#: TurtleArt/tabasics.py:254 TurtleArt/tabasics.py:333
+msgid "set xy"
+msgstr "xy లను అమర్చు"
+
+#: TurtleArt/tabasics.py:254 TurtleArt/tabasics.py:333
+msgid "x"
+msgstr "x"
+
+#: TurtleArt/tabasics.py:254 TurtleArt/tabasics.py:333
+msgid "y"
+msgstr "y"
+
+#: TurtleArt/tabasics.py:258 TurtleArt/tabasics.py:337
+msgid ""
+"moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
+msgstr ""
+
+#
+#: TurtleArt/tabasics.py:269
+msgid "set heading"
+msgstr "seth"
+
+#: TurtleArt/tabasics.py:273
+msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
+msgstr ""
+
+#: TurtleArt/tabasics.py:285
+msgid ""
+"holds current x-coordinate value of the turtle (can be used in place of a "
+"number block)"
+msgstr ""
+
+#: TurtleArt/tabasics.py:300
+msgid ""
+"holds current y-coordinate value of the turtle (can be used in place of a "
+"number block)"
+msgstr ""
+
+#: TurtleArt/tabasics.py:315
+msgid ""
+"holds current heading value of the turtle (can be used in place of a number "
+"block)"
+msgstr ""
+
+#: TurtleArt/tabasics.py:353
+#, fuzzy
+msgid "Palette of pen commands"
+msgstr "కలం వర్ణాలతో కూడిన పలకం"
+
+#: TurtleArt/tabasics.py:354
+#, fuzzy
+msgid "pen"
+msgstr "తెరుచు "
+
+#: TurtleArt/tabasics.py:359 TurtleArt/tabasics.py:372
+msgid "fill screen"
+msgstr "తెరను నింపుము"
+
+#: TurtleArt/tabasics.py:363 TurtleArt/tabasics.py:377
+msgid "fills the background with (color, shade)"
+msgstr "పూర్వరంగాన్ని (వర్ణము, చాయతో ) నింపుతుంది"
+
+#: TurtleArt/tabasics.py:390
+msgid "set color"
+msgstr "వర్ణాన్ని  అమర్చు"
+
+#: TurtleArt/tabasics.py:394
+msgid "sets color of the line drawn by the turtle"
+msgstr ""
+
+#: TurtleArt/tabasics.py:406
+msgid "set shade"
+msgstr "ఛాయను అమర్చు"
+
+#: TurtleArt/tabasics.py:410
+msgid "sets shade of the line drawn by the turtle"
+msgstr ""
+
+#: TurtleArt/tabasics.py:421
+msgid "set gray"
+msgstr ""
+
+#: TurtleArt/tabasics.py:424
+msgid "sets gray level of the line drawn by the turtle"
+msgstr ""
+
+#: TurtleArt/tabasics.py:436
+msgid "holds current pen color (can be used in place of a number block)"
+msgstr ""
+"ప్రస్తుత కలం వర్ణాన్ని పట్టి ఉంచుతుంది ( సంఖ్య భాగం బదులు మనం దీనిని వాడ "
+"వచ్చు)"
+
+#: TurtleArt/tabasics.py:448
+msgid "holds current pen shade"
+msgstr ""
+
+#: TurtleArt/tabasics.py:462
+#, fuzzy
+msgid "holds current gray level (can be used in place of a number block)"
+msgstr ""
+"ప్రస్థుత పాఠ్య పరిమాణాన్ని పట్టి ఉంచుతుంది (సంఖ్య  భాగాల స్థానంలో వాడవచ్చు )"
+
+#: TurtleArt/tabasics.py:472
+msgid "pen up"
+msgstr "కలం పట్టుకొను"
+
+#: TurtleArt/tabasics.py:475
+msgid "Turtle will not draw when moved."
+msgstr ""
+
+#: TurtleArt/tabasics.py:482
+msgid "pen down"
+msgstr "కలం పక్కనపెట్టు"
+
+#: TurtleArt/tabasics.py:485
+msgid "Turtle will draw when moved."
+msgstr ""
+
+#: TurtleArt/tabasics.py:492
+msgid "pen down?"
+msgstr ""
+
+#: TurtleArt/tabasics.py:494
+msgid "returns True if pen is down"
+msgstr ""
+
+#: TurtleArt/tabasics.py:501
+msgid "set pen size"
+msgstr "కలం పరిమాణాన్ని అమర్చు"
+
+#: TurtleArt/tabasics.py:505
+msgid "sets size of the line drawn by the turtle"
+msgstr ""
+
+#: TurtleArt/tabasics.py:518
+msgid "start fill"
+msgstr ""
+
+#: TurtleArt/tabasics.py:520
+msgid "starts filled polygon (used with end fill block)"
+msgstr ""
+
+#: TurtleArt/tabasics.py:526
+msgid "end fill"
+msgstr ""
+
+#: TurtleArt/tabasics.py:528
+msgid "completes filled polygon (used with start fill block)"
+msgstr ""
+
+#: TurtleArt/tabasics.py:534
+msgid "pen size"
+msgstr "కలం పరిమాణము"
+
+#: TurtleArt/tabasics.py:535
+#, fuzzy
+msgid "holds current pen size (can be used in place of a number block)"
+msgstr ""
+"ప్రస్థుత పాఠ్య పరిమాణాన్ని పట్టి ఉంచుతుంది (సంఖ్య  భాగాల స్థానంలో వాడవచ్చు )"
+
+#: TurtleArt/tabasics.py:554
+msgid "Palette of pen colors"
+msgstr "కలం వర్ణాలతో కూడిన పలకం"
+
+#: TurtleArt/tabasics.py:555
+msgid "colors"
+msgstr ""
+
+#: TurtleArt/tabasics.py:560 TurtleArt/tabasics.py:568
+msgid "red"
+msgstr "ఎరుపు"
+
+#: TurtleArt/tabasics.py:560
+msgid "orange"
+msgstr "నారింజ"
+
+#: TurtleArt/tabasics.py:560
+msgid "yellow"
+msgstr "పసుపు పచ్చ"
+
+#: TurtleArt/tabasics.py:560 TurtleArt/tabasics.py:568
+msgid "green"
+msgstr "ఆకుపచ్చ"
+
+#: TurtleArt/tabasics.py:561
+msgid "cyan"
+msgstr ""
+
+#: TurtleArt/tabasics.py:561 TurtleArt/tabasics.py:568
+msgid "blue"
+msgstr "నీలం"
+
+#: TurtleArt/tabasics.py:561
+msgid "purple"
+msgstr "ఊద"
+
+#: TurtleArt/tabasics.py:561
+#, fuzzy
+msgid "white"
+msgstr "రాయు"
+
+#: TurtleArt/tabasics.py:562
+#, fuzzy
+msgid "black"
+msgstr "వెనుక"
+
+#: TurtleArt/tabasics.py:568
+msgid ""
+"RGB to\n"
+"\n"
+"color"
+msgstr ""
+
+#: TurtleArt/tabasics.py:570
+msgid "converter"
+msgstr ""
+
+#: TurtleArt/tabasics.py:655
+#, fuzzy
+msgid "Palette of numeric operators"
+msgstr "ప్రస్రణా కార్యవాహికల పలకం"
+
+#: TurtleArt/tabasics.py:656
+#, fuzzy
+msgid "numbers"
+msgstr "సంఖ్య "
+
+#: TurtleArt/tabasics.py:661
+msgid "plus"
+msgstr "కూడిక"
+
+#: TurtleArt/tabasics.py:665
+msgid "adds two alphanumeric inputs"
+msgstr ""
+
+#: TurtleArt/tabasics.py:684
+msgid "minus"
+msgstr "తీసివేయు"
+
+#: TurtleArt/tabasics.py:687
+msgid "subtracts bottom numeric input from top numeric input"
+msgstr ""
+
+#: TurtleArt/tabasics.py:705
+msgid "multiply"
+msgstr "గుణించు"
+
+#: TurtleArt/tabasics.py:708
+msgid "multiplies two numeric inputs"
+msgstr ""
+
+#: TurtleArt/tabasics.py:724
+msgid "divide"
+msgstr "భాగించు"
+
+#: TurtleArt/tabasics.py:727
+msgid ""
+"divides top numeric input (numerator) by bottom numeric input (denominator)"
+msgstr ""
+
+#: TurtleArt/tabasics.py:744
+msgid "identity"
+msgstr "అస్థిత్వం"
+
+#: TurtleArt/tabasics.py:746
+msgid "identity operator used for extending blocks"
+msgstr "భాగాలను పెంచటానికి ఉపయోగించే కార్యవాహిక గుర్తు"
+
+#: TurtleArt/tabasics.py:772 TurtleArt/tabasics.py:773
+msgid "mod"
+msgstr ""
+
+#: TurtleArt/tabasics.py:776
+msgid "modular (remainder) operator"
+msgstr ""
+
+#: TurtleArt/tabasics.py:784
+msgid "√"
+msgstr ""
+
+#: TurtleArt/tabasics.py:785
+msgid "square root"
+msgstr "మూలం"
+
+#: TurtleArt/tabasics.py:788
+msgid "calculates square root"
+msgstr "మూలాన్ని గణిస్తుంది"
+
+#: TurtleArt/tabasics.py:796
+msgid "random"
+msgstr "విభిన్నంగా"
+
+#: TurtleArt/tabasics.py:796
+msgid "min"
+msgstr "అత్యల్ప"
+
+#: TurtleArt/tabasics.py:796
+msgid "max"
+msgstr "అత్యధిక"
+
+#: TurtleArt/tabasics.py:800
+msgid "returns random number between minimum (top) and maximum (bottom) values"
+msgstr ""
+
+#: TurtleArt/tabasics.py:822
+msgid "number"
+msgstr "సంఖ్య"
+
+#: TurtleArt/tabasics.py:823
+msgid "used as numeric input in mathematic operators"
+msgstr ""
+
+#: TurtleArt/tabasics.py:830
+msgid "greater than"
+msgstr "కంటే ఏక్కువ"
+
+#: TurtleArt/tabasics.py:833
+msgid "logical greater-than operator"
+msgstr "తార్కిక  ఎక్కువ కార్యవాహిక"
+
+#: TurtleArt/tabasics.py:849
+msgid "less than"
+msgstr "కంటే తక్కువ"
+
+#: TurtleArt/tabasics.py:853
+msgid "logical less-than operator"
+msgstr "తార్కిక తక్కువ కార్యవాహిక"
+
+#: TurtleArt/tabasics.py:869
+msgid "equal"
+msgstr "సమానం"
+
+#: TurtleArt/tabasics.py:873
+msgid "logical equal-to operator"
+msgstr "తార్కిక సమాన కార్యవాహిక"
+
+#: TurtleArt/tabasics.py:888
+msgid "not"
+msgstr "కాదు"
+
+#: TurtleArt/tabasics.py:891
+msgid "logical NOT operator"
+msgstr "తార్కిక కాదు కార్యవాహిక"
+
+#: TurtleArt/tabasics.py:899 TurtleArt/tabasics.py:902
+msgid "and"
+msgstr "మరియు"
+
+#: TurtleArt/tabasics.py:903
+msgid "logical AND operator"
+msgstr "తార్కిక AND కార్యనిర్వాహిక"
+
+#: TurtleArt/tabasics.py:911 TurtleArt/tabasics.py:914
+msgid "or"
+msgstr "లేదా"
+
+#: TurtleArt/tabasics.py:915
+#, fuzzy
+msgid "logical OR operator"
+msgstr "తార్కిక కాదు కార్యవాహిక"
+
+#: TurtleArt/tabasics.py:927
+msgid "flow"
+msgstr ""
+
+#: TurtleArt/tabasics.py:931
+msgid "wait"
+msgstr "వేచి ఉండు"
+
+#: TurtleArt/tabasics.py:935
+msgid "pauses program execution a specified number of seconds"
+msgstr "నిర్వర్తిస్తున్న కార్యక్రమాన్ని పేర్కొన్న సెకన్ల వరకు నిలిపి వేస్తుంది"
+
+#: TurtleArt/tabasics.py:944
+msgid "forever"
+msgstr "ఎప్పటికీ"
+
+#: TurtleArt/tabasics.py:948
+msgid "loops forever"
+msgstr "ఎల్లప్పిటికీ ఉండే లూపులు"
+
+#: TurtleArt/tabasics.py:958 TurtleArt/tabasics.py:962
+msgid "repeat"
+msgstr "మళ్ళీ చేయి"
+
+#: TurtleArt/tabasics.py:963
+msgid "loops specified number of times"
+msgstr ""
+
+#: TurtleArt/tabasics.py:976 TurtleArt/tabasics.py:992
+msgid "if"
+msgstr "ఒక వేళ"
+
+#: TurtleArt/tabasics.py:976 TurtleArt/tabasics.py:992
+msgid "then"
+msgstr "అయితే"
+
+#: TurtleArt/tabasics.py:979
+msgid "if then"
+msgstr "ఒకవేళ అయితే"
+
+#: TurtleArt/tabasics.py:981
+msgid "if-then operator that uses boolean operators from Numbers palette"
+msgstr ""
+
+#: TurtleArt/tabasics.py:992
+msgid "else"
+msgstr ""
+
+#: TurtleArt/tabasics.py:996 TurtleArt/tabasics.py:1009
+#, fuzzy
+msgid "if then else"
+msgstr "కాకపోతే"
+
+#: TurtleArt/tabasics.py:997 TurtleArt/tabasics.py:1010
+msgid "if-then-else operator that uses boolean operators from Numbers palette"
+msgstr ""
+
+#: TurtleArt/tabasics.py:1019
+msgid "horizontal space"
+msgstr "అడ్డంగా ఉన్న  ప్రదేశం"
+
+#: TurtleArt/tabasics.py:1020
+msgid "jogs stack right"
+msgstr "కుప్పను కుడివైపుకు నెడుతుంది"
+
+#: TurtleArt/tabasics.py:1029
+msgid "vertical space"
+msgstr "నిటారు ప్రదేశము"
+
+#: TurtleArt/tabasics.py:1030
+msgid "jogs stack down"
+msgstr "కుప్పను క్రింది వైపునకు నెడుతుంది"
+
+#: TurtleArt/tabasics.py:1037
+msgid "stop action"
+msgstr "చర్యను నిలిపివేయి"
+
+#: TurtleArt/tabasics.py:1040
+msgid "stops current action"
+msgstr "ప్రస్థుత  చర్యను నిలిపి వేస్తుంది"
+
+#: TurtleArt/tabasics.py:1050
+msgid "Palette of variable blocks"
+msgstr "మారే భాగాల పలకం"
+
+#: TurtleArt/tabasics.py:1051
+msgid "blocks"
+msgstr ""
+
+#: TurtleArt/tabasics.py:1058
+msgid "connects action to toolbar run buttons"
+msgstr "చర్యను పనిముట్ల మీటలతో అనుసంధానం చేస్తుంది"
+
+#: TurtleArt/tabasics.py:1075
+msgid "top of nameable action stack"
+msgstr "నామకరణం చెయ గల చర్య  కుప్ప  పైన"
+
+#: TurtleArt/tabasics.py:1098
+msgid "store in box 1"
+msgstr "1 పేటికలో దాచుము"
+
+#: TurtleArt/tabasics.py:1103
+msgid "stores numeric value in Variable 1"
+msgstr "సంఖ్యా విలువను చరరాశి 1 లో నిక్షిప్తం చేస్తుంది"
+
+#: TurtleArt/tabasics.py:1112
+msgid "store in box 2"
+msgstr "2 పేటికలో దాచుము"
+
+#: TurtleArt/tabasics.py:1117
+msgid "stores numeric value in Variable 2"
+msgstr "సంఖ్యా విలువను చరరాశి 2 లో నిక్షిప్తం చేస్తుంది"
+
+#: TurtleArt/tabasics.py:1126
+msgid "box 1"
+msgstr "పేటిక 1"
+
+#: TurtleArt/tabasics.py:1129
+msgid "Variable 1 (numeric value)"
+msgstr "చరరాశి 1 ( పూర్ణసంఖ్య  విలువ )"
+
+#: TurtleArt/tabasics.py:1139
+msgid "box 2"
+msgstr "పేటిక 2"
+
+#: TurtleArt/tabasics.py:1142
+msgid "Variable 2 (numeric value)"
+msgstr "చరరాశి 2 ( పూర్ణసంఖ్య  విలువ )"
+
+#: TurtleArt/tabasics.py:1154 TurtleArt/tabasics.py:1170
+msgid "box"
+msgstr "పేటిక"
+
+#: TurtleArt/tabasics.py:1182 TurtleArt/tabasics.py:1206
+msgid "action 1"
+msgstr "చర్య 1"
+
+#: TurtleArt/tabasics.py:1185
+msgid "top of Action 1 stack"
+msgstr "చర్య 1 కుప్ప  పైన"
+
+#: TurtleArt/tabasics.py:1194 TurtleArt/tabasics.py:1219
+msgid "action 2"
+msgstr "చర్య  2"
+
+#: TurtleArt/tabasics.py:1197
+msgid "top of Action 2 stack"
+msgstr "చర్య 2 కుప్ప  పైన"
+
+#: TurtleArt/tabasics.py:1209
+msgid "invokes Action 1 stack"
+msgstr "చర్య 1 కుప్పను ప్రేరేపిస్తుంది"
+
+#: TurtleArt/tabasics.py:1222
+msgid "invokes Action 2 stack"
+msgstr "చర్య 2 కుప్పను ప్రేరేపిస్తుంది"
+
+#: TurtleArt/tabasics.py:1241
+msgid "invokes named action stack and returns value"
+msgstr ""
+
+#: TurtleArt/tabasics.py:1248
+msgid "return"
+msgstr ""
+
+#: TurtleArt/tabasics.py:1251
+msgid "returns a value"
+msgstr ""
+
+#: TurtleArt/tabasics.py:1268
+msgid "permanently deletes items in trash"
+msgstr "చెత్తకుండీలోని అంశాలను పూర్తిగా తొలగిస్తుంది"
+
+#: TurtleArt/tabasics.py:1272
+msgid "restore all"
+msgstr "అన్నింటినీ పున:స్థాపించు"
+
+#: TurtleArt/tabasics.py:1273
+msgid "restore all blocks from trash"
+msgstr ""
+
+#: TurtleArt/tabasics.py:1277
+msgid "clear all"
+msgstr ""
+
+#: TurtleArt/tabasics.py:1278
+msgid "move all blocks to trash"
+msgstr ""
+
+#~ msgid "set text color"
+#~ msgstr "పాఠ్య వర్ణాన్ని అమర్చు"
+
+#~ msgid "set text size"
+#~ msgstr "పాఠ్య పరిమాణాన్ని అమర్చు"
+
+#~ msgid "presentation 1x1"
+#~ msgstr "సమర్పణ 1x1"
+
+#~ msgid "presentation 2x1"
+#~ msgstr "సమర్పణ  2x1"
+
+#~ msgid "presentation 1x2"
+#~ msgstr "సమర్పణ 1x2"
+
+#~ msgid "presentation 2x2"
+#~ msgstr "సమర్పణ 2x2"
+
+#~ msgid "Turtle Art"
+#~ msgstr "టర్టిల్ కళ"
+
+#, fuzzy
+#~ msgid "density"
+#~ msgstr "అస్థిత్వం "
+
+#, fuzzy
+#~ msgid "light"
+#~ msgstr "కుడి"
+
+#, fuzzy
+#~ msgid "read"
+#~ msgstr "ఎరుపు"
+
+#, fuzzy
+#~ msgid "samples"
+#~ msgstr "నమూనాలు "
+
+#~ msgid "then else"
+#~ msgstr "కాకపోతే"
+
+#~ msgid "top of stack"
+#~ msgstr "కుప్ప పై భాగాన"
+
+#~ msgid "label"
+#~ msgstr "లేబుల్ "
+
+#~ msgid "Save as HTML"
+#~ msgstr "HTML గా దాచు"
+
+#~ msgid "presentation"
+#~ msgstr "సమర్పణ"
+
+#~ msgid "Import/Export"
+#~ msgstr "ఎగుమతి/దిగుమతి"
+
+#~ msgid "Import project from the Journal"
+#~ msgstr "పొద్దునుండి పథకాన్ని దిగుమతి చేసుకొనుము"
+
+#~ msgid "full screen"
+#~ msgstr "తెర నిండా "
+
+#~ msgid " clean "
+#~ msgstr "శుభ్రం "
+
+#~ msgid "write"
+#~ msgstr "రాయు "
+
+#~ msgid "restore last"
+#~ msgstr "చివరిదాన్ని పున:స్థాపించు "
+
+#~ msgid "text size"
+#~ msgstr "పాఠ పరిమాణం "
+
+#~ msgid "holds current text color (can be used in place of a number block)"
+#~ msgstr ""
+#~ "ప్రస్థుత పాఠ్య వర్ణాన్ని  పట్టి ఉంచుతుంది ( సంఖ్య భాగాల స్థానంలో వాడవచ్చు  )"
+
+#~ msgid "picture top"
+#~ msgstr "ప్రతిరూపం పైన "
+
+#~ msgid "Load my block"
+#~ msgstr "నా భాగాన్ని  తెరువుము "
+
+#~ msgid "picture left"
+#~ msgstr "ప్రతిరూపం ఎడమ  "
+
+#~ msgid "Python code"
+#~ msgstr "Python సంకేతం "
+
+#~ msgid "Trashcan"
+#~ msgstr "చెత్త కుండీ"
+
+#~ msgid "picture right"
+#~ msgstr "ప్రతిరూపం కుడి "
+
+#~ msgid "volume"
+#~ msgstr "సంపుటం "
+
+#~ msgid "picture bottom"
+#~ msgstr "ప్రతిరూపం దిగువున "
+
+#~ msgid "sensor voltage"
+#~ msgstr "సెన్సారు  వోల్టేజీ"
+
+#~ msgid "holds current text size (can be used in place of a number block)"
+#~ msgstr ""
+#~ "ప్రస్థుత పాఠ్య పరిమాణాన్ని పట్టి ఉంచుతుంది (సంఖ్య  భాగాల స్థానంలో వాడవచ్చు )"
+
+#~ msgid "Save Logo"
+#~ msgstr "ముద్రికను దాచు "
+
+#~ msgid "bulleted list"
+#~ msgstr "విశేష సూచిక జాబితా"
+
+#~ msgid "picture"
+#~ msgstr "ప్రతిరూపం"
+
+#~ msgid "2×2 pictures"
+#~ msgstr "2x2 ప్రతిరూపాలు"
+
+#~ msgid "2×1 pictures"
+#~ msgstr "2x1 ప్రతిరూపాలు"
+
+#~ msgid "1×2 pictures"
+#~ msgstr "1×2 ప్రతిరూపం"
+
+#~ msgid "1×1 picture"
+#~ msgstr "1×1 ప్రతిరూపం"

@@ -1,0 +1,2356 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-03-24 17:39+1100\n"
+"PO-Revision-Date: 2016-05-24 02:33+0000\n"
+"Last-Translator: Chris <cjl@sugarlabs.org>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: agr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.5.1.1\n"
+"X-POOTLE-MTIME: 1464057238.000000\n"
+
+#: activity/activity.info:2
+msgid "TurtleBlocks"
+msgstr "Kugkúim"
+
+#: TurtleArtActivity.py:127
+msgid "Please wait"
+msgstr ""
+
+#: TurtleArtActivity.py:128
+msgid "Starting connection..."
+msgstr ""
+
+#: TurtleArtActivity.py:282
+msgid "Export as python"
+msgstr ""
+
+#: TurtleArtActivity.py:283
+msgid "Error: You must use a Start Block when exporting to Python."
+msgstr ""
+
+#: TurtleArtActivity.py:414
+msgid "snapshot"
+msgstr "Wáamak"
+
+#: TurtleArtActivity.py:459 TurtleArtActivity.py:816 TurtleArtActivity.py:966
+msgid "Turn off hover help"
+msgstr "Agkántu asamatai yáimu flotante tawa nunu."
+
+#: TurtleArtActivity.py:468 TurtleArt/turtleblocks.py:482
+msgid "Turn on hover help"
+msgstr "Shig wakeas atunit wampumát"
+
+#: TurtleArtActivity.py:478 TurtleArt/turtleblocks.py:496
+msgid "Show palette"
+msgstr "Iwainakta paleta"
+
+#: TurtleArtActivity.py:484 TurtleArtActivity.py:1180
+#: TurtleArt/turtleblocks.py:498
+msgid "Hide palette"
+msgstr "Uút paleta"
+
+#: TurtleArtActivity.py:526 TurtleArtActivity.py:880
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1347
+#: TurtleArt/talogo.py:442
+msgid "Show blocks"
+msgstr "Inakmasta ijundaiju"
+
+#: TurtleArtActivity.py:530 TurtleArtActivity.py:1192 TurtleArt/talogo.py:446
+msgid "Hide blocks"
+msgstr "Uúkta ijumjamu"
+
+#: TurtleArtActivity.py:652
+msgid "Rescale coordinates down"
+msgstr "Wát coordenadas tawa nu nugkan."
+
+#: TurtleArtActivity.py:661 TurtleArtActivity.py:807 TurtleArtActivity.py:962
+msgid "Rescale coordinates up"
+msgstr "Wát coordenadas tawa nu yakin."
+
+#: TurtleArtActivity.py:757 TurtleArtActivity.py:873 TurtleArtActivity.py:936
+#: TurtleArt/turtleblocks.py:493
+msgid "Edit"
+msgstr "Agagta dutikam inakmasta"
+
+#: TurtleArtActivity.py:762 TurtleArtActivity.py:874 TurtleArtActivity.py:954
+#: TurtleArt/turtleblocks.py:484
+msgid "View"
+msgstr "Diít"
+
+#: TurtleArtActivity.py:784 TurtleArtActivity.py:937
+#: TurtleArt/turtleblocks.py:487
+msgid "Copy"
+msgstr "Enagket"
+
+#: TurtleArtActivity.py:786 TurtleArtActivity.py:938
+#: TurtleArt/turtleblocks.py:488
+msgid "Paste"
+msgstr "Anujut"
+
+#: TurtleArtActivity.py:788
+msgid "Restore blocks from trash"
+msgstr "Patakam awagkin itanta bloques de la papelera tawa nu"
+
+#: TurtleArtActivity.py:791 TurtleArtActivity.py:939
+#: TurtleArt/turtleblocks.py:489 TurtleArt/tawindow.py:1514
+msgid "Save stack"
+msgstr "Pira ukúkta"
+
+#: TurtleArtActivity.py:793 TurtleArt/turtleblocks.py:491
+#: TurtleArt/tawindow.py:1553 TurtleArt/tawindow.py:1561
+#: TurtleArt/tawindow.py:1570
+msgid "Delete stack"
+msgstr "Esakáut pira"
+
+#: TurtleArtActivity.py:796 TurtleArtActivity.py:955
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:961
+msgid "Fullscreen"
+msgstr "Pantalla muun emata"
+
+# Determinar termino
+#: TurtleArtActivity.py:799 TurtleArtActivity.py:956
+#: TurtleArt/turtleblocks.py:468
+msgid "Cartesian coordinates"
+msgstr "Takasmi Coordenadas cartesianas"
+
+# Determinar termino
+#: TurtleArtActivity.py:801 TurtleArtActivity.py:958
+#: TurtleArt/turtleblocks.py:470
+msgid "Polar coordinates"
+msgstr "Takasmi Coordenadas polares"
+
+# Determinar término
+#: TurtleArtActivity.py:804 TurtleArtActivity.py:960
+msgid "Metric coordinates"
+msgstr "Takasmi Coordenadas centímetros"
+
+#: TurtleArtActivity.py:810 TurtleArtActivity.py:964
+#: TurtleArt/turtleblocks.py:475
+msgid "Grow blocks"
+msgstr "Ayampaut bloques tawa nu."
+
+# Determinar término
+#: TurtleArtActivity.py:813 TurtleArtActivity.py:965
+#: TurtleArt/turtleblocks.py:477
+msgid "Shrink blocks"
+msgstr "Uchuchiji emamu bloques"
+
+#: TurtleArtActivity.py:843 TurtleArtActivity.py:881 TurtleArtActivity.py:1146
+msgid "Load example"
+msgstr "Egkét diisa takastin"
+
+# guardar/cargar (ARCHIVO)
+#: TurtleArtActivity.py:872 TurtleArtActivity.py:899
+msgid "Save/Load"
+msgstr "Ukút/Aimat"
+
+#: TurtleArtActivity.py:875
+msgid "Project"
+msgstr "Takat umikbau najanamu"
+
+#: TurtleArtActivity.py:876 TurtleArtActivity.py:1186
+#: TurtleArt/turtleblocks.py:505
+msgid "Clean"
+msgstr "Jaupit"
+
+#: TurtleArtActivity.py:877 TurtleArtActivity.py:1188
+#: TurtleArt/turtleblocks.py:506
+msgid "Run"
+msgstr "Dútikat, áikat"
+
+#: TurtleArtActivity.py:878 TurtleArtActivity.py:1190
+#: TurtleArt/turtleblocks.py:507
+msgid "Step"
+msgstr "Sút makichik nagkáemamu"
+
+#: TurtleArtActivity.py:879
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1356
+#: TurtleArt/talogo.py:432 TurtleArt/tawindow.py:1269
+msgid "Stop turtle"
+msgstr "Itájitmikata kugkúim"
+
+#: TurtleArtActivity.py:882 TurtleArt/turtleblocks.py:517
+#: TurtleArt/util/helpbutton.py:44
+msgid "Help"
+msgstr "Yaimat"
+
+#: TurtleArtActivity.py:883 TurtleArt/turtleblocks.py:509
+msgid "Stop"
+msgstr "Itájit"
+
+#: TurtleArtActivity.py:898 TurtleArt/tawindow.py:2048
+#: TurtleArt/tacollaboration.py:154
+msgid "Share selected blocks"
+msgstr "Tindamdaikatajum bloques tawa nu etegjamu"
+
+#: TurtleArtActivity.py:900 TurtleArtActivity.py:1103
+msgid "Save as image"
+msgstr "Ukúkta kuitamkam dakumkamujai"
+
+#: TurtleArtActivity.py:903 TurtleArtActivity.py:1106
+msgid "Save as icon"
+msgstr ""
+
+#. TRANS: ODP is Open Office presentation
+#: TurtleArtActivity.py:908 TurtleArtActivity.py:1110
+msgid "Save as ODP"
+msgstr ""
+
+#: TurtleArtActivity.py:913 TurtleArtActivity.py:1121
+msgid "Save as Logo"
+msgstr "Ukút wajuk awa logo tawa nu"
+
+#: TurtleArtActivity.py:914 TurtleArtActivity.py:1124
+msgid "Save as Python"
+msgstr ""
+
+#: TurtleArtActivity.py:915 TurtleArtActivity.py:1128
+msgid "Save snapshot"
+msgstr "Ukút wáamak"
+
+#: TurtleArtActivity.py:916 TurtleArtActivity.py:1155
+#: TurtleArt/turtleblocks.py:438
+#, fuzzy
+msgid "Add project"
+msgstr "Entsát takat umiktin najanamu"
+
+#: TurtleArtActivity.py:919 TurtleArtActivity.py:1160
+#: TurtleArt/turtleblocks.py:439
+msgid "Load plugin"
+msgstr "Aimkata plugin"
+
+#: TurtleArtActivity.py:920 TurtleArtActivity.py:1163
+msgid "Load Python block"
+msgstr "Entsát bloque Python"
+
+#: TurtleArtActivity.py:1075
+msgid "Palettes"
+msgstr "Dekami Paletas"
+
+#: TurtleArtActivity.py:1093
+msgid "Sharing blocks disabled"
+msgstr "Tinamdaiyatajum bloques deshabilitado awa nu"
+
+#: TurtleArtActivity.py:1098 TurtleArt/turtleblocks.py:441
+msgid "Save"
+msgstr "Ukukta"
+
+#: TurtleArtActivity.py:1131
+msgid "Save blocks as image"
+msgstr ""
+
+#: TurtleArtActivity.py:1135
+#, fuzzy
+msgid "Load"
+msgstr "Egkét"
+
+#: TurtleArtActivity.py:1152 TurtleArt/turtleblocks.py:437
+msgid "Open"
+msgstr "Ujat"
+
+#: TurtleArtActivity.py:1181
+msgid "<Ctrl>p"
+msgstr "<Ctrl>p"
+
+#: TurtleArtActivity.py:1186
+msgid "<Ctrl>e"
+msgstr "<Ctrl>e"
+
+#: TurtleArtActivity.py:1188
+msgid "<Ctrl>r"
+msgstr "<Ctrl>r"
+
+#: TurtleArtActivity.py:1190
+msgid "<Ctrl>w"
+msgstr "<Ctrl>w"
+
+#: TurtleArtActivity.py:1193
+msgid "<Ctrl>s"
+msgstr "<Ctrl>s"
+
+#: TurtleArtActivity.py:1379
+#, python-format
+msgid "Plugin %s already installed."
+msgstr "El plugin %s juka instalamuwai."
+
+#: TurtleArtActivity.py:1380 TurtleArt/turtleblocks.py:591
+#, python-format
+msgid "Do you want to reinstall %s?"
+msgstr "¿Patakam instalatakumek %s?"
+
+#: gnome_plugins/collaboration_plugin.py:64
+msgid "My Turtle Art session"
+msgstr "Takat umikbau kugkúimArtenu"
+
+#: gnome_plugins/collaboration_plugin.py:111
+msgid "Enable collaboration"
+msgstr "Tsagkamát shig wakegas yáimu"
+
+#: gnome_plugins/collaboration_plugin.py:116
+msgid "Activities"
+msgstr "Unuimaku takastin"
+
+#: gnome_plugins/collaboration_plugin.py:121
+msgid "Buddies"
+msgstr "Tsanitai"
+
+#: gnome_plugins/collaboration_plugin.py:124
+msgid "Share"
+msgstr "Tinamdaiyatajum"
+
+#: gnome_plugins/collaboration_plugin.py:125
+msgid "Configuration"
+msgstr "Ashi programa computadornum awa nuna tawai"
+
+#: gnome_plugins/collaboration_plugin.py:128
+msgid "Neighborhood"
+msgstr "Pata ijuntsa batsatkamu"
+
+#: gnome_plugins/collaboration_plugin.py:289
+msgid "Nickname"
+msgstr "Iwájsa andaikamu"
+
+#: gnome_plugins/collaboration_plugin.py:291
+msgid "Account ID"
+msgstr "Augmatsata"
+
+#: gnome_plugins/collaboration_plugin.py:293
+msgid "Server"
+msgstr "Aents tikichdau takau"
+
+#: gnome_plugins/collaboration_plugin.py:295
+msgid "Port"
+msgstr "Anuúmtai"
+
+#: gnome_plugins/collaboration_plugin.py:297
+msgid "Password"
+msgstr "Daa agagbau amek dekamu, tikich inaktumainchuitme."
+
+#: gnome_plugins/collaboration_plugin.py:299
+msgid "Register"
+msgstr "Daa agagbau abacha diisa"
+
+#: gnome_plugins/collaboration_plugin.py:301
+msgid "Colors"
+msgstr "Niimé"
+
+#: gnome_plugins/fb_plugin.py:82 gnome_plugins/fb_plugin.py:83
+#: gnome_plugins/fb_plugin.py:91 gnome_plugins/uploader_plugin.py:63
+#: gnome_plugins/uploader_plugin.py:64 gnome_plugins/uploader_plugin.py:73
+msgid "Upload"
+msgstr "Aimat"
+
+#: gnome_plugins/fb_plugin.py:87
+msgid "Facebook wall post"
+msgstr "Diismi muro de facebook"
+
+#: gnome_plugins/uploader_plugin.py:68
+msgid "Upload to Web"
+msgstr "Awemata Webnum"
+
+#: gnome_plugins/uploader_plugin.py:90
+msgid ""
+"You must have an account at http://turtleartsite.sugarlabs.org to upload "
+"your project."
+msgstr ""
+"Ajumainai bakichik cuenta internetnum http://turtleartsite.sugarlabs.org "
+"Takat umiktin najanamu agagbau jiktatambau."
+
+#: gnome_plugins/uploader_plugin.py:99
+msgid "Username:"
+msgstr "Usuario:"
+
+#: gnome_plugins/uploader_plugin.py:109
+msgid "Password:"
+msgstr "Daa agagbau amek dekamu, tikich inaktumainchuitme."
+
+#: gnome_plugins/uploader_plugin.py:120
+msgid "Title:"
+msgstr "Umiktin"
+
+#: gnome_plugins/uploader_plugin.py:130
+msgid "Description:"
+msgstr "Niime augmatbau:"
+
+#: gnome_plugins/uploader_plugin.py:140
+msgid "Submit to Web"
+msgstr "Awamata nanum Webnum"
+
+#: gnome_plugins/uploader_plugin.py:144 TurtleArt/tawindow.py:1518
+#: TurtleArt/tawindow.py:1557
+msgid "Cancel"
+msgstr "Takamu ukuta"
+
+#: gnome_plugins/uploader_plugin.py:172
+msgid "Login failed"
+msgstr "Besegbáu autentificación"
+
+#: gnome_plugins/uploader_plugin.py:209
+msgid "Failed to upload!"
+msgstr "¡Besegbau descargarDewat!"
+
+#: pyexported/window_setup.py:39
+msgid ""
+"The path to the TurtleArt installation must be listed in the environment "
+"variable PYTHONPATH."
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:72
+#: TurtleArt/tabasics.py:926
+msgid "Palette of flow operators"
+msgstr "Takasmi Paleta de operadores de flujo"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:76
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:79
+msgid "while"
+msgstr "Tujamtai"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:80
+msgid "do-while-True operator that uses boolean operators from Numbers palette"
+msgstr ""
+"Dutikattaji kuwashat takat bloquesnu nuniak umimkattawai wajuk jasa atatua "
+"yama nagkabau aanik."
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:97
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:100
+msgid "until"
+msgstr "Ejeyi"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:101
+msgid "do-until-True operator that uses boolean operators from Numbers palette"
+msgstr "Takat dutikatin kuwashat bloquesnu ejetatabaunum shig pegken ati tambau"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:121
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:854
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1071
+msgid "top"
+msgstr "Náin"
+
+# definir termino plegable
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:123
+msgid "top of a collapsible stack"
+msgstr "Náin pira abaunum plegable tawa nunu"
+
+# Definir término
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:133
+#: plugins/camera_sensor/camera_sensor.py:71
+msgid "Palette of media objects"
+msgstr "Paleta de bloques medios"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:135
+msgid "media"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:141
+msgid "journal"
+msgstr "Tsawantai"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:142
+msgid "Sugar Journal media object"
+msgstr "Wají aidau takatai diarionun yumintsak"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:153
+msgid "audio"
+msgstr "Shinau antumu, ejesmamu egkekbau."
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:155
+msgid "Sugar Journal audio object"
+msgstr "Wají aidau antutainum diario nu yumintsak"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:166
+msgid "video"
+msgstr "Dakumkamu inakmamu"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:168
+msgid "Sugar Journal video object"
+msgstr "objeto de video del Diario de Sugar"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:179
+msgid "description"
+msgstr "Niíme augmatbau"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:181
+msgid "Sugar Journal description field"
+msgstr "Wasugkamtainum niime augmatbau diario nu yumintsak"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:190
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:191
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:192
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:198
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:213
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:921
+#: TurtleArt/taconstants.py:452
+msgid "text"
+msgstr "Chicham agagbau"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:193
+msgid "string value"
+msgstr "Takasmi valor de cadena tawa nu"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:197
+msgid "show"
+msgstr "Inakmasta"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:201
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:216
+msgid "draws text or show media from the Journal"
+msgstr ""
+"Dakumkata chicham agagbau nuniashkumesh inakmasta takatai aidau diarionu "
+"pujasa"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:212
+msgid "show aligned"
+msgstr "Inakmasta tsegtsagbau"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:225
+msgid "set scale"
+msgstr "Etégket"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:229
+msgid "sets the scale of media"
+msgstr "fijar la escala de mediosEtégket escala medios nu tawa nunu"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:239
+msgid "set font"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:242
+msgid "sets the font used by the show block"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:249
+msgid "save picture"
+msgstr "Ukukta dakumkamu"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:251
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:262
+msgid "picture name"
+msgstr "Daa agagbau dakumkamunu"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:252
+msgid "saves a picture to the Sugar Journal"
+msgstr "Egkékta dakumkamu diario yumintskanu"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:260
+msgid "save SVG"
+msgstr "Ukukta SVG"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:263
+msgid "saves turtle graphics as an SVG file in the Sugar Journal"
+msgstr "Ukúkta kugkúimnu tsentsagbau wajuk archivo SVG diarionu yumintsakanu"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:272
+msgid "scale"
+msgstr "Wáit númi átuimunum"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:276
+msgid "holds current scale value"
+msgstr "Aintsan wai senchiji yamaipat wáitnum"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:283
+msgid "media wait"
+msgstr "Dakasta medios tawa nu."
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:285
+msgid "wait for current video or audio to complete"
+msgstr "Dakasta ejeyi betekmam antutai nuwintu diitai"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:291
+msgid "media stop"
+msgstr "Itajitmikata medios tawa nu"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:293
+msgid "stop video or audio"
+msgstr "Itajit video diiyamu nuniashkush audio antamu"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:298
+msgid "media pause"
+msgstr "Itajitmikata medios tawa nu"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:300
+msgid "pause video or audio"
+msgstr "Itajitmikata video diamnu nuniashkush antam nu"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:305
+msgid "media resume"
+msgstr "Emát medios tawa nu"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:307
+msgid "resume playing video or audio"
+msgstr "Patakam video ipujata nuniaskumes ishigkata antukmi"
+
+# decir
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:312
+msgid "speak"
+msgstr "Chichat"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:314
+msgid "hello"
+msgstr "Amekaitam"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:315
+msgid "speaks text"
+msgstr "Tawai agagbaunum"
+
+#. TRANS: pitch, duration, amplitude
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:323
+msgid "sinewave"
+msgstr "Tsegtsanbau aidau tuninniju."
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:323
+#: plugins/audio_sensors/audio_sensors.py:126
+msgid "pitch"
+msgstr "Dekami frecuencia Radio chichamu antutai"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:324
+msgid "amplitude"
+msgstr "Agkáju"
+
+# Tiempo de duración
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:324
+msgid "duration"
+msgstr "Dukap rsawan awai"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:327
+msgid "plays a sinewave at frequency, amplitude, and duration (in seconds)"
+msgstr ""
+"Dakumjata tsegkagbau aidau frecuencianu pujusam, aintsan amplitud nuwintu "
+"dukap(segundos tawa nu)"
+
+# definir término
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:339
+#: plugins/camera_sensor/camera_sensor.py:67 plugins/rfid/rfid.py:87
+#: plugins/accelerometer/accelerometer.py:50
+#: plugins/light_sensor/light_sensor.py:52
+#: plugins/audio_sensors/audio_sensors.py:84
+msgid "Palette of sensor blocks"
+msgstr "Paleta de bloques sensor"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:341
+msgid "sensor"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:346
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:357
+msgid "button down"
+msgstr "Butun iniinam awai"
+
+# devuelve en lugar de retorna - mouse en lugar de ratón
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:349
+msgid "returns 1 if mouse button is pressed"
+msgstr "Wakitkita chik1 butun katipnu iiniman nunishkush enekmam akuin"
+
+# devuelve en lugar de retorna - mouse en lugar de ratón
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:360
+msgid "returns True if mouse button is pressed"
+msgstr "Awankita dekaskea nu, butun katipnu iininam ematuam akuin"
+
+# mouse x o cursor
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:368
+msgid "mouse x"
+msgstr "usor x tawa nunu"
+
+# devuelve en lugar de retorna - mouse en lugar de ratón
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:371
+msgid "returns mouse x coordinate"
+msgstr "Awankita cordenada tawa nunu x corsornu"
+
+# mouse y - ratón y
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:379
+msgid "mouse y"
+msgstr ""
+"cursor y cursor tawa duka nágkijai betekai juka ujapawai utugni emattame "
+"pantallanum ame umuchiakme mause tawa nunu mainkatame betek buchitkattawai."
+
+# devuelve en lugar de retorna - mouse en lugar de ratón
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:382
+msgid "returns mouse y coordinate"
+msgstr "retorna la coordenada y del cursor"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:390
+msgid "query keyboard"
+msgstr "Iimimsa dekata teclado"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:392
+msgid "query for keyboard input (results stored in keyboard block)"
+msgstr ""
+"Inimsata wajuk wáitaita tecadonum (Jigbau aidau wai almacenamunum bloque "
+"tecladonum)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:400
+msgid "keyboard"
+msgstr "Abacha agagbau computadornum pekakbau, chicham agatai"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:404
+msgid "holds results of query-keyboard block as ASCII"
+msgstr ""
+"ASCII Imajuin jigbau awai bloque tawa nundau, aintsan teclado iinimain "
+"jutikam ACII"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:412
+msgid "read pixel"
+msgstr "Augbau pixel"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:415
+msgid "RGB color under the turtle is pushed to the stack"
+msgstr "Pira emaji jakimtikbaunum RGB kugkúma nugkanjin"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:422
+msgid "turtle sees"
+msgstr "Kugkúim waipawai"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:425
+msgid "returns the color that the turtle \"sees\""
+msgstr "Inakmasta jakimtiktai kugkúim wainu /\"ve\"/"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:434
+msgid "time"
+msgstr "Tsawan"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:437
+msgid "elapsed time (in seconds) since program started"
+msgstr "Tsawan nagkaemakbau(segundos tawa nu) takat nagkama umikbau"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:462
+msgid "Palette of extra options"
+msgstr "Paletanu etegjata ame tuwa atsumame"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:464
+msgid "extras"
+msgstr ""
+
+# desconozco termino
+#. TRANS: push adds a new item to the program stack
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:469
+msgid "push"
+msgstr "Ijumjamu pekakbau awántak"
+
+# término por definir
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:472
+msgid "pushes value onto FILO (first-in last-out heap)"
+msgstr "Dekami apila ajánchat pira nu (primero en entrar, último en salir)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:484
+msgid "show heap"
+msgstr "Inakmasta pira"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:487
+msgid "shows values in FILO (first-in last-out heap)"
+msgstr "Inakmasta valores a pira(émat wáit, inánamunum jinkittaja)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:499
+msgid "empty heap"
+msgstr "Agkán emata pira"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:502
+msgid "emptys FILO (first-in-last-out heap)"
+msgstr "Agkán emata pira(émat wáit, inánamunum jinkittajai)"
+
+#. TRANS: pop removes a new item from the program stack
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:513
+msgid "pop"
+msgstr "Jikta"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:517
+msgid "pops value off FILO (first-in last-out heap)"
+msgstr "Jikta valor piranu (émat wáit, inágnamunum jiinkittajai)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:529
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:585
+msgid "empty heap?"
+msgstr "pira agkán?"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:532
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:588
+msgid "returns True if heap is empty"
+msgstr "Awankin tita dekasketkun pira agkán akug"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:544
+msgid "save heap to file"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:545
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:559
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:573
+msgid "filename"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:547
+msgid "saves FILO (first-in last-out heap) to a file"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:558
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:566
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:572
+msgid "load heap from file"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:561
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:567
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:575
+msgid "loads FILO (first-in last-out heap) from a file"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:600
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:602
+msgid "comment"
+msgstr "Augmatsata"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:604
+msgid "places a comment in your code"
+msgstr "Agagta chicham sutamak augmatsata códigonum"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:611
+msgid "print"
+msgstr "Papi agagbau egkekbau betek dakumak jiyau."
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:615
+msgid "prints value in status block at bottom of the screen"
+msgstr ""
+"Dakumak jiiyawai papin betek egkekbau nuwintu senchiji bloquenu shig "
+"takamain, aintsak pujawai initken pantallanum"
+
+# Determinar término
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:626
+msgid "Python chr operator"
+msgstr "Yacha aents ishinin chr de Python"
+
+# Definir término
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:636
+msgid "Python int operator"
+msgstr "Yacha ishinin int de Python"
+
+# cordenadas falta determinar término en la lengua
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:646
+msgid "polar"
+msgstr "polar"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:648
+msgid "displays polar coordinates"
+msgstr "Iwainakta coordenadas polares tawa nu."
+
+# Definir término en la lengua
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:654
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:669
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:685
+#: TurtleArt/turtleblocks.py:462
+msgid "Python"
+msgstr "Python"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:658
+msgid ""
+"a programmable block: used to add advanced single-variable math equations, e."
+"g., sin(x)"
+msgstr ""
+"Chik najankamu takamain: esegamu páchinat ecuaciones matemáticas avanzadas "
+"de una variable, p.e., seno(x)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:673
+msgid ""
+"a programmable block: used to add advanced multi-variable math equations, e."
+"g., sqrt(x*x+y*y)"
+msgstr ""
+"Chik najankamu takamain: esegamu íjut takamu ecuaciones matemáticas "
+"avanzadas de múltiples variables, i.e., sqrt(x*x+y*y)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:689
+msgid ""
+"a programmable block: used to add advanced multi-variable math equations, e."
+"g., sin(x+y+z)"
+msgstr ""
+"Chik najankamu takamain: esegámu takamain ecuaciones matemáticas avanzadas "
+"multivariables, p.e. seno(x+y+z)"
+
+# desconocimiento proximos al término
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:699
+msgid "Cartesian"
+msgstr "Takasmi Cartesiana"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:701
+msgid "displays Cartesian coordinates"
+msgstr "Inakmasta coordenadas cartesianas"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:710
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:727
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:744
+msgid "Python block"
+msgstr "Najankamu Python"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:712
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:729
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:747
+msgid "runs code found in the tamyblock.py module found in the Journal"
+msgstr ""
+"Umikta ejecuta el código del módulo tamyblock.py que se encuentra en el "
+"Diario"
+
+#. TRANS: URL is universal resource locator
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:763
+msgid "URL"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:768
+msgid "gets a text string or an image from a URL"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:778
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:788
+msgid "turtle shell"
+msgstr "Duwáp kugkúimnu"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:780
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:789
+msgid "put a custom 'shell' on the turtle"
+msgstr "Apujata kugkúima duwápe personaliza tawa nu kugkúimnu"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:793
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:862
+#: TurtleArt/tabasics.py:159
+msgid "turtle"
+msgstr "Kugkúim"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:797
+msgid "chooses which turtle to command"
+msgstr "Ándaikata tuu kugkúima ijúmat"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:804
+#, fuzzy
+msgid "turtle x"
+msgstr "Kugkúim"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:807
+msgid "Returns x coordinate of turtle"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:816
+#, fuzzy
+msgid "turtle y"
+msgstr "Kugkúim"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:819
+msgid "Returns y coordinate of turtle"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:828
+msgid "active turtle"
+msgstr "Kugkúim takamain tortuga activa"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:831
+msgid "the name of the active turtle"
+msgstr "Daa kugkúimnu takamain paan awai"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:839
+msgid "turtle heading"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:842
+msgid "Returns heading of turtle"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:852
+#: TurtleArt/tautils.py:638
+msgid "click to open"
+msgstr "Imajui pijit ininata dutikam ujanattawai"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:855
+msgid "top of a collapsed stack"
+msgstr "Náin makichik pira awai kakekau"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:860
+#, fuzzy
+msgid "select palette"
+msgstr "Etegjata chik paleta"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:863
+msgid "selects a palette"
+msgstr "Etegjata chik paleta"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:871
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:883
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:897
+msgid "load"
+msgstr "Egkét"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:873
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:886
+#: TurtleArt/tabasics.py:163
+msgid "forward"
+msgstr "Eem"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:874
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:887
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:901
+msgid "loads a block"
+msgstr "Egkét chik bloquenum"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:900
+msgid "setxy"
+msgstr "Etegkat xy"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:912
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:918
+msgid "index"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:913
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:923
+msgid "return the text of the positions"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:918
+msgid "string"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:919
+#: pysamples/grecord.py:212 TurtleArt/tabasics.py:1055
+msgid "start"
+msgstr "Nagkamu"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:919
+msgid "end"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:936
+msgid "Palette of presentation templates"
+msgstr "Paleta plantillanu iwainmamu"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:939
+msgid "portfolio"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:943
+msgid "hide blocks"
+msgstr "Uumát bloques"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:945
+msgid "declutters canvas by hiding blocks"
+msgstr "Jaupjata lienzo uwau bloquen"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:952
+msgid "show blocks"
+msgstr "Iwainat bloques tawa nu."
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:954
+msgid "restores hidden blocks"
+msgstr "Iwainat blokes tawa nu uukbau"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:963
+msgid "hides the Sugar toolbars"
+msgstr "Uumát barras herramientas tawa nundau yumintskanu"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:973
+msgid "list"
+msgstr "Uminas"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:977
+msgid "presentation bulleted list"
+msgstr "Iwainmamu uminas viñetas tawa nunu."
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:985
+msgid "presentation template: list of bullets"
+msgstr "plantillanum iwainamu: Uminas awai viñetas tawa nu"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:992
+msgid "presentation template: select Journal object (no description)"
+msgstr "plantillanum iwainmamu: Etegjata wají diarionu (niime augmattsashbau)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:999
+msgid "presentation template: select Journal object (with description)"
+msgstr "plantillanum iwainmamu: Etegjata wají diarionum (niime augmatbau)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1006
+msgid "presentation template: select four Journal objects"
+msgstr "plantillanum iwainmamu:Etegjata sup wají Diarionu"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1013
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1020
+msgid "presentation template: select two Journal objects"
+msgstr "plantillanum iwainmamu: Etegjata jim wajì diarionu"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1027
+#: TurtleArt/taconstants.py:149 TurtleArt/tabasics.py:210
+msgid "left"
+msgstr "Mena"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1030
+msgid "xcor of left of screen"
+msgstr "coorx awai menanum pantalllanum"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1038
+msgid "bottom"
+msgstr "Initken"
+
+# Falta determinar términos
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1041
+msgid "ycor of bottom of screen"
+msgstr "coory tawa duka awai limiteinum nugkan pantallanum"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1049
+msgid "width"
+msgstr "Wegkantí"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1052
+msgid "the canvas width"
+msgstr "Lienzo Wegkantí"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1060
+#: TurtleArt/taconstants.py:151 TurtleArt/tabasics.py:224
+msgid "right"
+msgstr "Untsun"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1063
+msgid "xcor of right of screen"
+msgstr "xcornum awai yagtamen untsugnum pantallanu"
+
+# Por definir el término
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1074
+msgid "ycor of top of screen"
+msgstr "ycor pujawai limite yakig pantallanum"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1082
+msgid "height"
+msgstr "Esánji"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1085
+msgid "the canvas height"
+msgstr "Yakinjin lienzo nu"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1095
+msgid "title x"
+msgstr "Umiktin x"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1107
+msgid "title y"
+msgstr "Umiktin y"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1119
+msgid "left x"
+msgstr "Mena x"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1131
+msgid "top y"
+msgstr "Yakí y"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1143
+msgid "right x"
+msgstr "Untsugnum x"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1155
+msgid "bottom y"
+msgstr "Initken y"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1174
+msgid "Palette of user-defined operators"
+msgstr "Paleta de operaciones tawa nunu umikbauwai usuario takamaina nunu"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1175
+msgid "my blocks"
+msgstr ""
+
+#: plugins/camera_sensor/camera_sensor.py:90
+#: plugins/camera_sensor/camera_sensor.py:122
+#: plugins/light_sensor/light_sensor.py:58
+#: plugins/light_sensor/light_sensor.py:66
+msgid "brightness"
+msgstr "Etsánbau"
+
+#: plugins/camera_sensor/camera_sensor.py:92
+msgid "light level detected by camera"
+msgstr "Betek etsánbauji wainkae cámara"
+
+#: plugins/camera_sensor/camera_sensor.py:107
+#: plugins/camera_sensor/camera_sensor.py:115
+msgid "camera output"
+msgstr "Dakumkamu Kamarajai"
+
+#: plugins/camera_sensor/camera_sensor.py:124
+msgid "Average RGB color from camera is pushed to the stack"
+msgstr "Betek mamtin usuamu RGB cámaranu buchitui piranum"
+
+# Se utilizan las siglas en inglés para "Identificación por Radio Frecuencia"
+#: plugins/rfid/rfid.py:93 plugins/rfid/rfid.py:101
+msgid "RFID"
+msgstr "RFID"
+
+#: plugins/rfid/rfid.py:94 plugins/rfid/rfid.py:102
+msgid "read value from RFID device"
+msgstr "Augui dispoditivo akíke radiofrecuenciaji (RFID)"
+
+# Definir término
+#: plugins/accelerometer/accelerometer.py:56
+#: plugins/accelerometer/accelerometer.py:63
+msgid "acceleration"
+msgstr "acelerómetro"
+
+#: plugins/accelerometer/accelerometer.py:58
+#: plugins/accelerometer/accelerometer.py:65
+msgid "push acceleration in x, y, z to heap"
+msgstr "Apújut wamketush ejes tawa nundau x,y z piranum"
+
+#: plugins/light_sensor/light_sensor.py:61
+#: plugins/light_sensor/light_sensor.py:69
+msgid "light level detected by light sensor"
+msgstr "Betek etsánbauji wainkae sensor tawa nunu."
+
+#: plugins/audio_sensors/audio_sensors.py:93 pysamples/grecord.py:207
+msgid "sound"
+msgstr "Shinut"
+
+#: plugins/audio_sensors/audio_sensors.py:94
+msgid "raw microphone input signal"
+msgstr "Mamikit wait micrófonon"
+
+#: plugins/audio_sensors/audio_sensors.py:100
+msgid "loudness"
+msgstr "Sénchi"
+
+#: plugins/audio_sensors/audio_sensors.py:101
+msgid "microphone input volume"
+msgstr "Sénchi wáit microfononum"
+
+#: plugins/audio_sensors/audio_sensors.py:127
+msgid "microphone input pitch"
+msgstr ""
+"Riodio frecuenciaji senchi chuchau nuwintu shig antundau microfononum "
+"chichcam wayak"
+
+#: plugins/audio_sensors/audio_sensors.py:160
+#: plugins/audio_sensors/audio_sensors.py:178
+msgid "resistance"
+msgstr "Átsanbau"
+
+#: plugins/audio_sensors/audio_sensors.py:161
+#: plugins/audio_sensors/audio_sensors.py:179
+msgid "microphone input resistance"
+msgstr ""
+"Akíke átsanbau ijuk achitkau waitainum micrófononum (rango de medición: 700 "
+"a 14000 ohms)"
+
+#: plugins/audio_sensors/audio_sensors.py:166
+#: plugins/audio_sensors/audio_sensors.py:184
+msgid "voltage"
+msgstr "Sénchi japijatin"
+
+#: plugins/audio_sensors/audio_sensors.py:167
+#: plugins/audio_sensors/audio_sensors.py:185
+msgid "microphone input voltage"
+msgstr ""
+"Akíke senchi japijatnunum DC ijuka waitnu micrófonunum (rango: 0.40 a 1.90 "
+"V),"
+
+#: pysamples/uturn.py:35
+msgid "uturn"
+msgstr "Ayampat U"
+
+#: pysamples/uturn.py:37
+msgid "turns the turtle 180 degrees"
+msgstr ""
+
+#: pysamples/brain.py:43
+msgid "Please install the Speak Activity and try again."
+msgstr "Wait aneasam instalata unuimaku takastin Chichat patakam ataktu umikta."
+
+#: pysamples/brain.py:52
+msgid "Spanish"
+msgstr "Apach"
+
+# Chicham inglesnun
+#: pysamples/brain.py:56 pysamples/brain.py:69 pysamples/brain.py:71
+#: pysamples/brain.py:77
+msgid "English"
+msgstr "Inglésnum"
+
+#: pysamples/brain.py:88
+msgid "Sorry, I can't understand what you are asking about."
+msgstr "Tsagkuntunta, antumain dekapeasjai tuwa ininme."
+
+#: pysamples/brain.py:97
+msgid ""
+"Sorry, there is no free memory to load my brain. Close other activities and "
+"try once more."
+msgstr ""
+"Tsagkuntunta, atsawai memorianum agkan mina butsukjui egkéktatamunum. Epenta "
+"tikich unuimaku takastin dutikakum patakam ataktu egkékta."
+
+#: pysamples/journal-stats.py:90
+msgid "other"
+msgstr "Tikich"
+
+# Definir término a la lengua
+#: pysamples/forward_push.py:48
+msgid "push destination rgb value to heap"
+msgstr "Dekami apila el valor rgb a la pila"
+
+#: pysamples/grecord.py:214
+msgid "stop"
+msgstr "Itájit"
+
+#: pysamples/grecord.py:216
+msgid "play"
+msgstr ""
+"Ataktu nagkama ishinat, nunishkush kuwashat papi agagbau copia jigbaush "
+"amainai."
+
+#: pysamples/grecord.py:218
+msgid "save"
+msgstr "Ukukta"
+
+#: TurtleArt/talogo.py:604
+msgid "did not output to"
+msgstr "Agamainchau dekapeajai awi"
+
+#: TurtleArt/talogo.py:645 TurtleArt/talogo.py:1059
+msgid "doesn't like"
+msgstr "Dakitun diiawai"
+
+#: TurtleArt/talogo.py:646 TurtleArt/talogo.py:1060
+msgid "as input"
+msgstr "Wajuk waít"
+
+#: TurtleArt/talogo.py:709
+msgid "I don't know how to"
+msgstr "Dekasjai wajuk dutikmainitja"
+
+#: TurtleArt/turtleblocks.py:106
+msgid "usage is"
+msgstr "Takatai juwai"
+
+#: TurtleArt/turtleblocks.py:307
+msgid "No option action:"
+msgstr "Dutikmainchau nuwintu atsawai utunmainuk:"
+
+#: TurtleArt/turtleblocks.py:322
+msgid "File not found"
+msgstr "Ficheronum wainkasbau"
+
+#: TurtleArt/turtleblocks.py:346
+#, python-format
+msgid "Configuration directory not writable: %s"
+msgstr ""
+"Directorio tawa duka atsumtaiyai tsawan mamikia takamua nunu aintsan "
+"configuracion tawa duka etsejui wajiyai programa takame nuwintu yapajiam "
+"takamainchauwaitme %s directorinu"
+
+#: TurtleArt/turtleblocks.py:434
+msgid "New"
+msgstr "Yamájam, yamájma"
+
+#: TurtleArt/turtleblocks.py:435
+msgid "Show sample projects"
+msgstr ""
+
+#: TurtleArt/turtleblocks.py:442
+msgid "Save as"
+msgstr "Ukút wajúk ame wakegame"
+
+#: TurtleArt/turtleblocks.py:446
+msgid "Export as"
+msgstr ""
+
+#: TurtleArt/turtleblocks.py:449 TurtleArt/tawindow.py:4788
+msgid "image"
+msgstr "Dakumkamu"
+
+#: TurtleArt/turtleblocks.py:451
+msgid "image (blocks)"
+msgstr ""
+
+#: TurtleArt/turtleblocks.py:453
+msgid "SVG"
+msgstr ""
+
+#: TurtleArt/turtleblocks.py:455 TurtleArt/tawindow.py:4641
+msgid "icon"
+msgstr ""
+
+#. TRANS: ODP is Open Office presentation
+#: TurtleArt/turtleblocks.py:458
+msgid "ODP"
+msgstr ""
+
+#: TurtleArt/turtleblocks.py:460
+msgid "Logo"
+msgstr ""
+
+#: TurtleArt/turtleblocks.py:464
+msgid "Quit"
+msgstr "Jinat"
+
+#: TurtleArt/turtleblocks.py:465
+msgid "File"
+msgstr "Papi agagbau shig ijumjamu wajuk takatan uminawa."
+
+#: TurtleArt/turtleblocks.py:473
+msgid "Rescale coordinates"
+msgstr "Iyántut coordenadas"
+
+#: TurtleArt/turtleblocks.py:479
+msgid "Reset block size"
+msgstr "Pataka amaímat esánji bloquenu"
+
+#: TurtleArt/turtleblocks.py:500
+msgid "Show/hide blocks"
+msgstr "Ináktut/uút bloques tawa nu"
+
+#: TurtleArt/turtleblocks.py:502
+msgid "Tools"
+msgstr "Ashi atsumkas takatai aidau xo"
+
+#: TurtleArt/turtleblocks.py:508
+msgid "Debug"
+msgstr "Shig jaupit, jiit pegkenchauji emau"
+
+#: TurtleArt/turtleblocks.py:510
+msgid "Turtle"
+msgstr "Kugkúim"
+
+#: TurtleArt/turtleblocks.py:513
+msgid "Plugins"
+msgstr ""
+
+#: TurtleArt/turtleblocks.py:516
+msgid "About..."
+msgstr "Pachísa..."
+
+# Guardar o archivar sin salir
+#: TurtleArt/turtleblocks.py:575
+msgid "You have unsaved work. Would you like to save before quitting?"
+msgstr ""
+"Away takat umikbau tujash ukukchamu.¿Wait aneasam eke jiintsuk ukúmainkitam?"
+
+#: TurtleArt/turtleblocks.py:580
+msgid "Save project?"
+msgstr "Egkekta takat umiktin najanamu"
+
+#: TurtleArt/turtleblocks.py:590
+#, python-format
+#, fuzzy, python-format
+msgid "Plugin %s already installed"
+msgstr "El plugin %s juka instalamuwai."
+
+#: TurtleArt/turtleblocks.py:736
+msgid "myproject"
+msgstr ""
+
+#: TurtleArt/turtleblocks.py:814 TurtleArt/taplugin.py:89
+#, python-format
+msgid "Please restart %s in order to use the plugin."
+msgstr "Patakam nagkamata %s tawa nu dutikam takamainitme Plugin,"
+
+#: TurtleArt/turtleblocks.py:819
+#, python-format
+msgid "Please restart %s in order to unload the plugin."
+msgstr "Patakam nagkamata %s tawa nu dutikam takamainitme Plugin,"
+
+#: TurtleArt/tapalette.py:103
+msgid "displays next palette"
+msgstr "Iwainakta tikich paleta tawa nu"
+
+#: TurtleArt/tapalette.py:104
+msgid "changes the orientation of the palette of blocks"
+msgstr "Yapajiata wajuk paleta ijunjam awa nu."
+
+#: TurtleArt/tapalette.py:144 TurtleArt/tapalette.py:145
+#: TurtleArt/tabasics.py:1262 TurtleArt/tabasics.py:1263
+msgid "trash"
+msgstr "Pegkenchau, tsuwat"
+
+#: TurtleArt/taexportpython.py:226
+msgid "block is not exportable"
+msgstr ""
+
+#: TurtleArt/taexportpython.py:245
+msgid "error while exporting block"
+msgstr ""
+
+#: TurtleArt/taprimitive.py:62
+msgid "error in highlighted block"
+msgstr ""
+
+#: TurtleArt/taprimitive.py:64
+msgid "error"
+msgstr ""
+
+#: TurtleArt/tawindow.py:1151 TurtleArt/tawindow.py:1152
+msgid "orientation"
+msgstr "Chichajut"
+
+#: TurtleArt/tawindow.py:1166 TurtleArt/tawindow.py:1626
+msgid "next"
+msgstr "Tikich"
+
+#: TurtleArt/tawindow.py:1205 TurtleArt/tawindow.py:1635
+msgid "shift"
+msgstr "Yaja emamu"
+
+#: TurtleArt/tawindow.py:1273
+msgid "Please hit the Stop Button before making changes to your program"
+msgstr ""
+
+#: TurtleArt/tawindow.py:1316 TurtleArt/tawindow.py:1430
+#: TurtleArt/tawindow.py:1443 TurtleArt/tawindow.py:2078
+#: TurtleArt/tawindow.py:4934 TurtleArt/tabasics.py:1070
+#: TurtleArt/tabasics.py:1073 TurtleArt/tabasics.py:1086
+#: TurtleArt/tabasics.py:1090 TurtleArt/tabasics.py:1236
+#: TurtleArt/tabasics.py:1240
+msgid "action"
+msgstr "Dutikin"
+
+#: TurtleArt/tawindow.py:1322 TurtleArt/tawindow.py:1469
+#: TurtleArt/tawindow.py:2084 TurtleArt/tawindow.py:4961
+#: TurtleArt/tawindow.py:4988 TurtleArt/tabasics.py:1158
+#: TurtleArt/tabasics.py:1173
+msgid "my box"
+msgstr "Nima cajan"
+
+#: TurtleArt/tawindow.py:1337
+msgid "Select blocks to share"
+msgstr "Etegjata ikaugbau dutikam tikich aidaujai sudaisatajum."
+
+#: TurtleArt/tawindow.py:1515 TurtleArt/tawindow.py:1529
+msgid "Really overwrite stack?"
+msgstr "Wakeamek patakam agagta pira"
+
+#: TurtleArt/tawindow.py:1522 TurtleArt/tawindow.py:1532
+msgid "Overwrite stack"
+msgstr "Patakam agagta pira"
+
+#: TurtleArt/tawindow.py:1554 TurtleArt/tawindow.py:1567
+msgid "Really delete stack?"
+msgstr "¿Wakeamek pira ajápet ?"
+
+#: TurtleArt/tawindow.py:1947 TurtleArt/tabasics.py:1267
+msgid "empty trash"
+msgstr "Yajat papeleranum"
+
+#: TurtleArt/tawindow.py:1948
+msgid "Do you really want to empty the trash?"
+msgstr ""
+
+#: TurtleArt/tawindow.py:4285 TurtleArt/tawindow.py:4306
+#, python-format
+msgid "Cannot write data to %s."
+msgstr ""
+
+#: TurtleArt/tawindow.py:4286
+msgid "Please choose a different save directory."
+msgstr ""
+
+#: TurtleArt/tawindow.py:4307
+msgid "Please choose a different file name."
+msgstr ""
+
+# Texo por traducir
+#: TurtleArt/tawindow.py:4415 TurtleArt/tabasics.py:284
+msgid "xcor"
+msgstr "Dekami coorx"
+
+# desconozco
+#: TurtleArt/tawindow.py:4416 TurtleArt/tabasics.py:299
+msgid "ycor"
+msgstr "Dekami coory"
+
+# Ir, dirigirse, determinar
+#: TurtleArt/tawindow.py:4416 TurtleArt/tabasics.py:314
+msgid "heading"
+msgstr "wétin"
+
+#: TurtleArt/tawindow.py:4442 TurtleArt/tawindow.py:4447
+#: TurtleArt/tabasics.py:359 TurtleArt/tabasics.py:373
+#: TurtleArt/tabasics.py:447
+msgid "shade"
+msgstr "Ameinai yakagbau, jakimtikbau"
+
+# Gris
+#: TurtleArt/tawindow.py:4443 TurtleArt/tawindow.py:4448
+#: TurtleArt/tabasics.py:373 TurtleArt/tabasics.py:461
+msgid "gray"
+msgstr "Bukusea"
+
+#: TurtleArt/tawindow.py:4446 TurtleArt/tabasics.py:359
+#: TurtleArt/tabasics.py:372 TurtleArt/tabasics.py:435
+msgid "color"
+msgstr "Yakagta"
+
+#: TurtleArt/tawindow.py:4516
+msgid "True"
+msgstr ""
+
+#: TurtleArt/tawindow.py:4516
+msgid "False"
+msgstr ""
+
+#: TurtleArt/tawindow.py:4714
+#, python-format
+msgid "%s blocks image"
+msgstr ""
+
+#: TurtleArt/tawindow.py:4947 TurtleArt/tabasics.py:1091
+msgid "invokes named action stack"
+msgstr "Wait aneasam pira de acción nombrado"
+
+#: TurtleArt/tawindow.py:4974 TurtleArt/tabasics.py:1176
+msgid "named variable (numeric value)"
+msgstr "Takasmi variable adaikamu (valor numérico)"
+
+#: TurtleArt/tawindow.py:4996 TurtleArt/tabasics.py:1154
+msgid "store in"
+msgstr "Egkét"
+
+#: TurtleArt/tawindow.py:4996 TurtleArt/tabasics.py:1154
+msgid "value"
+msgstr "Akike"
+
+#: TurtleArt/tawindow.py:5001 TurtleArt/tabasics.py:1159
+msgid "stores numeric value in named variable"
+msgstr "Ukúkta valor numérico en la variable adaikamunum"
+
+#: TurtleArt/taplugin.py:93 TurtleArt/taplugin.py:103 TurtleArt/taplugin.py:105
+msgid "Plugin could not be installed."
+msgstr "Plugin tawanunu instalaumainchui"
+
+#: TurtleArt/taconstants.py:150
+msgid "up"
+msgstr ""
+
+#: TurtleArt/taconstants.py:152
+msgid "down"
+msgstr ""
+
+#: TurtleArt/taconstants.py:153
+msgid "backspace"
+msgstr ""
+
+#: TurtleArt/taconstants.py:154
+msgid "tab"
+msgstr ""
+
+#. TRANS: enter is the name of the enter (or return) key
+#: TurtleArt/taconstants.py:156
+msgid "enter"
+msgstr ""
+
+#. TRANS: space is the name of the space key
+#: TurtleArt/taconstants.py:159
+msgid "space"
+msgstr ""
+
+#: TurtleArt/taconstants.py:160
+msgid "delete"
+msgstr ""
+
+#: TurtleArt/taconstants.py:473 TurtleArt/taconstants.py:494
+#: TurtleArt/taconstants.py:514 TurtleArt/taconstants.py:555
+#: TurtleArt/taconstants.py:596 TurtleArt/taconstants.py:637
+msgid "Title"
+msgstr "Umiktin"
+
+#: TurtleArt/taconstants.py:659
+msgid "banana"
+msgstr ""
+
+#: TurtleArt/tautils.py:313
+msgid "Load..."
+msgstr "Egkét....aimat"
+
+#: TurtleArt/tautils.py:323
+msgid "Save..."
+msgstr "Ukút"
+
+# Desconocimiento
+#: TurtleArt/tabasics.py:158
+msgid "Palette of turtle commands"
+msgstr "Paleta de comandos tawa nu kugkúimdau"
+
+#: TurtleArt/tabasics.py:167
+msgid "moves turtle forward"
+msgstr "Kugkúim eem umushkata"
+
+#: TurtleArt/tabasics.py:176
+msgid "back"
+msgstr "Ukunmatai"
+
+#: TurtleArt/tabasics.py:180
+msgid "moves turtle backward"
+msgstr "Kugkúim umushkata ukunum"
+
+#: TurtleArt/tabasics.py:189
+msgid "clean"
+msgstr "Jaupit"
+
+#: TurtleArt/tabasics.py:192
+msgid "clears the screen and reset the turtle"
+msgstr ""
+"Jaupjata computador pantallaji, dutikamin ataktu iman shig pegken "
+"wantinkattawai"
+
+#: TurtleArt/tabasics.py:214
+msgid "turns turtle counterclockwise (angle in degrees)"
+msgstr "Kugkúim papegátmikata sentido anti-horario tawa nui (ángulos en grados)"
+
+#: TurtleArt/tabasics.py:228
+msgid "turns turtle clockwise (angle in degrees)"
+msgstr "Kugkúim papegátmikata sentido horario( ángulos en grados)"
+
+# Término desconozco
+#: TurtleArt/tabasics.py:238
+msgid "arc"
+msgstr "Dekami wajukuita arco"
+
+# Desconozco término
+#: TurtleArt/tabasics.py:238
+msgid "angle"
+msgstr "Dekamiwajukuita ángulo"
+
+# Desconocimiento en la lengua
+#: TurtleArt/tabasics.py:238
+msgid "radius"
+msgstr "Dekami wajukuita arco"
+
+# Completar frase
+#: TurtleArt/tabasics.py:242
+msgid "moves turtle along an arc"
+msgstr "Kugkúim umushkata a lo largo de un arco"
+
+#: TurtleArt/tabasics.py:254 TurtleArt/tabasics.py:333
+msgid "set xy"
+msgstr "Etégkat xy"
+
+# Signo conocido x de la multiplicación.
+# Signo para marcar x
+# signo que se utiliza en la en tablero posicional x  que va en la parte vertical.
+#: TurtleArt/tabasics.py:254 TurtleArt/tabasics.py:333
+msgid "x"
+msgstr "Sapagket"
+
+# Se"y" utiliza en el tablero posicional y en la parte horizontal.
+#: TurtleArt/tabasics.py:254 TurtleArt/tabasics.py:333
+msgid "y"
+msgstr "y (nuwintushkam)"
+
+#: TurtleArt/tabasics.py:258 TurtleArt/tabasics.py:337
+msgid ""
+"moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
+msgstr ""
+"Kugkúim umushkata jutik tawa nu xcor, ycor; (0,0) ejapen pujawai pantallanum."
+
+# rumbo is the word traditionally used in LOGO; we should try to maintain consistency with the LOGO community
+#: TurtleArt/tabasics.py:269
+msgid "set heading"
+msgstr "Emamkemat rumbo tawa nu"
+
+#: TurtleArt/tabasics.py:273
+msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
+msgstr "Emamkemat kugkúim utugni etamua (Ten , emewai yakintin pantallanum )"
+
+#: TurtleArt/tabasics.py:285
+msgid ""
+"holds current x-coordinate value of the turtle (can be used in place of a "
+"number block)"
+msgstr ""
+"Awai coordenadas tawa nu x yamaipat kugkúimdau (takamainai atsumtsuk chik "
+"bloque tawau dekapat)"
+
+# Determinar tipos de cordenadas en la lengua awajún
+#: TurtleArt/tabasics.py:300
+msgid ""
+"holds current y-coordinate value of the turtle (can be used in place of a "
+"number block)"
+msgstr ""
+"Awai coordenada nuwintushkam yamaipat kugkúim (takamainai atsumtsuk "
+"makichik1 bloque tawa nu dukapdau)"
+
+#: TurtleArt/tabasics.py:315
+msgid ""
+"holds current heading value of the turtle (can be used in place of a number "
+"block)"
+msgstr "Imajuig awai wajuk kugkúimash emattaji(Takamaini atsumtsuk dekapat )"
+
+#: TurtleArt/tabasics.py:353
+msgid "Palette of pen commands"
+msgstr "Paleta tawa duka ujapawai wajiyaiya agagtatme"
+
+#: TurtleArt/tabasics.py:354
+#, fuzzy
+msgid "pen"
+msgstr "Ujat"
+
+#: TurtleArt/tabasics.py:359 TurtleArt/tabasics.py:372
+msgid "fill screen"
+msgstr "Pantallanum aimkata"
+
+#: TurtleArt/tabasics.py:363 TurtleArt/tabasics.py:377
+msgid "fills the background with (color, shade)"
+msgstr "Aimkata initken (ususata, wakan)"
+
+#: TurtleArt/tabasics.py:390
+msgid "set color"
+msgstr "Mamakjata wajiyaiya usuatmame"
+
+#: TurtleArt/tabasics.py:394
+msgid "sets color of the line drawn by the turtle"
+msgstr "Mamikjata wajiyaiya kugkúimash dakumkash tsegtakbaunas usuattawa"
+
+#: TurtleArt/tabasics.py:406
+msgid "set shade"
+msgstr "Mamikjata wajuk usuattame"
+
+#: TurtleArt/tabasics.py:410
+msgid "sets shade of the line drawn by the turtle"
+msgstr "Mamikiata tsegtsakbaush wajuk ashimkattame usuamesh kugkúim dakumkamush"
+
+#: TurtleArt/tabasics.py:421
+msgid "set gray"
+msgstr "Mamikjata bukuseayai"
+
+#: TurtleArt/tabasics.py:424
+msgid "sets gray level of the line drawn by the turtle"
+msgstr ""
+"Imajui awai wajupa usuamush washuttaku tsegtsagbaunum atsumtatme kugkúim "
+"dakumkamu"
+
+#: TurtleArt/tabasics.py:436
+msgid "holds current pen color (can be used in place of a number block)"
+msgstr ""
+"Awai yamaipat jakimtikbau agatainujai betek (Takamainai bloque dekapatainu "
+"achitsuk)"
+
+#: TurtleArt/tabasics.py:448
+msgid "holds current pen shade"
+msgstr "Yamaipat umikbau agatainum ashi awai"
+
+#: TurtleArt/tabasics.py:462
+msgid "holds current gray level (can be used in place of a number block)"
+msgstr ""
+"Imajui ujapawai betekji washuttakunu(takamainai atsumtsuk bloque tawanu "
+"dekapatainu)"
+
+# verbo
+#: TurtleArt/tabasics.py:472
+msgid "pen up"
+msgstr "Ujakta papi agatai"
+
+#: TurtleArt/tabasics.py:475
+msgid "Turtle will not draw when moved."
+msgstr "Kugkúim dakumkashtatui buchitkun"
+
+#: TurtleArt/tabasics.py:482
+msgid "pen down"
+msgstr "Nugkan emata agatai"
+
+#: TurtleArt/tabasics.py:485
+msgid "Turtle will draw when moved."
+msgstr "Kugkúim dakumkattawai buchitkun"
+
+#: TurtleArt/tabasics.py:492
+#, fuzzy
+msgid "pen down?"
+msgstr "Nugkan emata agatai"
+
+#: TurtleArt/tabasics.py:494
+msgid "returns True if pen is down"
+msgstr ""
+
+#: TurtleArt/tabasics.py:501
+msgid "set pen size"
+msgstr "Etégkata esanti"
+
+#: TurtleArt/tabasics.py:505
+msgid "sets size of the line drawn by the turtle"
+msgstr "Etégkata tsegtsakbua wegkanti kugkuim dakumkamu."
+
+#: TurtleArt/tabasics.py:518
+msgid "start fill"
+msgstr "Nagkamam ainmat, betekmat"
+
+#: TurtleArt/tabasics.py:520
+msgid "starts filled polygon (used with end fill block)"
+msgstr ""
+"Kagkamam betekmata poligononum (takasbau nagkánbaunum betekmata bloquenum)"
+
+#: TurtleArt/tabasics.py:526
+msgid "end fill"
+msgstr "Inágnakta betekmam"
+
+#: TurtleArt/tabasics.py:528
+msgid "completes filled polygon (used with start fill block)"
+msgstr "Betékmata polígononum ainmat (Esegámu nagkamata iammat bloquenum)"
+
+#: TurtleArt/tabasics.py:534
+msgid "pen size"
+msgstr "Apují"
+
+#: TurtleArt/tabasics.py:535
+msgid "holds current pen size (can be used in place of a number block)"
+msgstr ""
+"Awai esánji yamaipat agatainu (Atsumkas takamainai bloquejainchukesh "
+"dekapatainu)"
+
+#: TurtleArt/tabasics.py:554
+msgid "Palette of pen colors"
+msgstr "Paletaum wai kuwashat usumatai nuwintu agatai"
+
+#: TurtleArt/tabasics.py:555
+#, fuzzy
+msgid "colors"
+msgstr "Yakagta"
+
+#: TurtleArt/tabasics.py:560 TurtleArt/tabasics.py:568
+msgid "red"
+msgstr "Kapantu"
+
+#: TurtleArt/tabasics.py:560
+msgid "orange"
+msgstr "Yagkuttaku"
+
+#: TurtleArt/tabasics.py:560
+msgid "yellow"
+msgstr "Yagku"
+
+#: TurtleArt/tabasics.py:560 TurtleArt/tabasics.py:568
+msgid "green"
+msgstr "Samekmau"
+
+# determinar término
+#: TurtleArt/tabasics.py:561
+msgid "cyan"
+msgstr "cian"
+
+#: TurtleArt/tabasics.py:561 TurtleArt/tabasics.py:568
+msgid "blue"
+msgstr "Wigka"
+
+#: TurtleArt/tabasics.py:561
+msgid "purple"
+msgstr "Yamakái"
+
+#: TurtleArt/tabasics.py:561
+msgid "white"
+msgstr "Púju"
+
+#: TurtleArt/tabasics.py:562
+msgid "black"
+msgstr "Bukúsea"
+
+#: TurtleArt/tabasics.py:568
+msgid ""
+"RGB to\n"
+"\n"
+"color"
+msgstr ""
+
+#: TurtleArt/tabasics.py:570
+msgid "converter"
+msgstr ""
+
+# Identificar herramienta
+#: TurtleArt/tabasics.py:655
+msgid "Palette of numeric operators"
+msgstr "Paletanum awai operadores tawa nu numéricos"
+
+#: TurtleArt/tabasics.py:656
+#, fuzzy
+msgid "numbers"
+msgstr "Dekapat"
+
+#: TurtleArt/tabasics.py:661
+msgid "plus"
+msgstr "Ikaubau"
+
+#: TurtleArt/tabasics.py:665
+msgid "adds two alphanumeric inputs"
+msgstr "Ikaubau jim agagta alfanumérica tawa nunui."
+
+#: TurtleArt/tabasics.py:684
+msgid "minus"
+msgstr "Atanbau"
+
+# Definir bien en la lengua
+#: TurtleArt/tabasics.py:687
+msgid "subtracts bottom numeric input from top numeric input"
+msgstr "Jikta wayámunu numérica nugkan wayámunum numérica yakin awa nunu"
+
+#: TurtleArt/tabasics.py:705
+msgid "multiply"
+msgstr "Uyugkami"
+
+#: TurtleArt/tabasics.py:708
+msgid "multiplies two numeric inputs"
+msgstr "Uyugkami jim waít dekapatnum"
+
+#: TurtleArt/tabasics.py:724
+msgid "divide"
+msgstr "Akanmau"
+
+#: TurtleArt/tabasics.py:727
+msgid ""
+"divides top numeric input (numerator) by bottom numeric input (denominator)"
+msgstr ""
+"Akanmau wayámunum numérica yakin (numeradornum) waitainum numérica "
+"nugkan(denominadornum)"
+
+#: TurtleArt/tabasics.py:744
+msgid "identity"
+msgstr "Wainkámu"
+
+#: TurtleArt/tabasics.py:746
+msgid "identity operator used for extending blocks"
+msgstr ""
+"operador de identidad tawa duka atsumtaiyai ayapantatabaunum bloque de "
+"operador tawa nunu."
+
+# Falta traducir
+#: TurtleArt/tabasics.py:772 TurtleArt/tabasics.py:773
+msgid "mod"
+msgstr "Juka ujapawai waji dutikattame nu"
+
+# definir término
+#: TurtleArt/tabasics.py:776
+msgid "modular (remainder) operator"
+msgstr "operador módular (resto)"
+
+# Término por definir en la lengua
+#: TurtleArt/tabasics.py:784
+msgid "√"
+msgstr "Raiz cuadrada niime √"
+
+# Dsconocimiento en la lengua
+#: TurtleArt/tabasics.py:785
+msgid "square root"
+msgstr "Raiz cuadrada takastin"
+
+# Falta definir
+#: TurtleArt/tabasics.py:788
+msgid "calculates square root"
+msgstr "Raíz cuadrada takastin"
+
+# Definir en la lengua
+#: TurtleArt/tabasics.py:796
+msgid "random"
+msgstr "Kakastin aleatorio"
+
+# Definir en la lengua
+#: TurtleArt/tabasics.py:796
+msgid "min"
+msgstr "Ujumak"
+
+# Traducir
+#: TurtleArt/tabasics.py:796
+msgid "max"
+msgstr "Kuwashat"
+
+# Definir
+#: TurtleArt/tabasics.py:800
+msgid "returns random number between minimum (top) and maximum (bottom) values"
+msgstr ""
+"Awankita dekap aleatorio entre los valores mínimo (yakin) y máximo (nugkan)"
+
+#: TurtleArt/tabasics.py:822
+msgid "number"
+msgstr "Dekapat"
+
+#: TurtleArt/tabasics.py:823
+msgid "used as numeric input in mathematic operators"
+msgstr "Atsumtaiyai waitnum dekapanum operadores matemáticos tawa nu"
+
+#: TurtleArt/tabasics.py:830
+msgid "greater than"
+msgstr "Dúkape"
+
+#: TurtleArt/tabasics.py:833
+msgid "logical greater-than operator"
+msgstr "Dukape operador lógico tawa nu"
+
+#: TurtleArt/tabasics.py:849
+msgid "less than"
+msgstr "Ujumke"
+
+#: TurtleArt/tabasics.py:853
+msgid "logical less-than operator"
+msgstr "Ujumke operador lógico nu"
+
+#: TurtleArt/tabasics.py:869
+msgid "equal"
+msgstr "Betek"
+
+#: TurtleArt/tabasics.py:873
+msgid "logical equal-to operator"
+msgstr "Takasmi betek operador lógico nu"
+
+#: TurtleArt/tabasics.py:888
+msgid "not"
+msgstr "Atsa"
+
+#: TurtleArt/tabasics.py:891
+msgid "logical NOT operator"
+msgstr "Takastin operador NO lógico"
+
+#: TurtleArt/tabasics.py:899 TurtleArt/tabasics.py:902
+msgid "and"
+msgstr "y (nuwigtushkam)"
+
+#: TurtleArt/tabasics.py:903
+msgid "logical AND operator"
+msgstr "Dekami operador Y lógico"
+
+# Ten en 2da persona, de tener algo.
+#: TurtleArt/tabasics.py:911 TurtleArt/tabasics.py:914
+msgid "or"
+msgstr "Ajutjamu"
+
+#: TurtleArt/tabasics.py:915
+msgid "logical OR operator"
+msgstr "Dekami operador O lógico"
+
+#: TurtleArt/tabasics.py:927
+msgid "flow"
+msgstr ""
+
+#: TurtleArt/tabasics.py:931
+msgid "wait"
+msgstr "Dakamsata"
+
+#: TurtleArt/tabasics.py:935
+msgid "pauses program execution a specified number of seconds"
+msgstr "Itájitmikata takat umikbau dútikatnanu dekapat dutikatnanu segundos nu"
+
+#: TurtleArt/tabasics.py:944
+msgid "forever"
+msgstr "Tuke"
+
+#: TurtleArt/tabasics.py:948
+msgid "loops forever"
+msgstr "Awénata tuke"
+
+#: TurtleArt/tabasics.py:958 TurtleArt/tabasics.py:962
+msgid "repeat"
+msgstr "Awénat"
+
+#: TurtleArt/tabasics.py:963
+msgid "loops specified number of times"
+msgstr "Patakam dekapat imagnía"
+
+#: TurtleArt/tabasics.py:976 TurtleArt/tabasics.py:992
+msgid "if"
+msgstr "iEh, Dekas"
+
+#: TurtleArt/tabasics.py:976 TurtleArt/tabasics.py:992
+msgid "then"
+msgstr "Untsukám"
+
+#: TurtleArt/tabasics.py:979
+msgid "if then"
+msgstr "Dekas untsukám"
+
+#: TurtleArt/tabasics.py:981
+msgid "if-then operator that uses boolean operators from Numbers palette"
+msgstr ""
+"Aents takau, ehe, nuwintush takau operadores lógicos tawa npaletan "
+"dekapatainun"
+
+#: TurtleArt/tabasics.py:992
+msgid "else"
+msgstr "Atsa"
+
+# afirmación dudosa
+#: TurtleArt/tabasics.py:996 TurtleArt/tabasics.py:1009
+msgid "if then else"
+msgstr "Ehé, Untsukám, Atsa"
+
+#: TurtleArt/tabasics.py:997 TurtleArt/tabasics.py:1010
+msgid "if-then-else operator that uses boolean operators from Numbers palette"
+msgstr ""
+"Aents takau computador ehe, úntsu- nuniashkush takau operador lógico paleta "
+"dekapatnun"
+
+#: TurtleArt/tabasics.py:1019
+msgid "horizontal space"
+msgstr "Agkáju Horiontal tawa nunui"
+
+#: TurtleArt/tabasics.py:1020
+msgid "jogs stack right"
+msgstr "Akiíntut pila untsugmun"
+
+#: TurtleArt/tabasics.py:1029
+msgid "vertical space"
+msgstr "Akíntut akuúm"
+
+#: TurtleArt/tabasics.py:1030
+msgid "jogs stack down"
+msgstr "Akintut pila nunkan"
+
+#: TurtleArt/tabasics.py:1037
+msgid "stop action"
+msgstr "Itájit acción"
+
+#: TurtleArt/tabasics.py:1040
+msgid "stops current action"
+msgstr "Itájit yamaipat acción"
+
+#: TurtleArt/tabasics.py:1050
+msgid "Palette of variable blocks"
+msgstr "Takasmi Paleta de bloques de variables"
+
+#: TurtleArt/tabasics.py:1051
+msgid "blocks"
+msgstr ""
+
+#: TurtleArt/tabasics.py:1058
+#, fuzzy
+msgid "connects action to toolbar run buttons"
+msgstr ""
+"conecta la acción a los botones de ejecución de la barra de herramientas"
+
+#: TurtleArt/tabasics.py:1075
+msgid "top of nameable action stack"
+msgstr "Yakin pira acción nombrable"
+
+#: TurtleArt/tabasics.py:1098
+msgid "store in box 1"
+msgstr "Ukút cajanum makichik 1"
+
+#: TurtleArt/tabasics.py:1103
+msgid "stores numeric value in Variable 1"
+msgstr "Ukúkta valor numérico en la variable makichik 1 tawa nunu"
+
+#: TurtleArt/tabasics.py:1112
+msgid "store in box 2"
+msgstr "Ukút cajanum jimag 2"
+
+#: TurtleArt/tabasics.py:1117
+msgid "stores numeric value in Variable 2"
+msgstr "Ukúkta valor numérico en la variable jimag 2"
+
+#: TurtleArt/tabasics.py:1126
+msgid "box 1"
+msgstr "caja makichik 1"
+
+#: TurtleArt/tabasics.py:1129
+msgid "Variable 1 (numeric value)"
+msgstr "Takasmi Variable makichik 1 (valor numérico)"
+
+#: TurtleArt/tabasics.py:1139
+msgid "box 2"
+msgstr "Egkekta caja jimag 2"
+
+#: TurtleArt/tabasics.py:1142
+msgid "Variable 2 (numeric value)"
+msgstr "Takasmi Variable jimag 2 (valor numérico)"
+
+#: TurtleArt/tabasics.py:1154 TurtleArt/tabasics.py:1170
+msgid "box"
+msgstr "Egketai"
+
+#: TurtleArt/tabasics.py:1182 TurtleArt/tabasics.py:1206
+msgid "action 1"
+msgstr "Dútikatna nu makichik 1"
+
+#: TurtleArt/tabasics.py:1185
+msgid "top of Action 1 stack"
+msgstr "Dékatkau pira dútikatna nuwa makichik1"
+
+#: TurtleArt/tabasics.py:1194 TurtleArt/tabasics.py:1219
+msgid "action 2"
+msgstr "Dútikatna nu jimag 2"
+
+#: TurtleArt/tabasics.py:1197
+msgid "top of Action 2 stack"
+msgstr "Dékatkau pira dutikatna nuwa jimag 2"
+
+#: TurtleArt/tabasics.py:1209
+msgid "invokes Action 1 stack"
+msgstr "Segamta atsumamu pira de acción tawa nu makichik 1"
+
+#: TurtleArt/tabasics.py:1222
+msgid "invokes Action 2 stack"
+msgstr "Segamta atsumamu pira acción tawa nu jimag 2"
+
+#: TurtleArt/tabasics.py:1241
+msgid "invokes named action stack and returns value"
+msgstr ""
+
+#: TurtleArt/tabasics.py:1248
+msgid "return"
+msgstr ""
+
+#: TurtleArt/tabasics.py:1251
+msgid "returns a value"
+msgstr ""
+
+#: TurtleArt/tabasics.py:1268
+msgid "permanently deletes items in trash"
+msgstr "Tuke esakat waji awa papeleranum"
+
+#: TurtleArt/tabasics.py:1272
+msgid "restore all"
+msgstr "Patakam magkamata"
+
+#: TurtleArt/tabasics.py:1273
+msgid "restore all blocks from trash"
+msgstr "Dekami wajuk takataiyaita restaurar tawa nunu ashi bloques papeleranun"
+
+#: TurtleArt/tabasics.py:1277
+msgid "clear all"
+msgstr "Ashi esakagta"
+
+#: TurtleArt/tabasics.py:1278
+msgid "move all blocks to trash"
+msgstr "tsétse umushkata ashi ijumjamu awa nu."
+
+#~ msgid ""
+#~ "A Logo-inspired turtle that draws colorful pictures with snap-together "
+#~ "visual programming blocks"
+#~ msgstr ""
+#~ "Kugkúim shig wakegas dakumui, dutikak jakimtikbau aidau atsumkas takase, "
+#~ "shig paan waimainum"
+
+#~ msgid "Please restart Turtle Art in order to use the plugin."
+#~ msgstr "Patakam nagkamata kugkúimArte tawa nu dutikam takamainitme Plugin,"
+
+#~ msgid "set text color"
+#~ msgstr "Etegkáta jakimtikatin chicham agagbau"
+
+#~ msgid "sets color of text drawn by the turtle"
+#~ msgstr "Etegkáta jakimtikatin kugkúim dakumkamu"
+
+#~ msgid "set text size"
+#~ msgstr "Etegkáta chicham apujíi agagmau"
+
+#~ msgid "sets size of text drawn by the turtle"
+#~ msgstr "Etegkáta chicham esanti agagmau kugkúim dakumkamu"
+
+#~ msgid ""
+#~ "Please hit the Stop Button before making changes to your Turtle Blocks "
+#~ "program"
+#~ msgstr "Wait aneasam, itájitmikata butug eke yapagtsuk ame umikbau"
+
+#~ msgid "Load project"
+#~ msgstr "Entsát takat umiktin najanamu"
+
+#~ msgid "palette"
+#~ msgstr "paletanum"
+
+#~ msgid "presentation 1x1"
+#~ msgstr "Iwaimamu 1x1"
+
+#~ msgid "presentation 2x1"
+#~ msgstr "Iwaimamu 2x1"
+
+#~ msgid "presentation 1x2"
+#~ msgstr "Iwaimamu 1x2"
+
+#~ msgid "presentation 2x2"
+#~ msgstr "Iwaimamu 2x2"
+
+#~ msgid "make a uturn"
+#~ msgstr "Ayapitkata makichkia jutikam U"

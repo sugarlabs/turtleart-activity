@@ -1,0 +1,2213 @@
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the TurtleArt package.
+# Božidar Putanec <bozidarp@yahoo.com>, 2017.
+msgid ""
+msgstr ""
+"Project-Id-Version: TurtleArt\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-03-24 17:39+1100\n"
+"PO-Revision-Date: 2017-05-21 02:58+0000\n"
+"Last-Translator: Bo <bozidarp@yahoo.com>\n"
+"Language-Team: Croatian <LL@li.org>\n"
+"Language: hr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Pootle 2.5.1.1\n"
+"X-POOTLE-MTIME: 1495335486.000000\n"
+
+#: activity/activity.info:2
+msgid "TurtleBlocks"
+msgstr "Kornjača i blokovi"
+
+#: TurtleArtActivity.py:127
+msgid "Please wait"
+msgstr "Pričekaj"
+
+#: TurtleArtActivity.py:128
+msgid "Starting connection..."
+msgstr "Započinje povezivanje..."
+
+#: TurtleArtActivity.py:282
+msgid "Export as python"
+msgstr "Eksport kao python"
+
+#: TurtleArtActivity.py:283
+msgid "Error: You must use a Start Block when exporting to Python."
+msgstr "Greška: Za eksport u Python moraš rabiti blok ‘start’."
+
+#: TurtleArtActivity.py:414
+msgid "snapshot"
+msgstr "snimka"
+
+#: TurtleArtActivity.py:459 TurtleArtActivity.py:816 TurtleArtActivity.py:966
+msgid "Turn off hover help"
+msgstr "Isključi kontekstnu pomoć"
+
+#: TurtleArtActivity.py:468 TurtleArt/turtleblocks.py:482
+msgid "Turn on hover help"
+msgstr "Uključi kontekstnu pomoć"
+
+#: TurtleArtActivity.py:478 TurtleArt/turtleblocks.py:496
+msgid "Show palette"
+msgstr "Pokaži paletu"
+
+#: TurtleArtActivity.py:484 TurtleArtActivity.py:1180
+#: TurtleArt/turtleblocks.py:498
+msgid "Hide palette"
+msgstr "Skrij paletu"
+
+#: TurtleArtActivity.py:526 TurtleArtActivity.py:880
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1347
+#: TurtleArt/talogo.py:442
+msgid "Show blocks"
+msgstr "Pokaži blokove"
+
+#: TurtleArtActivity.py:530 TurtleArtActivity.py:1192 TurtleArt/talogo.py:446
+msgid "Hide blocks"
+msgstr "Skrij blokove"
+
+# rescale thesaurus and examples
+# resize - change the size of; make the size more appropriate
+# scale down - reduce proportionally; "The model is scaled down"
+# scale up - increase proportionally; "scale up the model"
+#
+#: TurtleArtActivity.py:652
+msgid "Rescale coordinates down"
+msgstr "Razmjerno smanjenje koordinata"
+
+#: TurtleArtActivity.py:661 TurtleArtActivity.py:807 TurtleArtActivity.py:962
+msgid "Rescale coordinates up"
+msgstr "Razmjerno povećanje koordinata"
+
+#: TurtleArtActivity.py:757 TurtleArtActivity.py:873 TurtleArtActivity.py:936
+#: TurtleArt/turtleblocks.py:493
+msgid "Edit"
+msgstr "Uredi"
+
+#: TurtleArtActivity.py:762 TurtleArtActivity.py:874 TurtleArtActivity.py:954
+#: TurtleArt/turtleblocks.py:484
+msgid "View"
+msgstr "Pregled"
+
+#: TurtleArtActivity.py:784 TurtleArtActivity.py:937
+#: TurtleArt/turtleblocks.py:487
+msgid "Copy"
+msgstr "Kopiraj"
+
+#: TurtleArtActivity.py:786 TurtleArtActivity.py:938
+#: TurtleArt/turtleblocks.py:488
+msgid "Paste"
+msgstr "Zalijepi"
+
+#: TurtleArtActivity.py:788
+msgid "Restore blocks from trash"
+msgstr "Vraća blokove iz smeća"
+
+#: TurtleArtActivity.py:791 TurtleArtActivity.py:939
+#: TurtleArt/turtleblocks.py:489 TurtleArt/tawindow.py:1514
+msgid "Save stack"
+msgstr "Spremi stȏg"
+
+#: TurtleArtActivity.py:793 TurtleArt/turtleblocks.py:491
+#: TurtleArt/tawindow.py:1553 TurtleArt/tawindow.py:1561
+#: TurtleArt/tawindow.py:1570
+msgid "Delete stack"
+msgstr "Izbriši stȏg"
+
+#: TurtleArtActivity.py:796 TurtleArtActivity.py:955
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:961
+msgid "Fullscreen"
+msgstr "Po cijelom ekranu"
+
+#: TurtleArtActivity.py:799 TurtleArtActivity.py:956
+#: TurtleArt/turtleblocks.py:468
+msgid "Cartesian coordinates"
+msgstr "Kartezijeve koordinate"
+
+#: TurtleArtActivity.py:801 TurtleArtActivity.py:958
+#: TurtleArt/turtleblocks.py:470
+msgid "Polar coordinates"
+msgstr "Polarne koordinate"
+
+#: TurtleArtActivity.py:804 TurtleArtActivity.py:960
+msgid "Metric coordinates"
+msgstr "Metričke koordinate"
+
+#: TurtleArtActivity.py:810 TurtleArtActivity.py:964
+#: TurtleArt/turtleblocks.py:475
+msgid "Grow blocks"
+msgstr "Povećaj blokove"
+
+#: TurtleArtActivity.py:813 TurtleArtActivity.py:965
+#: TurtleArt/turtleblocks.py:477
+msgid "Shrink blocks"
+msgstr "Smanji blokove"
+
+#: TurtleArtActivity.py:843 TurtleArtActivity.py:881 TurtleArtActivity.py:1146
+msgid "Load example"
+msgstr "Učitaj primjer"
+
+#: TurtleArtActivity.py:872 TurtleArtActivity.py:899
+msgid "Save/Load"
+msgstr "Spremi/Učitaj"
+
+#: TurtleArtActivity.py:875
+msgid "Project"
+msgstr "Projekt"
+
+#: TurtleArtActivity.py:876 TurtleArtActivity.py:1186
+#: TurtleArt/turtleblocks.py:505
+msgid "Clean"
+msgstr "Sve očisti"
+
+#: TurtleArtActivity.py:877 TurtleArtActivity.py:1188
+#: TurtleArt/turtleblocks.py:506
+msgid "Run"
+msgstr "Pokreni"
+
+#: TurtleArtActivity.py:878 TurtleArtActivity.py:1190
+#: TurtleArt/turtleblocks.py:507
+msgid "Step"
+msgstr "Postupno, po korak"
+
+#: TurtleArtActivity.py:879
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1356
+#: TurtleArt/talogo.py:432 TurtleArt/tawindow.py:1269
+msgid "Stop turtle"
+msgstr "Zaustavi kornjaču"
+
+#: TurtleArtActivity.py:882 TurtleArt/turtleblocks.py:517
+#: TurtleArt/util/helpbutton.py:44
+msgid "Help"
+msgstr "Pomoć"
+
+#: TurtleArtActivity.py:883 TurtleArt/turtleblocks.py:509
+msgid "Stop"
+msgstr "Stop"
+
+#: TurtleArtActivity.py:898 TurtleArt/tawindow.py:2048
+#: TurtleArt/tacollaboration.py:154
+msgid "Share selected blocks"
+msgstr "Podijeli s nekim označene blokove"
+
+#: TurtleArtActivity.py:900 TurtleArtActivity.py:1103
+msgid "Save as image"
+msgstr "Spremi kao sliku"
+
+#: TurtleArtActivity.py:903 TurtleArtActivity.py:1106
+msgid "Save as icon"
+msgstr "Spremi kao ikonu"
+
+#. TRANS: ODP is Open Office presentation
+#: TurtleArtActivity.py:908 TurtleArtActivity.py:1110
+msgid "Save as ODP"
+msgstr "Spremi kao ODP"
+
+#: TurtleArtActivity.py:913 TurtleArtActivity.py:1121
+msgid "Save as Logo"
+msgstr "Spremi kao Logo"
+
+#: TurtleArtActivity.py:914 TurtleArtActivity.py:1124
+msgid "Save as Python"
+msgstr "Spremi kao Python"
+
+#: TurtleArtActivity.py:915 TurtleArtActivity.py:1128
+msgid "Save snapshot"
+msgstr "Spremi snimku"
+
+#: TurtleArtActivity.py:916 TurtleArtActivity.py:1155
+#: TurtleArt/turtleblocks.py:438
+msgid "Add project"
+msgstr "Dodaj projekt"
+
+#: TurtleArtActivity.py:919 TurtleArtActivity.py:1160
+#: TurtleArt/turtleblocks.py:439
+msgid "Load plugin"
+msgstr "Učitaj plugin"
+
+#: TurtleArtActivity.py:920 TurtleArtActivity.py:1163
+msgid "Load Python block"
+msgstr "Učitaj blok ’Python’"
+
+#: TurtleArtActivity.py:1075
+msgid "Palettes"
+msgstr "Palete"
+
+#: TurtleArtActivity.py:1093
+msgid "Sharing blocks disabled"
+msgstr "Dijeljenje blokova nije omogućeno"
+
+#: TurtleArtActivity.py:1098 TurtleArt/turtleblocks.py:441
+msgid "Save"
+msgstr "Spremi"
+
+#: TurtleArtActivity.py:1131
+msgid "Save blocks as image"
+msgstr "Spremi blokove kao sliku"
+
+#: TurtleArtActivity.py:1135
+msgid "Load"
+msgstr "Učitaj"
+
+#: TurtleArtActivity.py:1152 TurtleArt/turtleblocks.py:437
+msgid "Open"
+msgstr "Otvori"
+
+#: TurtleArtActivity.py:1181
+msgid "<Ctrl>p"
+msgstr "<Ctrl>p"
+
+#: TurtleArtActivity.py:1186
+msgid "<Ctrl>e"
+msgstr "<Ctrl>e"
+
+#: TurtleArtActivity.py:1188
+msgid "<Ctrl>r"
+msgstr "<Ctrl>r"
+
+#: TurtleArtActivity.py:1190
+msgid "<Ctrl>w"
+msgstr "<Ctrl>w"
+
+#: TurtleArtActivity.py:1193
+msgid "<Ctrl>s"
+msgstr "<Ctrl>s"
+
+#: TurtleArtActivity.py:1379
+#, python-format
+msgid "Plugin %s already installed."
+msgstr "Plugin %s je već instaliran."
+
+#: TurtleArtActivity.py:1380 TurtleArt/turtleblocks.py:591
+#, python-format
+msgid "Do you want to reinstall %s?"
+msgstr "Želiš li ponovno instalirati %s?"
+
+#: gnome_plugins/collaboration_plugin.py:64
+msgid "My Turtle Art session"
+msgstr "Moja seansa s kornjačinom umjetnosti"
+
+#: gnome_plugins/collaboration_plugin.py:111
+msgid "Enable collaboration"
+msgstr "Omogući suradnju"
+
+#: gnome_plugins/collaboration_plugin.py:116
+msgid "Activities"
+msgstr "Aktivnosti"
+
+#: gnome_plugins/collaboration_plugin.py:121
+msgid "Buddies"
+msgstr "Prijateljice/prijatelji"
+
+#: gnome_plugins/collaboration_plugin.py:124
+msgid "Share"
+msgstr "Podijeli"
+
+#: gnome_plugins/collaboration_plugin.py:125
+msgid "Configuration"
+msgstr "Konfiguracija"
+
+#: gnome_plugins/collaboration_plugin.py:128
+msgid "Neighborhood"
+msgstr "Susjedstvo"
+
+#: gnome_plugins/collaboration_plugin.py:289
+msgid "Nickname"
+msgstr "Nadimak"
+
+#: gnome_plugins/collaboration_plugin.py:291
+msgid "Account ID"
+msgstr "ID korisnikovog računa"
+
+#: gnome_plugins/collaboration_plugin.py:293
+msgid "Server"
+msgstr "Poslužitelj"
+
+#: gnome_plugins/collaboration_plugin.py:295
+msgid "Port"
+msgstr "Port"
+
+#: gnome_plugins/collaboration_plugin.py:297
+msgid "Password"
+msgstr "Lozinka"
+
+#: gnome_plugins/collaboration_plugin.py:299
+msgid "Register"
+msgstr "Prijava"
+
+#: gnome_plugins/collaboration_plugin.py:301
+msgid "Colors"
+msgstr "Boje"
+
+#: gnome_plugins/fb_plugin.py:82 gnome_plugins/fb_plugin.py:83
+#: gnome_plugins/fb_plugin.py:91 gnome_plugins/uploader_plugin.py:63
+#: gnome_plugins/uploader_plugin.py:64 gnome_plugins/uploader_plugin.py:73
+msgid "Upload"
+msgstr "Slanje"
+
+#: gnome_plugins/fb_plugin.py:87
+msgid "Facebook wall post"
+msgstr "Objava na Facebooku"
+
+#: gnome_plugins/uploader_plugin.py:68
+msgid "Upload to Web"
+msgstr "Pošalji na Web"
+
+#: gnome_plugins/uploader_plugin.py:90
+msgid ""
+"You must have an account at http://turtleartsite.sugarlabs.org to upload your "
+"project."
+msgstr ""
+"Moraš imati račun u http://turtleartsite.sugarlabs.org da im pošalješ svoj "
+"projekt."
+
+#: gnome_plugins/uploader_plugin.py:99
+msgid "Username:"
+msgstr "Korisnik:"
+
+#: gnome_plugins/uploader_plugin.py:109
+msgid "Password:"
+msgstr "Lozinka:"
+
+#: gnome_plugins/uploader_plugin.py:120
+msgid "Title:"
+msgstr "Naslov:"
+
+#: gnome_plugins/uploader_plugin.py:130
+msgid "Description:"
+msgstr "Opis:"
+
+#: gnome_plugins/uploader_plugin.py:140
+msgid "Submit to Web"
+msgstr "Pošalji na Web"
+
+#: gnome_plugins/uploader_plugin.py:144 TurtleArt/tawindow.py:1518
+#: TurtleArt/tawindow.py:1557
+msgid "Cancel"
+msgstr "Odustani"
+
+#: gnome_plugins/uploader_plugin.py:172
+msgid "Login failed"
+msgstr "Prijava nije uspjela"
+
+#: gnome_plugins/uploader_plugin.py:209
+msgid "Failed to upload!"
+msgstr "Slanje nije uspjelo!"
+
+#: pyexported/window_setup.py:39
+msgid ""
+"The path to the TurtleArt installation must be listed in the environment "
+"variable PYTHONPATH."
+msgstr ""
+"Putanja do lokacije gdje je paket „Kornjača i blokovi“ instaliran mora biti "
+"naveden u varijabli okoline PYTHONPATH."
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:72
+#: TurtleArt/tabasics.py:926
+msgid "Palette of flow operators"
+msgstr "Operatori toka programa"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:76
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:79
+msgid "while"
+msgstr "dokle"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:80
+msgid "do-while-True operator that uses boolean operators from Numbers palette"
+msgstr ""
+"operator ponavlja-dokle-Istina rabi logičke operatore iz palete „Matematički "
+"operatori“"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:97
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:100
+msgid "until"
+msgstr "dok je"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:101
+msgid "do-until-True operator that uses boolean operators from Numbers palette"
+msgstr ""
+"operator ponavlja-dok je-Istina rabi logičke operatore iz palete „Matematički "
+"operatori“"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:121
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:854
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1071
+msgid "top"
+msgstr "vrh"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:123
+msgid "top of a collapsible stack"
+msgstr "vrh sažimajućeg stȏga"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:133
+#: plugins/camera_sensor/camera_sensor.py:71
+msgid "Palette of media objects"
+msgstr "Medijski objekti"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:135
+msgid "media"
+msgstr "mediji"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:141
+msgid "journal"
+msgstr "dnevnik"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:142
+msgid "Sugar Journal media object"
+msgstr "Medijski objekt iz Dnevnika"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:153
+msgid "audio"
+msgstr "audio"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:155
+msgid "Sugar Journal audio object"
+msgstr "audio objekt iz Dnevnika"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:166
+msgid "video"
+msgstr "video"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:168
+msgid "Sugar Journal video object"
+msgstr "video objekt iz Dnevnika"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:179
+msgid "description"
+msgstr "opis"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:181
+msgid "Sugar Journal description field"
+msgstr "polje za opis u Dnevnik"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:190
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:191
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:192
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:198
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:213
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:921
+#: TurtleArt/taconstants.py:452
+msgid "text"
+msgstr "tekst"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:193
+msgid "string value"
+msgstr "string, niz znakova"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:197
+msgid "show"
+msgstr "pokaži"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:201
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:216
+msgid "draws text or show media from the Journal"
+msgstr "nacrta tekst ili pokaže medije iz Dnevnika"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:212
+msgid "show aligned"
+msgstr "pokaži poravnato"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:225
+msgid "set scale"
+msgstr "određuje skalu"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:229
+msgid "sets the scale of media"
+msgstr "određuje razmjere medija"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:239
+msgid "set font"
+msgstr "odredi tip slova"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:242
+msgid "sets the font used by the show block"
+msgstr "određuje tip slova koji rabi blok ‘pokaži’"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:249
+msgid "save picture"
+msgstr "spremi sliku"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:251
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:262
+msgid "picture name"
+msgstr "ime slike"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:252
+msgid "saves a picture to theJournal"
+msgstr "spremi sliku uDnevnik"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:260
+msgid "save SVG"
+msgstr "spremi SVG"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:263
+msgid "saves turtle graphics as an SVG file in theJournal"
+msgstr "sprema kornjačinu grafiku kao SVG datoteku uDnevnik"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:272
+msgid "scale"
+msgstr "razmjer"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:276
+msgid "holds current scale value"
+msgstr "zadrži trenutačnu vrijednost razmjera"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:283
+msgid "media wait"
+msgstr "čekanje na medije"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:285
+msgid "wait for current video or audio to complete"
+msgstr "čeka se da trenutačni video ili audio završi"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:291
+msgid "media stop"
+msgstr "završi medije"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:293
+msgid "stop video or audio"
+msgstr "završi video ili audio"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:298
+msgid "media pause"
+msgstr "zaustavi medije"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:300
+msgid "pause video or audio"
+msgstr "zaustavi audio ili video"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:305
+msgid "media resume"
+msgstr "nastavi medije"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:307
+msgid "resume playing video or audio"
+msgstr "nastavi reprodukciju videa ili audia"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:312
+msgid "speak"
+msgstr "govori"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:314
+msgid "hello"
+msgstr "pozdrav"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:315
+msgid "speaks text"
+msgstr "izgvori tekst"
+
+#. TRANS: pitch, duration, amplitude
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:323
+msgid "sinewave"
+msgstr "sinusni val"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:323
+#: plugins/audio_sensors/audio_sensors.py:126
+msgid "pitch"
+msgstr "visina zvuka"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:324
+msgid "amplitude"
+msgstr "amplituda"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:324
+msgid "duration"
+msgstr "trajanje"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:327
+msgid "plays a sinewave at frequency, amplitude, and duration (in seconds)"
+msgstr "odsvira sinusni val frekvencije, amplitude i trajanja (u sekundama)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:339
+#: plugins/camera_sensor/camera_sensor.py:67 plugins/rfid/rfid.py:87
+#: plugins/accelerometer/accelerometer.py:50
+#: plugins/light_sensor/light_sensor.py:52
+#: plugins/audio_sensors/audio_sensors.py:84
+msgid "Palette of sensor blocks"
+msgstr "Senzori"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:341
+msgid "sensor"
+msgstr "senzor"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:346
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:357
+msgid "button down"
+msgstr "pritisnuti gumb"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:349
+msgid "returns 1 if mouse button is pressed"
+msgstr "vraća 1 ako je gumb miša stisnut"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:360
+msgid "returns True if mouse button is pressed"
+msgstr "vraća Istinu ako je gumb miša stisnut"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:368
+msgid "mouse x"
+msgstr "x miš"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:371
+msgid "returns mouse x coordinate"
+msgstr "vraća x koordinatu miša"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:379
+msgid "mouse y"
+msgstr "y miš"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:382
+msgid "returns mouse y coordinate"
+msgstr "vraća y koordinatu miša"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:390
+msgid "query keyboard"
+msgstr "iščita tipkovnicu"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:392
+msgid "query for keyboard input (results stored in keyboard block)"
+msgstr "iščita tipkovnicu (rezultat spremljen u blok ‘tipkovnica’)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:400
+msgid "keyboard"
+msgstr "tipkovnica"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:404
+msgid "holds results of query-keyboard block as ASCII"
+msgstr "drži rezultat bloka ‘iščita tipkovnicu’ u ASCII formatu"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:412
+msgid "read pixel"
+msgstr "čitaj piksele"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:415
+msgid "RGB color under the turtle is pushed to the stack"
+msgstr "RGB boja ispod kornjače je gurnuta u stȏg"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:422
+msgid "turtle sees"
+msgstr "kornjača vidi"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:425
+msgid "returns the color that the turtle \"sees\""
+msgstr "vraća boju koju kornjača „vidi“"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:434
+msgid "time"
+msgstr "vrijeme"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:437
+msgid "elapsed time (in seconds) since program started"
+msgstr "proteklo vrijeme (u sekundama) od pokretanja programa"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:462
+msgid "Palette of extra options"
+msgstr "Dodatni blokovi za napredne mogućnosti"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:464
+msgid "extras"
+msgstr "dodaci"
+
+#. TRANS: push adds a new item to the program stack
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:469
+msgid "push"
+msgstr "gurni"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:472
+msgid "pushes value onto FILO (first-in last-out heap)"
+msgstr ""
+"gurne vrijednost u FILO (first-in last-out heap; prvi unutra, zadnji van hrpa)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:484
+msgid "show heap"
+msgstr "pokaži hrpu"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:487
+msgid "shows values in FILO (first-in last-out heap)"
+msgstr "pokaže vrijednost u FILO (prvi unutra, zadnji van hrpi)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:499
+msgid "empty heap"
+msgstr "isprazni hrpu"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:502
+msgid "emptys FILO (first-in-last-out heap)"
+msgstr "isprazni FILO (prvi unutra zadnji, van hrpu)"
+
+#. TRANS: pop removes a new item from the program stack
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:513
+msgid "pop"
+msgstr "izguraj"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:517
+msgid "pops value off FILO (first-in last-out heap)"
+msgstr "izgura vrijednost iz FILO (prvi unutra, zadnji van hrpe)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:529
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:585
+msgid "empty heap?"
+msgstr "prazna hrpa?"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:532
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:588
+msgid "returns True if heap is empty"
+msgstr "vraća Istinu ako je hrpa prazna"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:544
+msgid "save heap to file"
+msgstr "spremi hrpu u datoteku"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:545
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:559
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:573
+msgid "filename"
+msgstr "ime datoteke"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:547
+msgid "saves FILO (first-in last-out heap) to a file"
+msgstr "sprema FILO (prvi unutra, zadnji van hrpu) u datoteku"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:558
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:566
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:572
+msgid "load heap from file"
+msgstr "učitaj hrpu iz datoteke"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:561
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:567
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:575
+msgid "loads FILO (first-in last-out heap) from a file"
+msgstr "učita FILO (prvi unutra, zadnji van hrpu) iz datoteke"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:600
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:602
+msgid "comment"
+msgstr "komentar"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:604
+msgid "places a comment in your code"
+msgstr "dodaje komentar u tvoj kȏd"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:611
+msgid "print"
+msgstr "ispiši"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:615
+msgid "prints value in status block at bottom of the screen"
+msgstr "ispiše vrijednost statusnog bloka na dno zaslona"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:626
+msgid "Python chr operator"
+msgstr "Python chr (znak) operator"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:636
+msgid "Python int operator"
+msgstr "Python int (cijeli broj) operator"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:646
+msgid "polar"
+msgstr "polarne"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:648
+msgid "displays polar coordinates"
+msgstr "prikaže polarne koordinate"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:654
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:669
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:685
+#: TurtleArt/turtleblocks.py:462
+msgid "Python"
+msgstr "Python"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:658
+msgid ""
+"a programmable block: used to add advanced single-variable math equations, e."
+"g., sin(x)"
+msgstr ""
+"programabilan blok za napredne matematičke funkcije s jednom varijablom, npr. "
+"sin(x)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:673
+msgid ""
+"a programmable block: used to add advanced multi-variable math equations, e."
+"g., sqrt(x*x+y*y)"
+msgstr ""
+"programabilan blok za napredne matematičke funkcije s više varijabli, npr. "
+"sqrt(x*x + y*y)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:689
+msgid ""
+"a programmable block: used to add advanced multi-variable math equations, e."
+"g., sin(x+y+z)"
+msgstr ""
+"programabilan blok za napredne matematičke funkcije s više varijabli, npr. "
+"sin(x+y+z)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:699
+msgid "Cartesian"
+msgstr "Kartezijeve"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:701
+msgid "displays Cartesian coordinates"
+msgstr "prikaže kartezijeve koordinate"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:710
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:727
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:744
+msgid "Python block"
+msgstr "Python blok"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:712
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:729
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:747
+msgid "runs code found in the tamyblock.py module found in the Journal"
+msgstr "izvrši kȏd nađen u tamyblock.py modulu nađen u Dnevniku"
+
+#. TRANS: URL is universal resource locator
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:763
+msgid "URL"
+msgstr "URL"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:768
+msgid "gets a text string or an image from a URL"
+msgstr "dobije tekstualni string (znakovni niz) ili sliku iz URL-a"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:778
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:788
+msgid "turtle shell"
+msgstr "kornjačin oklop"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:780
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:789
+msgid "put a custom 'shell' on the turtle"
+msgstr "stavi „oklop“ po želji na kornjaču"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:793
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:862
+#: TurtleArt/tabasics.py:159
+msgid "turtle"
+msgstr "kornjača"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:797
+msgid "chooses which turtle to command"
+msgstr "odabire kornjaču kojoj će se zapovijedati"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:804
+msgid "turtle x"
+msgstr "kornjača x"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:807
+msgid "Returns x coordinate of turtle"
+msgstr "Vraća x koordinatu kornjače"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:816
+msgid "turtle y"
+msgstr "kornjača y"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:819
+msgid "Returns y coordinate of turtle"
+msgstr "Vraća x koordinatu kornjače"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:828
+msgid "active turtle"
+msgstr "aktivna kornjača"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:831
+msgid "the name of the active turtle"
+msgstr "ime aktivne kornjače"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:839
+msgid "turtle heading"
+msgstr "kornjačin smjer"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:842
+msgid "Returns heading of turtle"
+msgstr "Vraća smjer kretanja kornjače"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:852
+#: TurtleArt/tautils.py:638
+msgid "click to open"
+msgstr "klikni da otvoriš"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:855
+msgid "top of a collapsed stack"
+msgstr "vrh sažetog stȏga"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:860
+msgid "select palette"
+msgstr "odaberi paletu"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:863
+msgid "selects a palette"
+msgstr "odabere paletu"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:871
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:883
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:897
+msgid "load"
+msgstr "učitaj"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:873
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:886
+#: TurtleArt/tabasics.py:163
+msgid "forward"
+msgstr "naprijed"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:874
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:887
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:901
+msgid "loads a block"
+msgstr "učita blok"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:900
+msgid "setxy"
+msgstr "setxy"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:912
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:918
+msgid "index"
+msgstr "indeks"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:913
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:923
+msgid "return the text of the positions"
+msgstr "vraća tekst s pozicije"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:918
+msgid "string"
+msgstr "string"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:919
+#: pysamples/grecord.py:212 TurtleArt/tabasics.py:1055
+msgid "start"
+msgstr "start"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:919
+msgid "end"
+msgstr "završi"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:936
+msgid "Palette of presentation templates"
+msgstr "Predlošci za prezentaciju"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:939
+msgid "portfolio"
+msgstr "portfelj"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:943
+msgid "hide blocks"
+msgstr "skrij blokove"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:945
+msgid "declutters canvas by hiding blocks"
+msgstr "očisti prozor skrivanjem blokova"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:952
+msgid "show blocks"
+msgstr "pokaži blokove"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:954
+msgid "restores hidden blocks"
+msgstr "vrati skrivene blokove"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:963
+msgid "hides thetoolbars"
+msgstr "skrije alate"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:973
+msgid "list"
+msgstr "popis"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:977
+msgid "presentation bulleted list"
+msgstr "prezentacija s označenim popisom"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:985
+msgid "presentation template: list of bullets"
+msgstr "predložak za prezentaciju: označeni popis"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:992
+msgid "presentation template: select Journal object (no description)"
+msgstr "predložak za prezentaciju: izaberi objekt iz Dnevnika (bez opisa)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:999
+msgid "presentation template: select Journal object (with description)"
+msgstr "predložak za prezentaciju: izaberi objekt iz Dnevnika (s opisom)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1006
+msgid "presentation template: select four Journal objects"
+msgstr "predložak za prezentaciju: izaberi četiri objekta iz Dnevnika"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1013
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1020
+msgid "presentation template: select two Journal objects"
+msgstr "predložak za prezentaciju: izaberi dva objekta iz Dnevnika"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1027
+#: TurtleArt/taconstants.py:149 TurtleArt/tabasics.py:210
+msgid "left"
+msgstr "lijevo ↶"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1030
+msgid "xcor of left of screen"
+msgstr "x-koor od lijevog ruba zaslona"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1038
+msgid "bottom"
+msgstr "dno"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1041
+msgid "ycor of bottom of screen"
+msgstr "y-koor od dna zaslona"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1049
+msgid "width"
+msgstr "širina"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1052
+msgid "the canvas width"
+msgstr "širina prozora"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1060
+#: TurtleArt/taconstants.py:151 TurtleArt/tabasics.py:224
+msgid "right"
+msgstr "desno ↷"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1063
+msgid "xcor of right of screen"
+msgstr "x-koor od desnog ruba zaslona"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1074
+msgid "ycor of top of screen"
+msgstr "y-koor od vrha zaslona"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1082
+msgid "height"
+msgstr "visina"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1085
+msgid "the canvas height"
+msgstr "visina prozora"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1095
+msgid "title x"
+msgstr "naslov x"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1107
+msgid "title y"
+msgstr "naslov y"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1119
+msgid "left x"
+msgstr "lijevo: x"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1131
+msgid "top y"
+msgstr "vrh: y"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1143
+msgid "right x"
+msgstr "desno: x"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1155
+msgid "bottom y"
+msgstr "dno: y"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1174
+msgid "Palette of user-defined operators"
+msgstr "Moji vlastiti blokovi"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1175
+msgid "my blocks"
+msgstr "moji blokovi"
+
+#: plugins/camera_sensor/camera_sensor.py:90
+#: plugins/camera_sensor/camera_sensor.py:122
+#: plugins/light_sensor/light_sensor.py:58
+#: plugins/light_sensor/light_sensor.py:66
+msgid "brightness"
+msgstr "svjetlina"
+
+#: plugins/camera_sensor/camera_sensor.py:92
+msgid "light level detected by camera"
+msgstr "razina svjetline koju osjeća kamera"
+
+#: plugins/camera_sensor/camera_sensor.py:107
+#: plugins/camera_sensor/camera_sensor.py:115
+msgid "camera output"
+msgstr "kamerin izlaz"
+
+#: plugins/camera_sensor/camera_sensor.py:124
+msgid "Average RGB color from camera is pushed to the stack"
+msgstr "Prosječna RGB boja iz kamere je gurnuta u stȏg"
+
+#: plugins/rfid/rfid.py:93 plugins/rfid/rfid.py:101
+msgid "RFID"
+msgstr "RFID"
+
+#: plugins/rfid/rfid.py:94 plugins/rfid/rfid.py:102
+msgid "read value from RFID device"
+msgstr "pročitaj vrijednost iz RFID uređaja"
+
+#: plugins/accelerometer/accelerometer.py:56
+#: plugins/accelerometer/accelerometer.py:63
+msgid "acceleration"
+msgstr "ubrzanje"
+
+#: plugins/accelerometer/accelerometer.py:58
+#: plugins/accelerometer/accelerometer.py:65
+msgid "push acceleration in x, y, z to heap"
+msgstr "gurne ubrzanje u x, y, z na hrpu"
+
+#: plugins/light_sensor/light_sensor.py:61
+#: plugins/light_sensor/light_sensor.py:69
+msgid "light level detected by light sensor"
+msgstr "razina svjetline koju osjeća svjetlosni senzor"
+
+#: plugins/audio_sensors/audio_sensors.py:93 pysamples/grecord.py:207
+msgid "sound"
+msgstr "zvuk"
+
+#: plugins/audio_sensors/audio_sensors.py:94
+msgid "raw microphone input signal"
+msgstr "sirovi mikrofonski ulazni signal"
+
+#: plugins/audio_sensors/audio_sensors.py:100
+msgid "loudness"
+msgstr "glasnoća"
+
+#: plugins/audio_sensors/audio_sensors.py:101
+msgid "microphone input volume"
+msgstr "glasnost na ulazu u mikrofon"
+
+#: plugins/audio_sensors/audio_sensors.py:127
+msgid "microphone input pitch"
+msgstr "visina tona na ulazu u mikrofon"
+
+#: plugins/audio_sensors/audio_sensors.py:160
+#: plugins/audio_sensors/audio_sensors.py:178
+msgid "resistance"
+msgstr "otpor"
+
+#: plugins/audio_sensors/audio_sensors.py:161
+#: plugins/audio_sensors/audio_sensors.py:179
+msgid "microphone input resistance"
+msgstr "ulazni otpor mikrofona"
+
+#: plugins/audio_sensors/audio_sensors.py:166
+#: plugins/audio_sensors/audio_sensors.py:184
+msgid "voltage"
+msgstr "napon"
+
+#: plugins/audio_sensors/audio_sensors.py:167
+#: plugins/audio_sensors/audio_sensors.py:185
+msgid "microphone input voltage"
+msgstr "napon na ulazu mikrofona"
+
+#: pysamples/uturn.py:35
+msgid "uturn"
+msgstr "obrni"
+
+#: pysamples/uturn.py:37
+msgid "turns the turtle 180 degrees"
+msgstr "rotira kornjaču za 180°"
+
+#: pysamples/brain.py:43
+msgid "Please install the Speak Activity and try again."
+msgstr "Instaliraj aktivnost „Govori“ i pokušaj ponovno."
+
+#: pysamples/brain.py:52
+msgid "Spanish"
+msgstr "španjolski"
+
+#: pysamples/brain.py:56 pysamples/brain.py:69 pysamples/brain.py:71
+#: pysamples/brain.py:77
+msgid "English"
+msgstr "engleski"
+
+#: pysamples/brain.py:88
+msgid "Sorry, I can't understand what you are asking about."
+msgstr "Žao mi je, ali ne razumijem tvoje pitanje."
+
+#: pysamples/brain.py:97
+msgid ""
+"Sorry, there is no free memory to load my brain. Close other activities and "
+"try once more."
+msgstr ""
+"Žao mi je, ali nema dovoljno slobodne memorije za moj mozak. Zatvori neku "
+"aktivnost i pokušaj ponovno."
+
+#: pysamples/journal-stats.py:90
+msgid "other"
+msgstr "ostalo"
+
+#: pysamples/forward_push.py:48
+msgid "push destination rgb value to heap"
+msgstr "gurne odredišnu rgb vrijednost na hrpu"
+
+#: pysamples/grecord.py:214
+msgid "stop"
+msgstr "stop"
+
+#: pysamples/grecord.py:216
+msgid "play"
+msgstr "reproduciraj"
+
+#: pysamples/grecord.py:218
+msgid "save"
+msgstr "spremi"
+
+#: TurtleArt/talogo.py:604
+msgid "did not output to"
+msgstr "nema izlaza na"
+
+#: TurtleArt/talogo.py:645 TurtleArt/talogo.py:1059
+msgid "doesn't like"
+msgstr "ne sviđa se"
+
+#: TurtleArt/talogo.py:646 TurtleArt/talogo.py:1060
+msgid "as input"
+msgstr "kao ulaz"
+
+#: TurtleArt/talogo.py:709
+msgid "I don't know how to"
+msgstr "Ne znam kako"
+
+#: TurtleArt/turtleblocks.py:106
+msgid "usage is"
+msgstr "se rabi"
+
+#: TurtleArt/turtleblocks.py:307
+msgid "No option action:"
+msgstr "Nema opcijske akcije:"
+
+#: TurtleArt/turtleblocks.py:322
+msgid "File not found"
+msgstr "Datoteka nije pronađena"
+
+#: TurtleArt/turtleblocks.py:346
+#, python-format
+msgid "Configuration directory not writable: %s"
+msgstr "U konfiguracijski direktorij nije moguće zapisivati: %s"
+
+#: TurtleArt/turtleblocks.py:434
+msgid "New"
+msgstr "Novo"
+
+#: TurtleArt/turtleblocks.py:435
+msgid "Show sample projects"
+msgstr "Pokaži primjere projekata"
+
+#: TurtleArt/turtleblocks.py:442
+msgid "Save as"
+msgstr "Spremi kao"
+
+#: TurtleArt/turtleblocks.py:446
+msgid "Export as"
+msgstr "Eksport kao"
+
+#: TurtleArt/turtleblocks.py:449 TurtleArt/tawindow.py:4788
+msgid "image"
+msgstr "slika"
+
+#: TurtleArt/turtleblocks.py:451
+msgid "image (blocks)"
+msgstr "slika (blokovi)"
+
+#: TurtleArt/turtleblocks.py:453
+msgid "SVG"
+msgstr "SVG"
+
+#: TurtleArt/turtleblocks.py:455 TurtleArt/tawindow.py:4641
+msgid "icon"
+msgstr "ikona"
+
+#. TRANS: ODP is Open Office presentation
+#: TurtleArt/turtleblocks.py:458
+msgid "ODP"
+msgstr "ODP"
+
+#: TurtleArt/turtleblocks.py:460
+msgid "Logo"
+msgstr "Logotip"
+
+#: TurtleArt/turtleblocks.py:464
+msgid "Quit"
+msgstr "Izlaz"
+
+#: TurtleArt/turtleblocks.py:465
+msgid "File"
+msgstr "Datoteka"
+
+#: TurtleArt/turtleblocks.py:473
+msgid "Rescale coordinates"
+msgstr "Razmjerna promjena koordinata"
+
+#: TurtleArt/turtleblocks.py:479
+msgid "Reset block size"
+msgstr "Vrati blokove na početnu veličinu"
+
+#: TurtleArt/turtleblocks.py:500
+msgid "Show/hide blocks"
+msgstr "Pokaži/skrij blokove"
+
+#: TurtleArt/turtleblocks.py:502
+msgid "Tools"
+msgstr "Alati"
+
+#: TurtleArt/turtleblocks.py:508
+msgid "Debug"
+msgstr "Debugiranje"
+
+#: TurtleArt/turtleblocks.py:510
+msgid "Turtle"
+msgstr "Kornjača"
+
+#: TurtleArt/turtleblocks.py:513
+msgid "Plugins"
+msgstr "Plugini"
+
+#: TurtleArt/turtleblocks.py:516
+msgid "About..."
+msgstr "O programu..."
+
+#: TurtleArt/turtleblocks.py:575
+msgid "You have unsaved work. Would you like to save before quitting?"
+msgstr "Nisi spremio svoj rad. Želiš li ga spremiti prije završetka rada?"
+
+#: TurtleArt/turtleblocks.py:580
+msgid "Save project?"
+msgstr "Spremiti projekt?"
+
+#: TurtleArt/turtleblocks.py:590
+#, python-format
+msgid "Plugin %s already installed"
+msgstr "Plugin %s je već instaliran"
+
+#: TurtleArt/turtleblocks.py:736
+msgid "myproject"
+msgstr "moj_projekt"
+
+#: TurtleArt/turtleblocks.py:814 TurtleArt/taplugin.py:89
+#, python-format
+msgid "Please restart %s in order to use the plugin."
+msgstr "Za korištenje plugina treba ponovno pokrenuti %s."
+
+#: TurtleArt/turtleblocks.py:819
+#, python-format
+msgid "Please restart %s in order to unload the plugin."
+msgstr "Za uklanjanje plugina treba ponovno pokrenuti %s."
+
+#: TurtleArt/tapalette.py:103
+msgid "displays next palette"
+msgstr "prikaže sljedeću paletu"
+
+#: TurtleArt/tapalette.py:104
+msgid "changes the orientation of the palette of blocks"
+msgstr "mijenja orijentaciju prikaza paleta; vodoravno/okomito"
+
+#: TurtleArt/tapalette.py:144 TurtleArt/tapalette.py:145
+#: TurtleArt/tabasics.py:1262 TurtleArt/tabasics.py:1263
+msgid "trash"
+msgstr "smeće"
+
+#: TurtleArt/taexportpython.py:226
+msgid "block is not exportable"
+msgstr "blok nije moguće eksportirati"
+
+#: TurtleArt/taexportpython.py:245
+msgid "error while exporting block"
+msgstr "dogodila se greška tijekom eksporta bloka"
+
+#: TurtleArt/taprimitive.py:62
+msgid "error in highlighted block"
+msgstr "greška u istaknutom bloku"
+
+#: TurtleArt/taprimitive.py:64
+msgid "error"
+msgstr "greška"
+
+#: TurtleArt/tawindow.py:1151 TurtleArt/tawindow.py:1152
+msgid "orientation"
+msgstr "orijentacija"
+
+#: TurtleArt/tawindow.py:1166 TurtleArt/tawindow.py:1626
+msgid "next"
+msgstr "sljedeće"
+
+#: TurtleArt/tawindow.py:1205 TurtleArt/tawindow.py:1635
+msgid "shift"
+msgstr "pomaknuti"
+
+#: TurtleArt/tawindow.py:1273
+msgid "Please hit the Stop Button before making changes to your program"
+msgstr "Klikni na Stop gumb da bi mogao izmijeniti program"
+
+#: TurtleArt/tawindow.py:1316 TurtleArt/tawindow.py:1430
+#: TurtleArt/tawindow.py:1443 TurtleArt/tawindow.py:2078
+#: TurtleArt/tawindow.py:4934 TurtleArt/tabasics.py:1070
+#: TurtleArt/tabasics.py:1073 TurtleArt/tabasics.py:1086
+#: TurtleArt/tabasics.py:1090 TurtleArt/tabasics.py:1236
+#: TurtleArt/tabasics.py:1240
+msgid "action"
+msgstr "akcija"
+
+#: TurtleArt/tawindow.py:1322 TurtleArt/tawindow.py:1469
+#: TurtleArt/tawindow.py:2084 TurtleArt/tawindow.py:4961
+#: TurtleArt/tawindow.py:4988 TurtleArt/tabasics.py:1158
+#: TurtleArt/tabasics.py:1173
+msgid "my box"
+msgstr "moja kutija"
+
+#: TurtleArt/tawindow.py:1337
+msgid "Select blocks to share"
+msgstr "Odaberi blokove za objaviti"
+
+#: TurtleArt/tawindow.py:1515 TurtleArt/tawindow.py:1529
+msgid "Really overwrite stack?"
+msgstr "Stvarno prebrisati stȏg?"
+
+#: TurtleArt/tawindow.py:1522 TurtleArt/tawindow.py:1532
+msgid "Overwrite stack"
+msgstr "Prebriši stȏg"
+
+#: TurtleArt/tawindow.py:1554 TurtleArt/tawindow.py:1567
+msgid "Really delete stack?"
+msgstr "Stvarno izbrisati stȏg?"
+
+#: TurtleArt/tawindow.py:1947 TurtleArt/tabasics.py:1267
+msgid "empty trash"
+msgstr "isprazni smeće"
+
+#: TurtleArt/tawindow.py:1948
+msgid "Do you really want to empty the trash?"
+msgstr "Zaista želiš isprazniti smeće?"
+
+#: TurtleArt/tawindow.py:4285 TurtleArt/tawindow.py:4306
+#, python-format
+msgid "Cannot write data to %s."
+msgstr "Nije moguće pisati u %s."
+
+#: TurtleArt/tawindow.py:4286
+msgid "Please choose a different save directory."
+msgstr "Izaberi neki drugi direktorij za spremanje."
+
+#: TurtleArt/tawindow.py:4307
+msgid "Please choose a different file name."
+msgstr "Izaberi neko drugo ime za datoteku."
+
+#: TurtleArt/tawindow.py:4415 TurtleArt/tabasics.py:284
+msgid "xcor"
+msgstr "x-koor"
+
+#: TurtleArt/tawindow.py:4416 TurtleArt/tabasics.py:299
+msgid "ycor"
+msgstr "y-koor"
+
+#: TurtleArt/tawindow.py:4416 TurtleArt/tabasics.py:314
+msgid "heading"
+msgstr "smjer"
+
+#: TurtleArt/tawindow.py:4442 TurtleArt/tawindow.py:4447
+#: TurtleArt/tabasics.py:359 TurtleArt/tabasics.py:373 TurtleArt/tabasics.py:447
+msgid "shade"
+msgstr "sjenčanje"
+
+#: TurtleArt/tawindow.py:4443 TurtleArt/tawindow.py:4448
+#: TurtleArt/tabasics.py:373 TurtleArt/tabasics.py:461
+msgid "gray"
+msgstr "sivo"
+
+#: TurtleArt/tawindow.py:4446 TurtleArt/tabasics.py:359
+#: TurtleArt/tabasics.py:372 TurtleArt/tabasics.py:435
+msgid "color"
+msgstr "boja"
+
+#: TurtleArt/tawindow.py:4516
+msgid "True"
+msgstr "Istina"
+
+#: TurtleArt/tawindow.py:4516
+msgid "False"
+msgstr "Laž"
+
+#: TurtleArt/tawindow.py:4714
+#, python-format
+msgid "%s blocks image"
+msgstr "slika bloka %s"
+
+#: TurtleArt/tawindow.py:4947 TurtleArt/tabasics.py:1091
+msgid "invokes named action stack"
+msgstr "pokrene stȏg s imenovanom akcijom"
+
+#: TurtleArt/tawindow.py:4974 TurtleArt/tabasics.py:1176
+msgid "named variable (numeric value)"
+msgstr "imenovana varijabla (numerička vrijednost)"
+
+#: TurtleArt/tawindow.py:4996 TurtleArt/tabasics.py:1154
+msgid "store in"
+msgstr "spremi u"
+
+#: TurtleArt/tawindow.py:4996 TurtleArt/tabasics.py:1154
+msgid "value"
+msgstr "vrijednost"
+
+#: TurtleArt/tawindow.py:5001 TurtleArt/tabasics.py:1159
+msgid "stores numeric value in named variable"
+msgstr "spremi numeričku vrijednost u imenovanu varijablu"
+
+#: TurtleArt/taplugin.py:93 TurtleArt/taplugin.py:103 TurtleArt/taplugin.py:105
+msgid "Plugin could not be installed."
+msgstr "Plugin nije moguće instalirati."
+
+#: TurtleArt/taconstants.py:150
+msgid "up"
+msgstr "up"
+
+#: TurtleArt/taconstants.py:152
+msgid "down"
+msgstr "down"
+
+#: TurtleArt/taconstants.py:153
+msgid "backspace"
+msgstr "backspace"
+
+#: TurtleArt/taconstants.py:154
+msgid "tab"
+msgstr "tab"
+
+#. TRANS: enter is the name of the enter (or return) key
+#: TurtleArt/taconstants.py:156
+msgid "enter"
+msgstr "enter"
+
+#. TRANS: space is the name of the space key
+#: TurtleArt/taconstants.py:159
+msgid "space"
+msgstr "space"
+
+#: TurtleArt/taconstants.py:160
+msgid "delete"
+msgstr "delete"
+
+#: TurtleArt/taconstants.py:473 TurtleArt/taconstants.py:494
+#: TurtleArt/taconstants.py:514 TurtleArt/taconstants.py:555
+#: TurtleArt/taconstants.py:596 TurtleArt/taconstants.py:637
+msgid "Title"
+msgstr "Naslov"
+
+#: TurtleArt/taconstants.py:659
+msgid "banana"
+msgstr "banana"
+
+#: TurtleArt/tautils.py:313
+msgid "Load..."
+msgstr "Učitavanje..."
+
+#: TurtleArt/tautils.py:323
+msgid "Save..."
+msgstr "Spremanje..."
+
+#: TurtleArt/tabasics.py:158
+msgid "Palette of turtle commands"
+msgstr "Komande za micanje kornjače"
+
+#: TurtleArt/tabasics.py:167
+msgid "moves turtle forward"
+msgstr "pomiče kornjaču naprijed"
+
+#: TurtleArt/tabasics.py:176
+msgid "back"
+msgstr "natrag"
+
+#: TurtleArt/tabasics.py:180
+msgid "moves turtle backward"
+msgstr "pomiče kornjaču unatrag"
+
+#: TurtleArt/tabasics.py:189
+msgid "clean"
+msgstr "počisti"
+
+#: TurtleArt/tabasics.py:192
+msgid "clears the screen and reset the turtle"
+msgstr "počisti zaslon i vrati kornjaču na početak"
+
+#: TurtleArt/tabasics.py:214
+msgid "turns turtle counterclockwise (angle in degrees)"
+msgstr ""
+"rotira kornjaču lijevo (u smjeru suprotno od kazaljke na satu za kut u "
+"stupnjevima)"
+
+#: TurtleArt/tabasics.py:228
+msgid "turns turtle clockwise (angle in degrees)"
+msgstr "rotira kornjaču desno (u smjeru kazaljke na satu za kut u stupnjevima)"
+
+#: TurtleArt/tabasics.py:238
+msgid "arc"
+msgstr "luk"
+
+#: TurtleArt/tabasics.py:238
+msgid "angle"
+msgstr "kut"
+
+#: TurtleArt/tabasics.py:238
+msgid "radius"
+msgstr "radijus"
+
+#: TurtleArt/tabasics.py:242
+msgid "moves turtle along an arc"
+msgstr "pomiče kornjaču po luku"
+
+#: TurtleArt/tabasics.py:254 TurtleArt/tabasics.py:333
+msgid "set xy"
+msgstr "zadaj xy"
+
+#: TurtleArt/tabasics.py:254 TurtleArt/tabasics.py:333
+msgid "x"
+msgstr "x"
+
+#: TurtleArt/tabasics.py:254 TurtleArt/tabasics.py:333
+msgid "y"
+msgstr "y"
+
+#: TurtleArt/tabasics.py:258 TurtleArt/tabasics.py:337
+msgid ""
+"moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
+msgstr ""
+"pomakne kornjaču na poziciju (x-koor, y-koor); (0, 0) je centar zaslona."
+
+#: TurtleArt/tabasics.py:269
+msgid "set heading"
+msgstr "zadaj smjer"
+
+#: TurtleArt/tabasics.py:273
+msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
+msgstr "zadaje kornjači smjer kretanja (smjer 0 je prema vrhu zaslona)"
+
+#: TurtleArt/tabasics.py:285
+msgid ""
+"holds current x-coordinate value of the turtle (can be used in place of a "
+"number block)"
+msgstr ""
+"zadrži trenutačnu vrijednost x koordinate kornjače (može se upotrijebiti "
+"umjesto bloka ‘broj’)"
+
+#: TurtleArt/tabasics.py:300
+msgid ""
+"holds current y-coordinate value of the turtle (can be used in place of a "
+"number block)"
+msgstr ""
+"zadrži trenutačnu vrijednost y koordinate kornjače (može se upotrijebiti "
+"umjesto bloka ‘broj’)"
+
+#: TurtleArt/tabasics.py:315
+msgid ""
+"holds current heading value of the turtle (can be used in place of a number "
+"block)"
+msgstr ""
+"zadrži trenutačno usmjerenje kornjače (može se upotrijebiti umjesto bloka "
+"‘broj’)"
+
+#: TurtleArt/tabasics.py:353
+msgid "Palette of pen commands"
+msgstr "Upravljanje svojstvima olovke"
+
+#: TurtleArt/tabasics.py:354
+msgid "pen"
+msgstr "olovka"
+
+#: TurtleArt/tabasics.py:359 TurtleArt/tabasics.py:372
+msgid "fill screen"
+msgstr "oboji zaslon"
+
+#: TurtleArt/tabasics.py:363 TurtleArt/tabasics.py:377
+msgid "fills the background with (color, shade)"
+msgstr "ispuni pozadinu s (boja, sjenčanje)"
+
+#: TurtleArt/tabasics.py:390
+msgid "set color"
+msgstr "zadaj boju"
+
+#: TurtleArt/tabasics.py:394
+msgid "sets color of the line drawn by the turtle"
+msgstr "zadaje boju linije koju crta kornjača kad se miče"
+
+#: TurtleArt/tabasics.py:406
+msgid "set shade"
+msgstr "zadaj sjenčanje"
+
+#: TurtleArt/tabasics.py:410
+msgid "sets shade of the line drawn by the turtle"
+msgstr "zadaje sjenčanje linije koju crta kornjača kad se miče"
+
+#: TurtleArt/tabasics.py:421
+msgid "set gray"
+msgstr "zadaj sivilo"
+
+#: TurtleArt/tabasics.py:424
+msgid "sets gray level of the line drawn by the turtle"
+msgstr "zadaje sivilo linije koju crta kornjača kad se miče"
+
+#: TurtleArt/tabasics.py:436
+msgid "holds current pen color (can be used in place of a number block)"
+msgstr ""
+"zadrži trenutačnu boju olovke (može se upotrijebiti umjesto bloka ‘broj’)"
+
+#: TurtleArt/tabasics.py:448
+msgid "holds current pen shade"
+msgstr "zadrži trenutačno sjenčanje olovke"
+
+#: TurtleArt/tabasics.py:462
+msgid "holds current gray level (can be used in place of a number block)"
+msgstr ""
+"zadrži trenutačnu razinu sivila (može se upotrijebiti umjesto bloka ‘broj’)"
+
+#: TurtleArt/tabasics.py:472
+msgid "pen up"
+msgstr "digni olovku"
+
+#: TurtleArt/tabasics.py:475
+msgid "Turtle will not draw when moved."
+msgstr "Kornjača neće crtati kad se miče."
+
+#: TurtleArt/tabasics.py:482
+msgid "pen down"
+msgstr "spusti olovku"
+
+#: TurtleArt/tabasics.py:485
+msgid "Turtle will draw when moved."
+msgstr "Kornjača će crtati kad se miče."
+
+#: TurtleArt/tabasics.py:492
+msgid "pen down?"
+msgstr "pero spušteno?"
+
+#: TurtleArt/tabasics.py:494
+msgid "returns True if pen is down"
+msgstr "vraća Istinu ako je pero spušteno"
+
+#: TurtleArt/tabasics.py:501
+msgid "set pen size"
+msgstr "zadaj debljinu olovke"
+
+#: TurtleArt/tabasics.py:505
+msgid "sets size of the line drawn by the turtle"
+msgstr "zadaje debljinu linije koju crta kornjača kad se miče"
+
+#: TurtleArt/tabasics.py:518
+msgid "start fill"
+msgstr "počni puniti"
+
+#: TurtleArt/tabasics.py:520
+msgid "starts filled polygon (used with end fill block)"
+msgstr "započinje ispunjavati poligon (koristi se s blokom ‘završi punjenje’)"
+
+#: TurtleArt/tabasics.py:526
+msgid "end fill"
+msgstr "završi puniti"
+
+#: TurtleArt/tabasics.py:528
+msgid "completes filled polygon (used with start fill block)"
+msgstr "završi s ispunjavanjem poligona (koristi se s blokom ‘počni puniti’)"
+
+#: TurtleArt/tabasics.py:534
+msgid "pen size"
+msgstr "debljina olovke"
+
+#: TurtleArt/tabasics.py:535
+msgid "holds current pen size (can be used in place of a number block)"
+msgstr ""
+"zadrži trenutačnu debljinu olovke (može se upotrijebiti umjesto bloka ‘broj’)"
+
+#: TurtleArt/tabasics.py:554
+msgid "Palette of pen colors"
+msgstr "Boje za olovku"
+
+#: TurtleArt/tabasics.py:555
+msgid "colors"
+msgstr "boje"
+
+#: TurtleArt/tabasics.py:560 TurtleArt/tabasics.py:568
+msgid "red"
+msgstr "crvena"
+
+#: TurtleArt/tabasics.py:560
+msgid "orange"
+msgstr "narančasta"
+
+#: TurtleArt/tabasics.py:560
+msgid "yellow"
+msgstr "žuta"
+
+#: TurtleArt/tabasics.py:560 TurtleArt/tabasics.py:568
+msgid "green"
+msgstr "zelena"
+
+#: TurtleArt/tabasics.py:561
+msgid "cyan"
+msgstr "cijan"
+
+#: TurtleArt/tabasics.py:561 TurtleArt/tabasics.py:568
+msgid "blue"
+msgstr "plava"
+
+#: TurtleArt/tabasics.py:561
+msgid "purple"
+msgstr "ljubičasta"
+
+#: TurtleArt/tabasics.py:561
+msgid "white"
+msgstr "bijela"
+
+#: TurtleArt/tabasics.py:562
+msgid "black"
+msgstr "crna"
+
+#: TurtleArt/tabasics.py:568
+msgid ""
+"RGB to\n"
+"\n"
+"color"
+msgstr ""
+"RGB u\n"
+"\n"
+"boju"
+
+#: TurtleArt/tabasics.py:570
+msgid "converter"
+msgstr "pretvarač"
+
+#: TurtleArt/tabasics.py:655
+msgid "Palette of numeric operators"
+msgstr "Matematički operatori"
+
+#: TurtleArt/tabasics.py:656
+msgid "numbers"
+msgstr "brojevi"
+
+#: TurtleArt/tabasics.py:661
+msgid "plus"
+msgstr "plus"
+
+#: TurtleArt/tabasics.py:665
+msgid "adds two alphanumeric inputs"
+msgstr "zbroji dva alfanumerička (slovno-brojčana) unosa"
+
+#: TurtleArt/tabasics.py:684
+msgid "minus"
+msgstr "minus"
+
+#: TurtleArt/tabasics.py:687
+msgid "subtracts bottom numeric input from top numeric input"
+msgstr "oduzme dolje uneseni broj od gore unesenog broja"
+
+#: TurtleArt/tabasics.py:705
+msgid "multiply"
+msgstr "pomnoži"
+
+#: TurtleArt/tabasics.py:708
+msgid "multiplies two numeric inputs"
+msgstr "pomnoži dva unesena broja"
+
+#: TurtleArt/tabasics.py:724
+msgid "divide"
+msgstr "podijeli"
+
+#: TurtleArt/tabasics.py:727
+msgid ""
+"divides top numeric input (numerator) by bottom numeric input (denominator)"
+msgstr ""
+"podijeli gore uneseni broj (djeljenik) s dolje unesenim brojem (djelitelj)"
+
+#: TurtleArt/tabasics.py:744
+msgid "identity"
+msgstr "jednakost"
+
+#: TurtleArt/tabasics.py:746
+msgid "identity operator used for extending blocks"
+msgstr "operator identičnosti koristi se za proširenje (razmak između) blokova"
+
+#: TurtleArt/tabasics.py:772 TurtleArt/tabasics.py:773
+msgid "mod"
+msgstr "mod"
+
+#: TurtleArt/tabasics.py:776
+msgid "modular (remainder) operator"
+msgstr "vraća ostatak dijeljenja dva cijela broja"
+
+#: TurtleArt/tabasics.py:784
+msgid "√"
+msgstr "√"
+
+#: TurtleArt/tabasics.py:785
+msgid "square root"
+msgstr "kvadratni korijen"
+
+#: TurtleArt/tabasics.py:788
+msgid "calculates square root"
+msgstr "izračuna kvadratni korijen"
+
+#: TurtleArt/tabasics.py:796
+msgid "random"
+msgstr "slučajni"
+
+#: TurtleArt/tabasics.py:796
+msgid "min"
+msgstr "min"
+
+#: TurtleArt/tabasics.py:796
+msgid "max"
+msgstr "max"
+
+#: TurtleArt/tabasics.py:800
+msgid "returns random number between minimum (top) and maximum (bottom) values"
+msgstr "vraća slučajni broj između minimuma (gore) i maksimuma (dolje)"
+
+#: TurtleArt/tabasics.py:822
+msgid "number"
+msgstr "broj"
+
+#: TurtleArt/tabasics.py:823
+msgid "used as numeric input in mathematic operators"
+msgstr "koristi se kao brojčani unos u matematičkim operatorima"
+
+#: TurtleArt/tabasics.py:830
+msgid "greater than"
+msgstr "veći od"
+
+#: TurtleArt/tabasics.py:833
+msgid "logical greater-than operator"
+msgstr "logički veći-od operator"
+
+#: TurtleArt/tabasics.py:849
+msgid "less than"
+msgstr "manji od"
+
+#: TurtleArt/tabasics.py:853
+msgid "logical less-than operator"
+msgstr "logički manje-od operator"
+
+#: TurtleArt/tabasics.py:869
+msgid "equal"
+msgstr "jednako"
+
+#: TurtleArt/tabasics.py:873
+msgid "logical equal-to operator"
+msgstr "logički jednako-je operator"
+
+#: TurtleArt/tabasics.py:888
+msgid "not"
+msgstr "ne"
+
+#: TurtleArt/tabasics.py:891
+msgid "logical NOT operator"
+msgstr "logički NE operator"
+
+#: TurtleArt/tabasics.py:899 TurtleArt/tabasics.py:902
+msgid "and"
+msgstr "i"
+
+#: TurtleArt/tabasics.py:903
+msgid "logical AND operator"
+msgstr "logički I operator"
+
+#: TurtleArt/tabasics.py:911 TurtleArt/tabasics.py:914
+msgid "or"
+msgstr "ili"
+
+#: TurtleArt/tabasics.py:915
+msgid "logical OR operator"
+msgstr "logički ILI operator"
+
+#: TurtleArt/tabasics.py:927
+msgid "flow"
+msgstr "tok programa"
+
+#: TurtleArt/tabasics.py:931
+msgid "wait"
+msgstr "čekaj"
+
+#: TurtleArt/tabasics.py:935
+msgid "pauses program execution a specified number of seconds"
+msgstr "zaustavi izvršavanje programa za specificirani broj sekundi"
+
+#: TurtleArt/tabasics.py:944
+msgid "forever"
+msgstr "zauvijek"
+
+#: TurtleArt/tabasics.py:948
+msgid "loops forever"
+msgstr "vječna petlja"
+
+#: TurtleArt/tabasics.py:958 TurtleArt/tabasics.py:962
+msgid "repeat"
+msgstr "ponovi"
+
+#: TurtleArt/tabasics.py:963
+msgid "loops specified number of times"
+msgstr "ponavlja specificirani broj puta"
+
+#: TurtleArt/tabasics.py:976 TurtleArt/tabasics.py:992
+msgid "if"
+msgstr "ako"
+
+#: TurtleArt/tabasics.py:976 TurtleArt/tabasics.py:992
+msgid "then"
+msgstr "onda"
+
+#: TurtleArt/tabasics.py:979
+msgid "if then"
+msgstr "ako onda"
+
+#: TurtleArt/tabasics.py:981
+msgid "if-then operator that uses boolean operators from Numbers palette"
+msgstr ""
+"operator ako-onda; koristi logičke operatore iz palete „Matematički operatori“"
+
+#: TurtleArt/tabasics.py:992
+msgid "else"
+msgstr "onda"
+
+#: TurtleArt/tabasics.py:996 TurtleArt/tabasics.py:1009
+msgid "if then else"
+msgstr "ako onda inače"
+
+#: TurtleArt/tabasics.py:997 TurtleArt/tabasics.py:1010
+msgid "if-then-else operator that uses boolean operators from Numbers palette"
+msgstr ""
+"operator ako-onda-inače; koristi logičke operatore iz bloka „Matematički "
+"operatori“"
+
+#: TurtleArt/tabasics.py:1019
+msgid "horizontal space"
+msgstr "horizontalni prostor"
+
+#: TurtleArt/tabasics.py:1020
+msgid "jogs stack right"
+msgstr "pomakne stȏg nadesno"
+
+#: TurtleArt/tabasics.py:1029
+msgid "vertical space"
+msgstr "vertikalni prostor"
+
+#: TurtleArt/tabasics.py:1030
+msgid "jogs stack down"
+msgstr "pomakne stȏg nalijevo"
+
+#: TurtleArt/tabasics.py:1037
+msgid "stop action"
+msgstr "zaustavi akciju"
+
+#: TurtleArt/tabasics.py:1040
+msgid "stops current action"
+msgstr "zaustavi trenutačnu akciju"
+
+#: TurtleArt/tabasics.py:1050
+msgid "Palette of variable blocks"
+msgstr "Varijable i potprogrami"
+
+#: TurtleArt/tabasics.py:1051
+msgid "blocks"
+msgstr "blokovi"
+
+#: TurtleArt/tabasics.py:1058
+msgid "connects action to toolbar run buttons"
+msgstr "povezuje akciju s gumbima za pokretanje, zec/puž, na alatnoj traci"
+
+#: TurtleArt/tabasics.py:1075
+msgid "top of nameable action stack"
+msgstr "vrh stȏga s akcijom koja se može imenovati"
+
+#: TurtleArt/tabasics.py:1098
+msgid "store in box 1"
+msgstr "spremi u kutiju 1"
+
+#: TurtleArt/tabasics.py:1103
+msgid "stores numeric value in Variable 1"
+msgstr "sprema brojčanu vrijednost u Varijablu 1"
+
+#: TurtleArt/tabasics.py:1112
+msgid "store in box 2"
+msgstr "spremi u kutiju 2"
+
+#: TurtleArt/tabasics.py:1117
+msgid "stores numeric value in Variable 2"
+msgstr "sprema brojčanu vrijednost u Varijablu 2"
+
+#: TurtleArt/tabasics.py:1126
+msgid "box 1"
+msgstr "kutija 1"
+
+#: TurtleArt/tabasics.py:1129
+msgid "Variable 1 (numeric value)"
+msgstr "Varijabla 1 (brojčana vrijednost)"
+
+#: TurtleArt/tabasics.py:1139
+msgid "box 2"
+msgstr "kutija 2"
+
+#: TurtleArt/tabasics.py:1142
+msgid "Variable 2 (numeric value)"
+msgstr "Varijabla 2 (brojčana vrijednost)"
+
+#: TurtleArt/tabasics.py:1154 TurtleArt/tabasics.py:1170
+msgid "box"
+msgstr "kutija"
+
+#: TurtleArt/tabasics.py:1182 TurtleArt/tabasics.py:1206
+msgid "action 1"
+msgstr "akcija 1"
+
+#: TurtleArt/tabasics.py:1185
+msgid "top of Action 1 stack"
+msgstr "vrh stȏga Akcije 1"
+
+#: TurtleArt/tabasics.py:1194 TurtleArt/tabasics.py:1219
+msgid "action 2"
+msgstr "akcija 2"
+
+#: TurtleArt/tabasics.py:1197
+msgid "top of Action 2 stack"
+msgstr "vrh stȏga Akcije 2"
+
+#: TurtleArt/tabasics.py:1209
+msgid "invokes Action 1 stack"
+msgstr "pokrene stȏg s Akcijom 1"
+
+#: TurtleArt/tabasics.py:1222
+msgid "invokes Action 2 stack"
+msgstr "pokrene stȏg s Akcijom 2"
+
+#: TurtleArt/tabasics.py:1241
+msgid "invokes named action stack and returns value"
+msgstr "pokrene stȏg s imenovanom akcijom i vrati njegovu vrijednost"
+
+#: TurtleArt/tabasics.py:1248
+msgid "return"
+msgstr "vraćanje"
+
+#: TurtleArt/tabasics.py:1251
+msgid "returns a value"
+msgstr "vrati vrijednost"
+
+#: TurtleArt/tabasics.py:1268
+msgid "permanently deletes items in trash"
+msgstr "trajno izbriše smeće"
+
+#: TurtleArt/tabasics.py:1272
+msgid "restore all"
+msgstr "vrati sve"
+
+#: TurtleArt/tabasics.py:1273
+msgid "restore all blocks from trash"
+msgstr "vrati sve blokove iz smeća"
+
+#: TurtleArt/tabasics.py:1277
+msgid "clear all"
+msgstr "očisti sve"
+
+#: TurtleArt/tabasics.py:1278
+msgid "move all blocks to trash"
+msgstr "sve blokove premjesti u smeće"

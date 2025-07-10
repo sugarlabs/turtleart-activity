@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+    <schema id="org.laptop.TurtleArtActivity" path="/org/laptop/TurtleArtActivity/">
+        <key name="hover-help" type="i">
+            <default>0</default>
+            <summary>hover help status</summary>
+            <description>Hover help can be turned off (on by default).</description>
+        </key>
+        <key name="palette-orientation" type="i">
+            <default>1</default>
+            <summary>palette orientation status</summary>
+            <description>The palettes can be either horizontal or vertical.</description>
+        </key>
+        <key name="coordinate-scale" type="i">
+            <default>1</default>
+            <summary>coordinate-scale status</summary>
+            <description>Coordinates can be scaled from 0-100 or by pixels.</description>
+        </key>
+        <key name="plugins" type="s">
+            <default>''</default>
+            <summary>plugin status</summary>
+            <description>A list of plugins that have been loaded.</description>
+        </key>
+    </schema>
+</schemalist>

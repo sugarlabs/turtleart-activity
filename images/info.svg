@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.0"
+   width="240"
+   height="360"
+   id="svg2">
+  <defs
+     id="defs27" />
+  <path
+     d="m 1.0120134,358.98799 c 0,0 0,-357.9759766 0,-357.9759766 l 237.9759766,0 c 0,0 0,357.9759766 0,357.9759766 l -237.9759766,0 z"
+     id="path4"
+     style="fill:#ffd000;fill-opacity:1;fill-rule:evenodd;stroke:#e0a000;stroke-width:2.02402687px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+  <g
+     transform="translate(129.51998,60.625002)"
+     id="g6">
+    <path
+       d="m 79.5,438.5 c 0,4.5 -3.75,8 -8.5,8 -4.5,0 -8.25,-3.5 -8.25,-8 0,-4.5 3.75,-8.25 8.25,-8.25 4.75,0 8.5,3.75 8.5,8.25 l 0,0 z"
+       transform="translate(24,-485)"
+       id="path8"
+       style="fill:#ff4040;fill-opacity:1;fill-rule:nonzero;stroke:#ff4040;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    <text
+       id="text10"
+       style="font-size:12px;font-weight:bold;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans">
+      <tspan
+         x="91"
+         y="-42"
+         id="tspan12"
+         style="font-size:12px">X</tspan>
+    </text>
+  </g>
+</svg>
