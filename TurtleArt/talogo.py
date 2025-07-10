@@ -222,18 +222,17 @@ class LogoCode:
         self.scale = DEFAULT_SCALE
         self.value_blocks_to_update = {}
 
-        # NEW STUFF
+        # new properties
         self.hollow_mode = False
         self.hollow_thickness = 1
-    # NEW STUFF, so that I can get the thickness and the state of us bein inide draw_hollow from taturtle
-    # There probably exist a better way
+    # new function, so that I can get the thickness and the state of us bein inide draw_hollow from taturtle
 
     def hm(self):
         return self.hollow_mode
 
     def ht(self):
         return self.hollow_thickness
-    # END NEW STUFF
+    
 
     def stop_logo(self):
         """ Stop logo is called from the Stop button on the toolbar """
