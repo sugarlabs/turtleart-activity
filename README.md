@@ -58,5 +58,5 @@ Added the logic for the "Draw Hollow" button, and modified the behavior of forwa
 * talogo:
 Introduced support for hollow drawing in forward. Added logic to manage custom attributes, including thickness and a boolean flag indicating whether hollow drawing is active. Drawing behavior is now conditionally executed based on this flag.
 
-* tawindo:
+* tawindow:
 Added a function to return self.lc, enabling external access to the talogo instance.
