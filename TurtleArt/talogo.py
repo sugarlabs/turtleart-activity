@@ -24,6 +24,7 @@
 import numbers
 import os
 import tempfile
+import turtle
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -50,6 +51,7 @@ from .taconstants import TAB_LAYER, DEFAULT_SCALE, ICON_SIZE
 from .tajail import myfunc, myfunc_import
 from .tapalette import block_names, value_blocks
 from .tatype import TATypeError, TYPES_NUMERIC
+
 from .tautils import (
     get_pixbuf_from_journal,
     data_from_file,
@@ -150,7 +152,7 @@ def _change_user_path(path):
         return None
     if path[0:5] == "/home" and "/":
         i = path[6:].index("/")
-        new_path = USER_HOME + path[6 + i :]
+        new_path = USER_HOME + path[6 + i:]
         if new_path == path:
             return None
         else:
@@ -219,6 +221,18 @@ class LogoCode:
         self.body_height = int((self.tw.canvas.height / 40) * self.tw.scale)
         self.scale = DEFAULT_SCALE
         self.value_blocks_to_update = {}
+
+        #
+        self.hollow_mode = False
+        self.hollow_thickness = 1
+
+    #Function used in taturtle to get the thickness of the hollow draw, and whether we are inside an draw hollow block
+    def hm(self):
+        return self.hollow_mode
+
+    def ht(self):
+        return self.hollow_thickness
+
 
     def stop_logo(self):
         """ Stop logo is called from the Stop button on the toolbar """
@@ -367,7 +381,8 @@ class LogoCode:
             code.append(dock[4])
         if blk.primitive is not None:  # make a tuple (prim, blk)
             if blk in self.tw.block_list.list:
-                code.append((blk.primitive, self.tw.block_list.list.index(blk)))
+                code.append(
+                    (blk.primitive, self.tw.block_list.list.index(blk)))
             else:
                 code.append(blk.primitive)  # Hidden block
         elif blk.is_value_block():  # Extract the value from content blocks.
@@ -448,10 +463,13 @@ class LogoCode:
         if self.tw.running_sugar:
             if self.tw.step_time == 0 and self.tw.selected_blk is None:
                 self.tw.activity.stop_turtle_button.set_icon_name("hideshowon")
-                self.tw.activity.stop_turtle_button.set_tooltip(_("Show blocks"))
+                self.tw.activity.stop_turtle_button.set_tooltip(
+                    _("Show blocks"))
             else:
-                self.tw.activity.stop_turtle_button.set_icon_name("hideshowoff")
-                self.tw.activity.stop_turtle_button.set_tooltip(_("Hide blocks"))
+                self.tw.activity.stop_turtle_button.set_icon_name(
+                    "hideshowoff")
+                self.tw.activity.stop_turtle_button.set_tooltip(
+                    _("Hide blocks"))
         elif self.tw.interactive_mode:
             self.tw.toolbar_shapes["stopiton"].hide()
         yield False
@@ -574,7 +592,8 @@ class LogoCode:
             self.tw.display_coordinates()
             raise logoerror("#noinput")
         is_Primitive = type(self.cfun.fcn).__name__ == "Primitive"
-        is_PrimitiveDisjunction = type(self.cfun.fcn).__name__ == "PrimitiveDisjunction"
+        is_PrimitiveDisjunction = type(
+            self.cfun.fcn).__name__ == "PrimitiveDisjunction"
         call_args = not (is_Primitive or is_PrimitiveDisjunction)
         for i in range(token.nargs):
             self._no_args_check()
@@ -608,7 +627,8 @@ class LogoCode:
         if self.arglist is not None and result is None:
             self.tw.showblocks()
             raise logoerror(
-                "%s %s %s" % (oldcfun.name, _("did not output to"), self.cfun.name)
+                "%s %s %s" % (oldcfun.name, _(
+                    "did not output to"), self.cfun.name)
             )
         if need_to_pop_istack:
             self.ireturn(result)
@@ -676,7 +696,8 @@ class LogoCode:
                                 traceback.print_exc()
                                 self.tw.showlabel(
                                     "status",
-                                    "%s: %s" % (type(error).__name__, str(error)),
+                                    "%s: %s" % (
+                                        type(error).__name__, str(error)),
                                 )
                                 self.tw.running_blocks = False
                                 return False
@@ -784,11 +805,29 @@ class LogoCode:
         if self.tw.running_turtleart:
             self.tw.activity.restore_state()
 
+    '''new hollow block'''
+
+    def hollow_line(self, num, blklist):
+
+        # Toggle thickness on for all blocks that supports it
+        self.hollow_mode = True
+        self.hollow_thickness = num
+
+        if blklist:
+            self.icall(self.evline, blklist[:])
+            yield True
+
+        # Set it back to normal
+        self.hollow_mode = False
+        self.ireturn()
+        yield True
+
     def prim_loop(self, controller, blklist):
         """Execute a loop
         controller -- iterator that yields True iff the loop should be run
             once more OR a callable that returns such an iterator
         blklist -- list of callables that form the loop body"""
+
         if not hasattr(controller, "__next__"):
             if callable(controller):
                 controller = controller()
@@ -798,6 +837,10 @@ class LogoCode:
                     "or a callable that returns an iterator"
                 )
         while next(controller):
+            for b in blklist:
+                if isinstance(b, tuple):
+                    print(blklist[0])
+
             self.icall(self.evline, blklist[:])
             yield True
             if self.procstop:
@@ -955,7 +998,8 @@ class LogoCode:
                     dsobject = datastore.get(obj.value)
                 except BaseException:
                     debug_output(
-                        "Couldn't find dsobject %s" % (obj.value), self.tw.running_sugar
+                        "Couldn't find dsobject %s" % (
+                            obj.value), self.tw.running_sugar
                     )
                 if dsobject is not None:
                     self.push_file_data_to_heap(dsobject)
@@ -968,7 +1012,8 @@ class LogoCode:
                 self.push_file_data_to_heap(None, path=obj)
             else:
                 # Finally try choosing a datastore object
-                chooser_dialog(self.tw.parent, obj, self.push_file_data_to_heap)
+                chooser_dialog(self.tw.parent, obj,
+                               self.push_file_data_to_heap)
         else:
             # If you cannot find the file, open a chooser.
             if os.path.exists(obj):
@@ -990,7 +1035,8 @@ class LogoCode:
             from sugar3.activity import activity
 
             # Save JSON-encoded heap to temporary file
-            heap_file = os.path.join(get_path(activity, "instance"), "heap.txt")
+            heap_file = os.path.join(
+                get_path(activity, "instance"), "heap.txt")
             data_to_file(self.heap, heap_file)
 
             # Write to an existing or new dsobject
@@ -1038,7 +1084,8 @@ class LogoCode:
         try:
             y = myfunc(f, args)
             if str(y) == "nan":
-                debug_output("Python function returned NAN", self.tw.running_sugar)
+                debug_output("Python function returned NAN",
+                             self.tw.running_sugar)
                 self.stop_logo()
                 raise logoerror("#notanumber")
             else:
@@ -1103,20 +1150,23 @@ class LogoCode:
                     block.resize()
         elif self.update_values:
             if isinstance(value, float):
-                valstring = str(round_int(value)).replace(".", self.tw.decimal_point)
+                valstring = str(round_int(value)).replace(
+                    ".", self.tw.decimal_point)
             else:
                 valstring = str(value)
             if name not in self.value_blocks_to_update:
                 return
             for block in self.value_blocks_to_update[name]:
                 if label is None:
-                    block.spr.set_label(block_names[name][0] + " = " + valstring)
+                    block.spr.set_label(
+                        block_names[name][0] + " = " + valstring)
                     block.resize()
                 else:
                     argblk = block.connections[-2]
                     # Only update if label matches
                     if argblk is not None and argblk.spr.labels[0] == label:
-                        block.spr.set_label(block_names[name][0] + " = " + valstring)
+                        block.spr.set_label(
+                            block_names[name][0] + " = " + valstring)
                         dx = block.dx
                         block.resize()
                         # Move connections over...
@@ -1145,7 +1195,8 @@ class LogoCode:
                 self.dsobject = datastore.get(obj.value)
             except BaseException:
                 debug_output(
-                    "Couldn't find dsobject %s" % (obj.value), self.tw.running_sugar
+                    "Couldn't find dsobject %s" % (
+                        obj.value), self.tw.running_sugar
                 )
             if self.dsobject is not None:
                 self.filepath = self.dsobject.file_path
@@ -1156,11 +1207,13 @@ class LogoCode:
 
         pixbuf = None
         try:
-            pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_size(self.filepath, scale, scale)
+            pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_size(
+                self.filepath, scale, scale)
         except BaseException:
             self.tw.showlabel("nojournal", self.filepath)
             debug_output(
-                "Couldn't open skin %s" % (self.filepath), self.tw.running_sugar
+                "Couldn't open skin %s" % (
+                    self.filepath), self.tw.running_sugar
             )
         if pixbuf is not None:
             self.tw.turtles.get_active_turtle().set_shapes([pixbuf])
@@ -1202,14 +1255,17 @@ class LogoCode:
         try:
             req = urllib.request.urlopen(url)
         except urllib.error.HTTPError as e:
-            debug_output("Couldn't open %s: %s" % (url, e), self.tw.running_sugar)
+            debug_output("Couldn't open %s: %s" %
+                         (url, e), self.tw.running_sugar)
             raise logoerror(url + " [%d]" % (e.code))
         except urllib.error.URLError as e:
             if hasattr(e, "code"):
-                debug_output("Couldn't open %s: %s" % (url, e), self.tw.running_sugar)
+                debug_output("Couldn't open %s: %s" %
+                             (url, e), self.tw.running_sugar)
                 raise logoerror(url + " [%d]" % (e.code))
             else:  # elif hasattr(e, 'reason'):
-                debug_output("Couldn't reach server: %s" % (e), self.tw.running_sugar)
+                debug_output("Couldn't reach server: %s" %
+                             (e), self.tw.running_sugar)
                 raise logoerror("#noconnection")
 
         mediatype = req.getheader("Content-Type")
@@ -1224,8 +1280,10 @@ class LogoCode:
 
     def showlist(self, objects):
         """ Display list of media objects """
-        x = self.tw.turtles.get_active_turtle().get_xy()[0] / self.tw.coord_scale
-        y = self.tw.turtles.get_active_turtle().get_xy()[1] / self.tw.coord_scale
+        x = self.tw.turtles.get_active_turtle().get_xy()[
+            0] / self.tw.coord_scale
+        y = self.tw.turtles.get_active_turtle().get_xy()[
+            1] / self.tw.coord_scale
         for obj in objects:
             self.tw.turtles.get_active_turtle().set_xy(x, y, pendown=False)
             self.show(obj)
@@ -1277,7 +1335,8 @@ class LogoCode:
                     self.dsobject = datastore.get(obj.value)
                 except BaseException:
                     debug_output(
-                        "Couldn't find dsobject %s" % (obj.value), self.tw.running_sugar
+                        "Couldn't find dsobject %s" % (
+                            obj.value), self.tw.running_sugar
                     )
 
                 if self.dsobject is not None:
@@ -1297,11 +1356,13 @@ class LogoCode:
                 self.insert_image(center=center, pixbuf=True)
             elif self.filepath is None:
                 if self.dsobject is not None:
-                    self.tw.showlabel("nojournal", self.dsobject.metadata["title"])
+                    self.tw.showlabel(
+                        "nojournal", self.dsobject.metadata["title"])
                 else:
                     self.tw.showlabel("nojournal", obj.value)
 
-                debug_output("Couldn't open %s" % (obj.value), self.tw.running_sugar)
+                debug_output("Couldn't open %s" %
+                             (obj.value), self.tw.running_sugar)
             elif obj.type == "media" or mediatype == "image":
                 self.insert_image(center=center)
             elif mediatype == "audio":
@@ -1396,7 +1457,8 @@ class LogoCode:
                 self.pixbuf = get_pixbuf_from_journal(self.dsobject, w, h)
             except BaseException:
                 debug_output(
-                    "Couldn't open dsobject %s" % (self.dsobject), self.tw.running_sugar
+                    "Couldn't open dsobject %s" % (
+                        self.dsobject), self.tw.running_sugar
                 )
         if self.pixbuf is None and self.filepath is not None and self.filepath != "":
             try:
@@ -1411,7 +1473,8 @@ class LogoCode:
             except BaseException:
                 self.tw.showlabel("nojournal", self.filepath)
                 debug_output(
-                    "Couldn't open filepath %s" % (self.filepath), self.tw.running_sugar
+                    "Couldn't open filepath %s" % (
+                        self.filepath), self.tw.running_sugar
                 )
         if self.pixbuf is not None:
             # w, h are relative to screen size, not coord_scale
@@ -1459,7 +1522,8 @@ class LogoCode:
                 except IOError:
                     self.tw.showlabel("nojournal", self.filepath)
                     debug_output(
-                        "Couldn't open %s" % (self.filepath), self.tw.running_sugar
+                        "Couldn't open %s" % (
+                            self.filepath), self.tw.running_sugar
                     )
         else:
             if description is not None:
@@ -1723,7 +1787,8 @@ class LogoCode:
             c = whileflow.connections[0]
             whileflow.connections[0] = None
             code = self._blocks_to_code(whileflow)
-            self.stacks[self._get_stack_key(action_flow_name)] = self._readline(code)
+            self.stacks[self._get_stack_key(
+                action_flow_name)] = self._readline(code)
             whileflow.connections[0] = c
 
         # Save the connections so we can restore them later
@@ -1741,7 +1806,7 @@ class LogoCode:
         if i == len(blocks) - 1:
             blocks_right = []
         else:
-            blocks_right = blocks[i + 1 :]
+            blocks_right = blocks[i + 1:]
         blocks = blocks_left[:]
         if until_blk and whileflow is not None:
             blocks.append(action_first)

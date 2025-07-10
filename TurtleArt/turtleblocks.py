@@ -186,7 +186,8 @@ class TurtleMain:
             schemas_path = activity_root
 
         # create a local Gio.Settings based on the compiled schema
-        source = Gio.SettingsSchemaSource.new_from_directory(schemas_path, None, True)
+        source = Gio.SettingsSchemaSource.new_from_directory(
+            schemas_path, None, True)
         schema = source.lookup(self._GIO_SETTINGS, True)
         _settings = Gio.Settings.new_full(schema, None, None)
         return _settings
@@ -199,7 +200,8 @@ class TurtleMain:
 
     def _get_gnome_plugin_home(self):
         """ Use plugin directory associated with execution path. """
-        if os.path.exists(os.path.join(self._lib_path, self._GNOME_PLUGIN_SUBPATH)):
+        if os.path.exists(os.path.join(self._lib_path,
+                          self._GNOME_PLUGIN_SUBPATH)):
             return os.path.join(self._lib_path, self._GNOME_PLUGIN_SUBPATH)
         else:
             return None
@@ -352,7 +354,8 @@ return %s(self)"
     def _parse_command_line(self):
         """ Try to make sense of the command-line arguments. """
         try:
-            opts, args = getopt.getopt(argv[1:], "hor", ["help", "output_png", "run"])
+            opts, args = getopt.getopt(
+                argv[1:], "hor", ["help", "output_png", "run"])
         except getopt.GetoptError as err:
             print(str(err))
             print(self._HELP_MSG)
@@ -381,7 +384,8 @@ return %s(self)"
             if not os.path.exists(self._ta_file):
                 self._ta_file = os.path.join(self._abspath, self._ta_file)
                 if not os.path.exists(self._ta_file):
-                    assert False, "%s: %s" % (self._ta_file, _("File not found"))
+                    assert False, "%s: %s" % (
+                        self._ta_file, _("File not found"))
 
     def _ensure_sugar_paths(self):
         """ Make sure Sugar paths are present. """
@@ -404,7 +408,8 @@ return %s(self)"
             # We'll assume it needs to be created
             try:
                 self._mkdir_p(CONFIG_HOME)
-                data_file = open(os.path.join(CONFIG_HOME, "turtleartrc"), "a+")
+                data_file = open(os.path.join(
+                    CONFIG_HOME, "turtleartrc"), "a+")
             except IOError as e:
                 # We can't write to the configuration file, use
                 # a faux file that will persist for the length of
@@ -453,7 +458,8 @@ return %s(self)"
         win.maximize()
         win.set_title("%s %s" % (self.name, str(self.version)))
         if os.path.exists(os.path.join(self._share_path, self._ICON_SUBPATH)):
-            win.set_icon_from_file(os.path.join(self._share_path, self._ICON_SUBPATH))
+            win.set_icon_from_file(os.path.join(
+                self._share_path, self._ICON_SUBPATH))
         win.show()
         win.connect("delete_event", self._quit_ta)
 
@@ -723,7 +729,8 @@ Would you like to save before quitting?"
         temp_save_folder = self.tw.save_folder
         self.tw.load_save_folder = self._autosavedirname
         self.tw.save_folder = self._autosavedirname
-        self.tw.save_file(file_name=os.path.join(self._autosavedirname, "autosave.tb"))
+        self.tw.save_file(file_name=os.path.join(
+            self._autosavedirname, "autosave.tb"))
         self.tw.save_folder = temp_save_folder
         self.tw.load_save_folder = temp_load_save_folder
 
@@ -839,14 +846,16 @@ Would you like to save before quitting?"
             self.tw.coord_scale = 1
             if self.tw.cartesian is True:
                 self.tw.overlay_shapes["Cartesian"].hide()
-                self.tw.overlay_shapes["Cartesian_labeled"].set_layer(OVERLAY_LAYER)
+                self.tw.overlay_shapes["Cartesian_labeled"].set_layer(
+                    OVERLAY_LAYER)
             default_values["forward"] = [100]
             default_values["back"] = [100]
             default_values["arc"] = [90, 100]
             default_values["setpensize"] = [5]
             self.tw.turtles.get_active_turtle().set_pen_size(5)
         if hasattr(self, "_settings"):
-            self._settings.set_int(self._COORDINATE_SCALE, int(self.tw.coord_scale))
+            self._settings.set_int(
+                self._COORDINATE_SCALE, int(self.tw.coord_scale))
 
         self.tw.recalculate_constants()
 
@@ -866,12 +875,15 @@ Would you like to save before quitting?"
             if button.get_active():
                 if name not in plugins:
                     plugins.append(name)
-                    self._settings.set_string(self._PLUGINS_LIST, ",".join(plugins))
-                label = _("Please restart %s in order to use the plugin.") % self.name
+                    self._settings.set_string(
+                        self._PLUGINS_LIST, ",".join(plugins))
+                label = _(
+                    "Please restart %s in order to use the plugin.") % self.name
             else:
                 if name in plugins:
                     plugins.remove(name)
-                    self._settings.set_string(self._PLUGINS_LIST, ",".join(plugins))
+                    self._settings.set_string(
+                        self._PLUGINS_LIST, ",".join(plugins))
                 label = (
                     _("Please restart %s in order to unload the plugin.") % self.name
                 )
@@ -987,7 +999,8 @@ Would you like to save before quitting?"
                 self.tw.paste_text_in_block_label(text)
                 self.tw.selected_blk.resize()
             else:
-                self.tw.process_data(data_from_string(text), self.tw.paste_offset)
+                self.tw.process_data(data_from_string(
+                    text), self.tw.paste_offset)
                 self.tw.paste_offset += PASTE_OFFSET
 
     def _do_about_cb(self, widget):
@@ -996,7 +1009,8 @@ Would you like to save before quitting?"
         about.set_version(self.version)
         about.set_comments(_(self.summary))
         about.set_website(self.website)
-        logo_path = os.path.join(self._share_path, "activity", self.icon_name + ".svg")
+        logo_path = os.path.join(
+            self._share_path, "activity", self.icon_name + ".svg")
         about.set_logo(GdkPixbuf.Pixbuf.new_from_file(logo_path))
         about.run()
         about.destroy()
@@ -1028,7 +1042,8 @@ Would you like to save before quitting?"
         """ From whence is the program being executed? """
         dirname = os.path.dirname(__file__)
         if dirname == "":
-            if os.path.exists(os.path.join("~", "Activities", "TurtleArt.activity")):
+            if os.path.exists(os.path.join(
+                    "~", "Activities", "TurtleArt.activity")):
                 return os.path.join("~", "Activities", "TurtleArt.activity")
             elif os.path.exists(self._INSTALL_PATH):
                 return self._INSTALL_PATH
@@ -1064,7 +1079,8 @@ Would you like to save before quitting?"
             icon_view = Gtk.IconView()
             icon_view.set_model(store)
             icon_view.set_selection_mode(Gtk.SelectionMode.SINGLE)
-            icon_view.connect("selection-changed", self._sample_selected, store)
+            icon_view.connect("selection-changed",
+                              self._sample_selected, store)
             icon_view.set_pixbuf_column(0)
             icon_view.grab_focus()
             self._sample_window.add_with_viewport(icon_view)
@@ -1111,7 +1127,8 @@ Would you like to save before quitting?"
         # Convert from thumbnail path to sample path
         basename = os.path.basename(self._selected_sample)[:-4]
         for suffix in [".ta", ".tb"]:
-            file_path = os.path.join(self._share_path, "samples", basename + suffix)
+            file_path = os.path.join(
+                self._share_path, "samples", basename + suffix)
             if os.path.exists(file_path):
                 self.tw.load_files(file_path)
                 break

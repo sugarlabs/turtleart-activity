@@ -314,7 +314,8 @@ class SVG:
         self.reset_min_max()
         svg = self._start_boolean(self._stroke_width / 2.0,
                                   self._radius * 5.5 + self._stroke_width / 2.0 + self._innie_y2 + self._innie_spacer + self._expand_y)
-        svg += self._rline_to(0, -self._radius * 3.5 - self._innie_y2 - self._innie_spacer - self._stroke_width)
+        svg += self._rline_to(0, -self._radius * 3.5 -
+                              self._innie_y2 - self._innie_spacer - self._stroke_width)
 
         self._hide_x = self._x + self._radius + self._stroke_width
         self._hide_y = self._y

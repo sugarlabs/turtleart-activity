@@ -86,9 +86,9 @@ class Blocks:
 
     def get_block(self, i):
         if i < 0 or i > len(self.list) - 1:
-            return(None)
+            return (None)
         else:
-            return(self.list[i])
+            return (self.list[i])
 
     def swap(self, blk1, blk2):
         i1 = self.list.index(blk1)
@@ -97,7 +97,7 @@ class Blocks:
         self.list[i2] = blk1
 
     def length_of_list(self):
-        return(len(self.list))
+        return (len(self.list))
 
     def append_to_list(self, block):
         self.list.append(block)
@@ -595,7 +595,7 @@ class Block:
 
     def get_expand_x_y(self):
         if self.spr is None:
-            return(0, 0)
+            return (0, 0)
         return (self.ex, self.ey, self.ey2)
 
     def _new_block_from_factory(self, sprite_list, x, y, copy_block=None):

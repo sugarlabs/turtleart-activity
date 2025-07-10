@@ -198,6 +198,7 @@ class TurtleGraphics:
         _larc(self.canvas, x, y, r, a, heading)
         self.inval()
         if self.cr_svg is not None:
+
             _larc(self.cr_svg, x, y, r, a, heading)
 
     def set_pen_size(self, pen_size):
@@ -415,7 +416,7 @@ class TurtleGraphics:
             w = self.turtle_window.turtle_canvas.get_width()
             h = self.turtle_window.turtle_canvas.get_height()
             if x < 0 or x > (w - 1) or y < 0 or y > (h - 1):
-                return(-1, -1, -1, -1)
+                return (-1, -1, -1, -1)
             # create a new 1x1 cairo surface
             cs = cairo.ImageSurface(cairo.FORMAT_RGB24, 1, 1)
             cr = cairo.Context(cs)
@@ -427,7 +428,7 @@ class TurtleGraphics:
             pixels = cs.get_data()  # Read the pixel
             return (pixels[2], pixels[1], pixels[0], 0)
         else:
-            return(-1, -1, -1, -1)
+            return (-1, -1, -1, -1)
 
     def svg_close(self):
         ''' Close current SVG graphic '''

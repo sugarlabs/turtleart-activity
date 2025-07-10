@@ -46,3 +46,17 @@ Copied Dependencies
 * CollabWrapper,
 * sugariconify,
 
+Changes Made To Add Hollow Line Block
+-------------------
+
+* taturtle:
+Enhanced the forward, backward, arc, and setxy functions to support dual-mode operation via a wrapper. One mode retains the standard behavior, while the other introduces "hollow draw" functionality.
+
+* tabasics:
+Added the logic for the "Draw Hollow" button, and modified the behavior of forward, backward, arc, and setxy to handle hollow draw mode when enabled.
+
+* talogo:
+Introduced support for hollow drawing in forward. Added logic to manage custom attributes, including thickness and a boolean flag indicating whether hollow drawing is active. Drawing behavior is now conditionally executed based on this flag.
+
+* tawindo:
+Added a function to return self.lc, enabling external access to the talogo instance.

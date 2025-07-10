@@ -364,6 +364,10 @@ class TurtleArtWindow():
             self._init_plugins()
             self._setup_plugins()
 
+    #To return lc for it to be used in taturtle
+    def LC(self):
+        return self.lc
+
     def get_global_objects(self):
         return global_objects
 
@@ -440,7 +444,8 @@ class TurtleArtWindow():
         plist = sorted(turtleart_plugin_list.keys())
         plugin_saved = []
         if hasattr(self.activity, '_settings'):
-            plugin_saved = self.activity._settings.get_string(self.activity._PLUGINS_LIST)
+            plugin_saved = self.activity._settings.get_string(
+                self.activity._PLUGINS_LIST)
 
         for plugin_dir in plist:
             plugin_path = turtleart_plugin_list[plugin_dir]
@@ -4554,7 +4559,7 @@ class TurtleArtWindow():
         h *= (self.canvas.height - y)
         dx *= w
         dy *= h
-        return(w, h, x, y, dx, dy)
+        return (w, h, x, y, dx, dy)
 
     def save_for_upload(self, file_name):
         ''' Grab the current canvas and save it for upload '''
@@ -4848,7 +4853,7 @@ class TurtleArtWindow():
                 maxx = x + w
             if y + h > maxy:
                 maxy = y + h
-        return(maxx - minx, maxy - miny)
+        return (maxx - minx, maxy - miny)
 
     # Utilities related to putting a image 'skin' on a block
 

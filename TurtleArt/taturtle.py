@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # Copyright (c) 2010-13 Walter Bender
-
+import math
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
 # in the Software without restriction, including without limitation the rights
@@ -34,7 +34,7 @@ from .tacanvas import wrap100, COLOR_TABLE
 from .sprites import Sprite
 from .tautils import (debug_output, data_to_string, round_int, get_path,
                       image_to_base64)
-from TurtleArt.talogo import logoerror
+from TurtleArt.talogo import logoerror, LogoCode
 
 SHAPES = 36
 DEGTOR = pi / 180.
@@ -65,6 +65,9 @@ class Turtles:
         self._active_turtle = None
         self._default_turtle_name = DEFAULT_TURTLE
 
+        #to be used in taturtle
+        self.lc = turtle_window
+
     def get_turtle(self, turtle_name, append=False, colors=None):
         ''' Find a turtle '''
         if turtle_name in self.dict:
@@ -89,7 +92,7 @@ class Turtles:
 
     def turtle_count(self):
         ''' How many turtles are there? '''
-        return(len(self.dict))
+        return (len(self.dict))
 
     def add_to_dict(self, turtle_name, turtle):
         ''' Add a new turtle '''
@@ -98,7 +101,7 @@ class Turtles:
     def remove_from_dict(self, turtle_name):
         ''' Delete a turtle '''
         if turtle_name in self.dict:
-            del(self.dict[turtle_name])
+            del (self.dict[turtle_name])
 
     def show_all(self):
         ''' Make all turtles visible '''
@@ -117,7 +120,7 @@ class Turtles:
         if self._default_pixbufs == []:
             self._default_pixbufs = generate_turtle_pixbufs(
                 ["#008000", "#00A000"])
-        return(self._default_pixbufs)
+        return (self._default_pixbufs)
 
     def turtle_to_screen_coordinates(self, pos):
         ''' The origin of turtle coordinates is the center of the screen '''
@@ -143,21 +146,21 @@ class Turtles:
         if turtle_name not in self.dict:
             debug_output('%s not found in turtle dictionary' % (turtle_name),
                          self.turtle_window.running_sugar)
-            raise logoerror("#syntaxerror")
+            # raise logoerror("#syntaxerror")
         return self.dict[turtle_name].get_x()
 
     def get_turtle_y(self, turtle_name):
         if turtle_name not in self.dict:
             debug_output('%s not found in turtle dictionary' % (turtle_name),
                          self.turtle_window.running_sugar)
-            raise logoerror("#syntaxerror")
+            # raise logoerror("#syntaxerror")
         return self.dict[turtle_name].get_y()
 
     def get_turtle_heading(self, turtle_name):
         if turtle_name not in self.dict:
             debug_output('%s not found in turtle dictionary' % (turtle_name),
                          self.turtle_window.running_sugar)
-            raise logoerror("#syntaxerror")
+            # raise logoerror("#syntaxerror")
         return self.dict[turtle_name].get_heading()
 
     def set_turtle(self, turtle_name, colors=None):
@@ -224,7 +227,6 @@ class Turtle:
         self._pen_state = True
         self._pen_fill = False
         self._poly_points = []
-
         self._prep_shapes(turtle_name, self._turtles, turtle_colors)
 
         # Create a sprite for the turtle in interactive mode.
@@ -551,37 +553,98 @@ class Turtle:
         self.right(degrees, share)
 
     def _draw_line(self, old, new, pendown):
+
         if self._pen_state and pendown:
             self._turtles.turtle_window.canvas.set_source_rgb()
             pos1 = self._turtles.turtle_to_screen_coordinates(old)
             pos2 = self._turtles.turtle_to_screen_coordinates(new)
+
             self._turtles.turtle_window.canvas.draw_line(pos1[0], pos1[1],
                                                          pos2[0], pos2[1])
+
             if self._pen_fill:
                 if self._poly_points == []:
                     self._poly_points.append(('move', pos1[0], pos1[1]))
                 self._poly_points.append(('line', pos2[0], pos2[1]))
 
-    def forward(self, distance, share=True):
+    def forward(self, distance, share=True, thickness=None):
         scaled_distance = distance * self._turtles.turtle_window.coord_scale
 
         old = self.get_xy()
         xcor = old[0] + scaled_distance * sin(self._heading * DEGTOR)
         ycor = old[1] + scaled_distance * cos(self._heading * DEGTOR)
 
-        self._draw_line(old, (xcor, ycor), True)
-        self.move_turtle((xcor, ycor))
+        if thickness is None:
+            self._draw_line(old, (xcor, ycor), True)
+            self.move_turtle((xcor, ycor))
+        else:
+            if self._pen_state:
+                # Need this to make the circle work at the first iteration
+                self._turtles.turtle_window.canvas.set_source_rgb()
+
+            # Draw first circle
+            # distance>=0 means that we are not going backward
+            self.larc(180, self._turtles.lc.LC().ht(), True, distance >= 0)
+
+            # Draw right
+            new_pos = [None, None]
+            new_pos[0] = xcor + thickness * cos(self._heading * DEGTOR)
+            new_pos[1] = ycor + thickness * -sin(self._heading * DEGTOR)
+
+            old_pos = [None, None]
+            old_pos[0] = old[0] + thickness * cos(self._heading * DEGTOR)
+            old_pos[1] = old[1] + thickness * -sin(self._heading * DEGTOR)
+
+            self._draw_line(old_pos, new_pos, True)
+
+            # Draw Left
+            new_pos = [None, None]
+            new_pos[0] = xcor - thickness * cos(self._heading * DEGTOR)
+            new_pos[1] = ycor - thickness * -sin(self._heading * DEGTOR)
+
+            old_pos = [None, None]
+            old_pos[0] = old[0] - thickness * cos(self._heading * DEGTOR)
+            old_pos[1] = old[1] - thickness * -sin(self._heading * DEGTOR)
+
+            self._draw_line(old_pos, new_pos, True)
+
+            self.move_turtle((xcor, ycor))
+            # Draw second circle
+            self.larc(180, self._turtles.lc.LC().ht(), True, distance >= 0)
 
         if self._turtles.turtle_window.sharing() and share:
             event = data_to_string([self._turtles.turtle_window.nick,
                                     int(distance)])
             self._turtles.turtle_window.send_event('f', event)
 
+    # This piece becomes obsolete since the backward button uses backward_wrapper which uses forward_wrapper
     def backward(self, distance, share=True):
         distance = 0 - distance
         self.forward(distance, share)
 
-    def set_xy(self, x=None, y=None, share=True, pendown=True, dragging=False):
+    def forward_wrapper(self, distance):
+        if self._turtles.lc.LC().hm():
+            self.forward(distance, True, self._turtles.lc.LC().ht())
+        else:
+            self.forward(distance)
+
+    def backward_wrapper(self, distance):
+        distance = 0 - distance
+        self.forward_wrapper(distance)
+
+    def arc_wrapper(self, a, r):
+        if self._turtles.lc.LC().hm():
+            self.arc(a, r, True, self._turtles.lc.LC().ht())
+        else:
+            self.arc(a, r)
+
+    def set_xy_wrapper(self, x, y):
+        if self._turtles.lc.LC().hm():  # it is not advice to use set xy in a hollow block, since it can give unexpected results
+            self.set_xy(x, y, True, True, False, self._turtles.lc.LC().ht())
+        else:
+            self.set_xy(x, y)
+
+    def set_xy(self, x=None, y=None, share=True, pendown=True, dragging=False, thickness=None):
         old = self.get_xy()
         if x is None or y is None:
             x = old[0]
@@ -593,24 +656,139 @@ class Turtle:
             xcor = x * self._turtles.turtle_window.coord_scale
             ycor = y * self._turtles.turtle_window.coord_scale
 
-        self._draw_line(old, (xcor, ycor), pendown)
-        self.move_turtle((xcor, ycor))
+        if thickness is None:
+            self._draw_line(old, (xcor, ycor), pendown)
+            self.move_turtle((xcor, ycor))
+        else:
+            # Draw first circle
+            if self._pen_state:
+                self._turtles.turtle_window.canvas.set_source_rgb()
+            self.larc(180, self._turtles.lc.LC().ht(), True, True)
+
+            # Move right
+            new_pos = [None, None]
+            new_pos[0] = xcor + thickness * cos(self._heading * DEGTOR)
+            new_pos[1] = ycor + thickness * -sin(self._heading * DEGTOR)
+
+            old_pos = [None, None]
+            old_pos[0] = old[0] + thickness * cos(self._heading * DEGTOR)
+            old_pos[1] = old[1] + thickness * -sin(self._heading * DEGTOR)
+
+            self._draw_line(old_pos, new_pos, True)
+
+            # Move Left
+            new_pos = [None, None]
+            new_pos[0] = xcor - thickness * cos(self._heading * DEGTOR)
+            new_pos[1] = ycor - thickness * -sin(self._heading * DEGTOR)
+
+            old_pos = [None, None]
+            old_pos[0] = old[0] - thickness * cos(self._heading * DEGTOR)
+            old_pos[1] = old[1] - thickness * -sin(self._heading * DEGTOR)
+
+            self._draw_line(old_pos, new_pos, True)
+
+            self.move_turtle((xcor, ycor))
+
+            # Draw second circle
+            self.larc(180, self._turtles.lc.LC().ht(), True, True)
 
         if self._turtles.turtle_window.sharing() and share:
             event = data_to_string([self._turtles.turtle_window.nick,
                                     [round_int(xcor), round_int(ycor)]])
             self._turtles.turtle_window.send_event('x', event)
 
-    def arc(self, a, r, share=True):
+    def arc(self, a, r, share=True, thickness=None):
         ''' Draw an arc '''
         if self._pen_state:
             self._turtles.turtle_window.canvas.set_source_rgb()
-        if a < 0:
-            pos = self.larc(-a, r)
-        else:
-            pos = self.rarc(a, r)
 
-        self.move_turtle(pos)
+        if thickness is None:
+            if a < 0:
+                pos = self.larc(-a, r)
+            else:
+                pos = self.rarc(a, r)
+            self.move_turtle(pos)
+        else:  # Draw hollow
+            self.larc(180, thickness, True, True)
+            self._heading += 180  # To handle turtle alignment
+
+            prev_rotation = self._heading  # It will get changed by moving
+            prev_pos = self.get_xy()  # It will get changed
+
+            if a < 0:
+                # Move right
+
+                new_pos = [None, None]
+                new_pos[0] = prev_pos[0] - thickness * \
+                    cos(self._heading * DEGTOR)
+                new_pos[1] = prev_pos[1] - thickness * - \
+                    sin(self._heading * DEGTOR)
+                self.move_turtle(new_pos)
+
+                self.larc(-a, r - thickness)
+
+                # Restore for next transformation
+
+                self._heading = prev_rotation
+                self.move_turtle(prev_pos)
+
+                # Move left
+                new_pos = [None, None]
+                new_pos[0] = prev_pos[0] + thickness * \
+                    cos(self._heading * DEGTOR)
+                new_pos[1] = prev_pos[1] + thickness * - \
+                    sin(self._heading * DEGTOR)
+                self.move_turtle(new_pos)
+                self.larc(-a, r + thickness)
+
+                # Restore for last transformation
+                self._heading = prev_rotation
+                self.move_turtle(prev_pos)
+            else:
+                # Move right
+
+                new_pos = [None, None]
+                new_pos[0] = prev_pos[0] + thickness * \
+                    cos(self._heading * DEGTOR)
+                new_pos[1] = prev_pos[1] + thickness * - \
+                    sin(self._heading * DEGTOR)
+                self.move_turtle(new_pos)
+
+                self.rarc(a, r - thickness)
+
+                # Restore for next transformation
+
+                self._heading = prev_rotation
+                self.move_turtle(prev_pos)
+
+                # Move left
+                new_pos = [None, None]
+                new_pos[0] = prev_pos[0] - thickness * \
+                    cos(self._heading * DEGTOR)
+                new_pos[1] = prev_pos[1] - thickness * - \
+                    sin(self._heading * DEGTOR)
+                self.move_turtle(new_pos)
+                self.rarc(a, r + thickness)
+
+                # Restore for last transformation
+                self._heading = prev_rotation
+                self.move_turtle(prev_pos)
+
+            # move turtle to central position without drawing
+            prev = self._pen_state
+            self._pen_state = False
+
+            if a < 0:
+                pos = self.larc(-a, r)
+            else:
+                pos = self.rarc(a, r)
+
+            self._pen_state = prev  # Restore original state
+
+            self.move_turtle(pos)
+
+            self._heading += 180  # To handle turtle alignment
+            self.larc(180, thickness, True, True)
 
         if self._turtles.turtle_window.sharing() and share:
             event = data_to_string([self._turtles.turtle_window.nick,
@@ -624,14 +802,18 @@ class Turtle:
             r = -r
             a = -a
         pos = self.get_xy()
+
         cx = pos[0] + r * cos(self._heading * DEGTOR)
         cy = pos[1] - r * sin(self._heading * DEGTOR)
+
         if self._pen_state:
             npos = self._turtles.turtle_to_screen_coordinates((cx, cy))
+
             self._turtles.turtle_window.canvas.rarc(npos[0], npos[1], r, a,
                                                     self._heading)
 
             if self._pen_fill:
+
                 self._poly_points.append(('move', npos[0], npos[1]))
                 self._poly_points.append(('rarc', npos[0], npos[1], r,
                                           (self._heading - 180) * DEGTOR,
@@ -641,19 +823,28 @@ class Turtle:
         return [cx - r * cos(self._heading * DEGTOR),
                 cy + r * sin(self._heading * DEGTOR)]
 
-    def larc(self, a, r):
+    def larc(self, a, r, helper=False, forward=False):
         ''' draw a counter-clockwise arc '''
         r *= self._turtles.turtle_window.coord_scale
         if r < 0:
             r = -r
             a = -a
         pos = self.get_xy()
-        cx = pos[0] - r * cos(self._heading * DEGTOR)
-        cy = pos[1] + r * sin(self._heading * DEGTOR)
+
+        if helper is False:
+            cx = pos[0] - r * cos(self._heading * DEGTOR)
+            cy = pos[1] + r * sin(self._heading * DEGTOR)
+        else:
+            cx = pos[0]
+            cy = pos[1]
+
         if self._pen_state:
             npos = self._turtles.turtle_to_screen_coordinates((cx, cy))
+            # Turn the turtle 180 to make the circle point
+            # Outward only if I'm moving forward and using this function as a helper
             self._turtles.turtle_window.canvas.larc(npos[0], npos[1], r, a,
-                                                    self._heading)
+                                                    self._heading - (180 * helper * forward))
+
 
             if self._pen_fill:
                 self._poly_points.append(('move', npos[0], npos[1]))
@@ -662,8 +853,9 @@ class Turtle:
                                           (self._heading - a) * DEGTOR))
 
         self.right(-a, False)
-        return [cx + r * cos(self._heading * DEGTOR),
-                cy - r * sin(self._heading * DEGTOR)]
+        if helper is False:
+            return [cx + r * cos(self._heading * DEGTOR),
+                    cy - r * sin(self._heading * DEGTOR)]
 
     def draw_pixbuf(self, pixbuf, a, b, x, y, w, h, path, share=True):
         ''' Draw a pixbuf '''

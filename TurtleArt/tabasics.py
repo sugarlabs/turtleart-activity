@@ -166,11 +166,28 @@ class Palettes():
                           default=100,
                           logo_command='forward',
                           help_string=_('moves turtle forward'))
+
         self.tw.lc.def_prim(
             'forward', 1,
-            Primitive(Turtle.forward,
+            Primitive(Turtle.forward_wrapper,  #Added a wrapper just like ro backward, setxy and arc
                       arg_descs=[ArgSlot(TYPE_NUMBER)],
                       call_afterwards=self.after_move))
+
+        palette.add_block("hollow_draw",
+                          style='clamp-style-1arg',
+                          label=_('hollow line'),
+                          prim_name='hollow_line',
+                          default=[30, None],
+                          # logo_command='forward_hollow',
+                          help_string=_(
+                              'draws the block inside with a thickness equal to what it is specified, default 30')
+                          )
+
+        self.tw.lc.def_prim(
+            'hollow_line', 2,
+            Primitive(self.tw.lc.hollow_line,
+                      arg_descs=[ArgSlot(TYPE_NUMBER), ArgSlot(TYPE_OBJECT, call_arg=False)]),
+            rprim=True)
 
         palette.add_block('back',
                           style='basic-style-1arg',
@@ -181,7 +198,7 @@ class Palettes():
                           help_string=_('moves turtle backward'))
         self.tw.lc.def_prim(
             'back', 1,
-            Primitive(Turtle.backward,
+            Primitive(Turtle.backward_wrapper,
                       arg_descs=[ArgSlot(TYPE_NUMBER)],
                       call_afterwards=self.after_move))
 
@@ -239,11 +256,12 @@ degrees)'))
                           label=[_('arc'), _('angle'), _('radius')],
                           prim_name='arc',
                           default=[90, 100],
-                          logo_command='taarc',
+                          logo_command='arc',
                           help_string=_('moves turtle along an arc'))
+
         self.tw.lc.def_prim(
             'arc', 2,
-            Primitive(Turtle.arc,
+            Primitive(Turtle.arc_wrapper,
                       arg_descs=[ArgSlot(TYPE_NUMBER),
                                  ArgSlot(TYPE_NUMBER)],
                       call_afterwards=self.after_arc))
@@ -258,9 +276,10 @@ degrees)'))
                           default=[0, 0],
                           help_string=_('moves turtle to position xcor, ycor; \
 (0, 0) is in the center of the screen.'))
+
         self.tw.lc.def_prim(
             'setxy2', 2,
-            Primitive(Turtle.set_xy,
+            Primitive(Turtle.set_xy_wrapper,
                       arg_descs=[ArgSlot(TYPE_NUMBER), ArgSlot(TYPE_NUMBER)],
                       call_afterwards=self.after_move))
         define_logo_function('tasetxy', 'to tasetxy :x :y\nsetxy :x :y\nend\n')
@@ -328,6 +347,7 @@ turtle (can be used in place of a number block)'),
                           label=['turtle'])
 
         # Deprecated
+
         palette.add_block('setxy',
                           hidden=True,
                           style='basic-style-2arg',

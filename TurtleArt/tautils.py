@@ -456,11 +456,11 @@ def get_pixbuf_from_journal(dsobject, w, h):
 def get_path(activity, subpath):
     ''' Find a Rainbow-approved place for temporary files. '''
     if hasattr(activity, "get_activity_root"):
-        return(os.path.join(activity.get_activity_root(), subpath))
+        return (os.path.join(activity.get_activity_root(), subpath))
     else:
         # Early versions of Sugar didn't support get_activity_root()
-        return(os.path.join(os.environ['HOME'], '.sugar/default',
-                            'org.laptop.TurtleArtActivity', subpath))
+        return (os.path.join(os.environ['HOME'], '.sugar/default',
+                             'org.laptop.TurtleArtActivity', subpath))
 
 
 def image_to_base64(image_path, tmp_path):
@@ -836,7 +836,7 @@ def get_stack_width_and_height(blk):
             maxx = x + w
         if y + h > maxy:
             maxy = y + h
-    return(maxx - minx, maxy - miny)
+    return (maxx - minx, maxy - miny)
 
 
 def get_stack_name(blk):
