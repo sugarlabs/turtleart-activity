@@ -364,6 +364,10 @@ class TurtleArtWindow():
             self._init_plugins()
             self._setup_plugins()
 
+    # To return lc for it to be used in taturtle
+    def LC(self):
+        return self.lc
+
     def get_global_objects(self):
         return global_objects
 
