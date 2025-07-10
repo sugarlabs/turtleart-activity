@@ -169,7 +169,7 @@ class Palettes():
 
         self.tw.lc.def_prim(
             'forward', 1,
-            Primitive(Turtle.forward_wrapper,  # Modificato aggiunto un wrapper
+            Primitive(Turtle.forward_wrapper,  
                       arg_descs=[ArgSlot(TYPE_NUMBER)],
                       call_afterwards=self.after_move))
 
@@ -177,9 +177,9 @@ class Palettes():
                           style='clamp-style-1arg',
                           label=_('hollow line'),
                           prim_name='hollow_line',
-                          # originale era solo 10, ma è sbagliato
+                          
                           default=[30, None],
-                          # logo_command='forward_hollow',
+                          
                           help_string=_(
                               'draws the block inside with a thickness equal to what it is specified, default 30')
                           )
