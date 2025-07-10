@@ -65,7 +65,7 @@ class Turtles:
         self._active_turtle = None
         self._default_turtle_name = DEFAULT_TURTLE
 
-        # NEW STUFF
+        # property
         self.lc = turtle_window
 
     def get_turtle(self, turtle_name, append=False, colors=None):
@@ -146,21 +146,21 @@ class Turtles:
         if turtle_name not in self.dict:
             debug_output('%s not found in turtle dictionary' % (turtle_name),
                          self.turtle_window.running_sugar)
-            # raise logoerror("#syntaxerror")
+            raise logoerror("#syntaxerror")
         return self.dict[turtle_name].get_x()
 
     def get_turtle_y(self, turtle_name):
         if turtle_name not in self.dict:
             debug_output('%s not found in turtle dictionary' % (turtle_name),
                          self.turtle_window.running_sugar)
-            # raise logoerror("#syntaxerror")
+            raise logoerror("#syntaxerror")
         return self.dict[turtle_name].get_y()
 
     def get_turtle_heading(self, turtle_name):
         if turtle_name not in self.dict:
             debug_output('%s not found in turtle dictionary' % (turtle_name),
                          self.turtle_window.running_sugar)
-            # raise logoerror("#syntaxerror")
+            raise logoerror("#syntaxerror")
         return self.dict[turtle_name].get_heading()
 
     def set_turtle(self, turtle_name, colors=None):
@@ -662,8 +662,8 @@ class Turtle:
         else:
             # Draw first circle
             if self._pen_state:
-                # Need this to make the circle work at the first iteration
                 self._turtles.turtle_window.canvas.set_source_rgb()
+              
             self.larc(180, self._turtles.lc.LC().ht(), True, True)
 
             # Move right
@@ -713,9 +713,8 @@ class Turtle:
             self.larc(180, thickness, True, True)
             self._heading += 180  # To handle turtle alignment
 
-            prev_rotation = self._heading  # It will get changed by moving
-            prev_pos = self.get_xy()  # It will get changed
-
+            prev_rotation = self._heading  
+            prev_pos = self.get_xy()  
             if a < 0:
                 # Move right
 
