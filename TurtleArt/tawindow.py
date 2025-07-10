@@ -364,7 +364,7 @@ class TurtleArtWindow():
             self._init_plugins()
             self._setup_plugins()
 
-    # NEW STUFF so that it return talogo from which i can then get the thickness, and the state of us being inside draw_hollow
+    #new function so that it return talogo from which i can then get the thickness, and the state of us being inside draw_hollow
     # So that they can be used in taturtle
     def LC(self):
         return self.lc
