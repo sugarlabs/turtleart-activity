@@ -99,7 +99,8 @@ def save_logo(tw):
                 stack_count += 1
             if logo_command in dispatch_table:
                 if i + 1 < len(psuedocode):
-                    this_stack += dispatch_table[logo_command](psuedocode[i + 1])
+                    this_stack += dispatch_table[logo_command](
+                        psuedocode[i + 1])
                     skip = True
                 else:
                     print("missing arg to %s" % (logo_command))
