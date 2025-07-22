@@ -168,7 +168,7 @@ class Palettes():
                           help_string=_('moves turtle forward'))
         self.tw.lc.def_prim(
             'forward', 1,
-            Primitive(Turtle.forward,
+            Primitive(Turtle.forward_wrapper,
                       arg_descs=[ArgSlot(TYPE_NUMBER)],
                       call_afterwards=self.after_move))
 
@@ -181,7 +181,7 @@ class Palettes():
                           help_string=_('moves turtle backward'))
         self.tw.lc.def_prim(
             'back', 1,
-            Primitive(Turtle.backward,
+            Primitive(Turtle.backward_wrapper,
                       arg_descs=[ArgSlot(TYPE_NUMBER)],
                       call_afterwards=self.after_move))
 
@@ -243,7 +243,7 @@ degrees)'))
                           help_string=_('moves turtle along an arc'))
         self.tw.lc.def_prim(
             'arc', 2,
-            Primitive(Turtle.arc,
+            Primitive(Turtle.arc_wrapper,
                       arg_descs=[ArgSlot(TYPE_NUMBER),
                                  ArgSlot(TYPE_NUMBER)],
                       call_afterwards=self.after_arc))
@@ -260,7 +260,7 @@ degrees)'))
 (0, 0) is in the center of the screen.'))
         self.tw.lc.def_prim(
             'setxy2', 2,
-            Primitive(Turtle.set_xy,
+            Primitive(Turtle.set_xy_wrapper,
                       arg_descs=[ArgSlot(TYPE_NUMBER), ArgSlot(TYPE_NUMBER)],
                       call_afterwards=self.after_move))
         define_logo_function('tasetxy', 'to tasetxy :x :y\nsetxy :x :y\nend\n')
@@ -543,6 +543,22 @@ in place of a number block)'),
             Primitive(Turtle.get_pen_size, return_type=TYPE_NUMBER))
         define_logo_function('tapensize', 'to tapensize\noutput first round \
 pensize\nend\n')
+
+        palette.add_block("hollow_draw",
+                          style='clamp-style-1arg',
+                          label=_('hollow line'),
+                          prim_name='hollow_line',
+                          default=[30, None],
+                          # logo_command='forward_hollow',
+                          help_string=_(
+                              'draws the block inside with a thickness equal to what it is specified, default 30')
+                          )
+
+        self.tw.lc.def_prim(
+            'hollow_line', 2,
+            Primitive(self.tw.lc.hollow_line,
+                      arg_descs=[ArgSlot(TYPE_NUMBER), ArgSlot(TYPE_OBJECT, call_arg=False)]),
+            rprim=True)
 
     def _rgb_converter(self, r, g, b):
         return float(self.tw.canvas.get_color_index(r, g, b))
