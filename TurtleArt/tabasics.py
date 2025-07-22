@@ -172,22 +172,6 @@ class Palettes():
                       arg_descs=[ArgSlot(TYPE_NUMBER)],
                       call_afterwards=self.after_move))
 
-        palette.add_block("hollow_draw",
-                          style='clamp-style-1arg',
-                          label=_('hollow line'),
-                          prim_name='hollow_line',
-                          default=[30, None],
-                          # logo_command='forward_hollow',
-                          help_string=_(
-                              'draws the block inside with a thickness equal to what it is specified, default 30')
-                          )
-
-        self.tw.lc.def_prim(
-            'hollow_line', 2,
-            Primitive(self.tw.lc.hollow_line,
-                      arg_descs=[ArgSlot(TYPE_NUMBER), ArgSlot(TYPE_OBJECT, call_arg=False)]),
-            rprim=True)
-
         palette.add_block('back',
                           style='basic-style-1arg',
                           label=_('back'),
@@ -559,6 +543,22 @@ in place of a number block)'),
             Primitive(Turtle.get_pen_size, return_type=TYPE_NUMBER))
         define_logo_function('tapensize', 'to tapensize\noutput first round \
 pensize\nend\n')
+
+        palette.add_block("hollow_draw",
+                          style='clamp-style-1arg',
+                          label=_('hollow line'),
+                          prim_name='hollow_line',
+                          default=[30, None],
+                          # logo_command='forward_hollow',
+                          help_string=_(
+                              'draws the block inside with a thickness equal to what it is specified, default 30')
+                          )
+
+        self.tw.lc.def_prim(
+            'hollow_line', 2,
+            Primitive(self.tw.lc.hollow_line,
+                      arg_descs=[ArgSlot(TYPE_NUMBER), ArgSlot(TYPE_OBJECT, call_arg=False)]),
+            rprim=True)
 
     def _rgb_converter(self, r, g, b):
         return float(self.tw.canvas.get_color_index(r, g, b))
