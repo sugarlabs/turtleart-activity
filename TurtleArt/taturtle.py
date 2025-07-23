@@ -90,7 +90,7 @@ class Turtles:
 
     def turtle_count(self):
         ''' How many turtles are there? '''
-        return(len(self.dict))
+        return (len(self.dict))
 
     def add_to_dict(self, turtle_name, turtle):
         ''' Add a new turtle '''
@@ -99,7 +99,7 @@ class Turtles:
     def remove_from_dict(self, turtle_name):
         ''' Delete a turtle '''
         if turtle_name in self.dict:
-            del(self.dict[turtle_name])
+            del (self.dict[turtle_name])
 
     def show_all(self):
         ''' Make all turtles visible '''
@@ -118,7 +118,7 @@ class Turtles:
         if self._default_pixbufs == []:
             self._default_pixbufs = generate_turtle_pixbufs(
                 ["#008000", "#00A000"])
-        return(self._default_pixbufs)
+        return (self._default_pixbufs)
 
     def turtle_to_screen_coordinates(self, pos):
         ''' The origin of turtle coordinates is the center of the screen '''
@@ -634,8 +634,12 @@ class Turtle:
             self.arc(a, r)
 
     def set_xy_wrapper(self, x, y):
-        if self._turtles.lc.LC().hm():  # it is not advice to use set xy in a hollow block, since it can give unexpected results
-            self.set_xy(x, y, True, True, False, self._turtles.lc.LC().ht())
+
+        if self._turtles.lc.LC().hm():
+            # it is not advice to use set xy in a hollow block,
+            # since it can give unexpected results
+            self.set_xy(x, y, True, True,
+                        False, self._turtles.lc.LC().ht())
         else:
             self.set_xy(x, y)
 
@@ -715,7 +719,7 @@ class Turtle:
 
                 new_pos = [None, None]
                 new_pos[0] = prev_pos[0] - thickness * \
-                             cos(self._heading * DEGTOR)
+                    cos(self._heading * DEGTOR)
                 new_pos[1] = prev_pos[1] - thickness * - \
                     sin(self._heading * DEGTOR)
                 self.move_turtle(new_pos)
@@ -730,7 +734,7 @@ class Turtle:
                 # Move left
                 new_pos = [None, None]
                 new_pos[0] = prev_pos[0] + thickness * \
-                             cos(self._heading * DEGTOR)
+                    cos(self._heading * DEGTOR)
                 new_pos[1] = prev_pos[1] + thickness * - \
                     sin(self._heading * DEGTOR)
                 self.move_turtle(new_pos)
@@ -744,7 +748,7 @@ class Turtle:
 
                 new_pos = [None, None]
                 new_pos[0] = prev_pos[0] + thickness * \
-                             cos(self._heading * DEGTOR)
+                    cos(self._heading * DEGTOR)
                 new_pos[1] = prev_pos[1] + thickness * - \
                     sin(self._heading * DEGTOR)
                 self.move_turtle(new_pos)
@@ -759,7 +763,7 @@ class Turtle:
                 # Move left
                 new_pos = [None, None]
                 new_pos[0] = prev_pos[0] - thickness * \
-                             cos(self._heading * DEGTOR)
+                    cos(self._heading * DEGTOR)
                 new_pos[1] = prev_pos[1] - thickness * - \
                     sin(self._heading * DEGTOR)
                 self.move_turtle(new_pos)
@@ -832,7 +836,8 @@ class Turtle:
         if self._pen_state:
             npos = self._turtles.turtle_to_screen_coordinates((cx, cy))
             # Turn the turtle 180 to make the circle point
-            # Outward only if I'm moving forward and using this function as a helper
+            # Outward only if I'm moving forward and using
+            # this function as a helper
             self._turtles.turtle_window.canvas.larc(npos[0], npos[1], r, a,
                                                     self._heading - (180 * helper * forward))
 

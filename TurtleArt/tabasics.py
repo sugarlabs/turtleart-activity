@@ -551,13 +551,15 @@ pensize\nend\n')
                           default=[30, None],
                           # logo_command='forward_hollow',
                           help_string=_(
-                              'draws the block inside with a thickness equal to what it is specified, default 30')
+                              'draws the block inside with a thickness '
+                              'equal to what it is specified, default 30')
                           )
 
         self.tw.lc.def_prim(
             'hollow_line', 2,
             Primitive(self.tw.lc.hollow_line,
-                      arg_descs=[ArgSlot(TYPE_NUMBER), ArgSlot(TYPE_OBJECT, call_arg=False)]),
+                      arg_descs=[ArgSlot(TYPE_NUMBER),
+                                 ArgSlot(TYPE_OBJECT, call_arg=False)]),
             rprim=True)
 
     def _rgb_converter(self, r, g, b):
