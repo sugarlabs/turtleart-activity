@@ -472,6 +472,18 @@ class LogoCode:
         oldiline = self.iline
         self.iline = blklist[:]
         self.arglist = None
+
+        if self.tw.step_time > 0: #Artificially modify the stack to support glide operations
+            factor=4
+            n=len(self.iline)
+            for i in range(n-1,-1,-1): #iterate from right to left to not mess up the stack
+                if isinstance(self.iline[i],tuple) and (self.iline[i][0].name=="left" or self.iline[i][0].name=="right"):
+                    degree=self.iline.pop(i+1) #Remove the number associated with the rotation
+                    action=self.iline.pop(i) #Remove the action
+                    for _ in range(factor):
+                        self.iline.insert(i,action) #Insert the action
+                        self.iline.insert(i+1,degree/factor) #Insert the degree divided by the value factor
+
         while self.iline:
             token = self.iline[0]
             self.bindex = None
