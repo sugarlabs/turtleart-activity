@@ -489,22 +489,44 @@ class LogoCode:
 
             # Iterate from right to left to not mess up the stack
             for i in range(n - 1, -1, -1):
-                if (isinstance(self.iline[i], tuple) and
-                        (self.iline[i][0].name == "left" or self.iline[i][0].name == "right")):
+                if isinstance(self.iline[i], tuple):
+                    if (self.iline[i][0].name == "left" or self.iline[i][0].name == "right"
+                            or self.iline[i][0].name == "forward" or self.iline[i][0].name == "back"):
 
-                    # Remove the number associated with the rotation
-                    degree = self.iline.pop(i + 1)
+                        # Remove the number associated with the rotation
+                        degree = self.iline.pop(i + 1)
 
-                    # Remove the action
-                    action = self.iline.pop(i)
+                        # Remove the action
+                        action = self.iline.pop(i)
 
-                    for h in range(factor):
+                        for h in range(factor):
 
-                        # Insert the action
-                        self.iline.insert(i, action)
+                            # Insert the action
+                            self.iline.insert(i, action)
 
-                        # Insert the degree divided by factor
-                        self.iline.insert(i + 1, degree / factor)
+                            # Insert the degree divided by factor
+                            self.iline.insert(i + 1, degree / factor)
+                    elif self.iline[i][0].name == "arc":
+
+                        # Remove the number associated with the radius
+                        radius = self.iline.pop(i + 2)
+
+                        # Remove the number associated with the rotation
+                        degree = self.iline.pop(i + 1)
+
+                        # Remove the action
+                        action = self.iline.pop(i)
+
+                        for h in range(factor):
+                            # Insert the action
+                            self.iline.insert(i, action)
+
+                            # Insert the degree divided by factor
+                            self.iline.insert(i + 1, degree / factor)
+
+                            # Insert the radius
+                            self.iline.insert(i + 2, radius)
+
 
         while self.iline:
             token = self.iline[0]
