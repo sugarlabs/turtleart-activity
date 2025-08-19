@@ -22,7 +22,7 @@
 from gettext import gettext as _
 
 from gi.repository import Gtk
-from gi.repository import Gdk
+from gi.repository import Gdk,GdkPixbuf
 
 from sugar3.graphics.toolbutton import ToolButton
 from sugar3.graphics.icon import Icon
@@ -54,27 +54,179 @@ class HelpButton(Gtk.ToolItem):
         self._current_palette = name
 
     def __help_button_clicked_cb(self, button):
-        if self._activity.palette_toolbar_button.is_expanded():
-            if not (self._current_palette in help_windows):
-                _logger.debug('name %s not found' % (self._current_palette))
-                return
-            self._palette.set_content(help_windows[self._current_palette])
-            help_windows[self._current_palette].show_all()
-        elif self._activity.edit_toolbar_button.is_expanded():
-            self._palette.set_content(help_windows['edit-toolbar'])
-            help_windows['edit-toolbar'].show_all()
-        elif self._activity.view_toolbar_button.is_expanded():
-            self._palette.set_content(help_windows['view-toolbar'])
-            help_windows['view-toolbar'].show_all()
-        elif self._activity.activity_toolbar_button.is_expanded():
-            self._palette.set_content(help_windows['activity-toolbar'])
-            help_windows['activity-toolbar'].show_all()
-        else:
-            self._palette.set_content(help_windows['main-toolbar'])
-            help_windows['main-toolbar'].show_all()
+        win = TutorialWindows()
+        win.execute()
 
-        self._palette.popup(immediate=True)
+class TutorialWindows:
+    def __init__(self):
+        self.array=[]
 
+        # Current Index of the Window we are at
+        self.curr=0
+
+        #Add all the windows, with respective text
+
+
+        #Window 1
+        w1= TutorialWindow()
+        w1.description_label.set_text("If it isn't already in the view, add the start block "
+                                      "\n Then add the forward block and push start. "
+                                      "\n"
+                                      "\n Every block inside start is executed after we click the start block.")
+
+        w1.gif_path = "doggif.gif"
+        w1.anim = GdkPixbuf.PixbufAnimation.new_from_file(w1.gif_path)
+        w1.gif_image = Gtk.Image.new_from_animation(w1.anim)
+        w1.box_gif.pack_start(w1.gif_image, True, True, 0)
+
+        w1.left_arrow.destroy() # First Window doesn't have a left arrow
+        w1.right_arrow.connect("clicked", self.on_right_click)
+
+        self.array.append(w1)
+
+
+        #Window 2
+        w2 = TutorialWindow()
+        w2.description_label.set_text("Add the rotate block to make the turtle rotate by the angle specified."
+                                      "\nPut all the block we have, except start, inside the repeat block, which repeats the instructions."
+                                      "\ninside it a number of time specified by the number attached to it.")
+
+        w2.gif_path = "catgif.gif"
+        w2.anim = GdkPixbuf.PixbufAnimation.new_from_file(w2.gif_path)
+        w2.gif_image = Gtk.Image.new_from_animation(w2.anim)
+        w2.box_gif.pack_start(w2.gif_image, True, True, 0)
+
+        w2.left_arrow.connect("clicked", self.on_left_click)
+        w2.right_arrow.connect("clicked", self.on_right_click)
+
+
+        # Window 3
+        w3 = TutorialWindow()
+        w3.description_label.set_text("Before the repeat block we change the pen size with the block set pen size (default 30)."
+                                      "\nAfter that we put a clean button, which cleans the screen after being executed."
+                                      "\nFinally we use the block store in, to store the value 1 inside the box named my box_1.")
+
+        w3.gif_path = "catgif.gif"
+        w3.anim = GdkPixbuf.PixbufAnimation.new_from_file(w3.gif_path)
+        w3.gif_image = Gtk.Image.new_from_animation(w3.anim)
+        w3.box_gif.pack_start(w3.gif_image, True, True, 0)
+
+        w3.left_arrow.connect("clicked", self.on_left_click)
+        w3.right_arrow.connect("clicked", self.on_right_click)
+
+        self.array.append(w3)
+
+
+        # Window 4
+        w4 = TutorialWindow()
+        w4.description_label.set_text(
+            "Now instead of moving the turtle a fixed amount of time, we move it by has much as the value stored in my box_1."
+            "\nAt the end of each cycle we increase the value in my box_1, to do this we use the sum block."
+            "\nThis block sum the two value given, and when combined with the store in block, the result ends up in the my box_1."
+            "\nBy doing so we effectively increase the value stored in my box_1.")
+
+        w4.gif_path = "catgif.gif"
+        w4.anim = GdkPixbuf.PixbufAnimation.new_from_file(w4.gif_path)
+        w4.gif_image = Gtk.Image.new_from_animation(w4.anim)
+        w4.box_gif.pack_start(w4.gif_image, True, True, 0)
+
+        w4.left_arrow.connect("clicked", self.on_left_click)
+        w4.right_arrow.connect("clicked", self.on_right_click)
+
+        self.array.append(w4)
+
+
+        #Window n
+        wn = TutorialWindow()
+        wn.description_label.set_text(
+            "We reuse the sum block to dynamically change the color of the drawing based on the horizontal coordinate of the turtle (x value)."
+            "\nThe horizontal coordinates are taken using the xcor block, then we divide the value by 6, the result is given to set color."
+            "\nThe shade is chosen based on the heading of the turtle, taken using set_heading."
+            )
+
+        wn.gif_path = "catgif.gif"
+        wn.anim = GdkPixbuf.PixbufAnimation.new_from_file(wn.gif_path)
+        wn.gif_image = Gtk.Image.new_from_animation(wn.anim)
+        wn.box_gif.pack_start(wn.gif_image, True, True, 0)
+
+        wn.right_arrow.destroy()  # Last Window doesn't have a right arrow
+        wn.left_arrow.connect("clicked", self.on_left_click)
+
+        self.array.append(wn)
+
+    def on_right_click(self, button):
+
+        self.array[self.curr+1].show_all()
+        self.array[self.curr].hide()
+
+        # Increase curr by one
+        self.curr+=1
+
+    def on_left_click(self, button):
+        self.array[self.curr - 1].show_all()
+        self.array[self.curr].hide()
+
+        # Decrease curr by one
+        self.curr -= 1
+
+    #We start by showing this
+    def execute(self):
+        self.array[0].show_all()
+
+class TutorialWindow(Gtk.Window):
+    def __init__(self):
+        super().__init__(title="")
+
+        self.set_default_size(700, 700)
+        self.set_border_width(20)
+        self.move(300, 300)
+        self.set_position(Gtk.WindowPosition.NONE)
+
+        # Main vertical layout
+        self.vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
+        self.add(self.vbox)
+
+
+        self.box_gif=Gtk.Box()
+        self.box_gif.set_size_request(100,100)
+
+        self.gif_path = None
+        self.anim = None
+        self.gif_image = None
+
+        self.vbox.pack_start(self.box_gif, False, False, 0)
+
+        # Horizontal box for the buttons
+        self.button_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=20)
+
+        self.left_arrow = Gtk.Button()
+        self.left_arrow.add(Gtk.Arrow(Gtk.ArrowType.LEFT, Gtk.ShadowType.NONE))
+        self.button_box.pack_start(self.left_arrow,True,True,0)
+
+        self.replay_button = Gtk.Button(label="⟳")
+        self.replay_button.connect("clicked", self.on_replay_click)
+        self.button_box.pack_start(self.replay_button, True, True, 0)
+
+        self.right_arrow = Gtk.Button()
+        self.right_arrow.add(Gtk.Arrow(Gtk.ArrowType.RIGHT, Gtk.ShadowType.NONE))
+        self.button_box.pack_start(self.right_arrow, True, True, 0)
+
+        self.vbox.pack_start(self.button_box, False, False, 0)
+
+        # Centered label below the buttons
+        self.description_label = Gtk.Label(label="This will describe what's shown in the GIF.")
+        self.description_label.set_justify(Gtk.Justification.CENTER)
+        self.description_label.set_line_wrap(True)
+        self.vbox.pack_start(self.description_label, False, False, 10)
+
+    def on_replay_click(self, button):
+        self.gif_image.destroy()
+
+        self.anim = GdkPixbuf.PixbufAnimation.new_from_file(self.gif_path)
+        self.gif_image = Gtk.Image.new_from_animation(self.anim)
+        self.box_gif.pack_start(self.gif_image,True,True,0)
+
+        self.show_all()
 
 def add_section(help_box, section_text, icon=None):
     ''' Add a section to the help palette. From helpbutton.py by
