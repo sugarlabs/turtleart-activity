@@ -67,12 +67,12 @@ class TutorialWindows:
 
         # Add all the windows, with respective text
 
-        # Window 1
         w1 = TutorialWindow()
-        w1.description_label.set_text("If it isn't already in the view, add the start block "
-                                      "\n Then add the forward block and push start. "
-                                      "\n"
-                                      "\n Every block inside start is executed after we click the start block.")
+        w1.description_label.set_text(
+            "If it isn't already in the view, add the start block "
+            "\nThen add the forward block and push start. "
+            "\n"
+            "\nEvery block inside start is executed after we click the start block.")
 
         w1.gif_path = "GIF1.gif"
         w1.anim = GdkPixbuf.PixbufAnimation.new_from_file(w1.gif_path)
@@ -84,17 +84,17 @@ class TutorialWindows:
 
         self.array.append(w1)
 
-        # Window 2
         w2 = TutorialWindow()
-        w2.description_label.set_text("Add the rotate block to make the turtle rotate by the angle specified."
-                                      "\n"
-                                      "\nEvery block inside the repeat block, will be repeated a specified number of time"
-                                      "\n"
-                                      "\nAfter that we put a clean button, which cleans the screen after being executed."
-                                      "\n"
-                                      "\nThen we use the block store in, to store the value 1 inside the box named my box_1."
-                                      "\n"
-                                      "\nFinally we move the turtle by the value stored in the box my box_1")
+        w2.description_label.set_text(
+            "Add the rotate block to make the turtle rotate by the angle specified."
+            "\n"
+            "\nEvery block inside the repeat block, will be repeated a specified number of time"
+            "\n"
+            "\nAfter that we put a clean button, which cleans the screen after being executed."
+            "\n"
+            "\nThen we use the block store in, to store the value 1 inside the box named my box_1."
+            "\n"
+            "\nFinally we move the turtle by the value stored in the box my box_1")
 
         w2.gif_path = "GIF2.gif"
         w2.anim = GdkPixbuf.PixbufAnimation.new_from_file(w2.gif_path)
@@ -106,7 +106,6 @@ class TutorialWindows:
 
         self.array.append(w2)
 
-        # Window 3
         w3 = TutorialWindow()
         w3.description_label.set_text(
             "At the end of each cycle we increase the value in my box_1, to do this we use the sum block."
@@ -125,7 +124,7 @@ class TutorialWindows:
 
         self.array.append(w3)
 
-        # Window n
+        # Add window n, that is the last window in our tutorial
         wn = TutorialWindow()
         wn.description_label.set_text(
             "We reuse the sum block to dynamically change the color of the drawing based on the horizontal coordinate of the turtle (x value)."
