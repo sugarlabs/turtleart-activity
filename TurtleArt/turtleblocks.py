@@ -91,6 +91,7 @@ from TurtleArt.util.menubuilder import (
     make_checkmenu_item,
 )
 
+from TurtleArt.util.helpbutton import TutorialWindows
 
 class TurtleMain:
 
@@ -562,6 +563,7 @@ return %s(self)"
 
         menu = Gtk.Menu()
         make_menu_item(menu, _("About..."), self._do_about_cb)
+        make_menu_item(menu, _("Tutorial"), self._do_tutorial_cb)
         help_menu = make_sub_menu(menu, _("Help"))
 
         menu_bar = Gtk.MenuBar()
@@ -662,6 +664,10 @@ Would you like to save before quitting?"
             )
         elif resp is Gtk.ResponseType.CANCEL:
             cancel_plugin_install(tmp_dir)
+
+    def _do_tutorial_cb(self, widget):
+        win = TutorialWindows()
+        win.execute()
 
     def _do_new_cb(self, widget):
         """ Callback for new project. """
