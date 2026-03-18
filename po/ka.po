@@ -8,13 +8,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-09-28 10:49+1000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2026-03-18 06:28+0000\n"
+"Last-Translator: NF <rkavt@smartprojects.ge>\n"
+"Language-Team: Georgian <http://weblate.sugarlabs.org/projects/"
+"sugar-activities/turtleart/ka/>\n"
 "Language: ka\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.4.2\n"
 
 #: activity/activity.info:2
 msgid "TurtleBlocks"
@@ -1072,22 +1075,22 @@ msgstr ""
 #: TurtleArt/turtleblocks.py:518 TurtleArtActivity.py:798
 #: TurtleArtActivity.py:913 TurtleArtActivity.py:993
 msgid "View"
-msgstr ""
+msgstr "ხედი"
 
 #: TurtleArt/turtleblocks.py:521 TurtleArtActivity.py:820
 #: TurtleArtActivity.py:976
 msgid "Copy"
-msgstr ""
+msgstr "კოპირება"
 
 #: TurtleArt/turtleblocks.py:522 TurtleArtActivity.py:822
 #: TurtleArtActivity.py:977
 msgid "Paste"
-msgstr ""
+msgstr "ჩასმა"
 
 #: TurtleArt/turtleblocks.py:527 TurtleArtActivity.py:793
 #: TurtleArtActivity.py:912 TurtleArtActivity.py:975
 msgid "Edit"
-msgstr ""
+msgstr "ჩასწორება"
 
 #: TurtleArt/turtleblocks.py:530 TurtleArtActivity.py:505
 msgid "Show palette"
@@ -1127,7 +1130,7 @@ msgstr ""
 
 #: TurtleArt/turtleblocks.py:543 TurtleArtActivity.py:922
 msgid "Stop"
-msgstr ""
+msgstr "გაჩერება"
 
 #: TurtleArt/turtleblocks.py:544
 msgid "Turtle"
@@ -1144,7 +1147,7 @@ msgstr ""
 #: TurtleArt/turtleblocks.py:551 TurtleArt/util/helpbutton.py:45
 #: TurtleArtActivity.py:921
 msgid "Help"
-msgstr ""
+msgstr "დახმარება"
 
 #: TurtleArt/turtleblocks.py:609
 msgid "You have unsaved work. Would you like to save before quitting?"
@@ -2001,7 +2004,7 @@ msgstr ""
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:911
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:917
 msgid "index"
-msgstr ""
+msgstr "ინდექსი"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:912
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:922
