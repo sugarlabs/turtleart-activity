@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-09-28 10:49+1000\n"
-"PO-Revision-Date: 2026-05-04 07:03+0000\n"
+"PO-Revision-Date: 2026-05-04 09:56+0000\n"
 "Last-Translator: NF <rkavt@smartprojects.ge>\n"
 "Language-Team: Georgian <http://weblate.sugarlabs.org/projects/"
 "sugar-activities/turtleart/ka/>\n"
@@ -1444,7 +1444,7 @@ msgstr ""
 #: plugins/audio_sensors/audio_sensors.py:126
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:324
 msgid "pitch"
-msgstr ""
+msgstr "ტონი"
 
 #: plugins/audio_sensors/audio_sensors.py:127
 msgid "microphone input pitch"
@@ -1685,11 +1685,11 @@ msgstr "სინუსოიდა"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:325
 msgid "amplitude"
-msgstr ""
+msgstr "ამპლიტუდა"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:325
 msgid "duration"
-msgstr ""
+msgstr "ხანგრძლივობა"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:328
 msgid "plays a sinewave at frequency, amplitude, and duration (in seconds)"
@@ -1697,7 +1697,7 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:342
 msgid "sensor"
-msgstr ""
+msgstr "სენსორი"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:347
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:358
@@ -1738,7 +1738,7 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:401
 msgid "keyboard"
-msgstr ""
+msgstr "კლავიატურა"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:405
 msgid "holds results of query-keyboard block as ASCII"
@@ -1762,7 +1762,7 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:435
 msgid "time"
-msgstr ""
+msgstr "დრო"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:438
 msgid "elapsed time (in seconds) since program started"
