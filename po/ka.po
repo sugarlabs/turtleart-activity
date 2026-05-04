@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-09-28 10:49+1000\n"
-"PO-Revision-Date: 2026-04-01 08:11+0000\n"
+"PO-Revision-Date: 2026-05-04 07:03+0000\n"
 "Last-Translator: NF <rkavt@smartprojects.ge>\n"
 "Language-Team: Georgian <http://weblate.sugarlabs.org/projects/"
 "sugar-activities/turtleart/ka/>\n"
@@ -21,7 +21,7 @@ msgstr ""
 
 #: activity/activity.info:2
 msgid "TurtleBlocks"
-msgstr ""
+msgstr "TurtleBlocks"
 
 #: activity/activity.info:3
 msgid ""
@@ -771,7 +771,7 @@ msgstr ""
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:213
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:920
 msgid "text"
-msgstr ""
+msgstr "ტექსტი"
 
 #: TurtleArt/taconstants.py:473 TurtleArt/taconstants.py:494
 #: TurtleArt/taconstants.py:514 TurtleArt/taconstants.py:555
@@ -891,7 +891,7 @@ msgstr ""
 #: TurtleArt/tawindow.py:1514 TurtleArt/tawindow.py:1553
 #: gnome_plugins/uploader_plugin.py:142
 msgid "Cancel"
-msgstr ""
+msgstr "გაუქმება"
 
 #: TurtleArt/tawindow.py:1518 TurtleArt/tawindow.py:1528
 msgid "Overwrite stack"
@@ -984,7 +984,7 @@ msgstr ""
 
 #: TurtleArt/turtleblocks.py:471 TurtleArtActivity.py:1191
 msgid "Open"
-msgstr ""
+msgstr "გახნა"
 
 #: TurtleArt/turtleblocks.py:472 TurtleArtActivity.py:955
 #: TurtleArtActivity.py:1194
@@ -998,7 +998,7 @@ msgstr ""
 
 #: TurtleArt/turtleblocks.py:475 TurtleArtActivity.py:1136
 msgid "Save"
-msgstr ""
+msgstr "შენახვა"
 
 #: TurtleArt/turtleblocks.py:476
 msgid "Save as"
@@ -1112,17 +1112,17 @@ msgstr ""
 #: TurtleArt/turtleblocks.py:539 TurtleArtActivity.py:915
 #: TurtleArtActivity.py:1225
 msgid "Clean"
-msgstr ""
+msgstr "გასუფთავება"
 
 #: TurtleArt/turtleblocks.py:540 TurtleArtActivity.py:916
 #: TurtleArtActivity.py:1227
 msgid "Run"
-msgstr ""
+msgstr "გაშვება"
 
 #: TurtleArt/turtleblocks.py:541 TurtleArtActivity.py:917
 #: TurtleArtActivity.py:1229
 msgid "Step"
-msgstr ""
+msgstr "ნაბიჯი"
 
 #: TurtleArt/turtleblocks.py:542
 msgid "Debug"
@@ -1194,7 +1194,7 @@ msgstr ""
 
 #: TurtleArtActivity.py:443
 msgid "snapshot"
-msgstr ""
+msgstr "სწრაფი ასლი"
 
 #: TurtleArtActivity.py:488 TurtleArtActivity.py:852 TurtleArtActivity.py:1005
 msgid "Turn off hover help"
@@ -1227,11 +1227,11 @@ msgstr ""
 
 #: TurtleArtActivity.py:911 TurtleArtActivity.py:938
 msgid "Save/Load"
-msgstr ""
+msgstr "შენახვა/ჩატვირთვა"
 
 #: TurtleArtActivity.py:914
 msgid "Project"
-msgstr ""
+msgstr "პროექტი"
 
 #: TurtleArtActivity.py:939 TurtleArtActivity.py:1141
 msgid "Save as image"
@@ -1264,7 +1264,7 @@ msgstr ""
 
 #: TurtleArtActivity.py:1115
 msgid "Palettes"
-msgstr ""
+msgstr "პალიტრები"
 
 #: TurtleArtActivity.py:1131
 msgid "Sharing blocks disabled"
@@ -1276,27 +1276,27 @@ msgstr ""
 
 #: TurtleArtActivity.py:1174
 msgid "Load"
-msgstr ""
+msgstr "ჩატვირთვა"
 
 #: TurtleArtActivity.py:1220
 msgid "<Ctrl>p"
-msgstr ""
+msgstr "<Ctrl>p"
 
 #: TurtleArtActivity.py:1225
 msgid "<Ctrl>e"
-msgstr ""
+msgstr "<Ctrl>e"
 
 #: TurtleArtActivity.py:1227
 msgid "<Ctrl>r"
-msgstr ""
+msgstr "<Ctrl>r"
 
 #: TurtleArtActivity.py:1229
 msgid "<Ctrl>w"
-msgstr ""
+msgstr "<Ctrl>w"
 
 #: TurtleArtActivity.py:1232
 msgid "<Ctrl>s"
-msgstr ""
+msgstr "<Ctrl>s"
 
 #: TurtleArtActivity.py:1418
 #, python-format
@@ -1313,27 +1313,27 @@ msgstr ""
 
 #: gnome_plugins/collaboration_plugin.py:117
 msgid "Activities"
-msgstr ""
+msgstr "აქტივობები"
 
 #: gnome_plugins/collaboration_plugin.py:122
 msgid "Buddies"
-msgstr ""
+msgstr "მეგობრები"
 
 #: gnome_plugins/collaboration_plugin.py:125
 msgid "Share"
-msgstr ""
+msgstr "გაზიარება"
 
 #: gnome_plugins/collaboration_plugin.py:126
 msgid "Configuration"
-msgstr ""
+msgstr "მორგება"
 
 #: gnome_plugins/collaboration_plugin.py:129
 msgid "Neighborhood"
-msgstr ""
+msgstr "სამეზობლო"
 
 #: gnome_plugins/collaboration_plugin.py:290
 msgid "Nickname"
-msgstr ""
+msgstr "მეტსახელი"
 
 #: gnome_plugins/collaboration_plugin.py:292
 msgid "Account ID"
@@ -1341,29 +1341,29 @@ msgstr ""
 
 #: gnome_plugins/collaboration_plugin.py:294
 msgid "Server"
-msgstr ""
+msgstr "სერვერი"
 
 #: gnome_plugins/collaboration_plugin.py:296
 msgid "Port"
-msgstr ""
+msgstr "პორტი"
 
 #: gnome_plugins/collaboration_plugin.py:298
 msgid "Password"
-msgstr ""
+msgstr "პაროლი"
 
 #: gnome_plugins/collaboration_plugin.py:300
 msgid "Register"
-msgstr ""
+msgstr "რეგისტრაცია"
 
 #: gnome_plugins/collaboration_plugin.py:302
 msgid "Colors"
-msgstr ""
+msgstr "ფერები"
 
 #: gnome_plugins/fb_plugin.py:84 gnome_plugins/fb_plugin.py:85
 #: gnome_plugins/fb_plugin.py:94 gnome_plugins/uploader_plugin.py:61
 #: gnome_plugins/uploader_plugin.py:62 gnome_plugins/uploader_plugin.py:71
 msgid "Upload"
-msgstr ""
+msgstr "ატვირთვა"
 
 #: gnome_plugins/fb_plugin.py:90
 msgid "Facebook wall post"
@@ -1381,19 +1381,19 @@ msgstr ""
 
 #: gnome_plugins/uploader_plugin.py:97
 msgid "Username:"
-msgstr ""
+msgstr "მომხმარებლის სახელი:"
 
 #: gnome_plugins/uploader_plugin.py:107
 msgid "Password:"
-msgstr ""
+msgstr "პაროლი:"
 
 #: gnome_plugins/uploader_plugin.py:118
 msgid "Title:"
-msgstr ""
+msgstr "სათაური:"
 
 #: gnome_plugins/uploader_plugin.py:128
 msgid "Description:"
-msgstr ""
+msgstr "აღწერა:"
 
 #: gnome_plugins/uploader_plugin.py:138
 msgid "Submit to Web"
@@ -1511,7 +1511,7 @@ msgstr ""
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:76
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:79
 msgid "while"
-msgstr ""
+msgstr "სანამ"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:80
 msgid "do-while-True operator that uses boolean operators from Numbers palette"
@@ -1520,7 +1520,7 @@ msgstr ""
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:97
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:100
 msgid "until"
-msgstr ""
+msgstr "სანამ არ"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:101
 msgid "do-until-True operator that uses boolean operators from Numbers palette"
@@ -1530,7 +1530,7 @@ msgstr ""
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:853
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1070
 msgid "top"
-msgstr ""
+msgstr "ზედა"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:123
 msgid "top of a collapsible stack"
@@ -1538,11 +1538,11 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:135
 msgid "media"
-msgstr ""
+msgstr "მედია"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:141
 msgid "journal"
-msgstr ""
+msgstr "ჟურნალი"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:142
 msgid "Sugar Journal media object"
@@ -1550,7 +1550,7 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:153
 msgid "audio"
-msgstr ""
+msgstr "აუდიო"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:155
 msgid "Sugar Journal audio object"
@@ -1558,7 +1558,7 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:166
 msgid "video"
-msgstr ""
+msgstr "ვიდეო"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:168
 msgid "Sugar Journal video object"
@@ -1566,7 +1566,7 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:179
 msgid "description"
-msgstr ""
+msgstr "აღწერა"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:181
 msgid "Sugar Journal description field"
@@ -1578,7 +1578,7 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:197
 msgid "show"
-msgstr ""
+msgstr "ჩვენება"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:201
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:216
@@ -1628,7 +1628,7 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:273
 msgid "scale"
-msgstr ""
+msgstr "მასშტაბი"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:277
 msgid "holds current scale value"
@@ -1668,11 +1668,11 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:313
 msgid "speak"
-msgstr ""
+msgstr "წარმოთქმა"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:315
 msgid "hello"
-msgstr ""
+msgstr "გამარჯობა"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:316
 msgid "speaks text"
@@ -1681,7 +1681,7 @@ msgstr ""
 #. TRANS: pitch, duration, amplitude
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:324
 msgid "sinewave"
-msgstr ""
+msgstr "სინუსოიდა"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:325
 msgid "amplitude"
