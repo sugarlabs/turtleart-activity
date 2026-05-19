@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-09-28 10:49+1000\n"
-"PO-Revision-Date: 2026-05-19 07:09+0000\n"
+"PO-Revision-Date: 2026-05-19 12:28+0000\n"
 "Last-Translator: NF <rkavt@smartprojects.ge>\n"
 "Language-Team: Georgian <http://weblate.sugarlabs.org/projects/"
 "sugar-activities/turtleart/ka/>\n"
@@ -1107,7 +1107,7 @@ msgstr ""
 
 #: TurtleArt/turtleblocks.py:536
 msgid "Tools"
-msgstr ""
+msgstr "ხელსაწყოები"
 
 #: TurtleArt/turtleblocks.py:539 TurtleArtActivity.py:915
 #: TurtleArtActivity.py:1225
