@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-09-28 10:49+1000\n"
-"PO-Revision-Date: 2026-05-19 12:28+0000\n"
+"PO-Revision-Date: 2026-06-14 03:15+0000\n"
 "Last-Translator: NF <rkavt@smartprojects.ge>\n"
 "Language-Team: Georgian <http://weblate.sugarlabs.org/projects/"
 "sugar-activities/turtleart/ka/>\n"
@@ -47,13 +47,13 @@ msgstr ""
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:792
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:861
 msgid "turtle"
-msgstr ""
+msgstr "კუ"
 
 #: TurtleArt/tabasics.py:164
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:872
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:885
 msgid "forward"
-msgstr ""
+msgstr "წინ"
 
 #: TurtleArt/tabasics.py:168
 msgid "moves turtle forward"
@@ -1030,7 +1030,7 @@ msgstr ""
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:671
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:687
 msgid "Python"
-msgstr ""
+msgstr "Python"
 
 #: TurtleArt/turtleblocks.py:498
 msgid "Quit"
@@ -1829,7 +1829,7 @@ msgstr ""
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:561
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:575
 msgid "filename"
-msgstr ""
+msgstr "ფაილის სახელი"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:549
 msgid "saves FILO (first-in last-out heap) to a file"
@@ -1850,7 +1850,7 @@ msgstr ""
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:602
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:604
 msgid "comment"
-msgstr ""
+msgstr "კომენტარი"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:606
 msgid "places a comment in your code"
@@ -1858,7 +1858,7 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:613
 msgid "print"
-msgstr ""
+msgstr "ბეჭდვა"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:617
 msgid "prints value in status block at bottom of the screen"
@@ -1874,7 +1874,7 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:648
 msgid "polar"
-msgstr ""
+msgstr "პოლარული"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:650
 msgid "displays polar coordinates"
@@ -1900,7 +1900,7 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:701
 msgid "Cartesian"
-msgstr ""
+msgstr "დეკარტის"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:703
 msgid "displays Cartesian coordinates"
@@ -1921,7 +1921,7 @@ msgstr ""
 #. TRANS: URL is universal resource locator
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:765
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:768
 msgid "gets a text string or an image from a URL"
@@ -1989,7 +1989,7 @@ msgstr ""
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:882
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:896
 msgid "load"
-msgstr ""
+msgstr "ჩატვირთვა"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:873
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:886
