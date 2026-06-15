@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-09-28 10:49+1000\n"
-"PO-Revision-Date: 2026-06-15 03:03+0000\n"
+"PO-Revision-Date: 2026-06-15 04:31+0000\n"
 "Last-Translator: NF <rkavt@smartprojects.ge>\n"
 "Language-Team: Georgian <http://weblate.sugarlabs.org/projects/"
 "sugar-activities/turtleart/ka/>\n"
@@ -61,7 +61,7 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:177
 msgid "back"
-msgstr ""
+msgstr "უკან"
 
 #: TurtleArt/tabasics.py:181
 msgid "moves turtle backward"
@@ -69,7 +69,7 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:190
 msgid "clean"
-msgstr ""
+msgstr "გასუფთავება"
 
 #: TurtleArt/tabasics.py:193
 msgid "clears the screen and reset the turtle"
@@ -95,15 +95,15 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:239
 msgid "arc"
-msgstr ""
+msgstr "რკალი"
 
 #: TurtleArt/tabasics.py:239
 msgid "angle"
-msgstr ""
+msgstr "კუთხე"
 
 #: TurtleArt/tabasics.py:239
 msgid "radius"
-msgstr ""
+msgstr "რადიუსი"
 
 #: TurtleArt/tabasics.py:243
 msgid "moves turtle along an arc"
@@ -115,11 +115,11 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:255 TurtleArt/tabasics.py:334
 msgid "x"
-msgstr ""
+msgstr "x"
 
 #: TurtleArt/tabasics.py:255 TurtleArt/tabasics.py:334
 msgid "y"
-msgstr ""
+msgstr "y"
 
 #: TurtleArt/tabasics.py:259 TurtleArt/tabasics.py:338
 msgid ""
@@ -136,7 +136,7 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:285 TurtleArt/tawindow.py:4411
 msgid "xcor"
-msgstr ""
+msgstr "მიმდ. x"
 
 #: TurtleArt/tabasics.py:286
 msgid ""
@@ -146,7 +146,7 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:300 TurtleArt/tawindow.py:4412
 msgid "ycor"
-msgstr ""
+msgstr "მიმდ. y"
 
 #: TurtleArt/tabasics.py:301
 msgid ""
@@ -156,7 +156,7 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:315 TurtleArt/tawindow.py:4412
 msgid "heading"
-msgstr ""
+msgstr "მიმართულება"
 
 #: TurtleArt/tabasics.py:316
 msgid ""
@@ -170,7 +170,7 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:355
 msgid "pen"
-msgstr ""
+msgstr "კალამი"
 
 #: TurtleArt/tabasics.py:360 TurtleArt/tabasics.py:373
 msgid "fill screen"
@@ -179,13 +179,13 @@ msgstr ""
 #: TurtleArt/tabasics.py:360 TurtleArt/tabasics.py:373
 #: TurtleArt/tabasics.py:436 TurtleArt/tawindow.py:4442
 msgid "color"
-msgstr ""
+msgstr "ფერი"
 
 #: TurtleArt/tabasics.py:360 TurtleArt/tabasics.py:374
 #: TurtleArt/tabasics.py:448 TurtleArt/tawindow.py:4438
 #: TurtleArt/tawindow.py:4443
 msgid "shade"
-msgstr ""
+msgstr "დაჩრდილვა"
 
 #: TurtleArt/tabasics.py:364 TurtleArt/tabasics.py:378
 msgid "fills the background with (color, shade)"
@@ -194,7 +194,7 @@ msgstr ""
 #: TurtleArt/tabasics.py:374 TurtleArt/tabasics.py:462
 #: TurtleArt/tawindow.py:4439 TurtleArt/tawindow.py:4444
 msgid "gray"
-msgstr ""
+msgstr "ნაცრისფერი"
 
 #: TurtleArt/tabasics.py:391
 msgid "set color"
@@ -294,43 +294,43 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:556
 msgid "colors"
-msgstr ""
+msgstr "ფერები"
 
 #: TurtleArt/tabasics.py:561 TurtleArt/tabasics.py:570
 msgid "red"
-msgstr ""
+msgstr "წითელი"
 
 #: TurtleArt/tabasics.py:561
 msgid "orange"
-msgstr ""
+msgstr "ნარინჯისფერი"
 
 #: TurtleArt/tabasics.py:561
 msgid "yellow"
-msgstr ""
+msgstr "ყვითელი"
 
 #: TurtleArt/tabasics.py:562 TurtleArt/tabasics.py:570
 msgid "green"
-msgstr ""
+msgstr "მწვანე"
 
 #: TurtleArt/tabasics.py:562
 msgid "cyan"
-msgstr ""
+msgstr "მომწვანო-მოცისფრო"
 
 #: TurtleArt/tabasics.py:562 TurtleArt/tabasics.py:570
 msgid "blue"
-msgstr ""
+msgstr "ლურჯი"
 
 #: TurtleArt/tabasics.py:563
 msgid "purple"
-msgstr ""
+msgstr "იისფერი"
 
 #: TurtleArt/tabasics.py:563
 msgid "white"
-msgstr ""
+msgstr "თეთრი"
 
 #: TurtleArt/tabasics.py:563
 msgid "black"
-msgstr ""
+msgstr "შავი"
 
 #: TurtleArt/tabasics.py:569
 msgid ""
@@ -341,7 +341,7 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:572
 msgid "converter"
-msgstr ""
+msgstr "გადამყვანი"
 
 #: TurtleArt/tabasics.py:664
 msgid "Palette of numeric operators"
@@ -349,11 +349,11 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:665
 msgid "numbers"
-msgstr ""
+msgstr "რიცხვები"
 
 #: TurtleArt/tabasics.py:670
 msgid "plus"
-msgstr ""
+msgstr "პლუს"
 
 #: TurtleArt/tabasics.py:674
 msgid "adds two alphanumeric inputs"
@@ -361,7 +361,7 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:693
 msgid "minus"
-msgstr ""
+msgstr "მინუს"
 
 #: TurtleArt/tabasics.py:696
 msgid "subtracts bottom numeric input from top numeric input"
@@ -369,7 +369,7 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:714
 msgid "multiply"
-msgstr ""
+msgstr "გამრავლება"
 
 #: TurtleArt/tabasics.py:717
 msgid "multiplies two numeric inputs"
@@ -377,7 +377,7 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:733
 msgid "divide"
-msgstr ""
+msgstr "გაყოფა"
 
 #: TurtleArt/tabasics.py:736
 msgid ""
@@ -386,7 +386,7 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:753
 msgid "identity"
-msgstr ""
+msgstr "იდენტიფიკატორი"
 
 #: TurtleArt/tabasics.py:755
 msgid "identity operator used for extending blocks"
@@ -394,7 +394,7 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:781 TurtleArt/tabasics.py:782
 msgid "mod"
-msgstr ""
+msgstr "მოდული"
 
 #: TurtleArt/tabasics.py:785
 msgid "modular (remainder) operator"
@@ -402,7 +402,7 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:793
 msgid "√"
-msgstr ""
+msgstr "√"
 
 #: TurtleArt/tabasics.py:794
 msgid "square root"
@@ -414,15 +414,15 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:805
 msgid "random"
-msgstr ""
+msgstr "შემთხვევით"
 
 #: TurtleArt/tabasics.py:805
 msgid "min"
-msgstr ""
+msgstr "წთ"
 
 #: TurtleArt/tabasics.py:805
 msgid "max"
-msgstr ""
+msgstr "მაქს"
 
 #: TurtleArt/tabasics.py:809
 msgid "returns random number between minimum (top) and maximum (bottom) values"
@@ -430,7 +430,7 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:831
 msgid "number"
-msgstr ""
+msgstr "რიცხვი"
 
 #: TurtleArt/tabasics.py:832
 msgid "used as numeric input in mathematic operators"
@@ -454,7 +454,7 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:878
 msgid "equal"
-msgstr ""
+msgstr "უდრის"
 
 #: TurtleArt/tabasics.py:882
 msgid "logical equal-to operator"
@@ -462,7 +462,7 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:897
 msgid "not"
-msgstr ""
+msgstr "არ"
 
 #: TurtleArt/tabasics.py:900
 msgid "logical NOT operator"
@@ -470,7 +470,7 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:908 TurtleArt/tabasics.py:911
 msgid "and"
-msgstr ""
+msgstr "და"
 
 #: TurtleArt/tabasics.py:912
 msgid "logical AND operator"
@@ -478,7 +478,7 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:920 TurtleArt/tabasics.py:923
 msgid "or"
-msgstr ""
+msgstr "ან"
 
 #: TurtleArt/tabasics.py:924
 msgid "logical OR operator"
@@ -491,11 +491,11 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:936
 msgid "flow"
-msgstr ""
+msgstr "დინება"
 
 #: TurtleArt/tabasics.py:940
 msgid "wait"
-msgstr ""
+msgstr "მოთმენა"
 
 #: TurtleArt/tabasics.py:944
 msgid "pauses program execution a specified number of seconds"
@@ -503,7 +503,7 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:953
 msgid "forever"
-msgstr ""
+msgstr "სამუდამოდ"
 
 #: TurtleArt/tabasics.py:957
 msgid "loops forever"
@@ -511,7 +511,7 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:967 TurtleArt/tabasics.py:971
 msgid "repeat"
-msgstr ""
+msgstr "გამეორება"
 
 #: TurtleArt/tabasics.py:972
 msgid "loops specified number of times"
@@ -519,11 +519,11 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:985 TurtleArt/tabasics.py:1001
 msgid "if"
-msgstr ""
+msgstr "თუ"
 
 #: TurtleArt/tabasics.py:985 TurtleArt/tabasics.py:1001
 msgid "then"
-msgstr ""
+msgstr "მაშინ"
 
 #: TurtleArt/tabasics.py:988
 msgid "if then"
@@ -535,7 +535,7 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:1001
 msgid "else"
-msgstr ""
+msgstr "არადა"
 
 #: TurtleArt/tabasics.py:1005 TurtleArt/tabasics.py:1018
 msgid "if then else"
@@ -575,7 +575,7 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:1060
 msgid "blocks"
-msgstr ""
+msgstr "ბლოკები"
 
 #: TurtleArt/tabasics.py:1064
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:918
@@ -594,7 +594,7 @@ msgstr ""
 #: TurtleArt/tawindow.py:1439 TurtleArt/tawindow.py:2061
 #: TurtleArt/tawindow.py:4920
 msgid "action"
-msgstr ""
+msgstr "ქმედება"
 
 #: TurtleArt/tabasics.py:1084
 msgid "top of nameable action stack"
@@ -642,11 +642,11 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:1163 TurtleArt/tabasics.py:1179
 msgid "box"
-msgstr ""
+msgstr "ყუთი"
 
 #: TurtleArt/tabasics.py:1163 TurtleArt/tawindow.py:4978
 msgid "value"
-msgstr ""
+msgstr "მნიშვნელობა"
 
 #: TurtleArt/tabasics.py:1167 TurtleArt/tabasics.py:1182
 #: TurtleArt/tawindow.py:1323 TurtleArt/tawindow.py:1465
@@ -693,7 +693,7 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:1258
 msgid "return"
-msgstr ""
+msgstr "დაბრუნება"
 
 #: TurtleArt/tabasics.py:1261
 msgid "returns a value"
@@ -702,7 +702,7 @@ msgstr ""
 #: TurtleArt/tabasics.py:1272 TurtleArt/tabasics.py:1273
 #: TurtleArt/tapalette.py:145 TurtleArt/tapalette.py:146
 msgid "trash"
-msgstr ""
+msgstr "ნაგვის ყუთი"
 
 #: TurtleArt/tabasics.py:1277 TurtleArt/tawindow.py:1931
 msgid "empty trash"
@@ -735,33 +735,33 @@ msgstr ""
 
 #: TurtleArt/taconstants.py:150
 msgid "up"
-msgstr ""
+msgstr "მაღლა"
 
 #: TurtleArt/taconstants.py:152
 msgid "down"
-msgstr ""
+msgstr "დაბლა"
 
 #: TurtleArt/taconstants.py:153
 msgid "backspace"
-msgstr ""
+msgstr "backspace"
 
 #: TurtleArt/taconstants.py:154
 msgid "tab"
-msgstr ""
+msgstr "tab"
 
 #. TRANS: enter is the name of the enter (or return) key
 #: TurtleArt/taconstants.py:156
 msgid "enter"
-msgstr ""
+msgstr "enter"
 
 #. TRANS: space is the name of the space key
 #: TurtleArt/taconstants.py:159
 msgid "space"
-msgstr ""
+msgstr "ჰარე"
 
 #: TurtleArt/taconstants.py:160
 msgid "delete"
-msgstr ""
+msgstr "delete"
 
 #: TurtleArt/taconstants.py:452
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:190
@@ -777,11 +777,11 @@ msgstr "ტექსტი"
 #: TurtleArt/taconstants.py:514 TurtleArt/taconstants.py:555
 #: TurtleArt/taconstants.py:596 TurtleArt/taconstants.py:637
 msgid "Title"
-msgstr ""
+msgstr "სათაური"
 
 #: TurtleArt/taconstants.py:659
 msgid "banana"
-msgstr ""
+msgstr "ბანანი"
 
 #: TurtleArt/taexportpython.py:226
 msgid "block is not exportable"
@@ -844,15 +844,15 @@ msgstr ""
 
 #: TurtleArt/taprimitive.py:65
 msgid "error"
-msgstr ""
+msgstr "შეცდომა"
 
 #: TurtleArt/tautils.py:289
 msgid "Load..."
-msgstr ""
+msgstr "ჩატვირთვა..."
 
 #: TurtleArt/tautils.py:299
 msgid "Save..."
-msgstr ""
+msgstr "შენახვა..."
 
 #: TurtleArt/tautils.py:608
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:851
@@ -861,15 +861,15 @@ msgstr ""
 
 #: TurtleArt/tawindow.py:1150 TurtleArt/tawindow.py:1151
 msgid "orientation"
-msgstr ""
+msgstr "ორიენტაცია"
 
 #: TurtleArt/tawindow.py:1165 TurtleArt/tawindow.py:1622
 msgid "next"
-msgstr ""
+msgstr "შემდეგი"
 
 #: TurtleArt/tawindow.py:1204 TurtleArt/tawindow.py:1631
 msgid "shift"
-msgstr ""
+msgstr "წანაცვლება"
 
 #: TurtleArt/tawindow.py:1274
 msgid "Please hit the Stop Button before making changes to your program"
@@ -926,15 +926,15 @@ msgstr ""
 
 #: TurtleArt/tawindow.py:4512
 msgid "True"
-msgstr ""
+msgstr "ჭეშმარიტი"
 
 #: TurtleArt/tawindow.py:4512
 msgid "False"
-msgstr ""
+msgstr "ცრუ"
 
 #: TurtleArt/tawindow.py:4637 TurtleArt/turtleblocks.py:489
 msgid "icon"
-msgstr ""
+msgstr "ხატულა"
 
 #: TurtleArt/tawindow.py:4710
 #, python-format
@@ -943,7 +943,7 @@ msgstr ""
 
 #: TurtleArt/tawindow.py:4784 TurtleArt/turtleblocks.py:483
 msgid "image"
-msgstr ""
+msgstr "გამოსახულება"
 
 #: TurtleArt/textchannelwrapper.py:196
 msgid "Joining activity..."
@@ -1014,16 +1014,16 @@ msgstr ""
 
 #: TurtleArt/turtleblocks.py:487
 msgid "SVG"
-msgstr ""
+msgstr "SVG"
 
 #. TRANS: ODP is Open Office presentation
 #: TurtleArt/turtleblocks.py:492
 msgid "ODP"
-msgstr ""
+msgstr "ODP"
 
 #: TurtleArt/turtleblocks.py:494
 msgid "Logo"
-msgstr ""
+msgstr "ლოგო"
 
 #: TurtleArt/turtleblocks.py:496
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:656
@@ -1034,11 +1034,11 @@ msgstr "Python"
 
 #: TurtleArt/turtleblocks.py:498
 msgid "Quit"
-msgstr ""
+msgstr "გასვლა"
 
 #: TurtleArt/turtleblocks.py:499
 msgid "File"
-msgstr ""
+msgstr "ფაილი"
 
 #: TurtleArt/turtleblocks.py:502 TurtleArtActivity.py:835
 #: TurtleArtActivity.py:995
@@ -1126,7 +1126,7 @@ msgstr "ნაბიჯი"
 
 #: TurtleArt/turtleblocks.py:542
 msgid "Debug"
-msgstr ""
+msgstr "გამართვა"
 
 #: TurtleArt/turtleblocks.py:543 TurtleArtActivity.py:922
 msgid "Stop"
@@ -1134,15 +1134,15 @@ msgstr "გაჩერება"
 
 #: TurtleArt/turtleblocks.py:544
 msgid "Turtle"
-msgstr ""
+msgstr "კუ"
 
 #: TurtleArt/turtleblocks.py:547
 msgid "Plugins"
-msgstr ""
+msgstr "დამატებები"
 
 #: TurtleArt/turtleblocks.py:550
 msgid "About..."
-msgstr ""
+msgstr "შესახებ..."
 
 #: TurtleArt/turtleblocks.py:551 TurtleArt/util/helpbutton.py:45
 #: TurtleArtActivity.py:921
@@ -1169,7 +1169,7 @@ msgstr ""
 
 #: TurtleArt/turtleblocks.py:770
 msgid "myproject"
-msgstr ""
+msgstr "ჩემიპროექტი"
 
 #: TurtleArt/turtleblocks.py:856
 #, python-format
@@ -2187,7 +2187,7 @@ msgstr "დაკვრა"
 
 #: pysamples/grecord.py:211
 msgid "save"
-msgstr ""
+msgstr "შენახვა"
 
 #: pysamples/journal-stats.py:90
 msgid "other"
