@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-09-28 10:49+1000\n"
-"PO-Revision-Date: 2026-06-15 02:55+0000\n"
+"PO-Revision-Date: 2026-06-15 03:03+0000\n"
 "Last-Translator: NF <rkavt@smartprojects.ge>\n"
 "Language-Team: Georgian <http://weblate.sugarlabs.org/projects/"
 "sugar-activities/turtleart/ka/>\n"
@@ -1418,7 +1418,7 @@ msgstr ""
 #: plugins/accelerometer/accelerometer.py:56
 #: plugins/accelerometer/accelerometer.py:63
 msgid "acceleration"
-msgstr ""
+msgstr "აჩქარება"
 
 #: plugins/accelerometer/accelerometer.py:58
 #: plugins/accelerometer/accelerometer.py:65
@@ -1427,7 +1427,7 @@ msgstr ""
 
 #: plugins/audio_sensors/audio_sensors.py:93 pysamples/grecord.py:200
 msgid "sound"
-msgstr ""
+msgstr "ხმა"
 
 #: plugins/audio_sensors/audio_sensors.py:94
 msgid "raw microphone input signal"
@@ -1435,7 +1435,7 @@ msgstr ""
 
 #: plugins/audio_sensors/audio_sensors.py:100
 msgid "loudness"
-msgstr ""
+msgstr "ხმამაღალობა"
 
 #: plugins/audio_sensors/audio_sensors.py:101
 msgid "microphone input volume"
@@ -1453,7 +1453,7 @@ msgstr ""
 #: plugins/audio_sensors/audio_sensors.py:160
 #: plugins/audio_sensors/audio_sensors.py:178
 msgid "resistance"
-msgstr ""
+msgstr "წინაღობა"
 
 #: plugins/audio_sensors/audio_sensors.py:161
 #: plugins/audio_sensors/audio_sensors.py:179
@@ -1463,7 +1463,7 @@ msgstr ""
 #: plugins/audio_sensors/audio_sensors.py:166
 #: plugins/audio_sensors/audio_sensors.py:184
 msgid "voltage"
-msgstr ""
+msgstr "ძაბვა"
 
 #: plugins/audio_sensors/audio_sensors.py:167
 #: plugins/audio_sensors/audio_sensors.py:185
@@ -1502,7 +1502,7 @@ msgstr ""
 
 #: plugins/rfid/rfid.py:96 plugins/rfid/rfid.py:104
 msgid "RFID"
-msgstr ""
+msgstr "RFID"
 
 #: plugins/rfid/rfid.py:97 plugins/rfid/rfid.py:105
 msgid "read value from RFID device"
@@ -2156,12 +2156,12 @@ msgstr ""
 
 #: pysamples/brain.py:52
 msgid "Spanish"
-msgstr ""
+msgstr "ესპანური"
 
 #: pysamples/brain.py:56 pysamples/brain.py:69 pysamples/brain.py:71
 #: pysamples/brain.py:77
 msgid "English"
-msgstr ""
+msgstr "ინგლისური"
 
 #: pysamples/brain.py:88
 msgid "Sorry, I can't understand what you are asking about."
@@ -2179,11 +2179,11 @@ msgstr ""
 
 #: pysamples/grecord.py:207
 msgid "stop"
-msgstr ""
+msgstr "გაჩერება"
 
 #: pysamples/grecord.py:209
 msgid "play"
-msgstr ""
+msgstr "დაკვრა"
 
 #: pysamples/grecord.py:211
 msgid "save"
@@ -2191,11 +2191,11 @@ msgstr ""
 
 #: pysamples/journal-stats.py:90
 msgid "other"
-msgstr ""
+msgstr "სხვა"
 
 #: pysamples/uturn.py:35
 msgid "uturn"
-msgstr ""
+msgstr "მობრუნება 180 გრადუსით"
 
 #: pysamples/uturn.py:37
 msgid "turns the turtle 180 degrees"
