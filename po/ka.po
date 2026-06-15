@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-09-28 10:49+1000\n"
-"PO-Revision-Date: 2026-06-14 03:15+0000\n"
+"PO-Revision-Date: 2026-06-15 02:55+0000\n"
 "Last-Translator: NF <rkavt@smartprojects.ge>\n"
 "Language-Team: Georgian <http://weblate.sugarlabs.org/projects/"
 "sugar-activities/turtleart/ka/>\n"
@@ -78,7 +78,7 @@ msgstr ""
 #: TurtleArt/tabasics.py:211 TurtleArt/taconstants.py:149
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1026
 msgid "left"
-msgstr ""
+msgstr "მარცხენა"
 
 #: TurtleArt/tabasics.py:215
 msgid "turns turtle counterclockwise (angle in degrees)"
@@ -87,7 +87,7 @@ msgstr ""
 #: TurtleArt/tabasics.py:225 TurtleArt/taconstants.py:151
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1059
 msgid "right"
-msgstr ""
+msgstr "მარჯვენა"
 
 #: TurtleArt/tabasics.py:229
 msgid "turns turtle clockwise (angle in degrees)"
@@ -581,7 +581,7 @@ msgstr ""
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:918
 #: pysamples/grecord.py:205
 msgid "start"
-msgstr ""
+msgstr "დასაწყისი"
 
 #: TurtleArt/tabasics.py:1067
 msgid "connects action to toolbar run buttons"
@@ -1480,7 +1480,7 @@ msgstr ""
 #: plugins/light_sensor/light_sensor.py:58
 #: plugins/light_sensor/light_sensor.py:66
 msgid "brightness"
-msgstr ""
+msgstr "სიკაშკაშე"
 
 #: plugins/camera_sensor/camera_sensor.py:93
 msgid "light level detected by camera"
@@ -2013,11 +2013,11 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:917
 msgid "string"
-msgstr ""
+msgstr "სტრიქონი"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:918
 msgid "end"
-msgstr ""
+msgstr "დასასრული"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:935
 msgid "Palette of presentation templates"
@@ -2025,7 +2025,7 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:938
 msgid "portfolio"
-msgstr ""
+msgstr "პორტფოლიო"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:942
 msgid "hide blocks"
@@ -2049,7 +2049,7 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:972
 msgid "list"
-msgstr ""
+msgstr "ჩამონათვალი"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:976
 msgid "presentation bulleted list"
@@ -2082,7 +2082,7 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1037
 msgid "bottom"
-msgstr ""
+msgstr "ქვედა"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1040
 msgid "ycor of bottom of screen"
@@ -2090,7 +2090,7 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1048
 msgid "width"
-msgstr ""
+msgstr "სიგანე"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1051
 msgid "the canvas width"
@@ -2106,7 +2106,7 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1081
 msgid "height"
-msgstr ""
+msgstr "სიმაღლე"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1084
 msgid "the canvas height"
