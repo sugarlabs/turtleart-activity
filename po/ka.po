@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-09-28 10:49+1000\n"
-"PO-Revision-Date: 2026-06-15 04:31+0000\n"
+"PO-Revision-Date: 2026-06-15 05:10+0000\n"
 "Last-Translator: NF <rkavt@smartprojects.ge>\n"
 "Language-Team: Georgian <http://weblate.sugarlabs.org/projects/"
 "sugar-activities/turtleart/ka/>\n"
@@ -302,7 +302,7 @@ msgstr "წითელი"
 
 #: TurtleArt/tabasics.py:561
 msgid "orange"
-msgstr "ნარინჯისფერი"
+msgstr "ფორთოხალი"
 
 #: TurtleArt/tabasics.py:561
 msgid "yellow"
