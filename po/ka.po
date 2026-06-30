@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-09-28 10:49+1000\n"
-"PO-Revision-Date: 2026-06-30 00:37+0000\n"
+"PO-Revision-Date: 2026-06-30 01:08+0000\n"
 "Last-Translator: NF <rkavt@smartprojects.ge>\n"
 "Language-Team: Georgian <http://weblate.sugarlabs.org/projects/"
 "sugar-activities/turtleart/ka/>\n"
@@ -1401,7 +1401,7 @@ msgstr ""
 
 #: gnome_plugins/uploader_plugin.py:170
 msgid "Login failed"
-msgstr ""
+msgstr "შესვლა ჩავარდა"
 
 #: gnome_plugins/uploader_plugin.py:207
 msgid "Failed to upload!"
@@ -1574,7 +1574,7 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:193
 msgid "string value"
-msgstr ""
+msgstr "სტრიქონი მნიშვნელობა"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:197
 msgid "show"
@@ -1587,11 +1587,11 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:212
 msgid "show aligned"
-msgstr ""
+msgstr "სწორებულის ჩვენება"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:225
 msgid "set scale"
-msgstr ""
+msgstr "მასშტაბის დაყენება"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:229
 msgid "sets the scale of media"
@@ -1599,7 +1599,7 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:240
 msgid "set font"
-msgstr ""
+msgstr "ფონტის დაყენება"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:243
 msgid "sets the font used by the show block"
@@ -1607,12 +1607,12 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:250
 msgid "save picture"
-msgstr ""
+msgstr "სურათის შენახვა"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:252
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:263
 msgid "picture name"
-msgstr ""
+msgstr "სურათის სახელი"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:253
 msgid "saves a picture to the Sugar Journal"
@@ -1620,7 +1620,7 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:261
 msgid "save SVG"
-msgstr ""
+msgstr "SVG-ის შენახვა"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:264
 msgid "saves turtle graphics as an SVG file in the Sugar Journal"
