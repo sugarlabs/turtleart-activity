@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-09-28 10:49+1000\n"
-"PO-Revision-Date: 2026-06-23 06:42+0000\n"
+"PO-Revision-Date: 2026-06-30 00:37+0000\n"
 "Last-Translator: NF <rkavt@smartprojects.ge>\n"
 "Language-Team: Georgian <http://weblate.sugarlabs.org/projects/"
 "sugar-activities/turtleart/ka/>\n"
@@ -794,16 +794,16 @@ msgstr ""
 #: TurtleArt/talogo.py:430 TurtleArt/tawindow.py:1270 TurtleArtActivity.py:918
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1363
 msgid "Stop turtle"
-msgstr ""
+msgstr "კუს გაჩერება"
 
 #: TurtleArt/talogo.py:440 TurtleArtActivity.py:553 TurtleArtActivity.py:919
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1354
 msgid "Show blocks"
-msgstr ""
+msgstr "ბლოკების ჩვენება"
 
 #: TurtleArt/talogo.py:445 TurtleArtActivity.py:557 TurtleArtActivity.py:1231
 msgid "Hide blocks"
-msgstr ""
+msgstr "ბლოკების დამალვა"
 
 #: TurtleArt/talogo.py:603
 msgid "did not output to"
@@ -882,7 +882,7 @@ msgstr ""
 #: TurtleArt/tawindow.py:1510 TurtleArt/turtleblocks.py:523
 #: TurtleArtActivity.py:827 TurtleArtActivity.py:978
 msgid "Save stack"
-msgstr ""
+msgstr "ნაკრების შენახვა"
 
 #: TurtleArt/tawindow.py:1511 TurtleArt/tawindow.py:1525
 msgid "Really overwrite stack?"
@@ -901,7 +901,7 @@ msgstr ""
 #: TurtleArt/tawindow.py:1566 TurtleArt/turtleblocks.py:525
 #: TurtleArtActivity.py:829
 msgid "Delete stack"
-msgstr ""
+msgstr "ნაკრების წაშლა"
 
 #: TurtleArt/tawindow.py:1550 TurtleArt/tawindow.py:1563
 msgid "Really delete stack?"
@@ -989,12 +989,12 @@ msgstr "გახნა"
 #: TurtleArt/turtleblocks.py:472 TurtleArtActivity.py:955
 #: TurtleArtActivity.py:1194
 msgid "Add project"
-msgstr ""
+msgstr "პროექტის დამატება"
 
 #: TurtleArt/turtleblocks.py:473 TurtleArtActivity.py:958
 #: TurtleArtActivity.py:1199
 msgid "Load plugin"
-msgstr ""
+msgstr "დამატების ჩატვირთვა"
 
 #: TurtleArt/turtleblocks.py:475 TurtleArtActivity.py:1136
 msgid "Save"
@@ -1043,12 +1043,12 @@ msgstr "ფაილი"
 #: TurtleArt/turtleblocks.py:502 TurtleArtActivity.py:835
 #: TurtleArtActivity.py:995
 msgid "Cartesian coordinates"
-msgstr ""
+msgstr "დეკარტის კოორდინატები"
 
 #: TurtleArt/turtleblocks.py:504 TurtleArtActivity.py:837
 #: TurtleArtActivity.py:997
 msgid "Polar coordinates"
-msgstr ""
+msgstr "პოლარული კოორდინატები"
 
 #: TurtleArt/turtleblocks.py:507
 msgid "Rescale coordinates"
@@ -1057,12 +1057,12 @@ msgstr ""
 #: TurtleArt/turtleblocks.py:509 TurtleArtActivity.py:846
 #: TurtleArtActivity.py:1003
 msgid "Grow blocks"
-msgstr ""
+msgstr "ბლოკების გაზრდა"
 
 #: TurtleArt/turtleblocks.py:511 TurtleArtActivity.py:849
 #: TurtleArtActivity.py:1004
 msgid "Shrink blocks"
-msgstr ""
+msgstr "ბლოკების შემცირება"
 
 #: TurtleArt/turtleblocks.py:513
 msgid "Reset block size"
@@ -1094,12 +1094,12 @@ msgstr "ჩასწორება"
 
 #: TurtleArt/turtleblocks.py:530 TurtleArtActivity.py:505
 msgid "Show palette"
-msgstr ""
+msgstr "პალიტრის ჩვენება"
 
 #: TurtleArt/turtleblocks.py:532 TurtleArtActivity.py:511
 #: TurtleArtActivity.py:1219
 msgid "Hide palette"
-msgstr ""
+msgstr "პალიტრის დამალვა"
 
 #: TurtleArt/turtleblocks.py:534
 msgid "Show/hide blocks"
@@ -1178,11 +1178,11 @@ msgstr ""
 
 #: TurtleArtActivity.py:133
 msgid "Please wait"
-msgstr ""
+msgstr "მოითმინეთ"
 
 #: TurtleArtActivity.py:134
 msgid "Starting connection..."
-msgstr ""
+msgstr "კავშირის დასაწყისი..."
 
 #: TurtleArtActivity.py:308
 msgid "Export as python"
@@ -1219,11 +1219,11 @@ msgstr "სრულ ეკრანზე"
 
 #: TurtleArtActivity.py:840 TurtleArtActivity.py:999
 msgid "Metric coordinates"
-msgstr ""
+msgstr "მეტრული კოორდინატები"
 
 #: TurtleArtActivity.py:882 TurtleArtActivity.py:920 TurtleArtActivity.py:1185
 msgid "Load example"
-msgstr ""
+msgstr "მაგალითის ჩატვირთვა"
 
 #: TurtleArtActivity.py:911 TurtleArtActivity.py:938
 msgid "Save/Load"
@@ -1256,7 +1256,7 @@ msgstr ""
 
 #: TurtleArtActivity.py:954 TurtleArtActivity.py:1166
 msgid "Save snapshot"
-msgstr ""
+msgstr "სწრაფი ასლის შენახვა"
 
 #: TurtleArtActivity.py:959 TurtleArtActivity.py:1202
 msgid "Load Python block"
@@ -1309,7 +1309,7 @@ msgstr ""
 
 #: gnome_plugins/collaboration_plugin.py:112
 msgid "Enable collaboration"
-msgstr ""
+msgstr "კოლაბორაციის ჩართვა"
 
 #: gnome_plugins/collaboration_plugin.py:117
 msgid "Activities"
@@ -1337,7 +1337,7 @@ msgstr "მეტსახელი"
 
 #: gnome_plugins/collaboration_plugin.py:292
 msgid "Account ID"
-msgstr ""
+msgstr "ანგარიშის ID"
 
 #: gnome_plugins/collaboration_plugin.py:294
 msgid "Server"
