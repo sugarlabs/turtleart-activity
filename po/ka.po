@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-09-28 10:49+1000\n"
-"PO-Revision-Date: 2026-06-30 01:08+0000\n"
+"PO-Revision-Date: 2026-07-03 13:01+0000\n"
 "Last-Translator: NF <rkavt@smartprojects.ge>\n"
 "Language-Team: Georgian <http://weblate.sugarlabs.org/projects/"
 "sugar-activities/turtleart/ka/>\n"
@@ -1779,7 +1779,7 @@ msgstr "დამატებითები"
 #. TRANS: push adds a new item to the program stack
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:470
 msgid "push"
-msgstr ""
+msgstr "მიწოლა"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:473
 msgid "pushes value onto FILO (first-in last-out heap)"
@@ -1805,7 +1805,7 @@ msgstr ""
 #. stack
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:515
 msgid "pop"
-msgstr ""
+msgstr "მოწოლა"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:519
 msgid "pops value off FILO (first-in last-out heap)"
@@ -1999,7 +1999,7 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:899
 msgid "setxy"
-msgstr ""
+msgstr "კოორდინატები"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:911
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:917
