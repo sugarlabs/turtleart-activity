@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-09-28 10:49+1000\n"
-"PO-Revision-Date: 2026-07-03 13:01+0000\n"
+"PO-Revision-Date: 2026-07-27 21:01+0000\n"
 "Last-Translator: NF <rkavt@smartprojects.ge>\n"
 "Language-Team: Georgian <http://weblate.sugarlabs.org/projects/"
 "sugar-activities/turtleart/ka/>\n"
@@ -653,7 +653,7 @@ msgstr "მნიშვნელობა"
 #: TurtleArt/tawindow.py:2067 TurtleArt/tawindow.py:4945
 #: TurtleArt/tawindow.py:4970
 msgid "my box"
-msgstr ""
+msgstr "ჩემი ყუთი"
 
 #: TurtleArt/tabasics.py:1168 TurtleArt/tawindow.py:4983
 msgid "stores numeric value in named variable"
@@ -811,11 +811,11 @@ msgstr ""
 
 #: TurtleArt/talogo.py:644
 msgid "doesn't like"
-msgstr ""
+msgstr "არ მოსწონს"
 
 #: TurtleArt/talogo.py:645
 msgid "as input"
-msgstr ""
+msgstr "როგორც შეყვანა"
 
 #: TurtleArt/talogo.py:708
 msgid "I don't know how to"
@@ -959,7 +959,7 @@ msgstr ""
 
 #: TurtleArt/turtleblocks.py:109
 msgid "usage is"
-msgstr ""
+msgstr "გამოყენებაა"
 
 #: TurtleArt/turtleblocks.py:340
 msgid "No option action:"
@@ -1002,15 +1002,15 @@ msgstr "შენახვა"
 
 #: TurtleArt/turtleblocks.py:476
 msgid "Save as"
-msgstr ""
+msgstr "შენახვა, როგორც"
 
 #: TurtleArt/turtleblocks.py:480
 msgid "Export as"
-msgstr ""
+msgstr "გატანა, როგორც"
 
 #: TurtleArt/turtleblocks.py:485
 msgid "image (blocks)"
-msgstr ""
+msgstr "გამოსახულება (ბლოკები)"
 
 #: TurtleArt/turtleblocks.py:487
 msgid "SVG"
@@ -1052,7 +1052,7 @@ msgstr "პოლარული კოორდინატები"
 
 #: TurtleArt/turtleblocks.py:507
 msgid "Rescale coordinates"
-msgstr ""
+msgstr "კოორდინატების თავიდან მასშტაბი"
 
 #: TurtleArt/turtleblocks.py:509 TurtleArtActivity.py:846
 #: TurtleArtActivity.py:1003
@@ -1103,7 +1103,7 @@ msgstr "პალიტრის დამალვა"
 
 #: TurtleArt/turtleblocks.py:534
 msgid "Show/hide blocks"
-msgstr ""
+msgstr "ბლოკების ჩვენება/დამალვა"
 
 #: TurtleArt/turtleblocks.py:536
 msgid "Tools"
@@ -1155,7 +1155,7 @@ msgstr ""
 
 #: TurtleArt/turtleblocks.py:614
 msgid "Save project?"
-msgstr ""
+msgstr "შევინახო პროექტი?"
 
 #: TurtleArt/turtleblocks.py:624
 #, python-format
@@ -1489,7 +1489,7 @@ msgstr ""
 #: plugins/camera_sensor/camera_sensor.py:108
 #: plugins/camera_sensor/camera_sensor.py:116
 msgid "camera output"
-msgstr ""
+msgstr "კამერის გამონატანი"
 
 #: plugins/camera_sensor/camera_sensor.py:126
 msgid "Average RGB color from camera is pushed to the stack"
@@ -1636,7 +1636,7 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:284
 msgid "media wait"
-msgstr ""
+msgstr "მედიის მოცდა"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:286
 msgid "wait for current video or audio to complete"
@@ -1644,7 +1644,7 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:292
 msgid "media stop"
-msgstr ""
+msgstr "მედიის გაჩერება"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:294
 msgid "stop video or audio"
@@ -1652,7 +1652,7 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:299
 msgid "media pause"
-msgstr ""
+msgstr "მედიის შეჩერება"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:301
 msgid "pause video or audio"
@@ -1660,7 +1660,7 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:306
 msgid "media resume"
-msgstr ""
+msgstr "მედიის გაგრძელება"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:308
 msgid "resume playing video or audio"
@@ -1676,7 +1676,7 @@ msgstr "გამარჯობა"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:316
 msgid "speaks text"
-msgstr ""
+msgstr "წარმოთქვამს ტექსტს"
 
 #. TRANS: pitch, duration, amplitude
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:324
@@ -1702,7 +1702,7 @@ msgstr "სენსორი"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:347
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:358
 msgid "button down"
-msgstr ""
+msgstr "ღილაკი ქვემოთ"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:350
 msgid "returns 1 if mouse button is pressed"
@@ -1714,7 +1714,7 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:369
 msgid "mouse x"
-msgstr ""
+msgstr "თაგუნას x"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:372
 msgid "returns mouse x coordinate"
@@ -1722,7 +1722,7 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:380
 msgid "mouse y"
-msgstr ""
+msgstr "თაგუნას y"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:383
 msgid "returns mouse y coordinate"
@@ -1730,7 +1730,7 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:391
 msgid "query keyboard"
-msgstr ""
+msgstr "კლავიატურის მოთხოვნა"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:393
 msgid "query for keyboard input (results stored in keyboard block)"
@@ -1746,7 +1746,7 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:413
 msgid "read pixel"
-msgstr ""
+msgstr "პიქსელის წაკითხვა"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:416
 msgid "RGB color under the turtle is pushed to the stack"
@@ -1754,7 +1754,7 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:423
 msgid "turtle sees"
-msgstr ""
+msgstr "კუ ხედავს"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:426
 msgid "returns the color that the turtle \"sees\""
@@ -1787,7 +1787,7 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:485
 msgid "show heap"
-msgstr ""
+msgstr "გროვის ჩვენება"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:488
 msgid "shows values in FILO (first-in last-out heap)"
@@ -1795,7 +1795,7 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:500
 msgid "empty heap"
-msgstr ""
+msgstr "ცარიელი გროვა"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:503
 msgid "emptys FILO (first-in-last-out heap)"
@@ -1814,7 +1814,7 @@ msgstr ""
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:531
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:587
 msgid "empty heap?"
-msgstr ""
+msgstr "დაცარიელდეს გროვა?"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:534
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:590
@@ -1910,7 +1910,7 @@ msgstr ""
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:729
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:746
 msgid "Python block"
-msgstr ""
+msgstr "Python-ის ბლოკი"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:714
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:731
@@ -1930,7 +1930,7 @@ msgstr ""
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:777
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:787
 msgid "turtle shell"
-msgstr ""
+msgstr "კუს ბაკანი"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:779
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:788
@@ -1943,7 +1943,7 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:803
 msgid "turtle x"
-msgstr ""
+msgstr "კუს x"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:806
 msgid "Returns x coordinate of turtle"
@@ -1951,7 +1951,7 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:815
 msgid "turtle y"
-msgstr ""
+msgstr "კუს y"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:818
 msgid "Returns y coordinate of turtle"
@@ -1959,7 +1959,7 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:827
 msgid "active turtle"
-msgstr ""
+msgstr "აქტიური კუ"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:830
 msgid "the name of the active turtle"
@@ -1967,7 +1967,7 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:838
 msgid "turtle heading"
-msgstr ""
+msgstr "კუს მიმართულება"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:841
 msgid "Returns heading of turtle"
@@ -1979,7 +1979,7 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:859
 msgid "select palette"
-msgstr ""
+msgstr "აირჩიეთ პალიტრა"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:862
 msgid "selects a palette"
@@ -2029,7 +2029,7 @@ msgstr "პორტფოლიო"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:942
 msgid "hide blocks"
-msgstr ""
+msgstr "ბლოკების დამალვა"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:944
 msgid "declutters canvas by hiding blocks"
@@ -2037,7 +2037,7 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:951
 msgid "show blocks"
-msgstr ""
+msgstr "ბლოკების ჩვენება"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:953
 msgid "restores hidden blocks"
@@ -2114,27 +2114,27 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1094
 msgid "title x"
-msgstr ""
+msgstr "სათაურის x"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1106
 msgid "title y"
-msgstr ""
+msgstr "სათაურის y"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1118
 msgid "left x"
-msgstr ""
+msgstr "მარცხნივ x"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1130
 msgid "top y"
-msgstr ""
+msgstr "ზედის y"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1142
 msgid "right x"
-msgstr ""
+msgstr "მარჯვენის x"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1154
 msgid "bottom y"
-msgstr ""
+msgstr "ქვედის y"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1173
 msgid "Palette of user-defined operators"
@@ -2142,7 +2142,7 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1174
 msgid "my blocks"
-msgstr ""
+msgstr "ჩემი ბლოკები"
 
 #: pyexported/window_setup.py:35
 msgid ""
