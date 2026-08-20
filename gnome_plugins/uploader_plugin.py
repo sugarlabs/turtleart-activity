@@ -30,12 +30,14 @@ except ImportError as e:
     _UPLOAD_AVAILABLE = False
 
 import os
+from gettext import gettext as _
+
+import gi
+gi.require_version('Gtk', '4.0')
+from gi.repository import Gtk
 
 from .plugin import Plugin
 from TurtleArt.util.menubuilder import make_menu_item, make_sub_menu, MENUBAR
-
-from gettext import gettext as _
-from gi.repository import Gtk
 
 
 class Uploader_plugin(Plugin):
@@ -60,16 +62,22 @@ class Uploader_plugin(Plugin):
     def get_menu(self):
         if _('Upload') in MENUBAR:
             menu, upload_menu = MENUBAR[_('Upload')]
+            already_existed = True
         else:
             upload_menu = None
-            menu = Gtk.Menu()
-        make_menu_item(menu, _('Upload to Web'),
-                       self.do_upload_to_web)
-        if upload_menu is not None:
-            return None  # We don't have to add it since it already exists
-        else:
+            from gi.repository import Gio
+            menu = Gio.Menu()
+            already_existed = False
+            
+        if upload_menu is None:
             upload_menu = make_sub_menu(menu, _('Upload'))
-            return upload_menu
+            
+        make_menu_item(upload_menu, _('Upload to Web'),
+                       self.do_upload_to_web)
+                       
+        if already_existed:
+            return None
+        return menu
 
     def enabled(self):
         return _UPLOAD_AVAILABLE
@@ -78,83 +86,90 @@ class Uploader_plugin(Plugin):
         if self.uploading:
             return
 
-        self.uploading = False
+        self.uploading = True
         self.pop_up = Gtk.Window()
         self.pop_up.set_default_size(600, 400)
-        self.pop_up.connect('delete_event', self._stop_uploading)
-        table = Gtk.Table(8, 1, False)
-        self.pop_up.add(table)
+        self.pop_up.connect('close-request', self._stop_uploading)
+        grid = Gtk.Grid(row_spacing=6, column_spacing=10)
+        grid.set_margin_start(10)
+        grid.set_margin_end(10)
+        grid.set_margin_top(10)
+        grid.set_margin_bottom(10)
+        self.pop_up.set_child(grid)
 
         login_label = Gtk.Label(label=_('You must have an account at \
 http://turtleartsite.sugarlabs.org to upload your project.'))
-        table.attach(login_label, 0, 1, 0, 1)
+        grid.attach(login_label, 0, 0, 1, 1)
         self.login_message = Gtk.Label(label='')
-        table.attach(self.login_message, 0, 1, 1, 2)
+        grid.attach(self.login_message, 0, 1, 1, 1)
 
-        self.Hbox1 = Gtk.HBox()
-        table.attach(self.Hbox1, 0, 1, 2, 3, xpadding=5, ypadding=3)
+        self.Hbox1 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
+        grid.attach(self.Hbox1, 0, 2, 1, 1)
         self.username_entry = Gtk.Entry()
         username_label = Gtk.Label(label=_('Username:') + ' ')
         username_label.set_size_request(150, 25)
-        username_label.set_alignment(1.0, 0.5)
+        username_label.set_halign(Gtk.Align.END)
+        username_label.set_valign(Gtk.Align.CENTER)
         self.username_entry.set_size_request(450, 25)
-        self.Hbox1.add(username_label)
-        self.Hbox1.add(self.username_entry)
+        self.Hbox1.append(username_label)
+        self.Hbox1.append(self.username_entry)
 
-        self.Hbox2 = Gtk.HBox()
-        table.attach(self.Hbox2, 0, 1, 3, 4, xpadding=5, ypadding=3)
+        self.Hbox2 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
+        grid.attach(self.Hbox2, 0, 3, 1, 1)
         self.password_entry = Gtk.Entry()
         password_label = Gtk.Label(label=_('Password:') + ' ')
         self.password_entry.set_visibility(False)
         password_label.set_size_request(150, 25)
-        password_label.set_alignment(1.0, 0.5)
+        password_label.set_halign(Gtk.Align.END)
+        password_label.set_valign(Gtk.Align.CENTER)
         self.password_entry.set_size_request(450, 25)
-        self.Hbox2.add(password_label)
-        self.Hbox2.add(self.password_entry)
+        self.Hbox2.append(password_label)
+        self.Hbox2.append(self.password_entry)
 
-        self.Hbox3 = Gtk.HBox()
-        table.attach(self.Hbox3, 0, 1, 4, 5, xpadding=5, ypadding=3)
+        self.Hbox3 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
+        grid.attach(self.Hbox3, 0, 4, 1, 1)
         self.title_entry = Gtk.Entry()
         title_label = Gtk.Label(label=_('Title:') + ' ')
         title_label.set_size_request(150, 25)
-        title_label.set_alignment(1.0, 0.5)
+        title_label.set_halign(Gtk.Align.END)
+        title_label.set_valign(Gtk.Align.CENTER)
         self.title_entry.set_size_request(450, 25)
-        self.Hbox3.add(title_label)
-        self.Hbox3.add(self.title_entry)
+        self.Hbox3.append(title_label)
+        self.Hbox3.append(self.title_entry)
 
-        self.Hbox4 = Gtk.HBox()
-        table.attach(self.Hbox4, 0, 1, 5, 6, xpadding=5, ypadding=3)
+        self.Hbox4 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
+        grid.attach(self.Hbox4, 0, 5, 1, 1)
         self.description_entry = Gtk.TextView()
         description_label = Gtk.Label(label=_('Description:') + ' ')
         description_label.set_size_request(150, 25)
-        description_label.set_alignment(1.0, 0.5)
+        description_label.set_halign(Gtk.Align.END)
+        description_label.set_valign(Gtk.Align.CENTER)
         self.description_entry.set_wrap_mode(Gtk.WrapMode.WORD)
         self.description_entry.set_size_request(450, 50)
-        self.Hbox4.add(description_label)
-        self.Hbox4.add(self.description_entry)
+        self.Hbox4.append(description_label)
+        self.Hbox4.append(self.description_entry)
 
-        self.Hbox5 = Gtk.HBox()
-        table.attach(self.Hbox5, 0, 1, 6, 7, xpadding=5, ypadding=3)
-        self.submit_button = Gtk.Button(_('Submit to Web'))
+        self.Hbox5 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
+        grid.attach(self.Hbox5, 0, 6, 1, 1)
+        self.submit_button = Gtk.Button(label=_('Submit to Web'))
         self.submit_button.set_size_request(300, 25)
-        self.submit_button.connect('pressed', self._do_remote_logon)
-        self.Hbox5.add(self.submit_button)
-        self.cancel_button = Gtk.Button(_('Cancel'))
+        self.submit_button.connect('clicked', self._do_remote_logon)
+        self.Hbox5.append(self.submit_button)
+        self.cancel_button = Gtk.Button(label=_('Cancel'))
         self.cancel_button.set_size_request(300, 25)
-        self.cancel_button.connect('pressed', self._stop_uploading)
-        self.Hbox5.add(self.cancel_button)
+        self.cancel_button.connect('clicked', self._stop_uploading)
+        self.Hbox5.append(self.cancel_button)
 
-        self.pop_up.show_all()
+        self.pop_up.present()
 
-    def _stop_uploading(self, widget, event=None):
+    def _stop_uploading(self, widget=None, event=None):
         """ Hide the popup when the upload is complte """
         self.uploading = False
-        self.pop_up.hide()
+        self.pop_up.set_visible(False)
+        return False
 
     def _do_remote_logon(self, widget):
         """ Log into the upload server """
-        import socket
-
         username = self.username_entry.get_text()
         password = self.password_entry.get_text()
         server = xmlrpc.client.ServerProxy(
@@ -162,7 +177,7 @@ http://turtleartsite.sugarlabs.org to upload your project.'))
         logged_in = None
         try:
             logged_in = server.login_remote(username, password)
-        except socket.gaierror as e:
+        except Exception as e:
             print("Login failed %s" % e)
         if logged_in:
             upload_key = logged_in
@@ -174,17 +189,17 @@ http://turtleartsite.sugarlabs.org to upload your project.'))
         """ Submit project to the server """
         title = self.title_entry.get_text()
         description = self.description_entry.get_buffer().get_text(
-            *self.description_entry.get_buffer().get_bounds())
+            *self.description_entry.get_buffer().get_bounds(), True)
         tafile, imagefile = self.tw.save_for_upload(title)
 
         # Set a maximum file size for image to be uploaded.
         if int(os.path.getsize(imagefile)) > self._max_file_size:
-            import Image
+            from PIL import Image
             while int(os.path.getsize(imagefile)) > self._max_file_size:
-                big_file = Image.open(imagefile)
-                smaller_file = big_file.resize(int(0.9 * big_file.size[0]),
-                                               int(0.9 * big_file.size[1]),
-                                               Image.ANTIALIAS)
+                with Image.open(imagefile) as big_file:
+                    smaller_file = big_file.resize(
+                        (int(0.9 * big_file.size[0]), int(0.9 * big_file.size[1])),
+                        getattr(Image, 'Resampling', Image).LANCZOS)
                 smaller_file.save(imagefile, quality=100)
 
         c = pycurl.Curl()
@@ -201,22 +216,14 @@ http://turtleartsite.sugarlabs.org to upload your project.'))
                                                     'image_create')])
         c.perform()
         error_code = c.getinfo(c.HTTP_CODE)
-        c.close
+        c.close()
         os.remove(imagefile)
         os.remove(tafile)
         if error_code == 400:
             self.login_message.set_text(_('Failed to upload!'))
         else:
-            self.pop_up.hide()
+            self.pop_up.set_visible(False)
             self.uploading = False
 
 
-if __name__ == "__main__":
-    # TODO: create test data...
-    u = Uploader_plugin(None)
-    if u.enabled():
-        print("Uploader is enabled... trying to upload")
-        u.do_upload_to_web()
-        Gtk.main()
-    else:
-        print("Uploader is not enabled... exiting")
+

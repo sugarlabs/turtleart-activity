@@ -20,12 +20,12 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
+import io
 import cairo
 import os
 
 from math import pi
 
-from gi.repository import Gdk
 from gi.repository import Pango
 from gi.repository import PangoCairo
 from .tautils import get_path
@@ -164,13 +164,14 @@ class TurtleGraphics:
         '''Clear the canvas and reset most graphics attributes to defaults.'''
 
         def _clearscreen(cr):
-            cr.move_to(0, 0)
+            cr.save()
+            cr.set_operator(cairo.OPERATOR_SOURCE)
             self._bgrgb = DEFAULT_BACKGROUND_COLOR
             cr.set_source_rgb(self._bgrgb[0] / 255.,
                               self._bgrgb[1] / 255.,
                               self._bgrgb[2] / 255.)
-            cr.rectangle(0, 0, self.width * 2, self.height * 2)
-            cr.fill()
+            cr.paint()
+            cr.restore()
 
         _clearscreen(self.canvas)
         self.inval()
@@ -297,7 +298,14 @@ class TurtleGraphics:
             cc.translate(x + w / 2., y + h / 2.)
             cc.rotate(heading * DEGTOR)
             cc.translate(-x - w / 2., -y - h / 2.)
-            Gdk.cairo_set_source_pixbuf(cc, pixbuf, x, y)
+            success, png_data = pixbuf.save_to_bufferv("png", [], [])
+            if success:
+                img_surface = cairo.ImageSurface.create_from_png(io.BytesIO(png_data))
+                cc.set_source_surface(img_surface, x, y)
+            else:
+                print('tacanvas.draw_pixbuf: PNG conversion failed')
+                cc.restore()
+                return
             cc.rectangle(x, y, w, h)
             cc.fill()
             cc.restore()

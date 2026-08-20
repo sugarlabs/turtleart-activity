@@ -76,6 +76,7 @@ from time import *
 from random import uniform
 from math import *
 
+from gi.repository import GLib
 from pyexported.window_setup import *
 
 
@@ -96,7 +97,8 @@ if __name__ == '__main__':
     tw.lc.start_time = time()
     tw.lc.icall(start)
     GObject.idle_add(tw.lc.doevalstep)
-    Gtk.main()
+    loop = GLib.MainLoop()
+    loop.run()
 """
 _ACTION_STACK_START = """\
 def %s():

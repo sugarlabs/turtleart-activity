@@ -25,6 +25,7 @@
 import os
 import sys
 import subprocess
+import shutil
 import errno
 from gettext import gettext as _
 
@@ -32,11 +33,9 @@ import cairo
 import gi
 gi.require_version('PangoCairo', '1.0')
 
-from gi.repository import Gtk
-from gi.repository import Gdk
+from gi.repository import Gtk, Gdk, GObject
 from gi.repository import GLib
 from gi.repository import GdkPixbuf
-from gi.repository import Pango
 from gi.repository import PangoCairo
 
 _GST_AVAILABLE = False
@@ -140,7 +139,7 @@ global_objects = {}
 plugins_in_use = []
 
 
-class TurtleArtWindow():
+class TurtleArtWindow:
 
     ''' TurtleArt Window class abstraction  '''
 
@@ -170,12 +169,12 @@ class TurtleArtWindow():
             self.interactive_mode = True
             self.window = canvas_window
             self.window.set_can_focus(True)
-            self.window.show_all()
+            self.window.show()
             if running_sugar:
-                self.parent.show_all()
+                self.parent.show()
                 self.running_sugar = True
 
-                from sugar3 import profile
+                from sugar4 import profile
 
                 self.nick = profile.get_nick_name()
                 self.macros_path = os.path.join(
@@ -209,8 +208,10 @@ class TurtleArtWindow():
         self.save_file_name = None
 
         # dimensions
-        self.width = Gdk.Screen.width()
-        self.height = Gdk.Screen.height()
+        from TurtleArt.tautils import get_screen_dimensions
+        screen_width, screen_height = get_screen_dimensions()
+        self.width = screen_width
+        self.height = screen_height
         self.rect = Gdk.Rectangle()
 
         self.no_help = False
@@ -459,13 +460,13 @@ class TurtleArtWindow():
                         self.activity._plugin_menu,
                         plugin_dir,
                         self.activity._do_toggle_plugin_cb,
-                        status)
+                        status,
+                        plugin_dir)
             if status:
                 self.init_plugin(plugin_dir, plugin_path)
                 self.turtleart_favorites_plugins.append(plugin_dir)
         if not self.running_sugar:
-            if hasattr(self.activity, '_plugin_menu'):
-                self.activity._plugin_menu.show_all()
+            pass
 
     def init_plugin(self, plugin_dir, plugin_path):
         ''' Initialize plugin in plugin_dir '''
@@ -490,11 +491,11 @@ class TurtleArtWindow():
 
     def _add_plugin_icon_dir(self, dirname):
         ''' If there is an icon subdir, add it to the search path. '''
-        icon_theme = Gtk.IconTheme.get_default()
+        icon_theme = Gtk.IconTheme.get_for_display(Gdk.Display.get_default())
         icon_path = os.path.join(dirname, 'icons')
         if os.path.exists(icon_path):
             if icon_path not in self.icon_paths:
-                icon_theme.append_search_path(icon_path)
+                icon_theme.add_search_path(icon_path)
                 self.icon_paths.append(icon_path)
 
     def _get_plugin_instance(self, plugin_name):
@@ -577,23 +578,30 @@ class TurtleArtWindow():
 
     def _setup_events(self):
         ''' Register the events we listen to. '''
-        self.window.add_events(Gdk.EventMask.BUTTON_PRESS_MASK)
-        self.window.add_events(Gdk.EventMask.BUTTON_RELEASE_MASK)
-        self.window.add_events(Gdk.EventMask.POINTER_MOTION_MASK)
-        self.window.add_events(Gdk.EventMask.KEY_PRESS_MASK)
-        self.window.drag_dest_set(Gtk.DestDefaults.ALL, [],
-                                  Gdk.DragAction.COPY)
-        self.window.drag_dest_set_target_list(None)
-        self.window.drag_dest_add_text_targets()
-        self.window.connect('draw', self._draw_cb)
-        self.window.connect('button-press-event', self._buttonpress_cb)
-        self.window.connect('button-release-event', self._buttonrelease_cb)
-        self.window.connect('motion-notify-event', self._move_cb)
-        self.window.connect('key-press-event', self._keypress_cb)
-        self.window.connect('drag_data_received', self._drag_data_received)
+        self.click_ctrl = Gtk.GestureClick()
+        self.click_ctrl.connect("pressed", self._buttonpress_cb)
+        self.click_ctrl.connect("released", self._buttonrelease_cb)
+        self.window.add_controller(self.click_ctrl)
 
-        Gdk.Screen.get_default().connect('size-changed',
-                                         self._configure_cb)
+        self.motion_ctrl = Gtk.EventControllerMotion()
+        self.motion_ctrl.connect("motion", self._move_cb)
+        self.window.add_controller(self.motion_ctrl)
+
+        self.key_ctrl = Gtk.EventControllerKey()
+        self.key_ctrl.connect("key-pressed", self._keypress_cb)
+        self.window.add_controller(self.key_ctrl)
+
+        self.drop_target = Gtk.DropTarget.new(GObject.TYPE_STRING, Gdk.DragAction.COPY)
+        self.drop_target.connect("drop", self._drag_data_received)
+        self.window.add_controller(self.drop_target)
+
+        self.window.set_draw_func(self._draw_cb)
+
+        display = Gdk.Display.get_default()
+        if display:
+            monitors = display.get_monitors()
+            if monitors:
+                monitors.connect("items-changed", self._configure_cb)
 
     def _show_unfullscreen_button(self):
         if self.activity._is_fullscreen and \
@@ -617,25 +625,25 @@ class TurtleArtWindow():
         self.activity._unfullscreen_button_timeout_id = None
         return False
 
-    def _drag_data_received(self, w, context, x, y, data, info, time):
+    def _drag_data_received(self, drop_target, value, x, y):
         ''' Handle dragging of block data from clipboard to canvas. '''
-        debug_output(data.data, True)
-        if data and data.format == 8 and data.data[0:2] == '[[':
-            self.process_data(data_from_string(data.data),
+        debug_output(value, True)
+        if value and value[0:2] == '[[':
+            self.process_data(data_from_string(value),
                               self.paste_offset)
             self.paste_offset += PASTE_OFFSET
-            context.finish(True, False, time)
-        elif data and data.format == 8 and \
+            return True
+        elif value and \
                 self.selected_blk is not None and \
                 self.selected_blk.name == 'string':
             bounds = self._text_buffer.get_bounds()
             self._text_buffer.set_text(
                 self._text_buffer.get_text(
-                    bounds[0], bounds[1]) + data.data, True)
+                    bounds[0], bounds[1], True) + value)
             self._text_entry.set_buffer(self._text_buffer)
-            context.finish(True, False, time)
+            return True
         else:
-            context.finish(False, False, time)
+            return False
 
     def load_media_shapes(self):
         ''' Media shapes get positioned onto blocks '''
@@ -707,23 +715,27 @@ class TurtleArtWindow():
     def _create_scaled_cartesian_coordinates(self):
         # Cartesian overlay has to be scaled to match the coordinate_scale
         # 200 pixels in the graphic == height / 4. (10 units)
-        pixbuf = svg_str_to_pixbuf(
-            svg_from_file('%s/%s.svg' % (self.images_path, 'Cartesian')))
-
         if self.running_sugar:
             scale = self.height / 800.
         else:
             scale = self.height / 800.
             # scale = (self.height + ICON_SIZE) / 800.
-        self.overlay_shapes['Cartesian'] = Sprite(
-            self.sprite_list,
-            int(self.width / 2 - 600),
-            int(self.height / 2 - 450),
-            pixbuf.scale_simple(int(1200 * scale),
-                                int(900 * scale),
-                                GdkPixbuf.InterpType.BILINEAR))
-        self.overlay_shapes['Cartesian'].set_layer(TAB_LAYER)
-        self.overlay_shapes['Cartesian'].hide()
+            
+        for name in ['Cartesian', 'Cartesian_labeled']:
+            try:
+                pixbuf = svg_str_to_pixbuf(
+                    svg_from_file('%s/%s.svg' % (self.images_path, name)))
+                self.overlay_shapes[name] = Sprite(
+                    self.sprite_list,
+                    int(self.width / 2 - 600),
+                    int(self.height / 2 - 450),
+                    pixbuf.scale_simple(int(1200 * scale),
+                                        int(900 * scale),
+                                        GdkPixbuf.InterpType.BILINEAR))
+                self.overlay_shapes[name].set_layer(TAB_LAYER)
+                self.overlay_shapes[name].hide()
+            except Exception as e:
+                _logger.debug("Could not create overlay %s: %s" % (name, e))
 
     def set_sharing(self, shared):
         self._sharing = shared
@@ -761,22 +773,23 @@ class TurtleArtWindow():
                                                CONSTANTS[blk.name]))
                 blk.resize()
 
-    def _configure_cb(self, event):
+    def _configure_cb(self, *args):
         ''' Screen size has changed '''
-        self.width = Gdk.Screen.width()
-        self.height = Gdk.Screen.height()
+        from TurtleArt.tautils import get_screen_dimensions
+        self.width, self.height = get_screen_dimensions()
         self.recalculate_constants()
 
-        if event is None:
+        if len(args) > 0 and args[0] is None:
             return
 
         if self.running_sugar:
             self.activity.check_buttons_for_fit()
 
-    def _draw_cb(self, win, context):
+    def _draw_cb(self, area, context, width, height):
         ''' Repaint '''
         self.do_draw(context)
-        return True
+        if self.activity is not None and hasattr(self.activity, 'update_sensitivity'):
+            self.activity.update_sensitivity()
 
     def do_draw(self, cr):
         ''' Handle the expose-event by drawing '''
@@ -865,29 +878,51 @@ class TurtleArtWindow():
         if self.running_sugar:
             self.activity.fullscreen()
             self.activity.recenter()
-            self.activity.vbox.set_size_request(Gdk.Screen.width(),
-                                                Gdk.Screen.height())
+            from TurtleArt.tautils import get_screen_dimensions
+            screen_width, screen_height = get_screen_dimensions()
+            self.activity.vbox.set_size_request(screen_width, screen_height)
 
     def set_cartesian(self, flag):
         ''' Turn on/off Cartesian coordinates '''
-        if self.coord_scale == 1:
-            self.draw_overlay('Cartesian_labeled')
+        self.cartesian = flag
+        if flag:
+            if self.coord_scale == 1:
+                name = 'Cartesian_labeled'
+            else:
+                name = 'Cartesian'
+            if self.overlay_shapes.get(name):
+                self.overlay_shapes[name].set_layer(OVERLAY_LAYER)
         else:
-            self.draw_overlay('Cartesian')
-        return
+            if self.overlay_shapes.get('Cartesian'):
+                self.overlay_shapes['Cartesian'].hide()
+            if self.overlay_shapes.get('Cartesian_labeled'):
+                self.overlay_shapes['Cartesian_labeled'].hide()
+        self.inval_all()
 
     def get_coord_scale(self):
         return self.coord_scale
 
     def set_polar(self, flag):
         ''' Turn on/off polar coordinates '''
-        self.draw_overlay('polar')
-        return
+        self.polar = flag
+        if flag:
+            if self.overlay_shapes.get('polar'):
+                self.overlay_shapes['polar'].set_layer(OVERLAY_LAYER)
+        else:
+            if self.overlay_shapes.get('polar'):
+                self.overlay_shapes['polar'].hide()
+        self.inval_all()
 
     def set_metric(self, flag):
         ''' Turn on/off metric coordinates '''
-        self.draw_overlay('metric')
-        return
+        self.metric = flag
+        if flag:
+            if self.overlay_shapes.get('metric'):
+                self.overlay_shapes['metric'].set_layer(OVERLAY_LAYER)
+        else:
+            if self.overlay_shapes.get('metric'):
+                self.overlay_shapes['metric'].hide()
+        self.inval_all()
 
     def draw_overlay(self, overlay):
         ''' Draw a coordinate grid onto the canvas. '''
@@ -905,12 +940,14 @@ class TurtleArtWindow():
             width,
             height)
 
-    def update_overlay_position(self, widget=None, event=None):
+    def update_overlay_position(self, *args):
         ''' Reposition the overlays when window size changes '''
         # self.width = event.width
         # self.height = event.height
-        self.width = Gdk.Screen.width()
-        self.height = Gdk.Screen.height()
+        from TurtleArt.tautils import get_screen_dimensions
+        screen_width, screen_height = get_screen_dimensions()
+        self.width = screen_width
+        self.height = screen_height
 
         for name in OVERLAY_SHAPES:
             if name not in self.overlay_shapes:
@@ -965,7 +1002,7 @@ class TurtleArtWindow():
     def inval_all(self):
         ''' Force a refresh '''
         if self.interactive_mode:
-            self.window.queue_draw_area(0, 0, self.width, self.height)
+            self.window.queue_draw()
 
     def hideshow_palette(self, state):
         ''' Hide or show palette  '''
@@ -1050,10 +1087,11 @@ class TurtleArtWindow():
 
         # Resize text_entry widget
         if hasattr(self, '_text_entry') and len(blocks) > 0:
-            font_desc = Pango.FontDescription('Sans')
-            font_desc.set_size(
-                int(blocks[0].font_size[0] * Pango.SCALE * self.entry_scale))
-            self._text_entry.modify_font(font_desc)
+            font_size_pt = blocks[0].font_size[0] * self.entry_scale
+            if not hasattr(self, '_css_provider'):
+                self._css_provider = Gtk.CssProvider()
+                Gtk.StyleContext.add_provider_for_display(Gdk.Display.get_default(), self._css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
+            self._css_provider.load_from_data(f"#turtle-text-entry {{ font-family: Sans; font-size: {font_size_pt}pt; }}".encode('utf-8'))
 
     def _has_selectors(self):
         return not self.running_sugar
@@ -1235,15 +1273,23 @@ class TurtleArtWindow():
             if self._has_selectors():
                 self.selectors[palette].set_shape(0)
 
-    def _buttonpress_cb(self, win, event):
+    def _buttonpress_cb(self, gesture, n_press, x, y):
         ''' Button press '''
+        if getattr(self, '_focus_out_id', None) is not None:
+            self._text_focus_out_cb()
+            
         self.window.grab_focus()
-        x, y = xy(event)
         self.mouse_flag = 1
         self.mouse_x = x
         self.mouse_y = y
-        self.button_press(
-            event.get_state() & Gdk.ModifierType.CONTROL_MASK, x, y)
+        event = gesture.get_current_event()
+        if event:
+            state = event.get_modifier_state()
+            mask = state & Gdk.ModifierType.CONTROL_MASK
+        else:
+            mask = 0
+        self.button_press(mask, x, y)
+        gesture.set_state(Gtk.EventSequenceState.CLAIMED)
         return True
 
     def get_mouse_flag(self):
@@ -1365,15 +1411,15 @@ class TurtleArtWindow():
         ''' If we were copying and didn't click on a block... '''
         if self.copying_blocks or self.sharing_blocks or self.saving_blocks:
             if blk is None or blk.type != 'block':
-                self.parent.get_window().set_cursor(
-                    Gdk.Cursor.new(Gdk.CursorType.LEFT_PTR))
+                self.parent.set_cursor(
+                    Gdk.Cursor.new_from_name("default"))
                 self.copying_blocks = False
                 self.sharing_blocks = False
                 self.saving_blocks = False
         elif self.deleting_blocks:
             if blk is None or blk.type != 'proto':
-                self.parent.get_window().set_cursor(
-                    Gdk.Cursor.new(Gdk.CursorType.LEFT_PTR))
+                self.parent.set_cursor(
+                    Gdk.Cursor.new_from_name("default"))
                 self.deleting_blocks = False
         if blk is not None:
             if blk.type == 'block':
@@ -1387,8 +1433,8 @@ class TurtleArtWindow():
                             self.selected_palette == \
                             palette_names.index('myblocks'):
                         self._delete_stack_alert(blk)
-                    self.parent.get_window().set_cursor(
-                        Gdk.Cursor.new(Gdk.CursorType.LEFT_PTR))
+                    self.parent.set_cursor(
+                        Gdk.Cursor.new_from_name("default"))
                     self.deleting_blocks = False
                 elif blk.name == 'restoreall':
                     self._restore_all_from_trash()
@@ -1515,8 +1561,8 @@ class TurtleArtWindow():
 
     def _save_stack_alert(self, name, data, macro_path):
         if self.running_sugar:
-            from sugar3.graphics.alert import Alert
-            from sugar3.graphics.icon import Icon
+            from sugar4.graphics.alert import Alert
+            from sugar4.graphics.icon import Icon
 
             alert = Alert()
             alert.props.title = _('Save stack')
@@ -1535,13 +1581,17 @@ class TurtleArtWindow():
                           macro_path)
         else:
             msg = _('Really overwrite stack?')
-            dialog = Gtk.MessageDialog(self.parent, 0, Gtk.MessageType.WARNING,
-                                       Gtk.ButtonsType.OK_CANCEL, msg)
+            dialog = Gtk.MessageDialog(transient_for=self.parent, modal=True, message_type=Gtk.MessageType.WARNING,
+                                       buttons=Gtk.ButtonsType.OK_CANCEL, text=msg)
             dialog.set_title('%s %s' % (_('Overwrite stack'), name))
-            answer = dialog.run()
-            dialog.destroy()
-            if answer == Gtk.ResponseType.OK:
-                self._save_stack(data, macro_path)
+
+            def _on_response(dlg, response_id):
+                dlg.destroy()
+                if response_id == Gtk.ResponseType.OK:
+                    self._save_stack(data, macro_path)
+
+            dialog.connect('response', _on_response)
+            dialog.show()
 
     def _overwrite_stack_dialog_response_cb(self, alert, response_id,
                                             data, macro_path):
@@ -1554,8 +1604,8 @@ class TurtleArtWindow():
 
     def _delete_stack_alert(self, blk):
         if self.running_sugar:
-            from sugar3.graphics.alert import Alert
-            from sugar3.graphics.icon import Icon
+            from sugar4.graphics.alert import Alert
+            from sugar4.graphics.icon import Icon
 
             alert = Alert()
             alert.props.title = _('Delete stack')
@@ -1573,13 +1623,17 @@ class TurtleArtWindow():
                           blk)
         else:
             msg = _('Really delete stack?')
-            dialog = Gtk.MessageDialog(self.parent, 0, Gtk.MessageType.WARNING,
-                                       Gtk.ButtonsType.OK_CANCEL, msg)
+            dialog = Gtk.MessageDialog(transient_for=self.parent, modal=True, message_type=Gtk.MessageType.WARNING,
+                                       buttons=Gtk.ButtonsType.OK_CANCEL, text=msg)
             dialog.set_title('%s %s' % (_('Delete stack'), blk.spr.labels[0]))
-            answer = dialog.run()
-            dialog.destroy()
-            if answer == Gtk.ResponseType.OK:
-                self._delete_stack(blk)
+
+            def _on_response(dlg, response_id):
+                dlg.destroy()
+                if response_id == Gtk.ResponseType.OK:
+                    self._delete_stack(blk)
+
+            dialog.connect('response', _on_response)
+            dialog.show()
 
     def _delete_stack_dialog_response_cb(self, alert, response_id, blk):
         self.activity.remove_alert(alert)
@@ -1945,13 +1999,17 @@ class TurtleArtWindow():
         if self.running_sugar:
             self.activity.empty_trash_alert(title, msg)
         else:
-            dialog = Gtk.MessageDialog(None, 0, Gtk.MessageType.WARNING,
-                                       Gtk.ButtonsType.OK_CANCEL, msg)
+            dialog = Gtk.MessageDialog(transient_for=self.parent, modal=True, message_type=Gtk.MessageType.WARNING,
+                                       buttons=Gtk.ButtonsType.OK_CANCEL, text=msg)
             dialog.set_title(title)
-            res = dialog.run()
-            dialog.destroy()
-            if res == Gtk.ResponseType.OK:
-                self._empty_trash()
+
+            def _on_response(dlg, response_id):
+                dlg.destroy()
+                if response_id == Gtk.ResponseType.OK:
+                    self._empty_trash()
+
+            dialog.connect('response', _on_response)
+            dialog.show()
 
     def _empty_trash(self):
         remove_list = []
@@ -2025,17 +2083,17 @@ class TurtleArtWindow():
                                 self._save_stack(data, macro_path)
                             self.drag_group = None
                     elif self.copying_blocks:
-                        clipboard = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD)
+                        clipboard = Gdk.Display.get_default().get_clipboard()
                         text = data_to_string(data)
                         if text is not None:
-                            clipboard.set_text(text, -1)
+                            clipboard.set(text)
                     elif self.sharing():
                         text = data_to_string(data)
                         self.send_event('B', data_to_string([self.nick, text]))
             self.paste_offset = 20
 
-            self.parent.get_window().set_cursor(
-                Gdk.Cursor.new(Gdk.CursorType.LEFT_PTR))
+            self.parent.set_cursor(
+                Gdk.Cursor.new_from_name("default"))
             self.saving_blocks = False
 
             if self.running_sugar and self._sharing and \
@@ -2394,10 +2452,17 @@ class TurtleArtWindow():
         else:
             self.drag_turtle = ('move', x - tpos[0], y - tpos[1])
 
-    def _move_cb(self, win, event):
-        x, y = xy(event)
+    def _move_cb(self, controller, x, y):
         self.mouse_x = x
         self.mouse_y = y
+        event = controller.get_current_event()
+        if event:
+            state = event.get_modifier_state()
+            if state & Gdk.ModifierType.BUTTON1_MASK:
+                if self.mouse_flag == 0:
+                    self.mouse_flag = 1
+            else:
+                self.mouse_flag = 0
         self._mouse_move(x, y)
         return True
 
@@ -2542,10 +2607,7 @@ class TurtleArtWindow():
             self.rect.y = miny
             self.rect.width = maxx - minx
             self.rect.height = maxy - miny
-            self.window.queue_draw_area(self.rect.x,
-                                        self.rect.y,
-                                        self.rect.width,
-                                        self.rect.height)
+            self.window.queue_draw()
         self.dx += dx
         self.dy += dy
 
@@ -2606,15 +2668,15 @@ class TurtleArtWindow():
         self.last_label = label
         return 0
 
-    def _buttonrelease_cb(self, win, event):
+    def _buttonrelease_cb(self, gesture, n_press, x, y):
         ''' Button release '''
-        x, y = xy(event)
         self.mouse_flag = 0
         self.mouse_x = x
         self.mouse_y = y
         self.button_release(x, y)
         if self.turtle_movement_to_share is not None:
             self._share_mouse_move()
+        gesture.set_state(Gtk.EventSequenceState.CLAIMED)
         return True
 
     def button_release(self, x, y):
@@ -2756,12 +2818,14 @@ class TurtleArtWindow():
             self._saved_string = blk.spr.labels[0]
             if not hasattr(self, '_text_entry'):
                 self._text_entry = Gtk.TextView()
+                self._text_entry.set_name("turtle-text-entry")
                 self._text_entry.set_justification(Gtk.Justification.CENTER)
                 self._text_buffer = self._text_entry.get_buffer()
-                font_desc = Pango.FontDescription('Sans')
-                font_desc.set_size(
-                    int(blk.font_size[0] * Pango.SCALE * self.entry_scale))
-                self._text_entry.modify_font(font_desc)
+                font_size_pt = blk.font_size[0] * self.entry_scale
+                if not hasattr(self, '_css_provider'):
+                    self._css_provider = Gtk.CssProvider()
+                    Gtk.StyleContext.add_provider_for_display(Gdk.Display.get_default(), self._css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
+                self._css_provider.load_from_data(f"#turtle-text-entry {{ font-family: Sans; font-size: {font_size_pt}pt; }}".encode('utf-8'))
                 self.activity.fixed.put(self._text_entry, 0, 0)
             self._text_entry.show()
             w = blk.spr.label_safe_width()
@@ -2786,8 +2850,11 @@ class TurtleArtWindow():
             if blk.name == 'number':
                 self._insert_text_id = self._text_buffer.connect(
                     'insert-text', self._insert_text_cb)
-            self._focus_out_id = self._text_entry.connect(
-                'focus-out-event', self._text_focus_out_cb)
+            if not hasattr(self, '_focus_ctrl'):
+                self._focus_ctrl = Gtk.EventControllerFocus()
+                self._text_entry.add_controller(self._focus_ctrl)
+            self._focus_out_id = self._focus_ctrl.connect(
+                'leave', self._text_focus_out_cb)
             self._text_entry.grab_focus()
 
         elif blk.name in block_styles['box-style-media'] and \
@@ -3014,8 +3081,8 @@ class TurtleArtWindow():
             self.__run_stack(blk)
         else:
             self._hide_text_entry()
-            self.parent.get_window().set_cursor(
-                Gdk.Cursor.new(Gdk.CursorType.WATCH))
+            self.parent.set_cursor(
+                Gdk.Cursor.new_from_name("wait"))
             GLib.idle_add(self.__run_stack, blk)
 
     def __run_stack(self, blk):
@@ -3033,8 +3100,8 @@ class TurtleArtWindow():
         top = find_top_block(blk)
         code = self.lc.generate_code(top, self.just_blocks())
         if self.interactive_mode:
-            self.parent.get_window().set_cursor(
-                Gdk.Cursor.new(Gdk.CursorType.LEFT_PTR))
+            self.parent.set_cursor(
+                Gdk.Cursor.new_from_name("default"))
         self.lc.run_blocks(code)
         if self.interactive_mode:
             GLib.idle_add(self.lc.doevalstep)
@@ -3435,11 +3502,11 @@ class TurtleArtWindow():
         if self.running_sugar:
             chooser_dialog(self.parent, '', self._update_media_blk)
         else:
-            fname, self.load_save_folder = get_load_name('.*',
-                                                         self.load_save_folder)
-            if fname is None:
-                return
-            self._update_media_icon(blk, fname)
+            def _on_load_cb(fname, datapath):
+                self.load_save_folder = datapath
+                if fname is not None:
+                    self._update_media_icon(blk, fname)
+            get_load_name('.*', self.load_save_folder, callback=_on_load_cb, window=self.canvas)
 
     def _load_description_block(self, blk):
         ''' Look for a corresponding description block '''
@@ -3484,7 +3551,7 @@ class TurtleArtWindow():
         media_path = media
 
         if self.running_sugar:
-            from sugar3.datastore import datastore
+            from sugar4.datastore import datastore
             if isinstance(media, datastore.RawObject):
                 media_path = media.object_id
             elif isinstance(media, datastore.DSObject):
@@ -3513,16 +3580,16 @@ class TurtleArtWindow():
             blk.set_image(pixbuf, x, y)
             self._resize_skin(blk)
 
-    def _keypress_cb(self, area, event):
+    def _keypress_cb(self, controller, keyval, keycode, state):
         ''' Keyboard '''
-        keyname = Gdk.keyval_name(event.keyval)
-        keyunicode = Gdk.keyval_to_unicode(event.keyval)
-        if event.get_state() & Gdk.ModifierType.MOD1_MASK:
+        keyname = Gdk.keyval_name(keyval)
+        keyunicode = Gdk.keyval_to_unicode(keyval)
+        if state & Gdk.ModifierType.MOD1_MASK:
             alt_mask = True
         else:
             alt_mask = False
         self._key_press(alt_mask, keyname, keyunicode)
-        return keyname
+        return True
 
     def _key_press(self, alt_mask, keyname, keyunicode):
         if keyname is None:
@@ -3652,10 +3719,12 @@ class TurtleArtWindow():
             # Always exit fullscreen mode if applicable
             if self.running_sugar and self.activity.is_fullscreen:
                 self.activity.unfullscreen()
-                from sugar3.graphics.style import GRID_CELL_SIZE
+                from sugar4.graphics.style import GRID_CELL_SIZE
+                from TurtleArt.tautils import get_screen_dimensions
+                screen_width, screen_height = get_screen_dimensions()
                 self.activity.vbox.set_size_request(
-                    Gdk.Screen.width(),
-                    Gdk.Screen.height() - 2 * GRID_CELL_SIZE)
+                    screen_width,
+                    screen_height - 2 * GRID_CELL_SIZE)
         return True
 
     def _jog_turtle(self, dx, dy):
@@ -3716,10 +3785,10 @@ class TurtleArtWindow():
 
     def _hide_text_entry(self):
         if hasattr(self, '_text_entry'):
-            if self._focus_out_id is not None:
-                self._text_entry.disconnect(self._focus_out_id)
+            if getattr(self, '_focus_out_id', None) is not None and getattr(self, '_focus_ctrl', None) is not None:
+                self._focus_ctrl.disconnect(self._focus_out_id)
                 self._focus_out_id = None
-            if self._insert_text_id is not None:
+            if getattr(self, '_insert_text_id', None) is not None:
                 self._text_buffer.disconnect(self._insert_text_id)
                 self._insert_text_id = None
             self._text_entry.hide()
@@ -3765,7 +3834,7 @@ class TurtleArtWindow():
         except IndexError:
             self.selected_blk.values[0] = float(str(num))
 
-    def _text_focus_out_cb(self, widget=None, event=None):
+    def _text_focus_out_cb(self, controller=None):
         self._text_to_check = True
         self._unselect_block()
 
@@ -3796,90 +3865,101 @@ class TurtleArtWindow():
         self.selected_blk.values[0] = text.replace(RETURN, '\n')
         self._saved_string = self.selected_blk.values[0]
 
-    def load_python_code_from_file(self, fname=None, add_new_block=True):
+    def load_python_code_from_file(self, fname=None, add_new_block=True, callback=None):
         ''' Load Python code from a file '''
-        id = None
         self.python_code = None
-        if fname is None:
-            fname, self.py_load_save_folder = get_load_name(
-                '.py',
-                self.py_load_save_folder)
-        if fname is None:
-            return id
-        try:
-            f = open(fname, 'r')
-            self.python_code = f.read()
-            f.close()
-            id = fname
-        except IOError:
-            error_output('Unable to read Python code from %s' % (fname),
-                         self.running_sugar)
-            return id
 
-        # if we are running Sugar, copy the file into the Journal
-        if self.running_sugar:
-            if fname in self._py_cache:
-                id = self._py_cache[fname]
-            else:
-                from sugar3.datastore import datastore
-                from sugar3 import profile
+        def _on_load_cb(loaded_fname, datapath=None):
+            if datapath:
+                self.py_load_save_folder = datapath
+            if loaded_fname is None:
+                if callback: callback(None)
+                return None
 
-                dsobject = datastore.create()
-                dsobject.metadata['title'] = os.path.basename(fname)
-                dsobject.metadata['icon-color'] = \
-                    profile.get_color().to_string()
-                dsobject.metadata['mime_type'] = 'text/x-python'
-                dsobject.metadata['activity'] = 'org.laptop.Pippy'
-                dsobject.set_file_path(fname)
-                try:
-                    datastore.write(dsobject)
-                    id = dsobject.object_id
-                    debug_output('Copied %s to the datastore' % (fname),
-                                 self.running_sugar)
-                    # Don't copy the same file more than once
-                    self._py_cache[fname] = id
-                except IOError:
-                    error_output('Error copying %s to the datastore' % (fname),
-                                 self.running_sugar)
-                    id = None
-                dsobject.destroy()
+            id = None
+            try:
+                f = open(loaded_fname, 'r')
+                self.python_code = f.read()
+                f.close()
+                id = loaded_fname
+            except IOError:
+                error_output('Unable to read Python code from %s' % (loaded_fname),
+                             self.running_sugar)
+                if callback: callback(None)
+                return id
 
-            if add_new_block:
-                # add a new block for this code at turtle position
-                pos = self.turtles.get_active_turtle().get_xy()
-                self._new_block('userdefined', pos[0], pos[1])
-                self.myblock[self.block_list.list.index(self.drag_group[0])] =\
-                    self.python_code
-                self.set_userdefined(self.drag_group[0])
-                self.drag_group[0].values.append(id)
-                self.drag_group = None
-            # Save object ID in block value
-            if self.selected_blk is not None:
-                if len(self.selected_blk.values) == 0:
-                    self.selected_blk.values.append(id)
+            # if we are running Sugar, copy the file into the Journal
+            if self.running_sugar:
+                if loaded_fname in self._py_cache:
+                    id = self._py_cache[loaded_fname]
                 else:
-                    self.selected_blk.values[0] = id
-        else:
-            if len(self.selected_blk.values) == 0:
-                self.selected_blk.values.append(fname)
-            else:
-                self.selected_blk.values[0] = fname
+                    from sugar4.datastore import datastore
+                    from sugar4 import profile
 
-        return id
+                    dsobject = datastore.create()
+                    dsobject.metadata['title'] = os.path.basename(loaded_fname)
+                    dsobject.metadata['icon-color'] = \
+                        profile.get_color().to_string()
+                    dsobject.metadata['mime_type'] = 'text/x-python'
+                    dsobject.metadata['activity'] = 'org.laptop.Pippy'
+                    dsobject.set_file_path(loaded_fname)
+                    try:
+                        datastore.write(dsobject)
+                        id = dsobject.object_id
+                        debug_output('Copied %s to the datastore' % (loaded_fname),
+                                     self.running_sugar)
+                        self._py_cache[loaded_fname] = id
+                    except IOError:
+                        error_output('Error copying %s to the datastore' % (loaded_fname),
+                                     self.running_sugar)
+                        id = None
+                    dsobject.destroy()
+
+                if add_new_block:
+                    # add a new block for this code at turtle position
+                    pos = self.turtles.get_active_turtle().get_xy()
+                    self._new_block('userdefined', pos[0], pos[1])
+                    self.myblock[self.block_list.list.index(self.drag_group[0])] =\
+                        self.python_code
+                    self.set_userdefined(self.drag_group[0])
+                    self.drag_group[0].values.append(id)
+                    self.drag_group = None
+                # Save object ID in block value
+                if self.selected_blk is not None:
+                    if len(self.selected_blk.values) == 0:
+                        self.selected_blk.values.append(id)
+                    else:
+                        self.selected_blk.values[0] = id
+            else:
+                if self.selected_blk is not None:
+                    if len(self.selected_blk.values) == 0:
+                        self.selected_blk.values.append(loaded_fname)
+                    else:
+                        self.selected_blk.values[0] = loaded_fname
+
+            if callback:
+                callback(id)
+            return id
+
+        if fname is None:
+            get_load_name('.py', self.py_load_save_folder, callback=_on_load_cb, window=self.canvas)
+            return None
+        else:
+            return _on_load_cb(fname)
 
     def load_python_code_from_journal(self, dsobject, blk=None):
-        ''' Read the Python code from the Journal object '''
+        ''' Load Python code from a file '''
         self.python_code = None
         if dsobject is None:
             return
         try:
-            file_handle = open(dsobject.file_path, 'r')
-            self.python_code = file_handle.read()
-            file_handle.close()
+            f = open(dsobject.file_path, 'r')
+            self.python_code = f.read()
+            f.close()
         except IOError:
-            debug_output('Could not open %s' % dsobject.file_path,
+            error_output('Unable to read Python code from %s' % (dsobject.file_path),
                          self.running_sugar)
-        # Save the object id as the block value
+            return
         if blk is None:
             blk = self.selected_blk
         if blk is not None:
@@ -3890,16 +3970,19 @@ class TurtleArtWindow():
 
     def _import_py(self):
         ''' Import Python code into a block '''
-        if self.running_sugar:
-            chooser_dialog(self.parent, 'org.laptop.Pippy',
-                           self.load_python_code_from_journal)
-        else:
-            self.load_python_code_from_file(fname=None, add_new_block=False)
+        def _on_py_loaded(*args):
+            if self.selected_blk is not None:
+                self.myblock[self.block_list.list.index(self.selected_blk)] = \
+                    self.python_code
+                self.set_userdefined(self.selected_blk)
 
-        if self.selected_blk is not None:
-            self.myblock[self.block_list.list.index(self.selected_blk)] = \
-                self.python_code
-            self.set_userdefined(self.selected_blk)
+        if self.running_sugar:
+            def _on_journal_loaded(dsobj):
+                self.load_python_code_from_journal(dsobj)
+                _on_py_loaded()
+            chooser_dialog(self.parent, 'org.laptop.Pippy', _on_journal_loaded)
+        else:
+            self.load_python_code_from_file(fname=None, add_new_block=False, callback=_on_py_loaded)
 
     def new_project(self):
         ''' Start a new project '''
@@ -3939,18 +4022,19 @@ class TurtleArtWindow():
 
     def load_file_from_chooser(self, create_new_project=True):
         ''' Load a project from file chooser '''
-        file_name, self.load_save_folder = get_load_name(
-            '.t[a-b]',
-            self.load_save_folder)
-        if file_name is None:
-            return
-        if not file_name.endswith(SUFFIX):
-            file_name = file_name + SUFFIX[1]
-        self.load_files(file_name, create_new_project)
-        if create_new_project:
-            self.save_file_name = os.path.basename(file_name)
-        if self.running_sugar:
-            self.activity.metadata['title'] = os.path.split(file_name)[1]
+        def _on_load_cb(file_name, datapath):
+            self.load_save_folder = datapath
+            if file_name is None:
+                return
+            if not file_name.endswith(SUFFIX):
+                file_name = file_name + SUFFIX[1]
+            self.load_files(file_name, create_new_project)
+            if create_new_project:
+                self.save_file_name = os.path.basename(file_name)
+            if self.running_sugar:
+                self.activity.metadata['title'] = os.path.split(file_name)[1]
+
+        get_load_name('.t[a-b]', self.load_save_folder, callback=_on_load_cb, window=self.canvas)
 
     def _found_font_scale(self, blk):
         ''' '_saved_font_scale is a reserved name '''
@@ -3990,7 +4074,7 @@ class TurtleArtWindow():
     def load_block(self, b, offset=0):
         ''' Restore individual blocks from saved state '''
         if self.running_sugar:
-            from sugar3.datastore import datastore
+            from sugar4.datastore import datastore
 
         if b[1] == 0:
             return None
@@ -4279,53 +4363,60 @@ class TurtleArtWindow():
 
     def save_file(self, file_name=None):
         ''' Start a project to a file '''
+        def _on_save_cb(file_path, datapath):
+            if file_path is None:
+                return
+            self.load_save_folder = datapath
+            if not is_writeable(self.load_save_folder):
+                if self.running_sugar:  # Shouldn't occur in Sugar
+                    debug_output('Cannot write data to %s.' %
+                                 self.load_save_folder, self.running_sugar)
+                else:
+                    title = _('Cannot write data to %s.') % self.load_save_folder
+                    msg = _('Please choose a different save directory.')
+                    dlg = Gtk.MessageDialog(transient_for=self.parent, modal=True,
+                                            message_type=Gtk.MessageType.INFO,
+                                            buttons=Gtk.ButtonsType.OK_CANCEL,
+                                            text=title)
+                    dlg.props.secondary_text = msg
+                    dlg.set_title(title)
+                    dlg.set_property('skip-taskbar-hint', False)
+
+                    dlg.connect('response', lambda d, r: d.destroy())
+                    dlg.show()
+                return
+            if not file_path.endswith(SUFFIX):
+                file_path = file_path + SUFFIX[1]
+            if os.path.exists(file_path) and not is_writeable(file_path):
+                if self.running_sugar:  # Shouldn't occur in Sugar
+                    debug_output('Cannot write data to %s.' % file_path,
+                                 self.running_sugar)
+                else:
+                    title = _('Cannot write data to %s.') % file_path
+                    msg = _('Please choose a different file name.')
+                    dlg = Gtk.MessageDialog(transient_for=self.parent, modal=True,
+                                            message_type=Gtk.MessageType.INFO,
+                                            buttons=Gtk.ButtonsType.CANCEL,
+                                            text=title)
+                    dlg.props.secondary_text = msg
+                    dlg.set_title(title)
+                    dlg.set_property('skip-taskbar-hint', False)
+
+                    dlg.connect('response', lambda d, r: d.destroy())
+                    dlg.show()
+                return
+            data_to_file(self.assemble_data_to_save(), file_path)
+            self.save_file_name = os.path.basename(file_path)
+            if not self.running_sugar:
+                self.save_folder = self.load_save_folder
+
         if self.save_folder is not None:
             self.load_save_folder = self.save_folder
         if file_name is None:
-            file_name, self.load_save_folder = get_save_name(
-                '.t[a-b]', self.load_save_folder, self.save_file_name)
-        if not is_writeable(self.load_save_folder):
-            if self.running_sugar:  # Shouldn't occur in Sugar
-                debug_output('Cannot write data to %s.' %
-                             self.load_save_folder, self.running_sugar)
-            else:
-                title = _('Cannot write data to %s.') % self.load_save_folder
-                msg = _('Please choose a different save directory.')
-                dlg = Gtk.MessageDialog(parent=None, type=Gtk.MessageType.INFO,
-                                        buttons=Gtk.ButtonsType.OK_CANCEL,
-                                        message_format=title)
-                dlg.format_secondary_text(msg)
-                dlg.set_title(title)
-                dlg.set_property('skip-taskbar-hint', False)
-
-                dlg.run()
-                dlg.destroy()
-            return
-        if file_name is None:
-            return
-        if not file_name.endswith(SUFFIX):
-            file_name = file_name + SUFFIX[1]
-        if os.path.exists(file_name) and not is_writeable(file_name):
-            if self.running_sugar:  # Shouldn't occur in Sugar
-                debug_output('Cannot write data to %s.' % file_name,
-                             self.running_sugar)
-            else:
-                title = _('Cannot write data to %s.') % file_name
-                msg = _('Please choose a different file name.')
-                dlg = Gtk.MessageDialog(parent=None, type=Gtk.MessageType.INFO,
-                                        buttons=Gtk.ButtonsType.CANCEL,
-                                        message_format=title)
-                dlg.format_secondary_text(msg)
-                dlg.set_title(title)
-                dlg.set_property('skip-taskbar-hint', False)
-
-                dlg.run()
-                dlg.destroy()
-            return
-        data_to_file(self.assemble_data_to_save(), file_name)
-        self.save_file_name = os.path.basename(file_name)
-        if not self.running_sugar:
-            self.save_folder = self.load_save_folder
+            get_save_name('.t[a-b]', self.load_save_folder, self.save_file_name,
+                          callback=_on_save_cb, window=self.canvas)
+        else:
+            _on_save_cb(file_name, os.path.dirname(file_name) or self.load_save_folder)
 
     def assemble_data_to_save(self, save_turtle=True, save_project=True):
         ''' Pack the project (or stack) into a datastream to be serialized '''
@@ -4467,7 +4558,7 @@ class TurtleArtWindow():
                     not in media_blocks_dictionary):
                 try:
                     if self.running_sugar:
-                        from sugar3.datastore import datastore
+                        from sugar4.datastore import datastore
                         try:
                             dsobject = datastore.get(n.value)
                         except BaseException:
@@ -4498,7 +4589,7 @@ class TurtleArtWindow():
         '''dialog = Gtk.MessageDialog(None, 0, Gtk.MessageType.INFO,
             Gtk.ButtonsType.OK, "This is an INFO MessageDialog")
         dialog.run()
-        dialog.destroy()'''
+        dialog.close()'''
         if not self.interactive_mode:
             debug_output(label, self.running_sugar)
             return
@@ -4547,7 +4638,7 @@ class TurtleArtWindow():
                      self.height - offset_from_bottom + self.activity.sw.get_vadjustment().get_value()))
             elif self.interactive_mode:
                 self.status_spr.move(
-                    (0, self.activity.win.get_window().get_height() - 80))
+                    (0, self.activity.win.get_height() - 80))
 
     def calc_position(self, template):
         ''' Relative placement of portfolio objects (deprecated) '''
@@ -4578,8 +4669,8 @@ class TurtleArtWindow():
 
         path_list = []
         if self.running_sugar:
-            from sugar3.datastore import datastore
-            from sugar3 import profile
+            from sugar4.datastore import datastore
+            from sugar4 import profile
             for ds_id in self.saved_pictures:
                 dsobj = datastore.get(ds_id[0])
                 path_list.append(dsobj.file_path)
@@ -4611,18 +4702,22 @@ class TurtleArtWindow():
             dsobject.destroy()
             os.remove(TMP_ODP_PATH)
         else:
+            def _on_save_cb(file_path, datapath):
+                if file_path is None:
+                    return
+                self.load_save_folder = datapath
+                shutil.copy(TMP_ODP_PATH, file_path)
+
             if self.save_folder is not None:
                 self.load_save_folder = self.save_folder
-                name, self.load_save_folder = get_save_name(
-                    '.odp', self.load_save_folder, 'turtleblocks.odp')
-                datapath = self.load_save_folder
-            else:
-                datapath = os.getcwd()
-                if '.odp' not in name:
-                    name = name + '.odp'
-            if name is not None:
-                subprocess.check_output(
-                    ['cp', TMP_ODP_PATH, os.path.join(datapath, name)])
+                
+            if name is None:
+                name = 'turtleblocks.odp'
+            elif '.odp' not in name:
+                name = name + '.odp'
+                
+            get_save_name('.odp', self.load_save_folder, name,
+                          callback=_on_save_cb, window=self.canvas)
 
     def save_as_icon(self, name=''):
         from .util.sugariconify import SugarIconify
@@ -4643,8 +4738,8 @@ class TurtleArtWindow():
         sugarized_path = os.path.join(output_dir, basename[:-4] + '.sugar.svg')
 
         if self.running_sugar:
-            from sugar3.datastore import datastore
-            from sugar3 import profile
+            from sugar4.datastore import datastore
+            from sugar4 import profile
 
             dsobject = datastore.create()
             if len(name) == 0:
@@ -4662,21 +4757,26 @@ class TurtleArtWindow():
         else:
             if len(name) == 0:
                 name = 'turtleblocks-icon.svg'
+            elif '.svg' not in name:
+                name = name + '.svg'
+
+            def _on_save_cb(file_path, datapath):
+                if file_path is None:
+                    return
+                self.load_save_folder = datapath
+                shutil.copy(sugarized_path, file_path)
+
             if self.save_folder is not None:
                 self.load_save_folder = self.save_folder
-                name, self.load_save_folder = get_save_name(
-                    '.svg', self.load_save_folder, name)
-                datapath = self.load_save_folder
-            else:
-                datapath = os.getcwd()
-                if '.svg' not in name:
-                    name = name + '.svg'
-            subprocess.check_output(
-                ['cp', TMP_SVG_PATH, os.path.join(datapath, name)])
+                
+            get_save_name('.svg', self.load_save_folder, name,
+                          callback=_on_save_cb, window=self.canvas)
 
     def write_svg_operation(self):
         self.canvas.svg_close()
         self.canvas.svg_reset()
+        if self.activity is not None and hasattr(self.activity, 'update_sensitivity'):
+            self.activity.update_sensitivity()
 
     def _ensure_square_svg(self, path):
         from xml.dom import minidom
@@ -4688,8 +4788,10 @@ class TurtleArtWindow():
         svg_xml = minidom.parseString(svg_text)
         svg_element = svg_xml.getElementsByTagName('svg')[0]
 
-        width = int(svg_element.getAttribute('width')[:-2])
-        height = int(svg_element.getAttribute('height')[:-2])
+        w_str = svg_element.getAttribute('width').replace('pt', '').replace('px', '')
+        h_str = svg_element.getAttribute('height').replace('pt', '').replace('px', '')
+        width = int(float(w_str)) if w_str else 0
+        height = int(float(h_str)) if h_str else 0
         size = min(width, height)
 
         svg_element.setAttribute('width', str(size) + 'pt')
@@ -4727,8 +4829,8 @@ class TurtleArtWindow():
 
             surface.write_to_png(file_path)
 
-            from sugar3.datastore import datastore
-            from sugar3 import profile
+            from sugar4.datastore import datastore
+            from sugar4 import profile
 
             dsobject = datastore.create()
             dsobject.metadata['title'] = filename
@@ -4740,12 +4842,17 @@ class TurtleArtWindow():
         else:
             datapath = os.getcwd()
             filename = 'turtleblocks'
-            if self.save_folder is not None:
-                datapath = self.save_folder
-            filename, datapath = get_save_name('.png', datapath, filename)
-            file_path = os.path.join(datapath, filename)
 
-            surface.write_to_png(file_path)
+            def _on_save_cb(file_path, datapath_cb):
+                if file_path is None:
+                    return
+                self.load_save_folder = datapath_cb
+                surface.write_to_png(file_path)
+
+            if self.save_folder is not None:
+                self.load_save_folder = self.save_folder
+            get_save_name('.png', self.load_save_folder, filename,
+                          callback=_on_save_cb, window=self.canvas)
 
     def save_as_image(self, name='', svg=False):
         ''' Grab the current canvas and save it. '''
@@ -4759,39 +4866,45 @@ class TurtleArtWindow():
             save_picture(self.canvas, name[:-3] + suffix)
             return
 
+        def _on_save_cb(file_path, datapath_cb):
+            if file_path is None:
+                return
+            if datapath_cb is not None:
+                self.load_save_folder = datapath_cb
+            
+            if svg:
+                if self.canvas.cr_svg is None:
+                    return
+                self.canvas.svg_close()
+                self.canvas.svg_reset()
+                svg_path = self.canvas.get_svg_path()
+                shutil.copy(svg_path, file_path)
+            else:
+                save_picture(self.canvas, file_path)
+                
+            self.saved_pictures.append((file_path, svg))
+            if self.activity is not None and hasattr(self.activity, 'update_sensitivity'):
+                self.activity.update_sensitivity()
+
         if self.running_sugar:
             if len(name) == 0:
                 filename = 'turtleblocks' + suffix
             else:
                 filename = name + suffix
             datapath = get_path(self.activity, 'instance')
-        elif len(name) == 0:
-            name = 'turtleblocks' + suffix
-            if self.save_folder is not None:
-                self.load_save_folder = self.save_folder
-            filename, self.load_save_folder = get_save_name(
-                suffix, self.load_save_folder, name)
-            datapath = self.load_save_folder
-        else:
-            datapath = os.getcwd()
-            filename = name + suffix
+            
+            file_path = os.path.join(datapath, filename)
+            if svg:
+                if self.canvas.cr_svg is None:
+                    return
+                self.canvas.svg_close()
+                self.canvas.svg_reset()
+                svg_path = self.canvas.get_svg_path()
+            else:
+                save_picture(self.canvas, file_path)
 
-        if filename is None:
-            return
-
-        file_path = os.path.join(datapath, filename)
-        if svg:
-            if self.canvas.cr_svg is None:
-                return
-            self.canvas.svg_close()
-            self.canvas.svg_reset()
-            svg_path = self.canvas.get_svg_path()
-        else:
-            save_picture(self.canvas, file_path)
-
-        if self.running_sugar:
-            from sugar3.datastore import datastore
-            from sugar3 import profile
+            from sugar4.datastore import datastore
+            from sugar4 import profile
 
             dsobject = datastore.create()
             if len(name) == 0:
@@ -4813,11 +4926,20 @@ class TurtleArtWindow():
                 os.remove(svg_path)
             else:
                 os.remove(file_path)
+                
+            if self.activity is not None and hasattr(self.activity, 'update_sensitivity'):
+                self.activity.update_sensitivity()
+
+        elif len(name) == 0:
+            name = 'turtleblocks' + suffix
+            if self.save_folder is not None:
+                self.load_save_folder = self.save_folder
+            get_save_name(suffix, self.load_save_folder, name,
+                          callback=_on_save_cb, window=self.canvas)
         else:
-            if svg:
-                subprocess.check_output(
-                    ['cp', svg_path, os.path.join(datapath, filename)])
-            self.saved_pictures.append((file_path, svg))
+            filename = name + suffix
+            datapath = os.getcwd()
+            _on_save_cb(os.path.join(datapath, filename), datapath)
 
     def just_blocks(self):
         ''' Filter out 'proto', 'trash', and 'deleted' blocks '''

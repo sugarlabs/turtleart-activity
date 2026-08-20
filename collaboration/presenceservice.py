@@ -29,9 +29,9 @@ from dbus import PROPERTIES_IFACE
 
 # FIXME ...
 try:
-    from sugar3.presence.buddy import Buddy
-    from sugar3.presence.activity import Activity
-    from sugar3.presence.connectionmanager import get_connection_manager
+    from sugar4.presence.buddy import Buddy
+    from sugar4.presence.activity import Activity
+    from sugar4.presence.connectionmanager import get_connection_manager
 except ImportError:
     pass
 
@@ -44,7 +44,7 @@ CONNECTION = TelepathyGLib.IFACE_CONNECTION
 HANDLE_TYPE_CONTACT = TelepathyGLib.HandleType.CONTACT
 from gi.repository import GObject
 
-_logger = logging.getLogger('sugar3.presence.presenceservice')
+_logger = logging.getLogger('sugar4.presence.presenceservice')
 
 ACCOUNT_MANAGER_SERVICE = 'org.freedesktop.Telepathy.AccountManager'
 ACCOUNT_MANAGER_PATH = '/org/freedesktop/Telepathy/AccountManager'

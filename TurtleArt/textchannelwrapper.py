@@ -32,7 +32,7 @@ Using CollabWrapper
         self._entry.set_text(data.get('text'))
 2. Make a CollabWrapper instance::
     def __init__(self, handle):
-        sugar3.activity.activity.Activity.__init__(self, handle)
+        sugar4.activity.activity.Activity.__init__(self, handle)
         self._collab = CollabWrapper(self)
         self._collab.connect('message', self.__message_cb)
         # setup your activity here
@@ -80,9 +80,9 @@ CHANNEL_TEXT_MESSAGE_TYPE_NORMAL = TelepathyGLib.ChannelTextMessageType.NORMAL
 SOCKET_ADDRESS_TYPE_UNIX = TelepathyGLib.SocketAddressType.UNIX
 SOCKET_ACCESS_CONTROL_LOCALHOST = TelepathyGLib.SocketAccessControl.LOCALHOST
 
-from sugar3.presence import presenceservice
-from sugar3.activity.activity import SCOPE_PRIVATE
-from sugar3.graphics.alert import NotifyAlert
+from sugar4.presence import presenceservice
+from sugar4.activity.activity import SCOPE_PRIVATE
+from sugar4.graphics.alert import NotifyAlert
 
 import logging
 _logger = logging.getLogger('CollabWrapper')
@@ -115,15 +115,15 @@ class CollabWrapper(GObject.GObject):
     shared activity.  At least one will be emitted before the `joined`
     signal.  The caller will never be mentioned, but is assumed to be
     part of the set.  The signal passes a
-    :class:`sugar3.presence.buddy.Buddy` as the only argument.
+    :class:`sugar4.presence.buddy.Buddy` as the only argument.
     The `buddy_left` signal is emitted when another user leaves the
     shared activity.  The signal is not emitted during quit.  The signal
-    passes a :class:`sugar3.presence.buddy.Buddy` as the only argument.
+    passes a :class:`sugar4.presence.buddy.Buddy` as the only argument.
     Any buddy may call `post` to send a message to all buddies.  Each
     buddy will receive a `message` signal.
     The `message` signal is emitted when a `post` is received from any
     buddy.  The signal has two arguments.  The first is a
-    :class:`sugar3.presence.buddy.Buddy`. The second is the message.
+    :class:`sugar4.presence.buddy.Buddy`. The second is the message.
     Any buddy may call `send_file_memory` or `send_file_file` to
     transfer a file to all buddies.  A description is to be given.
     Each buddy will receive an `incoming_file` signal.
@@ -304,7 +304,7 @@ class CollabWrapper(GObject.GObject):
         buddy will get the file transfer and description through the
         `incoming_transfer` signal.
         Args:
-            buddy (sugar3.presence.buddy.Buddy), buddy to send to.
+            buddy (sugar4.presence.buddy.Buddy), buddy to send to.
             data (str), the data to send.
             description (object), a json encodable description for the
                 transfer.  This will be given to the
@@ -324,7 +324,7 @@ class CollabWrapper(GObject.GObject):
         given buddy.  The buddy will get the file transfer and
         description through the `incoming_transfer` signal.
         Args:
-            buddy (sugar3.presence.buddy.Buddy), buddy to send to.
+            buddy (sugar4.presence.buddy.Buddy), buddy to send to.
             path (str), path of the file containing the data to send.
             description (object), a json encodable description for the
                 transfer.  This will be given to the
@@ -399,7 +399,7 @@ class _BaseFileTransfer(GObject.GObject):
         file_size (str), size of the file being sent/received, in bytes
         description (str), metadata provided by the buddy
         mime_type (str), metadata provided by the buddy
-        buddy (:class:`sugar3.presence.buddy.Buddy`), other party
+        buddy (:class:`sugar4.presence.buddy.Buddy`), other party
             in the transfer
         reason_last_change (FT_REASON_*), reason for the last state change
     GObject Props:
@@ -595,7 +595,7 @@ class _BaseOutgoingTransfer(_BaseFileTransfer):
     requested by the application.  You also need to call `_create_channel`
     with the length of the file in bytes during your `__init__`.
     Args:
-        buddy (sugar3.presence.buddy.Buddy), who to send the transfer to
+        buddy (sugar4.presence.buddy.Buddy), who to send the transfer to
         conn (telepathy.client.conn.Connection), telepathy connection to
             use to send the transfer.  Eg. `shared_activity.telepathy_conn`
         filename (str), metadata sent to the receiver

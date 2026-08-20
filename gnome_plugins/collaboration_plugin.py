@@ -20,31 +20,26 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-import sys
-
-sys.path.append("..")
 import os.path
-
-import dbus
+import sys
+import traceback
 from gettext import gettext as _
 
-from .plugin import Plugin
+import dbus
+import gi
+gi.require_version('Gtk', '4.0')
+from gi.repository import GObject, Gtk
 
-from TurtleArt.util.menubuilder import make_menu_item, make_sub_menu
+from .plugin import Plugin
+from TurtleArt.tacollaboration import Collaboration
 from TurtleArt.util.configfile import ConfigFile
 from TurtleArt.util.configwizard import ConfigWizard
+from TurtleArt.util.menubuilder import MENUBAR, make_menu_item, make_sub_menu
 
-from collaboration.neighborhood import get_neighborhood
-from collaboration.connectionmanager import get_connection_manager
-from collaboration.activity import Activity
 from collaboration import telepathyclient
-
-from TurtleArt.tacollaboration import Collaboration
-
-import traceback
-
-from gi.repository import Gtk
-from gi.repository import GObject
+from collaboration.activity import Activity
+from collaboration.connectionmanager import get_connection_manager
+from collaboration.neighborhood import get_neighborhood
 
 CONNECTION_INTERFACE_ACTIVITY_PROPERTIES = \
     'org.laptop.Telepathy.ActivityProperties'
@@ -110,28 +105,31 @@ class Collaboration_plugin(Plugin):
         self._setup_config_file(self._parent.get_config_home())
 
     def get_menu(self):
-        menu = Gtk.Menu()
+        if _('Neighborhood') in MENUBAR:
+            menu, neighborhood_menu = MENUBAR[_('Neighborhood')]
+            already_existed = True
+        else:
+            neighborhood_menu = None
+            from gi.repository import Gio
+            menu = Gio.Menu()
+            already_existed = False
 
-        make_menu_item(menu, _('Enable collaboration'),
+        if neighborhood_menu is None:
+            neighborhood_menu = make_sub_menu(menu, _('Neighborhood'))
+
+        make_menu_item(neighborhood_menu, _('Enable collaboration'),
                        self._connect_cb)
 
-        self._activities_submenu = Gtk.Menu()
-        activities_menu = make_sub_menu(self._activities_submenu,
-                                        _('Activities'))
-        menu.append(activities_menu)
+        self._activities_submenu = make_sub_menu(neighborhood_menu, _('Activities'))
+        self._buddies_submenu = make_sub_menu(neighborhood_menu, _('Buddies'))
 
-        self._buddies_submenu = Gtk.Menu()
-        buddies_menu = make_sub_menu(self._buddies_submenu,
-                                     _('Buddies'))
-        menu.append(buddies_menu)
-
-        make_menu_item(menu, _('Share'), self._share_cb)
-        make_menu_item(menu, _('Configuration'),
+        make_menu_item(neighborhood_menu, _('Share'), self._share_cb)
+        make_menu_item(neighborhood_menu, _('Configuration'),
                        self._config_neighborhood_cb)
 
-        neighborhood_menu = make_sub_menu(menu, _('Neighborhood'))
-
-        return neighborhood_menu
+        if already_existed:
+            return None
+        return menu
 
     def send_xy(self):
         ''' Resync xy position (and orientation) of my turtle. '''
@@ -200,8 +198,8 @@ class Collaboration_plugin(Plugin):
     def _activity_removed_cb(self, model, activity_model):
         try:
             self._activities.pop(activity_model.props.name)
-        except BaseException:
-            print('Failed to remove activity %s' % activity_model.props.name)
+        except Exception as e:
+            print('Failed to remove activity %s: %s' % (activity_model.props.name, e))
 
         self._recreate_available_activities_menu()
 
@@ -212,8 +210,8 @@ class Collaboration_plugin(Plugin):
     def _buddy_removed_cb(self, activity, buddy):
         try:
             self._buddies.pop(buddy.get_key())
-        except BaseException:
-            print("Couldn't remove buddy %s" % buddy.get_key())
+        except Exception as e:
+            print("Couldn't remove buddy %s: %s" % (buddy.get_key(), e))
         self._recreate_available_buddies_menu()
 
     # TODO: we should have a list of available actions over
@@ -221,8 +219,7 @@ class Collaboration_plugin(Plugin):
     #       c) invite to current activity
     #
     def _recreate_available_buddies_menu(self):
-        for child in self._buddies_submenu.get_children():
-            self._buddies_submenu.remove(child)
+        self._buddies_submenu.remove_all()
 
         for buddy in list(self._buddies.values()):
             key = buddy.get_key()
@@ -238,8 +235,7 @@ class Collaboration_plugin(Plugin):
     # TODO:
     #     we need an extra menu branch with a) 'Join' button b) List of buddies
     def _recreate_available_activities_menu(self):
-        for child in self._activities_submenu.get_children():
-            self._activities_submenu.remove(child)
+        self._activities_submenu.remove_all()
 
         for activity in list(self._activities.values()):
             n = activity.props.name
@@ -271,7 +267,7 @@ class Collaboration_plugin(Plugin):
                 account_path, connection, room_handle, properties=properties)
             # FIXME: this should be unified, no need to keep 2 references
             self.shared_activity = self._joined_activity
-        except BaseException:
+        except Exception:
             traceback.print_exc(file=sys.stdout)
 
         if self._joined_activity.props.joined:
@@ -288,7 +284,11 @@ class Collaboration_plugin(Plugin):
     def _config_neighborhood_cb(self, widget):
         if not self._setup_has_been_called:
             return
-        config_w = ConfigWizard(self._config_file_path)
+        if hasattr(self.tw, 'window') and self.tw.window:
+            parent_win = self.tw.window.get_root()
+        else:
+            parent_win = None
+        config_w = ConfigWizard(self._config_file_path, parent_window=parent_win)
         config_items = [
             {'item_label': _('Nickname'), 'item_type': 'text',
              'item_name': 'nick'},
@@ -332,7 +332,7 @@ class Collaboration_plugin(Plugin):
                                                     properties=properties)
             # FIXME: this should be unified, no need to keep 2 references
             self.shared_activity = self._parent.shared_activity
-        except BaseException:
+        except Exception:
             traceback.print_exc(file=sys.stdout)
 
         if self._parent._shared_parent.props.joined:
@@ -350,6 +350,3 @@ class Collaboration_plugin(Plugin):
         """Notify with GObject event of unsuccessful sharing of activity"""
         print('%s got error: %s' % (activity, error))
 
-
-if __name__ == '__main__':
-    print('testing collaboration')

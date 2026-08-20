@@ -35,7 +35,7 @@ from gi.repository import GLib
 from gi.repository import GdkPixbuf
 
 try:
-    from sugar3.graphics import style
+    from sugar4.graphics import style
 
     GRID_CELL_SIZE = style.GRID_CELL_SIZE
 except ImportError:
@@ -1020,7 +1020,7 @@ class LogoCode:
         if self.tw.running_sugar:
             # Is the object a dsobject?
             if isinstance(obj, Media) and obj.value:
-                from sugar3.datastore import datastore
+                from sugar4.datastore import datastore
 
                 try:
                     dsobject = datastore.get(obj.value)
@@ -1047,18 +1047,21 @@ class LogoCode:
             elif user_path is not None and os.path.exists(user_path):
                 self.push_file_data_to_heap(None, path=user_path)
             else:
-                obj, self.tw.load_save_folder = get_load_name(
-                    ".*", self.tw.load_save_folder
+                def _on_load_cb(obj, datapath):
+                    if obj is not None:
+                        self.tw.load_save_folder = datapath
+                        self.push_file_data_to_heap(None, path=obj)
+
+                get_load_name(
+                    ".*", self.tw.load_save_folder, callback=_on_load_cb, window=self.tw.canvas
                 )
-                if obj is not None:
-                    self.push_file_data_to_heap(None, path=obj)
 
     def save_heap(self, obj):
         """ save FILO to file """
         if self.tw.running_sugar:
-            from sugar3 import profile
-            from sugar3.datastore import datastore
-            from sugar3.activity import activity
+            from sugar4 import profile
+            from sugar4.datastore import datastore
+            from sugar4.activity import activity
 
             # Save JSON-encoded heap to temporary file
             heap_file = os.path.join(get_path(activity, "instance"), "heap.txt")
@@ -1210,7 +1213,7 @@ class LogoCode:
         elif user_path is not None and os.path.exists(user_path):
             self.filepath = user_path
         elif self.tw.running_sugar:  # datastore object
-            from sugar3.datastore import datastore
+            from sugar4.datastore import datastore
 
             try:
                 self.dsobject = datastore.get(obj.value)
@@ -1342,7 +1345,7 @@ class LogoCode:
                     elif text_media_type(self.filepath):
                         mediatype = "text"
             elif self.tw.running_sugar:
-                from sugar3.datastore import datastore
+                from sugar4.datastore import datastore
 
                 try:
                     self.dsobject = datastore.get(obj.value)

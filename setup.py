@@ -175,7 +175,7 @@ if len(sys.argv) > 1 and '--no-sugar' == sys.argv[1]:
           cmdclass={"install": post_install}
           )
 else:
-    from sugar3.activity import bundlebuilder
+    from sugar4.activity import bundlebuilder
 
     if __name__ == "__main__":
         bundlebuilder.start()

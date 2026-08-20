@@ -22,8 +22,7 @@
 # THE SOFTWARE.
 
 # NOTE: This is a plugin to enable uploading of Turtle Art projects to
-# Facebook. It currently works for the GTK3 version of Turtle Blocks and
-# only from the GNOME desktop.
+# Facebook.
 # USAGE: Download this file into the gnome_plugin directory; make sure the
 # filename is fb_plugin.py (Mediawiki capitalizes the first letter of files).
 # When you launch TA from the GNOME desktop by running turtleblocks.py
@@ -31,20 +30,25 @@
 # project. Please report any problems to rgs and walter.
 
 
-import pycurl
+import os
 import urllib.parse
+from gettext import gettext as _
 
+import pycurl
+
+import gi
+gi.require_version('Gtk', '4.0')
 from gi.repository import Gtk
 
 try:
+    gi.require_version('WebKit', '6.0')
     from gi.repository import WebKit
     HAS_WEBKIT = True
-except BaseException:
-    pass
+except (ValueError, ImportError):
     HAS_WEBKIT = False
+
 from .plugin import Plugin
 from TurtleArt.util.menubuilder import make_menu_item, make_sub_menu, MENUBAR
-from gettext import gettext as _
 
 
 class FbUploader():
@@ -61,6 +65,7 @@ class FbUploader():
         c.setopt(c.HTTPPOST, self._get_params(c))
         c.perform()
         print(c.getinfo(c.HTTP_CODE))
+        c.close()
 
     def _get_url(self):
         return self.UPLOAD_URL % (self._access_token)
@@ -83,22 +88,27 @@ class Fb_plugin(Plugin):
     def get_menu(self):
         if _('Upload') in MENUBAR:
             menu, upload_menu = MENUBAR[_('Upload')]
+            already_existed = True
         else:
             upload_menu = None
-            menu = Gtk.Menu()
+            from gi.repository import Gio
+            menu = Gio.Menu()
+            already_existed = False
 
-        make_menu_item(menu, _('Facebook wall post'), self._post_menu_cb)
-        if upload_menu is not None:
-            return None  # We don't have to add it since it already exists
-        else:
+        if upload_menu is None:
             upload_menu = make_sub_menu(menu, _('Upload'))
-            return upload_menu
+
+        make_menu_item(upload_menu, _('Facebook wall post'), self._post_menu_cb)
+        
+        if already_existed:
+            return None
+        return menu
 
     def set_tw(self, turtleart_window):
         self.tw = turtleart_window
 
     def enabled(self):
-        return True
+        return HAS_WEBKIT
 
     def _post_menu_cb(self, widget):
 
@@ -114,19 +124,21 @@ class Fb_plugin(Plugin):
     def _grab_fb_app_token(self):
         url = self._get_auth_url()
         w = Gtk.Window()
+        if hasattr(self.tw, 'window') and self.tw.window:
+            w.set_transient_for(self.tw.window.get_root())
+        w.set_modal(True)
         sw = Gtk.ScrolledWindow()
         sw.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
-        sw.show()
-        w.move(200, 200)
-        w.set_size_request(800, 400)
+        w.set_default_size(800, 400)
+        
         wkv = WebKit.WebView()
         wkv.load_uri(url)
         wkv.grab_focus()
-        wkv.connect('navigation-policy-decision-requested',
-                    self._nav_policy_cb)
-        sw.add_with_viewport(wkv)
-        w.add(sw)
-        w.show_all()
+        wkv.connect('decide-policy', self._nav_policy_cb)
+        
+        sw.set_child(wkv)
+        w.set_child(sw)
+        w.present()
         self._auth_win = w
 
     def _get_auth_url(self):
@@ -137,17 +149,25 @@ class Fb_plugin(Plugin):
 
         return url
 
-    def _nav_policy_cb(self, view, frame, req, action, param):
-        uri = req.get_uri()
-        if uri:
-            url_o = urllib.parse.urlparse(uri)
-            params = urllib.parse.parse_qs(url_o.fragment)
-            if 'access_token' in params:
-                self._access_token = params['access_token'][0]
-                self._auth_win.hide()
-                self._post_to_fb()
+    def _nav_policy_cb(self, view, decision, decision_type):
+        if decision_type == WebKit.PolicyDecisionType.NAVIGATION_ACTION:
+            nav_action = decision.get_navigation_action()
+            req = nav_action.get_request()
+            uri = req.get_uri()
+            if uri:
+                url_o = urllib.parse.urlparse(uri)
+                params = urllib.parse.parse_qs(url_o.fragment)
+                if 'access_token' in params:
+                    self._access_token = params['access_token'][0]
+                    self._auth_win.set_visible(False)
+                    self._post_to_fb()
 
     def _post_to_fb(self):
         ta_file, image_file = self.tw.save_for_upload("ta fb")
         uploader = FbUploader(image_file, self._access_token)
         uploader.doit()
+        
+        if os.path.exists(image_file):
+            os.remove(image_file)
+        if os.path.exists(ta_file):
+            os.remove(ta_file)

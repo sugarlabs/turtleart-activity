@@ -20,11 +20,11 @@
 # THE SOFTWARE.
 
 import os
+import io
 import cairo
 import tempfile
 
 from gi.repository import GLib
-from gi.repository import Gdk
 from random import uniform
 from math import sin, cos, pi, sqrt
 from .taconstants import (TURTLE_LAYER, DEFAULT_TURTLE_COLORS, DEFAULT_TURTLE,
@@ -293,6 +293,20 @@ class Turtle:
             self._shapes = generate_turtle_pixbufs(self.colors)
             self.set_heading(self._heading, share=False)
 
+    def _update_shell_color(self):
+        ''' Update the turtle shell to match the pen color '''
+        if self._turtles.turtle_window.canvas is None:
+            return
+        rgb = self._turtles.turtle_window.canvas._fgrgb
+        r, g, b = int(rgb[0]), int(rgb[1]), int(rgb[2])
+        fill_color = '#%02x%02x%02x' % (r, g, b)
+        stroke_color = '#%02x%02x%02x' % (max(0, r - 50), max(0, g - 50),
+                                          max(0, b - 50))
+        has_last_color = hasattr(self, '_last_shell_color')
+        if not has_last_color or self._last_shell_color != fill_color:
+            self._last_shell_color = fill_color
+            self.set_turtle_colors([fill_color, stroke_color])
+
     def set_shapes(self, shapes, i=0):
         ''' Reskin the turtle '''
         n = len(shapes)
@@ -309,6 +323,16 @@ class Turtle:
                 images = []
                 w, h = shapes[0].get_width(), shapes[0].get_height()
                 nw = nh = int(sqrt(w * w + h * h))
+                
+                success, png_data = shapes[0].save_to_bufferv("png", [], [])
+                if not success:
+                    debug_output('taturtle.set_shapes: PNG conversion failed',
+                                 self._turtles.turtle_window.running_sugar)
+                    return
+                
+                img_surface = cairo.ImageSurface.create_from_png(
+                    io.BytesIO(png_data))
+                
                 for i in range(SHAPES):
                     surface = cairo.ImageSurface(cairo.FORMAT_ARGB32, nw, nh)
                     context = cairo.Context(surface)
@@ -316,8 +340,10 @@ class Turtle:
                     context.translate(nw / 2.0, nh / 2.0)
                     context.rotate(i * 10 * pi / 180.)
                     context.translate(-nw / 2.0, -nh / 2.0)
-                    Gdk.cairo_set_source_pixbuf(
-                        context, shapes[0], (nw - w) / 2.0, (nh - h) / 2.0)
+                    
+                    context.set_source_surface(img_surface,
+                                               (nw - w) / 2.0,
+                                               (nh - h) / 2.0)
                     context.rectangle(0, 0, nw, nh)
                     context.fill()
                     images.append(surface)
@@ -402,6 +428,8 @@ class Turtle:
                                                        gray=self._pen_gray,
                                                        color=self._pen_color)
 
+        self._update_shell_color()
+
         if self._turtles.turtle_window.sharing() and share:
             event = data_to_string([self._turtles.turtle_window.nick,
                                     round_int(self._pen_color)])
@@ -421,6 +449,8 @@ class Turtle:
                                                        gray=self._pen_gray,
                                                        color=self._pen_color)
 
+        self._update_shell_color()
+
         if self._turtles.turtle_window.sharing() and share:
             event = data_to_string([self._turtles.turtle_window.nick,
                                     round_int(self._pen_gray)])
@@ -434,6 +464,8 @@ class Turtle:
         self._turtles.turtle_window.canvas.set_fgcolor(shade=self._pen_shade,
                                                        gray=self._pen_gray,
                                                        color=self._pen_color)
+
+        self._update_shell_color()
 
         if self._turtles.turtle_window.sharing() and share:
             event = data_to_string([self._turtles.turtle_window.nick,
@@ -643,7 +675,8 @@ class Turtle:
         else:
             self.set_xy(x, y)
 
-    def set_xy(self, x=None, y=None, share=True, pendown=True, dragging=False, thickness=None):
+    def set_xy(self, x=None, y=None, share=True, pendown=True, dragging=False,
+               thickness=None):
         old = self.get_xy()
         if x is None or y is None:
             x = old[0]
@@ -838,8 +871,9 @@ class Turtle:
             # Turn the turtle 180 to make the circle point
             # Outward only if I'm moving forward and using
             # this function as a helper
-            self._turtles.turtle_window.canvas.larc(npos[0], npos[1], r, a,
-                                                    self._heading - (180 * helper * forward))
+            self._turtles.turtle_window.canvas.larc(
+                npos[0], npos[1], r, a,
+                self._heading - (180 * helper * forward))
 
             if self._pen_fill:
                 self._poly_points.append(('move', npos[0], npos[1]))

@@ -26,14 +26,10 @@ import os
 
 import gi
 gi.require_version('Gst', '1.0')
-gi.require_version('GstVideo', '1.0')
 
 from gi.repository import Gtk
 from gi.repository import Gst
-from gi.repository import Gdk
 from gi.repository import GObject
-from gi.repository import GdkX11, GstVideo  # noqa: F401
-GObject.threads_init()
 Gst.init(None)
 
 
@@ -105,6 +101,9 @@ class Gplay():
     UPDATE_INTERVAL = 500
 
     def __init__(self, lc, x, y, w, h):
+        # NOTE: x, y are vestigial — modern GTK drops client-side window
+        # positioning (Gtk.Window.move). The video window will appear
+        # wherever the compositor decides.
         self.running_sugar = lc.tw.running_sugar
         self.player = None
         self.uri = None
@@ -117,16 +116,15 @@ class Gplay():
 
         self.bin = Gtk.Window()
 
-        self.videowidget = VideoWidget()
-        self.bin.add(self.videowidget)
-        self.bin.set_type_hint(Gdk.WindowTypeHint.NORMAL)
+        self.videowidget = Gtk.Picture()
+        self.videowidget.set_can_shrink(True)
+        self.bin.set_child(self.videowidget)
         self.bin.set_decorated(False)
         if self.running_sugar:
             self.bin.set_transient_for(lc.tw.activity)
 
-        self.bin.move(x, y)
-        self.bin.resize(w, h)
-        self.bin.show_all()
+        self.bin.set_default_size(w, h)
+        self.bin.present()
 
         self._want_document = True
 
@@ -205,26 +203,15 @@ class GstPlayer(GObject.GObject):
 
         self.player = Gst.ElementFactory.make('playbin', 'player')
 
-        videowidget.realize()
         self.videowidget = videowidget
-        self.videowidget_xid = videowidget.get_property('window').get_xid()
         self._init_video_sink()
 
         bus = self.player.get_bus()
-        bus.enable_sync_message_emission()
         bus.add_signal_watch()
-        bus.connect('sync-message::element', self.on_sync_message)
         bus.connect('message', self.on_message)
 
     def set_uri(self, uri):
         self.player.set_property('uri', uri)
-
-    def on_sync_message(self, bus, message):
-        if message.get_structure() is None:
-            return
-        if message.get_structure().get_name() == 'prepare-window-handle':
-            self.videowidget.set_sink(message.src, self.videowidget_xid)
-            message.src.set_property('force-aspect-ratio', True)
 
     def on_message(self, bus, message):
         t = message.type
@@ -247,40 +234,15 @@ class GstPlayer(GObject.GObject):
                           self.player.props.stream_info_value_array)
 
     def _init_video_sink(self):
-        self.bin = Gst.Bin.new()
-        videoscale = Gst.ElementFactory.make('videoscale', None)
-        self.bin.add(videoscale)
-        pad = videoscale.get_static_pad('sink')
-        ghostpad = Gst.GhostPad.new('sink', pad)
-        self.bin.add_pad(ghostpad)
-        videoscale.set_property('method', 0)
+        sink = Gst.ElementFactory.make('gtk4paintablesink', None)
+        if sink is None:
+            error_output('gtk4paintablesink not available — '
+                         'embedded video will not work', self.running_sugar)
+            return
 
-        caps_string = 'video/x-raw, '
-        r = self.videowidget.get_allocation()
-        if r.width > 500 and r.height > 500:
-            # Sigh... xvimagesink on the XOs will scale the video to fit
-            # but ximagesink in Xephyr does not.  So we live with unscaled
-            # video in Xephyr so that the XO can work right.
-            w = 480
-            h = float(w) / float(float(r.width) / float(r.height))
-            caps_string += 'width=%d, height=%d' % (w, h)
-        else:
-            caps_string += 'width=480, height=360'
-        caps = Gst.Caps.from_string(caps_string)
-        self.filter = Gst.ElementFactory.make('capsfilter', 'filter')
-        self.bin.add(self.filter)
-        self.filter.set_property('caps', caps)
-
-        conv = Gst.ElementFactory.make('videoconvert', 'conv')
-        self.bin.add(conv)
-        videosink = Gst.ElementFactory.make('autovideosink')
-        self.bin.add(videosink)
-
-        videoscale.link(self.filter)
-        self.filter.link(conv)
-        conv.link(videosink)
-
-        self.player.set_property('video-sink', self.bin)
+        self.player.set_property('video-sink', sink)
+        paintable = sink.get_property('paintable')
+        self.videowidget.set_paintable(paintable)
 
     def pause(self):
         self.player.set_state(Gst.State.PAUSED)
@@ -303,24 +265,3 @@ class GstPlayer(GObject.GObject):
 
     def is_playing(self):
         return self.playing
-
-
-class VideoWidget(Gtk.DrawingArea):
-
-    def __init__(self):
-        GObject.GObject.__init__(self)
-        self.set_events(Gdk.EventMask.EXPOSURE_MASK)
-        self.imagesink = None
-        self.set_double_buffered(True)
-        self.set_app_paintable(True)
-
-    def do_expose_event(self, event):
-        if self.imagesink:
-            self.imagesink.expose()
-            return False
-        else:
-            return True
-
-    def set_sink(self, sink, xid):
-        self.imagesink = sink
-        self.imagesink.set_window_handle(xid)

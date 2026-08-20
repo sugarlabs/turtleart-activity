@@ -15,25 +15,26 @@
 # Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 # Boston, MA 02111-1307, USA.
 
-from .configfile import ConfigFile
 from gi.repository import Gtk
 
+from .configfile import ConfigFile
 
-class ConfigWizard():
+
+class ConfigWizard:
 
     """Simple configuration wizard window."""
 
-    def __init__(self, config_file_path):
+    def __init__(self, config_file_path, parent_window=None):
         self._config_items = []
         self._config_entries = {}
         self._config_file_path = config_file_path
         self._config_file_obj = None
-
-    """
-    [ {item_label, item_type, item_name, item_with_value} , ... ]
-    """
+        self._parent_window = parent_window
 
     def set_config_items(self, items):
+        """
+        items: [ {item_label, item_type, item_name, item_with_value} , ... ]
+        """
         self._config_items = items
         keys = {}
         for i in self._config_items:
@@ -43,7 +44,7 @@ class ConfigWizard():
     def set_config_file_obj(self, obj):
         self._config_file_obj = obj
 
-    def get_config_file_obj(self, obj):
+    def get_config_file_obj(self):
         return self._config_file_obj
 
     def show(self, read_from_disc=False):
@@ -57,40 +58,56 @@ class ConfigWizard():
                 raise RuntimeError("I need the run time obj")
 
         self._config_popup = Gtk.Window()
+        if self._parent_window is not None:
+            self._config_popup.set_transient_for(self._parent_window)
+            self._config_popup.set_modal(True)
         self._config_popup.set_default_size(200, 200)
-        self._config_popup.connect('delete_event', self._close_config_cb)
-        table = Gtk.Table(12, 1, True)
-        self._config_popup.add(table)
+        self._config_popup.connect('close-request', self._close_config_cb)
+        grid = Gtk.Grid()
+        grid.set_row_homogeneous(True)
+        grid.set_column_homogeneous(True)
+        self._config_popup.set_child(grid)
 
         row = 1
         for i in self._config_items:
             hbox = self._create_param(i)
-            table.attach(hbox, 0, 1, row, row + 1, xpadding=5, ypadding=2)
+            hbox.set_margin_start(5)
+            hbox.set_margin_end(5)
+            hbox.set_margin_top(2)
+            hbox.set_margin_bottom(2)
+            grid.attach(hbox, 0, row, 1, 1)
             row = row + 1
 
-        hbox = Gtk.HBox()
+        hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
         save_button = Gtk.Button.new_with_label('Save')
         save_button.set_size_request(50, 15)
-        save_button.connect('pressed', self._save_config_cb)
-        hbox.add(save_button)
+        save_button.connect('clicked', self._save_config_cb)
+        hbox.append(save_button)
         cancel_button = Gtk.Button.new_with_label('Cancel')
         cancel_button.set_size_request(50, 15)
-        cancel_button.connect('pressed', self._close_config_cb)
-        hbox.add(cancel_button)
-        table.attach(hbox, 0, 1, row, row + 1, xpadding=5, ypadding=2)
+        cancel_button.connect('clicked', self._close_config_cb)
+        hbox.append(cancel_button)
+        hbox.set_margin_start(5)
+        hbox.set_margin_end(5)
+        hbox.set_margin_top(2)
+        hbox.set_margin_bottom(2)
+        grid.attach(hbox, 0, row, 1, 1)
 
-        self._config_popup.show_all()
+        self._config_popup.present()
 
     def _save_config_cb(self, widget):
         try:
             self._do_save_config()
         except Exception as e:
             w = Gtk.Window()
-            ls = Gtk.Label(label=e.message)
-            w.add(ls)
-            w.show_all()
+            if self._parent_window is not None:
+                w.set_transient_for(self._parent_window)
+                w.set_modal(True)
+            ls = Gtk.Label(label=str(e))
+            w.set_child(ls)
+            w.present()
         finally:
-            self._config_popup.hide()
+            self._config_popup.destroy()
 
     def _do_save_config(self):
         for i in self._config_items:
@@ -106,15 +123,14 @@ class ConfigWizard():
 
         self._config_file_obj.save()
 
-    """
-      {item_label, item_type, item_name, item_with_value}
-    """
-
     def _create_param(self, opts):
+        """
+        opts: {item_label, item_type, item_name, item_with_value}
+        """
         param_name = opts["item_name"]
         with_value = opts["item_with_value"] if "item_with_value" in opts \
             else True
-        hbox = Gtk.HBox()
+        hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
         if opts["item_type"] == "text":
             entry = Gtk.Entry()
             entry.set_size_request(150, 25)
@@ -128,92 +144,14 @@ class ConfigWizard():
                 entry.set_active(value)
         self._config_entries[param_name] = entry
         label = Gtk.Label(label=opts["item_label"] + ': ')
-        label.set_alignment(1.0, 0.5)
+        label.set_xalign(1.0)
+        label.set_yalign(0.5)
         label.set_size_request(100, 25)
-        hbox.add(label)
-        hbox.add(entry)
+        hbox.append(label)
+        hbox.append(entry)
         return hbox
 
     def _close_config_cb(self, widget, event=None):
-        self._config_popup.hide()
+        self._config_popup.destroy()
+        return True
 
-
-def test_wizard_from_config_file_obj(test_config_file):
-    keys = {}
-    keys["nick"] = {"type": "text"}
-    keys["account_id"] = {"type": "text"}
-    keys["server"] = {"type": "text"}
-    keys["port"] = {"type": "text"}
-    keys["password"] = {"type": "text"}
-    keys["register"] = {"type": "text"}
-
-    c = ConfigFile(test_config_file)
-    c.set_valid_keys(keys)
-    c.set("nick", "rgs")
-    c.set("account_id", "rgs@andromeda")
-    c.set("server", "andromeda")
-    c.set("port", 5223)
-    c.set("password", "97c74fa0dc3b39b8c87f119fa53cced2b7040786")
-    c.set("register", True)
-
-    c.save()
-
-    c = ConfigFile(test_config_file)
-    c.set_valid_keys(keys)
-    c.load()
-
-    config_w = ConfigWizard(test_config_file)
-    config_items = [
-        {"item_label": "Nickname", "item_type": "text", "item_name": "nick"},
-        {"item_label": "Account ID", "item_type": "text",
-         "item_name": "account_id"},
-        {"item_label": "Server", "item_type": "text", "item_name": "server"},
-        {"item_label": "Port", "item_type": "text", "item_name": "port"},
-        {"item_label": "Password", "item_type": "text",
-         "item_name": "password"},
-        {"item_label": "Register", "item_type": "text",
-         "item_name": "register"}]
-    config_w.set_config_items(config_items)
-    config_w.set_config_file_obj(c)
-    config_w.show()
-
-
-def test_wizard_from_config_file_path(test_config_file):
-    keys = {}
-    keys["nick"] = {"type": "text"}
-    keys["account_id"] = {"type": "text"}
-    keys["server"] = {"type": "text"}
-    keys["port"] = {"type": "text"}
-    keys["password"] = {"type": "text"}
-    keys["register"] = {"type": "text"}
-
-    c = ConfigFile(test_config_file)
-    c.set_valid_keys(keys)
-    c.set("nick", "rgs")
-    c.set("account_id", "rgs@andromeda")
-    c.set("server", "andromeda")
-    c.set("port", 5223)
-    c.set("password", "97c74fa0dc3b39b8c87f119fa53cced2b7040786")
-    c.set("register", True)
-
-    c.save()
-
-    config_w = ConfigWizard(test_config_file)
-    config_items = [
-        {"item_label": "Nickname", "item_type": "text", "item_name": "nick"},
-        {"item_label": "Account ID", "item_type": "text",
-         "item_name": "account_id"},
-        {"item_label": "Server", "item_type": "text", "item_name": "server"},
-        {"item_label": "Port", "item_type": "text", "item_name": "port"},
-        {"item_label": "Password", "item_type": "text",
-         "item_name": "password"},
-        {"item_label": "Register", "item_type": "text",
-         "item_name": "register"}]
-    config_w.set_config_items(config_items)
-    config_w.show(True)
-
-
-if __name__ == "__main__":
-    # test_wizard_from_config_file_obj("/tmp/configwizard.test.0001")
-    test_wizard_from_config_file_path("/tmp/configwizard.test.0002")
-    Gtk.main()

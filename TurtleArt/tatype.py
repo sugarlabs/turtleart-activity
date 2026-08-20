@@ -122,9 +122,11 @@ def get_type(x):
         return (x.return_type, False)
 
     # AST types
-    elif isinstance(x, ast.Num):
+    elif hasattr(ast, 'Constant') and isinstance(x, ast.Constant):
+        return (get_type(x.value)[0], True)
+    elif hasattr(ast, 'Num') and isinstance(x, getattr(ast, 'Num')):
         return (get_type(x.n)[0], True)
-    elif isinstance(x, ast.Str):
+    elif hasattr(ast, 'Str') and isinstance(x, getattr(ast, 'Str')):
         return (get_type(x.s)[0], True)
     elif isinstance(x, ast.Name):
         try:
@@ -176,9 +178,13 @@ def get_type(x):
 
 
 def is_instancemethod(method):
-    # FIXME: a way to identify an instance method in python 3
-    # until then, assume everything is an instance method
-    return True
+    import inspect
+    if inspect.ismethod(method):
+        return True
+    if (hasattr(method, '__qualname__') and '.' in method.__qualname__ and
+            '<locals>' not in method.__qualname__):
+        return True
+    return False
 
 
 def is_bound_method(method):
@@ -362,7 +368,7 @@ def convert(x, new_type, old_type=None, converter=None):
                     return y
                 elif is_instancemethod(converter):
                     func = ast.Attribute(value=y,
-                                         attr=converter.__func__.__name__,
+                                         attr=converter.__name__,
                                          ctx=ast.Load)
                     return get_call_ast(func)
                 else:

@@ -20,7 +20,7 @@
 
 
 try:
-    from sugar3.datastore import datastore
+    from sugar4.datastore import datastore
 except ImportError:
     datastore = None
 

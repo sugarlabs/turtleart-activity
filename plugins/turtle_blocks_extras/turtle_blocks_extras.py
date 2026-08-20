@@ -1226,7 +1226,7 @@ Journal objects'))
             language_option = ''
 
         if self.tw.running_sugar:
-            from sugar3.speech import SpeechManager
+            from sugar4.speech import SpeechManager
             sm = SpeechManager()
             sm.say_text(text)
         else:

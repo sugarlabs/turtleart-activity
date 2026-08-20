@@ -51,8 +51,9 @@ def complete_plugin_install(cls, tmp_dir, tmp_path, plugin_path,
                     create_palette.append(True)
                 else:
                     create_palette.append(False)
-        cls.tw.init_plugin(plugin_name)
-        cls.tw.turtleart_plugins[-1].setup()
+        cls.tw.init_plugin(plugin_name, plugin_path)
+        if plugin_name in cls.tw.turtleart_plugins:
+            cls.tw.turtleart_plugins[plugin_name].setup()
         cls.tw.load_media_shapes()
         for i, palette_name in enumerate(palette_name_list):
             if create_palette[i]:
@@ -72,8 +73,10 @@ def complete_plugin_install(cls, tmp_dir, tmp_path, plugin_path,
                         cls.do_palette_buttons_cb,
                         None,
                         arg=j - 1))
-                cls._overflow_box.pack_start(
-                    cls._overflow_buttons[j - 1], True, True, 0)
+                button = cls._overflow_buttons[j - 1]
+                button.set_hexpand(True)
+                button.set_halign(Gtk.Align.FILL)
+                cls._overflow_box.append(button)
                 cls.tw.palettes.insert(j - 1, [])
                 cls.tw.palette_sprs.insert(j - 1, [None, None])
             else:

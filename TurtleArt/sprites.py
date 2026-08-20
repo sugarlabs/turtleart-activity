@@ -75,6 +75,7 @@ def svg_str_to_pixbuf(svg_string):
     return pixbuf
 
 '''
+import io
 import cairo
 
 from gi.repository import Gdk
@@ -223,7 +224,15 @@ class Sprite:
             surface = cairo.ImageSurface(
                 cairo.FORMAT_ARGB32, self.rect.width, self.rect.height)
             context = cairo.Context(surface)
-            Gdk.cairo_set_source_pixbuf(context, image, 0, 0)
+            
+            success, png_data = image.save_to_bufferv("png", [], [])
+            if success:
+                img_surface = cairo.ImageSurface.create_from_png(io.BytesIO(png_data))
+                context.set_source_surface(img_surface, 0, 0)
+            else:
+                print('sprites.set_image: PNG conversion failed for image')
+                return
+
             context.rectangle(0, 0, self.rect.width, self.rect.height)
             context.fill()
             self.cached_surfaces[i] = surface
@@ -346,10 +355,7 @@ class Sprite:
 
     def inval(self):
         ''' Invalidate a region for gtk '''
-        self._sprites.widget.queue_draw_area(self.rect.x,
-                                             self.rect.y,
-                                             self.rect.width,
-                                             self.rect.height)
+        self._sprites.widget.queue_draw()
 
     def draw(self, cr=None):
         ''' Draw the sprite (and label) '''
@@ -435,6 +441,7 @@ class Sprite:
             cr.save()
             cr.translate(x, y)
             cr.set_source_rgb(self._color[0], self._color[1], self._color[2])
+            cr.move_to(0, 0)
             PangoCairo.update_layout(cr, pl)
             PangoCairo.show_layout(cr, pl)
 

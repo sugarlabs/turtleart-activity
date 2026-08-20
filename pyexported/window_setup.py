@@ -1,17 +1,16 @@
 #!/usr/bin/env python3
 
-import cairo
-import gi
-gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk
-from gi.repository import Gdk
-
-from gettext import gettext as _
-
 import os
 import sys
+from gettext import gettext as _
+
+import cairo
+import gi
+gi.require_version('Gtk', '4.0')
+from gi.repository import Gtk
 
 from TurtleArt.tawindow import TurtleArtWindow
+from TurtleArt.tautils import get_screen_dimensions
 
 
 # search sys.path for a dir containing TurtleArt/tawindow.py
@@ -37,8 +36,6 @@ if _TA_INSTALLATION_PATH is None:
             "environment variable PYTHONPATH."))
     exit(1)
 
-_PLUGIN_SUBPATH = 'plugins'
-_MACROS_SUBPATH = 'macros'
 
 
 class DummyTurtleMain(object):
@@ -55,37 +52,26 @@ class DummyTurtleMain(object):
         self.set_title = self.win.set_title
 
         # setup a scrolled container for the canvas
-        self.vbox = Gtk.VBox(False, 0)
-        self.vbox.show()
+        self.vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
         self.sw = Gtk.ScrolledWindow()
         self.sw.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
-        self.sw.show()
         self.canvas = Gtk.DrawingArea()
-        width = Gdk.Screen.width() * 2
-        height = Gdk.Screen.height() * 2
+        
+        screen_width, screen_height = get_screen_dimensions()
+        width = screen_width * 2
+        height = screen_height * 2
+        
         self.canvas.set_size_request(width, height)
-        self.sw.add_with_viewport(self.canvas)
-        self.canvas.show()
-        self.vbox.pack_end(self.sw, True, True)
-        self.win.add(self.vbox)
-        self.win.show_all()
-
-        # exported code is always in interactive mode
-        interactive = True
+        self.sw.set_child(self.canvas)
+        self.sw.set_vexpand(True)
+        self.sw.set_hexpand(True)
+        self.vbox.append(self.sw)
+        self.win.set_child(self.vbox)
 
         # copied from turtleblocks.TurtleMain._build_window()
-        if interactive:
-            gdk_win = self.canvas.get_window()
-            cr = gdk_win.cairo_create()
-            surface = cr.get_target()
-        else:
-            img_surface = cairo.ImageSurface(cairo.FORMAT_RGB24,
-                                             1024, 768)
-            cr = cairo.Context(img_surface)
-            surface = cr.get_target()
-        self.turtle_canvas = surface.create_similar(
-            cairo.CONTENT_COLOR, max(1024, Gdk.Screen.width() * 2),
-            max(768, Gdk.Screen.height() * 2))
+        self.turtle_canvas = cairo.ImageSurface(
+            cairo.FORMAT_ARGB32,
+            max(1024, width), max(768, height))
 
         # instantiate an instance of a dummy sub-class that supports only
         # the stuff TurtleGraphics needs
@@ -103,11 +89,10 @@ class DummyTurtleMain(object):
         """Quit all plugins and the main window. No need to prompt the user
         to save their work, since they cannot change anything.
         """
-        for plugin in self.tw.turtleart_plugins:
+        for plugin in list(self.tw.turtleart_plugins.values()):
             if hasattr(plugin, 'quit'):
                 plugin.quit()
-        Gtk.main_quit()
-        exit()
+        sys.exit(0)
 
 
 def get_tw():
@@ -116,17 +101,11 @@ def get_tw():
     """
     # copied from turtleblocks.TurtleMain._setup_gtk()
 
-    win = Gtk.Window(Gtk.WindowType.TOPLEVEL)
+    win = Gtk.Window()
     gui = DummyTurtleMain(win=win, name=sys.argv[0])
-    # TODO re-enable this code (after giving gui the right attributes)
-    # win.set_default_size(gui.width, gui.height)
-    # win.move(gui.x, gui.y)
     win.maximize()
     win.set_title(str(gui.name))
-    # if os.path.exists(os.path.join(gui._execdirname, gui._ICON_SUBPATH)):
-    #     win.set_icon_from_file(os.path.join(gui._execdirname,
-    #                                         gui._ICON_SUBPATH))
-    win.show()
-    win.connect('delete_event', gui._quit_ta)
+    win.present()
+    win.connect('close-request', gui._quit_ta)
 
     return gui.tw

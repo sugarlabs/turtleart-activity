@@ -482,7 +482,8 @@ class Primitive(object):
         # random
         elif self in (Primitive.random_char, Primitive.random_int):
             uniform_ast = get_call_ast('uniform', new_arg_asts)
-            round_ast = get_call_ast('round', [uniform_ast, ast.Num(n=0)])
+            num_0 = ast.Constant(value=0) if hasattr(ast, 'Constant') else getattr(ast, 'Num')(n=0)
+            round_ast = get_call_ast('round', [uniform_ast, num_0])
             int_ast = get_call_ast('int', [round_ast], return_type=TYPE_INT)
             if self == Primitive.random_char:
                 chr_ast = get_call_ast('chr', [int_ast], return_type=TYPE_CHAR)
@@ -522,7 +523,9 @@ class Primitive(object):
 
         # comment
         elif self == Primitive.comment:
-            if isinstance(new_arg_asts[0], ast.Str):
+            if hasattr(ast, 'Constant') and isinstance(new_arg_asts[0], ast.Constant):
+                text = ' ' + str(new_arg_asts[0].value)
+            elif hasattr(ast, 'Str') and isinstance(new_arg_asts[0], getattr(ast, 'Str')):
                 text = ' ' + str(new_arg_asts[0].s)
             else:
                 text = ' ' + str(new_arg_asts[0])
@@ -1208,10 +1211,10 @@ def value_to_ast(value, *args_for_prim, **kwargs_for_prim):
         return ast.Name(id=str(value), ctx=ast.Load)
     # number
     elif isinstance(value, (int, float)):
-        return ast.Num(n=value)
+        return ast.Constant(value=value) if hasattr(ast, 'Constant') else getattr(ast, 'Num')(n=value)
     # string
     elif isinstance(value, str):
-        return ast.Str(value)
+        return ast.Constant(value=value) if hasattr(ast, 'Constant') else getattr(ast, 'Str')(s=value)
     # list (recursively transform to an AST)
     elif isinstance(value, list):
         ast_list = []

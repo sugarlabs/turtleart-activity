@@ -29,8 +29,8 @@ from TurtleArt.tautils import data_to_string, data_from_string, get_path, \
     base64_to_image, debug_output, error_output
 from TurtleArt.taconstants import DEFAULT_TURTLE_COLORS
 
-from sugar3 import profile
-from sugar3.presence import presenceservice
+from sugar4 import profile
+from sugar4.presence import presenceservice
 
 from .textchannelwrapper import CollabWrapper
 
@@ -355,7 +355,7 @@ class Collaboration():
                 language_option = ''
             if text is not None:
                 if self._tw.running_sugar:
-                    from sugar3.speech import SpeechManager
+                    from sugar4.speech import SpeechManager
                     sm = SpeechManager()
                     sm.say_text(text)
                 else:

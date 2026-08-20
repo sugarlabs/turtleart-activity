@@ -85,10 +85,11 @@ block_styles = {'basic-style': [],
 
 
 from gi.repository import Gtk
-from gi.repository import Gdk
+
+from .tautils import get_screen_dimensions
 
 try:
-    from sugar3.graphics import style
+    from sugar4.graphics import style
     from .util.helpbutton import (add_section, add_paragraph)
     GRID_CELL_SIZE = style.GRID_CELL_SIZE
     HELP_PALETTE = True
@@ -113,20 +114,21 @@ class Palette():
         self._name = name
         self._special_name = _(name)
         self._colors = colors
-        self._max_text_width = int(Gdk.Screen.width() / 3) - 20
+        screen_width, screen_height = get_screen_dimensions()
+        self._max_text_width = int(screen_width / 3) - 20
 
         # Prepare a vbox for the help palette
         if self._name not in help_palettes:
-            self._help_box = Gtk.VBox()
+            self._help_box = Gtk.Box(
+                orientation=Gtk.Orientation.VERTICAL, spacing=0)
             self._help_box.set_homogeneous(False)
             help_palettes[self._name] = self._help_box
             help_windows[self._name] = Gtk.ScrolledWindow()
             help_windows[self._name].set_size_request(
-                int(Gdk.Screen.width() / 3),
-                Gdk.Screen.height() - GRID_CELL_SIZE * 3)
+                int(screen_width / 3), screen_height - GRID_CELL_SIZE * 3)
             help_windows[self._name].set_policy(
                 Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
-            help_windows[self._name].add_with_viewport(
+            help_windows[self._name].set_child(
                 help_palettes[self._name])
             help_palettes[self._name].show()
             self._help = None

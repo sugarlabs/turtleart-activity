@@ -19,9 +19,8 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
+import io
 import cairo
-
-from gi.repository import Gdk
 from gi.repository import GdkPixbuf
 
 from .taconstants import EXPANDABLE, EXPANDABLE_ARGS, OLD_NAMES, CONSTANTS, \
@@ -1362,7 +1361,13 @@ def _pixbuf_to_cairo_surface(image, width, height):
     surface = cairo.ImageSurface(
         cairo.FORMAT_ARGB32, int(width), int(height))
     context = cairo.Context(surface)
-    Gdk.cairo_set_source_pixbuf(context, image, 0, 0)
+    success, png_data = image.save_to_bufferv("png", [], [])
+    if success:
+        img_surface = cairo.ImageSurface.create_from_png(io.BytesIO(png_data))
+        context.set_source_surface(img_surface, 0, 0)
+    else:
+        print('tablock._pixbuf_to_cairo_surface: PNG conversion failed')
+        return surface
     context.rectangle(0, 0, int(width), int(height))
     context.fill()
     return surface

@@ -32,6 +32,7 @@ from gi.repository import Gtk
 from gi.repository import GLib
 from gi.repository import GdkPixbuf
 from gi.repository import Gio
+from gi.repository import Gdk
 import json
 json.dumps
 from json import load as jload
@@ -62,6 +63,18 @@ def error_output(message_string, running_sugar=False):
         _logger.error(message_string)
     else:
         print(message_string)
+
+
+def get_screen_dimensions():
+    """Get the primary monitor's dimensions."""
+    display = Gdk.Display.get_default()
+    if display:
+        monitors = display.get_monitors()
+        if monitors and monitors.get_n_items() > 0:
+            monitor = monitors.get_item(0)
+            geom = monitor.get_geometry()
+            return geom.width, geom.height
+    return 1200, 900
 
 
 class pythonerror(Exception):
@@ -282,23 +295,49 @@ def get_endswith_files(path, end):
     return files
 
 
-def get_load_name(filefilter, load_save_folder=None):
+def get_load_name(filefilter, load_save_folder=None, callback=None, window=None):
     ''' Open a load file dialog. '''
-    dialog = Gtk.FileChooserDialog(
-        _('Load...'), None,
-        Gtk.FileChooserAction.OPEN, (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
-                                     Gtk.STOCK_OPEN, Gtk.ResponseType.OK))
-    dialog.set_default_response(Gtk.ResponseType.OK)
-    return do_dialog(dialog, filefilter, load_save_folder)
+    dialog = Gtk.FileDialog()
+    dialog.set_title(_('Load...'))
+
+    filters = Gio.ListStore.new(Gtk.FileFilter)
+    file_filter = Gtk.FileFilter()
+    file_filter.add_pattern('*' + filefilter)
+    file_filter.set_name('Turtle Art')
+    filters.append(file_filter)
+    dialog.set_filters(filters)
+
+    if load_save_folder is not None:
+        dialog.set_initial_folder(Gio.File.new_for_path(load_save_folder))
+
+    def on_open_response(dlg, result):
+        try:
+            file = dlg.open_finish(result)
+            if callback:
+                callback(file.get_path(), file.get_parent().get_path())
+        except GLib.Error:
+            if callback:
+                callback(None, None)
+
+    parent_win = window.get_root() if hasattr(window, 'get_root') else window
+    dialog.open(parent_win, None, on_open_response)
 
 
-def get_save_name(filefilter, load_save_folder, save_file_name):
+def get_save_name(filefilter, load_save_folder=None, save_file_name=None, callback=None, window=None):
     ''' Open a save file dialog. '''
-    dialog = Gtk.FileChooserDialog(
-        _('Save...'), None,
-        Gtk.FileChooserAction.SAVE, (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
-                                     Gtk.STOCK_SAVE, Gtk.ResponseType.OK))
-    dialog.set_default_response(Gtk.ResponseType.OK)
+    dialog = Gtk.FileDialog()
+    dialog.set_title(_('Save...'))
+
+    filters = Gio.ListStore.new(Gtk.FileFilter)
+    file_filter = Gtk.FileFilter()
+    file_filter.add_pattern('*' + filefilter)
+    file_filter.set_name('Turtle Art')
+    filters.append(file_filter)
+    dialog.set_filters(filters)
+
+    if load_save_folder is not None:
+        dialog.set_initial_folder(Gio.File.new_for_path(load_save_folder))
+
     if filefilter in ['.png', '.svg', '.lg', '.py', '.odp']:
         suffix = filefilter
     else:
@@ -306,33 +345,34 @@ def get_save_name(filefilter, load_save_folder, save_file_name):
     if save_file_name is not None:
         if not save_file_name.endswith(suffix):
             save_file_name = save_file_name + suffix
-        dialog.set_current_name(save_file_name)
-    return do_dialog(dialog, filefilter, load_save_folder)
+        dialog.set_initial_name(save_file_name)
+
+    def on_save_response(dlg, result):
+        try:
+            file = dlg.save_finish(result)
+            if callback:
+                callback(file.get_path(), file.get_parent().get_path())
+        except GLib.Error:
+            if callback:
+                callback(None, None)
+
+    parent_win = window.get_root() if hasattr(window, 'get_root') else window
+    dialog.save(parent_win, None, on_save_response)
 
 
 def chooser_dialog(parent_window, filter, action):
     ''' Choose an object from the datastore and take some action '''
-    from sugar3.graphics.objectchooser import ObjectChooser
+    from sugar4.graphics.objectchooser import ObjectChooser
 
-    chooser = None
+    chooser = ObjectChooser(parent=parent_window, what_filter=filter)
     dsobject = None
-    cleanup_needed = False
-    try:
-        chooser = ObjectChooser(parent=parent_window, what_filter=filter)
-    except TypeError:  # Old-syle Sugar chooser
-        chooser = ObjectChooser(
-            None,
-            parent_window,
-            Gtk.DialogFlags.MODAL | Gtk.DialogFlags.DESTROY_WITH_PARENT)
-        cleanup_needed = True
 
     if chooser is not None:
         result = chooser.run()
         if result == Gtk.ResponseType.ACCEPT:
             dsobject = chooser.get_selected_object()
-        if cleanup_needed:
-            chooser.destroy()
-            del chooser
+        chooser.destroy()
+        del chooser
     GLib.idle_add(action, dsobject)
 
 
@@ -391,25 +431,6 @@ def data_to_file(data, ta_file):
 def data_to_string(data):
     ''' JSON dump a string. '''
     return json_dump(data).replace(']], ', ']],\n')
-
-
-def do_dialog(dialog, suffix, load_save_folder):
-    ''' Open a file dialog. '''
-    result = None
-    file_filter = Gtk.FileFilter()
-    file_filter.add_pattern('*' + suffix)
-    file_filter.set_name('Turtle Art')
-    dialog.add_filter(file_filter)
-
-    if load_save_folder is not None:
-        dialog.set_current_folder(load_save_folder)
-
-    response = dialog.run()
-    if response == Gtk.ResponseType.OK:
-        result = dialog.get_filename()
-        load_save_folder = dialog.get_current_folder()
-    dialog.destroy()
-    return result, load_save_folder
 
 
 def save_picture(canvas, file_name):

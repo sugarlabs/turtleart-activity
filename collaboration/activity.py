@@ -57,7 +57,7 @@ PROPERTY_FLAG_WRITE = TelepathyGLib.PropertyFlags.WRITE
 CONN_INTERFACE_ACTIVITY_PROPERTIES = 'org.laptop.Telepathy.ActivityProperties'
 CONN_INTERFACE_BUDDY_INFO = 'org.laptop.Telepathy.BuddyInfo'
 
-_logger = logging.getLogger('sugar3.presence.activity')
+_logger = logging.getLogger('sugar4.presence.activity')
 
 
 class Activity(GObject.GObject):
