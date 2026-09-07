@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-09-28 10:49+1000\n"
-"PO-Revision-Date: 2026-07-27 21:01+0000\n"
+"PO-Revision-Date: 2026-09-07 10:50+0000\n"
 "Last-Translator: NF <rkavt@smartprojects.ge>\n"
 "Language-Team: Georgian <http://weblate.sugarlabs.org/projects/"
 "sugar-activities/turtleart/ka/>\n"
@@ -895,7 +895,7 @@ msgstr "გაუქმება"
 
 #: TurtleArt/tawindow.py:1518 TurtleArt/tawindow.py:1528
 msgid "Overwrite stack"
-msgstr ""
+msgstr "სტეკის თავზე გადაწერა"
 
 #: TurtleArt/tawindow.py:1549 TurtleArt/tawindow.py:1557
 #: TurtleArt/tawindow.py:1566 TurtleArt/turtleblocks.py:525
