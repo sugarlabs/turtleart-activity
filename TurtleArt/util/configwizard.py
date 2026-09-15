@@ -86,11 +86,12 @@ class ConfigWizard():
             self._do_save_config()
         except Exception as e:
             w = Gtk.Window()
-            ls = Gtk.Label(label=e.message)
+            w.connect('delete_event', lambda widget, event: widget.destroy())
+            ls = Gtk.Label(label=str(e))
             w.add(ls)
             w.show_all()
         finally:
-            self._config_popup.hide()
+            self._config_popup.destroy()
 
     def _do_save_config(self):
         for i in self._config_items:
@@ -135,7 +136,7 @@ class ConfigWizard():
         return hbox
 
     def _close_config_cb(self, widget, event=None):
-        self._config_popup.hide()
+        self._config_popup.destroy()
 
 
 def test_wizard_from_config_file_obj(test_config_file):

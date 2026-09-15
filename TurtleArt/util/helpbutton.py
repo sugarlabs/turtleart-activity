@@ -29,6 +29,8 @@ from sugar3.graphics.icon import Icon
 
 from TurtleArt.tapalette import help_windows
 
+from pathlib import Path
+import os
 import logging
 _logger = logging.getLogger('turtleart-activity')
 
@@ -61,6 +63,7 @@ class HelpButton(Gtk.ToolItem):
 class TutorialWindows:
     def __init__(self):
         self.array = []
+        self.base_dir = Path(__file__).resolve().parents[2]
 
         # Current Index of the Window we are at
         self.curr = 0
@@ -74,10 +77,7 @@ class TutorialWindows:
             "\n"
             "\nEvery block inside start is executed after we click the start block.")
 
-        w1.gif_path = "GIF1.gif"
-        w1.anim = GdkPixbuf.PixbufAnimation.new_from_file(w1.gif_path)
-        w1.gif_image = Gtk.Image.new_from_animation(w1.anim)
-        w1.box_gif.pack_start(w1.gif_image, False, False, 0)
+        w1.load_gif(os.path.join(self.base_dir, "GIF1.gif"))
 
         w1.left_arrow.destroy()  # First Window doesn't have a left arrow
         w1.right_arrow.connect("clicked", self.on_right_click)
@@ -96,10 +96,7 @@ class TutorialWindows:
             "\n"
             "\nFinally we move the turtle by the value stored in the box my box_1")
 
-        w2.gif_path = "GIF2.gif"
-        w2.anim = GdkPixbuf.PixbufAnimation.new_from_file(w2.gif_path)
-        w2.gif_image = Gtk.Image.new_from_animation(w2.anim)
-        w2.box_gif.pack_start(w2.gif_image, True, True, 0)
+        w2.load_gif(os.path.join(self.base_dir, "GIF2.gif"))
 
         w2.left_arrow.connect("clicked", self.on_left_click)
         w2.right_arrow.connect("clicked", self.on_right_click)
@@ -114,10 +111,7 @@ class TutorialWindows:
             "\n"
             "\nBy doing so we effectively increase the value stored in my box_1.")
 
-        w3.gif_path = "GIF3.gif"
-        w3.anim = GdkPixbuf.PixbufAnimation.new_from_file(w3.gif_path)
-        w3.gif_image = Gtk.Image.new_from_animation(w3.anim)
-        w3.box_gif.pack_start(w3.gif_image, True, True, 0)
+        w3.load_gif(os.path.join(self.base_dir, "GIF3.gif"))
 
         w3.left_arrow.connect("clicked", self.on_left_click)
         w3.right_arrow.connect("clicked", self.on_right_click)
@@ -135,10 +129,7 @@ class TutorialWindows:
             "\n"
             "\nIt's all done, Good Luck and have fun!!!")
 
-        wn.gif_path = "GIF4.gif"
-        wn.anim = GdkPixbuf.PixbufAnimation.new_from_file(wn.gif_path)
-        wn.gif_image = Gtk.Image.new_from_animation(wn.anim)
-        wn.box_gif.pack_start(wn.gif_image, True, True, 0)
+        wn.load_gif(os.path.join(self.base_dir, "GIF4.gif"))
 
         wn.right_arrow.destroy()  # Last Window doesn't have a right arrow
         wn.left_arrow.connect("clicked", self.on_left_click)
@@ -209,14 +200,22 @@ class TutorialWindow(Gtk.Window):
         self.description_label.set_line_wrap(True)
         self.vbox.pack_start(self.description_label, False, False, 10)
 
-    def on_replay_click(self, button):
-        self.gif_image.destroy()
+    def load_gif(self, path):
+        if self.gif_image:
+            self.gif_image.destroy()
 
-        self.anim = GdkPixbuf.PixbufAnimation.new_from_file(self.gif_path)
-        self.gif_image = Gtk.Image.new_from_animation(self.anim)
+        self.gif_path = path
+        try:
+            self.anim = GdkPixbuf.PixbufAnimation.new_from_file(self.gif_path)
+            self.gif_image = Gtk.Image.new_from_animation(self.anim)
+        except Exception as e:
+            self.gif_image = Gtk.Label(label="Failed to load image!\nPath: " + self.gif_path + "\nError: " + str(e))
+            
         self.box_gif.pack_start(self.gif_image, True, True, 0)
+        self.box_gif.show_all()
 
-        self.show_all()
+    def on_replay_click(self, button):
+        self.load_gif(self.gif_path)
 
 
 def add_section(help_box, section_text, icon=None):

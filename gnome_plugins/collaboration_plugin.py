@@ -21,8 +21,6 @@
 # THE SOFTWARE.
 
 import sys
-
-sys.path.append("..")
 import os.path
 
 import dbus
@@ -200,8 +198,8 @@ class Collaboration_plugin(Plugin):
     def _activity_removed_cb(self, model, activity_model):
         try:
             self._activities.pop(activity_model.props.name)
-        except BaseException:
-            print('Failed to remove activity %s' % activity_model.props.name)
+        except Exception as e:
+            print('Failed to remove activity %s: %s' % (activity_model.props.name, e))
 
         self._recreate_available_activities_menu()
 
@@ -212,8 +210,8 @@ class Collaboration_plugin(Plugin):
     def _buddy_removed_cb(self, activity, buddy):
         try:
             self._buddies.pop(buddy.get_key())
-        except BaseException:
-            print("Couldn't remove buddy %s" % buddy.get_key())
+        except Exception as e:
+            print("Couldn't remove buddy %s: %s" % (buddy.get_key(), e))
         self._recreate_available_buddies_menu()
 
     # TODO: we should have a list of available actions over
@@ -271,7 +269,7 @@ class Collaboration_plugin(Plugin):
                 account_path, connection, room_handle, properties=properties)
             # FIXME: this should be unified, no need to keep 2 references
             self.shared_activity = self._joined_activity
-        except BaseException:
+        except Exception:
             traceback.print_exc(file=sys.stdout)
 
         if self._joined_activity.props.joined:
@@ -332,7 +330,7 @@ class Collaboration_plugin(Plugin):
                                                     properties=properties)
             # FIXME: this should be unified, no need to keep 2 references
             self.shared_activity = self._parent.shared_activity
-        except BaseException:
+        except Exception:
             traceback.print_exc(file=sys.stdout)
 
         if self._parent._shared_parent.props.joined:

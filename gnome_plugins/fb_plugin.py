@@ -31,6 +31,7 @@
 # project. Please report any problems to rgs and walter.
 
 
+import os
 import pycurl
 import urllib.parse
 
@@ -39,8 +40,7 @@ from gi.repository import Gtk
 try:
     from gi.repository import WebKit
     HAS_WEBKIT = True
-except BaseException:
-    pass
+except (ValueError, ImportError):
     HAS_WEBKIT = False
 from .plugin import Plugin
 from TurtleArt.util.menubuilder import make_menu_item, make_sub_menu, MENUBAR
@@ -61,6 +61,7 @@ class FbUploader():
         c.setopt(c.HTTPPOST, self._get_params(c))
         c.perform()
         print(c.getinfo(c.HTTP_CODE))
+        c.close()
 
     def _get_url(self):
         return self.UPLOAD_URL % (self._access_token)
@@ -98,7 +99,7 @@ class Fb_plugin(Plugin):
         self.tw = turtleart_window
 
     def enabled(self):
-        return True
+        return HAS_WEBKIT
 
     def _post_menu_cb(self, widget):
 
@@ -151,3 +152,8 @@ class Fb_plugin(Plugin):
         ta_file, image_file = self.tw.save_for_upload("ta fb")
         uploader = FbUploader(image_file, self._access_token)
         uploader.doit()
+        
+        if os.path.exists(image_file):
+            os.remove(image_file)
+        if os.path.exists(ta_file):
+            os.remove(ta_file)
