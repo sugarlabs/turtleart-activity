@@ -124,7 +124,6 @@ from .sprites import (Sprites, Sprite)
 
 from .util.menubuilder import make_checkmenu_item
 
-from .tagplay import stop_media
 
 _MOTION_THRESHOLD = 6
 _SNAP_THRESHOLD = 200
@@ -163,6 +162,8 @@ class TurtleArtWindow():
         self._timeout_tag = [0]
         self.send_event = None  # method to send events over the network
         self.gst_available = _GST_AVAILABLE
+        if self.gst_available:
+            from .tagplay import stop_media
         self.running_sugar = False
         self.nick = None
         self.running_turtleart = running_turtleart
