@@ -39,7 +39,14 @@ from gi.repository import GdkPixbuf
 from gi.repository import Pango
 from gi.repository import PangoCairo
 
-_GST_AVAILABLE = False
+try:
+    gi.require_version('Gst', '1.0')
+    gi.require_version('GstVideo', '1.0')
+    from . import tagplay
+except (ImportError, ValueError):
+    _GST_AVAILABLE = False
+else:
+    _GST_AVAILABLE = True
 
 
 from random import uniform
@@ -162,8 +169,9 @@ class TurtleArtWindow():
         self._timeout_tag = [0]
         self.send_event = None  # method to send events over the network
         self.gst_available = _GST_AVAILABLE
-        if self.gst_available:
-            from .tagplay import stop_media
+        self.media = None
+        if _GST_AVAILABLE:
+            self.media = tagplay
         self.running_sugar = False
         self.nick = None
         self.running_turtleart = running_turtleart
@@ -3536,8 +3544,8 @@ class TurtleArtWindow():
                 self.hideshow_button()
             elif keyname == 'q':
                 self.quit_plugins()
-                if self.gst_available:
-                    stop_media(self.lc)
+                if self.media is not None:
+                    self.media.stop_media(self.lc)
                 exit()
             elif keyname == 'g':
                 self._align_to_grid()

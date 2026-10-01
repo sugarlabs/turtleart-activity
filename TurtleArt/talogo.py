@@ -236,10 +236,7 @@ class LogoCode:
         self.istack = []
         self.iline = None
         self.tw.stop_plugins()
-        if self.tw.gst_available:
-            from .tagplay import stop_media
-
-            stop_media(self)
+        self.stop_playing_media()
         self.tw.turtles.get_active_turtle().show()
         self.tw.running_blocks = False
         # If we disabled hover help, reenable it
@@ -821,10 +818,8 @@ class LogoCode:
         self.reset_internals()
 
     def stop_playing_media(self):
-        if self.tw.gst_available:
-            from .tagplay import stop_media
-
-            stop_media(self)
+        if self.tw.media is not None:
+            self.tw.media.stop_media(self)
 
     def reset_scale(self):
         self.scale = DEFAULT_SCALE
@@ -1544,56 +1539,43 @@ class LogoCode:
 
     def media_wait(self):
         """ Wait for media to stop playing """
-        if self.tw.gst_available:
-            from .tagplay import media_playing
-
-            while media_playing(self):
+        if self.tw.media is not None:
+            while self.tw.media.media_playing(self):
                 yield True
         self.ireturn()
         yield True
 
     def media_stop(self):
         """ Stop playing media"""
-        if self.tw.gst_available:
-            from .tagplay import stop_media
-
-            stop_media(self)
+        self.stop_playing_media()
         self.ireturn()
         yield True
 
     def media_pause(self):
         """ Pause media"""
-        if self.tw.gst_available:
-            from .tagplay import pause_media
-
-            pause_media(self)
+        if self.tw.media is not None:
+            self.tw.media.pause_media(self)
         self.ireturn()
         yield True
 
     def media_play(self):
         """ Play media"""
-        if self.tw.gst_available:
-            from .tagplay import play_media
-
-            play_media(self)
+        if self.tw.media is not None:
+            self.tw.media.play_media(self)
         self.ireturn()
         yield True
 
     def play_sound(self):
         """ Sound file from Journal """
-        if self.tw.gst_available:
-            from .tagplay import play_audio_from_file
-
-            play_audio_from_file(self, self.filepath)
+        if self.tw.media is not None:
+            self.tw.media.play_audio_from_file(self, self.filepath)
 
     def play_video(self):
         """ Movie file from Journal """
         w, h = self.wpercent(), self.hpercent()
         if w < 1 or h < 1:
             return
-        if self.tw.gst_available:
-            from .tagplay import play_movie_from_file
-
+        if self.tw.media is not None:
             # The video window is an overlay, so we need to know where
             # the canvas is relative to the window, e.g., which
             # toolbars, if any are open.
@@ -1603,7 +1585,7 @@ class LogoCode:
                     yoffset += GRID_CELL_SIZE
                     if self.tw.activity.toolbars_expanded():
                         yoffset += GRID_CELL_SIZE
-            play_movie_from_file(
+            self.tw.media.play_movie_from_file(
                 self, self.filepath, self.x2tx(), self.y2ty() + yoffset, w, h
             )
 
