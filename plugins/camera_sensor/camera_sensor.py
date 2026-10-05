@@ -230,11 +230,11 @@ class Camera_sensor(Plugin):
             for y in range(10):
                 i = row_offset + column_offset
                 for x in range(10):
-                    r += ord(array[i])
+                    r += array[i]
                     i += 1
-                    g += ord(array[i])
+                    g += array[i]
                     i += 1
-                    b += ord(array[i])
+                    b += array[i]
                     i += 1
                 row_offset += width * 3
             if self.luminance_only:

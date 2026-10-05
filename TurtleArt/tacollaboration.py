@@ -19,12 +19,12 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-import os
 
 from gettext import gettext as _
 
 from gi.repository import GdkPixbuf
 
+from TurtleArt.util.speech import speak_text
 from TurtleArt.tautils import data_to_string, data_from_string, get_path, \
     base64_to_image, debug_output, error_output
 from TurtleArt.taconstants import DEFAULT_TURTLE_COLORS
@@ -359,9 +359,7 @@ class Collaboration():
                     sm = SpeechManager()
                     sm.say_text(text)
                 else:
-                    os.system(
-                        'espeak %s "%s" --stdout | aplay' %
-                        (language_option, str(text)))
+                    speak_text(text, language_option)
 
     def _paste(self, payload):
         if len(payload) > 0:

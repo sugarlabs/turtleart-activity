@@ -2,7 +2,8 @@ from .device import RFIDDevice
 from .serial import Serial
 import dbus
 from dbus.mainloop.glib import DBusGMainLoop
-import gobject
+from gi.repository import GLib
+import logging
 import re
 from time import sleep
 
@@ -79,9 +80,10 @@ class RFIDReader(RFIDDevice):
                 self._escape()
                 self._clear()
                 self._format()
-                gobject.idle_add(self._loop)
+                GLib.idle_add(self._loop)
                 retval = True
-            except BaseException:
+            except Exception:
+                logging.getLogger(__name__).exception('RFID operation failed')
                 self._connected = False
         return retval
 
@@ -110,12 +112,13 @@ class RFIDReader(RFIDDevice):
         if not (hexval.__len__() == 16 and reg.findall(hexval) == []):
             return False
         self.ser.read(100)
-        self.ser.write('P')
+        self.ser.write(b'P')
         for i in hexval:
-            self.ser.write(i)
+            self.ser.write(i.encode('ascii'))
         sleep(1)
-        resp = self.ser.read(64)
-        resp = resp.split()[0]
+        resp = self.ser.read(64).decode('ascii')
+        parts = resp.split()
+        resp = parts[0] if parts else ''
         if resp == "P0":
             return True
         else:
@@ -128,13 +131,14 @@ class RFIDReader(RFIDDevice):
         try:
             # self.ser.flushInput()
             self.ser.read(100)
-            self.ser.write('\x1B')
-            resp = self.ser.read()
+            self.ser.write(b'\x1B')
+            resp = self.ser.read().decode('ascii')
             if resp == 'E':
                 return True
             else:
                 return False
-        except BaseException:
+        except Exception:
+            logging.getLogger(__name__).exception('RFID operation failed')
             return False
 
     def _format(self):
@@ -144,13 +148,14 @@ class RFIDReader(RFIDDevice):
         try:
             # self.ser.flushInput()
             self.ser.read(100)
-            self.ser.write('F')
-            resp = self.ser.read()
+            self.ser.write(b'F')
+            resp = self.ser.read().decode('ascii')
             if resp == 'F':
                 return True
             else:
                 return False
-        except BaseException:
+        except Exception:
+            logging.getLogger(__name__).exception('RFID operation failed')
             return False
 
     def _clear(self):
@@ -160,13 +165,14 @@ class RFIDReader(RFIDDevice):
         try:
             # self.ser.flushInput()
             self.ser.read(100)
-            self.ser.write('C')
-            resp = self.ser.read()
+            self.ser.write(b'C')
+            resp = self.ser.read().decode('ascii')
             if resp == 'C':
                 return True
             else:
                 return False
-        except BaseException:
+        except Exception:
+            logging.getLogger(__name__).exception('RFID operation failed')
             return False
 
     def get_version(self):
@@ -176,11 +182,11 @@ class RFIDReader(RFIDDevice):
         """
         # self.ser.flushInput()
         self.ser.read(100)
-        self.ser.write('V')
+        self.ser.write(b'V')
         version = []
         tver = ""
         while True:
-            resp = self.ser.read()
+            resp = self.ser.read().decode('ascii')
             if resp == '\x0A' or resp == '':
                 break
             if resp != '\n' and resp != '\r':
@@ -210,14 +216,14 @@ class RFIDReader(RFIDDevice):
         if not self._connected:
             return False
 
-        if self._state is STATE_WAITING:
-            data = self.ser.read()
+        if self._state == STATE_WAITING:
+            data = self.ser.read().decode('ascii')
             if data in ['W', 'R']:
                 self._state = STATE_WAITING2
             return True
 
-        elif self._state is STATE_WAITING2:
-            data = self.ser.read()
+        elif self._state == STATE_WAITING2:
+            data = self.ser.read().decode('ascii')
             if data.isspace():
                 self._state = STATE_READING
             else:
@@ -225,8 +231,8 @@ class RFIDReader(RFIDDevice):
                 self._state = STATE_WAITING
             return True
 
-        elif self._state is STATE_READING:
-            data = self.ser.read(16)
+        elif self._state == STATE_READING:
+            data = self.ser.read(16).decode('ascii')
             if data.__len__() < 16:
                 self._clear()
                 self._state = STATE_WAITING
@@ -256,5 +262,5 @@ class RFIDReader(RFIDDevice):
 #    else:
 #        print "Not connected"
 #
-#    mloop = gobject.MainLoop()
+#    mloop = GLib.MainLoop()
 #    mloop.run()

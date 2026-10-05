@@ -18,8 +18,8 @@ PARITY_NAMES = {
     PARITY_SPACE: 'Space',
 }
 
-XON = chr(17)
-XOFF = chr(19)
+XON = b'\x11'
+XOFF = b'\x13'
 
 
 
@@ -60,10 +60,10 @@ class FileLike(object):
     def write(self, s):
         raise NotImplementedError
 
-    def readline(self, size=None, eol='\n'):
+    def readline(self, size=None, eol=b'\n'):
         """read a line which is terminated with end-of-line (eol) character
         ('\n' by default) or until timeout"""
-        line = ''
+        line = b''
         while True:
             c = self.read(1)
             if c:
@@ -77,7 +77,7 @@ class FileLike(object):
                 break
         return line
 
-    def readlines(self, sizehint=None, eol='\n'):
+    def readlines(self, sizehint=None, eol=b'\n'):
         """read a list of lines, until timeout
         sizehint is ignored"""
         if self.timeout is None:
@@ -88,7 +88,7 @@ class FileLike(object):
             line = self.readline(eol=eol)
             if line:
                 lines.append(line)
-                if line[-1] != eol:  # was the line received with a timeout?
+                if not line.endswith(eol):  # was the line received with a timeout?
                     break
             else:
                 break
@@ -182,6 +182,7 @@ class SerialBase(FileLike):
            opened immediately. Otherwise a Serial port object in closed state
            is returned."""
 
+        self.fd = None
         self._isOpen = False
         self._port = None  # correct value is assigned below trough properties
         # correct value is assigned below trough properties

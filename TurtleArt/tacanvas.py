@@ -23,7 +23,7 @@
 import cairo
 import os
 
-from math import pi
+from math import ceil, floor, pi
 
 from gi.repository import Gdk
 from gi.repository import Pango
@@ -372,7 +372,14 @@ class TurtleGraphics:
         _draw_line(self.canvas, x1, y1, x2, y2)
         if self.cr_svg is not None:
             _draw_line(self.cr_svg, x1, y1, x2, y2)
-        self.inval()
+        # Only the line's bounding box changed. Pad it by half the pen
+        # width (round caps) plus a pixel or two for anti-aliasing.
+        pad = self.canvas.get_line_width() / 2. + 2
+        left = floor(min(x1, x2) - pad)
+        top = floor(min(y1, y2) - pad)
+        right = ceil(max(x1, x2) + pad)
+        bottom = ceil(max(y1, y2) + pad)
+        self.inval((left, top, right - left, bottom - top))
 
     def get_color_index(self, r, g, b, a=0):
         ''' Find the closest palette entry to the rgb triplet '''
@@ -439,6 +446,11 @@ class TurtleGraphics:
         ''' Reset svg flags '''
         self.cr_svg = None
 
-    def inval(self):
-        ''' Invalidate a region for gtk '''
-        self.turtle_window.inval_all()
+    def inval(self, rect=None):
+        ''' Invalidate a region for gtk: rect is (x, y, width, height),
+        or the whole canvas if it is None. '''
+        if rect is None:
+            self.turtle_window.inval_all()
+        else:
+            self.turtle_window.inval_rect(*rect)
+

@@ -135,9 +135,7 @@ class Sprites:
 
     def find_sprite(self, pos, region=False):
         ''' Search based on (x, y) position. Return the 'top/first' one. '''
-        list_pos = self.list[:]
-        list_pos.reverse()
-        for spr in list_pos:
+        for spr in reversed(self.list):
             if spr.hit(pos, readpixel=not region):
                 return spr
         return None
@@ -153,13 +151,17 @@ class Sprites:
         if cr is None:
             print('sprites.redraw_sprites: no Cairo context')
             return
+        if area is None:
+            x1, y1, x2, y2 = cr.clip_extents()
+        else:
+            x1, y1 = area.x, area.y
+            x2, y2 = x1 + area.width, y1 + area.height
         for spr in self.list:
-            if area is None:
+            rect = spr.rect
+            if (rect.x < x2 and rect.x + rect.width > x1
+                    and rect.y < y2 and rect.y + rect.height > y1):
                 spr.draw(cr=cr)
-            else:
-                intersection = spr.rect.intersect(area)
-                if intersection.width > 0 or intersection.height > 0:
-                    spr.draw(cr=cr)
+
 
 
 class Sprite:
@@ -188,6 +190,7 @@ class Sprite:
         self._margins = [0, 0, 0, 0]
         self.layer = 100
         self.labels = []
+        self._label_layouts = []
         self.cached_surfaces = []
         self._dx = []  # image offsets
         self._dy = []
@@ -390,6 +393,28 @@ class Sprite:
                 return False
         return self._sprites.find_in_list(self)
 
+    def _get_label_layout(self, cr, i):
+        """Reuse a layout per label, updating its context and base font.
+
+        Fit and alignment are recalculated by the caller: moving/resizing a
+        sprite or changing the Cairo context must not reuse stale geometry.
+        """
+        del self._label_layouts[len(self.labels):]
+        while len(self._label_layouts) <= i:
+            self._label_layouts.append(None)
+        layout = self._label_layouts[i]
+        if layout is None:
+            layout = PangoCairo.create_layout(cr)
+            self._label_layouts[i] = layout
+        if layout.get_text() != self.labels[i]:
+            layout.set_text(self.labels[i], -1)
+        font = self._fd.copy()
+        font.set_size(int(self._scale[i] * Pango.SCALE))
+        layout.set_font_description(font)
+        layout.set_ellipsize(Pango.EllipsizeMode.NONE)
+        PangoCairo.update_layout(cr, layout)
+        return layout
+
     def draw_label(self, cr):
         ''' Draw the label based on its attributes '''
 
@@ -398,21 +423,17 @@ class Sprite:
             my_width = 0
         my_height = self.rect.height - self._margins[1] - self._margins[3]
         for i in range(len(self.labels)):
-            pl = PangoCairo.create_layout(cr)
-            pl.set_text(self.labels[i], -1)
-            self._fd.set_size(int(self._scale[i] * Pango.SCALE))
-            pl.set_font_description(self._fd)
+            pl = self._get_label_layout(cr, i)
             w = pl.get_size()[0] / Pango.SCALE
             if w > my_width:
                 if self._rescale[i]:
-                    self._fd.set_size(
+                    font = pl.get_font_description().copy()
+                    font.set_size(
                         int(self._scale[i] * Pango.SCALE * my_width / w))
-                    pl.set_font_description(self._fd)
+                    pl.set_font_description(font)
                     w = pl.get_size()[0] / Pango.SCALE
                 else:
                     pl.set_ellipsize(Pango.EllipsizeMode.MIDDLE)
-                    self._fd.set_size(int(self._scale[i] * Pango.SCALE))
-                    pl.set_font_description(self._fd)
                     w = pl.get_size()[0] / Pango.SCALE
             if self._x_pos[i] is not None:
                 x = int(self.rect.x + self._x_pos[i])
@@ -446,10 +467,7 @@ class Sprite:
         if cr is not None:
             maximum = 0
             for i in range(len(self.labels)):
-                pl = PangoCairo.create_layout(cr)
-                pl.set_text(self.labels[i], -1)
-                self._fd.set_size(int(self._scale[i] * Pango.SCALE))
-                pl.set_font_description(self._fd)
+                pl = self._get_label_layout(cr, i)
                 w = pl.get_size()[0] / Pango.SCALE
                 if w > maximum:
                     maximum = w

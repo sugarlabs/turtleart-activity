@@ -492,22 +492,9 @@ class AudioGrab():
 
 
 def check_output(command, warning):
-    ''' Workaround for old systems without subprocess.check_output'''
-    if hasattr(subprocess, 'check_output'):
-        try:
-            output = subprocess.check_output(command)
-        except subprocess.CalledProcessError:
-            log.warning(warning)
-            return None
-    else:
-        import subprocess
-
-        cmd = ''
-        for c in command:
-            cmd += c
-            cmd += ' '
-        (status, output) = subprocess.getstatusoutput(cmd)
-        if status != 0:
-            log.warning(warning)
-            return None
-    return output
+    """Run a mixer command and return text, or None if it fails."""
+    try:
+        return subprocess.check_output(command, universal_newlines=True)
+    except (OSError, subprocess.CalledProcessError) as error:
+        log.warning('%s: %s', warning, error)
+        return None

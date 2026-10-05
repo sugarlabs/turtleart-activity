@@ -19,10 +19,11 @@ import termios
 import struct
 import select
 import errno
-from .serialutil import portnum, SerialBase, SerialException, \
+from .serialutil import SerialBase, SerialException, \
     portNotOpenError, writeTimeoutError
 
-from .serialutil import VERSION, STOPBITS_ONE, STOPBITS_TWO, \
+from . import VERSION
+from .serialutil import STOPBITS_ONE, STOPBITS_TWO, \
     PARITY_NONE, PARITY_EVEN, PARITY_ODD, EIGHTBITS
 
 # Do check the Python version as some constants have moved.
@@ -99,7 +100,7 @@ and with a bit luck you can get this module running...
     # even if the device name is not correct for the platform it has chances
     # to work using a string with the real device name as port paramter.
 
-    def device(portum):
+    def device(portnum):
         return '/dev/ttyS%d' % portnum
 
     # ~ raise Exception, "this module does not run on this platform, sorry."
@@ -205,6 +206,7 @@ class Serial(SerialBase):
         except BaseException:
             os.close(self.fd)
             self.fd = None
+            raise
         else:
             self._isOpen = True
         # ~ self.flushInput()
@@ -334,7 +336,7 @@ class Serial(SerialBase):
             FCNTL.ioctl(self.fd, TERMIOS.TIOCGSERIAL, buf)
 
             # set custom divisor
-            buf[6] = buf[7] / custom_baud
+            buf[6] = buf[7] // custom_baud
 
             # update flags
             buf[4] &= ~ASYNC_SPD_MASK
@@ -373,7 +375,7 @@ class Serial(SerialBase):
            until the requested number of bytes is read."""
         if self.fd is None:
             raise portNotOpenError
-        read = ''
+        read = b''
         if size > 0:
             while len(read) < size:
                 # print "\tread(): size",size, "have", len(read)    #debug
@@ -382,8 +384,7 @@ class Serial(SerialBase):
                     break  # timeout
                 buf = os.read(self.fd, size - len(read))
                 read = read + buf
-                if (self._timeout >= 0 or self._interCharTimeout > 0) and \
-                        not buf:
+                if not buf:
                     break  # early abort on timeout
         return read
 
@@ -391,8 +392,9 @@ class Serial(SerialBase):
         """Output the given string over the serial port."""
         if self.fd is None:
             raise portNotOpenError
-        if not isinstance(data, str):
-            raise TypeError('expected str, got %s' % type(data))
+        if not isinstance(data, (bytes, bytearray, memoryview)):
+            raise TypeError('expected bytes-like data, got %s' % type(data))
+        data = bytes(data)
         t = len(data)
         d = data
         while t > 0:
@@ -533,7 +535,7 @@ if __name__ == '__main__':
     s.setDTR(1)
     s.flushInput()
     s.flushOutput()
-    s.write('hello')
+    s.write(b'hello')
     print(repr(s.read(5)))
     print(s.inWaiting())
     del s

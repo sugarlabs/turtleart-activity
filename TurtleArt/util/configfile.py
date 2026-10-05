@@ -19,6 +19,20 @@
 from gi.repository import GObject
 
 
+_TRUE_VALUES = ('true', '1', 'yes', 'on')
+_FALSE_VALUES = ('false', '0', 'no', 'off', '')
+
+
+def _parse_bool(text):
+    """Parse a boolean config value without using eval()."""
+    lowered = text.strip().lower()
+    if lowered in _TRUE_VALUES:
+        return True
+    if lowered in _FALSE_VALUES:
+        return False
+    raise ValueError("Invalid boolean config value %r" % text)
+
+
 class ConfigFile(GObject.GObject):
     """Load/save a simple (key = value) config file"""
 
@@ -72,7 +86,11 @@ class ConfigFile(GObject.GObject):
             config_file.close()
             for line in lines:
                 line = line.strip()
-                k, v = line.split('=')
+                if not line or line.startswith('#'):
+                    continue
+                # Split on the first '=' only: values (e.g. passwords)
+                # may legitimately contain '='.
+                k, v = line.split('=', 1)
                 k = k.strip(' ')
                 v = v.strip(' ')
                 if k not in self._valid_keys:
@@ -81,9 +99,12 @@ class ConfigFile(GObject.GObject):
                 if value_type == "text":
                     value = v
                 elif value_type == "boolean":
-                    value = eval(v)
+                    value = _parse_bool(v)
                 elif value_type == "integer":
                     value = int(v)
+                else:
+                    raise RuntimeError("Unknown config type %s for %s" %
+                                       (value_type, k))
                 self._config_hash[k] = value
             self._is_loaded = True
             self.emit('configuration-loaded')

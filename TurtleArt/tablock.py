@@ -80,6 +80,7 @@ class Blocks:
 
     def __init__(self, font_scale_factor=1, decimal_point='.'):
         self.list = []
+        self._sprite_to_block = {}
         self.max_width = 400
         self.font_scale_factor = font_scale_factor
         self.decimal_point = decimal_point
@@ -101,10 +102,14 @@ class Blocks:
 
     def append_to_list(self, block):
         self.list.append(block)
+        if block.spr is not None:
+            self._sprite_to_block[block.spr] = block
 
     def remove_from_list(self, block):
         if block in self.list:
             self.list.remove(block)
+            if block.spr is not None:
+                self._sprite_to_block.pop(block.spr, None)
 
     def print_list(self, block_type=None):
         for i, block in enumerate(self.list):
@@ -118,10 +123,10 @@ class Blocks:
         self.font_scale_factor = scale
 
     def spr_to_block(self, spr):
-        for b in self.list:
-            if spr == b.spr:
-                return b
-        return None
+        if spr is None:
+            # Preserve lookup behavior for blocks created without sprites.
+            return next((b for b in self.list if b.spr is None), None)
+        return self._sprite_to_block.get(spr)
 
     def get_next_block(self, block):
         if block is None:
@@ -139,16 +144,15 @@ class Blocks:
     def get_next_block_of_same_type(self, block):
         if block is None:
             return None
-        type = block.type
-        i = 0
-        while block is not None:
-            block = self.get_next_block(block)
-            if block is not None:
-                if block.type == type:
-                    return block
-            if i == len(self.list):
-                break
-            i += 1
+        try:
+            start = self.list.index(block)
+        except ValueError:
+            return None
+        block_type = block.type
+        for offset in range(1, len(self.list) + 1):
+            candidate = self.list[(start + offset) % len(self.list)]
+            if candidate.type == block_type:
+                return candidate
         return None
 
     def get_similar_blocks(self, block_type, name):
@@ -376,12 +380,14 @@ class Block:
 
     def highlight(self):
         """ We may want to highlight a block... """
-        if self.spr is not None and self.status != 'collapsed':
+        if (self.spr is not None and self.status != 'collapsed'
+                and self.spr.cached_surfaces[0] is not self.shapes[1]):
             self.spr.set_shape(self.shapes[1])
 
     def unhighlight(self):
         """ Or unhighlight it. """
-        if self.spr is not None and self.status != 'collapsed':
+        if (self.spr is not None and self.status != 'collapsed'
+                and self.spr.cached_surfaces[0] is not self.shapes[0]):
             self.spr.set_shape(self.shapes[0])
 
     def resize(self):
@@ -441,6 +447,14 @@ class Block:
         self._set_margins()
         self._set_label_attributes()
         self.spr.set_shape(self.shapes[0])
+
+    def refresh_label_layout(self):
+        """Update label geometry without rebuilding unchanged block images."""
+        if self.spr is None:
+            return
+        self._set_margins()
+        self._set_label_attributes()
+        self.spr.inval()
 
     def add_arg(self, keep_expanding=True):
         """ We may want to add additional slots for arguments ("innies"). """
@@ -1341,9 +1355,9 @@ class Block:
         self.svg.set_gradient(True, GRADIENT_COLOR)
         self.svg.clear_docks()
         if arg is None:
-            pixbuf = svg_str_to_pixbuf(function())
+            pixbuf = svg_str_to_pixbuf(function(), cache=True)
         else:
-            pixbuf = svg_str_to_pixbuf(function(arg))
+            pixbuf = svg_str_to_pixbuf(function(arg), cache=True)
         self.width = self.svg.get_width()
         self.height = self.svg.get_height()
         self.shapes[0] = _pixbuf_to_cairo_surface(pixbuf,
@@ -1351,9 +1365,9 @@ class Block:
         self.svg.set_gradient(False)
         self.svg.clear_docks()
         if arg is None:
-            pixbuf = svg_str_to_pixbuf(function())
+            pixbuf = svg_str_to_pixbuf(function(), cache=True)
         else:
-            pixbuf = svg_str_to_pixbuf(function(arg))
+            pixbuf = svg_str_to_pixbuf(function(arg), cache=True)
         self.shapes[1] = _pixbuf_to_cairo_surface(pixbuf,
                                                   self.width, self.height)
 

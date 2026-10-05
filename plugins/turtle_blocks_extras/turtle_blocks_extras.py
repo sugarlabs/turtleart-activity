@@ -21,6 +21,7 @@ from time import time
 from gettext import gettext as _
 
 from plugins.plugin import Plugin
+from TurtleArt.util.speech import speak_text
 from TurtleArt.tapalette import (make_palette, define_logo_function)
 from TurtleArt.talogo import (primitive_dictionary, logoerror)
 from TurtleArt.taconstants import (CONSTANTS, MACROS, KEY_DICT, MEDIA_SHAPES,
@@ -1219,7 +1220,7 @@ Journal objects'))
         if isinstance(text, float) and int(text) == text:
             text = int(text)
 
-        lang = os.environ['LANG'][0:2]
+        lang = os.environ.get('LANG', '')[0:2]
         if lang in VOICES:
             language_option = '-v ' + VOICES[lang]
         else:
@@ -1230,9 +1231,7 @@ Journal objects'))
             sm = SpeechManager()
             sm.say_text(text)
         else:
-            os.system(
-                'espeak %s "%s" --stdout | aplay' %
-                (language_option, str(text)))
+            speak_text(text, language_option)
 
         if self.tw.sharing():
             if language_option == '':

@@ -2,7 +2,8 @@ from .device import RFIDDevice
 from .serial import Serial
 import dbus
 from dbus.mainloop.glib import DBusGMainLoop
-import gobject
+from gi.repository import GLib
+import logging
 from . import utils
 
 HAL_SERVICE = 'org.freedesktop.Hal'
@@ -69,16 +70,19 @@ class RFIDReader(RFIDDevice):
                         parent.GetProperty('info.linux.driver')) == 'ftdi_sio':
                     device = str(serialusb_if.GetProperty('linux.device_file'))
                     ser = Serial(device, 9600, timeout=0.1)
-                    ser.read(100)
-                    ser.write('v')
-                    ser.write('e')
-                    ser.write('r')
-                    ser.write('\x0D')
-                    resp = ser.read(4)
-                    if resp[0:-1] in VERSIONS:
-                        self.device = device
-                        self.device_path = i
-                        return True
+                    try:
+                        ser.read(100)
+                        ser.write(b'v')
+                        ser.write(b'e')
+                        ser.write(b'r')
+                        ser.write(b'\x0D')
+                        resp = ser.read(4).decode('ascii')
+                        if resp[0:-1] in VERSIONS:
+                            self.device = device
+                            self.device_path = i
+                            return True
+                    finally:
+                        ser.close()
         return False
 
     def do_connect(self):
@@ -91,12 +95,15 @@ class RFIDReader(RFIDDevice):
             try:
                 self.ser = Serial(self.device, 9600, timeout=0.1)
                 self._connected = True
-                if self._select_animal_tag:
-                    # gobject.idle_add(self._loop)
-                    gobject.timeout_add(1000, self._loop)
+                if self._select_animal_tag():
+                    # GLib.idle_add(self._loop)
+                    GLib.timeout_add(1000, self._loop)
                     retval = True
-            except BaseException:
+            except Exception:
+                logging.getLogger(__name__).exception('RFID operation failed')
                 self._connected = False
+        if not retval:
+            self.do_disconnect()
         return retval
 
     def do_disconnect(self):
@@ -117,11 +124,11 @@ class RFIDReader(RFIDDevice):
         Sends the "Select Tag 2" (animal tag) command to the device.
         """
         self.ser.read(100)
-        self.ser.write('s')
-        self.ser.write('t')
-        self.ser.write('2')
-        self.ser.write('\x0d')
-        resp = self.ser.read(3)[0:-1]
+        self.ser.write(b's')
+        self.ser.write(b't')
+        self.ser.write(b'2')
+        self.ser.write(b'\x0d')
+        resp = self.ser.read(3).decode('ascii')[0:-1]
         if resp == 'OK':
             return True
         return False
@@ -134,11 +141,11 @@ class RFIDReader(RFIDDevice):
         # self.ser.flushInput()
         ver = "???"
         self.ser.read(100)
-        self.ser.write('v')
-        self.ser.write('e')
-        self.ser.write('r')
-        self.ser.write('\x0d')
-        resp = self.ser.read(4)[0:-1]
+        self.ser.write(b'v')
+        self.ser.write(b'e')
+        self.ser.write(b'r')
+        self.ser.write(b'\x0d')
+        resp = self.ser.read(4).decode('ascii')[0:-1]
         if resp in VERSIONS:
             return "RFIDRW-E-USB " + resp
         return ver
@@ -164,11 +171,11 @@ class RFIDReader(RFIDDevice):
             return False
 
         self.ser.read(100)
-        self.ser.write('r')
-        self.ser.write('a')
-        self.ser.write('t')
-        self.ser.write('\x0d')
-        resp = self.ser.read(33)[0:-1].split('_')
+        self.ser.write(b'r')
+        self.ser.write(b'a')
+        self.ser.write(b't')
+        self.ser.write(b'\x0d')
+        resp = self.ser.read(33).decode('ascii')[0:-1].split('_')
         if (resp.__len__() != 6) or resp in self.tags:
             return True
 
@@ -207,5 +214,5 @@ class RFIDReader(RFIDDevice):
 #    else:
 #        print "Not connected"
 #
-#    mloop = gobject.MainLoop()
+#    mloop = GLib.MainLoop()
 #    mloop.run()

@@ -17,7 +17,7 @@ else:
     if os.name == 'nt':  # sys.platform == 'win32':
         import serialwin32
     elif os.name == 'posix':
-        from . import serialposix
+        from .serialposix import Serial  # noqa: F401
     elif os.name == 'java':
         import serialjava
     else:

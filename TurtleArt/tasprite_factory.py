@@ -1617,12 +1617,32 @@ if __name__ == "__main__":
     main()
 
 
-def svg_str_to_pixbuf(svg_string):
-    """ Load pixbuf from SVG string """
+# Reuse SVG images only during initial loading. None disables caching and
+# releases the dictionary and its retained pixbufs after initialization.
+_svg_pixbuf_cache = {}
+
+
+def finish_svg_loading():
+    """Release all cached images and disable caching for subsequent calls."""
+    global _svg_pixbuf_cache
+    _svg_pixbuf_cache = None
+
+
+def svg_str_to_pixbuf(svg_string, cache=False):
+    """Rasterize SVG, reusing images during startup without sharing mutations."""
+    svg_bytes = svg_string.encode()
+    if cache and _svg_pixbuf_cache is not None:
+        cached = _svg_pixbuf_cache.get(svg_bytes)
+        if cached is not None:
+            return cached.copy()
+
     pl = GdkPixbuf.PixbufLoader()
-    pl.write(svg_string.encode())
+    pl.write(svg_bytes)
     pl.close()
     pixbuf = pl.get_pixbuf()
+    if cache and _svg_pixbuf_cache is not None:
+        # Keep a private copy so callers can modify their result safely.
+        _svg_pixbuf_cache[svg_bytes] = pixbuf.copy()
     return pixbuf
 
 

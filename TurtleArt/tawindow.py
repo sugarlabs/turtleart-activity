@@ -123,7 +123,8 @@ from .tautils import (magnitude, get_load_name, get_save_name, data_from_file,
                       error_output, find_hat, find_bot_block,
                       restore_clamp, collapse_clamp, data_from_string,
                       increment_name, get_screen_dpi, is_writeable)
-from .tasprite_factory import (svg_str_to_pixbuf, svg_from_file)
+from .tasprite_factory import (svg_str_to_pixbuf, svg_from_file,
+                               finish_svg_loading)
 from .tapalette import block_primitives
 from .tapaletteview import PaletteView
 from .taselector import (Selector, create_toolbar_background)
@@ -370,8 +371,11 @@ class TurtleArtWindow():
         if self.interactive_mode:
             GLib.idle_add(self._lazy_init)
         else:
-            self._init_plugins()
-            self._setup_plugins()
+            try:
+                self._init_plugins()
+                self._setup_plugins()
+            finally:
+                finish_svg_loading()
 
     # To return lc for it to be used in taturtle
     def LC(self):
@@ -387,27 +391,30 @@ class TurtleArtWindow():
             return True
 
     def _lazy_init(self):
-        self._init_plugins()
-        self._setup_plugins()
-        self._setup_misc()
+        try:
+            self._init_plugins()
+            self._setup_plugins()
+            self._setup_misc()
 
-        if self.running_turtleart:
-            self._basic_palettes.make_trash_palette()
-            for name in palette_init_on_start:
-                debug_output('initing palette %s' % (name), self.running_sugar)
-                self.show_toolbar_palette(palette_names.index(name),
+            if self.running_turtleart:
+                self._basic_palettes.make_trash_palette()
+                for name in palette_init_on_start:
+                    debug_output('initing palette %s' % (name), self.running_sugar)
+                    self.show_toolbar_palette(palette_names.index(name),
+                                              init_only=False,
+                                              regenerate=True,
+                                              show=False)
+
+                self.show_toolbar_palette(0,
                                           init_only=False,
                                           regenerate=True,
-                                          show=False)
+                                          show=True)
 
-            self.show_toolbar_palette(0,
-                                      init_only=False,
-                                      regenerate=True,
-                                      show=True)
-
-            if self.running_sugar:
-                self.activity.check_buttons_for_fit()
-                self.activity.update_palette_from_metadata()
+                if self.running_sugar:
+                    self.activity.check_buttons_for_fit()
+                    self.activity.update_palette_from_metadata()
+        finally:
+            finish_svg_loading()
 
     def _set_screen_dpi(self):
         dpi = get_screen_dpi()
@@ -665,21 +672,23 @@ class TurtleArtWindow():
                                          filename + '.svg')))
                     break
 
+    def _get_status_shape(self, name):
+        """Load a message image once, when it is first needed."""
+        if name not in STATUS_SHAPES:
+            raise KeyError(name)
+        if name not in self.status_shapes:
+            filename = name
+            if name in ('print', 'help', 'status') and self.width > 1024:
+                filename += '1200'
+            self.status_shapes[name] = svg_str_to_pixbuf(
+                svg_from_file(os.path.join(self.images_path, filename + '.svg')))
+        return self.status_shapes[name]
+
     def _setup_misc(self):
         ''' Misc. sprites for status, overlays, etc. '''
         self.load_media_shapes()
-        for i, name in enumerate(STATUS_SHAPES):
-            # Temporary hack to use wider shapes
-            if name in ['print', 'help', 'status'] and self.width > 1024:
-                self.status_shapes[name] = svg_str_to_pixbuf(
-                    svg_from_file(
-                        os.path.join(self.images_path, name + '1200.svg')))
-            else:
-                self.status_shapes[name] = svg_str_to_pixbuf(
-                    svg_from_file(
-                        os.path.join(self.images_path, name + '.svg')))
         self.status_spr = Sprite(self.sprite_list, 0, self.height - 200,
-                                 self.status_shapes['status'])
+                                 self._get_status_shape('status'))
         self.status_spr.hide()
         self.status_spr.type = 'status'
         self._autohide_shape = True
@@ -742,7 +751,13 @@ class TurtleArtWindow():
 
     def is_project_empty(self):
         ''' Check to see if project has any blocks in use '''
-        return len(self.just_blocks()) == 1
+        count = 0
+        for blk in self.block_list.list:
+            if blk.type == 'block':
+                count = count + 1
+                if count > 1:
+                    return False
+        return count == 1
 
     def recalculate_constants(self):
         CONSTANTS['titlex'] = int(-(self.width * TITLEXY[0]
@@ -795,15 +810,21 @@ class TurtleArtWindow():
         # sw needs new bounds set
         # cr.scale(self.activity.global_x_scale, self.activity.global_y_scale)
 
-        cr.rectangle(self.rect.x, self.rect.y,
-                     self.rect.width, self.rect.height)
-
+        # GTK already clips cr to the invalidated region, so paint() and
+        # redraw_sprites() (which reads cr.clip_extents()) only touch it.
+        # Do not leave an unconsumed rectangle path on cr: the first
+        # sprite's cr.fill() would fill it too.
         if self.turtle_canvas is not None:
             cr.set_source_surface(self.turtle_canvas)
             cr.paint()
 
         # Refresh sprite list
         self.sprite_list.redraw_sprites(cr=cr)
+
+    def inval_rect(self, x, y, width, height):
+        ''' Force a refresh of just one rectangle of the window '''
+        if self.interactive_mode:
+            self.window.queue_draw_area(x, y, width, height)
 
     def eraser_button(self):
         ''' Eraser_button (hide status block when clearing the screen.) '''
@@ -1969,8 +1990,7 @@ class TurtleArtWindow():
                 blk.spr.hide()
                 remove_list.append(blk)
         for blk in remove_list:
-            if blk in self.block_list.list:
-                self.block_list.list.remove(blk)
+            self.block_list.remove_from_list(blk)
         self.trash_stack = []
         if 'trash' in palette_names:
             self.show_toolbar_palette(palette_names.index('trash'),
@@ -2003,8 +2023,7 @@ class TurtleArtWindow():
                         blk.highlight()
                 self.block_operation = 'copying'
                 data = self.assemble_data_to_save(False, False)
-
-                if data is not []:
+                if data:
                     if self.saving_blocks:
                         i = find_hat(data)
                         if i is not None:
@@ -2784,13 +2803,14 @@ class TurtleArtWindow():
                 h = blk.spr.label_safe_height()
             self._text_entry.set_size_request(w, h)
             bx, by = blk.spr.get_xy()
-            if not self.running_sugar:
-                by += self.activity.menu_height
             mx, my = blk.spr.label_left_top()
-            self._text_entry.set_pixels_above_lines(my)
-            bx -= int(self.activity.sw.get_hadjustment().get_value())
-            by -= int(self.activity.sw.get_vadjustment().get_value())
-            self.activity.fixed.move(self._text_entry, bx + mx, by + my * 2)
+            # The editor belongs to Gtk.Fixed, while blocks use canvas
+            # coordinates. GTK accounts for menus, scrolling and offsets.
+            position = self.window.translate_coordinates(
+                self.activity.fixed, int(bx + mx), int(by + my))
+            self._text_entry.set_pixels_above_lines(0)
+            if position is not None:
+                self.activity.fixed.move(self._text_entry, *position)
             self.activity.fixed.show()
             if blk.name == 'number':
                 self._insert_text_id = self._text_buffer.connect(
@@ -3059,22 +3079,22 @@ class TurtleArtWindow():
         best_destination = None
         d = _SNAP_THRESHOLD
         self.inserting_block_mid_stack = False
+        # Build candidates once, preserving their order for equal distances.
+        dragged_blocks = set(self.drag_group)
+        candidates = [block for block in self.just_blocks()
+                      if block.status != 'collapsed'
+                      and block not in dragged_blocks]
         for selected_block_dockn in range(len(selected_block.docks)):
-            for destination_block in self.just_blocks():
-                # Don't link to a block that is hidden
-                if destination_block.status == 'collapsed':
-                    continue
-                # Don't link to a block to which you're already connected
-                if destination_block in self.drag_group:
-                    continue
+            for destination_block in candidates:
                 # Check each dock of destination for a possible connection
                 for destination_dockn in range(len(destination_block.docks)):
                     this_xy = self.dock_dx_dy(
                         destination_block, destination_dockn,
                         selected_block, selected_block_dockn)
-                    if magnitude(this_xy) > d:
+                    distance = magnitude(this_xy)
+                    if distance > d:
                         continue
-                    d = magnitude(this_xy)
+                    d = distance
                     best_xy = this_xy
                     best_destination = destination_block
                     best_destination_dockn = destination_dockn
@@ -3089,6 +3109,17 @@ class TurtleArtWindow():
                                  best_selected_block_dockn,
                                  best_destination_dockn):
                 return
+
+            # Derive insertion mode only from the chosen, validated dock.
+            self.inserting_block_mid_stack = (
+                selected_block.docks[best_selected_block_dockn][0] == 'flow'
+                and best_selected_block_dockn == 0
+                and best_destination.connections is not None
+                and best_destination.connections[best_destination_dockn]
+                is not None
+                and (best_destination_dockn ==
+                     len(best_destination.connections) - 1
+                     or best_destination.name in EXPANDABLE_FLOW))
 
             # Move the selected blocks into the docked position
             for blk in self.drag_group:
@@ -3293,8 +3324,9 @@ class TurtleArtWindow():
         ''' Swap postion in block list of nested while blocks '''
         # Check to see if blk1 comes before blk2 in the block list.
         # If so, swap them.
-        i1 = self.just_blocks().index(blk1)
-        i2 = self.just_blocks().index(blk2)
+        blocks = self.just_blocks()
+        i1 = blocks.index(blk1)
+        i2 = blocks.index(blk2)
         if i1 < i2:
             self.block_list.swap(blk1, blk2)
 
@@ -3915,8 +3947,11 @@ class TurtleArtWindow():
         self.lc.stop_logo()
         self._loaded_project = ''
         # Put current project in the trash.
-        while len(self.just_blocks()) > 0:
-            blk = self.just_blocks()[0]
+        for blk in self.just_blocks():
+            # Trashing a stack changes the type of every block in it, so
+            # skip blocks that went to the trash with an earlier stack.
+            if blk.type != 'block':
+                continue
             top = find_top_block(blk)
             self._put_in_trash(top)
         self.canvas.clearscreen()
@@ -4205,7 +4240,7 @@ class TurtleArtWindow():
                 if not movie_media_type(blk.values[0][-4:]):
                     try:
                         w, h, = calc_image_size(blk.spr)
-                        pixbuf = GdkPixbuf.pixbuf.new_from_file_at_size(
+                        pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_size(
                             blk.values[0], w, h)
                         x, y = self.calc_image_offset('', blk.spr)
                         blk.set_image(pixbuf, x, y)
@@ -4386,21 +4421,23 @@ class TurtleArtWindow():
             else:
                 data.append((blk.id, name, sx, sy, connections))
         if save_turtle:
-            for turtle in iter(self.turtles.dict):
+            for name, turtle in self.turtles.dict.items():
                 # Don't save remote turtles
-                if not self.remote_turtle(turtle):
+                if not self.remote_turtle(name):
                     # Save default turtle as 'Yertle'
-                    if turtle == self.nick:
-                        turtle = DEFAULT_TURTLE
-                    pos = self.turtles.get_active_turtle().get_xy()
+                    if name == self.nick:
+                        saved_name = DEFAULT_TURTLE
+                    else:
+                        saved_name = name
+                    pos = turtle.get_xy()
                     data.append(
                         (-1,
-                         ['turtle', turtle],
+                         ['turtle', saved_name],
                          pos[0], pos[1],
-                         self.turtles.get_active_turtle().get_heading(),
-                         self.turtles.get_active_turtle().get_color(),
-                         self.turtles.get_active_turtle().get_shade(),
-                         self.turtles.get_active_turtle().get_pen_size()))
+                         turtle.get_heading(),
+                         turtle.get_color(),
+                         turtle.get_shade(),
+                         turtle.get_pen_size()))
             # Also save font scale
             data.append((-1, '_saved_font_scale', 0, 0, self.block_scale))
 
@@ -4439,10 +4476,12 @@ class TurtleArtWindow():
 
     def _set_coordinates_label(self, text):
         if self.running_sugar:
-            self.activity.coordinates_label.set_text(text)
+            if self.activity.coordinates_label.get_text() != text:
+                self.activity.coordinates_label.set_text(text)
             self.activity.coordinates_label.show()
         elif self.interactive_mode:
-            self.parent.set_title(text)
+            if self.parent.get_title() != text:
+                self.parent.set_title(text)
 
     def print_(self, n, flag):
         """ Print object n to the bar at the bottom of the screen """
@@ -4519,7 +4558,7 @@ class TurtleArtWindow():
         else:
             self._autohide_shape = False
         if shp == 'syntaxerror' and str(label) != '':
-            if str(label)[1:] in self.status_shapes:
+            if str(label)[1:] in STATUS_SHAPES:
                 shp = str(label)[1:]
                 label = ''
             else:
@@ -4530,7 +4569,7 @@ class TurtleArtWindow():
         if self.running_sugar and \
            shp not in ['print', 'status', 'info', 'help']:
             self.activity.error_list.append(shp)
-        self.status_spr.set_shape(self.status_shapes[shp])
+        self.status_spr.set_shape(self._get_status_shape(shp))
         self.status_spr.set_label_attributes(12.0, rescale=False)
         if shp == 'status':
             # Make sure True and False get added to the POT file
@@ -4830,11 +4869,7 @@ class TurtleArtWindow():
 
     def just_blocks(self):
         ''' Filter out 'proto', 'trash', and 'deleted' blocks '''
-        just_blocks_list = []
-        for blk in self.block_list.list:
-            if blk.type == 'block':
-                just_blocks_list.append(blk)
-        return just_blocks_list
+        return [blk for blk in self.block_list.list if blk.type == 'block']
 
     def just_protos(self):
         ''' Filter out 'block', 'trash', and 'deleted' blocks '''
@@ -5030,18 +5065,10 @@ variable'))
         # Cannot connect an innie to an innie or an outie to an outie
         if d1dir == d2dir:
             return _NO_DOCK
-        # Flow blocks can be inserted into the middle of a stack
-        if d2type == 'flow' and dock2n == 0:
-            if block1.connections is not None and \
-               dock1n == len(block1.connections) - 1 and \
-               block1.connections[dock1n] is not None:
-                self.inserting_block_mid_stack = True
-            elif block1.connections is not None and \
-                    block1.name in EXPANDABLE_FLOW and \
-                    block1.connections[dock1n] is not None:
-                self.inserting_block_mid_stack = True
-        # Only number blocks can be docked when the dock is not empty
-        elif d2type != 'number' or dock2n != 0:
+        # Flow inputs may insert into an occupied stack. Other occupied
+        # docks only accept number blocks, as before.
+        if not (d2type == 'flow' and dock2n == 0) and \
+                (d2type != 'number' or dock2n != 0):
             if block1.connections is not None and \
                     dock1n < len(block1.connections) and \
                     block1.connections[dock1n] is not None:

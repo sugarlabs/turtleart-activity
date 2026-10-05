@@ -55,7 +55,6 @@ from sugar3 import profile
 _logger.debug('Started Sugar3')
 import os
 import tarfile
-import subprocess
 import shutil
 import tempfile
 
@@ -1454,21 +1453,14 @@ class TurtleArtActivity(activity.Activity):
             # Could be a plugin or deprecated gtar or tar file...
             if plugin or file_path.endswith(('.gtar', '.tar', '.tar.gz')):
                 try:
-                    # Copy to tmp file since some systems had trouble
-                    # with gunzip directly from datastore
-                    datapath = get_path(activity, 'instance')
-                    tmpfile = os.path.join(datapath, 'tmpfile.tar.gz')
-                    subprocess.call(['cp', file_path, tmpfile])
-                    status = subprocess.call(['gunzip', tmpfile])
-                    if status == 0:
-                        _logger.debug('tarfile.open %s' % (tmpfile[:3]))
-                        tar_fd = tarfile.open(tmpfile[:-3], 'r')
-                    else:
-                        _logger.debug('tarfile.open %s' % (tmpfile))
-                        tar_fd = tarfile.open(tmpfile, 'r')
-                except BaseException:
+                    # "r:*" handles both gzip-compressed and plain tar
+                    # archives, so no external cp/gunzip/rm is needed.
                     _logger.debug('tarfile.open %s' % (file_path))
-                    tar_fd = tarfile.open(file_path, 'r')
+                    tar_fd = tarfile.open(file_path, 'r:*')
+                except (tarfile.TarError, OSError):
+                    _logger.debug('Could not open %s.' % (file_path))
+                    self.restore_cursor()
+                    return
 
                 tmp_dir = tempfile.mkdtemp()
                 _logger.debug('tmp_dir %s' % (tmp_dir))
@@ -1491,9 +1483,6 @@ class TurtleArtActivity(activity.Activity):
                     if not plugin:
                         shutil.rmtree(tmp_dir)
                     tar_fd.close()
-                    # Remove tmpfile.tar
-                    subprocess.call(['rm',
-                                     os.path.join(datapath, 'tmpfile.tar')])
 
             # ...otherwise, assume it is a .ta file.
             else:

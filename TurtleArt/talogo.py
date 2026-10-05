@@ -27,7 +27,7 @@ import tempfile
 import urllib.error
 import urllib.parse
 import urllib.request
-from collections import UserDict
+from collections import UserDict, deque
 from os.path import exists as os_path_exists
 from time import time, sleep
 
@@ -108,7 +108,7 @@ class logoerror(Exception):
         return str(self.value)
 
 
-class NegativeRootError(BaseException):
+class NegativeRootError(Exception):
     """Similar to the ZeroDivisionError, this error is raised at runtime
     when trying to computer the square root of a negative number."""
 
@@ -148,7 +148,7 @@ def _change_user_path(path):
         return None
     if "/" not in path[6:]:
         return None
-    if path[0:5] == "/home" and "/":
+    if path.startswith("/home/"):
         i = path[6:].index("/")
         new_path = USER_HOME + path[6 + i :]
         if new_path == path:
@@ -325,12 +325,15 @@ class LogoCode:
                 if b == blk:
                     blk = action_blk
 
+        block_indices = {
+            block: index for index, block in enumerate(self.tw.block_list.list)
+        }
         for b in blocks:
             if b.name in ("hat", "hat1", "hat2"):
                 stack_name = get_stack_name(b)
                 if stack_name:
                     stack_key = self._get_stack_key(stack_name)
-                    code = self._blocks_to_code(b)
+                    code = self._blocks_to_code(b, block_indices)
                     self.stacks[stack_key] = self._readline(code)
                 else:
                     self.tw.showlabel("#nostack")
@@ -338,7 +341,7 @@ class LogoCode:
                     self.tw.running_blocks = False
                     return None
 
-        code = self._blocks_to_code(blk)
+        code = self._blocks_to_code(blk, block_indices)
 
         if self._save_blocks is not None:
             # Undo any hidden macro expansion
@@ -362,40 +365,52 @@ class LogoCode:
 
         return code
 
-    def _blocks_to_code(self, blk):
-        """ Convert a stack of blocks to pseudocode. """
+    def _blocks_to_code(self, blk, block_indices=None):
+        """Convert blocks to pseudocode without recursive list copying."""
         if blk is None:
             return ["%nothing%", "%nothing%"]
+        if block_indices is None:
+            block_indices = {
+                block: index for index, block in enumerate(self.tw.block_list.list)
+            }
         code = []
-        dock = blk.docks[0]
-        # There could be a '(', ')', '[' or ']'.
-        if len(dock) > 4 and dock[4] in ("[", "]", "]["):
-            code.append(dock[4])
-        if blk.primitive is not None:  # make a tuple (prim, blk)
-            if blk in self.tw.block_list.list:
-                code.append((blk.primitive, self.tw.block_list.list.index(blk)))
-            else:
-                code.append(blk.primitive)  # Hidden block
-        elif blk.is_value_block():  # Extract the value from content blocks.
-            value = blk.get_value()
-            if value is None:
-                return ["%nothing%"]
-            else:
-                code.append(value)
-        else:
-            return ["%nothing%"]
-        if blk.connections is not None and len(blk.connections) > 0:
-            for i in range(1, len(blk.connections)):
-                b = blk.connections[i]
-                dock = blk.docks[i]
-                # There could be a '(', ')', '[' or ']'.
-                if len(dock) > 4 and dock[4] in ("[", "]", "]["):
-                    for c in dock[4]:
-                        code.append(c)
-                if b is not None:
-                    code.extend(self._blocks_to_code(b))
-                elif blk.docks[i][0] not in ["flow", "unavailable"]:
+        # Each frame holds a block and the next dock to visit. Dock zero
+        # emits the block itself; subsequent docks visit its children.
+        pending = [(blk, 0)]
+        while pending:
+            block, dock_index = pending.pop()
+            if dock_index == 0:
+                if block.primitive is not None:
+                    if block in block_indices:
+                        token = (block.primitive, block_indices[block])
+                    else:
+                        token = block.primitive  # Hidden block
+                elif block.is_value_block():
+                    token = block.get_value()
+                    if token is None:
+                        code.append("%nothing%")
+                        continue
+                else:
                     code.append("%nothing%")
+                    continue
+                dock = block.docks[0]
+                if len(dock) > 4 and dock[4] in ("[", "]", "]["):
+                    code.append(dock[4])
+                code.append(token)
+                if block.connections is not None and len(block.connections) > 1:
+                    pending.append((block, 1))
+                continue
+
+            dock = block.docks[dock_index]
+            if len(dock) > 4 and dock[4] in ("[", "]", "]["):
+                code.extend(dock[4])
+            if dock_index + 1 < len(block.connections):
+                pending.append((block, dock_index + 1))
+            child = block.connections[dock_index]
+            if child is not None:
+                pending.append((child, 0))
+            elif dock[0] not in ("flow", "unavailable"):
+                code.append("%nothing%")
         return code
 
     def _setup_cmd(self, string):
@@ -413,9 +428,11 @@ class LogoCode:
         in a tuple, e.g., (#forward, 16)
         """
         # debug_output(line, self.tw.running_sugar)
+        if not isinstance(line, deque):
+            line = deque(line)
         res = []
         while line:
-            token = line.pop(0)
+            token = line.popleft()
             bindex = None
             if isinstance(token, tuple):
                 (token, bindex) = token
@@ -476,54 +493,37 @@ class LogoCode:
     def evline(self, blklist, call_me=True):
         """ Evaluate a line of code from the list. """
         oldiline = self.iline
-        self.iline = blklist[:]
+        # Animation edits need a list; execution consumes a queue.
+        self.iline = list(blklist) if self.tw.step_time > 0 else deque(blklist)
         self.arglist = None
 
-        # Artificially modify the stack to support glide operations
+        # Build the expanded sequence backwards so arguments are available
+        # without inserting into the middle of a list.
         if self.tw.step_time > 0:
             factor = 4
-            n = len(self.iline)
-
-            # Iterate from right to left to not mess up the stack
-            for i in range(n - 1, -1, -1):
-                if isinstance(self.iline[i], tuple):
-                    if (self.iline[i][0].name == "left" or self.iline[i][0].name == "right"
-                            or self.iline[i][0].name == "forward" or self.iline[i][0].name == "back"):
-
-                        # Remove the number associated with the rotation
-                        degree = self.iline.pop(i + 1)
-
-                        # Remove the action
-                        action = self.iline.pop(i)
-
-                        for h in range(factor):
-
-                            # Insert the action
-                            self.iline.insert(i, action)
-
-                            # Insert the degree divided by factor
-                            self.iline.insert(i + 1, degree / factor)
-                    elif self.iline[i][0].name == "arc":
-
-                        # Remove the number associated with the radius
-                        radius = self.iline.pop(i + 2)
-
-                        # Remove the number associated with the rotation
-                        degree = self.iline.pop(i + 1)
-
-                        # Remove the action
-                        action = self.iline.pop(i)
-
-                        for h in range(factor):
-                            # Insert the action
-                            self.iline.insert(i, action)
-
-                            # Insert the degree divided by factor
-                            self.iline.insert(i + 1, degree / factor)
-
-                            # Insert the radius
-                            self.iline.insert(i + 2, radius)
-
+            expanded = []
+            for token in reversed(self.iline):
+                if isinstance(token, tuple):
+                    name = token[0].name
+                    # Expressions must be evaluated by the interpreter, not
+                    # split or duplicated while preparing the animation.
+                    if (name in ("left", "right", "forward", "back")
+                            and expanded
+                            and isinstance(expanded[-1], numbers.Number)):
+                        degree = expanded.pop()
+                        for _ in range(factor):
+                            expanded.extend((degree / factor, token))
+                        continue
+                    if (name == "arc" and len(expanded) >= 2
+                            and isinstance(expanded[-1], numbers.Number)
+                            and isinstance(expanded[-2], numbers.Number)):
+                        degree = expanded.pop()
+                        radius = expanded.pop()
+                        for _ in range(factor):
+                            expanded.extend((radius, degree / factor, token))
+                        continue
+                expanded.append(token)
+            self.iline = deque(reversed(expanded))
 
         while self.iline:
             token = self.iline[0]
@@ -540,12 +540,6 @@ class LogoCode:
                 # before it is run?
                 if current_block.before is not None:
                     current_block.before(self.tw, current_block)
-
-            if not self.tw.hide and self.bindex is not None:
-                current_block = self.tw.block_list.list[self.bindex]
-                current_block.highlight()
-                if current_block.before is not None:
-                    current_block.before(current_block)
 
             # In debugging modes, we pause between steps and show the turtle.
             if self.tw.step_time > 0:
@@ -594,7 +588,7 @@ class LogoCode:
 
     def _eval(self, call_me=True):
         """ Evaluate the next token on the line of code we are processing. """
-        token = self.iline.pop(0)
+        token = self.iline.popleft()
         bindex = None
         if isinstance(token, tuple):
             (token, bindex) = token
@@ -791,7 +785,7 @@ class LogoCode:
     #
 
     def _prim_opar(self, val):
-        self.iline.pop(0)
+        self.iline.popleft()
         return val
 
     def _prim_define(self, name, body):
@@ -842,7 +836,7 @@ class LogoCode:
         self.hollow_thickness = num
 
         if blklist:
-            self.icall(self.evline, blklist[:])
+            self.icall(self.evline, blklist)
             yield True
 
         # Set it back to normal
@@ -864,7 +858,7 @@ class LogoCode:
                     "or a callable that returns an iterator"
                 )
         while next(controller):
-            self.icall(self.evline, blklist[:])
+            self.icall(self.evline, blklist)
             yield True
             if self.procstop:
                 break
@@ -873,7 +867,7 @@ class LogoCode:
 
     def prim_clamp(self, blklist):
         """ Run clamp blklist """
-        self.icall(self.evline, blklist[:])
+        self.icall(self.evline, blklist)
         yield True
         self.procstop = False
         self.ireturn()
@@ -919,7 +913,7 @@ class LogoCode:
     def prim_if(self, boolean, blklist):
         """ If bool, do list """
         if boolean:
-            self.icall(self.evline, blklist[:])
+            self.icall(self.evline, blklist)
             yield True
         self.ireturn()
         yield True
@@ -927,10 +921,10 @@ class LogoCode:
     def prim_ifelse(self, boolean, list1, list2):
         """ If bool, do list1, else do list2 """
         if boolean:
-            self.ijmp(self.evline, list1[:])
+            self.ijmp(self.evline, list1)
             yield True
         else:
-            self.ijmp(self.evline, list2[:])
+            self.ijmp(self.evline, list2)
             yield True
 
     def prim_set_box(self, name, value):
@@ -1154,6 +1148,8 @@ class LogoCode:
             if name not in self.value_blocks_to_update:
                 return
             for block in self.value_blocks_to_update[name]:
+                if block.spr.get_label() == block_names[name][0]:
+                    continue
                 block.spr.set_label(block_names[name][0])
                 if name == "box":
                     argblk = block.connections[-2]
@@ -1174,15 +1170,18 @@ class LogoCode:
                 valstring = str(value)
             if name not in self.value_blocks_to_update:
                 return
+            new_label = block_names[name][0] + " = " + valstring
             for block in self.value_blocks_to_update[name]:
+                if block.spr.get_label() == new_label:
+                    continue
                 if label is None:
-                    block.spr.set_label(block_names[name][0] + " = " + valstring)
+                    block.spr.set_label(new_label)
                     block.resize()
                 else:
                     argblk = block.connections[-2]
                     # Only update if label matches
                     if argblk is not None and argblk.spr.labels[0] == label:
-                        block.spr.set_label(block_names[name][0] + " = " + valstring)
+                        block.spr.set_label(new_label)
                         dx = block.dx
                         block.resize()
                         # Move connections over...

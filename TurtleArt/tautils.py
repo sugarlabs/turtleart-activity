@@ -27,6 +27,7 @@ import pickle
 import subprocess
 import os
 import mimetypes
+import base64
 from gettext import gettext as _
 from gi.repository import Gtk
 from gi.repository import GLib
@@ -233,12 +234,15 @@ def hat_on_top(data):
         i += 1
 
     # Then add the connections
+    positions = {}
+    for index, block_id in enumerate(sort):
+        positions.setdefault(block_id, index)
     for i, blk in enumerate(sort):
         for j in data[blk][4]:
             if j is None:
                 sorted_data[i][4].append(None)
             else:
-                sorted_data[i][4].append(sort.index(j))
+                sorted_data[i][4].append(positions[j])
 
     if data_was_tuple:
         return _tuplify(sorted_data)
@@ -338,20 +342,19 @@ def chooser_dialog(parent_window, filter, action):
 
 def data_from_file(ta_file):
     ''' Open the .ta file, ignoring any .png file that might be present. '''
-    file_handle = open(ta_file, 'r')
     #
     # We try to maintain read-compatibility with all versions of Turtle Art.
     # Try pickle first; then different versions of json.
     #
-    try:
-        data = pickle.load(file_handle)
-    except BaseException:
-        # Rewind necessary because of failed pickle.load attempt
-        file_handle.seek(0)
-        text = file_handle.read()
-        data = data_from_string(text)
-    file_handle.close()
-    return data
+    with open(ta_file, 'rb') as file_handle:
+        try:
+            return pickle.load(file_handle)
+        except (pickle.UnpicklingError, EOFError, AttributeError,
+                ValueError, TypeError):
+            # Rewind necessary because of failed pickle.load attempt
+            file_handle.seek(0)
+            text = file_handle.read().decode('utf-8')
+    return data_from_string(text)
 
 
 def data_from_string(text):
@@ -464,26 +467,17 @@ def get_path(activity, subpath):
 
 
 def image_to_base64(image_path, tmp_path):
-    ''' Convert an image to base64-encoded data '''
-    base64 = os.path.join(tmp_path, 'base64tmp')
-    cmd = 'base64 <' + image_path + ' >' + base64
-    subprocess.check_call(cmd, shell=True)
-    file_handle = open(base64, 'r')
-    data = file_handle.read()
-    file_handle.close()
-    os.remove(base64)
-    return data
+    """Encode an image without invoking a shell or creating scratch files."""
+    with open(image_path, 'rb') as image_file:
+        return base64.encodebytes(image_file.read()).decode('ascii')
 
 
 def base64_to_image(data, path_name):
-    ''' Convert base64-encoded data to an image '''
-    base64 = os.path.join(path_name, 'base64tmp')
-    file_handle = open(base64, 'w')
-    file_handle.write(data)
-    file_handle.close()
+    """Decode an image without interpreting paths as shell commands."""
+    decoded = base64.b64decode(data)
     file_name = os.path.join(path_name, 'imagetmp.png')
-    cmd = 'base64 -d <' + base64 + '>' + file_name
-    subprocess.check_call(cmd, shell=True)
+    with open(file_name, 'wb') as image_file:
+        image_file.write(decoded)
     return file_name
 
 
@@ -795,14 +789,24 @@ def find_start_stack(blk):
 
 
 def find_group(blk):
-    ''' Find the connected group of block in a stack. '''
+    ''' Return the block and its descendants in depth-first order ''' 
     if blk is None:
         return []
-    group = [blk]
-    if blk.connections is not None:
-        for cblk in blk.connections[1:]:
-            if cblk is not None:
-                group.extend(find_group(cblk))
+
+    group = []
+    pending = [blk]
+
+    while pending:
+        current = pending.pop()
+        group.append(current)
+
+        if current.connections:
+            pending.extend(
+                child
+                for child in reversed(current.connections[1:])
+                if child is not None
+            )
+
     return group
 
 
@@ -915,12 +919,11 @@ def check_output(command, warning):
     ''' Workaround for old systems without subprocess.check_output'''
     if hasattr(subprocess, 'check_output'):
         try:
-            output = subprocess.check_output(command)
+            output = subprocess.check_output(command, universal_newlines=True)
         except subprocess.CalledProcessError:
             print(warning)
             return None
     else:
-        import subprocess
 
         cmd = ''
         for c in command:

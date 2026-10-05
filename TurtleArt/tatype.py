@@ -122,10 +122,8 @@ def get_type(x):
         return (x.return_type, False)
 
     # AST types
-    elif isinstance(x, ast.Num):
-        return (get_type(x.n)[0], True)
-    elif isinstance(x, ast.Str):
-        return (get_type(x.s)[0], True)
+    elif isinstance(x, ast.Constant):
+        return (get_type(x.value)[0], True)
     elif isinstance(x, ast.Name):
         try:
             # we need to have imported CONSTANTS for this to work

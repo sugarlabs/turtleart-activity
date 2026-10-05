@@ -126,7 +126,7 @@ class Rfid(Plugin):
             _logger.debug("DEVICE_ADDED: %s" % self.rfid_device)
             if self.rfid_device is not None:
                 _logger.debug("DEVICE_ADDED: RFID device is not None!")
-                self.rfid_connected = self._device.do_connect()
+                self.rfid_connected = self.rfid_device.do_connect()
             if self.rfid_connected:
                 _logger.debug("DEVICE_ADDED: Connected!")
                 self.rfid_device.connect("tag-read", self._tag_read_cb)
@@ -148,7 +148,7 @@ class Rfid(Plugin):
         while self.rfid_idn.__len__() < 9:
             self.rfid_idn = '0' + self.rfid_idn
         print(tagid, idbin, self.rfid_idn)
-        self.tw.lc.update_label_value('rfid', self.rfid_idn)
+        self._parent.lc.update_label_value('rfid', self.rfid_idn)
 
     # Block primitives used in talogo
 

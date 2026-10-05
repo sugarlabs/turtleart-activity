@@ -202,7 +202,7 @@ class PaletteView():
                 elif name in PYTHON_SKIN:
                     self._proto_skin('pythonsmall', self.blocks[-1].spr)
                 elif len(self.blocks[-1].spr.labels) > 0:
-                    self.blocks[-1].refresh()
+                    self.blocks[-1].refresh_label_layout()
 
         self.populated = True
 

@@ -429,14 +429,11 @@ class SourceGenerator(ast.NodeVisitor):
         self.write(node.id)
     visit_TypedName = visit_Name
 
-    def visit_Str(self, node):
-        self.write(repr(node.s))
-
-    def visit_Bytes(self, node):
-        self.write(repr(node.s))
-
-    def visit_Num(self, node):
-        self.write(repr(node.n))
+    def visit_Constant(self, node):
+        if node.value is Ellipsis:
+            self.write('...')
+        else:
+            self.write(repr(node.value))
 
     def visit_Tuple(self, node):
         self.write('(')
