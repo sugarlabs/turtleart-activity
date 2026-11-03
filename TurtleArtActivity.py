@@ -222,7 +222,8 @@ class TurtleArtActivity(activity.Activity):
             self.toolbox.toolbar.remove(self.samples_button)
             self.toolbox.toolbar.remove(self.stop_separator)
         self.toolbox.toolbar.remove(self.stop_button)
-        self._view_toolbar.remove(self._coordinates_toolitem)
+        if self._coordinates_toolitem in self._view_toolbar:
+            self._view_toolbar.remove(self._coordinates_toolitem)
 
         if Gdk.Screen.width() / 14 < style.GRID_CELL_SIZE:
             self.samples_button2.show()
