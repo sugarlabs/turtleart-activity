@@ -270,7 +270,7 @@ class Text(Childless, Node):
             f.write(_escape(str(self.data).encode('utf-8')))
 
 
-class CDATASection(Childless, Text):
+class CDATASection(Text):
     nodeType = Node.CDATA_SECTION_NODE
 
     def toXml(self, level, f):

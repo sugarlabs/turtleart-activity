@@ -51,8 +51,9 @@ def complete_plugin_install(cls, tmp_dir, tmp_path, plugin_path,
                     create_palette.append(True)
                 else:
                     create_palette.append(False)
-        cls.tw.init_plugin(plugin_name)
-        cls.tw.turtleart_plugins[-1].setup()
+        cls.tw.init_plugin(plugin_name, plugin_path)
+        if plugin_name in cls.tw.turtleart_plugins:
+            cls.tw.turtleart_plugins[plugin_name].setup()
         cls.tw.load_media_shapes()
         for i, palette_name in enumerate(palette_name_list):
             if create_palette[i]:

@@ -78,7 +78,7 @@ class Uploader_plugin(Plugin):
         if self.uploading:
             return
 
-        self.uploading = False
+        self.uploading = True
         self.pop_up = Gtk.Window()
         self.pop_up.set_default_size(600, 400)
         self.pop_up.connect('delete_event', self._stop_uploading)
@@ -153,7 +153,6 @@ http://turtleartsite.sugarlabs.org to upload your project.'))
 
     def _do_remote_logon(self, widget):
         """ Log into the upload server """
-        import socket
 
         username = self.username_entry.get_text()
         password = self.password_entry.get_text()
@@ -162,7 +161,7 @@ http://turtleartsite.sugarlabs.org to upload your project.'))
         logged_in = None
         try:
             logged_in = server.login_remote(username, password)
-        except socket.gaierror as e:
+        except Exception as e:
             print("Login failed %s" % e)
         if logged_in:
             upload_key = logged_in
@@ -174,17 +173,17 @@ http://turtleartsite.sugarlabs.org to upload your project.'))
         """ Submit project to the server """
         title = self.title_entry.get_text()
         description = self.description_entry.get_buffer().get_text(
-            *self.description_entry.get_buffer().get_bounds())
+            *self.description_entry.get_buffer().get_bounds(), True)
         tafile, imagefile = self.tw.save_for_upload(title)
 
         # Set a maximum file size for image to be uploaded.
         if int(os.path.getsize(imagefile)) > self._max_file_size:
-            import Image
+            from PIL import Image
             while int(os.path.getsize(imagefile)) > self._max_file_size:
-                big_file = Image.open(imagefile)
-                smaller_file = big_file.resize(int(0.9 * big_file.size[0]),
-                                               int(0.9 * big_file.size[1]),
-                                               Image.ANTIALIAS)
+                with Image.open(imagefile) as big_file:
+                    smaller_file = big_file.resize(
+                        (int(0.9 * big_file.size[0]), int(0.9 * big_file.size[1])),
+                        getattr(Image, 'Resampling', Image).LANCZOS)
                 smaller_file.save(imagefile, quality=100)
 
         c = pycurl.Curl()
@@ -201,7 +200,7 @@ http://turtleartsite.sugarlabs.org to upload your project.'))
                                                     'image_create')])
         c.perform()
         error_code = c.getinfo(c.HTTP_CODE)
-        c.close
+        c.close()
         os.remove(imagefile)
         os.remove(tafile)
         if error_code == 400:
